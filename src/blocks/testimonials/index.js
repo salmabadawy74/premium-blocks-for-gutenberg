@@ -181,6 +181,10 @@ const testimonialsAttrs = {
     type: "string",
     default: "px",
   },
+  backColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 registerBlockType("premium/testimonial", {

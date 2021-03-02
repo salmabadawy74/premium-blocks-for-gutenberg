@@ -353,6 +353,10 @@ const newAttributes_1_7_2 = {
     type: "number",
     default: "1",
   },
+  backColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 const testimonialsAttrs_1_7_2 = Object.assign(
@@ -366,6 +370,7 @@ const deprecatedContent = [
     migrate: (attributes) => {
       let newAttributes = {
         backOpacity: "",
+        backColorUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

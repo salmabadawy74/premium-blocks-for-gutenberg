@@ -41,7 +41,7 @@ const iconAttrs = {
   },
   iconOpacity: {
     type: "number",
-    default:"1"
+    default: "1",
   },
   padding: {
     type: "string",
@@ -114,7 +114,7 @@ const iconAttrs = {
   },
   backgroundOpacity: {
     type: "number",
-    default:"1"
+    default: "1",
   },
   background: {
     type: "string",
@@ -214,6 +214,14 @@ const iconAttrs = {
   },
   target: {
     type: "boolean",
+  },
+  iconBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  backgroundColorUpdated: {
+    type: "boolean",
+    default: false,
   },
 };
 

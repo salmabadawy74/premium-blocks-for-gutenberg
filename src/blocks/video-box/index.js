@@ -215,6 +215,14 @@ const videoBoxAttrs = {
   playLeft: {
     type: "number",
   },
+  playBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  videoDescUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 const onChangeVideoURL = (type, URL) => {

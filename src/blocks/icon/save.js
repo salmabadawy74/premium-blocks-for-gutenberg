@@ -56,6 +56,8 @@ const save = (props) => {
     target,
     iconOpacity,
     backgroundOpacity,
+    iconBackUpdated,
+    backgroundColorUpdated,
   } = props.attributes;
 
   const mainClasses = classnames(className, "premium-icon");
@@ -65,7 +67,9 @@ const save = (props) => {
       className={`${mainClasses}__container`}
       style={{
         textAlign: align,
-        backgroundColor: `rgba(${backgroundColor},${backgroundOpacity})`,
+        backgroundColor: backgroundColorUpdated
+          ? `rgba(${backgroundColor},${backgroundOpacity})`
+          : backgroundColor,
         backgroundImage: `url('${imageURL}')`,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -98,7 +102,9 @@ const save = (props) => {
           className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
           style={{
             color: iconColor || "#6ec1e4",
-            backgroundColor: `rgba(${iconBack},${iconOpacity})`,
+            backgroundColor: iconBackUpdated
+              ? `rgba(${iconBack},${iconOpacity})`
+              : iconBack,
             fontSize: (iconSize || 50) + iconSizeUnit,
             paddingTop: paddingT + paddingU,
             paddingRight: paddingR + paddingU,

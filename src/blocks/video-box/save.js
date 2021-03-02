@@ -62,6 +62,8 @@ const save = (props) => {
     shadowPosition,
     playOpacity,
     videoDescOpacity,
+    videoDescUpdated,
+    playBackUpdated,
   } = props.attributes;
   const loopVideo = () => {
     if ("youtube" === videoType) {
@@ -147,7 +149,9 @@ const save = (props) => {
             top: playTop + "%",
             left: playLeft + "%",
             color: playColor,
-            backgroundColor: `rgba(${playBack},${playOpacity})`,
+            backgroundColor: playBackUpdated
+              ? `rgba(${playBack},${playOpacity})`
+              : playBack,
             border: playBorderType,
             borderWidth: playBorderWidth + "px",
             borderRadius: playBorderRadius + "px",
@@ -168,7 +172,9 @@ const save = (props) => {
           className={`premium-video-box__desc`}
           style={{
             color: videoDescColor,
-            backgroundColor: `rgba(${videoDescBack},${videoDescOpacity})`,
+            backgroundColor: videoDescUpdated
+              ? `rgba(${videoDescBack},${videoDescOpacity})`
+              : videoDescBack,
             padding: videoDescPadding,
             borderRadius: videoDescBorderRadius,
             top: descTop + "%",

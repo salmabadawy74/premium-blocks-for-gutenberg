@@ -37,6 +37,7 @@ const edit = (props) => {
     vPos,
     height,
     color,
+    colorUpdated,
     opacity,
     imageID,
     imageURL,
@@ -186,7 +187,9 @@ const edit = (props) => {
           <PremiumBackgroud
             type="color"
             colorValue={color}
-            onChangeColor={(newvalue) => setAttributes({ color: newvalue })}
+            onChangeColor={(newvalue) =>
+              setAttributes({ color: newvalue, colorUpdated: true })
+            }
             opacityValue={opacity}
             onChangeOpacity={(value) => setAttributes({ opacity: value })}
           />
@@ -349,7 +352,7 @@ const edit = (props) => {
       style={{
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-        backgroundColor: `rgba(${color},${opacity})`,
+        backgroundColor: colorUpdated ? `rgba(${color},${opacity})` : color,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",

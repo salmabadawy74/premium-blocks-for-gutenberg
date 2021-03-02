@@ -86,6 +86,7 @@ const edit = (props) => {
     paddingBottom,
     paddingLeft,
     paddingUnit,
+    backColorUpdated,
   } = props.attributes;
 
   const RADIUS = [
@@ -421,7 +422,7 @@ const edit = (props) => {
               type="color"
               colorValue={backColor}
               onChangeColor={(newvalue) =>
-                setAttributes({ backColor: newvalue })
+                setAttributes({ backColor: newvalue, backColorUpdated: true })
               }
               opacityValue={backOpacity}
               onChangeOpacity={(value) => setAttributes({ backOpacity: value })}
@@ -525,7 +526,9 @@ const edit = (props) => {
       className={`${mainClasses}__wrap`}
       style={{
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-        backgroundColor: `rgba(${backColor},${backOpacity})`,
+        backgroundColor: backColorUpdated
+          ? `rgba(${backColor},${backOpacity})`
+          : backColor,
         backgroundImage: imageURL ? `url('${imageURL}')` : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,

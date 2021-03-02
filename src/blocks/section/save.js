@@ -15,6 +15,7 @@ const save = (props) => {
     minHeight,
     minHeightUnit,
     color,
+    colorUpdated,
     opacity,
     imageURL,
     fixed,
@@ -50,7 +51,7 @@ const save = (props) => {
       style={{
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-        backgroundColor: `rgba(${color},${opacity})`,
+        backgroundColor: colorUpdated ? `rgba(${color},${opacity})` : color,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",

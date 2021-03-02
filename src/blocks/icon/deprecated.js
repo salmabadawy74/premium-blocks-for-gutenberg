@@ -208,6 +208,14 @@ const newAttributes_1_6_2 = {
     type: "number",
     default: "1",
   },
+  iconBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  backgroundColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 const deprecated_attributes_1_6_2 = Object.assign(
   deprecated_attributes_1_6_1,
@@ -762,6 +770,8 @@ const deprecatedContent = [
       let newAttributes = {
         iconOpacity: "",
         backgroundOpacity: "",
+        iconBackUpdated: "",
+        backgroundColorUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

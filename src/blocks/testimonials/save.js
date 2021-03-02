@@ -57,6 +57,7 @@ const save = (props) => {
     paddingBottom,
     paddingLeft,
     paddingUnit,
+    backColorUpdated,
   } = props.attributes;
 
   const mainClasses = classnames(className, "premium-testimonial");
@@ -66,7 +67,9 @@ const save = (props) => {
       className={`${mainClasses}__wrap`}
       style={{
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-        backgroundColor: `rgba(${backColor},${backOpacity})`,
+        backgroundColor: backColorUpdated
+          ? `rgba(${backColor},${backOpacity})`
+          : backColor,
         backgroundImage: `url('${imageURL}')`,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,

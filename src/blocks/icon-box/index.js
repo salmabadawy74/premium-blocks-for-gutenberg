@@ -374,6 +374,18 @@ const iconBoxAttrs = {
     type: "number",
     default: "1",
   },
+  iconUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  btnBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 registerBlockType("premium/icon-box", {

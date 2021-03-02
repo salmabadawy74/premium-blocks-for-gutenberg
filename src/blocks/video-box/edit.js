@@ -147,6 +147,8 @@ class edit extends Component {
       shadowHorizontal,
       shadowVertical,
       shadowPosition,
+      videoDescUpdated,
+      playBackUpdated,
     } = this.props.attributes;
 
     const TYPE = [
@@ -523,7 +525,10 @@ class edit extends Component {
                               type="color"
                               colorValue={playBack}
                               onChangeColor={(newvalue) =>
-                                setAttributes({ playBack: newvalue })
+                                setAttributes({
+                                  playBack: newvalue,
+                                  playBackUpdated: true,
+                                })
                               }
                               opacityValue={playOpacity}
                               onChangeOpacity={(value) =>
@@ -682,7 +687,10 @@ class edit extends Component {
                               type="color"
                               colorValue={videoDescBack}
                               onChangeColor={(newvalue) =>
-                                setAttributes({ videoDescBack: newvalue })
+                                setAttributes({
+                                  videoDescBack: newvalue,
+                                  videoDescUpdated: true,
+                                })
                               }
                               opacityValue={videoDescOpacity}
                               onChangeOpacity={(value) =>
@@ -864,7 +872,9 @@ class edit extends Component {
               top: playTop + "%",
               left: playLeft + "%",
               color: playColor,
-              backgroundColor: `rgba(${playBack},${playOpacity})`,
+              backgroundColor: playBackUpdated
+                ? `rgba(${playBack},${playOpacity})`
+                : playBack,
               border: playBorderType,
               borderWidth: playBorderWidth + "px",
               borderRadius: playBorderRadius + "px",
@@ -885,7 +895,9 @@ class edit extends Component {
             className={`premium-video-box__desc`}
             style={{
               color: videoDescColor,
-              backgroundColor: `rgba(${videoDescBack},${videoDescOpacity})`,
+              backgroundColor: videoDescUpdated
+                ? `rgba(${videoDescBack},${videoDescOpacity})`
+                : videoDescBack,
               padding: videoDescPadding,
               borderRadius: videoDescBorderRadius,
               top: descTop + "%",

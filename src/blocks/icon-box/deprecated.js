@@ -1067,6 +1067,18 @@ const newAttributes_1_7_2 = {
     type: "number",
     default: "1",
   },
+  iconUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  btnBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 const deprecated_attributes_1_7_2 = Object.assign(
@@ -1082,6 +1094,9 @@ const deprecatedContent = [
         btnOpacity: "",
         iconOpacity: "",
         backOpacity: "",
+        iconUpdated: "",
+        backColorUpdated: "",
+        btnBackUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

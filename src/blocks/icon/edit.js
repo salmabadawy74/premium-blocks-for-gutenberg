@@ -83,6 +83,8 @@ const edit = (props) => {
     urlCheck,
     link,
     target,
+    iconBackUpdated,
+    backgroundColorUpdated,
   } = props.attributes;
 
   const EFFECTS = [
@@ -209,7 +211,7 @@ const edit = (props) => {
                     type="color"
                     colorValue={iconBack}
                     onChangeColor={(value) =>
-                      setAttributes({ iconBack: value })
+                      setAttributes({ iconBack: value, iconBackUpdated: true })
                     }
                     opacityValue={iconOpacity}
                     onChangeOpacity={(newvalue) =>
@@ -325,7 +327,10 @@ const edit = (props) => {
               type="color"
               colorValue={backgroundColor}
               onChangeColor={(value) =>
-                setAttributes({ backgroundColor: value })
+                setAttributes({
+                  backgroundColor: value,
+                  backgroundColorUpdated: true,
+                })
               }
               opacityValue={backgroundOpacity}
               onChangeOpacity={(newvalue) =>
@@ -476,7 +481,9 @@ const edit = (props) => {
       className={`${mainClasses}__container`}
       style={{
         textAlign: align,
-        backgroundColor: `rgba(${backgroundColor},${backgroundOpacity})`,
+        backgroundColor: backgroundColorUpdated
+          ? `rgba(${backgroundColor},${backgroundOpacity})`
+          : backgroundColor,
         backgroundImage: imageURL ? `url('${imageURL}')` : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -509,7 +516,9 @@ const edit = (props) => {
           className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
           style={{
             color: iconColor || "#6ec1e4",
-            backgroundColor: `rgba(${iconBack},${iconOpacity})`,
+            backgroundColor: iconBackUpdated
+              ? `rgba(${iconBack},${iconOpacity})`
+              : iconBack,
             fontSize: (iconSize || 50) + iconSizeUnit,
             paddingTop: paddingT + paddingU,
             paddingRight: paddingR + paddingU,

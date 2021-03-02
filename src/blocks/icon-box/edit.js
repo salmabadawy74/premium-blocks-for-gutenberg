@@ -41,6 +41,9 @@ const {
 const edit = (props) => {
   const { isSelected, setAttributes, className, clientId: blockId } = props;
   const {
+    backColorUpdated,
+    iconUpdated,
+    btnBackUpdated,
     id,
     align,
     iconChecked,
@@ -393,7 +396,10 @@ const edit = (props) => {
                     type="color"
                     colorValue={iconBackColor}
                     onChangeColor={(newvalue) =>
-                      setAttributes({ iconBackColor: newvalue })
+                      setAttributes({
+                        iconBackColor: newvalue,
+                        iconUpdated: true,
+                      })
                     }
                     opacityValue={iconOpacity}
                     onChangeOpacity={(value) =>
@@ -737,7 +743,10 @@ const edit = (props) => {
                       type="color"
                       colorValue={btnBack}
                       onChangeColor={(newvalue) =>
-                        setAttributes({ btnBack: newvalue })
+                        setAttributes({
+                          btnBack: newvalue,
+                          btnBackUpdated: true,
+                        })
                       }
                       opacityValue={btnOpacity}
                       onChangeOpacity={(value) =>
@@ -860,7 +869,7 @@ const edit = (props) => {
               type="color"
               colorValue={backColor}
               onChangeColor={(newvalue) =>
-                setAttributes({ backColor: newvalue })
+                setAttributes({ backColor: newvalue, backColorUpdated: true })
               }
               opacityValue={backOpacity}
               onChangeOpacity={(value) => setAttributes({ backOpacity: value })}
@@ -1055,7 +1064,9 @@ const edit = (props) => {
         paddingBottom: paddingB + paddingU,
         paddingLeft: paddingL + paddingU,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-        backgroundColor: `rgba(${backColor},${backOpacity})`,
+        backgroundColor: backColorUpdated
+          ? `rgba(${backColor},${backOpacity})`
+          : backColor,
         backgroundImage: imageURL ? `url('${imageURL}')` : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -1100,7 +1111,9 @@ const edit = (props) => {
                   className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                   style={{
                     color: iconColor,
-                    backgroundColor: `rgba(${iconBackColor},${iconOpacity})`,
+                    backgroundColor: iconUpdated
+                      ? `rgba(${iconBackColor},${iconOpacity})`
+                      : iconBackColor,
                     fontSize: iconSize,
                   }}
                 />
@@ -1193,7 +1206,9 @@ const edit = (props) => {
               value={btnText}
               style={{
                 color: btnColor,
-                backgroundColor: `rgba(${btnBack},${btnOpacity})`,
+                backgroundColor: btnBackUpdated
+                  ? `rgba(${btnBack},${btnOpacity})`
+                  : btnBack,
                 fontSize: btnSize + "px",
                 letterSpacing: btnLetter + "px",
                 textTransform: btnUpper ? "uppercase" : "none",

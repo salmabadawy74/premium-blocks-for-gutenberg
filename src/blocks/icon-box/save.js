@@ -107,6 +107,9 @@ const save = (props) => {
     iconOpacity,
     btnOpacity,
     backOpacity,
+    backColorUpdated,
+    iconUpdated,
+    btnBackUpdated,
   } = props.attributes;
 
   const mainClasses = classnames(className, "premium-icon-box");
@@ -130,7 +133,9 @@ const save = (props) => {
         paddingBottom: paddingB + paddingU,
         paddingLeft: paddingL + paddingU,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-        backgroundColor: `rgba(${backColor},${backOpacity})`,
+        backgroundColor: backColorUpdated
+          ? `rgba(${backColor},${backOpacity})`
+          : backColor,
         backgroundImage: `url('${imageURL}')`,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -168,7 +173,9 @@ const save = (props) => {
               className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
               style={{
                 color: iconColor,
-                backgroundColor: `rgba(${iconBackColor},${iconOpacity})`,
+                backgroundColor: iconUpdated
+                  ? `rgba(${iconBackColor},${iconOpacity})`
+                  : iconBackColor,
                 fontSize: iconSize,
               }}
             />
@@ -253,7 +260,9 @@ const save = (props) => {
               value={btnText}
               style={{
                 color: btnColor,
-                backgroundColor: `rgba(${btnBack},${btnOpacity})`,
+                backgroundColor: btnBackUpdated
+                  ? `rgba(${btnBack},${btnOpacity})`
+                  : btnBack,
                 fontSize: btnSize + "px",
                 letterSpacing: btnLetter + "px",
                 textTransform: btnUpper ? "uppercase" : "none",

@@ -402,6 +402,20 @@ var PbgIcon = function (_wp$element$Component) {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(76);
+} else {
+  module.exports = __webpack_require__(77);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -614,20 +628,6 @@ function PremiumBackground(props) {
     )
   );
 }
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(76);
-} else {
-  module.exports = __webpack_require__(77);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 6 */
@@ -1243,7 +1243,7 @@ function PremiumSizeUnits(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -2081,6 +2081,14 @@ var videoBoxAttrs = {
   // Old props
   playLeft: {
     type: "number"
+  },
+  playBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  videoDescUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -2552,7 +2560,7 @@ module.exports = isSymbol;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(13);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3626,7 +3634,7 @@ function PremiumFilters(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(5), __webpack_require__(0), __webpack_require__(20), __webpack_require__(65)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(5), __webpack_require__(0), __webpack_require__(20), __webpack_require__(65)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(20), __webpack_require__(65)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(20), __webpack_require__(65)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -4236,7 +4244,7 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(20));
 
@@ -5045,7 +5053,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactLifecyclesCompat = __webpack_require__(67);
 
@@ -5605,7 +5613,7 @@ registerBlockType("premium/accordion", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(5);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14691,7 +14699,7 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(5);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -16424,7 +16432,7 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(19);
 
@@ -19531,7 +19539,7 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_fonts__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(5);
 
 
 
@@ -22244,6 +22252,14 @@ var iconAttrs = {
   },
   target: {
     type: "boolean"
+  },
+  iconBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  backgroundColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -22278,7 +22294,7 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(5);
 
 
 
@@ -22365,7 +22381,9 @@ var edit = function edit(props) {
       wrapMarginL = _props$attributes.wrapMarginL,
       urlCheck = _props$attributes.urlCheck,
       link = _props$attributes.link,
-      target = _props$attributes.target;
+      target = _props$attributes.target,
+      iconBackUpdated = _props$attributes.iconBackUpdated,
+      backgroundColorUpdated = _props$attributes.backgroundColorUpdated;
 
 
   var EFFECTS = [{
@@ -22528,7 +22546,7 @@ var edit = function edit(props) {
                 type: "color",
                 colorValue: iconBack,
                 onChangeColor: function onChangeColor(value) {
-                  return setAttributes({ iconBack: value });
+                  return setAttributes({ iconBack: value, iconBackUpdated: true });
                 },
                 opacityValue: iconOpacity,
                 onChangeOpacity: function onChangeOpacity(newvalue) {
@@ -22654,7 +22672,10 @@ var edit = function edit(props) {
           type: "color",
           colorValue: backgroundColor,
           onChangeColor: function onChangeColor(value) {
-            return setAttributes({ backgroundColor: value });
+            return setAttributes({
+              backgroundColor: value,
+              backgroundColorUpdated: true
+            });
           },
           opacityValue: backgroundOpacity,
           onChangeOpacity: function onChangeOpacity(newvalue) {
@@ -22802,7 +22823,7 @@ var edit = function edit(props) {
       className: mainClasses + "__container",
       style: {
         textAlign: align,
-        backgroundColor: "rgba(" + backgroundColor + "," + backgroundOpacity + ")",
+        backgroundColor: backgroundColorUpdated ? "rgba(" + backgroundColor + "," + backgroundOpacity + ")" : backgroundColor,
         backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -22832,7 +22853,7 @@ var edit = function edit(props) {
       className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
       style: {
         color: iconColor || "#6ec1e4",
-        backgroundColor: "rgba(" + iconBack + "," + iconOpacity + ")",
+        backgroundColor: iconBackUpdated ? "rgba(" + iconBack + "," + iconOpacity + ")" : iconBack,
         fontSize: (iconSize || 50) + iconSizeUnit,
         paddingTop: paddingT + paddingU,
         paddingRight: paddingR + paddingU,
@@ -23834,7 +23855,7 @@ module.exports = function () {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(5),
+var aa = __webpack_require__(4),
     n = __webpack_require__(16),
     r = __webpack_require__(64);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
@@ -27080,7 +27101,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(16);var checkPropTypes=__webpack_require__(29);var scheduler=__webpack_require__(64);var tracing=__webpack_require__(193);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(16);var checkPropTypes=__webpack_require__(29);var scheduler=__webpack_require__(64);var tracing=__webpack_require__(193);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -31442,7 +31463,7 @@ var _addClass = _interopRequireDefault(__webpack_require__(197));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(200));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _Transition = _interopRequireDefault(__webpack_require__(66));
 
@@ -31901,7 +31922,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = __webpack_require__(20);
 
@@ -32067,7 +32088,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -32272,7 +32293,9 @@ var save = function save(props) {
       link = _props$attributes.link,
       target = _props$attributes.target,
       iconOpacity = _props$attributes.iconOpacity,
-      backgroundOpacity = _props$attributes.backgroundOpacity;
+      backgroundOpacity = _props$attributes.backgroundOpacity,
+      iconBackUpdated = _props$attributes.iconBackUpdated,
+      backgroundColorUpdated = _props$attributes.backgroundColorUpdated;
 
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
@@ -32283,7 +32306,7 @@ var save = function save(props) {
       className: mainClasses + "__container",
       style: {
         textAlign: align,
-        backgroundColor: "rgba(" + backgroundColor + "," + backgroundOpacity + ")",
+        backgroundColor: backgroundColorUpdated ? "rgba(" + backgroundColor + "," + backgroundOpacity + ")" : backgroundColor,
         backgroundImage: "url('" + imageURL + "')",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -32316,7 +32339,7 @@ var save = function save(props) {
         className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
         style: {
           color: iconColor || "#6ec1e4",
-          backgroundColor: "rgba(" + iconBack + "," + iconOpacity + ")",
+          backgroundColor: iconBackUpdated ? "rgba(" + iconBack + "," + iconOpacity + ")" : iconBack,
           fontSize: (iconSize || 50) + iconSizeUnit,
           paddingTop: paddingT + paddingU,
           paddingRight: paddingR + paddingU,
@@ -32553,6 +32576,14 @@ var newAttributes_1_6_2 = {
   backgroundOpacity: {
     type: "number",
     default: "1"
+  },
+  iconBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  backgroundColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 var deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2);
@@ -33100,7 +33131,9 @@ var deprecatedContent = [{
   migrate: function migrate(attributes) {
     var newAttributes = {
       iconOpacity: "",
-      backgroundOpacity: ""
+      backgroundOpacity: "",
+      iconBackUpdated: "",
+      backgroundColorUpdated: ""
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -34054,6 +34087,18 @@ var iconBoxAttrs = {
   btnOpacity: {
     type: "number",
     default: "1"
+  },
+  iconUpdated: {
+    type: "boolean",
+    default: false
+  },
+  btnBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -34088,7 +34133,7 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(19);
 
@@ -34133,6 +34178,9 @@ var edit = function edit(props) {
       className = props.className,
       blockId = props.clientId;
   var _props$attributes = props.attributes,
+      backColorUpdated = _props$attributes.backColorUpdated,
+      iconUpdated = _props$attributes.iconUpdated,
+      btnBackUpdated = _props$attributes.btnBackUpdated,
       id = _props$attributes.id,
       align = _props$attributes.align,
       iconChecked = _props$attributes.iconChecked,
@@ -34487,7 +34535,10 @@ var edit = function edit(props) {
             type: "color",
             colorValue: iconBackColor,
             onChangeColor: function onChangeColor(newvalue) {
-              return setAttributes({ iconBackColor: newvalue });
+              return setAttributes({
+                iconBackColor: newvalue,
+                iconUpdated: true
+              });
             },
             opacityValue: iconOpacity,
             onChangeOpacity: function onChangeOpacity(value) {
@@ -34892,7 +34943,10 @@ var edit = function edit(props) {
                 type: "color",
                 colorValue: btnBack,
                 onChangeColor: function onChangeColor(newvalue) {
-                  return setAttributes({ btnBack: newvalue });
+                  return setAttributes({
+                    btnBack: newvalue,
+                    btnBackUpdated: true
+                  });
                 },
                 opacityValue: btnOpacity,
                 onChangeOpacity: function onChangeOpacity(value) {
@@ -35029,7 +35083,7 @@ var edit = function edit(props) {
           type: "color",
           colorValue: backColor,
           onChangeColor: function onChangeColor(newvalue) {
-            return setAttributes({ backColor: newvalue });
+            return setAttributes({ backColor: newvalue, backColorUpdated: true });
           },
           opacityValue: backOpacity,
           onChangeOpacity: function onChangeOpacity(value) {
@@ -35230,7 +35284,7 @@ var edit = function edit(props) {
         paddingBottom: paddingB + paddingU,
         paddingLeft: paddingL + paddingU,
         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-        backgroundColor: "rgba(" + backColor + "," + backOpacity + ")",
+        backgroundColor: backColorUpdated ? "rgba(" + backColor + "," + backOpacity + ")" : backColor,
         backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -35260,7 +35314,7 @@ var edit = function edit(props) {
           className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
           style: {
             color: iconColor,
-            backgroundColor: "rgba(" + iconBackColor + "," + iconOpacity + ")",
+            backgroundColor: iconUpdated ? "rgba(" + iconBackColor + "," + iconOpacity + ")" : iconBackColor,
             fontSize: iconSize
           }
         })
@@ -35357,7 +35411,7 @@ var edit = function edit(props) {
           value: btnText,
           style: {
             color: btnColor,
-            backgroundColor: "rgba(" + btnBack + "," + btnOpacity + ")",
+            backgroundColor: btnBackUpdated ? "rgba(" + btnBack + "," + btnOpacity + ")" : btnBack,
             fontSize: btnSize + "px",
             letterSpacing: btnLetter + "px",
             textTransform: btnUpper ? "uppercase" : "none",
@@ -35500,7 +35554,10 @@ var save = function save(props) {
       hoverShadowPosition = _props$attributes.hoverShadowPosition,
       iconOpacity = _props$attributes.iconOpacity,
       btnOpacity = _props$attributes.btnOpacity,
-      backOpacity = _props$attributes.backOpacity;
+      backOpacity = _props$attributes.backOpacity,
+      backColorUpdated = _props$attributes.backColorUpdated,
+      iconUpdated = _props$attributes.iconUpdated,
+      btnBackUpdated = _props$attributes.btnBackUpdated;
 
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-box");
@@ -35525,7 +35582,7 @@ var save = function save(props) {
         paddingBottom: paddingB + paddingU,
         paddingLeft: paddingL + paddingU,
         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-        backgroundColor: "rgba(" + backColor + "," + backOpacity + ")",
+        backgroundColor: backColorUpdated ? "rgba(" + backColor + "," + backOpacity + ")" : backColor,
         backgroundImage: "url('" + imageURL + "')",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -35547,7 +35604,7 @@ var save = function save(props) {
         className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
         style: {
           color: iconColor,
-          backgroundColor: "rgba(" + iconBackColor + "," + iconOpacity + ")",
+          backgroundColor: iconUpdated ? "rgba(" + iconBackColor + "," + iconOpacity + ")" : iconBackColor,
           fontSize: iconSize
         }
       }),
@@ -35631,7 +35688,7 @@ var save = function save(props) {
           value: btnText,
           style: {
             color: btnColor,
-            backgroundColor: "rgba(" + btnBack + "," + btnOpacity + ")",
+            backgroundColor: btnBackUpdated ? "rgba(" + btnBack + "," + btnOpacity + ")" : btnBack,
             fontSize: btnSize + "px",
             letterSpacing: btnLetter + "px",
             textTransform: btnUpper ? "uppercase" : "none",
@@ -36710,6 +36767,18 @@ var newAttributes_1_7_2 = {
   btnOpacity: {
     type: "number",
     default: "1"
+  },
+  iconUpdated: {
+    type: "boolean",
+    default: false
+  },
+  btnBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -36721,7 +36790,10 @@ var deprecatedContent = [{
     var newAttributes = {
       btnOpacity: "",
       iconOpacity: "",
-      backOpacity: ""
+      backOpacity: "",
+      iconUpdated: "",
+      backColorUpdated: "",
+      btnBackUpdated: ""
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -39800,7 +39872,7 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(5);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44150,6 +44222,10 @@ var containerAttrs = {
   shadowPosition: {
     type: "string",
     default: ""
+  },
+  colorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 registerBlockType("premium/container", {
@@ -44182,7 +44258,7 @@ registerBlockType("premium/container", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(13);
 
 
@@ -44223,6 +44299,7 @@ var edit = function edit(props) {
       vPos = _props$attributes.vPos,
       height = _props$attributes.height,
       color = _props$attributes.color,
+      colorUpdated = _props$attributes.colorUpdated,
       opacity = _props$attributes.opacity,
       imageID = _props$attributes.imageID,
       imageURL = _props$attributes.imageURL,
@@ -44374,7 +44451,7 @@ var edit = function edit(props) {
         type: "color",
         colorValue: color,
         onChangeColor: function onChangeColor(newvalue) {
-          return setAttributes({ color: newvalue });
+          return setAttributes({ color: newvalue, colorUpdated: true });
         },
         opacityValue: opacity,
         onChangeOpacity: function onChangeOpacity(value) {
@@ -44547,7 +44624,7 @@ var edit = function edit(props) {
       style: {
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-        backgroundColor: "rgba(" + color + "," + opacity + ")",
+        backgroundColor: colorUpdated ? "rgba(" + color + "," + opacity + ")" : color,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",
@@ -44611,6 +44688,7 @@ var save = function save(props) {
       minHeight = _props$attributes.minHeight,
       minHeightUnit = _props$attributes.minHeightUnit,
       color = _props$attributes.color,
+      colorUpdated = _props$attributes.colorUpdated,
       opacity = _props$attributes.opacity,
       imageURL = _props$attributes.imageURL,
       fixed = _props$attributes.fixed,
@@ -44647,7 +44725,7 @@ var save = function save(props) {
       style: {
         textAlign: horAlign,
         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-        backgroundColor: "rgba(" + color + "," + opacity + ")",
+        backgroundColor: colorUpdated ? "rgba(" + color + "," + opacity + ")" : color,
         border: borderType,
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",
@@ -44948,6 +45026,10 @@ var newAttributes_1_8_2 = {
   opacity: {
     type: "number",
     default: "1"
+  },
+  colorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 var deprecated_attributes_1_8_2 = Object.assign(deprecated_attributes_1_8_1, newAttributes_1_8_2);
@@ -44956,7 +45038,8 @@ var deprecatedContent = [{
   attributes: deprecated_attributes_1_8_2,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      opacity: ""
+      opacity: "",
+      colorUpdated: ""
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -45570,6 +45653,10 @@ var testimonialsAttrs = {
   paddingUnit: {
     type: "string",
     default: "px"
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -45599,7 +45686,7 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
 
 
@@ -45686,7 +45773,8 @@ var edit = function edit(props) {
       paddingRight = _props$attributes.paddingRight,
       paddingBottom = _props$attributes.paddingBottom,
       paddingLeft = _props$attributes.paddingLeft,
-      paddingUnit = _props$attributes.paddingUnit;
+      paddingUnit = _props$attributes.paddingUnit,
+      backColorUpdated = _props$attributes.backColorUpdated;
 
 
   var RADIUS = [{
@@ -46127,7 +46215,7 @@ var edit = function edit(props) {
           type: "color",
           colorValue: backColor,
           onChangeColor: function onChangeColor(newvalue) {
-            return setAttributes({ backColor: newvalue });
+            return setAttributes({ backColor: newvalue, backColorUpdated: true });
           },
           opacityValue: backOpacity,
           onChangeOpacity: function onChangeOpacity(value) {
@@ -46235,7 +46323,7 @@ var edit = function edit(props) {
       className: mainClasses + "__wrap",
       style: {
         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-        backgroundColor: "rgba(" + backColor + "," + backOpacity + ")",
+        backgroundColor: backColorUpdated ? "rgba(" + backColor + "," + backOpacity + ")" : backColor,
         backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -46441,7 +46529,8 @@ var save = function save(props) {
       paddingRight = _props$attributes.paddingRight,
       paddingBottom = _props$attributes.paddingBottom,
       paddingLeft = _props$attributes.paddingLeft,
-      paddingUnit = _props$attributes.paddingUnit;
+      paddingUnit = _props$attributes.paddingUnit,
+      backColorUpdated = _props$attributes.backColorUpdated;
 
 
   var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-testimonial");
@@ -46452,7 +46541,7 @@ var save = function save(props) {
       className: mainClasses + "__wrap",
       style: {
         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-        backgroundColor: "rgba(" + backColor + "," + backOpacity + ")",
+        backgroundColor: backColorUpdated ? "rgba(" + backColor + "," + backOpacity + ")" : backColor,
         backgroundImage: "url('" + imageURL + "')",
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -46939,6 +47028,10 @@ var newAttributes_1_7_2 = {
   backOpacity: {
     type: "number",
     default: "1"
+  },
+  backColorUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -46948,7 +47041,8 @@ var deprecatedContent = [{
   attributes: testimonialsAttrs_1_7_2,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      backOpacity: ""
+      backOpacity: "",
+      backColorUpdated: ""
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -47818,7 +47912,7 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_background__ = __webpack_require__(5);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47992,7 +48086,9 @@ var edit = function (_Component) {
           shadowColor = _props$attributes.shadowColor,
           shadowHorizontal = _props$attributes.shadowHorizontal,
           shadowVertical = _props$attributes.shadowVertical,
-          shadowPosition = _props$attributes.shadowPosition;
+          shadowPosition = _props$attributes.shadowPosition,
+          videoDescUpdated = _props$attributes.videoDescUpdated,
+          playBackUpdated = _props$attributes.playBackUpdated;
 
 
       var TYPE = [{
@@ -48412,7 +48508,10 @@ var edit = function (_Component) {
                         type: "color",
                         colorValue: playBack,
                         onChangeColor: function onChangeColor(newvalue) {
-                          return setAttributes({ playBack: newvalue });
+                          return setAttributes({
+                            playBack: newvalue,
+                            playBackUpdated: true
+                          });
                         },
                         opacityValue: playOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
@@ -48594,7 +48693,10 @@ var edit = function (_Component) {
                         type: "color",
                         colorValue: videoDescBack,
                         onChangeColor: function onChangeColor(newvalue) {
-                          return setAttributes({ videoDescBack: newvalue });
+                          return setAttributes({
+                            videoDescBack: newvalue,
+                            videoDescUpdated: true
+                          });
                         },
                         opacityValue: videoDescOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
@@ -48759,7 +48861,7 @@ var edit = function (_Component) {
               top: playTop + "%",
               left: playLeft + "%",
               color: playColor,
-              backgroundColor: "rgba(" + playBack + "," + playOpacity + ")",
+              backgroundColor: playBackUpdated ? "rgba(" + playBack + "," + playOpacity + ")" : playBack,
               border: playBorderType,
               borderWidth: playBorderWidth + "px",
               borderRadius: playBorderRadius + "px",
@@ -48780,7 +48882,7 @@ var edit = function (_Component) {
             className: "premium-video-box__desc",
             style: {
               color: videoDescColor,
-              backgroundColor: "rgba(" + videoDescBack + "," + videoDescOpacity + ")",
+              backgroundColor: videoDescUpdated ? "rgba(" + videoDescBack + "," + videoDescOpacity + ")" : videoDescBack,
               padding: videoDescPadding,
               borderRadius: videoDescBorderRadius,
               top: descTop + "%",
@@ -48887,7 +48989,9 @@ var save = function save(props) {
       shadowVertical = _props$attributes.shadowVertical,
       shadowPosition = _props$attributes.shadowPosition,
       playOpacity = _props$attributes.playOpacity,
-      videoDescOpacity = _props$attributes.videoDescOpacity;
+      videoDescOpacity = _props$attributes.videoDescOpacity,
+      videoDescUpdated = _props$attributes.videoDescUpdated,
+      playBackUpdated = _props$attributes.playBackUpdated;
 
   var loopVideo = function loopVideo() {
     if ("youtube" === videoType) {
@@ -48955,7 +49059,7 @@ var save = function save(props) {
           top: playTop + "%",
           left: playLeft + "%",
           color: playColor,
-          backgroundColor: "rgba(" + playBack + "," + playOpacity + ")",
+          backgroundColor: playBackUpdated ? "rgba(" + playBack + "," + playOpacity + ")" : playBack,
           border: playBorderType,
           borderWidth: playBorderWidth + "px",
           borderRadius: playBorderRadius + "px",
@@ -48976,7 +49080,7 @@ var save = function save(props) {
         className: "premium-video-box__desc",
         style: {
           color: videoDescColor,
-          backgroundColor: "rgba(" + videoDescBack + "," + videoDescOpacity + ")",
+          backgroundColor: videoDescUpdated ? "rgba(" + videoDescBack + "," + videoDescOpacity + ")" : videoDescBack,
           padding: videoDescPadding,
           borderRadius: videoDescBorderRadius,
           top: descTop + "%",
@@ -49596,6 +49700,14 @@ var newAttributes_1_3_5 = {
   videoDescOpacity: {
     type: "number",
     default: "1"
+  },
+  playBackUpdated: {
+    type: "boolean",
+    default: false
+  },
+  videoDescUpdated: {
+    type: "boolean",
+    default: false
   }
 };
 
@@ -49605,14 +49717,10 @@ var deprecatedContent = [{
   attributes: videoBoxAttrs_1_5_6,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      playOpacity: {
-        type: "number",
-        default: "1"
-      },
-      videoDescOpacity: {
-        type: "number",
-        default: "1"
-      }
+      playOpacity: "",
+      videoDescOpacity: "",
+      playBackUpdated: "",
+      videoDescUpdated: ""
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -50669,7 +50777,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_typed_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_sortable_hoc__ = __webpack_require__(232);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -52916,7 +53024,7 @@ function generateCSSUnit(value, unit) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);

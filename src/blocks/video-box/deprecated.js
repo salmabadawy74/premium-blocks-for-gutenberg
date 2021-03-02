@@ -580,6 +580,14 @@ const newAttributes_1_3_5 = {
     type: "number",
     default: "1",
   },
+  playBackUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  videoDescUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 const videoBoxAttrs_1_5_6 = Object.assign(
@@ -592,14 +600,10 @@ const deprecatedContent = [
     attributes: videoBoxAttrs_1_5_6,
     migrate: (attributes) => {
       let newAttributes = {
-        playOpacity: {
-          type: "number",
-          default: "1",
-        },
-        videoDescOpacity: {
-          type: "number",
-          default: "1",
-        },
+        playOpacity: "",
+        videoDescOpacity: "",
+        playBackUpdated: "",
+        videoDescUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

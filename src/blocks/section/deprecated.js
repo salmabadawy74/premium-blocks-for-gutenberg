@@ -260,6 +260,10 @@ const newAttributes_1_8_2 = {
     type: "number",
     default: "1",
   },
+  colorUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 const deprecated_attributes_1_8_2 = Object.assign(
   deprecated_attributes_1_8_1,
@@ -272,6 +276,7 @@ const deprecatedContent = [
     migrate: (attributes) => {
       let newAttributes = {
         opacity: "",
+        colorUpdated: "",
       };
       return Object.assign(attributes, newAttributes);
     },

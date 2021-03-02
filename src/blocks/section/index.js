@@ -44,7 +44,7 @@ const containerAttrs = {
   },
   opacity: {
     type: "number",
-    default:"1"
+    default: "1",
   },
   imageID: {
     type: "string",
@@ -130,6 +130,10 @@ const containerAttrs = {
   shadowPosition: {
     type: "string",
     default: "",
+  },
+  colorUpdated: {
+    type: "boolean",
+    default: false,
   },
 };
 registerBlockType("premium/container", {
