@@ -10,17 +10,6 @@ const {
 const { MediaUpload, ColorPalette } = wp.blockEditor;
 
 export default function PremiumBackground(props) {
-  const hexToRgb = (colorValue) => {
-    if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/gi.test(colorValue)) {
-      var hex = colorValue.substr(1);
-      hex = hex.length == 3 ? hex.replace(/(.)/g, "$1$1") : hex;
-      let rgb = parseInt(hex, 16);
-      let colorRGB = [(rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255].join(",");
-      props.onChangeColor(colorRGB);
-    }
-    return false;
-  };
-
   const {
     type,
     colorValue,
@@ -39,6 +28,17 @@ export default function PremiumBackground(props) {
     onChangeBackSize = () => {},
     onChangeFixed = () => {},
   } = props;
+  const hexToRgb = (colorValue) => {
+    if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/gi.test(colorValue)) {
+      var hex = colorValue.substr(1);
+      hex = hex.length == 3 ? hex.replace(/(.)/g, "$1$1") : hex;
+      let rgb = parseInt(hex, 16);
+      let colorRGB = [(rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255].join(",");
+      props.onChangeColor(colorRGB);
+    } else {
+      props.onChangeColor(colorValue);
+    }
+  };
 
   const POSITION = [
     {
