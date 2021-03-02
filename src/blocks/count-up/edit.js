@@ -620,9 +620,6 @@ const edit = (props) => {
               }
             />
           </Fragment>
-          {backgroundImageURL && (
-            <img src={backgroundImageURL} width="100%" height="auto" />
-          )}
           <PremiumBackgroud
             imageID={backgroundImageID}
             imageURL={backgroundImageURL}

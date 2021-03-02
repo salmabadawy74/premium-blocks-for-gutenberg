@@ -426,7 +426,6 @@ const edit = (props) => {
               opacityValue={backOpacity}
               onChangeOpacity={(value) => setAttributes({ backOpacity: value })}
             />
-            {imageURL && <img src={imageURL} width="100%" height="auto" />}
             <PremiumBackgroud
               imageID={imageID}
               imageURL={imageURL}
