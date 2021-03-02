@@ -3,222 +3,222 @@ const className = "premium-countup";
 const counterAttrs_1_0_9 = {
   increment: {
     type: "string",
-    default: 500
+    default: 500,
   },
   time: {
     type: "string",
-    default: 1000
+    default: 1000,
   },
   delay: {
     type: "string",
-    default: 10
+    default: 10,
   },
   align: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   flexDir: {
     type: "string",
-    default: "column"
+    default: "column",
   },
   numberSize: {
     type: "number",
-    default: 30
+    default: 30,
   },
   numberColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   numberWeight: {
     type: "number",
-    default: 900
+    default: 900,
   },
   prefix: {
     type: "boolean",
-    default: true
+    default: true,
   },
   prefixTxt: {
     type: "string",
-    default: "Prefix"
+    default: "Prefix",
   },
   prefixSize: {
     type: "number",
-    default: 20
+    default: 20,
   },
   prefixColor: {
-    type: "string"
+    type: "string",
   },
   prefixWeight: {
-    type: "number"
+    type: "number",
   },
   prefixGap: {
     type: "number",
-    default: 2
+    default: 2,
   },
   suffix: {
     type: "boolean",
-    default: true
+    default: true,
   },
   suffixTxt: {
     type: "string",
-    default: "Suffix"
+    default: "Suffix",
   },
   suffixSize: {
     type: "number",
-    default: 20
+    default: 20,
   },
   suffixColor: {
-    type: "string"
+    type: "string",
   },
   suffixWeight: {
-    type: "number"
+    type: "number",
   },
   suffixGap: {
     type: "number",
-    default: 2
+    default: 2,
   },
   icon: {
     type: "string",
-    default: "icon"
+    default: "icon",
   },
   iconSpacing: {
     type: "number",
-    default: 10
+    default: 10,
   },
   imageID: {
-    type: "string"
+    type: "string",
   },
   imageURL: {
-    type: "string"
+    type: "string",
   },
   iconType: {
     type: "string",
-    default: "dash"
+    default: "dash",
   },
   iconCheck: {
     type: "boolean",
-    default: true
+    default: true,
   },
   iconSize: {
     type: "number",
-    default: 40
+    default: 40,
   },
   iconColor: {
     type: "string",
-    default: "#6ec1e4"
+    default: "#6ec1e4",
   },
   selfAlign: {
     type: "string",
-    default: "center"
+    default: "center",
   },
   titleCheck: {
     type: "boolean",
-    default: true
+    default: true,
   },
   titleTxt: {
     type: "string",
-    default: "Premium Count Up"
+    default: "Premium Count Up",
   },
   titleSize: {
     type: "number",
-    default: 20
+    default: 20,
   },
   titleSpacing: {
-    type: "number"
+    type: "number",
   },
   titleStyle: {
-    type: "string"
+    type: "string",
   },
   titleUpper: {
-    type: "boolean"
+    type: "boolean",
   },
   titleT: {
     type: "number",
-    default: 1
+    default: 1,
   },
   titleB: {
     type: "number",
-    default: 1
+    default: 1,
   },
   titleColor: {
-    type: "string"
+    type: "string",
   },
   titleWeight: {
     type: "number",
-    default: 500
+    default: 500,
   },
   faIcon: {
     type: "string",
-    default: "dashicons-clock"
-  }
+    default: "dashicons-clock",
+  },
 };
 
 const newAttributes_1_2_1 = {
   containerBack: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 const newAttributes_1_3_7 = {
   shadowColor: {
-    type: "string"
+    type: "string",
   },
   shadowBlur: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowHorizontal: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowVertical: {
     type: "number",
-    default: "0"
+    default: "0",
   },
   shadowPosition: {
     type: "string",
-    default: ""
-  }
+    default: "",
+  },
 };
 
 const newAttributes_1_4_1 = {
   backgroundImageID: {
-    type: "string"
+    type: "string",
   },
   backgroundImageURL: {
-    type: "string"
+    type: "string",
   },
   backgroundRepeat: {
     type: "string",
-    default: "no-repeat"
+    default: "no-repeat",
   },
   backgroundPosition: {
     type: "string",
-    default: "top center"
+    default: "top center",
   },
   backgroundSize: {
     type: "string",
-    default: "auto"
+    default: "auto",
   },
   fixed: {
     type: "boolean",
-    default: false
-  }
+    default: false,
+  },
 };
 
 const newAttributes_1_6_4 = {
   titleFamily: {
-    type: "string"
+    type: "string",
   },
   counterFamily: {
-    type: "string"
+    type: "string",
   },
   prefixFamily: {
-    type: "string"
+    type: "string",
   },
   suffixFamily: {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 const counterAttrs_1_2_1 = Object.assign(
@@ -240,20 +240,477 @@ const counterAttrs_1_6_4 = Object.assign(
   counterAttrs_1_4_1,
   newAttributes_1_6_4
 );
-
+const counterAttrs_1_7_4 = {
+  increment: {
+    type: "string",
+    default: 500,
+  },
+  time: {
+    type: "string",
+    default: 1000,
+  },
+  delay: {
+    type: "string",
+    default: 10,
+  },
+  align: {
+    type: "string",
+    default: "center",
+  },
+  flexDir: {
+    type: "string",
+    default: "column",
+  },
+  numberSize: {
+    type: "number",
+    default: 30,
+  },
+  numberColor: {
+    type: "string",
+    default: "#6ec1e4",
+  },
+  numberWeight: {
+    type: "number",
+    default: 900,
+  },
+  prefix: {
+    type: "boolean",
+    default: true,
+  },
+  prefixTxt: {
+    type: "string",
+    default: "Prefix",
+  },
+  prefixSize: {
+    type: "number",
+    default: 20,
+  },
+  prefixColor: {
+    type: "string",
+  },
+  prefixWeight: {
+    type: "number",
+  },
+  prefixGap: {
+    type: "number",
+    default: 2,
+  },
+  suffix: {
+    type: "boolean",
+    default: true,
+  },
+  suffixTxt: {
+    type: "string",
+    default: "Suffix",
+  },
+  suffixSize: {
+    type: "number",
+    default: 20,
+  },
+  suffixColor: {
+    type: "string",
+  },
+  suffixWeight: {
+    type: "number",
+  },
+  suffixGap: {
+    type: "number",
+    default: 2,
+  },
+  icon: {
+    type: "string",
+    default: "icon",
+  },
+  iconSpacing: {
+    type: "number",
+    default: 10,
+  },
+  imageID: {
+    type: "string",
+  },
+  imageURL: {
+    type: "string",
+  },
+  iconType: {
+    type: "string",
+    default: "dash",
+  },
+  iconCheck: {
+    type: "boolean",
+    default: true,
+  },
+  iconSize: {
+    type: "number",
+    default: 40,
+  },
+  iconColor: {
+    type: "string",
+    default: "#6ec1e4",
+  },
+  selfAlign: {
+    type: "string",
+    default: "center",
+  },
+  titleCheck: {
+    type: "boolean",
+    default: true,
+  },
+  titleTxt: {
+    type: "string",
+    default: "Premium Count Up",
+  },
+  titleSize: {
+    type: "number",
+    default: 20,
+  },
+  titleSpacing: {
+    type: "number",
+  },
+  titleStyle: {
+    type: "string",
+  },
+  titleUpper: {
+    type: "boolean",
+  },
+  titleT: {
+    type: "number",
+    default: 1,
+  },
+  titleB: {
+    type: "number",
+    default: 1,
+  },
+  titleColor: {
+    type: "string",
+  },
+  titleWeight: {
+    type: "number",
+    default: 500,
+  },
+  faIcon: {
+    type: "string",
+    default: "dashicons-clock",
+  },
+  containerBack: {
+    type: "string",
+  },
+  shadowColor: {
+    type: "string",
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0",
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0",
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0",
+  },
+  shadowPosition: {
+    type: "string",
+    default: "",
+  },
+  backgroundImageID: {
+    type: "string",
+  },
+  backgroundImageURL: {
+    type: "string",
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  backgroundPosition: {
+    type: "string",
+    default: "top center",
+  },
+  backgroundSize: {
+    type: "string",
+    default: "auto",
+  },
+  fixed: {
+    type: "boolean",
+    default: false,
+  },
+  borderType: {
+    type: "string",
+    default: "none",
+  },
+  borderWidth: {
+    type: "number",
+    default: "1",
+  },
+  borderRadius: {
+    type: "number",
+    default: "0",
+  },
+  borderColor: {
+    type: "string",
+  },
+  titleFamily: {
+    type: "string",
+  },
+  counterFamily: {
+    type: "string",
+  },
+  prefixFamily: {
+    type: "string",
+  },
+  suffixFamily: {
+    type: "string",
+  },
+};
+const newAttributes_1_7_5 = {
+  containerOpacity: {
+    type: "number",
+    default: "1",
+  },
+};
+const counterAttrs_1_7_5 = Object.assign(
+  counterAttrs_1_7_4,
+  newAttributes_1_7_5
+);
 const deprecatedContent = [
   {
+    attributes: counterAttrs_1_7_5,
+    migrate: (attributes) => {
+      let newAttributes = {
+        containerOpacity: "",
+      };
+      return Object.assign(attributes, newAttributes);
+    },
+    save: (props) => {
+      const {
+        increment,
+        time,
+        delay,
+        align,
+        flexDir,
+        numberSize,
+        numberColor,
+        numberWeight,
+        prefix,
+        prefixTxt,
+        prefixSize,
+        prefixColor,
+        prefixWeight,
+        prefixGap,
+        suffix,
+        suffixTxt,
+        suffixSize,
+        suffixColor,
+        suffixWeight,
+        suffixGap,
+        iconCheck,
+        icon,
+        iconSpacing,
+        iconType,
+        imageURL,
+        iconSize,
+        iconColor,
+        selfAlign,
+        titleCheck,
+        titleTxt,
+        titleColor,
+        titleSize,
+        titleSpacing,
+        titleStyle,
+        titleUpper,
+        titleT,
+        titleB,
+        titleWeight,
+        faIcon,
+        containerBack,
+        shadowBlur,
+        shadowColor,
+        shadowHorizontal,
+        shadowVertical,
+        shadowPosition,
+        backgroundImageURL,
+        fixed,
+        backgroundRepeat,
+        backgroundPosition,
+        backgroundSize,
+        borderType,
+        borderColor,
+        borderRadius,
+        borderWidth,
+        titleFamily,
+        counterFamily,
+        prefixFamily,
+        suffixFamily,
+      } = props.attributes;
+      let iconClass =
+        "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+
+      return (
+        <div
+          className={`${className}__wrap`}
+          style={{
+            justifyContent: align,
+            flexDirection: flexDir,
+            backgroundColor: containerBack,
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+            backgroundImage: `url('${backgroundImageURL}')`,
+            backgroundRepeat: backgroundRepeat,
+            backgroundPosition: backgroundPosition,
+            backgroundSize: backgroundSize,
+            backgroundAttachment: fixed ? "fixed" : "unset",
+            border: borderType,
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius + "px",
+            borderColor: borderColor,
+          }}
+        >
+          {iconCheck && (
+            <div
+              className={`premium-countup__icon_wrap`}
+              style={{
+                marginRight:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
+                marginLeft:
+                  "row" === flexDir || "row-reverse" === flexDir
+                    ? iconSpacing + "px"
+                    : "0",
+                alignSelf:
+                  "row-reverse" === flexDir || "row" === flexDir
+                    ? "center"
+                    : selfAlign,
+              }}
+            >
+              {"icon" === icon && (
+                <i
+                  className={`premium-countup__icon ${iconClass}`}
+                  style={{
+                    fontSize: iconSize + "px",
+                    color: iconColor,
+                  }}
+                />
+              )}
+              {"img" === icon && imageURL && (
+                <img
+                  src={imageURL}
+                  style={{
+                    width: iconSize + "px",
+                    height: iconSize + "px",
+                  }}
+                />
+              )}
+            </div>
+          )}
+
+          <div
+            className={`premium-countup__info`}
+            style={{
+              alignSelf:
+                "row-reverse" === flexDir || "row" === flexDir
+                  ? "center"
+                  : selfAlign,
+            }}
+          >
+            <div className={`premium-countup__desc`}>
+              {prefix && (
+                <p
+                  className={`premium-countup__prefix`}
+                  style={{
+                    fontSize: prefixSize + "px",
+                    fontFamily: prefixFamily,
+                    color: prefixColor,
+                    fontWeight: prefixWeight,
+                    marginRight: prefixGap + "px",
+                  }}
+                >
+                  {prefixTxt}
+                </p>
+              )}
+              <p
+                className={`premium-countup__increment`}
+                data-interval={time}
+                data-delay={delay}
+                style={{
+                  fontSize: numberSize + "px",
+                  fontFamily: counterFamily,
+                  color: numberColor,
+                  fontWeight: numberWeight,
+                }}
+              >
+                {increment}
+              </p>
+              {suffix && (
+                <p
+                  className={`premium-countup__suffix`}
+                  style={{
+                    fontSize: suffixSize + "px",
+                    fontFamily: suffixFamily,
+                    color: suffixColor,
+                    fontWeight: suffixWeight,
+                    marginLeft: suffixGap + "px",
+                  }}
+                >
+                  {suffixTxt}
+                </p>
+              )}
+            </div>
+            {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
+              <h3
+                className={`premium-countup__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  fontFamily: titleFamily,
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  letterSpacing: titleSpacing + "px",
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle,
+                  fontWeight: titleWeight,
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
+          </div>
+          {titleCheck &&
+            ("column" === flexDir || "column-reverse" === flexDir) && (
+              <h3
+                className={`premium-countup__title`}
+                style={{
+                  fontSize: titleSize + "px",
+                  fontFamily: titleFamily,
+                  marginTop: titleT + "px",
+                  marginBottom: titleB + "px",
+                  color: titleColor,
+                  letterSpacing: titleSpacing + "px",
+                  fontWeight: titleWeight,
+                  textTransform: titleUpper ? "uppercase" : "none",
+                  fontStyle: titleStyle,
+                  alignSelf: selfAlign,
+                }}
+              >
+                {titleTxt}
+              </h3>
+            )}
+        </div>
+      );
+    },
+  },
+  {
     attributes: counterAttrs_1_6_4,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         borderType: "",
         borderColor: "",
         borderRadius: "",
-        borderWidth: ""
+        borderWidth: "",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         increment,
         time,
@@ -308,7 +765,7 @@ const deprecatedContent = [
         titleFamily,
         counterFamily,
         prefixFamily,
-        suffixFamily
+        suffixFamily,
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -324,7 +781,7 @@ const deprecatedContent = [
             backgroundRepeat: backgroundRepeat,
             backgroundPosition: backgroundPosition,
             backgroundSize: backgroundSize,
-            backgroundAttachment: fixed ? "fixed" : "unset"
+            backgroundAttachment: fixed ? "fixed" : "unset",
           }}
         >
           {iconCheck && (
@@ -342,7 +799,7 @@ const deprecatedContent = [
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
-                    : selfAlign
+                    : selfAlign,
               }}
             >
               {"icon" === icon && (
@@ -350,7 +807,7 @@ const deprecatedContent = [
                   className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
-                    color: iconColor
+                    color: iconColor,
                   }}
                 />
               )}
@@ -359,7 +816,7 @@ const deprecatedContent = [
                   src={imageURL}
                   style={{
                     width: iconSize + "px",
-                    height: iconSize + "px"
+                    height: iconSize + "px",
                   }}
                 />
               )}
@@ -372,7 +829,7 @@ const deprecatedContent = [
               alignSelf:
                 "row-reverse" === flexDir || "row" === flexDir
                   ? "center"
-                  : selfAlign
+                  : selfAlign,
             }}
           >
             <div className={`${className}__desc`}>
@@ -384,7 +841,7 @@ const deprecatedContent = [
                     fontFamily: prefixFamily,
                     color: prefixColor,
                     fontWeight: prefixWeight,
-                    marginRight: prefixGap + "px"
+                    marginRight: prefixGap + "px",
                   }}
                 >
                   {prefixTxt}
@@ -398,7 +855,7 @@ const deprecatedContent = [
                   fontSize: numberSize + "px",
                   fontFamily: counterFamily,
                   color: numberColor,
-                  fontWeight: numberWeight
+                  fontWeight: numberWeight,
                 }}
               >
                 {increment}
@@ -411,7 +868,7 @@ const deprecatedContent = [
                     fontFamily: suffixFamily,
                     color: suffixColor,
                     fontWeight: suffixWeight,
-                    marginLeft: suffixGap + "px"
+                    marginLeft: suffixGap + "px",
                   }}
                 >
                   {suffixTxt}
@@ -430,7 +887,7 @@ const deprecatedContent = [
                   letterSpacing: titleSpacing + "px",
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  fontWeight: titleWeight
+                  fontWeight: titleWeight,
                 }}
               >
                 {titleTxt}
@@ -451,7 +908,7 @@ const deprecatedContent = [
                   fontWeight: titleWeight,
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  alignSelf: selfAlign
+                  alignSelf: selfAlign,
                 }}
               >
                 {titleTxt}
@@ -459,20 +916,20 @@ const deprecatedContent = [
             )}
         </div>
       );
-    }
+    },
   },
   {
     attributes: counterAttrs_1_4_1,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         titleFamily: "",
         counterFamily: "",
         prefixFamily: "",
-        suffixFamily: ""
+        suffixFamily: "",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         increment,
         time,
@@ -523,7 +980,7 @@ const deprecatedContent = [
         fixed,
         backgroundRepeat,
         backgroundPosition,
-        backgroundSize
+        backgroundSize,
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -539,7 +996,7 @@ const deprecatedContent = [
             backgroundRepeat: backgroundRepeat,
             backgroundPosition: backgroundPosition,
             backgroundSize: backgroundSize,
-            backgroundAttachment: fixed ? "fixed" : "unset"
+            backgroundAttachment: fixed ? "fixed" : "unset",
           }}
         >
           {iconCheck && (
@@ -557,7 +1014,7 @@ const deprecatedContent = [
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
-                    : selfAlign
+                    : selfAlign,
               }}
             >
               {"icon" === icon && (
@@ -565,7 +1022,7 @@ const deprecatedContent = [
                   className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
-                    color: iconColor
+                    color: iconColor,
                   }}
                 />
               )}
@@ -574,7 +1031,7 @@ const deprecatedContent = [
                   src={imageURL}
                   style={{
                     width: iconSize + "px",
-                    height: iconSize + "px"
+                    height: iconSize + "px",
                   }}
                 />
               )}
@@ -587,7 +1044,7 @@ const deprecatedContent = [
               alignSelf:
                 "row-reverse" === flexDir || "row" === flexDir
                   ? "center"
-                  : selfAlign
+                  : selfAlign,
             }}
           >
             <div className={`${className}__desc`}>
@@ -597,7 +1054,7 @@ const deprecatedContent = [
                     fontSize: prefixSize + "px",
                     color: prefixColor,
                     fontWeight: prefixWeight,
-                    marginRight: prefixGap + "px"
+                    marginRight: prefixGap + "px",
                   }}
                 >
                   {prefixTxt}
@@ -610,7 +1067,7 @@ const deprecatedContent = [
                 style={{
                   fontSize: numberSize + "px",
                   color: numberColor,
-                  fontWeight: numberWeight
+                  fontWeight: numberWeight,
                 }}
               >
                 {increment}
@@ -621,7 +1078,7 @@ const deprecatedContent = [
                     fontSize: suffixSize + "px",
                     color: suffixColor,
                     fontWeight: suffixWeight,
-                    marginLeft: suffixGap + "px"
+                    marginLeft: suffixGap + "px",
                   }}
                 >
                   {suffixTxt}
@@ -639,7 +1096,7 @@ const deprecatedContent = [
                   letterSpacing: titleSpacing + "px",
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  fontWeight: titleWeight
+                  fontWeight: titleWeight,
                 }}
               >
                 {titleTxt}
@@ -659,7 +1116,7 @@ const deprecatedContent = [
                   fontWeight: titleWeight,
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  alignSelf: selfAlign
+                  alignSelf: selfAlign,
                 }}
               >
                 {titleTxt}
@@ -667,11 +1124,11 @@ const deprecatedContent = [
             )}
         </div>
       );
-    }
+    },
   },
   {
     attributes: counterAttrs_1_3_7,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         shadowColor: "",
         shadowBlur: "0",
@@ -683,11 +1140,11 @@ const deprecatedContent = [
         fixed: false,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top center",
-        backgroundSize: "auto"
+        backgroundSize: "auto",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         increment,
         time,
@@ -733,7 +1190,7 @@ const deprecatedContent = [
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
+        shadowPosition,
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -744,7 +1201,7 @@ const deprecatedContent = [
             justifyContent: align,
             flexDirection: flexDir,
             backgroundColor: containerBack,
-            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
           }}
         >
           {iconCheck && (
@@ -762,7 +1219,7 @@ const deprecatedContent = [
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
-                    : selfAlign
+                    : selfAlign,
               }}
             >
               {"icon" === icon && (
@@ -770,7 +1227,7 @@ const deprecatedContent = [
                   className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
-                    color: iconColor
+                    color: iconColor,
                   }}
                 />
               )}
@@ -779,7 +1236,7 @@ const deprecatedContent = [
                   src={imageURL}
                   style={{
                     width: iconSize + "px",
-                    height: iconSize + "px"
+                    height: iconSize + "px",
                   }}
                 />
               )}
@@ -792,7 +1249,7 @@ const deprecatedContent = [
               alignSelf:
                 "row-reverse" === flexDir || "row" === flexDir
                   ? "center"
-                  : selfAlign
+                  : selfAlign,
             }}
           >
             <div className={`${className}__desc`}>
@@ -802,7 +1259,7 @@ const deprecatedContent = [
                     fontSize: prefixSize + "px",
                     color: prefixColor,
                     fontWeight: prefixWeight,
-                    marginRight: prefixGap + "px"
+                    marginRight: prefixGap + "px",
                   }}
                 >
                   {prefixTxt}
@@ -815,7 +1272,7 @@ const deprecatedContent = [
                 style={{
                   fontSize: numberSize + "px",
                   color: numberColor,
-                  fontWeight: numberWeight
+                  fontWeight: numberWeight,
                 }}
               >
                 {increment}
@@ -826,7 +1283,7 @@ const deprecatedContent = [
                     fontSize: suffixSize + "px",
                     color: suffixColor,
                     fontWeight: suffixWeight,
-                    marginLeft: suffixGap + "px"
+                    marginLeft: suffixGap + "px",
                   }}
                 >
                   {suffixTxt}
@@ -844,7 +1301,7 @@ const deprecatedContent = [
                   letterSpacing: titleSpacing + "px",
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  fontWeight: titleWeight
+                  fontWeight: titleWeight,
                 }}
               >
                 {titleTxt}
@@ -864,7 +1321,7 @@ const deprecatedContent = [
                   fontWeight: titleWeight,
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  alignSelf: selfAlign
+                  alignSelf: selfAlign,
                 }}
               >
                 {titleTxt}
@@ -872,21 +1329,21 @@ const deprecatedContent = [
             )}
         </div>
       );
-    }
+    },
   },
   {
     attributes: counterAttrs_1_2_1,
-    migrate: attributes => {
+    migrate: (attributes) => {
       let newAttributes = {
         shadowColor: "",
         shadowBlur: "0",
         shadowHorizontal: "0",
         shadowVertical: "0",
-        shadowPosition: ""
+        shadowPosition: "",
       };
       return Object.assign(attributes, newAttributes);
     },
-    save: props => {
+    save: (props) => {
       const {
         increment,
         time,
@@ -927,7 +1384,7 @@ const deprecatedContent = [
         titleB,
         titleWeight,
         faIcon,
-        containerBack
+        containerBack,
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -937,7 +1394,7 @@ const deprecatedContent = [
           style={{
             justifyContent: align,
             flexDirection: flexDir,
-            backgroundColor: containerBack
+            backgroundColor: containerBack,
           }}
         >
           {iconCheck && (
@@ -955,7 +1412,7 @@ const deprecatedContent = [
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
-                    : selfAlign
+                    : selfAlign,
               }}
             >
               {"icon" === icon && (
@@ -963,7 +1420,7 @@ const deprecatedContent = [
                   className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
-                    color: iconColor
+                    color: iconColor,
                   }}
                 />
               )}
@@ -972,7 +1429,7 @@ const deprecatedContent = [
                   src={imageURL}
                   style={{
                     width: iconSize + "px",
-                    height: iconSize + "px"
+                    height: iconSize + "px",
                   }}
                 />
               )}
@@ -985,7 +1442,7 @@ const deprecatedContent = [
               alignSelf:
                 "row-reverse" === flexDir || "row" === flexDir
                   ? "center"
-                  : selfAlign
+                  : selfAlign,
             }}
           >
             <div className={`${className}__desc`}>
@@ -995,7 +1452,7 @@ const deprecatedContent = [
                     fontSize: prefixSize + "px",
                     color: prefixColor,
                     fontWeight: prefixWeight,
-                    marginRight: prefixGap + "px"
+                    marginRight: prefixGap + "px",
                   }}
                 >
                   {prefixTxt}
@@ -1008,7 +1465,7 @@ const deprecatedContent = [
                 style={{
                   fontSize: numberSize + "px",
                   color: numberColor,
-                  fontWeight: numberWeight
+                  fontWeight: numberWeight,
                 }}
               >
                 {increment}
@@ -1019,7 +1476,7 @@ const deprecatedContent = [
                     fontSize: suffixSize + "px",
                     color: suffixColor,
                     fontWeight: suffixWeight,
-                    marginLeft: suffixGap + "px"
+                    marginLeft: suffixGap + "px",
                   }}
                 >
                   {suffixTxt}
@@ -1037,7 +1494,7 @@ const deprecatedContent = [
                   letterSpacing: titleSpacing + "px",
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  fontWeight: titleWeight
+                  fontWeight: titleWeight,
                 }}
               >
                 {titleTxt}
@@ -1057,7 +1514,7 @@ const deprecatedContent = [
                   fontWeight: titleWeight,
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  alignSelf: selfAlign
+                  alignSelf: selfAlign,
                 }}
               >
                 {titleTxt}
@@ -1065,11 +1522,11 @@ const deprecatedContent = [
             )}
         </div>
       );
-    }
+    },
   },
   {
     attributes: counterAttrs_1_0_9,
-    save: props => {
+    save: (props) => {
       const {
         increment,
         time,
@@ -1109,7 +1566,7 @@ const deprecatedContent = [
         titleT,
         titleB,
         titleWeight,
-        faIcon
+        faIcon,
       } = props.attributes;
       let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -1118,7 +1575,7 @@ const deprecatedContent = [
           className={`${className}__wrap`}
           style={{
             justifyContent: align,
-            flexDirection: flexDir
+            flexDirection: flexDir,
           }}
         >
           {iconCheck && (
@@ -1136,7 +1593,7 @@ const deprecatedContent = [
                 alignSelf:
                   "row-reverse" === flexDir || "row" === flexDir
                     ? "center"
-                    : selfAlign
+                    : selfAlign,
               }}
             >
               {"icon" === icon && (
@@ -1144,7 +1601,7 @@ const deprecatedContent = [
                   className={`${className}__icon ${iconClass}`}
                   style={{
                     fontSize: iconSize + "px",
-                    color: iconColor
+                    color: iconColor,
                   }}
                 />
               )}
@@ -1153,7 +1610,7 @@ const deprecatedContent = [
                   src={imageURL}
                   style={{
                     width: iconSize + "px",
-                    height: iconSize + "px"
+                    height: iconSize + "px",
                   }}
                 />
               )}
@@ -1166,7 +1623,7 @@ const deprecatedContent = [
               alignSelf:
                 "row-reverse" === flexDir || "row" === flexDir
                   ? "center"
-                  : selfAlign
+                  : selfAlign,
             }}
           >
             <div className={`${className}__desc`}>
@@ -1176,7 +1633,7 @@ const deprecatedContent = [
                     fontSize: prefixSize + "px",
                     color: prefixColor,
                     fontWeight: prefixWeight,
-                    marginRight: prefixGap + "px"
+                    marginRight: prefixGap + "px",
                   }}
                 >
                   {prefixTxt}
@@ -1189,7 +1646,7 @@ const deprecatedContent = [
                 style={{
                   fontSize: numberSize + "px",
                   color: numberColor,
-                  fontWeight: numberWeight
+                  fontWeight: numberWeight,
                 }}
               >
                 {increment}
@@ -1200,7 +1657,7 @@ const deprecatedContent = [
                     fontSize: suffixSize + "px",
                     color: suffixColor,
                     fontWeight: suffixWeight,
-                    marginLeft: suffixGap + "px"
+                    marginLeft: suffixGap + "px",
                   }}
                 >
                   {suffixTxt}
@@ -1218,7 +1675,7 @@ const deprecatedContent = [
                   letterSpacing: titleSpacing + "px",
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  fontWeight: titleWeight
+                  fontWeight: titleWeight,
                 }}
               >
                 {titleTxt}
@@ -1238,7 +1695,7 @@ const deprecatedContent = [
                   fontWeight: titleWeight,
                   textTransform: titleUpper ? "uppercase" : "none",
                   fontStyle: titleStyle,
-                  alignSelf: selfAlign
+                  alignSelf: selfAlign,
                 }}
               >
                 {titleTxt}
@@ -1246,8 +1703,8 @@ const deprecatedContent = [
             )}
         </div>
       );
-    }
-  }
+    },
+  },
 ];
 
 export default deprecatedContent;

@@ -1,10 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import onChangeVideoURL from "./index";
 
-const save = props => {
-    
+const save = (props) => {
   const { className } = props;
-  
+
   const {
     videoBoxId,
     videoType,
@@ -60,7 +59,9 @@ const save = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+    shadowPosition,
+    playOpacity,
+    videoDescOpacity,
   } = props.attributes;
   const loopVideo = () => {
     if ("youtube" === videoType) {
@@ -78,9 +79,9 @@ const save = props => {
       return loop ? "1" : "0";
     }
   };
-  
-  const mainClasses = classnames ( className, 'premium-video-box' );
-  
+
+  const mainClasses = classnames(className, "premium-video-box");
+
   return (
     <div
       id={videoBoxId}
@@ -91,7 +92,7 @@ const save = props => {
         borderWidth: boxBorderWidth + "px",
         borderRadius: boxBorderRadius + "px",
         borderColor: boxBorderColor,
-        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
       }}
     >
       <style
@@ -100,8 +101,8 @@ const save = props => {
             `#${videoBoxId} .premium-video-box__play:hover {`,
             `color: ${playHoverColor} !important;`,
             `background-color: ${playHoverBackColor} !important;`,
-            "}"
-          ].join("\n")
+            "}",
+          ].join("\n"),
         }}
       />
       <div className={`premium-video-box__container`}>
@@ -135,7 +136,7 @@ const save = props => {
           className={`premium-video-box__overlay`}
           style={{
             backgroundImage: `url('${overlayImgURL}')`,
-            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
           }}
         />
       )}
@@ -146,18 +147,18 @@ const save = props => {
             top: playTop + "%",
             left: playLeft + "%",
             color: playColor,
-            backgroundColor: playBack,
+            backgroundColor: `rgba(${playBack},${playOpacity})`,
             border: playBorderType,
             borderWidth: playBorderWidth + "px",
             borderRadius: playBorderRadius + "px",
             borderColor: playBorderColor,
-            padding: playPadding + "px"
+            padding: playPadding + "px",
           }}
         >
           <i
             className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
             style={{
-              fontSize: playSize + "px"
+              fontSize: playSize + "px",
             }}
           />
         </div>
@@ -167,11 +168,11 @@ const save = props => {
           className={`premium-video-box__desc`}
           style={{
             color: videoDescColor,
-            backgroundColor: videoDescBack,
+            backgroundColor: `rgba(${videoDescBack},${videoDescOpacity})`,
             padding: videoDescPadding,
             borderRadius: videoDescBorderRadius,
             top: descTop + "%",
-            left: descLeft + "%"
+            left: descLeft + "%",
           }}
         >
           <p
@@ -183,7 +184,7 @@ const save = props => {
               letterSpacing: videoDescLetter + "px",
               textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
               textTransform: videoDescUpper ? "uppercase" : "none",
-              fontStyle: videoDescStyle
+              fontStyle: videoDescStyle,
             }}
           >
             <span>{videoDescText}</span>

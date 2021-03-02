@@ -585,7 +585,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title'       => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'],
+				'background-color' => 'rgba(' . $attr['fancyTextBGColor'].','.$attr['fancyTextBGOpacity'].')',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -595,7 +595,8 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title-slide' => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'],
+							'fancyTextBGOpacity'      =>'1',
+				'background-color' => 'rgba(' . $attr['fancyTextBGColor'].','.$attr['fancyTextBGOpacity'].')',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -608,7 +609,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-prefix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'],
+				'background-color' => 'rgba(' . $attr['textBGColor'].','.$attr['textBGOpacity'].')',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -617,7 +618,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-suffix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'],
+				'background-color' => 'rgba(' . $attr['textBGColor'].','.$attr['textBGOpacity'].')',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
