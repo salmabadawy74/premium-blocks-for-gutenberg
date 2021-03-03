@@ -572,6 +572,7 @@ class PBG_Blocks_Helper {
 	}
 
 	public static function get_fancy_text_css( $attr, $id ) {
+  
 
 		$defaults = self::$block_atts['premium/fancy-text']['attributes'];
 
@@ -585,7 +586,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title'       => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextUpdated'] ?'rgba(' . $attr['fancyTextBGColor'].','.$attr['fancyTextBGOpacity'].')':$attr['fancyTextBGColor'],
+				'background-color' => $attr['fancyTextBGColor'] ?'rgba(' . self::hColor2RGB($attr['fancyTextBGColor']).','.$attr['fancyTextBGOpacity'].')':"transparent",
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -595,7 +596,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title-slide' => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextUpdated'] ?'rgba(' . $attr['fancyTextBGColor'].','.$attr['fancyTextBGOpacity'].')':$attr['fancyTextBGColor'],
+				'background-color' => $attr['fancyTextBGColor'] ?'rgba(' . self::hColor2RGB($attr['fancyTextBGColor']).','.$attr['fancyTextBGOpacity'].')':"transparent",
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -608,7 +609,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-prefix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGUpdated'] ?'rgba(' . $attr['textBGColor'].','.$attr['textBGOpacity'].')': $attr['textBGColor'],
+				'background-color' => $attr['textBGColor'] ?'rgba(' . self::hColor2RGB($attr['textBGColor']).','.$attr['textBGOpacity'].')':"transparent",
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -617,7 +618,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-suffix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGUpdated'] ?'rgba(' . $attr['textBGColor'].','.$attr['textBGOpacity'].')': $attr['textBGColor'],
+				'background-color' => $attr['textBGColor'] ?'rgba(' . self::hColor2RGB($attr['textBGColor']).','.$attr['textBGOpacity'].')':"transparent",
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -743,6 +744,37 @@ class PBG_Blocks_Helper {
 
 		return $css_val;
 	}
+
+    	/**
+	 * Get CSS value
+	 *
+     * @since 1.8.2
+     * @access public
+     * 
+	 * @param string $hexColor value of Color.
+
+	 */
+    public static function hColor2RGB($hexColor){
+        $color = str_replace('#', '', $hexColor);
+        if (strlen($color) > 3) {
+            $rgb = 
+                hexdec(substr($color, 0, 2)) . ',' . hexdec(substr($color, 2, 2)) . 
+                
+                ',' . hexdec(substr($color, 4, 2))
+            ;
+        } else {
+            $color = str_replace('#', '', $hexColor);
+            $r = substr($color, 0, 1) . substr($color, 0, 1);
+            $g = substr($color, 1, 1) . substr($color, 1, 1);
+            $b = substr($color, 2, 1) . substr($color, 2, 1);
+            $rgb =
+             hexdec($r). "," .
+                hexdec($g) . "," .
+                 hexdec($b)
+            ;
+        }
+        return $rgb;
+    }
 
 	/**
 	 * Generates stylesheet for reusable blocks.
