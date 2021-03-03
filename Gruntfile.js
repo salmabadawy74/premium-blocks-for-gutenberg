@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 
                     "!node_modules/**",
                     "!eslintrc.json",
+                    "!.editorconfig",
                     "!README.md",
                     "!Gruntfile.js",
                     "!package.json",
