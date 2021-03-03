@@ -25,7 +25,7 @@ const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ") }],
 ];
 
-const edit = (props) => {
+const edit = props => {
     const { isSelected, className, setAttributes } = props;
 
     const {
@@ -107,7 +107,7 @@ const edit = (props) => {
             <BlockControls key="controls">
                 <AlignmentToolbar
                     value={horAlign}
-                    onChange={(newAlign) =>
+                    onChange={newAlign =>
                         setAttributes({ horAlign: newAlign })
                     }
                 />
@@ -123,7 +123,7 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Stretch Section")}
                         checked={stretchSection}
-                        onChange={(check) =>
+                        onChange={check =>
                             setAttributes({ stretchSection: check })
                         }
                         help={__(
@@ -135,7 +135,7 @@ const edit = (props) => {
                             label={__("Content Width")}
                             options={WIDTH}
                             value={innerWidthType}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ innerWidthType: newValue })
                             }
                         />
@@ -146,7 +146,7 @@ const edit = (props) => {
                             min="1"
                             max="1600"
                             value={innerWidth}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ innerWidth: newValue })
                             }
                         />
@@ -155,7 +155,7 @@ const edit = (props) => {
                         label={__("Height")}
                         options={HEIGHT}
                         value={height}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ height: newValue })
                         }
                     />
@@ -163,7 +163,7 @@ const edit = (props) => {
                         <Fragment>
                             <PremiumSizeUnits
                                 units={["px", "vh", "vw"]}
-                                onChangeSizeUnit={(newValue) =>
+                                onChangeSizeUnit={newValue =>
                                     setAttributes({ minHeightUnit: newValue })
                                 }
                             />
@@ -172,7 +172,7 @@ const edit = (props) => {
                                 value={minHeight}
                                 min="1"
                                 max="800"
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ minHeight: newValue })
                                 }
                             />
@@ -185,7 +185,7 @@ const edit = (props) => {
                         )}
                         options={VPOSITION}
                         value={vPos}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ vPos: newValue })
                         }
                     />
@@ -199,11 +199,11 @@ const edit = (props) => {
                     <PremiumBackground
                         type="color"
                         colorValue={color}
-                        onChangeColor={(newvalue) =>
+                        onChangeColor={newvalue =>
                             setAttributes({ color: newvalue })
                         }
                         opacityValue={opacity}
-                        onChangeOpacity={(value) =>
+                        onChangeOpacity={value =>
                             setAttributes({ opacity: value })
                         }
                     />
@@ -214,25 +214,25 @@ const edit = (props) => {
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={(media) => {
+                        onSelectMedia={media => {
                             setAttributes({
                                 imageID: media.id,
                                 imageURL: media.url,
                             });
                         }}
-                        onRemoveImage={(value) =>
+                        onRemoveImage={value =>
                             setAttributes({ imageURL: "", imageID: "" })
                         }
-                        onChangeBackPos={(newValue) =>
+                        onChangeBackPos={newValue =>
                             setAttributes({ backgroundPosition: newValue })
                         }
-                        onchangeBackRepeat={(newValue) =>
+                        onchangeBackRepeat={newValue =>
                             setAttributes({ backgroundRepeat: newValue })
                         }
-                        onChangeBackSize={(newValue) =>
+                        onChangeBackSize={newValue =>
                             setAttributes({ backgroundSize: newValue })
                         }
-                        onChangeFixed={(check) =>
+                        onChangeFixed={check =>
                             setAttributes({ fixed: check })
                         }
                     />
@@ -247,16 +247,16 @@ const edit = (props) => {
                         borderWidth={borderWidth}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ borderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -267,7 +267,7 @@ const edit = (props) => {
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
                         position={shadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 shadowColor:
                                     newColor === undefined
@@ -275,24 +275,24 @@ const edit = (props) => {
                                         : newColor.hex,
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal:
                                     newValue === undefined ? 0 : newValue,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical:
                                     newValue === undefined ? 0 : newValue,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition:
                                     newValue === undefined ? 0 : newValue,
@@ -311,28 +311,28 @@ const edit = (props) => {
                         marginRight={marginRight}
                         marginBottom={marginBottom}
                         marginLeft={marginLeft}
-                        onChangeMarTop={(value) =>
+                        onChangeMarTop={value =>
                             setAttributes({
                                 marginTop: value === undefined ? 0 : value,
                             })
                         }
-                        onChangeMarRight={(value) =>
+                        onChangeMarRight={value =>
                             setAttributes({
                                 marginRight: value === undefined ? 0 : value,
                             })
                         }
-                        onChangeMarBottom={(value) =>
+                        onChangeMarBottom={value =>
                             setAttributes({
                                 marginBottom: value === undefined ? 0 : value,
                             })
                         }
-                        onChangeMarLeft={(value) =>
+                        onChangeMarLeft={value=>
                             setAttributes({
                                 marginLeft: value === undefined ? 0 : value,
                             })
                         }
                         showUnits={true}
-                        onChangeMarSizeUnit={(newvalue) =>
+                        onChangeMarSizeUnit={newvalue =>
                             setAttributes({ marginUnit: newvalue })
                         }
                     />
@@ -341,29 +341,29 @@ const edit = (props) => {
                         paddingRight={paddingRight}
                         paddingBottom={paddingBottom}
                         paddingLeft={paddingLeft}
-                        onChangePadTop={(value) =>
+                        onChangePadTop={value =>
                             setAttributes({
                                 paddingTop: value === undefined ? 0 : value,
                             })
                         }
-                        onChangePadRight={(value) =>
+                        onChangePadRight={value =>
                             setAttributes({
                                 paddingRight: value === undefined ? 0 : value,
                             })
                         }
-                        onChangePadBottom={(value) =>
+                        onChangePadBottom={value =>
                             setAttributes({
                                 paddingBottom: value === undefined ? 0 : value,
                             })
                         }
-                        onChangePadLeft={(value) =>
+                        onChangePadLeft={value =>
                             setAttributes({
                                 paddingLeft: value === undefined ? 0 : value,
                             })
                         }
                         showUnits={true}
                         selectedUnit={paddingUnit}
-                        onChangePadSizeUnit={(newvalue) =>
+                        onChangePadSizeUnit={newvalue =>
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />

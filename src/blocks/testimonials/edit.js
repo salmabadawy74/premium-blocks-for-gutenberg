@@ -132,7 +132,7 @@ const edit = (props) => {
                         {!authorImgUrl && <DefaultImage />}
                         <MediaUpload
                             allowedTypes={["image"]}
-                            onSelect={(media) => {
+                            onSelect={media => {
                                 setAttributes({
                                     authorImgId: media.id,
                                     authorImgUrl:
@@ -212,7 +212,7 @@ const edit = (props) => {
                                 label={__("Image Style")}
                                 options={RADIUS}
                                 value={imgRadius}
-                                onChange={(newWeight) =>
+                                onChange={newWeight =>
                                     setAttributes({ imgRadius: newWeight })
                                 }
                             />
@@ -222,7 +222,7 @@ const edit = (props) => {
                                 label={__("Size")}
                                 max="200"
                                 value={imgSize}
-                                onChange={(newSize) =>
+                                onChange={newSize =>
                                     setAttributes({ imgSize: newSize })
                                 }
                             />
@@ -231,7 +231,7 @@ const edit = (props) => {
                             <RangeControl
                                 label={__("Border Width (PX)")}
                                 value={imgBorder}
-                                onChange={(newSize) =>
+                                onChange={newSize =>
                                     setAttributes({ imgBorder: newSize })
                                 }
                             />
@@ -241,7 +241,7 @@ const edit = (props) => {
                                 <p>{__("Border Color")}</p>
                                 <ColorPalette
                                     value={imgBorderColor}
-                                    onChange={(newValue) =>
+                                    onChange={newValue =>
                                         setAttributes({
                                             imgBorderColor: newValue,
                                         })
@@ -277,23 +277,23 @@ const edit = (props) => {
                         style={authorStyle}
                         spacing={authorLetter}
                         upper={authorUpper}
-                        onChangeWeight={(newWeight) =>
+                        onChangeWeight={newWeight =>
                             setAttributes({ authorWeight: newWeight })
                         }
-                        onChangeStyle={(newStyle) =>
+                        onChangeStyle={newStyle =>
                             setAttributes({ authorStyle: newStyle })
                         }
-                        onChangeSpacing={(newValue) =>
+                        onChangeSpacing={newValue =>
                             setAttributes({ authorLetter: newValue })
                         }
-                        onChangeUpper={(check) =>
+                        onChangeUpper={check =>
                             setAttributes({ authorUpper: check })
                         }
                     />
                     <p>{__("Color")}</p>
                     <ColorPalette
                         value={authorColor}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({
                                 authorColor: newValue,
                             })
@@ -310,17 +310,17 @@ const edit = (props) => {
                         components={["size", "line"]}
                         size={bodySize}
                         line={bodyLine}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ bodySize: newSize })
                         }
-                        onChangeLine={(newWeight) =>
+                        onChangeLine={newWeight =>
                             setAttributes({ bodyLine: newWeight })
                         }
                     />
                     <p>{__("Color")}</p>
                     <ColorPalette
                         value={bodyColor}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({
                                 bodyColor: newValue,
                             })
@@ -330,14 +330,14 @@ const edit = (props) => {
                     <RangeControl
                         label={__("Margin Top (PX)")}
                         value={bodyTop}
-                        onChange={(newSize) =>
+                        onChange={newSize =>
                             setAttributes({ bodyTop: newSize })
                         }
                     />
                     <RangeControl
                         label={__("Margin Bottom (PX)")}
                         value={bodyBottom}
-                        onChange={(newSize) =>
+                        onChange={newSize =>
                             setAttributes({ bodyBottom: newSize })
                         }
                     />
@@ -360,7 +360,7 @@ const edit = (props) => {
                     <PremiumTypo
                         components={["size"]}
                         size={authorComSize}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ authorComSize: newSize })
                         }
                     />
@@ -384,7 +384,7 @@ const edit = (props) => {
                                     <p>{__("Text Color")}</p>
                                     <ColorPalette
                                         value={authorComColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 authorComColor: newValue,
                                             })
@@ -394,7 +394,7 @@ const edit = (props) => {
                                     <p>{__("Dash Color")}</p>
                                     <ColorPalette
                                         value={dashColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 dashColor: newValue,
                                             })
@@ -408,7 +408,7 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("URL")}
                         checked={urlCheck}
-                        onChange={(newCheck) =>
+                        onChange={newCheck =>
                             setAttributes({ urlCheck: newCheck })
                         }
                     />
@@ -416,7 +416,7 @@ const edit = (props) => {
                         <TextControl
                             label={__("URL")}
                             value={urlText}
-                            onChange={(newURL) =>
+                            onChange={newURL =>
                                 setAttributes({ urlText: newURL })
                             }
                         />
@@ -425,7 +425,7 @@ const edit = (props) => {
                         <ToggleControl
                             label={__("Open Link in a New Tab")}
                             checked={urlTarget}
-                            onChange={(newCheck) =>
+                            onChange={newCheck =>
                                 setAttributes({ urlTarget: newCheck })
                             }
                         />
@@ -441,7 +441,7 @@ const edit = (props) => {
                         value={quotSize}
                         min="1"
                         max="12"
-                        onChange={(newSize) =>
+                        onChange={newSize =>
                             setAttributes({ quotSize: newSize })
                         }
                     />
@@ -449,7 +449,7 @@ const edit = (props) => {
                         <p>{__("Quotations Color")}</p>
                         <ColorPalette
                             value={quotColor}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({
                                     quotColor: newValue,
                                 })
@@ -462,7 +462,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         value={quotOpacity}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ quotOpacity: newValue })
                         }
                     />
@@ -477,14 +477,14 @@ const edit = (props) => {
                         <PremiumBackground
                             type="color"
                             colorValue={backColor}
-                            onChangeColor={(newvalue) =>
+                            onChangeColor={newvalue =>
                                 setAttributes({
                                     backColor: newvalue,
                                     backColorUpdated: true,
                                 })
                             }
                             opacityValue={backOpacity}
-                            onChangeOpacity={(value) =>
+                            onChangeOpacity={value =>
                                 setAttributes({ backOpacity: value })
                             }
                         />
@@ -495,25 +495,25 @@ const edit = (props) => {
                             backgroundRepeat={backgroundRepeat}
                             backgroundSize={backgroundSize}
                             fixed={fixed}
-                            onSelectMedia={(media) => {
+                            onSelectMedia={media => {
                                 setAttributes({
                                     imageID: media.id,
                                     imageURL: media.url,
                                 });
                             }}
-                            onRemoveImage={(value) =>
+                            onRemoveImage={value =>
                                 setAttributes({ imageURL: "", imageID: "" })
                             }
-                            onChangeBackPos={(newValue) =>
+                            onChangeBackPos={newValue =>
                                 setAttributes({ backgroundPosition: newValue })
                             }
-                            onchangeBackRepeat={(newValue) =>
+                            onchangeBackRepeat={newValue =>
                                 setAttributes({ backgroundRepeat: newValue })
                             }
-                            onChangeBackSize={(newValue) =>
+                            onChangeBackSize={newValue =>
                                 setAttributes({ backgroundSize: newValue })
                             }
-                            onChangeFixed={(check) =>
+                            onChangeFixed={check =>
                                 setAttributes({ fixed: check })
                             }
                         />
@@ -530,22 +530,22 @@ const edit = (props) => {
                                 shadowColor: newColor.hex,
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 shadowBlur: newBlur,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal: newValue,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical: newValue,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition: newValue,
                             })
@@ -556,29 +556,29 @@ const edit = (props) => {
                         paddingRight={paddingRight}
                         paddingBottom={paddingBottom}
                         paddingLeft={paddingLeft}
-                        onChangePadTop={(value) =>
+                        onChangePadTop={value =>
                             setAttributes({
                                 paddingTop: value,
                             })
                         }
-                        onChangePadRight={(value) =>
+                        onChangePadRight={value =>
                             setAttributes({
                                 paddingRight: value,
                             })
                         }
-                        onChangePadBottom={(value) =>
+                        onChangePadBottom={value =>
                             setAttributes({
                                 paddingBottom: value,
                             })
                         }
-                        onChangePadLeft={(value) =>
+                        onChangePadLeft={value =>
                             setAttributes({
                                 paddingLeft: value,
                             })
                         }
                         showUnits={true}
                         selectedUnit={paddingUnit}
-                        onChangePadSizeUnit={(newvalue) =>
+                        onChangePadSizeUnit={newvalue =>
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />

@@ -176,7 +176,7 @@ const edit = (props) => {
         },
     ];
 
-    const onChangeHover = (newValue) => {
+    const onChangeHover = newValue => {
         props.setAttributes({ effect: newValue });
         switch (newValue) {
             case "slide":
@@ -222,7 +222,7 @@ const edit = (props) => {
             <BlockControls key="controls">
                 <AlignmentToolbar
                     value={btnAlign}
-                    onChange={(newAlign) =>
+                    onChange={newAlign =>
                         setAttributes({ btnAlign: newAlign })
                     }
                 />
@@ -246,7 +246,7 @@ const edit = (props) => {
                             options={DIRECTION}
                             label={__("Direction")}
                             value={effectDir}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ effectDir: newValue })
                             }
                         />
@@ -256,7 +256,7 @@ const edit = (props) => {
                             options={SHUTTER}
                             label={__("Shutter Direction")}
                             value={effectDir}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ effectDir: newValue })
                             }
                         />
@@ -266,7 +266,7 @@ const edit = (props) => {
                             options={RADIAL}
                             label={__("Style")}
                             value={effectDir}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ effectDir: newValue })
                             }
                         />
@@ -275,14 +275,14 @@ const edit = (props) => {
                         options={SIZE}
                         label={__("Button Size")}
                         value={btnSize}
-                        onChange={(newSize) =>
+                        onChange={newSize =>
                             setAttributes({ btnSize: newSize })
                         }
                     />
                     <ToggleControl
                         label={__("Open link in new tab")}
                         checked={btnTarget}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ btnTarget: newValue })
                         }
                     />
@@ -313,25 +313,25 @@ const edit = (props) => {
                         spacing={textLetter}
                         upper={textUpper}
                         line={textLine}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ textSize: newSize })
                         }
-                        onChangeWeight={(newWeight) =>
+                        onChangeWeight={newWeight =>
                             setAttributes({ textWeight: newWeight })
                         }
-                        onChangeLine={(newValue) =>
+                        onChangeLine={newValue =>
                             setAttributes({ textLine: newValue })
                         }
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ textSize: newSize })
                         }
-                        onChangeStyle={(newStyle) =>
+                        onChangeStyle={newStyle =>
                             setAttributes({ textStyle: newStyle })
                         }
-                        onChangeSpacing={(newValue) =>
+                        onChangeSpacing={newValue =>
                             setAttributes({ textLetter: newValue })
                         }
-                        onChangeUpper={(check) =>
+                        onChangeUpper={check =>
                             setAttributes({ textUpper: check })
                         }
                     />
@@ -355,7 +355,7 @@ const edit = (props) => {
                                     <p>{__("Text Color")}</p>
                                     <ColorPalette
                                         value={textColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 textColor: newValue,
                                             })
@@ -365,7 +365,7 @@ const edit = (props) => {
                                     <p>{__("Text Hover Color")}</p>
                                     <ColorPalette
                                         value={textHoverColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 textHoverColor: newValue,
                                             })
@@ -381,16 +381,16 @@ const edit = (props) => {
                         blur={shadowBlur}
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({ shadowColor: newColor.hex })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({ shadowBlur: newBlur })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({ shadowHorizontal: newValue })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({ shadowVertical: newValue })
                         }
                     />
@@ -425,13 +425,13 @@ const edit = (props) => {
                                     <PremiumBackground
                                         type="color"
                                         colorValue={backColor}
-                                        onChangeColor={(newvalue) =>
+                                        onChangeColor={newvalue =>
                                             setAttributes({
                                                 backColor: newvalue,
                                             })
                                         }
                                         opacityValue={backOpacity}
-                                        onChangeOpacity={(value) =>
+                                        onChangeOpacity={value =>
                                             setAttributes({
                                                 backOpacity: value,
                                             })
@@ -445,7 +445,7 @@ const edit = (props) => {
                                     </p>
                                     <ColorPalette
                                         value={backHoverColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 backHoverColor: newValue,
                                                 slideColor: newValue,
@@ -462,16 +462,16 @@ const edit = (props) => {
                         borderWidth={borderWidth}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ borderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -479,7 +479,7 @@ const edit = (props) => {
                         <p>{__("Border Hover Color")}</p>
                         <ColorPalette
                             value={borderHoverColor}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({
                                     borderHoverColor: newValue,
                                 })
@@ -495,7 +495,7 @@ const edit = (props) => {
                         horizontal={btnShadowHorizontal}
                         vertical={btnShadowVertical}
                         position={btnShadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 btnShadowColor:
                                     newColor === undefined
@@ -503,25 +503,25 @@ const edit = (props) => {
                                         : newColor.hex,
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 btnShadowBlur:
                                     newBlur === undefined ? 0 : newBlur,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 btnShadowHorizontal:
                                     newValue === undefined ? 0 : newValue,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 btnShadowVertical:
                                     newValue === undefined ? 0 : newValue,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 btnShadowPosition:
                                     newValue === undefined ? 0 : newValue,
@@ -529,14 +529,14 @@ const edit = (props) => {
                         }
                     />
                     <PremiumSizeUnits
-                        onChangeSizeUnit={(newValue) =>
+                        onChangeSizeUnit={newValue =>
                             setAttributes({ paddingU: newValue })
                         }
                     />
                     <RangeControl
                         label={__("Padding")}
                         value={padding}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ padding: newValue })
                         }
                     />
@@ -594,7 +594,7 @@ const edit = (props) => {
             />
             <URLInput
                 value={btnLink}
-                onChange={(newLink) => setAttributes({ btnLink: newLink })}
+                onChange={newLink => setAttributes({ btnLink: newLink })}
             />
         </div>,
     ];

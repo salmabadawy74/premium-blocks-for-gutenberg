@@ -274,42 +274,42 @@ class PremiumPricingTable extends Component {
                         <ToggleControl
                             label={__("Title")}
                             checked={titleChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ titleChecked: newValue })
                             }
                         />
                         <ToggleControl
                             label={__("Price")}
                             checked={priceChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ priceChecked: newValue })
                             }
                         />
                         <ToggleControl
                             label={__("Features")}
                             checked={listChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ listChecked: newValue })
                             }
                         />
                         <ToggleControl
                             label={__("Description")}
                             checked={descChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ descChecked: newValue })
                             }
                         />
                         <ToggleControl
                             label={__("Button")}
                             checked={btnChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ btnChecked: newValue })
                             }
                         />
                         <ToggleControl
                             label={__("Badge")}
                             checked={badgeChecked}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ badgeChecked: newValue })
                             }
                         />
@@ -345,22 +345,22 @@ class PremiumPricingTable extends Component {
                                 spacing={titleLetter}
                                 line={titleLine}
                                 upper={titleUpper}
-                                onChangeSize={(newSize) =>
+                                onChangeSize={newSize =>
                                     setAttributes({ titleSize: newSize })
                                 }
-                                onChangeWeight={(newWeight) =>
+                                onChangeWeight={newWeight =>
                                     setAttributes({ titleWeight: newWeight })
                                 }
-                                onChangeStyle={(newStyle) =>
+                                onChangeStyle={newStyle =>
                                     setAttributes({ titleStyle: newStyle })
                                 }
-                                onChangeSpacing={(newValue) =>
+                                onChangeSpacing={newValue =>
                                     setAttributes({ titleLetter: newValue })
                                 }
-                                onChangeLine={(newValue) =>
+                                onChangeLine={newValue =>
                                     setAttributes({ titleLine: newValue })
                                 }
-                                onChangeUpper={(check) =>
+                                onChangeUpper={check =>
                                     setAttributes({ titleUpper: check })
                                 }
                             />
@@ -371,7 +371,7 @@ class PremiumPricingTable extends Component {
                                 colorSettings={[
                                     {
                                         value: titleColor,
-                                        onChange: (newColor) =>
+                                        onChange: newColor =>
                                             setAttributes({
                                                 titleColor: newColor,
                                             }),
@@ -379,7 +379,7 @@ class PremiumPricingTable extends Component {
                                     },
                                     {
                                         value: titleBack,
-                                        onChange: (newColor) =>
+                                        onChange: newColor =>
                                             setAttributes({
                                                 titleBack: newColor,
                                             }),
@@ -392,20 +392,20 @@ class PremiumPricingTable extends Component {
                                 blur={titleShadowBlur}
                                 horizontal={titleShadowHorizontal}
                                 vertical={titleShadowVertical}
-                                onChangeColor={(newColor) =>
+                                onChangeColor={newColor =>
                                     setAttributes({
                                         titleShadowColor: newColor.hex,
                                     })
                                 }
-                                onChangeBlur={(newBlur) =>
+                                onChangeBlur={newBlur =>
                                     setAttributes({ titleShadowBlur: newBlur })
                                 }
-                                onChangehHorizontal={(newValue) =>
+                                onChangehHorizontal={newValue =>
                                     setAttributes({
                                         titleShadowHorizontal: newValue,
                                     })
                                 }
-                                onChangeVertical={(newValue) =>
+                                onChangeVertical={newValue =>
                                     setAttributes({
                                         titleShadowVertical: newValue,
                                     })
@@ -433,7 +433,7 @@ class PremiumPricingTable extends Component {
                                                 value={titleMarginT}
                                                 min="10"
                                                 max="80"
-                                                onChange={(newSize) =>
+                                                onChange={newSize =>
                                                     setAttributes({
                                                         titleMarginT: newSize,
                                                     })
@@ -444,7 +444,7 @@ class PremiumPricingTable extends Component {
                                                 value={titleMarginB}
                                                 min="0"
                                                 max="100"
-                                                onChange={(newMargin) =>
+                                                onChange={newMargin =>
                                                     setAttributes({
                                                         titleMarginB: newMargin,
                                                     })
@@ -455,7 +455,7 @@ class PremiumPricingTable extends Component {
                                                 value={titlePadding}
                                                 min="0"
                                                 max="100"
-                                                onChange={(newPadding) =>
+                                                onChange={newPadding =>
                                                     setAttributes({
                                                         titlePadding: newPadding,
                                                     })
@@ -476,14 +476,14 @@ class PremiumPricingTable extends Component {
                             <TextControl
                                 label={__("Slashed Price")}
                                 value={slashPrice}
-                                onChange={(value) =>
+                                onChange={value =>
                                     setAttributes({ slashPrice: value })
                                 }
                             />
                             <TextControl
                                 label={__("Currency")}
                                 value={currPrice}
-                                onChange={(value) =>
+                                onChange={value =>
                                     setAttributes({ currPrice: value })
                                 }
                             />
@@ -497,14 +497,14 @@ class PremiumPricingTable extends Component {
                             <TextControl
                                 label={__("Divider")}
                                 value={divPrice}
-                                onChange={(value) =>
+                                onChange={value =>
                                     setAttributes({ divPrice: value })
                                 }
                             />
                             <TextControl
                                 label={__("Duration")}
                                 value={durPrice}
-                                onChange={(value) =>
+                                onChange={value =>
                                     setAttributes({ durPrice: value })
                                 }
                             />
@@ -517,7 +517,7 @@ class PremiumPricingTable extends Component {
                                     label={__("Element")}
                                     options={PRICE}
                                     value={selectedStyle}
-                                    onChange={(newElem) =>
+                                    onChange={newElem =>
                                         setAttributes({
                                             selectedStyle: newElem,
                                         })
@@ -529,12 +529,12 @@ class PremiumPricingTable extends Component {
                                             components={["size", "weight"]}
                                             size={slashSize}
                                             weight={slashWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     slashSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     slashWeight: newWeight,
                                                 })
@@ -544,7 +544,7 @@ class PremiumPricingTable extends Component {
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
                                             value={slashV}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     slashV: newValue,
                                                 })
@@ -554,7 +554,7 @@ class PremiumPricingTable extends Component {
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={slashColor}
-                                                onChange={(newValue) =>
+                                                onChange={newValue =>
                                                     setAttributes({
                                                         slashColor:
                                                             newValue ===
@@ -574,12 +574,12 @@ class PremiumPricingTable extends Component {
                                             components={["size", "weight"]}
                                             size={currSize}
                                             weight={currWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     currSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     currWeight: newWeight,
                                                 })
@@ -589,7 +589,7 @@ class PremiumPricingTable extends Component {
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
                                             value={currV}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     currV: newValue,
                                                 })
@@ -599,7 +599,7 @@ class PremiumPricingTable extends Component {
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={currColor}
-                                                onChange={(newValue) =>
+                                                onChange={newValue =>
                                                     setAttributes({
                                                         currColor:
                                                             newValue ===
@@ -619,12 +619,12 @@ class PremiumPricingTable extends Component {
                                             components={["size", "weight"]}
                                             size={valSize}
                                             weight={valWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     valSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     valWeight: newWeight,
                                                 })
@@ -644,7 +644,7 @@ class PremiumPricingTable extends Component {
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={valColor}
-                                                onChange={(newValue) =>
+                                                onChange={newValue =>
                                                     setAttributes({
                                                         valColor:
                                                             newValue ===
@@ -664,12 +664,12 @@ class PremiumPricingTable extends Component {
                                             components={["size", "weight"]}
                                             size={divSize}
                                             weight={divWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     divSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     divWeight: newWeight,
                                                 })
@@ -679,7 +679,7 @@ class PremiumPricingTable extends Component {
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
                                             value={divV}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     divV: newValue,
                                                 })
@@ -689,7 +689,7 @@ class PremiumPricingTable extends Component {
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={divColor}
-                                                onChange={(newValue) =>
+                                                onChange={newValue =>
                                                     setAttributes({
                                                         divColor:
                                                             newValue ===
@@ -709,12 +709,12 @@ class PremiumPricingTable extends Component {
                                             components={["size", "weight"]}
                                             size={durSize}
                                             weight={durWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     durSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     durWeight: newWeight,
                                                 })
@@ -724,7 +724,7 @@ class PremiumPricingTable extends Component {
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
                                             value={durV}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     durV: newValue,
                                                 })
@@ -734,7 +734,7 @@ class PremiumPricingTable extends Component {
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={durColor}
-                                                onChange={(newValue) =>
+                                                onChange={newValue =>
                                                     setAttributes({
                                                         durColor:
                                                             newValue ===

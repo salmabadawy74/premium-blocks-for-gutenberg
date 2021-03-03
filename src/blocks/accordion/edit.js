@@ -342,22 +342,22 @@ class PremiumAccordion extends Component {
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ titleSize: newSize })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={ newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
-                            onChangeStyle={(newStyle) =>
+                            onChangeStyle={newStyle =>
                                 setAttributes({ titleStyle: newStyle })
                             }
-                            onChangeSpacing={(newValue) =>
+                            onChangeSpacing={newValue =>
                                 setAttributes({ titleLetter: newValue })
                             }
-                            onChangeLine={(newValue) =>
+                            onChangeLine={newValue =>
                                 setAttributes({ titleLine: newValue })
                             }
-                            onChangeUpper={(check) =>
+                            onChangeUpper={check =>
                                 setAttributes({ titleUpper: check })
                             }
                         />
@@ -381,7 +381,7 @@ class PremiumAccordion extends Component {
                                         <p>{__("Text Color")}</p>
                                         <ColorPalette
                                             value={titleColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     titleColor: newValue,
                                                 })
@@ -392,13 +392,13 @@ class PremiumAccordion extends Component {
                                         <PremiumBackground
                                             type="color"
                                             colorValue={titleBack}
-                                            onChangeColor={(newvalue) =>
+                                            onChangeColor={newvalue =>
                                                 setAttributes({
                                                     titleBack: newvalue,
                                                 })
                                             }
                                             opacityValue={titleOpacity}
-                                            onChangeOpacity={(value) =>
+                                            onChangeOpacity={value =>
                                                 setAttributes({
                                                     titleOpacity: value,
                                                 })
@@ -413,18 +413,18 @@ class PremiumAccordion extends Component {
                             borderWidth={titleBorderWidth}
                             borderColor={titleBorderColor}
                             borderRadius={titleBorderRadius}
-                            onChangeType={(newType) =>
+                            onChangeType={newType =>
                                 setAttributes({ titleBorder: newType })
                             }
-                            onChangeWidth={(newWidth) =>
+                            onChangeWidth={newWidth =>
                                 setAttributes({ titleBorderWidth: newWidth })
                             }
-                            onChangeColor={(colorValue) =>
+                            onChangeColor={colorValue =>
                                 setAttributes({
                                     titleBorderColor: colorValue.hex,
                                 })
                             }
-                            onChangeRadius={(newrRadius) =>
+                            onChangeRadius={newrRadius =>
                                 setAttributes({ titleBorderRadius: newrRadius })
                             }
                         />
@@ -433,20 +433,20 @@ class PremiumAccordion extends Component {
                             blur={titleShadowBlur}
                             horizontal={titleShadowHorizontal}
                             vertical={titleShadowVertical}
-                            onChangeColor={(newColor) =>
+                            onChangeColor={newColor =>
                                 setAttributes({
                                     titleShadowColor: newColor.hex,
                                 })
                             }
-                            onChangeBlur={(newBlur) =>
+                            onChangeBlur={newBlur =>
                                 setAttributes({ titleShadowBlur: newBlur })
                             }
-                            onChangehHorizontal={(newValue) =>
+                            onChangehHorizontal={newValue =>
                                 setAttributes({
                                     titleShadowHorizontal: newValue,
                                 })
                             }
-                            onChangeVertical={(newValue) =>
+                            onChangeVertical={newValue =>
                                 setAttributes({ titleShadowVertical: newValue })
                             }
                         />
@@ -456,25 +456,25 @@ class PremiumAccordion extends Component {
                             paddingRight={titlePaddingR}
                             paddingBottom={titlePaddingB}
                             paddingLeft={titlePaddingL}
-                            onChangePadTop={(value) =>
+                            onChangePadTop={value =>
                                 setAttributes({
                                     titlePaddingT:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadRight={(value) =>
+                            onChangePadRight={value =>
                                 setAttributes({
                                     titlePaddingR:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadBottom={(value) =>
+                            onChangePadBottom={value =>
                                 setAttributes({
                                     titlePaddingB:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadLeft={(value) =>
+                            onChangePadLeft={value =>
                                 setAttributes({
                                     titlePaddingL:
                                         value === undefined ? 0 : value,
@@ -491,14 +491,14 @@ class PremiumAccordion extends Component {
                             label={__("Position")}
                             options={ARROW}
                             value={arrowPos}
-                            onChange={(newEffect) =>
+                            onChange={newEffect =>
                                 setAttributes({ arrowPos: newEffect })
                             }
                         />
                         <RangeControl
                             label={__("Size ")}
                             value={arrowSize}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ arrowSize: newValue })
                             }
                         />
@@ -522,7 +522,7 @@ class PremiumAccordion extends Component {
                                         <p>{__("Arrow Color")}</p>
                                         <ColorPalette
                                             value={arrowColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     arrowColor: newValue,
                                                 })
@@ -533,13 +533,13 @@ class PremiumAccordion extends Component {
                                         <PremiumBackground
                                             type="color"
                                             colorValue={arrowBack}
-                                            onChangeColor={(newvalue) =>
+                                            onChangeColor={newvalue =>
                                                 setAttributes({
                                                     arrowBack: newvalue,
                                                 })
                                             }
                                             opacityValue={arrowOpacity}
-                                            onChangeOpacity={(value) =>
+                                            onChangeOpacity={value =>
                                                 setAttributes({
                                                     arrowOpacity: value,
                                                 })
@@ -552,7 +552,7 @@ class PremiumAccordion extends Component {
                         <RangeControl
                             label={__("Border Radius (PX)")}
                             value={arrowRadius}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({
                                     arrowRadius:
                                         newValue === undefined ? 0 : newValue,
@@ -562,7 +562,7 @@ class PremiumAccordion extends Component {
                         <RangeControl
                             label={__("Padding (PX)")}
                             value={arrowPadding}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({
                                     arrowPadding:
                                         newValue === undefined ? 0 : newValue,
@@ -579,7 +579,7 @@ class PremiumAccordion extends Component {
                             label={__("Type")}
                             options={TYPE}
                             value={contentType}
-                            onChange={(newType) =>
+                            onChange={newType =>
                                 setAttributes({ contentType: newType })
                             }
                             help={__(
@@ -611,22 +611,22 @@ class PremiumAccordion extends Component {
                                     spacing={descLetter}
                                     line={descLine}
                                     upper={descUpper}
-                                    onChangeSize={(newSize) =>
+                                    onChangeSize={newSize =>
                                         setAttributes({ descSize: newSize })
                                     }
-                                    onChangeWeight={(newWeight) =>
+                                    onChangeWeight={newWeight =>
                                         setAttributes({ descWeight: newWeight })
                                     }
-                                    onChangeStyle={(newStyle) =>
+                                    onChangeStyle={newStyle =>
                                         setAttributes({ descStyle: newStyle })
                                     }
-                                    onChangeSpacing={(newValue) =>
+                                    onChangeSpacing={newValue =>
                                         setAttributes({ descLetter: newValue })
                                     }
-                                    onChangeLine={(newValue) =>
+                                    onChangeLine={newValue =>
                                         setAttributes({ descLine: newValue })
                                     }
-                                    onChangeUpper={(check) =>
+                                    onChangeUpper={check =>
                                         setAttributes({ descUpper: check })
                                     }
                                 />
@@ -653,7 +653,7 @@ class PremiumAccordion extends Component {
                                                 <p>{__("Text Color")}</p>
                                                 <ColorPalette
                                                     value={descColor}
-                                                    onChange={(newValue) =>
+                                                    onChange={newValue =>
                                                         setAttributes({
                                                             descColor: newValue,
                                                         })
@@ -664,13 +664,13 @@ class PremiumAccordion extends Component {
                                                 <PremiumBackground
                                                     type="color"
                                                     colorValue={descBack}
-                                                    onChangeColor={(newvalue) =>
+                                                    onChangeColor={newvalue =>
                                                         setAttributes({
                                                             descBack: newvalue,
                                                         })
                                                     }
                                                     opacityValue={descOpacity}
-                                                    onChangeOpacity={(value) =>
+                                                    onChangeOpacity={value =>
                                                         setAttributes({
                                                             descOpacity: value,
                                                         })
@@ -688,18 +688,18 @@ class PremiumAccordion extends Component {
                             borderWidth={descBorderWidth}
                             borderColor={descBorderColor}
                             borderRadius={descBorderRadius}
-                            onChangeType={(newType) =>
+                            onChangeType={newType =>
                                 setAttributes({ descBorder: newType })
                             }
-                            onChangeWidth={(newWidth) =>
+                            onChangeWidth={newWidth =>
                                 setAttributes({ descBorderWidth: newWidth })
                             }
-                            onChangeColor={(colorValue) =>
+                            onChangeColor={colorValue =>
                                 setAttributes({
                                     descBorderColor: colorValue.hex,
                                 })
                             }
-                            onChangeRadius={(newrRadius) =>
+                            onChangeRadius={newrRadius =>
                                 setAttributes({ descBorderRadius: newrRadius })
                             }
                         />
@@ -710,7 +710,7 @@ class PremiumAccordion extends Component {
                                 blur={textShadowBlur}
                                 horizontal={textShadowHorizontal}
                                 vertical={textShadowVertical}
-                                onChangeColor={(newColor) =>
+                                onChangeColor={newColor =>
                                     setAttributes({
                                         textShadowColor:
                                             newColor === undefined
@@ -718,13 +718,13 @@ class PremiumAccordion extends Component {
                                                 : newColor.hex,
                                     })
                                 }
-                                onChangeBlur={(newBlur) =>
+                                onChangeBlur={newBlur =>
                                     setAttributes({
                                         textShadowBlur:
                                             newBlur === undefined ? 0 : newBlur,
                                     })
                                 }
-                                onChangehHorizontal={(newValue) =>
+                                onChangehHorizontal={newValue =>
                                     setAttributes({
                                         textShadowHorizontal:
                                             newValue === undefined
@@ -732,7 +732,7 @@ class PremiumAccordion extends Component {
                                                 : newValue,
                                     })
                                 }
-                                onChangeVertical={(newValue) =>
+                                onChangeVertical={newValue =>
                                     setAttributes({
                                         textShadowVertical:
                                             newValue === undefined
@@ -747,25 +747,25 @@ class PremiumAccordion extends Component {
                             paddingRight={descPaddingR}
                             paddingBottom={descPaddingB}
                             paddingLeft={descPaddingL}
-                            onChangePadTop={(value) =>
+                            onChangePadTop={value =>
                                 setAttributes({
                                     descPaddingT:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadRight={(value) =>
+                            onChangePadRight={value =>
                                 setAttributes({
                                     descPaddingR:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadBottom={(value) =>
+                            onChangePadBottom={value =>
                                 setAttributes({
                                     descPaddingB:
                                         value === undefined ? 0 : value,
                                 })
                             }
-                            onChangePadLeft={(value) =>
+                            onChangePadLeft={value =>
                                 setAttributes({
                                     descPaddingL:
                                         value === undefined ? 0 : value,

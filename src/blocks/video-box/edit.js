@@ -268,7 +268,7 @@ class edit extends Component {
                         {"self" === videoType && (
                             <MediaUpload
                                 allowedTypes={["video"]}
-                                onSelect={(media) => {
+                                onSelect={media => {
                                     setAttributes({
                                         videoID: media.id,
                                         videoURL: media.url,
@@ -349,7 +349,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__("Autoplay")}
                             checked={autoPlay}
-                            onChange={(newCheck) =>
+                            onChange={newCheck =>
                                 setAttributes({ autoPlay: newCheck })
                             }
                             help={__(
@@ -360,7 +360,7 @@ class edit extends Component {
                             <ToggleControl
                                 label={__("Loop")}
                                 checked={loop}
-                                onChange={(newCheck) =>
+                                onChange={newCheck =>
                                     setAttributes({ loop: newCheck })
                                 }
                             />
@@ -368,7 +368,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__("Mute")}
                             checked={mute}
-                            onChange={(newCheck) =>
+                            onChange={newCheck =>
                                 setAttributes({ mute: newCheck })
                             }
                         />
@@ -376,7 +376,7 @@ class edit extends Component {
                             <ToggleControl
                                 label={__("Player Controls")}
                                 checked={controls}
-                                onChange={(newCheck) =>
+                                onChange={newCheck =>
                                     setAttributes({ controls: newCheck })
                                 }
                             />
@@ -385,7 +385,7 @@ class edit extends Component {
                             <ToggleControl
                                 label={__("Show Related Videos")}
                                 checked={relatedVideos}
-                                onChange={(newCheck) =>
+                                onChange={newCheck =>
                                     setAttributes({ relatedVideos: newCheck })
                                 }
                             />
@@ -393,7 +393,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__("Overlay Image")}
                             checked={overlay}
-                            onChange={(newCheck) =>
+                            onChange={newCheck =>
                                 setAttributes({ overlay: newCheck })
                             }
                         />
@@ -406,7 +406,7 @@ class edit extends Component {
                         >
                             <MediaUpload
                                 allowedTypes={["image"]}
-                                onSelect={(media) => {
+                                onSelect={media => {
                                     setAttributes({
                                         overlayImgID: media.id,
                                         overlayImgURL: media.url,
@@ -489,30 +489,30 @@ class edit extends Component {
                                 contrast={contrast}
                                 saturation={saturation}
                                 hue={hue}
-                                onChangeBlur={(value) =>
+                                onChangeBlur={value =>
                                     setAttributes({
                                         blur: value === undefined ? 0 : value,
                                     })
                                 }
-                                onChangeBright={(value) =>
+                                onChangeBright={value =>
                                     setAttributes({
                                         bright:
                                             value === undefined ? 100 : value,
                                     })
                                 }
-                                onChangeContrast={(value) =>
+                                onChangeContrast={value =>
                                     setAttributes({
                                         contrast:
                                             value === undefined ? 100 : value,
                                     })
                                 }
-                                onChangeSat={(value) =>
+                                onChangeSat={value =>
                                     setAttributes({
                                         saturation:
                                             value === undefined ? 100 : value,
                                     })
                                 }
-                                onChangeHue={(value) =>
+                                onChangeHue={value =>
                                     setAttributes({
                                         hue: value === undefined ? 100 : value,
                                     })
@@ -530,7 +530,7 @@ class edit extends Component {
                                 <ToggleControl
                                     label={__("Enable Play Icon")}
                                     checked={playIcon}
-                                    onChange={(newCheck) =>
+                                    onChange={newCheck =>
                                         setAttributes({ playIcon: newCheck })
                                     }
                                 />
@@ -539,7 +539,7 @@ class edit extends Component {
                                         <RangeControl
                                             label={__("Size (PX)")}
                                             value={playSize}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     playSize:
                                                         newValue === undefined
@@ -552,7 +552,7 @@ class edit extends Component {
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playTop}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     playTop:
                                                         newValue === undefined
@@ -605,23 +605,16 @@ class edit extends Component {
                                                             colorValue={
                                                                 playBack
                                                             }
-                                                            onChangeColor={(
-                                                                newvalue
-                                                            ) =>
-                                                                setAttributes({
-                                                                    playBack: newvalue,
-                                                                })
-                                                            }
+                                                            onChangeColor={ newvalue => {
+                                                                setAttributes({playBack:newvalue})
+                                                            }}
+                                                            
                                                             opacityValue={
                                                                 playOpacity
                                                             }
-                                                            onChangeOpacity={(
-                                                                value
-                                                            ) =>
-                                                                setAttributes({
-                                                                    playOpacity: value,
-                                                                })
-                                                            }
+                                                            onChangeOpacity={ value => {
+                                                                setAttributes({playOpacity:value})
+                                                            }  }
                                                         />
                                                         <p>
                                                             {__(
@@ -632,13 +625,10 @@ class edit extends Component {
                                                             value={
                                                                 playHoverColor
                                                             }
-                                                            onChange={(
-                                                                newValue
-                                                            ) =>
-                                                                setAttributes({
-                                                                    playHoverColor: newValue,
-                                                                })
-                                                            }
+                                                            onChange={ newValue => {
+                                                                setAttributes({ playHoverColor: newValue,})
+                                                            } }
+                                                            
                                                             allowReset={true}
                                                         />
                                                         <p>
@@ -650,9 +640,7 @@ class edit extends Component {
                                                             value={
                                                                 playHoverBackColor
                                                             }
-                                                            onChange={(
-                                                                newValue
-                                                            ) =>
+                                                            onChange={ newValue    =>
                                                                 setAttributes({
                                                                     playHoverBackColor: newValue,
                                                                 })
@@ -669,23 +657,23 @@ class edit extends Component {
                                             borderWidth={playBorderWidth}
                                             borderColor={playBorderColor}
                                             borderRadius={playBorderRadius}
-                                            onChangeType={(newType) =>
+                                            onChangeType={newType =>
                                                 setAttributes({
                                                     playBorderType: newType,
                                                 })
                                             }
-                                            onChangeWidth={(newWidth) =>
+                                            onChangeWidth={newWidth =>
                                                 setAttributes({
                                                     playBorderWidth: newWidth,
                                                 })
                                             }
-                                            onChangeColor={(colorValue) =>
+                                            onChangeColor={colorValue =>
                                                 setAttributes({
                                                     playBorderColor:
                                                         colorValue.hex,
                                                 })
                                             }
-                                            onChangeRadius={(newrRadius) =>
+                                            onChangeRadius={newrRadius =>
                                                 setAttributes({
                                                     playBorderRadius: newrRadius,
                                                 })
@@ -694,7 +682,7 @@ class edit extends Component {
                                         <RangeControl
                                             label={__("Padding (PX)")}
                                             value={playPadding}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     playPadding:
                                                         newValue === undefined
@@ -714,7 +702,7 @@ class edit extends Component {
                                 <ToggleControl
                                     label={__("Enable Video Description")}
                                     checked={videoDesc}
-                                    onChange={(newCheck) =>
+                                    onChange={newCheck =>
                                         setAttributes({ videoDesc: newCheck })
                                     }
                                 />
@@ -723,7 +711,7 @@ class edit extends Component {
                                         <TextareaControl
                                             label={__("Description Text")}
                                             value={videoDescText}
-                                            onChange={(newText) =>
+                                            onChange={newText =>
                                                 setAttributes({
                                                     videoDescText: newText,
                                                 })
@@ -745,12 +733,12 @@ class edit extends Component {
                                             ]}
                                             size={videoDescSize}
                                             weight={videoDescWeight}
-                                            onChangeSize={(newSize) =>
+                                            onChangeSize={newSize =>
                                                 setAttributes({
                                                     videoDescSize: newSize,
                                                 })
                                             }
-                                            onChangeWeight={(newWeight) =>
+                                            onChangeWeight={newWeight =>
                                                 setAttributes({
                                                     videoDescWeight: newWeight,
                                                 })
@@ -758,17 +746,17 @@ class edit extends Component {
                                             style={videoDescStyle}
                                             spacing={videoDescLetter}
                                             upper={videoDescUpper}
-                                            onChangeStyle={(newStyle) =>
+                                            onChangeStyle={newStyle =>
                                                 setAttributes({
                                                     videoDescStyle: newStyle,
                                                 })
                                             }
-                                            onChangeSpacing={(newValue) =>
+                                            onChangeSpacing={newValue =>
                                                 setAttributes({
                                                     videoDescLetter: newValue,
                                                 })
                                             }
-                                            onChangeUpper={(check) =>
+                                            onChangeUpper={check =>
                                                 setAttributes({
                                                     videoDescUpper: check,
                                                 })
@@ -777,7 +765,7 @@ class edit extends Component {
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={descTop}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     descTop:
                                                         newValue === undefined
@@ -813,13 +801,10 @@ class edit extends Component {
                                                             value={
                                                                 videoDescColor
                                                             }
-                                                            onChange={(
-                                                                newValue
-                                                            ) =>
-                                                                setAttributes({
-                                                                    videoDescColor: newValue,
-                                                                })
-                                                            }
+                                                            onChange={ newValue => {
+                                                                setAttributes({videoDescColor: newValue,})
+                                                            }}
+                                                            
                                                             allowReset={true}
                                                         />
                                                         <p>
@@ -832,23 +817,17 @@ class edit extends Component {
                                                             colorValue={
                                                                 videoDescBack
                                                             }
-                                                            onChangeColor={(
-                                                                newvalue
-                                                            ) =>
-                                                                setAttributes({
-                                                                    videoDescBack: newvalue,
-                                                                })
-                                                            }
+                                                            onChangeColor={newvalue=>{ setAttributes({
+                                                                videoDescBack: newvalue,
+                                                            })} }
+                                                            
                                                             opacityValue={
                                                                 videoDescOpacity
                                                             }
-                                                            onChangeOpacity={(
-                                                                value
-                                                            ) =>
-                                                                setAttributes({
-                                                                    videoDescOpacity: value,
-                                                                })
-                                                            }
+                                                            onChangeOpacity={value=>{ setAttributes({
+                                                                videoDescOpacity: value,
+                                                            })} }
+                                                              
                                                         />
                                                     </Fragment>
                                                 )}
@@ -871,26 +850,26 @@ class edit extends Component {
                                             blur={descShadowBlur}
                                             horizontal={descShadowHorizontal}
                                             vertical={descShadowVertical}
-                                            onChangeColor={(newColor) =>
+                                            onChangeColor={newColor =>
                                                 setAttributes({
                                                     descShadowColor:
                                                         newColor.hex ||
                                                         "transparent",
                                                 })
                                             }
-                                            onChangeBlur={(newBlur) =>
+                                            onChangeBlur={newBlur =>
                                                 setAttributes({
                                                     descShadowBlur:
                                                         newBlur || "0",
                                                 })
                                             }
-                                            onChangehHorizontal={(newValue) =>
+                                            onChangehHorizontal={newValue =>
                                                 setAttributes({
                                                     descShadowHorizontal:
                                                         newValue || "0",
                                                 })
                                             }
-                                            onChangeVertical={(newValue) =>
+                                            onChangeVertical={newValue =>
                                                 setAttributes({
                                                     descShadowVertical:
                                                         newValue || "0",
@@ -900,7 +879,7 @@ class edit extends Component {
                                         <RangeControl
                                             label={__("Padding (PX)")}
                                             value={videoDescPadding}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     videoDescPadding:
                                                         newValue === undefined
@@ -924,18 +903,18 @@ class edit extends Component {
                             borderWidth={boxBorderWidth}
                             borderColor={boxBorderColor}
                             borderRadius={boxBorderRadius}
-                            onChangeType={(newType) =>
+                            onChangeType={newType =>
                                 setAttributes({ boxBorderType: newType })
                             }
-                            onChangeWidth={(newWidth) =>
+                            onChangeWidth={newWidth =>
                                 setAttributes({ boxBorderWidth: newWidth })
                             }
-                            onChangeColor={(colorValue) =>
+                            onChangeColor={colorValue =>
                                 setAttributes({
                                     boxBorderColor: colorValue.hex,
                                 })
                             }
-                            onChangeRadius={(newrRadius) =>
+                            onChangeRadius={newrRadius =>
                                 setAttributes({ boxBorderRadius: newrRadius })
                             }
                         />
@@ -946,7 +925,7 @@ class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             position={shadowPosition}
-                            onChangeColor={(newColor) =>
+                            onChangeColor={newColor =>
                                 setAttributes({
                                     shadowColor:
                                         newColor === undefined
@@ -954,25 +933,25 @@ class edit extends Component {
                                             : newColor.hex,
                                 })
                             }
-                            onChangeBlur={(newBlur) =>
+                            onChangeBlur={newBlur =>
                                 setAttributes({
                                     shadowBlur:
                                         newBlur === undefined ? 0 : newBlur,
                                 })
                             }
-                            onChangehHorizontal={(newValue) =>
+                            onChangehHorizontal={newValue =>
                                 setAttributes({
                                     shadowHorizontal:
                                         newValue === undefined ? 0 : newValue,
                                 })
                             }
-                            onChangeVertical={(newValue) =>
+                            onChangeVertical={newValue =>
                                 setAttributes({
                                     shadowVertical:
                                         newValue === undefined ? 0 : newValue,
                                 })
                             }
-                            onChangePosition={(newValue) =>
+                            onChangePosition={newValue =>
                                 setAttributes({
                                     shadowPosition:
                                         newValue === undefined ? 0 : newValue,

@@ -112,7 +112,7 @@ const edit = (props) => {
         },
     ];
 
-    const addFontToHead = (fontFamily) => {
+    const addFontToHead = fontFamily => {
         const head = document.head;
         const link = document.createElement("link");
         link.type = "text/css";
@@ -125,7 +125,7 @@ const edit = (props) => {
         head.appendChild(link);
     };
 
-    const onChangeFirstFamily = (fontFamily) => {
+    const onChangeFirstFamily = fontFamily => {
         setAttributes({ firstFamily: fontFamily });
         if (!fontFamily) {
             return;
@@ -134,7 +134,7 @@ const edit = (props) => {
         addFontToHead(fontFamily);
     };
 
-    const onChangeSecondFamily = (fontFamily) => {
+    const onChangeSecondFamily = fontFamily => {
         setAttributes({ secondFamily: fontFamily });
         if (!fontFamily) {
             return;
@@ -153,7 +153,7 @@ const edit = (props) => {
             <BlockControls key="controls">
                 <AlignmentToolbar
                     value={contentAlign}
-                    onChange={(newAlign) =>
+                    onChange={newAlign =>
                         setAttributes({ contentAlign: newAlign })
                     }
                 />
@@ -170,7 +170,7 @@ const edit = (props) => {
                         label={__("First Heading")}
                         type="url"
                         value={firstHeading}
-                        onChange={(value) =>
+                        onChange={value =>
                             setAttributes({ firstHeading: value })
                         }
                     />
@@ -178,7 +178,7 @@ const edit = (props) => {
                         label={__("Second Heading")}
                         type="url"
                         value={secondHeading}
-                        onChange={(value) =>
+                        onChange={value =>
                             setAttributes({ secondHeading: value })
                         }
                     />
@@ -187,12 +187,12 @@ const edit = (props) => {
                         label={__("Display")}
                         value={display}
                         options={DISPLAY}
-                        onChange={(value) => setAttributes({ display: value })}
+                        onChange={value => setAttributes({ display: value })}
                     />
                     <ToggleControl
                         label={__("Link")}
                         checked={link}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ link: newValue })
                         }
                     />
@@ -200,7 +200,7 @@ const edit = (props) => {
                         <ToggleControl
                             label={__("Open link in new tab")}
                             checked={target}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ target: newValue })
                             }
                         />
@@ -214,7 +214,7 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Clipped")}
                         checked={firstClip}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ firstClip: newValue })
                         }
                     />
@@ -223,14 +223,14 @@ const edit = (props) => {
                             <ToggleControl
                                 label={__("Animated")}
                                 checked={firstAnim}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ firstAnim: newValue })
                                 }
                             />
                             <ToggleControl
                                 label={__("Stroke")}
                                 checked={firstStroke}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ firstStroke: newValue })
                                 }
                             />
@@ -255,19 +255,19 @@ const edit = (props) => {
                         style={firstStyle}
                         spacing={firstLetter}
                         upper={firstUpper}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ firstSize: newSize || 20 })
                         }
-                        onChangeWeight={(newWeight) =>
+                        onChangeWeight={newWeight =>
                             setAttributes({ firstWeight: newWeight || 500 })
                         }
-                        onChangeStyle={(newStyle) =>
+                        onChangeStyle={newStyle =>
                             setAttributes({ firstStyle: newStyle })
                         }
-                        onChangeSpacing={(newValue) =>
+                        onChangeSpacing={newValue =>
                             setAttributes({ firstLetter: newValue })
                         }
-                        onChangeUpper={(check) =>
+                        onChangeUpper={check =>
                             setAttributes({ firstUpper: check })
                         }
                     />
@@ -293,7 +293,7 @@ const edit = (props) => {
                                         <p>{__("Text Color")}</p>
                                         <ColorPalette
                                             value={firstColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     firstColor: newValue,
                                                 })
@@ -304,13 +304,13 @@ const edit = (props) => {
                                         <PremiumBackground
                                             type="color"
                                             colorValue={firstBackground}
-                                            onChangeColor={(value) =>
+                                            onChangeColor={value =>
                                                 setAttributes({
                                                     firstBackground: value,
                                                 })
                                             }
                                             opacityValue={firstOpacity}
-                                            onChangeOpacity={(value) =>
+                                            onChangeOpacity={value =>
                                                 setAttributes({
                                                     firstOpacity: value,
                                                 })
@@ -343,7 +343,7 @@ const edit = (props) => {
                                         <p>{__("First Color")}</p>
                                         <ColorPalette
                                             value={firstColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     firstColor: newValue,
                                                 })
@@ -353,7 +353,7 @@ const edit = (props) => {
                                         <p>{__("Second Color")}</p>
                                         <ColorPalette
                                             value={firstClipColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     firstClipColor: newValue,
                                                 })
@@ -371,19 +371,19 @@ const edit = (props) => {
                         borderWidth={firstBorderWidth}
                         borderColor={firstBorderColor}
                         borderRadius={firstBorderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ firstBorderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ firstBorderWidth: newWidth || "0" })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({
                                 firstBorderColor:
                                     colorValue.hex || "transparent",
                             })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({
                                 firstBorderRadius: newrRadius || "0",
                             })
@@ -395,20 +395,20 @@ const edit = (props) => {
                         blur={firstShadowBlur}
                         horizontal={firstShadowHorizontal}
                         vertical={firstShadowVertical}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 firstShadowColor: newColor.hex || "transparent",
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({ firstShadowBlur: newBlur || "0" })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 firstShadowHorizontal: newValue || "0",
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 firstShadowVertical: newValue || "0",
                             })
@@ -420,7 +420,7 @@ const edit = (props) => {
                         value={firstMarginL}
                         min="0"
                         max="100"
-                        onChange={(newMargin) =>
+                        onChange={newMargin =>
                             setAttributes({ firstMarginL: newMargin || "0" })
                         }
                     />
@@ -429,7 +429,7 @@ const edit = (props) => {
                         value={firstMarginR}
                         min="0"
                         max="100"
-                        onChange={(newMargin) =>
+                        onChange={newMargin =>
                             setAttributes({ firstMarginR: newMargin || "0" })
                         }
                     />
@@ -438,7 +438,7 @@ const edit = (props) => {
                         value={firstPadding}
                         min="0"
                         max="100"
-                        onChange={(newPadding) =>
+                        onChange={newPadding =>
                             setAttributes({ firstPadding: newPadding || "0" })
                         }
                     />
@@ -451,7 +451,7 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Clipped")}
                         checked={secondClip}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ secondClip: newValue })
                         }
                     />
@@ -460,14 +460,14 @@ const edit = (props) => {
                             <ToggleControl
                                 label={__("Animated")}
                                 checked={secondAnim}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ secondAnim: newValue })
                                 }
                             />
                             <ToggleControl
                                 label={__("Stroke")}
                                 checked={secondStroke}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ secondStroke: newValue })
                                 }
                             />
@@ -492,19 +492,19 @@ const edit = (props) => {
                         style={secondStyle}
                         spacing={secondLetter}
                         upper={secondUpper}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ secondSize: newSize || 20 })
                         }
-                        onChangeWeight={(newWeight) =>
+                        onChangeWeight={newWeight =>
                             setAttributes({ secondWeight: newWeight || 500 })
                         }
-                        onChangeStyle={(newStyle) =>
+                        onChangeStyle={newStyle =>
                             setAttributes({ secondStyle: newStyle })
                         }
-                        onChangeSpacing={(newValue) =>
+                        onChangeSpacing={newValue =>
                             setAttributes({ secondLetter: newValue })
                         }
-                        onChangeUpper={(check) =>
+                        onChangeUpper={check =>
                             setAttributes({ secondUpper: check })
                         }
                     />
@@ -543,13 +543,13 @@ const edit = (props) => {
                                         <PremiumBackground
                                             type="color"
                                             colorValue={secondBackground}
-                                            onChangeColor={(value) =>
+                                            onChangeColor={value =>
                                                 setAttributes({
                                                     secondBackground: value,
                                                 })
                                             }
                                             opacityValue={secondOpacity}
-                                            onChangeOpacity={(newvalue) =>
+                                            onChangeOpacity={newvalue =>
                                                 setAttributes({
                                                     secondOpacity: newvalue,
                                                 })
@@ -581,7 +581,7 @@ const edit = (props) => {
                                         <p>{__("First Color")}</p>
                                         <ColorPalette
                                             value={secondColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     secondColor:
                                                         newValue ||
@@ -593,7 +593,7 @@ const edit = (props) => {
                                         <p>{__("Second Color")}</p>
                                         <ColorPalette
                                             value={secondClipColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     secondClipColor:
                                                         newValue ||
@@ -613,19 +613,19 @@ const edit = (props) => {
                         borderWidth={secondBorderWidth}
                         borderColor={secondBorderColor}
                         borderRadius={secondBorderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ secondBorderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ secondBorderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({
                                 secondBorderColor:
                                     colorValue.hex || "transparent",
                             })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({
                                 secondBorderRadius: newrRadius || "0",
                             })
@@ -637,21 +637,21 @@ const edit = (props) => {
                         blur={secondShadowBlur}
                         horizontal={secondShadowHorizontal}
                         vertical={secondShadowVertical}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 secondShadowColor:
                                     newColor.hex || "transparent",
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({ secondShadowBlur: newBlur || "0" })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 secondShadowHorizontal: newValue || "0",
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 secondShadowVertical: newValue || "0",
                             })
@@ -662,7 +662,7 @@ const edit = (props) => {
                         value={secondMarginL}
                         min="0"
                         max="100"
-                        onChange={(newMargin) =>
+                        onChange={newMargin =>
                             setAttributes({ secondMarginL: newMargin || "0" })
                         }
                     />
@@ -671,7 +671,7 @@ const edit = (props) => {
                         value={secondMarginR}
                         min="0"
                         max="100"
-                        onChange={(newMargin) =>
+                        onChange={newMargin =>
                             setAttributes({ secondMarginR: newMargin || "0" })
                         }
                     />
@@ -680,7 +680,7 @@ const edit = (props) => {
                         value={secondPadding}
                         min="0"
                         max="100"
-                        onChange={(newPadding) =>
+                        onChange={newPadding =>
                             setAttributes({ secondPadding: newPadding || "0" })
                         }
                     />
@@ -694,13 +694,13 @@ const edit = (props) => {
                     <PremiumBackground
                         type="color"
                         colorValue={containerBack}
-                        onChangeColor={(newvalue) =>
+                        onChangeColor={newvalue =>
                             setAttributes({
                                 containerBack: newvalue,
                             })
                         }
                         opacityValue={containerOpacity}
-                        onChangeOpacity={(value) =>
+                        onChangeOpacity={value =>
                             setAttributes({ containerOpacity: value })
                         }
                     />
@@ -711,25 +711,25 @@ const edit = (props) => {
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={(media) => {
+                        onSelectMedia={media => {
                             setAttributes({
                                 imageID: media.id,
                                 imageURL: media.url,
                             });
                         }}
-                        onRemoveImage={(value) =>
+                        onRemoveImage={value =>
                             setAttributes({ imageURL: "", imageID: "" })
                         }
-                        onChangeBackPos={(newValue) =>
+                        onChangeBackPos={newValue =>
                             setAttributes({ backgroundPosition: newValue })
                         }
-                        onchangeBackRepeat={(newValue) =>
+                        onchangeBackRepeat={newValue =>
                             setAttributes({ backgroundRepeat: newValue })
                         }
-                        onChangeBackSize={(newValue) =>
+                        onChangeBackSize={newValue =>
                             setAttributes({ backgroundSize: newValue })
                         }
-                        onChangeFixed={(check) =>
+                        onChangeFixed={check =>
                             setAttributes({ fixed: check })
                         }
                     />
@@ -739,18 +739,18 @@ const edit = (props) => {
                         borderWidth={containerBorderWidth}
                         borderColor={containerBorderColor}
                         borderRadius={containerBorderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ containerBorderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ containerBorderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({
                                 containerBorderColor: colorValue.hex,
                             })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({ containerBorderRadius: newrRadius })
                         }
                     />

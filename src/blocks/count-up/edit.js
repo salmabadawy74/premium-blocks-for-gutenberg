@@ -150,7 +150,7 @@ const edit = (props) => {
             break;
     }
 
-    const addFontToHead = (fontFamily) => {
+    const addFontToHead = fontFamily => {
         const head = document.head;
         const link = document.createElement("link");
         link.type = "text/css";
@@ -212,14 +212,14 @@ const edit = (props) => {
                     <TextControl
                         label={__("Increment")}
                         value={increment}
-                        onChange={(value) =>
+                        onChange={value =>
                             setAttributes({ increment: value })
                         }
                     />
                     <TextControl
                         label={__("Rolling Time")}
                         value={time}
-                        onChange={(value) => setAttributes({ time: value })}
+                        onChange={value => setAttributes({ time: value })}
                         help={__(
                             "Set counting time in milliseconds, for example: 1000"
                         )}
@@ -227,7 +227,7 @@ const edit = (props) => {
                     <TextControl
                         label={__("Delay")}
                         value={delay}
-                        onChange={(value) => setAttributes({ delay: value })}
+                        onChange={value => setAttributes({ delay: value })}
                         help={__("Set delay in milliseconds, for example: 10")}
                     />
                     <p>{__("Align")}</p>
@@ -256,7 +256,7 @@ const edit = (props) => {
                         label={__("Direction")}
                         options={DIRECTION}
                         value={flexDir}
-                        onChange={(newDir) =>
+                        onChange={newDir =>
                             setAttributes({ flexDir: newDir })
                         }
                     />
@@ -264,7 +264,7 @@ const edit = (props) => {
                         <RangeControl
                             label={__("Spacing (PX)")}
                             value={iconSpacing}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ iconSpacing: newValue })
                             }
                         />
@@ -272,24 +272,24 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Icon")}
                         checked={iconCheck}
-                        onChange={(check) =>
+                        onChange={check =>
                             setAttributes({ iconCheck: check })
                         }
                     />
                     <ToggleControl
                         label={__("Prefix")}
                         checked={prefix}
-                        onChange={(check) => setAttributes({ prefix: check })}
+                        onChange={check => setAttributes({ prefix: check })}
                     />
                     <ToggleControl
                         label={__("Suffix")}
                         checked={suffix}
-                        onChange={(check) => setAttributes({ suffix: check })}
+                        onChange={check => setAttributes({ suffix: check })}
                     />
                     <ToggleControl
                         label={__("Title")}
                         checked={titleCheck}
-                        onChange={(check) =>
+                        onChange={check =>
                             setAttributes({ titleCheck: check })
                         }
                     />
@@ -304,7 +304,7 @@ const edit = (props) => {
                             label={__("Icon Type")}
                             options={ICONS}
                             value={icon}
-                            onChange={(newType) =>
+                            onChange={newType =>
                                 setAttributes({ icon: newType })
                             }
                         />
@@ -320,7 +320,7 @@ const edit = (props) => {
                                     label={__("Icon Type")}
                                     value={iconType}
                                     options={TYPE}
-                                    onChange={(newType) =>
+                                    onChange={newType =>
                                         setAttributes({ iconType: newType })
                                     }
                                 />
@@ -354,7 +354,7 @@ const edit = (props) => {
                         {"img" === icon && (
                             <MediaUpload
                                 allowedTypes={["image"]}
-                                onSelect={(media) => {
+                                onSelect={media => {
                                     setAttributes({
                                         imageID: media.id,
                                         imageURL:
@@ -440,7 +440,7 @@ const edit = (props) => {
                             label={__("Size (PX)")}
                             max="200"
                             value={iconSize}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ iconSize: newValue })
                             }
                         />
@@ -449,7 +449,7 @@ const edit = (props) => {
                                 <p>{__("Icon Color")}</p>
                                 <ColorPalette
                                     value={iconColor}
-                                    onChange={(newValue) =>
+                                    onChange={newValue =>
                                         setAttributes({
                                             iconColor:
                                                 newValue === undefined
@@ -478,10 +478,10 @@ const edit = (props) => {
                         components={["size", "weight"]}
                         size={numberSize}
                         weight={numberWeight}
-                        onChangeSize={(newSize) =>
+                        onChangeSize={newSize =>
                             setAttributes({ numberSize: newSize })
                         }
-                        onChangeWeight={(newWeight) =>
+                        onChangeWeight={newWeight =>
                             setAttributes({ numberWeight: newWeight })
                         }
                     />
@@ -489,7 +489,7 @@ const edit = (props) => {
                         <p>{__("Number Color")}</p>
                         <ColorPalette
                             value={numberColor}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({
                                     numberColor:
                                         newValue === undefined
@@ -510,7 +510,7 @@ const edit = (props) => {
                         <TextControl
                             label={__("Prefix")}
                             value={prefixTxt}
-                            onChange={(value) =>
+                            onChange={value =>
                                 setAttributes({ prefixTxt: value })
                             }
                         />
@@ -524,10 +524,10 @@ const edit = (props) => {
                             components={["size", "weight"]}
                             size={prefixSize}
                             weight={prefixWeight}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ prefixSize: newSize })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ prefixWeight: newWeight })
                             }
                         />
@@ -535,7 +535,7 @@ const edit = (props) => {
                             <p>{__("Text Color")}</p>
                             <ColorPalette
                                 value={prefixColor}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({
                                         prefixColor:
                                             newValue === undefined
@@ -549,7 +549,7 @@ const edit = (props) => {
                         <RangeControl
                             label={__("Gap After (PX)")}
                             value={prefixGap}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ prefixGap: newValue })
                             }
                         />
@@ -564,7 +564,7 @@ const edit = (props) => {
                         <TextControl
                             label={__("Suffix")}
                             value={suffixTxt}
-                            onChange={(value) =>
+                            onChange={value =>
                                 setAttributes({ suffixTxt: value })
                             }
                         />
@@ -578,10 +578,10 @@ const edit = (props) => {
                             components={["size", "weight"]}
                             size={suffixSize}
                             weight={suffixWeight}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ suffixSize: newSize })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ suffixWeight: newWeight })
                             }
                         />
@@ -589,7 +589,7 @@ const edit = (props) => {
                             <p>{__("Text Color")}</p>
                             <ColorPalette
                                 value={suffixColor}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({
                                         suffixColor:
                                             newValue === undefined
@@ -603,7 +603,7 @@ const edit = (props) => {
                         <RangeControl
                             label={__("Gap Before (PX)")}
                             value={suffixGap}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ suffixGap: newValue })
                             }
                         />
@@ -618,7 +618,7 @@ const edit = (props) => {
                         <TextControl
                             label={__("Title Text")}
                             value={titleTxt}
-                            onChange={(value) =>
+                            onChange={value =>
                                 setAttributes({ titleTxt: value })
                             }
                         />
@@ -641,19 +641,19 @@ const edit = (props) => {
                             style={titleStyle}
                             spacing={titleSpacing}
                             upper={titleUpper}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ titleSize: newSize })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
-                            onChangeStyle={(newStyle) =>
+                            onChangeStyle={newStyle =>
                                 setAttributes({ titleStyle: newStyle })
                             }
-                            onChangeSpacing={(newValue) =>
+                            onChangeSpacing={newValue =>
                                 setAttributes({ titleSpacing: newValue })
                             }
-                            onChangeUpper={(check) =>
+                            onChangeUpper={check =>
                                 setAttributes({ titleUpper: check })
                             }
                         />
@@ -661,7 +661,7 @@ const edit = (props) => {
                             <p>{__("Text Color")}</p>
                             <ColorPalette
                                 value={titleColor}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({
                                         titleColor:
                                             newValue === undefined
@@ -680,14 +680,14 @@ const edit = (props) => {
                             <RangeControl
                                 label={__("Margin Top (PX)")}
                                 value={titleT}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ titleT: newValue })
                                 }
                             />
                             <RangeControl
                                 label={__("Margin Bottom (PX)")}
                                 value={titleB}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ titleB: newValue })
                                 }
                             />
@@ -704,13 +704,13 @@ const edit = (props) => {
                         <PremiumBackground
                             type="color"
                             colorValue={containerBack}
-                            onChangeColor={(newValue) =>
+                            onChangeColor={newValue =>
                                 setAttributes({
                                     containerBack: newValue,
                                 })
                             }
                             opacityValue={containerOpacity}
-                            onChangeOpacity={(value) =>
+                            onChangeOpacity={value =>
                                 setAttributes({ containerOpacity: value })
                             }
                         />
@@ -722,28 +722,28 @@ const edit = (props) => {
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={(media) => {
+                        onSelectMedia={media => {
                             setAttributes({
                                 backgroundImageID: media.id,
                                 backgroundImageURL: media.url,
                             });
                         }}
-                        onRemoveImage={(value) =>
+                        onRemoveImage={value =>
                             setAttributes({
                                 backgroundImageURL: "",
                                 backgroundImageID: "",
                             })
                         }
-                        onChangeBackPos={(newValue) =>
+                        onChangeBackPos={newValue =>
                             setAttributes({ backgroundPosition: newValue })
                         }
-                        onchangeBackRepeat={(newValue) =>
+                        onchangeBackRepeat={newValue =>
                             setAttributes({ backgroundRepeat: newValue })
                         }
-                        onChangeBackSize={(newValue) =>
+                        onChangeBackSize={newValue =>
                             setAttributes({ backgroundSize: newValue })
                         }
-                        onChangeFixed={(check) =>
+                        onChangeFixed={check =>
                             setAttributes({ fixed: check })
                         }
                     />
@@ -752,16 +752,16 @@ const edit = (props) => {
                         borderWidth={borderWidth}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ borderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={(newRadius) =>
+                        onChangeRadius={newRadius =>
                             setAttributes({ borderRadius: newRadius })
                         }
                     />
@@ -772,27 +772,27 @@ const edit = (props) => {
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
                         position={shadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 shadowColor: newColor.hex,
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 shadowBlur: newBlur,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal: newValue,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical: newValue,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition: newValue,
                             })

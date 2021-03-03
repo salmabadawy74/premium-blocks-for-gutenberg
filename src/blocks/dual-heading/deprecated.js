@@ -611,7 +611,7 @@ const deprecatedContent = [
             } = props.attributes;
 
             const mainClasses = classnames(
-                className,
+                classnames,
                 "premium-dheading-block__container"
             );
 

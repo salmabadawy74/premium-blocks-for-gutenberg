@@ -261,7 +261,7 @@ const edit = (props) => {
         },
     ];
 
-    const addFontToHead = (fontFamily) => {
+    const addFontToHead = fontFamily => {
         const head = document.head;
         const link = document.createElement("link");
         link.type = "text/css";
@@ -274,7 +274,7 @@ const edit = (props) => {
         head.appendChild(link);
     };
 
-    const onChangeTitleFamily = (fontFamily) => {
+    const onChangeTitleFamily = fontFamily => {
         setAttributes({ titleFont: fontFamily });
         if (!fontFamily) {
             return;
@@ -283,7 +283,7 @@ const edit = (props) => {
         addFontToHead(fontFamily);
     };
 
-    const onChangeDescFamily = (fontFamily) => {
+    const onChangeDescFamily = fontFamily => {
         setAttributes({ descFont: fontFamily });
         if (!fontFamily) {
             return;
@@ -313,14 +313,14 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Icon")}
                         checked={iconChecked}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ iconChecked: newValue })
                         }
                     />
                     <ToggleControl
                         label={__("Title")}
                         checked={titleChecked}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ titleChecked: newValue })
                         }
                     />
@@ -334,7 +334,7 @@ const edit = (props) => {
                     <ToggleControl
                         label={__("Button")}
                         checked={btnChecked}
-                        onChange={(newValue) =>
+                        onChange={newValue =>
                             setAttributes({ btnChecked: newValue })
                         }
                     />
@@ -349,7 +349,7 @@ const edit = (props) => {
                             label={__("Icon Position")}
                             options={ICON_POS}
                             value={iconPos}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ iconPos: newValue })
                             }
                         />
@@ -359,7 +359,7 @@ const edit = (props) => {
                                     label={__("Horizontal Position")}
                                     options={ICON_HPOS}
                                     value={iconHPos}
-                                    onChange={(newValue) =>
+                                    onChange={newValue =>
                                         setAttributes({ iconHPos: newValue })
                                     }
                                 />
@@ -367,7 +367,7 @@ const edit = (props) => {
                                     label={__("Vertical Position")}
                                     options={ICON_VPOS}
                                     value={iconVPos}
-                                    onChange={(newValue) =>
+                                    onChange={newValue =>
                                         setAttributes({ iconVPos: newValue })
                                     }
                                 />
@@ -377,7 +377,7 @@ const edit = (props) => {
                             label={__("Icon Type")}
                             options={imgIcon}
                             value={iconImage}
-                            onChange={(newType) =>
+                            onChange={newType =>
                                 setAttributes({ iconImage: newType })
                             }
                         />
@@ -400,7 +400,7 @@ const edit = (props) => {
                                     <p>{__("Icon Color")}</p>
                                     <ColorPalette
                                         value={iconColor}
-                                        onChange={(newValue) =>
+                                        onChange={newValue =>
                                             setAttributes({
                                                 iconColor:
                                                     newValue || "transparent",
@@ -412,13 +412,13 @@ const edit = (props) => {
                                     <PremiumBackground
                                         type="color"
                                         colorValue={iconBackColor}
-                                        onChangeColor={(newvalue) =>
+                                        onChangeColor={newvalue =>
                                             setAttributes({
                                                 iconBackColor: newvalue,
                                             })
                                         }
                                         opacityValue={iconOpacity}
-                                        onChangeOpacity={(value) =>
+                                        onChangeOpacity={value =>
                                             setAttributes({
                                                 iconOpacity: value,
                                             })
@@ -431,7 +431,7 @@ const edit = (props) => {
                             <Fragment>
                                 <MediaUpload
                                     allowedTypes={["image"]}
-                                    onSelect={(media) => {
+                                    onSelect={media=> {
                                         setAttributes({
                                             iconImgId: media.id,
                                             iconImgUrl:
@@ -531,7 +531,7 @@ const edit = (props) => {
                             label={__("Hover Effect")}
                             options={EFFECTS}
                             value={hoverEffect}
-                            onChange={(newEffect) =>
+                            onChange={newEffect =>
                                 setAttributes({ hoverEffect: newEffect })
                             }
                         />
@@ -540,7 +540,7 @@ const edit = (props) => {
                             value={iconSize}
                             min="1"
                             max="200"
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ iconSize: newValue || 30 })
                             }
                         />
@@ -583,22 +583,22 @@ const edit = (props) => {
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ titleSize: newSize })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight || 500 })
                             }
-                            onChangeStyle={(newStyle) =>
+                            onChangeStyle={newStyle =>
                                 setAttributes({ titleStyle: newStyle })
                             }
-                            onChangeSpacing={(newValue) =>
+                            onChangeSpacing={newValue =>
                                 setAttributes({ titleLetter: newValue })
                             }
-                            onChangeLine={(newValue) =>
+                            onChangeLine={newValue =>
                                 setAttributes({ titleLine: newValue })
                             }
-                            onChangeUpper={(check) =>
+                            onChangeUpper={check =>
                                 setAttributes({ titleUpper: check })
                             }
                         />
@@ -606,7 +606,7 @@ const edit = (props) => {
                             <p>{__("Text Color")}</p>
                             <ColorPalette
                                 value={titleColor}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({
                                         titleColor: newValue || "transparent",
                                     })
@@ -619,21 +619,21 @@ const edit = (props) => {
                             blur={titleShadowBlur}
                             horizontal={titleShadowHorizontal}
                             vertical={titleShadowVertical}
-                            onChangeColor={(newColor) =>
+                            onChangeColor={newColor =>
                                 setAttributes({
                                     titleShadowColor:
                                         newColor.hex || "transparent",
                                 })
                             }
-                            onChangeBlur={(newBlur) =>
+                            onChangeBlur={newBlur =>
                                 setAttributes({ titleShadowBlur: newBlur || 0 })
                             }
-                            onChangehHorizontal={(newValue) =>
+                            onChangehHorizontal={newValue =>
                                 setAttributes({
                                     titleShadowHorizontal: newValue || 0,
                                 })
                             }
-                            onChangeVertical={(newValue) =>
+                            onChangeVertical={newValue =>
                                 setAttributes({
                                     titleShadowVertical: newValue || 0,
                                 })
@@ -643,12 +643,12 @@ const edit = (props) => {
                             directions={["top", "bottom"]}
                             marginTop={titleMarginT}
                             marginBottom={titleMarginB}
-                            onChangeMarTop={(value) =>
+                            onChangeMarTop={value =>
                                 setAttributes({
                                     titleMarginT: value || 0,
                                 })
                             }
-                            onChangeMarBottom={(value) =>
+                            onChangeMarBottom={value =>
                                 setAttributes({
                                     titleMarginB: value || 0,
                                 })
@@ -673,13 +673,13 @@ const edit = (props) => {
                             size={descSize}
                             weight={descWeight}
                             line={descLine}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ descSize: newSize || 20 })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ descWeight: newWeight || 500 })
                             }
-                            onChangeLine={(newValue) =>
+                            onChangeLine={newValue =>
                                 setAttributes({ descLine: newValue })
                             }
                         />
@@ -687,7 +687,7 @@ const edit = (props) => {
                             <p>{__("Text Color")}</p>
                             <ColorPalette
                                 value={descColor}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({
                                         descColor: newValue || "transparent",
                                     })
@@ -699,12 +699,12 @@ const edit = (props) => {
                             directions={["top", "bottom"]}
                             marginTop={descMarginT}
                             marginBottom={descMarginB}
-                            onChangeMarTop={(value) =>
+                            onChangeMarTop={value =>
                                 setAttributes({
                                     descMarginT: value || 0,
                                 })
                             }
-                            onChangeMarBottom={(value) =>
+                            onChangeMarBottom={value =>
                                 setAttributes({
                                     descMarginB: value || 0,
                                 })
@@ -723,7 +723,7 @@ const edit = (props) => {
                             options={BTN_EFFECTS}
                             label={__("Hover Effect")}
                             value={btnEffect}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ btnEffect: newValue })
                             }
                         />
@@ -732,7 +732,7 @@ const edit = (props) => {
                                 options={DIRECTION}
                                 label={__("Direction")}
                                 value={effectDir}
-                                onChange={(newValue) =>
+                                onChange={newValue =>
                                     setAttributes({ effectDir: newValue })
                                 }
                             />
@@ -740,7 +740,7 @@ const edit = (props) => {
                         <ToggleControl
                             label={__("Open link in new tab")}
                             checked={btnTarget}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ btnTarget: newValue })
                             }
                         />
@@ -757,19 +757,19 @@ const edit = (props) => {
                             style={btnStyle}
                             spacing={btnLetter}
                             upper={btnUpper}
-                            onChangeSize={(newSize) =>
+                            onChangeSize={newSize =>
                                 setAttributes({ btnSize: newSize || 20 })
                             }
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({ btnWeight: newWeight || 500 })
                             }
-                            onChangeStyle={(newStyle) =>
+                            onChangeStyle={newStyle =>
                                 setAttributes({ btnStyle: newStyle })
                             }
-                            onChangeSpacing={(newValue) =>
+                            onChangeSpacing={newValue =>
                                 setAttributes({ btnLetter: newValue })
                             }
-                            onChangeUpper={(check) =>
+                            onChangeUpper={check =>
                                 setAttributes({ btnUpper: check })
                             }
                         />
@@ -793,7 +793,7 @@ const edit = (props) => {
                                         <p>{__("Text Color")}</p>
                                         <ColorPalette
                                             value={btnColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     btnColor:
                                                         newValue || "#000",
@@ -804,7 +804,7 @@ const edit = (props) => {
                                         <p>{__("Text Hover Color")}</p>
                                         <ColorPalette
                                             value={btnHoverColor}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     btnHoverColor:
                                                         newValue || "#000",
@@ -816,13 +816,13 @@ const edit = (props) => {
                                         <PremiumBackground
                                             type="color"
                                             colorValue={btnBack}
-                                            onChangeColor={(newvalue) =>
+                                            onChangeColor={newvalue =>
                                                 setAttributes({
                                                     btnBack: newvalue,
                                                 })
                                             }
                                             opacityValue={btnOpacity}
-                                            onChangeOpacity={(value) =>
+                                            onChangeOpacity={value =>
                                                 setAttributes({
                                                     btnOpacity: value,
                                                 })
@@ -832,7 +832,7 @@ const edit = (props) => {
                                         <p>{__("Background Hover Color")}</p>
                                         <ColorPalette
                                             value={btnHoverBack}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     btnHoverBack: newValue,
                                                 })
@@ -842,7 +842,7 @@ const edit = (props) => {
                                         <p>{__("Border Hover Color")}</p>
                                         <ColorPalette
                                             value={btnHoverBorder}
-                                            onChange={(newValue) =>
+                                            onChange={newValue =>
                                                 setAttributes({
                                                     btnHoverBorder:
                                                         newValue ||
@@ -861,18 +861,18 @@ const edit = (props) => {
                             borderWidth={btnBorderWidth}
                             borderColor={btnBorderColor}
                             borderRadius={btnBorderRadius}
-                            onChangeType={(newType) =>
+                            onChangeType={newType =>
                                 setAttributes({ btnBorderType: newType })
                             }
-                            onChangeWidth={(newWidth) =>
+                            onChangeWidth={newWidth =>
                                 setAttributes({ btnBorderWidth: newWidth })
                             }
-                            onChangeColor={(colorValue) =>
+                            onChangeColor={colorValue =>
                                 setAttributes({
                                     btnBorderColor: colorValue.hex,
                                 })
                             }
-                            onChangeRadius={(newrRadius) =>
+                            onChangeRadius={newrRadius =>
                                 setAttributes({ btnBorderRadius: newrRadius })
                             }
                         />
@@ -883,42 +883,42 @@ const edit = (props) => {
                             horizontal={btnShadowHorizontal}
                             vertical={btnShadowVertical}
                             position={btnShadowPosition}
-                            onChangeColor={(newColor) =>
+                            onChangeColor={newColor =>
                                 setAttributes({
                                     btnShadowColor:
                                         newColor.hex || "transparent",
                                 })
                             }
-                            onChangeBlur={(newBlur) =>
+                            onChangeBlur={newBlur =>
                                 setAttributes({
                                     btnShadowBlur: newBlur || 0,
                                 })
                             }
-                            onChangehHorizontal={(newValue) =>
+                            onChangehHorizontal={newValue =>
                                 setAttributes({
                                     btnShadowHorizontal: newValue || 0,
                                 })
                             }
-                            onChangeVertical={(newValue) =>
+                            onChangeVertical={newValue =>
                                 setAttributes({
                                     btnShadowVertical: newValue || 0,
                                 })
                             }
-                            onChangePosition={(newValue) =>
+                            onChangePosition={newValue =>
                                 setAttributes({
                                     btnShadowPosition: newValue || 0,
                                 })
                             }
                         />
                         <PremiumSizeUnits
-                            onChangeSizeUnit={(newValue) =>
+                            onChangeSizeUnit={newValue =>
                                 setAttributes({ btnPaddingU: newValue })
                             }
                         />
                         <RangeControl
                             label={__("Padding")}
                             value={btnPadding}
-                            onChange={(newValue) =>
+                            onChange={newValue =>
                                 setAttributes({ btnPadding: newValue })
                             }
                         />
@@ -926,12 +926,12 @@ const edit = (props) => {
                             directions={["top", "bottom"]}
                             marginTop={btnMarginT}
                             marginBottom={btnMarginB}
-                            onChangeMarTop={(value) =>
+                            onChangeMarTop={value =>
                                 setAttributes({
                                     btnMarginT: value || 0,
                                 })
                             }
-                            onChangeMarBottom={(value) =>
+                            onChangeMarBottom={value =>
                                 setAttributes({
                                     btnMarginB: value || 0,
                                 })
@@ -950,11 +950,11 @@ const edit = (props) => {
                         <PremiumBackground
                             type="color"
                             colorValue={backColor}
-                            onChangeColor={(newvalue) =>
+                            onChangeColor={newvalue =>
                                 setAttributes({ backColor: newvalue })
                             }
                             opacityValue={backOpacity}
-                            onChangeOpacity={(value) =>
+                            onChangeOpacity={value =>
                                 setAttributes({ backOpacity: value })
                             }
                         />
@@ -966,25 +966,25 @@ const edit = (props) => {
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={(media) => {
+                        onSelectMedia={media => {
                             setAttributes({
                                 imageID: media.id,
                                 imageURL: media.url,
                             });
                         }}
-                        onRemoveImage={(value) =>
+                        onRemoveImage={value =>
                             setAttributes({ imageURL: "", imageID: "" })
                         }
-                        onChangeBackPos={(newValue) =>
+                        onChangeBackPos={newValue =>
                             setAttributes({ backgroundPosition: newValue })
                         }
-                        onchangeBackRepeat={(newValue) =>
+                        onchangeBackRepeat={newValue =>
                             setAttributes({ backgroundRepeat: newValue })
                         }
-                        onChangeBackSize={(newValue) =>
+                        onChangeBackSize={newValue =>
                             setAttributes({ backgroundSize: newValue })
                         }
-                        onChangeFixed={(check) =>
+                        onChangeFixed={check =>
                             setAttributes({ fixed: check })
                         }
                     />
@@ -993,16 +993,16 @@ const edit = (props) => {
                         borderWidth={borderWidth}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={(newType) =>
+                        onChangeType={newType =>
                             setAttributes({ borderType: newType })
                         }
-                        onChangeWidth={(newWidth) =>
+                        onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={(colorValue) =>
+                        onChangeColor={colorValue =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={(newrRadius) =>
+                        onChangeRadius={newrRadius =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -1013,27 +1013,27 @@ const edit = (props) => {
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
                         position={shadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 shadowColor: newColor.hex || "transparent",
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 shadowBlur: newBlur || 0,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal: newValue || 0,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical: newValue || 0,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition: newValue,
                             })
@@ -1047,27 +1047,27 @@ const edit = (props) => {
                         horizontal={hoverShadowHorizontal}
                         vertical={hoverShadowVertical}
                         position={hoverShadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
                                 hoverShadowColor: newColor.hex,
                             })
                         }
-                        onChangeBlur={(newBlur) =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 hoverShadowBlur: newBlur,
                             })
                         }
-                        onChangehHorizontal={(newValue) =>
+                        onChangehHorizontal={newValue =>
                             setAttributes({
                                 hoverShadowHorizontal: newValue,
                             })
                         }
-                        onChangeVertical={(newValue) =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 hoverShadowVertical: newValue,
                             })
                         }
-                        onChangePosition={(newValue) =>
+                        onChangePosition={newValue =>
                             setAttributes({
                                 hoverShadowPosition: newValue,
                             })
@@ -1079,22 +1079,22 @@ const edit = (props) => {
                         marginRight={marginR}
                         marginBottom={marginB}
                         marginLeft={marginL}
-                        onChangeMarTop={(value) =>
+                        onChangeMarTop={value =>
                             setAttributes({
                                 marginT: value || 0,
                             })
                         }
-                        onChangeMarRight={(value) =>
+                        onChangeMarRight={value =>
                             setAttributes({
                                 marginR: value || 0,
                             })
                         }
-                        onChangeMarBottom={(value) =>
+                        onChangeMarBottom={value =>
                             setAttributes({
                                 marginB: value || 0,
                             })
                         }
-                        onChangeMarLeft={(value) =>
+                        onChangeMarLeft={value=>
                             setAttributes({
                                 marginL: value || 0,
                             })
@@ -1106,28 +1106,28 @@ const edit = (props) => {
                         paddingBottom={paddingB}
                         paddingLeft={paddingL}
                         showUnits={true}
-                        onChangePadTop={(value) =>
+                        onChangePadTop={value =>
                             setAttributes({
                                 paddingT: value || 0,
                             })
                         }
-                        onChangePadRight={(value) =>
+                        onChangePadRight={value =>
                             setAttributes({
                                 paddingR: value || 0,
                             })
                         }
-                        onChangePadBottom={(value) =>
+                        onChangePadBottom={value =>
                             setAttributes({
                                 paddingB: value || 0,
                             })
                         }
-                        onChangePadLeft={(value) =>
+                        onChangePadLeft={value=>
                             setAttributes({
                                 paddingL: value || 0,
                             })
                         }
                         selectedUnit={paddingU}
-                        onChangePadSizeUnit={(newvalue) =>
+                        onChangePadSizeUnit={newvalue =>
                             setAttributes({ paddingU: newvalue })
                         }
                     />
