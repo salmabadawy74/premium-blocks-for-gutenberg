@@ -74,9 +74,9 @@ class PBG_Blocks_Helper {
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 
 		// Register Premium Blocks category.
-        add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-        
-        // Generate Blocks Stylesheet.
+		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+
+		// Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 
 		// Enqueue Generated stylesheet to WP Head.
@@ -485,8 +485,8 @@ class PBG_Blocks_Helper {
 
 		// self::file_write( self::$stylesheet, 'css' );
 
-        ob_start();
-        
+		ob_start();
+
 		?>
 			<style type="text/css" media="all" id="premium-style-frontend"><?php echo self::$stylesheet; ?></style>
 		<?php
@@ -497,9 +497,9 @@ class PBG_Blocks_Helper {
 	 * Get Block CSS
 	 *
 	 * Generates CSS recurrsively.
-     * 
-     * @since 1.8.2
-     * @access public
+	 *
+	 * @since 1.8.2
+	 * @access public
 	 *
 	 * @param object $block The block object.
 	 */
@@ -572,7 +572,6 @@ class PBG_Blocks_Helper {
 	}
 
 	public static function get_fancy_text_css( $attr, $id ) {
-  
 
 		$defaults = self::$block_atts['premium/fancy-text']['attributes'];
 
@@ -586,7 +585,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title'       => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'] ?'rgba(' . self::hColor2RGB($attr['fancyTextBGColor']).','.$attr['fancyTextBGOpacity'].')':"transparent",
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -596,7 +595,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title-slide' => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'] ?'rgba(' . self::hColor2RGB($attr['fancyTextBGColor']).','.$attr['fancyTextBGOpacity'].')':"transparent",
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -609,7 +608,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-prefix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'] ?'rgba(' . self::hColor2RGB($attr['textBGColor']).','.$attr['textBGOpacity'].')':"transparent",
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -618,7 +617,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-suffix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'] ?'rgba(' . self::hColor2RGB($attr['textBGColor']).','.$attr['textBGOpacity'].')':"transparent",
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -646,7 +645,7 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' .premium-fancy-text-title'        => array(
+			' .premium-fancy-text-title'       => array(
 				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-title-slide' => array(
@@ -723,9 +722,9 @@ class PBG_Blocks_Helper {
 	/**
 	 * Get CSS value
 	 *
-     * @since 1.8.2
-     * @access public
-     * 
+	 * @since 1.8.2
+	 * @access public
+	 *
 	 * @param string $value  CSS value.
 	 * @param string $unit  CSS unit.
 	 */
@@ -745,36 +744,34 @@ class PBG_Blocks_Helper {
 		return $css_val;
 	}
 
-    	/**
+	/**
 	 * Get CSS value
 	 *
-     * @since 1.8.2
-     * @access public
-     * 
+	 * @since 1.8.2
+	 * @access public
+	 *
 	 * @param string $hexColor value of Color.
-
 	 */
-    public static function hColor2RGB($hexColor){
-        $color = str_replace('#', '', $hexColor);
-        if (strlen($color) > 3) {
-            $rgb = 
-                hexdec(substr($color, 0, 2)) . ',' . hexdec(substr($color, 2, 2)) . 
-                
-                ',' . hexdec(substr($color, 4, 2))
-            ;
-        } else {
-            $color = str_replace('#', '', $hexColor);
-            $r = substr($color, 0, 1) . substr($color, 0, 1);
-            $g = substr($color, 1, 1) . substr($color, 1, 1);
-            $b = substr($color, 2, 1) . substr($color, 2, 1);
-            $rgb =
-             hexdec($r). "," .
-                hexdec($g) . "," .
-                 hexdec($b)
-            ;
+	public static function hex_to_rgba( $hexColor ) {
+
+        $color = str_replace( '#', '', $hexColor );
+        
+		if ( strlen( $color ) > 3 ) {
+			$rgb =
+				hexdec( substr( $color, 0, 2 ) ) . ',' . hexdec( substr( $color, 2, 2 ) ) .
+
+                ',' . hexdec( substr( $color, 4, 2 ) );
+
+		} else {
+			$color = str_replace( '#', '', $hexColor );
+			$r     = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
+			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
+			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+			$rgb   = hexdec( $r ) . ',' . hexdec( $g ) . ',' . hexdec( $b );
         }
-        return $rgb;
-    }
+        
+		return $rgb;
+	}
 
 	/**
 	 * Generates stylesheet for reusable blocks.
@@ -866,7 +863,7 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * @return object
 	 */
 	function pbg_blocks_helper() {
-        return pbg_blocks_helper::get_instance();
+		return pbg_blocks_helper::get_instance();
 	}
 }
 pbg_blocks_helper();
