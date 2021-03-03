@@ -4,6 +4,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
 
 const { Component, Fragment } = wp.element;
 
@@ -185,9 +186,9 @@ class PremiumAccordion extends Component {
           <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
             style={{
-              backgroundColor: titleupdated
-                ? `rgba(${titleBack},${titleOpacity})`
-                : titleBack,
+              backgroundColor: titleBack
+                ? hexToRgba(titleBack, titleOpacity)
+                : "transparent",
               border: titleBorder,
               borderWidth: titleBorderWidth + "px",
               borderRadius: titleBorderRadius + "px",
@@ -236,9 +237,9 @@ class PremiumAccordion extends Component {
                 viewBox="0 0 20 20"
                 style={{
                   fill: arrowColor,
-                  backgroundColor: arrowUpdated
-                    ? `rgba(${arrowBack},${arrowOpacity})`
-                    : arrowBack,
+                  backgroundColor: arrowBack
+                    ? hexToRgba(arrowBack, arrowOpacity)
+                    : "transparent",
                   padding: arrowPadding + "px",
                   borderRadius: arrowRadius + "px",
                 }}
@@ -251,9 +252,9 @@ class PremiumAccordion extends Component {
             className={`premium-accordion__desc_wrap`}
             style={{
               textAlign: descAlign,
-              backgroundColor: descUpdated
-                ? `rgba(${descBack},${descOpacity})`
-                : descBack,
+              backgroundColor: descBack
+                ? hexToRgba(descBack, descOpacity)
+                : "transparent",
               border: descBorder,
               borderWidth: descBorderWidth + "px",
               borderRadius: descBorderRadius + "px",
@@ -379,7 +380,6 @@ class PremiumAccordion extends Component {
                       onChangeColor={(newvalue) =>
                         setAttributes({
                           titleBack: newvalue,
-                          titleupdated: true,
                         })
                       }
                       opacityValue={titleOpacity}
@@ -387,15 +387,6 @@ class PremiumAccordion extends Component {
                         setAttributes({ titleOpacity: value })
                       }
                     />
-                    {/* <ColorPalette
-                      value={titleBack}
-                      onChange={(newValue) =>
-                        setAttributes({
-                          titleBack: newValue,
-                        })
-                      }
-                      allowReset={true}
-                    /> */}
                   </Fragment>
                 )}
               />
@@ -510,7 +501,6 @@ class PremiumAccordion extends Component {
                       onChangeColor={(newvalue) =>
                         setAttributes({
                           arrowBack: newvalue,
-                          arrowUpdated: true,
                         })
                       }
                       opacityValue={arrowOpacity}
@@ -624,7 +614,6 @@ class PremiumAccordion extends Component {
                           onChangeColor={(newvalue) =>
                             setAttributes({
                               descBack: newvalue,
-                              descUpdated: true,
                             })
                           }
                           opacityValue={descOpacity}
