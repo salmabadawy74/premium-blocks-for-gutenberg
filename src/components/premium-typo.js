@@ -25,13 +25,13 @@ export default class PremiumTypo extends Component {
             spacing,
             line,
             upper,
-            onChangeSize = () => { },
-            onChangeWeight = () => { },
-            onChangeStyle = () => { },
-            onChangeSpacing = () => { },
-            onChangeLine = () => { },
-            onChangeUpper = () => { },
-            onResetClick = () => { },
+            onChangeSize = () => {},
+            onChangeWeight = () => {},
+            onChangeStyle = () => {},
+            onChangeSpacing = () => {},
+            onChangeLine = () => {},
+            onChangeUpper = () => {},
+            onResetClick = () => {},
         } = this.props;
 
         const STYLE = [

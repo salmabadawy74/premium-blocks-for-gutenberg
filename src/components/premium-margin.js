@@ -20,7 +20,6 @@ class PremiumMargin extends Component {
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.changeFunction = this.changeFunction.bind(this);
-
     }
 
     onButtonClick() {
@@ -69,7 +68,7 @@ class PremiumMargin extends Component {
             isLinked,
         } = this.state;
 
-        const { onChangeMarSizeUnit = () => { }, selectedUnit } = this.props;
+        const { onChangeMarSizeUnit = () => {}, selectedUnit } = this.props;
 
         return (
             <div className={`premium-control-group`}>
@@ -87,7 +86,8 @@ class PremiumMargin extends Component {
                     </div>
                 </div>
                 <div className={`premium-controls-container`}>
-                    {(directions.includes("all") || directions.includes("top")) && (
+                    {(directions.includes("all") ||
+                        directions.includes("top")) && (
                         <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
@@ -95,10 +95,13 @@ class PremiumMargin extends Component {
                                 value={top || 0}
                                 onChange={this.onInputChange}
                             />
-                            <label className={`premium-control-label`}>Top</label>
+                            <label className={`premium-control-label`}>
+                                Top
+                            </label>
                         </div>
                     )}
-                    {(directions.includes("all") || directions.includes("right")) && (
+                    {(directions.includes("all") ||
+                        directions.includes("right")) && (
                         <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
@@ -106,10 +109,13 @@ class PremiumMargin extends Component {
                                 value={right || 0}
                                 onChange={this.onInputChange}
                             />
-                            <label className={`premium-control-label`}>Right</label>
+                            <label className={`premium-control-label`}>
+                                Right
+                            </label>
                         </div>
                     )}
-                    {(directions.includes("all") || directions.includes("bottom")) && (
+                    {(directions.includes("all") ||
+                        directions.includes("bottom")) && (
                         <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
@@ -117,10 +123,13 @@ class PremiumMargin extends Component {
                                 value={bottom || 0}
                                 onChange={this.onInputChange}
                             />
-                            <label className={`premium-control-label`}>Bottom</label>
+                            <label className={`premium-control-label`}>
+                                Bottom
+                            </label>
                         </div>
                     )}
-                    {(directions.includes("all") || directions.includes("left")) && (
+                    {(directions.includes("all") ||
+                        directions.includes("left")) && (
                         <div className={`premium-control-wrapper`}>
                             <input
                                 type="number"
@@ -128,14 +137,17 @@ class PremiumMargin extends Component {
                                 value={left || 0}
                                 onChange={this.onInputChange}
                             />
-                            <label className={`premium-control-label`}>Left</label>
+                            <label className={`premium-control-label`}>
+                                Left
+                            </label>
                         </div>
                     )}
                     {(directions.length > 1 || directions.includes("all")) && (
                         <div>
                             <button
-                                className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
-                                    }`}
+                                className={`linked-btn components-button is-button dashicons dashicons-${
+                                    isLinked ? "admin-links" : "editor-unlink"
+                                }`}
                                 onClick={this.onButtonClick}
                             />
                         </div>
