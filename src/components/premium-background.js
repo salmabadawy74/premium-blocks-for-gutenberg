@@ -17,13 +17,14 @@ export default function PremiumBackground(props) {
     type,
     colorValue,
     opacityValue,
-    onChangeOpacity = () => {},
     imageID,
     imageURL,
     backgroundPosition,
     backgroundRepeat,
     backgroundSize,
     fixed,
+    onChangeColor = () => {},
+    onChangeOpacity = () => {},
     onSelectMedia = () => {},
     onRemoveImage = () => {},
     onChangeBackPos = () => {},
@@ -31,18 +32,6 @@ export default function PremiumBackground(props) {
     onChangeBackSize = () => {},
     onChangeFixed = () => {},
   } = props;
-
-  const hexToRgb = (colorValue) => {
-    if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/gi.test(colorValue)) {
-      var hex = colorValue.substr(1);
-      hex = hex.length == 3 ? hex.replace(/(.)/g, "$1$1") : hex;
-      let rgb = parseInt(hex, 16);
-      let colorRGB = [(rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255].join(",");
-      props.onChangeColor(colorRGB);
-    } else {
-      props.onChangeColor(colorValue);
-    }
-  };
 
   const POSITION = [
     {
@@ -116,10 +105,14 @@ export default function PremiumBackground(props) {
       label: __("Contain"),
     },
   ];
-  
+
   return type === "color" ? (
     <Fragment>
-      <ColorPalette value={colorValue} onChange={hexToRgb} allowReset={true} />
+      <ColorPalette
+        value={colorValue}
+        onChange={onChangeColor}
+        allowReset={true}
+      />
       <RangeControl
         label={__(`Background Opacity`)}
         value={opacityValue}
