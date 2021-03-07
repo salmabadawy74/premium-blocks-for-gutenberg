@@ -5,6 +5,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
 
@@ -89,8 +90,12 @@ const edit = props => {
         paddingT,
         paddingR,
         paddingL,
-        paddingU
+        paddingU,
+        Desktop,
+        Tablet,
+        Mobile
     } = props.attributes;
+
     const ALIGNS = [
         {
             value: "flex-start",
@@ -181,7 +186,15 @@ const edit = props => {
     ];
     setAttributes({ id: blockID });
 
-    const mainClasses = classnames(className, "premium-banner");
+    const mainClasses = classnames( className, "premium-banner" );
+    
+  const   hundleChangeDevice = ( device ) => {
+      if ( device === "Desktop" ) {
+            setAttributes({Desktop:!Desktop})
+      } else {
+          console.log(device)
+        }
+    }
 
     return [
         isSelected && (
@@ -614,6 +627,12 @@ const edit = props => {
                         }
                     />
                 </PanelBody>
+                <PremiumResponsiveTabs
+                    Desktop={Desktop}
+                    Tablet={Tablet}
+                    Mobile={Mobile}
+                onChangeDevice={(device)=>hundleChangeDevice(device)}
+                />
             </InspectorControls>
         ),
         <div
