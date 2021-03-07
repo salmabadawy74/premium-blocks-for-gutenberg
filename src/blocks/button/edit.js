@@ -13,8 +13,7 @@ const {
     SelectControl,
     RangeControl,
     ToggleControl,
-    Dropdown,
-    Button
+    TabPanel,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -28,7 +27,7 @@ const {
     URLInput
 } = wp.blockEditor;
 
-const edit = props => {
+const edit = (props) => {
     const { isSelected, setAttributes, className, clientId: blockId } = props;
 
     const {
@@ -168,6 +167,7 @@ const edit = props => {
             label: __("Radial")
         }
     ];
+
     const onChangeHover = newValue => {
         props.setAttributes({ effect: newValue });
         switch (newValue) {
@@ -297,43 +297,6 @@ const edit = props => {
                         }
                         onChangeUpper={check => setAttributes({ textUpper: check })}
                     />
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>{__("Text Color")}</p>
-                                    <ColorPalette
-                                        value={textColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                textColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Text Hover Color")}</p>
-                                    <ColorPalette
-                                        value={textHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                textHoverColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
-                            )}
-                        />
-                    </div>
                     <PremiumTextShadow
                         color={shadowColor}
                         blur={shadowBlur}
@@ -356,52 +319,104 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Color")
-                                            : __("Background Hover Color")}
-                                    </p>
-                                    <ColorPalette
-                                        value={backColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                backColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Hover Color")
-                                            : __("Background Color")}
-                                    </p>
-                                    <ColorPalette
-                                        value={backHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                backHoverColor: newValue,
-                                                slideColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
-                            )}
-                        />
-                    </div>
+                    <strong>{__("Colors")}</strong>
+                    <TabPanel
+                        className="premium-color-tabpanel"
+                        activeClass="active-tab"
+                        tabs={[
+                            {
+                                name: "normal",
+                                title: "Normal",
+                                className: "premium-tab",
+                            },
+                            {
+                                name: "hover",
+                                title: "Hover",
+                                className: "premium-tab",
+                            },
+                        ]}
+                    >
+                        {(tab) => {
+                            let tabout;
+                            if ("normal" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                        <p>{__("Text Color")}</p>
+                                        <ColorPalette
+                                            value={textColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    textColor: newValue,
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <p>
+                                            {"radial" !== effect
+                                                ? __("Background Color")
+                                                : __("Background Hover Color")}
+                                        </p>
+                                        <ColorPalette
+                                            value={backColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    backColor: newValue,
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                            if ("hover" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                        <p>{__("Text Hover Color")}</p>
+                                        <ColorPalette
+                                            value={textHoverColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    textHoverColor: newValue,
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <p>
+                                            {"radial" !== effect
+                                                ? __("Background Hover Color")
+                                                : __("Background Color")}
+                                        </p>
+                                        <ColorPalette
+                                            value={backHoverColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    backHoverColor: newValue,
+                                                    slideColor: newValue,
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                        <p>{__("Border Hover Color")}</p>
+                                        <ColorPalette
+                                            value={borderHoverColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    borderHoverColor: newValue,
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                            return (
+                                <div>
+                                    {tabout}
+                                    <hr />
+                                </div>
+                            );
+                        }}
+                    </TabPanel>
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
@@ -416,18 +431,6 @@ const edit = props => {
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
-                    <Fragment>
-                        <p>{__("Border Hover Color")}</p>
-                        <ColorPalette
-                            value={borderHoverColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    borderHoverColor: newValue
-                                })
-                            }
-                            allowReset={true}
-                        />
-                    </Fragment>
                     <PremiumBoxShadow
                         label="Shadow"
                         inner={true}
@@ -475,7 +478,7 @@ const edit = props => {
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-wrap-${id}`}
+            id={`premium-button-wrap-${id}`}
             className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
             style={{ textAlign: btnAlign }}
         >

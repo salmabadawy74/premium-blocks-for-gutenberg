@@ -15,8 +15,7 @@ const {
     TextControl,
     TextareaControl,
     ToggleControl,
-    Dropdown,
-    Button,
+    TabPanel,
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
@@ -404,67 +403,7 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-                                        <div className="premium-control-toggle">
-                                            <strong>{__("Colors")}</strong>
-                                            <Dropdown
-                                                className="premium-control-toggle-btn"
-                                                contentClassName="premium-control-toggle-content"
-                                                position="bottom right"
-                                                renderToggle={({ isOpen, onToggle }) => (
-                                                    <Button
-                                                        isSmall
-                                                        onClick={onToggle}
-                                                        aria-expanded={isOpen}
-                                                    >
-                                                        <i className="dashicons dashicons-edit" />
-                                                    </Button>
-                                                )}
-                                                renderContent={() => (
-                                                    <Fragment>
-                                                        <p>{__("Icon Color")}</p>
-                                                        <ColorPalette
-                                                            value={playColor}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    playColor: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                        <p>{__("Icon Background Color")}</p>
-                                                        <ColorPalette
-                                                            value={playBack}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    playBack: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                        <p>{__("Icon Hover Color")}</p>
-                                                        <ColorPalette
-                                                            value={playHoverColor}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    playHoverColor: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                        <p>{__("Icon Hover Background Color")}</p>
-                                                        <ColorPalette
-                                                            value={playHoverBackColor}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    playHoverBackColor: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                    </Fragment>
-                                                )}
-                                            />
-                                        </div>
+                                        <strong>{__("Colors")}</strong>
 
                                         <PremiumBorder
                                             borderType={playBorderType}
@@ -559,47 +498,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-                                        <div className="premium-control-toggle">
-                                            <strong>{__("Colors")}</strong>
-                                            <Dropdown
-                                                className="premium-control-toggle-btn"
-                                                contentClassName="premium-control-toggle-content"
-                                                position="bottom right"
-                                                renderToggle={({ isOpen, onToggle }) => (
-                                                    <Button
-                                                        isSmall
-                                                        onClick={onToggle}
-                                                        aria-expanded={isOpen}
-                                                    >
-                                                        <i className="dashicons dashicons-edit" />
-                                                    </Button>
-                                                )}
-                                                renderContent={() => (
-                                                    <Fragment>
-                                                        <p>{__("Text Color")}</p>
-                                                        <ColorPalette
-                                                            value={videoDescColor}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    videoDescColor: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                        <p>{__("Text Background Color")}</p>
-                                                        <ColorPalette
-                                                            value={videoDescBack}
-                                                            onChange={newValue =>
-                                                                setAttributes({
-                                                                    videoDescBack: newValue
-                                                                })
-                                                            }
-                                                            allowReset={true}
-                                                        />
-                                                    </Fragment>
-                                                )}
-                                            />
-                                        </div>
                                         <RangeControl
                                             label={__("Border Radius (px)")}
                                             value={videoDescBorderRadius}
@@ -647,6 +545,115 @@ class edit extends Component {
                             </PanelBody>
                         </Fragment>
                     )}
+                    <PanelBody
+                        title={__("Colors")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <TabPanel
+                            className="Premium-color-tabpanel"
+                            activeClass="active-tab"
+                            tabs={[
+                                {
+                                    name: "normal",
+                                    title: "Normal",
+                                    className: "premium-tab",
+                                },
+                                {
+                                    name: "hover",
+                                    title: "Hover",
+                                    className: "premium-tab",
+                                },
+                            ]}
+                        >
+                            {(tab) => {
+                                let tabout;
+                                if ("normal" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            <p>{__("Icon Color")}</p>
+
+                                            <ColorPalette
+                                                value={playColor}
+                                                onChange={newValue =>
+                                                    setAttributes({
+                                                        playColor: newValue,
+                                                    })
+                                                }
+                                                allowReset={true}
+                                            />
+                                            <p>{__("Icon Background Color")}</p>
+                                            <ColorPalette
+                                                value={playBack}
+                                                onChange={newValue =>
+                                                    setAttributes({
+                                                        playBack: newValue,
+                                                    })
+                                                }
+                                                allowReset={true}
+                                            />
+                                            {videoDesc && (
+                                                <Fragment>
+                                                    <p>{__("Description Color")}</p>
+                                                    <ColorPalette
+                                                        value={videoDescColor}
+                                                        onChange={newValue =>
+                                                            setAttributes({
+                                                                videoDescColor: newValue,
+                                                            })
+                                                        }
+                                                        allowReset={true}
+                                                    />
+                                                    <p>{__("Description Background Color")}</p>
+                                                    <ColorPalette
+                                                        value={videoDescBack}
+                                                        onChange={newValue =>
+                                                            setAttributes({
+                                                                videoDescBack: newValue,
+                                                            })
+                                                        }
+                                                        allowReset={true}
+                                                    />
+                                                </Fragment>
+                                            )}
+                                        </Fragment>
+                                    );
+                                }
+                                if ("hover" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            <p>{__("Icon Hover Color")}</p>
+                                            <ColorPalette
+                                                value={playHoverColor}
+                                                onChange={newValue =>
+                                                    setAttributes({
+                                                        playHoverColor: newValue,
+                                                    })
+                                                }
+                                                allowReset={true}
+                                            />
+                                            <p>{__("Icon Hover Background Color")}</p>
+                                            <ColorPalette
+                                                value={playHoverBackColor}
+                                                onChange={newValue =>
+                                                    setAttributes({
+                                                        playHoverBackColor: newValue,
+                                                    })
+                                                }
+                                                allowReset={true}
+                                            />
+                                        </Fragment>
+                                    );
+                                }
+                                return (
+                                    <div>
+                                        {tabout}
+                                        <hr />
+                                    </div>
+                                );
+                            }}
+                        </TabPanel>
+                    </PanelBody>
                     <PanelBody
                         title={__("Box Style")}
                         className="premium-panel-body"

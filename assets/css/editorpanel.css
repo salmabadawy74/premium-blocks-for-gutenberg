@@ -23,9 +23,9 @@
     margin-right: 3%;
 }
 
-/*
-  * Unit Group Button
-  */
+/**
+* Unit Group Controls
+*/
 .components-base-control .components-base-control__label {
     margin-right: 100px;
 }
@@ -53,9 +53,9 @@
     font-weight: bold;
 }
 
-/*
-  * Responsive Controls
-  */
+/**
+* Responsive Controls
+*/
 .premium-size-type-field-tabs .components-range-control .components-base-control__field {
     display: block;
     flex-wrap: unset;
@@ -179,10 +179,9 @@
     margin-bottom: -18px;
 }
 
-/*
-  * Margin-Padding-Controls
-  */
-
+/**
+* Margin/Padding Tabs
+*/
 .premium-control-group {
     display: flex;
     flex-direction: column;
@@ -244,9 +243,9 @@
     text-align: center;
     font-size: 0.75em;
 }
-/*
-  * Background Image Controls
-  */
+/**
+* Background Image Controls
+*/
 .premium-image-media {
     position: relative;
     display: block;
@@ -299,9 +298,37 @@
     margin-top: 8px;
 }
 
-/*
-  * Repeater Controls
-  */
+/**
+* Color Tabs
+*/
+.premium-color-tabpanel {
+    margin: 10px !important;
+}
+
+.premium-color-tabpanel button.components-tab-panel__tabs-item {
+    display: block;
+    text-align: center;
+    border: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 2px;
+    width: 50%;
+    height: 40px !important;
+    margin: 10px 1px;
+    padding: 5px 19px;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+
+.premium-color-tabpanel button.active-tab {
+    border: none;
+    color: #000;
+    background-color: rgb(240, 240, 240);
+}
+
+/**
+* Repeater Controls
+*/
 .premium-repeater-btn__wrap {
     text-align: center;
     padding-top: 10px;

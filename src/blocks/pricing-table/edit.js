@@ -1202,7 +1202,7 @@ class PremiumPricingTable extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`${mainClasses}-${id}`}
+                id={`premium-pricing-table-${id}`}
                 className={`${mainClasses}`}
                 style={{
                     textAlign: contentAlign,

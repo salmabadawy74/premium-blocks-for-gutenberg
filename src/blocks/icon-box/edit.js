@@ -21,8 +21,7 @@ const {
     RangeControl,
     SelectControl,
     ToggleControl,
-    Dropdown,
-    Button,
+    TabPanel
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -370,28 +369,6 @@ const edit = props => {
                                     appendTo="body"
                                     noSelectedPlaceholder={__("Select Icon")}
                                 />
-                                <Fragment>
-                                    <p>{__("Icon Color")}</p>
-                                    <ColorPalette
-                                        value={iconColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                iconColor: newValue || "transparent"
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Background Color")}</p>
-                                    <ColorPalette
-                                        value={iconBackColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                iconBackColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
                             </Fragment>
                         )}
                         {"image" === iconImage && (
@@ -486,18 +463,6 @@ const edit = props => {
                             onChangeLine={newValue => setAttributes({ titleLine: newValue })}
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
                         />
-                        <Fragment>
-                            <p>{__("Text Color")}</p>
-                            <ColorPalette
-                                value={titleColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        titleColor: newValue || "transparent"
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
                         <PremiumTextShadow
                             color={titleShadowColor}
                             blur={titleShadowBlur}
@@ -560,18 +525,6 @@ const edit = props => {
                             }
                             onChangeLine={newValue => setAttributes({ descLine: newValue })}
                         />
-                        <Fragment>
-                            <p>{__("Text Color")}</p>
-                            <ColorPalette
-                                value={descColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        descColor: newValue || "transparent"
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
                         <PremiumMargin
                             directions={["top", "bottom"]}
                             marginTop={descMarginT}
@@ -634,73 +587,6 @@ const edit = props => {
                             }
                             onChangeUpper={check => setAttributes({ btnUpper: check })}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Text Color")}</p>
-                                        <ColorPalette
-                                            value={btnColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    btnColor: newValue || "#000"
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Text Hover Color")}</p>
-                                        <ColorPalette
-                                            value={btnHoverColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    btnHoverColor: newValue || "#000"
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={btnBack}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    btnBack: newValue || "transparent"
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Hover Color")}</p>
-                                        <ColorPalette
-                                            value={btnHoverBack}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    btnHoverBack: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Border Hover Color")}</p>
-                                        <ColorPalette
-                                            value={btnHoverBorder}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    btnHoverBorder: newValue || "transparent"
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
 
                         <PremiumBorder
                             borderType={btnBorderType}
@@ -786,19 +672,6 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <Fragment>
-                        <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={backColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    backColor: newValue || "transparent"
-                                })
-                            }
-                            allowReset={true}
-                        />
-                    </Fragment>
-
                     {imageURL && <img src={imageURL} width="100%" height="auto" />}
                     <PremiumBackgroud
                         imageID={imageID}
@@ -967,10 +840,177 @@ const edit = props => {
                         }
                     />
                 </PanelBody>
+                <PanelBody
+                    title={__("Colors")}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <TabPanel
+                        className="premium-color-tabpanel"
+                        activeClass="active-tab"
+                        tabs={[
+                            {
+                                name: "normal",
+                                title: "Normal",
+                                className: "premium-tab",
+                            },
+                            {
+                                name: "hover",
+                                title: "Hover",
+                                className: "premium-tab",
+                            },
+                        ]}
+                    >
+                        {(tab) => {
+                            let tabout;
+                            if ("normal" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                        {iconChecked && (
+                                            <Fragment>
+                                                <p>{__("Icon Color")}</p>
+                                                <ColorPalette
+                                                    value={iconColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            iconColor: newValue || "transparent",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                                <p>{__(" Icon Background Color")}</p>
+                                                <ColorPalette
+                                                    value={iconBackColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            iconBackColor: newValue,
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                            </Fragment>
+                                        )}
+                                        {titleChecked && (
+                                            <Fragment>
+                                                <p>{__("Tile Color")}</p>
+                                                <ColorPalette
+                                                    value={titleColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            titleColor: newValue || "transparent",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                            </Fragment>
+                                        )}
+                                        {descChecked && (
+                                            <Fragment>
+                                                <p>{__("Descreption Color")}</p>
+                                                <ColorPalette
+                                                    value={descColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            descColor: newValue || "transparent",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                            </Fragment>
+                                        )}
+                                        {btnChecked && (
+                                            <Fragment>
+                                                <p>{__("Button Color")}</p>
+                                                <ColorPalette
+                                                    value={btnColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            btnColor: newValue || "#000",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                                <p>{__("Button Background Color")}</p>
+                                                <ColorPalette
+                                                    value={btnBack}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            btnBack: newValue || "transparent",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                            </Fragment>
+                                        )}
+
+                                        <p>{__(" Container Background Color")}</p>
+                                        <ColorPalette
+                                            value={backColor}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    backColor: newValue || "transparent",
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                            if ("hover" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                        {btnChecked && (
+                                            <Fragment>
+                                                <p>{__("Button Hover Color")}</p>
+                                                <ColorPalette
+                                                    value={btnHoverColor}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            btnHoverColor: newValue || "#000",
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+
+                                                <p>{__("Background Button Hover Color")}</p>
+                                                <ColorPalette
+                                                    value={btnHoverBack}
+                                                    onChange={newValue =>
+                                                        setAttributes({
+                                                            btnHoverBack: newValue,
+                                                        })
+                                                    }
+                                                    allowReset={true}
+                                                />
+                                            </Fragment>
+                                        )}
+
+                                        <p>{__("Border Hover Color")}</p>
+                                        <ColorPalette
+                                            value={btnHoverBorder}
+                                            onChange={newValue =>
+                                                setAttributes({
+                                                    btnHoverBorder: newValue || "transparent",
+                                                })
+                                            }
+                                            allowReset={true}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                            return (
+                                <div>
+                                    {tabout}
+                                    <hr />
+                                </div>
+                            );
+                        }}
+                    </TabPanel>
+                </PanelBody>
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-${id}`}
+            id={`premium-icon-box-${id}`}
             className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
             style={{
                 textAlign: align,
