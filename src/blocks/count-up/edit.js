@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
+import {FontAwesomeEnabled} from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
@@ -7,7 +7,7 @@ import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -20,12 +20,12 @@ const {
     Dashicon,
 } = wp.components;
 
-const { InspectorControls, ColorPalette, MediaUpload } = wp.blockEditor;
+const {InspectorControls, ColorPalette, MediaUpload} = wp.blockEditor;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const edit = (props) => {
-    const { isSelected, setAttributes, className } = props;
+    const {isSelected, setAttributes, className} = props;
     const {
         increment,
         time,
@@ -91,7 +91,7 @@ const edit = (props) => {
     } = props.attributes;
 
     let iconClass =
-        "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+        "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
 
     const ICONS = [
         {
@@ -140,13 +140,13 @@ const edit = (props) => {
 
     switch (align) {
         case "left":
-            setAttributes({ selfAlign: "flex-start" });
+            setAttributes({selfAlign: "flex-start"});
             break;
         case "center":
-            setAttributes({ selfAlign: "center" });
+            setAttributes({selfAlign: "center"});
             break;
         case "right":
-            setAttributes({ selfAlign: "flex-end" });
+            setAttributes({selfAlign: "flex-end"});
             break;
     }
 
@@ -164,7 +164,7 @@ const edit = (props) => {
     };
 
     const onChangeTitleFamily = (fontFamily) => {
-        setAttributes({ titleFamily: fontFamily });
+        setAttributes({titleFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -173,7 +173,7 @@ const edit = (props) => {
     };
 
     const onChangePrefixFamily = (fontFamily) => {
-        setAttributes({ prefixFamily: fontFamily });
+        setAttributes({prefixFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -182,7 +182,7 @@ const edit = (props) => {
     };
 
     const onChangeCounterFamily = (fontFamily) => {
-        setAttributes({ counterFamily: fontFamily });
+        setAttributes({counterFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -191,7 +191,7 @@ const edit = (props) => {
     };
 
     const onChangeSuffixFamily = (fontFamily) => {
-        setAttributes({ suffixFamily: fontFamily });
+        setAttributes({suffixFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -213,13 +213,13 @@ const edit = (props) => {
                         label={__("Increment")}
                         value={increment}
                         onChange={value =>
-                            setAttributes({ increment: value })
+                            setAttributes({increment: value})
                         }
                     />
                     <TextControl
                         label={__("Rolling Time")}
                         value={time}
-                        onChange={value => setAttributes({ time: value })}
+                        onChange={value => setAttributes({time: value})}
                         help={__(
                             "Set counting time in milliseconds, for example: 1000"
                         )}
@@ -227,7 +227,7 @@ const edit = (props) => {
                     <TextControl
                         label={__("Delay")}
                         value={delay}
-                        onChange={value => setAttributes({ delay: value })}
+                        onChange={value => setAttributes({delay: value})}
                         help={__("Set delay in milliseconds, for example: 10")}
                     />
                     <p>{__("Align")}</p>
@@ -237,7 +237,7 @@ const edit = (props) => {
                                 icon: "editor-align" + contentAlign,
                                 isActive: contentAlign === align,
                                 onClick: () =>
-                                    setAttributes({ align: contentAlign }),
+                                    setAttributes({align: contentAlign}),
                             }))}
                         />
                     )}
@@ -248,7 +248,7 @@ const edit = (props) => {
                                 icon: "editor-align" + contentAlign,
                                 isActive: contentAlign === align,
                                 onClick: () =>
-                                    setAttributes({ align: contentAlign }),
+                                    setAttributes({align: contentAlign}),
                             }))}
                         />
                     )}
@@ -257,7 +257,7 @@ const edit = (props) => {
                         options={DIRECTION}
                         value={flexDir}
                         onChange={newDir =>
-                            setAttributes({ flexDir: newDir })
+                            setAttributes({flexDir: newDir})
                         }
                     />
                     {("row" === flexDir || "row-reverse" === flexDir) && (
@@ -265,7 +265,7 @@ const edit = (props) => {
                             label={__("Spacing (PX)")}
                             value={iconSpacing}
                             onChange={newValue =>
-                                setAttributes({ iconSpacing: newValue })
+                                setAttributes({iconSpacing: newValue})
                             }
                         />
                     )}
@@ -273,24 +273,24 @@ const edit = (props) => {
                         label={__("Icon")}
                         checked={iconCheck}
                         onChange={check =>
-                            setAttributes({ iconCheck: check })
+                            setAttributes({iconCheck: check})
                         }
                     />
                     <ToggleControl
                         label={__("Prefix")}
                         checked={prefix}
-                        onChange={check => setAttributes({ prefix: check })}
+                        onChange={check => setAttributes({prefix: check})}
                     />
                     <ToggleControl
                         label={__("Suffix")}
                         checked={suffix}
-                        onChange={check => setAttributes({ suffix: check })}
+                        onChange={check => setAttributes({suffix: check})}
                     />
                     <ToggleControl
                         label={__("Title")}
                         checked={titleCheck}
                         onChange={check =>
-                            setAttributes({ titleCheck: check })
+                            setAttributes({titleCheck: check})
                         }
                     />
                 </PanelBody>
@@ -305,7 +305,7 @@ const edit = (props) => {
                             options={ICONS}
                             value={icon}
                             onChange={newType =>
-                                setAttributes({ icon: newType })
+                                setAttributes({icon: newType})
                             }
                         />
                         {("" !== faIcon || "undefined" !== typeof faIcon) &&
@@ -321,7 +321,7 @@ const edit = (props) => {
                                     value={iconType}
                                     options={TYPE}
                                     onChange={newType =>
-                                        setAttributes({ iconType: newType })
+                                        setAttributes({iconType: newType})
                                     }
                                 />
                                 <TextControl
@@ -346,7 +346,7 @@ const edit = (props) => {
                                             : "dashicons-admin-site",
                                     ]}
                                     onChange={(newIcon) =>
-                                        setAttributes({ faIcon: newIcon })
+                                        setAttributes({faIcon: newIcon})
                                     }
                                 />
                             </Fragment>
@@ -359,14 +359,14 @@ const edit = (props) => {
                                         imageID: media.id,
                                         imageURL:
                                             "undefined" ===
-                                            typeof media.sizes.thumbnail
+                                                typeof media.sizes.thumbnail
                                                 ? media.url
                                                 : media.sizes.thumbnail.url,
                                     });
                                 }}
                                 type="image"
                                 value={imageID}
-                                render={({ open }) => (
+                                render={({open}) => (
                                     <Fragment>
                                         {imageURL && (
                                             <span className="premium-image-media">
@@ -441,7 +441,7 @@ const edit = (props) => {
                             max="200"
                             value={iconSize}
                             onChange={newValue =>
-                                setAttributes({ iconSize: newValue })
+                                setAttributes({iconSize: newValue})
                             }
                         />
                         {"icon" === icon && (
@@ -479,10 +479,10 @@ const edit = (props) => {
                         size={numberSize}
                         weight={numberWeight}
                         onChangeSize={newSize =>
-                            setAttributes({ numberSize: newSize })
+                            setAttributes({numberSize: newSize})
                         }
                         onChangeWeight={newWeight =>
-                            setAttributes({ numberWeight: newWeight })
+                            setAttributes({numberWeight: newWeight})
                         }
                     />
                     <Fragment>
@@ -511,7 +511,7 @@ const edit = (props) => {
                             label={__("Prefix")}
                             value={prefixTxt}
                             onChange={value =>
-                                setAttributes({ prefixTxt: value })
+                                setAttributes({prefixTxt: value})
                             }
                         />
                         <SelectControl
@@ -525,10 +525,10 @@ const edit = (props) => {
                             size={prefixSize}
                             weight={prefixWeight}
                             onChangeSize={newSize =>
-                                setAttributes({ prefixSize: newSize })
+                                setAttributes({prefixSize: newSize})
                             }
                             onChangeWeight={newWeight =>
-                                setAttributes({ prefixWeight: newWeight })
+                                setAttributes({prefixWeight: newWeight})
                             }
                         />
                         <Fragment>
@@ -550,7 +550,7 @@ const edit = (props) => {
                             label={__("Gap After (PX)")}
                             value={prefixGap}
                             onChange={newValue =>
-                                setAttributes({ prefixGap: newValue })
+                                setAttributes({prefixGap: newValue})
                             }
                         />
                     </PanelBody>
@@ -565,7 +565,7 @@ const edit = (props) => {
                             label={__("Suffix")}
                             value={suffixTxt}
                             onChange={value =>
-                                setAttributes({ suffixTxt: value })
+                                setAttributes({suffixTxt: value})
                             }
                         />
                         <SelectControl
@@ -579,10 +579,10 @@ const edit = (props) => {
                             size={suffixSize}
                             weight={suffixWeight}
                             onChangeSize={newSize =>
-                                setAttributes({ suffixSize: newSize })
+                                setAttributes({suffixSize: newSize})
                             }
                             onChangeWeight={newWeight =>
-                                setAttributes({ suffixWeight: newWeight })
+                                setAttributes({suffixWeight: newWeight})
                             }
                         />
                         <Fragment>
@@ -604,7 +604,7 @@ const edit = (props) => {
                             label={__("Gap Before (PX)")}
                             value={suffixGap}
                             onChange={newValue =>
-                                setAttributes({ suffixGap: newValue })
+                                setAttributes({suffixGap: newValue})
                             }
                         />
                     </PanelBody>
@@ -619,7 +619,7 @@ const edit = (props) => {
                             label={__("Title Text")}
                             value={titleTxt}
                             onChange={value =>
-                                setAttributes({ titleTxt: value })
+                                setAttributes({titleTxt: value})
                             }
                         />
                         <SelectControl
@@ -642,19 +642,19 @@ const edit = (props) => {
                             spacing={titleSpacing}
                             upper={titleUpper}
                             onChangeSize={newSize =>
-                                setAttributes({ titleSize: newSize })
+                                setAttributes({titleSize: newSize})
                             }
                             onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight })
+                                setAttributes({titleWeight: newWeight})
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
+                                setAttributes({titleStyle: newStyle})
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({ titleSpacing: newValue })
+                                setAttributes({titleSpacing: newValue})
                             }
                             onChangeUpper={check =>
-                                setAttributes({ titleUpper: check })
+                                setAttributes({titleUpper: check})
                             }
                         />
                         <Fragment>
@@ -681,14 +681,14 @@ const edit = (props) => {
                                 label={__("Margin Top (PX)")}
                                 value={titleT}
                                 onChange={newValue =>
-                                    setAttributes({ titleT: newValue })
+                                    setAttributes({titleT: newValue})
                                 }
                             />
                             <RangeControl
                                 label={__("Margin Bottom (PX)")}
                                 value={titleB}
                                 onChange={newValue =>
-                                    setAttributes({ titleB: newValue })
+                                    setAttributes({titleB: newValue})
                                 }
                             />
                         </PanelBody>
@@ -711,7 +711,7 @@ const edit = (props) => {
                             }
                             opacityValue={containerOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({ containerOpacity: value })
+                                setAttributes({containerOpacity: value})
                             }
                         />
                     </Fragment>
@@ -735,16 +735,16 @@ const edit = (props) => {
                             })
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
+                            setAttributes({backgroundPosition: newValue})
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
+                            setAttributes({backgroundRepeat: newValue})
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
+                            setAttributes({backgroundSize: newValue})
                         }
                         onChangeFixed={check =>
-                            setAttributes({ fixed: check })
+                            setAttributes({fixed: check})
                         }
                     />
                     <PremiumBorder
@@ -753,16 +753,16 @@ const edit = (props) => {
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType =>
-                            setAttributes({ borderType: newType })
+                            setAttributes({borderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ borderWidth: newWidth })
+                            setAttributes({borderWidth: newWidth})
                         }
                         onChangeColor={colorValue =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            setAttributes({borderColor: colorValue.hex})
                         }
                         onChangeRadius={newRadius =>
-                            setAttributes({ borderRadius: newRadius })
+                            setAttributes({borderRadius: newRadius})
                         }
                     />
                     <PremiumBoxShadow
@@ -811,16 +811,16 @@ const edit = (props) => {
             )}
         </div>,
         <div
-            className={`${mainClasses}__wrap`}
+            className={`${ mainClasses }__wrap`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
                 backgroundColor: containerBack
                     ? hexToRgba(containerBack, containerOpacity)
                     : "transparent",
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 backgroundImage: backgroundImageURL
-                    ? `url('${backgroundImageURL}')`
+                    ? `url('${ backgroundImageURL }')`
                     : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -852,7 +852,7 @@ const edit = (props) => {
                 >
                     {"icon" === icon && (
                         <i
-                            className={`premium-countup__icon ${iconClass}`}
+                            className={`premium-countup__icon ${ iconClass }`}
                             style={{
                                 fontSize: iconSize + "px",
                                 color: iconColor,

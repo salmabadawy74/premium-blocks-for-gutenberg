@@ -7,9 +7,9 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
-const { Component, Fragment } = wp.element;
+const {Component, Fragment} = wp.element;
 
 const {
     Toolbar,
@@ -38,13 +38,13 @@ class PremiumPricingTable extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId } = this.props;
+        const {setAttributes, clientId} = this.props;
 
-        setAttributes({ id: clientId });
+        setAttributes({id: clientId});
     }
 
     render() {
-        const { isSelected, setAttributes, className } = this.props;
+        const {isSelected, setAttributes, className} = this.props;
 
         const {
             contentAlign,
@@ -259,7 +259,7 @@ class PremiumPricingTable extends Component {
                     <AlignmentToolbar
                         value={contentAlign}
                         onChange={(newAlign) =>
-                            setAttributes({ contentAlign: newAlign })
+                            setAttributes({contentAlign: newAlign})
                         }
                     />
                 </BlockControls>
@@ -275,42 +275,42 @@ class PremiumPricingTable extends Component {
                             label={__("Title")}
                             checked={titleChecked}
                             onChange={newValue =>
-                                setAttributes({ titleChecked: newValue })
+                                setAttributes({titleChecked: newValue})
                             }
                         />
                         <ToggleControl
                             label={__("Price")}
                             checked={priceChecked}
                             onChange={newValue =>
-                                setAttributes({ priceChecked: newValue })
+                                setAttributes({priceChecked: newValue})
                             }
                         />
                         <ToggleControl
                             label={__("Features")}
                             checked={listChecked}
                             onChange={newValue =>
-                                setAttributes({ listChecked: newValue })
+                                setAttributes({listChecked: newValue})
                             }
                         />
                         <ToggleControl
                             label={__("Description")}
                             checked={descChecked}
                             onChange={newValue =>
-                                setAttributes({ descChecked: newValue })
+                                setAttributes({descChecked: newValue})
                             }
                         />
                         <ToggleControl
                             label={__("Button")}
                             checked={btnChecked}
                             onChange={newValue =>
-                                setAttributes({ btnChecked: newValue })
+                                setAttributes({btnChecked: newValue})
                             }
                         />
                         <ToggleControl
                             label={__("Badge")}
                             checked={badgeChecked}
                             onChange={newValue =>
-                                setAttributes({ badgeChecked: newValue })
+                                setAttributes({badgeChecked: newValue})
                             }
                         />
                     </PanelBody>
@@ -326,7 +326,7 @@ class PremiumPricingTable extends Component {
                                     icon: "heading",
                                     isActive: "H" + tag === titleTag,
                                     onClick: () =>
-                                        setAttributes({ titleTag: "H" + tag }),
+                                        setAttributes({titleTag: "H" + tag}),
                                     subscript: tag,
                                 }))}
                             />
@@ -346,22 +346,22 @@ class PremiumPricingTable extends Component {
                                 line={titleLine}
                                 upper={titleUpper}
                                 onChangeSize={newSize =>
-                                    setAttributes({ titleSize: newSize })
+                                    setAttributes({titleSize: newSize})
                                 }
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight })
+                                    setAttributes({titleWeight: newWeight})
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
+                                    setAttributes({titleStyle: newStyle})
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ titleLetter: newValue })
+                                    setAttributes({titleLetter: newValue})
                                 }
                                 onChangeLine={newValue =>
-                                    setAttributes({ titleLine: newValue })
+                                    setAttributes({titleLine: newValue})
                                 }
                                 onChangeUpper={check =>
-                                    setAttributes({ titleUpper: check })
+                                    setAttributes({titleUpper: check})
                                 }
                             />
                             <PanelColorSettings
@@ -398,7 +398,7 @@ class PremiumPricingTable extends Component {
                                     })
                                 }
                                 onChangeBlur={newBlur =>
-                                    setAttributes({ titleShadowBlur: newBlur })
+                                    setAttributes({titleShadowBlur: newBlur})
                                 }
                                 onChangehHorizontal={newValue =>
                                     setAttributes({
@@ -417,7 +417,7 @@ class PremiumPricingTable extends Component {
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
                                     position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
+                                    renderToggle={({isOpen, onToggle}) => (
                                         <Button
                                             isSmall
                                             onClick={onToggle}
@@ -477,35 +477,35 @@ class PremiumPricingTable extends Component {
                                 label={__("Slashed Price")}
                                 value={slashPrice}
                                 onChange={value =>
-                                    setAttributes({ slashPrice: value })
+                                    setAttributes({slashPrice: value})
                                 }
                             />
                             <TextControl
                                 label={__("Currency")}
                                 value={currPrice}
                                 onChange={value =>
-                                    setAttributes({ currPrice: value })
+                                    setAttributes({currPrice: value})
                                 }
                             />
                             <TextControl
                                 label={__("Price")}
                                 value={valPrice}
                                 onChange={(value) =>
-                                    setAttributes({ valPrice: value })
+                                    setAttributes({valPrice: value})
                                 }
                             />
                             <TextControl
                                 label={__("Divider")}
                                 value={divPrice}
                                 onChange={value =>
-                                    setAttributes({ divPrice: value })
+                                    setAttributes({divPrice: value})
                                 }
                             />
                             <TextControl
                                 label={__("Duration")}
                                 value={durPrice}
                                 onChange={value =>
-                                    setAttributes({ durPrice: value })
+                                    setAttributes({durPrice: value})
                                 }
                             />
                             <PanelBody
@@ -558,7 +558,7 @@ class PremiumPricingTable extends Component {
                                                     setAttributes({
                                                         slashColor:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? "transparent"
                                                                 : newValue,
                                                     })
@@ -603,7 +603,7 @@ class PremiumPricingTable extends Component {
                                                     setAttributes({
                                                         currColor:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? "transparent"
                                                                 : newValue,
                                                     })
@@ -648,7 +648,7 @@ class PremiumPricingTable extends Component {
                                                     setAttributes({
                                                         valColor:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? "transparent"
                                                                 : newValue,
                                                     })
@@ -693,7 +693,7 @@ class PremiumPricingTable extends Component {
                                                     setAttributes({
                                                         divColor:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? "transparent"
                                                                 : newValue,
                                                     })
@@ -738,7 +738,7 @@ class PremiumPricingTable extends Component {
                                                     setAttributes({
                                                         durColor:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? "transparent"
                                                                 : newValue,
                                                     })
@@ -756,7 +756,7 @@ class PremiumPricingTable extends Component {
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
                                     position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
+                                    renderToggle={({isOpen, onToggle}) => (
                                         <Button
                                             isSmall
                                             onClick={onToggle}
@@ -823,7 +823,7 @@ class PremiumPricingTable extends Component {
                                     }
                                     opacityValue={priceOpacity}
                                     onChangeOpacity={(value) =>
-                                        setAttributes({ priceOpacity: value })
+                                        setAttributes({priceOpacity: value})
                                     }
                                 />
                             </Fragment>
@@ -853,7 +853,7 @@ class PremiumPricingTable extends Component {
                                 options={TYPE}
                                 value={listStyle}
                                 onChange={(newType) =>
-                                    setAttributes({ listStyle: newType })
+                                    setAttributes({listStyle: newType})
                                 }
                             />
                             <PremiumTypo
@@ -872,22 +872,22 @@ class PremiumPricingTable extends Component {
                                 line={listLine}
                                 upper={listUpper}
                                 onChangeSize={(newSize) =>
-                                    setAttributes({ listSize: newSize })
+                                    setAttributes({listSize: newSize})
                                 }
                                 onChangeWeight={(newWeight) =>
-                                    setAttributes({ listWeight: newWeight })
+                                    setAttributes({listWeight: newWeight})
                                 }
                                 onChangeStyle={(newStyle) =>
-                                    setAttributes({ listItemsStyle: newStyle })
+                                    setAttributes({listItemsStyle: newStyle})
                                 }
                                 onChangeSpacing={(newValue) =>
-                                    setAttributes({ listLetter: newValue })
+                                    setAttributes({listLetter: newValue})
                                 }
                                 onChangeLine={(newValue) =>
-                                    setAttributes({ listLine: newValue })
+                                    setAttributes({listLine: newValue})
                                 }
                                 onChangeUpper={(check) =>
-                                    setAttributes({ listUpper: check })
+                                    setAttributes({listUpper: check})
                                 }
                             />
                             <PanelColorSettings
@@ -919,7 +919,7 @@ class PremiumPricingTable extends Component {
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
                                     position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
+                                    renderToggle={({isOpen, onToggle}) => (
                                         <Button
                                             isSmall
                                             onClick={onToggle}
@@ -983,19 +983,19 @@ class PremiumPricingTable extends Component {
                                 spacing={descLetter}
                                 line={descLine}
                                 onChangeSize={(newSize) =>
-                                    setAttributes({ descSize: newSize })
+                                    setAttributes({descSize: newSize})
                                 }
                                 onChangeWeight={(newWeight) =>
-                                    setAttributes({ descWeight: newWeight })
+                                    setAttributes({descWeight: newWeight})
                                 }
                                 onChangeStyle={(newStyle) =>
-                                    setAttributes({ descStyle: newStyle })
+                                    setAttributes({descStyle: newStyle})
                                 }
                                 onChangeSpacing={(newValue) =>
-                                    setAttributes({ descLetter: newValue })
+                                    setAttributes({descLetter: newValue})
                                 }
                                 onChangeLine={(newValue) =>
-                                    setAttributes({ descLine: newValue })
+                                    setAttributes({descLine: newValue})
                                 }
                             />
                             <PanelColorSettings
@@ -1027,7 +1027,7 @@ class PremiumPricingTable extends Component {
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
                                     position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
+                                    renderToggle={({isOpen, onToggle}) => (
                                         <Button
                                             isSmall
                                             onClick={onToggle}
@@ -1099,22 +1099,22 @@ class PremiumPricingTable extends Component {
                                 line={btnLine}
                                 upper={btnUpper}
                                 onChangeSize={(newSize) =>
-                                    setAttributes({ btnSize: newSize })
+                                    setAttributes({btnSize: newSize})
                                 }
                                 onChangeWeight={(newWeight) =>
-                                    setAttributes({ btnWeight: newWeight })
+                                    setAttributes({btnWeight: newWeight})
                                 }
                                 onChangeStyle={(newStyle) =>
-                                    setAttributes({ btnStyle: newStyle })
+                                    setAttributes({btnStyle: newStyle})
                                 }
                                 onChangeSpacing={(newValue) =>
-                                    setAttributes({ btnLetter: newValue })
+                                    setAttributes({btnLetter: newValue})
                                 }
                                 onChangeLine={(newValue) =>
-                                    setAttributes({ btnLine: newValue })
+                                    setAttributes({btnLine: newValue})
                                 }
                                 onChangeUpper={(check) =>
-                                    setAttributes({ btnUpper: check })
+                                    setAttributes({btnUpper: check})
                                 }
                             />
                             <PanelColorSettings
@@ -1162,10 +1162,10 @@ class PremiumPricingTable extends Component {
                                 borderColor={btnBorderColor}
                                 borderRadius={btnBorderRadius}
                                 onChangeType={(newType) =>
-                                    setAttributes({ btnBorderType: newType })
+                                    setAttributes({btnBorderType: newType})
                                 }
                                 onChangeWidth={(newWidth) =>
-                                    setAttributes({ btnBorderWidth: newWidth })
+                                    setAttributes({btnBorderWidth: newWidth})
                                 }
                                 onChangeColor={(colorValue) =>
                                     setAttributes({
@@ -1184,7 +1184,7 @@ class PremiumPricingTable extends Component {
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
                                     position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
+                                    renderToggle={({isOpen, onToggle}) => (
                                         <Button
                                             isSmall
                                             onClick={onToggle}
@@ -1252,7 +1252,7 @@ class PremiumPricingTable extends Component {
                                 label={__("Open Link in a new tab")}
                                 checked={btnTarget}
                                 onChange={(newValue) =>
-                                    setAttributes({ btnTarget: newValue })
+                                    setAttributes({btnTarget: newValue})
                                 }
                             />
                         </PanelBody>
@@ -1267,7 +1267,7 @@ class PremiumPricingTable extends Component {
                                 label={__("Text")}
                                 value={badgeText}
                                 onChange={(value) =>
-                                    setAttributes({ badgeText: value })
+                                    setAttributes({badgeText: value})
                                 }
                             />
                             <SelectControl
@@ -1275,7 +1275,7 @@ class PremiumPricingTable extends Component {
                                 options={POSITION}
                                 value={badgePos}
                                 onChange={(newValue) =>
-                                    setAttributes({ badgePos: newValue })
+                                    setAttributes({badgePos: newValue})
                                 }
                             />
                             <PremiumTypo
@@ -1292,19 +1292,19 @@ class PremiumPricingTable extends Component {
                                 spacing={badgeLetter}
                                 upper={badgeUpper}
                                 onChangeSize={(newSize) =>
-                                    setAttributes({ badgeTextSize: newSize })
+                                    setAttributes({badgeTextSize: newSize})
                                 }
                                 onChangeWeight={(newWeight) =>
-                                    setAttributes({ badgeWeight: newWeight })
+                                    setAttributes({badgeWeight: newWeight})
                                 }
                                 onChangeStyle={(newStyle) =>
-                                    setAttributes({ badgeStyle: newStyle })
+                                    setAttributes({badgeStyle: newStyle})
                                 }
                                 onChangeSpacing={(newValue) =>
-                                    setAttributes({ badgeLetter: newValue })
+                                    setAttributes({badgeLetter: newValue})
                                 }
                                 onChangeUpper={(check) =>
-                                    setAttributes({ badgeUpper: check })
+                                    setAttributes({badgeUpper: check})
                                 }
                             />
                             <PanelColorSettings
@@ -1334,7 +1334,7 @@ class PremiumPricingTable extends Component {
                                 label={__("Vertical Offset")}
                                 value={badgeTop}
                                 onChange={(newValue) =>
-                                    setAttributes({ badgeTop: newValue })
+                                    setAttributes({badgeTop: newValue})
                                 }
                             />
                             <RangeControl
@@ -1343,7 +1343,7 @@ class PremiumPricingTable extends Component {
                                 min="1"
                                 max="150"
                                 onChange={(newValue) =>
-                                    setAttributes({ badgeHorizontal: newValue })
+                                    setAttributes({badgeHorizontal: newValue})
                                 }
                             />
                             <RangeControl
@@ -1351,7 +1351,7 @@ class PremiumPricingTable extends Component {
                                 value={badgeSize}
                                 max="250"
                                 onChange={(newValue) =>
-                                    setAttributes({ badgeSize: newValue })
+                                    setAttributes({badgeSize: newValue})
                                 }
                             />
                             <RangeControl
@@ -1360,7 +1360,7 @@ class PremiumPricingTable extends Component {
                                 max="200"
                                 value={badgeWidth}
                                 onChange={(newValue) =>
-                                    setAttributes({ badgeWidth: newValue })
+                                    setAttributes({badgeWidth: newValue})
                                 }
                             />
                         </PanelBody>
@@ -1376,11 +1376,11 @@ class PremiumPricingTable extends Component {
                                 type="color"
                                 colorValue={tableBack}
                                 onChangeColor={(newvalue) =>
-                                    setAttributes({ tableBack: newvalue })
+                                    setAttributes({tableBack: newvalue})
                                 }
                                 opacityValue={tableOpacity}
                                 onChangeOpacity={(value) =>
-                                    setAttributes({ tableOpacity: value })
+                                    setAttributes({tableOpacity: value})
                                 }
                             />
                         </Fragment>
@@ -1390,16 +1390,16 @@ class PremiumPricingTable extends Component {
                             borderColor={borderColor}
                             borderRadius={borderRadius}
                             onChangeType={(newType) =>
-                                setAttributes({ borderType: newType })
+                                setAttributes({borderType: newType})
                             }
                             onChangeWidth={(newWidth) =>
-                                setAttributes({ borderWidth: newWidth })
+                                setAttributes({borderWidth: newWidth})
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                setAttributes({borderColor: colorValue.hex})
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                setAttributes({borderRadius: newrRadius})
                             }
                         />
                         <PremiumBoxShadow
@@ -1448,7 +1448,7 @@ class PremiumPricingTable extends Component {
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
                                 position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
+                                renderToggle={({isOpen, onToggle}) => (
                                     <Button
                                         isSmall
                                         onClick={onToggle}
@@ -1478,8 +1478,8 @@ class PremiumPricingTable extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`${mainClasses}-${id}`}
-                className={`${mainClasses}`}
+                id={`${ mainClasses }-${ id }`}
+                className={`${ mainClasses }`}
                 style={{
                     textAlign: contentAlign,
                     backgroundColor: tableBack
@@ -1490,12 +1490,12 @@ class PremiumPricingTable extends Component {
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     padding: tablePadding + "px",
-                    boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
+                    boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`,
                 }}
             >
                 {badgeChecked && (
                     <div
-                        className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
+                        className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${ badgePos }`}
                     >
                         <div
                             className={`premium-pricing-table__badge`}
@@ -1559,7 +1559,7 @@ class PremiumPricingTable extends Component {
                             tagName={titleTag.toLowerCase()}
                             className={`premium-pricing-table__title`}
                             onChange={(newText) =>
-                                setAttributes({ title: newText })
+                                setAttributes({title: newText})
                             }
                             placeholder={__("Awesome Title")}
                             value={title}
@@ -1575,7 +1575,7 @@ class PremiumPricingTable extends Component {
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + "px",
                                 padding: titlePadding + "px",
-                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
                             }}
                         />
                     </div>
@@ -1670,12 +1670,12 @@ class PremiumPricingTable extends Component {
                     >
                         <RichText
                             tagName="ul"
-                            className={`premium-pricing-table__list list-${listStyle}`}
+                            className={`premium-pricing-table__list list-${ listStyle }`}
                             multiline="li"
                             placeholder={__("List Item #1")}
                             value={listItems}
                             onChange={(newText) =>
-                                setAttributes({ listItems: newText })
+                                setAttributes({listItems: newText})
                             }
                             style={{
                                 color: listColor,
@@ -1703,7 +1703,7 @@ class PremiumPricingTable extends Component {
                             tagName="p"
                             className={`premium-pricing-table__desc`}
                             onChange={(newText) =>
-                                setAttributes({ desc: newText })
+                                setAttributes({desc: newText})
                             }
                             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
                             value={desc}
@@ -1753,7 +1753,7 @@ class PremiumPricingTable extends Component {
                             <RichText
                                 tagName="span"
                                 onChange={(newText) =>
-                                    setAttributes({ btnText: newText })
+                                    setAttributes({btnText: newText})
                                 }
                                 value={btnText}
                                 style={{
@@ -1766,15 +1766,15 @@ class PremiumPricingTable extends Component {
                         <URLInput
                             value={btnLink}
                             onChange={(newLink) =>
-                                setAttributes({ btnLink: newLink })
+                                setAttributes({btnLink: newLink})
                             }
                         />
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
-                                    `color: ${btnHoverColor} !important;`,
-                                    `background: ${btnHoverBack} !important`,
+                                    `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
+                                    `color: ${ btnHoverColor } !important;`,
+                                    `background: ${ btnHoverBack } !important`,
                                     "}",
                                 ].join("\n"),
                             }}

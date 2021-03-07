@@ -8,7 +8,7 @@ import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     Toolbar,
@@ -32,10 +32,10 @@ const {
     ColorPalette,
 } = wp.blockEditor;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const edit = (props) => {
-    const { isSelected, className, setAttributes } = props;
+    const {isSelected, className, setAttributes} = props;
     const {
         align,
         authorImgId,
@@ -112,7 +112,7 @@ const edit = (props) => {
             <BlockControls key="controls">
                 <AlignmentToolbar
                     value={align}
-                    onChange={(newAlign) => setAttributes({ align: newAlign })}
+                    onChange={(newAlign) => setAttributes({align: newAlign})}
                 />
             </BlockControls>
         ),
@@ -137,14 +137,14 @@ const edit = (props) => {
                                     authorImgId: media.id,
                                     authorImgUrl:
                                         "undefined" ===
-                                        typeof media.sizes.thumbnail
+                                            typeof media.sizes.thumbnail
                                             ? media.url
                                             : media.sizes.thumbnail.url,
                                 });
                             }}
                             type="image"
                             value={authorImgId}
-                            render={({ open }) => (
+                            render={({open}) => (
                                 <Fragment>
                                     {authorImgUrl && (
                                         <span className="premium-image-media">
@@ -213,7 +213,7 @@ const edit = (props) => {
                                 options={RADIUS}
                                 value={imgRadius}
                                 onChange={newWeight =>
-                                    setAttributes({ imgRadius: newWeight })
+                                    setAttributes({imgRadius: newWeight})
                                 }
                             />
                         )}
@@ -223,7 +223,7 @@ const edit = (props) => {
                                 max="200"
                                 value={imgSize}
                                 onChange={newSize =>
-                                    setAttributes({ imgSize: newSize })
+                                    setAttributes({imgSize: newSize})
                                 }
                             />
                         )}
@@ -232,7 +232,7 @@ const edit = (props) => {
                                 label={__("Border Width (PX)")}
                                 value={imgBorder}
                                 onChange={newSize =>
-                                    setAttributes({ imgBorder: newSize })
+                                    setAttributes({imgBorder: newSize})
                                 }
                             />
                         )}
@@ -257,7 +257,7 @@ const edit = (props) => {
                             icon: "heading",
                             isActive: "H" + tag === authorTag,
                             onClick: () =>
-                                setAttributes({ authorTag: "H" + tag }),
+                                setAttributes({authorTag: "H" + tag}),
                             subscript: tag,
                         }))}
                     />
@@ -271,23 +271,23 @@ const edit = (props) => {
                         ]}
                         size={authorSize}
                         onChangeSize={(newSize) =>
-                            setAttributes({ authorSize: newSize })
+                            setAttributes({authorSize: newSize})
                         }
                         weight={authorWeight}
                         style={authorStyle}
                         spacing={authorLetter}
                         upper={authorUpper}
                         onChangeWeight={newWeight =>
-                            setAttributes({ authorWeight: newWeight })
+                            setAttributes({authorWeight: newWeight})
                         }
                         onChangeStyle={newStyle =>
-                            setAttributes({ authorStyle: newStyle })
+                            setAttributes({authorStyle: newStyle})
                         }
                         onChangeSpacing={newValue =>
-                            setAttributes({ authorLetter: newValue })
+                            setAttributes({authorLetter: newValue})
                         }
                         onChangeUpper={check =>
-                            setAttributes({ authorUpper: check })
+                            setAttributes({authorUpper: check})
                         }
                     />
                     <p>{__("Color")}</p>
@@ -311,10 +311,10 @@ const edit = (props) => {
                         size={bodySize}
                         line={bodyLine}
                         onChangeSize={newSize =>
-                            setAttributes({ bodySize: newSize })
+                            setAttributes({bodySize: newSize})
                         }
                         onChangeLine={newWeight =>
-                            setAttributes({ bodyLine: newWeight })
+                            setAttributes({bodyLine: newWeight})
                         }
                     />
                     <p>{__("Color")}</p>
@@ -331,14 +331,14 @@ const edit = (props) => {
                         label={__("Margin Top (PX)")}
                         value={bodyTop}
                         onChange={newSize =>
-                            setAttributes({ bodyTop: newSize })
+                            setAttributes({bodyTop: newSize})
                         }
                     />
                     <RangeControl
                         label={__("Margin Bottom (PX)")}
                         value={bodyBottom}
                         onChange={newSize =>
-                            setAttributes({ bodyBottom: newSize })
+                            setAttributes({bodyBottom: newSize})
                         }
                     />
                 </PanelBody>
@@ -353,7 +353,7 @@ const edit = (props) => {
                             icon: "heading",
                             isActive: "H" + tag === authorComTag,
                             onClick: () =>
-                                setAttributes({ authorComTag: "H" + tag }),
+                                setAttributes({authorComTag: "H" + tag}),
                             subscript: tag,
                         }))}
                     />
@@ -361,7 +361,7 @@ const edit = (props) => {
                         components={["size"]}
                         size={authorComSize}
                         onChangeSize={newSize =>
-                            setAttributes({ authorComSize: newSize })
+                            setAttributes({authorComSize: newSize})
                         }
                     />
                     <div className="premium-control-toggle">
@@ -370,7 +370,7 @@ const edit = (props) => {
                             className="premium-control-toggle-btn"
                             contentClassName="premium-control-toggle-content"
                             position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
+                            renderToggle={({isOpen, onToggle}) => (
                                 <Button
                                     isSmall
                                     onClick={onToggle}
@@ -409,7 +409,7 @@ const edit = (props) => {
                         label={__("URL")}
                         checked={urlCheck}
                         onChange={newCheck =>
-                            setAttributes({ urlCheck: newCheck })
+                            setAttributes({urlCheck: newCheck})
                         }
                     />
                     {urlCheck && (
@@ -417,7 +417,7 @@ const edit = (props) => {
                             label={__("URL")}
                             value={urlText}
                             onChange={newURL =>
-                                setAttributes({ urlText: newURL })
+                                setAttributes({urlText: newURL})
                             }
                         />
                     )}
@@ -426,7 +426,7 @@ const edit = (props) => {
                             label={__("Open Link in a New Tab")}
                             checked={urlTarget}
                             onChange={newCheck =>
-                                setAttributes({ urlTarget: newCheck })
+                                setAttributes({urlTarget: newCheck})
                             }
                         />
                     )}
@@ -442,7 +442,7 @@ const edit = (props) => {
                         min="1"
                         max="12"
                         onChange={newSize =>
-                            setAttributes({ quotSize: newSize })
+                            setAttributes({quotSize: newSize})
                         }
                     />
                     <Fragment>
@@ -463,7 +463,7 @@ const edit = (props) => {
                         max="100"
                         value={quotOpacity}
                         onChange={newValue =>
-                            setAttributes({ quotOpacity: newValue })
+                            setAttributes({quotOpacity: newValue})
                         }
                     />
                 </PanelBody>
@@ -485,7 +485,7 @@ const edit = (props) => {
                             }
                             opacityValue={backOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({ backOpacity: value })
+                                setAttributes({backOpacity: value})
                             }
                         />
                         <PremiumBackground
@@ -502,19 +502,19 @@ const edit = (props) => {
                                 });
                             }}
                             onRemoveImage={value =>
-                                setAttributes({ imageURL: "", imageID: "" })
+                                setAttributes({imageURL: "", imageID: ""})
                             }
                             onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
+                                setAttributes({backgroundPosition: newValue})
                             }
                             onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
+                                setAttributes({backgroundRepeat: newValue})
                             }
                             onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
+                                setAttributes({backgroundSize: newValue})
                             }
                             onChangeFixed={check =>
-                                setAttributes({ fixed: check })
+                                setAttributes({fixed: check})
                             }
                         />
                     </Fragment>
@@ -579,20 +579,20 @@ const edit = (props) => {
                         showUnits={true}
                         selectedUnit={paddingUnit}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingUnit: newvalue })
+                            setAttributes({paddingUnit: newvalue})
                         }
                     />
                 </PanelBody>
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses}__wrap`}
+            className={`${ mainClasses }__wrap`}
             style={{
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 backgroundColor: backColor
                     ? hexToRgba(backColor, backOpacity)
                     : "transparent",
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
+                backgroundImage: imageURL ? `url('${ imageURL }')` : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -621,7 +621,7 @@ const edit = (props) => {
                         {authorImgUrl && (
                             <img
                                 className={`premium-testimonial__img`}
-                                src={`${authorImgUrl}`}
+                                src={`${ authorImgUrl }`}
                                 alt="Author"
                                 style={{
                                     borderWidth: imgBorder + "px",
@@ -645,7 +645,7 @@ const edit = (props) => {
                                 isSelected={false}
                                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                 onChange={(newText) =>
-                                    setAttributes({ text: newText })
+                                    setAttributes({text: newText})
                                 }
                                 style={{
                                     color: bodyColor,
@@ -660,7 +660,7 @@ const edit = (props) => {
                     </div>
                     <div
                         className={`premium-testimonial__info`}
-                        style={{ justifyContent: align }}
+                        style={{justifyContent: align}}
                     >
                         <RichText
                             tagName={authorTag.toLowerCase()}
@@ -668,7 +668,7 @@ const edit = (props) => {
                             value={author}
                             isSelected={false}
                             onChange={(newText) =>
-                                setAttributes({ author: newText })
+                                setAttributes({author: newText})
                             }
                             style={{
                                 color: authorColor,
@@ -693,7 +693,7 @@ const edit = (props) => {
                             tagName={authorComTag.toLowerCase()}
                             className={`premium-testimonial__author_comp`}
                             onChange={(newText) =>
-                                setAttributes({ authorCom: newText })
+                                setAttributes({authorCom: newText})
                             }
                             value={authorCom}
                             isSelected={false}

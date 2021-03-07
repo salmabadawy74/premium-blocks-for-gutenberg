@@ -7,11 +7,11 @@ import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
-const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
+const {PanelBody, ToggleControl, RangeControl, SelectControl} = wp.components;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const {
     BlockControls,
@@ -22,11 +22,11 @@ const {
 } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert your text or select a block ") }],
+    ["core/paragraph", {content: __("Insert your text or select a block ")}],
 ];
 
 const edit = props => {
-    const { isSelected, className, setAttributes } = props;
+    const {isSelected, className, setAttributes} = props;
 
     const {
         stretchSection,
@@ -108,7 +108,7 @@ const edit = props => {
                 <AlignmentToolbar
                     value={horAlign}
                     onChange={newAlign =>
-                        setAttributes({ horAlign: newAlign })
+                        setAttributes({horAlign: newAlign})
                     }
                 />
             </BlockControls>
@@ -124,7 +124,7 @@ const edit = props => {
                         label={__("Stretch Section")}
                         checked={stretchSection}
                         onChange={check =>
-                            setAttributes({ stretchSection: check })
+                            setAttributes({stretchSection: check})
                         }
                         help={__(
                             "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time."
@@ -136,7 +136,7 @@ const edit = props => {
                             options={WIDTH}
                             value={innerWidthType}
                             onChange={newValue =>
-                                setAttributes({ innerWidthType: newValue })
+                                setAttributes({innerWidthType: newValue})
                             }
                         />
                     )}
@@ -147,7 +147,7 @@ const edit = props => {
                             max="1600"
                             value={innerWidth}
                             onChange={newValue =>
-                                setAttributes({ innerWidth: newValue })
+                                setAttributes({innerWidth: newValue})
                             }
                         />
                     )}
@@ -156,7 +156,7 @@ const edit = props => {
                         options={HEIGHT}
                         value={height}
                         onChange={newValue =>
-                            setAttributes({ height: newValue })
+                            setAttributes({height: newValue})
                         }
                     />
                     {"min" === height && (
@@ -164,7 +164,7 @@ const edit = props => {
                             <PremiumSizeUnits
                                 units={["px", "vh", "vw"]}
                                 onChangeSizeUnit={newValue =>
-                                    setAttributes({ minHeightUnit: newValue })
+                                    setAttributes({minHeightUnit: newValue})
                                 }
                             />
                             <RangeControl
@@ -173,7 +173,7 @@ const edit = props => {
                                 min="1"
                                 max="800"
                                 onChange={newValue =>
-                                    setAttributes({ minHeight: newValue })
+                                    setAttributes({minHeight: newValue})
                                 }
                             />
                         </Fragment>
@@ -186,7 +186,7 @@ const edit = props => {
                         options={VPOSITION}
                         value={vPos}
                         onChange={newValue =>
-                            setAttributes({ vPos: newValue })
+                            setAttributes({vPos: newValue})
                         }
                     />
                 </PanelBody>
@@ -200,11 +200,11 @@ const edit = props => {
                         type="color"
                         colorValue={color}
                         onChangeColor={newvalue =>
-                            setAttributes({ color: newvalue })
+                            setAttributes({color: newvalue})
                         }
                         opacityValue={opacity}
                         onChangeOpacity={value =>
-                            setAttributes({ opacity: value })
+                            setAttributes({opacity: value})
                         }
                     />
                     <PremiumBackground
@@ -221,19 +221,19 @@ const edit = props => {
                             });
                         }}
                         onRemoveImage={value =>
-                            setAttributes({ imageURL: "", imageID: "" })
+                            setAttributes({imageURL: "", imageID: ""})
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
+                            setAttributes({backgroundPosition: newValue})
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
+                            setAttributes({backgroundRepeat: newValue})
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
+                            setAttributes({backgroundSize: newValue})
                         }
                         onChangeFixed={check =>
-                            setAttributes({ fixed: check })
+                            setAttributes({fixed: check})
                         }
                     />
                 </PanelBody>
@@ -248,16 +248,16 @@ const edit = props => {
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType =>
-                            setAttributes({ borderType: newType })
+                            setAttributes({borderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ borderWidth: newWidth })
+                            setAttributes({borderWidth: newWidth})
                         }
                         onChangeColor={colorValue =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            setAttributes({borderColor: colorValue.hex})
                         }
                         onChangeRadius={newrRadius =>
-                            setAttributes({ borderRadius: newrRadius })
+                            setAttributes({borderRadius: newrRadius})
                         }
                     />
                     <PremiumBoxShadow
@@ -326,14 +326,14 @@ const edit = props => {
                                 marginBottom: value === undefined ? 0 : value,
                             })
                         }
-                        onChangeMarLeft={value=>
+                        onChangeMarLeft={value =>
                             setAttributes({
                                 marginLeft: value === undefined ? 0 : value,
                             })
                         }
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue =>
-                            setAttributes({ marginUnit: newvalue })
+                            setAttributes({marginUnit: newvalue})
                         }
                     />
                     <PremiumPadding
@@ -364,14 +364,14 @@ const edit = props => {
                         showUnits={true}
                         selectedUnit={paddingUnit}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingUnit: newvalue })
+                            setAttributes({paddingUnit: newvalue})
                         }
                     />
                 </PanelBody>
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+            className={`${ mainClasses } premium-container__stretch_${ stretchSection } premium-container__${ innerWidthType }`}
             style={{
                 textAlign: horAlign,
                 minHeight:
@@ -383,7 +383,7 @@ const edit = props => {
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
+                backgroundImage: imageURL ? `url('${ imageURL }')` : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -396,11 +396,11 @@ const edit = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
             }}
         >
             <div
-                className={`premium-container__content_wrap premium-container__${vPos}`}
+                className={`premium-container__content_wrap premium-container__${ vPos }`}
                 style={{
                     maxWidth:
                         "boxed" == innerWidthType && stretchSection

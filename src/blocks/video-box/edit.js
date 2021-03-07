@@ -22,11 +22,11 @@ const {
     Dashicon,
 } = wp.components;
 
-const { Component, Fragment } = wp.element;
+const {Component, Fragment} = wp.element;
 
-const { InspectorControls, MediaUpload, ColorPalette } = wp.blockEditor;
+const {InspectorControls, MediaUpload, ColorPalette} = wp.blockEditor;
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 let isBoxUpdated = null;
 
@@ -38,10 +38,10 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        const { attributes, setAttributes, clientId } = this.props;
+        const {attributes, setAttributes, clientId} = this.props;
 
         if (!attributes.videoBoxId) {
-            setAttributes({ videoBoxId: "premium-video-box-" + clientId });
+            setAttributes({videoBoxId: "premium-video-box-" + clientId});
         }
         this.initVideoBox();
     }
@@ -52,7 +52,7 @@ class edit extends Component {
     }
 
     initVideoBox() {
-        const { videoBoxId } = this.props.attributes;
+        const {videoBoxId} = this.props.attributes;
 
         if (!videoBoxId) return null;
 
@@ -89,7 +89,7 @@ class edit extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, className } = this.props;
+        const {isSelected, setAttributes, className} = this.props;
 
         const {
             videoBoxId,
@@ -176,13 +176,13 @@ class edit extends Component {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
                     return loop
-                        ? `1&playlist=${videoURL.replace(
-                              "https://www.youtube.com/embed/",
-                              ""
-                          )}`
+                        ? `1&playlist=${ videoURL.replace(
+                            "https://www.youtube.com/embed/",
+                            ""
+                        ) }`
                         : "0";
                 } else {
-                    return loop ? `1&playlist=${videoURL}` : "0";
+                    return loop ? `1&playlist=${ videoURL }` : "0";
                 }
             } else {
                 return loop ? "1" : "0";
@@ -220,7 +220,7 @@ class edit extends Component {
         };
 
         const onChangeDescFamily = (fontFamily) => {
-            setAttributes({ videoDescFamily: fontFamily });
+            setAttributes({videoDescFamily: fontFamily});
             if (!fontFamily) {
                 return;
             }
@@ -232,9 +232,9 @@ class edit extends Component {
 
         const changeVideoType = (newvalue) => {
             if (newvalue === "self") {
-                setAttributes({ videoURL: "" });
+                setAttributes({videoURL: ""});
             }
-            setAttributes({ videoType: newvalue });
+            setAttributes({videoType: newvalue});
         };
 
         return [
@@ -260,7 +260,7 @@ class edit extends Component {
                                     "Enter Video ID, Embed URL or Video URL"
                                 )}
                                 onChange={(newURL) =>
-                                    setAttributes({ videoURL: newURL })
+                                    setAttributes({videoURL: newURL})
                                 }
                                 help={getHelp(videoType)}
                             />
@@ -276,7 +276,7 @@ class edit extends Component {
                                 }}
                                 type="video"
                                 value={videoID}
-                                render={({ open }) => (
+                                render={({open}) => (
                                     <Fragment>
                                         {videoURL && (
                                             <span className="premium-image-media">
@@ -350,7 +350,7 @@ class edit extends Component {
                             label={__("Autoplay")}
                             checked={autoPlay}
                             onChange={newCheck =>
-                                setAttributes({ autoPlay: newCheck })
+                                setAttributes({autoPlay: newCheck})
                             }
                             help={__(
                                 "This option effect works when Overlay Image option is disabled"
@@ -361,7 +361,7 @@ class edit extends Component {
                                 label={__("Loop")}
                                 checked={loop}
                                 onChange={newCheck =>
-                                    setAttributes({ loop: newCheck })
+                                    setAttributes({loop: newCheck})
                                 }
                             />
                         )}
@@ -369,7 +369,7 @@ class edit extends Component {
                             label={__("Mute")}
                             checked={mute}
                             onChange={newCheck =>
-                                setAttributes({ mute: newCheck })
+                                setAttributes({mute: newCheck})
                             }
                         />
                         {"vimeo" !== videoType && (
@@ -377,7 +377,7 @@ class edit extends Component {
                                 label={__("Player Controls")}
                                 checked={controls}
                                 onChange={newCheck =>
-                                    setAttributes({ controls: newCheck })
+                                    setAttributes({controls: newCheck})
                                 }
                             />
                         )}
@@ -386,7 +386,7 @@ class edit extends Component {
                                 label={__("Show Related Videos")}
                                 checked={relatedVideos}
                                 onChange={newCheck =>
-                                    setAttributes({ relatedVideos: newCheck })
+                                    setAttributes({relatedVideos: newCheck})
                                 }
                             />
                         )}
@@ -394,7 +394,7 @@ class edit extends Component {
                             label={__("Overlay Image")}
                             checked={overlay}
                             onChange={newCheck =>
-                                setAttributes({ overlay: newCheck })
+                                setAttributes({overlay: newCheck})
                             }
                         />
                     </PanelBody>
@@ -414,7 +414,7 @@ class edit extends Component {
                                 }}
                                 type="image"
                                 value={overlayImgID}
-                                render={({ open }) => (
+                                render={({open}) => (
                                     <Fragment>
                                         {overlayImgURL && (
                                             <span className="premium-image-media">
@@ -531,7 +531,7 @@ class edit extends Component {
                                     label={__("Enable Play Icon")}
                                     checked={playIcon}
                                     onChange={newCheck =>
-                                        setAttributes({ playIcon: newCheck })
+                                        setAttributes({playIcon: newCheck})
                                     }
                                 />
                                 {playIcon && (
@@ -548,7 +548,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playTop}
@@ -605,16 +604,15 @@ class edit extends Component {
                                                             colorValue={
                                                                 playBack
                                                             }
-                                                            onChangeColor={ newvalue => {
-                                                                setAttributes({playBack:newvalue})
+                                                            onChangeColor={newvalue => {
+                                                                setAttributes({playBack: newvalue})
                                                             }}
-                                                            
                                                             opacityValue={
                                                                 playOpacity
                                                             }
-                                                            onChangeOpacity={ value => {
-                                                                setAttributes({playOpacity:value})
-                                                            }  }
+                                                            onChangeOpacity={value => {
+                                                                setAttributes({playOpacity: value})
+                                                            }}
                                                         />
                                                         <p>
                                                             {__(
@@ -625,10 +623,9 @@ class edit extends Component {
                                                             value={
                                                                 playHoverColor
                                                             }
-                                                            onChange={ newValue => {
-                                                                setAttributes({ playHoverColor: newValue,})
-                                                            } }
-                                                            
+                                                            onChange={newValue => {
+                                                                setAttributes({playHoverColor: newValue, })
+                                                            }}
                                                             allowReset={true}
                                                         />
                                                         <p>
@@ -640,7 +637,7 @@ class edit extends Component {
                                                             value={
                                                                 playHoverBackColor
                                                             }
-                                                            onChange={ newValue    =>
+                                                            onChange={newValue =>
                                                                 setAttributes({
                                                                     playHoverBackColor: newValue,
                                                                 })
@@ -651,7 +648,6 @@ class edit extends Component {
                                                 )}
                                             />
                                         </div>
-
                                         <PremiumBorder
                                             borderType={playBorderType}
                                             borderWidth={playBorderWidth}
@@ -703,7 +699,7 @@ class edit extends Component {
                                     label={__("Enable Video Description")}
                                     checked={videoDesc}
                                     onChange={newCheck =>
-                                        setAttributes({ videoDesc: newCheck })
+                                        setAttributes({videoDesc: newCheck})
                                     }
                                 />
                                 {videoDesc && (
@@ -801,10 +797,9 @@ class edit extends Component {
                                                             value={
                                                                 videoDescColor
                                                             }
-                                                            onChange={ newValue => {
-                                                                setAttributes({videoDescColor: newValue,})
+                                                            onChange={newValue => {
+                                                                setAttributes({videoDescColor: newValue, })
                                                             }}
-                                                            
                                                             allowReset={true}
                                                         />
                                                         <p>
@@ -817,17 +812,19 @@ class edit extends Component {
                                                             colorValue={
                                                                 videoDescBack
                                                             }
-                                                            onChangeColor={newvalue=>{ setAttributes({
-                                                                videoDescBack: newvalue,
-                                                            })} }
-                                                            
+                                                            onChangeColor={newvalue => {
+                                                                setAttributes({
+                                                                    videoDescBack: newvalue,
+                                                                })
+                                                            }}
                                                             opacityValue={
                                                                 videoDescOpacity
                                                             }
-                                                            onChangeOpacity={value=>{ setAttributes({
-                                                                videoDescOpacity: value,
-                                                            })} }
-                                                              
+                                                            onChangeOpacity={value => {
+                                                                setAttributes({
+                                                                    videoDescOpacity: value,
+                                                                })
+                                                            }}
                                                         />
                                                     </Fragment>
                                                 )}
@@ -904,10 +901,10 @@ class edit extends Component {
                             borderColor={boxBorderColor}
                             borderRadius={boxBorderRadius}
                             onChangeType={newType =>
-                                setAttributes({ boxBorderType: newType })
+                                setAttributes({boxBorderType: newType})
                             }
                             onChangeWidth={newWidth =>
-                                setAttributes({ boxBorderWidth: newWidth })
+                                setAttributes({boxBorderWidth: newWidth})
                             }
                             onChangeColor={colorValue =>
                                 setAttributes({
@@ -915,7 +912,7 @@ class edit extends Component {
                                 })
                             }
                             onChangeRadius={newrRadius =>
-                                setAttributes({ boxBorderRadius: newrRadius })
+                                setAttributes({boxBorderRadius: newrRadius})
                             }
                         />
                         <PremiumBoxShadow
@@ -963,22 +960,22 @@ class edit extends Component {
             ),
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay}`}
+                className={`${ mainClasses } video-overlay-${ overlay }`}
                 data-type={videoType}
                 style={{
                     border: boxBorderType,
                     borderWidth: boxBorderWidth + "px",
                     borderRadius: boxBorderRadius + "px",
                     borderColor: boxBorderColor,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                    boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playHoverColor} !important;`,
-                            `background-color: ${playHoverBackColor} !important;`,
+                            `#${ videoBoxId } .premium-video-box__play:hover {`,
+                            `color: ${ playHoverColor } !important;`,
+                            `background-color: ${ playHoverBackColor } !important;`,
                             "}",
                         ].join("\n"),
                     }}
@@ -986,16 +983,13 @@ class edit extends Component {
                 <div className={`premium-video-box__container`}>
                     {"self" !== videoType && (
                         <iframe
-                            src={`${onChangeVideoURL(
+                            src={`${ onChangeVideoURL(
                                 videoType,
                                 videoURL
-                            )}?autoplay=${
-                                overlay ? 0 : autoPlay
-                            }&loop=${loopVideo()}&mute${
-                                "vimeo" == videoType ? "d" : ""
-                            }=${mute}&rel=${
-                                relatedVideos ? "1" : "0"
-                            }&controls=${controls ? "1" : "0"}`}
+                            ) }?autoplay=${ overlay ? 0 : autoPlay
+                                }&loop=${ loopVideo() }&mute${ "vimeo" == videoType ? "d" : ""
+                                }=${ mute }&rel=${ relatedVideos ? "1" : "0"
+                                }&controls=${ controls ? "1" : "0" }`}
                             frameborder="0"
                             gesture="media"
                             allow="encrypted-media"
@@ -1016,8 +1010,8 @@ class edit extends Component {
                     <div
                         className={`premium-video-box__overlay`}
                         style={{
-                            backgroundImage: `url('${overlayImgURL}')`,
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                            backgroundImage: `url('${ overlayImgURL }')`,
+                            filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
                         }}
                     />
                 )}
@@ -1070,7 +1064,7 @@ class edit extends Component {
                                 textTransform: videoDescUpper
                                     ? "uppercase"
                                     : "none",
-                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
+                                textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
                                 fontStyle: videoDescStyle,
                             }}
                         >

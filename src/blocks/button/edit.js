@@ -8,7 +8,7 @@ import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -19,7 +19,7 @@ const {
     Button,
 } = wp.components;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const {
     InspectorControls,
@@ -31,7 +31,7 @@ const {
 } = wp.blockEditor;
 
 const edit = (props) => {
-    const { isSelected, setAttributes, className, clientId: blockId } = props;
+    const {isSelected, setAttributes, className, clientId: blockId} = props;
 
     const {
         id,
@@ -177,21 +177,21 @@ const edit = (props) => {
     ];
 
     const onChangeHover = newValue => {
-        props.setAttributes({ effect: newValue });
+        props.setAttributes({effect: newValue});
         switch (newValue) {
             case "slide":
-                props.setAttributes({ effectDir: "top" });
+                props.setAttributes({effectDir: "top"});
                 break;
             case "shutter":
-                props.setAttributes({ effectDir: "shutouthor" });
+                props.setAttributes({effectDir: "shutouthor"});
                 break;
             case "radial":
-                props.setAttributes({ effectDir: "radialin" });
+                props.setAttributes({effectDir: "radialin"});
                 break;
         }
     };
 
-    setAttributes({ id: blockId });
+    setAttributes({id: blockId});
 
     const addFontToHead = (fontFamily) => {
         const head = document.head;
@@ -207,7 +207,7 @@ const edit = (props) => {
     };
 
     const onChangeTextFamily = (fontFamily) => {
-        setAttributes({ textFontFamily: fontFamily });
+        setAttributes({textFontFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -223,7 +223,7 @@ const edit = (props) => {
                 <AlignmentToolbar
                     value={btnAlign}
                     onChange={newAlign =>
-                        setAttributes({ btnAlign: newAlign })
+                        setAttributes({btnAlign: newAlign})
                     }
                 />
             </BlockControls>
@@ -247,7 +247,7 @@ const edit = (props) => {
                             label={__("Direction")}
                             value={effectDir}
                             onChange={newValue =>
-                                setAttributes({ effectDir: newValue })
+                                setAttributes({effectDir: newValue})
                             }
                         />
                     )}
@@ -257,7 +257,7 @@ const edit = (props) => {
                             label={__("Shutter Direction")}
                             value={effectDir}
                             onChange={newValue =>
-                                setAttributes({ effectDir: newValue })
+                                setAttributes({effectDir: newValue})
                             }
                         />
                     )}
@@ -267,7 +267,7 @@ const edit = (props) => {
                             label={__("Style")}
                             value={effectDir}
                             onChange={newValue =>
-                                setAttributes({ effectDir: newValue })
+                                setAttributes({effectDir: newValue})
                             }
                         />
                     )}
@@ -276,14 +276,14 @@ const edit = (props) => {
                         label={__("Button Size")}
                         value={btnSize}
                         onChange={newSize =>
-                            setAttributes({ btnSize: newSize })
+                            setAttributes({btnSize: newSize})
                         }
                     />
                     <ToggleControl
                         label={__("Open link in new tab")}
                         checked={btnTarget}
                         onChange={newValue =>
-                            setAttributes({ btnTarget: newValue })
+                            setAttributes({btnTarget: newValue})
                         }
                     />
                 </PanelBody>
@@ -314,25 +314,25 @@ const edit = (props) => {
                         upper={textUpper}
                         line={textLine}
                         onChangeSize={newSize =>
-                            setAttributes({ textSize: newSize })
+                            setAttributes({textSize: newSize})
                         }
                         onChangeWeight={newWeight =>
-                            setAttributes({ textWeight: newWeight })
+                            setAttributes({textWeight: newWeight})
                         }
                         onChangeLine={newValue =>
-                            setAttributes({ textLine: newValue })
+                            setAttributes({textLine: newValue})
                         }
                         onChangeSize={newSize =>
-                            setAttributes({ textSize: newSize })
+                            setAttributes({textSize: newSize})
                         }
                         onChangeStyle={newStyle =>
-                            setAttributes({ textStyle: newStyle })
+                            setAttributes({textStyle: newStyle})
                         }
                         onChangeSpacing={newValue =>
-                            setAttributes({ textLetter: newValue })
+                            setAttributes({textLetter: newValue})
                         }
                         onChangeUpper={check =>
-                            setAttributes({ textUpper: check })
+                            setAttributes({textUpper: check})
                         }
                     />
                     <div className="premium-control-toggle">
@@ -341,7 +341,7 @@ const edit = (props) => {
                             className="premium-control-toggle-btn"
                             contentClassName="premium-control-toggle-content"
                             position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
+                            renderToggle={({isOpen, onToggle}) => (
                                 <Button
                                     isSmall
                                     onClick={onToggle}
@@ -382,16 +382,16 @@ const edit = (props) => {
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
                         onChangeColor={newColor =>
-                            setAttributes({ shadowColor: newColor.hex })
+                            setAttributes({shadowColor: newColor.hex})
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({ shadowBlur: newBlur })
+                            setAttributes({shadowBlur: newBlur})
                         }
                         onChangehHorizontal={newValue =>
-                            setAttributes({ shadowHorizontal: newValue })
+                            setAttributes({shadowHorizontal: newValue})
                         }
                         onChangeVertical={newValue =>
-                            setAttributes({ shadowVertical: newValue })
+                            setAttributes({shadowVertical: newValue})
                         }
                     />
                 </PanelBody>
@@ -406,7 +406,7 @@ const edit = (props) => {
                             className="premium-control-toggle-btn"
                             contentClassName="premium-control-toggle-content"
                             position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
+                            renderToggle={({isOpen, onToggle}) => (
                                 <Button
                                     isSmall
                                     onClick={onToggle}
@@ -437,7 +437,6 @@ const edit = (props) => {
                                             })
                                         }
                                     />
-
                                     <p>
                                         {"radial" !== effect
                                             ? __("Background Hover Color")
@@ -463,16 +462,16 @@ const edit = (props) => {
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType =>
-                            setAttributes({ borderType: newType })
+                            setAttributes({borderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ borderWidth: newWidth })
+                            setAttributes({borderWidth: newWidth})
                         }
                         onChangeColor={colorValue =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            setAttributes({borderColor: colorValue.hex})
                         }
                         onChangeRadius={newrRadius =>
-                            setAttributes({ borderRadius: newrRadius })
+                            setAttributes({borderRadius: newrRadius})
                         }
                     />
                     <Fragment>
@@ -530,46 +529,46 @@ const edit = (props) => {
                     />
                     <PremiumSizeUnits
                         onChangeSizeUnit={newValue =>
-                            setAttributes({ paddingU: newValue })
+                            setAttributes({paddingU: newValue})
                         }
                     />
                     <RangeControl
                         label={__("Padding")}
                         value={padding}
                         onChange={newValue =>
-                            setAttributes({ padding: newValue })
+                            setAttributes({padding: newValue})
                         }
                     />
                 </PanelBody>
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
-            style={{ textAlign: btnAlign }}
+            id={`${ mainClasses }-wrap-${ id }`}
+            className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir }`}
+            style={{textAlign: btnAlign}}
         >
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-button-wrap-${id} .premium-button:hover {`,
-                        `color: ${textHoverColor} !important;`,
-                        `border-color: ${borderHoverColor} !important;`,
+                        `#premium-button-wrap-${ id } .premium-button:hover {`,
+                        `color: ${ textHoverColor } !important;`,
+                        `border-color: ${ borderHoverColor } !important;`,
                         "}",
-                        `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                        `background-color: ${backHoverColor} !important;`,
+                        `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                        `background-color: ${ backHoverColor } !important;`,
                         "}",
-                        `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                        `background-color: ${slideColor}`,
+                        `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                        `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                        `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                        `background-color: ${ slideColor }`,
                         "}",
                     ].join("\n"),
                 }}
             />
             <RichText
-                className={`premium-button premium-button__${btnSize}`}
+                className={`premium-button premium-button__${ btnSize }`}
                 value={btnText}
-                onChange={(value) => setAttributes({ btnText: value })}
+                onChange={(value) => setAttributes({btnText: value})}
                 style={{
                     color: textColor,
                     backgroundColor: backColor
@@ -582,8 +581,8 @@ const edit = (props) => {
                     fontStyle: textStyle,
                     lineHeight: textLine + "px",
                     fontWeight: textWeight,
-                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                    textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                     padding: padding + paddingU,
                     border: borderType,
                     borderWidth: borderWidth + "px",
@@ -594,7 +593,7 @@ const edit = (props) => {
             />
             <URLInput
                 value={btnLink}
-                onChange={newLink => setAttributes({ btnLink: newLink })}
+                onChange={newLink => setAttributes({btnLink: newLink})}
             />
         </div>,
     ];

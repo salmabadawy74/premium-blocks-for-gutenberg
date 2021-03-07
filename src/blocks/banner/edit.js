@@ -6,9 +6,9 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const {
     IconButton,
@@ -32,7 +32,7 @@ const {
 } = wp.blockEditor;
 
 const edit = props => {
-    const { isSelected, setAttributes, className, clientId: blockID } = props;
+    const {isSelected, setAttributes, className, clientId: blockID} = props;
     const {
         id,
         imageID,
@@ -179,7 +179,7 @@ const edit = props => {
             label: __("Custom"),
         },
     ];
-    setAttributes({ id: blockID });
+    setAttributes({id: blockID});
 
     const mainClasses = classnames(className, "premium-banner");
 
@@ -193,13 +193,13 @@ const edit = props => {
                         )}
                         icon="update"
                         className="components-toolbar__control"
-                        onClick={() => setAttributes({ id: blockID })}
+                        onClick={() => setAttributes({id: blockID})}
                     />
                 </Toolbar>
                 <AlignmentToolbar
                     value={contentAlign}
                     onChange={newAlign =>
-                        setAttributes({ contentAlign: newAlign })
+                        setAttributes({contentAlign: newAlign})
                     }
                 />
             </BlockControls>
@@ -221,7 +221,7 @@ const edit = props => {
                         }}
                         type="image"
                         value={imageID}
-                        render={({ open }) => (
+                        render={({open}) => (
                             <Fragment>
                                 {imageURL && (
                                     <span className="premium-image-media">
@@ -281,23 +281,23 @@ const edit = props => {
                         contrast={contrast}
                         saturation={saturation}
                         hue={hue}
-                        onChangeBlur={value => setAttributes({ blur: value })}
+                        onChangeBlur={value => setAttributes({blur: value})}
                         onChangeBright={value =>
-                            setAttributes({ bright: value })
+                            setAttributes({bright: value})
                         }
                         onChangeContrast={value =>
-                            setAttributes({ contrast: value })
+                            setAttributes({contrast: value})
                         }
                         onChangeSat={value =>
-                            setAttributes({ saturation: value })
+                            setAttributes({saturation: value})
                         }
-                        onChangeHue={value => setAttributes({ hue: value })}
+                        onChangeHue={value => setAttributes({hue: value})}
                     />
                     <SelectControl
                         label={__("Banner Style")}
                         value={effect}
                         onChange={newEffect =>
-                            setAttributes({ effect: newEffect })
+                            setAttributes({effect: newEffect})
                         }
                         options={EFFECTS}
                     />
@@ -306,20 +306,20 @@ const edit = props => {
                         options={HOVER}
                         value={hoverEffect}
                         onChange={newEffect =>
-                            setAttributes({ hoverEffect: newEffect })
+                            setAttributes({hoverEffect: newEffect})
                         }
                     />
                     <ToggleControl
                         label={__("Always Hovered")}
                         checked={hovered}
-                        onChange={check => setAttributes({ hovered: check })}
+                        onChange={check => setAttributes({hovered: check})}
                     />
                     <SelectControl
                         label={__("Height")}
                         options={HEIGHT}
                         value={height}
                         onChange={newHeight =>
-                            setAttributes({ height: newHeight })
+                            setAttributes({height: newHeight})
                         }
                     />
                     <p>{"custom" === height && __("Min Height (PX)")}</p>
@@ -329,7 +329,7 @@ const edit = props => {
                             min="10"
                             max="800"
                             onChange={newSize =>
-                                setAttributes({ minHeight: newSize })
+                                setAttributes({minHeight: newSize})
                             }
                         />
                     )}
@@ -339,7 +339,7 @@ const edit = props => {
                             options={ALIGNS}
                             value={verAlign}
                             onChange={newValue =>
-                                setAttributes({ verAlign: newValue })
+                                setAttributes({verAlign: newValue})
                             }
                         />
                     )}
@@ -374,14 +374,14 @@ const edit = props => {
                         label={__("Link")}
                         checked={urlCheck}
                         onChange={newCheck =>
-                            setAttributes({ urlCheck: newCheck })
+                            setAttributes({urlCheck: newCheck})
                         }
                     />
                     {urlCheck && (
                         <TextControl
                             value={url}
                             onChange={newURL =>
-                                setAttributes({ url: newURL })
+                                setAttributes({url: newURL})
                             }
                         />
                     )}
@@ -390,7 +390,7 @@ const edit = props => {
                             label={__("Open link in new tab")}
                             checked={target}
                             onChange={newValue =>
-                                setAttributes({ target: newValue })
+                                setAttributes({target: newValue})
                             }
                         />
                     )}
@@ -398,7 +398,7 @@ const edit = props => {
                         label={__("Hide Description on Mobiles")}
                         checked={responsive}
                         onChange={newValue =>
-                            setAttributes({ responsive: newValue })
+                            setAttributes({responsive: newValue})
                         }
                     />
                 </PanelBody>
@@ -413,7 +413,7 @@ const edit = props => {
                             icon: "heading",
                             isActive: "H" + tag === titleTag,
                             onClick: () =>
-                                setAttributes({ titleTag: "H" + tag }),
+                                setAttributes({titleTag: "H" + tag}),
                             subscript: tag,
                         }))}
                     />
@@ -423,7 +423,7 @@ const edit = props => {
                         weight={titleWeight}
                         line={titleLine}
                         onChangeSize={newSize =>
-                            setAttributes({ titleSize: newSize })
+                            setAttributes({titleSize: newSize})
                         }
                         onChangeWeight={newWeight =>
                             setAttributes({
@@ -531,7 +531,7 @@ const edit = props => {
                         weight={descWeight}
                         line={descLine}
                         onChangeSize={newSize =>
-                            setAttributes({ descSize: newSize })
+                            setAttributes({descSize: newSize})
                         }
                         onChangeWeight={newWeight =>
                             setAttributes({
@@ -574,7 +574,7 @@ const edit = props => {
                                         : newColor.hex,
                             })
                         }
-                        onChangeBlur={ newBlur =>
+                        onChangeBlur={newBlur =>
                             setAttributes({
                                 descShadowBlur:
                                     newBlur === undefined ? 0 : newBlur,
@@ -586,7 +586,7 @@ const edit = props => {
                                     newValue === undefined ? 0 : newValue,
                             })
                         }
-                        onChangeVertical={ newValue =>
+                        onChangeVertical={newValue =>
                             setAttributes({
                                 descShadowVertical:
                                     newValue === undefined ? 0 : newValue,
@@ -605,7 +605,7 @@ const edit = props => {
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType =>
-                            setAttributes({ borderType: newType })
+                            setAttributes({borderType: newType})
                         }
                         onChangeWidth={newWidth =>
                             setAttributes({
@@ -689,15 +689,15 @@ const edit = props => {
                         }
                         selectedUnit={paddingU}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingU: newvalue })
+                            setAttributes({paddingU: newvalue})
                         }
                     />
                 </PanelBody>
             </InspectorControls>
         ),
         <div
-            id={`premium-banner-${id}`}
-            className={`${mainClasses} premium-banner__responsive_${responsive}`}
+            id={`premium-banner-${ id }`}
+            className={`${ mainClasses } premium-banner__responsive_${ responsive }`}
             style={{
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -708,23 +708,23 @@ const edit = props => {
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                        `background: ${sepColor}`,
+                        `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                        `background: ${ sepColor }`,
                         "}",
-                        `#premium-banner-${id} .premium-banner__inner {`,
-                        `background: ${background}`,
+                        `#premium-banner-${ id } .premium-banner__inner {`,
+                        `background: ${ background }`,
                         "}",
-                        `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                        `opacity: ${background ? 1 - opacity / 100 : 1} `,
+                        `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
+                        `opacity: ${ background ? 1 - opacity / 100 : 1 } `,
                         "}",
                     ].join("\n"),
                 }}
             />
             {imageURL && (
                 <div
-                    className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
+                    className={`premium-banner__inner premium-banner__min premium-banner__${ effect } premium-banner__${ hoverEffect } hover_${ hovered }`}
                     style={{
-                        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+                        boxShadow: `${ containerShadowHorizontal }px ${ containerShadowVertical }px ${ containerShadowBlur }px ${ containerShadowColor } ${ containerShadowPosition }`,
                         border: borderType,
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius + "px",
@@ -732,7 +732,7 @@ const edit = props => {
                     }}
                 >
                     <div
-                        className={`premium-banner__img_wrap premium-banner__${height}`}
+                        className={`premium-banner__img_wrap premium-banner__${ height }`}
                         style={{
                             minHeight: minHeight,
                             alignItems: verAlign,
@@ -743,7 +743,7 @@ const edit = props => {
                             alt="Banner Image"
                             src={imageURL}
                             style={{
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                                filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
                             }}
                         />
                     </div>
@@ -769,14 +769,14 @@ const edit = props => {
                                 value={title}
                                 isSelected={false}
                                 onChange={(newText) =>
-                                    setAttributes({ title: newText })
+                                    setAttributes({title: newText})
                                 }
                                 style={{
                                     color: titleColor,
                                     fontSize: titleSize + "px",
                                     fontWeight: titleWeight,
                                     lineHeight: titleLine + "px",
-                                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                                    textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
                                 }}
                             />
                         </div>
@@ -792,14 +792,14 @@ const edit = props => {
                                 value={desc}
                                 isSelected={false}
                                 onChange={(newText) =>
-                                    setAttributes({ desc: newText })
+                                    setAttributes({desc: newText})
                                 }
                                 style={{
                                     color: descColor,
                                     fontSize: descSize + "px",
                                     fontWeight: descWeight,
                                     lineHeight: descLine + "px",
-                                    textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
+                                    textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
                                 }}
                             />
                         </div>

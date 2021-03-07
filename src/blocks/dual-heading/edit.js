@@ -6,9 +6,9 @@ import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
-const { Fragment } = wp.element;
+const {Fragment} = wp.element;
 
 const {
     PanelBody,
@@ -29,7 +29,7 @@ const {
 } = wp.blockEditor;
 
 const edit = (props) => {
-    const { setAttributes, isSelected, className } = props;
+    const {setAttributes, isSelected, className} = props;
 
     const {
         contentAlign,
@@ -126,7 +126,7 @@ const edit = (props) => {
     };
 
     const onChangeFirstFamily = fontFamily => {
-        setAttributes({ firstFamily: fontFamily });
+        setAttributes({firstFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -135,7 +135,7 @@ const edit = (props) => {
     };
 
     const onChangeSecondFamily = fontFamily => {
-        setAttributes({ secondFamily: fontFamily });
+        setAttributes({secondFamily: fontFamily});
         if (!fontFamily) {
             return;
         }
@@ -154,7 +154,7 @@ const edit = (props) => {
                 <AlignmentToolbar
                     value={contentAlign}
                     onChange={newAlign =>
-                        setAttributes({ contentAlign: newAlign })
+                        setAttributes({contentAlign: newAlign})
                     }
                 />
             </BlockControls>
@@ -171,7 +171,7 @@ const edit = (props) => {
                         type="url"
                         value={firstHeading}
                         onChange={value =>
-                            setAttributes({ firstHeading: value })
+                            setAttributes({firstHeading: value})
                         }
                     />
                     <TextControl
@@ -179,7 +179,7 @@ const edit = (props) => {
                         type="url"
                         value={secondHeading}
                         onChange={value =>
-                            setAttributes({ secondHeading: value })
+                            setAttributes({secondHeading: value})
                         }
                     />
 
@@ -187,13 +187,13 @@ const edit = (props) => {
                         label={__("Display")}
                         value={display}
                         options={DISPLAY}
-                        onChange={value => setAttributes({ display: value })}
+                        onChange={value => setAttributes({display: value})}
                     />
                     <ToggleControl
                         label={__("Link")}
                         checked={link}
                         onChange={newValue =>
-                            setAttributes({ link: newValue })
+                            setAttributes({link: newValue})
                         }
                     />
                     {link && (
@@ -201,7 +201,7 @@ const edit = (props) => {
                             label={__("Open link in new tab")}
                             checked={target}
                             onChange={newValue =>
-                                setAttributes({ target: newValue })
+                                setAttributes({target: newValue})
                             }
                         />
                     )}
@@ -215,7 +215,7 @@ const edit = (props) => {
                         label={__("Clipped")}
                         checked={firstClip}
                         onChange={newValue =>
-                            setAttributes({ firstClip: newValue })
+                            setAttributes({firstClip: newValue})
                         }
                     />
                     {firstClip && (
@@ -224,14 +224,14 @@ const edit = (props) => {
                                 label={__("Animated")}
                                 checked={firstAnim}
                                 onChange={newValue =>
-                                    setAttributes({ firstAnim: newValue })
+                                    setAttributes({firstAnim: newValue})
                                 }
                             />
                             <ToggleControl
                                 label={__("Stroke")}
                                 checked={firstStroke}
                                 onChange={newValue =>
-                                    setAttributes({ firstStroke: newValue })
+                                    setAttributes({firstStroke: newValue})
                                 }
                             />
                         </Fragment>
@@ -256,19 +256,19 @@ const edit = (props) => {
                         spacing={firstLetter}
                         upper={firstUpper}
                         onChangeSize={newSize =>
-                            setAttributes({ firstSize: newSize || 20 })
+                            setAttributes({firstSize: newSize || 20})
                         }
                         onChangeWeight={newWeight =>
-                            setAttributes({ firstWeight: newWeight || 500 })
+                            setAttributes({firstWeight: newWeight || 500})
                         }
                         onChangeStyle={newStyle =>
-                            setAttributes({ firstStyle: newStyle })
+                            setAttributes({firstStyle: newStyle})
                         }
                         onChangeSpacing={newValue =>
-                            setAttributes({ firstLetter: newValue })
+                            setAttributes({firstLetter: newValue})
                         }
                         onChangeUpper={check =>
-                            setAttributes({ firstUpper: check })
+                            setAttributes({firstUpper: check})
                         }
                     />
 
@@ -279,7 +279,7 @@ const edit = (props) => {
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
                                 position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
+                                renderToggle={({isOpen, onToggle}) => (
                                     <Button
                                         isSmall
                                         onClick={onToggle}
@@ -329,7 +329,7 @@ const edit = (props) => {
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
                                 position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
+                                renderToggle={({isOpen, onToggle}) => (
                                     <Button
                                         isSmall
                                         onClick={onToggle}
@@ -372,10 +372,10 @@ const edit = (props) => {
                         borderColor={firstBorderColor}
                         borderRadius={firstBorderRadius}
                         onChangeType={newType =>
-                            setAttributes({ firstBorderType: newType })
+                            setAttributes({firstBorderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ firstBorderWidth: newWidth || "0" })
+                            setAttributes({firstBorderWidth: newWidth || "0"})
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -401,7 +401,7 @@ const edit = (props) => {
                             })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({ firstShadowBlur: newBlur || "0" })
+                            setAttributes({firstShadowBlur: newBlur || "0"})
                         }
                         onChangehHorizontal={newValue =>
                             setAttributes({
@@ -421,7 +421,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newMargin =>
-                            setAttributes({ firstMarginL: newMargin || "0" })
+                            setAttributes({firstMarginL: newMargin || "0"})
                         }
                     />
                     <p>{__("Margin Right")}</p>
@@ -430,7 +430,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newMargin =>
-                            setAttributes({ firstMarginR: newMargin || "0" })
+                            setAttributes({firstMarginR: newMargin || "0"})
                         }
                     />
                     <p>{__("Padding")}</p>
@@ -439,7 +439,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newPadding =>
-                            setAttributes({ firstPadding: newPadding || "0" })
+                            setAttributes({firstPadding: newPadding || "0"})
                         }
                     />
                 </PanelBody>
@@ -452,7 +452,7 @@ const edit = (props) => {
                         label={__("Clipped")}
                         checked={secondClip}
                         onChange={newValue =>
-                            setAttributes({ secondClip: newValue })
+                            setAttributes({secondClip: newValue})
                         }
                     />
                     {secondClip && (
@@ -461,14 +461,14 @@ const edit = (props) => {
                                 label={__("Animated")}
                                 checked={secondAnim}
                                 onChange={newValue =>
-                                    setAttributes({ secondAnim: newValue })
+                                    setAttributes({secondAnim: newValue})
                                 }
                             />
                             <ToggleControl
                                 label={__("Stroke")}
                                 checked={secondStroke}
                                 onChange={newValue =>
-                                    setAttributes({ secondStroke: newValue })
+                                    setAttributes({secondStroke: newValue})
                                 }
                             />
                         </Fragment>
@@ -493,19 +493,19 @@ const edit = (props) => {
                         spacing={secondLetter}
                         upper={secondUpper}
                         onChangeSize={newSize =>
-                            setAttributes({ secondSize: newSize || 20 })
+                            setAttributes({secondSize: newSize || 20})
                         }
                         onChangeWeight={newWeight =>
-                            setAttributes({ secondWeight: newWeight || 500 })
+                            setAttributes({secondWeight: newWeight || 500})
                         }
                         onChangeStyle={newStyle =>
-                            setAttributes({ secondStyle: newStyle })
+                            setAttributes({secondStyle: newStyle})
                         }
                         onChangeSpacing={newValue =>
-                            setAttributes({ secondLetter: newValue })
+                            setAttributes({secondLetter: newValue})
                         }
                         onChangeUpper={check =>
-                            setAttributes({ secondUpper: check })
+                            setAttributes({secondUpper: check})
                         }
                     />
 
@@ -516,7 +516,7 @@ const edit = (props) => {
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
                                 position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
+                                renderToggle={({isOpen, onToggle}) => (
                                     <Button
                                         isSmall
                                         onClick={onToggle}
@@ -567,7 +567,7 @@ const edit = (props) => {
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
                                 position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
+                                renderToggle={({isOpen, onToggle}) => (
                                     <Button
                                         isSmall
                                         onClick={onToggle}
@@ -614,10 +614,10 @@ const edit = (props) => {
                         borderColor={secondBorderColor}
                         borderRadius={secondBorderRadius}
                         onChangeType={newType =>
-                            setAttributes({ secondBorderType: newType })
+                            setAttributes({secondBorderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ secondBorderWidth: newWidth })
+                            setAttributes({secondBorderWidth: newWidth})
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -644,7 +644,7 @@ const edit = (props) => {
                             })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({ secondShadowBlur: newBlur || "0" })
+                            setAttributes({secondShadowBlur: newBlur || "0"})
                         }
                         onChangehHorizontal={newValue =>
                             setAttributes({
@@ -663,7 +663,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newMargin =>
-                            setAttributes({ secondMarginL: newMargin || "0" })
+                            setAttributes({secondMarginL: newMargin || "0"})
                         }
                     />
                     <p>{__("Margin Right")}</p>
@@ -672,7 +672,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newMargin =>
-                            setAttributes({ secondMarginR: newMargin || "0" })
+                            setAttributes({secondMarginR: newMargin || "0"})
                         }
                     />
                     <p>{__("Padding")}</p>
@@ -681,7 +681,7 @@ const edit = (props) => {
                         min="0"
                         max="100"
                         onChange={newPadding =>
-                            setAttributes({ secondPadding: newPadding || "0" })
+                            setAttributes({secondPadding: newPadding || "0"})
                         }
                     />
                 </PanelBody>
@@ -701,7 +701,7 @@ const edit = (props) => {
                         }
                         opacityValue={containerOpacity}
                         onChangeOpacity={value =>
-                            setAttributes({ containerOpacity: value })
+                            setAttributes({containerOpacity: value})
                         }
                     />
                     <PremiumBackground
@@ -718,19 +718,19 @@ const edit = (props) => {
                             });
                         }}
                         onRemoveImage={value =>
-                            setAttributes({ imageURL: "", imageID: "" })
+                            setAttributes({imageURL: "", imageID: ""})
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
+                            setAttributes({backgroundPosition: newValue})
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
+                            setAttributes({backgroundRepeat: newValue})
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
+                            setAttributes({backgroundSize: newValue})
                         }
                         onChangeFixed={check =>
-                            setAttributes({ fixed: check })
+                            setAttributes({fixed: check})
                         }
                     />
 
@@ -740,10 +740,10 @@ const edit = (props) => {
                         borderColor={containerBorderColor}
                         borderRadius={containerBorderRadius}
                         onChangeType={newType =>
-                            setAttributes({ containerBorderType: newType })
+                            setAttributes({containerBorderType: newType})
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes({ containerBorderWidth: newWidth })
+                            setAttributes({containerBorderWidth: newWidth})
                         }
                         onChangeColor={colorValue =>
                             setAttributes({
@@ -751,7 +751,7 @@ const edit = (props) => {
                             })
                         }
                         onChangeRadius={newrRadius =>
-                            setAttributes({ containerBorderRadius: newrRadius })
+                            setAttributes({containerBorderRadius: newrRadius})
                         }
                     />
                 </PanelBody>
@@ -759,13 +759,13 @@ const edit = (props) => {
         ),
 
         <div
-            className={`${mainClasses}`}
+            className={`${ mainClasses }`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: containerBack
                     ? hexToRgba(containerBack, containerOpacity)
                     : "transparent",
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
+                backgroundImage: imageURL ? `url('${ imageURL }')` : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -779,17 +779,17 @@ const edit = (props) => {
             <div className={`premium-dheading-block__wrap`}>
                 <h2 className={`premium-dheading-block__title`}>
                     <span
-                        className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
+                        className={`premium-dheading-block__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim } premium-headings-${ firstStroke }`}
                         style={{
                             display: display,
                             color: firstColor,
                             backgroundColor: firstClip
                                 ? "none"
                                 : firstBackground
-                                ? hexToRgba(firstBackground, firstOpacity)
-                                : "transparent",
+                                    ? hexToRgba(firstBackground, firstOpacity)
+                                    : "transparent",
                             backgroundImage: firstClip
-                                ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
+                                ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
                                 : "none",
                             fontSize: firstSize + "px",
                             fontFamily: firstFamily,
@@ -804,23 +804,23 @@ const edit = (props) => {
                             padding: firstPadding + "px",
                             marginLeft: firstMarginL + "px",
                             marginRight: firstMarginR + "px",
-                            textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
+                            textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
                         }}
                     >
                         {firstHeading}
                     </span>
                     <span
-                        className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
+                        className={`premium-dheading-block__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim } premium-headings-${ secondStroke }`}
                         style={{
                             display: display,
                             color: secondColor,
                             backgroundColor: secondClip
                                 ? "none"
                                 : secondBackground
-                                ? hexToRgba(secondBackground, secondOpacity)
-                                : "transparent",
+                                    ? hexToRgba(secondBackground, secondOpacity)
+                                    : "transparent",
                             backgroundImage: secondClip
-                                ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
+                                ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
                                 : "none",
                             fontSize: secondSize + "px",
                             fontFamily: secondFamily,
@@ -835,7 +835,7 @@ const edit = (props) => {
                             padding: secondPadding + "px",
                             marginLeft: secondMarginL + "px",
                             marginRight: secondMarginR + "px",
-                            textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
+                            textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
                         }}
                     >
                         {secondHeading}
@@ -845,7 +845,7 @@ const edit = (props) => {
             {link && isSelected && (
                 <URLInput
                     value={headingURL}
-                    onChange={(newUrl) => setAttributes({ headingURL: newUrl })}
+                    onChange={(newUrl) => setAttributes({headingURL: newUrl})}
                 />
             )}
         </div>,
