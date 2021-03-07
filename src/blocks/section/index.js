@@ -11,141 +11,141 @@ const { registerBlockType } = wp.blocks;
 
 const containerAttrs = {
     block_id: {
-        type:"string"
+        type: "string",
     },
     stretchSection: {
         type: "boolean",
-        default: false
+        default: false,
     },
     innerWidthType: {
         type: "string",
-        default: "boxed"
+        default: "boxed",
     },
     horAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     height: {
         type: "string",
-        default: "min"
+        default: "min",
     },
     innerWidth: {
-        type: "number"
+        type: "number",
     },
     minHeight: {
-        type: "number"
+        type: "number",
     },
     minHeightUnit: {
-        type: "string"
+        type: "string",
     },
     vPos: {
         type: "string",
-        default: "top"
+        default: "top",
     },
     color: {
-        type: "string"
+        type: "string",
     },
     imageID: {
-        type: "string"
+        type: "string",
     },
     imageURL: {
-        type: "string"
+        type: "string",
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat"
+        default: "no-repeat",
     },
     backgroundPosition: {
         type: "string",
-        default: "top center"
+        default: "top center",
     },
     backgroundSize: {
         type: "string",
-        default: "auto"
+        default: "auto",
     },
     fixed: {
         type: "boolean",
-        default: false
+        default: false,
     },
     borderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     borderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     borderRadius: {
-        type: "number"
+        type: "number",
     },
     borderColor: {
-        type: "string"
+        type: "string",
     },
     marginTop: {
-        type: "number"
+        type: "number",
     },
     marginBottom: {
-        type: "number"
+        type: "number",
     },
     marginLeft: {
-        type: "number"
+        type: "number",
     },
     marginRight: {
-        type: "number"
+        type: "number",
     },
     marginUnit: {
-        type: "string"
+        type: "string",
     },
     paddingTop: {
-        type: "number"
+        type: "number",
     },
     paddingRight: {
-        type: "number"
+        type: "number",
     },
     paddingBottom: {
-        type: "number"
+        type: "number",
     },
     paddingLeft: {
-        type: "number"
+        type: "number",
     },
     paddingUnit: {
-        type: "string"
+        type: "string",
     },
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
     showDesk: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     showTablet: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     showMobile: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     classMigrate: {
-        type: 'boolean',
-        default: false
-    }
+        type: "boolean",
+        default: false,
+    },
 };
 registerBlockType("premium/container", {
     title: __("Section"),
@@ -155,7 +155,7 @@ registerBlockType("premium/container", {
     supports: {
         inserter: container,
         align: true,
-        align: ["center", "wide", "full"]
+        align: ["center", "wide", "full"],
     },
     example: {
         attributes: {
@@ -164,5 +164,5 @@ registerBlockType("premium/container", {
     },
     edit: edit,
     save: save,
-    deprecated: deprecatedContent
+    deprecated: deprecatedContent,
 });

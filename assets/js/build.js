@@ -40670,19 +40670,19 @@ var containerAttrs = {
         default: ""
     },
     showDesk: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     showTablet: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     showMobile: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     classMigrate: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     }
 };
@@ -40767,7 +40767,9 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
+            this.props.setAttributes({
+                block_id: this.props.clientId.substr(0, 6)
+            });
 
             // Assigning id in the attribute.
             this.props.setAttributes({ classMigrate: true });
@@ -40849,7 +40851,7 @@ var edit = function (_Component) {
                 label: __("Bottom")
             }];
 
-            var element = document.getElementById('premium-style-section-' + block_id);
+            var element = document.getElementById("premium-style-section-" + block_id);
 
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_7__styling__["a" /* default */])(this.props);
@@ -40915,7 +40917,9 @@ var edit = function (_Component) {
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
                             units: ["px", "vh", "vw"],
                             onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                return setAttributes({ minHeightUnit: newValue });
+                                return setAttributes({
+                                    minHeightUnit: newValue
+                                });
                             }
                         }),
                         wp.element.createElement(RangeControl, {
@@ -40998,21 +41002,21 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     wp.element.createElement(ToggleControl, {
-                        label: __('Hide in Desktop'),
+                        label: __("Hide in Desktop"),
                         checked: showDesk,
                         onChange: function onChange() {
                             return setAttributes({ showDesk: !showDesk });
                         }
                     }),
                     wp.element.createElement(ToggleControl, {
-                        label: __('Hide in Tablet'),
+                        label: __("Hide in Tablet"),
                         checked: showTablet,
                         onChange: function onChange() {
                             return setAttributes({ showTablet: !showTablet });
                         }
                     }),
                     wp.element.createElement(ToggleControl, {
-                        label: __('Hide in Mobile'),
+                        label: __("Hide in Mobile"),
                         checked: showMobile,
                         onChange: function onChange() {
                             return setAttributes({ showMobile: !showMobile });
@@ -41134,13 +41138,15 @@ var edit = function (_Component) {
                 })
             ), wp.element.createElement(
                 "div",
-                { className: "premium-container-" + block_id, id: "premium-container-" + block_id },
+                {
+                    className: "premium-container-" + block_id,
+                    id: "premium-container-" + block_id
+                },
                 wp.element.createElement(
                     "div",
                     {
                         className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType,
                         style: {
-
                             textAlign: horAlign,
                             minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                             backgroundColor: color,
@@ -41148,7 +41154,7 @@ var edit = function (_Component) {
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
                             borderColor: borderColor,
-                            backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
+                            backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
                             backgroundRepeat: backgroundRepeat,
                             backgroundPosition: backgroundPosition,
                             backgroundSize: backgroundSize,
@@ -41186,8 +41192,6 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-;
-
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
@@ -41196,7 +41200,6 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(72);
 
 
 function styling(props) {
@@ -41207,6 +41210,7 @@ function styling(props) {
         showTablet = _props$attributes.showTablet,
         showMobile = _props$attributes.showMobile;
 
+
     var selectors = {};
     var tablet_selectors = {};
     var mobile_selectors = {};
@@ -41216,24 +41220,28 @@ function styling(props) {
             display: showDesk ? "none" : "block"
         }
     };
+
     tablet_selectors = {
         " .premium-container": {
             display: showTablet ? "none" : "block"
         }
     };
+
     mobile_selectors = {
-        ' .premium-container': {
+        " .premium-container": {
             display: showMobile ? "none" : "block"
         }
     };
+
     var styling_css = "";
 
-    var id = '#premium-container-' + block_id;
+    var id = "#premium-container-" + block_id;
     if (classMigrate) {
-        id = '.premium-container-' + block_id;
+        id = ".premium-container-" + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
@@ -41294,15 +41302,18 @@ var save = function save(props) {
         shadowPosition = _props$attributes.shadowPosition;
 
 
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-container');
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
 
     return wp.element.createElement(
-        'div',
-        { className: 'premium-container-' + block_id, id: 'premium-container-' + block_id },
+        "div",
+        {
+            className: "premium-container-" + block_id,
+            id: "premium-container-" + block_id
+        },
         wp.element.createElement(
-            'div',
+            "div",
             {
-                className: mainClasses + ' premium-container__stretch_' + stretchSection + ' premium-container__' + innerWidthType,
+                className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType,
                 style: {
                     textAlign: horAlign,
                     minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -41311,7 +41322,7 @@ var save = function save(props) {
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
-                    backgroundImage: 'url(\'' + imageURL + '\')',
+                    backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -41324,20 +41335,20 @@ var save = function save(props) {
                     paddingBottom: paddingBottom + paddingUnit,
                     paddingLeft: paddingLeft + paddingUnit,
                     paddingRight: paddingRight + paddingUnit,
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
                 }
             },
             wp.element.createElement(
-                'div',
+                "div",
                 {
-                    className: 'premium-container__content_wrap premium-container__' + vPos,
+                    className: "premium-container__content_wrap premium-container__" + vPos,
                     style: {
                         maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
                     }
                 },
                 wp.element.createElement(
-                    'div',
-                    { className: 'premium-container__content_inner' },
+                    "div",
+                    { className: "premium-container__content_inner" },
                     wp.element.createElement(InnerBlocks.Content, null)
                 )
             )
@@ -41602,7 +41613,6 @@ var deprecated_attributes_1_7_1 = {
         type: "string",
         default: ""
     }
-
 };
 
 var newAttributes_1_7_2 = {
@@ -41610,19 +41620,19 @@ var newAttributes_1_7_2 = {
         type: "string"
     },
     showDesk: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     showTablet: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     showMobile: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     classMigrate: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     }
 };
@@ -41636,7 +41646,7 @@ var deprecatedContent = [{
             showDesk: false,
             showTablet: false,
             showMobile: false,
-            block_id: ''
+            block_id: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -42043,7 +42053,9 @@ var deprecatedContent = [{
                 "div",
                 {
                     className: className + "__content_wrap " + className + "__" + vPos,
-                    style: { width: innerWidth ? innerWidth + "%" : "100%" }
+                    style: {
+                        width: innerWidth ? innerWidth + "%" : "100%"
+                    }
                 },
                 wp.element.createElement(
                     "div",

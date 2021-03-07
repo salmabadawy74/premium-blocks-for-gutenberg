@@ -18,17 +18,18 @@ const {
     AlignmentToolbar,
     InnerBlocks,
     InspectorControls,
-    ColorPalette
+    ColorPalette,
 } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert your text or select a block ") }]
+    ["core/paragraph", { content: __("Insert your text or select a block ") }],
 ];
 
 class edit extends Component {
-
-    componentDidMount () {
-        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
+    componentDidMount() {
+        this.props.setAttributes({
+            block_id: this.props.clientId.substr(0, 6),
+        });
 
         // Assigning id in the attribute.
         this.props.setAttributes({ classMigrate: true });
@@ -37,14 +38,12 @@ class edit extends Component {
         const $style = document.createElement("style");
         $style.setAttribute(
             "id",
-            "premium-style-section-"+this.props.clientId.substr(0, 6)
+            "premium-style-section-" + this.props.clientId.substr(0, 6)
         );
         document.head.appendChild($style);
-
     }
     render() {
-
-        const { isSelected, className, setAttributes,attributes } = this.props;
+        const { isSelected, className, setAttributes, attributes } = this.props;
 
         const {
             block_id,
@@ -84,44 +83,46 @@ class edit extends Component {
             shadowPosition,
             showDesk,
             showTablet,
-            showMobile
+            showMobile,
         } = attributes;
         const WIDTH = [
             {
                 value: "boxed",
-                label: __("Boxed")
+                label: __("Boxed"),
             },
             {
                 value: "full",
-                label: __("Full Width")
-            }
+                label: __("Full Width"),
+            },
         ];
         const HEIGHT = [
             {
                 value: "fit",
-                label: __("Fit to Screen")
+                label: __("Fit to Screen"),
             },
             {
                 value: "min",
-                label: __("Min Height")
-            }
+                label: __("Min Height"),
+            },
         ];
         const VPOSITION = [
             {
                 value: "top",
-                label: __("Top")
+                label: __("Top"),
             },
             {
                 value: "middle",
-                label: __("Middle")
+                label: __("Middle"),
             },
             {
                 value: "bottom",
-                label: __("Bottom")
-            }
+                label: __("Bottom"),
+            },
         ];
 
-        var element = document.getElementById('premium-style-section-'+block_id);
+        var element = document.getElementById(
+            "premium-style-section-" + block_id
+        );
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props);
@@ -134,7 +135,9 @@ class edit extends Component {
                 <BlockControls key="controls">
                     <AlignmentToolbar
                         value={horAlign}
-                        onChange={newAlign => setAttributes({ horAlign: newAlign })}
+                        onChange={newAlign =>
+                            setAttributes({ horAlign: newAlign })
+                        }
                     />
                 </BlockControls>
             ),
@@ -189,7 +192,9 @@ class edit extends Component {
                                 <PremiumSizeUnits
                                     units={["px", "vh", "vw"]}
                                     onChangeSizeUnit={newValue =>
-                                        setAttributes({ minHeightUnit: newValue })
+                                        setAttributes({
+                                            minHeightUnit: newValue,
+                                        })
                                     }
                                 />
                                 <RangeControl
@@ -210,7 +215,9 @@ class edit extends Component {
                             )}
                             options={VPOSITION}
                             value={vPos}
-                            onChange={newValue => setAttributes({ vPos: newValue })}
+                            onChange={newValue =>
+                                setAttributes({ vPos: newValue })
+                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -223,7 +230,7 @@ class edit extends Component {
                             value={color}
                             onChange={newValue =>
                                 setAttributes({
-                                    color: newValue
+                                    color: newValue,
                                 })
                             }
                             allowReset={true}
@@ -241,7 +248,7 @@ class edit extends Component {
                             onSelectMedia={media => {
                                 setAttributes({
                                     imageID: media.id,
-                                    imageURL: media.url
+                                    imageURL: media.url,
                                 });
                             }}
                             onRemoveImage={value =>
@@ -256,7 +263,9 @@ class edit extends Component {
                             onChangeBackSize={newValue =>
                                 setAttributes({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onChangeFixed={check =>
+                                setAttributes({ fixed: check })
+                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -265,21 +274,26 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__('Hide in Desktop')}
+                            label={__("Hide in Desktop")}
                             checked={showDesk}
-                            onChange={() => setAttributes({ showDesk: !showDesk })}
+                            onChange={() =>
+                                setAttributes({ showDesk: !showDesk })
+                            }
                         />
                         <ToggleControl
-                            label={__('Hide in Tablet')}
+                            label={__("Hide in Tablet")}
                             checked={showTablet}
-                            onChange={() => setAttributes({ showTablet: !showTablet })}
+                            onChange={() =>
+                                setAttributes({ showTablet: !showTablet })
+                            }
                         />
                         <ToggleControl
-                            label={__('Hide in Mobile')}
+                            label={__("Hide in Mobile")}
                             checked={showMobile}
-                            onChange={() => setAttributes({ showMobile: !showMobile })}
+                            onChange={() =>
+                                setAttributes({ showMobile: !showMobile })
+                            }
                         />
-
                     </PanelBody>
                     <PremiumBorder
                         borderType={borderType}
@@ -311,30 +325,30 @@ class edit extends Component {
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
-                                        : newColor.hex
+                                        : newColor.hex,
                             })
                         }
                         onChangeBlur={newBlur =>
                             setAttributes({
-                                shadowBlur: newBlur === undefined ? 0 : newBlur
+                                shadowBlur: newBlur === undefined ? 0 : newBlur,
                             })
                         }
                         onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal:
-                                    newValue === undefined ? 0 : newValue
+                                    newValue === undefined ? 0 : newValue,
                             })
                         }
                         onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical:
-                                    newValue === undefined ? 0 : newValue
+                                    newValue === undefined ? 0 : newValue,
                             })
                         }
                         onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition:
-                                    newValue === undefined ? 0 : newValue
+                                    newValue === undefined ? 0 : newValue,
                             })
                         }
                     />
@@ -344,24 +358,24 @@ class edit extends Component {
                         marginRight={marginRight}
                         marginBottom={marginBottom}
                         marginLeft={marginLeft}
-                        onChangeMarTop={value =>
+                        onChangeMarTop={(value) =>
                             setAttributes({
-                                marginTop: value === undefined ? 0 : value
+                                marginTop: value === undefined ? 0 : value,
                             })
                         }
                         onChangeMarRight={value =>
                             setAttributes({
-                                marginRight: value === undefined ? 0 : value
+                                marginRight: value === undefined ? 0 : value,
                             })
                         }
                         onChangeMarBottom={value =>
                             setAttributes({
-                                marginBottom: value === undefined ? 0 : value
+                                marginBottom: value === undefined ? 0 : value,
                             })
                         }
                         onChangeMarLeft={value =>
                             setAttributes({
-                                marginLeft: value === undefined ? 0 : value
+                                marginLeft: value === undefined ? 0 : value,
                             })
                         }
                         showUnits={true}
@@ -376,22 +390,22 @@ class edit extends Component {
                         paddingLeft={paddingLeft}
                         onChangePadTop={value =>
                             setAttributes({
-                                paddingTop: value === undefined ? 0 : value
+                                paddingTop: value === undefined ? 0 : value,
                             })
                         }
                         onChangePadRight={value =>
                             setAttributes({
-                                paddingRight: value === undefined ? 0 : value
+                                paddingRight: value === undefined ? 0 : value,
                             })
                         }
                         onChangePadBottom={value =>
                             setAttributes({
-                                paddingBottom: value === undefined ? 0 : value
+                                paddingBottom: value === undefined ? 0 : value,
                             })
                         }
                         onChangePadLeft={value =>
                             setAttributes({
-                                paddingLeft: value === undefined ? 0 : value
+                                paddingLeft: value === undefined ? 0 : value,
                             })
                         }
                         showUnits={true}
@@ -402,54 +416,60 @@ class edit extends Component {
                     />
                 </InspectorControls>
             ),
-        <div className={`premium-container-${block_id}`} id={`premium-container-${block_id}`}>
             <div
-                className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
-                style={{
-                    
-                    textAlign: horAlign,
-                    minHeight:
-                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                    backgroundColor: color,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    marginTop: marginTop + marginUnit,
-                    marginBottom: marginBottom + marginUnit,
-                    marginLeft: marginLeft + marginUnit,
-                    marginRight: marginRight + marginUnit,
-                    paddingTop: paddingTop + paddingUnit,
-                    paddingBottom: paddingBottom + paddingUnit,
-                    paddingLeft: paddingLeft + paddingUnit,
-                    paddingRight: paddingRight + paddingUnit,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-                }}
+                className={`premium-container-${block_id}`}
+                id={`premium-container-${block_id}`}
             >
                 <div
-                    className={`premium-container__content_wrap premium-container__${vPos}`}
+                    className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
                     style={{
-                        maxWidth:
-                            "boxed" == innerWidthType && stretchSection
-                                ? innerWidth
-                                    ? innerWidth + "px"
-                                    : "1140px"
-                                : "100%"
+                        textAlign: horAlign,
+                        minHeight:
+                            "fit" === height
+                                ? "100vh"
+                                : minHeight + minHeightUnit,
+                        backgroundColor: color,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor,
+                        backgroundImage: imageURL
+                            ? `url('${imageURL}')`
+                            : "none",
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        marginTop: marginTop + marginUnit,
+                        marginBottom: marginBottom + marginUnit,
+                        marginLeft: marginLeft + marginUnit,
+                        marginRight: marginRight + marginUnit,
+                        paddingTop: paddingTop + paddingUnit,
+                        paddingBottom: paddingBottom + paddingUnit,
+                        paddingLeft: paddingLeft + paddingUnit,
+                        paddingRight: paddingRight + paddingUnit,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
-                    <div className={`premium-container__content_inner`}>
-                        <InnerBlocks template={CONTENT} />
+                    <div
+                        className={`premium-container__content_wrap premium-container__${vPos}`}
+                        style={{
+                            maxWidth:
+                                "boxed" == innerWidthType && stretchSection
+                                    ? innerWidth
+                                        ? innerWidth + "px"
+                                        : "1140px"
+                                    : "100%",
+                        }}
+                    >
+                        <div className={`premium-container__content_inner`}>
+                            <InnerBlocks template={CONTENT} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>,
         ];
     }
-};
+}
 
 export default edit;

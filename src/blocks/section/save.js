@@ -1,9 +1,8 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 
 const { InnerBlocks } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -43,53 +42,57 @@ const save = props => {
         shadowPosition
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-container');
+    const mainClasses = classnames(className, "premium-container");
 
     return (
-        <div className={`premium-container-${block_id}`} id={`premium-container-${block_id}`}>
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
-            style={{
-                textAlign: horAlign,
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color,
-                border: borderType,
-                borderWidth: borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-            }}
+            className={`premium-container-${block_id}`}
+            id={`premium-container-${block_id}`}
         >
             <div
-                className={`premium-container__content_wrap premium-container__${vPos}`}
+                className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
                 style={{
-                    maxWidth:
-                        "boxed" == innerWidthType && stretchSection
-                            ? innerWidth
-                                ? innerWidth + "px"
-                                : "1140px"
-                            : "100%"
+                    textAlign: horAlign,
+                    minHeight:
+                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    backgroundColor: color,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    backgroundImage: `url('${imageURL}')`,
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    marginTop: marginTop + marginUnit,
+                    marginBottom: marginBottom + marginUnit,
+                    marginLeft: marginLeft + marginUnit,
+                    marginRight: marginRight + marginUnit,
+                    paddingTop: paddingTop + paddingUnit,
+                    paddingBottom: paddingBottom + paddingUnit,
+                    paddingLeft: paddingLeft + paddingUnit,
+                    paddingRight: paddingRight + paddingUnit,
+                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 }}
             >
-                <div className={`premium-container__content_inner`}>
-                    <InnerBlocks.Content />
+                <div
+                    className={`premium-container__content_wrap premium-container__${vPos}`}
+                    style={{
+                        maxWidth:
+                            "boxed" == innerWidthType && stretchSection
+                                ? innerWidth
+                                    ? innerWidth + "px"
+                                    : "1140px"
+                                : "100%",
+                    }}
+                >
+                    <div className={`premium-container__content_inner`}>
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
     );
 };
 
