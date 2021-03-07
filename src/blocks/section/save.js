@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -45,6 +46,7 @@ const save = props => {
     const mainClasses = classnames(className, 'premium-container');
 
     return (
+        <div className={`premium-container-${block_id}`} id={`premium-container-${block_id}`}>
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
             style={{
@@ -86,7 +88,8 @@ const save = props => {
                     <InnerBlocks.Content />
                 </div>
             </div>
-        </div>
+            </div>
+            </div>
     );
 };
 

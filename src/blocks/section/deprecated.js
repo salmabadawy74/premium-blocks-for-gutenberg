@@ -135,7 +135,246 @@ const deprecated_attributes_1_6_2 = Object.assign(
     newAttributes_1_6_2
 );
 
+const deprecated_attributes_1_7_1 = {
+    stretchSection: {
+        type: "boolean",
+        default: false
+    },
+    innerWidthType: {
+        type: "string",
+        default: "boxed"
+    },
+    horAlign: {
+        type: "string",
+        default: "center"
+    },
+    height: {
+        type: "string",
+        default: "min"
+    },
+    innerWidth: {
+        type: "number"
+    },
+    minHeight: {
+        type: "number"
+    },
+    minHeightUnit: {
+        type: "string"
+    },
+    vPos: {
+        type: "string",
+        default: "top"
+    },
+    color: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginTop: {
+        type: "number"
+    },
+    marginBottom: {
+        type: "number"
+    },
+    marginLeft: {
+        type: "number"
+    },
+    marginRight: {
+        type: "number"
+    },
+    marginUnit: {
+        type: "string"
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+
+
+}
+
+const newAttributes_1_7_2 = {
+    block_id: {
+        type:"string"
+    },
+    showDesk: {
+        type: 'boolean',
+        default: false
+    },
+    showTablet: {
+        type: 'boolean',
+        default: false
+    },
+    showMobile: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    }
+}
+ const deprecated_attributes_1_7_2=Object.assign(deprecated_attributes_1_7_1,newAttributes_1_7_2)
+
 const deprecatedContent = [
+    {
+        attributes: deprecated_attributes_1_7_2, 
+        migrate: attributes => {
+            let newAttributes = {
+                classMigrate: false,
+                showDesk: false,
+                showTablet: false,
+                showMobile: false,
+                block_id:''
+            }
+            return Object.assign(attributes,newAttributes)
+        },
+        save: props => {
+            const {
+                stretchSection,
+                horAlign,
+                innerWidthType,
+                innerWidth,
+                height,
+                vPos,
+                minHeight,
+                minHeightUnit,
+                color,
+                imageURL,
+                fixed,
+                backgroundRepeat,
+                backgroundPosition,
+                backgroundSize,
+                borderType,
+                borderWidth,
+                borderColor,
+                borderRadius,
+                marginTop,
+                marginBottom,
+                marginLeft,
+                marginRight,
+                marginUnit,
+                paddingTop,
+                paddingRight,
+                paddingBottom,
+                paddingLeft,
+                paddingUnit,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition
+            } = props.attributes;
+            return (
+                <div
+                    className={`${className} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+                    style={{
+                        textAlign: horAlign,
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                        backgroundColor: color,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor,
+                        backgroundImage: `url('${imageURL}')`,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        marginTop: marginTop + marginUnit,
+                        marginBottom: marginBottom + marginUnit,
+                        marginLeft: marginLeft + marginUnit,
+                        marginRight: marginRight + marginUnit,
+                        paddingTop: paddingTop + paddingUnit,
+                        paddingBottom: paddingBottom + paddingUnit,
+                        paddingLeft: paddingLeft + paddingUnit,
+                        paddingRight: paddingRight + paddingUnit,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    }}
+                >
+                    <div
+                        className={`premium-container__content_wrap premium-container__${vPos}`}
+                        style={{
+                            maxWidth:
+                                "boxed" == innerWidthType && stretchSection
+                                    ? innerWidth
+                                        ? innerWidth + "px"
+                                        : "1140px"
+                                    : "100%"
+                        }}
+                    >
+                        <div className={`premium-container__content_inner`}>
+                            <InnerBlocks.Content />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: deprecated_attributes_1_6_2,
         migrate: attributes => {

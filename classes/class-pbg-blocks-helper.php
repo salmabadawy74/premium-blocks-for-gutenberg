@@ -74,9 +74,9 @@ class PBG_Blocks_Helper {
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 
 		// Register Premium Blocks category.
-        add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-        
-        // Generate Blocks Stylesheet.
+		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+
+		// Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 
 		// Enqueue Generated stylesheet to WP Head.
@@ -485,8 +485,8 @@ class PBG_Blocks_Helper {
 
 		// self::file_write( self::$stylesheet, 'css' );
 
-        ob_start();
-        
+		ob_start();
+
 		?>
 			<style type="text/css" media="all" id="premium-style-frontend"><?php echo self::$stylesheet; ?></style>
 		<?php
@@ -497,9 +497,9 @@ class PBG_Blocks_Helper {
 	 * Get Block CSS
 	 *
 	 * Generates CSS recurrsively.
-     * 
-     * @since 1.8.2
-     * @access public
+	 *
+	 * @since 1.8.2
+	 * @access public
 	 *
 	 * @param object $block The block object.
 	 */
@@ -531,6 +531,10 @@ class PBG_Blocks_Helper {
 		switch ( $name ) {
 			case 'premium/fancy-text':
 				$css += $this->get_fancy_text_css( $blockattr, $block_id );
+				break;
+
+			case 'premium/container':
+				$css += $this->get_container_css( $blockattr, $block_id );
 				break;
 			default:
 				// Nothing to do here.
@@ -645,7 +649,7 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' .premium-fancy-text-title'        => array(
+			' .premium-fancy-text-title'       => array(
 				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-title-slide' => array(
@@ -675,6 +679,48 @@ class PBG_Blocks_Helper {
 		);
 
 		return $generated_css;
+	}
+
+	public static function get_container_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/container']['attributes'];
+		$attr     = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors   = array(
+			' .premium-container' => array(
+				'display' => $attr['showDesk'] ? 'none' : 'block',
+			),
+		);
+		$t_selectors = array(
+			' .premium-container' => array(
+				'display' => $attr['showTablet'] ? 'none' : 'block',
+			),
+		);
+		$m_selectors = array(
+			' .premium-container' => array(
+				'display' => $attr['showMobile'] ? 'none' : 'block',
+			),
+		);
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-container-' : '#premium-container-';
+
+			$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+			$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
+
 	}
 
 	/**
@@ -722,9 +768,9 @@ class PBG_Blocks_Helper {
 	/**
 	 * Get CSS value
 	 *
-     * @since 1.8.2
-     * @access public
-     * 
+	 * @since 1.8.2
+	 * @access public
+	 *
 	 * @param string $value  CSS value.
 	 * @param string $unit  CSS unit.
 	 */
@@ -834,7 +880,7 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * @return object
 	 */
 	function pbg_blocks_helper() {
-        return pbg_blocks_helper::get_instance();
+		return pbg_blocks_helper::get_instance();
 	}
 }
 pbg_blocks_helper();

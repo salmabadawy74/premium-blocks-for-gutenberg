@@ -5,12 +5,13 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
+import styling from "./styling";
 
 const { __ } = wp.i18n;
 
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
 
-const { Fragment } = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
     BlockControls,
@@ -24,214 +25,262 @@ const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ") }]
 ];
 
-const edit = props => {
-    const { isSelected, className, setAttributes } = props;
+class edit extends Component {
 
-    const {
-        stretchSection,
-        horAlign,
-        innerWidthType,
-        innerWidth,
-        minHeight,
-        minHeightUnit,
-        vPos,
-        height,
-        color,
-        imageID,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderWidth,
-        borderColor,
-        borderRadius,
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        marginUnit,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
-        paddingUnit,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition
-    } = props.attributes;
-    const WIDTH = [
-        {
-            value: "boxed",
-            label: __("Boxed")
-        },
-        {
-            value: "full",
-            label: __("Full Width")
-        }
-    ];
-    const HEIGHT = [
-        {
-            value: "fit",
-            label: __("Fit to Screen")
-        },
-        {
-            value: "min",
-            label: __("Min Height")
-        }
-    ];
-    const VPOSITION = [
-        {
-            value: "top",
-            label: __("Top")
-        },
-        {
-            value: "middle",
-            label: __("Middle")
-        },
-        {
-            value: "bottom",
-            label: __("Bottom")
-        }
-    ];
+    componentDidMount () {
+        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
-    const mainClasses = classnames(className, "premium-container");
+        // Assigning id in the attribute.
+        this.props.setAttributes({ classMigrate: true });
 
-    return [
-        isSelected && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    value={horAlign}
-                    onChange={newAlign => setAttributes({ horAlign: newAlign })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <InspectorControls key="inspector">
-                <PanelBody
-                    title={__("General Settings")}
-                    className={`premium-panel-body premium-stretch-section`}
-                    initialOpen={true}
-                >
-                    <ToggleControl
-                        label={__("Stretch Section")}
-                        checked={stretchSection}
-                        onChange={check =>
-                            setAttributes({ stretchSection: check })
-                        }
-                        help={__(
-                            "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time."
-                        )}
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-section-"+this.props.clientId.substr(0, 6)
+        );
+        document.head.appendChild($style);
+
+    }
+    render() {
+
+        const { isSelected, className, setAttributes,attributes } = this.props;
+
+        const {
+            block_id,
+            stretchSection,
+            horAlign,
+            innerWidthType,
+            innerWidth,
+            minHeight,
+            minHeightUnit,
+            vPos,
+            height,
+            color,
+            imageID,
+            imageURL,
+            fixed,
+            backgroundRepeat,
+            backgroundPosition,
+            backgroundSize,
+            borderType,
+            borderWidth,
+            borderColor,
+            borderRadius,
+            marginTop,
+            marginBottom,
+            marginLeft,
+            marginRight,
+            marginUnit,
+            paddingTop,
+            paddingRight,
+            paddingBottom,
+            paddingLeft,
+            paddingUnit,
+            shadowBlur,
+            shadowColor,
+            shadowHorizontal,
+            shadowVertical,
+            shadowPosition,
+            showDesk,
+            showTablet,
+            showMobile
+        } = attributes;
+        const WIDTH = [
+            {
+                value: "boxed",
+                label: __("Boxed")
+            },
+            {
+                value: "full",
+                label: __("Full Width")
+            }
+        ];
+        const HEIGHT = [
+            {
+                value: "fit",
+                label: __("Fit to Screen")
+            },
+            {
+                value: "min",
+                label: __("Min Height")
+            }
+        ];
+        const VPOSITION = [
+            {
+                value: "top",
+                label: __("Top")
+            },
+            {
+                value: "middle",
+                label: __("Middle")
+            },
+            {
+                value: "bottom",
+                label: __("Bottom")
+            }
+        ];
+
+        var element = document.getElementById('premium-style-section-'+block_id);
+
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
+
+        const mainClasses = classnames(className, "premium-container");
+
+        return [
+            isSelected && (
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        value={horAlign}
+                        onChange={newAlign => setAttributes({ horAlign: newAlign })}
                     />
-                    {stretchSection && (
-                        <SelectControl
-                            label={__("Content Width")}
-                            options={WIDTH}
-                            value={innerWidthType}
-                            onChange={newValue =>
-                                setAttributes({ innerWidthType: newValue })
+                </BlockControls>
+            ),
+            isSelected && (
+                <InspectorControls key="inspector">
+                    <PanelBody
+                        title={__("General Settings")}
+                        className={`premium-panel-body premium-stretch-section`}
+                        initialOpen={true}
+                    >
+                        <ToggleControl
+                            label={__("Stretch Section")}
+                            checked={stretchSection}
+                            onChange={check =>
+                                setAttributes({ stretchSection: check })
                             }
+                            help={__(
+                                "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time."
+                            )}
                         />
-                    )}
-                    {"boxed" === innerWidthType && stretchSection && (
-                        <RangeControl
-                            label={__("Max Width (%)")}
-                            min="1"
-                            max="1600"
-                            value={innerWidth}
-                            onChange={newValue =>
-                                setAttributes({ innerWidth: newValue })
-                            }
-                        />
-                    )}
-                    <SelectControl
-                        label={__("Height")}
-                        options={HEIGHT}
-                        value={height}
-                        onChange={newValue =>
-                            setAttributes({ height: newValue })
-                        }
-                    />
-                    {"min" === height && (
-                        <Fragment>
-                            <PremiumSizeUnits
-                                units={["px", "vh", "vw"]}
-                                onChangeSizeUnit={newValue =>
-                                    setAttributes({ minHeightUnit: newValue })
-                                }
-                            />
-                            <RangeControl
-                                label={__("Min Height")}
-                                value={minHeight}
-                                min="1"
-                                max="800"
+                        {stretchSection && (
+                            <SelectControl
+                                label={__("Content Width")}
+                                options={WIDTH}
+                                value={innerWidthType}
                                 onChange={newValue =>
-                                    setAttributes({ minHeight: newValue })
+                                    setAttributes({ innerWidthType: newValue })
                                 }
                             />
-                        </Fragment>
-                    )}
-                    <SelectControl
-                        label={__("Content Position")}
-                        help={__(
-                            "If you have two or more inner columns then this option will work only on the preview page"
                         )}
-                        options={VPOSITION}
-                        value={vPos}
-                        onChange={newValue => setAttributes({ vPos: newValue })}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Background")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <p>{__("Background Color")}</p>
-                    <ColorPalette
-                        value={color}
-                        onChange={newValue =>
-                            setAttributes({
-                                color: newValue
-                            })
-                        }
-                        allowReset={true}
-                    />
-                    <PremiumBackgroud
-                        imageID={imageID}
-                        imageURL={imageURL}
-                        backgroundPosition={backgroundPosition}
-                        backgroundRepeat={backgroundRepeat}
-                        backgroundSize={backgroundSize}
-                        fixed={fixed}
-                        onSelectMedia={media => {
-                            setAttributes({
-                                imageID: media.id,
-                                imageURL: media.url
-                            });
-                        }}
-                        onRemoveImage={value =>
-                            setAttributes({ imageURL: "", imageID: "" })
-                        }
-                        onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
-                        }
-                        onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
-                        }
-                        onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
-                        }
-                        onChangeFixed={check => setAttributes({ fixed: check })}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Border")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
+                        {"boxed" === innerWidthType && stretchSection && (
+                            <RangeControl
+                                label={__("Max Width (%)")}
+                                min="1"
+                                max="1600"
+                                value={innerWidth}
+                                onChange={newValue =>
+                                    setAttributes({ innerWidth: newValue })
+                                }
+                            />
+                        )}
+                        <SelectControl
+                            label={__("Height")}
+                            options={HEIGHT}
+                            value={height}
+                            onChange={newValue =>
+                                setAttributes({ height: newValue })
+                            }
+                        />
+                        {"min" === height && (
+                            <Fragment>
+                                <PremiumSizeUnits
+                                    units={["px", "vh", "vw"]}
+                                    onChangeSizeUnit={newValue =>
+                                        setAttributes({ minHeightUnit: newValue })
+                                    }
+                                />
+                                <RangeControl
+                                    label={__("Min Height")}
+                                    value={minHeight}
+                                    min="1"
+                                    max="800"
+                                    onChange={newValue =>
+                                        setAttributes({ minHeight: newValue })
+                                    }
+                                />
+                            </Fragment>
+                        )}
+                        <SelectControl
+                            label={__("Content Position")}
+                            help={__(
+                                "If you have two or more inner columns then this option will work only on the preview page"
+                            )}
+                            options={VPOSITION}
+                            value={vPos}
+                            onChange={newValue => setAttributes({ vPos: newValue })}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Background")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={color}
+                            onChange={newValue =>
+                                setAttributes({
+                                    color: newValue
+                                })
+                            }
+                            allowReset={true}
+                        />
+                        {imageURL && (
+                            <img src={imageURL} width="100%" height="auto" />
+                        )}
+                        <PremiumBackgroud
+                            imageID={imageID}
+                            imageURL={imageURL}
+                            backgroundPosition={backgroundPosition}
+                            backgroundRepeat={backgroundRepeat}
+                            backgroundSize={backgroundSize}
+                            fixed={fixed}
+                            onSelectMedia={media => {
+                                setAttributes({
+                                    imageID: media.id,
+                                    imageURL: media.url
+                                });
+                            }}
+                            onRemoveImage={value =>
+                                setAttributes({ imageURL: "", imageID: "" })
+                            }
+                            onChangeBackPos={newValue =>
+                                setAttributes({ backgroundPosition: newValue })
+                            }
+                            onchangeBackRepeat={newValue =>
+                                setAttributes({ backgroundRepeat: newValue })
+                            }
+                            onChangeBackSize={newValue =>
+                                setAttributes({ backgroundSize: newValue })
+                            }
+                            onChangeFixed={check => setAttributes({ fixed: check })}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Responsive")}
+                        className={`premium-panel-body premium-stretch-section`}
+                        initialOpen={false}
+                    >
+                        <ToggleControl
+                            label={__('Hide in Desktop')}
+                            checked={showDesk}
+                            onChange={() => setAttributes({ showDesk: !showDesk })}
+                        />
+                        <ToggleControl
+                            label={__('Hide in Tablet')}
+                            checked={showTablet}
+                            onChange={() => setAttributes({ showTablet: !showTablet })}
+                        />
+                        <ToggleControl
+                            label={__('Hide in Mobile')}
+                            checked={showMobile}
+                            onChange={() => setAttributes({ showMobile: !showMobile })}
+                        />
+
+                    </PanelBody>
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
@@ -289,12 +338,6 @@ const edit = props => {
                             })
                         }
                     />
-                </PanelBody>
-                <PanelBody
-                    title={__("Spacings")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={marginTop}
@@ -357,53 +400,56 @@ const edit = props => {
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />
-                </PanelBody>
-            </InspectorControls>
-        ),
-        <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
-            style={{
-                textAlign: horAlign,
-                minHeight:
-                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color,
-                border: borderType,
-                borderWidth: borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-            }}
-        >
+                </InspectorControls>
+            ),
+        <div className={`premium-container-${block_id}`} id={`premium-container-${block_id}`}>
             <div
-                className={`premium-container__content_wrap premium-container__${vPos}`}
+                className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
                 style={{
-                    maxWidth:
-                        "boxed" == innerWidthType && stretchSection
-                            ? innerWidth
-                                ? innerWidth + "px"
-                                : "1140px"
-                            : "100%"
+                    
+                    textAlign: horAlign,
+                    minHeight:
+                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    backgroundColor: color,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    marginTop: marginTop + marginUnit,
+                    marginBottom: marginBottom + marginUnit,
+                    marginLeft: marginLeft + marginUnit,
+                    marginRight: marginRight + marginUnit,
+                    paddingTop: paddingTop + paddingUnit,
+                    paddingBottom: paddingBottom + paddingUnit,
+                    paddingLeft: paddingLeft + paddingUnit,
+                    paddingRight: paddingRight + paddingUnit,
+                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
                 }}
             >
-                <div className={`premium-container__content_inner`}>
-                    <InnerBlocks template={CONTENT} />
+                <div
+                    className={`premium-container__content_wrap premium-container__${vPos}`}
+                    style={{
+                        maxWidth:
+                            "boxed" == innerWidthType && stretchSection
+                                ? innerWidth
+                                    ? innerWidth + "px"
+                                    : "1140px"
+                                : "100%"
+                    }}
+                >
+                    <div className={`premium-container__content_inner`}>
+                        <InnerBlocks template={CONTENT} />
+                    </div>
                 </div>
             </div>
         </div>
-    ];
+        ];
+    }
 };
 
 export default edit;

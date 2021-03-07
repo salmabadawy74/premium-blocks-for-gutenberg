@@ -10,6 +10,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const containerAttrs = {
+    block_id: {
+        type:"string"
+    },
     stretchSection: {
         type: "boolean",
         default: false
@@ -126,6 +129,22 @@ const containerAttrs = {
     shadowPosition: {
         type: "string",
         default: ""
+    },
+    showDesk: {
+        type: 'boolean',
+        default: false
+    },
+    showTablet: {
+        type: 'boolean',
+        default: false
+    },
+    showMobile: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
     }
 };
 registerBlockType("premium/container", {

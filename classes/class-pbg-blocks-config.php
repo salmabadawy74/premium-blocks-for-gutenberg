@@ -76,6 +76,18 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textBGColor'             => '',
 						),
 					),
+
+					'premium/container'  => array(
+						'slug'       => '',
+						'default'    => true,
+						'attributes' => array(
+							'classMigrate' => false,
+							'showDesk'     => false,
+							'showTablet'   => false,
+							'showMobile'   => false,
+							'block_id'     => false,
+						),
+					),
 				);
 
 			}
