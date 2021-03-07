@@ -6,9 +6,9 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 
 const {
-    IconButton,
     PanelBody,
     SelectControl,
     RangeControl,
@@ -17,13 +17,11 @@ const {
     ToggleControl,
     Dropdown,
     Button,
-    Tooltip,
-    Dashicon,
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
 
-const { InspectorControls, MediaUpload, ColorPalette } = wp.blockEditor;
+const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -259,65 +257,22 @@ class edit extends Component {
                             />
                         )}
                         {"self" === videoType && (
-                            <MediaUpload
-                                allowedTypes={["video"]}
-                                onSelect={media => {
-                                    setAttributes({
-                                        videoID: media.id,
-                                        videoURL: media.url
-                                    });
-                                }}
+                            <PremiumMediaUpload
                                 type="video"
-                                value={videoID}
-                                render={({ open }) => (
-                                    <Fragment>
-                                        {videoURL && (
-                                            <span className="premium-image-media">
-                                                <iframe
-                                                    src={videoURL}
-                                                    className="premium-image-upload"
-                                                />
-                                                <div className="premium-image-actions">
-                                                    <Tooltip text={__("Edit")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Edit")}
-                                                            onClick={open}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Edit")}
-                                                                className="fa fa-pencil"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                    <Tooltip text={__("Remove")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Remove")}
-                                                            onClick={() => setAttributes({ videoURL: "" })}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Close")}
-                                                                className="fa fa-trash-o"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                </div>
-                                            </span>
-                                        )}
-                                        {!videoURL && (
-                                            <div
-                                                onClick={open}
-                                                className={"premium-placeholder-image"}
-                                            >
-                                                <Dashicon icon="video-alt3" />
-                                                <span>{__("Insert Video ")}</span>
-                                            </div>
-                                        )}
-                                    </Fragment>
-                                )}
+                                imageID={videoID}
+                                imageURL={videoURL}
+                                onSelectMedia={(media) => {
+                                    setAttributes({
+                                        videoURL: media.url,
+                                        videoID: media.id
+                                    })
+                                }}
+                                onRemoveImage={() => {
+                                    setAttributes({
+                                        videoURL: "",
+                                        videoID: ""
+                                    })
+                                }}
                             />
                         )}
                         <ToggleControl
@@ -368,66 +323,24 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <MediaUpload
-                                allowedTypes={["image"]}
-                                onSelect={(media) => {
+                            <PremiumMediaUpload
+                                type="image"
+                                imageID={overlayImgID}
+                                imageURL={overlayImgURL}
+                                onSelectMedia={media => {
                                     setAttributes({
                                         overlayImgID: media.id,
-                                        overlayImgURL: media.url,
+                                        overlayImgURL: media.url
                                     });
                                 }}
-                                type="image"
-                                value={overlayImgID}
-                                render={({ open }) => (
-                                    <Fragment>
-                                        {overlayImgURL && (
-                                            <span className="premium-image-media">
-                                                <img
-                                                    src={overlayImgURL}
-                                                    className="premium-image-upload"
-                                                />
-                                                <div className="premium-image-actions">
-                                                    <Tooltip text={__("Edit")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Edit")}
-                                                            onClick={open}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Edit")}
-                                                                className="fa fa-pencil"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                    <Tooltip text={__("Remove")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Remove")}
-                                                            onClick={() => setAttributes({ overlayImgURL: "" })}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Close")}
-                                                                className="fa fa-trash-o"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                </div>
-                                            </span>
-                                        )}
-                                        {!overlayImgURL && (
-                                            <div
-                                                onClick={open}
-                                                className={"premium-placeholder-image"}
-                                            >
-                                                <Dashicon icon="insert" />
-                                                <span>{__("Insert Image ")}</span>
-                                            </div>
-                                        )}
-                                    </Fragment>
-                                )}
+                                onRemoveImage={() =>
+                                    setAttributes({
+                                        overlayImgID: "",
+                                        overlayImgURL: ""
+                                    })
+                                }
                             />
+
                             <PremiumFilters
                                 blur={blur}
                                 bright={bright}

@@ -1,4 +1,5 @@
 import { maps } from "../../../assets/js/settings";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 
 const className = "premium-maps";
@@ -15,11 +16,9 @@ const {
     TextControl,
     TextareaControl,
     ToggleControl,
-    Tooltip,
-    Dashicon
 } = wp.components;
 
-const { InspectorControls, MediaUpload, ColorPalette } = wp.editor;
+const { InspectorControls, ColorPalette } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -402,68 +401,23 @@ class PremiumMap extends Component {
                                     onChange={check => setAttributes({ markerCustom: check })}
                                 />
                                 {markerCustom && (
-                                    <MediaUpload
-                                        allowedTypes={["image"]}
-                                        onSelect={(media) => {
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={markerIconId}
+                                        imageURL={markerIconUrl}
+                                        onSelectMedia={media => {
                                             setAttributes({
                                                 markerIconId: media.id,
-                                                markerIconUrl:
-                                                    "undefined" === typeof media.sizes.thumbnail
-                                                        ? media.url
-                                                        : media.sizes.thumbnail.url,
+                                                markerIconUrl: media.url
                                             });
                                         }}
-                                        type="image"
-                                        value={markerIconId}
-                                        render={({ open }) => (
-                                            <Fragment>
-                                                {markerIconUrl && (
-                                                    <span className="premium-image-media">
-                                                        <img
-                                                            src={markerIconUrl}
-                                                            className="premium-image-upload"
-                                                        />
-                                                        <div className="premium-image-actions">
-                                                            <Tooltip text={__("Edit")}>
-                                                                <button
-                                                                    className="premium-image-button"
-                                                                    aria-label={__("Edit")}
-                                                                    onClick={open}
-                                                                    role="button"
-                                                                >
-                                                                    <span
-                                                                        aria-label={__("Edit")}
-                                                                        className="fa fa-pencil"
-                                                                    />
-                                                                </button>
-                                                            </Tooltip>
-                                                            <Tooltip text={__("Remove")}>
-                                                                <button
-                                                                    className="premium-image-button"
-                                                                    aria-label={__("Remove")}
-                                                                    onClick={() => setAttributes({ markerIconUrl: "" })}
-                                                                    role="button"
-                                                                >
-                                                                    <span
-                                                                        aria-label={__("Close")}
-                                                                        className="fa fa-trash-o"
-                                                                    />
-                                                                </button>
-                                                            </Tooltip>
-                                                        </div>
-                                                    </span>
-                                                )}
-                                                {!markerIconUrl && (
-                                                    <div
-                                                        onClick={open}
-                                                        className={"premium-placeholder-image"}
-                                                    >
-                                                        <Dashicon icon="insert" />
-                                                        <span>{__("Insert Image ")}</span>
-                                                    </div>
-                                                )}
-                                            </Fragment>
-                                        )}
+                                        onRemoveImage={() =>
+                                            setAttributes({
+                                                markerIconId: "",
+                                                markerIconUrl: ""
+                                            })
+                                        }
+
                                     />
                                 )}
                                 <RangeControl
