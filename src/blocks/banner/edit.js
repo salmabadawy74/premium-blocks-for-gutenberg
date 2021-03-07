@@ -5,6 +5,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 
 const { __ } = wp.i18n;
 
@@ -18,8 +19,6 @@ const {
     RangeControl,
     TextControl,
     ToggleControl,
-    Tooltip,
-    Dashicon,
 } = wp.components;
 
 const {
@@ -28,7 +27,6 @@ const {
     AlignmentToolbar,
     ColorPalette,
     RichText,
-    MediaUpload,
 } = wp.blockEditor;
 
 const edit = props => {
@@ -209,56 +207,22 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
-                    <MediaUpload
-                        allowedTypes={["image"]}
-                        onSelect={(media) => {
-                            setAttributes({ imageURL: media.url, imageID: media.id });
-                        }}
+                    <PremiumMediaUpload
                         type="image"
-                        value={imageID}
-                        render={({ open }) => (
-                            <Fragment>
-                                {imageURL && (
-                                    <span className="premium-image-media">
-                                        <img src={imageURL} className="premium-image-upload" />
-                                        <div className="premium-image-actions">
-                                            <Tooltip text={__("Edit")}>
-                                                <button
-                                                    className="premium-image-button"
-                                                    aria-label={__("Edit")}
-                                                    onClick={open}
-                                                    role="button"
-                                                >
-                                                    <span
-                                                        aria-label={__("Edit")}
-                                                        className="fa fa-pencil"
-                                                    />
-                                                </button>
-                                            </Tooltip>
-                                            <Tooltip text={__("Remove")}>
-                                                <button
-                                                    className="premium-image-button"
-                                                    aria-label={__("Remove")}
-                                                    onClick={() => setAttributes({ imageURL: "" })}
-                                                    role="button"
-                                                >
-                                                    <span
-                                                        aria-label={__("Close")}
-                                                        className="fa fa-trash-o"
-                                                    />
-                                                </button>
-                                            </Tooltip>
-                                        </div>
-                                    </span>
-                                )}
-                                {!imageURL && (
-                                    <div onClick={open} className={"premium-placeholder-image"}>
-                                        <Dashicon icon="insert" />
-                                        <span>{__("Insert Image ")}</span>
-                                    </div>
-                                )}
-                            </Fragment>
-                        )}
+                        imageID={imageID}
+                        imageURL={imageURL}
+                        onSelectMedia={media => {
+                            setAttributes({
+                                imageID: media.id,
+                                imageURL: media.url
+                            });
+                        }}
+                        onRemoveImage={() =>
+                            setAttributes({
+                                imageURL: "",
+                                imageURL: ""
+                            })
+                        }
                     />
                     <PremiumFilters
                         blur={blur}

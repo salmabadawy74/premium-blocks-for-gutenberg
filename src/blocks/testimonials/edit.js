@@ -6,6 +6,7 @@ import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 
 const { __ } = wp.i18n;
 
@@ -18,8 +19,6 @@ const {
     ToggleControl,
     Dropdown,
     Button,
-    Tooltip,
-    Dashicon,
 } = wp.components;
 
 const {
@@ -27,7 +26,6 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
-    MediaUpload,
     ColorPalette,
 } = wp.blockEditor;
 
@@ -127,65 +125,23 @@ const edit = props => {
                     >
                         <p>{__("Author Image")}</p>
                         {!authorImgUrl && <DefaultImage />}
-                        <MediaUpload
-                            allowedTypes={["image"]}
-                            onSelect={(media) => {
-                                setAttributes({
-                                    authorImgId: media.id,
-                                    authorImgUrl:
-                                        "undefined" === typeof media.sizes.thumbnail
-                                            ? media.url
-                                            : media.sizes.thumbnail.url,
-                                });
-                            }}
+                        <PremiumMediaUpload
                             type="image"
-                            value={authorImgId}
-                            render={({ open }) => (
-                                <Fragment>
-                                    {authorImgUrl && (
-                                        <span className="premium-image-media">
-                                            <img
-                                                src={authorImgUrl}
-                                                className="premium-image-upload"
-                                            />
-                                            <div className="premium-image-actions">
-                                                <Tooltip text={__("Edit")}>
-                                                    <button
-                                                        className="premium-image-button"
-                                                        aria-label={__("Edit")}
-                                                        onClick={open}
-                                                        role="button"
-                                                    >
-                                                        <span
-                                                            aria-label={__("Edit")}
-                                                            className="fa fa-pencil"
-                                                        />
-                                                    </button>
-                                                </Tooltip>
-                                                <Tooltip text={__("Remove")}>
-                                                    <button
-                                                        className="premium-image-button"
-                                                        aria-label={__("Remove")}
-                                                        onClick={() => setAttributes({ authorImgUrl: "" })}
-                                                        role="button"
-                                                    >
-                                                        <span
-                                                            aria-label={__("Close")}
-                                                            className="fa fa-trash-o"
-                                                        />
-                                                    </button>
-                                                </Tooltip>
-                                            </div>
-                                        </span>
-                                    )}
-                                    {!authorImgUrl && (
-                                        <div onClick={open} className={"premium-placeholder-image"}>
-                                            <Dashicon icon="insert" />
-                                            <span>{__("Insert Image ")}</span>
-                                        </div>
-                                    )}
-                                </Fragment>
-                            )}
+                            imageID={authorImgId}
+                            imageURL={authorImgUrl}
+                            onSelectMedia={(media) => {
+                                setAttributes({
+                                    authorImgId: media.id
+                                    ,
+                                    authorImgUrl: media.url
+                                })
+                            }}
+                            onRemoveImage={() => {
+                                setAttributes({
+                                    authorImgId: "",
+                                    authorImgUrl: ""
+                                })
+                            }}
                         />
                         {authorImgUrl && (
                             <SelectControl

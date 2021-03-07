@@ -5,6 +5,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 
 const { __ } = wp.i18n;
 
@@ -14,12 +15,10 @@ const {
     SelectControl,
     TextControl,
     RangeControl,
-    ToggleControl,
-    Tooltip,
-    Dashicon,
+    ToggleControl
 } = wp.components;
 
-const { InspectorControls, ColorPalette, MediaUpload } = wp.blockEditor;
+const { InspectorControls, ColorPalette } = wp.blockEditor;
 
 const { Fragment } = wp.element;
 
@@ -320,65 +319,22 @@ const edit = props => {
                             </Fragment>
                         )}
                         {"img" === icon && (
-                            <MediaUpload
-                                allowedTypes={["image"]}
-                                onSelect={(media) => {
+                            <PremiumMediaUpload
+                                type="image"
+                                imageID={imageID}
+                                imageURL={imageURL}
+                                onSelectMedia={media => {
                                     setAttributes({
                                         imageID: media.id,
-                                        imageURL:
-                                            "undefined" === typeof media.sizes.thumbnail
-                                                ? media.url
-                                                : media.sizes.thumbnail.url,
+                                        imageURL: media.url
                                     });
                                 }}
-                                type="image"
-                                value={imageID}
-                                render={({ open }) => (
-                                    <Fragment>
-                                        {imageURL && (
-                                            <span className="premium-image-media">
-                                                <img src={imageURL} className="premium-image-upload" />
-                                                <div className="premium-image-actions">
-                                                    <Tooltip text={__("Edit")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Edit")}
-                                                            onClick={open}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Edit")}
-                                                                className="fa fa-pencil"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                    <Tooltip text={__("Remove")}>
-                                                        <button
-                                                            className="premium-image-button"
-                                                            aria-label={__("Remove")}
-                                                            onClick={() => setAttributes({ imageURL: "" })}
-                                                            role="button"
-                                                        >
-                                                            <span
-                                                                aria-label={__("Close")}
-                                                                className="fa fa-trash-o"
-                                                            />
-                                                        </button>
-                                                    </Tooltip>
-                                                </div>
-                                            </span>
-                                        )}
-                                        {!imageURL && (
-                                            <div
-                                                onClick={open}
-                                                className={"premium-placeholder-image"}
-                                            >
-                                                <Dashicon icon="insert" />
-                                                <span>{__("Insert Image ")}</span>
-                                            </div>
-                                        )}
-                                    </Fragment>
-                                )}
+                                onRemoveImage={() =>
+                                    setAttributes({
+                                        imageURL: "",
+                                        imageURL: ""
+                                    })
+                                }
                             />
                         )}
                         <RangeControl

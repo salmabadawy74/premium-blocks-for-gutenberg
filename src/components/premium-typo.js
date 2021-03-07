@@ -43,6 +43,10 @@ export default class PremiumTypo extends Component {
                 value: "italic",
                 label: "Italic",
             },
+            {
+                value: "oblique",
+                label: "Oblique",
+            },
         ];
 
         return (
@@ -53,11 +57,7 @@ export default class PremiumTypo extends Component {
                     contentClassName="premium-control-toggle-content"
                     position="bottom right"
                     renderToggle={({ isOpen, onToggle }) => (
-                        <Button
-                            isSmall
-                            onClick={onToggle}
-                            aria-expanded={isOpen}
-                        >
+                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
                             <i className="dashicons dashicons-edit" />
                         </Button>
                     )}
@@ -77,13 +77,9 @@ export default class PremiumTypo extends Component {
                                     type={this.props.fontSizeType}
                                     typeLabel={this.props.fontSizeType.label}
                                     sizeMobile={this.props.fontSizeMobile}
-                                    sizeMobileLabel={
-                                        this.props.fontSizeMobile.label
-                                    }
+                                    sizeMobileLabel={this.props.fontSizeMobile.label}
                                     sizeTablet={this.props.fontSizeTablet}
-                                    sizeTabletLabel={
-                                        this.props.fontSizeTablet.label
-                                    }
+                                    sizeTabletLabel={this.props.fontSizeTablet.label}
                                     size={this.props.fontSize}
                                     sizeLabel={this.props.fontSize.label}
                                     sizeMobileText={
