@@ -9,7 +9,8 @@ const save = props => {
 
     const { className } = props;
 
-    const {
+	const {
+		block_id,
         align,
         authorImgUrl,
         imgRadius,
@@ -56,14 +57,17 @@ const save = props => {
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit
+		paddingUnit,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-testimonial');
+	const mainClasses = classnames( className, 'premium-testimonial' );
 
     return (
-        <div
-            className={`${mainClasses}__wrap`}
+		<div
+            className={`${mainClasses}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor,
@@ -76,7 +80,7 @@ const save = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit
-            }}
+			}}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>

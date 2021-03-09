@@ -3,7 +3,8 @@ import classnames from "classnames";
 const save = props => {
     const { className } = props;
 
-    const {
+	const {
+		block_id,
         contentAlign,
         firstHeading,
         secondHeading,
@@ -64,17 +65,20 @@ const save = props => {
         containerBorderType,
         containerBorderWidth,
         containerBorderRadius,
-        containerBorderColor
+		containerBorderColor,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
-    );
+	);
 
     return (
         <div
-            className={`${mainClasses}`}
+            className={`${mainClasses } ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: containerBack,
@@ -87,7 +91,7 @@ const save = props => {
                 borderWidth: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
                 borderColor: containerBorderColor
-            }}
+			}}
         >
             <div className={`premium-dheading-block__wrap`}>
                 <h2 className={`premium-dheading-block__title`}>

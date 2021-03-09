@@ -6,7 +6,7 @@ import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
-
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 const { __ } = wp.i18n;
 
 const {
@@ -34,8 +34,8 @@ const {
 const { Fragment } = wp.element;
 
 const edit = props => {
-    const { isSelected, className, setAttributes } = props;
-    const {
+    const { isSelected, className, setAttributes} = props;
+	const {
         align,
         authorImgId,
         authorImgUrl,
@@ -84,8 +84,11 @@ const edit = props => {
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit
-    } = props.attributes;
+		paddingUnit,
+		hideDesktop,
+		hideTablet,
+		hideMobile
+	} = props.attributes;
 
     const RADIUS = [
         {
@@ -102,7 +105,7 @@ const edit = props => {
         }
     ];
 
-    const mainClasses = classnames(className, "premium-testimonial");
+	const mainClasses = classnames( className, "premium-testimonial" );
 
     return [
         isSelected && (
@@ -512,11 +515,19 @@ const edit = props => {
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
             </InspectorControls>
         ),
-        <div
-            className={`${mainClasses}__wrap`}
+		<div
+            className={`${mainClasses}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor,
@@ -529,7 +540,7 @@ const edit = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit
-            }}
+			}}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>

@@ -193,7 +193,20 @@ const accordionAttrs = {
     descPaddingL: {
         type: "number",
         default: 10
-    }
+	},
+	hideDesktop: {
+		type: "boolean",
+		default:false
+	},
+	hideTablet: {
+		type: "boolean",
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
+
 };
 
 registerBlockType("premium/accordion", {

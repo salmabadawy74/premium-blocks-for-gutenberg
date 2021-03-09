@@ -6,7 +6,8 @@ const save = props => {
 
     const { className } = props;
 
-    const {
+	const {
+		block_id,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -39,14 +40,17 @@ const save = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
+		shadowPosition,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-container');
+	const mainClasses = classnames( className, 'premium-container' );
 
     return (
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -69,7 +73,7 @@ const save = props => {
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-            }}
+			}}
         >
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}

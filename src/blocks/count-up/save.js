@@ -1,10 +1,11 @@
 import classnames from 'classnames'
 
 const save = props => {
-   
+
   const { className } = props;
-    
-  const {
+
+	const {
+		block_id,
     increment,
     time,
     delay,
@@ -62,15 +63,18 @@ const save = props => {
     titleFamily,
     counterFamily,
     prefixFamily,
-    suffixFamily
+		suffixFamily,
+		hideDesktop,
+		hideTablet,
+		hideMobile
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-  
+
   const mainClasses = classnames ( className, 'premium-countup' );
-  
+
   return (
-    <div
-      className={`${mainClasses}__wrap`}
+		<div
+      className={`${mainClasses}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
       style={{
         justifyContent: align,
         flexDirection: flexDir,
@@ -85,7 +89,7 @@ const save = props => {
         borderWidth: borderWidth + "px",
         borderRadius: borderRadius + "px",
         borderColor: borderColor
-      }}
+			}}
     >
       {iconCheck && (
         <div

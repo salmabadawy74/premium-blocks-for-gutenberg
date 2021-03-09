@@ -4,6 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
 
@@ -172,7 +173,10 @@ class PremiumPricingTable extends Component {
             listPadding,
             listStyle,
             featsAlign,
-            id
+			id,
+			hideDesktop,
+			hideTablet,
+			hideMobile
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -1198,12 +1202,20 @@ class PremiumPricingTable extends Component {
                                 )}
                             />
                         </div>
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 id={`${mainClasses}-${id}`}
-                className={`${mainClasses}`}
+                className={`${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: contentAlign,
                     background: tableBack,

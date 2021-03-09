@@ -11,6 +11,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -141,7 +142,10 @@ const edit = props => {
         hoverShadowColor,
         hoverShadowHorizontal,
         hoverShadowVertical,
-        hoverShadowPosition
+		hoverShadowPosition,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     setAttributes({ id: blockId });
@@ -288,7 +292,7 @@ const edit = props => {
         addFontToHead(fontFamily);
     };
 
-    const mainClasses = classnames(className, "premium-icon-box");
+	const mainClasses = classnames( className, "premium-icon-box" );
 
     return [
         isSelected && (
@@ -1014,12 +1018,20 @@ const edit = props => {
                             setAttributes({ paddingU: newvalue })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-${id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+            id={`premium-icon-box-${id}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 border: borderType,
@@ -1041,7 +1053,7 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset"
-            }}
+			}}
         >
             {btnChecked && btnText && (
                 <style

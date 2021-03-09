@@ -146,7 +146,152 @@ const newAttributes_1_4_7 = {
     }
 };
 
-const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
+const buttonAttrs_1_4_7 = Object.assign( buttonAttrs_1_3_4, newAttributes_1_4_7 );
+
+const buttonAttrs_1_5_1 = {
+	btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    textColor: {
+        type: "string"
+    },
+    textHoverColor: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backHoverColor: {
+        type: "string"
+    },
+    slideColor: {
+        type: "string"
+    },
+    textSize: {
+        type: "number"
+    },
+    textFontFamily: {
+        type: "string"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean"
+    },
+    textWeight: {
+        type: "number",
+        default: 500
+    },
+    textLine: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    padding: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    id: {
+        type: "string"
+    }
+}
+const newAttributes_1_5_2 = {
+	hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
+    }
+}
+
 
 const deprecatedContent = [
     {

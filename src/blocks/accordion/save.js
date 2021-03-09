@@ -58,10 +58,13 @@ const save = props => {
         descPaddingT,
         descPaddingR,
         descPaddingB,
-        descPaddingL
+		descPaddingL,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-accordion');
+	const mainClasses = classnames( className, 'premium-accordion' );
 
     const accordionItems = repeaterItems.map((item, index) => {
         return (
@@ -158,7 +161,8 @@ const save = props => {
         );
     });
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+		<div id={accordionId} className={`${ mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+		>
             {accordionItems}
         </div>
     );

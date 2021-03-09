@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 
 const save = props => {
-   
+
   const { className } = props;
-    
+
   const {
     selectedIcon,
     align,
@@ -54,14 +54,17 @@ const save = props => {
     wrapMarginL,
     urlCheck,
     link,
-    target
+		target,
+		hideDesktop,
+		hideTablet,
+		hideMobile
   } = props.attributes;
-  
-  const mainClasses = classnames ( className, 'premium-icon' );
+
+	const mainClasses = classnames( className, 'premium-icon' );
 
   return (
     <div
-      className={`${mainClasses}__container`}
+      className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`  }
       style={{
         textAlign: align,
         backgroundColor: backgroundColor,

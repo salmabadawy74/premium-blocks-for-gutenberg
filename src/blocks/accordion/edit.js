@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { Component, Fragment } = wp.element;
 
@@ -24,6 +25,7 @@ const CONTENT = [
 ];
 
 let isAccUpdated = null;
+
 
 class PremiumAccordion extends Component {
     constructor() {
@@ -113,7 +115,10 @@ class PremiumAccordion extends Component {
             descPaddingT,
             descPaddingR,
             descPaddingB,
-            descPaddingL
+			descPaddingL,
+			hideDesktop,
+			hideTablet,
+			hideMobile
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -151,6 +156,7 @@ class PremiumAccordion extends Component {
 
         const ALIGNS = ["left", "center", "right"];
 
+
         const onAccordionChange = (attr, value, index) => {
             const items = repeaterItems;
 
@@ -161,9 +167,9 @@ class PremiumAccordion extends Component {
 
                 return item;
             });
-        };
+		};
 
-        const mainClasses = classnames(className, "premium-accordion");
+		const mainClasses = classnames( className, "premium-accordion" );
 
         const accordionItems = repeaterItems.map((item, index) => {
             return (
@@ -660,14 +666,22 @@ class PremiumAccordion extends Component {
                                 })
                             }
                         />
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				     />
                 </InspectorControls>
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses}`}>
-                    {accordionItems}
-                </div>
-                <div className={"premium-repeater"}>
+				<div id={accordionId} className={`${ mainClasses } ${hideDesktop} ${hideTablet} ${hideMobile}`}
+				>
+					{accordionItems}
+					<div className={"premium-repeater"}>
                     <button
                         className={"premium-repeater-btn"}
                         onClick={() => {
@@ -686,6 +700,8 @@ class PremiumAccordion extends Component {
                     </button>
                     <p>{__("Add the items you need then reload the page")}</p>
                 </div>
+                </div>
+
             </Fragment>
         ];
     }

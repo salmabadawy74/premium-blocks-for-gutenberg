@@ -104,15 +104,18 @@ const save = props => {
         hoverShadowColor,
         hoverShadowHorizontal,
         hoverShadowVertical,
-        hoverShadowPosition
+		hoverShadowPosition,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon-box');
+	const mainClasses = classnames( className, 'premium-icon-box' );
 
     return (
         <div
             id={`premium-icon-box-${id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 border: borderType,
@@ -134,7 +137,7 @@ const save = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset"
-            }}
+			}}
         >
             {btnChecked && btnText && (
                 <style

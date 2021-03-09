@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const testimonialsAttrs = {
+	block_id: {
+		type:"string"
+	},
     align: {
         type: "string",
         default: "center"
@@ -176,7 +179,20 @@ const testimonialsAttrs = {
     paddingUnit: {
         type: "string",
         default: "px"
-    }
+	},
+	hideDesktop: {
+		type: 'boolean',
+		default:false
+	},
+	hideTablet: {
+		type: 'boolean',
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
+
 };
 
 registerBlockType("premium/testimonial", {

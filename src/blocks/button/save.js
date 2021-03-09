@@ -42,15 +42,18 @@ const save = props => {
         btnShadowColor,
         btnShadowHorizontal,
         btnShadowVertical,
-        btnShadowPosition
+        btnShadowPosition,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-button');
+	const mainClasses = classnames( className, 'premium-button' );
 
     return (
         <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
+            id={`premium-button-wrap-${id}`}
+            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{ textAlign: btnAlign }}
         >
             <style

@@ -1,22 +1,11 @@
-import {
-    fancyText
-} from "../../../assets/js/settings";
+const className = "premium-dheading-block";
 
-import save from "./save";
-import edit from "./edit";
-import deprecated from './deprecated'
-import PbgIcon from "../icons";
+import classnames from "classnames";
 
-const {
-    __
-} = wp.i18n;
+const { __ } = wp.i18n;
 
-const {
-    registerBlockType
-} = wp.blocks;
-
-const fancyTextAttrs = {
-    block_id: {
+const deprecated_attributes = {
+	block_id: {
         type: "string"
     },
     classMigrate: {
@@ -191,7 +180,9 @@ const fancyTextAttrs = {
     fancyalign: {
         type: "string",
         default: "center"
-	},
+    }
+}
+const newAttributes_1_0 = {
 	hideDesktop: {
         type: 'boolean',
         default:false
@@ -204,18 +195,92 @@ const fancyTextAttrs = {
         type: 'boolean',
         default:false
     }
-};
+}
+const deprecated_attributes_1_0=Object.assign(deprecated_attributes,newAttributes_1_0)
+const deprecatedContent = [
+	{
+		attributes: deprecated_attributes_1_0,
+		migrate: attributes => {
+			let newAttributes = {
+				hideDesktop: false,
+				hideTablet: false,
+				hideMobile:false
+			}
+			return Object.assign(attributes,newAttributes)
+		},
+		save: props => {
+			const {
+				block_id,
+				align,
+				prefix,
+				suffix,
+				repeaterFancyText,
+				effect,
+				loop,
+				cursorShow,
+				cursorMark,
+				typeSpeed,
+				backSpeed,
+				startdelay,
+				backdelay,
+				animationSpeed,
+				pauseTime,
+				hoverPause,
+				fancyalign
+			} = attributes
 
-registerBlockType("premium/fancy-text", {
-    title: __("Fancy Text"),
-    icon: <PbgIcon icon="fancy-text" />,
-    category: "premium-blocks",
-    attributes: fancyTextAttrs,
-    supports: {
-        inserter: fancyText
-    },
-    example: {},
-    edit: edit,
-	save: save,
-	deprecated:deprecated
-});
+			return (
+				<div
+					className={classnames(
+						className,
+						`premium-block-${block_id}`
+					)}
+					style={{
+						textAlign: align,
+					}}>
+					{effect == 'typing' ? <div
+						id={`premium-fancy-text-${block_id}`}
+						className={`premium-fancy-text`} style={{
+							textAlign: align,
+						}}
+						data-effect={`${effect}`}
+						data-strings={`${repeaterFancyText.map((item, index) => { return item.title })}`}
+						data-typespeed={`${typeSpeed}`}
+						data-backspeed={`${backSpeed}`}
+						data-startdelay={`${startdelay}`}
+						data-backdelay={`${backdelay}`}
+						data-loop={`${loop}`}
+						data-cursorshow={`${cursorShow}`}
+						data-cursormark={`${cursorMark}`}
+					>
+						<span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
+						<span className={`premium-fancy-text-title`}> </span>
+						<span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
+					</div>
+						: <div className={`premium-fancy-text premium-fancy-slide`} style={{
+							textAlign: align
+						}}
+							data-effect={`${effect}`}
+							data-strings={`${repeaterFancyText.map((item, index) => { return item.title })}`}
+							data-animationspeed={`${animationSpeed}`}
+							data-pausetime={`${pauseTime}`}
+							data-hoverpause={`${hoverPause}`}
+						>
+							<span className={`premium-fancy-text-prefix-text`}>{prefix} </span>
+							<div className={`premium-fancy-text-title-slide`} style={{
+								textAlign: fancyalign
+							}}>
+								<ul className={`premium-fancy-text-title-slide-list`}>
+									{repeaterFancyText.map((item, index) => { return <li>{item.title}</li> })}
+								</ul>
+							</div>
+							<span className={`premium-fancy-text-suffix-text`}> {suffix}</span>
+						</div>
+					}
+				</div>
+			)
+		}
+
+	}
+]
+export default deprecatedContent;

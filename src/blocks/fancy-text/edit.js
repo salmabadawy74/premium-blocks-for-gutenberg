@@ -9,6 +9,7 @@ import {
     SortableElement,
     arrayMove,
 } from "react-sortable-hoc";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
 
@@ -206,7 +207,10 @@ class edit extends Component {
             animationSpeed,
             pauseTime,
             hoverPause,
-            fancyalign,
+			fancyalign,
+			hideDesktop,
+			hideTablet,
+			hideMobile
         } = attributes;
 
         const ALIGNS = ["left", "center", "right"];
@@ -299,7 +303,7 @@ class edit extends Component {
                 }
                 return item;
             });
-        };
+		};
 
         const edit = (index) => {
             return repeaterFancyText.map((item, i) => {
@@ -718,13 +722,21 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 className={classnames(
                     className,
-                    `premium-block-${block_id}`
+                    `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`
                 )}
                 style={{
                     textAlign: align,

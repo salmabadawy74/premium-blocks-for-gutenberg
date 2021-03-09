@@ -130,15 +130,18 @@ const save = props => {
         listPadding,
         listStyle,
         featsAlign,
-        id
+		id,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-pricing-table");
+	const mainClasses = classnames( className, "premium-pricing-table" );
 
     return (
         <div
             id={`${mainClasses}-${id}`}
-            className={`${mainClasses}`}
+            className={`${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
                 background: tableBack,

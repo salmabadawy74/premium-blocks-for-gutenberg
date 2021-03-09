@@ -5,6 +5,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -27,7 +28,7 @@ const CONTENT = [
 const edit = props => {
     const { isSelected, className, setAttributes } = props;
 
-    const {
+	const {
         stretchSection,
         horAlign,
         innerWidthType,
@@ -61,8 +62,12 @@ const edit = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
-    } = props.attributes;
+		shadowPosition,
+		hideDesktop,
+		hideTablet,
+		hideMobile
+	} = props.attributes;
+
     const WIDTH = [
         {
             value: "boxed",
@@ -98,7 +103,7 @@ const edit = props => {
         }
     ];
 
-    const mainClasses = classnames(className, "premium-container");
+	const mainClasses = classnames( className, "premium-container" );
 
     return [
         isSelected && (
@@ -357,12 +362,21 @@ const edit = props => {
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
             </InspectorControls>
         ),
-        <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
-            style={{
+		<div
+
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+             style={{
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -385,7 +399,7 @@ const edit = props => {
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-            }}
+			}}
         >
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}

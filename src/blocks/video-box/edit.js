@@ -6,6 +6,8 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+
 
 const {
     IconButton,
@@ -148,7 +150,10 @@ class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
-            shadowPosition
+			shadowPosition,
+			hideDesktop,
+			hideTablet,
+			hideMobile
         } = this.props.attributes;
 
         const TYPE = [
@@ -225,7 +230,7 @@ class edit extends Component {
             addFontToHead(fontFamily);
         };
 
-        const mainClasses = classnames(className, "premium-video-box");
+		const mainClasses = classnames( className, "premium-video-box" );
 
         const changeVideoType = (newvalue) => {
             if (newvalue === "self") {
@@ -791,12 +796,20 @@ class edit extends Component {
                                 })
                             }
                         />
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay}`}
+                className={`${mainClasses} video-overlay-${overlay} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-type={videoType}
                 style={{
                     border: boxBorderType,
@@ -804,7 +817,7 @@ class edit extends Component {
                     borderRadius: boxBorderRadius + "px",
                     borderColor: boxBorderColor,
                     boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-                }}
+				}}
             >
                 <style
                     dangerouslySetInnerHTML={{

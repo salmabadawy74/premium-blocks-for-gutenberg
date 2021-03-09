@@ -206,7 +206,19 @@ const videoBoxAttrs = {
     // Old props
     playLeft: {
         type: "number"
-    }
+	},
+	hideDesktop: {
+		type: 'boolean',
+		default:false
+	},
+	hideTablet: {
+		type: 'boolean',
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
 };
 
 const onChangeVideoURL = (type, URL) => {

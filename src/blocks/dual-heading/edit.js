@@ -4,6 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import FONTS from "../../components/premium-fonts";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
 
@@ -18,6 +19,7 @@ const {
     Dropdown,
     Button
 } = wp.components;
+
 const {
     BlockControls,
     InspectorControls,
@@ -92,7 +94,10 @@ const edit = props => {
         containerBorderType,
         containerBorderWidth,
         containerBorderRadius,
-        containerBorderColor
+		containerBorderColor,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
     const DISPLAY = [
         {
@@ -139,7 +144,7 @@ const edit = props => {
     const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
-    );
+	);
 
     return [
         isSelected && (
@@ -648,12 +653,20 @@ const edit = props => {
                             setAttributes({ containerBorderRadius: newrRadius })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
             </InspectorControls>
         ),
 
         <div
-            className={`${mainClasses}`}
+            className={`${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: containerBack,

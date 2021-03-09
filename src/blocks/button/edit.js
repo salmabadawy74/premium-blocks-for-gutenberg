@@ -5,6 +5,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
 
@@ -67,7 +68,11 @@ const edit = props => {
         btnShadowColor,
         btnShadowHorizontal,
         btnShadowVertical,
-        btnShadowPosition
+        btnShadowPosition,
+        hideDesktop,
+        hideTablet,
+        hideMobile
+
     } = props.attributes;
 
     const SIZE = [
@@ -206,7 +211,7 @@ const edit = props => {
         addFontToHead(fontFamily);
     };
 
-    const mainClasses = classnames(className, "premium-button");
+    const mainClasses = classnames( className, "premium-button" );
 
     return [
         isSelected && "block" != btnSize && (
@@ -472,11 +477,20 @@ const edit = props => {
                         onChange={newValue => setAttributes({ padding: newValue })}
                     />
                 </PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
+
             </InspectorControls>
         ),
         <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
+            id={`premium-button-wrap-${id}`}
+            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{ textAlign: btnAlign }}
         >
             <style

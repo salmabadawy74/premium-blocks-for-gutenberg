@@ -9,6 +9,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroud from "../../components/premium-background";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -80,7 +81,10 @@ const edit = props => {
         wrapMarginL,
         urlCheck,
         link,
-        target
+		target,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const EFFECTS = [
@@ -457,12 +461,20 @@ const edit = props => {
                             })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
             </InspectorControls>
         ),
 
         <div
-            className={`${mainClasses}__container`}
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 backgroundColor: backgroundColor,

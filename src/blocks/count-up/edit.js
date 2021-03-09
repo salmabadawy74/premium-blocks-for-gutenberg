@@ -5,6 +5,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackgroud from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -85,7 +86,10 @@ const edit = props => {
         titleFamily,
         counterFamily,
         prefixFamily,
-        suffixFamily
+		suffixFamily,
+		hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
     const ICONS = [
@@ -189,7 +193,7 @@ const edit = props => {
         addFontToHead(fontFamily);
     };
 
-    const mainClasses = classnames(className, "premium-countup");
+	const mainClasses = classnames( className, "premium-countup" );
 
     return [
         isSelected && (
@@ -595,7 +599,8 @@ const edit = props => {
                                 value={titleB}
                                 onChange={newValue => setAttributes({ titleB: newValue })}
                             />
-                        </PanelBody>
+						</PanelBody>
+
                     </PanelBody>
                 )}
                 <PanelBody
@@ -696,7 +701,15 @@ const edit = props => {
                             })
                         }
                     />
-                </PanelBody>
+				</PanelBody>
+				<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				     />
             </InspectorControls>
         ),
         <div>
@@ -707,7 +720,7 @@ const edit = props => {
             )}
         </div>,
         <div
-            className={`${mainClasses}__wrap`}
+            className={`${mainClasses}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
