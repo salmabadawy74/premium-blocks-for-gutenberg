@@ -1,56 +1,47 @@
-const { dispatch } = wp.data;
+
 const { __ } = wp.i18n;
 const {
     PanelBody,
     ToggleControl,
 } = wp.components;
-const { Fragment,Component } = wp.element;
+function PremiumResponsiveTabs ( props ) {
 
-export default class PremiumResponsiveTabs extends Component{
-     
-    constructor( props ) {
-        super( props );
-        this.state = {
-            Desktop: this.props.Desktop || false,
-            Tablet: this.props.Tablet || false,
-            Mobile: this.props.Mobile || false
-            
-        };
+    const {
+        onChangeDesktop = () => { },
+        onChangeTablet = () => { },
+        onChangeMobile = () => { },
+        Desktop,
+        Tablet,
+        Mobile
+    } = props;
 
+    return (
 
-    }
+        <PanelBody
+            title={__( "Responsive" )}
+            className="premium-panel-body"
+            initialOpen={false}
+        >
+            <ToggleControl
+                label={__( 'Hide in Desktop' )}
+                checked={Desktop}
+                onChange={onChangeDesktop}
+            />
 
+            <ToggleControl
+                label={__( 'Hide in Tablet' )}
+                checked={Tablet}
+                onChange={onChangeTablet}
+            />
 
+            <ToggleControl
+                label={__( 'Hide in Mobile' )}
+                checked={Mobile}
+                onChange={onChangeMobile}
+            />
 
-    render () {
-        const { Desktop, Tablet, Mobile } = this.state;
-            return (
-            
-                <PanelBody
-                title={__("Responsive")}
-                className="premium-panel-body"
-                initialOpen={false}
-                >
-                     <ToggleControl
-                        label={__( 'Hide in Desktop' )}
-                        checked={Desktop}
-                        onChange={this.props.onChangeDevice('Desktop')}
-                    /> 
+        </PanelBody>
 
-                    <ToggleControl
-                    label={__( 'Hide in Tablet' )}
-                    checked={Tablet}
-                        onChange={this.props.onChangeDevice( 'tablet' )}
-                    />
-
-                    <ToggleControl
-                    label={__( 'Hide in Mobile' )}
-                    checked={Mobile}
-                     onChange={this.props.onChangeDevice( 'Mobile' )}
-                    />
-                    
-                    </PanelBody>
-                
-            )
-        }
-    }
+    )
+}
+export default PremiumResponsiveTabs;
