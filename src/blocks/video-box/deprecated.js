@@ -671,8 +671,6 @@ const deprecatedContent = [
 				}
 			};
 
-			const mainClasses = classnames ( className, 'premium-video-box' );
-
 			return (
 				<div
 					id={videoBoxId}

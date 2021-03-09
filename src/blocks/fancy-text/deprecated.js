@@ -208,7 +208,8 @@ const deprecatedContent = [
 			}
 			return Object.assign(attributes,newAttributes)
 		},
-		save: props => {
+        save: props => {
+            const { className } = props;
 			const {
 				block_id,
 				align,
@@ -227,7 +228,7 @@ const deprecatedContent = [
 				pauseTime,
 				hoverPause,
 				fancyalign
-			} = attributes
+			} =props.attributes
 
 			return (
 				<div

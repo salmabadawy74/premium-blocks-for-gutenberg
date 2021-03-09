@@ -11926,7 +11926,7 @@ var newAttributes_1_0_2 = {
 var deprecated_attributes_1_0_2 = Object.assign(deprecated_attributes_1_0_1, newAttributes_1_0_2);
 
 var deprecated = [{
-    atrributes: deprecated_attributes_1_0_2,
+    attributes: deprecated_attributes_1_0_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
             hideDesktop: false,
@@ -16109,10 +16109,17 @@ var newAttributes_1_5_2 = {
     }
 };
 
+var buttonAttrs_1_5_2 = Object.assign(buttonAttrs_1_5_1, newAttributes_1_5_2);
+
 var deprecatedContent = [{
-    attributes: buttonAttrs_1_4_7,
+    attributes: buttonAttrs_1_5_2,
     migrate: function migrate(attributes) {
-        return Object.assign(attributes, { paddingU: "" });
+        var newAttributes = {
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
@@ -16142,6 +16149,7 @@ var deprecatedContent = [{
             borderColor = _props$attributes.borderColor,
             borderHoverColor = _props$attributes.borderHoverColor,
             padding = _props$attributes.padding,
+            paddingU = _props$attributes.paddingU,
             shadowBlur = _props$attributes.shadowBlur,
             shadowColor = _props$attributes.shadowColor,
             shadowHorizontal = _props$attributes.shadowHorizontal,
@@ -16152,11 +16160,12 @@ var deprecatedContent = [{
             btnShadowVertical = _props$attributes.btnShadowVertical,
             btnShadowPosition = _props$attributes.btnShadowPosition;
 
+
         return wp.element.createElement(
             "div",
             {
                 id: className + "-wrap-" + id,
-                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                className: className + "__wrap premium-button__" + effect + " premium-button__" + effectDir,
                 style: { textAlign: btnAlign }
             },
             wp.element.createElement("style", {
@@ -16167,7 +16176,7 @@ var deprecatedContent = [{
             wp.element.createElement(RichText.Content, {
                 tagName: "a",
                 value: btnText,
-                className: className + " " + className + "__" + btnSize,
+                className: "premium-button premium-button__" + btnSize,
                 href: btnLink,
                 rel: "noopener noreferrer",
                 target: btnTarget ? "_blank" : "_self",
@@ -16183,7 +16192,7 @@ var deprecatedContent = [{
                     fontWeight: textWeight,
                     textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
                     boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-                    padding: padding + "px",
+                    padding: padding + paddingU,
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
@@ -16194,6 +16203,9 @@ var deprecatedContent = [{
     }
 }, {
     attributes: buttonAttrs_1_4_7,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { paddingU: "" });
+    },
     save: function save(props) {
         var _props$attributes2 = props.attributes,
             id = _props$attributes2.id,
@@ -16249,6 +16261,86 @@ var deprecatedContent = [{
                 value: btnText,
                 className: className + " " + className + "__" + btnSize,
                 href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: buttonAttrs_1_4_7,
+    save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            btnText = _props$attributes3.btnText,
+            btnSize = _props$attributes3.btnSize,
+            btnAlign = _props$attributes3.btnAlign,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            effect = _props$attributes3.effect,
+            effectDir = _props$attributes3.effectDir,
+            textColor = _props$attributes3.textColor,
+            textHoverColor = _props$attributes3.textHoverColor,
+            backColor = _props$attributes3.backColor,
+            backHoverColor = _props$attributes3.backHoverColor,
+            slideColor = _props$attributes3.slideColor,
+            textSize = _props$attributes3.textSize,
+            textFontFamily = _props$attributes3.textFontFamily,
+            textWeight = _props$attributes3.textWeight,
+            textLine = _props$attributes3.textLine,
+            textLetter = _props$attributes3.textLetter,
+            textStyle = _props$attributes3.textStyle,
+            textUpper = _props$attributes3.textUpper,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            borderHoverColor = _props$attributes3.borderHoverColor,
+            padding = _props$attributes3.padding,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition;
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
                 target: btnTarget ? "_blank" : "_self",
                 style: {
                     color: textColor,
@@ -16277,41 +16369,41 @@ var deprecatedContent = [{
         return Object.assign(attributes, { textFontFamily: "" });
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            btnText = _props$attributes3.btnText,
-            btnSize = _props$attributes3.btnSize,
-            btnAlign = _props$attributes3.btnAlign,
-            btnLink = _props$attributes3.btnLink,
-            btnTarget = _props$attributes3.btnTarget,
-            effect = _props$attributes3.effect,
-            effectDir = _props$attributes3.effectDir,
-            textColor = _props$attributes3.textColor,
-            textHoverColor = _props$attributes3.textHoverColor,
-            backColor = _props$attributes3.backColor,
-            backHoverColor = _props$attributes3.backHoverColor,
-            slideColor = _props$attributes3.slideColor,
-            textSize = _props$attributes3.textSize,
-            textWeight = _props$attributes3.textWeight,
-            textLine = _props$attributes3.textLine,
-            textLetter = _props$attributes3.textLetter,
-            textStyle = _props$attributes3.textStyle,
-            textUpper = _props$attributes3.textUpper,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            borderHoverColor = _props$attributes3.borderHoverColor,
-            padding = _props$attributes3.padding,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            btnText = _props$attributes4.btnText,
+            btnSize = _props$attributes4.btnSize,
+            btnAlign = _props$attributes4.btnAlign,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            effect = _props$attributes4.effect,
+            effectDir = _props$attributes4.effectDir,
+            textColor = _props$attributes4.textColor,
+            textHoverColor = _props$attributes4.textHoverColor,
+            backColor = _props$attributes4.backColor,
+            backHoverColor = _props$attributes4.backHoverColor,
+            slideColor = _props$attributes4.slideColor,
+            textSize = _props$attributes4.textSize,
+            textWeight = _props$attributes4.textWeight,
+            textLine = _props$attributes4.textLine,
+            textLetter = _props$attributes4.textLetter,
+            textStyle = _props$attributes4.textStyle,
+            textUpper = _props$attributes4.textUpper,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            borderHoverColor = _props$attributes4.borderHoverColor,
+            padding = _props$attributes4.padding,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -16357,40 +16449,40 @@ var deprecatedContent = [{
         return Object.assign(attributes, { borderHoverColor: "" });
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            btnText = _props$attributes4.btnText,
-            btnSize = _props$attributes4.btnSize,
-            btnAlign = _props$attributes4.btnAlign,
-            btnLink = _props$attributes4.btnLink,
-            btnTarget = _props$attributes4.btnTarget,
-            effect = _props$attributes4.effect,
-            effectDir = _props$attributes4.effectDir,
-            textColor = _props$attributes4.textColor,
-            textHoverColor = _props$attributes4.textHoverColor,
-            backColor = _props$attributes4.backColor,
-            backHoverColor = _props$attributes4.backHoverColor,
-            slideColor = _props$attributes4.slideColor,
-            textSize = _props$attributes4.textSize,
-            textWeight = _props$attributes4.textWeight,
-            textLine = _props$attributes4.textLine,
-            textLetter = _props$attributes4.textLetter,
-            textStyle = _props$attributes4.textStyle,
-            textUpper = _props$attributes4.textUpper,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            padding = _props$attributes4.padding,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            btnText = _props$attributes5.btnText,
+            btnSize = _props$attributes5.btnSize,
+            btnAlign = _props$attributes5.btnAlign,
+            btnLink = _props$attributes5.btnLink,
+            btnTarget = _props$attributes5.btnTarget,
+            effect = _props$attributes5.effect,
+            effectDir = _props$attributes5.effectDir,
+            textColor = _props$attributes5.textColor,
+            textHoverColor = _props$attributes5.textHoverColor,
+            backColor = _props$attributes5.backColor,
+            backHoverColor = _props$attributes5.backHoverColor,
+            slideColor = _props$attributes5.slideColor,
+            textSize = _props$attributes5.textSize,
+            textWeight = _props$attributes5.textWeight,
+            textLine = _props$attributes5.textLine,
+            textLetter = _props$attributes5.textLetter,
+            textStyle = _props$attributes5.textStyle,
+            textUpper = _props$attributes5.textUpper,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            padding = _props$attributes5.padding,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -16443,35 +16535,35 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            btnText = _props$attributes5.btnText,
-            btnSize = _props$attributes5.btnSize,
-            btnAlign = _props$attributes5.btnAlign,
-            btnLink = _props$attributes5.btnLink,
-            btnTarget = _props$attributes5.btnTarget,
-            effect = _props$attributes5.effect,
-            effectDir = _props$attributes5.effectDir,
-            textColor = _props$attributes5.textColor,
-            textHoverColor = _props$attributes5.textHoverColor,
-            backColor = _props$attributes5.backColor,
-            backHoverColor = _props$attributes5.backHoverColor,
-            slideColor = _props$attributes5.slideColor,
-            textSize = _props$attributes5.textSize,
-            textWeight = _props$attributes5.textWeight,
-            textLine = _props$attributes5.textLine,
-            textLetter = _props$attributes5.textLetter,
-            textStyle = _props$attributes5.textStyle,
-            textUpper = _props$attributes5.textUpper,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            padding = _props$attributes5.padding,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            btnText = _props$attributes6.btnText,
+            btnSize = _props$attributes6.btnSize,
+            btnAlign = _props$attributes6.btnAlign,
+            btnLink = _props$attributes6.btnLink,
+            btnTarget = _props$attributes6.btnTarget,
+            effect = _props$attributes6.effect,
+            effectDir = _props$attributes6.effectDir,
+            textColor = _props$attributes6.textColor,
+            textHoverColor = _props$attributes6.textHoverColor,
+            backColor = _props$attributes6.backColor,
+            backHoverColor = _props$attributes6.backHoverColor,
+            slideColor = _props$attributes6.slideColor,
+            textSize = _props$attributes6.textSize,
+            textWeight = _props$attributes6.textWeight,
+            textLine = _props$attributes6.textLine,
+            textLetter = _props$attributes6.textLetter,
+            textStyle = _props$attributes6.textStyle,
+            textUpper = _props$attributes6.textUpper,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            padding = _props$attributes6.padding,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical;
 
         return wp.element.createElement(
             "div",
@@ -21504,6 +21596,7 @@ var deprecatedContent = [{
   },
 
   save: function save(props) {
+    var className = props.className;
     var _props$attributes = props.attributes,
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
@@ -50198,8 +50291,6 @@ var deprecatedContent = [{
       }
     };
 
-    var mainClasses = classnames(className, 'premium-video-box');
-
     return wp.element.createElement(
       "div",
       {
@@ -55614,24 +55705,25 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _attributes = attributes,
-            block_id = _attributes.block_id,
-            align = _attributes.align,
-            prefix = _attributes.prefix,
-            suffix = _attributes.suffix,
-            repeaterFancyText = _attributes.repeaterFancyText,
-            effect = _attributes.effect,
-            loop = _attributes.loop,
-            cursorShow = _attributes.cursorShow,
-            cursorMark = _attributes.cursorMark,
-            typeSpeed = _attributes.typeSpeed,
-            backSpeed = _attributes.backSpeed,
-            startdelay = _attributes.startdelay,
-            backdelay = _attributes.backdelay,
-            animationSpeed = _attributes.animationSpeed,
-            pauseTime = _attributes.pauseTime,
-            hoverPause = _attributes.hoverPause,
-            fancyalign = _attributes.fancyalign;
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            align = _props$attributes.align,
+            prefix = _props$attributes.prefix,
+            suffix = _props$attributes.suffix,
+            repeaterFancyText = _props$attributes.repeaterFancyText,
+            effect = _props$attributes.effect,
+            loop = _props$attributes.loop,
+            cursorShow = _props$attributes.cursorShow,
+            cursorMark = _props$attributes.cursorMark,
+            typeSpeed = _props$attributes.typeSpeed,
+            backSpeed = _props$attributes.backSpeed,
+            startdelay = _props$attributes.startdelay,
+            backdelay = _props$attributes.backdelay,
+            animationSpeed = _props$attributes.animationSpeed,
+            pauseTime = _props$attributes.pauseTime,
+            hoverPause = _props$attributes.hoverPause,
+            fancyalign = _props$attributes.fancyalign;
 
 
         return wp.element.createElement(

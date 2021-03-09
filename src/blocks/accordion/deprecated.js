@@ -395,7 +395,7 @@ const newAttributes_1_0_2 = {
 
 const deprecated = [
 	{
-		atrributes: deprecated_attributes_1_0_2,
+		attributes: deprecated_attributes_1_0_2,
 		migrate: attributes => {
 			let newAttributes = {
 				hideDesktop: false,
@@ -404,7 +404,7 @@ const deprecated = [
 			}
 			 return Object.assign(attributes,newAttributes)
 		},
-		save: props => {
+        save: props => {
 			const {
 				accordionId,
 				repeaterItems,

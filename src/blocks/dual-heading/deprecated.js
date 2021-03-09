@@ -541,7 +541,8 @@ const deprecatedContent = [
 			return Object.assign(attributes,newAttributes)
 		},
 
-		save: props => {
+        save: props => {
+            const { className } = props;
 			const {
         contentAlign,
         firstHeading,
