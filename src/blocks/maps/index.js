@@ -1,6 +1,6 @@
 import { maps } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
-
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 const className = "premium-maps";
 
 const { __ } = wp.i18n;
@@ -131,8 +131,157 @@ const mapAttrs = {
     gapBetween: {
         type: "number",
         default: 5
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
     }
+
 };
+
+const mapAttrs_1_2 = {
+    mapID: {
+        type: "string"
+    },
+    mapStyle: {
+        type: "string",
+        default: "[]"
+    },
+    mapType: {
+        type: "string",
+        default: "roadmap"
+    },
+    height: {
+        type: "number",
+        default: 500
+    },
+    zoom: {
+        type: "number",
+        default: 6
+    },
+    mapTypeControl: {
+        type: "boolean",
+        default: true
+    },
+    zoomControl: {
+        type: "boolean",
+        default: true
+    },
+    fullscreenControl: {
+        type: "boolean",
+        default: true
+    },
+    streetViewControl: {
+        type: "boolean",
+        default: false
+    },
+    scrollwheel: {
+        type: "boolean",
+        default: false
+    },
+    centerLat: {
+        type: "string",
+        default: "40.7569733"
+    },
+    centerLng: {
+        type: "string",
+        default: " -73.98878250000001"
+    },
+    markerOpen: {
+        type: "boolean",
+        default: false
+    },
+    markerTitle: {
+        type: "string",
+        default: __("Awesome Title")
+    },
+    markerDesc: {
+        type: "string",
+        default: __("Cool Description")
+    },
+    mapMarker: {
+        type: "boolean",
+        default: true
+    },
+    markerIconUrl: {
+        type: "string"
+    },
+    markerIconId: {
+        type: "number",
+        default: ""
+    },
+    markerCustom: {
+        type: "boolean",
+        default: false
+    },
+    maxWidth: {
+        type: "number",
+        default: 300
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: 16
+    },
+    boxAlign: {
+        type: "string",
+        default: "center"
+    },
+    boxPadding: {
+        type: "number",
+        default: "0"
+    },
+    gapBetween: {
+        type: "number",
+        default: 5
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
+    }
+}
+const newAttributes_1_0 = {
+    hideDesktop: {
+		type: "boolean",
+		default:false
+	},
+	hideTablet: {
+		type: "boolean",
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
+} 
+const mapAttrs_1_3 = Object.assign( mapAttrs_1_2, newAttributes_1_0 );
 
 class PremiumMap extends Component {
     constructor() {
@@ -305,7 +454,10 @@ class PremiumMap extends Component {
             descSize,
             boxAlign,
             boxPadding,
-            gapBetween
+            gapBetween,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const TYPES = [
@@ -611,10 +763,18 @@ class PremiumMap extends Component {
                             }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				     />
                 </InspectorControls>
             ),
             <div
-                className={`${className}__wrap`}
+                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 id={mapID}
                 style={{
                     height: height + "px"
@@ -660,12 +820,15 @@ registerBlockType("premium/maps", {
             descSize,
             boxAlign,
             boxPadding,
-            gapBetween
+            gapBetween,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = props.attributes;
 
         return (
             <div
-                className={`${className}__wrap`}
+                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 id={mapID}
                 style={{
                     height: height + "px"
@@ -749,6 +912,132 @@ registerBlockType("premium/maps", {
         );
     },
     deprecated: [
+        {
+            attributes: mapAttrs_1_3,
+            migrate: attributes => {
+                let newAttributes = {
+                    hideDesktop: false,
+                    hideTablet: false,
+                    hideMobile:false
+                }
+                return Object.assign(attributes,newAttributes)
+            },
+            save: props => {
+                const {
+                    mapID,
+                    height,
+                    mapStyle,
+                    mapType,
+                    zoom,
+                    mapTypeControl,
+                    zoomControl,
+                    fullscreenControl,
+                    streetViewControl,
+                    scrollwheel,
+                    centerLat,
+                    centerLng,
+                    mapMarker,
+                    markerOpen,
+                    markerIconUrl,
+                    markerCustom,
+                    maxWidth,
+                    markerTitle,
+                    markerDesc,
+                    titleColor,
+                    titleSize,
+                    descColor,
+                    descSize,
+                    boxAlign,
+                    boxPadding,
+                    gapBetween,
+                } = props.attributes;
+        
+                return (
+                    <div
+                        className={`${className}__wrap `}
+                        id={mapID}
+                        style={{
+                            height: height + "px"
+                        }}
+                    >
+                        <div className={`${className}__marker`}>
+                            <div
+                                className={`${className}__info`}
+                                style={{
+                                    textAlign: boxAlign,
+                                    padding: boxPadding + "px"
+                                }}
+                            >
+                                {markerTitle && (
+                                    <h3
+                                        className={`${className}__title`}
+                                        style={{
+                                            color: titleColor,
+                                            fontSize: titleSize + "px",
+                                            marginBottom: gapBetween + "px"
+                                        }}
+                                    >
+                                        {markerTitle}
+                                    </h3>
+                                )}
+                                {markerDesc && (
+                                    <div
+                                        className={`${className}__desc`}
+                                        style={{
+                                            color: descColor,
+                                            fontSize: descSize + "px"
+                                        }}
+                                    >
+                                        {markerDesc}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <script>
+                            {`window.addEventListener('load',function(){
+                            if( typeof google === 'undefined' ) return;
+                            let mapElem = document.getElementById('${mapID}');
+                            let pin = mapElem.querySelector('.${className}__marker');
+                            let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+        
+                            let map = new google.maps.Map(mapElem, {
+                                zoom: ${zoom},
+                                gestureHandling: 'cooperative',
+                                mapTypeId: '${mapType}',
+                                mapTypeControl: ${mapTypeControl},
+                                zoomControl: ${zoomControl},
+                                fullscreenControl: ${fullscreenControl},
+                                streetViewControl: ${streetViewControl},
+                                scrollwheel: ${scrollwheel},
+                                center: latlng,
+                                styles: ${mapStyle}
+                            });
+                            if( ${mapMarker} ) {
+                                let markerIcon = '${markerIconUrl}';
+                                let marker = new google.maps.Marker({
+                                    position	: latlng,
+                                    map			: map,
+                                    icon        : ${markerCustom} ? markerIcon : ''
+                                });
+                                
+                                let infowindow = new google.maps.InfoWindow({
+                                    maxWidth    : ${maxWidth},
+                                    content		: pin.innerHTML
+                                });
+                                if (${markerOpen}) {
+                                  infowindow.open( map, marker );
+                                }
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    infowindow.open( map, marker );
+                                });
+                            }
+                            
+                        });`}
+                        </script>
+                    </div>
+                );
+            }
+        },
         {
             attributes: mapAttrs,
             save: props => {
