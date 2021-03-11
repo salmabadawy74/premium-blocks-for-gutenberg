@@ -37,6 +37,12 @@ const accordionAttrs = {
     titleSize: {
         type: "number"
     },
+    titleSizeTablet: {
+        type:"number"
+    },
+    titleSizeMobile: {
+        type:"number"
+    },
     titleLine: {
         type: "number"
     },
@@ -150,6 +156,12 @@ const accordionAttrs = {
     descSize: {
         type: "number"
     },
+    descSizeTablet: {
+        type:"number"
+    },
+    descSizeMobile: {
+      type:"number"  
+    },
     descLine: {
         type: "number"
     },
@@ -193,6 +205,10 @@ const accordionAttrs = {
     descPaddingL: {
         type: "number",
         default: 10
+    },
+    classMigrate: {
+        type: 'boolean',
+        default:false
     }
 };
 

@@ -41,6 +41,12 @@ const dualHeadingAttrs = {
         type: "number",
         default: "20"
     },
+    firstSizeTablet: {
+      type:"number"  
+    },
+    firstSizeMobile: {
+      type:"number"  
+    },
     firstFamily: {
         type: "string"
     },
@@ -125,6 +131,12 @@ const dualHeadingAttrs = {
     secondSize: {
         type: "number",
         default: "20"
+    },
+    secondSizeTablet: {
+      type:"number"  
+    },
+    secondSizeMobile: {
+      type:"number"  
     },
     secondFamily: {
         type: "string"

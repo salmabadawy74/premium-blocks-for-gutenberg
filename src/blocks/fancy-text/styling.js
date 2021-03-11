@@ -33,9 +33,9 @@ function styling(props) {
         textBGColor
     } = props.attributes
 
-    var selectors = {}
-    var tablet_selectors = {}
-    var mobile_selectors = {}
+    let selectors = {}
+    let tablet_selectors = {}
+    let mobile_selectors = {}
 
     selectors = {
         " .premium-fancy-text-title": {

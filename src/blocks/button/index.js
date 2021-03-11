@@ -58,6 +58,12 @@ const buttonAttrs = {
     textSize: {
         type: "number"
     },
+    textSizeTablet: {
+      type:"number"  
+    },
+    textSizeMobile: {
+      type:"number"  
+    },
     textFontFamily: {
         type: "string"
     },
@@ -136,6 +142,10 @@ const buttonAttrs = {
     },
     id: {
         type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default:false
     }
 };
 

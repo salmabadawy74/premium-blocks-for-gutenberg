@@ -85,6 +85,16 @@ const iconBoxAttrs = {
     titleSize: {
         type: "number"
     },
+    titlefontSizeUnit: {
+        type: 'string',
+        default:'px'
+    },
+    titleSizeTablet: {
+        type:'number'
+    },
+    titleSizeMobile: {
+        type:'number'
+    },
     titleLine: {
         type: "number"
     },
@@ -141,6 +151,16 @@ const iconBoxAttrs = {
     },
     descSize: {
         type: "number"
+    },
+    descfontSizeUnit: {
+        type: "string",
+        default:'px'
+    },
+    descSizeTablet: {
+        type:"number"
+    },
+    descSizeMobile: {
+      type:"number"  
     },
     descLine: {
         type: "number"
@@ -200,6 +220,16 @@ const iconBoxAttrs = {
     },
     btnSize: {
         type: "number"
+    },
+    btnfontSizeUnit: {
+        type: "string",
+        default:"px"
+    },
+    btnSizeTablet: {
+        type:"number"
+    },
+    btnSizeMobile: {
+        type:"number"
     },
     btnLine: {
         type: "number"
@@ -361,6 +391,10 @@ const iconBoxAttrs = {
     },
     hoverShadowPosition: {
         type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default:false
     }
 };
 

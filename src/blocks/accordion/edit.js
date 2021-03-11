@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import styling from './styling';
 
 const { Component, Fragment } = wp.element;
 
@@ -37,6 +38,16 @@ class PremiumAccordion extends Component {
         if (!attributes.accordionId) {
             setAttributes({ accordionId: "premium-accordion-" + clientId });
         }
+        this.props.setAttributes({ classMigrate: true });
+
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-accordion-" + this.props.clientId.substr(0, 6)
+        ); 
+        document.head.appendChild( $style );
+        
         this.initAccordion();
     }
 
@@ -68,6 +79,8 @@ class PremiumAccordion extends Component {
             titleTag,
             titleColor,
             titleSize,
+            titleSizeTablet,
+            titleSizeMobile,
             titleLine,
             titleLetter,
             titleStyle,
@@ -101,6 +114,8 @@ class PremiumAccordion extends Component {
             descBorderRadius,
             descBorderWidth,
             descSize,
+            descSizeTablet,
+            descSizeMobile,
             descLine,
             descLetter,
             descStyle,
@@ -148,6 +163,14 @@ class PremiumAccordion extends Component {
                 label: __("Gutenberg Block")
             }
         ];
+
+        let element = document.getElementById(
+            "premium-style-accordion-" + clientId.substr(0, 6)
+        );
+
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
 
         const ALIGNS = ["left", "center", "right"];
 
@@ -202,7 +225,6 @@ class PremiumAccordion extends Component {
                                 value={item.titleText}
                                 style={{
                                     color: titleColor,
-                                    fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
                                     textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
@@ -259,7 +281,6 @@ class PremiumAccordion extends Component {
                                 value={item.descText}
                                 style={{
                                     color: descColor,
-                                    fontSize: descSize + "px",
                                     letterSpacing: descLetter + "px",
                                     textTransform: descUpper ? "uppercase" : "none",
                                     textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
@@ -308,12 +329,16 @@ class PremiumAccordion extends Component {
                                 "line"
                             ]}
                             size={titleSize}
+                            sizeTablet={titleSizeTablet}
+                            sizeMobile={titleSizeMobile}
                             weight={titleWeight}
                             style={titleStyle}
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                            onChangeSize={newSize => setAttributes( { titleSize: newSize } )}
+                            onChangeSizeTablet={newSize => setAttributes( { titleSizeTablet: newSize } )}
+                            onChangeSizeMobile={newSize=>setAttributes({titleSizeMobile:newSize})}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
@@ -528,12 +553,16 @@ class PremiumAccordion extends Component {
                                         "line"
                                     ]}
                                     size={descSize}
+                                    sizeTablet={descSizeTablet}
+                                    sizeMobile={descSizeMobile}
                                     weight={descWeight}
                                     style={descStyle}
                                     spacing={descLetter}
                                     line={descLine}
                                     upper={descUpper}
-                                    onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                                    onChangeSize={newSize => setAttributes( { descSize: newSize } )}
+                                    onChangeSizeTablet={newSize => setAttributes( { descSizeTablet: newSize } )}
+                                    onChangeSizeMobile={newSize=>setAttributes({descSizeMobile:newSize})}
                                     onChangeWeight={newWeight =>
                                         setAttributes({ descWeight: newWeight })
                                     }
@@ -664,7 +693,7 @@ class PremiumAccordion extends Component {
                 </InspectorControls>
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses}`}>
+                <div id={accordionId} className={`${mainClasses} ${accordionId}`}>
                     {accordionItems}
                 </div>
                 <div className={"premium-repeater"}>

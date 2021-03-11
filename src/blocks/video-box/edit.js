@@ -7,7 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-
+import styling from './styling'
 const {
     PanelBody,
     SelectControl,
@@ -39,6 +39,15 @@ class edit extends Component {
         if (!attributes.videoBoxId) {
             setAttributes({ videoBoxId: "premium-video-box-" + clientId });
         }
+        this.props.setAttributes({ classMigrate: true });
+
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-videoBox-" + this.props.clientId.substr(0, 6)
+        );
+        document.head.appendChild($style);
         this.initVideoBox();
     }
 
@@ -86,7 +95,7 @@ class edit extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, className } = this.props;
+        const { isSelected, setAttributes, className,clientId } = this.props;
 
         const {
             videoBoxId,
@@ -127,6 +136,9 @@ class edit extends Component {
             videoDescBack,
             videoDescPadding,
             videoDescSize,
+            videoDescSizeUnit,
+            videoDescSizeTablet,
+            videoDescSizeMobile,
             videoDescFamily,
             videoDescWeight,
             videoDescLetter,
@@ -221,6 +233,14 @@ class edit extends Component {
 
             addFontToHead(fontFamily);
         };
+
+        let element = document.getElementById(
+            "premium-style-videoBox-" + clientId.substr(0, 6)
+        );
+
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
 
         const mainClasses = classnames(className, "premium-video-box");
 
@@ -462,17 +482,30 @@ class edit extends Component {
                                         />
                                         <PremiumTypo
                                             components={[
-                                                "size",
+                                                "responsiveSize",
                                                 "weight",
                                                 "style",
                                                 "upper",
                                                 "spacing"
                                             ]}
-                                            size={videoDescSize}
+                                            setAttributes={setAttributes}
+                                            fontSizeType={{
+                                                value: videoDescSizeUnit,
+                                                label: __("videoDescSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: videoDescSize,
+                                                label: __("videoDescSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: videoDescSizeMobile,
+                                                label: __("videoDescSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: videoDescSizeTablet,
+                                                label: __("videoDescSizeTablet"),
+                                            }}
                                             weight={videoDescWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ videoDescSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ videoDescWeight: newWeight })
                                             }

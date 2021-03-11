@@ -137,7 +137,6 @@ const save = props => {
                             value={title}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + "px",
                                 textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`

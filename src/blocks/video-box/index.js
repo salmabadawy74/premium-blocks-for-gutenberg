@@ -127,6 +127,16 @@ const videoBoxAttrs = {
     videoDescSize: {
         type: "number"
     },
+    videoDescSizeUnit: {
+        type: "string",
+      default:'px'  
+    },
+    videoDescSizeMobile: {
+      type:'number'  
+    },
+    videoDescSizeTablet: {
+      type:'number'  
+    },
     videoDescFamily: {
         type: "string"
     },
@@ -206,6 +216,10 @@ const videoBoxAttrs = {
     // Old props
     playLeft: {
         type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default:false
     }
 };
 

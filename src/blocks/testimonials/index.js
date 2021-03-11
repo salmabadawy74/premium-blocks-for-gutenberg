@@ -49,6 +49,16 @@ const testimonialsAttrs = {
     authorSize: {
         type: "number"
     },
+    authorSizeUnit: {
+        type: 'string',
+      default:'px'  
+    },
+    authorSizeMobile: {
+        type:"number"
+    },
+    authorSizeTablet: {
+        type:"number"
+    },
     authorLetter: {
         type: "number"
     },
@@ -83,6 +93,16 @@ const testimonialsAttrs = {
     authorComSize: {
         type: "number"
     },
+    authorComSizeUnit: {
+        type: "string",
+      default:'px'  
+    },
+    authorComSizeMobile: {
+        type:'number'
+    },
+    authorComSizeTablet: {
+      type:'number'  
+    },
     urlCheck: {
         type: "boolean",
         default: false
@@ -108,6 +128,16 @@ const testimonialsAttrs = {
     },
     bodySize: {
         type: "number"
+    },
+    bodySizeUnit: {
+        type: "string",
+      default:'px'  
+    },
+    bodySizeMobile: {
+        type:"number"
+    },
+    bodySizeTablet: {
+        type:"string"
     },
     bodyLine: {
         type: "number"

@@ -4,6 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
+import styling from './styling'
 
 const { __ } = wp.i18n;
 
@@ -40,13 +41,25 @@ class PremiumPricingTable extends Component {
 
         const { setAttributes, clientId } = this.props;
 
-        setAttributes({ id: clientId });
+        setAttributes( { id: clientId } );
+        setAttributes( { classMigrate: true } );
+
+                // Pushing Style tag for this block css.
+        const $style = document.createElement( "style" );
+        
+        $style.setAttribute(
+            "id",
+            "premium-style-pricing-" + clientId
+        ); 
+        document.head.appendChild( $style );
+        
     }
 
     render() {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
+            classMigrate,
             contentAlign,
             tableBack,
             borderType,
@@ -101,7 +114,6 @@ class PremiumPricingTable extends Component {
             slashV,
             currPrice,
             currColor,
-            currSize,
             currWeight,
             currV,
             valPrice,
@@ -172,7 +184,38 @@ class PremiumPricingTable extends Component {
             listPadding,
             listStyle,
             featsAlign,
-            id
+            id,
+            titleSizeUnit,
+            titleSizeMobile,
+            titleSizeTablet,
+            slashSizeUnit,
+            slashSizeMobile,
+            slashSizeTablet,
+            currSizeUnit,
+            currSize,
+            currSizeMobile,
+            currSizeTablet,
+            valSizeUnit,
+            valSizeMobile,
+            valSizeTablet,
+            divSizeUnit,
+            divSizeMobile,
+            divSizeTablet,
+            durSizeUnit,
+            durSizeMobile,
+            durSizeTablet,
+            listSizeUnit,
+            listSizeMobile,
+            listSizeTablet,
+            descSizeUnit,
+            descSizeMobile,
+            descSizeTablet,
+            btnSizeUnit,
+            btnSizeMobile,
+            btnSizeTablet,
+            badgeTextUnit,
+            badgeTextSizeMobile,
+            badgeTextSizeTablet,
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -189,6 +232,7 @@ class PremiumPricingTable extends Component {
                 label: __("Bottom")
             }
         ];
+
         const PRICE = [
             {
                 value: "slash",
@@ -211,6 +255,7 @@ class PremiumPricingTable extends Component {
                 label: __("Duration")
             }
         ];
+
         const TYPE = [
             {
                 value: "none",
@@ -233,6 +278,7 @@ class PremiumPricingTable extends Component {
                 label: __("Square")
             }
         ];
+
         const POSITION = [
             {
                 value: "right",
@@ -243,6 +289,12 @@ class PremiumPricingTable extends Component {
                 label: __("Left")
             }
         ];
+
+        var element = document.getElementById( `premium-style-pricing-${ id }` );
+
+        if (null != element && "undefined" != typeof element) {
+           element.innerHTML = styling(this.props);
+        }
 
         const FEATURES_ALIGN = ["left", "center", "right"];
 
@@ -312,20 +364,34 @@ class PremiumPricingTable extends Component {
                             />
                             <PremiumTypo
                                 components={[
-                                    "size",
+                                    "responsiveSize",
                                     "weight",
                                     "style",
                                     "upper",
                                     "spacing",
                                     "line"
                                 ]}
-                                size={titleSize}
+                                fontSizeType={{
+                                    value: titleSizeUnit,
+                                    label: __("titleSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: titleSize,
+                                    label: __("titleSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: titleSizeMobile,
+                                    label: __("titleSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: titleSizeTablet,
+                                    label: __("titleSizeTablet"),
+                                }}
                                 weight={titleWeight}
                                 style={titleStyle}
                                 spacing={titleLetter}
                                 line={titleLine}
                                 upper={titleUpper}
-                                onChangeSize={newSize => setAttributes({ titleSize: newSize })}
                                 onChangeWeight={newWeight =>
                                     setAttributes({ titleWeight: newWeight })
                                 }
@@ -464,12 +530,24 @@ class PremiumPricingTable extends Component {
                                 {"slash" === selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["size", "weight"]}
-                                            size={slashSize}
+                                            components={[ "responsiveSize", "weight" ]}
+                                            fontSizeType={{
+                                                value: slashSizeUnit,
+                                                label: __("slashSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: slashSize,
+                                                label: __("slashSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: slashSizeMobile,
+                                                label: __("slashSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: slashSizeTablet,
+                                                label: __("slashSizeTablet"),
+                                            }}
                                             weight={slashWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ slashSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ slashWeight: newWeight })
                                             }
@@ -498,12 +576,25 @@ class PremiumPricingTable extends Component {
                                 {"curr" === selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["size", "weight"]}
-                                            size={currSize}
+                                            components={[ "responsiveSize", "weight" ]}
+                                            fontSizeType={{
+                                                value: currSizeUnit,
+                                                label: __("currSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: currSize,
+                                                label: __("currSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: currSizeMobile,
+                                                label: __("currSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: currSizeTablet,
+                                                label: __("currSizeTablet"),
+                                            }}
+ 
                                             weight={currWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ currSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ currWeight: newWeight })
                                             }
@@ -532,12 +623,25 @@ class PremiumPricingTable extends Component {
                                 {"price" === selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["size", "weight"]}
+                                            components={[ "responsiveSize", "weight" ]}
+                                            fontSizeType={{
+                                                value: valSizeUnit,
+                                                label: __("valSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: valSize,
+                                                label: __("valSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: valSizeMobile,
+                                                label: __("valSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: valSizeTablet,
+                                                label: __("valSizeTablet"),
+                                            }}
                                             size={valSize}
                                             weight={valWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ valSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ valWeight: newWeight })
                                             }
@@ -566,12 +670,24 @@ class PremiumPricingTable extends Component {
                                 {"divider" === selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["size", "weight"]}
-                                            size={divSize}
+                                            components={[ "responsiveSize", "weight" ]}
+                                            fontSizeType={{
+                                                value: divSizeUnit,
+                                                label: __("divSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: divSize,
+                                                label: __("divSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: divSizeMobile,
+                                                label: __("divSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: divSizeTablet,
+                                                label: __("divSizeTablet"),
+                                            }}
                                             weight={divWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ divSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ divWeight: newWeight })
                                             }
@@ -600,12 +716,24 @@ class PremiumPricingTable extends Component {
                                 {"duration" === selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["size", "weight"]}
-                                            size={durSize}
+                                            components={[ "responsiveSize", "weight" ]}
+                                            fontSizeType={{
+                                                value: durSizeUnit,
+                                                label: __("durSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: durSize,
+                                                label: __("durSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: durSizeMobile,
+                                                label: __("durSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: durSizeTablet,
+                                                label: __("durSizeTablet"),
+                                            }}
                                             weight={durWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ durSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ durWeight: newWeight })
                                             }
@@ -714,20 +842,34 @@ class PremiumPricingTable extends Component {
                             />
                             <PremiumTypo
                                 components={[
-                                    "size",
+                                    "responsiveSize",
                                     "weight",
                                     "style",
                                     "upper",
                                     "spacing",
                                     "line"
                                 ]}
-                                size={listSize}
+                                fontSizeType={{
+                                    value: listSizeUnit,
+                                    label: __("listSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: listSize,
+                                    label: __("listSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: listSizeMobile,
+                                    label: __("listSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: listSizeTablet,
+                                    label: __("listSizeTablet"),
+                                }}
                                 weight={listWeight}
                                 style={listItemsStyle}
                                 spacing={listLetter}
                                 line={listLine}
                                 upper={listUpper}
-                                onChangeSize={newSize => setAttributes({ listSize: newSize })}
                                 onChangeWeight={newWeight =>
                                     setAttributes({ listWeight: newWeight })
                                 }
@@ -804,13 +946,28 @@ class PremiumPricingTable extends Component {
                             initialOpen={false}
                         >
                             <PremiumTypo
-                                components={["size", "weight", "style", "spacing", "line"]}
+                                components={[ "responsiveSize", "weight", "style", "spacing", "line" ]}
+                                fontSizeType={{
+                                    value: descSizeUnit,
+                                    label: __("descSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: descSize,
+                                    label: __("descSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: descSizeMobile,
+                                    label: __("descSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: descSizeTablet,
+                                    label: __("descSizeTablet"),
+                                }}
                                 size={descSize}
                                 weight={descWeight}
                                 style={descStyle}
                                 spacing={descLetter}
                                 line={descLine}
-                                onChangeSize={newSize => setAttributes({ descSize: newSize })}
                                 onChangeWeight={newWeight =>
                                     setAttributes({ descWeight: newWeight })
                                 }
@@ -891,20 +1048,34 @@ class PremiumPricingTable extends Component {
                         >
                             <PremiumTypo
                                 components={[
-                                    "size",
+                                    "responsiveSize",
                                     "weight",
                                     "style",
                                     "upper",
                                     "spacing",
                                     "line"
                                 ]}
-                                size={btnSize}
+                                fontSizeType={{
+                                    value: btnSizeUnit,
+                                    label: __("btnSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: btnSize,
+                                    label: __("btnSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: btnSizeMobile,
+                                    label: __("btnSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: btnSizeTablet,
+                                    label: __("btnSizeTablet"),
+                                }}
                                 weight={btnWeight}
                                 style={btnStyle}
                                 spacing={btnLetter}
                                 line={btnLine}
                                 upper={btnUpper}
-                                onChangeSize={newSize => setAttributes({ btnSize: newSize })}
                                 onChangeWeight={newWeight =>
                                     setAttributes({ btnWeight: newWeight })
                                 }
@@ -1041,15 +1212,27 @@ class PremiumPricingTable extends Component {
                                 onChange={newValue => setAttributes({ badgePos: newValue })}
                             />
                             <PremiumTypo
-                                components={["size", "weight", "style", "upper", "spacing"]}
-                                size={badgeTextSize}
+                                components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                fontSizeType={{
+                                    value: badgeTextUnit,
+                                    label: __("badgeTextUnit"),
+                                }}
+                                fontSize={{
+                                    value: badgeTextSize,
+                                    label: __("badgeText"),
+                                }}
+                                fontSizeMobile={{
+                                    value: badgeTextSizeMobile,
+                                    label: __("badgeTextMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: badgeTextSizeTablet,
+                                    label: __( "badgeTextTablet" ),
+                                }}
                                 weight={badgeWeight}
                                 style={badgeStyle}
                                 spacing={badgeLetter}
                                 upper={badgeUpper}
-                                onChangeSize={newSize =>
-                                    setAttributes({ badgeTextSize: newSize })
-                                }
                                 onChangeWeight={newWeight =>
                                     setAttributes({ badgeWeight: newWeight })
                                 }
@@ -1267,7 +1450,6 @@ class PremiumPricingTable extends Component {
                             style={{
                                 color: titleColor,
                                 background: titleBack,
-                                fontSize: titleSize + "px",
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyle,

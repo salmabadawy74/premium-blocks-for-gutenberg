@@ -33,6 +33,12 @@ const counterAttrs = {
         type: "number",
         default: 30
     },
+    numberSizeTablet: {
+      type:"number"  
+    },
+    numberSizeMobile: {
+      type:"number"  
+    },
     numberColor: {
         type: "string",
         default: "#6ec1e4"
@@ -52,6 +58,12 @@ const counterAttrs = {
     prefixSize: {
         type: "number",
         default: 20
+    },
+    prefixSizeTablet: {
+      type:"number"  
+    },
+    prefixSizeMobile: {
+      type:"number"  
     },
     prefixColor: {
         type: "string"
@@ -74,6 +86,12 @@ const counterAttrs = {
     suffixSize: {
         type: "number",
         default: 20
+    },
+    suffixSizeTablet: {
+        type:"number"
+    },
+    suffixSizeMobile: {
+      type:'number'  
     },
     suffixColor: {
         type: "string"
@@ -130,6 +148,12 @@ const counterAttrs = {
     titleSize: {
         type: "number",
         default: 20
+    },
+    titleSizeTablet: {
+        type:"number"
+    },
+    titleSizeMobile: {
+      type:"number"  
     },
     titleSpacing: {
         type: "number"

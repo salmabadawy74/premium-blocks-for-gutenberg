@@ -221,6 +221,16 @@ const bannerAttrs = {
     },
     paddingU: {
         type: "string"
+    },
+    titleSizeMobile: {
+        type:"number"
+    },
+    titleSizeTablet: {
+        type:"number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default:false
     }
 };
 registerBlockType("premium/banner", {
