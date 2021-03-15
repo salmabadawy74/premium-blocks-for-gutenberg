@@ -5,7 +5,8 @@ const save = props => {
     
   const { className } = props;
   
-  const {
+    const {
+      block_id,
     videoBoxId,
     videoType,
     videoURL,
@@ -84,7 +85,7 @@ const save = props => {
   return (
     <div
       id={videoBoxId}
-      className={`${mainClasses} video-overlay-${overlay}`}
+      className={`${mainClasses} video-overlay-${overlay}  premium-video-box-${block_id}`}
       data-type={videoType}
       style={{
         border: boxBorderType,
@@ -177,7 +178,6 @@ const save = props => {
           <p
             className={`premium-video-box__desc_text`}
             style={{
-              fontSize: videoDescSize + "px",
               fontFamily: videoDescFamily,
               fontWeight: videoDescWeight,
               letterSpacing: videoDescLetter + "px",

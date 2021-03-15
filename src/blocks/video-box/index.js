@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const videoBoxAttrs = {
+    block_id: {
+      type:'string'  
+    },
     videoBoxId: {
         type: "string"
     },

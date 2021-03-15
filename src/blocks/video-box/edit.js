@@ -35,6 +35,7 @@ class edit extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
+        setAttributes({block_id:clientId})
 
         if (!attributes.videoBoxId) {
             setAttributes({ videoBoxId: "premium-video-box-" + clientId });
@@ -98,6 +99,7 @@ class edit extends Component {
         const { isSelected, setAttributes, className,clientId } = this.props;
 
         const {
+            block_id,
             videoBoxId,
             videoType,
             videoURL,
@@ -195,6 +197,7 @@ class edit extends Component {
                 return loop ? "1" : "0";
             }
         };
+
         const getHelp = Type => {
             switch (Type) {
                 case "youtube":
@@ -749,7 +752,7 @@ class edit extends Component {
             ),
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay}`}
+                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id}`}
                 data-type={videoType}
                 style={{
                     border: boxBorderType,
@@ -839,7 +842,6 @@ class edit extends Component {
                         <p
                             className={`premium-video-box__desc_text`}
                             style={{
-                                fontSize: videoDescSize + "px",
                                 fontFamily: videoDescFamily,
                                 fontWeight: videoDescWeight,
                                 letterSpacing: videoDescLetter + "px",

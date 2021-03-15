@@ -624,10 +624,11 @@ const deprecatedContent = [
                 containerBorderRadius,
                 containerBorderColor
             } = props.attributes;
+            const mainClasses = classnames ( className, 'premium-dheading-block__container' );
 
             return (
                 <div
-                    className={`${className}`}
+                    className={`${mainClasses}`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,

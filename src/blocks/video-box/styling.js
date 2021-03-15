@@ -3,6 +3,7 @@ import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling ( props ) {
     const {
+        block_id,
         videoBoxId,
         classMigrate,
         videoDescSizeUnit,
@@ -34,7 +35,7 @@ function styling ( props ) {
     }
 
     var styling_css = ""
-    var id = `.premium-video-box`
+    var id = `.premium-video-box-${block_id}`
     if (classMigrate) {
        id = `#${videoBoxId}`
     }

@@ -1270,7 +1270,7 @@ class PBG_Blocks_Helper {
     }
 
     public static function get_videoBox_css( $attr, $id ) {
-		$defaults = self::$block_atts['premium/icon-box']['attributes'];
+		$defaults = self::$block_atts['premium/video-box']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
 
@@ -1278,47 +1278,29 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+			'  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSize'], $attr['videoDescSizeUnit'] ),
 			),
 		);
 		// Desktop Icon Size CSS ends.
 
 		// Tablet CSS Start.
 		$t_selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+            '  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSizeTablet'], $attr['videoDescSizeUnit'] ),
 			),
 		);
 		// Tablet CSS End.
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+            '  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSizeMobile'], $attr['videoDescSizeUnit'] ),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-icon-box-' : '.premium-icon-box-';
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-video-box-' : '#premium-video-box-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 

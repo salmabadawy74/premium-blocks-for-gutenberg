@@ -2013,6 +2013,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var videoBoxAttrs = {
+    block_id: {
+        type: 'string'
+    },
     videoBoxId: {
         type: "string"
     },
@@ -22461,11 +22464,12 @@ var deprecatedContent = [{
         containerBorderRadius = _props$attributes.containerBorderRadius,
         containerBorderColor = _props$attributes.containerBorderColor;
 
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-dheading-block__container');
 
     return wp.element.createElement(
       "div",
       {
-        className: "" + className,
+        className: "" + mainClasses,
         style: {
           textAlign: contentAlign,
           backgroundColor: containerBack,
@@ -49440,6 +49444,7 @@ var edit = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
+            setAttributes({ block_id: clientId });
 
             if (!attributes.videoBoxId) {
                 setAttributes({ videoBoxId: "premium-video-box-" + clientId });
@@ -49503,6 +49508,7 @@ var edit = function (_Component) {
                 className = _props2.className,
                 clientId = _props2.clientId;
             var _props$attributes = this.props.attributes,
+                block_id = _props$attributes.block_id,
                 videoBoxId = _props$attributes.videoBoxId,
                 videoType = _props$attributes.videoType,
                 videoURL = _props$attributes.videoURL,
@@ -49590,6 +49596,7 @@ var edit = function (_Component) {
                     return loop ? "1" : "0";
                 }
             };
+
             var getHelp = function getHelp(Type) {
                 switch (Type) {
                     case "youtube":
@@ -50160,7 +50167,7 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: videoBoxId,
-                    className: mainClasses + " video-overlay-" + overlay,
+                    className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id,
                     "data-type": videoType,
                     style: {
                         border: boxBorderType,
@@ -50241,7 +50248,6 @@ var edit = function (_Component) {
                         {
                             className: "premium-video-box__desc_text",
                             style: {
-                                fontSize: videoDescSize + "px",
                                 fontFamily: videoDescFamily,
                                 fontWeight: videoDescWeight,
                                 letterSpacing: videoDescLetter + "px",
@@ -50278,6 +50284,7 @@ var edit = function (_Component) {
 
 function styling(props) {
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         videoBoxId = _props$attributes.videoBoxId,
         classMigrate = _props$attributes.classMigrate,
         videoDescSizeUnit = _props$attributes.videoDescSizeUnit,
@@ -50309,7 +50316,7 @@ function styling(props) {
     };
 
     var styling_css = "";
-    var id = '.premium-video-box';
+    var id = '.premium-video-box-' + block_id;
     if (classMigrate) {
         id = '#' + videoBoxId;
     }
@@ -50339,6 +50346,7 @@ function styling(props) {
 var save = function save(props) {
   var className = props.className;
   var _props$attributes = props.attributes,
+      block_id = _props$attributes.block_id,
       videoBoxId = _props$attributes.videoBoxId,
       videoType = _props$attributes.videoType,
       videoURL = _props$attributes.videoURL,
@@ -50413,7 +50421,7 @@ var save = function save(props) {
     "div",
     {
       id: videoBoxId,
-      className: mainClasses + " video-overlay-" + overlay,
+      className: mainClasses + " video-overlay-" + overlay + "  premium-video-box-" + block_id,
       "data-type": videoType,
       style: {
         border: boxBorderType,
@@ -50494,7 +50502,6 @@ var save = function save(props) {
         {
           className: "premium-video-box__desc_text",
           style: {
-            fontSize: videoDescSize + "px",
             fontFamily: videoDescFamily,
             fontWeight: videoDescWeight,
             letterSpacing: videoDescLetter + "px",
@@ -50894,14 +50901,236 @@ var videoBoxAttrs_1_5_4 = {
   }
 };
 
+var videoBoxAttrs_2_0 = {
+  videoBoxId: {
+    type: "string"
+  },
+  videoType: {
+    type: "string",
+    default: "youtube"
+  },
+  videoURL: {
+    type: "string",
+    default: "07d2dXHYb94"
+  },
+  videoID: {
+    type: "string"
+  },
+  autoPlay: {
+    type: "boolean",
+    default: false
+  },
+  loop: {
+    type: "boolean",
+    default: false
+  },
+  controls: {
+    type: "boolean",
+    default: true
+  },
+  relatedVideos: {
+    type: "boolean",
+    default: false
+  },
+  mute: {
+    type: "boolean",
+    default: false
+  },
+  overlay: {
+    type: "boolean",
+    default: false
+  },
+  overlayImgID: {
+    type: "string"
+  },
+  overlayImgURL: {
+    type: "string"
+  },
+  blur: {
+    type: "number",
+    default: 0
+  },
+  bright: {
+    type: "number",
+    default: 100
+  },
+  contrast: {
+    type: "number",
+    default: 100
+  },
+  saturation: {
+    type: "number",
+    default: 100
+  },
+  hue: {
+    type: "number",
+    default: 0
+  },
+  playTop: {
+    type: "number"
+  },
+  playIcon: {
+    type: "boolean",
+    default: true
+  },
+  playSize: {
+    type: "number"
+  },
+  playColor: {
+    type: "string"
+  },
+  playBack: {
+    type: "string"
+  },
+  playHoverColor: {
+    type: "string"
+  },
+  playHoverBackColor: {
+    type: "string"
+  },
+  playPadding: {
+    type: "number"
+  },
+  playBorderType: {
+    type: "string",
+    default: "none"
+  },
+  playBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  playBorderRadius: {
+    type: "number"
+  },
+  playBorderColor: {
+    type: "string"
+  },
+  videoDescText: {
+    type: "string"
+  },
+  videoDesc: {
+    type: "boolean"
+  },
+  descLeft: {
+    type: "number"
+  },
+  descTop: {
+    type: "number"
+  },
+  videoDescSize: {
+    type: "number"
+  },
+  videoDescFamily: {
+    type: "string"
+  },
+  videoDescWeight: {
+    type: "number"
+  },
+  videoDescLetter: {
+    type: "number"
+  },
+  videoDescStyle: {
+    type: "string"
+  },
+  videoDescUpper: {
+    type: "boolean"
+  },
+  videoDescColor: {
+    type: "string"
+  },
+  videoDescBack: {
+    type: "string"
+  },
+  videoDescPadding: {
+    type: "number"
+  },
+  videoDescBorderRadius: {
+    type: "number"
+  },
+  descShadowColor: {
+    type: "string"
+  },
+  descShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  descShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  descShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  boxBorderType: {
+    type: "string",
+    default: "none"
+  },
+  boxBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  boxBorderRadius: {
+    type: "number"
+  },
+  boxBorderColor: {
+    type: "string"
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  shadowPosition: {
+    type: "string",
+    default: ""
+  },
+
+  // Old props
+  playLeft: {
+    type: "number"
+  }
+};
+var newAttributes_2_1 = {
+  block_id: {
+    type: 'string'
+  },
+  videoDescSizeUnit: {
+    type: "string",
+    default: 'px'
+  },
+  videoDescSizeMobile: {
+    type: 'number'
+  },
+  videoDescSizeTablet: {
+    type: 'number'
+  },
+  classMigrate: {
+    type: 'boolean',
+    default: false
+  }
+};
+var videoBoxAttrs_2_1 = Object.assign(videoBoxAttrs_2_0, newAttributes_2_1);
+
 var deprecatedContent = [{
-  attributes: videoBoxAttrs_1_5_4,
+  attributes: videoBoxAttrs_2_1,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      descShadowBlur: "0",
-      descShadowColor: "",
-      descShadowHorizontal: "0",
-      descShadowVertical: "0"
+      classMigrate: false,
+      block_id: '',
+      videoDescSizeUnit: 'px',
+      videoDescSizeTablet: '',
+      videoDescSizeMobile: ''
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -50949,6 +51178,10 @@ var deprecatedContent = [{
         videoDescStyle = _props$attributes.videoDescStyle,
         videoDescUpper = _props$attributes.videoDescUpper,
         videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
+        descShadowBlur = _props$attributes.descShadowBlur,
+        descShadowColor = _props$attributes.descShadowColor,
+        descShadowHorizontal = _props$attributes.descShadowHorizontal,
+        descShadowVertical = _props$attributes.descShadowVertical,
         boxBorderColor = _props$attributes.boxBorderColor,
         boxBorderWidth = _props$attributes.boxBorderWidth,
         boxBorderRadius = _props$attributes.boxBorderRadius,
@@ -50958,6 +51191,186 @@ var deprecatedContent = [{
         shadowHorizontal = _props$attributes.shadowHorizontal,
         shadowVertical = _props$attributes.shadowVertical,
         shadowPosition = _props$attributes.shadowPosition;
+
+    var loopVideo = function loopVideo() {
+      if ("youtube" === videoType) {
+        if (videoURL.startsWith("http")) {
+          return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
+        } else {
+          return loop ? "1&playlist=" + videoURL : "0";
+        }
+      } else {
+        return loop ? "1" : "0";
+      }
+    };
+
+    return wp.element.createElement(
+      "div",
+      {
+        id: videoBoxId,
+        className: className + " video-overlay-" + overlay,
+        "data-type": videoType,
+        style: {
+          border: boxBorderType,
+          borderWidth: boxBorderWidth + "px",
+          borderRadius: boxBorderRadius + "px",
+          borderColor: boxBorderColor,
+          boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+        }
+      },
+      wp.element.createElement("style", {
+        dangerouslySetInnerHTML: {
+          __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+        }
+      }),
+      wp.element.createElement(
+        "div",
+        { className: "premium-video-box__container" },
+        "self" !== videoType && wp.element.createElement("iframe", {
+          src: Object(__WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */])(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+          frameborder: "0",
+          gesture: "media",
+          allow: "encrypted-media",
+          allowfullscreen: true
+        }),
+        "self" === videoType && wp.element.createElement("video", {
+          src: videoURL,
+          loop: loop ? true : false,
+          muted: mute ? true : false,
+          controls: controls ? true : false,
+          autoplay: overlay ? false : autoPlay
+        })
+      ),
+      overlay && overlayImgURL && wp.element.createElement("div", {
+        className: "premium-video-box__overlay",
+        style: {
+          backgroundImage: "url('" + overlayImgURL + "')",
+          filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+        }
+      }),
+      overlay && playIcon && wp.element.createElement(
+        "div",
+        {
+          className: "premium-video-box__play",
+          style: {
+            top: playTop + "%",
+            left: playLeft + "%",
+            color: playColor,
+            backgroundColor: playBack,
+            border: playBorderType,
+            borderWidth: playBorderWidth + "px",
+            borderRadius: playBorderRadius + "px",
+            borderColor: playBorderColor,
+            padding: playPadding + "px"
+          }
+        },
+        wp.element.createElement("i", {
+          className: "premium-video-box__play_icon dashicons dashicons-controls-play",
+          style: {
+            fontSize: playSize + "px"
+          }
+        })
+      ),
+      overlay && videoDesc && wp.element.createElement(
+        "div",
+        {
+          className: "premium-video-box__desc",
+          style: {
+            color: videoDescColor,
+            backgroundColor: videoDescBack,
+            padding: videoDescPadding,
+            borderRadius: videoDescBorderRadius,
+            top: descTop + "%",
+            left: descLeft + "%"
+          }
+        },
+        wp.element.createElement(
+          "p",
+          {
+            className: "premium-video-box__desc_text",
+            style: {
+              fontSize: videoDescSize + "px",
+              fontFamily: videoDescFamily,
+              fontWeight: videoDescWeight,
+              letterSpacing: videoDescLetter + "px",
+              textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor,
+              textTransform: videoDescUpper ? "uppercase" : "none",
+              fontStyle: videoDescStyle
+            }
+          },
+          wp.element.createElement(
+            "span",
+            null,
+            videoDescText
+          )
+        )
+      )
+    );
+  }
+}, {
+  attributes: videoBoxAttrs_1_5_4,
+  migrate: function migrate(attributes) {
+    var newAttributes = {
+      descShadowBlur: "0",
+      descShadowColor: "",
+      descShadowHorizontal: "0",
+      descShadowVertical: "0"
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        videoBoxId = _props$attributes2.videoBoxId,
+        videoType = _props$attributes2.videoType,
+        videoURL = _props$attributes2.videoURL,
+        autoPlay = _props$attributes2.autoPlay,
+        loop = _props$attributes2.loop,
+        mute = _props$attributes2.mute,
+        relatedVideos = _props$attributes2.relatedVideos,
+        controls = _props$attributes2.controls,
+        overlay = _props$attributes2.overlay,
+        overlayImgURL = _props$attributes2.overlayImgURL,
+        blur = _props$attributes2.blur,
+        contrast = _props$attributes2.contrast,
+        saturation = _props$attributes2.saturation,
+        bright = _props$attributes2.bright,
+        hue = _props$attributes2.hue,
+        playTop = _props$attributes2.playTop,
+        playLeft = _props$attributes2.playLeft,
+        playIcon = _props$attributes2.playIcon,
+        playColor = _props$attributes2.playColor,
+        playHoverColor = _props$attributes2.playHoverColor,
+        playHoverBackColor = _props$attributes2.playHoverBackColor,
+        playSize = _props$attributes2.playSize,
+        playPadding = _props$attributes2.playPadding,
+        playBack = _props$attributes2.playBack,
+        playBorderColor = _props$attributes2.playBorderColor,
+        playBorderWidth = _props$attributes2.playBorderWidth,
+        playBorderRadius = _props$attributes2.playBorderRadius,
+        playBorderType = _props$attributes2.playBorderType,
+        videoDesc = _props$attributes2.videoDesc,
+        descTop = _props$attributes2.descTop,
+        descLeft = _props$attributes2.descLeft,
+        videoDescText = _props$attributes2.videoDescText,
+        videoDescColor = _props$attributes2.videoDescColor,
+        videoDescBack = _props$attributes2.videoDescBack,
+        videoDescPadding = _props$attributes2.videoDescPadding,
+        videoDescSize = _props$attributes2.videoDescSize,
+        videoDescFamily = _props$attributes2.videoDescFamily,
+        videoDescWeight = _props$attributes2.videoDescWeight,
+        videoDescLetter = _props$attributes2.videoDescLetter,
+        videoDescStyle = _props$attributes2.videoDescStyle,
+        videoDescUpper = _props$attributes2.videoDescUpper,
+        videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
+        boxBorderColor = _props$attributes2.boxBorderColor,
+        boxBorderWidth = _props$attributes2.boxBorderWidth,
+        boxBorderRadius = _props$attributes2.boxBorderRadius,
+        boxBorderType = _props$attributes2.boxBorderType,
+        shadowBlur = _props$attributes2.shadowBlur,
+        shadowColor = _props$attributes2.shadowColor,
+        shadowHorizontal = _props$attributes2.shadowHorizontal,
+        shadowVertical = _props$attributes2.shadowVertical,
+        shadowPosition = _props$attributes2.shadowPosition;
 
     var loopVideo = function loopVideo() {
       if ("youtube" === videoType) {
@@ -51081,57 +51494,57 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        videoBoxId = _props$attributes2.videoBoxId,
-        videoType = _props$attributes2.videoType,
-        videoURL = _props$attributes2.videoURL,
-        autoPlay = _props$attributes2.autoPlay,
-        loop = _props$attributes2.loop,
-        mute = _props$attributes2.mute,
-        relatedVideos = _props$attributes2.relatedVideos,
-        controls = _props$attributes2.controls,
-        overlay = _props$attributes2.overlay,
-        overlayImgURL = _props$attributes2.overlayImgURL,
-        blur = _props$attributes2.blur,
-        contrast = _props$attributes2.contrast,
-        saturation = _props$attributes2.saturation,
-        bright = _props$attributes2.bright,
-        hue = _props$attributes2.hue,
-        playTop = _props$attributes2.playTop,
-        playLeft = _props$attributes2.playLeft,
-        playIcon = _props$attributes2.playIcon,
-        playColor = _props$attributes2.playColor,
-        playHoverColor = _props$attributes2.playHoverColor,
-        playHoverBackColor = _props$attributes2.playHoverBackColor,
-        playSize = _props$attributes2.playSize,
-        playPadding = _props$attributes2.playPadding,
-        playBack = _props$attributes2.playBack,
-        playBorderColor = _props$attributes2.playBorderColor,
-        playBorderWidth = _props$attributes2.playBorderWidth,
-        playBorderRadius = _props$attributes2.playBorderRadius,
-        playBorderType = _props$attributes2.playBorderType,
-        videoDesc = _props$attributes2.videoDesc,
-        descTop = _props$attributes2.descTop,
-        descLeft = _props$attributes2.descLeft,
-        videoDescText = _props$attributes2.videoDescText,
-        videoDescColor = _props$attributes2.videoDescColor,
-        videoDescBack = _props$attributes2.videoDescBack,
-        videoDescPadding = _props$attributes2.videoDescPadding,
-        videoDescSize = _props$attributes2.videoDescSize,
-        videoDescWeight = _props$attributes2.videoDescWeight,
-        videoDescLetter = _props$attributes2.videoDescLetter,
-        videoDescStyle = _props$attributes2.videoDescStyle,
-        videoDescUpper = _props$attributes2.videoDescUpper,
-        videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
-        boxBorderColor = _props$attributes2.boxBorderColor,
-        boxBorderWidth = _props$attributes2.boxBorderWidth,
-        boxBorderRadius = _props$attributes2.boxBorderRadius,
-        boxBorderType = _props$attributes2.boxBorderType,
-        shadowBlur = _props$attributes2.shadowBlur,
-        shadowColor = _props$attributes2.shadowColor,
-        shadowHorizontal = _props$attributes2.shadowHorizontal,
-        shadowVertical = _props$attributes2.shadowVertical,
-        shadowPosition = _props$attributes2.shadowPosition;
+    var _props$attributes3 = props.attributes,
+        videoBoxId = _props$attributes3.videoBoxId,
+        videoType = _props$attributes3.videoType,
+        videoURL = _props$attributes3.videoURL,
+        autoPlay = _props$attributes3.autoPlay,
+        loop = _props$attributes3.loop,
+        mute = _props$attributes3.mute,
+        relatedVideos = _props$attributes3.relatedVideos,
+        controls = _props$attributes3.controls,
+        overlay = _props$attributes3.overlay,
+        overlayImgURL = _props$attributes3.overlayImgURL,
+        blur = _props$attributes3.blur,
+        contrast = _props$attributes3.contrast,
+        saturation = _props$attributes3.saturation,
+        bright = _props$attributes3.bright,
+        hue = _props$attributes3.hue,
+        playTop = _props$attributes3.playTop,
+        playLeft = _props$attributes3.playLeft,
+        playIcon = _props$attributes3.playIcon,
+        playColor = _props$attributes3.playColor,
+        playHoverColor = _props$attributes3.playHoverColor,
+        playHoverBackColor = _props$attributes3.playHoverBackColor,
+        playSize = _props$attributes3.playSize,
+        playPadding = _props$attributes3.playPadding,
+        playBack = _props$attributes3.playBack,
+        playBorderColor = _props$attributes3.playBorderColor,
+        playBorderWidth = _props$attributes3.playBorderWidth,
+        playBorderRadius = _props$attributes3.playBorderRadius,
+        playBorderType = _props$attributes3.playBorderType,
+        videoDesc = _props$attributes3.videoDesc,
+        descTop = _props$attributes3.descTop,
+        descLeft = _props$attributes3.descLeft,
+        videoDescText = _props$attributes3.videoDescText,
+        videoDescColor = _props$attributes3.videoDescColor,
+        videoDescBack = _props$attributes3.videoDescBack,
+        videoDescPadding = _props$attributes3.videoDescPadding,
+        videoDescSize = _props$attributes3.videoDescSize,
+        videoDescWeight = _props$attributes3.videoDescWeight,
+        videoDescLetter = _props$attributes3.videoDescLetter,
+        videoDescStyle = _props$attributes3.videoDescStyle,
+        videoDescUpper = _props$attributes3.videoDescUpper,
+        videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
+        boxBorderColor = _props$attributes3.boxBorderColor,
+        boxBorderWidth = _props$attributes3.boxBorderWidth,
+        boxBorderRadius = _props$attributes3.boxBorderRadius,
+        boxBorderType = _props$attributes3.boxBorderType,
+        shadowBlur = _props$attributes3.shadowBlur,
+        shadowColor = _props$attributes3.shadowColor,
+        shadowHorizontal = _props$attributes3.shadowHorizontal,
+        shadowVertical = _props$attributes3.shadowVertical,
+        shadowPosition = _props$attributes3.shadowPosition;
 
     var loopVideo = function loopVideo() {
       if ("youtube" === videoType) {
@@ -51248,56 +51661,56 @@ var deprecatedContent = [{
 }, {
   attributes: videoBoxAttrs_1_2_7,
   save: function save(props) {
-    var _props$attributes3 = props.attributes,
-        videoBoxId = _props$attributes3.videoBoxId,
-        videoType = _props$attributes3.videoType,
-        videoURL = _props$attributes3.videoURL,
-        autoPlay = _props$attributes3.autoPlay,
-        loop = _props$attributes3.loop,
-        mute = _props$attributes3.mute,
-        controls = _props$attributes3.controls,
-        overlay = _props$attributes3.overlay,
-        overlayImgURL = _props$attributes3.overlayImgURL,
-        blur = _props$attributes3.blur,
-        contrast = _props$attributes3.contrast,
-        saturation = _props$attributes3.saturation,
-        bright = _props$attributes3.bright,
-        hue = _props$attributes3.hue,
-        playTop = _props$attributes3.playTop,
-        playLeft = _props$attributes3.playLeft,
-        playIcon = _props$attributes3.playIcon,
-        playColor = _props$attributes3.playColor,
-        playHoverColor = _props$attributes3.playHoverColor,
-        playHoverBackColor = _props$attributes3.playHoverBackColor,
-        playSize = _props$attributes3.playSize,
-        playPadding = _props$attributes3.playPadding,
-        playBack = _props$attributes3.playBack,
-        playBorderColor = _props$attributes3.playBorderColor,
-        playBorderWidth = _props$attributes3.playBorderWidth,
-        playBorderRadius = _props$attributes3.playBorderRadius,
-        playBorderType = _props$attributes3.playBorderType,
-        videoDesc = _props$attributes3.videoDesc,
-        descTop = _props$attributes3.descTop,
-        descLeft = _props$attributes3.descLeft,
-        videoDescText = _props$attributes3.videoDescText,
-        videoDescColor = _props$attributes3.videoDescColor,
-        videoDescBack = _props$attributes3.videoDescBack,
-        videoDescPadding = _props$attributes3.videoDescPadding,
-        videoDescSize = _props$attributes3.videoDescSize,
-        videoDescWeight = _props$attributes3.videoDescWeight,
-        videoDescLetter = _props$attributes3.videoDescLetter,
-        videoDescStyle = _props$attributes3.videoDescStyle,
-        videoDescUpper = _props$attributes3.videoDescUpper,
-        videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
-        boxBorderColor = _props$attributes3.boxBorderColor,
-        boxBorderWidth = _props$attributes3.boxBorderWidth,
-        boxBorderRadius = _props$attributes3.boxBorderRadius,
-        boxBorderType = _props$attributes3.boxBorderType,
-        shadowBlur = _props$attributes3.shadowBlur,
-        shadowColor = _props$attributes3.shadowColor,
-        shadowHorizontal = _props$attributes3.shadowHorizontal,
-        shadowVertical = _props$attributes3.shadowVertical,
-        shadowPosition = _props$attributes3.shadowPosition;
+    var _props$attributes4 = props.attributes,
+        videoBoxId = _props$attributes4.videoBoxId,
+        videoType = _props$attributes4.videoType,
+        videoURL = _props$attributes4.videoURL,
+        autoPlay = _props$attributes4.autoPlay,
+        loop = _props$attributes4.loop,
+        mute = _props$attributes4.mute,
+        controls = _props$attributes4.controls,
+        overlay = _props$attributes4.overlay,
+        overlayImgURL = _props$attributes4.overlayImgURL,
+        blur = _props$attributes4.blur,
+        contrast = _props$attributes4.contrast,
+        saturation = _props$attributes4.saturation,
+        bright = _props$attributes4.bright,
+        hue = _props$attributes4.hue,
+        playTop = _props$attributes4.playTop,
+        playLeft = _props$attributes4.playLeft,
+        playIcon = _props$attributes4.playIcon,
+        playColor = _props$attributes4.playColor,
+        playHoverColor = _props$attributes4.playHoverColor,
+        playHoverBackColor = _props$attributes4.playHoverBackColor,
+        playSize = _props$attributes4.playSize,
+        playPadding = _props$attributes4.playPadding,
+        playBack = _props$attributes4.playBack,
+        playBorderColor = _props$attributes4.playBorderColor,
+        playBorderWidth = _props$attributes4.playBorderWidth,
+        playBorderRadius = _props$attributes4.playBorderRadius,
+        playBorderType = _props$attributes4.playBorderType,
+        videoDesc = _props$attributes4.videoDesc,
+        descTop = _props$attributes4.descTop,
+        descLeft = _props$attributes4.descLeft,
+        videoDescText = _props$attributes4.videoDescText,
+        videoDescColor = _props$attributes4.videoDescColor,
+        videoDescBack = _props$attributes4.videoDescBack,
+        videoDescPadding = _props$attributes4.videoDescPadding,
+        videoDescSize = _props$attributes4.videoDescSize,
+        videoDescWeight = _props$attributes4.videoDescWeight,
+        videoDescLetter = _props$attributes4.videoDescLetter,
+        videoDescStyle = _props$attributes4.videoDescStyle,
+        videoDescUpper = _props$attributes4.videoDescUpper,
+        videoDescBorderRadius = _props$attributes4.videoDescBorderRadius,
+        boxBorderColor = _props$attributes4.boxBorderColor,
+        boxBorderWidth = _props$attributes4.boxBorderWidth,
+        boxBorderRadius = _props$attributes4.boxBorderRadius,
+        boxBorderType = _props$attributes4.boxBorderType,
+        shadowBlur = _props$attributes4.shadowBlur,
+        shadowColor = _props$attributes4.shadowColor,
+        shadowHorizontal = _props$attributes4.shadowHorizontal,
+        shadowVertical = _props$attributes4.shadowVertical,
+        shadowPosition = _props$attributes4.shadowPosition;
 
     var loopVideo = function loopVideo() {
       if ("youtube" === videoType) {
