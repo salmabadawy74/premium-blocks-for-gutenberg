@@ -130,15 +130,15 @@ const save = props => {
         listPadding,
         listStyle,
         featsAlign,
-        id
+        block_id
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-pricing-table");
 
     return (
         <div
-            id={`${mainClasses}-${id}`}
-            className={`${mainClasses}`}
+            id={`${mainClasses}-${block_id}`}
+            className={`${mainClasses} premium-pricing-table-${block_id}`}
             style={{
                 textAlign: contentAlign,
                 background: tableBack,
@@ -173,7 +173,6 @@ const save = props => {
                     >
                         <span
                             style={{
-                                fontSize: badgeTextSize + "px",
                                 color: badgeColor,
                                 fontWeight: badgeWeight,
                                 textTransform: badgeUpper
@@ -213,7 +212,6 @@ const save = props => {
                         style={{
                             color: titleColor,
                             background: titleBack,
-                            fontSize: titleSize + "px",
                             letterSpacing: titleLetter + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyle,
@@ -242,7 +240,6 @@ const save = props => {
                             className={`premium-pricing-table__slash`}
                             style={{
                                 color: slashColor,
-                                fontSize: slashSize + "px",
                                 fontWeight: slashWeight,
                                 alignSelf: slashV
                             }}
@@ -255,7 +252,6 @@ const save = props => {
                             className={`premium-pricing-table__currency`}
                             style={{
                                 color: currColor,
-                                fontSize: currSize + "px",
                                 fontWeight: currWeight,
                                 alignSelf: currV
                             }}
@@ -268,7 +264,6 @@ const save = props => {
                             className={`premium-pricing-table__val`}
                             style={{
                                 color: valColor,
-                                fontSize: valSize + "px",
                                 fontWeight: valWeight,
                                 alignSelf: valV
                             }}
@@ -281,7 +276,6 @@ const save = props => {
                             className={`premium-pricing-table__divider`}
                             style={{
                                 color: divColor,
-                                fontSize: divSize + "px",
                                 fontWeight: divWeight,
                                 alignSelf: divV
                             }}
@@ -294,7 +288,6 @@ const save = props => {
                             className={`premium-pricing-table__dur`}
                             style={{
                                 color: durColor,
-                                fontSize: durSize + "px",
                                 fontWeight: durWeight,
                                 alignSelf: durV
                             }}
@@ -316,7 +309,6 @@ const save = props => {
                         className={`premium-pricing-table__list list-${listStyle}`}
                         style={{
                             color: listColor,
-                            fontSize: listSize + "px",
                             background: listBack,
                             padding: listPadding + "px",
                             listStyle:
@@ -343,7 +335,6 @@ const save = props => {
                         style={{
                             color: descColor,
                             background: descBack,
-                            fontSize: descSize + "px",
                             fontWeight: descWeight,
                             lineHeight: descLine + "px",
                             letterSpacing: descLetter + "px",
@@ -370,7 +361,6 @@ const save = props => {
                         style={{
                             color: btnColor,
                             background: btnBack ? btnBack : "transparent",
-                            fontSize: btnSize + "px",
                             fontWeight: btnWeight,
                             letterSpacing: btnLetter + "px",
                             fontStyle: btnStyle,
@@ -398,7 +388,7 @@ const save = props => {
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
+                                `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
                                 `color: ${btnHoverColor} !important;`,
                                 `background: ${btnHoverBack} !important`,
                                 "}"

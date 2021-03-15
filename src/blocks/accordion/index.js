@@ -10,6 +10,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const accordionAttrs = {
+    block_id: {
+      type:"string"  
+    },
     accordionId: {
         type: "string"
     },
@@ -33,6 +36,10 @@ const accordionAttrs = {
     },
     titleColor: {
         type: "string"
+    },
+    titleSizeUnit: {
+        type: "string",
+      default:"px"  
     },
     titleSize: {
         type: "number"
@@ -120,6 +127,10 @@ const accordionAttrs = {
     arrowRadius: {
         type: "number"
     },
+    descSizeUnit: {
+        type: "string",
+      default:"number"  
+    },
     arrowSize: {
         type: "number",
         default: 20
@@ -154,7 +165,8 @@ const accordionAttrs = {
         type: "string"
     },
     descSize: {
-        type: "number"
+        type: "number",
+        default:"20"
     },
     descSizeTablet: {
         type:"number"

@@ -1,38 +1,40 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling ( props ) { 
     const {
+        textSizeUnit,
         textSize,
         textSizeTablet,
         textSizeMobile,
-        id:block_id,
+       block_id,
         classMigrate
     } = props.attributes;
 
-    var selectors = {}
-    var tablet_selectors = {}
-    var mobile_selectors = {}
+    let selectors = {}
+    let  tablet_selectors = {}
+    let mobile_selectors = {}
 
     selectors = {
         " .premium-button": {
-            "font-size":textSize + 'px',
+            "font-size":generateCSSUnit(textSize,textSizeUnit),
         }
     }
     tablet_selectors = {
         " .premium-button": {
-            "font-size": textSizeTablet + 'px'
+            "font-size":generateCSSUnit(textSizeTablet,textSizeUnit)
         }
     }
     mobile_selectors = {
         " .premium-button": {
-             "font-size" : textSizeMobile + 'px'
+             "font-size" :generateCSSUnit(textSizeMobile,textSizeUnit)
          }
     }
     
-    var styling_css = ""
+    let styling_css = ""
     var id = `#premium-button-wrap-${ block_id }`
     if (classMigrate) {
-        id=`.premium-button__wrap`
+        id=`.premium-button-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)

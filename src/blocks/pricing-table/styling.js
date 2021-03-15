@@ -4,7 +4,7 @@ import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 function styling ( props ) {
     const {
         classMigrate,
-        id:block_id,
+        block_id,
         titleSizeUnit,
         titleSizeMobile,
         titleSizeTablet,
@@ -45,7 +45,7 @@ function styling ( props ) {
         badgeTextSize,
         badgeTextSizeMobile,
         badgeTextSizeTablet,
-    } = props;
+    } = props.attributes;
 
     var selectors = {}
     var tablet_selectors = {}
@@ -153,14 +153,14 @@ function styling ( props ) {
     var styling_css = ""
     var id = `#premium-pricing-table-${block_id}`
     if (classMigrate) {
-        id = `.premium-pricing-table`
+        id = `.premium-pricing-table-${block_id}`
     }
 
-    styling_css = generateCSS(selectors, id)
-    styling_css += generateCSS(tablet_selectors, id, true, "tablet")
+    styling_css = generateCSS( selectors, id );
 
-    styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
-    console.log(styling_css)
+    styling_css += generateCSS( tablet_selectors, id, true, "tablet" );
+
+    styling_css += generateCSS( mobile_selectors, id, true, "mobile" );
 
     return styling_css
 

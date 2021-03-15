@@ -41,7 +41,7 @@ class PremiumPricingTable extends Component {
 
         const { setAttributes, clientId } = this.props;
 
-        setAttributes( { id: clientId } );
+        setAttributes( { block_id: clientId } );
         setAttributes( { classMigrate: true } );
 
                 // Pushing Style tag for this block css.
@@ -59,7 +59,7 @@ class PremiumPricingTable extends Component {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
-            classMigrate,
+            block_id,
             contentAlign,
             tableBack,
             borderType,
@@ -290,7 +290,7 @@ class PremiumPricingTable extends Component {
             }
         ];
 
-        var element = document.getElementById( `premium-style-pricing-${ id }` );
+       let element = document.getElementById( `premium-style-pricing-${this.props.clientId }` );
 
         if (null != element && "undefined" != typeof element) {
            element.innerHTML = styling(this.props);
@@ -371,6 +371,7 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line"
                                 ]}
+                                setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: titleSizeUnit,
                                     label: __("titleSizeUnit"),
@@ -531,6 +532,7 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <PremiumTypo
                                             components={[ "responsiveSize", "weight" ]}
+                                            setAttributes={setAttributes}
                                             fontSizeType={{
                                                 value: slashSizeUnit,
                                                 label: __("slashSizeUnit"),
@@ -577,6 +579,7 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <PremiumTypo
                                             components={[ "responsiveSize", "weight" ]}
+                                            setAttributes={setAttributes}
                                             fontSizeType={{
                                                 value: currSizeUnit,
                                                 label: __("currSizeUnit"),
@@ -624,6 +627,7 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <PremiumTypo
                                             components={[ "responsiveSize", "weight" ]}
+                                            setAttributes={setAttributes}
                                             fontSizeType={{
                                                 value: valSizeUnit,
                                                 label: __("valSizeUnit"),
@@ -671,6 +675,7 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <PremiumTypo
                                             components={[ "responsiveSize", "weight" ]}
+                                            setAttributes={setAttributes}
                                             fontSizeType={{
                                                 value: divSizeUnit,
                                                 label: __("divSizeUnit"),
@@ -717,6 +722,7 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <PremiumTypo
                                             components={[ "responsiveSize", "weight" ]}
+                                            setAttributes={setAttributes}
                                             fontSizeType={{
                                                 value: durSizeUnit,
                                                 label: __("durSizeUnit"),
@@ -849,6 +855,7 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line"
                                 ]}
+                                setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: listSizeUnit,
                                     label: __("listSizeUnit"),
@@ -947,6 +954,7 @@ class PremiumPricingTable extends Component {
                         >
                             <PremiumTypo
                                 components={[ "responsiveSize", "weight", "style", "spacing", "line" ]}
+                                setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: descSizeUnit,
                                     label: __("descSizeUnit"),
@@ -1055,6 +1063,7 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line"
                                 ]}
+                                setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: btnSizeUnit,
                                     label: __("btnSizeUnit"),
@@ -1212,7 +1221,8 @@ class PremiumPricingTable extends Component {
                                 onChange={newValue => setAttributes({ badgePos: newValue })}
                             />
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "style", "upper", "spacing"]}
+                                components={[ "responsiveSize", "weight", "style", "upper", "spacing" ]}
+                                setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: badgeTextUnit,
                                     label: __("badgeTextUnit"),
@@ -1385,8 +1395,8 @@ class PremiumPricingTable extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-pricing-table-${id}`}
-                className={`${mainClasses}`}
+                id={`premium-pricing-table-${block_id}`}
+                className={`${mainClasses} premium-pricing-table-${block_id}`}
                 style={{
                     textAlign: contentAlign,
                     background: tableBack,
@@ -1417,7 +1427,6 @@ class PremiumPricingTable extends Component {
                             <span
                                 style={{
                                     color: badgeColor,
-                                    fontSize: badgeTextSize + "px",
                                     fontWeight: badgeWeight,
                                     textTransform: badgeUpper ? "uppercase" : "none",
                                     letterSpacing: badgeLetter + "px",
@@ -1477,7 +1486,6 @@ class PremiumPricingTable extends Component {
                                 className={`premium-pricing-table__slash`}
                                 style={{
                                     color: slashColor,
-                                    fontSize: slashSize + "px",
                                     fontWeight: slashWeight,
                                     alignSelf: slashV
                                 }}
@@ -1490,7 +1498,6 @@ class PremiumPricingTable extends Component {
                                 className={`premium-pricing-table__currency`}
                                 style={{
                                     color: currColor,
-                                    fontSize: currSize + "px",
                                     fontWeight: currWeight,
                                     alignSelf: currV
                                 }}
@@ -1503,7 +1510,6 @@ class PremiumPricingTable extends Component {
                                 className={`premium-pricing-table__val`}
                                 style={{
                                     color: valColor,
-                                    fontSize: valSize + "px",
                                     fontWeight: valWeight,
                                     alignSelf: valV
                                 }}
@@ -1516,7 +1522,6 @@ class PremiumPricingTable extends Component {
                                 className={`premium-pricing-table__divider`}
                                 style={{
                                     color: divColor,
-                                    fontSize: divSize + "px",
                                     fontWeight: divWeight,
                                     alignSelf: divV
                                 }}
@@ -1529,7 +1534,6 @@ class PremiumPricingTable extends Component {
                                 className={`premium-pricing-table__dur`}
                                 style={{
                                     color: durColor,
-                                    fontSize: durSize + "px",
                                     fontWeight: durWeight,
                                     alignSelf: durV
                                 }}
@@ -1556,7 +1560,6 @@ class PremiumPricingTable extends Component {
                             onChange={newText => setAttributes({ listItems: newText })}
                             style={{
                                 color: listColor,
-                                fontSize: listSize + "px",
                                 background: listBack,
                                 padding: listPadding + "px",
                                 listStyle: "check" !== listStyle ? listStyle : "none",
@@ -1582,7 +1585,6 @@ class PremiumPricingTable extends Component {
                             style={{
                                 color: descColor,
                                 background: descBack,
-                                fontSize: descSize + "px",
                                 fontWeight: descWeight,
                                 letterSpacing: descLetter + "px",
                                 fontStyle: descStyle,
@@ -1608,7 +1610,6 @@ class PremiumPricingTable extends Component {
                             style={{
                                 color: btnColor,
                                 background: btnBack ? btnBack : "transparent",
-                                fontSize: btnSize + "px",
                                 fontWeight: btnWeight,
                                 letterSpacing: btnLetter + "px",
                                 fontStyle: btnStyle,

@@ -36,7 +36,8 @@ export default class edit extends Component {
         super(...arguments);
     }
 
-    componentDidMount() {
+    componentDidMount () {
+        this.props.setAttributes({ block_id: this.props.clientId });
         this.props.setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
@@ -51,7 +52,7 @@ export default class edit extends Component {
         
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
         const {
-            id,
+            block_id,
             imageID,
             imageURL,
             title,
@@ -72,6 +73,7 @@ export default class edit extends Component {
             borderRadius,
             borderColor,
             titleColor,
+            titleSizeUnit,
             titleSize,
             titleLine,
             titleWeight,
@@ -81,7 +83,10 @@ export default class edit extends Component {
             shadowHorizontal,
             shadowVertical,
             descColor,
+            descSizeUnit,
             descSize,
+            descSizeTablet,
+            descSizeMobile,
             descLine,
             descWeight,
             descShadowBlur,
@@ -198,7 +203,6 @@ export default class edit extends Component {
                 label: __( "Custom" )
             }
         ];
-        setAttributes( { id: blockID } );
 
         const mainClasses = classnames( className, "premium-banner" );
 
@@ -220,7 +224,7 @@ export default class edit extends Component {
                             )}
                             icon="update"
                             className="components-toolbar__control"
-                            onClick={() => setAttributes( { id: blockID } )}
+                            onClick={() => setAttributes( {block_id: blockID } )}
                         />
                     </Toolbar>
                     <AlignmentToolbar
@@ -367,15 +371,26 @@ export default class edit extends Component {
                             } ) )}
                         />
                         <PremiumTypo
-                            components={[ "size", "weight", "line" ]}
-                            size={titleSize}
-                            sizeTablet={titleSizeTablet}
-                            sizeMobile={titleSizeMobile}
+                            components={[ "responsiveSize", "weight", "line" ]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: titleSizeUnit,
+                                label: __("titleSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: titleSize,
+                                label: __("titleSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: titleSizeMobile,
+                                label: __("titleSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: titleSizeTablet,
+                                label: __("titleSizeTablet"),
+                            }}
                             weight={titleWeight}
                             line={titleLine}
-                            onChangeSize={newSize => setAttributes( { titleSize: newSize } )}
-                            onChangeSizeTablet={newSize => setAttributes( { titleSizeTablet: newSize } )}
-                            onChangeSizeMobile={newSize=>setAttributes({titleSizeMobile:newSize})}
                             onChangeWeight={newWeight =>
                                 setAttributes( {
                                     titleWeight: newWeight === undefined ? 500 : newWeight
@@ -462,11 +477,26 @@ export default class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumTypo
-                            components={[ "size", "weight", "line" ]}
-                            size={descSize}
+                            components={[ "responsiveSize", "weight", "line" ]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: descSizeUnit,
+                                label: __("descSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: descSize,
+                                label: __("descSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: descSizeMobile,
+                                label: __("descSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: descSizeTablet,
+                                label: __("descSizeTablet"),
+                            }}
                             weight={descWeight}
                             line={descLine}
-                            onChangeSize={newSize => setAttributes( { descSize: newSize } )}
                             onChangeWeight={newWeight =>
                                 setAttributes( {
                                     descWeight: newWeight === undefined ? 500 : newWeight
@@ -614,8 +644,8 @@ export default class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-banner-${ id }`}
-                className={`${ mainClasses } premium-banner__responsive_${ responsive }`}
+                id={`premium-banner-${ block_id }`}
+                className={`${ mainClasses } premium-banner__responsive_${ responsive } premium-banner-${block_id}` }
                 style={{
                     paddingTop: paddingT + paddingU,
                     paddingRight: paddingR + paddingU,
@@ -626,13 +656,13 @@ export default class edit extends Component {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                            `#premium-banner-${ block_id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
                             `background: ${ sepColor }`,
                             "}",
-                            `#premium-banner-${ id } .premium-banner__inner {`,
+                            `#premium-banner-${ block_id } .premium-banner__inner {`,
                             `background: ${ background }`,
                             "}",
-                            `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
+                            `#premium-banner-${ block_id } .premium-banner__img.premium-banner__active {`,
                             `opacity: ${ background ? 1 - opacity / 100 : 1 } `,
                             "}"
                         ].join( "\n" )
@@ -706,7 +736,6 @@ export default class edit extends Component {
                                     onChange={newText => setAttributes( { desc: newText } )}
                                     style={{
                                         color: descColor,
-                                        fontSize: descSize + "px",
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
                                         textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`

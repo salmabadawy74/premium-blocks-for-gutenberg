@@ -7,7 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        id,
+        block_id,
         align,
         iconImage,
         iconImgUrl,
@@ -111,8 +111,8 @@ const save = props => {
 
     return (
         <div
-            id={`premium-icon-box-${id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+            id={`premium-icon-box-${block_id}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id}`}
             style={{
                 textAlign: align,
                 border: borderType,
@@ -140,17 +140,17 @@ const save = props => {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-icon-box-${id}:hover {`,
+                            `#premium-icon-box-${block_id}:hover {`,
                             `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                             "}",
-                            `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                            `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
                             `color: ${btnHoverColor} !important;`,
                             `border-color: ${btnHoverBorder} !important;`,
                             "}",
-                            `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                            `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
                             `background-color: ${btnHoverBack} !important;`,
                             "}",
-                            `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                            `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
                             `background-color: ${btnHoverBack} !important;`,
                             "}"
                         ].join("\n")
@@ -200,7 +200,6 @@ const save = props => {
                             value={titleText}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 fontFamily: titleFont,
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
@@ -226,7 +225,6 @@ const save = props => {
                             value={descText}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 fontFamily: descFont,
                                 lineHeight: descLine + "px",
                                 fontWeight: descWeight
@@ -252,7 +250,6 @@ const save = props => {
                             style={{
                                 color: btnColor,
                                 backgroundColor: btnBack,
-                                fontSize: btnSize + "px",
                                 letterSpacing: btnLetter + "px",
                                 textTransform: btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyle,

@@ -129,7 +129,7 @@ class edit extends Component {
         ];
 
         let element = document.getElementById(
-            "premium-style-testimonial-" + clientId.substr(0, 6)
+            "premium-style-testimonial-" + this.props.clientId.substr(0, 6)
         );
 
         if (null != element && "undefined" != typeof element) {
@@ -295,7 +295,6 @@ class edit extends Component {
                                 label: __("bodySizeTablet"),
                             }}
                             line={bodyLine}
-                            onChangeSize={newSize => setAttributes( { bodySize: newSize } )}
                             onChangeLine={newWeight => setAttributes( { bodyLine: newWeight } )}
                         />
                         <p>{__( "Color" )}</p>
@@ -334,7 +333,7 @@ class edit extends Component {
                             } ) )}
                         />
                         <PremiumTypo
-                            components={[ "reponsiveSize" ]}
+                            components={[ "responsiveSize" ]}
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: authorComSizeUnit,
@@ -352,7 +351,6 @@ class edit extends Component {
                                 value: authorComSizeTablet,
                                 label: __("authorComSizeTablet"),
                             }}
-                            onChangeSize={newSize => setAttributes( { authorComSize: newSize } )}
                         />
                         <div className="premium-control-toggle">
                             <strong>{__( "Colors" )}</strong>
@@ -557,7 +555,7 @@ class edit extends Component {
             ),
             <div
                 id={`premium-testimonial-${block_id}`}
-                className={`${ mainClasses }__wrap`}
+                className={`${ mainClasses }__wrap premium-testimonial-${block_id}`}
                 style={{
                     boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                     backgroundColor: backColor,
@@ -657,7 +655,6 @@ class edit extends Component {
                                 isSelected={false}
                                 style={{
                                     color: authorComColor,
-                                    fontSize: authorComSize + "px"
                                 }}
                             />
                         </div>

@@ -50,7 +50,7 @@ export default class edit extends Component {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
 
         const {
-            id,
+            block_id,
             btnText,
             btnSize,
             btnAlign,
@@ -63,6 +63,7 @@ export default class edit extends Component {
             backColor,
             backHoverColor,
             slideColor,
+            textSizeUnit,
             textSize,
             textSizeTablet,
             textSizeMobile,
@@ -203,7 +204,7 @@ export default class edit extends Component {
                     break;
             }
         };
-        setAttributes( { id: blockId } );
+        setAttributes( { block_id: blockId } );
 
         const addFontToHead = fontFamily => {
             const head = document.head;
@@ -307,10 +308,24 @@ export default class edit extends Component {
                             onChange={onChangeTextFamily}
                         />
                         <PremiumTypo
-                            components={[ "size", "weight", "line", "style", "upper", "spacing" ]}
-                            size={textSize}
-                            sizeTablet={textSizeTablet}
-                            sizeMobile={textSizeMobile}
+                            components={[ "responsiveSize", "weight", "line", "style", "upper", "spacing" ]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: textSizeUnit,
+                                label: __("textSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: textSize,
+                                label: __("textSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: textSizeMobile,
+                                label: __("textSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: textSizeTablet,
+                                label: __( "textSizeTablet" ),
+                            }}
                             weight={textWeight}
                             style={textStyle}
                             spacing={textLetter}
@@ -511,23 +526,23 @@ export default class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-button-wrap-${ id }`}
-                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir }`}
+                id={`premium-button-wrap-${ block_id }`}
+                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${block_id}`}
                 style={{ textAlign: btnAlign }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-button-wrap-${ id } .premium-button:hover {`,
+                            `#premium-button-wrap-${ block_id } .premium-button:hover {`,
                             `color: ${ textHoverColor } !important;`,
                             `border-color: ${ borderHoverColor } !important;`,
                             "}",
-                            `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                            `#premium-button-wrap-${ block_id }.premium-button__none .premium-button:hover {`,
                             `background-color: ${ backHoverColor } !important;`,
                             "}",
-                            `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
-                            `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
-                            `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                            `#premium-button-wrap-${ block_id }.premium-button__slide .premium-button::before,`,
+                            `#premium-button-wrap-${ block_id }.premium-button__shutter .premium-button::before,`,
+                            `#premium-button-wrap-${ block_id }.premium-button__radial .premium-button::before {`,
                             `background-color: ${ slideColor }`,
                             "}"
                         ].join( "\n" )

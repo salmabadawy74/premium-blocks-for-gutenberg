@@ -55,8 +55,13 @@ const buttonAttrs = {
     slideColor: {
         type: "string"
     },
+    textSizeUnit: {
+        type: "string",
+      default:'px'  
+    },
     textSize: {
-        type: "number"
+        type: "number",
+        default:'20'
     },
     textSizeTablet: {
       type:"number"  
@@ -140,7 +145,7 @@ const buttonAttrs = {
         type: "string",
         default: ""
     },
-    id: {
+    block_id: {
         type: "string"
     },
     classMigrate: {

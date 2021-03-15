@@ -1,15 +1,20 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling ( props ) {
     const {
+        block_id,
         classMigrate,
         accordionId,
+        titleSizeUnit,
         titleSize,
         titleSizeTablet,
         titleSizeMobile,
+        descSizeUnit,
         descSize,
         descSizeTablet,
-        descSizeMobile
+        descSizeMobile,
+     
     } = props.attributes
     
     var selectors = {}
@@ -18,35 +23,35 @@ function styling ( props ) {
 
     selectors = {
         " .premium-accordion__title": {
-           "font-size" : titleSize +'px',
+           "font-size" : generateCSSUnit(titleSize,titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size" : descSize + "px"
+            "font-size" :generateCSSUnit(descSize,descSizeUnit)
         }
     }
 
     tablet_selectors = {
-        " .premium-accordion__title": {
-            "font-size" : titleSizeTablet +'px',
+        " .premium-accordion__title ": {
+            "font-size" :generateCSSUnit(titleSizeTablet,titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size" : descSizeTablet + "px"
+            "font-size" :generateCSSUnit(descSizeTablet,descSizeUnit)
         }
     }
 
     mobile_selectors = {
         " .premium-accordion__title": {
-            "font-size" : titleSizeMobile +'px',
+            "font-size" : generateCSSUnit(titleSizeMobile,titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size" : descSizeMobile + "px"
+            "font-size" :generateCSSUnit(descSizeMobile,descSizeUnit)
         }
     }
 
     var styling_css = ""
-    var id = `.${accordionId}`
+    var id = `.premium-accordion-${block_id}`
     if (classMigrate) {
-        id = `#${ accordionId }`
+        id = `#premium-accordion-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)

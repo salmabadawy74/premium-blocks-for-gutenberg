@@ -6,12 +6,11 @@ const save = props => {
 
     const { className } = props;
 
-    const {
+    const { block_id,
         accordionId,
         repeaterItems,
         direction,
         titleTag,
-        titleSize,
         titleLine,
         titleLetter,
         titleStyle,
@@ -39,7 +38,6 @@ const save = props => {
         arrowRadius,
         contentType,
         descAlign,
-        descSize,
         descLine,
         descLetter,
         descStyle,
@@ -61,16 +59,16 @@ const save = props => {
         descPaddingL
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-accordion');
+    const mainClasses = classnames( className, 'premium-accordion' );
 
-    const accordionItems = repeaterItems.map((item, index) => {
+    const accordionItems = repeaterItems.map( ( item, index ) => {
         return (
             <div
-                id={`premium-accordion__layer${index}`}
+                id={`premium-accordion__layer${ index }`}
                 className={`premium-accordion__content_wrap`}
             >
                 <div
-                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                    className={`premium-accordion__title_wrap premium-accordion__${ direction } premium-accordion__${ arrowPos }`}
                     style={{
                         backgroundColor: titleBack,
                         border: titleBorder,
@@ -90,12 +88,11 @@ const save = props => {
                             value={item.titleText}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyle,
                                 fontWeight: titleWeight,
-                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
                                 lineHeight: titleLine + "px"
                             }}
                         />
@@ -142,10 +139,9 @@ const save = props => {
                             value={item.descText}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 letterSpacing: descLetter + "px",
                                 textTransform: descUpper ? "uppercase" : "none",
-                                textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                textShadow: `${ textShadowHorizontal }px ${ textShadowVertical }px ${ textShadowBlur }px ${ textShadowColor }`,
                                 fontStyle: descStyle,
                                 fontWeight: descWeight,
                                 lineHeight: descLine + "px"
@@ -156,9 +152,9 @@ const save = props => {
                 </div>
             </div>
         );
-    });
+    } );
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+        <div id={  accordionId} className={`${ mainClasses }  premium-accordion-${block_id}`}>
             {accordionItems}
         </div>
     );

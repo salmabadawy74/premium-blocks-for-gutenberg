@@ -35,8 +35,9 @@ class PremiumAccordion extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
+        setAttributes({block_id:clientId})
         if (!attributes.accordionId) {
-            setAttributes({ accordionId: "premium-accordion-" + clientId });
+            this.props.setAttributes({ accordionId: "premium-accordion-" +clientId });
         }
         this.props.setAttributes({ classMigrate: true });
 
@@ -73,11 +74,13 @@ class PremiumAccordion extends Component {
     render() {
         const { isSelected, setAttributes, clientId, className } = this.props;
         const {
+            block_id,
             accordionId,
             repeaterItems,
             direction,
             titleTag,
             titleColor,
+            titleSizeUnit,
             titleSize,
             titleSizeTablet,
             titleSizeMobile,
@@ -113,6 +116,7 @@ class PremiumAccordion extends Component {
             descBorderColor,
             descBorderRadius,
             descBorderWidth,
+            descSizeUnit,
             descSize,
             descSizeTablet,
             descSizeMobile,
@@ -321,24 +325,35 @@ class PremiumAccordion extends Component {
 
                         <PremiumTypo
                             components={[
-                                "size",
+                                "responsiveSize",
                                 "weight",
                                 "style",
                                 "upper",
                                 "spacing",
                                 "line"
                             ]}
-                            size={titleSize}
-                            sizeTablet={titleSizeTablet}
-                            sizeMobile={titleSizeMobile}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: titleSizeUnit,
+                                label: __("titleSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: titleSize,
+                                label: __("titleSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: titleSizeMobile,
+                                label: __("titleSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: titleSizeTablet,
+                                label: __("titleSizeTablet"),
+                            }}
                             weight={titleWeight}
                             style={titleStyle}
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={newSize => setAttributes( { titleSize: newSize } )}
-                            onChangeSizeTablet={newSize => setAttributes( { titleSizeTablet: newSize } )}
-                            onChangeSizeMobile={newSize=>setAttributes({titleSizeMobile:newSize})}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
@@ -545,16 +560,30 @@ class PremiumAccordion extends Component {
                             <Fragment>
                                 <PremiumTypo
                                     components={[
-                                        "size",
+                                        "responsiveSize",
                                         "weight",
                                         "style",
                                         "upper",
                                         "spacing",
                                         "line"
                                     ]}
-                                    size={descSize}
-                                    sizeTablet={descSizeTablet}
-                                    sizeMobile={descSizeMobile}
+                                    setAttributes={setAttributes}
+                                    fontSizeType={{
+                                        value: descSizeUnit,
+                                        label: __("descSizeUnit"),
+                                    }}
+                                    fontSize={{
+                                        value: descSize,
+                                        label: __("descSize"),
+                                    }}
+                                    fontSizeMobile={{
+                                        value: descSizeMobile,
+                                        label: __("descSizeMobile"),
+                                    }}
+                                    fontSizeTablet={{
+                                        value: descSizeTablet,
+                                        label: __("descSizeTablet"),
+                                    }}
                                     weight={descWeight}
                                     style={descStyle}
                                     spacing={descLetter}
@@ -693,7 +722,7 @@ class PremiumAccordion extends Component {
                 </InspectorControls>
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses} ${accordionId}`}>
+                <div id={`${accordionId}` } className={`${mainClasses}  premium-accordion-${block_id}`}>
                     {accordionItems}
                 </div>
                 <div className={"premium-repeater"}>

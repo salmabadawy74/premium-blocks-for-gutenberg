@@ -10,6 +10,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         align,
         authorImgUrl,
         imgRadius,
@@ -63,7 +64,8 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}__wrap`}
+        id={`premium-testimonial-${block_id}`}
+        className={`${ mainClasses }__wrap premium-testimonial-${block_id}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor,
@@ -117,7 +119,6 @@ const save = props => {
                                 value={text}
                                 style={{
                                     color: bodyColor,
-                                    fontSize: bodySize + "px",
                                     lineHeight: bodyLine + "px",
                                     marginTop: bodyTop + "px",
                                     marginBottom: bodyBottom + "px"
@@ -132,7 +133,6 @@ const save = props => {
                             value={author}
                             style={{
                                 color: authorColor,
-                                fontSize: authorSize + "px",
                                 letterSpacing: authorLetter + "px",
                                 textTransform: authorUpper ? "uppercase" : "none",
                                 fontStyle: authorStyle,
@@ -154,7 +154,6 @@ const save = props => {
                                 value={authorCom}
                                 style={{
                                     color: authorComColor,
-                                    fontSize: authorComSize + "px"
                                 }}
                             />
                             {urlCheck && (

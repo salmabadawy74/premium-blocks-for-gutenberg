@@ -701,6 +701,90 @@ var PremiumTypo = function (_Component) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSS(selectors, id) {
+	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+	var styling_css = "";
+	var breakpoint = "";
+	var gen_styling_css = "";
+	var res_styling_css = "";
+
+	if (responsiveType == "tablet") {
+		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+	} else if (responsiveType == "mobile") {
+		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+	}
+
+	for (var i in selectors) {
+
+		var sel = selectors[i];
+		var css = "";
+
+		for (var j in sel) {
+
+			var checkString = true;
+
+			if (typeof sel[j] === "string" && sel[j].length === 0) {
+				checkString = false;
+			}
+
+			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+				continue;
+			}
+
+			if (typeof sel[j] != "undefined" && checkString) {
+				css += j + ": " + sel[j] + ";";
+			}
+		}
+
+		if (css.length !== 0) {
+			gen_styling_css += id;
+			gen_styling_css += i + "{";
+			gen_styling_css += css;
+			gen_styling_css += "}";
+		}
+	}
+
+	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+		res_styling_css += gen_styling_css;
+		res_styling_css += "}";
+	}
+
+	if (isResponsive) {
+		return res_styling_css;
+	} else {
+		return gen_styling_css;
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSSUnit(value, unit) {
+
+    var css = "";
+
+    if (typeof value != "undefined") {
+        css += value + unit;
+    }
+
+    return css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -716,7 +800,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 /**
@@ -747,7 +831,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -843,7 +927,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -953,73 +1037,7 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSS(selectors, id) {
-	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-
-	var styling_css = "";
-	var breakpoint = "";
-	var gen_styling_css = "";
-	var res_styling_css = "";
-
-	if (responsiveType == "tablet") {
-		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-	} else if (responsiveType == "mobile") {
-		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-	}
-
-	for (var i in selectors) {
-
-		var sel = selectors[i];
-		var css = "";
-
-		for (var j in sel) {
-
-			var checkString = true;
-
-			if (typeof sel[j] === "string" && sel[j].length === 0) {
-				checkString = false;
-			}
-
-			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-				continue;
-			}
-
-			if (typeof sel[j] != "undefined" && checkString) {
-				css += j + ": " + sel[j] + ";";
-			}
-		}
-
-		if (css.length !== 0) {
-			gen_styling_css += id;
-			gen_styling_css += i + "{";
-			gen_styling_css += css;
-			gen_styling_css += "}";
-		}
-	}
-
-	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-		res_styling_css += gen_styling_css;
-		res_styling_css += "}";
-	}
-
-	if (isResponsive) {
-		return res_styling_css;
-	} else {
-		return gen_styling_css;
-	}
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
-
-/***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1035,16 +1053,16 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(194)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(195)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(195)();
+  module.exports = __webpack_require__(196)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1088,11 +1106,11 @@ function PremiumSizeUnits(props) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1302,7 +1320,7 @@ var PremiumPadding = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPadding);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsNative = __webpack_require__(96),
@@ -1324,7 +1342,7 @@ function getNative(object, key) {
 module.exports = getNative;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1409,7 +1427,7 @@ function PremiumMediaUpload(props) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1593,7 +1611,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1689,10 +1707,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(25),
+var _Symbol = __webpack_require__(26),
     getRawTag = __webpack_require__(97),
     objectToString = __webpack_require__(98);
 
@@ -1720,7 +1738,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1756,7 +1774,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1774,7 +1792,7 @@ var FONTS = [{
 /* harmony default export */ __webpack_exports__["a"] = (FONTS);
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1809,14 +1827,14 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(196);
+  module.exports = __webpack_require__(197);
 } else {
-  module.exports = __webpack_require__(199);
+  module.exports = __webpack_require__(200);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var listCacheClear = __webpack_require__(86),
@@ -1853,7 +1871,7 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(50);
@@ -1879,10 +1897,10 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(7);
+var root = __webpack_require__(9);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -1890,10 +1908,10 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15);
+var getNative = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -1901,7 +1919,7 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isKeyable = __webpack_require__(110);
@@ -1922,7 +1940,7 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -1949,7 +1967,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isSymbol = __webpack_require__(42);
@@ -1975,33 +1993,15 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSSUnit(value, unit) {
-
-    var css = "";
-
-    if (typeof value != "undefined") {
-        css += value + unit;
-    }
-
-    return css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
-
-/***/ }),
 /* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(236);
 
 
 
@@ -2392,8 +2392,8 @@ module.exports = ReactPropTypesSecret;
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
-    root = __webpack_require__(7);
+var getNative = __webpack_require__(16),
+    root = __webpack_require__(9);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -2627,7 +2627,7 @@ module.exports = isArrayLike;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(8),
+var isArray = __webpack_require__(10),
     isSymbol = __webpack_require__(42);
 
 /** Used to match property names within property paths. */
@@ -2661,8 +2661,8 @@ module.exports = isKey;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(19),
-    isObjectLike = __webpack_require__(20);
+var baseGetTag = __webpack_require__(20),
+    isObjectLike = __webpack_require__(21);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -2697,7 +2697,7 @@ module.exports = isSymbol;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3117,7 +3117,7 @@ module.exports = arrayMap;
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(23),
+var ListCache = __webpack_require__(24),
     stackClear = __webpack_require__(91),
     stackDelete = __webpack_require__(92),
     stackGet = __webpack_require__(93),
@@ -3191,7 +3191,7 @@ module.exports = eq;
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(19),
+var baseGetTag = __webpack_require__(20),
     isObject = __webpack_require__(36);
 
 /** `Object#toString` result references. */
@@ -3277,7 +3277,7 @@ module.exports = toSource;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(114),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(21);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -3393,7 +3393,7 @@ module.exports = equalArrays;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(133),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(21);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -3436,7 +3436,7 @@ module.exports = isArguments;
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(7),
+var root = __webpack_require__(9),
     stubFalse = __webpack_require__(134);
 
 /** Detect free variable `exports`. */
@@ -3474,7 +3474,7 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
 
 /***/ }),
 /* 58 */
@@ -3586,7 +3586,7 @@ module.exports = matchesStrictComparable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(63),
-    toKey = __webpack_require__(29);
+    toKey = __webpack_require__(30);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -3614,7 +3614,7 @@ module.exports = baseGet;
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(8),
+var isArray = __webpack_require__(10),
     isKey = __webpack_require__(41),
     stringToPath = __webpack_require__(150),
     toString = __webpack_require__(153);
@@ -3769,7 +3769,7 @@ function PremiumFilters(props) {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(22), __webpack_require__(68)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(22), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(13), __webpack_require__(4), __webpack_require__(0), __webpack_require__(23), __webpack_require__(68)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(13), __webpack_require__(4), __webpack_require__(0), __webpack_require__(23), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -4311,7 +4311,7 @@ function PremiumFilters(props) {
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
 
 /***/ }),
 /* 66 */
@@ -4321,9 +4321,9 @@ function PremiumFilters(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(192);
-} else {
   module.exports = __webpack_require__(193);
+} else {
+  module.exports = __webpack_require__(194);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -4335,9 +4335,9 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(197);
-} else {
   module.exports = __webpack_require__(198);
+} else {
+  module.exports = __webpack_require__(199);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -4348,9 +4348,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(203));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(204));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(208));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(209));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(72));
 
@@ -4377,11 +4377,11 @@ module.exports = {
 exports.__esModule = true;
 exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(12));
+var PropTypes = _interopRequireWildcard(__webpack_require__(13));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
-var _reactDom = _interopRequireDefault(__webpack_require__(22));
+var _reactDom = _interopRequireDefault(__webpack_require__(23));
 
 var _reactLifecyclesCompat = __webpack_require__(70);
 
@@ -5149,7 +5149,7 @@ function polyfill(Component) {
 exports.__esModule = true;
 exports.classNamesShape = exports.timeoutsShape = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(12));
+var _propTypes = _interopRequireDefault(__webpack_require__(13));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -5186,13 +5186,13 @@ exports.classNamesShape = classNamesShape;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(12));
+var _propTypes = _interopRequireDefault(__webpack_require__(13));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactLifecyclesCompat = __webpack_require__(70);
 
-var _ChildMapping = __webpack_require__(209);
+var _ChildMapping = __webpack_require__(210);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -5470,15 +5470,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(237);
 
 
 
@@ -5516,6 +5516,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var accordionAttrs = {
+    block_id: {
+        type: "string"
+    },
     accordionId: {
         type: "string"
     },
@@ -5536,6 +5539,10 @@ var accordionAttrs = {
     },
     titleColor: {
         type: "string"
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
     },
     titleSize: {
         type: "number"
@@ -5623,6 +5630,10 @@ var accordionAttrs = {
     arrowRadius: {
         type: "number"
     },
+    descSizeUnit: {
+        type: "string",
+        default: "number"
+    },
     arrowSize: {
         type: "number",
         default: 20
@@ -5657,7 +5668,8 @@ var accordionAttrs = {
         type: "string"
     },
     descSize: {
-        type: "number"
+        type: "number",
+        default: "20"
     },
     descSizeTablet: {
         type: "number"
@@ -5737,9 +5749,9 @@ registerBlockType("premium/accordion", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styling__ = __webpack_require__(168);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -5798,8 +5810,9 @@ var PremiumAccordion = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
+            setAttributes({ block_id: clientId });
             if (!attributes.accordionId) {
-                setAttributes({ accordionId: "premium-accordion-" + clientId });
+                this.props.setAttributes({ accordionId: "premium-accordion-" + clientId });
             }
             this.props.setAttributes({ classMigrate: true });
 
@@ -5837,11 +5850,13 @@ var PremiumAccordion = function (_Component) {
                 clientId = _props2.clientId,
                 className = _props2.className;
             var _props$attributes = this.props.attributes,
+                block_id = _props$attributes.block_id,
                 accordionId = _props$attributes.accordionId,
                 repeaterItems = _props$attributes.repeaterItems,
                 direction = _props$attributes.direction,
                 titleTag = _props$attributes.titleTag,
                 titleColor = _props$attributes.titleColor,
+                titleSizeUnit = _props$attributes.titleSizeUnit,
                 titleSize = _props$attributes.titleSize,
                 titleSizeTablet = _props$attributes.titleSizeTablet,
                 titleSizeMobile = _props$attributes.titleSizeMobile,
@@ -5877,6 +5892,7 @@ var PremiumAccordion = function (_Component) {
                 descBorderColor = _props$attributes.descBorderColor,
                 descBorderRadius = _props$attributes.descBorderRadius,
                 descBorderWidth = _props$attributes.descBorderWidth,
+                descSizeUnit = _props$attributes.descSizeUnit,
                 descSize = _props$attributes.descSize,
                 descSizeTablet = _props$attributes.descSizeTablet,
                 descSizeMobile = _props$attributes.descSizeMobile,
@@ -6088,24 +6104,29 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "style", "upper", "spacing", "line"],
-                        size: titleSize,
-                        sizeTablet: titleSizeTablet,
-                        sizeMobile: titleSizeMobile,
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: titleSizeUnit,
+                            label: __("titleSizeUnit")
+                        },
+                        fontSize: {
+                            value: titleSize,
+                            label: __("titleSize")
+                        },
+                        fontSizeMobile: {
+                            value: titleSizeMobile,
+                            label: __("titleSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: titleSizeTablet,
+                            label: __("titleSizeTablet")
+                        },
                         weight: titleWeight,
                         style: titleStyle,
                         spacing: titleLetter,
                         line: titleLine,
                         upper: titleUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ titleSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ titleSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ titleSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ titleWeight: newWeight });
                         },
@@ -6371,10 +6392,24 @@ var PremiumAccordion = function (_Component) {
                         Fragment,
                         null,
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_typo__["a" /* default */], {
-                            components: ["size", "weight", "style", "upper", "spacing", "line"],
-                            size: descSize,
-                            sizeTablet: descSizeTablet,
-                            sizeMobile: descSizeMobile,
+                            components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                            setAttributes: setAttributes,
+                            fontSizeType: {
+                                value: descSizeUnit,
+                                label: __("descSizeUnit")
+                            },
+                            fontSize: {
+                                value: descSize,
+                                label: __("descSize")
+                            },
+                            fontSizeMobile: {
+                                value: descSizeMobile,
+                                label: __("descSizeMobile")
+                            },
+                            fontSizeTablet: {
+                                value: descSizeTablet,
+                                label: __("descSizeTablet")
+                            },
                             weight: descWeight,
                             style: descStyle,
                             spacing: descLetter,
@@ -6539,7 +6574,7 @@ var PremiumAccordion = function (_Component) {
                 null,
                 wp.element.createElement(
                     "div",
-                    { id: accordionId, className: mainClasses + " " + accordionId },
+                    { id: "" + accordionId, className: mainClasses + "  premium-accordion-" + block_id },
                     accordionItems
                 ),
                 wp.element.createElement(
@@ -6594,7 +6629,7 @@ var PremiumAccordion = function (_Component) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var k = __webpack_require__(18),
+var k = __webpack_require__(19),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -6782,7 +6817,7 @@ if (process.env.NODE_ENV !== "production") {
   (function () {
     'use strict';
 
-    var _assign = __webpack_require__(18);
+    var _assign = __webpack_require__(19);
     var checkPropTypes = __webpack_require__(32);
 
     // TODO: this is special because it gets imported during build.
@@ -8821,7 +8856,7 @@ function PremiumResponsive(props) {
 var arrayMap = __webpack_require__(48),
     baseIteratee = __webpack_require__(83),
     baseMap = __webpack_require__(162),
-    isArray = __webpack_require__(8);
+    isArray = __webpack_require__(10);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -8881,7 +8916,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var baseMatches = __webpack_require__(84),
     baseMatchesProperty = __webpack_require__(148),
     identity = __webpack_require__(158),
-    isArray = __webpack_require__(8),
+    isArray = __webpack_require__(10),
     property = __webpack_require__(159);
 
 /**
@@ -9018,7 +9053,7 @@ module.exports = listCacheClear;
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(24);
+var assocIndexOf = __webpack_require__(25);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -9058,7 +9093,7 @@ module.exports = listCacheDelete;
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(24);
+var assocIndexOf = __webpack_require__(25);
 
 /**
  * Gets the list cache value for `key`.
@@ -9082,7 +9117,7 @@ module.exports = listCacheGet;
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(24);
+var assocIndexOf = __webpack_require__(25);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -9103,7 +9138,7 @@ module.exports = listCacheHas;
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(24);
+var assocIndexOf = __webpack_require__(25);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -9134,7 +9169,7 @@ module.exports = listCacheSet;
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(23);
+var ListCache = __webpack_require__(24);
 
 /**
  * Removes all key-value entries from the stack.
@@ -9215,7 +9250,7 @@ module.exports = stackHas;
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(23),
+var ListCache = __webpack_require__(24),
     Map = __webpack_require__(34),
     MapCache = __webpack_require__(37);
 
@@ -9303,7 +9338,7 @@ module.exports = baseIsNative;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(25);
+var _Symbol = __webpack_require__(26);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -9406,7 +9441,7 @@ module.exports = isMasked;
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(7);
+var root = __webpack_require__(9);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -9436,7 +9471,7 @@ module.exports = getValue;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Hash = __webpack_require__(103),
-    ListCache = __webpack_require__(23),
+    ListCache = __webpack_require__(24),
     Map = __webpack_require__(34);
 
 /**
@@ -9498,7 +9533,7 @@ module.exports = Hash;
 /* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(26);
+var nativeCreate = __webpack_require__(27);
 
 /**
  * Removes all key-value entries from the hash.
@@ -9540,7 +9575,7 @@ module.exports = hashDelete;
 /* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(26);
+var nativeCreate = __webpack_require__(27);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -9575,7 +9610,7 @@ module.exports = hashGet;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(26);
+var nativeCreate = __webpack_require__(27);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -9603,7 +9638,7 @@ module.exports = hashHas;
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(26);
+var nativeCreate = __webpack_require__(27);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -9631,7 +9666,7 @@ module.exports = hashSet;
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(27);
+var getMapData = __webpack_require__(28);
 
 /**
  * Removes `key` and its value from the map.
@@ -9674,7 +9709,7 @@ module.exports = isKeyable;
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(27);
+var getMapData = __webpack_require__(28);
 
 /**
  * Gets the map value for `key`.
@@ -9695,7 +9730,7 @@ module.exports = mapCacheGet;
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(27);
+var getMapData = __webpack_require__(28);
 
 /**
  * Checks if a map value for `key` exists.
@@ -9716,7 +9751,7 @@ module.exports = mapCacheHas;
 /* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(27);
+var getMapData = __webpack_require__(28);
 
 /**
  * Sets the map `key` to `value`.
@@ -9748,7 +9783,7 @@ var Stack = __webpack_require__(49),
     equalByTag = __webpack_require__(120),
     equalObjects = __webpack_require__(124),
     getTag = __webpack_require__(142),
-    isArray = __webpack_require__(8),
+    isArray = __webpack_require__(10),
     isBuffer = __webpack_require__(57),
     isTypedArray = __webpack_require__(59);
 
@@ -9950,7 +9985,7 @@ module.exports = cacheHas;
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(25),
+var _Symbol = __webpack_require__(26),
     Uint8Array = __webpack_require__(121),
     eq = __webpack_require__(50),
     equalArrays = __webpack_require__(55),
@@ -10065,7 +10100,7 @@ module.exports = equalByTag;
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(7);
+var root = __webpack_require__(9);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -10231,7 +10266,7 @@ module.exports = getAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(127),
-    isArray = __webpack_require__(8);
+    isArray = __webpack_require__(10);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -10375,7 +10410,7 @@ module.exports = stubArray;
 
 var baseTimes = __webpack_require__(132),
     isArguments = __webpack_require__(56),
-    isArray = __webpack_require__(8),
+    isArray = __webpack_require__(10),
     isBuffer = __webpack_require__(57),
     isIndex = __webpack_require__(58),
     isTypedArray = __webpack_require__(59);
@@ -10450,8 +10485,8 @@ module.exports = baseTimes;
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(19),
-    isObjectLike = __webpack_require__(20);
+var baseGetTag = __webpack_require__(20),
+    isObjectLike = __webpack_require__(21);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -10496,9 +10531,9 @@ module.exports = stubFalse;
 /* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(19),
+var baseGetTag = __webpack_require__(20),
     isLength = __webpack_require__(39),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(21);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -10600,7 +10635,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
 
 /***/ }),
 /* 138 */
@@ -10700,7 +10735,7 @@ var DataView = __webpack_require__(143),
     Promise = __webpack_require__(144),
     Set = __webpack_require__(145),
     WeakMap = __webpack_require__(146),
-    baseGetTag = __webpack_require__(19),
+    baseGetTag = __webpack_require__(20),
     toSource = __webpack_require__(53);
 
 /** `Object#toString` result references. */
@@ -10759,8 +10794,8 @@ module.exports = getTag;
 /* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
-    root = __webpack_require__(7);
+var getNative = __webpack_require__(16),
+    root = __webpack_require__(9);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -10771,8 +10806,8 @@ module.exports = DataView;
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
-    root = __webpack_require__(7);
+var getNative = __webpack_require__(16),
+    root = __webpack_require__(9);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -10783,8 +10818,8 @@ module.exports = Promise;
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
-    root = __webpack_require__(7);
+var getNative = __webpack_require__(16),
+    root = __webpack_require__(9);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -10795,8 +10830,8 @@ module.exports = Set;
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(15),
-    root = __webpack_require__(7);
+var getNative = __webpack_require__(16),
+    root = __webpack_require__(9);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -10842,7 +10877,7 @@ var baseIsEqual = __webpack_require__(54),
     isKey = __webpack_require__(41),
     isStrictComparable = __webpack_require__(60),
     matchesStrictComparable = __webpack_require__(61),
-    toKey = __webpack_require__(29);
+    toKey = __webpack_require__(30);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -11084,9 +11119,9 @@ module.exports = toString;
 /* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Symbol = __webpack_require__(25),
+var _Symbol = __webpack_require__(26),
     arrayMap = __webpack_require__(48),
-    isArray = __webpack_require__(8),
+    isArray = __webpack_require__(10),
     isSymbol = __webpack_require__(42);
 
 /** Used as references for various `Number` constants. */
@@ -11185,10 +11220,10 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(63),
     isArguments = __webpack_require__(56),
-    isArray = __webpack_require__(8),
+    isArray = __webpack_require__(10),
     isIndex = __webpack_require__(58),
     isLength = __webpack_require__(39),
-    toKey = __webpack_require__(29);
+    toKey = __webpack_require__(30);
 
 /**
  * Checks if `path` exists on `object`.
@@ -11255,7 +11290,7 @@ module.exports = identity;
 var baseProperty = __webpack_require__(160),
     basePropertyDeep = __webpack_require__(161),
     isKey = __webpack_require__(41),
-    toKey = __webpack_require__(29);
+    toKey = __webpack_require__(30);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -11485,16 +11520,21 @@ module.exports = createBaseEach;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
 
 
 function styling(props) {
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate,
         accordionId = _props$attributes.accordionId,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
         titleSize = _props$attributes.titleSize,
         titleSizeTablet = _props$attributes.titleSizeTablet,
         titleSizeMobile = _props$attributes.titleSizeMobile,
+        descSizeUnit = _props$attributes.descSizeUnit,
         descSize = _props$attributes.descSize,
         descSizeTablet = _props$attributes.descSizeTablet,
         descSizeMobile = _props$attributes.descSizeMobile;
@@ -11506,35 +11546,35 @@ function styling(props) {
 
     selectors = {
         " .premium-accordion__title": {
-            "font-size": titleSize + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
         },
         " .premium-accordion__desc": {
-            "font-size": descSize + "px"
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
         }
     };
 
     tablet_selectors = {
-        " .premium-accordion__title": {
-            "font-size": titleSizeTablet + 'px'
+        " .premium-accordion__title ": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
         },
         " .premium-accordion__desc": {
-            "font-size": descSizeTablet + "px"
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descSizeUnit)
         }
     };
 
     mobile_selectors = {
         " .premium-accordion__title": {
-            "font-size": titleSizeMobile + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
         },
         " .premium-accordion__desc": {
-            "font-size": descSizeMobile + "px"
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descSizeUnit)
         }
     };
 
     var styling_css = "";
-    var id = "." + accordionId;
+    var id = '.premium-accordion-' + block_id;
     if (classMigrate) {
-        id = "#" + accordionId;
+        id = '#premium-accordion-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -11563,11 +11603,11 @@ var _wp$blockEditor = wp.blockEditor,
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         accordionId = _props$attributes.accordionId,
         repeaterItems = _props$attributes.repeaterItems,
         direction = _props$attributes.direction,
         titleTag = _props$attributes.titleTag,
-        titleSize = _props$attributes.titleSize,
         titleLine = _props$attributes.titleLine,
         titleLetter = _props$attributes.titleLetter,
         titleStyle = _props$attributes.titleStyle,
@@ -11595,7 +11635,6 @@ var save = function save(props) {
         arrowRadius = _props$attributes.arrowRadius,
         contentType = _props$attributes.contentType,
         descAlign = _props$attributes.descAlign,
-        descSize = _props$attributes.descSize,
         descLine = _props$attributes.descLine,
         descLetter = _props$attributes.descLetter,
         descStyle = _props$attributes.descStyle,
@@ -11651,7 +11690,6 @@ var save = function save(props) {
                         value: item.titleText,
                         style: {
                             color: titleColor,
-                            fontSize: titleSize + "px",
                             letterSpacing: titleLetter + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyle,
@@ -11708,7 +11746,6 @@ var save = function save(props) {
                     value: item.descText,
                     style: {
                         color: descColor,
-                        fontSize: descSize + "px",
                         letterSpacing: descLetter + "px",
                         textTransform: descUpper ? "uppercase" : "none",
                         textShadow: textShadowHorizontal + 'px ' + textShadowVertical + 'px ' + textShadowBlur + 'px ' + textShadowColor,
@@ -11723,7 +11760,7 @@ var save = function save(props) {
     });
     return wp.element.createElement(
         'div',
-        { id: accordionId, className: '' + mainClasses },
+        { id: accordionId, className: mainClasses + '  premium-accordion-' + block_id },
         accordionItems
     );
 };
@@ -11926,8 +11963,236 @@ var deprecated_attributes = {
     }
 };
 
+var deprecated_attributes_1_0 = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title"),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleBorder: {
+        type: "string",
+        default: "none"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderColor: {
+        type: "string"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    arrowColor: {
+        type: "string"
+    },
+    arrowBack: {
+        type: "string"
+    },
+    arrowPos: {
+        type: "string",
+        default: "out"
+    },
+    arrowPadding: {
+        type: "number"
+    },
+    arrowRadius: {
+        type: "number"
+    },
+    arrowSize: {
+        type: "number",
+        default: 20
+    },
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+    descAlign: {
+        type: "string",
+        default: "left"
+    },
+    descColor: {
+        type: "string"
+    },
+    descBack: {
+        type: "string"
+    },
+    descBorder: {
+        type: "string",
+        default: "none"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    descBorderColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descUpper: {
+        type: "boolean"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    }
+};
+
+var newAttributes_1_1 = {
+    block_id: {
+        type: "string"
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: "number"
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var deprecated_attributes_1_1 = Object.assign(deprecated_attributes_1_0, newAttributes_1_1);
+
 var deprecated = [{
-    attributes: deprecated_attributes,
+    attributes: deprecated_attributes_1_1,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            classMigrate: false,
+            titleSizeUnit: 'px',
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            descSizeUnit: '',
+            descSizeTablet: '',
+            descSizeMobile: ''
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             accordionId = _props$attributes.accordionId,
@@ -11974,10 +12239,176 @@ var deprecated = [{
             descBorderColor = _props$attributes.descBorderColor,
             descBorderRadius = _props$attributes.descBorderRadius,
             descBorderWidth = _props$attributes.descBorderWidth,
+            textShadowBlur = _props$attributes.textShadowBlur,
+            textShadowColor = _props$attributes.textShadowColor,
+            textShadowHorizontal = _props$attributes.textShadowHorizontal,
+            textShadowVertical = _props$attributes.textShadowVertical,
             descPaddingT = _props$attributes.descPaddingT,
             descPaddingR = _props$attributes.descPaddingR,
             descPaddingB = _props$attributes.descPaddingB,
             descPaddingL = _props$attributes.descPaddingL;
+
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return wp.element.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            border: titleBorder,
+                            borderWidth: titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        wp.element.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            wp.element.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            border: descBorder,
+                            borderWidth: descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && wp.element.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && wp.element.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return wp.element.createElement(
+            "div",
+            { id: accordionId, className: "" + className },
+            accordionItems
+        );
+    }
+}, {
+    attributes: deprecated_attributes,
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            accordionId = _props$attributes2.accordionId,
+            repeaterItems = _props$attributes2.repeaterItems,
+            direction = _props$attributes2.direction,
+            titleTag = _props$attributes2.titleTag,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleColor = _props$attributes2.titleColor,
+            titleBorder = _props$attributes2.titleBorder,
+            titleBorderColor = _props$attributes2.titleBorderColor,
+            titleBorderWidth = _props$attributes2.titleBorderWidth,
+            titleBorderRadius = _props$attributes2.titleBorderRadius,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titlePaddingT = _props$attributes2.titlePaddingT,
+            titlePaddingR = _props$attributes2.titlePaddingR,
+            titlePaddingB = _props$attributes2.titlePaddingB,
+            titlePaddingL = _props$attributes2.titlePaddingL,
+            arrowColor = _props$attributes2.arrowColor,
+            arrowBack = _props$attributes2.arrowBack,
+            arrowPos = _props$attributes2.arrowPos,
+            arrowPadding = _props$attributes2.arrowPadding,
+            arrowSize = _props$attributes2.arrowSize,
+            arrowRadius = _props$attributes2.arrowRadius,
+            contentType = _props$attributes2.contentType,
+            descAlign = _props$attributes2.descAlign,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descLetter = _props$attributes2.descLetter,
+            descStyle = _props$attributes2.descStyle,
+            descUpper = _props$attributes2.descUpper,
+            descWeight = _props$attributes2.descWeight,
+            descColor = _props$attributes2.descColor,
+            descBack = _props$attributes2.descBack,
+            descBorder = _props$attributes2.descBorder,
+            descBorderColor = _props$attributes2.descBorderColor,
+            descBorderRadius = _props$attributes2.descBorderRadius,
+            descBorderWidth = _props$attributes2.descBorderWidth,
+            descPaddingT = _props$attributes2.descPaddingT,
+            descPaddingR = _props$attributes2.descPaddingR,
+            descPaddingB = _props$attributes2.descPaddingB,
+            descPaddingL = _props$attributes2.descPaddingL;
 
 
         var accordionItems = repeaterItems.map(function (item, index) {
@@ -12112,6 +12543,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var bannerAttrs = {
+    block_id: {
+        type: "string"
+    },
     imageID: {
         type: "number"
     },
@@ -12197,6 +12631,10 @@ var bannerAttrs = {
         type: "number",
         default: "20"
     },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     titleLine: {
         type: "number"
     },
@@ -12228,6 +12666,16 @@ var bannerAttrs = {
     descSize: {
         type: "number",
         default: "20"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
     },
     descLine: {
         type: "number"
@@ -12267,9 +12715,7 @@ var bannerAttrs = {
     sepColor: {
         type: "string"
     },
-    id: {
-        type: "string"
-    },
+
     blur: {
         type: "number",
         default: "0"
@@ -12358,11 +12804,11 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(173);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -12415,6 +12861,7 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
 
             // Pushing Style tag for this block css.
@@ -12431,7 +12878,7 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockID = _props.clientId;
             var _props$attributes = this.props.attributes,
-                id = _props$attributes.id,
+                block_id = _props$attributes.block_id,
                 imageID = _props$attributes.imageID,
                 imageURL = _props$attributes.imageURL,
                 title = _props$attributes.title,
@@ -12452,6 +12899,7 @@ var edit = function (_Component) {
                 borderRadius = _props$attributes.borderRadius,
                 borderColor = _props$attributes.borderColor,
                 titleColor = _props$attributes.titleColor,
+                titleSizeUnit = _props$attributes.titleSizeUnit,
                 titleSize = _props$attributes.titleSize,
                 titleLine = _props$attributes.titleLine,
                 titleWeight = _props$attributes.titleWeight,
@@ -12461,7 +12909,10 @@ var edit = function (_Component) {
                 shadowHorizontal = _props$attributes.shadowHorizontal,
                 shadowVertical = _props$attributes.shadowVertical,
                 descColor = _props$attributes.descColor,
+                descSizeUnit = _props$attributes.descSizeUnit,
                 descSize = _props$attributes.descSize,
+                descSizeTablet = _props$attributes.descSizeTablet,
+                descSizeMobile = _props$attributes.descSizeMobile,
                 descLine = _props$attributes.descLine,
                 descWeight = _props$attributes.descWeight,
                 descShadowBlur = _props$attributes.descShadowBlur,
@@ -12554,7 +13005,6 @@ var edit = function (_Component) {
                 value: "custom",
                 label: __("Custom")
             }];
-            setAttributes({ id: blockID });
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
 
@@ -12575,7 +13025,7 @@ var edit = function (_Component) {
                         icon: "update",
                         className: "components-toolbar__control",
                         onClick: function onClick() {
-                            return setAttributes({ id: blockID });
+                            return setAttributes({ block_id: blockID });
                         }
                     })
                 ),
@@ -12767,21 +13217,26 @@ var edit = function (_Component) {
                         })
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "line"],
-                        size: titleSize,
-                        sizeTablet: titleSizeTablet,
-                        sizeMobile: titleSizeMobile,
+                        components: ["responsiveSize", "weight", "line"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: titleSizeUnit,
+                            label: __("titleSizeUnit")
+                        },
+                        fontSize: {
+                            value: titleSize,
+                            label: __("titleSize")
+                        },
+                        fontSizeMobile: {
+                            value: titleSizeMobile,
+                            label: __("titleSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: titleSizeTablet,
+                            label: __("titleSizeTablet")
+                        },
                         weight: titleWeight,
                         line: titleLine,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ titleSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ titleSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ titleSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({
                                 titleWeight: newWeight === undefined ? 500 : newWeight
@@ -12882,13 +13337,26 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "line"],
-                        size: descSize,
+                        components: ["responsiveSize", "weight", "line"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: descSizeUnit,
+                            label: __("descSizeUnit")
+                        },
+                        fontSize: {
+                            value: descSize,
+                            label: __("descSize")
+                        },
+                        fontSizeMobile: {
+                            value: descSizeMobile,
+                            label: __("descSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: descSizeTablet,
+                            label: __("descSizeTablet")
+                        },
                         weight: descWeight,
                         line: descLine,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ descSize: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({
                                 descWeight: newWeight === undefined ? 500 : newWeight
@@ -13044,8 +13512,8 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    id: "premium-banner-" + id,
-                    className: mainClasses + " premium-banner__responsive_" + responsive,
+                    id: "premium-banner-" + block_id,
+                    className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id,
                     style: {
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
@@ -13055,7 +13523,7 @@ var edit = function (_Component) {
                 },
                 wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                        __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
                     }
                 }),
                 imageURL && wp.element.createElement(
@@ -13138,7 +13606,6 @@ var edit = function (_Component) {
                                 },
                                 style: {
                                     color: descColor,
-                                    fontSize: descSize + "px",
                                     fontWeight: descWeight,
                                     lineHeight: descLine + "px",
                                     textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
@@ -13162,15 +13629,22 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
 
 
 function styling(props) {
     var _props$attributes = props.attributes,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
         titleSize = _props$attributes.titleSize,
         titleSizeTablet = _props$attributes.titleSizeTablet,
         titleSizeMobile = _props$attributes.titleSizeMobile,
-        block_id = _props$attributes.id,
+        descSizeUnit = _props$attributes.descSizeUnit,
+        descSize = _props$attributes.descSize,
+        descSizeTablet = _props$attributes.descSizeTablet,
+        descSizeMobile = _props$attributes.descSizeMobile,
+        block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate;
 
 
@@ -13180,24 +13654,33 @@ function styling(props) {
 
     selectors = {
         " .premium-banner__title": {
-            "font-size": titleSize + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
+        },
+        " .premium-banner__desc": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
         }
     };
     tablet_selectors = {
         " .premium-banner__title": {
-            "font-size": titleSizeTablet + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
+        },
+        " .premium-banner__desc": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descSizeUnit)
         }
     };
     mobile_selectors = {
         " .premium-banner__title": {
-            "font-size": titleSizeMobile + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
+        },
+        " .premium-banner__desc": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descSizeUnit)
         }
     };
 
     var styling_css = "";
-    var id = "#premium-banner-" + block_id;
+    var id = '#premium-banner-' + block_id;
     if (classMigrate) {
-        id = ".premium-banner";
+        id = '.premium-banner-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -13224,7 +13707,7 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        id = _props$attributes.id,
+        block_id = _props$attributes.block_id,
         imageURL = _props$attributes.imageURL,
         title = _props$attributes.title,
         titleTag = _props$attributes.titleTag,
@@ -13286,8 +13769,8 @@ var save = function save(props) {
     return wp.element.createElement(
         'div',
         {
-            id: 'premium-banner-' + id,
-            className: mainClasses + ' premium-banner__responsive_' + responsive,
+            id: 'premium-banner-' + block_id,
+            className: mainClasses + ' premium-banner__responsive_' + responsive + ' premium-banner-' + block_id,
             style: {
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -13297,7 +13780,7 @@ var save = function save(props) {
         },
         wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-banner-' + id + ' .premium-banner__effect3 .premium-banner__title_wrap::after{', 'background: ' + sepColor, "}", '#premium-banner-' + id + ' .premium-banner__inner {', 'background: ' + background, "}", '#premium-banner-' + id + ' .premium-banner__img.premium-banner__active {', 'opacity: ' + (background ? 1 - opacity / 100 : 1) + ' ', "}"].join("\n")
+                __html: ['#premium-banner-' + block_id + ' .premium-banner__effect3 .premium-banner__title_wrap::after{', 'background: ' + sepColor, "}", '#premium-banner-' + block_id + ' .premium-banner__inner {', 'background: ' + background, "}", '#premium-banner-' + block_id + ' .premium-banner__img.premium-banner__active {', 'opacity: ' + (background ? 1 - opacity / 100 : 1) + ' ', "}"].join("\n")
             }
         }),
         wp.element.createElement(
@@ -13619,15 +14102,263 @@ var newAttributes_1_6_7 = {
 
 var deprecated_attributes_1_6_7 = Object.assign(deprecated_attributes_1_5_3, newAttributes_1_6_7);
 
+var deprecated_attributes_1_9 = {
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
+    },
+    effect: {
+        type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
+        type: "string",
+        default: "top"
+    },
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: 50
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: "20"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleWeight: {
+        type: "number"
+    },
+    titleBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: "20"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number"
+    },
+    descShadowColor: {
+        type: "string"
+    },
+    descShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+    },
+    sepColor: {
+        type: "string"
+    },
+    id: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowColor: {
+        type: "string"
+    },
+    containerShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    }
+};
+var newAttributes_2_9 = {
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    block_id: {
+        type: "string"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
+    }
+};
+
+var deprecated_attributes_2_9 = Object.assign(deprecated_attributes_1_9, newAttributes_2_9);
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_6_7,
+    attributes: deprecated_attributes_2_9,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            paddingT: "",
-            paddingR: "",
-            paddingB: "",
-            paddingL: "",
-            paddingU: ""
+            classMigrate: false,
+            titleSizeUnit: 'px',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            descSizeUnit: 'px',
+            descSizeMobile: '',
+            descSizeTablet: '',
+            block_id: ''
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -13682,7 +14413,184 @@ var deprecatedContent = [{
             containerShadowColor = _props$attributes.containerShadowColor,
             containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
             containerShadowVertical = _props$attributes.containerShadowVertical,
-            containerShadowPosition = _props$attributes.containerShadowPosition;
+            containerShadowPosition = _props$attributes.containerShadowPosition,
+            paddingB = _props$attributes.paddingB,
+            paddingT = _props$attributes.paddingT,
+            paddingR = _props$attributes.paddingR,
+            paddingL = _props$attributes.paddingL,
+            paddingU = _props$attributes.paddingU;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-banner-" + id,
+                className: className + " premium-banner__responsive_" + responsive,
+                style: {
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU
+                }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-banner-" + id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(
+                "div",
+                {
+                    className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                    style: {
+                        boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor
+                    }
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__img_wrap premium-banner__" + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    wp.element.createElement("img", {
+                        className: "premium-banner__img",
+                        alt: "Banner Image",
+                        src: imageURL,
+                        style: {
+                            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__content",
+                        style: {
+                            background: "effect2" === effect ? titleBack : "transparent"
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__title_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-banner__title",
+                            value: title,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                fontWeight: titleWeight,
+                                lineHeight: titleLine + "px",
+                                textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__desc_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-banner__desc",
+                            value: desc,
+                            style: {
+                                color: descColor,
+                                fontSize: descSize + "px",
+                                fontWeight: descWeight,
+                                lineHeight: descLine + "px",
+                                textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                            }
+                        })
+                    )
+                ),
+                urlCheck && "" !== url && wp.element.createElement("a", {
+                    className: "premium-banner__link",
+                    href: url,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_6_7,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            paddingT: "",
+            paddingR: "",
+            paddingB: "",
+            paddingL: "",
+            paddingU: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            imageURL = _props$attributes2.imageURL,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            desc = _props$attributes2.desc,
+            contentAlign = _props$attributes2.contentAlign,
+            effect = _props$attributes2.effect,
+            hoverEffect = _props$attributes2.hoverEffect,
+            height = _props$attributes2.height,
+            minHeight = _props$attributes2.minHeight,
+            verAlign = _props$attributes2.verAlign,
+            hovered = _props$attributes2.hovered,
+            responsive = _props$attributes2.responsive,
+            background = _props$attributes2.background,
+            opacity = _props$attributes2.opacity,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            titleColor = _props$attributes2.titleColor,
+            titleBack = _props$attributes2.titleBack,
+            titleSize = _props$attributes2.titleSize,
+            titleWeight = _props$attributes2.titleWeight,
+            titleLine = _props$attributes2.titleLine,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descShadowBlur = _props$attributes2.descShadowBlur,
+            descShadowColor = _props$attributes2.descShadowColor,
+            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
+            descShadowVertical = _props$attributes2.descShadowVertical,
+            urlCheck = _props$attributes2.urlCheck,
+            url = _props$attributes2.url,
+            target = _props$attributes2.target,
+            sepColor = _props$attributes2.sepColor,
+            blur = _props$attributes2.blur,
+            bright = _props$attributes2.bright,
+            contrast = _props$attributes2.contrast,
+            saturation = _props$attributes2.saturation,
+            hue = _props$attributes2.hue,
+            containerShadowBlur = _props$attributes2.containerShadowBlur,
+            containerShadowColor = _props$attributes2.containerShadowColor,
+            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes2.containerShadowVertical,
+            containerShadowPosition = _props$attributes2.containerShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -13799,52 +14707,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            imageURL = _props$attributes2.imageURL,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            desc = _props$attributes2.desc,
-            contentAlign = _props$attributes2.contentAlign,
-            effect = _props$attributes2.effect,
-            hoverEffect = _props$attributes2.hoverEffect,
-            height = _props$attributes2.height,
-            minHeight = _props$attributes2.minHeight,
-            verAlign = _props$attributes2.verAlign,
-            hovered = _props$attributes2.hovered,
-            responsive = _props$attributes2.responsive,
-            background = _props$attributes2.background,
-            opacity = _props$attributes2.opacity,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            titleColor = _props$attributes2.titleColor,
-            titleBack = _props$attributes2.titleBack,
-            titleSize = _props$attributes2.titleSize,
-            titleWeight = _props$attributes2.titleWeight,
-            titleLine = _props$attributes2.titleLine,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descShadowBlur = _props$attributes2.descShadowBlur,
-            descShadowColor = _props$attributes2.descShadowColor,
-            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
-            descShadowVertical = _props$attributes2.descShadowVertical,
-            urlCheck = _props$attributes2.urlCheck,
-            url = _props$attributes2.url,
-            target = _props$attributes2.target,
-            sepColor = _props$attributes2.sepColor,
-            blur = _props$attributes2.blur,
-            bright = _props$attributes2.bright,
-            contrast = _props$attributes2.contrast,
-            saturation = _props$attributes2.saturation,
-            hue = _props$attributes2.hue;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            imageURL = _props$attributes3.imageURL,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            desc = _props$attributes3.desc,
+            contentAlign = _props$attributes3.contentAlign,
+            effect = _props$attributes3.effect,
+            hoverEffect = _props$attributes3.hoverEffect,
+            height = _props$attributes3.height,
+            minHeight = _props$attributes3.minHeight,
+            verAlign = _props$attributes3.verAlign,
+            hovered = _props$attributes3.hovered,
+            responsive = _props$attributes3.responsive,
+            background = _props$attributes3.background,
+            opacity = _props$attributes3.opacity,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            titleColor = _props$attributes3.titleColor,
+            titleBack = _props$attributes3.titleBack,
+            titleSize = _props$attributes3.titleSize,
+            titleWeight = _props$attributes3.titleWeight,
+            titleLine = _props$attributes3.titleLine,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descShadowBlur = _props$attributes3.descShadowBlur,
+            descShadowColor = _props$attributes3.descShadowColor,
+            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
+            descShadowVertical = _props$attributes3.descShadowVertical,
+            urlCheck = _props$attributes3.urlCheck,
+            url = _props$attributes3.url,
+            target = _props$attributes3.target,
+            sepColor = _props$attributes3.sepColor,
+            blur = _props$attributes3.blur,
+            bright = _props$attributes3.bright,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            hue = _props$attributes3.hue;
 
         return wp.element.createElement(
             "div",
@@ -13957,48 +14865,48 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            imageURL = _props$attributes3.imageURL,
-            title = _props$attributes3.title,
-            titleTag = _props$attributes3.titleTag,
-            desc = _props$attributes3.desc,
-            contentAlign = _props$attributes3.contentAlign,
-            effect = _props$attributes3.effect,
-            hoverEffect = _props$attributes3.hoverEffect,
-            height = _props$attributes3.height,
-            minHeight = _props$attributes3.minHeight,
-            verAlign = _props$attributes3.verAlign,
-            hovered = _props$attributes3.hovered,
-            responsive = _props$attributes3.responsive,
-            background = _props$attributes3.background,
-            opacity = _props$attributes3.opacity,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            titleColor = _props$attributes3.titleColor,
-            titleBack = _props$attributes3.titleBack,
-            titleSize = _props$attributes3.titleSize,
-            titleWeight = _props$attributes3.titleWeight,
-            titleLine = _props$attributes3.titleLine,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descWeight = _props$attributes3.descWeight,
-            descLine = _props$attributes3.descLine,
-            urlCheck = _props$attributes3.urlCheck,
-            url = _props$attributes3.url,
-            target = _props$attributes3.target,
-            sepColor = _props$attributes3.sepColor,
-            blur = _props$attributes3.blur,
-            bright = _props$attributes3.bright,
-            contrast = _props$attributes3.contrast,
-            saturation = _props$attributes3.saturation,
-            hue = _props$attributes3.hue;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            imageURL = _props$attributes4.imageURL,
+            title = _props$attributes4.title,
+            titleTag = _props$attributes4.titleTag,
+            desc = _props$attributes4.desc,
+            contentAlign = _props$attributes4.contentAlign,
+            effect = _props$attributes4.effect,
+            hoverEffect = _props$attributes4.hoverEffect,
+            height = _props$attributes4.height,
+            minHeight = _props$attributes4.minHeight,
+            verAlign = _props$attributes4.verAlign,
+            hovered = _props$attributes4.hovered,
+            responsive = _props$attributes4.responsive,
+            background = _props$attributes4.background,
+            opacity = _props$attributes4.opacity,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            titleColor = _props$attributes4.titleColor,
+            titleBack = _props$attributes4.titleBack,
+            titleSize = _props$attributes4.titleSize,
+            titleWeight = _props$attributes4.titleWeight,
+            titleLine = _props$attributes4.titleLine,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descWeight = _props$attributes4.descWeight,
+            descLine = _props$attributes4.descLine,
+            urlCheck = _props$attributes4.urlCheck,
+            url = _props$attributes4.url,
+            target = _props$attributes4.target,
+            sepColor = _props$attributes4.sepColor,
+            blur = _props$attributes4.blur,
+            bright = _props$attributes4.bright,
+            contrast = _props$attributes4.contrast,
+            saturation = _props$attributes4.saturation,
+            hue = _props$attributes4.hue;
 
         return wp.element.createElement(
             "div",
@@ -14111,43 +15019,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            imageURL = _props$attributes4.imageURL,
-            title = _props$attributes4.title,
-            titleTag = _props$attributes4.titleTag,
-            desc = _props$attributes4.desc,
-            contentAlign = _props$attributes4.contentAlign,
-            effect = _props$attributes4.effect,
-            hoverEffect = _props$attributes4.hoverEffect,
-            height = _props$attributes4.height,
-            minHeight = _props$attributes4.minHeight,
-            verAlign = _props$attributes4.verAlign,
-            hovered = _props$attributes4.hovered,
-            responsive = _props$attributes4.responsive,
-            background = _props$attributes4.background,
-            opacity = _props$attributes4.opacity,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            titleColor = _props$attributes4.titleColor,
-            titleBack = _props$attributes4.titleBack,
-            titleSize = _props$attributes4.titleSize,
-            titleWeight = _props$attributes4.titleWeight,
-            titleLine = _props$attributes4.titleLine,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descWeight = _props$attributes4.descWeight,
-            descLine = _props$attributes4.descLine,
-            urlCheck = _props$attributes4.urlCheck,
-            url = _props$attributes4.url,
-            target = _props$attributes4.target,
-            sepColor = _props$attributes4.sepColor;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            imageURL = _props$attributes5.imageURL,
+            title = _props$attributes5.title,
+            titleTag = _props$attributes5.titleTag,
+            desc = _props$attributes5.desc,
+            contentAlign = _props$attributes5.contentAlign,
+            effect = _props$attributes5.effect,
+            hoverEffect = _props$attributes5.hoverEffect,
+            height = _props$attributes5.height,
+            minHeight = _props$attributes5.minHeight,
+            verAlign = _props$attributes5.verAlign,
+            hovered = _props$attributes5.hovered,
+            responsive = _props$attributes5.responsive,
+            background = _props$attributes5.background,
+            opacity = _props$attributes5.opacity,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            titleColor = _props$attributes5.titleColor,
+            titleBack = _props$attributes5.titleBack,
+            titleSize = _props$attributes5.titleSize,
+            titleWeight = _props$attributes5.titleWeight,
+            titleLine = _props$attributes5.titleLine,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descWeight = _props$attributes5.descWeight,
+            descLine = _props$attributes5.descLine,
+            urlCheck = _props$attributes5.urlCheck,
+            url = _props$attributes5.url,
+            target = _props$attributes5.target,
+            sepColor = _props$attributes5.sepColor;
 
         return wp.element.createElement(
             "div",
@@ -14256,39 +15164,39 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            imageURL = _props$attributes5.imageURL,
-            title = _props$attributes5.title,
-            titleTag = _props$attributes5.titleTag,
-            desc = _props$attributes5.desc,
-            contentAlign = _props$attributes5.contentAlign,
-            effect = _props$attributes5.effect,
-            hoverEffect = _props$attributes5.hoverEffect,
-            height = _props$attributes5.height,
-            minHeight = _props$attributes5.minHeight,
-            verAlign = _props$attributes5.verAlign,
-            hovered = _props$attributes5.hovered,
-            responsive = _props$attributes5.responsive,
-            background = _props$attributes5.background,
-            opacity = _props$attributes5.opacity,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            titleColor = _props$attributes5.titleColor,
-            titleBack = _props$attributes5.titleBack,
-            titleSize = _props$attributes5.titleSize,
-            titleWeight = _props$attributes5.titleWeight,
-            titleLine = _props$attributes5.titleLine,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descWeight = _props$attributes5.descWeight,
-            descLine = _props$attributes5.descLine,
-            urlCheck = _props$attributes5.urlCheck,
-            url = _props$attributes5.url,
-            target = _props$attributes5.target,
-            sepColor = _props$attributes5.sepColor;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            imageURL = _props$attributes6.imageURL,
+            title = _props$attributes6.title,
+            titleTag = _props$attributes6.titleTag,
+            desc = _props$attributes6.desc,
+            contentAlign = _props$attributes6.contentAlign,
+            effect = _props$attributes6.effect,
+            hoverEffect = _props$attributes6.hoverEffect,
+            height = _props$attributes6.height,
+            minHeight = _props$attributes6.minHeight,
+            verAlign = _props$attributes6.verAlign,
+            hovered = _props$attributes6.hovered,
+            responsive = _props$attributes6.responsive,
+            background = _props$attributes6.background,
+            opacity = _props$attributes6.opacity,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            titleColor = _props$attributes6.titleColor,
+            titleBack = _props$attributes6.titleBack,
+            titleSize = _props$attributes6.titleSize,
+            titleWeight = _props$attributes6.titleWeight,
+            titleLine = _props$attributes6.titleLine,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descWeight = _props$attributes6.descWeight,
+            descLine = _props$attributes6.descLine,
+            urlCheck = _props$attributes6.urlCheck,
+            url = _props$attributes6.url,
+            target = _props$attributes6.target,
+            sepColor = _props$attributes6.sepColor;
 
         return wp.element.createElement(
             "div",
@@ -14454,8 +15362,13 @@ var buttonAttrs = {
     slideColor: {
         type: "string"
     },
+    textSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     textSize: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
     textSizeTablet: {
         type: "number"
@@ -14539,7 +15452,7 @@ var buttonAttrs = {
         type: "string",
         default: ""
     },
-    id: {
+    block_id: {
         type: "string"
     },
     classMigrate: {
@@ -14571,10 +15484,10 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styling__ = __webpack_require__(178);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14643,7 +15556,7 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockId = _props.clientId;
             var _props$attributes = this.props.attributes,
-                id = _props$attributes.id,
+                block_id = _props$attributes.block_id,
                 btnText = _props$attributes.btnText,
                 btnSize = _props$attributes.btnSize,
                 btnAlign = _props$attributes.btnAlign,
@@ -14656,6 +15569,7 @@ var edit = function (_Component) {
                 backColor = _props$attributes.backColor,
                 backHoverColor = _props$attributes.backHoverColor,
                 slideColor = _props$attributes.slideColor,
+                textSizeUnit = _props$attributes.textSizeUnit,
                 textSize = _props$attributes.textSize,
                 textSizeTablet = _props$attributes.textSizeTablet,
                 textSizeMobile = _props$attributes.textSizeMobile,
@@ -14769,7 +15683,7 @@ var edit = function (_Component) {
                         break;
                 }
             };
-            setAttributes({ id: blockId });
+            setAttributes({ block_id: blockId });
 
             var addFontToHead = function addFontToHead(fontFamily) {
                 var head = document.head;
@@ -14876,10 +15790,24 @@ var edit = function (_Component) {
                         onChange: onChangeTextFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
-                        components: ["size", "weight", "line", "style", "upper", "spacing"],
-                        size: textSize,
-                        sizeTablet: textSizeTablet,
-                        sizeMobile: textSizeMobile,
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: textSizeUnit,
+                            label: __("textSizeUnit")
+                        },
+                        fontSize: {
+                            value: textSize,
+                            label: __("textSize")
+                        },
+                        fontSizeMobile: {
+                            value: textSizeMobile,
+                            label: __("textSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: textSizeTablet,
+                            label: __("textSizeTablet")
+                        },
                         weight: textWeight,
                         style: textStyle,
                         spacing: textLetter,
@@ -15116,13 +16044,13 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    id: "premium-button-wrap-" + id,
-                    className: mainClasses + "__wrap premium-button__" + effect + " premium-button__" + effectDir,
+                    id: "premium-button-wrap-" + block_id,
+                    className: mainClasses + "__wrap premium-button__" + effect + " premium-button__" + effectDir + " premium-button-" + block_id,
                     style: { textAlign: btnAlign }
                 },
                 wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                        __html: ["#premium-button-wrap-" + block_id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
                     }
                 }),
                 wp.element.createElement(RichText, {
@@ -15171,15 +16099,18 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
 
 
 function styling(props) {
     var _props$attributes = props.attributes,
+        textSizeUnit = _props$attributes.textSizeUnit,
         textSize = _props$attributes.textSize,
         textSizeTablet = _props$attributes.textSizeTablet,
         textSizeMobile = _props$attributes.textSizeMobile,
-        block_id = _props$attributes.id,
+        block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate;
 
 
@@ -15189,24 +16120,24 @@ function styling(props) {
 
     selectors = {
         " .premium-button": {
-            "font-size": textSize + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSize, textSizeUnit)
         }
     };
     tablet_selectors = {
         " .premium-button": {
-            "font-size": textSizeTablet + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeTablet, textSizeUnit)
         }
     };
     mobile_selectors = {
         " .premium-button": {
-            "font-size": textSizeMobile + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeMobile, textSizeUnit)
         }
     };
 
     var styling_css = "";
-    var id = "#premium-button-wrap-" + block_id;
+    var id = '#premium-button-wrap-' + block_id;
     if (classMigrate) {
-        id = ".premium-button__wrap";
+        id = '.premium-button-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -15233,7 +16164,7 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        id = _props$attributes.id,
+        block_id = _props$attributes.block_id,
         btnText = _props$attributes.btnText,
         btnSize = _props$attributes.btnSize,
         btnAlign = _props$attributes.btnAlign,
@@ -15276,13 +16207,13 @@ var save = function save(props) {
     return wp.element.createElement(
         'div',
         {
-            id: mainClasses + '-wrap-' + id,
-            className: mainClasses + '__wrap premium-button__' + effect + ' premium-button__' + effectDir,
+            id: mainClasses + '-wrap-' + block_id,
+            className: mainClasses + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id,
             style: { textAlign: btnAlign }
         },
         wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
             }
         }),
         wp.element.createElement(RichText.Content, {
@@ -15295,7 +16226,6 @@ var save = function save(props) {
             style: {
                 color: textColor,
                 backgroundColor: backColor,
-                fontSize: textSize + "px",
                 fontFamily: textFontFamily,
                 letterSpacing: textLetter + "px",
                 textTransform: textUpper ? "uppercase" : "none",
@@ -15469,12 +16399,182 @@ var newAttributes_1_4_7 = {
     }
 };
 
+var buttonAttrs_3_0 = {
+    btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    textColor: {
+        type: "string"
+    },
+    textHoverColor: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backHoverColor: {
+        type: "string"
+    },
+    slideColor: {
+        type: "string"
+    },
+    textSize: {
+        type: "number"
+    },
+    textFontFamily: {
+        type: "string"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean"
+    },
+    textWeight: {
+        type: "number",
+        default: 500
+    },
+    textLine: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    padding: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    id: {
+        type: "string"
+    }
+};
+var newAttributes_3_1 = {
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    block_id: {
+        type: "string"
+    }
+};
+
 var buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
 
+var buttonAttrs_3_1 = Object.assign(buttonAttrs_3_0, newAttributes_3_1);
+
 var deprecatedContent = [{
-    attributes: buttonAttrs_1_4_7,
+    attributes: buttonAttrs_3_1,
     migrate: function migrate(attributes) {
-        return Object.assign(attributes, { paddingU: "" });
+        var newAttributes = {
+            descSizeUnit: 'px',
+            titleSizeUnit: 'px',
+            descSizeMobile: '',
+            descSizeTablet: '',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            classMigrate: false
+        };
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
@@ -15504,6 +16604,7 @@ var deprecatedContent = [{
             borderColor = _props$attributes.borderColor,
             borderHoverColor = _props$attributes.borderHoverColor,
             padding = _props$attributes.padding,
+            paddingU = _props$attributes.paddingU,
             shadowBlur = _props$attributes.shadowBlur,
             shadowColor = _props$attributes.shadowColor,
             shadowHorizontal = _props$attributes.shadowHorizontal,
@@ -15514,11 +16615,12 @@ var deprecatedContent = [{
             btnShadowVertical = _props$attributes.btnShadowVertical,
             btnShadowPosition = _props$attributes.btnShadowPosition;
 
+
         return wp.element.createElement(
             "div",
             {
                 id: className + "-wrap-" + id,
-                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                className: className + "__wrap premium-button__" + effect + " premium-button__" + effectDir,
                 style: { textAlign: btnAlign }
             },
             wp.element.createElement("style", {
@@ -15529,7 +16631,7 @@ var deprecatedContent = [{
             wp.element.createElement(RichText.Content, {
                 tagName: "a",
                 value: btnText,
-                className: className + " " + className + "__" + btnSize,
+                className: "premium-button premium-button__" + btnSize,
                 href: btnLink,
                 rel: "noopener noreferrer",
                 target: btnTarget ? "_blank" : "_self",
@@ -15545,7 +16647,7 @@ var deprecatedContent = [{
                     fontWeight: textWeight,
                     textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
                     boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-                    padding: padding + "px",
+                    padding: padding + paddingU,
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
@@ -15556,6 +16658,9 @@ var deprecatedContent = [{
     }
 }, {
     attributes: buttonAttrs_1_4_7,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { paddingU: "" });
+    },
     save: function save(props) {
         var _props$attributes2 = props.attributes,
             id = _props$attributes2.id,
@@ -15611,6 +16716,86 @@ var deprecatedContent = [{
                 value: btnText,
                 className: className + " " + className + "__" + btnSize,
                 href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: buttonAttrs_1_4_7,
+    save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            btnText = _props$attributes3.btnText,
+            btnSize = _props$attributes3.btnSize,
+            btnAlign = _props$attributes3.btnAlign,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            effect = _props$attributes3.effect,
+            effectDir = _props$attributes3.effectDir,
+            textColor = _props$attributes3.textColor,
+            textHoverColor = _props$attributes3.textHoverColor,
+            backColor = _props$attributes3.backColor,
+            backHoverColor = _props$attributes3.backHoverColor,
+            slideColor = _props$attributes3.slideColor,
+            textSize = _props$attributes3.textSize,
+            textFontFamily = _props$attributes3.textFontFamily,
+            textWeight = _props$attributes3.textWeight,
+            textLine = _props$attributes3.textLine,
+            textLetter = _props$attributes3.textLetter,
+            textStyle = _props$attributes3.textStyle,
+            textUpper = _props$attributes3.textUpper,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            borderHoverColor = _props$attributes3.borderHoverColor,
+            padding = _props$attributes3.padding,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition;
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
                 target: btnTarget ? "_blank" : "_self",
                 style: {
                     color: textColor,
@@ -15639,41 +16824,41 @@ var deprecatedContent = [{
         return Object.assign(attributes, { textFontFamily: "" });
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            btnText = _props$attributes3.btnText,
-            btnSize = _props$attributes3.btnSize,
-            btnAlign = _props$attributes3.btnAlign,
-            btnLink = _props$attributes3.btnLink,
-            btnTarget = _props$attributes3.btnTarget,
-            effect = _props$attributes3.effect,
-            effectDir = _props$attributes3.effectDir,
-            textColor = _props$attributes3.textColor,
-            textHoverColor = _props$attributes3.textHoverColor,
-            backColor = _props$attributes3.backColor,
-            backHoverColor = _props$attributes3.backHoverColor,
-            slideColor = _props$attributes3.slideColor,
-            textSize = _props$attributes3.textSize,
-            textWeight = _props$attributes3.textWeight,
-            textLine = _props$attributes3.textLine,
-            textLetter = _props$attributes3.textLetter,
-            textStyle = _props$attributes3.textStyle,
-            textUpper = _props$attributes3.textUpper,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            borderHoverColor = _props$attributes3.borderHoverColor,
-            padding = _props$attributes3.padding,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            btnText = _props$attributes4.btnText,
+            btnSize = _props$attributes4.btnSize,
+            btnAlign = _props$attributes4.btnAlign,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            effect = _props$attributes4.effect,
+            effectDir = _props$attributes4.effectDir,
+            textColor = _props$attributes4.textColor,
+            textHoverColor = _props$attributes4.textHoverColor,
+            backColor = _props$attributes4.backColor,
+            backHoverColor = _props$attributes4.backHoverColor,
+            slideColor = _props$attributes4.slideColor,
+            textSize = _props$attributes4.textSize,
+            textWeight = _props$attributes4.textWeight,
+            textLine = _props$attributes4.textLine,
+            textLetter = _props$attributes4.textLetter,
+            textStyle = _props$attributes4.textStyle,
+            textUpper = _props$attributes4.textUpper,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            borderHoverColor = _props$attributes4.borderHoverColor,
+            padding = _props$attributes4.padding,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -15719,40 +16904,40 @@ var deprecatedContent = [{
         return Object.assign(attributes, { borderHoverColor: "" });
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            btnText = _props$attributes4.btnText,
-            btnSize = _props$attributes4.btnSize,
-            btnAlign = _props$attributes4.btnAlign,
-            btnLink = _props$attributes4.btnLink,
-            btnTarget = _props$attributes4.btnTarget,
-            effect = _props$attributes4.effect,
-            effectDir = _props$attributes4.effectDir,
-            textColor = _props$attributes4.textColor,
-            textHoverColor = _props$attributes4.textHoverColor,
-            backColor = _props$attributes4.backColor,
-            backHoverColor = _props$attributes4.backHoverColor,
-            slideColor = _props$attributes4.slideColor,
-            textSize = _props$attributes4.textSize,
-            textWeight = _props$attributes4.textWeight,
-            textLine = _props$attributes4.textLine,
-            textLetter = _props$attributes4.textLetter,
-            textStyle = _props$attributes4.textStyle,
-            textUpper = _props$attributes4.textUpper,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            padding = _props$attributes4.padding,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            btnText = _props$attributes5.btnText,
+            btnSize = _props$attributes5.btnSize,
+            btnAlign = _props$attributes5.btnAlign,
+            btnLink = _props$attributes5.btnLink,
+            btnTarget = _props$attributes5.btnTarget,
+            effect = _props$attributes5.effect,
+            effectDir = _props$attributes5.effectDir,
+            textColor = _props$attributes5.textColor,
+            textHoverColor = _props$attributes5.textHoverColor,
+            backColor = _props$attributes5.backColor,
+            backHoverColor = _props$attributes5.backHoverColor,
+            slideColor = _props$attributes5.slideColor,
+            textSize = _props$attributes5.textSize,
+            textWeight = _props$attributes5.textWeight,
+            textLine = _props$attributes5.textLine,
+            textLetter = _props$attributes5.textLetter,
+            textStyle = _props$attributes5.textStyle,
+            textUpper = _props$attributes5.textUpper,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            padding = _props$attributes5.padding,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -15805,35 +16990,35 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            btnText = _props$attributes5.btnText,
-            btnSize = _props$attributes5.btnSize,
-            btnAlign = _props$attributes5.btnAlign,
-            btnLink = _props$attributes5.btnLink,
-            btnTarget = _props$attributes5.btnTarget,
-            effect = _props$attributes5.effect,
-            effectDir = _props$attributes5.effectDir,
-            textColor = _props$attributes5.textColor,
-            textHoverColor = _props$attributes5.textHoverColor,
-            backColor = _props$attributes5.backColor,
-            backHoverColor = _props$attributes5.backHoverColor,
-            slideColor = _props$attributes5.slideColor,
-            textSize = _props$attributes5.textSize,
-            textWeight = _props$attributes5.textWeight,
-            textLine = _props$attributes5.textLine,
-            textLetter = _props$attributes5.textLetter,
-            textStyle = _props$attributes5.textStyle,
-            textUpper = _props$attributes5.textUpper,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            padding = _props$attributes5.padding,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            btnText = _props$attributes6.btnText,
+            btnSize = _props$attributes6.btnSize,
+            btnAlign = _props$attributes6.btnAlign,
+            btnLink = _props$attributes6.btnLink,
+            btnTarget = _props$attributes6.btnTarget,
+            effect = _props$attributes6.effect,
+            effectDir = _props$attributes6.effectDir,
+            textColor = _props$attributes6.textColor,
+            textHoverColor = _props$attributes6.textHoverColor,
+            backColor = _props$attributes6.backColor,
+            backHoverColor = _props$attributes6.backHoverColor,
+            slideColor = _props$attributes6.slideColor,
+            textSize = _props$attributes6.textSize,
+            textWeight = _props$attributes6.textWeight,
+            textLine = _props$attributes6.textLine,
+            textLetter = _props$attributes6.textLetter,
+            textStyle = _props$attributes6.textStyle,
+            textUpper = _props$attributes6.textUpper,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            padding = _props$attributes6.padding,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical;
 
         return wp.element.createElement(
             "div",
@@ -15883,9 +17068,9 @@ var deprecatedContent = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(185);
 
 
 
@@ -15897,6 +17082,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var counterAttrs = {
+    block_id: {
+        type: 'string'
+    },
     increment: {
         type: "string",
         default: 500
@@ -15916,6 +17104,10 @@ var counterAttrs = {
     flexDir: {
         type: "string",
         default: "column"
+    },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
     },
     numberSize: {
         type: "number",
@@ -15947,6 +17139,10 @@ var counterAttrs = {
         type: "number",
         default: 20
     },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
     prefixSizeTablet: {
         type: "number"
     },
@@ -15970,6 +17166,10 @@ var counterAttrs = {
     suffixTxt: {
         type: "string",
         default: "Suffix"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
     },
     suffixSize: {
         type: "number",
@@ -16036,6 +17236,10 @@ var counterAttrs = {
     titleSize: {
         type: "number",
         default: 20
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
     },
     titleSizeTablet: {
         type: "number"
@@ -16167,11 +17371,12 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(183);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -16181,6 +17386,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -16218,27 +17424,34 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            this.props.setAttributes({ classMigrate: true });
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
+
+            setAttributes({ block_id: clientId.substr(0, 6) });
+            setAttributes({ classMigrate: true });
 
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-count-up-" + this.props.clientId.substr(0, 6));
+            $style.setAttribute("id", "premium-style-count-up-" + clientId.substr(0, 6));
             document.head.appendChild($style);
         }
     }, {
         key: "render",
         value: function render() {
-            var _props = this.props,
-                isSelected = _props.isSelected,
-                setAttributes = _props.setAttributes,
-                className = _props.className,
-                blockId = _props.clientId;
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                className = _props2.className,
+                blockId = _props2.clientId;
             var _props$attributes = this.props.attributes,
+                block_id = _props$attributes.block_id,
                 increment = _props$attributes.increment,
                 time = _props$attributes.time,
                 delay = _props$attributes.delay,
                 align = _props$attributes.align,
                 flexDir = _props$attributes.flexDir,
+                numberSizeUnit = _props$attributes.numberSizeUnit,
                 numberSize = _props$attributes.numberSize,
                 numberSizeMobile = _props$attributes.numberSizeMobile,
                 numberSizeTablet = _props$attributes.numberSizeTablet,
@@ -16251,6 +17464,7 @@ var edit = function (_Component) {
                 titleCheck = _props$attributes.titleCheck,
                 titleTxt = _props$attributes.titleTxt,
                 titleColor = _props$attributes.titleColor,
+                titleSizeUnit = _props$attributes.titleSizeUnit,
                 titleSize = _props$attributes.titleSize,
                 titleSizeMobile = _props$attributes.titleSizeMobile,
                 titleSizeTablet = _props$attributes.titleSizeTablet,
@@ -16267,6 +17481,7 @@ var edit = function (_Component) {
                 prefix = _props$attributes.prefix,
                 prefixTxt = _props$attributes.prefixTxt,
                 prefixSize = _props$attributes.prefixSize,
+                prefixSizeUnit = _props$attributes.prefixSizeUnit,
                 prefixSizeTablet = _props$attributes.prefixSizeTablet,
                 prefixSizeMobile = _props$attributes.prefixSizeMobile,
                 prefixColor = _props$attributes.prefixColor,
@@ -16274,6 +17489,7 @@ var edit = function (_Component) {
                 prefixGap = _props$attributes.prefixGap,
                 suffix = _props$attributes.suffix,
                 suffixTxt = _props$attributes.suffixTxt,
+                suffixSizeUnit = _props$attributes.suffixSizeUnit,
                 suffixSize = _props$attributes.suffixSize,
                 suffixSizeTablet = _props$attributes.suffixSizeTablet,
                 suffixSizeMobile = _props$attributes.suffixSizeMobile,
@@ -16303,6 +17519,7 @@ var edit = function (_Component) {
                 prefixFamily = _props$attributes.prefixFamily,
                 suffixFamily = _props$attributes.suffixFamily;
 
+
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
             var ICONS = [{
                 value: "icon",
@@ -16311,6 +17528,7 @@ var edit = function (_Component) {
                 value: "img",
                 label: __("Image")
             }];
+
             var DIRECTION = [{
                 value: "row",
                 label: __("Row")
@@ -16324,6 +17542,7 @@ var edit = function (_Component) {
                 value: "column-reverse",
                 label: __("Reversed Column")
             }];
+
             var TYPE = [{
                 value: "fa",
                 label: "Font Awesome Icon"
@@ -16331,6 +17550,7 @@ var edit = function (_Component) {
                 value: "dash",
                 label: "Dashicon"
             }];
+
             var ALIGNS = ["left", "center", "right"];
             var REVALIGNS = ["right", "center", "left"];
             switch (align) {
@@ -16393,7 +17613,7 @@ var edit = function (_Component) {
             var element = document.getElementById("premium-style-count-up-" + blockId.substr(0, 6));
 
             if (null != element && "undefined" != typeof element) {
-                element.innerHTML = styling(this.props);
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_8__styling__["a" /* default */])(this.props);
             }
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-countup");
@@ -16608,20 +17828,25 @@ var edit = function (_Component) {
                         onChange: onChangeCounterFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight"],
-                        size: numberSize,
-                        sizeTablet: numberSizeTablet,
-                        sizeMobile: numberSizeMobile,
+                        components: ["responsiveSize", "weight"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: numberSizeUnit,
+                            label: __("numberSizeUnit")
+                        },
+                        fontSize: {
+                            value: numberSize,
+                            label: __("numberSize")
+                        },
+                        fontSizeMobile: {
+                            value: numberSizeMobile,
+                            label: __("numberSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: numberSizeTablet,
+                            label: __("numberSizeTablet")
+                        },
                         weight: numberWeight,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ numberSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ numberSizeTablet: newSize });
-                        },
-                        onChangeSizeMoile: function onChangeSizeMoile(newSize) {
-                            return setAttributes({ numberSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ numberWeight: newWeight });
                         }
@@ -16666,20 +17891,25 @@ var edit = function (_Component) {
                         onChange: onChangePrefixFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight"],
-                        size: prefixSize,
-                        sizeTablet: prefixSizeTablet,
-                        sizeMobile: prefixSizeMobile,
+                        components: ["responsiveSize", "weight"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: prefixSizeUnit,
+                            label: __("prefixSizeUnit")
+                        },
+                        fontSize: {
+                            value: prefixSize,
+                            label: __("prefixSize")
+                        },
+                        fontSizeMobile: {
+                            value: prefixSizeMobile,
+                            label: __("prefixSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: prefixSizeTablet,
+                            label: __("prefixSizeTablet")
+                        },
                         weight: prefixWeight,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ prefixSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ prefixSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ prefixSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ prefixWeight: newWeight });
                         }
@@ -16731,20 +17961,25 @@ var edit = function (_Component) {
                         onChange: onChangeSuffixFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight"],
-                        size: suffixSize,
-                        sizeTablet: suffixSizeTablet,
-                        sizeMobile: suffixSizeMobile,
+                        components: ["responsiveSize", "weight"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: suffixSizeUnit,
+                            label: __("suffixSizeUnit")
+                        },
+                        fontSize: {
+                            value: suffixSize,
+                            label: __("suffixSize")
+                        },
+                        fontSizeMobile: {
+                            value: suffixSizeMobile,
+                            label: __("suffixSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: suffixSizeTablet,
+                            label: __("suffixSizeTablet")
+                        },
                         weight: suffixWeight,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ suffixSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ suffixSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ suffixSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ suffixWeight: newWeight });
                         }
@@ -16796,23 +18031,28 @@ var edit = function (_Component) {
                         onChange: onChangeTitleFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "spacing", "style", "upper"],
-                        size: titleSize,
-                        sizeTablet: titleSizeTablet,
-                        sizeMobile: titleSizeMobile,
+                        components: ["responsiveSize", "weight", "spacing", "style", "upper"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: titleSizeUnit,
+                            label: __("titleSizeUnit")
+                        },
+                        fontSize: {
+                            value: titleSize,
+                            label: __("titleSize")
+                        },
+                        fontSizeMobile: {
+                            value: titleSizeMobile,
+                            label: __("titleSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: titleSizeTablet,
+                            label: __("titleSizeTablet")
+                        },
                         weight: titleWeight,
                         style: titleStyle,
                         spacing: titleSpacing,
                         upper: titleUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ titleSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ titleSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ titleSizeMobile: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ titleWeight: newWeight });
                         },
@@ -16988,7 +18228,8 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    className: mainClasses + "__wrap",
+                    id: "premium-countup-" + block_id,
+                    className: mainClasses + "__wrap premium-countup-" + block_id,
                     style: {
                         justifyContent: align,
                         flexDirection: flexDir,
@@ -17046,7 +18287,6 @@ var edit = function (_Component) {
                             {
                                 className: "premium-countup__prefix",
                                 style: {
-                                    fontSize: prefixSize + "px",
                                     fontFamily: prefixFamily,
                                     color: prefixColor,
                                     fontWeight: prefixWeight,
@@ -17062,7 +18302,6 @@ var edit = function (_Component) {
                                 "data-interval": time,
                                 "data-delay": delay,
                                 style: {
-                                    fontSize: numberSize + "px",
                                     fontFamily: counterFamily,
                                     color: numberColor,
                                     fontWeight: numberWeight
@@ -17075,7 +18314,6 @@ var edit = function (_Component) {
                             {
                                 className: "premium-countup__suffix",
                                 style: {
-                                    fontSize: suffixSize + "px",
                                     fontFamily: suffixFamily,
                                     color: suffixColor,
                                     fontWeight: suffixWeight,
@@ -17090,7 +18328,6 @@ var edit = function (_Component) {
                         {
                             className: "premium-countup__title",
                             style: {
-                                fontSize: titleSize + "px",
                                 fontFamily: titleFamily,
                                 marginTop: titleT + "px",
                                 marginBottom: titleB + "px",
@@ -17109,7 +18346,6 @@ var edit = function (_Component) {
                     {
                         className: "premium-countup__title",
                         style: {
-                            fontSize: titleSize + "px",
                             fontFamily: titleFamily,
                             marginTop: titleT + "px",
                             marginBottom: titleB + "px",
@@ -17139,221 +18375,312 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        numberSizeUnit = _props$attributes.numberSizeUnit,
+        numberSize = _props$attributes.numberSize,
+        numberSizeMobile = _props$attributes.numberSizeMobile,
+        numberSizeTablet = _props$attributes.numberSizeTablet,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
+        titleSize = _props$attributes.titleSize,
+        titleSizeMobile = _props$attributes.titleSizeMobile,
+        titleSizeTablet = _props$attributes.titleSizeTablet,
+        prefixSize = _props$attributes.prefixSize,
+        prefixSizeUnit = _props$attributes.prefixSizeUnit,
+        prefixSizeTablet = _props$attributes.prefixSizeTablet,
+        prefixSizeMobile = _props$attributes.prefixSizeMobile,
+        suffixSizeUnit = _props$attributes.suffixSizeUnit,
+        suffixSize = _props$attributes.suffixSize,
+        suffixSizeTablet = _props$attributes.suffixSizeTablet,
+        suffixSizeMobile = _props$attributes.suffixSizeMobile,
+        block_id = _props$attributes.block_id,
+        classMigrate = _props$attributes.classMigrate;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " .premium-countup__increment": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSize, numberSizeUnit)
+        },
+        " .premium-countup__title": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
+        },
+        " .premium-countup__prefix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSize, prefixSizeUnit)
+        },
+        " .premium-countup__suffix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(suffixSize, suffixSizeUnit)
+        }
+    };
+    tablet_selectors = {
+        " .premium-countup__increment": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSizeTablet, numberSizeUnit)
+        },
+        " .premium-countup__title": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
+        },
+        " .premium-countup__prefix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSizeTablet, prefixSizeUnit)
+        },
+        " .premium-countup__suffix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(suffixSizeTablet, suffixSizeUnit)
+        }
+    };
+    mobile_selectors = {
+        " .premium-countup__increment": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSizeMobile, numberSizeUnit)
+        },
+        " .premium-countup__title": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
+        },
+        " .premium-countup__prefix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSizeMobile, prefixSizeUnit)
+        },
+        " .premium-countup__suffix": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(suffixSizeMobile, suffixSizeUnit)
+        }
+    };
+
+    var styling_css = "";
+    var id = '.premium-countup-' + block_id;
+    if (classMigrate) {
+        id = '#premium-countup-' + block_id;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+/* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 184 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
 var save = function save(props) {
-  var className = props.className;
-  var _props$attributes = props.attributes,
-      increment = _props$attributes.increment,
-      time = _props$attributes.time,
-      delay = _props$attributes.delay,
-      align = _props$attributes.align,
-      flexDir = _props$attributes.flexDir,
-      numberSize = _props$attributes.numberSize,
-      numberColor = _props$attributes.numberColor,
-      numberWeight = _props$attributes.numberWeight,
-      prefix = _props$attributes.prefix,
-      prefixTxt = _props$attributes.prefixTxt,
-      prefixSize = _props$attributes.prefixSize,
-      prefixColor = _props$attributes.prefixColor,
-      prefixWeight = _props$attributes.prefixWeight,
-      prefixGap = _props$attributes.prefixGap,
-      suffix = _props$attributes.suffix,
-      suffixTxt = _props$attributes.suffixTxt,
-      suffixSize = _props$attributes.suffixSize,
-      suffixColor = _props$attributes.suffixColor,
-      suffixWeight = _props$attributes.suffixWeight,
-      suffixGap = _props$attributes.suffixGap,
-      iconCheck = _props$attributes.iconCheck,
-      icon = _props$attributes.icon,
-      iconSpacing = _props$attributes.iconSpacing,
-      iconType = _props$attributes.iconType,
-      imageURL = _props$attributes.imageURL,
-      iconSize = _props$attributes.iconSize,
-      iconColor = _props$attributes.iconColor,
-      selfAlign = _props$attributes.selfAlign,
-      titleCheck = _props$attributes.titleCheck,
-      titleTxt = _props$attributes.titleTxt,
-      titleColor = _props$attributes.titleColor,
-      titleSize = _props$attributes.titleSize,
-      titleSpacing = _props$attributes.titleSpacing,
-      titleStyle = _props$attributes.titleStyle,
-      titleUpper = _props$attributes.titleUpper,
-      titleT = _props$attributes.titleT,
-      titleB = _props$attributes.titleB,
-      titleWeight = _props$attributes.titleWeight,
-      faIcon = _props$attributes.faIcon,
-      containerBack = _props$attributes.containerBack,
-      shadowBlur = _props$attributes.shadowBlur,
-      shadowColor = _props$attributes.shadowColor,
-      shadowHorizontal = _props$attributes.shadowHorizontal,
-      shadowVertical = _props$attributes.shadowVertical,
-      shadowPosition = _props$attributes.shadowPosition,
-      backgroundImageURL = _props$attributes.backgroundImageURL,
-      fixed = _props$attributes.fixed,
-      backgroundRepeat = _props$attributes.backgroundRepeat,
-      backgroundPosition = _props$attributes.backgroundPosition,
-      backgroundSize = _props$attributes.backgroundSize,
-      borderType = _props$attributes.borderType,
-      borderColor = _props$attributes.borderColor,
-      borderRadius = _props$attributes.borderRadius,
-      borderWidth = _props$attributes.borderWidth,
-      titleFamily = _props$attributes.titleFamily,
-      counterFamily = _props$attributes.counterFamily,
-      prefixFamily = _props$attributes.prefixFamily,
-      suffixFamily = _props$attributes.suffixFamily;
+    var className = props.className;
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        increment = _props$attributes.increment,
+        time = _props$attributes.time,
+        delay = _props$attributes.delay,
+        align = _props$attributes.align,
+        flexDir = _props$attributes.flexDir,
+        numberSize = _props$attributes.numberSize,
+        numberColor = _props$attributes.numberColor,
+        numberWeight = _props$attributes.numberWeight,
+        prefix = _props$attributes.prefix,
+        prefixTxt = _props$attributes.prefixTxt,
+        prefixSize = _props$attributes.prefixSize,
+        prefixColor = _props$attributes.prefixColor,
+        prefixWeight = _props$attributes.prefixWeight,
+        prefixGap = _props$attributes.prefixGap,
+        suffix = _props$attributes.suffix,
+        suffixTxt = _props$attributes.suffixTxt,
+        suffixSize = _props$attributes.suffixSize,
+        suffixColor = _props$attributes.suffixColor,
+        suffixWeight = _props$attributes.suffixWeight,
+        suffixGap = _props$attributes.suffixGap,
+        iconCheck = _props$attributes.iconCheck,
+        icon = _props$attributes.icon,
+        iconSpacing = _props$attributes.iconSpacing,
+        iconType = _props$attributes.iconType,
+        imageURL = _props$attributes.imageURL,
+        iconSize = _props$attributes.iconSize,
+        iconColor = _props$attributes.iconColor,
+        selfAlign = _props$attributes.selfAlign,
+        titleCheck = _props$attributes.titleCheck,
+        titleTxt = _props$attributes.titleTxt,
+        titleColor = _props$attributes.titleColor,
+        titleSize = _props$attributes.titleSize,
+        titleSpacing = _props$attributes.titleSpacing,
+        titleStyle = _props$attributes.titleStyle,
+        titleUpper = _props$attributes.titleUpper,
+        titleT = _props$attributes.titleT,
+        titleB = _props$attributes.titleB,
+        titleWeight = _props$attributes.titleWeight,
+        faIcon = _props$attributes.faIcon,
+        containerBack = _props$attributes.containerBack,
+        shadowBlur = _props$attributes.shadowBlur,
+        shadowColor = _props$attributes.shadowColor,
+        shadowHorizontal = _props$attributes.shadowHorizontal,
+        shadowVertical = _props$attributes.shadowVertical,
+        shadowPosition = _props$attributes.shadowPosition,
+        backgroundImageURL = _props$attributes.backgroundImageURL,
+        fixed = _props$attributes.fixed,
+        backgroundRepeat = _props$attributes.backgroundRepeat,
+        backgroundPosition = _props$attributes.backgroundPosition,
+        backgroundSize = _props$attributes.backgroundSize,
+        borderType = _props$attributes.borderType,
+        borderColor = _props$attributes.borderColor,
+        borderRadius = _props$attributes.borderRadius,
+        borderWidth = _props$attributes.borderWidth,
+        titleFamily = _props$attributes.titleFamily,
+        counterFamily = _props$attributes.counterFamily,
+        prefixFamily = _props$attributes.prefixFamily,
+        suffixFamily = _props$attributes.suffixFamily;
 
-  var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+    var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
 
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-countup');
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-countup');
 
-  return wp.element.createElement(
-    'div',
-    {
-      className: mainClasses + '__wrap',
-      style: {
-        justifyContent: align,
-        flexDirection: flexDir,
-        backgroundColor: containerBack,
-        boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-        backgroundImage: 'url(\'' + backgroundImageURL + '\')',
-        backgroundRepeat: backgroundRepeat,
-        backgroundPosition: backgroundPosition,
-        backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset",
-        border: borderType,
-        borderWidth: borderWidth + "px",
-        borderRadius: borderRadius + "px",
-        borderColor: borderColor
-      }
-    },
-    iconCheck && wp.element.createElement(
-      'div',
-      {
-        className: 'premium-countup__icon_wrap',
-        style: {
-          marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-          marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-          alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-        }
-      },
-      "icon" === icon && wp.element.createElement('i', {
-        className: 'premium-countup__icon ' + iconClass,
-        style: {
-          fontSize: iconSize + "px",
-          color: iconColor
-        }
-      }),
-      "img" === icon && imageURL && wp.element.createElement('img', {
-        src: imageURL,
-        style: {
-          width: iconSize + "px",
-          height: iconSize + "px"
-        }
-      })
-    ),
-    wp.element.createElement(
-      'div',
-      {
-        className: 'premium-countup__info',
-        style: {
-          alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-        }
-      },
-      wp.element.createElement(
+    return wp.element.createElement(
         'div',
-        { className: 'premium-countup__desc' },
-        prefix && wp.element.createElement(
-          'p',
-          {
-            className: 'premium-countup__prefix',
+        {
+            id: 'premium-countup-' + block_id,
+            className: mainClasses + '__wrap premium-countup-' + block_id,
             style: {
-              fontSize: prefixSize + "px",
-              fontFamily: prefixFamily,
-              color: prefixColor,
-              fontWeight: prefixWeight,
-              marginRight: prefixGap + "px"
+                justifyContent: align,
+                flexDirection: flexDir,
+                backgroundColor: containerBack,
+                boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
+                backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                backgroundRepeat: backgroundRepeat,
+                backgroundPosition: backgroundPosition,
+                backgroundSize: backgroundSize,
+                backgroundAttachment: fixed ? "fixed" : "unset",
+                border: borderType,
+                borderWidth: borderWidth + "px",
+                borderRadius: borderRadius + "px",
+                borderColor: borderColor
             }
-          },
-          prefixTxt
+        },
+        iconCheck && wp.element.createElement(
+            'div',
+            {
+                className: 'premium-countup__icon_wrap',
+                style: {
+                    marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                    marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                    alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                }
+            },
+            "icon" === icon && wp.element.createElement('i', {
+                className: 'premium-countup__icon ' + iconClass,
+                style: {
+                    fontSize: iconSize + "px",
+                    color: iconColor
+                }
+            }),
+            "img" === icon && imageURL && wp.element.createElement('img', {
+                src: imageURL,
+                style: {
+                    width: iconSize + "px",
+                    height: iconSize + "px"
+                }
+            })
         ),
         wp.element.createElement(
-          'p',
-          {
-            className: 'premium-countup__increment',
-            'data-interval': time,
-            'data-delay': delay,
-            style: {
-              fontSize: numberSize + "px",
-              fontFamily: counterFamily,
-              color: numberColor,
-              fontWeight: numberWeight
-            }
-          },
-          increment
+            'div',
+            {
+                className: 'premium-countup__info',
+                style: {
+                    alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                }
+            },
+            wp.element.createElement(
+                'div',
+                { className: 'premium-countup__desc' },
+                prefix && wp.element.createElement(
+                    'p',
+                    {
+                        className: 'premium-countup__prefix',
+                        style: {
+                            fontFamily: prefixFamily,
+                            color: prefixColor,
+                            fontWeight: prefixWeight,
+                            marginRight: prefixGap + "px"
+                        }
+                    },
+                    prefixTxt
+                ),
+                wp.element.createElement(
+                    'p',
+                    {
+                        className: 'premium-countup__increment',
+                        'data-interval': time,
+                        'data-delay': delay,
+                        style: {
+                            fontFamily: counterFamily,
+                            color: numberColor,
+                            fontWeight: numberWeight
+                        }
+                    },
+                    increment
+                ),
+                suffix && wp.element.createElement(
+                    'p',
+                    {
+                        className: 'premium-countup__suffix',
+                        style: {
+                            fontFamily: suffixFamily,
+                            color: suffixColor,
+                            fontWeight: suffixWeight,
+                            marginLeft: suffixGap + "px"
+                        }
+                    },
+                    suffixTxt
+                )
+            ),
+            titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
+                'h3',
+                {
+                    className: 'premium-countup__title',
+                    style: {
+                        fontFamily: titleFamily,
+                        marginTop: titleT + "px",
+                        marginBottom: titleB + "px",
+                        color: titleColor,
+                        letterSpacing: titleSpacing + "px",
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        fontWeight: titleWeight
+                    }
+                },
+                titleTxt
+            )
         ),
-        suffix && wp.element.createElement(
-          'p',
-          {
-            className: 'premium-countup__suffix',
-            style: {
-              fontSize: suffixSize + "px",
-              fontFamily: suffixFamily,
-              color: suffixColor,
-              fontWeight: suffixWeight,
-              marginLeft: suffixGap + "px"
-            }
-          },
-          suffixTxt
+        titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+            'h3',
+            {
+                className: 'premium-countup__title',
+                style: {
+                    fontFamily: titleFamily,
+                    marginTop: titleT + "px",
+                    marginBottom: titleB + "px",
+                    color: titleColor,
+                    letterSpacing: titleSpacing + "px",
+                    fontWeight: titleWeight,
+                    textTransform: titleUpper ? "uppercase" : "none",
+                    fontStyle: titleStyle,
+                    alignSelf: selfAlign
+                }
+            },
+            titleTxt
         )
-      ),
-      titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
-        'h3',
-        {
-          className: 'premium-countup__title',
-          style: {
-            fontSize: titleSize + "px",
-            fontFamily: titleFamily,
-            marginTop: titleT + "px",
-            marginBottom: titleB + "px",
-            color: titleColor,
-            letterSpacing: titleSpacing + "px",
-            textTransform: titleUpper ? "uppercase" : "none",
-            fontStyle: titleStyle,
-            fontWeight: titleWeight
-          }
-        },
-        titleTxt
-      )
-    ),
-    titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
-      'h3',
-      {
-        className: 'premium-countup__title',
-        style: {
-          fontSize: titleSize + "px",
-          fontFamily: titleFamily,
-          marginTop: titleT + "px",
-          marginBottom: titleB + "px",
-          color: titleColor,
-          letterSpacing: titleSpacing + "px",
-          fontWeight: titleWeight,
-          textTransform: titleUpper ? "uppercase" : "none",
-          fontStyle: titleStyle,
-          alignSelf: selfAlign
-        }
-      },
-      titleTxt
-    )
-  );
+    );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17588,14 +18915,295 @@ var counterAttrs_1_4_1 = Object.assign(counterAttrs_1_3_7, newAttributes_1_4_1);
 
 var counterAttrs_1_6_4 = Object.assign(counterAttrs_1_4_1, newAttributes_1_6_4);
 
+var counterAttrs_2_0 = {
+  increment: {
+    type: "string",
+    default: 500
+  },
+  time: {
+    type: "string",
+    default: 1000
+  },
+  delay: {
+    type: "string",
+    default: 10
+  },
+  align: {
+    type: "string",
+    default: "center"
+  },
+  flexDir: {
+    type: "string",
+    default: "column"
+  },
+  numberSize: {
+    type: "number",
+    default: 30
+  },
+  numberColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  numberWeight: {
+    type: "number",
+    default: 900
+  },
+  prefix: {
+    type: "boolean",
+    default: true
+  },
+  prefixTxt: {
+    type: "string",
+    default: "Prefix"
+  },
+  prefixSize: {
+    type: "number",
+    default: 20
+  },
+  prefixColor: {
+    type: "string"
+  },
+  prefixWeight: {
+    type: "number"
+  },
+  prefixGap: {
+    type: "number",
+    default: 2
+  },
+  suffix: {
+    type: "boolean",
+    default: true
+  },
+  suffixTxt: {
+    type: "string",
+    default: "Suffix"
+  },
+  suffixSize: {
+    type: "number",
+    default: 20
+  },
+  suffixColor: {
+    type: "string"
+  },
+  suffixWeight: {
+    type: "number"
+  },
+  suffixGap: {
+    type: "number",
+    default: 2
+  },
+  icon: {
+    type: "string",
+    default: "icon"
+  },
+  iconSpacing: {
+    type: "number",
+    default: 10
+  },
+  imageID: {
+    type: "string"
+  },
+  imageURL: {
+    type: "string"
+  },
+  iconType: {
+    type: "string",
+    default: "dash"
+  },
+  iconCheck: {
+    type: "boolean",
+    default: true
+  },
+  iconSize: {
+    type: "number",
+    default: 40
+  },
+  iconColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  selfAlign: {
+    type: "string",
+    default: "center"
+  },
+  titleCheck: {
+    type: "boolean",
+    default: true
+  },
+  titleTxt: {
+    type: "string",
+    default: "Premium Count Up"
+  },
+  titleSize: {
+    type: "number",
+    default: 20
+  },
+  titleSpacing: {
+    type: "number"
+  },
+  titleStyle: {
+    type: "string"
+  },
+  titleUpper: {
+    type: "boolean"
+  },
+  titleT: {
+    type: "number",
+    default: 1
+  },
+  titleB: {
+    type: "number",
+    default: 1
+  },
+  titleColor: {
+    type: "string"
+  },
+  titleWeight: {
+    type: "number",
+    default: 500
+  },
+  faIcon: {
+    type: "string",
+    default: "dashicons-clock"
+  },
+  containerBack: {
+    type: "string"
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  shadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  shadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  shadowPosition: {
+    type: "string",
+    default: ""
+  },
+  backgroundImageID: {
+    type: "string"
+  },
+  backgroundImageURL: {
+    type: "string"
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundPosition: {
+    type: "string",
+    default: "top center"
+  },
+  backgroundSize: {
+    type: "string",
+    default: "auto"
+  },
+  fixed: {
+    type: "boolean",
+    default: false
+  },
+  borderType: {
+    type: "string",
+    default: "none"
+  },
+  borderWidth: {
+    type: "number",
+    default: "1"
+  },
+  borderRadius: {
+    type: "number",
+    default: "0"
+  },
+  borderColor: {
+    type: "string"
+  },
+  titleFamily: {
+    type: "string"
+  },
+  counterFamily: {
+    type: "string"
+  },
+  prefixFamily: {
+    type: "string"
+  },
+  suffixFamily: {
+    type: "string"
+  }
+};
+
+var newAttributes_2_1 = {
+  block_id: {
+    type: 'string'
+  },
+  numberSizeUnit: {
+    type: "string",
+    default: "px"
+  },
+  numberSizeTablet: {
+    type: "number"
+  },
+  numberSizeMobile: {
+    type: "number"
+  },
+  prefixSizeUnit: {
+    type: 'string',
+    default: 'px'
+  },
+  prefixSizeTablet: {
+    type: "number"
+  },
+  prefixSizeMobile: {
+    type: "number"
+  },
+  suffixSizeUnit: {
+    type: "string",
+    default: 'px'
+  },
+  suffixSizeTablet: {
+    type: "number"
+  },
+  suffixSizeMobile: {
+    type: 'number'
+  },
+  titleSizeUnit: {
+    type: "string",
+    default: "px"
+  },
+  titleSizeTablet: {
+    type: "number"
+  },
+  titleSizeMobile: {
+    type: "number"
+  }
+};
+
+var counterAttrs_2_1 = Object.assign(counterAttrs_2_0, newAttributes_2_1);
+
 var deprecatedContent = [{
-  attributes: counterAttrs_1_6_4,
+  attributes: counterAttrs_2_1,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      borderType: "",
-      borderColor: "",
-      borderRadius: "",
-      borderWidth: ""
+      block_id: '',
+      numberSizeUnit: 'px',
+      numberSizeTablet: '',
+      numberSizeMobile: '',
+      prefixSizeUnit: 'px',
+      prefixSizeTablet: '',
+      prefixSizeMobile: '',
+      suffixSizeUnit: 'px',
+      suffixSizeTablet: '',
+      suffixSizeMobile: '',
+      titleSizeUnit: 'px',
+      titleSizeTablet: '',
+      titleSizeMobile: ''
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -17651,10 +19259,224 @@ var deprecatedContent = [{
         backgroundRepeat = _props$attributes.backgroundRepeat,
         backgroundPosition = _props$attributes.backgroundPosition,
         backgroundSize = _props$attributes.backgroundSize,
+        borderType = _props$attributes.borderType,
+        borderColor = _props$attributes.borderColor,
+        borderRadius = _props$attributes.borderRadius,
+        borderWidth = _props$attributes.borderWidth,
         titleFamily = _props$attributes.titleFamily,
         counterFamily = _props$attributes.counterFamily,
         prefixFamily = _props$attributes.prefixFamily,
         suffixFamily = _props$attributes.suffixFamily;
+
+    var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+
+    return wp.element.createElement(
+      "div",
+      {
+        className: className + "__wrap",
+        style: {
+          justifyContent: align,
+          flexDirection: flexDir,
+          backgroundColor: containerBack,
+          boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+          backgroundImage: "url('" + backgroundImageURL + "')",
+          backgroundRepeat: backgroundRepeat,
+          backgroundPosition: backgroundPosition,
+          backgroundSize: backgroundSize,
+          backgroundAttachment: fixed ? "fixed" : "unset",
+          border: borderType,
+          borderWidth: borderWidth + "px",
+          borderRadius: borderRadius + "px",
+          borderColor: borderColor
+        }
+      },
+      iconCheck && wp.element.createElement(
+        "div",
+        {
+          className: "premium-countup__icon_wrap",
+          style: {
+            marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+            marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+            alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+          }
+        },
+        "icon" === icon && wp.element.createElement("i", {
+          className: "premium-countup__icon " + iconClass,
+          style: {
+            fontSize: iconSize + "px",
+            color: iconColor
+          }
+        }),
+        "img" === icon && imageURL && wp.element.createElement("img", {
+          src: imageURL,
+          style: {
+            width: iconSize + "px",
+            height: iconSize + "px"
+          }
+        })
+      ),
+      wp.element.createElement(
+        "div",
+        {
+          className: "premium-countup__info",
+          style: {
+            alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+          }
+        },
+        wp.element.createElement(
+          "div",
+          { className: "premium-countup__desc" },
+          prefix && wp.element.createElement(
+            "p",
+            {
+              className: "premium-countup__prefix",
+              style: {
+                fontSize: prefixSize + "px",
+                fontFamily: prefixFamily,
+                color: prefixColor,
+                fontWeight: prefixWeight,
+                marginRight: prefixGap + "px"
+              }
+            },
+            prefixTxt
+          ),
+          wp.element.createElement(
+            "p",
+            {
+              className: "premium-countup__increment",
+              "data-interval": time,
+              "data-delay": delay,
+              style: {
+                fontSize: numberSize + "px",
+                fontFamily: counterFamily,
+                color: numberColor,
+                fontWeight: numberWeight
+              }
+            },
+            increment
+          ),
+          suffix && wp.element.createElement(
+            "p",
+            {
+              className: "premium-countup__suffix",
+              style: {
+                fontSize: suffixSize + "px",
+                fontFamily: suffixFamily,
+                color: suffixColor,
+                fontWeight: suffixWeight,
+                marginLeft: suffixGap + "px"
+              }
+            },
+            suffixTxt
+          )
+        ),
+        titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
+          "h3",
+          {
+            className: "premium-countup__title",
+            style: {
+              fontSize: titleSize + "px",
+              fontFamily: titleFamily,
+              marginTop: titleT + "px",
+              marginBottom: titleB + "px",
+              color: titleColor,
+              letterSpacing: titleSpacing + "px",
+              textTransform: titleUpper ? "uppercase" : "none",
+              fontStyle: titleStyle,
+              fontWeight: titleWeight
+            }
+          },
+          titleTxt
+        )
+      ),
+      titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+        "h3",
+        {
+          className: "premium-countup__title",
+          style: {
+            fontSize: titleSize + "px",
+            fontFamily: titleFamily,
+            marginTop: titleT + "px",
+            marginBottom: titleB + "px",
+            color: titleColor,
+            letterSpacing: titleSpacing + "px",
+            fontWeight: titleWeight,
+            textTransform: titleUpper ? "uppercase" : "none",
+            fontStyle: titleStyle,
+            alignSelf: selfAlign
+          }
+        },
+        titleTxt
+      )
+    );
+  }
+}, {
+  attributes: counterAttrs_1_6_4,
+  migrate: function migrate(attributes) {
+    var newAttributes = {
+      borderType: "",
+      borderColor: "",
+      borderRadius: "",
+      borderWidth: ""
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        increment = _props$attributes2.increment,
+        time = _props$attributes2.time,
+        delay = _props$attributes2.delay,
+        align = _props$attributes2.align,
+        flexDir = _props$attributes2.flexDir,
+        numberSize = _props$attributes2.numberSize,
+        numberColor = _props$attributes2.numberColor,
+        numberWeight = _props$attributes2.numberWeight,
+        prefix = _props$attributes2.prefix,
+        prefixTxt = _props$attributes2.prefixTxt,
+        prefixSize = _props$attributes2.prefixSize,
+        prefixColor = _props$attributes2.prefixColor,
+        prefixWeight = _props$attributes2.prefixWeight,
+        prefixGap = _props$attributes2.prefixGap,
+        suffix = _props$attributes2.suffix,
+        suffixTxt = _props$attributes2.suffixTxt,
+        suffixSize = _props$attributes2.suffixSize,
+        suffixColor = _props$attributes2.suffixColor,
+        suffixWeight = _props$attributes2.suffixWeight,
+        suffixGap = _props$attributes2.suffixGap,
+        iconCheck = _props$attributes2.iconCheck,
+        icon = _props$attributes2.icon,
+        iconSpacing = _props$attributes2.iconSpacing,
+        iconType = _props$attributes2.iconType,
+        imageURL = _props$attributes2.imageURL,
+        iconSize = _props$attributes2.iconSize,
+        iconColor = _props$attributes2.iconColor,
+        selfAlign = _props$attributes2.selfAlign,
+        titleCheck = _props$attributes2.titleCheck,
+        titleTxt = _props$attributes2.titleTxt,
+        titleColor = _props$attributes2.titleColor,
+        titleSize = _props$attributes2.titleSize,
+        titleSpacing = _props$attributes2.titleSpacing,
+        titleStyle = _props$attributes2.titleStyle,
+        titleUpper = _props$attributes2.titleUpper,
+        titleT = _props$attributes2.titleT,
+        titleB = _props$attributes2.titleB,
+        titleWeight = _props$attributes2.titleWeight,
+        faIcon = _props$attributes2.faIcon,
+        containerBack = _props$attributes2.containerBack,
+        shadowBlur = _props$attributes2.shadowBlur,
+        shadowColor = _props$attributes2.shadowColor,
+        shadowHorizontal = _props$attributes2.shadowHorizontal,
+        shadowVertical = _props$attributes2.shadowVertical,
+        shadowPosition = _props$attributes2.shadowPosition,
+        backgroundImageURL = _props$attributes2.backgroundImageURL,
+        fixed = _props$attributes2.fixed,
+        backgroundRepeat = _props$attributes2.backgroundRepeat,
+        backgroundPosition = _props$attributes2.backgroundPosition,
+        backgroundSize = _props$attributes2.backgroundSize,
+        titleFamily = _props$attributes2.titleFamily,
+        counterFamily = _props$attributes2.counterFamily,
+        prefixFamily = _props$attributes2.prefixFamily,
+        suffixFamily = _props$attributes2.suffixFamily;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
     return wp.element.createElement(
@@ -17805,57 +19627,57 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        increment = _props$attributes2.increment,
-        time = _props$attributes2.time,
-        delay = _props$attributes2.delay,
-        align = _props$attributes2.align,
-        flexDir = _props$attributes2.flexDir,
-        numberSize = _props$attributes2.numberSize,
-        numberColor = _props$attributes2.numberColor,
-        numberWeight = _props$attributes2.numberWeight,
-        prefix = _props$attributes2.prefix,
-        prefixTxt = _props$attributes2.prefixTxt,
-        prefixSize = _props$attributes2.prefixSize,
-        prefixColor = _props$attributes2.prefixColor,
-        prefixWeight = _props$attributes2.prefixWeight,
-        prefixGap = _props$attributes2.prefixGap,
-        suffix = _props$attributes2.suffix,
-        suffixTxt = _props$attributes2.suffixTxt,
-        suffixSize = _props$attributes2.suffixSize,
-        suffixColor = _props$attributes2.suffixColor,
-        suffixWeight = _props$attributes2.suffixWeight,
-        suffixGap = _props$attributes2.suffixGap,
-        iconCheck = _props$attributes2.iconCheck,
-        icon = _props$attributes2.icon,
-        iconSpacing = _props$attributes2.iconSpacing,
-        iconType = _props$attributes2.iconType,
-        imageURL = _props$attributes2.imageURL,
-        iconSize = _props$attributes2.iconSize,
-        iconColor = _props$attributes2.iconColor,
-        selfAlign = _props$attributes2.selfAlign,
-        titleCheck = _props$attributes2.titleCheck,
-        titleTxt = _props$attributes2.titleTxt,
-        titleColor = _props$attributes2.titleColor,
-        titleSize = _props$attributes2.titleSize,
-        titleSpacing = _props$attributes2.titleSpacing,
-        titleStyle = _props$attributes2.titleStyle,
-        titleUpper = _props$attributes2.titleUpper,
-        titleT = _props$attributes2.titleT,
-        titleB = _props$attributes2.titleB,
-        titleWeight = _props$attributes2.titleWeight,
-        faIcon = _props$attributes2.faIcon,
-        containerBack = _props$attributes2.containerBack,
-        shadowBlur = _props$attributes2.shadowBlur,
-        shadowColor = _props$attributes2.shadowColor,
-        shadowHorizontal = _props$attributes2.shadowHorizontal,
-        shadowVertical = _props$attributes2.shadowVertical,
-        shadowPosition = _props$attributes2.shadowPosition,
-        backgroundImageURL = _props$attributes2.backgroundImageURL,
-        fixed = _props$attributes2.fixed,
-        backgroundRepeat = _props$attributes2.backgroundRepeat,
-        backgroundPosition = _props$attributes2.backgroundPosition,
-        backgroundSize = _props$attributes2.backgroundSize;
+    var _props$attributes3 = props.attributes,
+        increment = _props$attributes3.increment,
+        time = _props$attributes3.time,
+        delay = _props$attributes3.delay,
+        align = _props$attributes3.align,
+        flexDir = _props$attributes3.flexDir,
+        numberSize = _props$attributes3.numberSize,
+        numberColor = _props$attributes3.numberColor,
+        numberWeight = _props$attributes3.numberWeight,
+        prefix = _props$attributes3.prefix,
+        prefixTxt = _props$attributes3.prefixTxt,
+        prefixSize = _props$attributes3.prefixSize,
+        prefixColor = _props$attributes3.prefixColor,
+        prefixWeight = _props$attributes3.prefixWeight,
+        prefixGap = _props$attributes3.prefixGap,
+        suffix = _props$attributes3.suffix,
+        suffixTxt = _props$attributes3.suffixTxt,
+        suffixSize = _props$attributes3.suffixSize,
+        suffixColor = _props$attributes3.suffixColor,
+        suffixWeight = _props$attributes3.suffixWeight,
+        suffixGap = _props$attributes3.suffixGap,
+        iconCheck = _props$attributes3.iconCheck,
+        icon = _props$attributes3.icon,
+        iconSpacing = _props$attributes3.iconSpacing,
+        iconType = _props$attributes3.iconType,
+        imageURL = _props$attributes3.imageURL,
+        iconSize = _props$attributes3.iconSize,
+        iconColor = _props$attributes3.iconColor,
+        selfAlign = _props$attributes3.selfAlign,
+        titleCheck = _props$attributes3.titleCheck,
+        titleTxt = _props$attributes3.titleTxt,
+        titleColor = _props$attributes3.titleColor,
+        titleSize = _props$attributes3.titleSize,
+        titleSpacing = _props$attributes3.titleSpacing,
+        titleStyle = _props$attributes3.titleStyle,
+        titleUpper = _props$attributes3.titleUpper,
+        titleT = _props$attributes3.titleT,
+        titleB = _props$attributes3.titleB,
+        titleWeight = _props$attributes3.titleWeight,
+        faIcon = _props$attributes3.faIcon,
+        containerBack = _props$attributes3.containerBack,
+        shadowBlur = _props$attributes3.shadowBlur,
+        shadowColor = _props$attributes3.shadowColor,
+        shadowHorizontal = _props$attributes3.shadowHorizontal,
+        shadowVertical = _props$attributes3.shadowVertical,
+        shadowPosition = _props$attributes3.shadowPosition,
+        backgroundImageURL = _props$attributes3.backgroundImageURL,
+        fixed = _props$attributes3.fixed,
+        backgroundRepeat = _props$attributes3.backgroundRepeat,
+        backgroundPosition = _props$attributes3.backgroundPosition,
+        backgroundSize = _props$attributes3.backgroundSize;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
     return wp.element.createElement(
@@ -18006,52 +19828,52 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes3 = props.attributes,
-        increment = _props$attributes3.increment,
-        time = _props$attributes3.time,
-        delay = _props$attributes3.delay,
-        align = _props$attributes3.align,
-        flexDir = _props$attributes3.flexDir,
-        numberSize = _props$attributes3.numberSize,
-        numberColor = _props$attributes3.numberColor,
-        numberWeight = _props$attributes3.numberWeight,
-        prefix = _props$attributes3.prefix,
-        prefixTxt = _props$attributes3.prefixTxt,
-        prefixSize = _props$attributes3.prefixSize,
-        prefixColor = _props$attributes3.prefixColor,
-        prefixWeight = _props$attributes3.prefixWeight,
-        prefixGap = _props$attributes3.prefixGap,
-        suffix = _props$attributes3.suffix,
-        suffixTxt = _props$attributes3.suffixTxt,
-        suffixSize = _props$attributes3.suffixSize,
-        suffixColor = _props$attributes3.suffixColor,
-        suffixWeight = _props$attributes3.suffixWeight,
-        suffixGap = _props$attributes3.suffixGap,
-        iconCheck = _props$attributes3.iconCheck,
-        icon = _props$attributes3.icon,
-        iconSpacing = _props$attributes3.iconSpacing,
-        iconType = _props$attributes3.iconType,
-        imageURL = _props$attributes3.imageURL,
-        iconSize = _props$attributes3.iconSize,
-        iconColor = _props$attributes3.iconColor,
-        selfAlign = _props$attributes3.selfAlign,
-        titleCheck = _props$attributes3.titleCheck,
-        titleTxt = _props$attributes3.titleTxt,
-        titleColor = _props$attributes3.titleColor,
-        titleSize = _props$attributes3.titleSize,
-        titleSpacing = _props$attributes3.titleSpacing,
-        titleStyle = _props$attributes3.titleStyle,
-        titleUpper = _props$attributes3.titleUpper,
-        titleT = _props$attributes3.titleT,
-        titleB = _props$attributes3.titleB,
-        titleWeight = _props$attributes3.titleWeight,
-        faIcon = _props$attributes3.faIcon,
-        containerBack = _props$attributes3.containerBack,
-        shadowBlur = _props$attributes3.shadowBlur,
-        shadowColor = _props$attributes3.shadowColor,
-        shadowHorizontal = _props$attributes3.shadowHorizontal,
-        shadowVertical = _props$attributes3.shadowVertical,
-        shadowPosition = _props$attributes3.shadowPosition;
+    var _props$attributes4 = props.attributes,
+        increment = _props$attributes4.increment,
+        time = _props$attributes4.time,
+        delay = _props$attributes4.delay,
+        align = _props$attributes4.align,
+        flexDir = _props$attributes4.flexDir,
+        numberSize = _props$attributes4.numberSize,
+        numberColor = _props$attributes4.numberColor,
+        numberWeight = _props$attributes4.numberWeight,
+        prefix = _props$attributes4.prefix,
+        prefixTxt = _props$attributes4.prefixTxt,
+        prefixSize = _props$attributes4.prefixSize,
+        prefixColor = _props$attributes4.prefixColor,
+        prefixWeight = _props$attributes4.prefixWeight,
+        prefixGap = _props$attributes4.prefixGap,
+        suffix = _props$attributes4.suffix,
+        suffixTxt = _props$attributes4.suffixTxt,
+        suffixSize = _props$attributes4.suffixSize,
+        suffixColor = _props$attributes4.suffixColor,
+        suffixWeight = _props$attributes4.suffixWeight,
+        suffixGap = _props$attributes4.suffixGap,
+        iconCheck = _props$attributes4.iconCheck,
+        icon = _props$attributes4.icon,
+        iconSpacing = _props$attributes4.iconSpacing,
+        iconType = _props$attributes4.iconType,
+        imageURL = _props$attributes4.imageURL,
+        iconSize = _props$attributes4.iconSize,
+        iconColor = _props$attributes4.iconColor,
+        selfAlign = _props$attributes4.selfAlign,
+        titleCheck = _props$attributes4.titleCheck,
+        titleTxt = _props$attributes4.titleTxt,
+        titleColor = _props$attributes4.titleColor,
+        titleSize = _props$attributes4.titleSize,
+        titleSpacing = _props$attributes4.titleSpacing,
+        titleStyle = _props$attributes4.titleStyle,
+        titleUpper = _props$attributes4.titleUpper,
+        titleT = _props$attributes4.titleT,
+        titleB = _props$attributes4.titleB,
+        titleWeight = _props$attributes4.titleWeight,
+        faIcon = _props$attributes4.faIcon,
+        containerBack = _props$attributes4.containerBack,
+        shadowBlur = _props$attributes4.shadowBlur,
+        shadowColor = _props$attributes4.shadowColor,
+        shadowHorizontal = _props$attributes4.shadowHorizontal,
+        shadowVertical = _props$attributes4.shadowVertical,
+        shadowPosition = _props$attributes4.shadowPosition;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
     return wp.element.createElement(
@@ -18191,47 +20013,47 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes4 = props.attributes,
-        increment = _props$attributes4.increment,
-        time = _props$attributes4.time,
-        delay = _props$attributes4.delay,
-        align = _props$attributes4.align,
-        flexDir = _props$attributes4.flexDir,
-        numberSize = _props$attributes4.numberSize,
-        numberColor = _props$attributes4.numberColor,
-        numberWeight = _props$attributes4.numberWeight,
-        prefix = _props$attributes4.prefix,
-        prefixTxt = _props$attributes4.prefixTxt,
-        prefixSize = _props$attributes4.prefixSize,
-        prefixColor = _props$attributes4.prefixColor,
-        prefixWeight = _props$attributes4.prefixWeight,
-        prefixGap = _props$attributes4.prefixGap,
-        suffix = _props$attributes4.suffix,
-        suffixTxt = _props$attributes4.suffixTxt,
-        suffixSize = _props$attributes4.suffixSize,
-        suffixColor = _props$attributes4.suffixColor,
-        suffixWeight = _props$attributes4.suffixWeight,
-        suffixGap = _props$attributes4.suffixGap,
-        iconCheck = _props$attributes4.iconCheck,
-        icon = _props$attributes4.icon,
-        iconSpacing = _props$attributes4.iconSpacing,
-        iconType = _props$attributes4.iconType,
-        imageURL = _props$attributes4.imageURL,
-        iconSize = _props$attributes4.iconSize,
-        iconColor = _props$attributes4.iconColor,
-        selfAlign = _props$attributes4.selfAlign,
-        titleCheck = _props$attributes4.titleCheck,
-        titleTxt = _props$attributes4.titleTxt,
-        titleColor = _props$attributes4.titleColor,
-        titleSize = _props$attributes4.titleSize,
-        titleSpacing = _props$attributes4.titleSpacing,
-        titleStyle = _props$attributes4.titleStyle,
-        titleUpper = _props$attributes4.titleUpper,
-        titleT = _props$attributes4.titleT,
-        titleB = _props$attributes4.titleB,
-        titleWeight = _props$attributes4.titleWeight,
-        faIcon = _props$attributes4.faIcon,
-        containerBack = _props$attributes4.containerBack;
+    var _props$attributes5 = props.attributes,
+        increment = _props$attributes5.increment,
+        time = _props$attributes5.time,
+        delay = _props$attributes5.delay,
+        align = _props$attributes5.align,
+        flexDir = _props$attributes5.flexDir,
+        numberSize = _props$attributes5.numberSize,
+        numberColor = _props$attributes5.numberColor,
+        numberWeight = _props$attributes5.numberWeight,
+        prefix = _props$attributes5.prefix,
+        prefixTxt = _props$attributes5.prefixTxt,
+        prefixSize = _props$attributes5.prefixSize,
+        prefixColor = _props$attributes5.prefixColor,
+        prefixWeight = _props$attributes5.prefixWeight,
+        prefixGap = _props$attributes5.prefixGap,
+        suffix = _props$attributes5.suffix,
+        suffixTxt = _props$attributes5.suffixTxt,
+        suffixSize = _props$attributes5.suffixSize,
+        suffixColor = _props$attributes5.suffixColor,
+        suffixWeight = _props$attributes5.suffixWeight,
+        suffixGap = _props$attributes5.suffixGap,
+        iconCheck = _props$attributes5.iconCheck,
+        icon = _props$attributes5.icon,
+        iconSpacing = _props$attributes5.iconSpacing,
+        iconType = _props$attributes5.iconType,
+        imageURL = _props$attributes5.imageURL,
+        iconSize = _props$attributes5.iconSize,
+        iconColor = _props$attributes5.iconColor,
+        selfAlign = _props$attributes5.selfAlign,
+        titleCheck = _props$attributes5.titleCheck,
+        titleTxt = _props$attributes5.titleTxt,
+        titleColor = _props$attributes5.titleColor,
+        titleSize = _props$attributes5.titleSize,
+        titleSpacing = _props$attributes5.titleSpacing,
+        titleStyle = _props$attributes5.titleStyle,
+        titleUpper = _props$attributes5.titleUpper,
+        titleT = _props$attributes5.titleT,
+        titleB = _props$attributes5.titleB,
+        titleWeight = _props$attributes5.titleWeight,
+        faIcon = _props$attributes5.faIcon,
+        containerBack = _props$attributes5.containerBack;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
     return wp.element.createElement(
@@ -18360,46 +20182,46 @@ var deprecatedContent = [{
 }, {
   attributes: counterAttrs_1_0_9,
   save: function save(props) {
-    var _props$attributes5 = props.attributes,
-        increment = _props$attributes5.increment,
-        time = _props$attributes5.time,
-        delay = _props$attributes5.delay,
-        align = _props$attributes5.align,
-        flexDir = _props$attributes5.flexDir,
-        numberSize = _props$attributes5.numberSize,
-        numberColor = _props$attributes5.numberColor,
-        numberWeight = _props$attributes5.numberWeight,
-        prefix = _props$attributes5.prefix,
-        prefixTxt = _props$attributes5.prefixTxt,
-        prefixSize = _props$attributes5.prefixSize,
-        prefixColor = _props$attributes5.prefixColor,
-        prefixWeight = _props$attributes5.prefixWeight,
-        prefixGap = _props$attributes5.prefixGap,
-        suffix = _props$attributes5.suffix,
-        suffixTxt = _props$attributes5.suffixTxt,
-        suffixSize = _props$attributes5.suffixSize,
-        suffixColor = _props$attributes5.suffixColor,
-        suffixWeight = _props$attributes5.suffixWeight,
-        suffixGap = _props$attributes5.suffixGap,
-        iconCheck = _props$attributes5.iconCheck,
-        icon = _props$attributes5.icon,
-        iconSpacing = _props$attributes5.iconSpacing,
-        iconType = _props$attributes5.iconType,
-        imageURL = _props$attributes5.imageURL,
-        iconSize = _props$attributes5.iconSize,
-        iconColor = _props$attributes5.iconColor,
-        selfAlign = _props$attributes5.selfAlign,
-        titleCheck = _props$attributes5.titleCheck,
-        titleTxt = _props$attributes5.titleTxt,
-        titleColor = _props$attributes5.titleColor,
-        titleSize = _props$attributes5.titleSize,
-        titleSpacing = _props$attributes5.titleSpacing,
-        titleStyle = _props$attributes5.titleStyle,
-        titleUpper = _props$attributes5.titleUpper,
-        titleT = _props$attributes5.titleT,
-        titleB = _props$attributes5.titleB,
-        titleWeight = _props$attributes5.titleWeight,
-        faIcon = _props$attributes5.faIcon;
+    var _props$attributes6 = props.attributes,
+        increment = _props$attributes6.increment,
+        time = _props$attributes6.time,
+        delay = _props$attributes6.delay,
+        align = _props$attributes6.align,
+        flexDir = _props$attributes6.flexDir,
+        numberSize = _props$attributes6.numberSize,
+        numberColor = _props$attributes6.numberColor,
+        numberWeight = _props$attributes6.numberWeight,
+        prefix = _props$attributes6.prefix,
+        prefixTxt = _props$attributes6.prefixTxt,
+        prefixSize = _props$attributes6.prefixSize,
+        prefixColor = _props$attributes6.prefixColor,
+        prefixWeight = _props$attributes6.prefixWeight,
+        prefixGap = _props$attributes6.prefixGap,
+        suffix = _props$attributes6.suffix,
+        suffixTxt = _props$attributes6.suffixTxt,
+        suffixSize = _props$attributes6.suffixSize,
+        suffixColor = _props$attributes6.suffixColor,
+        suffixWeight = _props$attributes6.suffixWeight,
+        suffixGap = _props$attributes6.suffixGap,
+        iconCheck = _props$attributes6.iconCheck,
+        icon = _props$attributes6.icon,
+        iconSpacing = _props$attributes6.iconSpacing,
+        iconType = _props$attributes6.iconType,
+        imageURL = _props$attributes6.imageURL,
+        iconSize = _props$attributes6.iconSize,
+        iconColor = _props$attributes6.iconColor,
+        selfAlign = _props$attributes6.selfAlign,
+        titleCheck = _props$attributes6.titleCheck,
+        titleTxt = _props$attributes6.titleTxt,
+        titleColor = _props$attributes6.titleColor,
+        titleSize = _props$attributes6.titleSize,
+        titleSpacing = _props$attributes6.titleSpacing,
+        titleStyle = _props$attributes6.titleStyle,
+        titleUpper = _props$attributes6.titleUpper,
+        titleT = _props$attributes6.titleT,
+        titleB = _props$attributes6.titleB,
+        titleWeight = _props$attributes6.titleWeight,
+        faIcon = _props$attributes6.faIcon;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
     return wp.element.createElement(
@@ -18529,15 +20351,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(190);
 
 
 
@@ -18549,6 +20371,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var dualHeadingAttrs = {
+    block_id: {
+        type: "string"
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -18580,6 +20405,10 @@ var dualHeadingAttrs = {
     firstSize: {
         type: "number",
         default: "20"
+    },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
     },
     firstSizeTablet: {
         type: "number"
@@ -18671,6 +20500,10 @@ var dualHeadingAttrs = {
     secondSize: {
         type: "number",
         default: "20"
+    },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
     },
     secondSizeTablet: {
         type: "number"
@@ -18822,7 +20655,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18830,10 +20663,10 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(188);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18905,6 +20738,7 @@ var edit = function (_Component) {
                 display = _props$attributes.display,
                 firstColor = _props$attributes.firstColor,
                 firstBackground = _props$attributes.firstBackground,
+                firstSizeUnit = _props$attributes.firstSizeUnit,
                 firstSize = _props$attributes.firstSize,
                 firstSizeTablet = _props$attributes.firstSizeTablet,
                 firstSizeMobile = _props$attributes.firstSizeMobile,
@@ -18930,6 +20764,7 @@ var edit = function (_Component) {
                 firstShadowVertical = _props$attributes.firstShadowVertical,
                 secondColor = _props$attributes.secondColor,
                 secondBackground = _props$attributes.secondBackground,
+                secondSizeUnit = _props$attributes.secondSizeUnit,
                 secondSize = _props$attributes.secondSize,
                 secondSizeTablet = _props$attributes.secondSizeTablet,
                 secondSizeMobile = _props$attributes.secondSizeMobile,
@@ -19109,24 +20944,28 @@ var edit = function (_Component) {
                         onChange: onChangeFirstFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "style", "upper", "spacing"],
-                        size: firstSize,
-                        sizeTablet: firstSizeTablet,
-                        sizeMobile: firstSizeMobile,
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: firstSizeUnit,
+                            label: __("firstSizeUnit")
+                        },
+                        fontSize: {
+                            value: firstSize,
+                            label: __("firstSize")
+                        },
+                        fontSizeMobile: {
+                            value: firstSizeMobile,
+                            label: __("firstSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: firstSizeTablet,
+                            label: __("firstSizeTablet")
+                        },
                         weight: firstWeight,
                         style: firstStyle,
                         spacing: firstLetter,
                         upper: firstUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ firstSize: newSize || 20 });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ firstSizeTablet: newSize || 20 });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ firstSizeMobile: newSize || 20 });
-                        },
-
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ firstWeight: newWeight || 500 });
                         },
@@ -19371,23 +21210,28 @@ var edit = function (_Component) {
                         onChange: onChangeSecondFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "style", "upper", "spacing"],
-                        size: secondSize,
-                        sizeTablet: secondSizeTablet,
-                        sizeMobile: secondSizeMobile,
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: secondSizeUnit,
+                            label: __("secondSizeUnit")
+                        },
+                        fontSize: {
+                            value: secondSize,
+                            label: __("secondSize")
+                        },
+                        fontSizeMobile: {
+                            value: secondSizeMobile,
+                            label: __("secondSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: secondSizeTablet,
+                            label: __("secondSizeTablet")
+                        },
                         weight: secondWeight,
                         style: secondStyle,
                         spacing: secondLetter,
                         upper: secondUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ secondSize: newSize || 20 });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ secondSizeTablet: newSize || 20 });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ secondSizeMobile: newSize || 20 });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ secondWeight: newWeight || 500 });
                         },
@@ -19670,7 +21514,7 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-dheading-block-" + block_id,
-                    className: "" + mainClasses,
+                    className: mainClasses + " premium-dheading-" + block_id,
                     style: {
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
@@ -19762,11 +21606,13 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
 
 
 function styling(props) {
@@ -19774,9 +21620,11 @@ function styling(props) {
         block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate,
         firstSize = _props$attributes.firstSize,
+        firstSizeUnit = _props$attributes.firstSizeUnit,
         firstSizeTablet = _props$attributes.firstSizeTablet,
         firstSizeMobile = _props$attributes.firstSizeMobile,
         secondSize = _props$attributes.secondSize,
+        secondSizeUnit = _props$attributes.secondSizeUnit,
         secondSizeTablet = _props$attributes.secondSizeTablet,
         secondSizeMobile = _props$attributes.secondSizeMobile;
 
@@ -19787,33 +21635,33 @@ function styling(props) {
 
     selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSize + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSize, firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size': secondSize + 'px'
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSize, secondSizeUnit)
         }
     };
     tablet_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSizeTablet + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeTablet, firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size': secondSizeTablet + 'px'
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeTablet, secondSizeUnit)
         }
     };
     mobile_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSizeMobile + 'px'
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeMobile, firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size': secondSizeMobile + 'px'
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeMobile, secondSizeUnit)
         }
     };
 
     var styling_css = "";
-    var id = "#premium-dheading-block-" + block_id;
+    var id = '#premium-dheading-block-' + block_id;
     if (classMigrate) {
-        id = ".premium-dheading-block__container";
+        id = '.premium-dheading-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -19826,7 +21674,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19837,6 +21685,7 @@ function styling(props) {
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
         secondHeading = _props$attributes.secondHeading,
@@ -19905,7 +21754,8 @@ var save = function save(props) {
     return wp.element.createElement(
         "div",
         {
-            className: "" + mainClasses,
+            id: "premium-dheading-block-" + block_id,
+            className: mainClasses + " premium-dheading-" + block_id,
             style: {
                 textAlign: contentAlign,
                 backgroundColor: containerBack,
@@ -19935,7 +21785,6 @@ var save = function save(props) {
                             color: firstColor,
                             backgroundColor: firstClip ? "none" : firstBackground,
                             backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                            fontSize: firstSize + "px",
                             fontFamily: firstFamily,
                             letterSpacing: firstLetter + "px",
                             textTransform: firstUpper ? "uppercase" : "none",
@@ -19961,7 +21810,6 @@ var save = function save(props) {
                             color: secondColor,
                             backgroundColor: secondClip ? "none" : secondBackground,
                             backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                            fontSize: secondSize + "px",
                             fontFamily: secondFamily,
                             letterSpacing: secondLetter + "px",
                             textTransform: secondUpper ? "uppercase" : "none",
@@ -19991,7 +21839,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20256,17 +22104,300 @@ var deprecated_attributes_1_4_8 = Object.assign(deprecated_attributes_1_4_1, new
 
 var deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_4_8, newAttributes_1_7_2);
 
+var deprecated_attributes_2_0 = {
+  contentAlign: {
+    type: "string",
+    default: "center"
+  },
+  firstHeading: {
+    type: "array",
+    source: "children",
+    default: "Premium ",
+    selector: ".premium-dheading-block__first"
+  },
+  secondHeading: {
+    type: "array",
+    source: "children",
+    default: "Blocks",
+    selector: ".premium-dheading-block__second"
+  },
+  titleTag: {
+    type: "string",
+    default: "h1"
+  },
+  display: {
+    type: "string",
+    default: "inline"
+  },
+  firstColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  firstSize: {
+    type: "number",
+    default: "20"
+  },
+  firstFamily: {
+    type: "string"
+  },
+  firstLetter: {
+    type: "number"
+  },
+  firstStyle: {
+    type: "string"
+  },
+  firstUpper: {
+    type: "boolean"
+  },
+  firstWeight: {
+    type: "number",
+    default: 500
+  },
+  firstBackground: {
+    type: "string"
+  },
+  firstBorderType: {
+    type: "string",
+    default: "none"
+  },
+  firstBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  firstBorderRadius: {
+    type: "number",
+    default: "0"
+  },
+  firstBorderColor: {
+    type: "string"
+  },
+  firstMarginR: {
+    type: "number",
+    default: "0"
+  },
+  firstMarginL: {
+    type: "number",
+    default: "0"
+  },
+  firstPadding: {
+    type: "number",
+    default: "0"
+  },
+  firstClip: {
+    type: "boolean",
+    default: false
+  },
+  firstAnim: {
+    type: "boolean",
+    default: false
+  },
+  firstStroke: {
+    type: "boolean",
+    default: false
+  },
+  firstClipColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  firstShadowColor: {
+    type: "string"
+  },
+  firstShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  firstShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  firstShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  secondColor: {
+    type: "string",
+    default: "#54595f"
+  },
+  secondSize: {
+    type: "number",
+    default: "20"
+  },
+  secondFamily: {
+    type: "string"
+  },
+  secondLetter: {
+    type: "number"
+  },
+  secondStyle: {
+    type: "string"
+  },
+  secondUpper: {
+    type: "boolean"
+  },
+  secondWeight: {
+    type: "number",
+    default: 500
+  },
+  secondBackground: {
+    type: "string"
+  },
+  secondBorderType: {
+    type: "string",
+    default: "none"
+  },
+  secondBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  secondBorderRadius: {
+    type: "number",
+    default: "0"
+  },
+  secondBorderColor: {
+    type: "string"
+  },
+  secondMarginR: {
+    type: "number",
+    default: "0"
+  },
+  secondMarginL: {
+    type: "number",
+    default: "0"
+  },
+  secondPadding: {
+    type: "number",
+    default: "0"
+  },
+  secondClip: {
+    type: "boolean",
+    default: false
+  },
+  secondStroke: {
+    type: "boolean",
+    default: false
+  },
+  secondShadowColor: {
+    type: "string"
+  },
+  secondShadowBlur: {
+    type: "number",
+    default: "0"
+  },
+  secondShadowHorizontal: {
+    type: "number",
+    default: "0"
+  },
+  secondShadowVertical: {
+    type: "number",
+    default: "0"
+  },
+  secondAnim: {
+    type: "boolean",
+    default: false
+  },
+  secondClipColor: {
+    type: "string",
+    default: "#6ec1e4"
+  },
+  link: {
+    type: "boolean",
+    default: false
+  },
+  target: {
+    type: "boolean",
+    default: false
+  },
+  headingURL: {
+    type: "string"
+  },
+  containerBack: {
+    type: "string"
+  },
+  imageID: {
+    type: "string"
+  },
+  imageURL: {
+    type: "string"
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundPosition: {
+    type: "string",
+    default: "top center"
+  },
+  backgroundSize: {
+    type: "string",
+    default: "auto"
+  },
+  fixed: {
+    type: "boolean",
+    default: false
+  },
+  containerBorderType: {
+    type: "string",
+    default: "none"
+  },
+  containerBorderWidth: {
+    type: "number",
+    default: "1"
+  },
+  containerBorderRadius: {
+    type: "number",
+    default: "0"
+  },
+  containerBorderColor: {
+    type: "string"
+  }
+};
+var newAttributes_2_1 = {
+  block_id: {
+    type: "string"
+  },
+  firstSizeUnit: {
+    type: "string",
+    default: 'px'
+  },
+  firstSizeTablet: {
+    type: "number"
+  },
+  firstSizeMobile: {
+    type: "number"
+  },
+  secondSizeUnit: {
+    type: "string",
+    default: 'px'
+  },
+  secondSizeTablet: {
+    type: "number"
+  },
+  secondSizeMobile: {
+    type: "number"
+  },
+  classMigrate: {
+    type: "boolean",
+    default: false
+  }
+};
+var deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
+
 var deprecatedContent = [{
-  attributes: deprecated_attributes_1_7_2,
+  attributes: deprecated_attributes_2_1,
   migrate: function migrate(attributes) {
     var newAttributes = {
-      firstStroke: false,
-      secondStroke: false
+      classMigrate: false,
+      block_id: '',
+      secondSizeUnit: 'px',
+      secondSizeTablet: '',
+      secondSizeMobile: '',
+      firstSizeUnit: 'px',
+      firstSizeTablet: '',
+      firstSizeMobile: ''
     };
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var className = props.className;
     var _props$attributes = props.attributes,
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
@@ -20288,6 +22419,7 @@ var deprecatedContent = [{
         firstMargin = _props$attributes.firstMargin,
         firstClip = _props$attributes.firstClip,
         firstAnim = _props$attributes.firstAnim,
+        firstStroke = _props$attributes.firstStroke,
         firstClipColor = _props$attributes.firstClipColor,
         firstShadowBlur = _props$attributes.firstShadowBlur,
         firstShadowColor = _props$attributes.firstShadowColor,
@@ -20308,6 +22440,7 @@ var deprecatedContent = [{
         secondPadding = _props$attributes.secondPadding,
         secondMargin = _props$attributes.secondMargin,
         secondClip = _props$attributes.secondClip,
+        secondStroke = _props$attributes.secondStroke,
         secondAnim = _props$attributes.secondAnim,
         secondClipColor = _props$attributes.secondClipColor,
         secondShadowBlur = _props$attributes.secondShadowBlur,
@@ -20327,6 +22460,165 @@ var deprecatedContent = [{
         containerBorderWidth = _props$attributes.containerBorderWidth,
         containerBorderRadius = _props$attributes.containerBorderRadius,
         containerBorderColor = _props$attributes.containerBorderColor;
+
+
+    return wp.element.createElement(
+      "div",
+      {
+        className: "" + className,
+        style: {
+          textAlign: contentAlign,
+          backgroundColor: containerBack,
+          backgroundImage: "url('" + imageURL + "')",
+          backgroundRepeat: backgroundRepeat,
+          backgroundPosition: backgroundPosition,
+          backgroundSize: backgroundSize,
+          backgroundAttachment: fixed ? "fixed" : "unset",
+          border: containerBorderType,
+          borderWidth: containerBorderWidth + "px",
+          borderRadius: containerBorderRadius + "px",
+          borderColor: containerBorderColor
+        }
+      },
+      wp.element.createElement(
+        "div",
+        { className: "premium-dheading-block__wrap" },
+        wp.element.createElement(
+          "h2",
+          { className: "premium-dheading-block__title" },
+          wp.element.createElement(
+            "span",
+            {
+              className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+              style: {
+                display: display,
+                color: firstColor,
+                backgroundColor: firstClip ? "none" : firstBackground,
+                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                fontSize: firstSize + "px",
+                fontFamily: firstFamily,
+                letterSpacing: firstLetter + "px",
+                textTransform: firstUpper ? "uppercase" : "none",
+                fontStyle: firstStyle,
+                fontWeight: firstWeight,
+                border: firstBorderType,
+                borderWidth: firstBorderWidth + "px",
+                borderRadius: firstBorderRadius + "px",
+                borderColor: firstBorderColor,
+                padding: firstPadding + "px",
+                margin: firstMargin + "px",
+                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+              }
+            },
+            firstHeading
+          ),
+          wp.element.createElement(
+            "span",
+            {
+              className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+              style: {
+                display: display,
+                color: secondColor,
+                backgroundColor: secondClip ? "none" : secondBackground,
+                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                fontSize: secondSize + "px",
+                fontFamily: secondFamily,
+                letterSpacing: secondLetter + "px",
+                textTransform: secondUpper ? "uppercase" : "none",
+                fontStyle: secondStyle,
+                fontWeight: secondWeight,
+                border: secondBorderType,
+                borderWidth: secondBorderWidth + "px",
+                borderRadius: secondBorderRadius + "px",
+                borderColor: secondBorderColor,
+                padding: secondPadding + "px",
+                margin: secondMargin + "px",
+                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+              }
+            },
+            secondHeading
+          )
+        ),
+        link && headingURL && wp.element.createElement("a", {
+          className: "premium-dheading-block__link",
+          href: link && headingURL,
+          target: target && "_blank"
+        })
+      )
+    );
+  }
+
+}, {
+  attributes: deprecated_attributes_1_7_2,
+  migrate: function migrate(attributes) {
+    var newAttributes = {
+      firstStroke: false,
+      secondStroke: false
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: function save(props) {
+    var className = props.className;
+    var _props$attributes2 = props.attributes,
+        contentAlign = _props$attributes2.contentAlign,
+        firstHeading = _props$attributes2.firstHeading,
+        secondHeading = _props$attributes2.secondHeading,
+        display = _props$attributes2.display,
+        firstColor = _props$attributes2.firstColor,
+        firstBackground = _props$attributes2.firstBackground,
+        firstSize = _props$attributes2.firstSize,
+        firstFamily = _props$attributes2.firstFamily,
+        firstStyle = _props$attributes2.firstStyle,
+        firstUpper = _props$attributes2.firstUpper,
+        firstLetter = _props$attributes2.firstLetter,
+        firstWeight = _props$attributes2.firstWeight,
+        firstBorderType = _props$attributes2.firstBorderType,
+        firstBorderWidth = _props$attributes2.firstBorderWidth,
+        firstBorderRadius = _props$attributes2.firstBorderRadius,
+        firstBorderColor = _props$attributes2.firstBorderColor,
+        firstPadding = _props$attributes2.firstPadding,
+        firstMargin = _props$attributes2.firstMargin,
+        firstClip = _props$attributes2.firstClip,
+        firstAnim = _props$attributes2.firstAnim,
+        firstClipColor = _props$attributes2.firstClipColor,
+        firstShadowBlur = _props$attributes2.firstShadowBlur,
+        firstShadowColor = _props$attributes2.firstShadowColor,
+        firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
+        firstShadowVertical = _props$attributes2.firstShadowVertical,
+        secondColor = _props$attributes2.secondColor,
+        secondBackground = _props$attributes2.secondBackground,
+        secondSize = _props$attributes2.secondSize,
+        secondFamily = _props$attributes2.secondFamily,
+        secondLetter = _props$attributes2.secondLetter,
+        secondUpper = _props$attributes2.secondUpper,
+        secondWeight = _props$attributes2.secondWeight,
+        secondStyle = _props$attributes2.secondStyle,
+        secondBorderType = _props$attributes2.secondBorderType,
+        secondBorderWidth = _props$attributes2.secondBorderWidth,
+        secondBorderRadius = _props$attributes2.secondBorderRadius,
+        secondBorderColor = _props$attributes2.secondBorderColor,
+        secondPadding = _props$attributes2.secondPadding,
+        secondMargin = _props$attributes2.secondMargin,
+        secondClip = _props$attributes2.secondClip,
+        secondAnim = _props$attributes2.secondAnim,
+        secondClipColor = _props$attributes2.secondClipColor,
+        secondShadowBlur = _props$attributes2.secondShadowBlur,
+        secondShadowColor = _props$attributes2.secondShadowColor,
+        secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
+        secondShadowVertical = _props$attributes2.secondShadowVertical,
+        link = _props$attributes2.link,
+        target = _props$attributes2.target,
+        headingURL = _props$attributes2.headingURL,
+        containerBack = _props$attributes2.containerBack,
+        imageURL = _props$attributes2.imageURL,
+        fixed = _props$attributes2.fixed,
+        backgroundRepeat = _props$attributes2.backgroundRepeat,
+        backgroundPosition = _props$attributes2.backgroundPosition,
+        backgroundSize = _props$attributes2.backgroundSize,
+        containerBorderType = _props$attributes2.containerBorderType,
+        containerBorderWidth = _props$attributes2.containerBorderWidth,
+        containerBorderRadius = _props$attributes2.containerBorderRadius,
+        containerBorderColor = _props$attributes2.containerBorderColor;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-dheading-block__container');
@@ -20428,62 +22720,62 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        contentAlign = _props$attributes2.contentAlign,
-        firstHeading = _props$attributes2.firstHeading,
-        secondHeading = _props$attributes2.secondHeading,
-        display = _props$attributes2.display,
-        firstColor = _props$attributes2.firstColor,
-        firstBackground = _props$attributes2.firstBackground,
-        firstSize = _props$attributes2.firstSize,
-        firstFamily = _props$attributes2.firstFamily,
-        firstStyle = _props$attributes2.firstStyle,
-        firstUpper = _props$attributes2.firstUpper,
-        firstLetter = _props$attributes2.firstLetter,
-        firstWeight = _props$attributes2.firstWeight,
-        firstBorderType = _props$attributes2.firstBorderType,
-        firstBorderWidth = _props$attributes2.firstBorderWidth,
-        firstBorderRadius = _props$attributes2.firstBorderRadius,
-        firstBorderColor = _props$attributes2.firstBorderColor,
-        firstPadding = _props$attributes2.firstPadding,
-        firstMargin = _props$attributes2.firstMargin,
-        firstClip = _props$attributes2.firstClip,
-        firstAnim = _props$attributes2.firstAnim,
-        firstClipColor = _props$attributes2.firstClipColor,
-        firstShadowBlur = _props$attributes2.firstShadowBlur,
-        firstShadowColor = _props$attributes2.firstShadowColor,
-        firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
-        firstShadowVertical = _props$attributes2.firstShadowVertical,
-        secondColor = _props$attributes2.secondColor,
-        secondBackground = _props$attributes2.secondBackground,
-        secondSize = _props$attributes2.secondSize,
-        secondFamily = _props$attributes2.secondFamily,
-        secondLetter = _props$attributes2.secondLetter,
-        secondUpper = _props$attributes2.secondUpper,
-        secondWeight = _props$attributes2.secondWeight,
-        secondStyle = _props$attributes2.secondStyle,
-        secondBorderType = _props$attributes2.secondBorderType,
-        secondBorderWidth = _props$attributes2.secondBorderWidth,
-        secondBorderRadius = _props$attributes2.secondBorderRadius,
-        secondBorderColor = _props$attributes2.secondBorderColor,
-        secondPadding = _props$attributes2.secondPadding,
-        secondMargin = _props$attributes2.secondMargin,
-        secondClip = _props$attributes2.secondClip,
-        secondAnim = _props$attributes2.secondAnim,
-        secondClipColor = _props$attributes2.secondClipColor,
-        secondShadowBlur = _props$attributes2.secondShadowBlur,
-        secondShadowColor = _props$attributes2.secondShadowColor,
-        secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
-        secondShadowVertical = _props$attributes2.secondShadowVertical,
-        link = _props$attributes2.link,
-        target = _props$attributes2.target,
-        headingURL = _props$attributes2.headingURL,
-        containerBack = _props$attributes2.containerBack,
-        imageURL = _props$attributes2.imageURL,
-        fixed = _props$attributes2.fixed,
-        backgroundRepeat = _props$attributes2.backgroundRepeat,
-        backgroundPosition = _props$attributes2.backgroundPosition,
-        backgroundSize = _props$attributes2.backgroundSize;
+    var _props$attributes3 = props.attributes,
+        contentAlign = _props$attributes3.contentAlign,
+        firstHeading = _props$attributes3.firstHeading,
+        secondHeading = _props$attributes3.secondHeading,
+        display = _props$attributes3.display,
+        firstColor = _props$attributes3.firstColor,
+        firstBackground = _props$attributes3.firstBackground,
+        firstSize = _props$attributes3.firstSize,
+        firstFamily = _props$attributes3.firstFamily,
+        firstStyle = _props$attributes3.firstStyle,
+        firstUpper = _props$attributes3.firstUpper,
+        firstLetter = _props$attributes3.firstLetter,
+        firstWeight = _props$attributes3.firstWeight,
+        firstBorderType = _props$attributes3.firstBorderType,
+        firstBorderWidth = _props$attributes3.firstBorderWidth,
+        firstBorderRadius = _props$attributes3.firstBorderRadius,
+        firstBorderColor = _props$attributes3.firstBorderColor,
+        firstPadding = _props$attributes3.firstPadding,
+        firstMargin = _props$attributes3.firstMargin,
+        firstClip = _props$attributes3.firstClip,
+        firstAnim = _props$attributes3.firstAnim,
+        firstClipColor = _props$attributes3.firstClipColor,
+        firstShadowBlur = _props$attributes3.firstShadowBlur,
+        firstShadowColor = _props$attributes3.firstShadowColor,
+        firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
+        firstShadowVertical = _props$attributes3.firstShadowVertical,
+        secondColor = _props$attributes3.secondColor,
+        secondBackground = _props$attributes3.secondBackground,
+        secondSize = _props$attributes3.secondSize,
+        secondFamily = _props$attributes3.secondFamily,
+        secondLetter = _props$attributes3.secondLetter,
+        secondUpper = _props$attributes3.secondUpper,
+        secondWeight = _props$attributes3.secondWeight,
+        secondStyle = _props$attributes3.secondStyle,
+        secondBorderType = _props$attributes3.secondBorderType,
+        secondBorderWidth = _props$attributes3.secondBorderWidth,
+        secondBorderRadius = _props$attributes3.secondBorderRadius,
+        secondBorderColor = _props$attributes3.secondBorderColor,
+        secondPadding = _props$attributes3.secondPadding,
+        secondMargin = _props$attributes3.secondMargin,
+        secondClip = _props$attributes3.secondClip,
+        secondAnim = _props$attributes3.secondAnim,
+        secondClipColor = _props$attributes3.secondClipColor,
+        secondShadowBlur = _props$attributes3.secondShadowBlur,
+        secondShadowColor = _props$attributes3.secondShadowColor,
+        secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
+        secondShadowVertical = _props$attributes3.secondShadowVertical,
+        link = _props$attributes3.link,
+        target = _props$attributes3.target,
+        headingURL = _props$attributes3.headingURL,
+        containerBack = _props$attributes3.containerBack,
+        imageURL = _props$attributes3.imageURL,
+        fixed = _props$attributes3.fixed,
+        backgroundRepeat = _props$attributes3.backgroundRepeat,
+        backgroundPosition = _props$attributes3.backgroundPosition,
+        backgroundSize = _props$attributes3.backgroundSize;
 
 
     return wp.element.createElement(
@@ -20577,60 +22869,60 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes3 = props.attributes,
-        contentAlign = _props$attributes3.contentAlign,
-        firstHeading = _props$attributes3.firstHeading,
-        secondHeading = _props$attributes3.secondHeading,
-        display = _props$attributes3.display,
-        firstColor = _props$attributes3.firstColor,
-        firstBackground = _props$attributes3.firstBackground,
-        firstSize = _props$attributes3.firstSize,
-        firstStyle = _props$attributes3.firstStyle,
-        firstUpper = _props$attributes3.firstUpper,
-        firstLetter = _props$attributes3.firstLetter,
-        firstWeight = _props$attributes3.firstWeight,
-        firstBorderType = _props$attributes3.firstBorderType,
-        firstBorderWidth = _props$attributes3.firstBorderWidth,
-        firstBorderRadius = _props$attributes3.firstBorderRadius,
-        firstBorderColor = _props$attributes3.firstBorderColor,
-        firstPadding = _props$attributes3.firstPadding,
-        firstMargin = _props$attributes3.firstMargin,
-        firstClip = _props$attributes3.firstClip,
-        firstAnim = _props$attributes3.firstAnim,
-        firstClipColor = _props$attributes3.firstClipColor,
-        firstShadowBlur = _props$attributes3.firstShadowBlur,
-        firstShadowColor = _props$attributes3.firstShadowColor,
-        firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
-        firstShadowVertical = _props$attributes3.firstShadowVertical,
-        secondColor = _props$attributes3.secondColor,
-        secondBackground = _props$attributes3.secondBackground,
-        secondSize = _props$attributes3.secondSize,
-        secondLetter = _props$attributes3.secondLetter,
-        secondUpper = _props$attributes3.secondUpper,
-        secondWeight = _props$attributes3.secondWeight,
-        secondStyle = _props$attributes3.secondStyle,
-        secondBorderType = _props$attributes3.secondBorderType,
-        secondBorderWidth = _props$attributes3.secondBorderWidth,
-        secondBorderRadius = _props$attributes3.secondBorderRadius,
-        secondBorderColor = _props$attributes3.secondBorderColor,
-        secondPadding = _props$attributes3.secondPadding,
-        secondMargin = _props$attributes3.secondMargin,
-        secondClip = _props$attributes3.secondClip,
-        secondAnim = _props$attributes3.secondAnim,
-        secondClipColor = _props$attributes3.secondClipColor,
-        secondShadowBlur = _props$attributes3.secondShadowBlur,
-        secondShadowColor = _props$attributes3.secondShadowColor,
-        secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
-        secondShadowVertical = _props$attributes3.secondShadowVertical,
-        link = _props$attributes3.link,
-        target = _props$attributes3.target,
-        headingURL = _props$attributes3.headingURL,
-        containerBack = _props$attributes3.containerBack,
-        imageURL = _props$attributes3.imageURL,
-        fixed = _props$attributes3.fixed,
-        backgroundRepeat = _props$attributes3.backgroundRepeat,
-        backgroundPosition = _props$attributes3.backgroundPosition,
-        backgroundSize = _props$attributes3.backgroundSize;
+    var _props$attributes4 = props.attributes,
+        contentAlign = _props$attributes4.contentAlign,
+        firstHeading = _props$attributes4.firstHeading,
+        secondHeading = _props$attributes4.secondHeading,
+        display = _props$attributes4.display,
+        firstColor = _props$attributes4.firstColor,
+        firstBackground = _props$attributes4.firstBackground,
+        firstSize = _props$attributes4.firstSize,
+        firstStyle = _props$attributes4.firstStyle,
+        firstUpper = _props$attributes4.firstUpper,
+        firstLetter = _props$attributes4.firstLetter,
+        firstWeight = _props$attributes4.firstWeight,
+        firstBorderType = _props$attributes4.firstBorderType,
+        firstBorderWidth = _props$attributes4.firstBorderWidth,
+        firstBorderRadius = _props$attributes4.firstBorderRadius,
+        firstBorderColor = _props$attributes4.firstBorderColor,
+        firstPadding = _props$attributes4.firstPadding,
+        firstMargin = _props$attributes4.firstMargin,
+        firstClip = _props$attributes4.firstClip,
+        firstAnim = _props$attributes4.firstAnim,
+        firstClipColor = _props$attributes4.firstClipColor,
+        firstShadowBlur = _props$attributes4.firstShadowBlur,
+        firstShadowColor = _props$attributes4.firstShadowColor,
+        firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
+        firstShadowVertical = _props$attributes4.firstShadowVertical,
+        secondColor = _props$attributes4.secondColor,
+        secondBackground = _props$attributes4.secondBackground,
+        secondSize = _props$attributes4.secondSize,
+        secondLetter = _props$attributes4.secondLetter,
+        secondUpper = _props$attributes4.secondUpper,
+        secondWeight = _props$attributes4.secondWeight,
+        secondStyle = _props$attributes4.secondStyle,
+        secondBorderType = _props$attributes4.secondBorderType,
+        secondBorderWidth = _props$attributes4.secondBorderWidth,
+        secondBorderRadius = _props$attributes4.secondBorderRadius,
+        secondBorderColor = _props$attributes4.secondBorderColor,
+        secondPadding = _props$attributes4.secondPadding,
+        secondMargin = _props$attributes4.secondMargin,
+        secondClip = _props$attributes4.secondClip,
+        secondAnim = _props$attributes4.secondAnim,
+        secondClipColor = _props$attributes4.secondClipColor,
+        secondShadowBlur = _props$attributes4.secondShadowBlur,
+        secondShadowColor = _props$attributes4.secondShadowColor,
+        secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
+        secondShadowVertical = _props$attributes4.secondShadowVertical,
+        link = _props$attributes4.link,
+        target = _props$attributes4.target,
+        headingURL = _props$attributes4.headingURL,
+        containerBack = _props$attributes4.containerBack,
+        imageURL = _props$attributes4.imageURL,
+        fixed = _props$attributes4.fixed,
+        backgroundRepeat = _props$attributes4.backgroundRepeat,
+        backgroundPosition = _props$attributes4.backgroundPosition,
+        backgroundSize = _props$attributes4.backgroundSize;
 
 
     return wp.element.createElement(
@@ -20726,55 +23018,55 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
-    var _props$attributes4 = props.attributes,
-        contentAlign = _props$attributes4.contentAlign,
-        firstHeading = _props$attributes4.firstHeading,
-        secondHeading = _props$attributes4.secondHeading,
-        display = _props$attributes4.display,
-        firstColor = _props$attributes4.firstColor,
-        firstBackground = _props$attributes4.firstBackground,
-        firstSize = _props$attributes4.firstSize,
-        firstStyle = _props$attributes4.firstStyle,
-        firstUpper = _props$attributes4.firstUpper,
-        firstLetter = _props$attributes4.firstLetter,
-        firstWeight = _props$attributes4.firstWeight,
-        firstBorderType = _props$attributes4.firstBorderType,
-        firstBorderWidth = _props$attributes4.firstBorderWidth,
-        firstBorderRadius = _props$attributes4.firstBorderRadius,
-        firstBorderColor = _props$attributes4.firstBorderColor,
-        firstPadding = _props$attributes4.firstPadding,
-        firstMargin = _props$attributes4.firstMargin,
-        firstClip = _props$attributes4.firstClip,
-        firstAnim = _props$attributes4.firstAnim,
-        firstClipColor = _props$attributes4.firstClipColor,
-        firstShadowBlur = _props$attributes4.firstShadowBlur,
-        firstShadowColor = _props$attributes4.firstShadowColor,
-        firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
-        firstShadowVertical = _props$attributes4.firstShadowVertical,
-        secondColor = _props$attributes4.secondColor,
-        secondBackground = _props$attributes4.secondBackground,
-        secondSize = _props$attributes4.secondSize,
-        secondLetter = _props$attributes4.secondLetter,
-        secondUpper = _props$attributes4.secondUpper,
-        secondWeight = _props$attributes4.secondWeight,
-        secondStyle = _props$attributes4.secondStyle,
-        secondBorderType = _props$attributes4.secondBorderType,
-        secondBorderWidth = _props$attributes4.secondBorderWidth,
-        secondBorderRadius = _props$attributes4.secondBorderRadius,
-        secondBorderColor = _props$attributes4.secondBorderColor,
-        secondPadding = _props$attributes4.secondPadding,
-        secondMargin = _props$attributes4.secondMargin,
-        secondClip = _props$attributes4.secondClip,
-        secondAnim = _props$attributes4.secondAnim,
-        secondClipColor = _props$attributes4.secondClipColor,
-        secondShadowBlur = _props$attributes4.secondShadowBlur,
-        secondShadowColor = _props$attributes4.secondShadowColor,
-        secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
-        secondShadowVertical = _props$attributes4.secondShadowVertical,
-        link = _props$attributes4.link,
-        target = _props$attributes4.target,
-        headingURL = _props$attributes4.headingURL,
-        containerBack = _props$attributes4.containerBack;
+    var _props$attributes5 = props.attributes,
+        contentAlign = _props$attributes5.contentAlign,
+        firstHeading = _props$attributes5.firstHeading,
+        secondHeading = _props$attributes5.secondHeading,
+        display = _props$attributes5.display,
+        firstColor = _props$attributes5.firstColor,
+        firstBackground = _props$attributes5.firstBackground,
+        firstSize = _props$attributes5.firstSize,
+        firstStyle = _props$attributes5.firstStyle,
+        firstUpper = _props$attributes5.firstUpper,
+        firstLetter = _props$attributes5.firstLetter,
+        firstWeight = _props$attributes5.firstWeight,
+        firstBorderType = _props$attributes5.firstBorderType,
+        firstBorderWidth = _props$attributes5.firstBorderWidth,
+        firstBorderRadius = _props$attributes5.firstBorderRadius,
+        firstBorderColor = _props$attributes5.firstBorderColor,
+        firstPadding = _props$attributes5.firstPadding,
+        firstMargin = _props$attributes5.firstMargin,
+        firstClip = _props$attributes5.firstClip,
+        firstAnim = _props$attributes5.firstAnim,
+        firstClipColor = _props$attributes5.firstClipColor,
+        firstShadowBlur = _props$attributes5.firstShadowBlur,
+        firstShadowColor = _props$attributes5.firstShadowColor,
+        firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
+        firstShadowVertical = _props$attributes5.firstShadowVertical,
+        secondColor = _props$attributes5.secondColor,
+        secondBackground = _props$attributes5.secondBackground,
+        secondSize = _props$attributes5.secondSize,
+        secondLetter = _props$attributes5.secondLetter,
+        secondUpper = _props$attributes5.secondUpper,
+        secondWeight = _props$attributes5.secondWeight,
+        secondStyle = _props$attributes5.secondStyle,
+        secondBorderType = _props$attributes5.secondBorderType,
+        secondBorderWidth = _props$attributes5.secondBorderWidth,
+        secondBorderRadius = _props$attributes5.secondBorderRadius,
+        secondBorderColor = _props$attributes5.secondBorderColor,
+        secondPadding = _props$attributes5.secondPadding,
+        secondMargin = _props$attributes5.secondMargin,
+        secondClip = _props$attributes5.secondClip,
+        secondAnim = _props$attributes5.secondAnim,
+        secondClipColor = _props$attributes5.secondClipColor,
+        secondShadowBlur = _props$attributes5.secondShadowBlur,
+        secondShadowColor = _props$attributes5.secondShadowColor,
+        secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
+        secondShadowVertical = _props$attributes5.secondShadowVertical,
+        link = _props$attributes5.link,
+        target = _props$attributes5.target,
+        headingURL = _props$attributes5.headingURL,
+        containerBack = _props$attributes5.containerBack;
 
 
     return wp.element.createElement(
@@ -20855,55 +23147,55 @@ var deprecatedContent = [{
   attributes: deprecated_attributes_1_3_0,
   save: function save(props) {
     {
-      var _props$attributes5 = props.attributes,
-          contentAlign = _props$attributes5.contentAlign,
-          firstHeading = _props$attributes5.firstHeading,
-          secondHeading = _props$attributes5.secondHeading,
-          display = _props$attributes5.display,
-          firstColor = _props$attributes5.firstColor,
-          firstBackground = _props$attributes5.firstBackground,
-          firstSize = _props$attributes5.firstSize,
-          firstStyle = _props$attributes5.firstStyle,
-          firstUpper = _props$attributes5.firstUpper,
-          firstLetter = _props$attributes5.firstLetter,
-          firstWeight = _props$attributes5.firstWeight,
-          firstBorderType = _props$attributes5.firstBorderType,
-          firstBorderWidth = _props$attributes5.firstBorderWidth,
-          firstBorderRadius = _props$attributes5.firstBorderRadius,
-          firstBorderColor = _props$attributes5.firstBorderColor,
-          firstPadding = _props$attributes5.firstPadding,
-          firstMargin = _props$attributes5.firstMargin,
-          firstClip = _props$attributes5.firstClip,
-          firstAnim = _props$attributes5.firstAnim,
-          firstClipColor = _props$attributes5.firstClipColor,
-          firstShadowBlur = _props$attributes5.firstShadowBlur,
-          firstShadowColor = _props$attributes5.firstShadowColor,
-          firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
-          firstShadowVertical = _props$attributes5.firstShadowVertical,
-          secondColor = _props$attributes5.secondColor,
-          secondBackground = _props$attributes5.secondBackground,
-          secondSize = _props$attributes5.secondSize,
-          secondLetter = _props$attributes5.secondLetter,
-          secondUpper = _props$attributes5.secondUpper,
-          secondWeight = _props$attributes5.secondWeight,
-          secondStyle = _props$attributes5.secondStyle,
-          secondBorderType = _props$attributes5.secondBorderType,
-          secondBorderWidth = _props$attributes5.secondBorderWidth,
-          secondBorderRadius = _props$attributes5.secondBorderRadius,
-          secondBorderColor = _props$attributes5.secondBorderColor,
-          secondPadding = _props$attributes5.secondPadding,
-          secondMargin = _props$attributes5.secondMargin,
-          secondClip = _props$attributes5.secondClip,
-          secondAnim = _props$attributes5.secondAnim,
-          secondClipColor = _props$attributes5.secondClipColor,
-          secondShadowBlur = _props$attributes5.secondShadowBlur,
-          secondShadowColor = _props$attributes5.secondShadowColor,
-          secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
-          secondShadowVertical = _props$attributes5.secondShadowVertical,
-          link = _props$attributes5.link,
-          target = _props$attributes5.target,
-          headingURL = _props$attributes5.headingURL,
-          containerBack = _props$attributes5.containerBack;
+      var _props$attributes6 = props.attributes,
+          contentAlign = _props$attributes6.contentAlign,
+          firstHeading = _props$attributes6.firstHeading,
+          secondHeading = _props$attributes6.secondHeading,
+          display = _props$attributes6.display,
+          firstColor = _props$attributes6.firstColor,
+          firstBackground = _props$attributes6.firstBackground,
+          firstSize = _props$attributes6.firstSize,
+          firstStyle = _props$attributes6.firstStyle,
+          firstUpper = _props$attributes6.firstUpper,
+          firstLetter = _props$attributes6.firstLetter,
+          firstWeight = _props$attributes6.firstWeight,
+          firstBorderType = _props$attributes6.firstBorderType,
+          firstBorderWidth = _props$attributes6.firstBorderWidth,
+          firstBorderRadius = _props$attributes6.firstBorderRadius,
+          firstBorderColor = _props$attributes6.firstBorderColor,
+          firstPadding = _props$attributes6.firstPadding,
+          firstMargin = _props$attributes6.firstMargin,
+          firstClip = _props$attributes6.firstClip,
+          firstAnim = _props$attributes6.firstAnim,
+          firstClipColor = _props$attributes6.firstClipColor,
+          firstShadowBlur = _props$attributes6.firstShadowBlur,
+          firstShadowColor = _props$attributes6.firstShadowColor,
+          firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
+          firstShadowVertical = _props$attributes6.firstShadowVertical,
+          secondColor = _props$attributes6.secondColor,
+          secondBackground = _props$attributes6.secondBackground,
+          secondSize = _props$attributes6.secondSize,
+          secondLetter = _props$attributes6.secondLetter,
+          secondUpper = _props$attributes6.secondUpper,
+          secondWeight = _props$attributes6.secondWeight,
+          secondStyle = _props$attributes6.secondStyle,
+          secondBorderType = _props$attributes6.secondBorderType,
+          secondBorderWidth = _props$attributes6.secondBorderWidth,
+          secondBorderRadius = _props$attributes6.secondBorderRadius,
+          secondBorderColor = _props$attributes6.secondBorderColor,
+          secondPadding = _props$attributes6.secondPadding,
+          secondMargin = _props$attributes6.secondMargin,
+          secondClip = _props$attributes6.secondClip,
+          secondAnim = _props$attributes6.secondAnim,
+          secondClipColor = _props$attributes6.secondClipColor,
+          secondShadowBlur = _props$attributes6.secondShadowBlur,
+          secondShadowColor = _props$attributes6.secondShadowColor,
+          secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
+          secondShadowVertical = _props$attributes6.secondShadowVertical,
+          link = _props$attributes6.link,
+          target = _props$attributes6.target,
+          headingURL = _props$attributes6.headingURL,
+          containerBack = _props$attributes6.containerBack;
 
 
       return wp.element.createElement(
@@ -20984,15 +23276,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(212);
 
 
 
@@ -21219,7 +23511,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21229,13 +23521,13 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(18);
 
 
 
@@ -21812,7 +24104,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21887,7 +24179,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22121,7 +24413,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22137,7 +24429,7 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(66);
-var assign = __webpack_require__(18);
+var assign = __webpack_require__(19);
 
 var ReactPropTypesSecret = __webpack_require__(33);
 var checkPropTypes = __webpack_require__(32);
@@ -22699,7 +24991,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22765,7 +25057,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22786,7 +25078,7 @@ module.exports = function () {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var aa = __webpack_require__(4),
-    n = __webpack_require__(18),
+    n = __webpack_require__(19),
     r = __webpack_require__(67);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
@@ -25108,7 +27400,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25314,7 +27606,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26020,7 +28312,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(35)))
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26031,7 +28323,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(18);var checkPropTypes=__webpack_require__(32);var scheduler=__webpack_require__(67);var tracing=__webpack_require__(200);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(19);var checkPropTypes=__webpack_require__(32);var scheduler=__webpack_require__(67);var tracing=__webpack_require__(201);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -29909,21 +32201,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(201);
-} else {
   module.exports = __webpack_require__(202);
+} else {
+  module.exports = __webpack_require__(203);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29950,7 +32242,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30378,7 +32670,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30387,11 +32679,11 @@ if (process.env.NODE_ENV !== "production") {
 exports.__esModule = true;
 exports.default = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(12));
+var PropTypes = _interopRequireWildcard(__webpack_require__(13));
 
-var _addClass = _interopRequireDefault(__webpack_require__(204));
+var _addClass = _interopRequireDefault(__webpack_require__(205));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(207));
+var _removeClass = _interopRequireDefault(__webpack_require__(208));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
@@ -30778,18 +33070,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(205);
+var _interopRequireDefault = __webpack_require__(206);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(206));
+var _hasClass = _interopRequireDefault(__webpack_require__(207));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -30798,7 +33090,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -30810,7 +33102,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30826,7 +33118,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30841,7 +33133,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30850,11 +33142,11 @@ module.exports = function removeClass(element, className) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(12));
+var _propTypes = _interopRequireDefault(__webpack_require__(13));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
-var _reactDom = __webpack_require__(22);
+var _reactDom = __webpack_require__(23);
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(72));
 
@@ -31006,7 +33298,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31161,7 +33453,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31289,7 +33581,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32287,15 +34579,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(217);
 
 
 
@@ -32307,7 +34599,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var iconBoxAttrs = {
-    id: {
+    block_id: {
         type: "string"
     },
     align: {
@@ -32381,17 +34673,20 @@ var iconBoxAttrs = {
         type: "string"
     },
     titleSize: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
-    titlefontSizeUnit: {
+    titleSizeUnit: {
         type: 'string',
         default: 'px'
     },
     titleSizeTablet: {
-        type: 'number'
+        type: 'number',
+        default: '20'
     },
     titleSizeMobile: {
-        type: 'number'
+        type: 'number',
+        default: '20'
     },
     titleLine: {
         type: "number"
@@ -32447,17 +34742,20 @@ var iconBoxAttrs = {
         type: "string"
     },
     descSize: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
-    descfontSizeUnit: {
+    descSizeUnit: {
         type: "string",
         default: 'px'
     },
     descSizeTablet: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
     descSizeMobile: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
     descLine: {
         type: "number"
@@ -32516,17 +34814,20 @@ var iconBoxAttrs = {
         type: "string"
     },
     btnSize: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
-    btnfontSizeUnit: {
+    btnSizeUnit: {
         type: "string",
         default: "px"
     },
     btnSizeTablet: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
     btnSizeMobile: {
-        type: "number"
+        type: "number",
+        default: '20'
     },
     btnLine: {
         type: "number"
@@ -32710,7 +35011,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32722,15 +35023,15 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_premium_media_upload__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styling__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_premium_media_upload__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styling__ = __webpack_require__(215);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -32788,24 +35089,30 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
 
-            this.props.setAttributes({ classMigrate: true });
+
+            setAttributes({ block_id: clientId });
+
+            setAttributes({ classMigrate: true });
 
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-iconBox-" + this.props.clientId);
+            $style.setAttribute("id", "premium-style-iconBox-" + clientId);
             document.head.appendChild($style);
         }
     }, {
         key: "render",
         value: function render() {
-            var _props = this.props,
-                isSelected = _props.isSelected,
-                setAttributes = _props.setAttributes,
-                className = _props.className,
-                blockId = _props.clientId,
-                attributes = _props.attributes;
-            var id = attributes.id,
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                className = _props2.className,
+                blockId = _props2.clientId,
+                attributes = _props2.attributes;
+            var block_id = attributes.block_id,
                 align = attributes.align,
                 iconChecked = attributes.iconChecked,
                 iconImage = attributes.iconImage,
@@ -32826,7 +35133,7 @@ var edit = function (_Component) {
                 titleTag = attributes.titleTag,
                 titleColor = attributes.titleColor,
                 titleFont = attributes.titleFont,
-                titlefontSizeUnit = attributes.titlefontSizeUnit,
+                titleSizeUnit = attributes.titleSizeUnit,
                 titleSize = attributes.titleSize,
                 titleSizeTablet = attributes.titleSizeTablet,
                 titleSizeMobile = attributes.titleSizeMobile,
@@ -32845,7 +35152,7 @@ var edit = function (_Component) {
                 descText = attributes.descText,
                 descColor = attributes.descColor,
                 descFont = attributes.descFont,
-                descfontSizeUnit = attributes.descfontSizeUnit,
+                descSizeUnit = attributes.descSizeUnit,
                 descSize = attributes.descSize,
                 descSizeTablet = attributes.descSizeTablet,
                 descSizeMobile = attributes.descSizeMobile,
@@ -32859,7 +35166,7 @@ var edit = function (_Component) {
                 btnTarget = attributes.btnTarget,
                 btnText = attributes.btnText,
                 btnLink = attributes.btnLink,
-                btnfontSizeUnit = attributes.btnfontSizeUnit,
+                btnSizeUnit = attributes.btnSizeUnit,
                 btnSize = attributes.btnSize,
                 btnSizeTablet = attributes.btnSizeTablet,
                 btnSizeMobile = attributes.btnSizeMobile,
@@ -33223,20 +35530,20 @@ var edit = function (_Component) {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: titlefontSizeUnit,
-                            label: __("fontSizeUnit")
+                            value: titleSizeUnit,
+                            label: __("titleSizeUnit")
                         },
                         fontSize: {
                             value: titleSize,
-                            label: __("fontSize")
+                            label: __("titleSize")
                         },
                         fontSizeMobile: {
                             value: titleSizeMobile,
-                            label: __("fontSizeMobile")
+                            label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
                             value: titleSizeTablet,
-                            label: __("fontSizeTablet")
+                            label: __("titleSizeTablet")
                         },
                         weight: titleWeight,
                         style: titleStyle,
@@ -33312,20 +35619,20 @@ var edit = function (_Component) {
                         components: ["responsiveSize", "weight", "line"],
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: descfontSizeUnit,
-                            label: __("fontSizeUnit")
+                            value: descSizeUnit,
+                            label: __("descSizeUnit")
                         },
                         fontSize: {
                             value: descSize,
-                            label: __("fontSize")
+                            label: __("descSize")
                         },
                         fontSizeMobile: {
                             value: descSizeMobile,
-                            label: __("fontSizeMobile")
+                            label: __("descSizeMobile")
                         },
                         fontSizeTablet: {
                             value: descSizeTablet,
-                            label: __("fontSizeTablet")
+                            label: __("descSizeTablet")
                         },
                         weight: descWeight,
                         line: descLine,
@@ -33384,24 +35691,24 @@ var edit = function (_Component) {
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: btnfontSizeUnit,
-                            label: __("fontSizeUnit")
+                            value: btnSizeUnit,
+                            label: __("btnSizeUnit")
                         },
                         fontSize: {
                             value: btnSize,
-                            label: __("fontSize")
+                            label: __("btnSize")
                         },
                         fontSizeMobile: {
                             value: btnSizeMobile,
-                            label: __("fontSizeMobile")
+                            label: __("btnSizeMobile")
                         },
                         fontSizeTablet: {
                             value: btnSizeTablet,
-                            label: __("fontSizeTablet")
+                            label: __("btnSizeTablet")
                         },
-
                         weight: btnWeight,
                         style: btnStyle,
                         spacing: btnLetter,
@@ -33887,8 +36194,8 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    id: "premium-icon-box-" + id,
-                    className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
+                    id: "premium-icon-box-" + block_id,
+                    className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id,
                     style: {
                         textAlign: align,
                         border: borderType,
@@ -33914,7 +36221,7 @@ var edit = function (_Component) {
                 },
                 btnChecked && btnText && wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
                     }
                 }),
                 iconChecked && wp.element.createElement(
@@ -34003,7 +36310,6 @@ var edit = function (_Component) {
                             },
                             style: {
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 fontFamily: descFont,
                                 lineHeight: descLine + "px",
                                 fontWeight: descWeight
@@ -34064,28 +36370,28 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
 function styling(props) {
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate,
-        block_id = _props$attributes.id,
-        titlefontSizeUnit = _props$attributes.titlefontSizeUnit,
-        titleSize = _props$attributes.titleSize,
-        titleSizeTablet = _props$attributes.titleSizeTablet,
-        titleSizeMobile = _props$attributes.titleSizeMobile,
-        descfontSizeUnit = _props$attributes.descfontSizeUnit,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
+        descSizeUnit = _props$attributes.descSizeUnit,
         descSize = _props$attributes.descSize,
         descSizeTablet = _props$attributes.descSizeTablet,
         descSizeMobile = _props$attributes.descSizeMobile,
-        btnfontSizeUnit = _props$attributes.btnfontSizeUnit,
+        titleSize = _props$attributes.titleSize,
+        titleSizeTablet = _props$attributes.titleSizeTablet,
+        titleSizeMobile = _props$attributes.titleSizeMobile,
+        btnSizeUnit = _props$attributes.btnSizeUnit,
         btnSize = _props$attributes.btnSize,
         btnSizeTablet = _props$attributes.btnSizeTablet,
         btnSizeMobile = _props$attributes.btnSizeMobile;
@@ -34096,59 +36402,58 @@ function styling(props) {
     var mobile_selectors = {};
 
     selectors = {
-        " .premium-icon-box__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(30, titlefontSizeUnit)
+        "  .premium-icon-box__title": {
+            "font-size": titleSize + titleSizeUnit
         },
         " .premium-icon-box__desc": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnSizeUnit)
         }
     };
 
     tablet_selectors = {
         " .premium-icon-box__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titlefontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeTablet, btnfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeTablet, btnSizeUnit)
         }
     };
 
     mobile_selectors = {
         " .premium-icon-box__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titlefontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeMobile, btnfontSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeMobile, btnSizeUnit)
         }
     };
 
-    var styling_css = "";
+    var styling_css = '';
     var id = '#premium-icon-box-' + block_id;
     if (classMigrate) {
-        id = '.premium-icon-box';
+        id = '.premium-icon-box-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
     console.log(styling_css);
     return styling_css;
 }
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34162,7 +36467,7 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        id = _props$attributes.id,
+        block_id = _props$attributes.block_id,
         align = _props$attributes.align,
         iconImage = _props$attributes.iconImage,
         iconImgUrl = _props$attributes.iconImgUrl,
@@ -34267,8 +36572,8 @@ var save = function save(props) {
     return wp.element.createElement(
         'div',
         {
-            id: 'premium-icon-box-' + id,
-            className: mainClasses + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos,
+            id: 'premium-icon-box-' + block_id,
+            className: mainClasses + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos + ' premium-icon-box-' + block_id,
             style: {
                 textAlign: align,
                 border: borderType,
@@ -34294,7 +36599,7 @@ var save = function save(props) {
         },
         btnChecked && btnText && wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
+                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
             }
         }),
         iconChecked && wp.element.createElement(
@@ -34339,7 +36644,6 @@ var save = function save(props) {
                     value: titleText,
                     style: {
                         color: titleColor,
-                        fontSize: titleSize + "px",
                         fontFamily: titleFont,
                         letterSpacing: titleLetter + "px",
                         textTransform: titleUpper ? "uppercase" : "none",
@@ -34365,7 +36669,6 @@ var save = function save(props) {
                     value: descText,
                     style: {
                         color: descColor,
-                        fontSize: descSize + "px",
                         fontFamily: descFont,
                         lineHeight: descLine + "px",
                         fontWeight: descWeight
@@ -34391,7 +36694,6 @@ var save = function save(props) {
                     style: {
                         color: btnColor,
                         backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
                         letterSpacing: btnLetter + "px",
                         textTransform: btnUpper ? "uppercase" : "none",
                         fontStyle: btnStyle,
@@ -34412,7 +36714,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35103,13 +37405,423 @@ var newAttributes_1_6_6 = {
 
 var deprecated_attributes_1_6_6 = Object.assign(deprecated_attributes_1_5_7, newAttributes_1_6_6);
 
+var deprecated_attributes_2_0 = {
+    id: {
+        type: "string"
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleFont: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+    descFont: {
+        type: "string"
+    },
+    descColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+    btnColor: {
+        type: "string"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnBack: {
+        type: "string"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnHoverBorder: {
+        type: "string"
+    },
+    btnSize: {
+        type: "number"
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnWeight: {
+        type: "number",
+        default: 500
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderRadius: {
+        type: "number"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    btnPadding: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    hoverShadowColor: {
+        type: "string"
+    },
+    hoverShadowBlur: {
+        type: "number"
+    },
+    hoverShadowHorizontal: {
+        type: "number"
+    },
+    hoverShadowVertical: {
+        type: "number"
+    },
+    hoverShadowPosition: {
+        type: "string"
+    }
+};
+var newAttributes_2_1 = {
+    block_id: {
+        type: "string"
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: 'number',
+        default: '20'
+    },
+    titleSizeMobile: {
+        type: 'number',
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    descSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    btnSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    }
+};
+
+var deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
+
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_6_6,
+    attributes: deprecated_attributes_2_1,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            iconPos: "block",
-            iconHPos: "before",
-            iconVPos: "center"
+            classMigrate: false,
+            block_id: '',
+            titleSizeUnit: "px",
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            descSizeUnit: 'px',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            btnSizeUnit: '',
+            btnSizeTablet: '',
+            btnSizeMobile: ''
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -35123,6 +37835,9 @@ var deprecatedContent = [{
             selectedIcon = _props$attributes.selectedIcon,
             iconChecked = _props$attributes.iconChecked,
             hoverEffect = _props$attributes.hoverEffect,
+            iconPos = _props$attributes.iconPos,
+            iconHPos = _props$attributes.iconHPos,
+            iconVPos = _props$attributes.iconVPos,
             iconSize = _props$attributes.iconSize,
             iconColor = _props$attributes.iconColor,
             iconBackColor = _props$attributes.iconBackColor,
@@ -35210,6 +37925,259 @@ var deprecatedContent = [{
             hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
             hoverShadowVertical = _props$attributes.hoverShadowVertical,
             hoverShadowPosition = _props$attributes.hoverShadowPosition;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-icon-box-" + id,
+                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
+                style: {
+                    textAlign: align,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            btnChecked && btnText && wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                }
+            }),
+            iconChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && wp.element.createElement("i", {
+                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
+                    style: {
+                        color: iconColor,
+                        backgroundColor: iconBackColor,
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && wp.element.createElement("img", {
+                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
+                    src: "" + iconImgUrl,
+                    alt: "Image Icon",
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-icon-box__content_wrap" },
+                titleChecked && titleText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__title_wrap",
+                        style: {
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: "premium-icon-box__title",
+                        value: titleText,
+                        style: {
+                            color: titleColor,
+                            fontSize: titleSize + "px",
+                            fontFamily: titleFont,
+                            letterSpacing: titleLetter + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight,
+                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                            lineHeight: titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__desc_wrap",
+                        style: {
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-icon-box__desc",
+                        value: descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            fontFamily: descFont,
+                            lineHeight: descLine + "px",
+                            fontWeight: descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                        style: {
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "a",
+                        className: "premium-icon-box__btn premium-button",
+                        href: btnLink,
+                        rel: "noopener noreferrer",
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnColor,
+                            backgroundColor: btnBack,
+                            fontSize: btnSize + "px",
+                            letterSpacing: btnLetter + "px",
+                            textTransform: btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyle,
+                            fontWeight: btnWeight,
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor,
+                            padding: btnPadding + btnPaddingU,
+                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        }
+                    })
+                )
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_6_6,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            iconPos: "block",
+            iconHPos: "before",
+            iconVPos: "center"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            align = _props$attributes2.align,
+            iconImage = _props$attributes2.iconImage,
+            iconImgUrl = _props$attributes2.iconImgUrl,
+            iconRadius = _props$attributes2.iconRadius,
+            selectedIcon = _props$attributes2.selectedIcon,
+            iconChecked = _props$attributes2.iconChecked,
+            hoverEffect = _props$attributes2.hoverEffect,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            iconBackColor = _props$attributes2.iconBackColor,
+            titleChecked = _props$attributes2.titleChecked,
+            titleText = _props$attributes2.titleText,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleFont = _props$attributes2.titleFont,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            descChecked = _props$attributes2.descChecked,
+            descText = _props$attributes2.descText,
+            descColor = _props$attributes2.descColor,
+            descFont = _props$attributes2.descFont,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            btnChecked = _props$attributes2.btnChecked,
+            btnEffect = _props$attributes2.btnEffect,
+            effectDir = _props$attributes2.effectDir,
+            btnText = _props$attributes2.btnText,
+            btnTarget = _props$attributes2.btnTarget,
+            btnLink = _props$attributes2.btnLink,
+            btnSize = _props$attributes2.btnSize,
+            btnStyle = _props$attributes2.btnStyle,
+            btnUpper = _props$attributes2.btnUpper,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLetter = _props$attributes2.btnLetter,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnHoverBorder = _props$attributes2.btnHoverBorder,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            marginT = _props$attributes2.marginT,
+            marginR = _props$attributes2.marginR,
+            marginB = _props$attributes2.marginB,
+            marginL = _props$attributes2.marginL,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
+            hoverShadowColor = _props$attributes2.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -35360,100 +38328,100 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            align = _props$attributes3.align,
+            iconImage = _props$attributes3.iconImage,
+            iconImgUrl = _props$attributes3.iconImgUrl,
+            iconRadius = _props$attributes3.iconRadius,
+            selectedIcon = _props$attributes3.selectedIcon,
+            iconChecked = _props$attributes3.iconChecked,
+            hoverEffect = _props$attributes3.hoverEffect,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            iconBackColor = _props$attributes3.iconBackColor,
+            titleChecked = _props$attributes3.titleChecked,
+            titleText = _props$attributes3.titleText,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleFont = _props$attributes3.titleFont,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            descChecked = _props$attributes3.descChecked,
+            descText = _props$attributes3.descText,
+            descColor = _props$attributes3.descColor,
+            descFont = _props$attributes3.descFont,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            btnChecked = _props$attributes3.btnChecked,
+            btnEffect = _props$attributes3.btnEffect,
+            effectDir = _props$attributes3.effectDir,
+            btnText = _props$attributes3.btnText,
+            btnTarget = _props$attributes3.btnTarget,
+            btnLink = _props$attributes3.btnLink,
+            btnSize = _props$attributes3.btnSize,
+            btnStyle = _props$attributes3.btnStyle,
+            btnUpper = _props$attributes3.btnUpper,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLetter = _props$attributes3.btnLetter,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnHoverBorder = _props$attributes3.btnHoverBorder,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnPadding = _props$attributes3.btnPadding,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition,
+            backColor = _props$attributes3.backColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            marginT = _props$attributes3.marginT,
+            marginR = _props$attributes3.marginR,
+            marginB = _props$attributes3.marginB,
+            marginL = _props$attributes3.marginL,
+            paddingT = _props$attributes3.paddingT,
+            paddingR = _props$attributes3.paddingR,
+            paddingB = _props$attributes3.paddingB,
+            paddingL = _props$attributes3.paddingL,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
+            hoverShadowColor = _props$attributes3.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -35604,98 +38572,98 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            align = _props$attributes3.align,
-            iconImage = _props$attributes3.iconImage,
-            iconImgUrl = _props$attributes3.iconImgUrl,
-            iconRadius = _props$attributes3.iconRadius,
-            selectedIcon = _props$attributes3.selectedIcon,
-            iconChecked = _props$attributes3.iconChecked,
-            hoverEffect = _props$attributes3.hoverEffect,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            iconBackColor = _props$attributes3.iconBackColor,
-            titleChecked = _props$attributes3.titleChecked,
-            titleText = _props$attributes3.titleText,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            descChecked = _props$attributes3.descChecked,
-            descText = _props$attributes3.descText,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            btnChecked = _props$attributes3.btnChecked,
-            btnEffect = _props$attributes3.btnEffect,
-            effectDir = _props$attributes3.effectDir,
-            btnText = _props$attributes3.btnText,
-            btnTarget = _props$attributes3.btnTarget,
-            btnLink = _props$attributes3.btnLink,
-            btnSize = _props$attributes3.btnSize,
-            btnStyle = _props$attributes3.btnStyle,
-            btnUpper = _props$attributes3.btnUpper,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLetter = _props$attributes3.btnLetter,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnHoverBorder = _props$attributes3.btnHoverBorder,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnPadding = _props$attributes3.btnPadding,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition,
-            backColor = _props$attributes3.backColor,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            marginT = _props$attributes3.marginT,
-            marginR = _props$attributes3.marginR,
-            marginB = _props$attributes3.marginB,
-            marginL = _props$attributes3.marginL,
-            paddingT = _props$attributes3.paddingT,
-            paddingR = _props$attributes3.paddingR,
-            paddingB = _props$attributes3.paddingB,
-            paddingL = _props$attributes3.paddingL,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
-            hoverShadowColor = _props$attributes3.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            align = _props$attributes4.align,
+            iconImage = _props$attributes4.iconImage,
+            iconImgUrl = _props$attributes4.iconImgUrl,
+            iconRadius = _props$attributes4.iconRadius,
+            selectedIcon = _props$attributes4.selectedIcon,
+            iconChecked = _props$attributes4.iconChecked,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBackColor = _props$attributes4.iconBackColor,
+            titleChecked = _props$attributes4.titleChecked,
+            titleText = _props$attributes4.titleText,
+            titleTag = _props$attributes4.titleTag,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titleMarginT = _props$attributes4.titleMarginT,
+            titleMarginB = _props$attributes4.titleMarginB,
+            descChecked = _props$attributes4.descChecked,
+            descText = _props$attributes4.descText,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descMarginT = _props$attributes4.descMarginT,
+            descMarginB = _props$attributes4.descMarginB,
+            btnChecked = _props$attributes4.btnChecked,
+            btnEffect = _props$attributes4.btnEffect,
+            effectDir = _props$attributes4.effectDir,
+            btnText = _props$attributes4.btnText,
+            btnTarget = _props$attributes4.btnTarget,
+            btnLink = _props$attributes4.btnLink,
+            btnSize = _props$attributes4.btnSize,
+            btnStyle = _props$attributes4.btnStyle,
+            btnUpper = _props$attributes4.btnUpper,
+            btnWeight = _props$attributes4.btnWeight,
+            btnLetter = _props$attributes4.btnLetter,
+            btnColor = _props$attributes4.btnColor,
+            btnHoverColor = _props$attributes4.btnHoverColor,
+            btnHoverBorder = _props$attributes4.btnHoverBorder,
+            btnBack = _props$attributes4.btnBack,
+            btnHoverBack = _props$attributes4.btnHoverBack,
+            btnBorderWidth = _props$attributes4.btnBorderWidth,
+            btnBorderRadius = _props$attributes4.btnBorderRadius,
+            btnBorderColor = _props$attributes4.btnBorderColor,
+            btnBorderType = _props$attributes4.btnBorderType,
+            btnPadding = _props$attributes4.btnPadding,
+            btnMarginT = _props$attributes4.btnMarginT,
+            btnMarginB = _props$attributes4.btnMarginB,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition,
+            backColor = _props$attributes4.backColor,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
+            hoverShadowColor = _props$attributes4.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -35843,97 +38811,97 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            align = _props$attributes4.align,
-            iconImage = _props$attributes4.iconImage,
-            iconImgUrl = _props$attributes4.iconImgUrl,
-            iconRadius = _props$attributes4.iconRadius,
-            selectedIcon = _props$attributes4.selectedIcon,
-            iconChecked = _props$attributes4.iconChecked,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            titleChecked = _props$attributes4.titleChecked,
-            titleText = _props$attributes4.titleText,
-            titleTag = _props$attributes4.titleTag,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titleMarginT = _props$attributes4.titleMarginT,
-            titleMarginB = _props$attributes4.titleMarginB,
-            descChecked = _props$attributes4.descChecked,
-            descText = _props$attributes4.descText,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descMarginT = _props$attributes4.descMarginT,
-            descMarginB = _props$attributes4.descMarginB,
-            btnChecked = _props$attributes4.btnChecked,
-            btnEffect = _props$attributes4.btnEffect,
-            effectDir = _props$attributes4.effectDir,
-            btnText = _props$attributes4.btnText,
-            btnTarget = _props$attributes4.btnTarget,
-            btnLink = _props$attributes4.btnLink,
-            btnSize = _props$attributes4.btnSize,
-            btnStyle = _props$attributes4.btnStyle,
-            btnUpper = _props$attributes4.btnUpper,
-            btnWeight = _props$attributes4.btnWeight,
-            btnLetter = _props$attributes4.btnLetter,
-            btnColor = _props$attributes4.btnColor,
-            btnHoverColor = _props$attributes4.btnHoverColor,
-            btnHoverBorder = _props$attributes4.btnHoverBorder,
-            btnBack = _props$attributes4.btnBack,
-            btnHoverBack = _props$attributes4.btnHoverBack,
-            btnBorderWidth = _props$attributes4.btnBorderWidth,
-            btnBorderRadius = _props$attributes4.btnBorderRadius,
-            btnBorderColor = _props$attributes4.btnBorderColor,
-            btnBorderType = _props$attributes4.btnBorderType,
-            btnPadding = _props$attributes4.btnPadding,
-            btnMarginT = _props$attributes4.btnMarginT,
-            btnMarginB = _props$attributes4.btnMarginB,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition,
-            backColor = _props$attributes4.backColor,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
-            hoverShadowColor = _props$attributes4.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            align = _props$attributes5.align,
+            iconImage = _props$attributes5.iconImage,
+            iconImgUrl = _props$attributes5.iconImgUrl,
+            iconRadius = _props$attributes5.iconRadius,
+            selectedIcon = _props$attributes5.selectedIcon,
+            iconChecked = _props$attributes5.iconChecked,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            titleChecked = _props$attributes5.titleChecked,
+            titleText = _props$attributes5.titleText,
+            titleTag = _props$attributes5.titleTag,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleLine = _props$attributes5.titleLine,
+            titleLetter = _props$attributes5.titleLetter,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleWeight = _props$attributes5.titleWeight,
+            titleShadowBlur = _props$attributes5.titleShadowBlur,
+            titleShadowColor = _props$attributes5.titleShadowColor,
+            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes5.titleShadowVertical,
+            titleMarginT = _props$attributes5.titleMarginT,
+            titleMarginB = _props$attributes5.titleMarginB,
+            descChecked = _props$attributes5.descChecked,
+            descText = _props$attributes5.descText,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descLine = _props$attributes5.descLine,
+            descWeight = _props$attributes5.descWeight,
+            descMarginT = _props$attributes5.descMarginT,
+            descMarginB = _props$attributes5.descMarginB,
+            btnChecked = _props$attributes5.btnChecked,
+            btnEffect = _props$attributes5.btnEffect,
+            effectDir = _props$attributes5.effectDir,
+            btnText = _props$attributes5.btnText,
+            btnTarget = _props$attributes5.btnTarget,
+            btnLink = _props$attributes5.btnLink,
+            btnSize = _props$attributes5.btnSize,
+            btnStyle = _props$attributes5.btnStyle,
+            btnUpper = _props$attributes5.btnUpper,
+            btnWeight = _props$attributes5.btnWeight,
+            btnLetter = _props$attributes5.btnLetter,
+            btnColor = _props$attributes5.btnColor,
+            btnHoverColor = _props$attributes5.btnHoverColor,
+            btnHoverBorder = _props$attributes5.btnHoverBorder,
+            btnBack = _props$attributes5.btnBack,
+            btnHoverBack = _props$attributes5.btnHoverBack,
+            btnBorderWidth = _props$attributes5.btnBorderWidth,
+            btnBorderRadius = _props$attributes5.btnBorderRadius,
+            btnBorderColor = _props$attributes5.btnBorderColor,
+            btnBorderType = _props$attributes5.btnBorderType,
+            btnPadding = _props$attributes5.btnPadding,
+            btnMarginT = _props$attributes5.btnMarginT,
+            btnMarginB = _props$attributes5.btnMarginB,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition,
+            backColor = _props$attributes5.backColor,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition,
+            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
+            hoverShadowColor = _props$attributes5.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -36083,92 +39051,92 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            align = _props$attributes5.align,
-            iconImage = _props$attributes5.iconImage,
-            iconImgUrl = _props$attributes5.iconImgUrl,
-            iconRadius = _props$attributes5.iconRadius,
-            selectedIcon = _props$attributes5.selectedIcon,
-            iconChecked = _props$attributes5.iconChecked,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            titleChecked = _props$attributes5.titleChecked,
-            titleText = _props$attributes5.titleText,
-            titleTag = _props$attributes5.titleTag,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleLine = _props$attributes5.titleLine,
-            titleLetter = _props$attributes5.titleLetter,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleWeight = _props$attributes5.titleWeight,
-            titleShadowBlur = _props$attributes5.titleShadowBlur,
-            titleShadowColor = _props$attributes5.titleShadowColor,
-            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes5.titleShadowVertical,
-            titleMarginT = _props$attributes5.titleMarginT,
-            titleMarginB = _props$attributes5.titleMarginB,
-            descChecked = _props$attributes5.descChecked,
-            descText = _props$attributes5.descText,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descLine = _props$attributes5.descLine,
-            descWeight = _props$attributes5.descWeight,
-            descMarginT = _props$attributes5.descMarginT,
-            descMarginB = _props$attributes5.descMarginB,
-            btnChecked = _props$attributes5.btnChecked,
-            btnEffect = _props$attributes5.btnEffect,
-            effectDir = _props$attributes5.effectDir,
-            btnText = _props$attributes5.btnText,
-            btnTarget = _props$attributes5.btnTarget,
-            btnLink = _props$attributes5.btnLink,
-            btnSize = _props$attributes5.btnSize,
-            btnStyle = _props$attributes5.btnStyle,
-            btnUpper = _props$attributes5.btnUpper,
-            btnWeight = _props$attributes5.btnWeight,
-            btnLetter = _props$attributes5.btnLetter,
-            btnColor = _props$attributes5.btnColor,
-            btnHoverColor = _props$attributes5.btnHoverColor,
-            btnHoverBorder = _props$attributes5.btnHoverBorder,
-            btnBack = _props$attributes5.btnBack,
-            btnHoverBack = _props$attributes5.btnHoverBack,
-            btnBorderWidth = _props$attributes5.btnBorderWidth,
-            btnBorderRadius = _props$attributes5.btnBorderRadius,
-            btnBorderColor = _props$attributes5.btnBorderColor,
-            btnBorderType = _props$attributes5.btnBorderType,
-            btnPadding = _props$attributes5.btnPadding,
-            btnMarginT = _props$attributes5.btnMarginT,
-            btnMarginB = _props$attributes5.btnMarginB,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition,
-            backColor = _props$attributes5.backColor,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            align = _props$attributes6.align,
+            iconImage = _props$attributes6.iconImage,
+            iconImgUrl = _props$attributes6.iconImgUrl,
+            iconRadius = _props$attributes6.iconRadius,
+            selectedIcon = _props$attributes6.selectedIcon,
+            iconChecked = _props$attributes6.iconChecked,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            titleChecked = _props$attributes6.titleChecked,
+            titleText = _props$attributes6.titleText,
+            titleTag = _props$attributes6.titleTag,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleLine = _props$attributes6.titleLine,
+            titleLetter = _props$attributes6.titleLetter,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleWeight = _props$attributes6.titleWeight,
+            titleShadowBlur = _props$attributes6.titleShadowBlur,
+            titleShadowColor = _props$attributes6.titleShadowColor,
+            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes6.titleShadowVertical,
+            titleMarginT = _props$attributes6.titleMarginT,
+            titleMarginB = _props$attributes6.titleMarginB,
+            descChecked = _props$attributes6.descChecked,
+            descText = _props$attributes6.descText,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descLine = _props$attributes6.descLine,
+            descWeight = _props$attributes6.descWeight,
+            descMarginT = _props$attributes6.descMarginT,
+            descMarginB = _props$attributes6.descMarginB,
+            btnChecked = _props$attributes6.btnChecked,
+            btnEffect = _props$attributes6.btnEffect,
+            effectDir = _props$attributes6.effectDir,
+            btnText = _props$attributes6.btnText,
+            btnTarget = _props$attributes6.btnTarget,
+            btnLink = _props$attributes6.btnLink,
+            btnSize = _props$attributes6.btnSize,
+            btnStyle = _props$attributes6.btnStyle,
+            btnUpper = _props$attributes6.btnUpper,
+            btnWeight = _props$attributes6.btnWeight,
+            btnLetter = _props$attributes6.btnLetter,
+            btnColor = _props$attributes6.btnColor,
+            btnHoverColor = _props$attributes6.btnHoverColor,
+            btnHoverBorder = _props$attributes6.btnHoverBorder,
+            btnBack = _props$attributes6.btnBack,
+            btnHoverBack = _props$attributes6.btnHoverBack,
+            btnBorderWidth = _props$attributes6.btnBorderWidth,
+            btnBorderRadius = _props$attributes6.btnBorderRadius,
+            btnBorderColor = _props$attributes6.btnBorderColor,
+            btnBorderType = _props$attributes6.btnBorderType,
+            btnPadding = _props$attributes6.btnPadding,
+            btnMarginT = _props$attributes6.btnMarginT,
+            btnMarginB = _props$attributes6.btnMarginB,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition,
+            backColor = _props$attributes6.backColor,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition;
 
 
         return wp.element.createElement(
@@ -36313,91 +39281,91 @@ var deprecatedContent = [{
         };
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            align = _props$attributes6.align,
-            iconType = _props$attributes6.iconType,
-            iconImage = _props$attributes6.iconImage,
-            iconImgUrl = _props$attributes6.iconImgUrl,
-            iconRadius = _props$attributes6.iconRadius,
-            selectedIcon = _props$attributes6.selectedIcon,
-            iconChecked = _props$attributes6.iconChecked,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            titleChecked = _props$attributes6.titleChecked,
-            titleText = _props$attributes6.titleText,
-            titleTag = _props$attributes6.titleTag,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleLine = _props$attributes6.titleLine,
-            titleLetter = _props$attributes6.titleLetter,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleWeight = _props$attributes6.titleWeight,
-            titleShadowBlur = _props$attributes6.titleShadowBlur,
-            titleShadowColor = _props$attributes6.titleShadowColor,
-            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes6.titleShadowVertical,
-            titleMarginT = _props$attributes6.titleMarginT,
-            titleMarginB = _props$attributes6.titleMarginB,
-            descChecked = _props$attributes6.descChecked,
-            descText = _props$attributes6.descText,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descLine = _props$attributes6.descLine,
-            descWeight = _props$attributes6.descWeight,
-            descMarginT = _props$attributes6.descMarginT,
-            descMarginB = _props$attributes6.descMarginB,
-            btnChecked = _props$attributes6.btnChecked,
-            btnText = _props$attributes6.btnText,
-            btnTarget = _props$attributes6.btnTarget,
-            btnLink = _props$attributes6.btnLink,
-            btnSize = _props$attributes6.btnSize,
-            btnStyle = _props$attributes6.btnStyle,
-            btnUpper = _props$attributes6.btnUpper,
-            btnWeight = _props$attributes6.btnWeight,
-            btnLetter = _props$attributes6.btnLetter,
-            btnColor = _props$attributes6.btnColor,
-            btnHoverColor = _props$attributes6.btnHoverColor,
-            btnHoverBorder = _props$attributes6.btnHoverBorder,
-            btnBack = _props$attributes6.btnBack,
-            btnHoverBack = _props$attributes6.btnHoverBack,
-            btnBorderWidth = _props$attributes6.btnBorderWidth,
-            btnBorderRadius = _props$attributes6.btnBorderRadius,
-            btnBorderColor = _props$attributes6.btnBorderColor,
-            btnBorderType = _props$attributes6.btnBorderType,
-            btnPadding = _props$attributes6.btnPadding,
-            btnMarginT = _props$attributes6.btnMarginT,
-            btnMarginB = _props$attributes6.btnMarginB,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition,
-            backColor = _props$attributes6.backColor,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            align = _props$attributes7.align,
+            iconType = _props$attributes7.iconType,
+            iconImage = _props$attributes7.iconImage,
+            iconImgUrl = _props$attributes7.iconImgUrl,
+            iconRadius = _props$attributes7.iconRadius,
+            selectedIcon = _props$attributes7.selectedIcon,
+            iconChecked = _props$attributes7.iconChecked,
+            hoverEffect = _props$attributes7.hoverEffect,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            titleChecked = _props$attributes7.titleChecked,
+            titleText = _props$attributes7.titleText,
+            titleTag = _props$attributes7.titleTag,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleLine = _props$attributes7.titleLine,
+            titleLetter = _props$attributes7.titleLetter,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleWeight = _props$attributes7.titleWeight,
+            titleShadowBlur = _props$attributes7.titleShadowBlur,
+            titleShadowColor = _props$attributes7.titleShadowColor,
+            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes7.titleShadowVertical,
+            titleMarginT = _props$attributes7.titleMarginT,
+            titleMarginB = _props$attributes7.titleMarginB,
+            descChecked = _props$attributes7.descChecked,
+            descText = _props$attributes7.descText,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descLine = _props$attributes7.descLine,
+            descWeight = _props$attributes7.descWeight,
+            descMarginT = _props$attributes7.descMarginT,
+            descMarginB = _props$attributes7.descMarginB,
+            btnChecked = _props$attributes7.btnChecked,
+            btnText = _props$attributes7.btnText,
+            btnTarget = _props$attributes7.btnTarget,
+            btnLink = _props$attributes7.btnLink,
+            btnSize = _props$attributes7.btnSize,
+            btnStyle = _props$attributes7.btnStyle,
+            btnUpper = _props$attributes7.btnUpper,
+            btnWeight = _props$attributes7.btnWeight,
+            btnLetter = _props$attributes7.btnLetter,
+            btnColor = _props$attributes7.btnColor,
+            btnHoverColor = _props$attributes7.btnHoverColor,
+            btnHoverBorder = _props$attributes7.btnHoverBorder,
+            btnBack = _props$attributes7.btnBack,
+            btnHoverBack = _props$attributes7.btnHoverBack,
+            btnBorderWidth = _props$attributes7.btnBorderWidth,
+            btnBorderRadius = _props$attributes7.btnBorderRadius,
+            btnBorderColor = _props$attributes7.btnBorderColor,
+            btnBorderType = _props$attributes7.btnBorderType,
+            btnPadding = _props$attributes7.btnPadding,
+            btnMarginT = _props$attributes7.btnMarginT,
+            btnMarginB = _props$attributes7.btnMarginB,
+            btnShadowBlur = _props$attributes7.btnShadowBlur,
+            btnShadowColor = _props$attributes7.btnShadowColor,
+            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes7.btnShadowVertical,
+            btnShadowPosition = _props$attributes7.btnShadowPosition,
+            backColor = _props$attributes7.backColor,
+            imageURL = _props$attributes7.imageURL,
+            fixed = _props$attributes7.fixed,
+            backgroundRepeat = _props$attributes7.backgroundRepeat,
+            backgroundPosition = _props$attributes7.backgroundPosition,
+            backgroundSize = _props$attributes7.backgroundSize,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            marginT = _props$attributes7.marginT,
+            marginR = _props$attributes7.marginR,
+            marginB = _props$attributes7.marginB,
+            marginL = _props$attributes7.marginL,
+            paddingT = _props$attributes7.paddingT,
+            paddingR = _props$attributes7.paddingR,
+            paddingB = _props$attributes7.paddingB,
+            paddingL = _props$attributes7.paddingL,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            shadowPosition = _props$attributes7.shadowPosition;
 
 
         return wp.element.createElement(
@@ -36539,12 +39507,12 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_media_upload__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_media_upload__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icons__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37366,19 +40334,15 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(222);
-var _pricingAttrs;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(223);
 
 
 
@@ -37389,7 +40353,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 var __ = wp.i18n.__;
 
 
-var pricingAttrs = (_pricingAttrs = {
+var pricingAttrs = {
     contentAlign: {
         type: "string",
         default: "center"
@@ -37825,91 +40789,125 @@ var pricingAttrs = (_pricingAttrs = {
     },
     badgeTextSizeTablet: {
         type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
+    badgeTop: {
+        type: "number"
+    },
+    badgeHorizontal: {
+        type: "number"
+    },
+    badgeWidth: {
+        type: "number"
+    },
+    badgeWeight: {
+        type: "number",
+        default: 900
+    },
+    badgeLetter: {
+        type: "number"
+    },
+    badgeStyle: {
+        type: "string"
+    },
+    badgeUpper: {
+        type: "boolean"
+    },
+    badgeText: {
+        type: "string",
+        default: __("Popular")
+    },
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listColor: {
+        type: "string"
+    },
+    listSize: {
+        type: "number"
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
+    },
+    listWeight: {
+        type: "number",
+        default: 500
+    },
+    listItemsStyle: {
+        type: "string"
+    },
+    listLetter: {
+        type: "number"
+    },
+    listLine: {
+        type: "number"
+    },
+    listUpper: {
+        type: "boolean"
+    },
+    listBack: {
+        type: "string"
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    listMarginB: {
+        type: "number",
+        default: 20
+    },
+    listMarginT: {
+        type: "number"
+    },
+    listPadding: {
+        type: "number"
+    },
+    listStyle: {
+        type: "string",
+        default: "disc"
+    },
+    featsAlign: {
+        type: "string"
+    },
+    slashV: {
+        type: "string",
+        default: "center"
+    },
+    currV: {
+        type: "string",
+        default: "center"
+    },
+    valV: {
+        type: "string",
+        default: "center"
+    },
+    divV: {
+        type: "string",
+        default: "center"
+    },
+    durV: {
+        type: "string",
+        default: "center"
+    },
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
     }
-}, _defineProperty(_pricingAttrs, "badgeTextSizeTablet", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "badgeTop", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "badgeHorizontal", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "badgeWidth", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "badgeWeight", {
-    type: "number",
-    default: 900
-}), _defineProperty(_pricingAttrs, "badgeLetter", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "badgeStyle", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "badgeUpper", {
-    type: "boolean"
-}), _defineProperty(_pricingAttrs, "badgeText", {
-    type: "string",
-    default: __("Popular")
-}), _defineProperty(_pricingAttrs, "listChecked", {
-    type: "boolean",
-    default: true
-}), _defineProperty(_pricingAttrs, "listColor", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "listSize", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "listSizeUnit", {
-    type: 'string',
-    default: 'px'
-}), _defineProperty(_pricingAttrs, "listSizeTablet", {
-    type: 'number'
-}), _defineProperty(_pricingAttrs, "listSizeMobile", {
-    type: 'number'
-}), _defineProperty(_pricingAttrs, "listWeight", {
-    type: "number",
-    default: 500
-}), _defineProperty(_pricingAttrs, "listItemsStyle", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "listLetter", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "listLine", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "listUpper", {
-    type: "boolean"
-}), _defineProperty(_pricingAttrs, "listBack", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "listItems", {
-    type: "array",
-    source: "children",
-    selector: ".premium-pricing-table__list"
-}), _defineProperty(_pricingAttrs, "listMarginB", {
-    type: "number",
-    default: 20
-}), _defineProperty(_pricingAttrs, "listMarginT", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "listPadding", {
-    type: "number"
-}), _defineProperty(_pricingAttrs, "listStyle", {
-    type: "string",
-    default: "disc"
-}), _defineProperty(_pricingAttrs, "featsAlign", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "slashV", {
-    type: "string",
-    default: "center"
-}), _defineProperty(_pricingAttrs, "currV", {
-    type: "string",
-    default: "center"
-}), _defineProperty(_pricingAttrs, "valV", {
-    type: "string",
-    default: "center"
-}), _defineProperty(_pricingAttrs, "divV", {
-    type: "string",
-    default: "center"
-}), _defineProperty(_pricingAttrs, "durV", {
-    type: "string",
-    default: "center"
-}), _defineProperty(_pricingAttrs, "id", {
-    type: "string"
-}), _defineProperty(_pricingAttrs, "classMigrate", {
-    type: 'boolean',
-    default: false
-}), _pricingAttrs);
+};
 
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
@@ -37925,7 +40923,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37933,10 +40931,10 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(221);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37992,7 +40990,7 @@ var PremiumPricingTable = function (_Component) {
                 clientId = _props.clientId;
 
 
-            setAttributes({ id: clientId });
+            setAttributes({ block_id: clientId });
             setAttributes({ classMigrate: true });
 
             // Pushing Style tag for this block css.
@@ -38009,7 +41007,7 @@ var PremiumPricingTable = function (_Component) {
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
             var _props$attributes = this.props.attributes,
-                classMigrate = _props$attributes.classMigrate,
+                block_id = _props$attributes.block_id,
                 contentAlign = _props$attributes.contentAlign,
                 tableBack = _props$attributes.tableBack,
                 borderType = _props$attributes.borderType,
@@ -38221,7 +41219,7 @@ var PremiumPricingTable = function (_Component) {
                 label: __("Left")
             }];
 
-            var element = document.getElementById("premium-style-pricing-" + id);
+            var element = document.getElementById("premium-style-pricing-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_6__styling__["a" /* default */])(this.props);
@@ -38319,6 +41317,7 @@ var PremiumPricingTable = function (_Component) {
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                        setAttributes: setAttributes,
                         fontSizeType: {
                             value: titleSizeUnit,
                             label: __("titleSizeUnit")
@@ -38511,6 +41510,7 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                                 components: ["responsiveSize", "weight"],
+                                setAttributes: setAttributes,
                                 fontSizeType: {
                                     value: slashSizeUnit,
                                     label: __("slashSizeUnit")
@@ -38564,6 +41564,7 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                                 components: ["responsiveSize", "weight"],
+                                setAttributes: setAttributes,
                                 fontSizeType: {
                                     value: currSizeUnit,
                                     label: __("currSizeUnit")
@@ -38618,6 +41619,7 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                                 components: ["responsiveSize", "weight"],
+                                setAttributes: setAttributes,
                                 fontSizeType: {
                                     value: valSizeUnit,
                                     label: __("valSizeUnit")
@@ -38672,6 +41674,7 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                                 components: ["responsiveSize", "weight"],
+                                setAttributes: setAttributes,
                                 fontSizeType: {
                                     value: divSizeUnit,
                                     label: __("divSizeUnit")
@@ -38725,6 +41728,7 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                                 components: ["responsiveSize", "weight"],
+                                setAttributes: setAttributes,
                                 fontSizeType: {
                                     value: durSizeUnit,
                                     label: __("durSizeUnit")
@@ -38882,6 +41886,7 @@ var PremiumPricingTable = function (_Component) {
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                        setAttributes: setAttributes,
                         fontSizeType: {
                             value: listSizeUnit,
                             label: __("listSizeUnit")
@@ -38997,6 +42002,7 @@ var PremiumPricingTable = function (_Component) {
                     },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "spacing", "line"],
+                        setAttributes: setAttributes,
                         fontSizeType: {
                             value: descSizeUnit,
                             label: __("descSizeUnit")
@@ -39115,6 +42121,7 @@ var PremiumPricingTable = function (_Component) {
                     },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                        setAttributes: setAttributes,
                         fontSizeType: {
                             value: btnSizeUnit,
                             label: __("btnSizeUnit")
@@ -39300,6 +42307,7 @@ var PremiumPricingTable = function (_Component) {
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
                         fontSizeType: {
                             value: badgeTextUnit,
                             label: __("badgeTextUnit")
@@ -39503,8 +42511,8 @@ var PremiumPricingTable = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    id: "premium-pricing-table-" + id,
-                    className: "" + mainClasses,
+                    id: "premium-pricing-table-" + block_id,
+                    className: mainClasses + " premium-pricing-table-" + block_id,
                     style: {
                         textAlign: contentAlign,
                         background: tableBack,
@@ -39539,7 +42547,6 @@ var PremiumPricingTable = function (_Component) {
                             {
                                 style: {
                                     color: badgeColor,
-                                    fontSize: badgeTextSize + "px",
                                     fontWeight: badgeWeight,
                                     textTransform: badgeUpper ? "uppercase" : "none",
                                     letterSpacing: badgeLetter + "px",
@@ -39602,7 +42609,6 @@ var PremiumPricingTable = function (_Component) {
                             className: "premium-pricing-table__slash",
                             style: {
                                 color: slashColor,
-                                fontSize: slashSize + "px",
                                 fontWeight: slashWeight,
                                 alignSelf: slashV
                             }
@@ -39615,7 +42621,6 @@ var PremiumPricingTable = function (_Component) {
                             className: "premium-pricing-table__currency",
                             style: {
                                 color: currColor,
-                                fontSize: currSize + "px",
                                 fontWeight: currWeight,
                                 alignSelf: currV
                             }
@@ -39628,7 +42633,6 @@ var PremiumPricingTable = function (_Component) {
                             className: "premium-pricing-table__val",
                             style: {
                                 color: valColor,
-                                fontSize: valSize + "px",
                                 fontWeight: valWeight,
                                 alignSelf: valV
                             }
@@ -39641,7 +42645,6 @@ var PremiumPricingTable = function (_Component) {
                             className: "premium-pricing-table__divider",
                             style: {
                                 color: divColor,
-                                fontSize: divSize + "px",
                                 fontWeight: divWeight,
                                 alignSelf: divV
                             }
@@ -39654,7 +42657,6 @@ var PremiumPricingTable = function (_Component) {
                             className: "premium-pricing-table__dur",
                             style: {
                                 color: durColor,
-                                fontSize: durSize + "px",
                                 fontWeight: durWeight,
                                 alignSelf: durV
                             }
@@ -39682,7 +42684,6 @@ var PremiumPricingTable = function (_Component) {
                         },
                         style: {
                             color: listColor,
-                            fontSize: listSize + "px",
                             background: listBack,
                             padding: listPadding + "px",
                             listStyle: "check" !== listStyle ? listStyle : "none",
@@ -39710,7 +42711,6 @@ var PremiumPricingTable = function (_Component) {
                         style: {
                             color: descColor,
                             background: descBack,
-                            fontSize: descSize + "px",
                             fontWeight: descWeight,
                             letterSpacing: descLetter + "px",
                             fontStyle: descStyle,
@@ -39738,7 +42738,6 @@ var PremiumPricingTable = function (_Component) {
                             style: {
                                 color: btnColor,
                                 background: btnBack ? btnBack : "transparent",
-                                fontSize: btnSize + "px",
                                 fontWeight: btnWeight,
                                 letterSpacing: btnLetter + "px",
                                 fontStyle: btnStyle,
@@ -39785,58 +42784,59 @@ var PremiumPricingTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPricingTable);
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
 function styling(props) {
-    var classMigrate = props.classMigrate,
-        block_id = props.id,
-        titleSizeUnit = props.titleSizeUnit,
-        titleSizeMobile = props.titleSizeMobile,
-        titleSizeTablet = props.titleSizeTablet,
-        titleSize = props.titleSize,
-        slashSizeUnit = props.slashSizeUnit,
-        slashSize = props.slashSize,
-        slashSizeMobile = props.slashSizeMobile,
-        slashSizeTablet = props.slashSizeTablet,
-        currSizeUnit = props.currSizeUnit,
-        currSize = props.currSize,
-        currSizeMobile = props.currSizeMobile,
-        currSizeTablet = props.currSizeTablet,
-        valSizeUnit = props.valSizeUnit,
-        valSize = props.valSize,
-        valSizeMobile = props.valSizeMobile,
-        valSizeTablet = props.valSizeTablet,
-        divSizeUnit = props.divSizeUnit,
-        divSize = props.divSize,
-        divSizeMobile = props.divSizeMobile,
-        divSizeTablet = props.divSizeTablet,
-        durSizeUnit = props.durSizeUnit,
-        durSize = props.durSize,
-        durSizeMobile = props.durSizeMobile,
-        durSizeTablet = props.durSizeTablet,
-        listSizeUnit = props.listSizeUnit,
-        listSize = props.listSize,
-        listSizeMobile = props.listSizeMobile,
-        listSizeTablet = props.listSizeTablet,
-        descSizeUnit = props.descSizeUnit,
-        descSize = props.descSize,
-        descSizeMobile = props.descSizeMobile,
-        descSizeTablet = props.descSizeTablet,
-        btnSizeUnit = props.btnSizeUnit,
-        btnSize = props.btnSize,
-        btnSizeMobile = props.btnSizeMobile,
-        btnSizeTablet = props.btnSizeTablet,
-        badgeTextUnit = props.badgeTextUnit,
-        badgeTextSize = props.badgeTextSize,
-        badgeTextSizeMobile = props.badgeTextSizeMobile,
-        badgeTextSizeTablet = props.badgeTextSizeTablet;
+    var _props$attributes = props.attributes,
+        classMigrate = _props$attributes.classMigrate,
+        block_id = _props$attributes.block_id,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
+        titleSizeMobile = _props$attributes.titleSizeMobile,
+        titleSizeTablet = _props$attributes.titleSizeTablet,
+        titleSize = _props$attributes.titleSize,
+        slashSizeUnit = _props$attributes.slashSizeUnit,
+        slashSize = _props$attributes.slashSize,
+        slashSizeMobile = _props$attributes.slashSizeMobile,
+        slashSizeTablet = _props$attributes.slashSizeTablet,
+        currSizeUnit = _props$attributes.currSizeUnit,
+        currSize = _props$attributes.currSize,
+        currSizeMobile = _props$attributes.currSizeMobile,
+        currSizeTablet = _props$attributes.currSizeTablet,
+        valSizeUnit = _props$attributes.valSizeUnit,
+        valSize = _props$attributes.valSize,
+        valSizeMobile = _props$attributes.valSizeMobile,
+        valSizeTablet = _props$attributes.valSizeTablet,
+        divSizeUnit = _props$attributes.divSizeUnit,
+        divSize = _props$attributes.divSize,
+        divSizeMobile = _props$attributes.divSizeMobile,
+        divSizeTablet = _props$attributes.divSizeTablet,
+        durSizeUnit = _props$attributes.durSizeUnit,
+        durSize = _props$attributes.durSize,
+        durSizeMobile = _props$attributes.durSizeMobile,
+        durSizeTablet = _props$attributes.durSizeTablet,
+        listSizeUnit = _props$attributes.listSizeUnit,
+        listSize = _props$attributes.listSize,
+        listSizeMobile = _props$attributes.listSizeMobile,
+        listSizeTablet = _props$attributes.listSizeTablet,
+        descSizeUnit = _props$attributes.descSizeUnit,
+        descSize = _props$attributes.descSize,
+        descSizeMobile = _props$attributes.descSizeMobile,
+        descSizeTablet = _props$attributes.descSizeTablet,
+        btnSizeUnit = _props$attributes.btnSizeUnit,
+        btnSize = _props$attributes.btnSize,
+        btnSizeMobile = _props$attributes.btnSizeMobile,
+        btnSizeTablet = _props$attributes.btnSizeTablet,
+        badgeTextUnit = _props$attributes.badgeTextUnit,
+        badgeTextSize = _props$attributes.badgeTextSize,
+        badgeTextSizeMobile = _props$attributes.badgeTextSizeMobile,
+        badgeTextSizeTablet = _props$attributes.badgeTextSizeTablet;
 
 
     var selectors = {};
@@ -39945,21 +42945,21 @@ function styling(props) {
     var styling_css = "";
     var id = '#premium-pricing-table-' + block_id;
     if (classMigrate) {
-        id = '.premium-pricing-table';
+        id = '.premium-pricing-table-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-    console.log(styling_css);
 
     return styling_css;
 }
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40097,7 +43097,7 @@ var save = function save(props) {
         listPadding = _props$attributes.listPadding,
         listStyle = _props$attributes.listStyle,
         featsAlign = _props$attributes.featsAlign,
-        id = _props$attributes.id;
+        block_id = _props$attributes.block_id;
 
 
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-pricing-table");
@@ -40105,8 +43105,8 @@ var save = function save(props) {
     return wp.element.createElement(
         "div",
         {
-            id: mainClasses + "-" + id,
-            className: "" + mainClasses,
+            id: mainClasses + "-" + block_id,
+            className: mainClasses + " premium-pricing-table-" + block_id,
             style: {
                 textAlign: contentAlign,
                 background: tableBack,
@@ -40140,7 +43140,6 @@ var save = function save(props) {
                     "span",
                     {
                         style: {
-                            fontSize: badgeTextSize + "px",
                             color: badgeColor,
                             fontWeight: badgeWeight,
                             textTransform: badgeUpper ? "uppercase" : "none",
@@ -40172,7 +43171,6 @@ var save = function save(props) {
                 style: {
                     color: titleColor,
                     background: titleBack,
-                    fontSize: titleSize + "px",
                     letterSpacing: titleLetter + "px",
                     textTransform: titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyle,
@@ -40202,7 +43200,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__slash",
                     style: {
                         color: slashColor,
-                        fontSize: slashSize + "px",
                         fontWeight: slashWeight,
                         alignSelf: slashV
                     }
@@ -40215,7 +43212,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__currency",
                     style: {
                         color: currColor,
-                        fontSize: currSize + "px",
                         fontWeight: currWeight,
                         alignSelf: currV
                     }
@@ -40228,7 +43224,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__val",
                     style: {
                         color: valColor,
-                        fontSize: valSize + "px",
                         fontWeight: valWeight,
                         alignSelf: valV
                     }
@@ -40241,7 +43236,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__divider",
                     style: {
                         color: divColor,
-                        fontSize: divSize + "px",
                         fontWeight: divWeight,
                         alignSelf: divV
                     }
@@ -40254,7 +43248,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__dur",
                     style: {
                         color: durColor,
-                        fontSize: durSize + "px",
                         fontWeight: durWeight,
                         alignSelf: durV
                     }
@@ -40277,7 +43270,6 @@ var save = function save(props) {
                     className: "premium-pricing-table__list list-" + listStyle,
                     style: {
                         color: listColor,
-                        fontSize: listSize + "px",
                         background: listBack,
                         padding: listPadding + "px",
                         listStyle: "check" !== listStyle ? listStyle : "none",
@@ -40303,7 +43295,6 @@ var save = function save(props) {
                 style: {
                     color: descColor,
                     background: descBack,
-                    fontSize: descSize + "px",
                     fontWeight: descWeight,
                     lineHeight: descLine + "px",
                     letterSpacing: descLetter + "px",
@@ -40332,7 +43323,6 @@ var save = function save(props) {
                     style: {
                         color: btnColor,
                         background: btnBack ? btnBack : "transparent",
-                        fontSize: btnSize + "px",
                         fontWeight: btnWeight,
                         letterSpacing: btnLetter + "px",
                         fontStyle: btnStyle,
@@ -40359,7 +43349,7 @@ var save = function save(props) {
             ),
             wp.element.createElement("style", {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-pricing-table-" + id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+                    __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
                 }
             })
         )
@@ -40369,7 +43359,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40828,10 +43818,608 @@ var pricingAttrs_1_6_3 = {
     }
 };
 
+var pricingAttrs_1_8_1 = {
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    tableBack: {
+        type: "string"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    tablePadding: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowColor: {
+        type: "string"
+    },
+    tableShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table"
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleMarginB: {
+        type: "number",
+        default: 20
+    },
+    titleMarginT: {
+        type: "number",
+        default: 20
+    },
+    titlePadding: {
+        type: "number",
+        default: "0"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descLine: {
+        type: "number"
+    },
+    descBack: {
+        type: "string"
+    },
+    descMarginT: {
+        type: "number",
+        default: "0"
+    },
+    descMarginB: {
+        type: "number",
+        default: "30"
+    },
+    descPadding: {
+        type: "number",
+        default: "0"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    descChecked: {
+        type: "boolean",
+        default: false
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true
+    },
+    priceBack: {
+        type: "string"
+    },
+    priceMarginT: {
+        type: "number"
+    },
+    priceMarginB: {
+        type: "number",
+        default: 10
+    },
+    pricePadding: {
+        type: "number"
+    },
+    slashPrice: {
+        type: "string"
+    },
+    slashColor: {
+        type: "string"
+    },
+    slashSize: {
+        type: "number",
+        default: 20
+    },
+    slashWeight: {
+        type: "number"
+    },
+    currPrice: {
+        type: "string",
+        default: "$"
+    },
+    currColor: {
+        type: "string"
+    },
+    currSize: {
+        type: "number",
+        default: 20
+    },
+    currWeight: {
+        type: "number"
+    },
+    valPrice: {
+        type: "string",
+        default: "25"
+    },
+    valColor: {
+        type: "string"
+    },
+    valSize: {
+        type: "number",
+        default: 50
+    },
+    valWeight: {
+        type: "number"
+    },
+    divPrice: {
+        type: "string",
+        default: "/"
+    },
+    divColor: {
+        type: "string"
+    },
+    divSize: {
+        type: "number",
+        default: 20
+    },
+    divWeight: {
+        type: "number"
+    },
+    durPrice: {
+        type: "string",
+        default: "m"
+    },
+    durColor: {
+        type: "string"
+    },
+    durSize: {
+        type: "number",
+        default: 20
+    },
+    durWeight: {
+        type: "number"
+    },
+    selectedStyle: {
+        type: "string",
+        default: "price"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: true
+    },
+    btnColor: {
+        type: "string",
+        default: "#fff"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnWidth: {
+        type: "number"
+    },
+    btnSize: {
+        type: "number"
+    },
+    btnWeight: {
+        type: "number",
+        default: 900
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number",
+        default: "0"
+    },
+    btnMarginB: {
+        type: "number",
+        default: "0"
+    },
+    btnPadding: {
+        type: "number",
+        default: 10
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    badgeChecked: {
+        type: "boolean"
+    },
+    badgePos: {
+        type: "string",
+        default: "right"
+    },
+    badgeBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    badgeColor: {
+        type: "string"
+    },
+    badgeTextSize: {
+        type: "number"
+    },
+    badgeSize: {
+        type: "number"
+    },
+    badgeTop: {
+        type: "number"
+    },
+    badgeHorizontal: {
+        type: "number"
+    },
+    badgeWidth: {
+        type: "number"
+    },
+    badgeWeight: {
+        type: "number",
+        default: 900
+    },
+    badgeLetter: {
+        type: "number"
+    },
+    badgeStyle: {
+        type: "string"
+    },
+    badgeUpper: {
+        type: "boolean"
+    },
+    badgeText: {
+        type: "string",
+        default: __("Popular")
+    },
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listColor: {
+        type: "string"
+    },
+    listSize: {
+        type: "number"
+    },
+    listWeight: {
+        type: "number",
+        default: 500
+    },
+    listItemsStyle: {
+        type: "string"
+    },
+    listLetter: {
+        type: "number"
+    },
+    listLine: {
+        type: "number"
+    },
+    listUpper: {
+        type: "boolean"
+    },
+    listBack: {
+        type: "string"
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    listMarginB: {
+        type: "number",
+        default: 20
+    },
+    listMarginT: {
+        type: "number"
+    },
+    listPadding: {
+        type: "number"
+    },
+    listStyle: {
+        type: "string",
+        default: "disc"
+    },
+    featsAlign: {
+        type: "string"
+    },
+    slashV: {
+        type: "string",
+        default: "center"
+    },
+    currV: {
+        type: "string",
+        default: "center"
+    },
+    valV: {
+        type: "string",
+        default: "center"
+    },
+    divV: {
+        type: "string",
+        default: "center"
+    },
+    durV: {
+        type: "string",
+        default: "center"
+    },
+    id: {
+        type: "string"
+    }
+};
+
+var newAttributes_1_7 = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeMobile: {
+        type: 'number'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: 'number'
+    },
+    descSizeMobile: {
+        type: 'number'
+    },
+    slashSizeMobile: {
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
+    },
+    slashSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeMobile: {
+        type: "number"
+    },
+    currSizeTablet: {
+        type: "number"
+    },
+    valSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    valSizeMobile: {
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
+    },
+    divSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    divSizeMobile: {
+        type: "number"
+    },
+    divSizeTablet: {
+        type: "number"
+    },
+    durSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    durSizeMobile: {
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
+    },
+    btnSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    btnSizeTablet: {
+        type: 'number'
+    },
+    btnSizeMobile: {
+        type: 'number'
+    },
+    badgeTextUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    badgeTextSizeTablet: {
+        type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
+    }
+};
+
+var pricingAttrs_1_7 = Object.assign(pricingAttrs_1_8_1, newAttributes_1_7);
+
 var deprecatedContent = [{
-    attributes: pricingAttrs_1_6_3,
+    attributes: pricingAttrs_1_7,
     migrate: function migrate(attributes) {
-        return Object.assign(attributes, { featsAlign: "" });
+        var newAttributes = {
+            classMigrate: false,
+            block_id: '',
+            titleSizeUnit: 'px',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            valSizeUnit: "px",
+            valSizeTablet: '',
+            valSizeMobile: '',
+            badgeTextUnit: "px",
+            badgeTextSizeTablet: '',
+            badgeTextSizeMobile: '',
+            btnSizeUnit: 'px',
+            btnSizeMobile: '',
+            btnSizeTablet: '',
+            currSizeUnit: 'px',
+            currSizeMobile: '',
+            currSizeTablet: '',
+            descSizeUnit: 'px',
+            descSizeMobile: '',
+            descSizeTablet: '',
+            divSizeUnit: 'px',
+            divSizeMobile: '',
+            divSizeTablet: '',
+            durSizeUnit: "px",
+            durSizeTablet: '',
+            durSizeMobile: '',
+            listSizeUnit: 'px',
+            listSizeMobile: '',
+            listSizeTablet: '',
+            slashSizeUnit: 'px',
+            slashSizeMobile: '',
+            slashSizeTablet: ''
+        };
+        return Object.assign(newAttributes, attributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
@@ -40958,7 +44546,404 @@ var deprecatedContent = [{
             listMarginT = _props$attributes.listMarginT,
             listPadding = _props$attributes.listPadding,
             listStyle = _props$attributes.listStyle,
+            featsAlign = _props$attributes.featsAlign,
             id = _props$attributes.id;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-" + id,
+                className: "" + className,
+                style: {
+                    textAlign: contentAlign,
+                    background: tableBack,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    padding: tablePadding + "px",
+                    boxShadow: tableShadowHorizontal + "px " + tableShadowVertical + "px " + tableShadowBlur + "px " + tableShadowColor + " " + tableShadowPosition
+                }
+            },
+            badgeChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__badge_wrap premium-pricing-table__badge_" + badgePos
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-pricing-table__badge",
+                        style: {
+                            borderRightColor: "right" === badgePos ? badgeBack : "transparent",
+                            borderTopColor: "left" === badgePos ? badgeBack : "transparent",
+                            borderBottomWidth: badgeSize + "px",
+                            borderRightWidth: badgeSize + "px",
+                            borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
+                            borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                        }
+                    },
+                    wp.element.createElement(
+                        "span",
+                        {
+                            style: {
+                                fontSize: badgeTextSize + "px",
+                                color: badgeColor,
+                                fontWeight: badgeWeight,
+                                textTransform: badgeUpper ? "uppercase" : "none",
+                                letterSpacing: badgeLetter + "px",
+                                fontStyle: badgeStyle,
+                                width: badgeWidth + "px",
+                                top: badgeTop + "px",
+                                left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                                right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                            }
+                        },
+                        badgeText
+                    )
+                )
+            ),
+            titleChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__title_wrap",
+                    style: {
+                        paddingTop: titleMarginT + "px",
+                        paddingBottom: titleMarginB + "px"
+                    }
+                },
+                wp.element.createElement(RichText.Content, {
+                    tagName: titleTag.toLowerCase(),
+                    className: "premium-pricing-table__title",
+                    value: title,
+                    style: {
+                        color: titleColor,
+                        background: titleBack,
+                        fontSize: titleSize + "px",
+                        letterSpacing: titleLetter + "px",
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        fontWeight: titleWeight,
+                        lineHeight: titleLine + "px",
+                        marginBottom: titleMarginB + "px",
+                        padding: titlePadding + "px",
+                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+                    }
+                })
+            ),
+            priceChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__price_wrap",
+                    style: {
+                        background: priceBack,
+                        marginTop: priceMarginT + "px",
+                        marginBottom: priceMarginB + "px",
+                        padding: pricePadding + "px",
+                        justifyContent: contentAlign
+                    }
+                },
+                slashPrice && wp.element.createElement(
+                    "strike",
+                    {
+                        className: "premium-pricing-table__slash",
+                        style: {
+                            color: slashColor,
+                            fontSize: slashSize + "px",
+                            fontWeight: slashWeight,
+                            alignSelf: slashV
+                        }
+                    },
+                    slashPrice
+                ),
+                currPrice && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__currency",
+                        style: {
+                            color: currColor,
+                            fontSize: currSize + "px",
+                            fontWeight: currWeight,
+                            alignSelf: currV
+                        }
+                    },
+                    currPrice
+                ),
+                valPrice && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__val",
+                        style: {
+                            color: valColor,
+                            fontSize: valSize + "px",
+                            fontWeight: valWeight,
+                            alignSelf: valV
+                        }
+                    },
+                    valPrice
+                ),
+                divPrice && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__divider",
+                        style: {
+                            color: divColor,
+                            fontSize: divSize + "px",
+                            fontWeight: divWeight,
+                            alignSelf: divV
+                        }
+                    },
+                    divPrice
+                ),
+                durPrice && wp.element.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__dur",
+                        style: {
+                            color: durColor,
+                            fontSize: durSize + "px",
+                            fontWeight: durWeight,
+                            alignSelf: durV
+                        }
+                    },
+                    durPrice
+                )
+            ),
+            listChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__list_wrap",
+                    style: {
+                        marginTop: listMarginT + "px",
+                        marginBottom: listMarginB + "px"
+                    }
+                },
+                wp.element.createElement(
+                    "ul",
+                    {
+                        className: "premium-pricing-table__list list-" + listStyle,
+                        style: {
+                            color: listColor,
+                            fontSize: listSize + "px",
+                            background: listBack,
+                            padding: listPadding + "px",
+                            listStyle: "check" !== listStyle ? listStyle : "none",
+                            listStylePosition: "inside",
+                            fontWeight: listWeight,
+                            letterSpacing: listLetter + "px",
+                            textTransform: listUpper ? "uppercase" : "none",
+                            fontStyle: listItemsStyle,
+                            lineHeight: listLine + "px",
+                            textAlign: featsAlign ? featsAlign : contentAlign
+                        }
+                    },
+                    listItems
+                )
+            ),
+            descChecked && wp.element.createElement(
+                "div",
+                { className: "premium-pricing-table__desc_wrap" },
+                wp.element.createElement(RichText.Content, {
+                    tagName: "p",
+                    className: "premium-pricing-table__desc",
+                    value: desc,
+                    style: {
+                        color: descColor,
+                        background: descBack,
+                        fontSize: descSize + "px",
+                        fontWeight: descWeight,
+                        lineHeight: descLine + "px",
+                        letterSpacing: descLetter + "px",
+                        fontStyle: descStyle,
+                        marginTop: descMarginT + "px",
+                        marginBottom: descMarginB + "px",
+                        padding: descPadding + "px"
+                    }
+                })
+            ),
+            btnChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__button",
+                    style: {
+                        width: btnWidth + "%"
+                    }
+                },
+                wp.element.createElement(
+                    "a",
+                    {
+                        "class": "premium-pricing-table__button_link",
+                        href: btnLink,
+                        target: btnTarget ? "_blank" : "_self",
+                        rel: "noopener noreferrer",
+                        style: {
+                            color: btnColor,
+                            background: btnBack ? btnBack : "transparent",
+                            fontSize: btnSize + "px",
+                            fontWeight: btnWeight,
+                            letterSpacing: btnLetter + "px",
+                            fontStyle: btnStyle,
+                            lineHeight: btnLine + "px",
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB,
+                            padding: btnPadding + btnPaddingU,
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "span",
+                        onChange: function onChange(newText) {
+                            return setAttributes({ btnText: newText });
+                        },
+                        value: btnText,
+                        style: {
+                            textTransform: btnUpper ? "uppercase" : "none"
+                        }
+                    })
+                ),
+                wp.element.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: ["#premium-pricing-table-" + id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+                    }
+                })
+            )
+        );
+    }
+}, {
+    attributes: pricingAttrs_1_6_3,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { featsAlign: "" });
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            tableBack = _props$attributes2.tableBack,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            tablePadding = _props$attributes2.tablePadding,
+            tableShadowBlur = _props$attributes2.tableShadowBlur,
+            tableShadowColor = _props$attributes2.tableShadowColor,
+            tableShadowHorizontal = _props$attributes2.tableShadowHorizontal,
+            tableShadowVertical = _props$attributes2.tableShadowVertical,
+            tableShadowPosition = _props$attributes2.tableShadowPosition,
+            titleChecked = _props$attributes2.titleChecked,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleLetter = _props$attributes2.titleLetter,
+            titleUpper = _props$attributes2.titleUpper,
+            titleStyle = _props$attributes2.titleStyle,
+            titleLine = _props$attributes2.titleLine,
+            titleWeight = _props$attributes2.titleWeight,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            titlePadding = _props$attributes2.titlePadding,
+            descChecked = _props$attributes2.descChecked,
+            desc = _props$attributes2.desc,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descStyle = _props$attributes2.descStyle,
+            descLetter = _props$attributes2.descLetter,
+            descBack = _props$attributes2.descBack,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            descPadding = _props$attributes2.descPadding,
+            priceChecked = _props$attributes2.priceChecked,
+            priceBack = _props$attributes2.priceBack,
+            priceMarginT = _props$attributes2.priceMarginT,
+            priceMarginB = _props$attributes2.priceMarginB,
+            pricePadding = _props$attributes2.pricePadding,
+            slashPrice = _props$attributes2.slashPrice,
+            slashColor = _props$attributes2.slashColor,
+            slashSize = _props$attributes2.slashSize,
+            slashWeight = _props$attributes2.slashWeight,
+            slashV = _props$attributes2.slashV,
+            currPrice = _props$attributes2.currPrice,
+            currColor = _props$attributes2.currColor,
+            currSize = _props$attributes2.currSize,
+            currWeight = _props$attributes2.currWeight,
+            currV = _props$attributes2.currV,
+            valPrice = _props$attributes2.valPrice,
+            valColor = _props$attributes2.valColor,
+            valSize = _props$attributes2.valSize,
+            valWeight = _props$attributes2.valWeight,
+            valV = _props$attributes2.valV,
+            divPrice = _props$attributes2.divPrice,
+            divColor = _props$attributes2.divColor,
+            divSize = _props$attributes2.divSize,
+            divWeight = _props$attributes2.divWeight,
+            divV = _props$attributes2.divV,
+            durPrice = _props$attributes2.durPrice,
+            durColor = _props$attributes2.durColor,
+            durSize = _props$attributes2.durSize,
+            durWeight = _props$attributes2.durWeight,
+            durV = _props$attributes2.durV,
+            btnChecked = _props$attributes2.btnChecked,
+            btnText = _props$attributes2.btnText,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnSize = _props$attributes2.btnSize,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLine = _props$attributes2.btnLine,
+            btnLetter = _props$attributes2.btnLetter,
+            btnUpper = _props$attributes2.btnUpper,
+            btnStyle = _props$attributes2.btnStyle,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnWidth = _props$attributes2.btnWidth,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            badgeChecked = _props$attributes2.badgeChecked,
+            badgePos = _props$attributes2.badgePos,
+            badgeBack = _props$attributes2.badgeBack,
+            badgeColor = _props$attributes2.badgeColor,
+            badgeTop = _props$attributes2.badgeTop,
+            badgeHorizontal = _props$attributes2.badgeHorizontal,
+            badgeWidth = _props$attributes2.badgeWidth,
+            badgeSize = _props$attributes2.badgeSize,
+            badgeTextSize = _props$attributes2.badgeTextSize,
+            badgeWeight = _props$attributes2.badgeWeight,
+            badgeLetter = _props$attributes2.badgeLetter,
+            badgeStyle = _props$attributes2.badgeStyle,
+            badgeUpper = _props$attributes2.badgeUpper,
+            badgeText = _props$attributes2.badgeText,
+            listChecked = _props$attributes2.listChecked,
+            listColor = _props$attributes2.listColor,
+            listWeight = _props$attributes2.listWeight,
+            listSize = _props$attributes2.listSize,
+            listItemsStyle = _props$attributes2.listItemsStyle,
+            listLine = _props$attributes2.listLine,
+            listUpper = _props$attributes2.listUpper,
+            listLetter = _props$attributes2.listLetter,
+            listBack = _props$attributes2.listBack,
+            listItems = _props$attributes2.listItems,
+            listMarginB = _props$attributes2.listMarginB,
+            listMarginT = _props$attributes2.listMarginT,
+            listPadding = _props$attributes2.listPadding,
+            listStyle = _props$attributes2.listStyle,
+            id = _props$attributes2.id;
 
         return wp.element.createElement(
             "div",
@@ -41228,125 +45213,125 @@ var deprecatedContent = [{
         return Object.assign(attributes, { btnPaddingU: "" });
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            contentAlign = _props$attributes2.contentAlign,
-            tableBack = _props$attributes2.tableBack,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            tablePadding = _props$attributes2.tablePadding,
-            titleChecked = _props$attributes2.titleChecked,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleSize = _props$attributes2.titleSize,
-            titleLetter = _props$attributes2.titleLetter,
-            titleUpper = _props$attributes2.titleUpper,
-            titleStyle = _props$attributes2.titleStyle,
-            titleLine = _props$attributes2.titleLine,
-            titleWeight = _props$attributes2.titleWeight,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            titlePadding = _props$attributes2.titlePadding,
-            descChecked = _props$attributes2.descChecked,
-            desc = _props$attributes2.desc,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descStyle = _props$attributes2.descStyle,
-            descLetter = _props$attributes2.descLetter,
-            descBack = _props$attributes2.descBack,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            descPadding = _props$attributes2.descPadding,
-            priceChecked = _props$attributes2.priceChecked,
-            priceBack = _props$attributes2.priceBack,
-            priceMarginT = _props$attributes2.priceMarginT,
-            priceMarginB = _props$attributes2.priceMarginB,
-            pricePadding = _props$attributes2.pricePadding,
-            slashPrice = _props$attributes2.slashPrice,
-            slashColor = _props$attributes2.slashColor,
-            slashSize = _props$attributes2.slashSize,
-            slashWeight = _props$attributes2.slashWeight,
-            slashV = _props$attributes2.slashV,
-            currPrice = _props$attributes2.currPrice,
-            currColor = _props$attributes2.currColor,
-            currSize = _props$attributes2.currSize,
-            currWeight = _props$attributes2.currWeight,
-            currV = _props$attributes2.currV,
-            valPrice = _props$attributes2.valPrice,
-            valColor = _props$attributes2.valColor,
-            valSize = _props$attributes2.valSize,
-            valWeight = _props$attributes2.valWeight,
-            valV = _props$attributes2.valV,
-            divPrice = _props$attributes2.divPrice,
-            divColor = _props$attributes2.divColor,
-            divSize = _props$attributes2.divSize,
-            divWeight = _props$attributes2.divWeight,
-            divV = _props$attributes2.divV,
-            durPrice = _props$attributes2.durPrice,
-            durColor = _props$attributes2.durColor,
-            durSize = _props$attributes2.durSize,
-            durWeight = _props$attributes2.durWeight,
-            durV = _props$attributes2.durV,
-            btnChecked = _props$attributes2.btnChecked,
-            btnText = _props$attributes2.btnText,
-            btnLink = _props$attributes2.btnLink,
-            btnTarget = _props$attributes2.btnTarget,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnSize = _props$attributes2.btnSize,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLine = _props$attributes2.btnLine,
-            btnLetter = _props$attributes2.btnLetter,
-            btnUpper = _props$attributes2.btnUpper,
-            btnStyle = _props$attributes2.btnStyle,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnPadding = _props$attributes2.btnPadding,
-            btnWidth = _props$attributes2.btnWidth,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            badgeChecked = _props$attributes2.badgeChecked,
-            badgePos = _props$attributes2.badgePos,
-            badgeBack = _props$attributes2.badgeBack,
-            badgeColor = _props$attributes2.badgeColor,
-            badgeTop = _props$attributes2.badgeTop,
-            badgeHorizontal = _props$attributes2.badgeHorizontal,
-            badgeWidth = _props$attributes2.badgeWidth,
-            badgeSize = _props$attributes2.badgeSize,
-            badgeTextSize = _props$attributes2.badgeTextSize,
-            badgeWeight = _props$attributes2.badgeWeight,
-            badgeLetter = _props$attributes2.badgeLetter,
-            badgeStyle = _props$attributes2.badgeStyle,
-            badgeUpper = _props$attributes2.badgeUpper,
-            badgeText = _props$attributes2.badgeText,
-            listChecked = _props$attributes2.listChecked,
-            listColor = _props$attributes2.listColor,
-            listWeight = _props$attributes2.listWeight,
-            listSize = _props$attributes2.listSize,
-            listItemsStyle = _props$attributes2.listItemsStyle,
-            listLine = _props$attributes2.listLine,
-            listUpper = _props$attributes2.listUpper,
-            listLetter = _props$attributes2.listLetter,
-            listBack = _props$attributes2.listBack,
-            listItems = _props$attributes2.listItems,
-            listMarginB = _props$attributes2.listMarginB,
-            listMarginT = _props$attributes2.listMarginT,
-            listPadding = _props$attributes2.listPadding,
-            listStyle = _props$attributes2.listStyle,
-            id = _props$attributes2.id;
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            tableBack = _props$attributes3.tableBack,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            tablePadding = _props$attributes3.tablePadding,
+            titleChecked = _props$attributes3.titleChecked,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleLetter = _props$attributes3.titleLetter,
+            titleUpper = _props$attributes3.titleUpper,
+            titleStyle = _props$attributes3.titleStyle,
+            titleLine = _props$attributes3.titleLine,
+            titleWeight = _props$attributes3.titleWeight,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            titlePadding = _props$attributes3.titlePadding,
+            descChecked = _props$attributes3.descChecked,
+            desc = _props$attributes3.desc,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descStyle = _props$attributes3.descStyle,
+            descLetter = _props$attributes3.descLetter,
+            descBack = _props$attributes3.descBack,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            descPadding = _props$attributes3.descPadding,
+            priceChecked = _props$attributes3.priceChecked,
+            priceBack = _props$attributes3.priceBack,
+            priceMarginT = _props$attributes3.priceMarginT,
+            priceMarginB = _props$attributes3.priceMarginB,
+            pricePadding = _props$attributes3.pricePadding,
+            slashPrice = _props$attributes3.slashPrice,
+            slashColor = _props$attributes3.slashColor,
+            slashSize = _props$attributes3.slashSize,
+            slashWeight = _props$attributes3.slashWeight,
+            slashV = _props$attributes3.slashV,
+            currPrice = _props$attributes3.currPrice,
+            currColor = _props$attributes3.currColor,
+            currSize = _props$attributes3.currSize,
+            currWeight = _props$attributes3.currWeight,
+            currV = _props$attributes3.currV,
+            valPrice = _props$attributes3.valPrice,
+            valColor = _props$attributes3.valColor,
+            valSize = _props$attributes3.valSize,
+            valWeight = _props$attributes3.valWeight,
+            valV = _props$attributes3.valV,
+            divPrice = _props$attributes3.divPrice,
+            divColor = _props$attributes3.divColor,
+            divSize = _props$attributes3.divSize,
+            divWeight = _props$attributes3.divWeight,
+            divV = _props$attributes3.divV,
+            durPrice = _props$attributes3.durPrice,
+            durColor = _props$attributes3.durColor,
+            durSize = _props$attributes3.durSize,
+            durWeight = _props$attributes3.durWeight,
+            durV = _props$attributes3.durV,
+            btnChecked = _props$attributes3.btnChecked,
+            btnText = _props$attributes3.btnText,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnSize = _props$attributes3.btnSize,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLine = _props$attributes3.btnLine,
+            btnLetter = _props$attributes3.btnLetter,
+            btnUpper = _props$attributes3.btnUpper,
+            btnStyle = _props$attributes3.btnStyle,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnPadding = _props$attributes3.btnPadding,
+            btnWidth = _props$attributes3.btnWidth,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            badgeChecked = _props$attributes3.badgeChecked,
+            badgePos = _props$attributes3.badgePos,
+            badgeBack = _props$attributes3.badgeBack,
+            badgeColor = _props$attributes3.badgeColor,
+            badgeTop = _props$attributes3.badgeTop,
+            badgeHorizontal = _props$attributes3.badgeHorizontal,
+            badgeWidth = _props$attributes3.badgeWidth,
+            badgeSize = _props$attributes3.badgeSize,
+            badgeTextSize = _props$attributes3.badgeTextSize,
+            badgeWeight = _props$attributes3.badgeWeight,
+            badgeLetter = _props$attributes3.badgeLetter,
+            badgeStyle = _props$attributes3.badgeStyle,
+            badgeUpper = _props$attributes3.badgeUpper,
+            badgeText = _props$attributes3.badgeText,
+            listChecked = _props$attributes3.listChecked,
+            listColor = _props$attributes3.listColor,
+            listWeight = _props$attributes3.listWeight,
+            listSize = _props$attributes3.listSize,
+            listItemsStyle = _props$attributes3.listItemsStyle,
+            listLine = _props$attributes3.listLine,
+            listUpper = _props$attributes3.listUpper,
+            listLetter = _props$attributes3.listLetter,
+            listBack = _props$attributes3.listBack,
+            listItems = _props$attributes3.listItems,
+            listMarginB = _props$attributes3.listMarginB,
+            listMarginT = _props$attributes3.listMarginT,
+            listPadding = _props$attributes3.listPadding,
+            listStyle = _props$attributes3.listStyle,
+            id = _props$attributes3.id;
 
         return wp.element.createElement(
             "div",
@@ -41613,14 +45598,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -41774,18 +45759,18 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(14);
 
 
 
@@ -42187,7 +46172,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42286,7 +46271,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42760,14 +46745,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -42780,6 +46765,13 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var testimonialsAttrs = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     align: {
         type: "string",
         default: "center"
@@ -42995,7 +46987,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43005,11 +46997,11 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(230);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43154,7 +47146,7 @@ var edit = function (_Component) {
                 label: __("Rounded")
             }];
 
-            var element = document.getElementById("premium-style-testimonial-" + clientId.substr(0, 6));
+            var element = document.getElementById("premium-style-testimonial-" + this.props.clientId.substr(0, 6));
 
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_9__styling__["a" /* default */])(this.props);
@@ -43352,9 +47344,6 @@ var edit = function (_Component) {
                             label: __("bodySizeTablet")
                         },
                         line: bodyLine,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ bodySize: newSize });
-                        },
                         onChangeLine: function onChangeLine(newWeight) {
                             return setAttributes({ bodyLine: newWeight });
                         }
@@ -43413,7 +47402,7 @@ var edit = function (_Component) {
                         })
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
-                        components: ["reponsiveSize"],
+                        components: ["responsiveSize"],
                         setAttributes: setAttributes,
                         fontSizeType: {
                             value: authorComSizeUnit,
@@ -43430,9 +47419,6 @@ var edit = function (_Component) {
                         fontSizeTablet: {
                             value: authorComSizeTablet,
                             label: __("authorComSizeTablet")
-                        },
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ authorComSize: newSize });
                         }
                     }),
                     wp.element.createElement(
@@ -43682,7 +47668,7 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-testimonial-" + block_id,
-                    className: mainClasses + "__wrap",
+                    className: mainClasses + "__wrap premium-testimonial-" + block_id,
                     style: {
                         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
                         backgroundColor: backColor,
@@ -43801,8 +47787,7 @@ var edit = function (_Component) {
                                 value: authorCom,
                                 isSelected: false,
                                 style: {
-                                    color: authorComColor,
-                                    fontSize: authorComSize + "px"
+                                    color: authorComColor
                                 }
                             })
                         )
@@ -43829,30 +47814,31 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
 function styling(props) {
-    var classMigrate = props.classMigrate,
-        block_id = props.block_id,
-        authorSizeUnit = props.authorSizeUnit,
-        authorSizeMobile = props.authorSizeMobile,
-        authorSizeTablet = props.authorSizeTablet,
-        authorSize = props.authorSize,
-        authorComSize = props.authorComSize,
-        authorComSizeUnit = props.authorComSizeUnit,
-        authorComSizeMobile = props.authorComSizeMobile,
-        authorComSizeTablet = props.authorComSizeTablet,
-        bodySize = props.bodySize,
-        bodySizeUnit = props.bodySizeUnit,
-        bodySizeMobile = props.bodySizeMobile,
-        bodySizeTablet = props.bodySizeTablet;
+    var _props$attributes = props.attributes,
+        classMigrate = _props$attributes.classMigrate,
+        block_id = _props$attributes.block_id,
+        authorSizeUnit = _props$attributes.authorSizeUnit,
+        authorSizeMobile = _props$attributes.authorSizeMobile,
+        authorSizeTablet = _props$attributes.authorSizeTablet,
+        authorSize = _props$attributes.authorSize,
+        authorComSize = _props$attributes.authorComSize,
+        authorComSizeUnit = _props$attributes.authorComSizeUnit,
+        authorComSizeMobile = _props$attributes.authorComSizeMobile,
+        authorComSizeTablet = _props$attributes.authorComSizeTablet,
+        bodySize = _props$attributes.bodySize,
+        bodySizeUnit = _props$attributes.bodySizeUnit,
+        bodySizeMobile = _props$attributes.bodySizeMobile,
+        bodySizeTablet = _props$attributes.bodySizeTablet;
 
 
     var selectors = {};
@@ -43898,7 +47884,7 @@ function styling(props) {
     var styling_css = "";
     var id = '#premium-testimonial-' + block_id;
     if (classMigrate) {
-        id = '.premium-testimonial__wrap';
+        id = '.premium-testimonial-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -43912,7 +47898,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43932,6 +47918,7 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         align = _props$attributes.align,
         authorImgUrl = _props$attributes.authorImgUrl,
         imgRadius = _props$attributes.imgRadius,
@@ -43986,7 +47973,8 @@ var save = function save(props) {
     return wp.element.createElement(
         "div",
         {
-            className: mainClasses + "__wrap",
+            id: "premium-testimonial-" + block_id,
+            className: mainClasses + "__wrap premium-testimonial-" + block_id,
             style: {
                 boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
                 backgroundColor: backColor,
@@ -44050,7 +48038,6 @@ var save = function save(props) {
                             value: text,
                             style: {
                                 color: bodyColor,
-                                fontSize: bodySize + "px",
                                 lineHeight: bodyLine + "px",
                                 marginTop: bodyTop + "px",
                                 marginBottom: bodyBottom + "px"
@@ -44067,7 +48054,6 @@ var save = function save(props) {
                         value: author,
                         style: {
                             color: authorColor,
-                            fontSize: authorSize + "px",
                             letterSpacing: authorLetter + "px",
                             textTransform: authorUpper ? "uppercase" : "none",
                             fontStyle: authorStyle,
@@ -44092,8 +48078,7 @@ var save = function save(props) {
                             className: "premium-testimonial__author_comp",
                             value: authorCom,
                             style: {
-                                color: authorComColor,
-                                fontSize: authorComSize + "px"
+                                color: authorComColor
                             }
                         }),
                         urlCheck && wp.element.createElement("a", {
@@ -44120,7 +48105,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44301,15 +48286,232 @@ var testimonialsAttrs_1_3_9 = Object.assign(testimonialsAttrs_1_0_1, newAttribut
 
 var testimonialsAttrs_1_6_5 = Object.assign(testimonialsAttrs_1_3_9, newAttributes_1_6_5);
 
+var testimonialsAttrs_2_0 = {
+    align: {
+        type: "string",
+        default: "center"
+    },
+    authorImgId: {
+        type: "string"
+    },
+    authorImgUrl: {
+        type: "string"
+    },
+    imgRadius: {
+        type: "string",
+        default: "50%"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    author: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author",
+        default: "John Doe"
+    },
+    authorTag: {
+        type: "string",
+        default: "H3"
+    },
+    authorColor: {
+        type: "string"
+    },
+    authorSize: {
+        type: "number"
+    },
+    authorLetter: {
+        type: "number"
+    },
+    authorStyle: {
+        type: "string"
+    },
+    authorUpper: {
+        type: "boolean"
+    },
+    authorWeight: {
+        type: "number",
+        default: 500
+    },
+    authorComTag: {
+        type: "string",
+        default: "H4"
+    },
+    text: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__text"
+    },
+    authorCom: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author_comp",
+        default: "Leap13"
+    },
+    authorComColor: {
+        type: "string"
+    },
+    authorComSize: {
+        type: "number"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    urlText: {
+        type: "string"
+    },
+    urlTarget: {
+        type: "boolean",
+        default: false
+    },
+    quotSize: {
+        type: "number"
+    },
+    quotColor: {
+        type: "string"
+    },
+    quotOpacity: {
+        type: "number"
+    },
+    bodyColor: {
+        type: "string"
+    },
+    bodySize: {
+        type: "number"
+    },
+    bodyLine: {
+        type: "number"
+    },
+    bodyTop: {
+        type: "number"
+    },
+    bodyBottom: {
+        type: "number"
+    },
+    dashColor: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number"
+    },
+    shadowHorizontal: {
+        type: "number"
+    },
+    shadowVertical: {
+        type: "number"
+    },
+    shadowPosition: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string",
+        default: "px"
+    }
+};
+var newAttributes_2_2 = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    authorSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    authorSizeMobile: {
+        type: "number"
+    },
+    authorSizeTablet: {
+        type: "number"
+    },
+    authorComSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    authorComSizeMobile: {
+        type: 'number'
+    },
+    authorComSizeTablet: {
+        type: 'number'
+    },
+    bodySizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    bodySizeMobile: {
+        type: "number"
+    },
+    bodySizeTablet: {
+        type: "string"
+    }
+};
+var testimonialsAttrs_2_2 = Object.assign(testimonialsAttrs_2_0, newAttributes_2_2);
+
 var deprecatedContent = [{
-    attributes: testimonialsAttrs_1_6_5,
+    attributes: testimonialsAttrs_2_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            paddingTop: "",
-            paddingRight: "",
-            paddingBottom: "",
-            paddingLeft: "",
-            paddingUnit: "px"
+            classMigrate: false,
+            block_id: '',
+            bodySizeUnit: 'px',
+            bodySizeTablet: '',
+            bodySizeMobile: '',
+            authorSizeUnit: 'px',
+            authorComSizeTablet: '',
+            authorSizeTablet: '',
+            authorSizeMobile: '',
+            authorComSizeMobile: '',
+            authorComSizeUnit: 'px'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -44356,7 +48558,203 @@ var deprecatedContent = [{
             fixed = _props$attributes.fixed,
             backgroundRepeat = _props$attributes.backgroundRepeat,
             backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize;
+            backgroundSize = _props$attributes.backgroundSize,
+            paddingTop = _props$attributes.paddingTop,
+            paddingRight = _props$attributes.paddingRight,
+            paddingBottom = _props$attributes.paddingBottom,
+            paddingLeft = _props$attributes.paddingLeft,
+            paddingUnit = _props$attributes.paddingUnit;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                className: className + "__wrap",
+                style: {
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    paddingTop: paddingTop + paddingUnit,
+                    paddingBottom: paddingBottom + paddingUnit,
+                    paddingLeft: paddingLeft + paddingUnit,
+                    paddingRight: paddingRight + paddingUnit
+                }
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-testimonial__container" },
+                wp.element.createElement(
+                    "span",
+                    { className: "premium-testimonial__upper" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+                        size: quotSize,
+                        color: quotColor,
+                        opacity: quotOpacity
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-testimonial__content",
+                        style: {
+                            textAlign: align
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__img_wrap" },
+                        authorImgUrl && wp.element.createElement("img", {
+                            className: "premium-testimonial__img",
+                            src: "" + authorImgUrl,
+                            alt: "Author",
+                            style: {
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px"
+                            }
+                        }),
+                        !authorImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], { className: className })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__text_wrap" },
+                        wp.element.createElement(
+                            "div",
+                            null,
+                            wp.element.createElement(RichText.Content, {
+                                tagName: "p",
+                                className: "premium-testimonial__text",
+                                value: text,
+                                style: {
+                                    color: bodyColor,
+                                    fontSize: bodySize + "px",
+                                    lineHeight: bodyLine + "px",
+                                    marginTop: bodyTop + "px",
+                                    marginBottom: bodyBottom + "px"
+                                }
+                            })
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__info" },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: authorTag.toLowerCase(),
+                            className: "premium-testimonial__author",
+                            value: author,
+                            style: {
+                                color: authorColor,
+                                fontSize: authorSize + "px",
+                                letterSpacing: authorLetter + "px",
+                                textTransform: authorUpper ? "uppercase" : "none",
+                                fontStyle: authorStyle,
+                                fontWeight: authorWeight
+                            }
+                        }),
+                        wp.element.createElement(
+                            "span",
+                            {
+                                className: "premium-testimonial__sep",
+                                style: {
+                                    color: dashColor
+                                }
+                            },
+                            "\xA0-\xA0"
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-testimonial__link_wrap" },
+                            wp.element.createElement(RichText.Content, {
+                                tagName: authorComTag.toLowerCase(),
+                                className: "premium-testimonial__author_comp",
+                                value: authorCom,
+                                style: {
+                                    color: authorComColor,
+                                    fontSize: authorComSize + "px"
+                                }
+                            }),
+                            urlCheck && wp.element.createElement("a", {
+                                rel: "noopener noreferrer",
+                                href: urlText,
+                                target: urlTarget ? "_blank" : ""
+                            })
+                        )
+                    )
+                ),
+                wp.element.createElement(
+                    "span",
+                    { className: "premium-testimonial__lower" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+                        color: quotColor,
+                        size: quotSize,
+                        opacity: quotOpacity
+                    })
+                )
+            )
+        );
+    }
+}, {
+    attributes: testimonialsAttrs_1_6_5,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            paddingTop: "",
+            paddingRight: "",
+            paddingBottom: "",
+            paddingLeft: "",
+            paddingUnit: "px"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            align = _props$attributes2.align,
+            authorImgUrl = _props$attributes2.authorImgUrl,
+            imgRadius = _props$attributes2.imgRadius,
+            imgBorder = _props$attributes2.imgBorder,
+            imgBorderColor = _props$attributes2.imgBorderColor,
+            imgSize = _props$attributes2.imgSize,
+            text = _props$attributes2.text,
+            authorTag = _props$attributes2.authorTag,
+            authorColor = _props$attributes2.authorColor,
+            authorSize = _props$attributes2.authorSize,
+            authorLetter = _props$attributes2.authorLetter,
+            authorStyle = _props$attributes2.authorStyle,
+            authorUpper = _props$attributes2.authorUpper,
+            authorWeight = _props$attributes2.authorWeight,
+            author = _props$attributes2.author,
+            authorComTag = _props$attributes2.authorComTag,
+            authorComColor = _props$attributes2.authorComColor,
+            authorComSize = _props$attributes2.authorComSize,
+            authorCom = _props$attributes2.authorCom,
+            quotSize = _props$attributes2.quotSize,
+            quotColor = _props$attributes2.quotColor,
+            quotOpacity = _props$attributes2.quotOpacity,
+            bodyColor = _props$attributes2.bodyColor,
+            bodySize = _props$attributes2.bodySize,
+            bodyLine = _props$attributes2.bodyLine,
+            bodyTop = _props$attributes2.bodyTop,
+            bodyBottom = _props$attributes2.bodyBottom,
+            dashColor = _props$attributes2.dashColor,
+            urlCheck = _props$attributes2.urlCheck,
+            urlText = _props$attributes2.urlText,
+            urlTarget = _props$attributes2.urlTarget,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize;
 
 
         return wp.element.createElement(
@@ -44503,43 +48901,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            align = _props$attributes2.align,
-            authorImgUrl = _props$attributes2.authorImgUrl,
-            imgRadius = _props$attributes2.imgRadius,
-            imgBorder = _props$attributes2.imgBorder,
-            imgBorderColor = _props$attributes2.imgBorderColor,
-            imgSize = _props$attributes2.imgSize,
-            text = _props$attributes2.text,
-            authorTag = _props$attributes2.authorTag,
-            authorColor = _props$attributes2.authorColor,
-            authorSize = _props$attributes2.authorSize,
-            authorLetter = _props$attributes2.authorLetter,
-            authorStyle = _props$attributes2.authorStyle,
-            authorUpper = _props$attributes2.authorUpper,
-            authorWeight = _props$attributes2.authorWeight,
-            author = _props$attributes2.author,
-            authorComTag = _props$attributes2.authorComTag,
-            authorComColor = _props$attributes2.authorComColor,
-            authorComSize = _props$attributes2.authorComSize,
-            authorCom = _props$attributes2.authorCom,
-            quotSize = _props$attributes2.quotSize,
-            quotColor = _props$attributes2.quotColor,
-            quotOpacity = _props$attributes2.quotOpacity,
-            bodyColor = _props$attributes2.bodyColor,
-            bodySize = _props$attributes2.bodySize,
-            bodyLine = _props$attributes2.bodyLine,
-            bodyTop = _props$attributes2.bodyTop,
-            bodyBottom = _props$attributes2.bodyBottom,
-            dashColor = _props$attributes2.dashColor,
-            urlCheck = _props$attributes2.urlCheck,
-            urlText = _props$attributes2.urlText,
-            urlTarget = _props$attributes2.urlTarget,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition;
+        var _props$attributes3 = props.attributes,
+            align = _props$attributes3.align,
+            authorImgUrl = _props$attributes3.authorImgUrl,
+            imgRadius = _props$attributes3.imgRadius,
+            imgBorder = _props$attributes3.imgBorder,
+            imgBorderColor = _props$attributes3.imgBorderColor,
+            imgSize = _props$attributes3.imgSize,
+            text = _props$attributes3.text,
+            authorTag = _props$attributes3.authorTag,
+            authorColor = _props$attributes3.authorColor,
+            authorSize = _props$attributes3.authorSize,
+            authorLetter = _props$attributes3.authorLetter,
+            authorStyle = _props$attributes3.authorStyle,
+            authorUpper = _props$attributes3.authorUpper,
+            authorWeight = _props$attributes3.authorWeight,
+            author = _props$attributes3.author,
+            authorComTag = _props$attributes3.authorComTag,
+            authorComColor = _props$attributes3.authorComColor,
+            authorComSize = _props$attributes3.authorComSize,
+            authorCom = _props$attributes3.authorCom,
+            quotSize = _props$attributes3.quotSize,
+            quotColor = _props$attributes3.quotColor,
+            quotOpacity = _props$attributes3.quotOpacity,
+            bodyColor = _props$attributes3.bodyColor,
+            bodySize = _props$attributes3.bodySize,
+            bodyLine = _props$attributes3.bodyLine,
+            bodyTop = _props$attributes3.bodyTop,
+            bodyBottom = _props$attributes3.bodyBottom,
+            dashColor = _props$attributes3.dashColor,
+            urlCheck = _props$attributes3.urlCheck,
+            urlText = _props$attributes3.urlText,
+            urlTarget = _props$attributes3.urlTarget,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition;
 
 
         return wp.element.createElement(
@@ -44674,38 +49072,38 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            align = _props$attributes3.align,
-            authorImgUrl = _props$attributes3.authorImgUrl,
-            imgRadius = _props$attributes3.imgRadius,
-            imgBorder = _props$attributes3.imgBorder,
-            imgBorderColor = _props$attributes3.imgBorderColor,
-            imgSize = _props$attributes3.imgSize,
-            text = _props$attributes3.text,
-            authorTag = _props$attributes3.authorTag,
-            authorColor = _props$attributes3.authorColor,
-            authorSize = _props$attributes3.authorSize,
-            authorLetter = _props$attributes3.authorLetter,
-            authorStyle = _props$attributes3.authorStyle,
-            authorUpper = _props$attributes3.authorUpper,
-            authorWeight = _props$attributes3.authorWeight,
-            author = _props$attributes3.author,
-            authorComTag = _props$attributes3.authorComTag,
-            authorComColor = _props$attributes3.authorComColor,
-            authorComSize = _props$attributes3.authorComSize,
-            authorCom = _props$attributes3.authorCom,
-            quotSize = _props$attributes3.quotSize,
-            quotColor = _props$attributes3.quotColor,
-            quotOpacity = _props$attributes3.quotOpacity,
-            bodyColor = _props$attributes3.bodyColor,
-            bodySize = _props$attributes3.bodySize,
-            bodyLine = _props$attributes3.bodyLine,
-            bodyTop = _props$attributes3.bodyTop,
-            bodyBottom = _props$attributes3.bodyBottom,
-            dashColor = _props$attributes3.dashColor,
-            urlCheck = _props$attributes3.urlCheck,
-            urlText = _props$attributes3.urlText,
-            urlTarget = _props$attributes3.urlTarget;
+        var _props$attributes4 = props.attributes,
+            align = _props$attributes4.align,
+            authorImgUrl = _props$attributes4.authorImgUrl,
+            imgRadius = _props$attributes4.imgRadius,
+            imgBorder = _props$attributes4.imgBorder,
+            imgBorderColor = _props$attributes4.imgBorderColor,
+            imgSize = _props$attributes4.imgSize,
+            text = _props$attributes4.text,
+            authorTag = _props$attributes4.authorTag,
+            authorColor = _props$attributes4.authorColor,
+            authorSize = _props$attributes4.authorSize,
+            authorLetter = _props$attributes4.authorLetter,
+            authorStyle = _props$attributes4.authorStyle,
+            authorUpper = _props$attributes4.authorUpper,
+            authorWeight = _props$attributes4.authorWeight,
+            author = _props$attributes4.author,
+            authorComTag = _props$attributes4.authorComTag,
+            authorComColor = _props$attributes4.authorComColor,
+            authorComSize = _props$attributes4.authorComSize,
+            authorCom = _props$attributes4.authorCom,
+            quotSize = _props$attributes4.quotSize,
+            quotColor = _props$attributes4.quotColor,
+            quotOpacity = _props$attributes4.quotOpacity,
+            bodyColor = _props$attributes4.bodyColor,
+            bodySize = _props$attributes4.bodySize,
+            bodyLine = _props$attributes4.bodyLine,
+            bodyTop = _props$attributes4.bodyTop,
+            bodyBottom = _props$attributes4.bodyBottom,
+            dashColor = _props$attributes4.dashColor,
+            urlCheck = _props$attributes4.urlCheck,
+            urlText = _props$attributes4.urlText,
+            urlTarget = _props$attributes4.urlTarget;
 
 
         return wp.element.createElement(
@@ -44825,34 +49223,34 @@ var deprecatedContent = [{
 }, {
     attributes: testimonialsAttrs_1_0_1,
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            align = _props$attributes4.align,
-            authorImgUrl = _props$attributes4.authorImgUrl,
-            imgRadius = _props$attributes4.imgRadius,
-            imgBorder = _props$attributes4.imgBorder,
-            imgBorderColor = _props$attributes4.imgBorderColor,
-            imgSize = _props$attributes4.imgSize,
-            text = _props$attributes4.text,
-            authorTag = _props$attributes4.authorTag,
-            authorColor = _props$attributes4.authorColor,
-            authorSize = _props$attributes4.authorSize,
-            author = _props$attributes4.author,
-            authorComTag = _props$attributes4.authorComTag,
-            authorComColor = _props$attributes4.authorComColor,
-            authorComSize = _props$attributes4.authorComSize,
-            authorCom = _props$attributes4.authorCom,
-            quotSize = _props$attributes4.quotSize,
-            quotColor = _props$attributes4.quotColor,
-            quotOpacity = _props$attributes4.quotOpacity,
-            bodyColor = _props$attributes4.bodyColor,
-            bodySize = _props$attributes4.bodySize,
-            bodyLine = _props$attributes4.bodyLine,
-            bodyTop = _props$attributes4.bodyTop,
-            bodyBottom = _props$attributes4.bodyBottom,
-            dashColor = _props$attributes4.dashColor,
-            urlCheck = _props$attributes4.urlCheck,
-            urlText = _props$attributes4.urlText,
-            urlTarget = _props$attributes4.urlTarget;
+        var _props$attributes5 = props.attributes,
+            align = _props$attributes5.align,
+            authorImgUrl = _props$attributes5.authorImgUrl,
+            imgRadius = _props$attributes5.imgRadius,
+            imgBorder = _props$attributes5.imgBorder,
+            imgBorderColor = _props$attributes5.imgBorderColor,
+            imgSize = _props$attributes5.imgSize,
+            text = _props$attributes5.text,
+            authorTag = _props$attributes5.authorTag,
+            authorColor = _props$attributes5.authorColor,
+            authorSize = _props$attributes5.authorSize,
+            author = _props$attributes5.author,
+            authorComTag = _props$attributes5.authorComTag,
+            authorComColor = _props$attributes5.authorComColor,
+            authorComSize = _props$attributes5.authorComSize,
+            authorCom = _props$attributes5.authorCom,
+            quotSize = _props$attributes5.quotSize,
+            quotColor = _props$attributes5.quotColor,
+            quotOpacity = _props$attributes5.quotOpacity,
+            bodyColor = _props$attributes5.bodyColor,
+            bodySize = _props$attributes5.bodySize,
+            bodyLine = _props$attributes5.bodyLine,
+            bodyTop = _props$attributes5.bodyTop,
+            bodyBottom = _props$attributes5.bodyBottom,
+            dashColor = _props$attributes5.dashColor,
+            urlCheck = _props$attributes5.urlCheck,
+            urlText = _props$attributes5.urlText,
+            urlTarget = _props$attributes5.urlTarget;
 
 
         return wp.element.createElement(
@@ -44970,7 +49368,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44978,13 +49376,13 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(234);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45869,7 +50267,66 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 233 */
+/* 234 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        videoBoxId = _props$attributes.videoBoxId,
+        classMigrate = _props$attributes.classMigrate,
+        videoDescSizeUnit = _props$attributes.videoDescSizeUnit,
+        videoDescSize = _props$attributes.videoDescSize,
+        videoDescSizeMobile = _props$attributes.videoDescSizeMobile,
+        videoDescSizeTablet = _props$attributes.videoDescSizeTablet;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " .premium-video-box__desc_text": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(videoDescSize, videoDescSizeUnit)
+        }
+    };
+
+    tablet_selectors = {
+        " .premium-video-box__desc_text": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(videoDescSizeTablet, videoDescSizeUnit)
+        }
+    };
+
+    mobile_selectors = {
+        " .premium-video-box__desc_text": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(videoDescSizeMobile, videoDescSizeUnit)
+        }
+    };
+
+    var styling_css = "";
+    var id = '.premium-video-box';
+    if (classMigrate) {
+        id = '#' + videoBoxId;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    console.log(styling_css);
+
+    return styling_css;
+}
+/* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46059,7 +50516,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 234 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46959,13 +51416,13 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 235 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -47167,7 +51624,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 236 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47288,18 +51745,18 @@ function save(props) {
 }
 
 /***/ }),
-/* 237 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_typed_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_sortable_hoc__ = __webpack_require__(242);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48191,12 +52648,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -48326,7 +52783,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -49432,10 +53889,10 @@ function styling(props) {
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49446,25 +53903,25 @@ function styling(props) {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(257);
 
 
 
@@ -51051,7 +55508,7 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51075,14 +55532,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(247);
 
 
 
@@ -51091,7 +55548,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51101,7 +55558,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51133,7 +55590,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51143,7 +55600,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51170,7 +55627,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51182,7 +55639,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 248 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51204,12 +55661,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 249 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(75);
 
 
@@ -51222,7 +55679,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 250 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51256,7 +55713,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 251 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51269,12 +55726,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 252 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(255);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -51292,7 +55749,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51307,7 +55764,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51360,14 +55817,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(260);
 
 
 
@@ -51376,7 +55833,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51392,7 +55849,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51402,7 +55859,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51410,48 +55867,6 @@ function _iterableToArray(iter) {
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
-
-/***/ }),
-/* 259 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(30);
-
-
-
-function styling(props) {
-    var videoBoxId = props.videoBoxId,
-        classMigrate = props.classMigrate;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {};
-
-    tablet_selectors = {};
-
-    mobile_selectors = {};
-
-    var styling_css = "";
-    var id = '.premium-video-box';
-    if (classMigrate) {
-        id = '#' + videoBoxId;
-    }
-
-    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
-    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
-
-    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
-    console.log(styling_css);
-
-    return styling_css;
-}
-/* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ })
 /******/ ]);

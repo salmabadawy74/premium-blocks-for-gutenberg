@@ -7,7 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        id,
+        block_id,
         btnText,
         btnSize,
         btnAlign,
@@ -49,23 +49,23 @@ const save = props => {
 
     return (
         <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
+            id={`${mainClasses}-wrap-${block_id}`}
+            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id}`}
             style={{ textAlign: btnAlign }}
         >
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-button-wrap-${id} .premium-button:hover {`,
+                        `#premium-button-wrap-${block_id} .premium-button:hover {`,
                         `color: ${textHoverColor} !important;`,
                         `border-color: ${borderHoverColor} !important;`,
                         "}",
-                        `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
+                        `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
                         `background-color: ${backHoverColor} !important;`,
                         "}",
-                        `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
+                        `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
+                        `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
+                        `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
                         `background-color: ${slideColor}`,
                         "}"
                     ].join("\n")
@@ -81,7 +81,6 @@ const save = props => {
                 style={{
                     color: textColor,
                     backgroundColor: backColor,
-                    fontSize: textSize + "px",
                     fontFamily: textFontFamily,
                     letterSpacing: textLetter + "px",
                     textTransform: textUpper ? "uppercase" : "none",

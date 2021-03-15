@@ -9,6 +9,13 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const testimonialsAttrs = {
+    block_id: {
+      type:"string"  
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false  
+    },
     align: {
         type: "string",
         default: "center"

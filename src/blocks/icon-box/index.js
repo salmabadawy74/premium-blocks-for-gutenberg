@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconBoxAttrs = {
-    id: {
+    block_id: {
         type: "string"
     },
     align: {
@@ -83,17 +83,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     titleSize: {
-        type: "number"
+        type: "number",
+        default:'20'
     },
-    titlefontSizeUnit: {
+    titleSizeUnit: {
         type: 'string',
         default:'px'
     },
     titleSizeTablet: {
-        type:'number'
+        type: 'number',
+        default:'20'
     },
     titleSizeMobile: {
-        type:'number'
+        type: 'number',
+        default:'20'
     },
     titleLine: {
         type: "number"
@@ -150,17 +153,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     descSize: {
-        type: "number"
+        type: "number",
+        default:'20'
     },
-    descfontSizeUnit: {
+    descSizeUnit: {
         type: "string",
         default:'px'
     },
     descSizeTablet: {
-        type:"number"
+        type: "number",
+        default:'20'
     },
     descSizeMobile: {
-      type:"number"  
+        type: "number",
+        default:'20'
     },
     descLine: {
         type: "number"
@@ -219,17 +225,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     btnSize: {
-        type: "number"
+        type: "number",
+        default:'20'
     },
-    btnfontSizeUnit: {
+    btnSizeUnit: {
         type: "string",
         default:"px"
     },
     btnSizeTablet: {
-        type:"number"
+        type: "number",
+        default:'20'
     },
     btnSizeMobile: {
-        type:"number"
+        type: "number",
+        default:'20'
     },
     btnLine: {
         type: "number"

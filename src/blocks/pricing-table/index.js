@@ -446,8 +446,8 @@ const pricingAttrs = {
     badgeTextSizeTablet: {
         type:'number'
     },
-    badgeTextSizeTablet: {
-        type:"number"
+    badgeTextSizeMobile: {
+        type:'number'
     },
     badgeTop: {
         type: "number"
@@ -556,7 +556,7 @@ const pricingAttrs = {
         type: "string",
         default: "center"
     },
-    id: {
+    block_id: {
         type: "string"
     },
     classMigrate: {

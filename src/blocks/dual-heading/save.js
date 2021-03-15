@@ -4,6 +4,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         contentAlign,
         firstHeading,
         secondHeading,
@@ -74,7 +75,8 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}`}
+        id={`premium-dheading-block-${ block_id }`}
+            className={`${mainClasses} premium-dheading-${ block_id }`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: containerBack,
@@ -102,7 +104,6 @@ const save = props => {
                             backgroundImage: firstClip
                                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                 : "none",
-                            fontSize: firstSize + "px",
                             fontFamily: firstFamily,
                             letterSpacing: firstLetter + "px",
                             textTransform: firstUpper ? "uppercase" : "none",
@@ -130,7 +131,6 @@ const save = props => {
                             backgroundImage: secondClip
                                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                 : "none",
-                            fontSize: secondSize + "px",
                             fontFamily: secondFamily,
                             letterSpacing: secondLetter + "px",
                             textTransform: secondUpper ? "uppercase" : "none",

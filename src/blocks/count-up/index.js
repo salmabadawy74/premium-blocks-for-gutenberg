@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const counterAttrs = {
+    block_id: {
+      type:'string'  
+    },
     increment: {
         type: "string",
         default: 500
@@ -28,6 +31,10 @@ const counterAttrs = {
     flexDir: {
         type: "string",
         default: "column"
+    },
+    numberSizeUnit: {
+        type: "string",
+      default:"px"  
     },
     numberSize: {
         type: "number",
@@ -59,6 +66,10 @@ const counterAttrs = {
         type: "number",
         default: 20
     },
+    prefixSizeUnit: {
+        type: 'string',
+      default:'px'  
+    },
     prefixSizeTablet: {
       type:"number"  
     },
@@ -82,6 +93,10 @@ const counterAttrs = {
     suffixTxt: {
         type: "string",
         default: "Suffix"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default:'px'
     },
     suffixSize: {
         type: "number",
@@ -148,6 +163,10 @@ const counterAttrs = {
     titleSize: {
         type: "number",
         default: 20
+    },
+    titleSizeUnit: {
+        type: "string",
+        default:"px"
     },
     titleSizeTablet: {
         type:"number"

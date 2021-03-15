@@ -5,24 +5,32 @@ function styling ( props ) {
     const {
         videoBoxId,
         classMigrate,
-
-
-     } = props;
+        videoDescSizeUnit,
+        videoDescSize,
+        videoDescSizeMobile,
+        videoDescSizeTablet,
+     } = props.attributes;
 
     let selectors = {}
     let tablet_selectors = {}
     let mobile_selectors = {}
 
     selectors = {
-        
+        " .premium-video-box__desc_text": {
+          "font-size" : generateCSSUnit(videoDescSize,videoDescSizeUnit)
+      }  
     };
 
     tablet_selectors = {
-        
+        " .premium-video-box__desc_text": {
+            "font-size" : generateCSSUnit(videoDescSizeTablet,videoDescSizeUnit)
+        } 
     };
 
     mobile_selectors = {
-        
+        " .premium-video-box__desc_text": {
+            "font-size" : generateCSSUnit(videoDescSizeMobile,videoDescSizeUnit)
+        } 
     }
 
     var styling_css = ""

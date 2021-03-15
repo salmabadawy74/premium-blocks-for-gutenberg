@@ -37,16 +37,22 @@ const {
 } = wp.blockEditor;
 
 class edit extends Component {
+    constructor() {
+        super(...arguments);
+    }
 
     componentDidMount () {
+        const { setAttributes, clientId } = this.props;
 
-        this.props.setAttributes({ classMigrate: true });
+        setAttributes({block_id:clientId})
+
+        setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");
         $style.setAttribute(
             "id",
-            "premium-style-iconBox-" + this.props.clientId
+            "premium-style-iconBox-" + clientId
         ); 
         document.head.appendChild( $style );
         
@@ -54,9 +60,10 @@ class edit extends Component {
 
     render () {
 
-        const { isSelected, setAttributes, className, clientId: blockId,attributes } = this.props;
+        const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
+        
         const {
-            id,
+            block_id,
             align,
             iconChecked,
             iconImage,
@@ -77,7 +84,7 @@ class edit extends Component {
             titleTag,
             titleColor,
             titleFont,
-            titlefontSizeUnit,
+            titleSizeUnit,
             titleSize,
             titleSizeTablet,
             titleSizeMobile,
@@ -96,7 +103,7 @@ class edit extends Component {
             descText,
             descColor,
             descFont,
-            descfontSizeUnit,
+            descSizeUnit,
             descSize,
             descSizeTablet,
             descSizeMobile,
@@ -110,7 +117,7 @@ class edit extends Component {
             btnTarget,
             btnText,
             btnLink,
-            btnfontSizeUnit,
+            btnSizeUnit,
             btnSize,
             btnSizeTablet,
             btnSizeMobile,
@@ -310,7 +317,7 @@ class edit extends Component {
             addFontToHead( fontFamily );
         };
 
-        var element = document.getElementById(
+       let element = document.getElementById(
             "premium-style-iconBox-" + blockId
         );
 
@@ -479,20 +486,20 @@ class edit extends Component {
                                 ]}
                                 setAttributes={setAttributes}
                                 fontSizeType={{
-                                    value: titlefontSizeUnit,
-                                    label: __( "fontSizeUnit" ),
+                                    value: titleSizeUnit,
+                                    label: __("titleSizeUnit"),
                                 }}
                                 fontSize={{
                                     value: titleSize,
-                                    label: __( "fontSize" ),
+                                    label: __("titleSize"),
                                 }}
                                 fontSizeMobile={{
                                     value: titleSizeMobile,
-                                    label: __( "fontSizeMobile" ),
+                                    label: __("titleSizeMobile"),
                                 }}
                                 fontSizeTablet={{
                                     value: titleSizeTablet,
-                                    label: __( "fontSizeTablet" ),
+                                    label: __("titleSizeTablet"),
                                 }}
                                 weight={titleWeight}
                                 style={titleStyle}
@@ -564,20 +571,20 @@ class edit extends Component {
                                 components={[ "responsiveSize", "weight", "line" ]}
                                 setAttributes={setAttributes}
                                 fontSizeType={{
-                                    value: descfontSizeUnit,
-                                    label: __( "fontSizeUnit" ),
+                                    value: descSizeUnit,
+                                    label: __("descSizeUnit"),
                                 }}
                                 fontSize={{
                                     value: descSize,
-                                    label: __( "fontSize" ),
+                                    label: __("descSize"),
                                 }}
                                 fontSizeMobile={{
                                     value: descSizeMobile,
-                                    label: __( "fontSizeMobile" ),
+                                    label: __("descSizeMobile"),
                                 }}
                                 fontSizeTablet={{
                                     value: descSizeTablet,
-                                    label: __( "fontSizeTablet" ),
+                                    label: __("descSizeTablet"),
                                 }}
                                 weight={descWeight}
                                 line={descLine}
@@ -631,24 +638,24 @@ class edit extends Component {
                             />
                             <PremiumTypo
                                 components={[ "responsiveSize", "weight", "style", "upper", "spacing" ]}
+                    
                                 setAttributes={setAttributes}
-                                fontSizeType={{
-                                    value: btnfontSizeUnit,
-                                    label: __( "fontSizeUnit" ),
-                                }}
-                                fontSize={{
-                                    value: btnSize,
-                                    label: __( "fontSize" ),
-                                }}
-                                fontSizeMobile={{
-                                    value: btnSizeMobile,
-                                    label: __( "fontSizeMobile" ),
-                                }}
-                                fontSizeTablet={{
-                                    value: btnSizeTablet,
-                                    label: __( "fontSizeTablet" ),
-                                }}
-                        
+                            fontSizeType={{
+                                value: btnSizeUnit,
+                                label: __("btnSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: btnSize,
+                                label: __("btnSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: btnSizeMobile,
+                                label: __("btnSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: btnSizeTablet,
+                                label: __("btnSizeTablet"),
+                            }}
                                 weight={btnWeight}
                                 style={btnStyle}
                                 spacing={btnLetter}
@@ -1085,8 +1092,8 @@ class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-icon-box-${ id }`}
-                className={`${ mainClasses } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos }`}
+                id={`premium-icon-box-${ block_id }`}
+                className={`${ mainClasses } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos } premium-icon-box-${block_id}`}
                 style={{
                     textAlign: align,
                     border: borderType,
@@ -1114,17 +1121,17 @@ class edit extends Component {
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-icon-box-${ id }:hover {`,
+                                `#premium-icon-box-${ block_id }:hover {`,
                                 `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
                                 "}",
-                                `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
+                                `#premium-icon-box-${ block_id } .premium-icon-box__btn:hover {`,
                                 `color: ${ btnHoverColor } !important;`,
                                 `border-color: ${ btnHoverBorder } !important;`,
                                 "}",
-                                `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
+                                `#premium-icon-box-${ block_id } .premium-button__none .premium-icon-box__btn:hover {`,
                                 `background-color: ${ btnHoverBack } !important;`,
                                 "}",
-                                `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
+                                `#premium-icon-box-${ block_id } .premium-button__slide .premium-button::before {`,
                                 `background-color: ${ btnHoverBack } !important;`,
                                 "}"
                             ].join( "\n" )
@@ -1214,7 +1221,6 @@ class edit extends Component {
                                 onChange={newText => setAttributes( { descText: newText } )}
                                 style={{
                                     color: descColor,
-                                    fontSize: descSize + "px",
                                     fontFamily: descFont,
                                     lineHeight: descLine + "px",
                                     fontWeight: descWeight

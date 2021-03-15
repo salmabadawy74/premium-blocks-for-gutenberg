@@ -6,6 +6,7 @@ import PremiumBackgroud from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
+import styling from  './styling'
 
 const { __ } = wp.i18n;
 
@@ -27,25 +28,30 @@ class edit extends Component{
         super(...arguments);
     }
 
-    componentDidMount() {
-        this.props.setAttributes({ classMigrate: true });
+    componentDidMount () {
+        const { setAttributes, clientId } = this.props;
+        setAttributes({block_id:clientId.substr(0,6)})
+       setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");
         $style.setAttribute(
             "id",
-            "premium-style-count-up-" + this.props.clientId.substr(0, 6)
+            "premium-style-count-up-" +clientId.substr(0, 6)
         ); 
         document.head.appendChild( $style );
     }
+    
     render () {
         const { isSelected, setAttributes, className ,clientId:blockId} = this.props;
         const {
+            block_id,
             increment,
             time,
             delay,
             align,
             flexDir,
+            numberSizeUnit,
             numberSize,
             numberSizeMobile,
             numberSizeTablet,
@@ -58,6 +64,7 @@ class edit extends Component{
             titleCheck,
             titleTxt,
             titleColor,
+            titleSizeUnit,
             titleSize,
             titleSizeMobile,
             titleSizeTablet,
@@ -74,6 +81,7 @@ class edit extends Component{
             prefix,
             prefixTxt,
             prefixSize,
+            prefixSizeUnit,
             prefixSizeTablet,
             prefixSizeMobile,
             prefixColor,
@@ -81,6 +89,7 @@ class edit extends Component{
             prefixGap,
             suffix,
             suffixTxt,
+            suffixSizeUnit,
             suffixSize,
             suffixSizeTablet,
             suffixSizeMobile,
@@ -110,6 +119,7 @@ class edit extends Component{
             prefixFamily,
             suffixFamily
         } = this.props.attributes;
+
         let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
         const ICONS = [
             {
@@ -121,6 +131,7 @@ class edit extends Component{
                 label: __( "Image" )
             }
         ];
+
         const DIRECTION = [
             {
                 value: "row",
@@ -139,6 +150,7 @@ class edit extends Component{
                 label: __( "Reversed Column" )
             }
         ];
+
         const TYPE = [
             {
                 value: "fa",
@@ -149,6 +161,7 @@ class edit extends Component{
                 label: "Dashicon"
             }
         ];
+
         const ALIGNS = [ "left", "center", "right" ];
         const REVALIGNS = [ "right", "center", "left" ];
         switch ( align ) {
@@ -212,7 +225,7 @@ class edit extends Component{
             addFontToHead( fontFamily );
         };
 
-        var element = document.getElementById(
+        let element = document.getElementById(
             "premium-style-count-up-" + blockId.substr(0, 6)
         );
 
@@ -405,14 +418,25 @@ class edit extends Component{
                             onChange={onChangeCounterFamily}
                         />
                         <PremiumTypo
-                            components={[ "size", "weight" ]}
-                            size={numberSize}
-                            sizeTablet={numberSizeTablet}
-                            sizeMobile={numberSizeMobile}
+                            components={[ "responsiveSize", "weight" ]}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: numberSizeUnit,
+                                label: __("numberSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: numberSize,
+                                label: __("numberSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: numberSizeMobile,
+                                label: __("numberSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: numberSizeTablet,
+                                label: __("numberSizeTablet"),
+                            }}
                             weight={numberWeight}
-                            onChangeSize={newSize => setAttributes( { numberSize: newSize } )}
-                            onChangeSizeTablet={newSize => setAttributes( { numberSizeTablet: newSize } )}
-                            onChangeSizeMoile={newSize => setAttributes( { numberSizeMobile: newSize } )}
                             onChangeWeight={newWeight =>
                                 setAttributes( { numberWeight: newWeight } )
                             }
@@ -449,14 +473,25 @@ class edit extends Component{
                                 onChange={onChangePrefixFamily}
                             />
                             <PremiumTypo
-                                components={[ "size", "weight" ]}
-                                size={prefixSize}
-                                sizeTablet={prefixSizeTablet}
-                                sizeMobile={prefixSizeMobile}
+                                components={[ "responsiveSize", "weight" ]}
+                                setAttributes={setAttributes}
+                                fontSizeType={{
+                                    value: prefixSizeUnit,
+                                    label: __("prefixSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: prefixSize,
+                                    label: __("prefixSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: prefixSizeMobile,
+                                    label: __("prefixSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: prefixSizeTablet,
+                                    label: __("prefixSizeTablet"),
+                                }}
                                 weight={prefixWeight}
-                                onChangeSize={newSize => setAttributes( { prefixSize: newSize } )}
-                                onChangeSizeTablet={newSize => setAttributes( { prefixSizeTablet: newSize } )}
-                                onChangeSizeMobile={newSize => setAttributes( { prefixSizeMobile: newSize } )}
                                 onChangeWeight={newWeight =>
                                     setAttributes( { prefixWeight: newWeight } )
                                 }
@@ -500,14 +535,25 @@ class edit extends Component{
                                 onChange={onChangeSuffixFamily}
                             />
                             <PremiumTypo
-                                components={[ "size", "weight" ]}
-                                size={suffixSize}
-                                sizeTablet={suffixSizeTablet}
-                                sizeMobile={suffixSizeMobile}
+                                components={[ "responsiveSize", "weight" ]}
+                                setAttributes={setAttributes}
+                                fontSizeType={{
+                                    value: suffixSizeUnit,
+                                    label: __("suffixSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: suffixSize,
+                                    label: __("suffixSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: suffixSizeMobile,
+                                    label: __("suffixSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: suffixSizeTablet,
+                                    label: __("suffixSizeTablet"),
+                                }}
                                 weight={suffixWeight}
-                                onChangeSize={newSize => setAttributes( { suffixSize: newSize } )}
-                                onChangeSizeTablet={newSize => setAttributes( { suffixSizeTablet: newSize } )}
-                                onChangeSizeMobile={newSize => setAttributes( { suffixSizeMobile: newSize } )}
                                 onChangeWeight={newWeight =>
                                     setAttributes( { suffixWeight: newWeight } )
                                 }
@@ -550,17 +596,28 @@ class edit extends Component{
                                 onChange={onChangeTitleFamily}
                             />
                             <PremiumTypo
-                                components={[ "size", "weight", "spacing", "style", "upper" ]}
-                                size={titleSize}
-                                sizeTablet={titleSizeTablet}
-                                sizeMobile={titleSizeMobile}
+                                components={[ "responsiveSize", "weight", "spacing", "style", "upper" ]}
+                                setAttributes={setAttributes}
+                                fontSizeType={{
+                                    value: titleSizeUnit,
+                                    label: __("titleSizeUnit"),
+                                }}
+                                fontSize={{
+                                    value: titleSize,
+                                    label: __("titleSize"),
+                                }}
+                                fontSizeMobile={{
+                                    value: titleSizeMobile,
+                                    label: __("titleSizeMobile"),
+                                }}
+                                fontSizeTablet={{
+                                    value: titleSizeTablet,
+                                    label: __("titleSizeTablet"),
+                                }}
                                 weight={titleWeight}
                                 style={titleStyle}
                                 spacing={titleSpacing}
                                 upper={titleUpper}
-                                onChangeSize={newSize => setAttributes( { titleSize: newSize } )}
-                                onChangeSizeTablet={newSize => setAttributes( { titleSizeTablet: newSize } )}
-                                onChangeSizeMobile={newSize => setAttributes( { titleSizeMobile: newSize } )}
                                 onChangeWeight={newWeight =>
                                     setAttributes( { titleWeight: newWeight } )
                                 }
@@ -712,7 +769,8 @@ class edit extends Component{
                 )}
             </div>,
             <div
-                className={`${ mainClasses }__wrap`}
+                id={`premium-countup-${block_id}`}
+                className={`${ mainClasses }__wrap premium-countup-${block_id}`}
                 style={{
                     justifyContent: align,
                     flexDirection: flexDir,
@@ -781,7 +839,6 @@ class edit extends Component{
                             <p
                                 className={`premium-countup__prefix`}
                                 style={{
-                                    fontSize: prefixSize + "px",
                                     fontFamily: prefixFamily,
                                     color: prefixColor,
                                     fontWeight: prefixWeight,
@@ -796,7 +853,6 @@ class edit extends Component{
                             data-interval={time}
                             data-delay={delay}
                             style={{
-                                fontSize: numberSize + "px",
                                 fontFamily: counterFamily,
                                 color: numberColor,
                                 fontWeight: numberWeight
@@ -808,7 +864,6 @@ class edit extends Component{
                             <p
                                 className={`premium-countup__suffix`}
                                 style={{
-                                    fontSize: suffixSize + "px",
                                     fontFamily: suffixFamily,
                                     color: suffixColor,
                                     fontWeight: suffixWeight,
@@ -823,7 +878,6 @@ class edit extends Component{
                         <h3
                             className={`premium-countup__title`}
                             style={{
-                                fontSize: titleSize + "px",
                                 fontFamily: titleFamily,
                                 marginTop: titleT + "px",
                                 marginBottom: titleB + "px",
@@ -842,7 +896,6 @@ class edit extends Component{
                     <h3
                         className={`premium-countup__title`}
                         style={{
-                            fontSize: titleSize + "px",
                             fontFamily: titleFamily,
                             marginTop: titleT + "px",
                             marginBottom: titleB + "px",

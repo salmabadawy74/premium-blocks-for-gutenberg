@@ -10,6 +10,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const bannerAttrs = {
+    block_id: {
+      type:"string"  
+    },
     imageID: {
         type: "number"
     },
@@ -95,6 +98,10 @@ const bannerAttrs = {
         type: "number",
         default: "20"
     },
+    titleSizeUnit: {
+        type: "string",
+        default:'px'
+    },
     titleLine: {
         type: "number"
     },
@@ -126,6 +133,16 @@ const bannerAttrs = {
     descSize: {
         type: "number",
         default: "20"
+    },
+    descSizeUnit: {
+        type: "string",
+        default:'px'
+    },
+    descSizeTablet: {
+        type:"number"
+    },
+    descSizeMobile: {
+        type:"number"
     },
     descLine: {
         type: "number"
@@ -165,9 +182,7 @@ const bannerAttrs = {
     sepColor: {
         type: "string"
     },
-    id: {
-        type: "string"
-    },
+   
     blur: {
         type: "number",
         default: "0"

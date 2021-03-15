@@ -1,11 +1,17 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling ( props ) { 
     const {
+        titleSizeUnit,
         titleSize,
         titleSizeTablet,
         titleSizeMobile,
-        id:block_id,
+        descSizeUnit,
+        descSize,
+        descSizeTablet,
+        descSizeMobile,
+        block_id,
         classMigrate
     } = props.attributes;
 
@@ -15,24 +21,33 @@ function styling ( props ) {
 
     selectors = {
         " .premium-banner__title": {
-            "font-size":titleSize + 'px',
+            "font-size":generateCSSUnit(titleSize,titleSizeUnit),
+        },
+        " .premium-banner__desc": {
+            "font-size" :generateCSSUnit(descSize,descSizeUnit)
         }
     }
     tablet_selectors = {
         " .premium-banner__title": {
-            "font-size": titleSizeTablet + 'px'
+            "font-size": generateCSSUnit(titleSizeTablet,titleSizeUnit)
+        },
+        " .premium-banner__desc": {
+            "font-size" :generateCSSUnit(descSizeTablet,descSizeUnit)
         }
     }
     mobile_selectors = {
         " .premium-banner__title": {
-             "font-size" : titleSizeMobile + 'px'
-         }
+             "font-size" : generateCSSUnit(titleSizeMobile,titleSizeUnit)
+        },
+        " .premium-banner__desc": {
+            "font-size" :generateCSSUnit(descSizeMobile,descSizeUnit)
+        }
     }
     
     var styling_css = ""
     var id = `#premium-banner-${ block_id}`
     if (classMigrate) {
-        id=`.premium-banner`
+        id=`.premium-banner-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)

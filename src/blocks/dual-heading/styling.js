@@ -1,4 +1,5 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling ( props ) { 
 
@@ -6,9 +7,11 @@ function styling ( props ) {
         block_id,
         classMigrate,
         firstSize,
+        firstSizeUnit,
         firstSizeTablet,
         firstSizeMobile,
         secondSize,
+        secondSizeUnit,
         secondSizeTablet,
         secondSizeMobile
     } = props.attributes;
@@ -19,33 +22,33 @@ function styling ( props ) {
 
     selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSize + 'px'
+            "font-size": generateCSSUnit(firstSize,firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size' : secondSize +'px'
+            'font-size' : generateCSSUnit(secondSize,secondSizeUnit)
         }
     }
     tablet_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSizeTablet + 'px'
+            "font-size": generateCSSUnit(firstSizeTablet,firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size' : secondSizeTablet +'px'
+            'font-size' :generateCSSUnit(secondSizeTablet,secondSizeUnit)
         }
     }
     mobile_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": firstSizeMobile + 'px'
+            "font-size": generateCSSUnit(firstSizeMobile,firstSizeUnit)
         },
         " .premium-dheading-block__second": {
-            'font-size' : secondSizeMobile +'px'
+            'font-size' : generateCSSUnit(secondSizeMobile,secondSizeUnit)
         }
     }
     
     var styling_css = ""
     var id = `#premium-dheading-block-${block_id}`
     if (classMigrate) {
-        id=`.premium-dheading-block__container`
+        id=`.premium-dheading-${ block_id }`
     }
 
     styling_css = generateCSS(selectors, id)

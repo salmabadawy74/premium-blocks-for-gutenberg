@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const dualHeadingAttrs = {
+    block_id:{
+        type: "string"
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -41,11 +44,15 @@ const dualHeadingAttrs = {
         type: "number",
         default: "20"
     },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     firstSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     firstSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     firstFamily: {
         type: "string"
@@ -132,11 +139,15 @@ const dualHeadingAttrs = {
         type: "number",
         default: "20"
     },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     secondSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     secondSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     secondFamily: {
         type: "string"
@@ -267,8 +278,8 @@ const dualHeadingAttrs = {
         type: "string"
     }
 };
-registerBlockType("premium/dheading-block", {
-    title: __("Dual Heading"),
+registerBlockType( "premium/dheading-block", {
+    title: __( "Dual Heading" ),
     icon: <PbgIcon icon="dual-heading" />,
     category: "premium-blocks",
     attributes: dualHeadingAttrs,
@@ -279,4 +290,4 @@ registerBlockType("premium/dheading-block", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent
-});
+} );

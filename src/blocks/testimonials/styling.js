@@ -17,7 +17,7 @@ function styling ( props ) {
         bodySizeUnit,
         bodySizeMobile,
         bodySizeTablet,
-    } = props;
+    } = props.attributes;
 
     let selectors = {}
     let tablet_selectors = {}
@@ -62,7 +62,7 @@ function styling ( props ) {
     var styling_css = ""
     var id = `#premium-testimonial-${block_id}`
     if (classMigrate) {
-        id = `.premium-testimonial__wrap`
+        id = `.premium-testimonial-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)
