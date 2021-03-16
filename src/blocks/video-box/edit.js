@@ -7,7 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling'
+import styling from './styling';
 const {
     PanelBody,
     SelectControl,
