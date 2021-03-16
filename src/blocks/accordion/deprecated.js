@@ -394,7 +394,7 @@ const newAttributes_1_1 = {
     },
     descSizeUnit: {
         type: "string",
-      default:"number"  
+      default:"px"  
     },
     descSizeTablet: {
         type:"number"
@@ -419,7 +419,7 @@ const deprecated = [
                 titleSizeUnit: 'px',
                 titleSizeTablet: '',
                 titleSizeMobile: '',
-                descSizeUnit: '',
+                descSizeUnit: 'px',
                 descSizeTablet: '',
                 descSizeMobile:''
             }

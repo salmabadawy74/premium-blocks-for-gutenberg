@@ -513,6 +513,7 @@ const deprecated_attributes_2_0 = {
         type: "string"
     }
 }
+
 const newAttributes_2_1 = {
     block_id:{
         type: "string"
@@ -542,6 +543,7 @@ const newAttributes_2_1 = {
         default:false
     }
 }
+
 const deprecated_attributes_2_1 = Object.assign( deprecated_attributes_2_0, newAttributes_2_1 );
 
 const deprecatedContent = [
@@ -561,6 +563,7 @@ const deprecatedContent = [
             return Object.assign(attributes,newAttributes)
         },
         save: props => {
+            const { className } = props;
             const {
                 contentAlign,
                 firstHeading,

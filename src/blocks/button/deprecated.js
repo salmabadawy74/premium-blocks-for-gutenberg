@@ -276,32 +276,23 @@ const buttonAttrs_3_0 = {
     } 
 }
 const newAttributes_3_1 = {
-    descSizeUnit: {
-        type: "string",
-        default:'px'
-    },
-    descSizeTablet: {
-        type:"number"
-    },
-    descSizeMobile: {
-        type:"number"
-    },
-    titleSizeMobile: {
-        type:"number"
-    },
-    titleSizeTablet: {
-        type:"number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default:false
-    },
-    titleSizeUnit: {
-        type: "string",
-        default:'px'
-    },
+  
     block_id: {
         type:"string"  
+    },
+    classMigrate: {
+        type: 'boolean',
+        default:false,
+    },
+    textSizeUnit: {
+        type: "string",
+      default:'px'  
+    },
+    textSizeTablet: {
+        type:"number"  
+    },
+    textSizeMobile: {
+        type:"number"  
       },
 }
 
@@ -315,13 +306,11 @@ const deprecatedContent = [
         attributes: buttonAttrs_3_1,
         migrate: attributes => {
             let newAttributes = {
-                descSizeUnit: 'px',
-                titleSizeUnit: 'px',
-                descSizeMobile: '',
-                descSizeTablet: '',
-                titleSizeMobile: '',
-                titleSizeTablet: '',
-                classMigrate:false
+                classMigrate: false,
+                block_id: "",
+                textSizeUnit: "px",
+                textSizeTablet: '',
+                textSizeMobile:'',
             }
             return Object.assign( attributes,newAttributes)
         },

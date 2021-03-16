@@ -12166,7 +12166,7 @@ var newAttributes_1_1 = {
     },
     descSizeUnit: {
         type: "string",
-        default: "number"
+        default: "px"
     },
     descSizeTablet: {
         type: "number"
@@ -12190,7 +12190,7 @@ var deprecated = [{
             titleSizeUnit: 'px',
             titleSizeTablet: '',
             titleSizeMobile: '',
-            descSizeUnit: '',
+            descSizeUnit: 'px',
             descSizeTablet: '',
             descSizeMobile: ''
         };
@@ -16532,32 +16532,23 @@ var buttonAttrs_3_0 = {
     }
 };
 var newAttributes_3_1 = {
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number"
-    },
-    descSizeMobile: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
+
     block_id: {
         type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    textSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    textSizeTablet: {
+        type: "number"
+    },
+    textSizeMobile: {
+        type: "number"
     }
 };
 
@@ -16569,13 +16560,11 @@ var deprecatedContent = [{
     attributes: buttonAttrs_3_1,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            descSizeUnit: 'px',
-            titleSizeUnit: 'px',
-            descSizeMobile: '',
-            descSizeTablet: '',
-            titleSizeMobile: '',
-            titleSizeTablet: '',
-            classMigrate: false
+            classMigrate: false,
+            block_id: "",
+            textSizeUnit: "px",
+            textSizeTablet: '',
+            textSizeMobile: ''
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -22354,6 +22343,7 @@ var deprecated_attributes_2_0 = {
     type: "string"
   }
 };
+
 var newAttributes_2_1 = {
   block_id: {
     type: "string"
@@ -22383,6 +22373,7 @@ var newAttributes_2_1 = {
     default: false
   }
 };
+
 var deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
 
 var deprecatedContent = [{
@@ -22401,6 +22392,7 @@ var deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: function save(props) {
+    var className = props.className;
     var _props$attributes = props.attributes,
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
