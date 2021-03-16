@@ -3,6 +3,7 @@
 node_modules
 
 # Exclude composer's directories
+
 vendor/
 
 # Skip package file from versoning
