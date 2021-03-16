@@ -21,11 +21,14 @@ export default function save(props) {
         pauseTime,
         hoverPause,
         fancyalign,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = attributes;
 
     return (
         <div
-            className={classnames(className, `premium-block-${block_id}`)}
+            className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
             style={{
                 textAlign: align,
             }}

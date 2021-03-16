@@ -59,7 +59,9 @@ const save = (props) => {
         paddingBottom,
         paddingLeft,
         paddingUnit,
-        backColorUpdated,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-testimonial");
@@ -67,7 +69,7 @@ const save = (props) => {
     return (
         <div
         id={`premium-testimonial-${block_id}`}
-        className={`${ mainClasses }__wrap premium-testimonial-${block_id}`}
+        className={`${ mainClasses }__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor
@@ -81,8 +83,8 @@ const save = (props) => {
                 paddingTop: paddingTop + paddingUnit,
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-            }}
+                paddingRight: paddingRight + paddingUnit
+			}}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>

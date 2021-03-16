@@ -9,8 +9,11 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const {__} = wp.i18n;
+
+
 
 const {
     Toolbar,
@@ -111,7 +114,10 @@ class edit extends Component {
             paddingRight,
             paddingBottom,
             paddingLeft,
-            paddingUnit
+            paddingUnit,
+            hideDesktop,
+		hideTablet,
+		hideMobile
         } = this.props.attributes;
 
         const RADIUS = [
@@ -555,6 +561,14 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
+                	<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div

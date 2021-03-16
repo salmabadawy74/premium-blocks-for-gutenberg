@@ -9,9 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const dualHeadingAttrs = {
-    block_id:{
-        type: "string"
-    },
+	block_id: {
+		type:"string"
+	},
     contentAlign: {
         type: "string",
         default: "center",
@@ -287,8 +287,20 @@ const dualHeadingAttrs = {
         default: "0",
     },
     containerBorderColor: {
-        type: "string",
+        type: "string"
+	},
+	hideDesktop: {
+        type: 'boolean',
+        default:false
     },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
+    }
 };
 registerBlockType( "premium/dheading-block", {
     title: __( "Dual Heading" ),

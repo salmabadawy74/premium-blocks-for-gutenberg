@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba";
 import onChangeVideoURL from "./index";
 
 const save = props => {
-    
+
   const { className } = props;
   
     const {
@@ -62,7 +62,10 @@ const save = props => {
     shadowColor,
     shadowHorizontal,
     shadowVertical,
-    shadowPosition
+		shadowPosition,
+		hideDesktop,
+		hideTablet,
+		hideMobile
   } = props.attributes;
   const loopVideo = () => {
     if ("youtube" === videoType) {
@@ -80,13 +83,13 @@ const save = props => {
       return loop ? "1" : "0";
     }
   };
-  
-  const mainClasses = classnames ( className, 'premium-video-box' );
-  
+
+	const mainClasses = classnames( className, 'premium-video-box' );
+
   return (
     <div
       id={videoBoxId}
-      className={`${mainClasses} video-overlay-${overlay}  premium-video-box-${block_id}`}
+      className={`${mainClasses} video-overlay-${overlay}  premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
       data-type={videoType}
       style={{
         border: boxBorderType,
@@ -94,7 +97,7 @@ const save = props => {
         borderRadius: boxBorderRadius + "px",
         borderColor: boxBorderColor,
         boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-      }}
+			}}
     >
       <style
         dangerouslySetInnerHTML={{

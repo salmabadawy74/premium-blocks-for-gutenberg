@@ -3,12 +3,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-<<<<<<< HEAD
 import styling from './styling';
-=======
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { Component, Fragment } = wp.element;
 
@@ -31,6 +29,7 @@ const CONTENT = [
 
 let isAccUpdated = null;
 
+
 class PremiumAccordion extends Component {
     constructor() {
         super( ...arguments );
@@ -40,15 +39,10 @@ class PremiumAccordion extends Component {
 
     componentDidMount () {
         const { attributes, setAttributes, clientId } = this.props;
-<<<<<<< HEAD
         
         setAttributes({block_id:clientId})
         if (!attributes.accordionId) {
             this.props.setAttributes({ accordionId: "premium-accordion-" +clientId });
-=======
-        if ( !attributes.accordionId ) {
-            setAttributes( { accordionId: "premium-accordion-" + clientId } );
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
         }
         this.props.setAttributes({ classMigrate: true });
 
@@ -201,6 +195,7 @@ class PremiumAccordion extends Component {
                 }
 
                 return item;
+
             } );
         };
 
@@ -825,14 +820,25 @@ class PremiumAccordion extends Component {
                                 } )
                             }
                         />
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				     />
                 </InspectorControls>
             ),
             <Fragment>
-                <div id={`${accordionId}` } className={`${mainClasses}  premium-accordion-${block_id}`}>
+
+                <div id={`${accordionId}` } className={`${mainClasses}  premium-accordion-${block_id}${hideDesktop} ${hideTablet} ${hideMobile}`}>
                     {accordionItems}
-                </div>
-                <div className={"premium-repeater"}>
+               
+				
+					<div className={"premium-repeater"}>
+
                     <button
                         className={"premium-repeater-btn"}
                         onClick={() => {
@@ -850,8 +856,11 @@ class PremiumAccordion extends Component {
                         {__( "Add New Item" )}
                     </button>
                     <p>{__( "Add the items you need then reload the page" )}</p>
-                </div>
-            </Fragment>,
+                    </div>
+                    </div>
+
+            </Fragment>
+
         ];
     }
 }

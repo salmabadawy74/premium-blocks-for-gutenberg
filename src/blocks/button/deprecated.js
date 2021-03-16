@@ -452,6 +452,18 @@ const newAttributes_1_5_8 = {
     },
     textSizeMobile: {
         type:"number"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
     }
 };
 
@@ -467,7 +479,10 @@ const deprecatedContent = [
                 block_id: "",
                 textSizeUnit: "px",
                 textSizeTablet: '',
-                textSizeMobile:'',
+                textSizeMobile: '',
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile:false
             };
             return Object.assign(attributes, newAttributes);
         },

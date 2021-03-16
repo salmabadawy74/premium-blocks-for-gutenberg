@@ -151,8 +151,20 @@ const buttonAttrs = {
     block_id: {
         type: "string"
     },
+    hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
     classMigrate: {
-        type: "boolean",
+        type: 'boolean',
+      default:false  
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
         default:false
     }
 };

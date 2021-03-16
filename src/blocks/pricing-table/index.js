@@ -570,6 +570,19 @@ const pricingAttrs = {
         type: "number",
         default: "1",
     },
+	
+	hideDesktop: {
+		type: "boolean",
+		default:false
+	},
+	hideTablet: {
+		type: "boolean",
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
 };
 
 registerBlockType("premium/pricing-table", {

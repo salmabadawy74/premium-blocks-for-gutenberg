@@ -61,6 +61,9 @@ const save = (props) => {
         paddingR,
         paddingL,
         paddingU,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-banner");
@@ -68,7 +71,7 @@ const save = (props) => {
     return (
         <div
             id={`premium-banner-${ block_id}`}
-            className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id}`}
+            className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
             style={{
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,

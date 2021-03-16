@@ -57,13 +57,16 @@ const save = (props) => {
         target,
         iconOpacity,
         backgroundOpacity,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-icon");
 
     return (
         <div
-            className={`${mainClasses}__container`}
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 backgroundColor: backgroundColor

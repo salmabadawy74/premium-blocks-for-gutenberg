@@ -8,6 +8,7 @@ import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const {__} = wp.i18n;
 
@@ -118,7 +119,10 @@ class edit extends Component{
             titleFamily,
             counterFamily,
             prefixFamily,
-            suffixFamily
+            suffixFamily,
+            hideDesktop,
+		hideTablet,
+		hideMobile
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
@@ -679,9 +683,7 @@ class edit extends Component{
                                 allowReset={true}
                             />
                         </Fragment>
-                        {backgroundImageURL && (
-                            <img src={backgroundImageURL} width="100%" height="auto" />
-                        )}
+                    
                         <PremiumBackgroud
                             imageID={backgroundImageID}
                             imageURL={backgroundImageURL}
@@ -759,7 +761,16 @@ class edit extends Component{
                                 } )
                             }
                         />
-                    </PanelBody>
+                        </PanelBody>
+                    <PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				     />
+                 
                 </InspectorControls>
             ),
             <div>

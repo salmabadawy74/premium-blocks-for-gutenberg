@@ -268,6 +268,100 @@ const deprecated_attributes_1_8_2 = Object.assign(
 );
 
 const deprecatedContent = [
+	{
+		attributes: deprecated_attributes_1_6_6,
+		migrate: attributes => {
+			let newAttributes = {
+				hideDesktop: false,
+				hideTablet: false,
+				hideMobile:false
+			}
+			return Object.assign(attributes,newAttributes)
+		},
+		save: props => {
+			const {
+				stretchSection,
+				horAlign,
+				innerWidthType,
+				innerWidth,
+				height,
+				vPos,
+				minHeight,
+				minHeightUnit,
+				color,
+				imageURL,
+				fixed,
+				backgroundRepeat,
+				backgroundPosition,
+				backgroundSize,
+				borderType,
+				borderWidth,
+				borderColor,
+				borderRadius,
+				marginTop,
+				marginBottom,
+				marginLeft,
+				marginRight,
+				marginUnit,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
+				paddingUnit,
+				shadowBlur,
+				shadowColor,
+				shadowHorizontal,
+				shadowVertical,
+				shadowPosition
+			} = props.attributes;
+
+			return (
+				<div
+					className={`${className} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+					style={{
+						textAlign: horAlign,
+						minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+						backgroundColor: color,
+						border: borderType,
+						borderWidth: borderWidth + "px",
+						borderRadius: borderRadius + "px",
+						borderColor: borderColor,
+						backgroundImage: `url('${imageURL}')`,
+						backgroundRepeat: backgroundRepeat,
+						backgroundPosition: backgroundPosition,
+						backgroundSize: backgroundSize,
+						backgroundAttachment: fixed ? "fixed" : "unset",
+						marginTop: marginTop + marginUnit,
+						marginBottom: marginBottom + marginUnit,
+						marginLeft: marginLeft + marginUnit,
+						marginRight: marginRight + marginUnit,
+						paddingTop: paddingTop + paddingUnit,
+						paddingBottom: paddingBottom + paddingUnit,
+						paddingLeft: paddingLeft + paddingUnit,
+						paddingRight: paddingRight + paddingUnit,
+						boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+					}}
+				>
+					<div
+						className={`premium-container__content_wrap premium-container__${vPos}`}
+						style={{
+							maxWidth:
+								"boxed" == innerWidthType && stretchSection
+									? innerWidth
+										? innerWidth + "px"
+										: "1140px"
+									: "100%"
+						}}
+					>
+						<div className={`premium-container__content_inner`}>
+							<InnerBlocks.Content />
+						</div>
+					</div>
+				</div>
+			);
+		}
+	},
+
     {
         attributes: deprecated_attributes_1_8_2,
         migrate: (attributes) => {

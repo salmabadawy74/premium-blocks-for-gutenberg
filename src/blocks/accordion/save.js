@@ -60,6 +60,9 @@ const save = (props) => {
         descPaddingR,
         descPaddingB,
         descPaddingL,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames( className, 'premium-accordion' );
@@ -165,7 +168,7 @@ const save = (props) => {
         );
     } );
     return (
-        <div id={  accordionId} className={`${ mainClasses }  premium-accordion-${block_id}`}>
+        <div id={  accordionId} className={`${ mainClasses } ${hideDesktop} ${hideTablet} ${hideMobile} premium-accordion-${block_id}`}>
             {accordionItems}
         </div>
     );

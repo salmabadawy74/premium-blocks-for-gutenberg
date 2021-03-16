@@ -130,7 +130,23 @@ const containerAttrs = {
     shadowPosition: {
         type: "string",
         default: "",
-    },
+   
+	},
+	block_id: {
+		type:"string"
+	},
+	hideDesktop: {
+		type: "boolean",
+		default:false
+	},
+	hideTablet: {
+		type: 'boolean',
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
 };
 
 registerBlockType("premium/container", {

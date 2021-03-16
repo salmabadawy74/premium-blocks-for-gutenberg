@@ -66,6 +66,9 @@ const save = props => {
         counterFamily,
         prefixFamily,
         suffixFamily,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
 
@@ -74,7 +77,7 @@ const save = props => {
     return (
         <div
             id={`premium-countup-${ block_id }`}
-            className={`${ mainClasses }__wrap premium-countup-${block_id}`}
+            className={`${ mainClasses }__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,

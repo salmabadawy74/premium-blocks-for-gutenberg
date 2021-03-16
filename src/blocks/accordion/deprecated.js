@@ -612,14 +612,193 @@ const newAttributes_1_1 = {
     classMigrate: {
         type: 'boolean',
         default:false
-    }
+    },
+    hideDesktop: {
+		type: "boolean",
+		default:false
+	},
+	hideTablet: {
+		type: "boolean",
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
 }
 
 const deprecated_attributes_1_1 = Object.assign( deprecated_attributes_1_0, newAttributes_1_1 );
 
 const deprecated = [
+	{
+		attributes: deprecated_attributes_1_0_2,
+		migrate: attributes => {
+			let newAttributes = {
+				hideDesktop: false,
+				hideTablet: false,
+                hideMobile: false,
+                
+			}
+			 return Object.assign(attributes,newAttributes)
+		},
+        save: props => {
+			const {
+				accordionId,
+				repeaterItems,
+				direction,
+				titleTag,
+				titleSize,
+				titleLine,
+				titleLetter,
+				titleStyle,
+				titleUpper,
+				titleWeight,
+				titleColor,
+				titleBorder,
+				titleBorderColor,
+				titleBorderWidth,
+				titleBorderRadius,
+				titleBack,
+				titleShadowBlur,
+				titleShadowColor,
+				titleShadowHorizontal,
+				titleShadowVertical,
+				titlePaddingT,
+				titlePaddingR,
+				titlePaddingB,
+				titlePaddingL,
+				arrowColor,
+				arrowBack,
+				arrowPos,
+				arrowPadding,
+				arrowSize,
+				arrowRadius,
+				contentType,
+				descAlign,
+				descSize,
+				descLine,
+				descLetter,
+				descStyle,
+				descUpper,
+				descWeight,
+				descColor,
+				descBack,
+				descBorder,
+				descBorderColor,
+				descBorderRadius,
+				descBorderWidth,
+				textShadowBlur,
+				textShadowColor,
+				textShadowHorizontal,
+				textShadowVertical,
+				descPaddingT,
+				descPaddingR,
+				descPaddingB,
+				descPaddingL
+			} = props.attributes;
+
+			const accordionItems = repeaterItems.map((item, index) => {
+				return (
+					<div
+						id={`premium-accordion__layer${index}`}
+						className={`premium-accordion__content_wrap`}
+					>
+						<div
+							className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+							style={{
+								backgroundColor: titleBack,
+								border: titleBorder,
+								borderWidth: titleBorderWidth + "px",
+								borderRadius: titleBorderRadius + "px",
+								borderColor: titleBorderColor,
+								paddingTop: titlePaddingT,
+								paddingRight: titlePaddingR,
+								paddingBottom: titlePaddingB,
+								paddingLeft: titlePaddingL
+							}}
+						>
+							<div className={`premium-accordion__title`}>
+								<RichText.Content
+									tagName={titleTag.toLowerCase()}
+									className={`premium-accordion__title_text`}
+									value={item.titleText}
+									style={{
+										color: titleColor,
+										fontSize: titleSize + "px",
+										letterSpacing: titleLetter + "px",
+										textTransform: titleUpper ? "uppercase" : "none",
+										fontStyle: titleStyle,
+										fontWeight: titleWeight,
+										textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+										lineHeight: titleLine + "px"
+									}}
+								/>
+							</div>
+							<div className={`premium-accordion__icon_wrap`}>
+								<svg
+									className={`premium-accordion__icon premium-accordion__closed`}
+									role="img"
+									focusable="false"
+									xmlns="http://www.w3.org/2000/svg"
+									width={arrowSize}
+									height={arrowSize}
+									viewBox="0 0 20 20"
+									style={{
+										fill: arrowColor,
+										backgroundColor: arrowBack,
+										padding: arrowPadding + "px",
+										borderRadius: arrowRadius + "px"
+									}}
+								>
+									<polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+								</svg>
+							</div>
+						</div>
+						<div
+							className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+							style={{
+								textAlign: descAlign,
+								backgroundColor: descBack,
+								border: descBorder,
+								borderWidth: descBorderWidth + "px",
+								borderRadius: descBorderRadius + "px",
+								borderColor: descBorderColor,
+								paddingTop: descPaddingT,
+								paddingRight: descPaddingR,
+								paddingBottom: descPaddingB,
+								paddingLeft: descPaddingL
+							}}
+						>
+							{"text" === contentType && (
+								<RichText.Content
+									tagName="p"
+									className={`premium-accordion__desc`}
+									value={item.descText}
+									style={{
+										color: descColor,
+										fontSize: descSize + "px",
+										letterSpacing: descLetter + "px",
+										textTransform: descUpper ? "uppercase" : "none",
+										textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+										fontStyle: descStyle,
+										fontWeight: descWeight,
+										lineHeight: descLine + "px"
+									}}
+								/>
+							)}
+							{"block" === contentType && <InnerBlocks.Content />}
+						</div>
+					</div>
+				);
+			});
+			return (
+				<div id={accordionId} className={`${className}`}>
+					{accordionItems}
+				</div>
+			);
+		}
+	},
     {
-<<<<<<< HEAD
         attributes: deprecated_attributes_1_1,
         migrate: attributes => {
             let newAttributes = {
@@ -629,23 +808,17 @@ const deprecated = [
                 titleSizeMobile: '',
                 descSizeUnit: 'px',
                 descSizeTablet: '',
-                descSizeMobile:''
+                descSizeMobile: '',
+                titleOpacity: "",
+                arrowOpacity: "",
+                descOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile:false
             }
            return  Object.assign(attributes,newAttributes)
         },
         save: props => {
-=======
-        attributes: deprecated_attributes_1_3_4,
-        migrate: (attributes) => {
-            let newAttributes = {
-                titleOpacity: "",
-                arrowOpacity: "",
-                descOpacity: "",
-            };
-            return Object.assign(attributes, newAttributes);
-        },
-        save: (props) => {
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
             const {
                 accordionId,
                 repeaterItems,
@@ -698,15 +871,9 @@ const deprecated = [
                 descPaddingT,
                 descPaddingR,
                 descPaddingB,
-<<<<<<< HEAD
                 descPaddingL
             } = props.attributes;
         
-=======
-                descPaddingL,
-            } = props.attributes;
-
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
             const accordionItems = repeaterItems.map((item, index) => {
                 return (
                     <div
@@ -724,11 +891,7 @@ const deprecated = [
                                 paddingTop: titlePaddingT,
                                 paddingRight: titlePaddingR,
                                 paddingBottom: titlePaddingB,
-<<<<<<< HEAD
-                                paddingLeft: titlePaddingL
-=======
                                 paddingLeft: titlePaddingL,
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                             }}
                         >
                             <div className={`premium-accordion__title`}>
@@ -740,21 +903,11 @@ const deprecated = [
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         letterSpacing: titleLetter + "px",
-<<<<<<< HEAD
                                         textTransform: titleUpper ? "uppercase" : "none",
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
                                         textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                         lineHeight: titleLine + "px"
-=======
-                                        textTransform: titleUpper
-                                            ? "uppercase"
-                                            : "none",
-                                        fontStyle: titleStyle,
-                                        fontWeight: titleWeight,
-                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                        lineHeight: titleLine + "px",
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 />
                             </div>
@@ -771,11 +924,7 @@ const deprecated = [
                                         fill: arrowColor,
                                         backgroundColor: arrowBack,
                                         padding: arrowPadding + "px",
-<<<<<<< HEAD
-                                        borderRadius: arrowRadius + "px"
-=======
                                         borderRadius: arrowRadius + "px",
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 >
                                     <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -794,11 +943,7 @@ const deprecated = [
                                 paddingTop: descPaddingT,
                                 paddingRight: descPaddingR,
                                 paddingBottom: descPaddingB,
-<<<<<<< HEAD
-                                paddingLeft: descPaddingL
-=======
                                 paddingLeft: descPaddingL,
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                             }}
                         >
                             {"text" === contentType && (
@@ -810,13 +955,6 @@ const deprecated = [
                                         color: descColor,
                                         fontSize: descSize + "px",
                                         letterSpacing: descLetter + "px",
-<<<<<<< HEAD
-                                        textTransform: descUpper ? "uppercase" : "none",
-                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                        fontStyle: descStyle,
-                                        fontWeight: descWeight,
-                                        lineHeight: descLine + "px"
-=======
                                         textTransform: descUpper
                                             ? "uppercase"
                                             : "none",
@@ -824,7 +962,6 @@ const deprecated = [
                                         fontStyle: descStyle,
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 />
                             )}
@@ -838,11 +975,7 @@ const deprecated = [
                     {accordionItems}
                 </div>
             );
-<<<<<<< HEAD
-        }
-=======
         },
->>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
     },
     {
         attributes: deprecated_attributes,

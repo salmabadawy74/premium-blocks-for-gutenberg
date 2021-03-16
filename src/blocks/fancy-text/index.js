@@ -2,7 +2,7 @@ import { fancyText } from "../../../assets/js/settings";
 
 import save from "./save";
 import edit from "./edit";
-import deprecated from "./deprecated";
+import deprecated from './deprecated'
 import PbgIcon from "../icons";
 
 const { __ } = wp.i18n;
@@ -195,6 +195,18 @@ const fancyTextAttrs = {
         type: "string",
         default: "center",
     },
+    hideDesktop: {
+        type: 'boolean',
+        default:false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
+    }
 };
 
 registerBlockType("premium/fancy-text", {
@@ -207,6 +219,6 @@ registerBlockType("premium/fancy-text", {
     },
     example: {},
     edit: edit,
-    save: save,
-    deprecated: deprecated,
+	save: save,
+	deprecated:deprecated
 });

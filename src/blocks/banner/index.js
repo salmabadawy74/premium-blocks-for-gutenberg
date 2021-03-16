@@ -237,6 +237,19 @@ const bannerAttrs = {
     paddingU: {
         type: "string"
     },
+hideDesktop: {
+    type: 'boolean',
+    default:false
+},
+hideTablet: {
+    type: 'boolean',
+    default:false
+},
+hideMobile: {
+    type: 'boolean',
+
+    default:false
+},
     titleSizeMobile: {
         type:"number"
     },
@@ -245,6 +258,7 @@ const bannerAttrs = {
     },
     classMigrate: {
         type: "boolean",
+
         default:false
     }
 };

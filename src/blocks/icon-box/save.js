@@ -108,6 +108,9 @@ const save = (props) => {
         iconOpacity,
         btnOpacity,
         backOpacity,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-icon-box");
@@ -115,7 +118,7 @@ const save = (props) => {
     return (
         <div
             id={`premium-icon-box-${block_id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 border: borderType,

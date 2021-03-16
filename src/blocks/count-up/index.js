@@ -9,9 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const counterAttrs = {
-    block_id: {
-      type:'string'  
-    },
+	block_id: {
+		type:"string"
+	},
     increment: {
         type: "string",
         default: 500,
@@ -275,8 +275,20 @@ const counterAttrs = {
         type: "string",
     },
     suffixFamily: {
-        type: "string",
+        type: "string"
+	},
+	hideDesktop: {
+        type: 'boolean',
+        default:false
     },
+    hideTablet: {
+        type: 'boolean',
+        default:false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default:false
+    }
 };
 
 registerBlockType("premium/countup", {

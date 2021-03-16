@@ -6,7 +6,8 @@ const { InnerBlocks } = wp.blockEditor;
 const save = (props) => {
     const { className } = props;
 
-    const {
+	const {
+		block_id,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -41,13 +42,16 @@ const save = (props) => {
         shadowHorizontal,
         shadowVertical,
         shadowPosition,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-container");
+	const mainClasses = classnames( className, 'premium-container' );
 
     return (
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight:

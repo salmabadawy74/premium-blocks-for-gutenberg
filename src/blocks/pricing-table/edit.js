@@ -7,6 +7,7 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling'
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const {__} = wp.i18n;
 
@@ -220,6 +221,9 @@ class PremiumPricingTable extends Component {
             badgeTextSizeTablet,
             priceOpacity,
             tableOpacity,
+            hideDesktop,
+			hideTablet,
+			hideMobile
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -1645,12 +1649,20 @@ class PremiumPricingTable extends Component {
                                 )}
                             />
                         </div>
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 id={`premium-pricing-table-${block_id}`}
-                className={`${mainClasses} premium-pricing-table-${block_id}`}
+                className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: contentAlign,
                     backgroundColor: tableBack

@@ -14,6 +14,7 @@ import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const {__} = wp.i18n;
 
@@ -173,7 +174,10 @@ class edit extends Component {
             hoverShadowColor,
             hoverShadowHorizontal,
             hoverShadowVertical,
-            hoverShadowPosition
+            hoverShadowPosition,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = attributes;
 
         const imgIcon = [
@@ -1089,6 +1093,14 @@ class edit extends Component {
                             }}
                         </TabPanel>
                     </PanelBody>
+                    <PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div

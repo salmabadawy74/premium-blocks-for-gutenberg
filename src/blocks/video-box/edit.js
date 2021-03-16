@@ -10,6 +10,8 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+
 
 const {
     PanelBody,
@@ -163,7 +165,10 @@ class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
-            shadowPosition,
+			shadowPosition,
+			hideDesktop,
+			hideTablet,
+			hideMobile
         } = this.props.attributes;
 
         const TYPE = [
@@ -827,20 +832,28 @@ class edit extends Component {
                                 })
                             }
                         />
-                    </PanelBody>
+					</PanelBody>
+					<PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id}`}
+                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-type={videoType}
                 style={{
                     border: boxBorderType,
                     borderWidth: boxBorderWidth + "px",
                     borderRadius: boxBorderRadius + "px",
                     borderColor: boxBorderColor,
-                    boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                }}
+                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+				}}
             >
                 <style
                     dangerouslySetInnerHTML={{

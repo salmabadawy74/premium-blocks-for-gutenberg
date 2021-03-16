@@ -70,17 +70,20 @@ const save = (props) => {
         firstOpacity,
         secondOpacity,
         containerOpacity,
+        hideDesktop,
+		hideTablet,
+		hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
-    );
+	);
 
     return (
         <div
         id={`premium-dheading-block-${ block_id }`}
-            className={`${mainClasses} premium-dheading-${ block_id }`}
+            className={`${mainClasses} premium-dheading-${ block_id } ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: containerBack
@@ -94,8 +97,8 @@ const save = (props) => {
                 border: containerBorderType,
                 borderWidth: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
-                borderColor: containerBorderColor,
-            }}
+                borderColor: containerBorderColor
+			}}
         >
             <div className={`premium-dheading-block__wrap`}>
                 <h2 className={`premium-dheading-block__title`}>

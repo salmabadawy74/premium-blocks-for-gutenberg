@@ -7,6 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const {__} = wp.i18n;
 

@@ -8,6 +8,7 @@ import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const {__} = wp.i18n;
 
@@ -89,7 +90,10 @@ export default class edit extends Component {
             btnShadowColor,
             btnShadowHorizontal,
             btnShadowVertical,
-            btnShadowPosition
+            btnShadowPosition,
+            hideDesktop,
+        hideTablet,
+        hideMobile
         } = this.props.attributes;
 
         const SIZE = [
@@ -524,11 +528,19 @@ export default class edit extends Component {
                             onChange={newValue => setAttributes( { padding: newValue } )}
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
             <div
                 id={`premium-button-wrap-${ block_id }`}
-                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${block_id}`}
+                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{ textAlign: btnAlign }}
             >
                 <style

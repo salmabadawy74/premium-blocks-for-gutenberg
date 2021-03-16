@@ -6,6 +6,7 @@ import FONTS from "../../components/premium-fonts";
 import styling from './styling';
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 
 const {__} = wp.i18n;
@@ -126,7 +127,10 @@ class edit extends Component {
             containerBorderType,
             containerBorderWidth,
             containerBorderRadius,
-            containerBorderColor
+            containerBorderColor,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const DISPLAY = [
@@ -718,12 +722,20 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+					Desktop={hideDesktop}
+					Tablet={hideTablet}
+					Mobile={hideMobile}
+					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
+					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
+					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
+				/>
                 </InspectorControls>
             ),
 
             <div
                 id={`premium-dheading-block-${ block_id }`}
-                className={`${ mainClasses } premium-dheading-${ block_id }`}
+                className={`${ mainClasses } premium-dheading-${ block_id } ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: contentAlign,
                     backgroundColor: containerBack,
