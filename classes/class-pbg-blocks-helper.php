@@ -746,7 +746,7 @@ class PBG_Blocks_Helper {
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#premium-accordion-';
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#block-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 

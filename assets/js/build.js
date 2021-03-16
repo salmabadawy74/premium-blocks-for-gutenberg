@@ -5813,6 +5813,7 @@ var PremiumAccordion = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
+
             setAttributes({ block_id: clientId });
             if (!attributes.accordionId) {
                 this.props.setAttributes({ accordionId: "premium-accordion-" + clientId });
@@ -11575,9 +11576,9 @@ function styling(props) {
     };
 
     var styling_css = "";
-    var id = '.premium-accordion-' + block_id;
+    var id = '#' + accordionId;
     if (classMigrate) {
-        id = '#premium-accordion-' + block_id;
+        id = '.premium-accordion-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -36399,7 +36400,7 @@ function styling(props) {
 
     selectors = {
         "  .premium-icon-box__title": {
-            "font-size": titleSize + titleSizeUnit
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
@@ -37815,7 +37816,7 @@ var deprecatedContent = [{
             descSizeUnit: 'px',
             descSizeTablet: '',
             descSizeMobile: '',
-            btnSizeUnit: '',
+            btnSizeUnit: 'px',
             btnSizeTablet: '',
             btnSizeMobile: ''
         };

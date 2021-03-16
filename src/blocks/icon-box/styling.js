@@ -25,7 +25,7 @@ function styling ( props ) {
 
     selectors = {
         "  .premium-icon-box__title": {
-            "font-size": titleSize + titleSizeUnit
+            "font-size": generateCSSUnit( titleSize,titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": generateCSSUnit( descSize, descSizeUnit )

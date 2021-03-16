@@ -35,6 +35,7 @@ class PremiumAccordion extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
+        
         setAttributes({block_id:clientId})
         if (!attributes.accordionId) {
             this.props.setAttributes({ accordionId: "premium-accordion-" +clientId });

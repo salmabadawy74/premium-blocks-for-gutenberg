@@ -49,9 +49,9 @@ function styling ( props ) {
     }
 
     var styling_css = ""
-    var id = `.premium-accordion-${block_id}`
+    var id = `#${accordionId}`
     if (classMigrate) {
-        id = `#premium-accordion-${block_id}`
+        id = `.premium-accordion-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)

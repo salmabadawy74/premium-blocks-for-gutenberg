@@ -1115,7 +1115,7 @@ const deprecatedContent = [
                 descSizeUnit: 'px',
                 descSizeTablet: '',
                 descSizeMobile: '',
-                btnSizeUnit: '',
+                btnSizeUnit: 'px',
                 btnSizeTablet: '',
                 btnSizeMobile:''
             }
