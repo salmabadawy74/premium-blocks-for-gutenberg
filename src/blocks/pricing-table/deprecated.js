@@ -7,450 +7,912 @@ const { RichText } = wp.editor;
 const pricingAttrs_1_6_3 = {
     contentAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     tableBack: {
-        type: "string"
+        type: "string",
     },
     borderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     borderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     borderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     borderColor: {
-        type: "string"
+        type: "string",
     },
     tablePadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     tableShadowColor: {
-        type: "string"
+        type: "string",
     },
     tableShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     tableShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     tableShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     tableShadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
     title: {
         type: "array",
         source: "children",
         selector: ".premium-pricing-table__title",
-        default: "Pricing Table"
+        default: "Pricing Table",
     },
     titleTag: {
         type: "string",
-        default: "H2"
+        default: "H2",
     },
     titleColor: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     titleSize: {
-        type: "number"
+        type: "number",
     },
     titleLine: {
-        type: "number"
+        type: "number",
     },
     titleLetter: {
-        type: "number"
+        type: "number",
     },
     titleStyle: {
-        type: "string"
+        type: "string",
     },
     titleUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     titleWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     titleShadowColor: {
-        type: "string"
+        type: "string",
     },
     titleShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleBack: {
-        type: "string"
+        type: "string",
     },
     titleMarginB: {
         type: "number",
-        default: 20
+        default: 20,
     },
     titleMarginT: {
         type: "number",
-        default: 20
+        default: 20,
     },
     titlePadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     desc: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__desc"
+        selector: ".premium-pricing-table__desc",
     },
     descColor: {
         type: "string",
-        default: "#000"
+        default: "#000",
     },
     descSize: {
-        type: "number"
+        type: "number",
     },
     descWeight: {
-        type: "number"
+        type: "number",
     },
     descLetter: {
-        type: "number"
+        type: "number",
     },
     descStyle: {
-        type: "string"
+        type: "string",
     },
     descLine: {
-        type: "number"
+        type: "number",
     },
     descBack: {
-        type: "string"
+        type: "string",
     },
     descMarginT: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descMarginB: {
         type: "number",
-        default: "30"
+        default: "30",
     },
     descPadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     descChecked: {
         type: "boolean",
-        default: false
+        default: false,
     },
     priceChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     priceBack: {
-        type: "string"
+        type: "string",
     },
     priceMarginT: {
-        type: "number"
+        type: "number",
     },
     priceMarginB: {
         type: "number",
-        default: 10
+        default: 10,
     },
     pricePadding: {
-        type: "number"
+        type: "number",
     },
     slashPrice: {
-        type: "string"
+        type: "string",
     },
     slashColor: {
-        type: "string"
+        type: "string",
     },
     slashSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     slashWeight: {
-        type: "number"
+        type: "number",
     },
     currPrice: {
         type: "string",
-        default: "$"
+        default: "$",
     },
     currColor: {
-        type: "string"
+        type: "string",
     },
     currSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     currWeight: {
-        type: "number"
+        type: "number",
     },
     valPrice: {
         type: "string",
-        default: "25"
+        default: "25",
     },
     valColor: {
-        type: "string"
+        type: "string",
     },
     valSize: {
         type: "number",
-        default: 50
+        default: 50,
     },
     valWeight: {
-        type: "number"
+        type: "number",
     },
     divPrice: {
         type: "string",
-        default: "/"
+        default: "/",
     },
     divColor: {
-        type: "string"
+        type: "string",
     },
     divSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     divWeight: {
-        type: "number"
+        type: "number",
     },
     durPrice: {
         type: "string",
-        default: "m"
+        default: "m",
     },
     durColor: {
-        type: "string"
+        type: "string",
     },
     durSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     durWeight: {
-        type: "number"
+        type: "number",
     },
     selectedStyle: {
         type: "string",
-        default: "price"
+        default: "price",
     },
     btnChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     btnText: {
         type: "string",
-        default: "Get Started"
+        default: "Get Started",
     },
     btnLink: {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-pricing-table__button_link"
+        selector: ".premium-pricing-table__button_link",
     },
     btnTarget: {
         type: "boolean",
-        default: true
+        default: true,
     },
     btnColor: {
         type: "string",
-        default: "#fff"
+        default: "#fff",
     },
     btnHoverColor: {
-        type: "string"
+        type: "string",
     },
     btnWidth: {
-        type: "number"
+        type: "number",
     },
     btnSize: {
-        type: "number"
+        type: "number",
     },
     btnWeight: {
         type: "number",
-        default: 900
+        default: 900,
     },
     btnLine: {
-        type: "number"
+        type: "number",
     },
     btnLetter: {
-        type: "number"
+        type: "number",
     },
     btnStyle: {
-        type: "string"
+        type: "string",
     },
     btnUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     btnBack: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     btnHoverBack: {
-        type: "string"
+        type: "string",
     },
     btnMarginT: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnMarginB: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnPadding: {
         type: "number",
-        default: 10
+        default: 10,
     },
     btnPaddingU: {
-        type: "string"
+        type: "string",
     },
     btnBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     btnBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     btnBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnBorderColor: {
-        type: "string"
+        type: "string",
     },
     badgeChecked: {
-        type: "boolean"
+        type: "boolean",
     },
     badgePos: {
         type: "string",
-        default: "right"
+        default: "right",
     },
     badgeBack: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     badgeColor: {
-        type: "string"
+        type: "string",
     },
     badgeTextSize: {
-        type: "number"
+        type: "number",
     },
     badgeSize: {
-        type: "number"
+        type: "number",
     },
     badgeTop: {
-        type: "number"
+        type: "number",
     },
     badgeHorizontal: {
-        type: "number"
+        type: "number",
     },
     badgeWidth: {
-        type: "number"
+        type: "number",
     },
     badgeWeight: {
         type: "number",
-        default: 900
+        default: 900,
     },
     badgeLetter: {
-        type: "number"
+        type: "number",
     },
     badgeStyle: {
-        type: "string"
+        type: "string",
     },
     badgeUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     badgeText: {
         type: "string",
-        default: __("Popular")
+        default: __("Popular"),
     },
     listChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     listColor: {
-        type: "string"
+        type: "string",
     },
     listSize: {
-        type: "number"
+        type: "number",
     },
     listWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     listItemsStyle: {
-        type: "string"
+        type: "string",
     },
     listLetter: {
-        type: "number"
+        type: "number",
     },
     listLine: {
-        type: "number"
+        type: "number",
     },
     listUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     listBack: {
-        type: "string"
+        type: "string",
     },
     listItems: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__list"
+        selector: ".premium-pricing-table__list",
     },
     listMarginB: {
         type: "number",
-        default: 20
+        default: 20,
     },
     listMarginT: {
-        type: "number"
+        type: "number",
     },
     listPadding: {
-        type: "number"
+        type: "number",
     },
     listStyle: {
         type: "string",
-        default: "disc"
+        default: "disc",
     },
     slashV: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     currV: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     valV: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     divV: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     durV: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     id: {
-        type: "string"
-    }
+        type: "string",
+    },
+};
+const pricingAttrs_1_8_2 = {
+    contentAlign: {
+        type: "string",
+        default: "center",
+    },
+    tableBack: {
+        type: "string",
+    },
+    borderType: {
+        type: "string",
+        default: "none",
+    },
+    borderWidth: {
+        type: "number",
+        default: "1",
+    },
+    borderRadius: {
+        type: "number",
+        default: "0",
+    },
+    borderColor: {
+        type: "string",
+    },
+    tablePadding: {
+        type: "number",
+        default: "0",
+    },
+    tableShadowColor: {
+        type: "string",
+    },
+    tableShadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    tableShadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    tableShadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    tableShadowPosition: {
+        type: "string",
+        default: "",
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table",
+    },
+    titleTag: {
+        type: "string",
+        default: "H2",
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4",
+    },
+    titleSize: {
+        type: "number",
+    },
+    titleLine: {
+        type: "number",
+    },
+    titleLetter: {
+        type: "number",
+    },
+    titleStyle: {
+        type: "string",
+    },
+    titleUpper: {
+        type: "boolean",
+    },
+    titleWeight: {
+        type: "number",
+        default: 500,
+    },
+    titleShadowColor: {
+        type: "string",
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    titleBack: {
+        type: "string",
+    },
+    titleMarginB: {
+        type: "number",
+        default: 20,
+    },
+    titleMarginT: {
+        type: "number",
+        default: 20,
+    },
+    titlePadding: {
+        type: "number",
+        default: "0",
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc",
+    },
+    descColor: {
+        type: "string",
+        default: "#000",
+    },
+    descSize: {
+        type: "number",
+    },
+    descWeight: {
+        type: "number",
+    },
+    descLetter: {
+        type: "number",
+    },
+    descStyle: {
+        type: "string",
+    },
+    descLine: {
+        type: "number",
+    },
+    descBack: {
+        type: "string",
+    },
+    descMarginT: {
+        type: "number",
+        default: "0",
+    },
+    descMarginB: {
+        type: "number",
+        default: "30",
+    },
+    descPadding: {
+        type: "number",
+        default: "0",
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true,
+    },
+    descChecked: {
+        type: "boolean",
+        default: false,
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true,
+    },
+    priceBack: {
+        type: "string",
+    },
+    priceMarginT: {
+        type: "number",
+    },
+    priceMarginB: {
+        type: "number",
+        default: 10,
+    },
+    pricePadding: {
+        type: "number",
+    },
+    slashPrice: {
+        type: "string",
+    },
+    slashColor: {
+        type: "string",
+    },
+    slashSize: {
+        type: "number",
+        default: 20,
+    },
+    slashWeight: {
+        type: "number",
+    },
+    currPrice: {
+        type: "string",
+        default: "$",
+    },
+    currColor: {
+        type: "string",
+    },
+    currSize: {
+        type: "number",
+        default: 20,
+    },
+    currWeight: {
+        type: "number",
+    },
+    valPrice: {
+        type: "string",
+        default: "25",
+    },
+    valColor: {
+        type: "string",
+    },
+    valSize: {
+        type: "number",
+        default: 50,
+    },
+    valWeight: {
+        type: "number",
+    },
+    divPrice: {
+        type: "string",
+        default: "/",
+    },
+    divColor: {
+        type: "string",
+    },
+    divSize: {
+        type: "number",
+        default: 20,
+    },
+    divWeight: {
+        type: "number",
+    },
+    durPrice: {
+        type: "string",
+        default: "m",
+    },
+    durColor: {
+        type: "string",
+    },
+    durSize: {
+        type: "number",
+        default: 20,
+    },
+    durWeight: {
+        type: "number",
+    },
+    selectedStyle: {
+        type: "string",
+        default: "price",
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true,
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started",
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link",
+    },
+    btnTarget: {
+        type: "boolean",
+        default: true,
+    },
+    btnColor: {
+        type: "string",
+        default: "#fff",
+    },
+    btnHoverColor: {
+        type: "string",
+    },
+    btnWidth: {
+        type: "number",
+    },
+    btnSize: {
+        type: "number",
+    },
+    btnWeight: {
+        type: "number",
+        default: 900,
+    },
+    btnLine: {
+        type: "number",
+    },
+    btnLetter: {
+        type: "number",
+    },
+    btnStyle: {
+        type: "string",
+    },
+    btnUpper: {
+        type: "boolean",
+    },
+    btnBack: {
+        type: "string",
+        default: "#6ec1e4",
+    },
+    btnHoverBack: {
+        type: "string",
+    },
+    btnMarginT: {
+        type: "number",
+        default: "0",
+    },
+    btnMarginB: {
+        type: "number",
+        default: "0",
+    },
+    btnPadding: {
+        type: "number",
+        default: 10,
+    },
+    btnPaddingU: {
+        type: "string",
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none",
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    btnBorderRadius: {
+        type: "number",
+        default: "0",
+    },
+    btnBorderColor: {
+        type: "string",
+    },
+    badgeChecked: {
+        type: "boolean",
+    },
+    badgePos: {
+        type: "string",
+        default: "right",
+    },
+    badgeBack: {
+        type: "string",
+        default: "#6ec1e4",
+    },
+    badgeColor: {
+        type: "string",
+    },
+    badgeTextSize: {
+        type: "number",
+    },
+    badgeSize: {
+        type: "number",
+    },
+    badgeTop: {
+        type: "number",
+    },
+    badgeHorizontal: {
+        type: "number",
+    },
+    badgeWidth: {
+        type: "number",
+    },
+    badgeWeight: {
+        type: "number",
+        default: 900,
+    },
+    badgeLetter: {
+        type: "number",
+    },
+    badgeStyle: {
+        type: "string",
+    },
+    badgeUpper: {
+        type: "boolean",
+    },
+    badgeText: {
+        type: "string",
+        default: __("Popular"),
+    },
+    listChecked: {
+        type: "boolean",
+        default: true,
+    },
+    listColor: {
+        type: "string",
+    },
+    listSize: {
+        type: "number",
+    },
+    listWeight: {
+        type: "number",
+        default: 500,
+    },
+    listItemsStyle: {
+        type: "string",
+    },
+    listLetter: {
+        type: "number",
+    },
+    listLine: {
+        type: "number",
+    },
+    listUpper: {
+        type: "boolean",
+    },
+    listBack: {
+        type: "string",
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list",
+    },
+    listMarginB: {
+        type: "number",
+        default: 20,
+    },
+    listMarginT: {
+        type: "number",
+    },
+    listPadding: {
+        type: "number",
+    },
+    listStyle: {
+        type: "string",
+        default: "disc",
+    },
+    featsAlign: {
+        type: "string",
+    },
+    slashV: {
+        type: "string",
+        default: "center",
+    },
+    currV: {
+        type: "string",
+        default: "center",
+    },
+    valV: {
+        type: "string",
+        default: "center",
+    },
+    divV: {
+        type: "string",
+        default: "center",
+    },
+    durV: {
+        type: "string",
+        default: "center",
+    },
+    id: {
+        type: "string",
+    },
+};
+
+const newAttributes_1_9_4 = {
+    tableOpacity: {
+        type: "number",
+        default: "1",
+    },
+    priceOpacity: {
+        type: "number",
+        default: "1",
+    },
 };
 
 const pricingAttrs_1_8_1 = {
@@ -1054,7 +1516,9 @@ const deprecatedContent = [
                 listSizeTablet: '',
                 slashSizeUnit: 'px',
                 slashSizeMobile: '',
-                slashSizeTablet:''
+                slashSizeTablet: '',
+                tableOpacity: "",
+                priceOpacity: "",
             }
             return Object.assign( newAttributes, attributes );
         },
@@ -1465,10 +1929,10 @@ const deprecatedContent = [
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: attributes => {
+        migrate: (attributes) => {
             return Object.assign(attributes, { featsAlign: "" });
         },
-        save: props => {
+        save: (props) => {
             const {
                 contentAlign,
                 tableBack,
@@ -1593,7 +2057,7 @@ const deprecatedContent = [
                 listMarginT,
                 listPadding,
                 listStyle,
-                id
+                id,
             } = props.attributes;
             return (
                 <div
@@ -1607,7 +2071,7 @@ const deprecatedContent = [
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
                         padding: tablePadding + "px",
-                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
+                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
                     }}
                 >
                     {badgeChecked && (
@@ -1618,15 +2082,23 @@ const deprecatedContent = [
                                 className={`${className}__badge`}
                                 style={{
                                     borderRightColor:
-                                        "right" === badgePos ? badgeBack : "transparent",
+                                        "right" === badgePos
+                                            ? badgeBack
+                                            : "transparent",
                                     borderTopColor:
-                                        "left" === badgePos ? badgeBack : "transparent",
+                                        "left" === badgePos
+                                            ? badgeBack
+                                            : "transparent",
                                     borderBottomWidth: badgeSize + "px",
                                     borderRightWidth: badgeSize + "px",
                                     borderTopWidth:
-                                        "left" === badgePos ? badgeSize + "px" : "none",
+                                        "left" === badgePos
+                                            ? badgeSize + "px"
+                                            : "none",
                                     borderLeftWidth:
-                                        "right" === badgePos ? badgeSize + "px" : "none"
+                                        "right" === badgePos
+                                            ? badgeSize + "px"
+                                            : "none",
                                 }}
                             >
                                 <span
@@ -1634,14 +2106,21 @@ const deprecatedContent = [
                                         fontSize: badgeTextSize + "px",
                                         color: badgeColor,
                                         fontWeight: badgeWeight,
-                                        textTransform: badgeUpper ? "uppercase" : "none",
+                                        textTransform: badgeUpper
+                                            ? "uppercase"
+                                            : "none",
                                         letterSpacing: badgeLetter + "px",
                                         fontStyle: badgeStyle,
                                         width: badgeWidth + "px",
                                         top: badgeTop + "px",
-                                        left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                                        left:
+                                            "left" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto",
                                         right:
-                                            "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                                            "right" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto",
                                     }}
                                 >
                                     {badgeText}
@@ -1654,7 +2133,7 @@ const deprecatedContent = [
                             className={`${className}__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
-                                paddingBottom: titleMarginB + "px"
+                                paddingBottom: titleMarginB + "px",
                             }}
                         >
                             <RichText.Content
@@ -1666,13 +2145,15 @@ const deprecatedContent = [
                                     background: titleBack,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    textTransform: titleUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 }}
                             />
                         </div>
@@ -1685,7 +2166,7 @@ const deprecatedContent = [
                                 marginTop: priceMarginT + "px",
                                 marginBottom: priceMarginB + "px",
                                 padding: pricePadding + "px",
-                                justifyContent: contentAlign
+                                justifyContent: contentAlign,
                             }}
                         >
                             {slashPrice && (
@@ -1695,7 +2176,7 @@ const deprecatedContent = [
                                         color: slashColor,
                                         fontSize: slashSize + "px",
                                         fontWeight: slashWeight,
-                                        alignSelf: slashV
+                                        alignSelf: slashV,
                                     }}
                                 >
                                     {slashPrice}
@@ -1708,7 +2189,7 @@ const deprecatedContent = [
                                         color: currColor,
                                         fontSize: currSize + "px",
                                         fontWeight: currWeight,
-                                        alignSelf: currV
+                                        alignSelf: currV,
                                     }}
                                 >
                                     {currPrice}
@@ -1721,7 +2202,7 @@ const deprecatedContent = [
                                         color: valColor,
                                         fontSize: valSize + "px",
                                         fontWeight: valWeight,
-                                        alignSelf: valV
+                                        alignSelf: valV,
                                     }}
                                 >
                                     {valPrice}
@@ -1734,7 +2215,7 @@ const deprecatedContent = [
                                         color: divColor,
                                         fontSize: divSize + "px",
                                         fontWeight: divWeight,
-                                        alignSelf: divV
+                                        alignSelf: divV,
                                     }}
                                 >
                                     {divPrice}
@@ -1747,7 +2228,7 @@ const deprecatedContent = [
                                         color: durColor,
                                         fontSize: durSize + "px",
                                         fontWeight: durWeight,
-                                        alignSelf: durV
+                                        alignSelf: durV,
                                     }}
                                 >
                                     {durPrice}
@@ -1760,7 +2241,7 @@ const deprecatedContent = [
                             className={`${className}__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
-                                marginBottom: listMarginB + "px"
+                                marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
@@ -1770,13 +2251,18 @@ const deprecatedContent = [
                                     fontSize: listSize + "px",
                                     background: listBack,
                                     padding: listPadding + "px",
-                                    listStyle: "check" !== listStyle ? listStyle : "none",
+                                    listStyle:
+                                        "check" !== listStyle
+                                            ? listStyle
+                                            : "none",
                                     listStylePosition: "inside",
                                     fontWeight: listWeight,
                                     letterSpacing: listLetter + "px",
-                                    textTransform: listUpper ? "uppercase" : "none",
+                                    textTransform: listUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: listItemsStyle,
-                                    lineHeight: listLine + "px"
+                                    lineHeight: listLine + "px",
                                 }}
                             >
                                 {listItems}
@@ -1799,7 +2285,7 @@ const deprecatedContent = [
                                     fontStyle: descStyle,
                                     marginTop: descMarginT + "px",
                                     marginBottom: descMarginB + "px",
-                                    padding: descPadding + "px"
+                                    padding: descPadding + "px",
                                 }}
                             />
                         </div>
@@ -1808,7 +2294,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__button`}
                             style={{
-                                width: btnWidth + "%"
+                                width: btnWidth + "%",
                             }}
                         >
                             <a
@@ -1818,7 +2304,9 @@ const deprecatedContent = [
                                 rel="noopener noreferrer"
                                 style={{
                                     color: btnColor,
-                                    background: btnBack ? btnBack : "transparent",
+                                    background: btnBack
+                                        ? btnBack
+                                        : "transparent",
                                     fontSize: btnSize + "px",
                                     fontWeight: btnWeight,
                                     letterSpacing: btnLetter + "px",
@@ -1830,15 +2318,19 @@ const deprecatedContent = [
                                     border: btnBorderType,
                                     borderWidth: btnBorderWidth + "px",
                                     borderRadius: btnBorderRadius + "px",
-                                    borderColor: btnBorderColor
+                                    borderColor: btnBorderColor,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={newText => setAttributes({ btnText: newText })}
+                                    onChange={(newText) =>
+                                        setAttributes({ btnText: newText })
+                                    }
                                     value={btnText}
                                     style={{
-                                        textTransform: btnUpper ? "uppercase" : "none"
+                                        textTransform: btnUpper
+                                            ? "uppercase"
+                                            : "none",
                                     }}
                                 />
                             </a>
@@ -1848,22 +2340,22 @@ const deprecatedContent = [
                                         `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
                                         `color: ${btnHoverColor} !important;`,
                                         `background: ${btnHoverBack} !important`,
-                                        "}"
-                                    ].join("\n")
+                                        "}",
+                                    ].join("\n"),
                                 }}
                             />
                         </div>
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: attributes => {
+        migrate: (attributes) => {
             return Object.assign(attributes, { btnPaddingU: "" });
         },
-        save: props => {
+        save: (props) => {
             const {
                 contentAlign,
                 tableBack,
@@ -1982,7 +2474,7 @@ const deprecatedContent = [
                 listMarginT,
                 listPadding,
                 listStyle,
-                id
+                id,
             } = props.attributes;
             return (
                 <div
@@ -1995,7 +2487,7 @@ const deprecatedContent = [
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
-                        padding: tablePadding + "px"
+                        padding: tablePadding + "px",
                     }}
                 >
                     {badgeChecked && (
@@ -2006,15 +2498,23 @@ const deprecatedContent = [
                                 className={`${className}__badge`}
                                 style={{
                                     borderRightColor:
-                                        "right" === badgePos ? badgeBack : "transparent",
+                                        "right" === badgePos
+                                            ? badgeBack
+                                            : "transparent",
                                     borderTopColor:
-                                        "left" === badgePos ? badgeBack : "transparent",
+                                        "left" === badgePos
+                                            ? badgeBack
+                                            : "transparent",
                                     borderBottomWidth: badgeSize + "px",
                                     borderRightWidth: badgeSize + "px",
                                     borderTopWidth:
-                                        "left" === badgePos ? badgeSize + "px" : "none",
+                                        "left" === badgePos
+                                            ? badgeSize + "px"
+                                            : "none",
                                     borderLeftWidth:
-                                        "right" === badgePos ? badgeSize + "px" : "none"
+                                        "right" === badgePos
+                                            ? badgeSize + "px"
+                                            : "none",
                                 }}
                             >
                                 <span
@@ -2022,14 +2522,21 @@ const deprecatedContent = [
                                         fontSize: badgeTextSize + "px",
                                         color: badgeColor,
                                         fontWeight: badgeWeight,
-                                        textTransform: badgeUpper ? "uppercase" : "none",
+                                        textTransform: badgeUpper
+                                            ? "uppercase"
+                                            : "none",
                                         letterSpacing: badgeLetter + "px",
                                         fontStyle: badgeStyle,
                                         width: badgeWidth + "px",
                                         top: badgeTop + "px",
-                                        left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                                        left:
+                                            "left" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto",
                                         right:
-                                            "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                                            "right" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto",
                                     }}
                                 >
                                     {badgeText}
@@ -2042,7 +2549,7 @@ const deprecatedContent = [
                             className={`${className}__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
-                                paddingBottom: titleMarginB + "px"
+                                paddingBottom: titleMarginB + "px",
                             }}
                         >
                             <RichText.Content
@@ -2054,13 +2561,15 @@ const deprecatedContent = [
                                     background: titleBack,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    textTransform: titleUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 }}
                             />
                         </div>
@@ -2073,7 +2582,7 @@ const deprecatedContent = [
                                 marginTop: priceMarginT + "px",
                                 marginBottom: priceMarginB + "px",
                                 padding: pricePadding + "px",
-                                justifyContent: contentAlign
+                                justifyContent: contentAlign,
                             }}
                         >
                             {slashPrice && (
@@ -2083,7 +2592,7 @@ const deprecatedContent = [
                                         color: slashColor,
                                         fontSize: slashSize + "px",
                                         fontWeight: slashWeight,
-                                        alignSelf: slashV
+                                        alignSelf: slashV,
                                     }}
                                 >
                                     {slashPrice}
@@ -2096,7 +2605,7 @@ const deprecatedContent = [
                                         color: currColor,
                                         fontSize: currSize + "px",
                                         fontWeight: currWeight,
-                                        alignSelf: currV
+                                        alignSelf: currV,
                                     }}
                                 >
                                     {currPrice}
@@ -2109,7 +2618,7 @@ const deprecatedContent = [
                                         color: valColor,
                                         fontSize: valSize + "px",
                                         fontWeight: valWeight,
-                                        alignSelf: valV
+                                        alignSelf: valV,
                                     }}
                                 >
                                     {valPrice}
@@ -2122,7 +2631,7 @@ const deprecatedContent = [
                                         color: divColor,
                                         fontSize: divSize + "px",
                                         fontWeight: divWeight,
-                                        alignSelf: divV
+                                        alignSelf: divV,
                                     }}
                                 >
                                     {divPrice}
@@ -2135,7 +2644,7 @@ const deprecatedContent = [
                                         color: durColor,
                                         fontSize: durSize + "px",
                                         fontWeight: durWeight,
-                                        alignSelf: durV
+                                        alignSelf: durV,
                                     }}
                                 >
                                     {durPrice}
@@ -2148,7 +2657,7 @@ const deprecatedContent = [
                             className={`${className}__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
-                                marginBottom: listMarginB + "px"
+                                marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
@@ -2158,13 +2667,18 @@ const deprecatedContent = [
                                     fontSize: listSize + "px",
                                     background: listBack,
                                     padding: listPadding + "px",
-                                    listStyle: "check" !== listStyle ? listStyle : "none",
+                                    listStyle:
+                                        "check" !== listStyle
+                                            ? listStyle
+                                            : "none",
                                     listStylePosition: "inside",
                                     fontWeight: listWeight,
                                     letterSpacing: listLetter + "px",
-                                    textTransform: listUpper ? "uppercase" : "none",
+                                    textTransform: listUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: listItemsStyle,
-                                    lineHeight: listLine + "px"
+                                    lineHeight: listLine + "px",
                                 }}
                             >
                                 {listItems}
@@ -2187,7 +2701,7 @@ const deprecatedContent = [
                                     fontStyle: descStyle,
                                     marginTop: descMarginT + "px",
                                     marginBottom: descMarginB + "px",
-                                    padding: descPadding + "px"
+                                    padding: descPadding + "px",
                                 }}
                             />
                         </div>
@@ -2196,7 +2710,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__button`}
                             style={{
-                                width: btnWidth + "%"
+                                width: btnWidth + "%",
                             }}
                         >
                             <a
@@ -2205,7 +2719,9 @@ const deprecatedContent = [
                                 target={btnTarget ? "_blank" : "_self"}
                                 style={{
                                     color: btnColor,
-                                    background: btnBack ? btnBack : "transparent",
+                                    background: btnBack
+                                        ? btnBack
+                                        : "transparent",
                                     fontSize: btnSize + "px",
                                     fontWeight: btnWeight,
                                     letterSpacing: btnLetter + "px",
@@ -2217,15 +2733,19 @@ const deprecatedContent = [
                                     border: btnBorderType,
                                     borderWidth: btnBorderWidth + "px",
                                     borderRadius: btnBorderRadius + "px",
-                                    borderColor: btnBorderColor
+                                    borderColor: btnBorderColor,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={newText => setAttributes({ btnText: newText })}
+                                    onChange={(newText) =>
+                                        setAttributes({ btnText: newText })
+                                    }
                                     value={btnText}
                                     style={{
-                                        textTransform: btnUpper ? "uppercase" : "none"
+                                        textTransform: btnUpper
+                                            ? "uppercase"
+                                            : "none",
                                     }}
                                 />
                             </a>
@@ -2235,16 +2755,16 @@ const deprecatedContent = [
                                         `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
                                         `color: ${btnHoverColor} !important;`,
                                         `background: ${btnHoverBack} !important`,
-                                        "}"
-                                    ].join("\n")
+                                        "}",
+                                    ].join("\n"),
                                 }}
                             />
                         </div>
                     )}
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 
 export default deprecatedContent;

@@ -4,9 +4,9 @@ const { __ } = wp.i18n;
 
 const { RichText, InnerBlocks } = wp.editor;
 
-const deprecated_attributes = {
+const deprecated_attributes_1_2_3 = {
     accordionId: {
-        type: "string"
+        type: "string",
     },
     repeaterItems: {
         type: "array",
@@ -14,181 +14,388 @@ const deprecated_attributes = {
             {
                 titleText: __("Awesome Title"),
                 descText:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-        ]
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            },
+        ],
     },
     direction: {
         type: "string",
-        default: "ltr"
+        default: "ltr",
     },
     titleTag: {
         type: "string",
-        default: "H4"
+        default: "H4",
     },
     titleColor: {
-        type: "string"
+        type: "string",
     },
     titleSize: {
-        type: "number"
+        type: "number",
     },
     titleLine: {
-        type: "number"
+        type: "number",
     },
     titleLetter: {
-        type: "number"
+        type: "number",
     },
     titleStyle: {
-        type: "string"
+        type: "string",
     },
     titleUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     titleWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     titleBorder: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     titleBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     titleBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleBorderColor: {
-        type: "string"
+        type: "string",
     },
     titleBack: {
-        type: "string"
+        type: "string",
     },
     titleShadowColor: {
-        type: "string"
+        type: "string",
     },
     titleShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titlePaddingT: {
-        type: "number"
+        type: "number",
     },
     titlePaddingR: {
-        type: "number"
+        type: "number",
     },
     titlePaddingB: {
-        type: "number"
+        type: "number",
     },
     titlePaddingL: {
-        type: "number"
+        type: "number",
     },
     arrowColor: {
-        type: "string"
+        type: "string",
     },
     arrowBack: {
-        type: "string"
+        type: "string",
     },
     arrowPos: {
         type: "string",
-        default: "out"
+        default: "out",
     },
     arrowPadding: {
-        type: "number"
+        type: "number",
     },
     arrowRadius: {
-        type: "number"
+        type: "number",
     },
     arrowSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     contentType: {
         type: "string",
-        default: "text"
+        default: "text",
     },
     descAlign: {
         type: "string",
-        default: "left"
+        default: "left",
     },
     descColor: {
-        type: "string"
+        type: "string",
     },
     descBack: {
-        type: "string"
+        type: "string",
     },
     descBorder: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     descBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     descBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descBorderColor: {
-        type: "string"
+        type: "string",
     },
     descSize: {
-        type: "number"
+        type: "number",
     },
     descLine: {
-        type: "number"
+        type: "number",
     },
     descLetter: {
-        type: "number"
+        type: "number",
     },
     descStyle: {
-        type: "string"
+        type: "string",
     },
     descUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     descWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     textShadowColor: {
-        type: "string"
+        type: "string",
     },
     textShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     textShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     textShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descPaddingT: {
-        type: "number"
+        type: "number",
     },
     descPaddingR: {
-        type: "number"
+        type: "number",
     },
     descPaddingB: {
-        type: "number"
+        type: "number",
     },
     descPaddingL: {
         type: "number",
-        default: 10
-    }
+        default: 10,
+    },
+};
+
+const newAttributes_1_3_4 = {
+    titleOpacity: {
+        type: "number",
+        default: "1",
+    },
+    arrowOpacity: {
+        type: "number",
+        default: "1",
+    },
+    descOpacity: {
+        type: "number",
+        default: "1",
+    },
+};
+
+const deprecated_attributes_1_3_4 = Object.assign(
+    deprecated_attributes_1_2_3,
+    newAttributes_1_3_4
+);
+
+const deprecated_attributes = {
+    accordionId: {
+        type: "string",
+    },
+    repeaterItems: {
+        type: "array",
+        default: [
+            {
+                titleText: __("Awesome Title"),
+                descText:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            },
+        ],
+    },
+    direction: {
+        type: "string",
+        default: "ltr",
+    },
+    titleTag: {
+        type: "string",
+        default: "H4",
+    },
+    titleColor: {
+        type: "string",
+    },
+    titleSize: {
+        type: "number",
+    },
+    titleLine: {
+        type: "number",
+    },
+    titleLetter: {
+        type: "number",
+    },
+    titleStyle: {
+        type: "string",
+    },
+    titleUpper: {
+        type: "boolean",
+    },
+    titleWeight: {
+        type: "number",
+        default: 500,
+    },
+    titleBorder: {
+        type: "string",
+        default: "none",
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    titleBorderRadius: {
+        type: "number",
+        default: "0",
+    },
+    titleBorderColor: {
+        type: "string",
+    },
+    titleBack: {
+        type: "string",
+    },
+    titleShadowColor: {
+        type: "string",
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    titlePaddingT: {
+        type: "number",
+    },
+    titlePaddingR: {
+        type: "number",
+    },
+    titlePaddingB: {
+        type: "number",
+    },
+    titlePaddingL: {
+        type: "number",
+    },
+    arrowColor: {
+        type: "string",
+    },
+    arrowBack: {
+        type: "string",
+    },
+    arrowPos: {
+        type: "string",
+        default: "out",
+    },
+    arrowPadding: {
+        type: "number",
+    },
+    arrowRadius: {
+        type: "number",
+    },
+    arrowSize: {
+        type: "number",
+        default: 20,
+    },
+    contentType: {
+        type: "string",
+        default: "text",
+    },
+    descAlign: {
+        type: "string",
+        default: "left",
+    },
+    descColor: {
+        type: "string",
+    },
+    descBack: {
+        type: "string",
+    },
+    descBorder: {
+        type: "string",
+        default: "none",
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    descBorderRadius: {
+        type: "number",
+        default: "0",
+    },
+    descBorderColor: {
+        type: "string",
+    },
+    descSize: {
+        type: "number",
+    },
+    descLine: {
+        type: "number",
+    },
+    descLetter: {
+        type: "number",
+    },
+    descStyle: {
+        type: "string",
+    },
+    descUpper: {
+        type: "boolean",
+    },
+    descWeight: {
+        type: "number",
+        default: 500,
+    },
+    textShadowColor: {
+        type: "string",
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    descPaddingT: {
+        type: "number",
+    },
+    descPaddingR: {
+        type: "number",
+    },
+    descPaddingB: {
+        type: "number",
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10,
+    },
 };
 
 const deprecated_attributes_1_0 = {
@@ -412,6 +619,7 @@ const deprecated_attributes_1_1 = Object.assign( deprecated_attributes_1_0, newA
 
 const deprecated = [
     {
+<<<<<<< HEAD
         attributes: deprecated_attributes_1_1,
         migrate: attributes => {
             let newAttributes = {
@@ -426,6 +634,18 @@ const deprecated = [
            return  Object.assign(attributes,newAttributes)
         },
         save: props => {
+=======
+        attributes: deprecated_attributes_1_3_4,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titleOpacity: "",
+                arrowOpacity: "",
+                descOpacity: "",
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: (props) => {
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
             const {
                 accordionId,
                 repeaterItems,
@@ -478,9 +698,15 @@ const deprecated = [
                 descPaddingT,
                 descPaddingR,
                 descPaddingB,
+<<<<<<< HEAD
                 descPaddingL
             } = props.attributes;
         
+=======
+                descPaddingL,
+            } = props.attributes;
+
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
             const accordionItems = repeaterItems.map((item, index) => {
                 return (
                     <div
@@ -498,7 +724,11 @@ const deprecated = [
                                 paddingTop: titlePaddingT,
                                 paddingRight: titlePaddingR,
                                 paddingBottom: titlePaddingB,
+<<<<<<< HEAD
                                 paddingLeft: titlePaddingL
+=======
+                                paddingLeft: titlePaddingL,
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                             }}
                         >
                             <div className={`premium-accordion__title`}>
@@ -510,11 +740,21 @@ const deprecated = [
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         letterSpacing: titleLetter + "px",
+<<<<<<< HEAD
                                         textTransform: titleUpper ? "uppercase" : "none",
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
                                         textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                         lineHeight: titleLine + "px"
+=======
+                                        textTransform: titleUpper
+                                            ? "uppercase"
+                                            : "none",
+                                        fontStyle: titleStyle,
+                                        fontWeight: titleWeight,
+                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                        lineHeight: titleLine + "px",
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 />
                             </div>
@@ -531,7 +771,11 @@ const deprecated = [
                                         fill: arrowColor,
                                         backgroundColor: arrowBack,
                                         padding: arrowPadding + "px",
+<<<<<<< HEAD
                                         borderRadius: arrowRadius + "px"
+=======
+                                        borderRadius: arrowRadius + "px",
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 >
                                     <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -550,7 +794,11 @@ const deprecated = [
                                 paddingTop: descPaddingT,
                                 paddingRight: descPaddingR,
                                 paddingBottom: descPaddingB,
+<<<<<<< HEAD
                                 paddingLeft: descPaddingL
+=======
+                                paddingLeft: descPaddingL,
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                             }}
                         >
                             {"text" === contentType && (
@@ -562,11 +810,21 @@ const deprecated = [
                                         color: descColor,
                                         fontSize: descSize + "px",
                                         letterSpacing: descLetter + "px",
+<<<<<<< HEAD
                                         textTransform: descUpper ? "uppercase" : "none",
                                         textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
                                         fontStyle: descStyle,
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px"
+=======
+                                        textTransform: descUpper
+                                            ? "uppercase"
+                                            : "none",
+                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                        fontStyle: descStyle,
+                                        fontWeight: descWeight,
+                                        lineHeight: descLine + "px",
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
                                     }}
                                 />
                             )}
@@ -580,11 +838,15 @@ const deprecated = [
                     {accordionItems}
                 </div>
             );
+<<<<<<< HEAD
         }
+=======
+        },
+>>>>>>> c0dbfc64fdc5d6828edba4f8206d6289bb00be6b
     },
     {
         attributes: deprecated_attributes,
-        save: props => {
+        save: (props) => {
             const {
                 accordionId,
                 repeaterItems,
@@ -633,7 +895,7 @@ const deprecated = [
                 descPaddingT,
                 descPaddingR,
                 descPaddingB,
-                descPaddingL
+                descPaddingL,
             } = props.attributes;
 
             const accordionItems = repeaterItems.map((item, index) => {
@@ -653,7 +915,7 @@ const deprecated = [
                                 paddingTop: titlePaddingT,
                                 paddingRight: titlePaddingR,
                                 paddingBottom: titlePaddingB,
-                                paddingLeft: titlePaddingL
+                                paddingLeft: titlePaddingL,
                             }}
                         >
                             <div className={`${className}__title`}>
@@ -665,11 +927,13 @@ const deprecated = [
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         letterSpacing: titleLetter + "px",
-                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        textTransform: titleUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
                                         textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                        lineHeight: titleLine + "px"
+                                        lineHeight: titleLine + "px",
                                     }}
                                 />
                             </div>
@@ -686,7 +950,7 @@ const deprecated = [
                                         fill: arrowColor,
                                         backgroundColor: arrowBack,
                                         padding: arrowPadding + "px",
-                                        borderRadius: arrowRadius + "px"
+                                        borderRadius: arrowRadius + "px",
                                     }}
                                 >
                                     <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -705,7 +969,7 @@ const deprecated = [
                                 paddingTop: descPaddingT,
                                 paddingRight: descPaddingR,
                                 paddingBottom: descPaddingB,
-                                paddingLeft: descPaddingL
+                                paddingLeft: descPaddingL,
                             }}
                         >
                             {"text" === contentType && (
@@ -717,10 +981,12 @@ const deprecated = [
                                         color: descColor,
                                         fontSize: descSize + "px",
                                         letterSpacing: descLetter + "px",
-                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textTransform: descUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: descStyle,
                                         fontWeight: descWeight,
-                                        lineHeight: descLine + "px"
+                                        lineHeight: descLine + "px",
                                     }}
                                 />
                             )}
@@ -734,7 +1000,7 @@ const deprecated = [
                     {accordionItems}
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 export default deprecated;

@@ -1,9 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -26,6 +26,7 @@ const save = props => {
         textLine,
         textLetter,
         textStyle,
+        backOpacity,
         textUpper,
         borderType,
         borderWidth,
@@ -42,10 +43,10 @@ const save = props => {
         btnShadowColor,
         btnShadowHorizontal,
         btnShadowVertical,
-        btnShadowPosition
+        btnShadowPosition,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-button');
+    const mainClasses = classnames(className, "premium-button");
 
     return (
         <div
@@ -67,8 +68,8 @@ const save = props => {
                         `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
                         `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
                         `background-color: ${slideColor}`,
-                        "}"
-                    ].join("\n")
+                        "}",
+                    ].join("\n"),
                 }}
             />
             <RichText.Content
@@ -93,7 +94,7 @@ const save = props => {
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    borderColor: borderColor,
                 }}
             />
         </div>

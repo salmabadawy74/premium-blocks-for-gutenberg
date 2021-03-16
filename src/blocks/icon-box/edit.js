@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
+import {FontAwesomeEnabled} from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
@@ -8,13 +8,14 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling'
+import styling from './styling';
+import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -754,7 +755,6 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        {imageURL && <img src={imageURL} width="100%" height="auto" />}
                         <PremiumBackgroud
                             imageID={imageID}
                             imageURL={imageURL}

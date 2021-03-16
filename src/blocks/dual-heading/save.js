@@ -1,6 +1,7 @@
 import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
-const save = props => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -65,7 +66,10 @@ const save = props => {
         containerBorderType,
         containerBorderWidth,
         containerBorderRadius,
-        containerBorderColor
+        containerBorderColor,
+        firstOpacity,
+        secondOpacity,
+        containerOpacity,
     } = props.attributes;
 
     const mainClasses = classnames(
@@ -79,7 +83,9 @@ const save = props => {
             className={`${mainClasses} premium-dheading-${ block_id }`}
             style={{
                 textAlign: contentAlign,
-                backgroundColor: containerBack,
+                backgroundColor: containerBack
+                    ? hexToRgba(containerBack, containerOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -88,7 +94,7 @@ const save = props => {
                 border: containerBorderType,
                 borderWidth: containerBorderWidth + "px",
                 borderRadius: containerBorderRadius + "px",
-                borderColor: containerBorderColor
+                borderColor: containerBorderColor,
             }}
         >
             <div className={`premium-dheading-block__wrap`}>
@@ -100,7 +106,9 @@ const save = props => {
                             color: firstColor,
                             backgroundColor: firstClip
                                 ? "none"
-                                : firstBackground,
+                                : firstBackground
+                                ? hexToRgba(firstBackground, firstOpacity)
+                                : "transparent",
                             backgroundImage: firstClip
                                 ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                 : "none",
@@ -115,7 +123,7 @@ const save = props => {
                             borderColor: firstBorderColor,
                             padding: firstPadding + "px",
                             margin: firstMargin + "px",
-                            textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                            textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                         }}
                     >
                         {firstHeading}
@@ -127,7 +135,9 @@ const save = props => {
                             color: secondColor,
                             backgroundColor: secondClip
                                 ? "none"
-                                : secondBackground,
+                                : secondBackground
+                                ? hexToRgba(secondBackground, secondOpacity)
+                                : "transparent",
                             backgroundImage: secondClip
                                 ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                 : "none",
@@ -142,7 +152,7 @@ const save = props => {
                             borderColor: secondBorderColor,
                             padding: secondPadding + "px",
                             margin: secondMargin + "px",
-                            textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                            textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                         }}
                     >
                         {secondHeading}

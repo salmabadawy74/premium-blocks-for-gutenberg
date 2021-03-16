@@ -1,9 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -104,10 +104,13 @@ const save = props => {
         hoverShadowColor,
         hoverShadowHorizontal,
         hoverShadowVertical,
-        hoverShadowPosition
+        hoverShadowPosition,
+        iconOpacity,
+        btnOpacity,
+        backOpacity,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon-box');
+    const mainClasses = classnames(className, "premium-icon-box");
 
     return (
         <div
@@ -128,12 +131,14 @@ const save = props => {
                 paddingBottom: paddingB + paddingU,
                 paddingLeft: paddingL + paddingU,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor,
+                backgroundColor: backColor
+                    ? hexToRgba(backColor, backOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset"
+                backgroundAttachment: fixed ? "fixed" : "unset",
             }}
         >
             {btnChecked && btnText && (
@@ -152,8 +157,8 @@ const save = props => {
                             "}",
                             `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
                             `background-color: ${btnHoverBack} !important;`,
-                            "}"
-                        ].join("\n")
+                            "}",
+                        ].join("\n"),
                     }}
                 />
             )}
@@ -166,8 +171,10 @@ const save = props => {
                             className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor,
-                                backgroundColor: iconBackColor,
-                                fontSize: iconSize
+                                backgroundColor: iconBackColor
+                                    ? hexToRgba(iconBackColor, iconOpacity)
+                                    : "transparent",
+                                fontSize: iconSize,
                             }}
                         />
                     )}
@@ -179,7 +186,7 @@ const save = props => {
                             style={{
                                 width: iconSize + "px",
                                 height: iconSize + "px",
-                                borderRadius: iconRadius + "px"
+                                borderRadius: iconRadius + "px",
                             }}
                         />
                     )}
@@ -191,7 +198,7 @@ const save = props => {
                         className={`premium-icon-box__title_wrap`}
                         style={{
                             marginTop: titleMarginT,
-                            marginBottom: titleMarginB
+                            marginBottom: titleMarginB,
                         }}
                     >
                         <RichText.Content
@@ -202,11 +209,13 @@ const save = props => {
                                 color: titleColor,
                                 fontFamily: titleFont,
                                 letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
+                                textTransform: titleUpper
+                                    ? "uppercase"
+                                    : "none",
                                 fontStyle: titleStyle,
                                 fontWeight: titleWeight,
                                 textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                lineHeight: titleLine + "px"
+                                lineHeight: titleLine + "px",
                             }}
                         />
                     </div>
@@ -216,7 +225,7 @@ const save = props => {
                         className={`premium-icon-box__desc_wrap`}
                         style={{
                             marginTop: descMarginT,
-                            marginBottom: descMarginB
+                            marginBottom: descMarginB,
                         }}
                     >
                         <RichText.Content
@@ -227,7 +236,7 @@ const save = props => {
                                 color: descColor,
                                 fontFamily: descFont,
                                 lineHeight: descLine + "px",
-                                fontWeight: descWeight
+                                fontWeight: descWeight,
                             }}
                         />
                     </div>
@@ -237,7 +246,7 @@ const save = props => {
                         className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                         style={{
                             marginTop: btnMarginT,
-                            marginBottom: btnMarginB
+                            marginBottom: btnMarginB,
                         }}
                     >
                         <RichText.Content
@@ -249,7 +258,10 @@ const save = props => {
                             value={btnText}
                             style={{
                                 color: btnColor,
-                                backgroundColor: btnBack,
+                                backgroundColor: btnBack
+                                    ? hexToRgba(btnBack, btnOpacity)
+                                    : "transparent",
+                                fontSize: btnSize + "px",
                                 letterSpacing: btnLetter + "px",
                                 textTransform: btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyle,
@@ -259,7 +271,7 @@ const save = props => {
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
                                 padding: btnPadding + btnPaddingU,
-                                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                             }}
                         />
                     </div>

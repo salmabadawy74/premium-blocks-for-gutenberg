@@ -8,7 +8,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const { Fragment ,Component} = wp.element;
 

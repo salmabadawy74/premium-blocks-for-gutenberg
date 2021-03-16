@@ -1,5 +1,4 @@
 import { button } from "../../../assets/js/settings";
-
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -12,48 +11,52 @@ const { registerBlockType } = wp.blocks;
 const buttonAttrs = {
     btnText: {
         type: "string",
-        default: __("Premium Button")
+        default: __("Premium Button"),
     },
     btnSize: {
         type: "string",
-        default: "md"
+        default: "md",
     },
     btnAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     btnLink: {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-button"
+        selector: ".premium-button",
     },
     btnTarget: {
         type: "boolean",
-        default: false
+        default: false,
     },
     effect: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     effectDir: {
         type: "string",
-        default: "top"
+        default: "top",
     },
     textColor: {
-        type: "string"
+        type: "string",
     },
     textHoverColor: {
-        type: "string"
+        type: "string",
     },
     backColor: {
-        type: "string"
+        type: "string",
+    },
+    backOpacity: {
+        type: "number",
+        default: "1",
     },
     backHoverColor: {
-        type: "string"
+        type: "string",
     },
     slideColor: {
-        type: "string"
+        type: "string",
     },
     textSizeUnit: {
         type: "string",
@@ -70,80 +73,80 @@ const buttonAttrs = {
       type:"number"  
     },
     textFontFamily: {
-        type: "string"
+        type: "string",
     },
     textLetter: {
-        type: "number"
+        type: "number",
     },
     textStyle: {
-        type: "string"
+        type: "string",
     },
     textUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     textWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     textLine: {
-        type: "number"
+        type: "number",
     },
     borderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     borderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     borderRadius: {
-        type: "number"
+        type: "number",
     },
     borderColor: {
-        type: "string"
+        type: "string",
     },
     borderHoverColor: {
-        type: "string"
+        type: "string",
     },
     padding: {
-        type: "number"
+        type: "number",
     },
     paddingU: {
-        type: "string"
+        type: "string",
     },
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowColor: {
-        type: "string"
+        type: "string",
     },
     btnShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
     block_id: {
         type: "string"
@@ -160,10 +163,10 @@ registerBlockType("premium/button", {
     category: "premium-blocks",
     attributes: buttonAttrs,
     supports: {
-        inserter: button
+        inserter: button,
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent
+    deprecated: deprecatedContent,
 });

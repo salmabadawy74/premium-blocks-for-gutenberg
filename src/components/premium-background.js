@@ -1,100 +1,128 @@
 const { __ } = wp.i18n;
+
 const { Fragment } = wp.element;
+
 const {
     SelectControl,
     ToggleControl,
     Tooltip,
-    Dashicon
+    Dashicon,
+    RangeControl,
 } = wp.components;
-const { MediaUpload } = wp.blockEditor;
+
+const { MediaUpload, ColorPalette } = wp.blockEditor;
 
 export default function PremiumBackground(props) {
     const {
+        type,
+        colorValue,
+        opacityValue,
         imageID,
         imageURL,
         backgroundPosition,
         backgroundRepeat,
         backgroundSize,
         fixed,
-        onSelectMedia = () => { },
-        onRemoveImage = () => { },
-        onChangeBackPos = () => { },
-        onchangeBackRepeat = () => { },
-        onChangeBackSize = () => { },
-        onChangeFixed = () => { }
+        onChangeColor = () => {},
+        onChangeOpacity = () => {},
+        onSelectMedia = () => {},
+        onRemoveImage = () => {},
+        onChangeBackPos = () => {},
+        onchangeBackRepeat = () => {},
+        onChangeBackSize = () => {},
+        onChangeFixed = () => {},
     } = props;
 
     const POSITION = [
         {
             value: "top left",
-            label: __("Top Left")
+            label: __("Top Left"),
         },
         {
             value: "top center",
-            label: __("Top Center")
+            label: __("Top Center"),
         },
         {
             value: "top right",
-            label: __("Top Right")
+            label: __("Top Right"),
         },
         {
             value: "center left",
-            label: __("Center Left")
+            label: __("Center Left"),
         },
         {
             value: "center center",
-            label: __("Center Center")
+            label: __("Center Center"),
         },
         {
             value: "center right",
-            label: __("Center Right")
+            label: __("Center Right"),
         },
         {
             value: "bottom left",
-            label: __("Bottom Left")
+            label: __("Bottom Left"),
         },
         {
             value: "bottom center",
-            label: __("Bottom Center")
+            label: __("Bottom Center"),
         },
         {
             value: "bottom right",
-            label: __("Bottom Right")
-        }
+            label: __("Bottom Right"),
+        },
     ];
+
     const REPEAT = [
         {
             value: "no-repeat",
-            label: __("No Repeat")
+            label: __("No Repeat"),
         },
         {
             value: "repeat",
-            label: __("Repeat")
+            label: __("Repeat"),
         },
         {
             value: "repeat-x",
-            label: __("Repeat Horizontally")
+            label: __("Repeat Horizontally"),
         },
         {
             value: "repeat-y",
-            label: __("Repeat Vertically")
-        }
+            label: __("Repeat Vertically"),
+        },
     ];
+
     const SIZE = [
         {
             value: "auto",
-            label: __("Auto")
+            label: __("Auto"),
         },
         {
             value: "cover",
-            label: __("Cover")
+            label: __("Cover"),
         },
         {
             value: "contain",
-            label: __("Contain")
-        }
+            label: __("Contain"),
+        },
     ];
-    return (
+
+    return type === "color" ? (
+        <Fragment>
+            <ColorPalette
+                value={colorValue}
+                onChange={onChangeColor}
+                allowReset={true}
+            />
+            <RangeControl
+                label={__(`Background Opacity`)}
+                value={opacityValue}
+                onChange={onChangeOpacity}
+                max={1}
+                min={0}
+                step={0.1}
+            />
+        </Fragment>
+    ) : (
         <Fragment>
             <MediaUpload
                 allowedTypes={["image"]}
@@ -105,7 +133,10 @@ export default function PremiumBackground(props) {
                     <Fragment>
                         {imageURL && (
                             <span className="premium-image-media">
-                                <img src={imageURL} className="premium-image-upload" />
+                                <img
+                                    src={imageURL}
+                                    className="premium-image-upload"
+                                />
                                 <div className="premium-image-actions">
                                     <Tooltip text={__("Edit")}>
                                         <button
@@ -114,7 +145,10 @@ export default function PremiumBackground(props) {
                                             onClick={open}
                                             role="button"
                                         >
-                                            <span aria-label={__("Edit")} className="fa fa-pencil" />
+                                            <span
+                                                aria-label={__("Edit")}
+                                                className="fa fa-pencil"
+                                            />
                                         </button>
                                     </Tooltip>
                                     <Tooltip text={__("Remove")}>
@@ -134,7 +168,10 @@ export default function PremiumBackground(props) {
                             </span>
                         )}
                         {!imageURL && (
-                            <div onClick={open} className={"premium-placeholder-image"}>
+                            <div
+                                onClick={open}
+                                className={"premium-placeholder-image"}
+                            >
                                 <Dashicon icon="insert" />
                                 <span>{__("Insert Background ")}</span>
                             </div>

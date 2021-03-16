@@ -48,10 +48,9 @@ class PremiumPadding extends Component {
     }
 
     render() {
-
         const { top, right, bottom, left, showUnits, isLinked } = this.state;
 
-        const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
+        const { onChangePadSizeUnit = () => {}, selectedUnit } = this.props;
 
         return (
             <div className={`premium-control-group`}>
@@ -94,7 +93,9 @@ class PremiumPadding extends Component {
                             value={bottom || 0}
                             onChange={this.onInputChange}
                         />
-                        <label className={`premium-control-label`}>Bottom</label>
+                        <label className={`premium-control-label`}>
+                            Bottom
+                        </label>
                     </div>
                     <div className={`premium-control-wrapper`}>
                         <input
@@ -107,8 +108,9 @@ class PremiumPadding extends Component {
                     </div>
                     <div>
                         <button
-                            className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
-                                }`}
+                            className={`linked-btn components-button is-button dashicons dashicons-${
+                                isLinked ? "admin-links" : "editor-unlink"
+                            }`}
                             onClick={this.onButtonClick}
                         />
                     </div>
@@ -118,4 +120,3 @@ class PremiumPadding extends Component {
     }
 }
 export default PremiumPadding;
-

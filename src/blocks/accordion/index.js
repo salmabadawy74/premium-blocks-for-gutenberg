@@ -14,7 +14,7 @@ const accordionAttrs = {
       type:"string"  
     },
     accordionId: {
-        type: "string"
+        type: "string",
     },
     repeaterItems: {
         type: "array",
@@ -22,27 +22,27 @@ const accordionAttrs = {
             {
                 titleText: __("Awesome Title"),
                 descText:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-        ]
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            },
+        ],
     },
     direction: {
         type: "string",
-        default: "ltr"
+        default: "ltr",
     },
     titleTag: {
         type: "string",
-        default: "H4"
+        default: "H4",
     },
     titleColor: {
-        type: "string"
+        type: "string",
     },
     titleSizeUnit: {
         type: "string",
       default:"px"  
     },
     titleSize: {
-        type: "number"
+        type: "number",
     },
     titleSizeTablet: {
         type:"number"
@@ -51,81 +51,89 @@ const accordionAttrs = {
         type:"number"
     },
     titleLine: {
-        type: "number"
+        type: "number",
     },
     titleLetter: {
-        type: "number"
+        type: "number",
     },
     titleStyle: {
-        type: "string"
+        type: "string",
     },
     titleUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     titleWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     titleBorder: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     titleBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     titleBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleBorderColor: {
-        type: "string"
+        type: "string",
     },
     titleBack: {
-        type: "string"
+        type: "string",
+    },
+    titleOpacity: {
+        type: "number",
+        default: "1",
     },
     titleShadowColor: {
-        type: "string"
+        type: "string",
     },
     titleShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titlePaddingT: {
-        type: "number"
+        type: "number",
     },
     titlePaddingR: {
-        type: "number"
+        type: "number",
     },
     titlePaddingB: {
-        type: "number"
+        type: "number",
     },
     titlePaddingL: {
-        type: "number"
+        type: "number",
     },
     arrowColor: {
-        type: "string"
+        type: "string",
     },
     arrowBack: {
-        type: "string"
+        type: "string",
+    },
+    arrowOpacity: {
+        type: "number",
+        default: "1",
     },
     arrowPos: {
         type: "string",
-        default: "out"
+        default: "out",
     },
     arrowPadding: {
-        type: "number"
+        type: "number",
     },
     arrowRadius: {
-        type: "number"
+        type: "number",
     },
     descSizeUnit: {
         type: "string",
@@ -133,36 +141,40 @@ const accordionAttrs = {
     },
     arrowSize: {
         type: "number",
-        default: 20
+        default: 20,
     },
     contentType: {
         type: "string",
-        default: "text"
+        default: "text",
     },
     descAlign: {
         type: "string",
-        default: "left"
+        default: "left",
     },
     descColor: {
-        type: "string"
+        type: "string",
     },
     descBack: {
-        type: "string"
+        type: "string",
+    },
+    descOpacity: {
+        type: "number",
+        default: "1",
     },
     descBorder: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     descBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     descBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descBorderColor: {
-        type: "string"
+        type: "string",
     },
     descSize: {
         type: "number",
@@ -175,44 +187,44 @@ const accordionAttrs = {
       type:"number"  
     },
     descLine: {
-        type: "number"
+        type: "number",
     },
     descLetter: {
-        type: "number"
+        type: "number",
     },
     descStyle: {
-        type: "string"
+        type: "string",
     },
     descUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     descWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     textShadowColor: {
-        type: "string"
+        type: "string",
     },
     textShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     textShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     textShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descPaddingT: {
-        type: "number"
+        type: "number",
     },
     descPaddingR: {
-        type: "number"
+        type: "number",
     },
     descPaddingB: {
-        type: "number"
+        type: "number",
     },
     descPaddingL: {
         type: "number",
@@ -230,10 +242,10 @@ registerBlockType("premium/accordion", {
     category: "premium-blocks",
     attributes: accordionAttrs,
     supports: {
-        inserter: accordion
+        inserter: accordion,
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecated
+    deprecated: deprecated,
 });

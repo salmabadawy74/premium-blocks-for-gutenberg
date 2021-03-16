@@ -14,35 +14,35 @@ const dualHeadingAttrs = {
     },
     contentAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     firstHeading: {
         type: "array",
         source: "children",
         default: "Premium ",
-        selector: ".premium-dheading-block__first"
+        selector: ".premium-dheading-block__first",
     },
     secondHeading: {
         type: "array",
         source: "children",
         default: "Blocks",
-        selector: ".premium-dheading-block__second"
+        selector: ".premium-dheading-block__second",
     },
     titleTag: {
         type: "string",
-        default: "h1"
+        default: "h1",
     },
     display: {
         type: "string",
-        default: "inline"
+        default: "inline",
     },
     firstColor: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     firstSize: {
         type: "number",
-        default: "20"
+        default: "20",
     },
     firstSizeUnit: {
         type: "string",
@@ -55,89 +55,93 @@ const dualHeadingAttrs = {
         type: "number"
     },
     firstFamily: {
-        type: "string"
+        type: "string",
     },
     firstLetter: {
-        type: "number"
+        type: "number",
     },
     firstStyle: {
-        type: "string"
+        type: "string",
     },
     firstUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     firstWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     firstBackground: {
-        type: "string"
+        type: "string",
+    },
+    firstOpacity: {
+        type: "number",
+        default: "1",
     },
     firstBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     firstBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     firstBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstBorderColor: {
-        type: "string"
+        type: "string",
     },
     firstMarginR: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstMarginL: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstPadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstClip: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstAnim: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstStroke: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstClipColor: {
         type: "string",
-        default: "#54595f"
+        default: "#54595f",
     },
     firstShadowColor: {
-        type: "string"
+        type: "string",
     },
     firstShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondColor: {
         type: "string",
-        default: "#54595f"
+        default: "#54595f",
     },
     secondSize: {
         type: "number",
-        default: "20"
+        default: "20",
     },
     secondSizeUnit: {
         type: "string",
@@ -150,133 +154,141 @@ const dualHeadingAttrs = {
         type: "number"
     },
     secondFamily: {
-        type: "string"
+        type: "string",
     },
     secondLetter: {
-        type: "number"
+        type: "number",
     },
     secondStyle: {
-        type: "string"
+        type: "string",
     },
     secondUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     secondWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     secondBackground: {
-        type: "string"
+        type: "string",
+    },
+    secondOpacity: {
+        type: "number",
+        default: "1",
     },
     secondBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     secondBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     secondBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondBorderColor: {
-        type: "string"
+        type: "string",
     },
     secondMarginR: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondMarginL: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondPadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondClip: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondStroke: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondShadowColor: {
-        type: "string"
+        type: "string",
     },
     secondShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondAnim: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondClipColor: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     link: {
         type: "boolean",
-        default: false
+        default: false,
     },
     target: {
         type: "boolean",
-        default: false
+        default: false,
     },
     headingURL: {
-        type: "string"
+        type: "string",
     },
     containerBack: {
-        type: "string"
+        type: "string",
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1",
     },
     imageID: {
-        type: "string"
+        type: "string",
     },
     imageURL: {
-        type: "string"
+        type: "string",
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat"
+        default: "no-repeat",
     },
     backgroundPosition: {
         type: "string",
-        default: "top center"
+        default: "top center",
     },
     backgroundSize: {
         type: "string",
-        default: "auto"
+        default: "auto",
     },
     fixed: {
         type: "boolean",
-        default: false
+        default: false,
     },
     containerBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     containerBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     containerBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     containerBorderColor: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 registerBlockType( "premium/dheading-block", {
     title: __( "Dual Heading" ),
@@ -284,7 +296,7 @@ registerBlockType( "premium/dheading-block", {
     category: "premium-blocks",
     attributes: dualHeadingAttrs,
     supports: {
-        inserter: dualHeading
+        inserter: dualHeading,
     },
     example: {},
     edit: edit,

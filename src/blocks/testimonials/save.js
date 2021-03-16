@@ -1,12 +1,12 @@
-import classnames from 'classnames'
+import classnames from "classnames";
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -48,6 +48,7 @@ const save = props => {
         shadowVertical,
         shadowPosition,
         backColor,
+        backOpacity,
         imageURL,
         fixed,
         backgroundRepeat,
@@ -57,10 +58,11 @@ const save = props => {
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit
+        paddingUnit,
+        backColorUpdated,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-testimonial');
+    const mainClasses = classnames(className, "premium-testimonial");
 
     return (
         <div
@@ -68,7 +70,9 @@ const save = props => {
         className={`${ mainClasses }__wrap premium-testimonial-${block_id}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor,
+                backgroundColor: backColor
+                    ? hexToRgba(backColor, backOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -77,7 +81,7 @@ const save = props => {
                 paddingTop: paddingTop + paddingUnit,
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit
+                paddingRight: paddingRight + paddingUnit,
             }}
         >
             <div className={`premium-testimonial__container`}>
@@ -91,7 +95,7 @@ const save = props => {
                 <div
                     className={`premium-testimonial__content`}
                     style={{
-                        textAlign: align
+                        textAlign: align,
                     }}
                 >
                     <div className={`premium-testimonial__img_wrap`}>
@@ -105,11 +109,13 @@ const save = props => {
                                     borderRadius: imgRadius,
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
-                                    height: imgSize + "px"
+                                    height: imgSize + "px",
                                 }}
                             />
                         )}
-                        {!authorImgUrl && <DefaultImage className={className} />}
+                        {!authorImgUrl && (
+                            <DefaultImage className={className} />
+                        )}
                     </div>
                     <div className={`premium-testimonial__text_wrap`}>
                         <div>
@@ -121,7 +127,7 @@ const save = props => {
                                     color: bodyColor,
                                     lineHeight: bodyLine + "px",
                                     marginTop: bodyTop + "px",
-                                    marginBottom: bodyBottom + "px"
+                                    marginBottom: bodyBottom + "px",
                                 }}
                             />
                         </div>
@@ -134,19 +140,21 @@ const save = props => {
                             style={{
                                 color: authorColor,
                                 letterSpacing: authorLetter + "px",
-                                textTransform: authorUpper ? "uppercase" : "none",
+                                textTransform: authorUpper
+                                    ? "uppercase"
+                                    : "none",
                                 fontStyle: authorStyle,
-                                fontWeight: authorWeight
+                                fontWeight: authorWeight,
                             }}
                         />
                         <span
                             className={`premium-testimonial__sep`}
                             style={{
-                                color: dashColor
+                                color: dashColor,
                             }}
                         >
                             &nbsp;-&nbsp;
-            </span>
+                        </span>
                         <div className={`premium-testimonial__link_wrap`}>
                             <RichText.Content
                                 tagName={authorComTag.toLowerCase()}

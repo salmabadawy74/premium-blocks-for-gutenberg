@@ -4,12 +4,13 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
+import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     Toolbar,
@@ -305,7 +306,10 @@ class edit extends Component {
                                     bodyColor: newValue
                                 } )
                             }
-                            allowReset={true}
+                            opacityValue={backOpacity}
+                            onChangeOpacity={value =>
+                                setAttributes({backOpacity: value})
+                            }
                         />
                         <RangeControl
                             label={__( "Margin Top (PX)" )}

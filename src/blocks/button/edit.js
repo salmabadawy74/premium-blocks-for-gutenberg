@@ -5,10 +5,11 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
 import styling from './styling';
 
-
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -26,7 +27,7 @@ const {
     AlignmentToolbar,
     BlockControls,
     RichText,
-    URLInput
+    URLInput,
 } = wp.blockEditor;
 
 export default class edit extends Component {

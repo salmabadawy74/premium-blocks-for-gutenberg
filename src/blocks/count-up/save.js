@@ -1,4 +1,5 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const save = props => {
 
@@ -46,6 +47,7 @@ const save = props => {
         titleWeight,
         faIcon,
         containerBack,
+        containerOpacity,
         shadowBlur,
         shadowColor,
         shadowHorizontal,
@@ -63,7 +65,7 @@ const save = props => {
         titleFamily,
         counterFamily,
         prefixFamily,
-        suffixFamily
+        suffixFamily,
     } = props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
 
@@ -76,7 +78,9 @@ const save = props => {
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerBack,
+                backgroundColor: containerBack
+                ? hexToRgba(containerBack, containerOpacity)
+                : "transparent",
                 boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 backgroundImage: `url('${ backgroundImageURL }')`,
                 backgroundRepeat: backgroundRepeat,

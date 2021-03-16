@@ -1,7 +1,7 @@
 const { ButtonGroup, Button } = wp.components;
 
 export default function PremiumSizeUnits(props) {
-    const { activeUnit, units, onChangeSizeUnit = unit => {} } = props;
+    const { activeUnit, units, onChangeSizeUnit = (unit) => {} } = props;
 
     let sizeUnits = ["px", "em", "%"];
 

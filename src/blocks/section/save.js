@@ -1,9 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { InnerBlocks } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -16,6 +16,7 @@ const save = props => {
         minHeight,
         minHeightUnit,
         color,
+        opacity,
         imageURL,
         fixed,
         backgroundRepeat,
@@ -39,18 +40,21 @@ const save = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
+        shadowPosition,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-container');
+    const mainClasses = classnames(className, "premium-container");
 
     return (
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
             style={{
                 textAlign: horAlign,
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color,
+                minHeight:
+                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                backgroundColor: color
+                    ? hexToRgba(color, opacity)
+                    : "transparent",
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
@@ -68,7 +72,7 @@ const save = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
             }}
         >
             <div
@@ -79,7 +83,7 @@ const save = props => {
                             ? innerWidth
                                 ? innerWidth + "px"
                                 : "1140px"
-                            : "100%"
+                            : "100%",
                 }}
             >
                 <div className={`premium-container__content_inner`}>

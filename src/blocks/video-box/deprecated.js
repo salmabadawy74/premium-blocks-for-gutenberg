@@ -3,372 +3,372 @@ import onChangeVideoURL from "./index";
 const className = "premium-video-box";
 
 const videoBoxAttrs_1_2_7 = {
-  videoBoxId: {
-    type: "string"
-  },
-  videoType: {
-    type: "string",
-    default: "youtube"
-  },
-  videoURL: {
-    type: "string",
-    default: "07d2dXHYb94"
-  },
-  videoID: {
-    type: "string"
-  },
-  autoPlay: {
-    type: "boolean",
-    default: false
-  },
-  loop: {
-    type: "boolean",
-    default: false
-  },
-  controls: {
-    type: "boolean",
-    default: true
-  },
-  relatedVideos: {
-    type: "boolean",
-    default: false
-  },
-  mute: {
-    type: "boolean",
-    default: false
-  },
-  overlay: {
-    type: "boolean",
-    default: false
-  },
-  overlayImgID: {
-    type: "string"
-  },
-  overlayImgURL: {
-    type: "string"
-  },
-  blur: {
-    type: "number",
-    default: 0
-  },
-  bright: {
-    type: "number",
-    default: 100
-  },
-  contrast: {
-    type: "number",
-    default: 100
-  },
-  saturation: {
-    type: "number",
-    default: 100
-  },
-  hue: {
-    type: "number",
-    default: 0
-  },
-  playTop: {
-    type: "number"
-  },
-  playIcon: {
-    type: "boolean",
-    default: true
-  },
-  playSize: {
-    type: "number"
-  },
-  playColor: {
-    type: "string"
-  },
-  playBack: {
-    type: "string"
-  },
-  playHoverColor: {
-    type: "string"
-  },
-  playHoverBackColor: {
-    type: "string"
-  },
-  playPadding: {
-    type: "number"
-  },
-  playBorderType: {
-    type: "string",
-    default: "none"
-  },
-  playBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  playBorderRadius: {
-    type: "number"
-  },
-  playBorderColor: {
-    type: "string"
-  },
-  videoDescText: {
-    type: "string"
-  },
-  videoDesc: {
-    type: "boolean"
-  },
-  descLeft: {
-    type: "number"
-  },
-  descTop: {
-    type: "number"
-  },
-  videoDescSize: {
-    type: "number"
-  },
-  videoDescWeight: {
-    type: "number"
-  },
-  videoDescLetter: {
-    type: "number"
-  },
-  videoDescStyle: {
-    type: "string"
-  },
-  videoDescUpper: {
-    type: "boolean"
-  },
-  videoDescColor: {
-    type: "string"
-  },
-  videoDescBack: {
-    type: "string"
-  },
-  videoDescPadding: {
-    type: "number"
-  },
-  videoDescBorderRadius: {
-    type: "number"
-  },
-  boxBorderType: {
-    type: "string",
-    default: "none"
-  },
-  boxBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  boxBorderRadius: {
-    type: "number"
-  },
-  boxBorderColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
+    videoBoxId: {
+        type: "string",
+    },
+    videoType: {
+        type: "string",
+        default: "youtube",
+    },
+    videoURL: {
+        type: "string",
+        default: "07d2dXHYb94",
+    },
+    videoID: {
+        type: "string",
+    },
+    autoPlay: {
+        type: "boolean",
+        default: false,
+    },
+    loop: {
+        type: "boolean",
+        default: false,
+    },
+    controls: {
+        type: "boolean",
+        default: true,
+    },
+    relatedVideos: {
+        type: "boolean",
+        default: false,
+    },
+    mute: {
+        type: "boolean",
+        default: false,
+    },
+    overlay: {
+        type: "boolean",
+        default: false,
+    },
+    overlayImgID: {
+        type: "string",
+    },
+    overlayImgURL: {
+        type: "string",
+    },
+    blur: {
+        type: "number",
+        default: 0,
+    },
+    bright: {
+        type: "number",
+        default: 100,
+    },
+    contrast: {
+        type: "number",
+        default: 100,
+    },
+    saturation: {
+        type: "number",
+        default: 100,
+    },
+    hue: {
+        type: "number",
+        default: 0,
+    },
+    playTop: {
+        type: "number",
+    },
+    playIcon: {
+        type: "boolean",
+        default: true,
+    },
+    playSize: {
+        type: "number",
+    },
+    playColor: {
+        type: "string",
+    },
+    playBack: {
+        type: "string",
+    },
+    playHoverColor: {
+        type: "string",
+    },
+    playHoverBackColor: {
+        type: "string",
+    },
+    playPadding: {
+        type: "number",
+    },
+    playBorderType: {
+        type: "string",
+        default: "none",
+    },
+    playBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    playBorderRadius: {
+        type: "number",
+    },
+    playBorderColor: {
+        type: "string",
+    },
+    videoDescText: {
+        type: "string",
+    },
+    videoDesc: {
+        type: "boolean",
+    },
+    descLeft: {
+        type: "number",
+    },
+    descTop: {
+        type: "number",
+    },
+    videoDescSize: {
+        type: "number",
+    },
+    videoDescWeight: {
+        type: "number",
+    },
+    videoDescLetter: {
+        type: "number",
+    },
+    videoDescStyle: {
+        type: "string",
+    },
+    videoDescUpper: {
+        type: "boolean",
+    },
+    videoDescColor: {
+        type: "string",
+    },
+    videoDescBack: {
+        type: "string",
+    },
+    videoDescPadding: {
+        type: "number",
+    },
+    videoDescBorderRadius: {
+        type: "number",
+    },
+    boxBorderType: {
+        type: "string",
+        default: "none",
+    },
+    boxBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    boxBorderRadius: {
+        type: "number",
+    },
+    boxBorderColor: {
+        type: "string",
+    },
+    shadowColor: {
+        type: "string",
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    shadowPosition: {
+        type: "string",
+        default: "",
+    },
 
-  // Old props
-  playLeft: {
-    type: "number"
-  }
+    // Old props
+    playLeft: {
+        type: "number",
+    },
 };
 
 const videoBoxAttrs_1_5_4 = {
-  videoBoxId: {
-    type: "string"
-  },
-  videoType: {
-    type: "string",
-    default: "youtube"
-  },
-  videoURL: {
-    type: "string",
-    default: "07d2dXHYb94"
-  },
-  videoID: {
-    type: "string"
-  },
-  autoPlay: {
-    type: "boolean",
-    default: false
-  },
-  loop: {
-    type: "boolean",
-    default: false
-  },
-  controls: {
-    type: "boolean",
-    default: true
-  },
-  relatedVideos: {
-    type: "boolean",
-    default: false
-  },
-  mute: {
-    type: "boolean",
-    default: false
-  },
-  overlay: {
-    type: "boolean",
-    default: false
-  },
-  overlayImgID: {
-    type: "string"
-  },
-  overlayImgURL: {
-    type: "string"
-  },
-  blur: {
-    type: "number",
-    default: 0
-  },
-  bright: {
-    type: "number",
-    default: 100
-  },
-  contrast: {
-    type: "number",
-    default: 100
-  },
-  saturation: {
-    type: "number",
-    default: 100
-  },
-  hue: {
-    type: "number",
-    default: 0
-  },
-  playTop: {
-    type: "number"
-  },
-  playIcon: {
-    type: "boolean",
-    default: true
-  },
-  playSize: {
-    type: "number"
-  },
-  playColor: {
-    type: "string"
-  },
-  playBack: {
-    type: "string"
-  },
-  playHoverColor: {
-    type: "string"
-  },
-  playHoverBackColor: {
-    type: "string"
-  },
-  playPadding: {
-    type: "number"
-  },
-  playBorderType: {
-    type: "string",
-    default: "none"
-  },
-  playBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  playBorderRadius: {
-    type: "number"
-  },
-  playBorderColor: {
-    type: "string"
-  },
-  videoDescText: {
-    type: "string"
-  },
-  videoDesc: {
-    type: "boolean"
-  },
-  descLeft: {
-    type: "number"
-  },
-  descTop: {
-    type: "number"
-  },
-  videoDescSize: {
-    type: "number"
-  },
-  videoDescFamily: {
-    type: "string"
-  },
-  videoDescWeight: {
-    type: "number"
-  },
-  videoDescLetter: {
-    type: "number"
-  },
-  videoDescStyle: {
-    type: "string"
-  },
-  videoDescUpper: {
-    type: "boolean"
-  },
-  videoDescColor: {
-    type: "string"
-  },
-  videoDescBack: {
-    type: "string"
-  },
-  videoDescPadding: {
-    type: "number"
-  },
-  videoDescBorderRadius: {
-    type: "number"
-  },
-  boxBorderType: {
-    type: "string",
-    default: "none"
-  },
-  boxBorderWidth: {
-    type: "number",
-    default: "1"
-  },
-  boxBorderRadius: {
-    type: "number"
-  },
-  boxBorderColor: {
-    type: "string"
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  shadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  shadowVertical: {
-    type: "number",
-    default: "0"
-  },
-  shadowPosition: {
-    type: "string",
-    default: ""
-  },
+    videoBoxId: {
+        type: "string",
+    },
+    videoType: {
+        type: "string",
+        default: "youtube",
+    },
+    videoURL: {
+        type: "string",
+        default: "07d2dXHYb94",
+    },
+    videoID: {
+        type: "string",
+    },
+    autoPlay: {
+        type: "boolean",
+        default: false,
+    },
+    loop: {
+        type: "boolean",
+        default: false,
+    },
+    controls: {
+        type: "boolean",
+        default: true,
+    },
+    relatedVideos: {
+        type: "boolean",
+        default: false,
+    },
+    mute: {
+        type: "boolean",
+        default: false,
+    },
+    overlay: {
+        type: "boolean",
+        default: false,
+    },
+    overlayImgID: {
+        type: "string",
+    },
+    overlayImgURL: {
+        type: "string",
+    },
+    blur: {
+        type: "number",
+        default: 0,
+    },
+    bright: {
+        type: "number",
+        default: 100,
+    },
+    contrast: {
+        type: "number",
+        default: 100,
+    },
+    saturation: {
+        type: "number",
+        default: 100,
+    },
+    hue: {
+        type: "number",
+        default: 0,
+    },
+    playTop: {
+        type: "number",
+    },
+    playIcon: {
+        type: "boolean",
+        default: true,
+    },
+    playSize: {
+        type: "number",
+    },
+    playColor: {
+        type: "string",
+    },
+    playBack: {
+        type: "string",
+    },
+    playHoverColor: {
+        type: "string",
+    },
+    playHoverBackColor: {
+        type: "string",
+    },
+    playPadding: {
+        type: "number",
+    },
+    playBorderType: {
+        type: "string",
+        default: "none",
+    },
+    playBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    playBorderRadius: {
+        type: "number",
+    },
+    playBorderColor: {
+        type: "string",
+    },
+    videoDescText: {
+        type: "string",
+    },
+    videoDesc: {
+        type: "boolean",
+    },
+    descLeft: {
+        type: "number",
+    },
+    descTop: {
+        type: "number",
+    },
+    videoDescSize: {
+        type: "number",
+    },
+    videoDescFamily: {
+        type: "string",
+    },
+    videoDescWeight: {
+        type: "number",
+    },
+    videoDescLetter: {
+        type: "number",
+    },
+    videoDescStyle: {
+        type: "string",
+    },
+    videoDescUpper: {
+        type: "boolean",
+    },
+    videoDescColor: {
+        type: "string",
+    },
+    videoDescBack: {
+        type: "string",
+    },
+    videoDescPadding: {
+        type: "number",
+    },
+    videoDescBorderRadius: {
+        type: "number",
+    },
+    boxBorderType: {
+        type: "string",
+        default: "none",
+    },
+    boxBorderWidth: {
+        type: "number",
+        default: "1",
+    },
+    boxBorderRadius: {
+        type: "number",
+    },
+    boxBorderColor: {
+        type: "string",
+    },
+    shadowColor: {
+        type: "string",
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    shadowPosition: {
+        type: "string",
+        default: "",
+    },
 
-  // Old props
-  playLeft: {
-    type: "number"
-  }
+    // Old props
+    playLeft: {
+        type: "number",
+    },
 };
 
 const videoBoxAttrs_2_0 = {
@@ -588,7 +588,15 @@ const newAttributes_2_1 = {
     classMigrate: {
         type: 'boolean',
         default:false
-    }
+    },
+    playOpacity: {
+        type: "number",
+        default: "1",
+    },
+    videoDescOpacity: {
+        type: "number",
+        default: "1",
+    },
 }
 const videoBoxAttrs_2_1 = Object.assign( videoBoxAttrs_2_0, newAttributes_2_1 );
 
@@ -601,7 +609,9 @@ const deprecatedContent = [
                 block_id: '',
                 videoDescSizeUnit: 'px',
                 videoDescSizeTablet: '',
-                videoDescSizeMobile:'',
+                videoDescSizeMobile: '',
+                playOpacity    : '',
+                videoDescOpacity:'',
             }
             return Object.assign( attributes, newAttributes );
         },

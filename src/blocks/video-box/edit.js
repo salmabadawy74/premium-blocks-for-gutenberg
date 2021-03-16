@@ -8,6 +8,9 @@ import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
+
 const {
     PanelBody,
     SelectControl,
@@ -18,11 +21,11 @@ const {
     TabPanel,
 } = wp.components;
 
-const { Component, Fragment } = wp.element;
+const {Component, Fragment} = wp.element;
 
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 let isBoxUpdated = null;
 
@@ -38,7 +41,7 @@ class edit extends Component {
         setAttributes({block_id:clientId})
 
         if (!attributes.videoBoxId) {
-            setAttributes({ videoBoxId: "premium-video-box-" + clientId });
+            setAttributes({videoBoxId: "premium-video-box-" + clientId});
         }
         this.props.setAttributes({ classMigrate: true });
 
@@ -58,17 +61,15 @@ class edit extends Component {
     }
 
     initVideoBox() {
-
-        const { videoBoxId } = this.props.attributes;
+        const {videoBoxId} = this.props.attributes;
 
         if (!videoBoxId) return null;
 
         let videoBox = document.getElementById(videoBoxId),
-            video, src;
-
+            video,
+            src;
 
         videoBox.addEventListener("click", () => {
-
             videoBox.classList.add("video-overlay-false");
 
             let type = videoBox.getAttribute("data-type");
@@ -81,16 +82,17 @@ class edit extends Component {
             }
 
             setTimeout(() => {
-
                 if ("self" !== type) {
-                    video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                    video.setAttribute(
+                        "src",
+                        src.replace("autoplay=0", "autoplay=1")
+                    );
                 } else {
                     videoBox
                         .getElementsByClassName("premium-video-box__overlay")[0]
                         .remove();
                     video.play();
                 }
-
             }, 300);
         });
     }
@@ -126,6 +128,7 @@ class edit extends Component {
             playSize,
             playPadding,
             playBack,
+            playOpacity,
             playBorderColor,
             playBorderWidth,
             playBorderRadius,
@@ -136,6 +139,7 @@ class edit extends Component {
             videoDescText,
             videoDescColor,
             videoDescBack,
+            videoDescOpacity,
             videoDescPadding,
             videoDescSize,
             videoDescSizeUnit,
@@ -159,46 +163,46 @@ class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
-            shadowPosition
+            shadowPosition,
         } = this.props.attributes;
 
         const TYPE = [
             {
                 value: "youtube",
-                label: __("Youtube")
+                label: __("Youtube"),
             },
             {
                 value: "vimeo",
-                label: __("Vimeo")
+                label: __("Vimeo"),
             },
             {
                 value: "daily",
-                label: __("Daily Motion")
+                label: __("Daily Motion"),
             },
             {
                 value: "self",
-                label: __("Self Hosted")
-            }
+                label: __("Self Hosted"),
+            },
         ];
 
         const loopVideo = () => {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
                     return loop
-                        ? `1&playlist=${videoURL.replace(
+                        ? `1&playlist=${ videoURL.replace(
                             "https://www.youtube.com/embed/",
                             ""
-                        )}`
+                        ) }`
                         : "0";
                 } else {
-                    return loop ? `1&playlist=${videoURL}` : "0";
+                    return loop ? `1&playlist=${ videoURL }` : "0";
                 }
             } else {
                 return loop ? "1" : "0";
             }
         };
 
-        const getHelp = Type => {
+        const getHelp = (Type) => {
             switch (Type) {
                 case "youtube":
                     return __(
@@ -215,7 +219,7 @@ class edit extends Component {
             }
         };
 
-        const addFontToHead = fontFamily => {
+        const addFontToHead = (fontFamily) => {
             const head = document.head;
             const link = document.createElement("link");
             link.type = "text/css";
@@ -228,8 +232,8 @@ class edit extends Component {
             head.appendChild(link);
         };
 
-        const onChangeDescFamily = fontFamily => {
-            setAttributes({ videoDescFamily: fontFamily });
+        const onChangeDescFamily = (fontFamily) => {
+            setAttributes({videoDescFamily: fontFamily});
             if (!fontFamily) {
                 return;
             }
@@ -249,10 +253,10 @@ class edit extends Component {
 
         const changeVideoType = (newvalue) => {
             if (newvalue === "self") {
-                setAttributes({ videoURL: "" })
+                setAttributes({videoURL: ""});
             }
-            setAttributes({ videoType: newvalue })
-        }
+            setAttributes({videoType: newvalue});
+        };
 
         return [
             isSelected && (
@@ -273,8 +277,12 @@ class edit extends Component {
                                 className="premium-text-control"
                                 label={__("Video URL")}
                                 value={videoURL}
-                                placeholder={__("Enter Video ID, Embed URL or Video URL")}
-                                onChange={newURL => setAttributes({ videoURL: newURL })}
+                                placeholder={__(
+                                    "Enter Video ID, Embed URL or Video URL"
+                                )}
+                                onChange={(newURL) =>
+                                    setAttributes({videoURL: newURL})
+                                }
                                 help={getHelp(videoType)}
                             />
                         )}
@@ -300,7 +308,9 @@ class edit extends Component {
                         <ToggleControl
                             label={__("Autoplay")}
                             checked={autoPlay}
-                            onChange={newCheck => setAttributes({ autoPlay: newCheck })}
+                            onChange={newCheck =>
+                                setAttributes({autoPlay: newCheck})
+                            }
                             help={__(
                                 "This option effect works when Overlay Image option is disabled"
                             )}
@@ -309,19 +319,25 @@ class edit extends Component {
                             <ToggleControl
                                 label={__("Loop")}
                                 checked={loop}
-                                onChange={newCheck => setAttributes({ loop: newCheck })}
+                                onChange={newCheck =>
+                                    setAttributes({loop: newCheck})
+                                }
                             />
                         )}
                         <ToggleControl
                             label={__("Mute")}
                             checked={mute}
-                            onChange={newCheck => setAttributes({ mute: newCheck })}
+                            onChange={newCheck =>
+                                setAttributes({mute: newCheck})
+                            }
                         />
                         {"vimeo" !== videoType && (
                             <ToggleControl
                                 label={__("Player Controls")}
                                 checked={controls}
-                                onChange={newCheck => setAttributes({ controls: newCheck })}
+                                onChange={newCheck =>
+                                    setAttributes({controls: newCheck})
+                                }
                             />
                         )}
                         {"youtube" === videoType && (
@@ -329,14 +345,16 @@ class edit extends Component {
                                 label={__("Show Related Videos")}
                                 checked={relatedVideos}
                                 onChange={newCheck =>
-                                    setAttributes({ relatedVideos: newCheck })
+                                    setAttributes({relatedVideos: newCheck})
                                 }
                             />
                         )}
                         <ToggleControl
                             label={__("Overlay Image")}
                             checked={overlay}
-                            onChange={newCheck => setAttributes({ overlay: newCheck })}
+                            onChange={newCheck =>
+                                setAttributes({overlay: newCheck})
+                            }
                         />
                     </PanelBody>
                     {overlay && (
@@ -370,25 +388,32 @@ class edit extends Component {
                                 saturation={saturation}
                                 hue={hue}
                                 onChangeBlur={value =>
-                                    setAttributes({ blur: value === undefined ? 0 : value })
+                                    setAttributes({
+                                        blur: value === undefined ? 0 : value,
+                                    })
                                 }
                                 onChangeBright={value =>
                                     setAttributes({
-                                        bright: value === undefined ? 100 : value
+                                        bright:
+                                            value === undefined ? 100 : value,
                                     })
                                 }
                                 onChangeContrast={value =>
                                     setAttributes({
-                                        contrast: value === undefined ? 100 : value
+                                        contrast:
+                                            value === undefined ? 100 : value,
                                     })
                                 }
                                 onChangeSat={value =>
                                     setAttributes({
-                                        saturation: value === undefined ? 100 : value
+                                        saturation:
+                                            value === undefined ? 100 : value,
                                     })
                                 }
                                 onChangeHue={value =>
-                                    setAttributes({ hue: value === undefined ? 100 : value })
+                                    setAttributes({
+                                        hue: value === undefined ? 100 : value,
+                                    })
                                 }
                             />
                         </PanelBody>
@@ -403,7 +428,9 @@ class edit extends Component {
                                 <ToggleControl
                                     label={__("Enable Play Icon")}
                                     checked={playIcon}
-                                    onChange={newCheck => setAttributes({ playIcon: newCheck })}
+                                    onChange={newCheck =>
+                                        setAttributes({playIcon: newCheck})
+                                    }
                                 />
                                 {playIcon && (
                                     <Fragment>
@@ -412,17 +439,22 @@ class edit extends Component {
                                             value={playSize}
                                             onChange={newValue =>
                                                 setAttributes({
-                                                    playSize: newValue === undefined ? 20 : newValue
+                                                    playSize:
+                                                        newValue === undefined
+                                                            ? 20
+                                                            : newValue,
                                                 })
                                             }
                                         />
-
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playTop}
                                             onChange={newValue =>
                                                 setAttributes({
-                                                    playTop: newValue === undefined ? 50 : newValue
+                                                    playTop:
+                                                        newValue === undefined
+                                                            ? 50
+                                                            : newValue,
                                                 })
                                             }
                                         />
@@ -434,16 +466,25 @@ class edit extends Component {
                                             borderColor={playBorderColor}
                                             borderRadius={playBorderRadius}
                                             onChangeType={newType =>
-                                                setAttributes({ playBorderType: newType })
+                                                setAttributes({
+                                                    playBorderType: newType,
+                                                })
                                             }
                                             onChangeWidth={newWidth =>
-                                                setAttributes({ playBorderWidth: newWidth })
+                                                setAttributes({
+                                                    playBorderWidth: newWidth,
+                                                })
                                             }
                                             onChangeColor={colorValue =>
-                                                setAttributes({ playBorderColor: colorValue.hex })
+                                                setAttributes({
+                                                    playBorderColor:
+                                                        colorValue.hex,
+                                                })
                                             }
                                             onChangeRadius={newrRadius =>
-                                                setAttributes({ playBorderRadius: newrRadius })
+                                                setAttributes({
+                                                    playBorderRadius: newrRadius,
+                                                })
                                             }
                                         />
                                         <RangeControl
@@ -451,7 +492,10 @@ class edit extends Component {
                                             value={playPadding}
                                             onChange={newValue =>
                                                 setAttributes({
-                                                    playPadding: newValue === undefined ? 20 : newValue
+                                                    playPadding:
+                                                        newValue === undefined
+                                                            ? 20
+                                                            : newValue,
                                                 })
                                             }
                                         />
@@ -466,7 +510,9 @@ class edit extends Component {
                                 <ToggleControl
                                     label={__("Enable Video Description")}
                                     checked={videoDesc}
-                                    onChange={newCheck => setAttributes({ videoDesc: newCheck })}
+                                    onChange={newCheck =>
+                                        setAttributes({videoDesc: newCheck})
+                                    }
                                 />
                                 {videoDesc && (
                                     <Fragment>
@@ -474,7 +520,9 @@ class edit extends Component {
                                             label={__("Description Text")}
                                             value={videoDescText}
                                             onChange={newText =>
-                                                setAttributes({ videoDescText: newText })
+                                                setAttributes({
+                                                    videoDescText: newText,
+                                                })
                                             }
                                         />
                                         <SelectControl
@@ -489,7 +537,7 @@ class edit extends Component {
                                                 "weight",
                                                 "style",
                                                 "upper",
-                                                "spacing"
+                                                "spacing",
                                             ]}
                                             setAttributes={setAttributes}
                                             fontSizeType={{
@@ -510,19 +558,27 @@ class edit extends Component {
                                             }}
                                             weight={videoDescWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ videoDescWeight: newWeight })
+                                                setAttributes({
+                                                    videoDescWeight: newWeight,
+                                                })
                                             }
                                             style={videoDescStyle}
                                             spacing={videoDescLetter}
                                             upper={videoDescUpper}
                                             onChangeStyle={newStyle =>
-                                                setAttributes({ videoDescStyle: newStyle })
+                                                setAttributes({
+                                                    videoDescStyle: newStyle,
+                                                })
                                             }
                                             onChangeSpacing={newValue =>
-                                                setAttributes({ videoDescLetter: newValue })
+                                                setAttributes({
+                                                    videoDescLetter: newValue,
+                                                })
                                             }
                                             onChangeUpper={check =>
-                                                setAttributes({ videoDescUpper: check })
+                                                setAttributes({
+                                                    videoDescUpper: check,
+                                                })
                                             }
                                         />
                                         <RangeControl
@@ -530,17 +586,22 @@ class edit extends Component {
                                             value={descTop}
                                             onChange={newValue =>
                                                 setAttributes({
-                                                    descTop: newValue === undefined ? 50 : newValue
+                                                    descTop:
+                                                        newValue === undefined
+                                                            ? 50
+                                                            : newValue,
                                                 })
                                             }
                                         />
                                         <RangeControl
                                             label={__("Border Radius (px)")}
                                             value={videoDescBorderRadius}
-                                            onChange={newValue =>
+                                            onChange={(newValue) =>
                                                 setAttributes({
                                                     videoDescBorderRadius:
-                                                        newValue === undefined ? 0 : newValue
+                                                        newValue === undefined
+                                                            ? 0
+                                                            : newValue,
                                                 })
                                             }
                                         />
@@ -551,19 +612,28 @@ class edit extends Component {
                                             vertical={descShadowVertical}
                                             onChangeColor={newColor =>
                                                 setAttributes({
-                                                    descShadowColor: newColor.hex || "transparent"
+                                                    descShadowColor:
+                                                        newColor.hex ||
+                                                        "transparent",
                                                 })
                                             }
                                             onChangeBlur={newBlur =>
-                                                setAttributes({ descShadowBlur: newBlur || "0" })
+                                                setAttributes({
+                                                    descShadowBlur:
+                                                        newBlur || "0",
+                                                })
                                             }
                                             onChangehHorizontal={newValue =>
                                                 setAttributes({
-                                                    descShadowHorizontal: newValue || "0"
+                                                    descShadowHorizontal:
+                                                        newValue || "0",
                                                 })
                                             }
                                             onChangeVertical={newValue =>
-                                                setAttributes({ descShadowVertical: newValue || "0" })
+                                                setAttributes({
+                                                    descShadowVertical:
+                                                        newValue || "0",
+                                                })
                                             }
                                         />
                                         <RangeControl
@@ -572,7 +642,9 @@ class edit extends Component {
                                             onChange={newValue =>
                                                 setAttributes({
                                                     videoDescPadding:
-                                                        newValue === undefined ? 20 : newValue
+                                                        newValue === undefined
+                                                            ? 20
+                                                            : newValue,
                                                 })
                                             }
                                         />
@@ -701,16 +773,18 @@ class edit extends Component {
                             borderColor={boxBorderColor}
                             borderRadius={boxBorderRadius}
                             onChangeType={newType =>
-                                setAttributes({ boxBorderType: newType })
+                                setAttributes({boxBorderType: newType})
                             }
                             onChangeWidth={newWidth =>
-                                setAttributes({ boxBorderWidth: newWidth })
+                                setAttributes({boxBorderWidth: newWidth})
                             }
                             onChangeColor={colorValue =>
-                                setAttributes({ boxBorderColor: colorValue.hex })
+                                setAttributes({
+                                    boxBorderColor: colorValue.hex,
+                                })
                             }
                             onChangeRadius={newrRadius =>
-                                setAttributes({ boxBorderRadius: newrRadius })
+                                setAttributes({boxBorderRadius: newrRadius})
                             }
                         />
                         <PremiumBoxShadow
@@ -723,27 +797,33 @@ class edit extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     shadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined
+                                            ? "transparent"
+                                            : newColor.hex,
                                 })
                             }
                             onChangeBlur={newBlur =>
                                 setAttributes({
-                                    shadowBlur: newBlur === undefined ? 0 : newBlur
+                                    shadowBlur:
+                                        newBlur === undefined ? 0 : newBlur,
                                 })
                             }
                             onChangehHorizontal={newValue =>
                                 setAttributes({
-                                    shadowHorizontal: newValue === undefined ? 0 : newValue
+                                    shadowHorizontal:
+                                        newValue === undefined ? 0 : newValue,
                                 })
                             }
                             onChangeVertical={newValue =>
                                 setAttributes({
-                                    shadowVertical: newValue === undefined ? 0 : newValue
+                                    shadowVertical:
+                                        newValue === undefined ? 0 : newValue,
                                 })
                             }
                             onChangePosition={newValue =>
                                 setAttributes({
-                                    shadowPosition: newValue === undefined ? 0 : newValue
+                                    shadowPosition:
+                                        newValue === undefined ? 0 : newValue,
                                 })
                             }
                         />
@@ -759,26 +839,29 @@ class edit extends Component {
                     borderWidth: boxBorderWidth + "px",
                     borderRadius: boxBorderRadius + "px",
                     borderColor: boxBorderColor,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playHoverColor} !important;`,
-                            `background-color: ${playHoverBackColor} !important;`,
-                            "}"
-                        ].join("\n")
+                            `#${ videoBoxId } .premium-video-box__play:hover {`,
+                            `color: ${ playHoverColor } !important;`,
+                            `background-color: ${ playHoverBackColor } !important;`,
+                            "}",
+                        ].join("\n"),
                     }}
                 />
                 <div className={`premium-video-box__container`}>
                     {"self" !== videoType && (
                         <iframe
-                            src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                }`}
+                            src={`${ onChangeVideoURL(
+                                videoType,
+                                videoURL
+                            ) }?autoplay=${ overlay ? 0 : autoPlay
+                                }&loop=${ loopVideo() }&mute${ "vimeo" == videoType ? "d" : ""
+                                }=${ mute }&rel=${ relatedVideos ? "1" : "0"
+                                }&controls=${ controls ? "1" : "0" }`}
                             frameborder="0"
                             gesture="media"
                             allow="encrypted-media"
@@ -799,8 +882,8 @@ class edit extends Component {
                     <div
                         className={`premium-video-box__overlay`}
                         style={{
-                            backgroundImage: `url('${overlayImgURL}')`,
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            backgroundImage: `url('${ overlayImgURL }')`,
+                            filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
                         }}
                     />
                 )}
@@ -811,18 +894,20 @@ class edit extends Component {
                             top: playTop + "%",
                             left: playLeft + "%",
                             color: playColor,
-                            backgroundColor: playBack,
+                            backgroundColor: playBack
+                                ? hexToRgba(playBack, playOpacity)
+                                : "transparent",
                             border: playBorderType,
                             borderWidth: playBorderWidth + "px",
                             borderRadius: playBorderRadius + "px",
                             borderColor: playBorderColor,
-                            padding: playPadding + "px"
+                            padding: playPadding + "px",
                         }}
                     >
                         <i
                             className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                             style={{
-                                fontSize: playSize + "px"
+                                fontSize: playSize + "px",
                             }}
                         />
                     </div>
@@ -832,11 +917,13 @@ class edit extends Component {
                         className={`premium-video-box__desc`}
                         style={{
                             color: videoDescColor,
-                            backgroundColor: videoDescBack,
+                            backgroundColor: videoDescBack
+                                ? hexToRgba(videoDescBack, videoDescOpacity)
+                                : "transparent",
                             padding: videoDescPadding,
                             borderRadius: videoDescBorderRadius,
                             top: descTop + "%",
-                            left: descLeft + "%"
+                            left: descLeft + "%",
                         }}
                     >
                         <p
@@ -845,16 +932,18 @@ class edit extends Component {
                                 fontFamily: videoDescFamily,
                                 fontWeight: videoDescWeight,
                                 letterSpacing: videoDescLetter + "px",
-                                textTransform: videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-                                fontStyle: videoDescStyle
+                                textTransform: videoDescUpper
+                                    ? "uppercase"
+                                    : "none",
+                                textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
+                                fontStyle: videoDescStyle,
                             }}
                         >
                             <span>{videoDescText}</span>
                         </p>
                     </div>
                 )}
-            </div>
+            </div>,
         ];
     }
 }

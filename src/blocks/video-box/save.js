@@ -1,4 +1,5 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 import onChangeVideoURL from "./index";
 
 const save = props => {
@@ -140,58 +141,37 @@ const save = props => {
           }}
         />
       )}
-      {overlay && playIcon && (
-        <div
-          className={`premium-video-box__play`}
-          style={{
-            top: playTop + "%",
-            left: playLeft + "%",
-            color: playColor,
-            backgroundColor: playBack,
-            border: playBorderType,
-            borderWidth: playBorderWidth + "px",
-            borderRadius: playBorderRadius + "px",
-            borderColor: playBorderColor,
-            padding: playPadding + "px"
-          }}
-        >
-          <i
-            className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
-            style={{
-              fontSize: playSize + "px"
-            }}
-          />
-        </div>
-      )}
-      {overlay && videoDesc && (
-        <div
-          className={`premium-video-box__desc`}
-          style={{
-            color: videoDescColor,
-            backgroundColor: videoDescBack,
-            padding: videoDescPadding,
-            borderRadius: videoDescBorderRadius,
-            top: descTop + "%",
-            left: descLeft + "%"
-          }}
-        >
-          <p
-            className={`premium-video-box__desc_text`}
-            style={{
-              fontFamily: videoDescFamily,
-              fontWeight: videoDescWeight,
-              letterSpacing: videoDescLetter + "px",
-              textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-              textTransform: videoDescUpper ? "uppercase" : "none",
-              fontStyle: videoDescStyle
-            }}
-          >
-            <span>{videoDescText}</span>
-          </p>
-        </div>
-      )}
-    </div>
-  );
+          {overlay && playIcon && (
+              <div
+                  id={videoBoxId}
+                  className={`${ mainClasses } video-overlay-${ overlay }`}
+                  data-type={videoType}
+                  style={{
+                      border: boxBorderType,
+                      borderWidth: boxBorderWidth + "px",
+                      borderRadius: boxBorderRadius + "px",
+                      borderColor: boxBorderColor,
+                      boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                  }}
+              >
+                  <p
+                      className={`premium-video-box__desc_text`}
+                      style={{
+                          fontFamily: videoDescFamily,
+                          fontWeight: videoDescWeight,
+                          letterSpacing: videoDescLetter + "px",
+                          textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
+                          textTransform: videoDescUpper ? "uppercase" : "none",
+                          fontStyle: videoDescStyle
+                      }}
+                  >
+                      <span>{videoDescText}</span>
+                  </p>
+              </div>
+            
+          )}
+          </div>
+          )
 };
 
 export default save;

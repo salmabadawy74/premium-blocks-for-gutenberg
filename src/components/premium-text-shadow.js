@@ -8,11 +8,11 @@ export default function PremiumTextShadow(props) {
         blur,
         horizontal,
         vertical,
-        onChangeColor = () => { },
-        onChangeBlur = () => { },
-        onChangehHorizontal = () => { },
-        onChangeVertical = () => { },
-        onResetClick = () => { }
+        onChangeColor = () => {},
+        onChangeBlur = () => {},
+        onChangehHorizontal = () => {},
+        onChangeVertical = () => {},
+        onResetClick = () => {},
     } = props;
 
     return (

@@ -8,163 +8,163 @@ const { RichText } = wp.editor;
 
 const newAttributes_1_6_5 = {
     backColor: {
-        type: "string"
+        type: "string",
     },
     imageID: {
-        type: "string"
+        type: "string",
     },
     imageURL: {
-        type: "string"
+        type: "string",
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat"
+        default: "no-repeat",
     },
     backgroundPosition: {
         type: "string",
-        default: "top center"
+        default: "top center",
     },
     backgroundSize: {
         type: "string",
-        default: "auto"
+        default: "auto",
     },
     fixed: {
         type: "boolean",
-        default: false
-    }
+        default: false,
+    },
 };
 
 const newAttributes_1_3_9 = {
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
-        type: "number"
+        type: "number",
     },
     shadowHorizontal: {
-        type: "number"
+        type: "number",
     },
     shadowVertical: {
-        type: "number"
+        type: "number",
     },
     shadowPosition: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 
 const testimonialsAttrs_1_0_1 = {
     align: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     authorImgId: {
-        type: "string"
+        type: "string",
     },
     authorImgUrl: {
-        type: "string"
+        type: "string",
     },
     imgRadius: {
         type: "string",
-        default: "50%"
+        default: "50%",
     },
     imgSize: {
-        type: "number"
+        type: "number",
     },
     imgBorder: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     imgBorderColor: {
-        type: "string"
+        type: "string",
     },
     author: {
         type: "array",
         source: "children",
         selector: ".premium-testimonial__author",
-        default: "John Doe"
+        default: "John Doe",
     },
     authorTag: {
         type: "string",
-        default: "H3"
+        default: "H3",
     },
     authorColor: {
-        type: "string"
+        type: "string",
     },
     authorSize: {
-        type: "number"
+        type: "number",
     },
     authorLetter: {
-        type: "number"
+        type: "number",
     },
     authorStyle: {
-        type: "string"
+        type: "string",
     },
     authorUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     authorWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     authorComTag: {
         type: "string",
-        default: "H4"
+        default: "H4",
     },
     text: {
         type: "array",
         source: "children",
-        selector: ".premium-testimonial__text"
+        selector: ".premium-testimonial__text",
     },
     authorCom: {
         type: "array",
         source: "children",
         selector: ".premium-testimonial__author_comp",
-        default: "Leap13"
+        default: "Leap13",
     },
     authorComColor: {
-        type: "string"
+        type: "string",
     },
     authorComSize: {
-        type: "number"
+        type: "number",
     },
     urlCheck: {
         type: "boolean",
-        default: false
+        default: false,
     },
     urlText: {
-        type: "string"
+        type: "string",
     },
     urlTarget: {
         type: "boolean",
-        default: false
+        default: false,
     },
     quotSize: {
-        type: "number"
+        type: "number",
     },
     quotColor: {
-        type: "string"
+        type: "string",
     },
     quotOpacity: {
-        type: "number"
+        type: "number",
     },
     bodyColor: {
-        type: "string"
+        type: "string",
     },
     bodySize: {
-        type: "number"
+        type: "number",
     },
     bodyLine: {
-        type: "number"
+        type: "number",
     },
     bodyTop: {
-        type: "number"
+        type: "number",
     },
     bodyBottom: {
-        type: "number"
+        type: "number",
     },
     dashColor: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 
 const testimonialsAttrs_1_3_9 = Object.assign(
@@ -385,6 +385,9 @@ const newAttributes_2_2 = {
     bodySizeTablet: {
         type:"string"
     },
+    backOpacity: {
+        type:"number"
+    }
 }
 const testimonialsAttrs_2_2 = Object.assign( testimonialsAttrs_2_0, newAttributes_2_2 );
 
@@ -404,7 +407,8 @@ const deprecatedContent = [
                 authorSizeTablet: '',
                 authorSizeMobile: '',
                 authorComSizeMobile: '',
-                authorComSizeUnit:'px'
+                authorComSizeUnit: 'px',
+                backOpacity: "",
             }
             return Object.assign( attributes, newAttributes );
         },
@@ -456,9 +460,9 @@ const deprecatedContent = [
                 paddingRight,
                 paddingBottom,
                 paddingLeft,
-                paddingUnit
+                paddingUnit,
             } = props.attributes;
-        
+
             return (
                 <div
                     className={`${className}__wrap`}
@@ -473,7 +477,7 @@ const deprecatedContent = [
                         paddingTop: paddingTop + paddingUnit,
                         paddingBottom: paddingBottom + paddingUnit,
                         paddingLeft: paddingLeft + paddingUnit,
-                        paddingRight: paddingRight + paddingUnit
+                        paddingRight: paddingRight + paddingUnit,
                     }}
                 >
                     <div className={`premium-testimonial__container`}>
@@ -487,7 +491,7 @@ const deprecatedContent = [
                         <div
                             className={`premium-testimonial__content`}
                             style={{
-                                textAlign: align
+                                textAlign: align,
                             }}
                         >
                             <div className={`premium-testimonial__img_wrap`}>
@@ -501,11 +505,13 @@ const deprecatedContent = [
                                             borderRadius: imgRadius,
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
-                                            height: imgSize + "px"
+                                            height: imgSize + "px",
                                         }}
                                     />
                                 )}
-                                {!authorImgUrl && <DefaultImage className={className} />}
+                                {!authorImgUrl && (
+                                    <DefaultImage className={className} />
+                                )}
                             </div>
                             <div className={`premium-testimonial__text_wrap`}>
                                 <div>
@@ -518,7 +524,7 @@ const deprecatedContent = [
                                             fontSize: bodySize + "px",
                                             lineHeight: bodyLine + "px",
                                             marginTop: bodyTop + "px",
-                                            marginBottom: bodyBottom + "px"
+                                            marginBottom: bodyBottom + "px",
                                         }}
                                     />
                                 </div>
@@ -532,27 +538,31 @@ const deprecatedContent = [
                                         color: authorColor,
                                         fontSize: authorSize + "px",
                                         letterSpacing: authorLetter + "px",
-                                        textTransform: authorUpper ? "uppercase" : "none",
+                                        textTransform: authorUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: authorStyle,
-                                        fontWeight: authorWeight
+                                        fontWeight: authorWeight,
                                     }}
                                 />
                                 <span
                                     className={`premium-testimonial__sep`}
                                     style={{
-                                        color: dashColor
+                                        color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
-                    </span>
-                                <div className={`premium-testimonial__link_wrap`}>
+                                </span>
+                                <div
+                                    className={`premium-testimonial__link_wrap`}
+                                >
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
                                         className={`premium-testimonial__author_comp`}
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
-                                            fontSize: authorComSize + "px"
+                                            fontSize: authorComSize + "px",
                                         }}
                                     />
                                     {urlCheck && (
@@ -575,21 +585,21 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
+        },
     },
     {
         attributes: testimonialsAttrs_1_6_5,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 paddingTop: "",
                 paddingRight: "",
                 paddingBottom: "",
                 paddingLeft: "",
-                paddingUnit: "px"
+                paddingUnit: "px",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -632,7 +642,7 @@ const deprecatedContent = [
                 fixed,
                 backgroundRepeat,
                 backgroundPosition,
-                backgroundSize
+                backgroundSize,
             } = props.attributes;
 
             return (
@@ -645,7 +655,7 @@ const deprecatedContent = [
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset"
+                        backgroundAttachment: fixed ? "fixed" : "unset",
                     }}
                 >
                     <div className={`${className}__container`}>
@@ -659,7 +669,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                textAlign: align
+                                textAlign: align,
                             }}
                         >
                             <div className={`${className}__img_wrap`}>
@@ -673,11 +683,13 @@ const deprecatedContent = [
                                             borderRadius: imgRadius,
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
-                                            height: imgSize + "px"
+                                            height: imgSize + "px",
                                         }}
                                     />
                                 )}
-                                {!authorImgUrl && <DefaultImage className={className} />}
+                                {!authorImgUrl && (
+                                    <DefaultImage className={className} />
+                                )}
                             </div>
                             <div className={`${className}__text_wrap`}>
                                 <div>
@@ -690,7 +702,7 @@ const deprecatedContent = [
                                             fontSize: bodySize + "px",
                                             lineHeight: bodyLine + "px",
                                             marginTop: bodyTop + "px",
-                                            marginBottom: bodyBottom + "px"
+                                            marginBottom: bodyBottom + "px",
                                         }}
                                     />
                                 </div>
@@ -704,19 +716,21 @@ const deprecatedContent = [
                                         color: authorColor,
                                         fontSize: authorSize + "px",
                                         letterSpacing: authorLetter + "px",
-                                        textTransform: authorUpper ? "uppercase" : "none",
+                                        textTransform: authorUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: authorStyle,
-                                        fontWeight: authorWeight
+                                        fontWeight: authorWeight,
                                     }}
                                 />
                                 <span
                                     className={`${className}__sep`}
                                     style={{
-                                        color: dashColor
+                                        color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
-                </span>
+                                </span>
                                 <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
@@ -724,7 +738,7 @@ const deprecatedContent = [
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
-                                            fontSize: authorComSize + "px"
+                                            fontSize: authorComSize + "px",
                                         }}
                                     />
                                     {urlCheck && (
@@ -747,11 +761,11 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
+        },
     },
     {
         attributes: testimonialsAttrs_1_3_9,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 backColor: "",
                 imageID: "",
@@ -759,11 +773,11 @@ const deprecatedContent = [
                 fixed: false,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "top center",
-                backgroundSize: "auto"
+                backgroundSize: "auto",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -800,14 +814,14 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
 
             return (
                 <div
                     className={`${className}__wrap`}
                     style={{
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <div className={`${className}__container`}>
@@ -821,7 +835,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                textAlign: align
+                                textAlign: align,
                             }}
                         >
                             <div className={`${className}__img_wrap`}>
@@ -835,11 +849,13 @@ const deprecatedContent = [
                                             borderRadius: imgRadius,
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
-                                            height: imgSize + "px"
+                                            height: imgSize + "px",
                                         }}
                                     />
                                 )}
-                                {!authorImgUrl && <DefaultImage className={className} />}
+                                {!authorImgUrl && (
+                                    <DefaultImage className={className} />
+                                )}
                             </div>
                             <div className={`${className}__text_wrap`}>
                                 <div>
@@ -852,7 +868,7 @@ const deprecatedContent = [
                                             fontSize: bodySize + "px",
                                             lineHeight: bodyLine + "px",
                                             marginTop: bodyTop + "px",
-                                            marginBottom: bodyBottom + "px"
+                                            marginBottom: bodyBottom + "px",
                                         }}
                                     />
                                 </div>
@@ -866,19 +882,21 @@ const deprecatedContent = [
                                         color: authorColor,
                                         fontSize: authorSize + "px",
                                         letterSpacing: authorLetter + "px",
-                                        textTransform: authorUpper ? "uppercase" : "none",
+                                        textTransform: authorUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: authorStyle,
-                                        fontWeight: authorWeight
+                                        fontWeight: authorWeight,
                                     }}
                                 />
                                 <span
                                     className={`${className}__sep`}
                                     style={{
-                                        color: dashColor
+                                        color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
-                </span>
+                                </span>
                                 <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
@@ -886,11 +904,14 @@ const deprecatedContent = [
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
-                                            fontSize: authorComSize + "px"
+                                            fontSize: authorComSize + "px",
                                         }}
                                     />
                                     {urlCheck && (
-                                        <a href={urlText} target={urlTarget ? "_blank" : ""} />
+                                        <a
+                                            href={urlText}
+                                            target={urlTarget ? "_blank" : ""}
+                                        />
                                     )}
                                 </div>
                             </div>
@@ -905,21 +926,21 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
+        },
     },
     {
         attributes: testimonialsAttrs_1_0_1,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
                 shadowBlur: "",
                 shadowHorizontal: "",
                 shadowVertical: "",
-                shadowPosition: ""
+                shadowPosition: "",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -951,7 +972,7 @@ const deprecatedContent = [
                 dashColor,
                 urlCheck,
                 urlText,
-                urlTarget
+                urlTarget,
             } = props.attributes;
 
             return (
@@ -967,7 +988,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                textAlign: align
+                                textAlign: align,
                             }}
                         >
                             <div className={`${className}__img_wrap`}>
@@ -981,11 +1002,13 @@ const deprecatedContent = [
                                             borderRadius: imgRadius,
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
-                                            height: imgSize + "px"
+                                            height: imgSize + "px",
                                         }}
                                     />
                                 )}
-                                {!authorImgUrl && <DefaultImage className={className} />}
+                                {!authorImgUrl && (
+                                    <DefaultImage className={className} />
+                                )}
                             </div>
                             <div className={`${className}__text_wrap`}>
                                 <div>
@@ -998,7 +1021,7 @@ const deprecatedContent = [
                                             fontSize: bodySize + "px",
                                             lineHeight: bodyLine + "px",
                                             marginTop: bodyTop + "px",
-                                            marginBottom: bodyBottom + "px"
+                                            marginBottom: bodyBottom + "px",
                                         }}
                                     />
                                 </div>
@@ -1012,19 +1035,21 @@ const deprecatedContent = [
                                         color: authorColor,
                                         fontSize: authorSize + "px",
                                         letterSpacing: authorLetter + "px",
-                                        textTransform: authorUpper ? "uppercase" : "none",
+                                        textTransform: authorUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: authorStyle,
-                                        fontWeight: authorWeight
+                                        fontWeight: authorWeight,
                                     }}
                                 />
                                 <span
                                     className={`${className}__sep`}
                                     style={{
-                                        color: dashColor
+                                        color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
-                </span>
+                                </span>
                                 <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
@@ -1032,11 +1057,14 @@ const deprecatedContent = [
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
-                                            fontSize: authorComSize + "px"
+                                            fontSize: authorComSize + "px",
                                         }}
                                     />
                                     {urlCheck && (
-                                        <a href={urlText} target={urlTarget ? "_blank" : ""} />
+                                        <a
+                                            href={urlText}
+                                            target={urlTarget ? "_blank" : ""}
+                                        />
                                     )}
                                 </div>
                             </div>
@@ -1051,11 +1079,11 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
+        },
     },
     {
         attributes: testimonialsAttrs_1_0_1,
-        save: props => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -1083,7 +1111,7 @@ const deprecatedContent = [
                 dashColor,
                 urlCheck,
                 urlText,
-                urlTarget
+                urlTarget,
             } = props.attributes;
 
             return (
@@ -1099,7 +1127,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                textAlign: align
+                                textAlign: align,
                             }}
                         >
                             <div className={`${className}__img_wrap`}>
@@ -1113,11 +1141,13 @@ const deprecatedContent = [
                                             borderRadius: imgRadius,
                                             borderColor: imgBorderColor,
                                             width: imgSize + "px",
-                                            height: imgSize + "px"
+                                            height: imgSize + "px",
                                         }}
                                     />
                                 )}
-                                {!authorImgUrl && <DefaultImage className={className} />}
+                                {!authorImgUrl && (
+                                    <DefaultImage className={className} />
+                                )}
                             </div>
                             <div className={`${className}__text_wrap`}>
                                 <div>
@@ -1130,7 +1160,7 @@ const deprecatedContent = [
                                             fontSize: bodySize + "px",
                                             lineHeight: bodyLine + "px",
                                             marginTop: bodyTop + "px",
-                                            marginBottom: bodyBottom + "px"
+                                            marginBottom: bodyBottom + "px",
                                         }}
                                     />
                                 </div>
@@ -1142,17 +1172,17 @@ const deprecatedContent = [
                                     value={author}
                                     style={{
                                         color: authorColor,
-                                        fontSize: authorSize + "px"
+                                        fontSize: authorSize + "px",
                                     }}
                                 />
                                 <span
                                     className={`${className}__sep`}
                                     style={{
-                                        color: dashColor
+                                        color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
-                </span>
+                                </span>
                                 <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
@@ -1160,11 +1190,14 @@ const deprecatedContent = [
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
-                                            fontSize: authorComSize + "px"
+                                            fontSize: authorComSize + "px",
                                         }}
                                     />
                                     {urlCheck && (
-                                        <a href={urlText} target={urlTarget ? "_blank" : ""} />
+                                        <a
+                                            href={urlText}
+                                            target={urlTarget ? "_blank" : ""}
+                                        />
                                     )}
                                 </div>
                             </div>
@@ -1179,8 +1212,8 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 
 export default deprecatedContent;

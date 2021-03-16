@@ -2,12 +2,13 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackgroud from "../../components/premium-background";
 import FONTS from "../../components/premium-fonts";
-import styling from './styling'
+import styling from './styling';
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
 
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const { Fragment, Component } = wp.element;
 
@@ -18,16 +19,15 @@ const {
     RangeControl,
     ToggleControl,
     Dropdown,
-    Button
+    Button,
 } = wp.components;
-
 
 const {
     BlockControls,
     InspectorControls,
     AlignmentToolbar,
     ColorPalette,
-    URLInput
+    URLInput,
 } = wp.blockEditor;
 
 class edit extends Component {

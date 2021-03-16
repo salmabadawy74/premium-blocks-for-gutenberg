@@ -1,14 +1,15 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
+import {FontAwesomeEnabled} from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from  './styling'
+import styling from './styling'
+import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -831,7 +832,7 @@ class edit extends Component{
                         alignSelf:
                             "row-reverse" === flexDir || "row" === flexDir
                                 ? "center"
-                                : selfAlign
+                                : selfAlign,
                     }}
                 >
                     <div className={`premium-countup__desc`}>

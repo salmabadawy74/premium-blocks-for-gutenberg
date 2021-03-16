@@ -9,141 +9,141 @@ const { RichText } = wp.editor;
 const buttonAttrs_1_0_0 = {
     btnText: {
         type: "string",
-        default: __("Premium Button")
+        default: __("Premium Button"),
     },
     btnSize: {
         type: "string",
-        default: "md"
+        default: "md",
     },
     btnAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     btnLink: {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-button"
+        selector: ".premium-button",
     },
     btnTarget: {
         type: "boolean",
-        default: false
+        default: false,
     },
     effect: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     effectDir: {
         type: "string",
-        default: "top"
+        default: "top",
     },
     textColor: {
-        type: "string"
+        type: "string",
     },
     textHoverColor: {
-        type: "string"
+        type: "string",
     },
     backColor: {
-        type: "string"
+        type: "string",
     },
     backHoverColor: {
-        type: "string"
+        type: "string",
     },
     slideColor: {
-        type: "string"
+        type: "string",
     },
     textSize: {
-        type: "number"
+        type: "number",
     },
     textLetter: {
-        type: "number"
+        type: "number",
     },
     textStyle: {
-        type: "string"
+        type: "string",
     },
     textUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     textWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     textLine: {
-        type: "number"
+        type: "number",
     },
     borderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     borderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     borderRadius: {
-        type: "number"
+        type: "number",
     },
     borderColor: {
-        type: "string"
+        type: "string",
     },
     padding: {
-        type: "number"
+        type: "number",
     },
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     id: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 
 const newAttributes_1_0_1 = {
     btnShadowColor: {
-        type: "string"
+        type: "string",
     },
     btnShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowPosition: {
         type: "string",
-        default: ""
-    }
+        default: "",
+    },
 };
 
 const buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
 
 const newAttributes_1_3_4 = {
     borderHoverColor: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 
 const buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
 
 const newAttributes_1_4_7 = {
     textFontFamily: {
-        type: "string"
-    }
+        type: "string",
+    },
 };
 
 const buttonAttrs_3_0 = {
@@ -301,20 +301,177 @@ const buttonAttrs_1_4_7 = Object.assign( buttonAttrs_1_3_4, newAttributes_1_4_7 
 
 const buttonAttrs_3_1 = Object.assign( buttonAttrs_3_0, newAttributes_3_1 );
 
+const buttonAttrs_1_5_7 = {
+    btnText: {
+        type: "string",
+        default: __("Premium Button"),
+    },
+    btnSize: {
+        type: "string",
+        default: "md",
+    },
+    btnAlign: {
+        type: "string",
+        default: "center",
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button",
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false,
+    },
+    effect: {
+        type: "string",
+        default: "none",
+    },
+    effectDir: {
+        type: "string",
+        default: "top",
+    },
+    textColor: {
+        type: "string",
+    },
+    textHoverColor: {
+        type: "string",
+    },
+    backColor: {
+        type: "string",
+    },
+    backHoverColor: {
+        type: "string",
+    },
+    slideColor: {
+        type: "string",
+    },
+    textSize: {
+        type: "number",
+    },
+    textFontFamily: {
+        type: "string",
+    },
+    textLetter: {
+        type: "number",
+    },
+    textStyle: {
+        type: "string",
+    },
+    textUpper: {
+        type: "boolean",
+    },
+    textWeight: {
+        type: "number",
+        default: 500,
+    },
+    textLine: {
+        type: "number",
+    },
+    borderType: {
+        type: "string",
+        default: "none",
+    },
+    borderWidth: {
+        type: "number",
+        default: "1",
+    },
+    borderRadius: {
+        type: "number",
+    },
+    borderColor: {
+        type: "string",
+    },
+    borderHoverColor: {
+        type: "string",
+    },
+    padding: {
+        type: "number",
+    },
+    paddingU: {
+        type: "string",
+    },
+    shadowColor: {
+        type: "string",
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    btnShadowColor: {
+        type: "string",
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: "",
+    },
+    id: {
+        type: "string",
+    },
+};
+
+const newAttributes_1_5_8 = {
+    backOpacity: {
+        type: "number",
+        default: "1",
+    },
+    classMigrate: {
+        type: "boolean",
+        default:false
+    },
+    block_id: {
+        type:"string"
+    },
+    textSizeUnit: {
+        type: "string",
+        default:"px"
+    },
+    textSizeTablet: {
+        type:"number"
+    },
+    textSizeMobile: {
+        type:"number"
+    }
+};
+
+const buttonAttrs_1_5_8 = Object.assign(buttonAttrs_1_5_7, newAttributes_1_5_8);
+
 const deprecatedContent = [
     {
-        attributes: buttonAttrs_3_1,
-        migrate: attributes => {
+        attributes: buttonAttrs_1_5_8,
+        migrate: (attributes) => {
             let newAttributes = {
+                backOpacity: "",
                 classMigrate: false,
                 block_id: "",
                 textSizeUnit: "px",
                 textSizeTablet: '',
                 textSizeMobile:'',
-            }
-            return Object.assign( attributes,newAttributes)
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -410,10 +567,10 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_4_7,
-        migrate: attributes => {
+        migrate: (attributes) => {
             return Object.assign(attributes, { paddingU: "" });
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -449,7 +606,7 @@ const deprecatedContent = [
                 btnShadowColor,
                 btnShadowHorizontal,
                 btnShadowVertical,
-                btnShadowPosition
+                btnShadowPosition,
             } = props.attributes;
             return (
                 <div
@@ -471,8 +628,8 @@ const deprecatedContent = [
                                 `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
                                 `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                                 `background-color: ${slideColor}`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <RichText.Content
@@ -498,16 +655,16 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     />
                 </div>
             );
-        }
+        },
     },
     {
         attributes: buttonAttrs_1_4_7,
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -543,7 +700,7 @@ const deprecatedContent = [
                 btnShadowColor,
                 btnShadowHorizontal,
                 btnShadowVertical,
-                btnShadowPosition
+                btnShadowPosition,
             } = props.attributes;
             return (
                 <div
@@ -565,8 +722,8 @@ const deprecatedContent = [
                                 `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
                                 `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                                 `background-color: ${slideColor}`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <RichText.Content
@@ -591,19 +748,19 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     />
                 </div>
             );
-        }
+        },
     },
     {
         attributes: buttonAttrs_1_3_4,
-        migrate: attributes => {
+        migrate: (attributes) => {
             return Object.assign(attributes, { textFontFamily: "" });
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -638,7 +795,7 @@ const deprecatedContent = [
                 btnShadowColor,
                 btnShadowHorizontal,
                 btnShadowVertical,
-                btnShadowPosition
+                btnShadowPosition,
             } = props.attributes;
             return (
                 <div
@@ -660,8 +817,8 @@ const deprecatedContent = [
                                 `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
                                 `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                                 `background-color: ${slideColor}`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <RichText.Content
@@ -685,19 +842,19 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     />
                 </div>
             );
-        }
+        },
     },
     {
         attributes: buttonAttrs_1_0_1,
-        migrate: attributes => {
+        migrate: (attributes) => {
             return Object.assign(attributes, { borderHoverColor: "" });
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -731,7 +888,7 @@ const deprecatedContent = [
                 btnShadowColor,
                 btnShadowHorizontal,
                 btnShadowVertical,
-                btnShadowPosition
+                btnShadowPosition,
             } = props.attributes;
             return (
                 <div
@@ -752,8 +909,8 @@ const deprecatedContent = [
                                 `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
                                 `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                                 `background-color: ${slideColor}`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <RichText.Content
@@ -777,26 +934,26 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     />
                 </div>
             );
-        }
+        },
     },
     {
         attributes: buttonAttrs_1_0_0,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 btnShadowColor: "",
                 btnShadowBlur: "0",
                 btnShadowHorizontal: "0",
                 btnShadowVertical: "0",
-                btnShadowPosition: ""
+                btnShadowPosition: "",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 btnText,
@@ -825,7 +982,7 @@ const deprecatedContent = [
                 shadowBlur,
                 shadowColor,
                 shadowHorizontal,
-                shadowVertical
+                shadowVertical,
             } = props.attributes;
             return (
                 <div
@@ -846,8 +1003,8 @@ const deprecatedContent = [
                                 `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
                                 `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
                                 `background-color: ${slideColor}`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <RichText.Content
@@ -870,13 +1027,13 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     />
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 
 export default deprecatedContent;

@@ -1,9 +1,9 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText, InnerBlocks } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const { block_id,
@@ -17,6 +17,9 @@ const save = props => {
         titleUpper,
         titleWeight,
         titleColor,
+        titleOpacity,
+        arrowOpacity,
+        descOpacity,
         titleBorder,
         titleBorderColor,
         titleBorderWidth,
@@ -56,7 +59,7 @@ const save = props => {
         descPaddingT,
         descPaddingR,
         descPaddingB,
-        descPaddingL
+        descPaddingL,
     } = props.attributes;
 
     const mainClasses = classnames( className, 'premium-accordion' );
@@ -70,7 +73,9 @@ const save = props => {
                 <div
                     className={`premium-accordion__title_wrap premium-accordion__${ direction } premium-accordion__${ arrowPos }`}
                     style={{
-                        backgroundColor: titleBack,
+                        backgroundColor: titleBack
+                            ? hexToRgba(titleBack, titleOpacity)
+                            : "transparent",
                         border: titleBorder,
                         borderWidth: titleBorderWidth + "px",
                         borderRadius: titleBorderRadius + "px",
@@ -78,7 +83,7 @@ const save = props => {
                         paddingTop: titlePaddingT,
                         paddingRight: titlePaddingR,
                         paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL
+                        paddingLeft: titlePaddingL,
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -89,7 +94,9 @@ const save = props => {
                             style={{
                                 color: titleColor,
                                 letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
+                                textTransform: titleUpper
+                                    ? "uppercase"
+                                    : "none",
                                 fontStyle: titleStyle,
                                 fontWeight: titleWeight,
                                 textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
@@ -108,9 +115,11 @@ const save = props => {
                             viewBox="0 0 20 20"
                             style={{
                                 fill: arrowColor,
-                                backgroundColor: arrowBack,
+                                backgroundColor: arrowBack
+                                    ? hexToRgba(arrowBack, arrowOpacity)
+                                    : "transparent",
                                 padding: arrowPadding + "px",
-                                borderRadius: arrowRadius + "px"
+                                borderRadius: arrowRadius + "px",
                             }}
                         >
                             <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -121,7 +130,9 @@ const save = props => {
                     className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
                     style={{
                         textAlign: descAlign,
-                        backgroundColor: descBack,
+                        backgroundColor: descBack
+                            ? hexToRgba(descBack, descOpacity)
+                            : "transparent",
                         border: descBorder,
                         borderWidth: descBorderWidth + "px",
                         borderRadius: descBorderRadius + "px",
@@ -129,7 +140,7 @@ const save = props => {
                         paddingTop: descPaddingT,
                         paddingRight: descPaddingR,
                         paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL
+                        paddingLeft: descPaddingL,
                     }}
                 >
                     {"text" === contentType && (
@@ -144,7 +155,7 @@ const save = props => {
                                 textShadow: `${ textShadowHorizontal }px ${ textShadowVertical }px ${ textShadowBlur }px ${ textShadowColor }`,
                                 fontStyle: descStyle,
                                 fontWeight: descWeight,
-                                lineHeight: descLine + "px"
+                                lineHeight: descLine + "px",
                             }}
                         />
                     )}
