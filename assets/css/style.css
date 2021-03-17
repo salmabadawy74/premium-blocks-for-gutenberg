@@ -715,9 +715,8 @@ a.premium-dheading-block__link:hover {
     -ms-transform: scale(1);
     transform: scale(1);
 }
-.premium-desktop-hidden{
-    display: none !important;
-}
+
+
 /**
 * Responsive
 */
@@ -1753,16 +1752,8 @@ a.premium-dheading-block__link:hover {
 
 
 /************ Responsive **************/
-.premium-desktop-hidden{
-	display:block;
-}
-.premium-tablet-hidden{
-	display: block;
-}
-.premium-mobile-hidden{
-	display:block;
-}
-@media only screen and (max-width: 1280px) and (min-width: 977px) {
+
+@media (min-width: 977px) {
 	.premium-desktop-hidden{
         display: none !important;
     }
@@ -1771,10 +1762,12 @@ a.premium-dheading-block__link:hover {
     .premium-tablet-hidden{
         display: none !important;
     }
+   
 }
 @media(max-width:767px){
     .premium-mobile-hidden{
         display: none !important;
     }
+    
 }
 
