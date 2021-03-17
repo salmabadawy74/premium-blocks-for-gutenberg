@@ -222,7 +222,7 @@ const deprecated = [
                 hideMobile: false
 
             };
-            Object.assign( attributes, newAttributes );
+           return Object.assign( attributes, newAttributes );
         },
         save: ( props ) => {
             const { attributes, className } = props;
