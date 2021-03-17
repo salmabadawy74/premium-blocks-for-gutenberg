@@ -836,12 +836,9 @@ class PremiumAccordion extends Component {
             ),
             <Fragment>
 
-                <div id={`${ accordionId }`} className={`${ mainClasses }  premium-accordion-${ block_id }${ hideDesktop } ${ hideTablet } ${ hideMobile }`}>
+                <div id={`${ accordionId }`} className={`${ mainClasses }  premium-accordion-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}>
                     {accordionItems}
-
-
                     <div className={"premium-repeater"}>
-
                         <button
                             className={"premium-repeater-btn"}
                             onClick={() => {
