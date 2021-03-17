@@ -1201,9 +1201,9 @@ class PBG_Blocks_Helper {
 		);
 
 		return $generated_css;
-    }
+	}
 
-    public static function get_testimonial_css( $attr, $id ) {
+	public static function get_testimonial_css( $attr, $id ) {
 		$defaults = self::$block_atts['premium/testimonial']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1212,13 +1212,13 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-			' .premium-testimonial__author' => array(
+			' .premium-testimonial__author'      => array(
 				'font-size' => self::get_css_value( $attr['authorSize'], $attr['authorSizeUnit'] ),
 			),
-			' .premium-testimonial__author_comp'   => array(
+			' .premium-testimonial__author_comp' => array(
 				'font-size' => self::get_css_value( $attr['authorComSize'], $attr['authorComSizeUnit'] ),
 			),
-			' .premium-testimonial__text'    => array(
+			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySize'], $attr['bodySizeUnit'] ),
 			),
 		);
@@ -1226,13 +1226,13 @@ class PBG_Blocks_Helper {
 
 		// Tablet CSS Start.
 		$t_selectors = array(
-			' .premium-testimonial__author' => array(
+			' .premium-testimonial__author'      => array(
 				'font-size' => self::get_css_value( $attr['authorSizeTablet'], $attr['authorSizeUnit'] ),
 			),
-			' .premium-testimonial__author_comp'   => array(
+			' .premium-testimonial__author_comp' => array(
 				'font-size' => self::get_css_value( $attr['authorComSizeTablet'], $attr['authorComSizeUnit'] ),
 			),
-			' .premium-testimonial__text'    => array(
+			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySizeTablet'], $attr['bodySizeUnit'] ),
 			),
 		);
@@ -1240,13 +1240,13 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' .premium-testimonial__author' => array(
+			' .premium-testimonial__author'      => array(
 				'font-size' => self::get_css_value( $attr['authorSizeMobile'], $attr['authorSizeUnit'] ),
 			),
-			' .premium-testimonial__author_comp'   => array(
+			' .premium-testimonial__author_comp' => array(
 				'font-size' => self::get_css_value( $attr['authorComSizeMobile'], $attr['authorComSizeUnit'] ),
 			),
-			' .premium-testimonial__text'    => array(
+			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySizeMobile'], $attr['bodySizeUnit'] ),
 			),
 		);
@@ -1267,9 +1267,9 @@ class PBG_Blocks_Helper {
 		);
 
 		return $generated_css;
-    }
+	}
 
-    public static function get_videoBox_css( $attr, $id ) {
+	public static function get_videoBox_css( $attr, $id ) {
 		$defaults = self::$block_atts['premium/video-box']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1286,7 +1286,7 @@ class PBG_Blocks_Helper {
 
 		// Tablet CSS Start.
 		$t_selectors = array(
-            '  .premium-video-box__desc_text' => array(
+			'  .premium-video-box__desc_text' => array(
 				'font-size' => self::get_css_value( $attr['videoDescSizeTablet'], $attr['videoDescSizeUnit'] ),
 			),
 		);
@@ -1294,7 +1294,7 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-            '  .premium-video-box__desc_text' => array(
+			'  .premium-video-box__desc_text' => array(
 				'font-size' => self::get_css_value( $attr['videoDescSizeMobile'], $attr['videoDescSizeUnit'] ),
 			),
 		);
@@ -1394,13 +1394,13 @@ class PBG_Blocks_Helper {
 	 */
 	public static function hex_to_rgba( $hexColor ) {
 
-        $color = str_replace( '#', '', $hexColor );
-        
+		$color = str_replace( '#', '', $hexColor );
+
 		if ( strlen( $color ) > 3 ) {
 			$rgb =
 				hexdec( substr( $color, 0, 2 ) ) . ',' . hexdec( substr( $color, 2, 2 ) ) .
 
-                ',' . hexdec( substr( $color, 4, 2 ) );
+				',' . hexdec( substr( $color, 4, 2 ) );
 
 		} else {
 			$color = str_replace( '#', '', $hexColor );
@@ -1408,8 +1408,8 @@ class PBG_Blocks_Helper {
 			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
 			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
 			$rgb   = hexdec( $r ) . ',' . hexdec( $g ) . ',' . hexdec( $b );
-        }
-        
+		}
+
 		return $rgb;
 	}
 

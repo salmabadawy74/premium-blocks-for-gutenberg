@@ -74,8 +74,8 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textUpper'               => false,
 							'textStyle'               => '',
 							'textBGColor'             => '',
-							'fancyTextBGOpacity'      =>'1',
-							'textBGOpacity'           =>'1',
+							'fancyTextBGOpacity'      => '1',
+							'textBGOpacity'           => '1',
 						),
 					),
 					'premium/accordion'      => array(
