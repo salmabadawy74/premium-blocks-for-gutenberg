@@ -378,7 +378,7 @@ const pricingAttrs_1_6_3 = {
     },
     badgeText: {
         type: "string",
-        default: __("Popular"),
+        default: __( "Popular" ),
     },
     listChecked: {
         type: "boolean",
@@ -427,457 +427,6 @@ const pricingAttrs_1_6_3 = {
     listStyle: {
         type: "string",
         default: "disc",
-    },
-    slashV: {
-        type: "string",
-        default: "center",
-    },
-    currV: {
-        type: "string",
-        default: "center",
-    },
-    valV: {
-        type: "string",
-        default: "center",
-    },
-    divV: {
-        type: "string",
-        default: "center",
-    },
-    durV: {
-        type: "string",
-        default: "center",
-    },
-    id: {
-        type: "string",
-    },
-};
-const pricingAttrs_1_8_2 = {
-    contentAlign: {
-        type: "string",
-        default: "center",
-    },
-    tableBack: {
-        type: "string",
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-        default: "0",
-    },
-    borderColor: {
-        type: "string",
-    },
-    tablePadding: {
-        type: "number",
-        default: "0",
-    },
-    tableShadowColor: {
-        type: "string",
-    },
-    tableShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    tableShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    tableShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    tableShadowPosition: {
-        type: "string",
-        default: "",
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__title",
-        default: "Pricing Table",
-    },
-    titleTag: {
-        type: "string",
-        default: "H2",
-    },
-    titleColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    titleSize: {
-        type: "number",
-    },
-    titleLine: {
-        type: "number",
-    },
-    titleLetter: {
-        type: "number",
-    },
-    titleStyle: {
-        type: "string",
-    },
-    titleUpper: {
-        type: "boolean",
-    },
-    titleWeight: {
-        type: "number",
-        default: 500,
-    },
-    titleShadowColor: {
-        type: "string",
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    titleBack: {
-        type: "string",
-    },
-    titleMarginB: {
-        type: "number",
-        default: 20,
-    },
-    titleMarginT: {
-        type: "number",
-        default: 20,
-    },
-    titlePadding: {
-        type: "number",
-        default: "0",
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__desc",
-    },
-    descColor: {
-        type: "string",
-        default: "#000",
-    },
-    descSize: {
-        type: "number",
-    },
-    descWeight: {
-        type: "number",
-    },
-    descLetter: {
-        type: "number",
-    },
-    descStyle: {
-        type: "string",
-    },
-    descLine: {
-        type: "number",
-    },
-    descBack: {
-        type: "string",
-    },
-    descMarginT: {
-        type: "number",
-        default: "0",
-    },
-    descMarginB: {
-        type: "number",
-        default: "30",
-    },
-    descPadding: {
-        type: "number",
-        default: "0",
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true,
-    },
-    descChecked: {
-        type: "boolean",
-        default: false,
-    },
-    priceChecked: {
-        type: "boolean",
-        default: true,
-    },
-    priceBack: {
-        type: "string",
-    },
-    priceMarginT: {
-        type: "number",
-    },
-    priceMarginB: {
-        type: "number",
-        default: 10,
-    },
-    pricePadding: {
-        type: "number",
-    },
-    slashPrice: {
-        type: "string",
-    },
-    slashColor: {
-        type: "string",
-    },
-    slashSize: {
-        type: "number",
-        default: 20,
-    },
-    slashWeight: {
-        type: "number",
-    },
-    currPrice: {
-        type: "string",
-        default: "$",
-    },
-    currColor: {
-        type: "string",
-    },
-    currSize: {
-        type: "number",
-        default: 20,
-    },
-    currWeight: {
-        type: "number",
-    },
-    valPrice: {
-        type: "string",
-        default: "25",
-    },
-    valColor: {
-        type: "string",
-    },
-    valSize: {
-        type: "number",
-        default: 50,
-    },
-    valWeight: {
-        type: "number",
-    },
-    divPrice: {
-        type: "string",
-        default: "/",
-    },
-    divColor: {
-        type: "string",
-    },
-    divSize: {
-        type: "number",
-        default: 20,
-    },
-    divWeight: {
-        type: "number",
-    },
-    durPrice: {
-        type: "string",
-        default: "m",
-    },
-    durColor: {
-        type: "string",
-    },
-    durSize: {
-        type: "number",
-        default: 20,
-    },
-    durWeight: {
-        type: "number",
-    },
-    selectedStyle: {
-        type: "string",
-        default: "price",
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true,
-    },
-    btnText: {
-        type: "string",
-        default: "Get Started",
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-pricing-table__button_link",
-    },
-    btnTarget: {
-        type: "boolean",
-        default: true,
-    },
-    btnColor: {
-        type: "string",
-        default: "#fff",
-    },
-    btnHoverColor: {
-        type: "string",
-    },
-    btnWidth: {
-        type: "number",
-    },
-    btnSize: {
-        type: "number",
-    },
-    btnWeight: {
-        type: "number",
-        default: 900,
-    },
-    btnLine: {
-        type: "number",
-    },
-    btnLetter: {
-        type: "number",
-    },
-    btnStyle: {
-        type: "string",
-    },
-    btnUpper: {
-        type: "boolean",
-    },
-    btnBack: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    btnHoverBack: {
-        type: "string",
-    },
-    btnMarginT: {
-        type: "number",
-        default: "0",
-    },
-    btnMarginB: {
-        type: "number",
-        default: "0",
-    },
-    btnPadding: {
-        type: "number",
-        default: 10,
-    },
-    btnPaddingU: {
-        type: "string",
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none",
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1",
-    },
-    btnBorderRadius: {
-        type: "number",
-        default: "0",
-    },
-    btnBorderColor: {
-        type: "string",
-    },
-    badgeChecked: {
-        type: "boolean",
-    },
-    badgePos: {
-        type: "string",
-        default: "right",
-    },
-    badgeBack: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    badgeColor: {
-        type: "string",
-    },
-    badgeTextSize: {
-        type: "number",
-    },
-    badgeSize: {
-        type: "number",
-    },
-    badgeTop: {
-        type: "number",
-    },
-    badgeHorizontal: {
-        type: "number",
-    },
-    badgeWidth: {
-        type: "number",
-    },
-    badgeWeight: {
-        type: "number",
-        default: 900,
-    },
-    badgeLetter: {
-        type: "number",
-    },
-    badgeStyle: {
-        type: "string",
-    },
-    badgeUpper: {
-        type: "boolean",
-    },
-    badgeText: {
-        type: "string",
-        default: __("Popular"),
-    },
-    listChecked: {
-        type: "boolean",
-        default: true,
-    },
-    listColor: {
-        type: "string",
-    },
-    listSize: {
-        type: "number",
-    },
-    listWeight: {
-        type: "number",
-        default: 500,
-    },
-    listItemsStyle: {
-        type: "string",
-    },
-    listLetter: {
-        type: "number",
-    },
-    listLine: {
-        type: "number",
-    },
-    listUpper: {
-        type: "boolean",
-    },
-    listBack: {
-        type: "string",
-    },
-    listItems: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__list",
-    },
-    listMarginB: {
-        type: "number",
-        default: 20,
-    },
-    listMarginT: {
-        type: "number",
-    },
-    listPadding: {
-        type: "number",
-    },
-    listStyle: {
-        type: "string",
-        default: "disc",
-    },
-    featsAlign: {
-        type: "string",
     },
     slashV: {
         type: "string",
@@ -904,16 +453,6 @@ const pricingAttrs_1_8_2 = {
     },
 };
 
-const newAttributes_1_9_4 = {
-    tableOpacity: {
-        type: "number",
-        default: "1",
-    },
-    priceOpacity: {
-        type: "number",
-        default: "1",
-    },
-};
 
 const pricingAttrs_1_8_1 = {
     contentAlign: {
@@ -1289,7 +828,7 @@ const pricingAttrs_1_8_1 = {
     },
     badgeText: {
         type: "string",
-        default: __("Popular")
+        default: __( "Popular" )
     },
     listChecked: {
         type: "boolean",
@@ -1373,107 +912,119 @@ const newAttributes_1_7 = {
     },
     classMigrate: {
         type: 'boolean',
-        default:false
+        default: false
     },
     titleSizeUnit: {
         type: 'string',
-        default:'px',
+        default: 'px',
     },
     titleSizeMobile: {
-        type:'number'
+        type: 'number'
     },
     titleSizeTablet: {
-        type:"number"
+        type: "number"
     },
     descSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     descSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     descSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     slashSizeMobile: {
-        type:"number"  
-      },
-      slashSizeTablet: {
-          type:"number"
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
     },
     slashSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     currSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     currSizeMobile: {
-        type:"number"
+        type: "number"
     },
     currSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     valSizeUnit: {
         type: "string",
-      default:"px"  
+        default: "px"
     },
     valSizeMobile: {
-        type:"number"  
-      },
-      valSizeTablet: {
-          type:"number"
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
     },
     divSizeUnit: {
         type: "string",
-        default:"px"
+        default: "px"
     },
     divSizeMobile: {
-        type:"number"
+        type: "number"
     },
     divSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     durSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     durSizeMobile: {
-        type:"number"  
-      },
-      durSizeTablet: {
-        type:"number"  
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
     },
     btnSizeUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     btnSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     btnSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     badgeTextUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     badgeTextSizeTablet: {
-        type:'number'
+        type: 'number'
     },
     badgeTextSizeMobile: {
-        type:'number'
+        type: 'number'
     },
     listSizeUnit: {
         type: 'string',
-        default:'px'
+        default: 'px'
     },
     listSizeTablet: {
-        type:'number'
+        type: 'number'
     },
     listSizeMobile: {
-      type:'number'  
+        type: 'number'
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 }
 
@@ -1519,6 +1070,9 @@ const deprecatedContent = [
                 slashSizeTablet: '',
                 tableOpacity: "",
                 priceOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             }
             return Object.assign( newAttributes, attributes );
         },
@@ -1650,11 +1204,11 @@ const deprecatedContent = [
                 featsAlign,
                 id
             } = props.attributes;
-        
+
             return (
                 <div
-                    id={`${className}-${id}`}
-                    className={`${className}`}
+                    id={`${ className }-${ id }`}
+                    className={`${ className }`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -1663,12 +1217,12 @@ const deprecatedContent = [
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
                         padding: tablePadding + "px",
-                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
+                        boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`
                     }}
                 >
                     {badgeChecked && (
                         <div
-                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
+                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${ badgePos }`}
                         >
                             <div
                                 className={`premium-pricing-table__badge`}
@@ -1737,7 +1291,7 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`
                                 }}
                             />
                         </div>
@@ -1829,7 +1383,7 @@ const deprecatedContent = [
                             }}
                         >
                             <ul
-                                className={`premium-pricing-table__list list-${listStyle}`}
+                                className={`premium-pricing-table__list list-${ listStyle }`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -1903,7 +1457,7 @@ const deprecatedContent = [
                                 <RichText.Content
                                     tagName="span"
                                     onChange={newText =>
-                                        setAttributes({ btnText: newText })
+                                        setAttributes( { btnText: newText } )
                                     }
                                     value={btnText}
                                     style={{
@@ -1914,11 +1468,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
-                                        `color: ${btnHoverColor} !important;`,
-                                        `background: ${btnHoverBack} !important`,
+                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
+                                        `color: ${ btnHoverColor } !important;`,
+                                        `background: ${ btnHoverBack } !important`,
                                         "}"
-                                    ].join("\n")
+                                    ].join( "\n" )
                                 }}
                             />
                         </div>
@@ -1929,10 +1483,10 @@ const deprecatedContent = [
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: (attributes) => {
-            return Object.assign(attributes, { featsAlign: "" });
+        migrate: ( attributes ) => {
+            return Object.assign( attributes, { featsAlign: "" } );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 contentAlign,
                 tableBack,
@@ -2061,8 +1615,8 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-${id}`}
-                    className={`${className}`}
+                    id={`${ className }-${ id }`}
+                    className={`${ className }`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -2071,15 +1625,15 @@ const deprecatedContent = [
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
                         padding: tablePadding + "px",
-                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
+                        boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`,
                     }}
                 >
                     {badgeChecked && (
                         <div
-                            className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
+                            className={`${ className }__badge_wrap ${ className }__badge_${ badgePos }`}
                         >
                             <div
-                                className={`${className}__badge`}
+                                className={`${ className }__badge`}
                                 style={{
                                     borderRightColor:
                                         "right" === badgePos
@@ -2130,7 +1684,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && (
                         <div
-                            className={`${className}__title_wrap`}
+                            className={`${ className }__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
                                 paddingBottom: titleMarginB + "px",
@@ -2138,7 +1692,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${className}__title`}
+                                className={`${ className }__title`}
                                 value={title}
                                 style={{
                                     color: titleColor,
@@ -2153,14 +1707,14 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
                                 }}
                             />
                         </div>
                     )}
                     {priceChecked && (
                         <div
-                            className={`${className}__price_wrap`}
+                            className={`${ className }__price_wrap`}
                             style={{
                                 background: priceBack,
                                 marginTop: priceMarginT + "px",
@@ -2171,7 +1725,7 @@ const deprecatedContent = [
                         >
                             {slashPrice && (
                                 <strike
-                                    className={`${className}__slash`}
+                                    className={`${ className }__slash`}
                                     style={{
                                         color: slashColor,
                                         fontSize: slashSize + "px",
@@ -2184,7 +1738,7 @@ const deprecatedContent = [
                             )}
                             {currPrice && (
                                 <span
-                                    className={`${className}__currency`}
+                                    className={`${ className }__currency`}
                                     style={{
                                         color: currColor,
                                         fontSize: currSize + "px",
@@ -2197,7 +1751,7 @@ const deprecatedContent = [
                             )}
                             {valPrice && (
                                 <span
-                                    className={`${className}__val`}
+                                    className={`${ className }__val`}
                                     style={{
                                         color: valColor,
                                         fontSize: valSize + "px",
@@ -2210,7 +1764,7 @@ const deprecatedContent = [
                             )}
                             {divPrice && (
                                 <span
-                                    className={`${className}__divider`}
+                                    className={`${ className }__divider`}
                                     style={{
                                         color: divColor,
                                         fontSize: divSize + "px",
@@ -2223,7 +1777,7 @@ const deprecatedContent = [
                             )}
                             {durPrice && (
                                 <span
-                                    className={`${className}__dur`}
+                                    className={`${ className }__dur`}
                                     style={{
                                         color: durColor,
                                         fontSize: durSize + "px",
@@ -2238,14 +1792,14 @@ const deprecatedContent = [
                     )}
                     {listChecked && (
                         <div
-                            className={`${className}__list_wrap`}
+                            className={`${ className }__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
                                 marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
-                                className={`${className}__list list-${listStyle}`}
+                                className={`${ className }__list list-${ listStyle }`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -2270,10 +1824,10 @@ const deprecatedContent = [
                         </div>
                     )}
                     {descChecked && (
-                        <div className={`${className}__desc_wrap`}>
+                        <div className={`${ className }__desc_wrap`}>
                             <RichText.Content
                                 tagName="p"
-                                className={`${className}__desc`}
+                                className={`${ className }__desc`}
                                 value={desc}
                                 style={{
                                     color: descColor,
@@ -2292,13 +1846,13 @@ const deprecatedContent = [
                     )}
                     {btnChecked && (
                         <div
-                            className={`${className}__button`}
+                            className={`${ className }__button`}
                             style={{
                                 width: btnWidth + "%",
                             }}
                         >
                             <a
-                                class={`${className}__button_link`}
+                                class={`${ className }__button_link`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 rel="noopener noreferrer"
@@ -2323,8 +1877,8 @@ const deprecatedContent = [
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={(newText) =>
-                                        setAttributes({ btnText: newText })
+                                    onChange={( newText ) =>
+                                        setAttributes( { btnText: newText } )
                                     }
                                     value={btnText}
                                     style={{
@@ -2337,11 +1891,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
-                                        `color: ${btnHoverColor} !important;`,
-                                        `background: ${btnHoverBack} !important`,
+                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
+                                        `color: ${ btnHoverColor } !important;`,
+                                        `background: ${ btnHoverBack } !important`,
                                         "}",
-                                    ].join("\n"),
+                                    ].join( "\n" ),
                                 }}
                             />
                         </div>
@@ -2352,10 +1906,10 @@ const deprecatedContent = [
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: (attributes) => {
-            return Object.assign(attributes, { btnPaddingU: "" });
+        migrate: ( attributes ) => {
+            return Object.assign( attributes, { btnPaddingU: "" } );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 contentAlign,
                 tableBack,
@@ -2478,8 +2032,8 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-${id}`}
-                    className={`${className}`}
+                    id={`${ className }-${ id }`}
+                    className={`${ className }`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -2492,10 +2046,10 @@ const deprecatedContent = [
                 >
                     {badgeChecked && (
                         <div
-                            className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
+                            className={`${ className }__badge_wrap ${ className }__badge_${ badgePos }`}
                         >
                             <div
-                                className={`${className}__badge`}
+                                className={`${ className }__badge`}
                                 style={{
                                     borderRightColor:
                                         "right" === badgePos
@@ -2546,7 +2100,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && (
                         <div
-                            className={`${className}__title_wrap`}
+                            className={`${ className }__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
                                 paddingBottom: titleMarginB + "px",
@@ -2554,7 +2108,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${className}__title`}
+                                className={`${ className }__title`}
                                 value={title}
                                 style={{
                                     color: titleColor,
@@ -2569,14 +2123,14 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
                                 }}
                             />
                         </div>
                     )}
                     {priceChecked && (
                         <div
-                            className={`${className}__price_wrap`}
+                            className={`${ className }__price_wrap`}
                             style={{
                                 background: priceBack,
                                 marginTop: priceMarginT + "px",
@@ -2587,7 +2141,7 @@ const deprecatedContent = [
                         >
                             {slashPrice && (
                                 <strike
-                                    className={`${className}__slash`}
+                                    className={`${ className }__slash`}
                                     style={{
                                         color: slashColor,
                                         fontSize: slashSize + "px",
@@ -2600,7 +2154,7 @@ const deprecatedContent = [
                             )}
                             {currPrice && (
                                 <span
-                                    className={`${className}__currency`}
+                                    className={`${ className }__currency`}
                                     style={{
                                         color: currColor,
                                         fontSize: currSize + "px",
@@ -2613,7 +2167,7 @@ const deprecatedContent = [
                             )}
                             {valPrice && (
                                 <span
-                                    className={`${className}__val`}
+                                    className={`${ className }__val`}
                                     style={{
                                         color: valColor,
                                         fontSize: valSize + "px",
@@ -2626,7 +2180,7 @@ const deprecatedContent = [
                             )}
                             {divPrice && (
                                 <span
-                                    className={`${className}__divider`}
+                                    className={`${ className }__divider`}
                                     style={{
                                         color: divColor,
                                         fontSize: divSize + "px",
@@ -2639,7 +2193,7 @@ const deprecatedContent = [
                             )}
                             {durPrice && (
                                 <span
-                                    className={`${className}__dur`}
+                                    className={`${ className }__dur`}
                                     style={{
                                         color: durColor,
                                         fontSize: durSize + "px",
@@ -2654,14 +2208,14 @@ const deprecatedContent = [
                     )}
                     {listChecked && (
                         <div
-                            className={`${className}__list_wrap`}
+                            className={`${ className }__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
                                 marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
-                                className={`${className}__list list-${listStyle}`}
+                                className={`${ className }__list list-${ listStyle }`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -2686,10 +2240,10 @@ const deprecatedContent = [
                         </div>
                     )}
                     {descChecked && (
-                        <div className={`${className}__desc_wrap`}>
+                        <div className={`${ className }__desc_wrap`}>
                             <RichText.Content
                                 tagName="p"
-                                className={`${className}__desc`}
+                                className={`${ className }__desc`}
                                 value={desc}
                                 style={{
                                     color: descColor,
@@ -2708,13 +2262,13 @@ const deprecatedContent = [
                     )}
                     {btnChecked && (
                         <div
-                            className={`${className}__button`}
+                            className={`${ className }__button`}
                             style={{
                                 width: btnWidth + "%",
                             }}
                         >
                             <a
-                                class={`${className}__button_link`}
+                                class={`${ className }__button_link`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 style={{
@@ -2738,8 +2292,8 @@ const deprecatedContent = [
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={(newText) =>
-                                        setAttributes({ btnText: newText })
+                                    onChange={( newText ) =>
+                                        setAttributes( { btnText: newText } )
                                     }
                                     value={btnText}
                                     style={{
@@ -2752,11 +2306,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
-                                        `color: ${btnHoverColor} !important;`,
-                                        `background: ${btnHoverBack} !important`,
+                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
+                                        `color: ${ btnHoverColor } !important;`,
+                                        `background: ${ btnHoverBack } !important`,
                                         "}",
-                                    ].join("\n"),
+                                    ].join( "\n" ),
                                 }}
                             />
                         </div>

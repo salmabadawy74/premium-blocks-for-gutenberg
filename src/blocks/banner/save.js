@@ -158,7 +158,6 @@ const save = (props) => {
                             value={desc}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 fontWeight: descWeight,
                                 lineHeight: descLine + "px",
                                 textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,

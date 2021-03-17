@@ -210,12 +210,21 @@ const newAttributes_1_6_2 = {
         type: "number",
         default: "1",
     },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: "boolean",
+        default: false
+    }
 };
 
-const deprecated_attributes_1_6_2 = Object.assign(
-    deprecated_attributes_1_6_1,
-    newAttributes_1_6_2
-);
+
 
 const deprecated_attributes_1_5_5 = {
     iconType: {
@@ -758,357 +767,22 @@ const deprecated_attributes_1_3_1 = {
     },
 };
 
-const deprecated_attributes_1_6_1 = {
-	iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    iconBack: {
-        type: "string"
-    },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    backgroundColor: {
-        type: "string"
-    },
-    background: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
-    target: {
-        type: "boolean"
-    }
-}
-const newAttributes_1_6_2 = {
-	hideDesktop: {
-        type: 'boolean',
-        default:false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default:false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default:false
-    }
-}
-const deprecated_attributes_1_6_2=Object.assign(deprecated_attributes_1_6_1,newAttributes_1_6_2)
-const deprecatedContent = [
-	{
-		attributes: deprecated_attributes_1_6_2,
-		migrate: attributes => {
-			let newAttributes = {
-				hideDesktop: false,
-				hideTablet: false,
-				hideMobile:false
-			}
-			return Object.assign(attributes,newAttributes)
-		},
-		save: props => {
-			const {
-				selectedIcon,
-				align,
-				hoverEffect,
-				iconSize,
-				iconSizeUnit,
-				iconColor,
-				iconBack,
-				shadowBlur,
-				shadowColor,
-				shadowHorizontal,
-				shadowVertical,
-				paddingT,
-				paddingR,
-				paddingB,
-				paddingL,
-				paddingU,
-				marginT,
-				marginR,
-				marginB,
-				marginL,
-				borderType,
-				borderWidth,
-				borderRadius,
-				borderColor,
-				backgroundColor,
-				imageURL,
-				fixed,
-				backgroundRepeat,
-				backgroundPosition,
-				backgroundSize,
-				wrapBorderType,
-				wrapBorderWidth,
-				wrapBorderRadius,
-				wrapBorderColor,
-				wrapShadowBlur,
-				wrapShadowColor,
-				wrapShadowHorizontal,
-				wrapShadowVertical,
-				wrapShadowPosition,
-				wrapPaddingT,
-				wrapPaddingR,
-				wrapPaddingB,
-				wrapPaddingL,
-				wrapMarginT,
-				wrapMarginR,
-				wrapMarginB,
-				wrapMarginL,
-				urlCheck,
-				link,
-				target
-			  } = props.attributes;
 
-			  return (
-				<div
-				  className={`${className}__container`}
-				  style={{
-					textAlign: align,
-					backgroundColor: backgroundColor,
-					backgroundImage: `url('${imageURL}')`,
-					backgroundRepeat: backgroundRepeat,
-					backgroundPosition: backgroundPosition,
-					backgroundSize: backgroundSize,
-					backgroundAttachment: fixed ? "fixed" : "unset",
-					border: wrapBorderType,
-					borderWidth: wrapBorderWidth + "px",
-					borderRadius: wrapBorderRadius + "px",
-					borderColor: wrapBorderColor,
-					boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-					  0}px ${wrapShadowBlur ||
-					  0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-					paddingTop: wrapPaddingT,
-					paddingRight: wrapPaddingR,
-					paddingBottom: wrapPaddingB,
-					paddingLeft: wrapPaddingL,
-					marginTop: wrapMarginT,
-					marginRight: wrapMarginR,
-					marginBottom: wrapMarginB,
-					marginLeft: wrapMarginL
-				  }}
-				>
-				  <a
-					className={`premium-icon__link`}
-					href={urlCheck && link}
-					rel="noopener noreferrer"
-					target={target ? "_blank" : "_self"}
-				  >
-					<i
-					  className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-					  style={{
-						color: iconColor || "#6ec1e4",
-						backgroundColor: iconBack,
-						fontSize: (iconSize || 50) + iconSizeUnit,
-						paddingTop: paddingT + paddingU,
-						paddingRight: paddingR + paddingU,
-						paddingBottom: paddingB + paddingU,
-						paddingLeft: paddingL + paddingU,
-						marginTop: marginT,
-						marginRight: marginR,
-						marginBottom: marginB,
-						marginLeft: marginL,
-						border: borderType,
-						borderWidth: borderWidth + "px",
-						borderRadius: borderRadius || 100 + "px",
-						borderColor: borderColor,
-						textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-						  0}px ${shadowBlur || 0}px ${shadowColor}`
-					  }}
-					/>
-				  </a>
-				</div>
-			  );
-		}
-	},
+const deprecated_attributes_1_6_2 = Object.assign( deprecated_attributes_1_6_1, newAttributes_1_6_2 )
+const deprecatedContent = [
     {
         attributes: deprecated_attributes_1_6_2,
-        migrate: (attributes) => {
+        migrate: attributes => {
             let newAttributes = {
-                iconOpacity: "",
-                backgroundOpacity: "",
-            };
-            return Object.assign(attributes, newAttributes);
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false,
+                iconOpacity: '',
+                backgroundOpacity: ''
+            }
+            return Object.assign( attributes, newAttributes )
         },
-        save: (props) => {
+        save: props => {
             const {
                 selectedIcon,
                 align,
@@ -1159,16 +833,16 @@ const deprecatedContent = [
                 wrapMarginL,
                 urlCheck,
                 link,
-                target,
+                target
             } = props.attributes;
 
             return (
                 <div
-                    className={`${className}__container`}
+                    className={`${ className }__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${imageURL}')`,
+                        backgroundImage: `url('${ imageURL }')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1177,11 +851,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${wrapShadowHorizontal || 0}px ${
-                            wrapShadowVertical || 0
-                        }px ${
-                            wrapShadowBlur || 0
-                        }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical ||
+                            0 }px ${ wrapShadowBlur ||
+                            0 }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1189,7 +861,7 @@ const deprecatedContent = [
                         marginTop: wrapMarginT,
                         marginRight: wrapMarginR,
                         marginBottom: wrapMarginB,
-                        marginLeft: wrapMarginL,
+                        marginLeft: wrapMarginL
                     }}
                 >
                     <a
@@ -1199,11 +871,11 @@ const deprecatedContent = [
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                            className={`premium-icon ${ selectedIcon } premium-icon__${ hoverEffect }`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
-                                fontSize: (iconSize || 50) + iconSizeUnit,
+                                fontSize: ( iconSize || 50 ) + iconSizeUnit,
                                 paddingTop: paddingT + paddingU,
                                 paddingRight: paddingR + paddingU,
                                 paddingBottom: paddingB + paddingU,
@@ -1216,25 +888,24 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal || 0}px ${
-                                    shadowVertical || 0
-                                }px ${shadowBlur || 0}px ${shadowColor}`,
+                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical ||
+                                    0 }px ${ shadowBlur || 0 }px ${ shadowColor }`
                             }}
                         />
                     </a>
                 </div>
             );
-        },
+        }
     },
     {
         attributes: deprecated_attributes_1_5_6,
-        migrate: (attributes) => {
+        migrate: ( attributes ) => {
             let newAttributes = {
                 paddingU: "px",
             };
-            return Object.assign(attributes, newAttributes);
+            return Object.assign( attributes, newAttributes );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 selectedIcon,
                 align,
@@ -1289,11 +960,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${className}__container`}
+                    className={`${ className }__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${imageURL}')`,
+                        backgroundImage: `url('${ imageURL }')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1302,11 +973,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${wrapShadowHorizontal || 0}px ${
-                            wrapShadowVertical || 0
-                        }px ${
-                            wrapShadowBlur || 0
-                        }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
+                            }px ${ wrapShadowBlur || 0
+                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1318,17 +987,17 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${className}__link`}
+                        className={`${ className }__link`}
                         href={urlCheck && link}
                         rel="noopener noreferrer"
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
-                                fontSize: (iconSize || 50) + iconSizeUnit,
+                                fontSize: ( iconSize || 50 ) + iconSizeUnit,
                                 paddingTop: paddingT,
                                 paddingRight: paddingR,
                                 paddingBottom: paddingB,
@@ -1341,9 +1010,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal || 0}px ${
-                                    shadowVertical || 0
-                                }px ${shadowBlur || 0}px ${shadowColor}`,
+                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
+                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
                             }}
                         />
                     </a>
@@ -1353,13 +1021,13 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_5_5,
-        migrate: (attributes) => {
+        migrate: ( attributes ) => {
             let newAttributes = {
                 iconSizeUnit: "px",
             };
-            return Object.assign(attributes, newAttributes);
+            return Object.assign( attributes, newAttributes );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 selectedIcon,
                 align,
@@ -1413,11 +1081,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${className}__container`}
+                    className={`${ className }__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${imageURL}')`,
+                        backgroundImage: `url('${ imageURL }')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1426,11 +1094,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${wrapShadowHorizontal || 0}px ${
-                            wrapShadowVertical || 0
-                        }px ${
-                            wrapShadowBlur || 0
-                        }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
+                            }px ${ wrapShadowBlur || 0
+                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1442,13 +1108,13 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${className}__link`}
+                        className={`${ className }__link`}
                         href={urlCheck && link}
                         rel="noopener noreferrer"
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
@@ -1465,9 +1131,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal || 0}px ${
-                                    shadowVertical || 0
-                                }px ${shadowBlur || 0}px ${shadowColor}`,
+                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
+                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
                             }}
                         />
                     </a>
@@ -1477,7 +1142,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_9,
-        migrate: (attributes) => {
+        migrate: ( attributes ) => {
             let newAttributes = {
                 backgroundColor: attributes.background,
                 imageID: "",
@@ -1487,9 +1152,9 @@ const deprecatedContent = [
                 backgroundPosition: "top center",
                 backgroundSize: "auto",
             };
-            return Object.assign(attributes, newAttributes);
+            return Object.assign( attributes, newAttributes );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 selectedIcon,
                 align,
@@ -1538,7 +1203,7 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${className}__container`}
+                    className={`${ className }__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: background,
@@ -1546,11 +1211,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${wrapShadowHorizontal || 0}px ${
-                            wrapShadowVertical || 0
-                        }px ${
-                            wrapShadowBlur || 0
-                        }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
+                            }px ${ wrapShadowBlur || 0
+                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1562,12 +1225,12 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${className}__link`}
+                        className={`${ className }__link`}
                         href={urlCheck && link}
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
@@ -1584,9 +1247,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal || 0}px ${
-                                    shadowVertical || 0
-                                }px ${shadowBlur || 0}px ${shadowColor}`,
+                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
+                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
                             }}
                         />
                     </a>
@@ -1596,7 +1258,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_1,
-        save: (props) => {
+        save: ( props ) => {
             const {
                 selectedIcon,
                 align,
@@ -1640,7 +1302,7 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${className}__container`}
+                    className={`${ className }__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: background,
@@ -1659,12 +1321,12 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${className}__link`}
+                        className={`${ className }__link`}
                         href={urlCheck && link}
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
+                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
                             style={{
                                 color: iconColor,
                                 backgroundColor: iconBack,
@@ -1681,7 +1343,7 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                                textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
                             }}
                         />
                     </a>

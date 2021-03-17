@@ -597,6 +597,18 @@ const newAttributes_2_1 = {
         type: "number",
         default: "1",
     },
+    hideDesktop: {
+		type: 'boolean',
+		default:false
+	},
+	hideTablet: {
+		type: 'boolean',
+		default:false
+	},
+	hideMobile: {
+		type: 'boolean',
+		default:false
+	}
 }
 const videoBoxAttrs_2_1 = Object.assign( videoBoxAttrs_2_0, newAttributes_2_1 );
 
@@ -611,7 +623,10 @@ const deprecatedContent = [
                 videoDescSizeTablet: '',
                 videoDescSizeMobile: '',
                 playOpacity    : '',
-                videoDescOpacity:'',
+                videoDescOpacity: '',
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile:false
             }
             return Object.assign( attributes, newAttributes );
         },

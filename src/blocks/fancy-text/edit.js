@@ -12,9 +12,9 @@ import {
 } from "react-sortable-hoc";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
-const {Component, Fragment} = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
     BlockControls,
@@ -32,13 +32,13 @@ const {
 } = wp.components;
 
 const SortableItem = SortableElement(
-    ({edit, removeItem, newIndex, value, changeFancyValue, items}) => (
+    ( { edit, removeItem, newIndex, value, changeFancyValue, items } ) => (
         <div className="premium-repeater-item">
             <div className={`premium-repeater-item__container ${ newIndex }`}>
                 <span className="premium-repeater-item__dragHandle"></span>
                 <div
                     className="premium-repeater-item__content"
-                    onClick={() => edit(newIndex)}
+                    onClick={() => edit( newIndex )}
                 >
                     {value.title}{" "}
                 </div>
@@ -46,7 +46,7 @@ const SortableItem = SortableElement(
                 {items.length != 1 ? (
                     <button
                         className="premium-repeater-item__trashicon fa fa-trash"
-                        onClick={() => removeItem(newIndex, value)}
+                        onClick={() => removeItem( newIndex, value )}
                     ></button>
                 ) : (
                         ""
@@ -57,9 +57,9 @@ const SortableItem = SortableElement(
                     }`}
             >
                 <TextControl
-                    label={__("Fancy String")}
+                    label={__( "Fancy String" )}
                     value={value.title}
-                    onChange={(newText) => changeFancyValue(newText, newIndex)}
+                    onChange={( newText ) => changeFancyValue( newText, newIndex )}
                 />
             </div>
         </div>
@@ -67,11 +67,11 @@ const SortableItem = SortableElement(
 );
 
 const SortableList = SortableContainer(
-    ({items, removeItem, edit, changeFancyValue}) => {
+    ( { items, removeItem, edit, changeFancyValue } ) => {
         return (
             <div>
                 {" "}
-                {items.map((value, index) => (
+                {items.map( ( value, index ) => (
                     <SortableItem
                         key={`item-${ value }`}
                         index={index}
@@ -82,7 +82,7 @@ const SortableList = SortableContainer(
                         changeFancyValue={changeFancyValue}
                         items={items}
                     />
-                ))}{" "}
+                ) )}{" "}
             </div>
         );
     }
@@ -90,38 +90,38 @@ const SortableList = SortableContainer(
 
 class edit extends Component {
     constructor() {
-        super(...arguments);
-        this.renderFancyText = this.renderFancyText.bind(this);
+        super( ...arguments );
+        this.renderFancyText = this.renderFancyText.bind( this );
     }
 
-    componentDidMount() {
+    componentDidMount () {
         // Assigning id in the attribute.
-        this.props.setAttributes({
-            block_id: this.props.clientId.substr(0, 6),
-        });
-        this.props.setAttributes({classMigrate: true});
+        this.props.setAttributes( {
+            block_id: this.props.clientId.substr( 0, 6 ),
+        } );
+        this.props.setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-fancy-text-" + this.props.clientId.substr(0, 6)
+            "premium-style-fancy-text-" + this.props.clientId.substr( 0, 6 )
         );
-        document.head.appendChild($style);
+        document.head.appendChild( $style );
 
         this.renderFancyText();
     }
 
-    componentDidUpdate() {
-        const {effect} = this.props.attributes;
+    componentDidUpdate () {
+        const { effect } = this.props.attributes;
 
-        if (effect == "typing" && this.typed != undefined) {
+        if ( effect == "typing" && this.typed != undefined ) {
             this.typed.destroy();
         }
         this.renderFancyText();
     }
 
-    renderFancyText() {
+    renderFancyText () {
         const {
             repeaterFancyText,
             loop,
@@ -134,13 +134,13 @@ class edit extends Component {
             effect,
         } = this.props.attributes;
 
-        if (!repeaterFancyText) return null;
+        if ( !repeaterFancyText ) return null;
 
-        let txt = repeaterFancyText.map(item => {
+        let txt = repeaterFancyText.map( item => {
             return item.title;
-        });
+        } );
 
-        if (effect === "typing") {
+        if ( effect === "typing" ) {
             const options = {
                 strings: txt,
                 typeSpeed: typeSpeed,
@@ -151,19 +151,19 @@ class edit extends Component {
                 showCursor: cursorShow,
                 cursorChar: cursorMark,
             };
-            this.typed = new Typed(this.el, options);
+            this.typed = new Typed( this.el, options );
         }
     }
 
-    componentWillUnmount() {
-        const {effect} = this.props.attributes;
+    componentWillUnmount () {
+        const { effect } = this.props.attributes;
         // Make sure to destroy Typed instance on unmounting
         // to prevent memory leaks
         effect === "typing" ? this.typed.destroy() : "";
     }
 
-    render() {
-        const {attributes, setAttributes, isSelected} = this.props;
+    render () {
+        const { attributes, setAttributes, isSelected } = this.props;
 
         const {
             block_id,
@@ -212,19 +212,19 @@ class edit extends Component {
             fancyTextBGOpacity,
             textBGOpacity,
             hideDesktop,
-			hideTablet,
-			hideMobile
+            hideTablet,
+            hideMobile
         } = attributes;
 
-        const ALIGNS = ["left", "center", "right"];
+        const ALIGNS = [ "left", "center", "right" ];
 
         const EFFECT = [
             {
-                label: __("Typing"),
+                label: __( "Typing" ),
                 value: "typing",
             },
             {
-                label: __("Slide"),
+                label: __( "Slide" ),
                 value: "slide",
             },
         ];
@@ -233,12 +233,12 @@ class edit extends Component {
             "premium-style-fancy-text-" + block_id
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
         const onResetClickfancyTextTypo = () => {
-            setAttributes({
+            setAttributes( {
                 fancyTextWeight: 600,
                 fancyTextfontSizeUnit: "px",
                 fancyTextfontSize: "20",
@@ -247,11 +247,11 @@ class edit extends Component {
                 fancyTextStyle: "normal",
                 fancyTextLetter: "0",
                 fancyTextUpper: false,
-            });
+            } );
         };
 
         const onResetClickTextTypo = () => {
-            setAttributes({
+            setAttributes( {
                 textWeight: 600,
                 textfontSizeUnit: "px",
                 textfontSize: "20",
@@ -260,36 +260,36 @@ class edit extends Component {
                 textStyle: "normal",
                 textLetter: "0",
                 textUpper: false,
-            });
+            } );
         };
 
         const onResetClickLabelTextShadow = () => {
-            setAttributes({
+            setAttributes( {
                 shadowColor: "",
                 shadowBlur: "0",
                 shadowHorizontal: "0",
                 shadowVertical: "0",
-            });
+            } );
         };
 
-        const changeFancyValue = (newText, newIndex) => {
-            setAttributes({
-                repeaterFancyText: onRepeaterChange("title", newText, newIndex),
-            });
+        const changeFancyValue = ( newText, newIndex ) => {
+            setAttributes( {
+                repeaterFancyText: onRepeaterChange( "title", newText, newIndex ),
+            } );
         };
 
-        const onSortEndSingle = ({oldIndex, newIndex}) => {
-            let arrayItem = repeaterFancyText.map((cont) => cont);
-            const sortedArray = arrayMove(arrayItem, oldIndex, newIndex);
-            setAttributes({
+        const onSortEndSingle = ( { oldIndex, newIndex } ) => {
+            let arrayItem = repeaterFancyText.map( ( cont ) => cont );
+            const sortedArray = arrayMove( arrayItem, oldIndex, newIndex );
+            setAttributes( {
                 repeaterFancyText: sortedArray,
-            });
+            } );
         };
 
-        const shouldCancelStart = (e) => {
+        const shouldCancelStart = ( e ) => {
             // Prevent sorting from being triggered if target is input or button
             if (
-                ["button", "div", "input", "textarea", "i"].indexOf(
+                [ "button", "div", "input", "textarea", "i" ].indexOf(
                     e.target.tagName.toLowerCase()
                 ) !== -1
             ) {
@@ -297,53 +297,53 @@ class edit extends Component {
             }
         };
 
-        const onRepeaterChange = (attr, value, index) => {
-            return repeaterFancyText.map(function (item, currIndex) {
-                if (index == currIndex) {
-                    item[attr] = value;
+        const onRepeaterChange = ( attr, value, index ) => {
+            return repeaterFancyText.map( function ( item, currIndex ) {
+                if ( index == currIndex ) {
+                    item[ attr ] = value;
                 }
                 return item;
-            });
-		};
+            } );
+        };
 
-        const edit = (index) => {
-            return repeaterFancyText.map((item, i) => {
-                if (index == i) {
-                    setAttributes({
+        const edit = ( index ) => {
+            return repeaterFancyText.map( ( item, i ) => {
+                if ( index == i ) {
+                    setAttributes( {
                         repeaterFancyText: onRepeaterChange(
                             "edit",
                             item.edit ? false : true,
                             index
                         ),
-                    });
+                    } );
                 } else {
-                    setAttributes({
-                        repeaterFancyText: onRepeaterChange("edit", false, i),
-                    });
+                    setAttributes( {
+                        repeaterFancyText: onRepeaterChange( "edit", false, i ),
+                    } );
                 }
-            });
+            } );
         };
 
-        const removeItem = (index, item) => {
+        const removeItem = ( index, item ) => {
             let array = repeaterFancyText
-                .map((cont, currIndex) => {
+                .map( ( cont, currIndex ) => {
                     return cont;
-                })
-                .filter((f, i) => i != index);
-            setAttributes({
+                } )
+                .filter( ( f, i ) => i != index );
+            setAttributes( {
                 repeaterFancyText: array,
-            });
+            } );
         };
 
         const addNewFancyText = () => {
-            setAttributes({
-                repeaterFancyText: repeaterFancyText.concat([
+            setAttributes( {
+                repeaterFancyText: repeaterFancyText.concat( [
                     {
-                        title: __("Title"),
+                        title: __( "Title" ),
                         edit: true,
                     },
-                ]),
-            });
+                ] ),
+            } );
         };
 
         return [
@@ -351,22 +351,22 @@ class edit extends Component {
                 <BlockControls>
                     <AlignmentToolbar
                         value={align}
-                        onChange={(value) => setAttributes({align: value})}
+                        onChange={( value ) => setAttributes( { align: value } )}
                     />
                 </BlockControls>
             ),
             isSelected && (
                 <InspectorControls>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__( "General Settings" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Prefix Text")}
+                            label={__( "Prefix Text" )}
                             value={prefix}
-                            onChange={(newText) =>
-                                setAttributes({prefix: newText})
+                            onChange={( newText ) =>
+                                setAttributes( { prefix: newText } )
                             }
                         />
                         <Fragment>
@@ -379,11 +379,11 @@ class edit extends Component {
                                 </label>
                                 <SortableList
                                     items={repeaterFancyText}
-                                    onSortEnd={(oldIndex, newIndex) =>
-                                        onSortEndSingle(oldIndex, newIndex)
+                                    onSortEnd={( oldIndex, newIndex ) =>
+                                        onSortEndSingle( oldIndex, newIndex )
                                     }
-                                    removeItem={value => removeItem(value)}
-                                    edit={value => edit(value)}
+                                    removeItem={value => removeItem( value )}
+                                    edit={value => edit( value )}
                                     shouldCancelStart={shouldCancelStart}
                                     changeFancyValue={changeFancyValue}
                                     helperClass="premium-fancy-text__sortableHelper"
@@ -394,109 +394,109 @@ class edit extends Component {
                                         onClick={() => addNewFancyText()}
                                     >
                                         <i className="dashicons dashicons-plus premium-repeater__icon" />
-                                        <span>{__("Add New Item")}</span>
+                                        <span>{__( "Add New Item" )}</span>
                                     </button>
                                 </div>
                             </div>
                             <br />
                         </Fragment>
                         <TextControl
-                            label={__("Suffix Text")}
+                            label={__( "Suffix Text" )}
                             value={suffix}
-                            onChange={(newText) =>
-                                setAttributes({suffix: newText})
+                            onChange={( newText ) =>
+                                setAttributes( { suffix: newText } )
                             }
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Advanced Settings")}
+                        title={__( "Advanced Settings" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Effect")}
+                            label={__( "Effect" )}
                             options={EFFECT}
                             value={effect}
                             onChange={newValue =>
-                                setAttributes({effect: newValue})
+                                setAttributes( { effect: newValue } )
                             }
                         />
                         {"typing" === effect ? (
                             <Fragment>
                                 <TextControl
-                                    label={__("Type Speed")}
+                                    label={__( "Type Speed" )}
                                     type="Number"
                                     value={typeSpeed}
                                     onChange={newValue =>
-                                        setAttributes({
-                                            typeSpeed: parseInt(newValue),
-                                        })
+                                        setAttributes( {
+                                            typeSpeed: parseInt( newValue ),
+                                        } )
                                     }
                                     help={__(
                                         "Set typing effect speed in milliseconds."
                                     )}
                                 />
                                 <TextControl
-                                    label={__("Back Speed")}
+                                    label={__( "Back Speed" )}
                                     type="Number"
                                     value={backSpeed}
                                     onChange={newValue =>
-                                        setAttributes({
-                                            backSpeed: parseInt(newValue),
-                                        })
+                                        setAttributes( {
+                                            backSpeed: parseInt( newValue ),
+                                        } )
                                     }
                                     help={__(
                                         "Set a speed for backspace effect in milliseconds."
                                     )}
                                 />
                                 <TextControl
-                                    label={__("Start Delay")}
+                                    label={__( "Start Delay" )}
                                     type="Number"
                                     value={startdelay}
                                     onChange={newValue =>
-                                        setAttributes({
-                                            startdelay: parseInt(newValue),
-                                        })
+                                        setAttributes( {
+                                            startdelay: parseInt( newValue ),
+                                        } )
                                     }
                                     help={__(
                                         "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds."
                                     )}
                                 />
                                 <TextControl
-                                    label={__("Back Delay")}
+                                    label={__( "Back Delay" )}
                                     type="Number"
                                     value={backdelay}
                                     onChange={newValue =>
-                                        setAttributes({
-                                            backdelay: parseInt(newValue),
-                                        })
+                                        setAttributes( {
+                                            backdelay: parseInt( newValue ),
+                                        } )
                                     }
                                     help={__(
                                         "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
                                     )}
                                 />
                                 <ToggleControl
-                                    label={__("Loop")}
+                                    label={__( "Loop" )}
                                     checked={loop}
-                                    onChange={(newCheck) =>
-                                        setAttributes({loop: newCheck})
+                                    onChange={( newCheck ) =>
+                                        setAttributes( { loop: newCheck } )
                                     }
                                 />
                                 <ToggleControl
-                                    label={__("Show Cursor")}
+                                    label={__( "Show Cursor" )}
                                     checked={cursorShow}
                                     onChange={newCheck =>
-                                        setAttributes({cursorShow: newCheck})
+                                        setAttributes( { cursorShow: newCheck } )
                                     }
                                 />
                                 {cursorShow && (
                                     <TextControl
-                                        label={__("Cursor Mark")}
+                                        label={__( "Cursor Mark" )}
                                         value={cursorMark}
                                         onChange={newCheck =>
-                                            setAttributes({
+                                            setAttributes( {
                                                 cursorMark: newCheck,
-                                            })
+                                            } )
                                         }
                                     />
                                 )}
@@ -508,67 +508,67 @@ class edit extends Component {
                                         frontend
                                 </p>
                                     <TextControl
-                                        label={__("Animation Speed")}
+                                        label={__( "Animation Speed" )}
                                         value={animationSpeed}
                                         type="Number"
                                         onChange={newValue =>
-                                            setAttributes({
-                                                animationSpeed: parseInt(newValue),
-                                            })
+                                            setAttributes( {
+                                                animationSpeed: parseInt( newValue ),
+                                            } )
                                         }
                                         help={__(
                                             "Set a duration value in milliseconds for slide effect."
                                         )}
                                     />
                                     <TextControl
-                                        label={__("Pause Time")}
+                                        label={__( "Pause Time" )}
                                         value={pauseTime}
                                         type="Number"
                                         onChange={newValue =>
-                                            setAttributes({
-                                                pauseTime: parseInt(newValue),
-                                            })
+                                            setAttributes( {
+                                                pauseTime: parseInt( newValue ),
+                                            } )
                                         }
                                         help={__(
                                             "How long should the word/string stay visible? Set a value in milliseconds."
                                         )}
                                     />
                                     <ToggleControl
-                                        label={__("Pause on Hover")}
+                                        label={__( "Pause on Hover" )}
                                         checked={hoverPause}
                                         onChange={newCheck =>
-                                            setAttributes({hoverPause: newCheck})
+                                            setAttributes( { hoverPause: newCheck } )
                                         }
                                         help={__(
                                             "If you enabled this option, the slide will be paused when mouseover."
                                         )}
                                     />
-                                    <p>{__("Fancy Strings Alignment")}</p>
+                                    <p>{__( "Fancy Strings Alignment" )}</p>
                                     <Toolbar
-                                        controls={ALIGNS.map((contentAlign) => ({
+                                        controls={ALIGNS.map( ( contentAlign ) => ( {
                                             icon: "editor-align" + contentAlign,
                                             isActive: contentAlign === fancyalign,
                                             onClick: () =>
-                                                setAttributes({
+                                                setAttributes( {
                                                     fancyalign: contentAlign,
-                                                }),
-                                        }))}
+                                                } ),
+                                        } ) )}
                                     />
                                 </Fragment>
                             )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Fancy Text Style")}
+                        title={__( "Fancy Text Style" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
+                        <p>{__( "Color" )}</p>
                         <ColorPalette
                             value={fancyTextColor}
                             onChange={newValue =>
-                                setAttributes({
+                                setAttributes( {
                                     fancyTextColor: newValue,
-                                })
+                                } )
                             }
                             allowReset={true}
                         />
@@ -583,50 +583,50 @@ class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: fancyTextfontSizeUnit,
-                                label: __("fancyTextfontSizeUnit"),
+                                label: __( "fancyTextfontSizeUnit" ),
                             }}
                             fontSize={{
                                 value: fancyTextfontSize,
-                                label: __("fancyTextfontSize"),
+                                label: __( "fancyTextfontSize" ),
                             }}
                             fontSizeMobile={{
                                 value: fancyTextfontSizeMobile,
-                                label: __("fancyTextfontSizeMobile"),
+                                label: __( "fancyTextfontSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: fancyTextfontSizeTablet,
-                                label: __("fancyTextfontSizeTablet"),
+                                label: __( "fancyTextfontSizeTablet" ),
                             }}
                             weight={fancyTextWeight}
                             style={fancyTextStyle}
                             spacing={fancyTextLetter}
                             upper={fancyTextUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({
+                                setAttributes( {
                                     fancyTextWeight: newWeight || 500,
-                                })
+                                } )
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({fancyTextStyle: newStyle})
+                                setAttributes( { fancyTextStyle: newStyle } )
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({fancyTextLetter: newValue})
+                                setAttributes( { fancyTextLetter: newValue } )
                             }
                             onChangeUpper={check =>
-                                setAttributes({fancyTextUpper: check})
+                                setAttributes( { fancyTextUpper: check } )
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
+                        <p>{__( "Background Color" )}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={fancyTextBGColor}
                             onChangeColor={newvalue =>
-                                setAttributes({fancyTextBGColor: newvalue})
+                                setAttributes( { fancyTextBGColor: newvalue } )
                             }
                             opacityValue={fancyTextBGOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({fancyTextBGOpacity: value})
+                                setAttributes( { fancyTextBGOpacity: value } )
                             }
                         />
 
@@ -636,28 +636,28 @@ class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({shadowColor: newColor.hex})
+                                setAttributes( { shadowColor: newColor.hex } )
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({shadowBlur: newBlur})
+                                setAttributes( { shadowBlur: newBlur } )
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({shadowHorizontal: newValue})
+                                setAttributes( { shadowHorizontal: newValue } )
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({shadowVertical: newValue})
+                                setAttributes( { shadowVertical: newValue } )
                             }
                             onResetClick={onResetClickLabelTextShadow}
                         />
                         {effect == "typing" && cursorShow && (
                             <Fragment>
-                                <p>{__("Cursor Color")}</p>
+                                <p>{__( "Cursor Color" )}</p>
                                 <ColorPalette
                                     value={cursorColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        setAttributes( {
                                             cursorColor: newValue,
-                                        })
+                                        } )
                                     }
                                     allowReset={true}
                                 />
@@ -665,17 +665,17 @@ class edit extends Component {
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Prefix & Suffix Style")}
+                        title={__( "Prefix & Suffix Style" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
+                        <p>{__( "Color" )}</p>
                         <ColorPalette
                             value={textColor}
                             onChange={newValue =>
-                                setAttributes({
+                                setAttributes( {
                                     textColor: newValue,
-                                })
+                                } )
                             }
                             allowReset={true}
                         />
@@ -690,63 +690,63 @@ class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: textfontSizeUnit,
-                                label: __("textfontSizeUnit"),
+                                label: __( "textfontSizeUnit" ),
                             }}
                             fontSize={{
                                 value: textfontSize,
-                                label: __("textfontSize"),
+                                label: __( "textfontSize" ),
                             }}
                             fontSizeMobile={{
                                 value: textfontSizeMobile,
-                                label: __("textfontSizeMobile"),
+                                label: __( "textfontSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: textfontSizeTablet,
-                                label: __("textfontSizeTablet"),
+                                label: __( "textfontSizeTablet" ),
                             }}
                             weight={textWeight}
                             style={textStyle}
                             spacing={textLetter}
                             upper={textUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({textWeight: newWeight || 500})
+                                setAttributes( { textWeight: newWeight || 500 } )
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({textStyle: newStyle})
+                                setAttributes( { textStyle: newStyle } )
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({textLetter: newValue})
+                                setAttributes( { textLetter: newValue } )
                             }
                             onChangeUpper={check =>
-                                setAttributes({textUpper: check})
+                                setAttributes( { textUpper: check } )
                             }
                             onResetClick={onResetClickTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
+                        <p>{__( "Background Color" )}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={textBGColor}
                             onChangeColor={newvalue =>
-                                setAttributes({textBGColor: newvalue})
+                                setAttributes( { textBGColor: newvalue } )
                             }
                             opacityValue={textBGOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({textBGOpacity: value})
+                                setAttributes( { textBGOpacity: value } )
                             }
                         />
-					</PanelBody>
-					<PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				/>
+                    </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
-                className={classnames(className, `premium-block-${ block_id } ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+                className={classnames( className, `premium-block-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }` )}
                 style={{
                     textAlign: align,
                 }}
@@ -760,7 +760,7 @@ class edit extends Component {
                         }}
                         data-effect={`${ effect }`}
                         data-strings={`${ repeaterFancyText.map(
-                            (item, index) => {
+                            ( item, index ) => {
                                 return item.title;
                             }
                         ) }`}
@@ -777,7 +777,7 @@ class edit extends Component {
                         </span>
                         <span
                             className={`premium-fancy-text-title`}
-                            ref={(el) => {
+                            ref={( el ) => {
                                 this.el = el;
                             }}
                         >
@@ -796,7 +796,7 @@ class edit extends Component {
                             }}
                             data-effect={`${ effect }`}
                             data-strings={`${ repeaterFancyText.map(
-                                (item, index) => {
+                                ( item, index ) => {
                                     return item.title;
                                 }
                             ) }`}
@@ -816,9 +816,9 @@ class edit extends Component {
                                 <ul
                                     className={`premium-fancy-text-title-slide-list`}
                                 >
-                                    {repeaterFancyText.map((item, index) => {
+                                    {repeaterFancyText.map( ( item, index ) => {
                                         return <li>{item.title}</li>;
-                                    })}
+                                    } )}
                                 </ul>
                             </div>
                             <span className={`premium-fancy-text-suffix-text`}>

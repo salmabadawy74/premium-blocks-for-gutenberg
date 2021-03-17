@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import {FontAwesomeEnabled} from "../../../assets/js/settings";
+import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
@@ -16,7 +16,7 @@ import styling from './styling';
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
 const {
     PanelBody,
@@ -27,7 +27,7 @@ const {
     TabPanel
 } = wp.components;
 
-const { Fragment ,Component} = wp.element;
+const { Fragment, Component } = wp.element;
 
 const {
     BlockControls,
@@ -40,30 +40,30 @@ const {
 
 class edit extends Component {
     constructor() {
-        super(...arguments);
+        super( ...arguments );
     }
 
     componentDidMount () {
         const { setAttributes, clientId } = this.props;
 
-        setAttributes({block_id:clientId})
+        setAttributes( { block_id: clientId } )
 
-        setAttributes({ classMigrate: true });
+        setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
             "premium-style-iconBox-" + clientId
-        ); 
+        );
         document.head.appendChild( $style );
-        
+
     }
 
     render () {
 
         const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
-        
+
         const {
             block_id,
             align,
@@ -81,6 +81,7 @@ class edit extends Component {
             iconRadius,
             iconColor,
             iconBackColor,
+            iconOpacity,
             titleChecked,
             titleText,
             titleTag,
@@ -130,6 +131,7 @@ class edit extends Component {
             btnStyle,
             btnHoverColor,
             btnBack,
+            btnOpacity,
             btnHoverBack,
             btnHoverBorder,
             btnBorderColor,
@@ -149,6 +151,7 @@ class edit extends Component {
             imageURL,
             fixed,
             backColor,
+            backOpacity,
             backgroundRepeat,
             backgroundPosition,
             backgroundSize,
@@ -322,12 +325,12 @@ class edit extends Component {
             addFontToHead( fontFamily );
         };
 
-       let element = document.getElementById(
+        let element = document.getElementById(
             "premium-style-iconBox-" + blockId
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
         const mainClasses = classnames( className, "premium-icon-box" );
@@ -492,24 +495,24 @@ class edit extends Component {
                                 setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: titleSizeUnit,
-                                    label: __("titleSizeUnit"),
+                                    label: __( "titleSizeUnit" ),
                                 }}
                                 fontSize={{
                                     value: titleSize,
-                                    label: __("titleSize"),
+                                    label: __( "titleSize" ),
                                 }}
                                 fontSizeMobile={{
                                     value: titleSizeMobile,
-                                    label: __("titleSizeMobile"),
+                                    label: __( "titleSizeMobile" ),
                                 }}
                                 fontSizeTablet={{
                                     value: titleSizeTablet,
-                                    label: __("titleSizeTablet"),
+                                    label: __( "titleSizeTablet" ),
                                 }}
                                 weight={titleWeight}
                                 style={titleStyle}
                                 spacing={titleLetter}
-                                line={titleLine} 
+                                line={titleLine}
                                 upper={titleUpper}
                                 onChangeWeight={newWeight =>
                                     setAttributes( { titleWeight: newWeight || 500 } )
@@ -577,19 +580,19 @@ class edit extends Component {
                                 setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: descSizeUnit,
-                                    label: __("descSizeUnit"),
+                                    label: __( "descSizeUnit" ),
                                 }}
                                 fontSize={{
                                     value: descSize,
-                                    label: __("descSize"),
+                                    label: __( "descSize" ),
                                 }}
                                 fontSizeMobile={{
                                     value: descSizeMobile,
-                                    label: __("descSizeMobile"),
+                                    label: __( "descSizeMobile" ),
                                 }}
                                 fontSizeTablet={{
                                     value: descSizeTablet,
-                                    label: __("descSizeTablet"),
+                                    label: __( "descSizeTablet" ),
                                 }}
                                 weight={descWeight}
                                 line={descLine}
@@ -643,24 +646,24 @@ class edit extends Component {
                             />
                             <PremiumTypo
                                 components={[ "responsiveSize", "weight", "style", "upper", "spacing" ]}
-                    
+
                                 setAttributes={setAttributes}
-                            fontSizeType={{
-                                value: btnSizeUnit,
-                                label: __("btnSizeUnit"),
-                            }}
-                            fontSize={{
-                                value: btnSize,
-                                label: __("btnSize"),
-                            }}
-                            fontSizeMobile={{
-                                value: btnSizeMobile,
-                                label: __("btnSizeMobile"),
-                            }}
-                            fontSizeTablet={{
-                                value: btnSizeTablet,
-                                label: __("btnSizeTablet"),
-                            }}
+                                fontSizeType={{
+                                    value: btnSizeUnit,
+                                    label: __( "btnSizeUnit" ),
+                                }}
+                                fontSize={{
+                                    value: btnSize,
+                                    label: __( "btnSize" ),
+                                }}
+                                fontSizeMobile={{
+                                    value: btnSizeMobile,
+                                    label: __( "btnSizeMobile" ),
+                                }}
+                                fontSizeTablet={{
+                                    value: btnSizeTablet,
+                                    label: __( "btnSizeTablet" ),
+                                }}
                                 weight={btnWeight}
                                 style={btnStyle}
                                 spacing={btnLetter}
@@ -759,7 +762,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumBackgroud
+                        <PremiumBackground
                             imageID={imageID}
                             imageURL={imageURL}
                             backgroundPosition={backgroundPosition}
@@ -965,14 +968,20 @@ class edit extends Component {
                                                         allowReset={true}
                                                     />
                                                     <p>{__( " Icon Background Color" )}</p>
-                                                    <ColorPalette
-                                                        value={iconBackColor}
-                                                        onChange={newValue =>
+                                                    <PremiumBackground
+                                                        type="color"
+                                                        colorValue={iconBackColor}
+                                                        onChangeColor={newvalue =>
                                                             setAttributes( {
-                                                                iconBackColor: newValue,
+                                                                iconBackColor: newvalue,
                                                             } )
                                                         }
-                                                        allowReset={true}
+                                                        opacityValue={iconOpacity}
+                                                        onChangeOpacity={value =>
+                                                            setAttributes( {
+                                                                iconOpacity: value,
+                                                            } )
+                                                        }
                                                     />
                                                 </Fragment>
                                             )}
@@ -1017,27 +1026,35 @@ class edit extends Component {
                                                         allowReset={true}
                                                     />
                                                     <p>{__( "Button Background Color" )}</p>
-                                                    <ColorPalette
-                                                        value={btnBack}
-                                                        onChange={newValue =>
+                                                    <PremiumBackground
+                                                        type="color"
+                                                        colorValue={btnBack}
+                                                        onChangeColor={newvalue =>
                                                             setAttributes( {
-                                                                btnBack: newValue || "transparent",
+                                                                btnBack: newvalue,
                                                             } )
                                                         }
-                                                        allowReset={true}
+                                                        opacityValue={btnOpacity}
+                                                        onChangeOpacity={value =>
+                                                            setAttributes( {
+                                                                btnOpacity: value,
+                                                            } )
+                                                        }
                                                     />
                                                 </Fragment>
                                             )}
 
                                             <p>{__( " Container Background Color" )}</p>
-                                            <ColorPalette
-                                                value={backColor}
-                                                onChange={newValue =>
-                                                    setAttributes( {
-                                                        backColor: newValue || "transparent",
-                                                    } )
+                                            <PremiumBackground
+                                                type="color"
+                                                colorValue={backColor}
+                                                onChangeColor={newvalue =>
+                                                    setAttributes( { backColor: newvalue } )
                                                 }
-                                                allowReset={true}
+                                                opacityValue={backOpacity}
+                                                onChangeOpacity={value =>
+                                                    setAttributes( { backOpacity: value } )
+                                                }
                                             />
                                         </Fragment>
                                     );
@@ -1094,18 +1111,18 @@ class edit extends Component {
                         </TabPanel>
                     </PanelBody>
                     <PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				/>
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
                 id={`premium-icon-box-${ block_id }`}
-                className={`${ mainClasses } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos } premium-icon-box-${block_id}`}
+                className={`${ mainClasses } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos } premium-icon-box-${ block_id }`}
                 style={{
                     textAlign: align,
                     border: borderType,
@@ -1121,7 +1138,9 @@ class edit extends Component {
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
                     boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                    backgroundColor: backColor,
+                    backgroundColor: backColor
+                        ? hexToRgba( backColor, backOpacity )
+                        : "transparent",
                     backgroundImage: imageURL ? `url('${ imageURL }')` : 'none',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -1166,7 +1185,12 @@ class edit extends Component {
                                         className={`${ selectedIcon } premium-icon-box__icon premium-icon__${ hoverEffect }`}
                                         style={{
                                             color: iconColor,
-                                            backgroundColor: iconBackColor,
+                                            backgroundColor: iconBackColor
+                                                ? hexToRgba(
+                                                    iconBackColor,
+                                                    iconOpacity
+                                                )
+                                                : "transparent",
                                             fontSize: iconSize
                                         }}
                                     />
@@ -1257,7 +1281,9 @@ class edit extends Component {
                                 value={btnText}
                                 style={{
                                     color: btnColor,
-                                    backgroundColor: btnBack,
+                                    backgroundColor: btnBack
+                                        ? hexToRgba( btnBack, btnOpacity )
+                                        : "transparent",
                                     letterSpacing: btnLetter + "px",
                                     textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,

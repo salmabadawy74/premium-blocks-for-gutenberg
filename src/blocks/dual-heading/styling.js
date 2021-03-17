@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) { 
+function styling ( props ) {
 
     const {
         block_id,
@@ -22,39 +22,39 @@ function styling ( props ) {
 
     selectors = {
         " .premium-dheading-block__first": {
-            "font-size": generateCSSUnit(firstSize,firstSizeUnit)
+            "font-size": generateCSSUnit( firstSize, firstSizeUnit )
         },
         " .premium-dheading-block__second": {
-            'font-size' : generateCSSUnit(secondSize,secondSizeUnit)
+            'font-size': generateCSSUnit( secondSize, secondSizeUnit )
         }
     }
     tablet_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": generateCSSUnit(firstSizeTablet,firstSizeUnit)
+            "font-size": generateCSSUnit( firstSizeTablet, firstSizeUnit )
         },
         " .premium-dheading-block__second": {
-            'font-size' :generateCSSUnit(secondSizeTablet,secondSizeUnit)
+            'font-size': generateCSSUnit( secondSizeTablet, secondSizeUnit )
         }
     }
     mobile_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": generateCSSUnit(firstSizeMobile,firstSizeUnit)
+            "font-size": generateCSSUnit( firstSizeMobile, firstSizeUnit )
         },
         " .premium-dheading-block__second": {
-            'font-size' : generateCSSUnit(secondSizeMobile,secondSizeUnit)
+            'font-size': generateCSSUnit( secondSizeMobile, secondSizeUnit )
         }
     }
-    
+
     var styling_css = ""
-    var id = `#premium-dheading-block-${block_id}`
-    if (classMigrate) {
-        id=`.premium-dheading-${ block_id }`
+    var id = `#premium-dheading-block-${ block_id }`
+    if ( classMigrate ) {
+        id = `.premium-dheading-${ block_id }`
     }
 
-    styling_css = generateCSS(selectors, id)
-    styling_css += generateCSS(tablet_selectors, id, true, "tablet")
+    styling_css = generateCSS( selectors, id )
+    styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-    styling_css += generateCSS(mobile_selectors, id, true, "mobile")
+    styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
     return styling_css
 

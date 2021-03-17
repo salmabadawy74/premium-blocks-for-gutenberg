@@ -215,23 +215,23 @@ const iconAttrs = {
     target: {
         type: "boolean",
     },
-    
-	hideDesktop: {
+
+    hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 
-registerBlockType("premium/icon", {
-    title: __("Icon"),
+registerBlockType( "premium/icon", {
+    title: __( "Icon" ),
     icon: <PbgIcon icon="icon" />,
     category: "premium-blocks",
     attributes: iconAttrs,
@@ -242,4 +242,4 @@ registerBlockType("premium/icon", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

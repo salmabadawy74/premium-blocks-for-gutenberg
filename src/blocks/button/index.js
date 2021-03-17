@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 const buttonAttrs = {
     btnText: {
         type: "string",
-        default: __("Premium Button"),
+        default: __( "Premium Button" ),
     },
     btnSize: {
         type: "string",
@@ -60,17 +60,17 @@ const buttonAttrs = {
     },
     textSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     textSize: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     textSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     textSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     textFontFamily: {
         type: "string",
@@ -153,24 +153,24 @@ const buttonAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     classMigrate: {
         type: 'boolean',
-      default:false  
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 
-registerBlockType("premium/button", {
-    title: __("Button"),
+registerBlockType( "premium/button", {
+    title: __( "Button" ),
     icon: <PbgIcon icon="button" />,
     category: "premium-blocks",
     attributes: buttonAttrs,
@@ -181,4 +181,4 @@ registerBlockType("premium/button", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

@@ -78,11 +78,11 @@ const mapAttrs = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __( "Awesome Title" )
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __( "Cool Description" )
     },
     mapMarker: {
         type: "boolean",
@@ -133,15 +133,15 @@ const mapAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 
 };
@@ -200,11 +200,11 @@ const mapAttrs_1_2 = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __( "Awesome Title" )
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __( "Cool Description" )
     },
     mapMarker: {
         type: "boolean",
@@ -255,36 +255,36 @@ const mapAttrs_1_2 = {
     },
     hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 }
 const newAttributes_1_0 = {
     hideDesktop: {
-		type: "boolean",
-		default:false
-	},
-	hideTablet: {
-		type: "boolean",
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
-} 
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
 const mapAttrs_1_3 = Object.assign( mapAttrs_1_2, newAttributes_1_0 );
 
 class PremiumMap extends Component {
     constructor() {
-        super(...arguments);
+        super( ...arguments );
         this.state = {
             thisAddress: "",
             thisMap: null,
@@ -292,27 +292,27 @@ class PremiumMap extends Component {
             fetching: false
         };
 
-        this.initMap = this.initMap.bind(this);
+        this.initMap = this.initMap.bind( this );
     }
 
-    componentDidMount() {
+    componentDidMount () {
         const { attributes, setAttributes, clientId } = this.props;
 
-        if (!attributes.mapID) {
-            setAttributes({ mapID: "premium-map-" + clientId });
+        if ( !attributes.mapID ) {
+            setAttributes( { mapID: "premium-map-" + clientId } );
         }
         this.initMap();
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate ( prevProps, prevState ) {
         //if (prevProps.attributes !== this.props.attributes) {
-        clearTimeout(isMapUpdated);
-        isMapUpdated = setTimeout(this.initMap, 500);
+        clearTimeout( isMapUpdated );
+        isMapUpdated = setTimeout( this.initMap, 500 );
         //}
     }
 
-    initMap() {
-        if (typeof google === "undefined" || !this.props.attributes.mapID)
+    initMap () {
+        if ( typeof google === "undefined" || !this.props.attributes.mapID )
             return null;
 
         const { thisMap, thisInfo } = this.state;
@@ -347,12 +347,12 @@ class PremiumMap extends Component {
         let map = thisMap;
         let infoWindow = thisInfo;
         let latlng = new google.maps.LatLng(
-            parseFloat(centerLat),
-            parseFloat(centerLng)
+            parseFloat( centerLat ),
+            parseFloat( centerLng )
         );
-        if (!map) {
-            let mapElem = document.getElementById(mapID);
-            map = new google.maps.Map(mapElem, {
+        if ( !map ) {
+            let mapElem = document.getElementById( mapID );
+            map = new google.maps.Map( mapElem, {
                 zoom: zoom,
                 gestureHandling: "cooperative",
                 mapTypeId: mapType,
@@ -362,68 +362,68 @@ class PremiumMap extends Component {
                 streetViewControl: streetViewControl,
                 scrollwheel: scrollwheel,
                 center: latlng,
-                styles: JSON.parse(mapStyle)
-            });
-            this.setState({ thisMap: map });
+                styles: JSON.parse( mapStyle )
+            } );
+            this.setState( { thisMap: map } );
         }
 
-        map.setOptions({
+        map.setOptions( {
             zoom: zoom,
             mapTypeId: mapType,
             mapTypeControl: mapTypeControl,
             zoomControl: zoomControl,
             fullscreenControl: fullscreenControl,
             streetViewControl: streetViewControl,
-            styles: JSON.parse(mapStyle)
-        });
+            styles: JSON.parse( mapStyle )
+        } );
 
-        if (!infoWindow && mapMarker && "" !== markerTitle && "" !== markerDesc) {
-            infoWindow = new google.maps.InfoWindow({
+        if ( !infoWindow && mapMarker && "" !== markerTitle && "" !== markerDesc ) {
+            infoWindow = new google.maps.InfoWindow( {
                 maxWidth: maxWidth
-            });
-            this.setState({ thisInfo: infoWindow });
+            } );
+            this.setState( { thisInfo: infoWindow } );
         }
 
-        if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
+        if ( mapMarker && "" !== markerTitle && "" !== markerDesc ) {
             infoWindow.setContent(
-                `<div class="${className}__info" style="text-align:${boxAlign};padding:${boxPadding}px"
+                `<div class="${ className }__info" style="text-align:${ boxAlign };padding:${ boxPadding }px"
             >
             <h3
-                class="${className}__title"
-                style="color:${titleColor};font-size:${titleSize}px;margin-bottom:${gapBetween}px"
+                class="${ className }__title"
+                style="color:${ titleColor };font-size:${ titleSize }px;margin-bottom:${ gapBetween }px"
             >
-                ${markerTitle}
+                ${ markerTitle }
             </h3>
             <div
-                class="${className}__desc"
-                style="color: ${descColor};font-size: ${descSize}px"
+                class="${ className }__desc"
+                style="color: ${ descColor };font-size: ${ descSize }px"
             >
-                ${markerDesc}
+                ${ markerDesc }
             </div>
         </div>`
             );
         }
 
-        map.setCenter(latlng);
+        map.setCenter( latlng );
 
-        if (mapMarker) {
-            let marker = new google.maps.Marker({
+        if ( mapMarker ) {
+            let marker = new google.maps.Marker( {
                 position: latlng,
                 map: map,
                 icon: markerCustom ? markerIconUrl : ""
-            });
+            } );
 
-            if (markerOpen) {
-                infoWindow.open(map, marker);
+            if ( markerOpen ) {
+                infoWindow.open( map, marker );
             }
 
-            google.maps.event.addListener(marker, "click", function () {
-                infoWindow.open(map, marker);
-            });
+            google.maps.event.addListener( marker, "click", function () {
+                infoWindow.open( map, marker );
+            } );
         }
     }
 
-    render() {
+    render () {
         const { isSelected, setAttributes, clientId } = this.props;
 
         const {
@@ -462,95 +462,95 @@ class PremiumMap extends Component {
         const TYPES = [
             {
                 value: "roadmap",
-                label: __("Road Map")
+                label: __( "Road Map" )
             },
             {
                 value: "satellite",
-                label: __("Satellite")
+                label: __( "Satellite" )
             },
             {
                 value: "terrain",
-                label: __("Terrain")
+                label: __( "Terrain" )
             },
             {
                 value: "hybrid",
-                label: __("Hybrid")
+                label: __( "Hybrid" )
             }
         ];
 
-        const ALIGNS = ["left", "center", "right"];
+        const ALIGNS = [ "left", "center", "right" ];
         return [
             typeof google !== "undefined" && isSelected && (
                 <InspectorControls key="key">
                     <PanelBody
-                        title={__("Center Location")}
+                        title={__( "Center Location" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Longitude")}
+                            label={__( "Longitude" )}
                             value={centerLng}
                             help={[
-                                __("Get your location coordinates from"),
+                                __( "Get your location coordinates from" ),
                                 <a href="https://www.latlong.net/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                  {__( "here" )}
                                 </a>
                             ]}
-                            onChange={newLng => setAttributes({ centerLng: newLng })}
+                            onChange={newLng => setAttributes( { centerLng: newLng } )}
                         />
                         <TextControl
-                            label={__("Latitude")}
+                            label={__( "Latitude" )}
                             value={centerLat}
-                            onChange={newLat => setAttributes({ centerLat: newLat })}
+                            onChange={newLat => setAttributes( { centerLat: newLat } )}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Marker")}
+                        title={__( "Marker" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Enable Marker")}
+                            label={__( "Enable Marker" )}
                             checked={mapMarker}
-                            onChange={check => setAttributes({ mapMarker: check })}
-                            help={__("Disable marker is applied on page reload")}
+                            onChange={check => setAttributes( { mapMarker: check } )}
+                            help={__( "Disable marker is applied on page reload" )}
                         />
                         {mapMarker && (
                             <Fragment>
                                 <TextControl
-                                    label={__("Marker Title")}
+                                    label={__( "Marker Title" )}
                                     value={markerTitle}
-                                    onChange={newText => setAttributes({ markerTitle: newText })}
+                                    onChange={newText => setAttributes( { markerTitle: newText } )}
                                 />
                                 <TextareaControl
-                                    label={__("Marker Description")}
+                                    label={__( "Marker Description" )}
                                     value={markerDesc}
-                                    onChange={newText => setAttributes({ markerDesc: newText })}
+                                    onChange={newText => setAttributes( { markerDesc: newText } )}
                                 />
                                 <RangeControl
-                                    label={__("Spacing (PX)")}
+                                    label={__( "Spacing (PX)" )}
                                     value={gapBetween}
                                     min="10"
                                     max="80"
-                                    onChange={newSize => setAttributes({ gapBetween: newSize })}
+                                    onChange={newSize => setAttributes( { gapBetween: newSize } )}
                                 />
                                 <ToggleControl
-                                    label={__("Description opened by default")}
+                                    label={__( "Description opened by default" )}
                                     checked={markerOpen}
-                                    onChange={newValue => setAttributes({ markerOpen: newValue })}
+                                    onChange={newValue => setAttributes( { markerOpen: newValue } )}
                                 />
                                 <Toolbar
-                                    controls={ALIGNS.map(align => ({
+                                    controls={ALIGNS.map( align => ( {
                                         icon: "editor-align" + align,
                                         isActive: align === boxAlign,
-                                        onClick: () => setAttributes({ boxAlign: align })
-                                    }))}
+                                        onClick: () => setAttributes( { boxAlign: align } )
+                                    } ) )}
                                 />
                                 <ToggleControl
-                                    label={__("Custom Marker Icon")}
+                                    label={__( "Custom Marker Icon" )}
                                     checked={markerCustom}
-                                    onChange={check => setAttributes({ markerCustom: check })}
+                                    onChange={check => setAttributes( { markerCustom: check } )}
                                 />
                                 {markerCustom && (
                                     <PremiumMediaUpload
@@ -558,59 +558,59 @@ class PremiumMap extends Component {
                                         imageID={markerIconId}
                                         imageURL={markerIconUrl}
                                         onSelectMedia={media => {
-                                            setAttributes({
+                                            setAttributes( {
                                                 markerIconId: media.id,
                                                 markerIconUrl: media.url
-                                            });
+                                            } );
                                         }}
                                         onRemoveImage={() =>
-                                            setAttributes({
+                                            setAttributes( {
                                                 markerIconId: "",
                                                 markerIconUrl: ""
-                                            })
+                                            } )
                                         }
 
                                     />
                                 )}
                                 <RangeControl
-                                    label={__("Description Box Max Width (PX)")}
+                                    label={__( "Description Box Max Width (PX)" )}
                                     value={maxWidth}
                                     min="10"
                                     max="500"
-                                    onChange={newSize => setAttributes({ maxWidth: newSize })}
+                                    onChange={newSize => setAttributes( { maxWidth: newSize } )}
                                 />
                                 <RangeControl
-                                    label={__("Description Box Padding (PX)")}
+                                    label={__( "Description Box Padding (PX)" )}
                                     value={boxPadding}
                                     min="1"
                                     max="50"
-                                    onChange={newSize => setAttributes({ boxPadding: newSize })}
+                                    onChange={newSize => setAttributes( { boxPadding: newSize } )}
                                 />
                             </Fragment>
                         )}
                     </PanelBody>
                     {mapMarker && markerTitle && (
                         <PanelBody
-                            title={__("Marker Title Style")}
+                            title={__( "Marker Title Style" )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <RangeControl
-                                label={__("Font Size (PX)")}
+                                label={__( "Font Size (PX)" )}
                                 value={titleSize}
                                 min="10"
                                 max="80"
-                                onChange={newSize => setAttributes({ titleSize: newSize })}
+                                onChange={newSize => setAttributes( { titleSize: newSize } )}
                             />
                             <Fragment>
-                                <p>{__("Text Color")}</p>
+                                <p>{__( "Text Color" )}</p>
                                 <ColorPalette
                                     value={titleColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        setAttributes( {
                                             titleColor:
                                                 newValue === undefined ? "transparent" : newValue
-                                        })
+                                        } )
                                     }
                                     allowReset={true}
                                 />
@@ -619,26 +619,26 @@ class PremiumMap extends Component {
                     )}
                     {mapMarker && markerDesc && (
                         <PanelBody
-                            title={__("Marker Description Style")}
+                            title={__( "Marker Description Style" )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <RangeControl
-                                label={__("Font Size (PX)")}
+                                label={__( "Font Size (PX)" )}
                                 value={descSize}
                                 min="10"
                                 max="80"
-                                onChange={newSize => setAttributes({ descSize: newSize })}
+                                onChange={newSize => setAttributes( { descSize: newSize } )}
                             />
                             <Fragment>
-                                <p>{__("Text Color")}</p>
+                                <p>{__( "Text Color" )}</p>
                                 <ColorPalette
                                     value={descColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        setAttributes( {
                                             descColor:
                                                 newValue === undefined ? "transparent" : newValue
-                                        })
+                                        } )
                                     }
                                     allowReset={true}
                                 />
@@ -646,89 +646,89 @@ class PremiumMap extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Controls")}
+                        title={__( "Controls" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Map Type")}
+                            label={__( "Map Type" )}
                             options={TYPES}
                             value={mapType}
-                            onChange={newType => setAttributes({ mapType: newType })}
+                            onChange={newType => setAttributes( { mapType: newType } )}
                         />
                         <RangeControl
-                            label={__("Map Height (PX)")}
+                            label={__( "Map Height (PX)" )}
                             value={height}
                             min="10"
                             max="800"
-                            onChange={newSize => setAttributes({ height: newSize })}
+                            onChange={newSize => setAttributes( { height: newSize } )}
                         />
                         <RangeControl
-                            label={__("Zoom")}
+                            label={__( "Zoom" )}
                             value={zoom}
                             min="1"
                             max="14"
-                            onChange={newSize => setAttributes({ zoom: newSize })}
+                            onChange={newSize => setAttributes( { zoom: newSize } )}
                         />
                         <ToggleControl
-                            label={__("Map Type Controls")}
+                            label={__( "Map Type Controls" )}
                             checked={mapTypeControl}
-                            onChange={check => setAttributes({ mapTypeControl: check })}
+                            onChange={check => setAttributes( { mapTypeControl: check } )}
                         />
                         <ToggleControl
-                            label={__("Zoom Controls")}
+                            label={__( "Zoom Controls" )}
                             checked={zoomControl}
-                            onChange={check => setAttributes({ zoomControl: check })}
+                            onChange={check => setAttributes( { zoomControl: check } )}
                         />
                         <ToggleControl
-                            label={__("Street View Control")}
+                            label={__( "Street View Control" )}
                             checked={streetViewControl}
-                            onChange={check => setAttributes({ streetViewControl: check })}
+                            onChange={check => setAttributes( { streetViewControl: check } )}
                         />
 
                         <ToggleControl
-                            label={__("Full Screen Control")}
+                            label={__( "Full Screen Control" )}
                             checked={fullscreenControl}
-                            onChange={check => setAttributes({ fullscreenControl: check })}
+                            onChange={check => setAttributes( { fullscreenControl: check } )}
                         />
                         <ToggleControl
-                            label={__("Scroll Wheel Zoom")}
+                            label={__( "Scroll Wheel Zoom" )}
                             checked={scrollwheel}
-                            onChange={check => setAttributes({ scrollwheel: check })}
+                            onChange={check => setAttributes( { scrollwheel: check } )}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Map Style")}
+                        title={__( "Map Style" )}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextareaControl
-                            label={__("Maps Style")}
+                            label={__( "Maps Style" )}
                             value={mapStyle}
                             help={[
-                                __("Get your custom styling from"),
+                                __( "Get your custom styling from" ),
                                 <a href="https://snazzymaps.com/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                  {__( "here" )}
                                 </a>
                             ]}
                             onChange={newStyle =>
-                                setAttributes({ mapStyle: "" !== newStyle ? newStyle : "[]" })
+                                setAttributes( { mapStyle: "" !== newStyle ? newStyle : "[]" } )
                             }
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				     />
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
-                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${ className }__wrap ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 id={mapID}
                 style={{
                     height: height + "px"
@@ -738,8 +738,8 @@ class PremiumMap extends Component {
     }
 }
 
-registerBlockType("premium/maps", {
-    title: __("Maps"),
+registerBlockType( "premium/maps", {
+    title: __( "Maps" ),
     icon: <PbgIcon icon="maps" />,
     category: "premium-blocks",
     attributes: mapAttrs,
@@ -782,15 +782,15 @@ registerBlockType("premium/maps", {
 
         return (
             <div
-                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${ className }__wrap ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 id={mapID}
                 style={{
                     height: height + "px"
                 }}
             >
-                <div className={`${className}__marker`}>
+                <div className={`${ className }__marker`}>
                     <div
-                        className={`${className}__info`}
+                        className={`${ className }__info`}
                         style={{
                             textAlign: boxAlign,
                             padding: boxPadding + "px"
@@ -798,7 +798,7 @@ registerBlockType("premium/maps", {
                     >
                         {markerTitle && (
                             <h3
-                                className={`${className}__title`}
+                                className={`${ className }__title`}
                                 style={{
                                     color: titleColor,
                                     fontSize: titleSize + "px",
@@ -810,7 +810,7 @@ registerBlockType("premium/maps", {
                         )}
                         {markerDesc && (
                             <div
-                                className={`${className}__desc`}
+                                className={`${ className }__desc`}
                                 style={{
                                     color: descColor,
                                     fontSize: descSize + "px"
@@ -824,35 +824,35 @@ registerBlockType("premium/maps", {
                 <script>
                     {`window.addEventListener('load',function(){
                     if( typeof google === 'undefined' ) return;
-                    let mapElem = document.getElementById('${mapID}');
-                    let pin = mapElem.querySelector('.${className}__marker');
-                    let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+                    let mapElem = document.getElementById('${ mapID }');
+                    let pin = mapElem.querySelector('.${ className }__marker');
+                    let latlng = new google.maps.LatLng( parseFloat( ${ centerLat } ) , parseFloat( ${ centerLng } ) );
 
                     let map = new google.maps.Map(mapElem, {
-                        zoom: ${zoom},
+                        zoom: ${ zoom },
                         gestureHandling: 'cooperative',
-                        mapTypeId: '${mapType}',
-                        mapTypeControl: ${mapTypeControl},
-                        zoomControl: ${zoomControl},
-                        fullscreenControl: ${fullscreenControl},
-                        streetViewControl: ${streetViewControl},
-                        scrollwheel: ${scrollwheel},
+                        mapTypeId: '${ mapType }',
+                        mapTypeControl: ${ mapTypeControl },
+                        zoomControl: ${ zoomControl },
+                        fullscreenControl: ${ fullscreenControl },
+                        streetViewControl: ${ streetViewControl },
+                        scrollwheel: ${ scrollwheel },
                         center: latlng,
-                        styles: ${mapStyle}
+                        styles: ${ mapStyle }
                     });
-                    if( ${mapMarker} ) {
-                        let markerIcon = '${markerIconUrl}';
+                    if( ${ mapMarker } ) {
+                        let markerIcon = '${ markerIconUrl }';
                         let marker = new google.maps.Marker({
                             position	: latlng,
                             map			: map,
-                            icon        : ${markerCustom} ? markerIcon : ''
+                            icon        : ${ markerCustom } ? markerIcon : ''
                         });
                         
                         let infowindow = new google.maps.InfoWindow({
-                            maxWidth    : ${maxWidth},
+                            maxWidth    : ${ maxWidth },
                             content		: pin.innerHTML
                         });
-                        if (${markerOpen}) {
+                        if (${ markerOpen }) {
                           infowindow.open( map, marker );
                         }
                         google.maps.event.addListener(marker, 'click', function() {
@@ -872,9 +872,9 @@ registerBlockType("premium/maps", {
                 let newAttributes = {
                     hideDesktop: false,
                     hideTablet: false,
-                    hideMobile:false
+                    hideMobile: false
                 }
-                return Object.assign(attributes,newAttributes)
+                return Object.assign( attributes, newAttributes )
             },
             save: props => {
                 const {
@@ -905,18 +905,18 @@ registerBlockType("premium/maps", {
                     boxPadding,
                     gapBetween,
                 } = props.attributes;
-        
+
                 return (
                     <div
-                        className={`${className}__wrap `}
+                        className={`${ className }__wrap `}
                         id={mapID}
                         style={{
                             height: height + "px"
                         }}
                     >
-                        <div className={`${className}__marker`}>
+                        <div className={`${ className }__marker`}>
                             <div
-                                className={`${className}__info`}
+                                className={`${ className }__info`}
                                 style={{
                                     textAlign: boxAlign,
                                     padding: boxPadding + "px"
@@ -924,7 +924,7 @@ registerBlockType("premium/maps", {
                             >
                                 {markerTitle && (
                                     <h3
-                                        className={`${className}__title`}
+                                        className={`${ className }__title`}
                                         style={{
                                             color: titleColor,
                                             fontSize: titleSize + "px",
@@ -936,7 +936,7 @@ registerBlockType("premium/maps", {
                                 )}
                                 {markerDesc && (
                                     <div
-                                        className={`${className}__desc`}
+                                        className={`${ className }__desc`}
                                         style={{
                                             color: descColor,
                                             fontSize: descSize + "px"
@@ -950,35 +950,35 @@ registerBlockType("premium/maps", {
                         <script>
                             {`window.addEventListener('load',function(){
                             if( typeof google === 'undefined' ) return;
-                            let mapElem = document.getElementById('${mapID}');
-                            let pin = mapElem.querySelector('.${className}__marker');
-                            let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+                            let mapElem = document.getElementById('${ mapID }');
+                            let pin = mapElem.querySelector('.${ className }__marker');
+                            let latlng = new google.maps.LatLng( parseFloat( ${ centerLat } ) , parseFloat( ${ centerLng } ) );
         
                             let map = new google.maps.Map(mapElem, {
-                                zoom: ${zoom},
+                                zoom: ${ zoom },
                                 gestureHandling: 'cooperative',
-                                mapTypeId: '${mapType}',
-                                mapTypeControl: ${mapTypeControl},
-                                zoomControl: ${zoomControl},
-                                fullscreenControl: ${fullscreenControl},
-                                streetViewControl: ${streetViewControl},
-                                scrollwheel: ${scrollwheel},
+                                mapTypeId: '${ mapType }',
+                                mapTypeControl: ${ mapTypeControl },
+                                zoomControl: ${ zoomControl },
+                                fullscreenControl: ${ fullscreenControl },
+                                streetViewControl: ${ streetViewControl },
+                                scrollwheel: ${ scrollwheel },
                                 center: latlng,
-                                styles: ${mapStyle}
+                                styles: ${ mapStyle }
                             });
-                            if( ${mapMarker} ) {
-                                let markerIcon = '${markerIconUrl}';
+                            if( ${ mapMarker } ) {
+                                let markerIcon = '${ markerIconUrl }';
                                 let marker = new google.maps.Marker({
                                     position	: latlng,
                                     map			: map,
-                                    icon        : ${markerCustom} ? markerIcon : ''
+                                    icon        : ${ markerCustom } ? markerIcon : ''
                                 });
                                 
                                 let infowindow = new google.maps.InfoWindow({
-                                    maxWidth    : ${maxWidth},
+                                    maxWidth    : ${ maxWidth },
                                     content		: pin.innerHTML
                                 });
-                                if (${markerOpen}) {
+                                if (${ markerOpen }) {
                                   infowindow.open( map, marker );
                                 }
                                 google.maps.event.addListener(marker, 'click', function() {
@@ -1026,15 +1026,15 @@ registerBlockType("premium/maps", {
 
                 return (
                     <div
-                        className={`${className}__wrap`}
+                        className={`${ className }__wrap`}
                         id={mapID}
                         style={{
                             height: height + "px"
                         }}
                     >
-                        <div className={`${className}__marker`}>
+                        <div className={`${ className }__marker`}>
                             <div
-                                className={`${className}__info`}
+                                className={`${ className }__info`}
                                 style={{
                                     textAlign: boxAlign,
                                     padding: boxPadding + "px"
@@ -1042,7 +1042,7 @@ registerBlockType("premium/maps", {
                             >
                                 {markerTitle && (
                                     <h3
-                                        className={`${className}__title`}
+                                        className={`${ className }__title`}
                                         style={{
                                             color: titleColor,
                                             fontSize: titleSize + "px",
@@ -1054,7 +1054,7 @@ registerBlockType("premium/maps", {
                                 )}
                                 {markerDesc && (
                                     <div
-                                        className={`${className}__desc`}
+                                        className={`${ className }__desc`}
                                         style={{
                                             color: descColor,
                                             fontSize: descSize + "px"
@@ -1068,35 +1068,34 @@ registerBlockType("premium/maps", {
                         <script>
                             {`window.addEventListener('load',function(){
                         if( typeof google === 'undefined' ) return;
-                        let mapElem = document.getElementById('${mapID}');
-                        let pin = mapElem.querySelector('.${className}__marker');
-                        let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
-    
+                        let mapElem = document.getElementById('${ mapID }');
+                        let pin = mapElem.querySelector('.${ className }__marker');
+                        let latlng = new google.maps.LatLng( parseFloat( ${ centerLat } ) , parseFloat( ${ centerLng } ) );
                         let map = new google.maps.Map(mapElem, {
-                            zoom: ${zoom},
+                            zoom: ${ zoom },
                             gestureHandling: 'cooperative',
-                            mapTypeId: '${mapType}',
-                            mapTypeControl: ${mapTypeControl},
-                            zoomControl: ${zoomControl},
-                            fullscreenControl: ${fullscreenControl},
-                            streetViewControl: ${streetViewControl},
-                            scrollwheel: ${scrollwheel},
+                            mapTypeId: '${ mapType }',
+                            mapTypeControl: ${ mapTypeControl },
+                            zoomControl: ${ zoomControl },
+                            fullscreenControl: ${ fullscreenControl },
+                            streetViewControl: ${ streetViewControl },
+                            scrollwheel: ${ scrollwheel },
                             center: latlng,
-                            styles: ${mapStyle}
+                            styles: ${ mapStyle }
                         });
-                        if( ${mapMarker} ) {
-                            let markerIcon = '${markerIconUrl}';
+                        if( ${ mapMarker } ) {
+                            let markerIcon = '${ markerIconUrl }';
                             let marker = new google.maps.Marker({
                                 position	: latlng,
                                 map			: map,
-                                icon        : ${markerCustom} ? markerIcon : ''
+                                icon        : ${ markerCustom } ? markerIcon : ''
                             });
                             
                             let infowindow = new google.maps.InfoWindow({
-                                maxWidth    : ${maxWidth},
+                                maxWidth    : ${ maxWidth },
                                 content		: pin.innerHTML
                             });
-                            if (${markerOpen}) {
+                            if (${ markerOpen }) {
                               infowindow.open( map, marker );
                             }
                             google.maps.event.addListener(marker, 'click', function() {
@@ -1111,4 +1110,4 @@ registerBlockType("premium/maps", {
             }
         }
     ]
-});
+} );

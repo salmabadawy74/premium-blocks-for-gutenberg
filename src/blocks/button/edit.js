@@ -10,7 +10,7 @@ import hexToRgba from "hex-to-rgba";
 import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
 const {
     PanelBody,
@@ -20,7 +20,7 @@ const {
     TabPanel,
 } = wp.components;
 
-const { Fragment,Component } = wp.element;
+const { Fragment, Component } = wp.element;
 
 const {
     InspectorControls,
@@ -32,20 +32,20 @@ const {
 } = wp.blockEditor;
 
 export default class edit extends Component {
-    
+
     constructor() {
-        super(...arguments);
+        super( ...arguments );
     }
 
-    componentDidMount() {
-        this.props.setAttributes({ classMigrate: true });
+    componentDidMount () {
+        this.props.setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-button-" + this.props.clientId.substr(0, 6)
-        ); 
+            "premium-style-button-" + this.props.clientId.substr( 0, 6 )
+        );
         document.head.appendChild( $style );
     }
     render () {
@@ -63,6 +63,7 @@ export default class edit extends Component {
             textColor,
             textHoverColor,
             backColor,
+            backOpacity,
             backHoverColor,
             slideColor,
             textSizeUnit,
@@ -92,8 +93,8 @@ export default class edit extends Component {
             btnShadowVertical,
             btnShadowPosition,
             hideDesktop,
-        hideTablet,
-        hideMobile
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const SIZE = [
@@ -236,11 +237,11 @@ export default class edit extends Component {
         const mainClasses = classnames( className, "premium-button" );
 
         var element = document.getElementById(
-            "premium-style-button-" + blockId.substr(0, 6)
+            "premium-style-button-" + blockId.substr( 0, 6 )
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
         return [
@@ -317,15 +318,15 @@ export default class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: textSizeUnit,
-                                label: __("textSizeUnit"),
+                                label: __( "textSizeUnit" ),
                             }}
                             fontSize={{
                                 value: textSize,
-                                label: __("textSize"),
+                                label: __( "textSize" ),
                             }}
                             fontSizeMobile={{
                                 value: textSizeMobile,
-                                label: __("textSizeMobile"),
+                                label: __( "textSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: textSizeTablet,
@@ -409,14 +410,20 @@ export default class edit extends Component {
                                                     ? __( "Background Color" )
                                                     : __( "Background Hover Color" )}
                                             </p>
-                                            <ColorPalette
-                                                value={backColor}
-                                                onChange={newValue =>
+                                            <PremiumBackground
+                                                type="color"
+                                                colorValue={backColor}
+                                                onChangeColor={newvalue =>
                                                     setAttributes( {
-                                                        backColor: newValue,
+                                                        backColor: newvalue,
                                                     } )
                                                 }
-                                                allowReset={true}
+                                                opacityValue={backOpacity}
+                                                onChangeOpacity={value =>
+                                                    setAttributes( {
+                                                        backOpacity: value,
+                                                    } )
+                                                }
                                             />
                                         </Fragment>
                                     );
@@ -529,18 +536,18 @@ export default class edit extends Component {
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				/>
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
                 id={`premium-button-wrap-${ block_id }`}
-                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 style={{ textAlign: btnAlign }}
             >
                 <style
@@ -567,7 +574,9 @@ export default class edit extends Component {
                     onChange={value => setAttributes( { btnText: value } )}
                     style={{
                         color: textColor,
-                        backgroundColor: backColor,
+                        backgroundColor: backColor
+                            ? hexToRgba( backColor, backOpacity )
+                            : "transparent",
                         fontFamily: textFontFamily,
                         letterSpacing: textLetter + "px",
                         textTransform: textUpper ? "uppercase" : "none",

@@ -10,11 +10,11 @@ const { registerBlockType } = wp.blocks;
 
 const testimonialsAttrs = {
     block_id: {
-      type:"string"  
+        type: "string"
     },
     classMigrate: {
         type: "boolean",
-        default: false  
+        default: false
     },
     align: {
         type: "string",
@@ -58,13 +58,13 @@ const testimonialsAttrs = {
     },
     authorSizeUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     authorSizeMobile: {
-        type:"number"
+        type: "number"
     },
     authorSizeTablet: {
-        type:"number"
+        type: "number"
     },
     authorLetter: {
         type: "number",
@@ -102,13 +102,13 @@ const testimonialsAttrs = {
     },
     authorComSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     authorComSizeMobile: {
-        type:'number'
+        type: 'number'
     },
     authorComSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     urlCheck: {
         type: "boolean",
@@ -138,13 +138,13 @@ const testimonialsAttrs = {
     },
     bodySizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     bodySizeMobile: {
-        type:"number"
+        type: "number"
     },
     bodySizeTablet: {
-        type:"string"
+        type: "string"
     },
     bodyLine: {
         type: "number",
@@ -217,24 +217,24 @@ const testimonialsAttrs = {
     paddingUnit: {
         type: "string",
         default: "px",
-	},
-	hideDesktop: {
-		type: 'boolean',
-		default:false
-	},
-	hideTablet: {
-		type: 'boolean',
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 
 };
 
-registerBlockType("premium/testimonial", {
-    title: __("Testimonial"),
+registerBlockType( "premium/testimonial", {
+    title: __( "Testimonial" ),
     icon: <PbgIcon icon="testimonials" />,
     category: "premium-blocks",
     attributes: testimonialsAttrs,
@@ -245,4 +245,4 @@ registerBlockType("premium/testimonial", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

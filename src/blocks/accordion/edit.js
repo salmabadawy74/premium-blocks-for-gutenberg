@@ -24,7 +24,7 @@ const {
 const { InspectorControls, RichText, InnerBlocks, ColorPalette } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __( "Insert Your Content Here" ) }],
+    [ "core/paragraph", { content: __( "Insert Your Content Here" ) } ],
 ];
 
 let isAccUpdated = null;
@@ -39,21 +39,21 @@ class PremiumAccordion extends Component {
 
     componentDidMount () {
         const { attributes, setAttributes, clientId } = this.props;
-        
-        setAttributes({block_id:clientId})
-        if (!attributes.accordionId) {
-            this.props.setAttributes({ accordionId: "premium-accordion-" +clientId });
+
+        setAttributes( { block_id: clientId } )
+        if ( !attributes.accordionId ) {
+            this.props.setAttributes( { accordionId: "premium-accordion-" + clientId } );
         }
-        this.props.setAttributes({ classMigrate: true });
+        this.props.setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-accordion-" + this.props.clientId.substr(0, 6)
-        ); 
+            "premium-style-accordion-" + this.props.clientId.substr( 0, 6 )
+        );
         document.head.appendChild( $style );
-        
+
         this.initAccordion();
     }
 
@@ -141,6 +141,9 @@ class PremiumAccordion extends Component {
             descPaddingR,
             descPaddingB,
             descPaddingL,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -177,14 +180,14 @@ class PremiumAccordion extends Component {
         ];
 
         let element = document.getElementById(
-            "premium-style-accordion-" + clientId.substr(0, 6)
+            "premium-style-accordion-" + clientId.substr( 0, 6 )
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
-        const ALIGNS = ["left", "center", "right"];
+        const ALIGNS = [ "left", "center", "right" ];
 
         const onAccordionChange = ( attr, value, index ) => {
             const items = repeaterItems;
@@ -362,19 +365,19 @@ class PremiumAccordion extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: titleSizeUnit,
-                                label: __("titleSizeUnit"),
+                                label: __( "titleSizeUnit" ),
                             }}
                             fontSize={{
                                 value: titleSize,
-                                label: __("titleSize"),
+                                label: __( "titleSize" ),
                             }}
                             fontSizeMobile={{
                                 value: titleSizeMobile,
-                                label: __("titleSizeMobile"),
+                                label: __( "titleSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: titleSizeTablet,
-                                label: __("titleSizeTablet"),
+                                label: __( "titleSizeTablet" ),
                             }}
                             weight={titleWeight}
                             style={titleStyle}
@@ -388,10 +391,10 @@ class PremiumAccordion extends Component {
                                 setAttributes( { titleStyle: newStyle } )
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
+                                setAttributes( { titleLetter: newValue } )
                             }
                             onChangeLine={newValue =>
-                                setAttributes( { titleLine: newValue })
+                                setAttributes( { titleLine: newValue } )
                             }
                             onChangeUpper={check =>
                                 setAttributes( { titleUpper: check } )
@@ -644,19 +647,19 @@ class PremiumAccordion extends Component {
                                     setAttributes={setAttributes}
                                     fontSizeType={{
                                         value: descSizeUnit,
-                                        label: __("descSizeUnit"),
+                                        label: __( "descSizeUnit" ),
                                     }}
                                     fontSize={{
                                         value: descSize,
-                                        label: __("descSize"),
+                                        label: __( "descSize" ),
                                     }}
                                     fontSizeMobile={{
                                         value: descSizeMobile,
-                                        label: __("descSizeMobile"),
+                                        label: __( "descSizeMobile" ),
                                     }}
                                     fontSizeTablet={{
                                         value: descSizeTablet,
-                                        label: __("descSizeTablet"),
+                                        label: __( "descSizeTablet" ),
                                     }}
                                     weight={descWeight}
                                     style={descStyle}
@@ -820,44 +823,44 @@ class PremiumAccordion extends Component {
                                 } )
                             }
                         />
-					</PanelBody>
-					<PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				     />
+                    </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <Fragment>
 
-                <div id={`${accordionId}` } className={`${mainClasses}  premium-accordion-${block_id}${hideDesktop} ${hideTablet} ${hideMobile}`}>
+                <div id={`${ accordionId }`} className={`${ mainClasses }  premium-accordion-${ block_id }${ hideDesktop } ${ hideTablet } ${ hideMobile }`}>
                     {accordionItems}
-               
-				
-					<div className={"premium-repeater"}>
 
-                    <button
-                        className={"premium-repeater-btn"}
-                        onClick={() => {
-                            return setAttributes( {
-                                repeaterItems: repeaterItems.concat( [
-                                    {
-                                        titleText: __( "Awesome Title" ),
-                                        descText: __( "Cool Description" ),
-                                    },
-                                ] ),
-                            } );
-                        }}
-                    >
-                        <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__( "Add New Item" )}
-                    </button>
-                    <p>{__( "Add the items you need then reload the page" )}</p>
+
+                    <div className={"premium-repeater"}>
+
+                        <button
+                            className={"premium-repeater-btn"}
+                            onClick={() => {
+                                return setAttributes( {
+                                    repeaterItems: repeaterItems.concat( [
+                                        {
+                                            titleText: __( "Awesome Title" ),
+                                            descText: __( "Cool Description" ),
+                                        },
+                                    ] ),
+                                } );
+                            }}
+                        >
+                            <i className="dashicons dashicons-plus premium-repeater-icon" />
+                            {__( "Add New Item" )}
+                        </button>
+                        <p>{__( "Add the items you need then reload the page" )}</p>
                     </div>
-                    </div>
+                </div>
 
             </Fragment>
 

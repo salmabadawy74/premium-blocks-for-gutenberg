@@ -71,16 +71,16 @@ const pricingAttrs = {
     },
     titleSizeUnit: {
         type: 'string',
-        default:'px',
+        default: 'px',
     },
     titleSize: {
         type: "number",
     },
     titleSizeMobile: {
-        type:'number'
+        type: 'number'
     },
     titleSizeTablet: {
-        type:"number"
+        type: "number"
     },
     titleLine: {
         type: "number",
@@ -142,13 +142,13 @@ const pricingAttrs = {
     },
     descSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     descSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     descSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     descWeight: {
         type: "number",
@@ -210,17 +210,17 @@ const pricingAttrs = {
     },
     slashSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     slashSize: {
         type: "number",
         default: 20,
     },
     slashSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     slashSizeTablet: {
-        type:"number"
+        type: "number"
     },
     slashWeight: {
         type: "number",
@@ -238,13 +238,13 @@ const pricingAttrs = {
     },
     currSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     currSizeMobile: {
-        type:"number"
+        type: "number"
     },
     currSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     currWeight: {
         type: "number",
@@ -258,17 +258,17 @@ const pricingAttrs = {
     },
     valSizeUnit: {
         type: "string",
-      default:"px"  
+        default: "px"
     },
     valSize: {
         type: "number",
         default: 50,
     },
     valSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     valSizeTablet: {
-        type:"number"
+        type: "number"
     },
     valWeight: {
         type: "number",
@@ -286,13 +286,13 @@ const pricingAttrs = {
     },
     divSizeUnit: {
         type: "string",
-        default:"px"
+        default: "px"
     },
     divSizeMobile: {
-        type:"number"
+        type: "number"
     },
     divSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     divWeight: {
         type: "number",
@@ -306,17 +306,17 @@ const pricingAttrs = {
     },
     durSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     durSize: {
         type: "number",
         default: 20,
     },
     durSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     durSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     durWeight: {
         type: "number",
@@ -358,13 +358,13 @@ const pricingAttrs = {
     },
     btnSizeUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     btnSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     btnSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     btnWeight: {
         type: "number",
@@ -441,13 +441,13 @@ const pricingAttrs = {
     },
     badgeTextUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     badgeTextSizeTablet: {
-        type:'number'
+        type: 'number'
     },
     badgeTextSizeMobile: {
-        type:'number'
+        type: 'number'
     },
     badgeTop: {
         type: "number",
@@ -473,7 +473,7 @@ const pricingAttrs = {
     },
     badgeText: {
         type: "string",
-        default: __("Popular"),
+        default: __( "Popular" ),
     },
     listChecked: {
         type: "boolean",
@@ -487,13 +487,13 @@ const pricingAttrs = {
     },
     listSizeUnit: {
         type: 'string',
-        default:'px'
+        default: 'px'
     },
     listSizeTablet: {
-        type:'number'
+        type: 'number'
     },
     listSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     listWeight: {
         type: "number",
@@ -561,8 +561,9 @@ const pricingAttrs = {
     },
     classMigrate: {
         type: 'boolean',
-        default:false
-    }, tableOpacity: {
+        default: false
+    },
+    tableOpacity: {
         type: "number",
         default: "1",
     },
@@ -570,23 +571,23 @@ const pricingAttrs = {
         type: "number",
         default: "1",
     },
-	
-	hideDesktop: {
-		type: "boolean",
-		default:false
-	},
-	hideTablet: {
-		type: "boolean",
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
-registerBlockType("premium/pricing-table", {
-    title: __("Pricing Table"),
+registerBlockType( "premium/pricing-table", {
+    title: __( "Pricing Table" ),
     icon: <PbgIcon icon="pricing-table" />,
     category: "premium-blocks",
     attributes: pricingAttrs,
@@ -596,4 +597,4 @@ registerBlockType("premium/pricing-table", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

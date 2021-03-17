@@ -33,15 +33,15 @@ const fancyTextAttrs = {
         type: "array",
         default: [
             {
-                title: __("Designer"),
+                title: __( "Designer" ),
                 edit: false,
             },
             {
-                title: __("Developer"),
+                title: __( "Developer" ),
                 edit: false,
             },
             {
-                title: __("Awesome"),
+                title: __( "Awesome" ),
                 edit: false,
             },
         ],
@@ -197,20 +197,20 @@ const fancyTextAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 
-registerBlockType("premium/fancy-text", {
-    title: __("Fancy Text"),
+registerBlockType( "premium/fancy-text", {
+    title: __( "Fancy Text" ),
     icon: <PbgIcon icon="fancy-text" />,
     category: "premium-blocks",
     attributes: fancyTextAttrs,
@@ -219,6 +219,6 @@ registerBlockType("premium/fancy-text", {
     },
     example: {},
     edit: edit,
-	save: save,
-	deprecated:deprecated
-});
+    save: save,
+    deprecated: deprecated
+} );

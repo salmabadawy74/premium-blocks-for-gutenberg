@@ -9,7 +9,7 @@ const { RichText } = wp.editor;
 const buttonAttrs_1_0_0 = {
     btnText: {
         type: "string",
-        default: __("Premium Button"),
+        default: __( "Premium Button" ),
     },
     btnSize: {
         type: "string",
@@ -130,7 +130,7 @@ const newAttributes_1_0_1 = {
     },
 };
 
-const buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
+const buttonAttrs_1_0_1 = Object.assign( buttonAttrs_1_0_0, newAttributes_1_0_1 );
 
 const newAttributes_1_3_4 = {
     borderHoverColor: {
@@ -138,7 +138,7 @@ const newAttributes_1_3_4 = {
     },
 };
 
-const buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
+const buttonAttrs_1_3_4 = Object.assign( buttonAttrs_1_0_1, newAttributes_1_3_4 );
 
 const newAttributes_1_4_7 = {
     textFontFamily: {
@@ -146,165 +146,12 @@ const newAttributes_1_4_7 = {
     },
 };
 
-const buttonAttrs_3_0 = {
-    btnText: {
-        type: "string",
-        default: __("Premium Button")
-    },
-    btnSize: {
-        type: "string",
-        default: "md"
-    },
-    btnAlign: {
-        type: "string",
-        default: "center"
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    effect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    textColor: {
-        type: "string"
-    },
-    textHoverColor: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backHoverColor: {
-        type: "string"
-    },
-    slideColor: {
-        type: "string"
-    },
-    textSize: {
-        type: "number"
-    },
-    textFontFamily: {
-        type: "string"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean"
-    },
-    textWeight: {
-        type: "number",
-        default: 500
-    },
-    textLine: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    borderHoverColor: {
-        type: "string"
-    },
-    padding: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    id: {
-        type: "string"
-    } 
-}
-const newAttributes_3_1 = {
-  
-    block_id: {
-        type:"string"  
-    },
-    classMigrate: {
-        type: 'boolean',
-        default:false,
-    },
-    textSizeUnit: {
-        type: "string",
-      default:'px'  
-    },
-    textSizeTablet: {
-        type:"number"  
-    },
-    textSizeMobile: {
-        type:"number"  
-      },
-}
-
-
 const buttonAttrs_1_4_7 = Object.assign( buttonAttrs_1_3_4, newAttributes_1_4_7 );
-
-const buttonAttrs_3_1 = Object.assign( buttonAttrs_3_0, newAttributes_3_1 );
 
 const buttonAttrs_1_5_7 = {
     btnText: {
         type: "string",
-        default: __("Premium Button"),
+        default: __( "Premium Button" ),
     },
     btnSize: {
         type: "string",
@@ -438,41 +285,41 @@ const newAttributes_1_5_8 = {
     },
     classMigrate: {
         type: "boolean",
-        default:false
+        default: false
     },
     block_id: {
-        type:"string"
+        type: "string"
     },
     textSizeUnit: {
         type: "string",
-        default:"px"
+        default: "px"
     },
     textSizeTablet: {
-        type:"number"
+        type: "number"
     },
     textSizeMobile: {
-        type:"number"
+        type: "number"
     },
     hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 
-const buttonAttrs_1_5_8 = Object.assign(buttonAttrs_1_5_7, newAttributes_1_5_8);
+const buttonAttrs_1_5_8 = Object.assign( buttonAttrs_1_5_7, newAttributes_1_5_8 );
 
 const deprecatedContent = [
     {
         attributes: buttonAttrs_1_5_8,
-        migrate: (attributes) => {
+        migrate: ( attributes ) => {
             let newAttributes = {
                 backOpacity: "",
                 classMigrate: false,
@@ -482,11 +329,11 @@ const deprecatedContent = [
                 textSizeMobile: '',
                 hideDesktop: false,
                 hideTablet: false,
-                hideMobile:false
+                hideMobile: false
             };
-            return Object.assign(attributes, newAttributes);
+            return Object.assign( attributes, newAttributes );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -525,35 +372,35 @@ const deprecatedContent = [
                 btnShadowVertical,
                 btnShadowPosition
             } = props.attributes;
-  
+
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap premium-button__${effect} premium-button__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap premium-button__${ effect } premium-button__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
-                                `border-color: ${borderHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
+                                `border-color: ${ borderHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}"
-                            ].join("\n")
+                            ].join( "\n" )
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`premium-button premium-button__${btnSize}`}
+                        className={`premium-button premium-button__${ btnSize }`}
                         href={btnLink}
                         rel="noopener noreferrer"
                         target={btnTarget ? "_blank" : "_self"}
@@ -567,8 +414,8 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                            boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                             padding: padding + paddingU,
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -582,10 +429,10 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_4_7,
-        migrate: (attributes) => {
-            return Object.assign(attributes, { paddingU: "" });
+        migrate: ( attributes ) => {
+            return Object.assign( attributes, { paddingU: "" } );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -625,32 +472,32 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap ${ className }__${ effect } ${ className }__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
-                                `border-color: ${borderHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
+                                `border-color: ${ borderHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}",
-                            ].join("\n"),
+                            ].join( "\n" ),
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`${className} ${className}__${btnSize}`}
+                        className={`${ className } ${ className }__${ btnSize }`}
                         href={btnLink}
                         rel="noopener noreferrer"
                         target={btnTarget ? "_blank" : "_self"}
@@ -664,8 +511,8 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                            boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                             padding: padding + "px",
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -679,7 +526,7 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_4_7,
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -719,32 +566,32 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap ${ className }__${ effect } ${ className }__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
-                                `border-color: ${borderHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
+                                `border-color: ${ borderHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}",
-                            ].join("\n"),
+                            ].join( "\n" ),
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`${className} ${className}__${btnSize}`}
+                        className={`${ className } ${ className }__${ btnSize }`}
                         href={btnLink}
                         target={btnTarget ? "_blank" : "_self"}
                         style={{
@@ -757,8 +604,8 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                            boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                             padding: padding + "px",
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -772,10 +619,10 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_3_4,
-        migrate: (attributes) => {
-            return Object.assign(attributes, { textFontFamily: "" });
+        migrate: ( attributes ) => {
+            return Object.assign( attributes, { textFontFamily: "" } );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -814,32 +661,32 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap ${ className }__${ effect } ${ className }__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
-                                `border-color: ${borderHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
+                                `border-color: ${ borderHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}",
-                            ].join("\n"),
+                            ].join( "\n" ),
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`${className} ${className}__${btnSize}`}
+                        className={`${ className } ${ className }__${ btnSize }`}
                         href={btnLink}
                         target={btnTarget ? "_blank" : "_self"}
                         style={{
@@ -851,8 +698,8 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                            boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                             padding: padding + "px",
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -866,10 +713,10 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_0_1,
-        migrate: (attributes) => {
-            return Object.assign(attributes, { borderHoverColor: "" });
+        migrate: ( attributes ) => {
+            return Object.assign( attributes, { borderHoverColor: "" } );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -907,31 +754,31 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap ${ className }__${ effect } ${ className }__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}",
-                            ].join("\n"),
+                            ].join( "\n" ),
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`${className} ${className}__${btnSize}`}
+                        className={`${ className } ${ className }__${ btnSize }`}
                         href={btnLink}
                         target={btnTarget ? "_blank" : "_self"}
                         style={{
@@ -943,8 +790,8 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                            boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
                             padding: padding + "px",
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -958,7 +805,7 @@ const deprecatedContent = [
     },
     {
         attributes: buttonAttrs_1_0_0,
-        migrate: (attributes) => {
+        migrate: ( attributes ) => {
             let newAttributes = {
                 btnShadowColor: "",
                 btnShadowBlur: "0",
@@ -966,9 +813,9 @@ const deprecatedContent = [
                 btnShadowVertical: "0",
                 btnShadowPosition: "",
             };
-            return Object.assign(attributes, newAttributes);
+            return Object.assign( attributes, newAttributes );
         },
-        save: (props) => {
+        save: ( props ) => {
             const {
                 id,
                 btnText,
@@ -1001,31 +848,31 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${className}-wrap-${id}`}
-                    className={`${className}__wrap ${className}__${effect} ${className}__${effectDir}`}
+                    id={`${ className }-wrap-${ id }`}
+                    className={`${ className }__wrap ${ className }__${ effect } ${ className }__${ effectDir }`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-button-wrap-${id} .premium-button:hover {`,
-                                `color: ${textHoverColor} !important;`,
+                                `#premium-button-wrap-${ id } .premium-button:hover {`,
+                                `color: ${ textHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                                `background-color: ${backHoverColor} !important;`,
+                                `#premium-button-wrap-${ id }.premium-button__none .premium-button:hover {`,
+                                `background-color: ${ backHoverColor } !important;`,
                                 "}",
-                                `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                                `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                                `background-color: ${slideColor}`,
+                                `#premium-button-wrap-${ id }.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${ id }.premium-button__radial .premium-button::before {`,
+                                `background-color: ${ slideColor }`,
                                 "}",
-                            ].join("\n"),
+                            ].join( "\n" ),
                         }}
                     />
                     <RichText.Content
                         tagName="a"
                         value={btnText}
-                        className={`${className} ${className}__${btnSize}`}
+                        className={`${ className } ${ className }__${ btnSize }`}
                         href={btnLink}
                         target={btnTarget ? "_blank" : "_self"}
                         style={{
@@ -1037,7 +884,7 @@ const deprecatedContent = [
                             fontStyle: textStyle,
                             lineHeight: textLine + "px",
                             fontWeight: textWeight,
-                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                            textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
                             padding: padding + "px",
                             border: borderType,
                             borderWidth: borderWidth + "px",

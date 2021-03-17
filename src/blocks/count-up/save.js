@@ -12,18 +12,15 @@ const save = props => {
         delay,
         align,
         flexDir,
-        numberSize,
         numberColor,
         numberWeight,
         prefix,
         prefixTxt,
-        prefixSize,
         prefixColor,
         prefixWeight,
         prefixGap,
         suffix,
         suffixTxt,
-        suffixSize,
         suffixColor,
         suffixWeight,
         suffixGap,
@@ -38,7 +35,6 @@ const save = props => {
         titleCheck,
         titleTxt,
         titleColor,
-        titleSize,
         titleSpacing,
         titleStyle,
         titleUpper,
@@ -67,8 +63,8 @@ const save = props => {
         prefixFamily,
         suffixFamily,
         hideDesktop,
-		hideTablet,
-		hideMobile
+        hideTablet,
+        hideMobile
     } = props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
 
@@ -77,13 +73,13 @@ const save = props => {
     return (
         <div
             id={`premium-countup-${ block_id }`}
-            className={`${ mainClasses }__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${ mainClasses }__wrap premium-countup-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
                 backgroundColor: containerBack
-                ? hexToRgba(containerBack, containerOpacity)
-                : "transparent",
+                    ? hexToRgba( containerBack, containerOpacity )
+                    : "transparent",
                 boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 backgroundImage: `url('${ backgroundImageURL }')`,
                 backgroundRepeat: backgroundRepeat,

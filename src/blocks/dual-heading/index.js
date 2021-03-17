@@ -9,9 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const dualHeadingAttrs = {
-	block_id: {
-		type:"string"
-	},
+    block_id: {
+        type: "string"
+    },
     contentAlign: {
         type: "string",
         default: "center",
@@ -288,18 +288,18 @@ const dualHeadingAttrs = {
     },
     containerBorderColor: {
         type: "string"
-	},
-	hideDesktop: {
+    },
+    hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 registerBlockType( "premium/dheading-block", {

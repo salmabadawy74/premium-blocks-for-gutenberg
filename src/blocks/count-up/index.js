@@ -9,9 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const counterAttrs = {
-	block_id: {
-		type:"string"
-	},
+    block_id: {
+        type: "string"
+    },
     increment: {
         type: "string",
         default: 500,
@@ -34,17 +34,17 @@ const counterAttrs = {
     },
     numberSizeUnit: {
         type: "string",
-      default:"px"  
+        default: "px"
     },
     numberSize: {
         type: "number",
         default: 30,
     },
     numberSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     numberSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     numberColor: {
         type: "string",
@@ -68,13 +68,13 @@ const counterAttrs = {
     },
     prefixSizeUnit: {
         type: 'string',
-      default:'px'  
+        default: 'px'
     },
     prefixSizeTablet: {
-      type:"number"  
+        type: "number"
     },
     prefixSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     prefixColor: {
         type: "string",
@@ -96,17 +96,17 @@ const counterAttrs = {
     },
     suffixSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     suffixSize: {
         type: "number",
         default: 20,
     },
     suffixSizeTablet: {
-        type:"number"
+        type: "number"
     },
     suffixSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     suffixColor: {
         type: "string",
@@ -166,13 +166,13 @@ const counterAttrs = {
     },
     titleSizeUnit: {
         type: "string",
-        default:"px"
+        default: "px"
     },
     titleSizeTablet: {
-        type:"number"
+        type: "number"
     },
     titleSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     titleSpacing: {
         type: "number",
@@ -276,23 +276,23 @@ const counterAttrs = {
     },
     suffixFamily: {
         type: "string"
-	},
-	hideDesktop: {
+    },
+    hideDesktop: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default:false
+        default: false
     }
 };
 
-registerBlockType("premium/countup", {
-    title: __("CountUp"),
+registerBlockType( "premium/countup", {
+    title: __( "CountUp" ),
     icon: <PbgIcon icon="counter" />,
     category: "premium-blocks",
     attributes: counterAttrs,
@@ -303,4 +303,4 @@ registerBlockType("premium/countup", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

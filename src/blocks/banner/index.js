@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 
 const bannerAttrs = {
     block_id: {
-      type:"string"  
+        type: "string"
     },
     imageID: {
         type: "number",
@@ -26,7 +26,7 @@ const bannerAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-banner__title",
-        default: __("Awesome Title"),
+        default: __( "Awesome Title" ),
     },
     titleTag: {
         type: "string",
@@ -36,7 +36,7 @@ const bannerAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __("Cool Description!!"),
+        default: __( "Cool Description!!" ),
     },
     contentAlign: {
         type: "string",
@@ -100,7 +100,7 @@ const bannerAttrs = {
     },
     titleSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     titleLine: {
         type: "number",
@@ -136,13 +136,13 @@ const bannerAttrs = {
     },
     descSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     descSizeTablet: {
-        type:"number"
+        type: "number"
     },
     descSizeMobile: {
-        type:"number"
+        type: "number"
     },
     descLine: {
         type: "number",
@@ -182,7 +182,7 @@ const bannerAttrs = {
     sepColor: {
         type: "string",
     },
-   
+
     blur: {
         type: "number",
         default: "0",
@@ -237,33 +237,33 @@ const bannerAttrs = {
     paddingU: {
         type: "string"
     },
-hideDesktop: {
-    type: 'boolean',
-    default:false
-},
-hideTablet: {
-    type: 'boolean',
-    default:false
-},
-hideMobile: {
-    type: 'boolean',
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
 
-    default:false
-},
+        default: false
+    },
     titleSizeMobile: {
-        type:"number"
+        type: "number"
     },
     titleSizeTablet: {
-        type:"number"
+        type: "number"
     },
     classMigrate: {
         type: "boolean",
 
-        default:false
+        default: false
     }
 };
-registerBlockType("premium/banner", {
-    title: __("Banner"),
+registerBlockType( "premium/banner", {
+    title: __( "Banner" ),
     icon: <PbgIcon icon="banner" />,
     category: "premium-blocks",
     attributes: bannerAttrs,
@@ -274,4 +274,4 @@ registerBlockType("premium/banner", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

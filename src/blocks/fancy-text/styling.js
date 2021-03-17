@@ -2,7 +2,7 @@ import hexToRgba from "hex-to-rgba";
 import generateCSS from "../../../assets/js/blocks/generateCss";
 import generateCSSUnit from "../../../assets/js/blocks/generateCssUnit";
 
-function styling(props) {
+function styling ( props ) {
     const {
         block_id,
         classMigrate,
@@ -51,9 +51,9 @@ function styling(props) {
             "text-transform": fancyTextUpper ? "uppercase" : "none",
             "font-style": fancyTextStyle,
             "background-color": fancyTextBGColor
-                ? hexToRgba(fancyTextBGColor, fancyTextBGOpacity)
+                ? hexToRgba( fancyTextBGColor, fancyTextBGOpacity )
                 : "transparent",
-            "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+            "text-shadow": `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
         },
         " .premium-fancy-text-title-slide": {
             "font-size": generateCSSUnit(
@@ -66,33 +66,33 @@ function styling(props) {
             "text-transform": fancyTextUpper ? "uppercase" : "none",
             "font-style": fancyTextStyle,
             "background-color": fancyTextBGColor
-                ? hexToRgba(fancyTextBGColor, fancyTextBGOpacity)
+                ? hexToRgba( fancyTextBGColor, fancyTextBGOpacity )
                 : "transparent",
-            "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+            "text-shadow": `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
         },
         " .typed-cursor": {
             color: cursorColor,
         },
         " .premium-fancy-text-prefix-text": {
-            "font-size": generateCSSUnit(textfontSize, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSize, textfontSizeUnit ),
             color: textColor,
             "font-weight": textWeight,
             "letter-spacing": textLetter + "px",
             "text-transform": textUpper ? "uppercase" : "none",
             "font-style": textStyle,
             "background-color": textBGColor
-                ? hexToRgba(textBGColor, textBGOpacity)
+                ? hexToRgba( textBGColor, textBGOpacity )
                 : "transparent",
         },
         " .premium-fancy-text-suffix-text": {
-            "font-size": generateCSSUnit(textfontSize, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSize, textfontSizeUnit ),
             color: textColor,
             "font-weight": textWeight,
             "letter-spacing": textLetter + "px",
             "text-transform": textUpper ? "uppercase" : "none",
             "font-style": textStyle,
             "background-color": textBGColor
-                ? hexToRgba(textBGColor, textBGOpacity)
+                ? hexToRgba( textBGColor, textBGOpacity )
                 : "transparent",
         },
     };
@@ -111,10 +111,10 @@ function styling(props) {
             ),
         },
         " .premium-fancy-text-prefix-text": {
-            "font-size": generateCSSUnit(textfontSizeMobile, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSizeMobile, textfontSizeUnit ),
         },
         " .premium-fancy-text-suffix-text": {
-            "font-size": generateCSSUnit(textfontSizeMobile, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSizeMobile, textfontSizeUnit ),
         },
     };
 
@@ -132,22 +132,22 @@ function styling(props) {
             ),
         },
         " .premium-fancy-text-prefix-text": {
-            "font-size": generateCSSUnit(textfontSizeTablet, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSizeTablet, textfontSizeUnit ),
         },
         " .premium-fancy-text-suffix-text": {
-            "font-size": generateCSSUnit(textfontSizeTablet, textfontSizeUnit),
+            "font-size": generateCSSUnit( textfontSizeTablet, textfontSizeUnit ),
         },
     };
 
     var styling_css = "";
-    var id = `#premium-fancy-text-${block_id}`;
-    if (classMigrate) {
-        id = `.premium-block-${block_id}`;
+    var id = `#premium-fancy-text-${ block_id }`;
+    if ( classMigrate ) {
+        id = `.premium-block-${ block_id }`;
     }
 
-    styling_css = generateCSS(selectors, id);
-    styling_css += generateCSS(tablet_selectors, id, true, "tablet");
-    styling_css += generateCSS(mobile_selectors, id, true, "mobile");
+    styling_css = generateCSS( selectors, id );
+    styling_css += generateCSS( tablet_selectors, id, true, "tablet" );
+    styling_css += generateCSS( mobile_selectors, id, true, "mobile" );
 
     return styling_css;
 }

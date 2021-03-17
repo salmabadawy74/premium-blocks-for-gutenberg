@@ -9,7 +9,7 @@ import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
 const { Fragment, Component } = wp.element;
 
@@ -64,6 +64,7 @@ class edit extends Component {
             display,
             firstColor,
             firstBackground,
+            firstOpacity,
             firstSizeUnit,
             firstSize,
             firstSizeTablet,
@@ -90,6 +91,7 @@ class edit extends Component {
             firstShadowVertical,
             secondColor,
             secondBackground,
+            secondOpacity,
             secondSizeUnit,
             secondSize,
             secondSizeTablet,
@@ -118,6 +120,7 @@ class edit extends Component {
             target,
             headingURL,
             containerBack,
+            containerOpacity,
             imageID,
             imageURL,
             fixed,
@@ -324,14 +327,20 @@ class edit extends Component {
                                                 allowReset={true}
                                             />
                                             <p>{__( "Background Color" )}</p>
-                                            <ColorPalette
-                                                value={firstBackground}
-                                                onChange={newValue =>
+                                            <PremiumBackground
+                                                type="color"
+                                                colorValue={firstBackground}
+                                                onChangeColor={value =>
                                                     setAttributes( {
-                                                        firstBackground: newValue
+                                                        firstBackground: value,
                                                     } )
                                                 }
-                                                allowReset={true}
+                                                opacityValue={firstOpacity}
+                                                onChangeOpacity={value =>
+                                                    setAttributes( {
+                                                        firstOpacity: value,
+                                                    } )
+                                                }
                                             />
                                         </Fragment>
                                     )}
@@ -535,14 +544,20 @@ class edit extends Component {
                                                 allowReset={true}
                                             />
                                             <p>{__( "Background Color" )}</p>
-                                            <ColorPalette
-                                                value={secondBackground}
-                                                onChange={newValue =>
+                                            <PremiumBackground
+                                                type="color"
+                                                colorValue={secondBackground}
+                                                onChangeColor={value =>
                                                     setAttributes( {
-                                                        secondBackground: newValue
+                                                        secondBackground: value,
                                                     } )
                                                 }
-                                                allowReset={true}
+                                                opacityValue={secondOpacity}
+                                                onChangeOpacity={value =>
+                                                    setAttributes( {
+                                                        secondOpacity: value,
+                                                    } )
+                                                }
                                             />
                                         </Fragment>
                                     )}
@@ -664,16 +679,20 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <p>{__( "Background Color" )}</p>
-                        <ColorPalette
-                            value={containerBack}
-                            onChange={newValue =>
+                        <PremiumBackground
+                            type="color"
+                            colorValue={containerBack}
+                            onChangeColor={newvalue =>
                                 setAttributes( {
-                                    containerBack: newValue || "transparent"
+                                    containerBack: newvalue,
                                 } )
                             }
-                            allowReset={true}
+                            opacityValue={containerOpacity}
+                            onChangeOpacity={value =>
+                                setAttributes( { containerOpacity: value } )
+                            }
                         />
-                        <PremiumBackgroud
+                        <PremiumBackground
                             imageID={imageID}
                             imageURL={imageURL}
                             backgroundPosition={backgroundPosition}
@@ -723,22 +742,22 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				/>
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
 
             <div
                 id={`premium-dheading-block-${ block_id }`}
-                className={`${ mainClasses } premium-dheading-${ block_id } ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${ mainClasses } premium-dheading-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 style={{
                     textAlign: contentAlign,
-                    backgroundColor: containerBack,
+                    backgroundColor: containerBack?hexToRgba(containerBack,containerOpacity):"transparent",
                     backgroundImage: imageURL ? `url('${ imageURL }')` : 'none',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -757,7 +776,7 @@ class edit extends Component {
                             style={{
                                 display: display,
                                 color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundColor: firstClip ? "none" : firstBackground?hexToRgba(firstBackground,firstOpacity) : "transparent",
                                 backgroundImage: firstClip
                                     ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
                                     : "none",
@@ -783,7 +802,7 @@ class edit extends Component {
                             style={{
                                 display: display,
                                 color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundColor: secondClip ? "none" : secondBackground?hexToRgba(secondBackground,secondOpacity):"transparent",
                                 backgroundImage: secondClip
                                     ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
                                     : "none",

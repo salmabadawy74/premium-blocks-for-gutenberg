@@ -6,7 +6,7 @@ import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = (props) => {
+const save = ( props ) => {
     const { className } = props;
 
     const {
@@ -60,22 +60,22 @@ const save = (props) => {
         paddingLeft,
         paddingUnit,
         hideDesktop,
-		hideTablet,
-		hideMobile
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-testimonial");
+    const mainClasses = classnames( className, "premium-testimonial" );
 
     return (
         <div
-        id={`premium-testimonial-${block_id}`}
-        className={`${ mainClasses }__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            id={`premium-testimonial-${ block_id }`}
+            className={`${ mainClasses }__wrap premium-testimonial-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
             style={{
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                 backgroundColor: backColor
-                    ? hexToRgba(backColor, backOpacity)
+                    ? hexToRgba( backColor, backOpacity )
                     : "transparent",
-                backgroundImage: `url('${imageURL}')`,
+                backgroundImage: `url('${ imageURL }')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -84,7 +84,7 @@ const save = (props) => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit
-			}}
+            }}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>
@@ -104,7 +104,7 @@ const save = (props) => {
                         {authorImgUrl && (
                             <img
                                 className={`premium-testimonial__img`}
-                                src={`${authorImgUrl}`}
+                                src={`${ authorImgUrl }`}
                                 alt="Author"
                                 style={{
                                     borderWidth: imgBorder + "px",

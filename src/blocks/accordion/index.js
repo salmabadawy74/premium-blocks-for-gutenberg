@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 
 const accordionAttrs = {
     block_id: {
-      type:"string"  
+        type: "string"
     },
     accordionId: {
         type: "string",
@@ -20,7 +20,7 @@ const accordionAttrs = {
         type: "array",
         default: [
             {
-                titleText: __("Awesome Title"),
+                titleText: __( "Awesome Title" ),
                 descText:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             },
@@ -39,16 +39,16 @@ const accordionAttrs = {
     },
     titleSizeUnit: {
         type: "string",
-      default:"px"  
+        default: "px"
     },
     titleSize: {
         type: "number",
     },
     titleSizeTablet: {
-        type:"number"
+        type: "number"
     },
     titleSizeMobile: {
-        type:"number"
+        type: "number"
     },
     titleLine: {
         type: "number",
@@ -137,7 +137,7 @@ const accordionAttrs = {
     },
     descSizeUnit: {
         type: "string",
-      default:"number"  
+        default: "number"
     },
     arrowSize: {
         type: "number",
@@ -178,13 +178,13 @@ const accordionAttrs = {
     },
     descSize: {
         type: "number",
-        default:"20"
+        default: "20"
     },
     descSizeTablet: {
-        type:"number"
+        type: "number"
     },
     descSizeMobile: {
-      type:"number"  
+        type: "number"
     },
     descLine: {
         type: "number",
@@ -232,24 +232,24 @@ const accordionAttrs = {
     },
     classMigrate: {
         type: 'boolean',
-        default:false
+        default: false
     },
     hideDesktop: {
-		type: "boolean",
-		default:false
-	},
-	hideTablet: {
-		type: "boolean",
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
-registerBlockType("premium/accordion", {
-    title: __("Accordion"),
+registerBlockType( "premium/accordion", {
+    title: __( "Accordion" ),
     icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: accordionAttrs,
@@ -260,4 +260,4 @@ registerBlockType("premium/accordion", {
     edit: edit,
     save: save,
     deprecated: deprecated,
-});
+} );

@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import {FontAwesomeEnabled} from "../../../assets/js/settings";
+import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
@@ -10,7 +10,7 @@ import styling from './styling'
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
 const {
     PanelBody,
@@ -23,29 +23,29 @@ const {
 
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 
-const { Fragment,Component } = wp.element;
+const { Fragment, Component } = wp.element;
 
-class edit extends Component{
+class edit extends Component {
     constructor() {
-        super(...arguments);
+        super( ...arguments );
     }
 
     componentDidMount () {
         const { setAttributes, clientId } = this.props;
-        setAttributes({block_id:clientId.substr(0,6)})
-       setAttributes({ classMigrate: true });
+        setAttributes( { block_id: clientId.substr( 0, 6 ) } )
+        setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-count-up-" +clientId.substr(0, 6)
-        ); 
+            "premium-style-count-up-" + clientId.substr( 0, 6 )
+        );
         document.head.appendChild( $style );
     }
-    
+
     render () {
-        const { isSelected, setAttributes, className ,clientId:blockId} = this.props;
+        const { isSelected, setAttributes, className, clientId: blockId } = this.props;
         const {
             block_id,
             increment,
@@ -101,6 +101,7 @@ class edit extends Component{
             selfAlign,
             faIcon,
             containerBack,
+            containerOpacity,
             shadowBlur,
             shadowColor,
             shadowHorizontal,
@@ -121,8 +122,8 @@ class edit extends Component{
             prefixFamily,
             suffixFamily,
             hideDesktop,
-		hideTablet,
-		hideMobile
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
@@ -231,11 +232,11 @@ class edit extends Component{
         };
 
         let element = document.getElementById(
-            "premium-style-count-up-" + blockId.substr(0, 6)
+            "premium-style-count-up-" + blockId.substr( 0, 6 )
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
 
@@ -427,19 +428,19 @@ class edit extends Component{
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: numberSizeUnit,
-                                label: __("numberSizeUnit"),
+                                label: __( "numberSizeUnit" ),
                             }}
                             fontSize={{
                                 value: numberSize,
-                                label: __("numberSize"),
+                                label: __( "numberSize" ),
                             }}
                             fontSizeMobile={{
                                 value: numberSizeMobile,
-                                label: __("numberSizeMobile"),
+                                label: __( "numberSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: numberSizeTablet,
-                                label: __("numberSizeTablet"),
+                                label: __( "numberSizeTablet" ),
                             }}
                             weight={numberWeight}
                             onChangeWeight={newWeight =>
@@ -482,19 +483,19 @@ class edit extends Component{
                                 setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: prefixSizeUnit,
-                                    label: __("prefixSizeUnit"),
+                                    label: __( "prefixSizeUnit" ),
                                 }}
                                 fontSize={{
                                     value: prefixSize,
-                                    label: __("prefixSize"),
+                                    label: __( "prefixSize" ),
                                 }}
                                 fontSizeMobile={{
                                     value: prefixSizeMobile,
-                                    label: __("prefixSizeMobile"),
+                                    label: __( "prefixSizeMobile" ),
                                 }}
                                 fontSizeTablet={{
                                     value: prefixSizeTablet,
-                                    label: __("prefixSizeTablet"),
+                                    label: __( "prefixSizeTablet" ),
                                 }}
                                 weight={prefixWeight}
                                 onChangeWeight={newWeight =>
@@ -544,19 +545,19 @@ class edit extends Component{
                                 setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: suffixSizeUnit,
-                                    label: __("suffixSizeUnit"),
+                                    label: __( "suffixSizeUnit" ),
                                 }}
                                 fontSize={{
                                     value: suffixSize,
-                                    label: __("suffixSize"),
+                                    label: __( "suffixSize" ),
                                 }}
                                 fontSizeMobile={{
                                     value: suffixSizeMobile,
-                                    label: __("suffixSizeMobile"),
+                                    label: __( "suffixSizeMobile" ),
                                 }}
                                 fontSizeTablet={{
                                     value: suffixSizeTablet,
-                                    label: __("suffixSizeTablet"),
+                                    label: __( "suffixSizeTablet" ),
                                 }}
                                 weight={suffixWeight}
                                 onChangeWeight={newWeight =>
@@ -605,19 +606,19 @@ class edit extends Component{
                                 setAttributes={setAttributes}
                                 fontSizeType={{
                                     value: titleSizeUnit,
-                                    label: __("titleSizeUnit"),
+                                    label: __( "titleSizeUnit" ),
                                 }}
                                 fontSize={{
                                     value: titleSize,
-                                    label: __("titleSize"),
+                                    label: __( "titleSize" ),
                                 }}
                                 fontSizeMobile={{
                                     value: titleSizeMobile,
-                                    label: __("titleSizeMobile"),
+                                    label: __( "titleSizeMobile" ),
                                 }}
                                 fontSizeTablet={{
                                     value: titleSizeTablet,
-                                    label: __("titleSizeTablet"),
+                                    label: __( "titleSizeTablet" ),
                                 }}
                                 weight={titleWeight}
                                 style={titleStyle}
@@ -672,19 +673,22 @@ class edit extends Component{
                     >
                         <Fragment>
                             <p>{__( "Background Color" )}</p>
-                            <ColorPalette
-                                value={containerBack}
-                                onChange={newValue =>
+                            <PremiumBackground
+                                type="color"
+                                colorValue={containerBack}
+                                onChangeColor={newValue =>
                                     setAttributes( {
-                                        containerBack:
-                                            newValue === undefined ? "transparent" : newValue
+                                        containerBack: newValue,
                                     } )
                                 }
-                                allowReset={true}
+                                opacityValue={containerOpacity}
+                                onChangeOpacity={value =>
+                                    setAttributes( { containerOpacity: value } )
+                                }
                             />
                         </Fragment>
-                    
-                        <PremiumBackgroud
+
+                        <PremiumBackground
                             imageID={backgroundImageID}
                             imageURL={backgroundImageURL}
                             backgroundPosition={backgroundPosition}
@@ -761,16 +765,16 @@ class edit extends Component{
                                 } )
                             }
                         />
-                        </PanelBody>
+                    </PanelBody>
                     <PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				     />
-                 
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
+
                 </InspectorControls>
             ),
             <div>
@@ -781,12 +785,14 @@ class edit extends Component{
                 )}
             </div>,
             <div
-                id={`premium-countup-${block_id}`}
-                className={`${ mainClasses }__wrap premium-countup-${block_id}`}
+                id={`premium-countup-${ block_id }`}
+                className={`${ mainClasses }__wrap premium-countup-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 style={{
                     justifyContent: align,
                     flexDirection: flexDir,
-                    backgroundColor: containerBack,
+                    backgroundColor: containerBack
+                        ? hexToRgba( containerBack, containerOpacity )
+                        : "transparent",
                     boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
                     backgroundImage: backgroundImageURL ? `url('${ backgroundImageURL }')` : 'none',
                     backgroundRepeat: backgroundRepeat,

@@ -70,7 +70,7 @@ const iconBoxAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __("Awesome Title"),
+        default: __( "Awesome Title" ),
     },
     titleTag: {
         type: "string",
@@ -84,19 +84,19 @@ const iconBoxAttrs = {
     },
     titleSize: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     titleSizeUnit: {
         type: 'string',
-        default:'px'
+        default: 'px'
     },
     titleSizeTablet: {
         type: 'number',
-        default:'20'
+        default: '20'
     },
     titleSizeMobile: {
         type: 'number',
-        default:'20'
+        default: '20'
     },
     titleLine: {
         type: "number",
@@ -154,19 +154,19 @@ const iconBoxAttrs = {
     },
     descSize: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     descSizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     descSizeTablet: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     descSizeMobile: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     descLine: {
         type: "number",
@@ -201,7 +201,7 @@ const iconBoxAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __("Click Here"),
+        default: __( "Click Here" ),
     },
     btnLink: {
         type: "string",
@@ -226,19 +226,19 @@ const iconBoxAttrs = {
     },
     btnSize: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     btnSizeUnit: {
         type: "string",
-        default:"px"
+        default: "px"
     },
     btnSizeTablet: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     btnSizeMobile: {
         type: "number",
-        default:'20'
+        default: '20'
     },
     btnLine: {
         type: "number",
@@ -403,25 +403,37 @@ const iconBoxAttrs = {
     },
     classMigrate: {
         type: "boolean",
-        default:false
-  
-	},
-	hideDesktop: {
-		type: 'boolean',
-		default:false
-	},
-	hideTablet: {
-		type: 'boolean',
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+        default: false
+
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backOpacity: {
+        type: "number",
+        default: "1",
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1",
+    },
+    btnOpacity: {
+        type: "number",
+        default: "1",
+    },
 };
 
-registerBlockType("premium/icon-box", {
-    title: __("Icon Box"),
+registerBlockType( "premium/icon-box", {
+    title: __( "Icon Box" ),
     icon: <PbgIcon icon="icon-box" />,
     category: "premium-blocks",
     attributes: iconBoxAttrs,
@@ -432,4 +444,4 @@ registerBlockType("premium/icon-box", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

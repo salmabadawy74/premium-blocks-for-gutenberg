@@ -130,34 +130,33 @@ const containerAttrs = {
     shadowPosition: {
         type: "string",
         default: "",
-   
-	},
-	block_id: {
-		type:"string"
-	},
-	hideDesktop: {
-		type: "boolean",
-		default:false
-	},
-	hideTablet: {
-		type: 'boolean',
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
-registerBlockType("premium/container", {
-    title: __("Section"),
+registerBlockType( "premium/container", {
+    title: __( "Section" ),
     icon: <PbgIcon icon="section" />,
     category: "premium-blocks",
     attributes: containerAttrs,
     supports: {
         inserter: container,
         align: true,
-        align: ["center", "wide", "full"],
+        align: [ "center", "wide", "full" ],
     },
     example: {
         attributes: {
@@ -167,4 +166,4 @@ registerBlockType("premium/container", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-});
+} );

@@ -9,9 +9,9 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
-const { Fragment ,Component} = wp.element;
+const { Fragment, Component } = wp.element;
 
 const {
     IconButton,
@@ -34,23 +34,23 @@ const {
 export default class edit extends Component {
 
     constructor() {
-        super(...arguments);
+        super( ...arguments );
     }
 
     componentDidMount () {
-        this.props.setAttributes({ block_id: this.props.clientId });
-        this.props.setAttributes({ classMigrate: true });
+        this.props.setAttributes( { block_id: this.props.clientId } );
+        this.props.setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-banner-" + this.props.clientId.substr(0, 6)
-        ); 
+            "premium-style-banner-" + this.props.clientId.substr( 0, 6 )
+        );
         document.head.appendChild( $style );
     }
     render () {
-        
+
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
         const {
             block_id,
@@ -114,7 +114,10 @@ export default class edit extends Component {
             paddingL,
             paddingU,
             titleSizeTablet,
-            titleSizeMobile
+            titleSizeMobile,
+            hideDesktop,
+            hideMobile,
+            hideTablet
         } = this.props.attributes;
         const ALIGNS = [
             {
@@ -208,11 +211,11 @@ export default class edit extends Component {
         const mainClasses = classnames( className, "premium-banner" );
 
         var element = document.getElementById(
-            "premium-style-banner-" + blockID.substr(0, 6)
+            "premium-style-banner-" + blockID.substr( 0, 6 )
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
         return [
@@ -225,7 +228,7 @@ export default class edit extends Component {
                             )}
                             icon="update"
                             className="components-toolbar__control"
-                            onClick={() => setAttributes( {block_id: blockID } )}
+                            onClick={() => setAttributes( { block_id: blockID } )}
                         />
                     </Toolbar>
                     <AlignmentToolbar
@@ -376,19 +379,19 @@ export default class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: titleSizeUnit,
-                                label: __("titleSizeUnit"),
+                                label: __( "titleSizeUnit" ),
                             }}
                             fontSize={{
                                 value: titleSize,
-                                label: __("titleSize"),
+                                label: __( "titleSize" ),
                             }}
                             fontSizeMobile={{
                                 value: titleSizeMobile,
-                                label: __("titleSizeMobile"),
+                                label: __( "titleSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: titleSizeTablet,
-                                label: __("titleSizeTablet"),
+                                label: __( "titleSizeTablet" ),
                             }}
                             weight={titleWeight}
                             line={titleLine}
@@ -482,19 +485,19 @@ export default class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: descSizeUnit,
-                                label: __("descSizeUnit"),
+                                label: __( "descSizeUnit" ),
                             }}
                             fontSize={{
                                 value: descSize,
-                                label: __("descSize"),
+                                label: __( "descSize" ),
                             }}
                             fontSizeMobile={{
                                 value: descSizeMobile,
-                                label: __("descSizeMobile"),
+                                label: __( "descSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: descSizeTablet,
-                                label: __("descSizeTablet"),
+                                label: __( "descSizeTablet" ),
                             }}
                             weight={descWeight}
                             line={descLine}
@@ -642,11 +645,19 @@ export default class edit extends Component {
                             }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
                 id={`premium-banner-${ block_id }`}
-                className={`${ mainClasses } premium-banner__responsive_${ responsive } premium-banner-${block_id}` }
+                className={`${ mainClasses } premium-banner__responsive_${ responsive } premium-banner-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
                 style={{
                     paddingTop: paddingT + paddingU,
                     paddingRight: paddingR + paddingU,

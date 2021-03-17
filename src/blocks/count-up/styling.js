@@ -72,9 +72,9 @@ function styling ( props ) {
     }
 
     var styling_css = ""
-    var id = `.premium-countup-${block_id}`
+    var id = `.premium-countup-${ block_id }`
     if ( classMigrate ) {
-        id = `#premium-countup-${block_id}`
+        id = `#premium-countup-${ block_id }`
     }
 
     styling_css = generateCSS( selectors, id )

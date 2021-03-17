@@ -11,7 +11,7 @@ import styling from './styling';
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
 
 
@@ -34,22 +34,22 @@ const {
     ColorPalette,
 } = wp.blockEditor;
 
-const { Fragment ,Component} = wp.element;
+const { Fragment, Component } = wp.element;
 
 class edit extends Component {
 
     componentDidMount () {
         const { setAttributes, clientId } = this.props;
-        setAttributes({block_id:clientId.substr(0,6)})
-       
-        this.props.setAttributes({ classMigrate: true });
+        setAttributes( { block_id: clientId.substr( 0, 6 ) } )
+
+        this.props.setAttributes( { classMigrate: true } );
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
+        const $style = document.createElement( "style" );
         $style.setAttribute(
             "id",
-            "premium-style-testimonial-" + clientId.substr(0, 6)
-        ); 
+            "premium-style-testimonial-" + clientId.substr( 0, 6 )
+        );
         document.head.appendChild( $style );
     }
 
@@ -104,6 +104,7 @@ class edit extends Component {
             shadowVertical,
             shadowPosition,
             backColor,
+            backOpacity,
             imageID,
             imageURL,
             fixed,
@@ -116,8 +117,8 @@ class edit extends Component {
             paddingLeft,
             paddingUnit,
             hideDesktop,
-		hideTablet,
-		hideMobile
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const RADIUS = [
@@ -136,11 +137,11 @@ class edit extends Component {
         ];
 
         let element = document.getElementById(
-            "premium-style-testimonial-" + this.props.clientId.substr(0, 6)
+            "premium-style-testimonial-" + this.props.clientId.substr( 0, 6 )
         );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        if ( null != element && "undefined" != typeof element ) {
+            element.innerHTML = styling( this.props );
         }
 
         const mainClasses = classnames( className, "premium-testimonial" );
@@ -238,19 +239,19 @@ class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: authorSizeUnit,
-                                label: __("authorSizeUnit"),
+                                label: __( "authorSizeUnit" ),
                             }}
                             fontSize={{
                                 value: authorSize,
-                                label: __("authorSize"),
+                                label: __( "authorSize" ),
                             }}
                             fontSizeMobile={{
                                 value: authorSizeMobile,
-                                label: __("authorSizeMobile"),
+                                label: __( "authorSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: authorSizeTablet,
-                                label: __("authorSizeTablet"),
+                                label: __( "authorSizeTablet" ),
                             }}
                             onChangeSize={newSize => setAttributes( { authorSize: newSize } )}
                             weight={authorWeight}
@@ -287,19 +288,19 @@ class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: bodySizeUnit,
-                                label: __("bodySizeUnit"),
+                                label: __( "bodySizeUnit" ),
                             }}
                             fontSize={{
                                 value: bodySize,
-                                label: __("bodySize"),
+                                label: __( "bodySize" ),
                             }}
                             fontSizeMobile={{
                                 value: bodySizeMobile,
-                                label: __("bodySizeMobile"),
+                                label: __( "bodySizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: bodySizeTablet,
-                                label: __("bodySizeTablet"),
+                                label: __( "bodySizeTablet" ),
                             }}
                             line={bodyLine}
                             onChangeLine={newWeight => setAttributes( { bodyLine: newWeight } )}
@@ -314,7 +315,7 @@ class edit extends Component {
                             }
                             opacityValue={backOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({backOpacity: value})
+                                setAttributes( { backOpacity: value } )
                             }
                         />
                         <RangeControl
@@ -347,19 +348,19 @@ class edit extends Component {
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: authorComSizeUnit,
-                                label: __("authorComSizeUnit"),
+                                label: __( "authorComSizeUnit" ),
                             }}
                             fontSize={{
                                 value: authorComSize,
-                                label: __("authorComSize"),
+                                label: __( "authorComSize" ),
                             }}
                             fontSizeMobile={{
                                 value: authorComSizeMobile,
-                                label: __("authorComSizeMobile"),
+                                label: __( "authorComSizeMobile" ),
                             }}
                             fontSizeTablet={{
                                 value: authorComSizeTablet,
-                                label: __("authorComSizeTablet"),
+                                label: __( "authorComSizeTablet" ),
                             }}
                         />
                         <div className="premium-control-toggle">
@@ -458,17 +459,21 @@ class edit extends Component {
                     >
                         <Fragment>
                             <p>{__( "Background Color" )}</p>
-                            <ColorPalette
-                                value={backColor}
-                                onChange={newValue =>
+                            <PremiumBackground
+                                type="color"
+                                colorValue={backColor}
+                                onChangeColor={newvalue =>
                                     setAttributes( {
-                                        backColor: newValue
+                                        backColor: newvalue,
+                                        backColorUpdated: true,
                                     } )
                                 }
-                                allowReset={true}
+                                opacityValue={backOpacity}
+                                onChangeOpacity={value =>
+                                    setAttributes( { backOpacity: value } )
+                                }
                             />
-                            {imageURL && <img src={imageURL} width="100%" height="auto" />}
-                            <PremiumBackgroud
+                            <PremiumBackground
                                 imageID={imageID}
                                 imageURL={imageURL}
                                 backgroundPosition={backgroundPosition}
@@ -561,22 +566,24 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
-                	<PremiumResponsiveTabs
-					Desktop={hideDesktop}
-					Tablet={hideTablet}
-					Mobile={hideMobile}
-					onChangeDesktop={(value)=>setAttributes({hideDesktop:value ? " premium-desktop-hidden":""})}
-					onChangeTablet={(value)=>setAttributes({hideTablet:value ? " premium-tablet-hidden" : ""})}
-					onChangeMobile={(value)=>setAttributes({hideMobile:value ? " premium-mobile-hidden": ""})}
-				/>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
+                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
+                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    />
                 </InspectorControls>
             ),
             <div
-                id={`premium-testimonial-${block_id}`}
-                className={`${ mainClasses }__wrap premium-testimonial-${block_id}`}
+                id={`premium-testimonial-${ block_id }`}
+                className={`${ mainClasses }__wrap premium-testimonial-${ block_id }`}
                 style={{
                     boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                    backgroundColor: backColor,
+                    backgroundColor: backColor
+                        ? hexToRgba( backColor, backOpacity )
+                        : "transparent",
                     backgroundImage: imageURL ? `url('${ imageURL }')` : 'none',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
