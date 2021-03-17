@@ -637,7 +637,6 @@ class edit extends Component {
                                     onChange={newText => setAttributes( { text: newText } )}
                                     style={{
                                         color: bodyColor,
-                                        fontSize: bodySize + "px",
                                         lineHeight: bodyLine + "px",
                                         marginTop: bodyTop + "px",
                                         marginBottom: bodyBottom + "px"
