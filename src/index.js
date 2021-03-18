@@ -11,4 +11,5 @@ import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/fancy-text"
+import "./blocks/lottie-animation"
 //import "./blocks/test";
