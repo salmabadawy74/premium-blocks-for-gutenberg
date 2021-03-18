@@ -13,18 +13,18 @@ const videoBoxAttrs = {
         type: 'string'
     },
     videoBoxId: {
-        type: "string",
+        type: "string"
     },
     videoType: {
         type: "string",
-        default: "youtube",
+        default: "youtube"
     },
     videoURL: {
         type: "string",
-        default: "07d2dXHYb94",
+        default: "07d2dXHYb94"
     },
     videoID: {
-        type: "string",
+        type: "string"
     },
     autoPlay: {
         type: "boolean",
@@ -32,107 +32,107 @@ const videoBoxAttrs = {
     },
     loop: {
         type: "boolean",
-        default: false,
+        default: false
     },
     controls: {
         type: "boolean",
-        default: true,
+        default: true
     },
     relatedVideos: {
         type: "boolean",
-        default: false,
+        default: false
     },
     mute: {
         type: "boolean",
-        default: false,
+        default: false
     },
     overlay: {
         type: "boolean",
-        default: false,
+        default: false
     },
     overlayImgID: {
-        type: "string",
+        type: "string"
     },
     overlayImgURL: {
-        type: "string",
+        type: "string"
     },
     blur: {
         type: "number",
-        default: 0,
+        default: 0
     },
     bright: {
         type: "number",
-        default: 100,
+        default: 100
     },
     contrast: {
         type: "number",
-        default: 100,
+        default: 100
     },
     saturation: {
         type: "number",
-        default: 100,
+        default: 100
     },
     hue: {
         type: "number",
-        default: 0,
+        default: 0
     },
     playTop: {
-        type: "number",
+        type: "number"
     },
     playIcon: {
         type: "boolean",
-        default: true,
+        default: true
     },
     playSize: {
-        type: "number",
+        type: "number"
     },
     playColor: {
-        type: "string",
+        type: "string"
     },
     playBack: {
-        type: "string",
+        type: "string"
     },
     playOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     playHoverColor: {
-        type: "string",
+        type: "string"
     },
     playHoverBackColor: {
-        type: "string",
+        type: "string"
     },
     playPadding: {
-        type: "number",
+        type: "number"
     },
     playBorderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     playBorderWidth: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     playBorderRadius: {
-        type: "number",
+        type: "number"
     },
     playBorderColor: {
-        type: "string",
+        type: "string"
     },
     videoDescText: {
-        type: "string",
+        type: "string"
     },
     videoDesc: {
-        type: "boolean",
+        type: "boolean"
     },
     descLeft: {
-        type: "number",
+        type: "number"
     },
     descTop: {
-        type: "number",
+        type: "number"
     },
     videoDescSize: {
-        type: "number",
+        type: "number"
     },
     videoDescSizeUnit: {
         type: "string",
@@ -145,83 +145,83 @@ const videoBoxAttrs = {
         type: 'number'
     },
     videoDescFamily: {
-        type: "string",
+        type: "string"
     },
     videoDescWeight: {
-        type: "number",
+        type: "number"
     },
     videoDescLetter: {
-        type: "number",
+        type: "number"
     },
     videoDescStyle: {
-        type: "string",
+        type: "string"
     },
     videoDescUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     videoDescColor: {
-        type: "string",
+        type: "string"
     },
     videoDescBack: {
         type: "string",
     },
     videoDescOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     videoDescPadding: {
-        type: "number",
+        type: "number"
     },
     videoDescBorderRadius: {
-        type: "number",
+        type: "number"
     },
     descShadowColor: {
-        type: "string",
+        type: "string"
     },
     descShadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     descShadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     descShadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     boxBorderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     boxBorderWidth: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     boxBorderRadius: {
-        type: "number",
+        type: "number"
     },
     boxBorderColor: {
-        type: "string",
+        type: "string"
     },
     shadowColor: {
-        type: "string",
+        type: "string"
     },
     shadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowPosition: {
         type: "string",
-        default: "",
+        default: ""
     },
 
     // Old props

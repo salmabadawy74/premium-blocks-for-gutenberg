@@ -14,23 +14,23 @@ const counterAttrs = {
     },
     increment: {
         type: "string",
-        default: 500,
+        default: 500
     },
     time: {
         type: "string",
-        default: 1000,
+        default: 1000
     },
     delay: {
         type: "string",
-        default: 10,
+        default: 10
     },
     align: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     flexDir: {
         type: "string",
-        default: "column",
+        default: "column"
     },
     numberSizeUnit: {
         type: "string",
@@ -38,7 +38,7 @@ const counterAttrs = {
     },
     numberSize: {
         type: "number",
-        default: 30,
+        default: 30
     },
     numberSizeTablet: {
         type: "number"
@@ -48,23 +48,23 @@ const counterAttrs = {
     },
     numberColor: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     numberWeight: {
         type: "number",
-        default: 900,
+        default: 900
     },
     prefix: {
         type: "boolean",
-        default: true,
+        default: true
     },
     prefixTxt: {
         type: "string",
-        default: "Prefix",
+        default: "Prefix"
     },
     prefixSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     prefixSizeUnit: {
         type: 'string',
@@ -77,22 +77,22 @@ const counterAttrs = {
         type: "number"
     },
     prefixColor: {
-        type: "string",
+        type: "string"
     },
     prefixWeight: {
-        type: "number",
+        type: "number"
     },
     prefixGap: {
         type: "number",
-        default: 2,
+        default: 2
     },
     suffix: {
         type: "boolean",
-        default: true,
+        default: true
     },
     suffixTxt: {
         type: "string",
-        default: "Suffix",
+        default: "Suffix"
     },
     suffixSizeUnit: {
         type: "string",
@@ -100,7 +100,7 @@ const counterAttrs = {
     },
     suffixSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     suffixSizeTablet: {
         type: "number"
@@ -109,60 +109,60 @@ const counterAttrs = {
         type: 'number'
     },
     suffixColor: {
-        type: "string",
+        type: "string"
     },
     suffixWeight: {
-        type: "number",
+        type: "number"
     },
     suffixGap: {
         type: "number",
-        default: 2,
+        default: 2
     },
     icon: {
         type: "string",
-        default: "icon",
+        default: "icon"
     },
     iconSpacing: {
         type: "number",
-        default: 10,
+        default: 10
     },
     imageID: {
-        type: "string",
+        type: "string"
     },
     imageURL: {
-        type: "string",
+        type: "string"
     },
     iconType: {
         type: "string",
-        default: "dash",
+        default: "dash"
     },
     iconCheck: {
         type: "boolean",
-        default: true,
+        default: true
     },
     iconSize: {
         type: "number",
-        default: 40,
+        default: 40
     },
     iconColor: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     selfAlign: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     titleCheck: {
         type: "boolean",
-        default: true,
+        default: true
     },
     titleTxt: {
         type: "string",
-        default: "Premium Count Up",
+        default: "Premium Count Up"
     },
     titleSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     titleSizeUnit: {
         type: "string",
@@ -175,104 +175,104 @@ const counterAttrs = {
         type: "number"
     },
     titleSpacing: {
-        type: "number",
+        type: "number"
     },
     titleStyle: {
-        type: "string",
+        type: "string"
     },
     titleUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     titleT: {
         type: "number",
-        default: 1,
+        default: 1
     },
     titleB: {
         type: "number",
-        default: 1,
+        default: 1
     },
     titleColor: {
-        type: "string",
+        type: "string"
     },
     titleWeight: {
         type: "number",
-        default: 500,
+        default: 500
     },
     faIcon: {
         type: "string",
-        default: "dashicons-clock",
+        default: "dashicons-clock"
     },
     containerBack: {
-        type: "string",
+        type: "string"
     },
     containerOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     shadowColor: {
-        type: "string",
+        type: "string"
     },
     shadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowPosition: {
         type: "string",
-        default: "",
+        default: ""
     },
     backgroundImageID: {
-        type: "string",
+        type: "string"
     },
     backgroundImageURL: {
-        type: "string",
+        type: "string"
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat",
+        default: "no-repeat"
     },
     backgroundPosition: {
         type: "string",
-        default: "top center",
+        default: "top center"
     },
     backgroundSize: {
         type: "string",
-        default: "auto",
+        default: "auto"
     },
     fixed: {
         type: "boolean",
-        default: false,
+        default: false
     },
     borderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     borderWidth: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     borderRadius: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     borderColor: {
-        type: "string",
+        type: "string"
     },
     titleFamily: {
-        type: "string",
+        type: "string"
     },
     counterFamily: {
-        type: "string",
+        type: "string"
     },
     prefixFamily: {
-        type: "string",
+        type: "string"
     },
     suffixFamily: {
         type: "string"

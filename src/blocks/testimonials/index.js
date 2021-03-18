@@ -18,43 +18,43 @@ const testimonialsAttrs = {
     },
     align: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     authorImgId: {
-        type: "string",
+        type: "string"
     },
     authorImgUrl: {
-        type: "string",
+        type: "string"
     },
     imgRadius: {
         type: "string",
-        default: "50%",
+        default: "50%"
     },
     imgSize: {
-        type: "number",
+        type: "number"
     },
     imgBorder: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     imgBorderColor: {
-        type: "string",
+        type: "string"
     },
     author: {
         type: "array",
         source: "children",
         selector: ".premium-testimonial__author",
-        default: "John Doe",
+        default: "John Doe"
     },
     authorTag: {
         type: "string",
-        default: "H3",
+        default: "H3"
     },
     authorColor: {
-        type: "string",
+        type: "string"
     },
     authorSize: {
-        type: "number",
+        type: "number"
     },
     authorSizeUnit: {
         type: 'string',
@@ -67,38 +67,38 @@ const testimonialsAttrs = {
         type: "number"
     },
     authorLetter: {
-        type: "number",
+        type: "number"
     },
     authorStyle: {
-        type: "string",
+        type: "string"
     },
     authorUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     authorWeight: {
         type: "number",
-        default: 500,
+        default: 500
     },
     authorComTag: {
         type: "string",
-        default: "H4",
+        default: "H4"
     },
     text: {
         type: "array",
         source: "children",
-        selector: ".premium-testimonial__text",
+        selector: ".premium-testimonial__text"
     },
     authorCom: {
         type: "array",
         source: "children",
         selector: ".premium-testimonial__author_comp",
-        default: "Leap13",
+        default: "Leap13"
     },
     authorComColor: {
-        type: "string",
+        type: "string"
     },
     authorComSize: {
-        type: "number",
+        type: "number"
     },
     authorComSizeUnit: {
         type: "string",
@@ -112,29 +112,29 @@ const testimonialsAttrs = {
     },
     urlCheck: {
         type: "boolean",
-        default: false,
+        default: false
     },
     urlText: {
-        type: "string",
+        type: "string"
     },
     urlTarget: {
         type: "boolean",
-        default: false,
+        default: false
     },
     quotSize: {
-        type: "number",
+        type: "number"
     },
     quotColor: {
-        type: "string",
+        type: "string"
     },
     quotOpacity: {
-        type: "number",
+        type: "number"
     },
     bodyColor: {
-        type: "string",
+        type: "string"
     },
     bodySize: {
-        type: "number",
+        type: "number"
     },
     bodySizeUnit: {
         type: "string",
@@ -147,76 +147,76 @@ const testimonialsAttrs = {
         type: "string"
     },
     bodyLine: {
-        type: "number",
+        type: "number"
     },
     bodyTop: {
-        type: "number",
+        type: "number"
     },
     bodyBottom: {
-        type: "number",
+        type: "number"
     },
     dashColor: {
-        type: "string",
+        type: "string"
     },
     shadowColor: {
-        type: "string",
+        type: "string"
     },
     shadowBlur: {
-        type: "number",
+        type: "number"
     },
     shadowHorizontal: {
-        type: "number",
+        type: "number"
     },
     shadowVertical: {
-        type: "number",
+        type: "number"
     },
     shadowPosition: {
-        type: "string",
+        type: "string"
     },
     backColor: {
-        type: "string",
+        type: "string"
     },
     backOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     imageID: {
-        type: "string",
+        type: "string"
     },
     imageURL: {
-        type: "string",
+        type: "string"
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat",
+        default: "no-repeat"
     },
     backgroundPosition: {
         type: "string",
-        default: "top center",
+        default: "top center"
     },
     backgroundSize: {
         type: "string",
-        default: "auto",
+        default: "auto"
     },
     fixed: {
         type: "boolean",
-        default: false,
+        default: false
     },
     paddingTop: {
-        type: "number",
+        type: "number"
     },
     paddingRight: {
-        type: "number",
+        type: "number"
     },
     paddingBottom: {
-        type: "number",
+        type: "number"
     },
     paddingLeft: {
-        type: "number",
+        type: "number"
     },
     paddingUnit: {
         type: "string",
-        default: "px",
+        default: "px"
     },
     hideDesktop: {
         type: 'boolean',

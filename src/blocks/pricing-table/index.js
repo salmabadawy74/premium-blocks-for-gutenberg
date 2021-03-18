@@ -12,40 +12,40 @@ const { __ } = wp.i18n;
 const pricingAttrs = {
     contentAlign: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     tableBack: {
-        type: "string",
+        type: "string"
     },
     borderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     borderWidth: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     borderRadius: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     borderColor: {
-        type: "string",
+        type: "string"
     },
     tablePadding: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     tableShadowColor: {
-        type: "string",
+        type: "string"
     },
     tableShadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     tableShadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     tableShadowVertical: {
         type: "number",
@@ -53,28 +53,28 @@ const pricingAttrs = {
     },
     tableShadowPosition: {
         type: "string",
-        default: "",
+        default: ""
     },
     title: {
         type: "array",
         source: "children",
         selector: ".premium-pricing-table__title",
-        default: "Pricing Table",
+        default: "Pricing Table"
     },
     titleTag: {
         type: "string",
-        default: "H2",
+        default: "H2"
     },
     titleColor: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     titleSizeUnit: {
         type: 'string',
-        default: 'px',
+        default: 'px'
     },
     titleSize: {
-        type: "number",
+        type: "number"
     },
     titleSizeMobile: {
         type: 'number'
@@ -83,27 +83,27 @@ const pricingAttrs = {
         type: "number"
     },
     titleLine: {
-        type: "number",
+        type: "number"
     },
     titleLetter: {
-        type: "number",
+        type: "number"
     },
     titleStyle: {
-        type: "string",
+        type: "string"
     },
     titleUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     titleWeight: {
         type: "number",
-        default: 500,
+        default: 500
     },
     titleShadowColor: {
-        type: "string",
+        type: "string"
     },
     titleShadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     titleShadowHorizontal: {
         type: "number",
@@ -111,34 +111,34 @@ const pricingAttrs = {
     },
     titleShadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     titleBack: {
-        type: "string",
+        type: "string"
     },
     titleMarginB: {
         type: "number",
-        default: 20,
+        default: 20
     },
     titleMarginT: {
         type: "number",
-        default: 20,
+        default: 20
     },
     titlePadding: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     desc: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__desc",
+        selector: ".premium-pricing-table__desc"
     },
     descColor: {
         type: "string",
-        default: "#000",
+        default: "#000"
     },
     descSize: {
-        type: "number",
+        type: "number"
     },
     descSizeUnit: {
         type: "string",
@@ -151,62 +151,62 @@ const pricingAttrs = {
         type: 'number'
     },
     descWeight: {
-        type: "number",
+        type: "number"
     },
     descLetter: {
-        type: "number",
+        type: "number"
     },
     descStyle: {
-        type: "string",
+        type: "string"
     },
     descLine: {
-        type: "number",
+        type: "number"
     },
     descBack: {
-        type: "string",
+        type: "string"
     },
     descMarginT: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     descMarginB: {
         type: "number",
-        default: "30",
+        default: "30"
     },
     descPadding: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     titleChecked: {
         type: "boolean",
-        default: true,
+        default: true
     },
     descChecked: {
         type: "boolean",
-        default: false,
+        default: false
     },
     priceChecked: {
         type: "boolean",
-        default: true,
+        default: true
     },
     priceBack: {
-        type: "string",
+        type: "string"
     },
     priceMarginT: {
-        type: "number",
+        type: "number"
     },
     priceMarginB: {
         type: "number",
-        default: 10,
+        default: 10
     },
     pricePadding: {
-        type: "number",
+        type: "number"
     },
     slashPrice: {
-        type: "string",
+        type: "string"
     },
     slashColor: {
-        type: "string",
+        type: "string"
     },
     slashSizeUnit: {
         type: "string",
@@ -214,7 +214,7 @@ const pricingAttrs = {
     },
     slashSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     slashSizeMobile: {
         type: "number"
@@ -223,14 +223,14 @@ const pricingAttrs = {
         type: "number"
     },
     slashWeight: {
-        type: "number",
+        type: "number"
     },
     currPrice: {
         type: "string",
-        default: "$",
+        default: "$"
     },
     currColor: {
-        type: "string",
+        type: "string"
     },
     currSize: {
         type: "number",
@@ -247,14 +247,14 @@ const pricingAttrs = {
         type: "number"
     },
     currWeight: {
-        type: "number",
+        type: "number"
     },
     valPrice: {
         type: "string",
-        default: "25",
+        default: "25"
     },
     valColor: {
-        type: "string",
+        type: "string"
     },
     valSizeUnit: {
         type: "string",
@@ -262,7 +262,7 @@ const pricingAttrs = {
     },
     valSize: {
         type: "number",
-        default: 50,
+        default: 50
     },
     valSizeMobile: {
         type: "number"
@@ -271,18 +271,18 @@ const pricingAttrs = {
         type: "number"
     },
     valWeight: {
-        type: "number",
+        type: "number"
     },
     divPrice: {
         type: "string",
-        default: "/",
+        default: "/"
     },
     divColor: {
-        type: "string",
+        type: "string"
     },
     divSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     divSizeUnit: {
         type: "string",
@@ -295,14 +295,14 @@ const pricingAttrs = {
         type: "number"
     },
     divWeight: {
-        type: "number",
+        type: "number"
     },
     durPrice: {
         type: "string",
-        default: "m",
+        default: "m"
     },
     durColor: {
-        type: "string",
+        type: "string"
     },
     durSizeUnit: {
         type: "string",
@@ -310,7 +310,7 @@ const pricingAttrs = {
     },
     durSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     durSizeMobile: {
         type: "number"
@@ -319,42 +319,42 @@ const pricingAttrs = {
         type: "number"
     },
     durWeight: {
-        type: "number",
+        type: "number"
     },
     selectedStyle: {
         type: "string",
-        default: "price",
+        default: "price"
     },
     btnChecked: {
         type: "boolean",
-        default: true,
+        default: true
     },
     btnText: {
         type: "string",
-        default: "Get Started",
+        default: "Get Started"
     },
     btnLink: {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-pricing-table__button_link",
+        selector: ".premium-pricing-table__button_link"
     },
     btnTarget: {
         type: "boolean",
-        default: true,
+        default: true
     },
     btnColor: {
         type: "string",
-        default: "#fff",
+        default: "#fff"
     },
     btnHoverColor: {
-        type: "string",
+        type: "string"
     },
     btnWidth: {
-        type: "number",
+        type: "number"
     },
     btnSize: {
-        type: "number",
+        type: "number"
     },
     btnSizeUnit: {
         type: 'string',
@@ -368,76 +368,76 @@ const pricingAttrs = {
     },
     btnWeight: {
         type: "number",
-        default: 900,
+        default: 900
     },
     btnLine: {
-        type: "number",
+        type: "number"
     },
     btnLetter: {
-        type: "number",
+        type: "number"
     },
     btnStyle: {
-        type: "string",
+        type: "string"
     },
     btnUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     btnBack: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     btnHoverBack: {
-        type: "string",
+        type: "string"
     },
     btnMarginT: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     btnMarginB: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     btnPadding: {
         type: "number",
-        default: 10,
+        default: 10
     },
     btnPaddingU: {
-        type: "string",
+        type: "string"
     },
     btnBorderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     btnBorderWidth: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     btnBorderRadius: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     btnBorderColor: {
-        type: "string",
+        type: "string"
     },
     badgeChecked: {
-        type: "boolean",
+        type: "boolean"
     },
     badgePos: {
         type: "string",
-        default: "right",
+        default: "right"
     },
     badgeBack: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     badgeColor: {
-        type: "string",
+        type: "string"
     },
     badgeTextSize: {
-        type: "number",
+        type: "number"
     },
     badgeSize: {
-        type: "number",
+        type: "number"
     },
     badgeTextUnit: {
         type: 'string',
@@ -453,37 +453,37 @@ const pricingAttrs = {
         type: "number",
     },
     badgeHorizontal: {
-        type: "number",
+        type: "number"
     },
     badgeWidth: {
-        type: "number",
+        type: "number"
     },
     badgeWeight: {
         type: "number",
-        default: 900,
+        default: 900
     },
     badgeLetter: {
-        type: "number",
+        type: "number"
     },
     badgeStyle: {
-        type: "string",
+        type: "string"
     },
     badgeUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     badgeText: {
         type: "string",
-        default: __( "Popular" ),
+        default: __( "Popular" )
     },
     listChecked: {
         type: "boolean",
-        default: true,
+        default: true
     },
     listColor: {
-        type: "string",
+        type: "string"
     },
     listSize: {
-        type: "number",
+        type: "number"
     },
     listSizeUnit: {
         type: 'string',
@@ -497,64 +497,64 @@ const pricingAttrs = {
     },
     listWeight: {
         type: "number",
-        default: 500,
+        default: 500
     },
     listItemsStyle: {
-        type: "string",
+        type: "string"
     },
     listLetter: {
-        type: "number",
+        type: "number"
     },
     listLine: {
-        type: "number",
+        type: "number"
     },
     listUpper: {
-        type: "boolean",
+        type: "boolean"
     },
     listBack: {
-        type: "string",
+        type: "string"
     },
     listItems: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__list",
+        selector: ".premium-pricing-table__list"
     },
     listMarginB: {
         type: "number",
-        default: 20,
+        default: 20
     },
     listMarginT: {
-        type: "number",
+        type: "number"
     },
     listPadding: {
-        type: "number",
+        type: "number"
     },
     listStyle: {
         type: "string",
-        default: "disc",
+        default: "disc"
     },
     featsAlign: {
-        type: "string",
+        type: "string"
     },
     slashV: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     currV: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     valV: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     divV: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     durV: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     block_id: {
         type: "string"
@@ -569,7 +569,7 @@ const pricingAttrs = {
     },
     priceOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
 
     hideDesktop: {

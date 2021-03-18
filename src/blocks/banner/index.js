@@ -180,59 +180,59 @@ const bannerAttrs = {
         selector: ".premium-banner__link",
     },
     sepColor: {
-        type: "string",
+        type: "string"
     },
 
     blur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     bright: {
         type: "number",
-        default: "100",
+        default: "100"
     },
     contrast: {
         type: "number",
-        default: "100",
+        default: "100"
     },
     saturation: {
         type: "number",
-        default: "100",
+        default: "100"
     },
     hue: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     containerShadowColor: {
-        type: "string",
+        type: "string"
     },
     containerShadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     containerShadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     containerShadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     containerShadowPosition: {
         type: "string",
-        default: "",
+        default: ""
     },
     paddingT: {
-        type: "number",
+        type: "number"
     },
     paddingR: {
-        type: "number",
+        type: "number"
     },
     paddingB: {
-        type: "number",
+        type: "number"
     },
     paddingL: {
-        type: "number",
+        type: "number"
     },
     paddingU: {
         type: "string"
@@ -247,7 +247,6 @@ const bannerAttrs = {
     },
     hideMobile: {
         type: 'boolean',
-
         default: false
     },
     titleSizeMobile: {
@@ -258,7 +257,6 @@ const bannerAttrs = {
     },
     classMigrate: {
         type: "boolean",
-
         default: false
     }
 };
