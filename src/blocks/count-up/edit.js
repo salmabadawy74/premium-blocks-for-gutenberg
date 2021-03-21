@@ -24,6 +24,7 @@ const { Fragment } = wp.element;
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
+
     const {
         increment,
         time,
@@ -81,11 +82,17 @@ const edit = props => {
         borderColor,
         borderRadius,
         borderWidth,
+        borderCount,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         titleFamily,
         counterFamily,
         prefixFamily,
-        suffixFamily
+        suffixFamily,
     } = props.attributes;
+
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
     const ICONS = [
         {
@@ -608,14 +615,26 @@ const edit = props => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
+                        top={borderTop}
+                        right={borderRight}
+                        bottom={borderBottom}
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                        onChangeColor={colorValue =>
+                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                borderCount: true,
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newRadius =>
+                        onChangeRadius={(newRadius) =>
                             setAttributes({ borderRadius: newRadius })
                         }
                     />
@@ -674,8 +693,10 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: borderCount
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor
             }}

@@ -7,6 +7,8 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderIconBox,
+        btnBorderIconBox,
         id,
         align,
         iconImage,
@@ -64,6 +66,14 @@ const save = props => {
         btnBack,
         btnHoverBack,
         btnBorderWidth,
+        btnBorderTop,
+        btnBorderRight,
+        btnBorderBottom,
+        btnBorderLeft,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         btnBorderRadius,
         btnBorderColor,
         btnBorderType,
@@ -104,7 +114,7 @@ const save = props => {
         hoverShadowColor,
         hoverShadowHorizontal,
         hoverShadowVertical,
-        hoverShadowPosition
+        hoverShadowPosition,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
@@ -115,8 +125,10 @@ const save = props => {
             className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
             style={{
                 textAlign: align,
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: borderIconBox
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 marginTop: marginT,
@@ -257,8 +269,10 @@ const save = props => {
                                 textTransform: btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyle,
                                 fontWeight: btnWeight,
-                                border: btnBorderType,
-                                borderWidth: btnBorderWidth + "px",
+                                borderStyle: btnBorderType,
+                                borderWidth: btnBorderIconBox
+                                    ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                    : btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
                                 padding: btnPadding + btnPaddingU,

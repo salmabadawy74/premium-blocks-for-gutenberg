@@ -10,6 +10,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const bannerAttrs = {
+    borderBanner: {
+        type: "boolean",
+        default: false,
+    },
     imageID: {
         type: "number"
     },
@@ -80,6 +84,18 @@ const bannerAttrs = {
     borderWidth: {
         type: "number",
         default: "1"
+    },
+    borderTop: {
+        type: "number",
+    },
+    borderRight: {
+        type: "number",
+    },
+    borderBottom: {
+        type: "number",
+    },
+    borderLeft: {
+        type: "number",
     },
     borderRadius: {
         type: "number",
@@ -223,6 +239,7 @@ const bannerAttrs = {
         type: "string"
     }
 };
+
 registerBlockType("premium/banner", {
     title: __("Banner"),
     icon: <PbgIcon icon="banner" />,

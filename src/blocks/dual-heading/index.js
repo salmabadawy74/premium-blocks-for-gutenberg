@@ -68,6 +68,22 @@ const dualHeadingAttrs = {
         type: "number",
         default: "1"
     },
+    firstBorder: {
+        type: "boolean",
+        default: false
+    },
+    firstBorderTop: {
+        type: "number"
+    },
+    firstBorderRight: {
+        type: "number"
+    },
+    firstBorderBottom: {
+        type: "number"
+    },
+    firstBorderLeft: {
+        type: "number"
+    },
     firstBorderRadius: {
         type: "number",
         default: "0"
@@ -152,6 +168,22 @@ const dualHeadingAttrs = {
     secondBorderWidth: {
         type: "number",
         default: "1"
+    },
+    secondBorder: {
+        type: "boolean",
+        default: false
+    },
+    secondBorderTop: {
+        type: "number"
+    },
+    secondBorderRight: {
+        type: "number"
+    },
+    secondBorderBottom: {
+        type: "number"
+    },
+    secondBorderLeft: {
+        type: "number"
     },
     secondBorderRadius: {
         type: "number",
@@ -247,6 +279,22 @@ const dualHeadingAttrs = {
         type: "number",
         default: "1"
     },
+    containerBorder: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderTop: {
+        type: "number"
+    },
+    containerBorderRight: {
+        type: "number"
+    },
+    containerBorderBottom: {
+        type: "number",
+    },
+    containerBorderLeft: {
+        type: "number"
+    },
     containerBorderRadius: {
         type: "number",
         default: "0"
@@ -255,6 +303,7 @@ const dualHeadingAttrs = {
         type: "string"
     }
 };
+
 registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
     icon: <PbgIcon icon="dual-heading" />,

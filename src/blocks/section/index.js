@@ -18,6 +18,10 @@ const containerAttrs = {
         type: "string",
         default: "boxed"
     },
+    isUpdated: {
+        type: "boolean",
+        default: false
+    },
     horAlign: {
         type: "string",
         default: "center"
@@ -71,6 +75,18 @@ const containerAttrs = {
     borderWidth: {
         type: "number",
         default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
     },
     borderRadius: {
         type: "number"
@@ -128,6 +144,7 @@ const containerAttrs = {
         default: ""
     }
 };
+
 registerBlockType("premium/container", {
     title: __("Section"),
     icon: <PbgIcon icon="section" />,

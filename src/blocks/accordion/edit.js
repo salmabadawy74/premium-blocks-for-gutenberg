@@ -61,6 +61,7 @@ class PremiumAccordion extends Component {
 
     render() {
         const { isSelected, setAttributes, clientId, className } = this.props;
+
         const {
             accordionId,
             repeaterItems,
@@ -75,6 +76,10 @@ class PremiumAccordion extends Component {
             titleWeight,
             titleBorder,
             titleBorderWidth,
+            titleBorderTop,
+            titleBorderRight,
+            titleBorderBottom,
+            titleBorderLeft,
             titleBorderColor,
             titleBorderRadius,
             titleBack,
@@ -100,6 +105,10 @@ class PremiumAccordion extends Component {
             descBorderColor,
             descBorderRadius,
             descBorderWidth,
+            descBorderTop,
+            descBorderRight,
+            descBorderBottom,
+            descBorderLeft,
             descSize,
             descLine,
             descLetter,
@@ -113,7 +122,9 @@ class PremiumAccordion extends Component {
             descPaddingT,
             descPaddingR,
             descPaddingB,
-            descPaddingL
+            descPaddingL,
+            titleBorderUpdated,
+            descBorderUpdated
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -175,8 +186,10 @@ class PremiumAccordion extends Component {
                         className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
                         style={{
                             backgroundColor: titleBack,
-                            border: titleBorder,
-                            borderWidth: titleBorderWidth + "px",
+                            borderStyle: titleBorder,
+                            borderWidth: titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px",
                             borderRadius: titleBorderRadius + "px",
                             borderColor: titleBorderColor,
                             paddingTop: titlePaddingT,
@@ -237,8 +250,10 @@ class PremiumAccordion extends Component {
                         style={{
                             textAlign: descAlign,
                             backgroundColor: descBack,
-                            border: descBorder,
-                            borderWidth: descBorderWidth + "px",
+                            borderStyle: descBorder,
+                            borderWidth: descBorderUpdated
+                                ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                                : descBorderWidth + "px",
                             borderRadius: descBorderRadius + "px",
                             borderColor: descBorderColor,
                             paddingTop: descPaddingT,
@@ -366,16 +381,28 @@ class PremiumAccordion extends Component {
                         <PremiumBorder
                             borderType={titleBorder}
                             borderWidth={titleBorderWidth}
+                            top={titleBorderTop}
+                            right={titleBorderRight}
+                            bottom={titleBorderBottom}
+                            left={titleBorderLeft}
                             borderColor={titleBorderColor}
                             borderRadius={titleBorderRadius}
-                            onChangeType={newType => setAttributes({ titleBorder: newType })}
-                            onChangeWidth={newWidth =>
-                                setAttributes({ titleBorderWidth: newWidth })
+                            onChangeType={(newType) =>
+                                setAttributes({ titleBorder: newType })
                             }
-                            onChangeColor={colorValue =>
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    titleBorderUpdated: true,
+                                    titleBorderTop: top,
+                                    titleBorderRight: right,
+                                    titleBorderBottom: bottom,
+                                    titleBorderLeft: left,
+                                })
+                            }
+                            onChangeColor={(colorValue) =>
                                 setAttributes({ titleBorderColor: colorValue.hex })
                             }
-                            onChangeRadius={newrRadius =>
+                            onChangeRadius={(newrRadius) =>
                                 setAttributes({ titleBorderRadius: newrRadius })
                             }
                         />
@@ -591,16 +618,26 @@ class PremiumAccordion extends Component {
                         <PremiumBorder
                             borderType={descBorder}
                             borderWidth={descBorderWidth}
+                            top={descBorderTop}
+                            right={descBorderRight}
+                            bottom={descBorderBottom}
+                            left={descBorderLeft}
                             borderColor={descBorderColor}
                             borderRadius={descBorderRadius}
-                            onChangeType={newType => setAttributes({ descBorder: newType })}
-                            onChangeWidth={newWidth =>
-                                setAttributes({ descBorderWidth: newWidth })
+                            onChangeType={(newType) => setAttributes({ descBorder: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    descBorderUpdated: true,
+                                    descBorderTop: top,
+                                    descBorderRight: right,
+                                    descBorderBottom: bottom,
+                                    descBorderLeft: left,
+                                })
                             }
-                            onChangeColor={colorValue =>
+                            onChangeColor={(colorValue) =>
                                 setAttributes({ descBorderColor: colorValue.hex })
                             }
-                            onChangeRadius={newrRadius =>
+                            onChangeRadius={(newrRadius) =>
                                 setAttributes({ descBorderRadius: newrRadius })
                             }
                         />

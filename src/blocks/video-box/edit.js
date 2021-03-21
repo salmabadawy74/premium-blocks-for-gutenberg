@@ -89,6 +89,8 @@ class edit extends Component {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
+            borderPlayUpdated,
+            borderBoxUpdated,
             videoBoxId,
             videoType,
             videoURL,
@@ -117,6 +119,14 @@ class edit extends Component {
             playBack,
             playBorderColor,
             playBorderWidth,
+            boxBorderTop,
+            boxBorderRight,
+            boxBorderBottom,
+            boxBorderLeft,
+            playBorderTop,
+            playBorderRight,
+            playBorderBottom,
+            playBorderLeft,
             playBorderRadius,
             playBorderType,
             videoDesc,
@@ -145,7 +155,7 @@ class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
-            shadowPosition
+            shadowPosition,
         } = this.props.attributes;
 
         const TYPE = [
@@ -408,18 +418,28 @@ class edit extends Component {
                                         <PremiumBorder
                                             borderType={playBorderType}
                                             borderWidth={playBorderWidth}
+                                            top={playBorderTop}
+                                            right={playBorderRight}
+                                            bottom={playBorderBottom}
+                                            left={playBorderLeft}
                                             borderColor={playBorderColor}
                                             borderRadius={playBorderRadius}
-                                            onChangeType={newType =>
+                                            onChangeType={(newType) =>
                                                 setAttributes({ playBorderType: newType })
                                             }
-                                            onChangeWidth={newWidth =>
-                                                setAttributes({ playBorderWidth: newWidth })
+                                            onChangeWidth={({ top, right, bottom, left }) =>
+                                                setAttributes({
+                                                    borderPlayUpdated: true,
+                                                    playBorderTop: top,
+                                                    playBorderRight: right,
+                                                    playBorderBottom: bottom,
+                                                    playBorderLeft: left,
+                                                })
                                             }
-                                            onChangeColor={colorValue =>
+                                            onChangeColor={(colorValue) =>
                                                 setAttributes({ playBorderColor: colorValue.hex })
                                             }
-                                            onChangeRadius={newrRadius =>
+                                            onChangeRadius={(newrRadius) =>
                                                 setAttributes({ playBorderRadius: newrRadius })
                                             }
                                         />
@@ -662,18 +682,28 @@ class edit extends Component {
                         <PremiumBorder
                             borderType={boxBorderType}
                             borderWidth={boxBorderWidth}
+                            top={boxBorderTop}
+                            right={boxBorderRight}
+                            bottom={boxBorderBottom}
+                            left={boxBorderLeft}
                             borderColor={boxBorderColor}
                             borderRadius={boxBorderRadius}
-                            onChangeType={newType =>
+                            onChangeType={(newType) =>
                                 setAttributes({ boxBorderType: newType })
                             }
-                            onChangeWidth={newWidth =>
-                                setAttributes({ boxBorderWidth: newWidth })
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    borderBoxUpdated: true,
+                                    boxBorderTop: top,
+                                    boxBorderRight: right,
+                                    boxBorderBottom: bottom,
+                                    boxBorderLeft: left,
+                                })
                             }
-                            onChangeColor={colorValue =>
+                            onChangeColor={(colorValue) =>
                                 setAttributes({ boxBorderColor: colorValue.hex })
                             }
-                            onChangeRadius={newrRadius =>
+                            onChangeRadius={(newrRadius) =>
                                 setAttributes({ boxBorderRadius: newrRadius })
                             }
                         />
@@ -719,8 +749,10 @@ class edit extends Component {
                 className={`${mainClasses} video-overlay-${overlay}`}
                 data-type={videoType}
                 style={{
-                    border: boxBorderType,
-                    borderWidth: boxBorderWidth + "px",
+                    borderStyle: boxBorderType,
+                    borderWidth: borderBoxUpdated
+                        ? `${boxBorderTop}px ${boxBorderRight}px ${boxBorderBottom}px ${boxBorderLeft}px`
+                        : boxBorderWidth + "px",
                     borderRadius: boxBorderRadius + "px",
                     borderColor: boxBorderColor,
                     boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
@@ -776,8 +808,10 @@ class edit extends Component {
                             left: playLeft + "%",
                             color: playColor,
                             backgroundColor: playBack,
-                            border: playBorderType,
-                            borderWidth: playBorderWidth + "px",
+                            borderStyle: playBorderType,
+                            borderWidth: borderPlayUpdated
+                                ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
+                                : playBorderWidth + "px",
                             borderRadius: playBorderRadius + "px",
                             borderColor: playBorderColor,
                             padding: playPadding + "px"

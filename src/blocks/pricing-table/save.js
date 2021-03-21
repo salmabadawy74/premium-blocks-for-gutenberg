@@ -6,6 +6,8 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderUpdated,
+        btnBorderUpdated,
         contentAlign,
         tableBack,
         borderType,
@@ -97,6 +99,14 @@ const save = props => {
         btnPadding,
         btnPaddingU,
         btnWidth,
+        btnBorderTop,
+        btnBorderRight,
+        btnBorderBottom,
+        btnBorderLeft,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         btnBorderType,
         btnBorderWidth,
         btnBorderRadius,
@@ -130,7 +140,7 @@ const save = props => {
         listPadding,
         listStyle,
         featsAlign,
-        id
+        id,
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-pricing-table");
@@ -142,8 +152,10 @@ const save = props => {
             style={{
                 textAlign: contentAlign,
                 background: tableBack,
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: borderUpdated
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 padding: tablePadding + "px",
@@ -378,8 +390,10 @@ const save = props => {
                             marginTop: btnMarginT,
                             marginBottom: btnMarginB,
                             padding: btnPadding + btnPaddingU,
-                            border: btnBorderType,
-                            borderWidth: btnBorderWidth + "px",
+                            borderStyle: btnBorderType,
+                            borderWidth: btnBorderUpdated
+                                ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                : btnBorderWidth + "px",
                             borderRadius: btnBorderRadius + "px",
                             borderColor: btnBorderColor
                         }}
