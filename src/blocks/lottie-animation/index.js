@@ -9,60 +9,115 @@ const { registerBlockType } = wp.blocks;
 
 const LottieAttr = {
     block_id: {
-        type:"string"
+        type: "string"
     },
     classMigrate: {
         type: "boolean",
-        default:false
+        default: false
     },
     lottieURl: {
         type: "string",
-        default:""
+        default: ""
     },
     lottieJson: {
-        type:"object"
+        type: "object"
     },
     loop: {
         type: 'boolean',
-        default:true  
+        default: true
     },
     reverse: {
         type: "boolean",
-        default:false
+        default: false
     },
     speed: {
         type: "number",
-        default:1
+        default: 1
     },
     trigger: {
         type: 'string',
-        default:'none'
+        default: 'none'
     },
     size: {
-        type: "number",
+        type: "number"
     },
     sizeUnit: {
         type: "string",
-        default:'px'
+        default: 'px'
     },
     rotate: {
         type: "number",
-        default:0
+        default: 0
     },
     align: {
         type: "string",
-        default:"center"
+        default: "center"
     },
     link: {
         type: "boolean",
-        default:false
+        default: false
     },
     url: {
-        type: "string",
+        type: "string"
     },
     backColor: {
+        type: "string"
+    },
+    backOpacity: {
+        type: "number",
+        default: 1
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    borderType:{
+        type:"string",
+        default:'none'
+    },
+    borderWidth:{
+        type:"number",
+        default:0
+    },
+    borderColor:{
         type:"string"
-    }
+    },
+    borderRadius:{
+        type:"number",
+        default:0
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
 }
 
 registerBlockType("premium/lottie", {
@@ -72,5 +127,5 @@ registerBlockType("premium/lottie", {
     attributes: LottieAttr,
     example: {},
     edit: edit,
-    save: ()=>{},
+    save: () => { },
 });
