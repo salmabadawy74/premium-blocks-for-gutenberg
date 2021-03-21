@@ -33,15 +33,15 @@ const fancyTextAttrs = {
         type: "array",
         default: [
             {
-                title: __( "Designer" ),
+                title: __("Designer"),
                 edit: false,
             },
             {
-                title: __( "Developer" ),
+                title: __("Developer"),
                 edit: false,
             },
             {
-                title: __( "Awesome" ),
+                title: __("Awesome"),
                 edit: false,
             },
         ],
@@ -209,8 +209,8 @@ const fancyTextAttrs = {
     }
 };
 
-registerBlockType( "premium/fancy-text", {
-    title: __( "Fancy Text" ),
+registerBlockType("premium/fancy-text", {
+    title: __("Fancy Text"),
     icon: <PbgIcon icon="fancy-text" />,
     category: "premium-blocks",
     attributes: fancyTextAttrs,
@@ -221,4 +221,4 @@ registerBlockType( "premium/fancy-text", {
     edit: edit,
     save: save,
     deprecated: deprecated
-} );
+});

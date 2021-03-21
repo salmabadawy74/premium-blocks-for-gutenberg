@@ -26,7 +26,7 @@ const bannerAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-banner__title",
-        default: __( "Awesome Title" ),
+        default: __("Awesome Title"),
     },
     titleTag: {
         type: "string",
@@ -36,7 +36,7 @@ const bannerAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __( "Cool Description!!" ),
+        default: __("Cool Description!!"),
     },
     contentAlign: {
         type: "string",
@@ -260,8 +260,8 @@ const bannerAttrs = {
         default: false
     }
 };
-registerBlockType( "premium/banner", {
-    title: __( "Banner" ),
+registerBlockType("premium/banner", {
+    title: __("Banner"),
     icon: <PbgIcon icon="banner" />,
     category: "premium-blocks",
     attributes: bannerAttrs,
@@ -272,4 +272,4 @@ registerBlockType( "premium/banner", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

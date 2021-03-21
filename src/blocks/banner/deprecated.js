@@ -18,7 +18,7 @@ const deprecated_attributes_1_0_1 = {
         type: "array",
         source: "children",
         selector: ".premium-banner__title",
-        default: __( "Awesome Title" ),
+        default: __("Awesome Title"),
     },
     titleTag: {
         type: "string",
@@ -28,7 +28,7 @@ const deprecated_attributes_1_0_1 = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __( "Cool Description!!" ),
+        default: __("Cool Description!!"),
     },
     contentAlign: {
         type: "string",
@@ -242,7 +242,7 @@ const deprecated_attributes_1_7_1 = {
         type: "array",
         source: "children",
         selector: ".premium-banner__title",
-        default: __( "Awesome Title" )
+        default: __("Awesome Title")
     },
     titleTag: {
         type: "string",
@@ -252,7 +252,7 @@ const deprecated_attributes_1_7_1 = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __( "Cool Description!!" )
+        default: __("Cool Description!!")
     },
     contentAlign: {
         type: "string",
@@ -489,7 +489,7 @@ const newAttributes_1_7_2 = {
     },
 }
 
-const deprecated_attributes_1_7_2 = Object.assign( deprecated_attributes_1_7_1, newAttributes_1_7_2 )
+const deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_7_1, newAttributes_1_7_2)
 
 const deprecatedContent = [
 
@@ -509,7 +509,7 @@ const deprecatedContent = [
                 hideTablet: false,
                 hideMobile: false
             }
-            return Object.assign( attributes, newAttributes )
+            return Object.assign(attributes, newAttributes)
         },
         save: props => {
             const {
@@ -572,8 +572,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } premium-banner__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} premium-banner__responsive_${responsive}`}
                     style={{
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
@@ -584,22 +584,22 @@ const deprecatedContent = [
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1 } `,
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}"
-                            ].join( "\n" )
+                            ].join("\n")
                         }}
                     />
                     <div
-                        className={`premium-banner__inner premium-banner__min premium-banner__${ effect } premium-banner__${ hoverEffect } hover_${ hovered }`}
+                        className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
-                            boxShadow: `${ containerShadowHorizontal }px ${ containerShadowVertical }px ${ containerShadowBlur }px ${ containerShadowColor } ${ containerShadowPosition }`,
+                            boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
@@ -607,7 +607,7 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`premium-banner__img_wrap premium-banner__${ height }`}
+                            className={`premium-banner__img_wrap premium-banner__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign
@@ -618,7 +618,7 @@ const deprecatedContent = [
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
                                 }}
                             />
                         </div>
@@ -644,7 +644,7 @@ const deprecatedContent = [
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
                                     }}
                                 />
                             </div>
@@ -663,7 +663,7 @@ const deprecatedContent = [
                                         fontSize: descSize + "px",
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
-                                        textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`
+                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
                                     }}
                                 />
                             </div>
@@ -683,7 +683,7 @@ const deprecatedContent = [
     ,
     {
         attributes: deprecated_attributes_1_6_7,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 paddingT: "",
                 paddingR: "",
@@ -691,9 +691,9 @@ const deprecatedContent = [
                 paddingL: "",
                 paddingU: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -748,30 +748,30 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } ${ className }__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} ${className}__responsive_${responsive}`}
                     style={{
-                        boxShadow: `${ containerShadowHorizontal }px ${ containerShadowVertical }px ${ containerShadowBlur }px ${ containerShadowColor } ${ containerShadowPosition }`,
+                        boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
                     }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1
                                 } `,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                     <div
-                        className={`${ className }__inner ${ className }__min ${ className }__${ effect } ${ className }__${ hoverEffect } hover_${ hovered }`}
+                        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
                         style={{
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -780,24 +780,24 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`${ className }__img_wrap ${ className }__${ height }`}
+                            className={`${className}__img_wrap ${className}__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign,
                             }}
                         >
                             <img
-                                className={`${ className }__img`}
+                                className={`${className}__img`}
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                 }}
                             />
                         </div>
 
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 background:
                                     "effect2" === effect
@@ -806,47 +806,47 @@ const deprecatedContent = [
                             }}
                         >
                             <div
-                                className={`${ className }__title_wrap`}
+                                className={`${className}__title_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName={titleTag.toLowerCase()}
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     value={title}
                                     style={{
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                     }}
                                 />
                             </div>
                             <div
-                                className={`${ className }__desc_wrap`}
+                                className={`${className}__desc_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${ className }__desc`}
+                                    className={`${className}__desc`}
                                     value={desc}
                                     style={{
                                         color: descColor,
                                         fontSize: descSize + "px",
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
-                                        textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
+                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                                     }}
                                 />
                             </div>
                         </div>
                         {urlCheck && "" !== url && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={url}
                                 target={target && "_blank"}
                             />
@@ -858,7 +858,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_5_3,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 containerShadowColor: "",
                 containerShadowBlur: "0",
@@ -866,9 +866,9 @@ const deprecatedContent = [
                 containerShadowVertical: "0",
                 containerShadowPosition: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -918,27 +918,27 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } ${ className }__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} ${className}__responsive_${responsive}`}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1
                                 } `,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                     <div
-                        className={`${ className }__inner ${ className }__min ${ className }__${ effect } ${ className }__${ hoverEffect } hover_${ hovered }`}
+                        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
                         style={{
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -947,24 +947,24 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`${ className }__img_wrap ${ className }__${ height }`}
+                            className={`${className}__img_wrap ${className}__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign,
                             }}
                         >
                             <img
-                                className={`${ className }__img`}
+                                className={`${className}__img`}
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                 }}
                             />
                         </div>
 
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 background:
                                     "effect2" === effect
@@ -973,47 +973,47 @@ const deprecatedContent = [
                             }}
                         >
                             <div
-                                className={`${ className }__title_wrap`}
+                                className={`${className}__title_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName={titleTag.toLowerCase()}
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     value={title}
                                     style={{
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                     }}
                                 />
                             </div>
                             <div
-                                className={`${ className }__desc_wrap`}
+                                className={`${className}__desc_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${ className }__desc`}
+                                    className={`${className}__desc`}
                                     value={desc}
                                     style={{
                                         color: descColor,
                                         fontSize: descSize + "px",
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
-                                        textShadow: `${ descShadowHorizontal }px ${ descShadowVertical }px ${ descShadowBlur }px ${ descShadowColor }`,
+                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                                     }}
                                 />
                             </div>
                         </div>
                         {urlCheck && "" !== url && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={url}
                                 target={target && "_blank"}
                             />
@@ -1025,16 +1025,16 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_8,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 descShadowBlur: "0",
                 descShadowColor: "",
                 descShadowHorizontal: "0",
                 descShadowVertical: "0",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -1080,27 +1080,27 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } ${ className }__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} ${className}__responsive_${responsive}`}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1
                                 } `,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                     <div
-                        className={`${ className }__inner ${ className }__min ${ className }__${ effect } ${ className }__${ hoverEffect } hover_${ hovered }`}
+                        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
                         style={{
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -1109,24 +1109,24 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`${ className }__img_wrap ${ className }__${ height }`}
+                            className={`${className}__img_wrap ${className}__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign,
                             }}
                         >
                             <img
-                                className={`${ className }__img`}
+                                className={`${className}__img`}
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${ bright }% ) contrast( ${ contrast }% ) saturate( ${ saturation }% ) blur( ${ blur }px ) hue-rotate( ${ hue }deg )`,
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                 }}
                             />
                         </div>
 
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 background:
                                     "effect2" === effect
@@ -1135,33 +1135,33 @@ const deprecatedContent = [
                             }}
                         >
                             <div
-                                className={`${ className }__title_wrap`}
+                                className={`${className}__title_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName={titleTag.toLowerCase()}
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     value={title}
                                     style={{
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                     }}
                                 />
                             </div>
                             <div
-                                className={`${ className }__desc_wrap`}
+                                className={`${className}__desc_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${ className }__desc`}
+                                    className={`${className}__desc`}
                                     value={desc}
                                     style={{
                                         color: descColor,
@@ -1174,7 +1174,7 @@ const deprecatedContent = [
                         </div>
                         {urlCheck && "" !== url && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={url}
                                 target={target && "_blank"}
                             />
@@ -1186,7 +1186,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_8,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 blur: "0",
                 bright: "100",
@@ -1194,9 +1194,9 @@ const deprecatedContent = [
                 saturation: "100",
                 hue: "0",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -1237,27 +1237,27 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } ${ className }__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} ${className}__responsive_${responsive}`}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1
                                 } `,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                     <div
-                        className={`${ className }__inner ${ className }__min ${ className }__${ effect } ${ className }__${ hoverEffect } hover_${ hovered }`}
+                        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
                         style={{
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -1266,21 +1266,21 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`${ className }__img_wrap ${ className }__${ height }`}
+                            className={`${className}__img_wrap ${className}__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign,
                             }}
                         >
                             <img
-                                className={`${ className }__img`}
+                                className={`${className}__img`}
                                 alt="Banner Image"
                                 src={imageURL}
                             />
                         </div>
 
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 background:
                                     "effect2" === effect
@@ -1289,33 +1289,33 @@ const deprecatedContent = [
                             }}
                         >
                             <div
-                                className={`${ className }__title_wrap`}
+                                className={`${className}__title_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName={titleTag.toLowerCase()}
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     value={title}
                                     style={{
                                         color: titleColor,
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                     }}
                                 />
                             </div>
                             <div
-                                className={`${ className }__desc_wrap`}
+                                className={`${className}__desc_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${ className }__desc`}
+                                    className={`${className}__desc`}
                                     value={desc}
                                     style={{
                                         color: descColor,
@@ -1328,7 +1328,7 @@ const deprecatedContent = [
                         </div>
                         {urlCheck && "" !== url && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={url}
                                 target={target && "_blank"}
                             />
@@ -1340,16 +1340,16 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_0_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 shadowBlur: "0",
                 shadowColor: "",
                 shadowHorizontal: "0",
                 shadowVertical: "0",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -1386,27 +1386,27 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`premium-banner-${ id }`}
-                    className={`${ className } ${ className }__responsive_${ responsive }`}
+                    id={`premium-banner-${id}`}
+                    className={`${className} ${className}__responsive_${responsive}`}
                 >
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-banner-${ id } .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${ sepColor }`,
+                                `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__inner {`,
-                                `background: ${ background }`,
+                                `#premium-banner-${id} .premium-banner__inner {`,
+                                `background: ${background}`,
                                 "}",
-                                `#premium-banner-${ id } .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${ background ? 1 - opacity / 100 : 1
+                                `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1
                                 } `,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                     <div
-                        className={`${ className }__inner ${ className }__min ${ className }__${ effect } ${ className }__${ hoverEffect } hover_${ hovered }`}
+                        className={`${className}__inner ${className}__min ${className}__${effect} ${className}__${hoverEffect} hover_${hovered}`}
                         style={{
                             border: borderType,
                             borderWidth: borderWidth + "px",
@@ -1415,21 +1415,21 @@ const deprecatedContent = [
                         }}
                     >
                         <div
-                            className={`${ className }__img_wrap ${ className }__${ height }`}
+                            className={`${className}__img_wrap ${className}__${height}`}
                             style={{
                                 minHeight: minHeight,
                                 alignItems: verAlign,
                             }}
                         >
                             <img
-                                className={`${ className }__img`}
+                                className={`${className}__img`}
                                 alt="Banner Image"
                                 src={imageURL}
                             />
                         </div>
 
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 background:
                                     "effect2" === effect
@@ -1438,14 +1438,14 @@ const deprecatedContent = [
                             }}
                         >
                             <div
-                                className={`${ className }__title_wrap`}
+                                className={`${className}__title_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName={titleTag.toLowerCase()}
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     value={title}
                                     style={{
                                         color: titleColor,
@@ -1456,14 +1456,14 @@ const deprecatedContent = [
                                 />
                             </div>
                             <div
-                                className={`${ className }__desc_wrap`}
+                                className={`${className}__desc_wrap`}
                                 style={{
                                     textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${ className }__desc`}
+                                    className={`${className}__desc`}
                                     value={desc}
                                     style={{
                                         color: descColor,
@@ -1476,7 +1476,7 @@ const deprecatedContent = [
                         </div>
                         {urlCheck && "" !== url && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={url}
                                 target={target && "_blank"}
                             />

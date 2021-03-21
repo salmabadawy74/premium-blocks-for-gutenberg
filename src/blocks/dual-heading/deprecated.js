@@ -527,7 +527,7 @@ const newAttributes_1_7_5 = {
     }
 }
 
-const deprecated_attributes_1_7_6 = Object.assign( deprecated_attributes_1_7_5, newAttributes_1_7_5 )
+const deprecated_attributes_1_7_6 = Object.assign(deprecated_attributes_1_7_5, newAttributes_1_7_5)
 
 const deprecated_attributes_1_8_1 = {
     contentAlign: {
@@ -1075,7 +1075,7 @@ const newAttributes_2_1 = {
     }
 }
 
-const deprecated_attributes_2_1 = Object.assign( deprecated_attributes_2_0, newAttributes_2_1 );
+const deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
 
 const deprecatedContent = [
     {
@@ -1097,7 +1097,7 @@ const deprecatedContent = [
                 hideTablet: false,
                 hideMobile: false
             }
-            return Object.assign( attributes, newAttributes )
+            return Object.assign(attributes, newAttributes)
         },
         save: props => {
             const { className } = props;
@@ -1164,15 +1164,15 @@ const deprecatedContent = [
                 containerBorderRadius,
                 containerBorderColor
             } = props.attributes;
-            const mainClasses = classnames( className, 'premium-dheading-block__container' );
+            const mainClasses = classnames(className, 'premium-dheading-block__container');
 
             return (
                 <div
-                    className={`${ mainClasses }`}
+                    className={`${mainClasses}`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1186,7 +1186,7 @@ const deprecatedContent = [
                     <div className={`premium-dheading-block__wrap`}>
                         <h2 className={`premium-dheading-block__title`}>
                             <span
-                                className={`premium-dheading-block__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim } premium-headings-${ firstStroke }`}
+                                className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -1194,7 +1194,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
@@ -1208,13 +1208,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`premium-dheading-block__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim } premium-headings-${ secondStroke }`}
+                                className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -1222,7 +1222,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
@@ -1236,7 +1236,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
                                 }}
                             >
                                 {secondHeading}
@@ -1262,7 +1262,7 @@ const deprecatedContent = [
                 firstStroke: false,
                 secondStroke: false
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
         save: props => {
 
@@ -1330,15 +1330,15 @@ const deprecatedContent = [
                 containerBorderColor
             } = props.attributes;
 
-            const mainClasses = classnames( className, 'premium-dheading-block__container' );
+            const mainClasses = classnames(className, 'premium-dheading-block__container');
 
             return (
                 <div
-                    className={`${ mainClasses }`}
+                    className={`${mainClasses}`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1352,13 +1352,13 @@ const deprecatedContent = [
                     <div className={`premium-dheading-block__wrap`}>
                         <h2 className={`premium-dheading-block__title`}>
                             <span
-                                className={`premium-dheading-block__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
                                     backgroundColor: firstClip ? "none" : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
@@ -1372,19 +1372,19 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`premium-dheading-block__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
                                     backgroundColor: secondClip ? "none" : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
@@ -1398,7 +1398,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
                                 }}
                             >
                                 {secondHeading}
@@ -1425,7 +1425,7 @@ const deprecatedContent = [
                 containerBorderRadius: "0",
                 containerBorderColor: ""
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
         save: props => {
             const {
@@ -1488,11 +1488,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ mainClasses }`}
+                    className={`${mainClasses}`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1506,7 +1506,7 @@ const deprecatedContent = [
                     <div className={`premium-dheading-block__wrap`}>
                         <h2 className={`premium-dheading-block__title`}>
                             <span
-                                className={`premium-dheading-block__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim } premium-headings-${ firstStroke }`}
+                                className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -1514,7 +1514,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
@@ -1530,13 +1530,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`premium-dheading-block__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim } premium-headings-${ secondStroke }`}
+                                className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -1544,7 +1544,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
@@ -1560,7 +1560,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -1580,14 +1580,14 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_7_2,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 firstStroke: false,
                 secondStroke: false,
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const { className } = props;
 
             const {
@@ -1659,11 +1659,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ mainClasses }`}
+                    className={`${mainClasses}`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1677,7 +1677,7 @@ const deprecatedContent = [
                     <div className={`premium-dheading-block__wrap`}>
                         <h2 className={`premium-dheading-block__title`}>
                             <span
-                                className={`premium-dheading-block__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                className={`premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -1685,7 +1685,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
@@ -1701,13 +1701,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`premium-dheading-block__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                className={`premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -1715,7 +1715,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
@@ -1731,7 +1731,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -1751,16 +1751,16 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_4_8,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 containerBorderType: "none",
                 containerBorderWidth: "1",
                 containerBorderRadius: "0",
                 containerBorderColor: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 contentAlign,
                 firstHeading,
@@ -1821,21 +1821,21 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
                         backgroundAttachment: fixed ? "fixed" : "unset",
                     }}
                 >
-                    <div className={`${ className }__wrap`}>
-                        <h2 className={`${ className }__title`}>
+                    <div className={`${className}__wrap`}>
+                        <h2 className={`${className}__title`}>
                             <span
-                                className={`${ className }__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -1843,7 +1843,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
@@ -1859,13 +1859,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`${ className }__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -1873,7 +1873,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
@@ -1889,7 +1889,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -1897,7 +1897,7 @@ const deprecatedContent = [
                         </h2>
                         {link && headingURL && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={link && headingURL}
                                 target={target && "_blank"}
                             />
@@ -1909,14 +1909,14 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_4_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 firstFamily: "",
                 secondFamily: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 contentAlign,
                 firstHeading,
@@ -1975,21 +1975,21 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
                         backgroundAttachment: fixed ? "fixed" : "unset",
                     }}
                 >
-                    <div className={`${ className }__wrap`}>
-                        <h2 className={`${ className }__title`}>
+                    <div className={`${className}__wrap`}>
+                        <h2 className={`${className}__title`}>
                             <span
-                                className={`${ className }__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -1997,7 +1997,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     letterSpacing: firstLetter + "px",
@@ -2012,13 +2012,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`${ className }__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -2026,7 +2026,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     letterSpacing: secondLetter + "px",
@@ -2041,7 +2041,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -2049,7 +2049,7 @@ const deprecatedContent = [
                         </h2>
                         {link && headingURL && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={link && headingURL}
                                 target={target && "_blank"}
                             />
@@ -2061,7 +2061,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_0,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 imageID: "",
                 imageURL: "",
@@ -2070,9 +2070,9 @@ const deprecatedContent = [
                 backgroundPosition: "top center",
                 backgroundSize: "auto",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 contentAlign,
                 firstHeading,
@@ -2126,16 +2126,16 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: contentAlign,
                         backgroundColor: containerBack,
                     }}
                 >
-                    <div className={`${ className }__wrap`}>
-                        <h2 className={`${ className }__title`}>
+                    <div className={`${className}__wrap`}>
+                        <h2 className={`${className}__title`}>
                             <span
-                                className={`${ className }__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                 style={{
                                     display: display,
                                     color: firstColor,
@@ -2143,7 +2143,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : firstBackground,
                                     backgroundImage: firstClip
-                                        ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                        ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     letterSpacing: firstLetter + "px",
@@ -2158,13 +2158,13 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
                             </span>
                             <span
-                                className={`${ className }__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                 style={{
                                     display: display,
                                     color: secondColor,
@@ -2172,7 +2172,7 @@ const deprecatedContent = [
                                         ? "none"
                                         : secondBackground,
                                     backgroundImage: secondClip
-                                        ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                        ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     letterSpacing: secondLetter + "px",
@@ -2187,7 +2187,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -2195,7 +2195,7 @@ const deprecatedContent = [
                         </h2>
                         {link && headingURL && (
                             <a
-                                className={`${ className }__link`}
+                                className={`${className}__link`}
                                 href={link && headingURL}
                                 target={target && "_blank"}
                             />
@@ -2207,7 +2207,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_0,
-        save: ( props ) => {
+        save: (props) => {
             {
                 const {
                     contentAlign,
@@ -2262,20 +2262,20 @@ const deprecatedContent = [
 
                 return (
                     <a
-                        className={`${ className }__link`}
+                        className={`${className}__link`}
                         href={link && headingURL}
                         target={target && "_blank"}
                     >
                         <div
-                            className={`${ className }__container`}
+                            className={`${className}__container`}
                             style={{
                                 textAlign: contentAlign,
                                 backgroundColor: containerBack,
                             }}
                         >
-                            <h2 className={`${ className }__title`}>
+                            <h2 className={`${className}__title`}>
                                 <span
-                                    className={`${ className }__first premium-headingc-${ firstClip } premium-headinga-${ firstAnim }`}
+                                    className={`${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`}
                                     style={{
                                         display: display,
                                         color: firstColor,
@@ -2283,7 +2283,7 @@ const deprecatedContent = [
                                             ? "none"
                                             : firstBackground,
                                         backgroundImage: firstClip
-                                            ? `linear-gradient(to left, ${ firstColor }, ${ firstClipColor })`
+                                            ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                             : "none",
                                         fontSize: firstSize + "px",
                                         letterSpacing: firstLetter + "px",
@@ -2298,13 +2298,13 @@ const deprecatedContent = [
                                         borderColor: firstBorderColor,
                                         padding: firstPadding + "px",
                                         margin: firstMargin + "px",
-                                        textShadow: `${ firstShadowHorizontal }px ${ firstShadowVertical }px ${ firstShadowBlur }px ${ firstShadowColor }`,
+                                        textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                     }}
                                 >
                                     {firstHeading}
                                 </span>
                                 <span
-                                    className={`${ className }__second premium-headingc-${ secondClip } premium-headinga-${ secondAnim }`}
+                                    className={`${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`}
                                     style={{
                                         display: display,
                                         color: secondColor,
@@ -2312,7 +2312,7 @@ const deprecatedContent = [
                                             ? "none"
                                             : secondBackground,
                                         backgroundImage: secondClip
-                                            ? `linear-gradient(to left, ${ secondColor }, ${ secondClipColor })`
+                                            ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                             : "none",
                                         fontSize: secondSize + "px",
                                         letterSpacing: secondLetter + "px",
@@ -2327,7 +2327,7 @@ const deprecatedContent = [
                                         borderColor: secondBorderColor,
                                         padding: secondPadding + "px",
                                         margin: secondMargin + "px",
-                                        textShadow: `${ secondShadowHorizontal }px ${ secondShadowVertical }px ${ secondShadowBlur }px ${ secondShadowColor }`,
+                                        textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                     }}
                                 >
                                     {secondHeading}

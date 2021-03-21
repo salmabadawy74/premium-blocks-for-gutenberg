@@ -389,7 +389,7 @@ const newAttributes_2_2 = {
         type: "number"
     }
 }
-const testimonialsAttrs_2_2 = Object.assign( testimonialsAttrs_2_0, newAttributes_2_2 );
+const testimonialsAttrs_2_2 = Object.assign(testimonialsAttrs_2_0, newAttributes_2_2);
 
 
 const deprecatedContent = [
@@ -411,7 +411,7 @@ const deprecatedContent = [
                 authorComSizeUnit: 'px',
                 backOpacity: "",
             }
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
         save: props => {
             const {
@@ -466,11 +466,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -499,7 +499,7 @@ const deprecatedContent = [
                                 {authorImgUrl && (
                                     <img
                                         className={`premium-testimonial__img`}
-                                        src={`${ authorImgUrl }`}
+                                        src={`${authorImgUrl}`}
                                         alt="Author"
                                         style={{
                                             borderWidth: imgBorder + "px",
@@ -590,7 +590,7 @@ const deprecatedContent = [
     },
     {
         attributes: testimonialsAttrs_1_6_5,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 paddingTop: "",
                 paddingRight: "",
@@ -598,9 +598,9 @@ const deprecatedContent = [
                 paddingLeft: "",
                 paddingUnit: "px",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -648,19 +648,19 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
                         backgroundAttachment: fixed ? "fixed" : "unset",
                     }}
                 >
-                    <div className={`${ className }__container`}>
-                        <span className={`${ className }__upper`}>
+                    <div className={`${className}__container`}>
+                        <span className={`${className}__upper`}>
                             <PremiumUpperQuote
                                 size={quotSize}
                                 color={quotColor}
@@ -668,16 +668,16 @@ const deprecatedContent = [
                             />
                         </span>
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 textAlign: align,
                             }}
                         >
-                            <div className={`${ className }__img_wrap`}>
+                            <div className={`${className}__img_wrap`}>
                                 {authorImgUrl && (
                                     <img
-                                        className={`${ className }__img`}
-                                        src={`${ authorImgUrl }`}
+                                        className={`${className}__img`}
+                                        src={`${authorImgUrl}`}
                                         alt="Author"
                                         style={{
                                             borderWidth: imgBorder + "px",
@@ -692,11 +692,11 @@ const deprecatedContent = [
                                     <DefaultImage className={className} />
                                 )}
                             </div>
-                            <div className={`${ className }__text_wrap`}>
+                            <div className={`${className}__text_wrap`}>
                                 <div>
                                     <RichText.Content
                                         tagName="p"
-                                        className={`${ className }__text`}
+                                        className={`${className}__text`}
                                         value={text}
                                         style={{
                                             color: bodyColor,
@@ -708,10 +708,10 @@ const deprecatedContent = [
                                     />
                                 </div>
                             </div>
-                            <div className={`${ className }__info`}>
+                            <div className={`${className}__info`}>
                                 <RichText.Content
                                     tagName={authorTag.toLowerCase()}
-                                    className={`${ className }__author`}
+                                    className={`${className}__author`}
                                     value={author}
                                     style={{
                                         color: authorColor,
@@ -725,17 +725,17 @@ const deprecatedContent = [
                                     }}
                                 />
                                 <span
-                                    className={`${ className }__sep`}
+                                    className={`${className}__sep`}
                                     style={{
                                         color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
                                 </span>
-                                <div className={`${ className }__link_wrap`}>
+                                <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
-                                        className={`${ className }__author_comp`}
+                                        className={`${className}__author_comp`}
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
@@ -752,7 +752,7 @@ const deprecatedContent = [
                                 </div>
                             </div>
                         </div>
-                        <span className={`${ className }__lower`}>
+                        <span className={`${className}__lower`}>
                             <PremiumLowerQuote
                                 color={quotColor}
                                 size={quotSize}
@@ -766,7 +766,7 @@ const deprecatedContent = [
     },
     {
         attributes: testimonialsAttrs_1_3_9,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 backColor: "",
                 imageID: "",
@@ -776,9 +776,9 @@ const deprecatedContent = [
                 backgroundPosition: "top center",
                 backgroundSize: "auto",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -820,13 +820,13 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
-                    <div className={`${ className }__container`}>
-                        <span className={`${ className }__upper`}>
+                    <div className={`${className}__container`}>
+                        <span className={`${className}__upper`}>
                             <PremiumUpperQuote
                                 size={quotSize}
                                 color={quotColor}
@@ -834,16 +834,16 @@ const deprecatedContent = [
                             />
                         </span>
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 textAlign: align,
                             }}
                         >
-                            <div className={`${ className }__img_wrap`}>
+                            <div className={`${className}__img_wrap`}>
                                 {authorImgUrl && (
                                     <img
-                                        className={`${ className }__img`}
-                                        src={`${ authorImgUrl }`}
+                                        className={`${className}__img`}
+                                        src={`${authorImgUrl}`}
                                         alt="Author"
                                         style={{
                                             borderWidth: imgBorder + "px",
@@ -858,11 +858,11 @@ const deprecatedContent = [
                                     <DefaultImage className={className} />
                                 )}
                             </div>
-                            <div className={`${ className }__text_wrap`}>
+                            <div className={`${className}__text_wrap`}>
                                 <div>
                                     <RichText.Content
                                         tagName="p"
-                                        className={`${ className }__text`}
+                                        className={`${className}__text`}
                                         value={text}
                                         style={{
                                             color: bodyColor,
@@ -874,10 +874,10 @@ const deprecatedContent = [
                                     />
                                 </div>
                             </div>
-                            <div className={`${ className }__info`}>
+                            <div className={`${className}__info`}>
                                 <RichText.Content
                                     tagName={authorTag.toLowerCase()}
-                                    className={`${ className }__author`}
+                                    className={`${className}__author`}
                                     value={author}
                                     style={{
                                         color: authorColor,
@@ -891,17 +891,17 @@ const deprecatedContent = [
                                     }}
                                 />
                                 <span
-                                    className={`${ className }__sep`}
+                                    className={`${className}__sep`}
                                     style={{
                                         color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
                                 </span>
-                                <div className={`${ className }__link_wrap`}>
+                                <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
-                                        className={`${ className }__author_comp`}
+                                        className={`${className}__author_comp`}
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
@@ -917,7 +917,7 @@ const deprecatedContent = [
                                 </div>
                             </div>
                         </div>
-                        <span className={`${ className }__lower`}>
+                        <span className={`${className}__lower`}>
                             <PremiumLowerQuote
                                 color={quotColor}
                                 size={quotSize}
@@ -931,7 +931,7 @@ const deprecatedContent = [
     },
     {
         attributes: testimonialsAttrs_1_0_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
                 shadowBlur: "",
@@ -939,9 +939,9 @@ const deprecatedContent = [
                 shadowVertical: "",
                 shadowPosition: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -977,9 +977,9 @@ const deprecatedContent = [
             } = props.attributes;
 
             return (
-                <div className={`${ className }__wrap`}>
-                    <div className={`${ className }__container`}>
-                        <span className={`${ className }__upper`}>
+                <div className={`${className}__wrap`}>
+                    <div className={`${className}__container`}>
+                        <span className={`${className}__upper`}>
                             <PremiumUpperQuote
                                 size={quotSize}
                                 color={quotColor}
@@ -987,16 +987,16 @@ const deprecatedContent = [
                             />
                         </span>
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 textAlign: align,
                             }}
                         >
-                            <div className={`${ className }__img_wrap`}>
+                            <div className={`${className}__img_wrap`}>
                                 {authorImgUrl && (
                                     <img
-                                        className={`${ className }__img`}
-                                        src={`${ authorImgUrl }`}
+                                        className={`${className}__img`}
+                                        src={`${authorImgUrl}`}
                                         alt="Author"
                                         style={{
                                             borderWidth: imgBorder + "px",
@@ -1011,11 +1011,11 @@ const deprecatedContent = [
                                     <DefaultImage className={className} />
                                 )}
                             </div>
-                            <div className={`${ className }__text_wrap`}>
+                            <div className={`${className}__text_wrap`}>
                                 <div>
                                     <RichText.Content
                                         tagName="p"
-                                        className={`${ className }__text`}
+                                        className={`${className}__text`}
                                         value={text}
                                         style={{
                                             color: bodyColor,
@@ -1027,10 +1027,10 @@ const deprecatedContent = [
                                     />
                                 </div>
                             </div>
-                            <div className={`${ className }__info`}>
+                            <div className={`${className}__info`}>
                                 <RichText.Content
                                     tagName={authorTag.toLowerCase()}
-                                    className={`${ className }__author`}
+                                    className={`${className}__author`}
                                     value={author}
                                     style={{
                                         color: authorColor,
@@ -1044,17 +1044,17 @@ const deprecatedContent = [
                                     }}
                                 />
                                 <span
-                                    className={`${ className }__sep`}
+                                    className={`${className}__sep`}
                                     style={{
                                         color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
                                 </span>
-                                <div className={`${ className }__link_wrap`}>
+                                <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
-                                        className={`${ className }__author_comp`}
+                                        className={`${className}__author_comp`}
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
@@ -1070,7 +1070,7 @@ const deprecatedContent = [
                                 </div>
                             </div>
                         </div>
-                        <span className={`${ className }__lower`}>
+                        <span className={`${className}__lower`}>
                             <PremiumLowerQuote
                                 color={quotColor}
                                 size={quotSize}
@@ -1084,7 +1084,7 @@ const deprecatedContent = [
     },
     {
         attributes: testimonialsAttrs_1_0_1,
-        save: ( props ) => {
+        save: (props) => {
             const {
                 align,
                 authorImgUrl,
@@ -1116,9 +1116,9 @@ const deprecatedContent = [
             } = props.attributes;
 
             return (
-                <div className={`${ className }__wrap`}>
-                    <div className={`${ className }__container`}>
-                        <span className={`${ className }__upper`}>
+                <div className={`${className}__wrap`}>
+                    <div className={`${className}__container`}>
+                        <span className={`${className}__upper`}>
                             <PremiumUpperQuote
                                 size={quotSize}
                                 color={quotColor}
@@ -1126,16 +1126,16 @@ const deprecatedContent = [
                             />
                         </span>
                         <div
-                            className={`${ className }__content`}
+                            className={`${className}__content`}
                             style={{
                                 textAlign: align,
                             }}
                         >
-                            <div className={`${ className }__img_wrap`}>
+                            <div className={`${className}__img_wrap`}>
                                 {authorImgUrl && (
                                     <img
-                                        className={`${ className }__img`}
-                                        src={`${ authorImgUrl }`}
+                                        className={`${className}__img`}
+                                        src={`${authorImgUrl}`}
                                         alt="Author"
                                         style={{
                                             borderWidth: imgBorder + "px",
@@ -1150,11 +1150,11 @@ const deprecatedContent = [
                                     <DefaultImage className={className} />
                                 )}
                             </div>
-                            <div className={`${ className }__text_wrap`}>
+                            <div className={`${className}__text_wrap`}>
                                 <div>
                                     <RichText.Content
                                         tagName="p"
-                                        className={`${ className }__text`}
+                                        className={`${className}__text`}
                                         value={text}
                                         style={{
                                             color: bodyColor,
@@ -1166,10 +1166,10 @@ const deprecatedContent = [
                                     />
                                 </div>
                             </div>
-                            <div className={`${ className }__info`}>
+                            <div className={`${className}__info`}>
                                 <RichText.Content
                                     tagName={authorTag.toLowerCase()}
-                                    className={`${ className }__author`}
+                                    className={`${className}__author`}
                                     value={author}
                                     style={{
                                         color: authorColor,
@@ -1177,17 +1177,17 @@ const deprecatedContent = [
                                     }}
                                 />
                                 <span
-                                    className={`${ className }__sep`}
+                                    className={`${className}__sep`}
                                     style={{
                                         color: dashColor,
                                     }}
                                 >
                                     &nbsp;-&nbsp;
                                 </span>
-                                <div className={`${ className }__link_wrap`}>
+                                <div className={`${className}__link_wrap`}>
                                     <RichText.Content
                                         tagName={authorComTag.toLowerCase()}
-                                        className={`${ className }__author_comp`}
+                                        className={`${className}__author_comp`}
                                         value={authorCom}
                                         style={{
                                             color: authorComColor,
@@ -1203,7 +1203,7 @@ const deprecatedContent = [
                                 </div>
                             </div>
                         </div>
-                        <span className={`${ className }__lower`}>
+                        <span className={`${className}__lower`}>
                             <PremiumLowerQuote
                                 color={quotColor}
                                 size={quotSize}

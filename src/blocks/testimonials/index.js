@@ -233,8 +233,8 @@ const testimonialsAttrs = {
 
 };
 
-registerBlockType( "premium/testimonial", {
-    title: __( "Testimonial" ),
+registerBlockType("premium/testimonial", {
+    title: __("Testimonial"),
     icon: <PbgIcon icon="testimonials" />,
     category: "premium-blocks",
     attributes: testimonialsAttrs,
@@ -245,4 +245,4 @@ registerBlockType( "premium/testimonial", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

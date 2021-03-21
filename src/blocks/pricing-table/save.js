@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = ( props ) => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -139,28 +139,28 @@ const save = ( props ) => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames( className, "premium-pricing-table" );
+    const mainClasses = classnames(className, "premium-pricing-table");
 
     return (
         <div
-            id={`${ mainClasses }-${ block_id }`}
-            className={`${ mainClasses } premium-pricing-table-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            id={`${mainClasses}-${block_id}`}
+            className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
                 backgroundColor: tableBack
-                    ? hexToRgba( tableBack, tableOpacity )
+                    ? hexToRgba(tableBack, tableOpacity)
                     : "transparent",
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 padding: tablePadding + "px",
-                boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`,
+                boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
             }}
         >
             {badgeChecked && (
                 <div
-                    className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${ badgePos }`}
+                    className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
                 >
                     <div
                         className={`premium-pricing-table__badge`}
@@ -229,7 +229,7 @@ const save = ( props ) => {
                             lineHeight: titleLine + "px",
                             marginBottom: titleMarginB + "px",
                             padding: titlePadding + "px",
-                            textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                            textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                         }}
                     />
                 </div>
@@ -239,7 +239,7 @@ const save = ( props ) => {
                     className={`premium-pricing-table__price_wrap`}
                     style={{
                         backgroundColor: priceBack
-                            ? hexToRgba( priceBack, priceOpacity )
+                            ? hexToRgba(priceBack, priceOpacity)
                             : "transparent",
                         marginTop: priceMarginT + "px",
                         marginBottom: priceMarginB + "px",
@@ -318,7 +318,7 @@ const save = ( props ) => {
                     }}
                 >
                     <ul
-                        className={`premium-pricing-table__list list-${ listStyle }`}
+                        className={`premium-pricing-table__list list-${listStyle}`}
                         style={{
                             color: listColor,
                             background: listBack,
@@ -388,8 +388,8 @@ const save = ( props ) => {
                     >
                         <RichText.Content
                             tagName="span"
-                            onChange={( newText ) =>
-                                setAttributes( { btnText: newText } )
+                            onChange={(newText) =>
+                                setAttributes({ btnText: newText })
                             }
                             value={btnText}
                             style={{
@@ -400,11 +400,11 @@ const save = ( props ) => {
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-pricing-table-${ block_id } .premium-pricing-table__button_link:hover {`,
-                                `color: ${ btnHoverColor } !important;`,
-                                `background: ${ btnHoverBack } !important`,
+                                `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
+                                `color: ${btnHoverColor} !important;`,
+                                `background: ${btnHoverBack} !important`,
                                 "}",
-                            ].join( "\n" ),
+                            ].join("\n"),
                         }}
                     />
                 </div>

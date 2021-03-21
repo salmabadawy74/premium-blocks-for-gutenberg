@@ -14,13 +14,13 @@ const accordionAttrs = {
         type: "string"
     },
     accordionId: {
-        type: "string",
+        type: "string"
     },
     repeaterItems: {
         type: "array",
         default: [
             {
-                titleText: __( "Awesome Title" ),
+                titleText: __("Awesome Title"),
                 descText:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             },
@@ -35,7 +35,7 @@ const accordionAttrs = {
         default: "H4"
     },
     titleColor: {
-        type: "string",
+        type: "string"
     },
     titleSizeUnit: {
         type: "string",
@@ -54,7 +54,7 @@ const accordionAttrs = {
         type: "number",
     },
     titleLetter: {
-        type: "number",
+        type: "number"
     },
     titleStyle: {
         type: "string"
@@ -248,8 +248,8 @@ const accordionAttrs = {
     }
 };
 
-registerBlockType( "premium/accordion", {
-    title: __( "Accordion" ),
+registerBlockType("premium/accordion", {
+    title: __("Accordion"),
     icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: accordionAttrs,
@@ -260,4 +260,4 @@ registerBlockType( "premium/accordion", {
     edit: edit,
     save: save,
     deprecated: deprecated,
-} );
+});

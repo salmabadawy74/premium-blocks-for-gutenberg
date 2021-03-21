@@ -291,8 +291,8 @@ const counterAttrs = {
     }
 };
 
-registerBlockType( "premium/countup", {
-    title: __( "CountUp" ),
+registerBlockType("premium/countup", {
+    title: __("CountUp"),
     icon: <PbgIcon icon="counter" />,
     category: "premium-blocks",
     attributes: counterAttrs,
@@ -303,4 +303,4 @@ registerBlockType( "premium/countup", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

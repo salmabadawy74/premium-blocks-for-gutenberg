@@ -148,15 +148,15 @@ const containerAttrs = {
     }
 };
 
-registerBlockType( "premium/container", {
-    title: __( "Section" ),
+registerBlockType("premium/container", {
+    title: __("Section"),
     icon: <PbgIcon icon="section" />,
     category: "premium-blocks",
     attributes: containerAttrs,
     supports: {
         inserter: container,
         align: true,
-        align: [ "center", "wide", "full" ],
+        align: ["center", "wide", "full"],
     },
     example: {
         attributes: {
@@ -166,4 +166,4 @@ registerBlockType( "premium/container", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss'
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) {
+function styling(props) {
     const {
         classMigrate,
         block_id,
@@ -25,37 +25,37 @@ function styling ( props ) {
 
     selectors = {
         " .premium-testimonial__author": {
-            "font-size" : generateCSSUnit(authorSize,authorSizeUnit)
+            "font-size": generateCSSUnit(authorSize, authorSizeUnit)
         },
         " .premium-testimonial__author_comp": {
-            "font-size":generateCSSUnit(authorComSize,authorComSizeUnit)
+            "font-size": generateCSSUnit(authorComSize, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {
-            "font-size" : generateCSSUnit(bodySize,bodySizeUnit)
+            "font-size": generateCSSUnit(bodySize, bodySizeUnit)
         }
     };
 
     tablet_selectors = {
         " .premium-testimonial__author": {
-            "font-size" : generateCSSUnit(authorSizeTablet,authorSizeUnit)
+            "font-size": generateCSSUnit(authorSizeTablet, authorSizeUnit)
         },
         " .premium-testimonial__author_comp": {
-            "font-size":generateCSSUnit(authorComSizeTablet,authorComSizeUnit)
+            "font-size": generateCSSUnit(authorComSizeTablet, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {
-            "font-size" : generateCSSUnit(bodySizeTablet,bodySizeUnit)
+            "font-size": generateCSSUnit(bodySizeTablet, bodySizeUnit)
         }
     };
 
     mobile_selectors = {
         " .premium-testimonial__author": {
-            "font-size" : generateCSSUnit(authorSizeMobile,authorSizeUnit)
+            "font-size": generateCSSUnit(authorSizeMobile, authorSizeUnit)
         },
         " .premium-testimonial__author_comp": {
-            "font-size":generateCSSUnit(authorComSizeMobile,authorComSizeUnit)
+            "font-size": generateCSSUnit(authorComSizeMobile, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {
-            "font-size" : generateCSSUnit(bodySizeMobile,bodySizeUnit)
+            "font-size": generateCSSUnit(bodySizeMobile, bodySizeUnit)
         }
     }
 
@@ -68,7 +68,7 @@ function styling ( props ) {
     styling_css = generateCSS(selectors, id)
     styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
-    styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+    styling_css += generateCSS(mobile_selectors, id, true, "mobile")
     console.log(styling_css)
 
     return styling_css

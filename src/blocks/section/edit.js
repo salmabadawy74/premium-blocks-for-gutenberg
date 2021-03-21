@@ -23,7 +23,7 @@ const {
 } = wp.blockEditor;
 
 const CONTENT = [
-    [ "core/paragraph", { content: __( "Insert your text or select a block " ) } ],
+    ["core/paragraph", { content: __("Insert your text or select a block ") }],
 ];
 
 const edit = props => {
@@ -73,41 +73,41 @@ const edit = props => {
     const WIDTH = [
         {
             value: "boxed",
-            label: __( "Boxed" ),
+            label: __("Boxed"),
         },
         {
             value: "full",
-            label: __( "Full Width" ),
+            label: __("Full Width"),
         },
     ];
 
     const HEIGHT = [
         {
             value: "fit",
-            label: __( "Fit to Screen" ),
+            label: __("Fit to Screen"),
         },
         {
             value: "min",
-            label: __( "Min Height" ),
+            label: __("Min Height"),
         },
     ];
 
     const VPOSITION = [
         {
             value: "top",
-            label: __( "Top" ),
+            label: __("Top"),
         },
         {
             value: "middle",
-            label: __( "Middle" ),
+            label: __("Middle"),
         },
         {
             value: "bottom",
-            label: __( "Bottom" ),
+            label: __("Bottom"),
         },
     ];
 
-    const mainClasses = classnames( className, "premium-container" );
+    const mainClasses = classnames(className, "premium-container");
 
     return [
         isSelected && (
@@ -115,7 +115,7 @@ const edit = props => {
                 <AlignmentToolbar
                     value={horAlign}
                     onChange={newAlign =>
-                        setAttributes( { horAlign: newAlign } )
+                        setAttributes({ horAlign: newAlign })
                     }
                 />
             </BlockControls>
@@ -123,15 +123,15 @@ const edit = props => {
         isSelected && (
             <InspectorControls key="inspector">
                 <PanelBody
-                    title={__( "General Settings" )}
+                    title={__("General Settings")}
                     className={`premium-panel-body premium-stretch-section`}
                     initialOpen={true}
                 >
                     <ToggleControl
-                        label={__( "Stretch Section" )}
+                        label={__("Stretch Section")}
                         checked={stretchSection}
                         onChange={check =>
-                            setAttributes( { stretchSection: check } )
+                            setAttributes({ stretchSection: check })
                         }
                         help={__(
                             "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time."
@@ -139,79 +139,79 @@ const edit = props => {
                     />
                     {stretchSection && (
                         <SelectControl
-                            label={__( "Content Width" )}
+                            label={__("Content Width")}
                             options={WIDTH}
                             value={innerWidthType}
                             onChange={newValue =>
-                                setAttributes( { innerWidthType: newValue } )
+                                setAttributes({ innerWidthType: newValue })
                             }
                         />
                     )}
                     {"boxed" === innerWidthType && stretchSection && (
                         <RangeControl
-                            label={__( "Max Width (%)" )}
+                            label={__("Max Width (%)")}
                             min="1"
                             max="1600"
                             value={innerWidth}
                             onChange={newValue =>
-                                setAttributes( { innerWidth: newValue } )
+                                setAttributes({ innerWidth: newValue })
                             }
                         />
                     )}
                     <SelectControl
-                        label={__( "Height" )}
+                        label={__("Height")}
                         options={HEIGHT}
                         value={height}
                         onChange={newValue =>
-                            setAttributes( { height: newValue } )
+                            setAttributes({ height: newValue })
                         }
                     />
                     {"min" === height && (
                         <Fragment>
                             <PremiumSizeUnits
-                                units={[ "px", "vh", "vw" ]}
+                                units={["px", "vh", "vw"]}
                                 onChangeSizeUnit={newValue =>
-                                    setAttributes( { minHeightUnit: newValue } )
+                                    setAttributes({ minHeightUnit: newValue })
                                 }
                             />
                             <RangeControl
-                                label={__( "Min Height" )}
+                                label={__("Min Height")}
                                 value={minHeight}
                                 min="1"
                                 max="800"
                                 onChange={newValue =>
-                                    setAttributes( { minHeight: newValue } )
+                                    setAttributes({ minHeight: newValue })
                                 }
                             />
                         </Fragment>
                     )}
                     <SelectControl
-                        label={__( "Content Position" )}
+                        label={__("Content Position")}
                         help={__(
                             "If you have two or more inner columns then this option will work only on the preview page"
                         )}
                         options={VPOSITION}
                         value={vPos}
                         onChange={newValue =>
-                            setAttributes( { vPos: newValue } )
+                            setAttributes({ vPos: newValue })
                         }
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__( "Background" )}
+                    title={__("Background")}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <p>{__( "Background Color" )}</p>
+                    <p>{__("Background Color")}</p>
                     <PremiumBackground
                         type="color"
                         colorValue={color}
                         onChangeColor={newvalue =>
-                            setAttributes( { color: newvalue } )
+                            setAttributes({ color: newvalue })
                         }
                         opacityValue={opacity}
                         onChangeOpacity={value =>
-                            setAttributes( { opacity: value } )
+                            setAttributes({ opacity: value })
                         }
                     />
                     <PremiumBackground
@@ -222,30 +222,30 @@ const edit = props => {
                         backgroundSize={backgroundSize}
                         fixed={fixed}
                         onSelectMedia={media => {
-                            setAttributes( {
+                            setAttributes({
                                 imageID: media.id,
                                 imageURL: media.url,
-                            } );
+                            });
                         }}
                         onRemoveImage={value =>
-                            setAttributes( { imageURL: "", imageID: "" } )
+                            setAttributes({ imageURL: "", imageID: "" })
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes( { backgroundPosition: newValue } )
+                            setAttributes({ backgroundPosition: newValue })
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes( { backgroundRepeat: newValue } )
+                            setAttributes({ backgroundRepeat: newValue })
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes( { backgroundSize: newValue } )
+                            setAttributes({ backgroundSize: newValue })
                         }
                         onChangeFixed={check =>
-                            setAttributes( { fixed: check } )
+                            setAttributes({ fixed: check })
                         }
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__( "Border" )}
+                    title={__("Border")}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -255,16 +255,16 @@ const edit = props => {
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={newType =>
-                            setAttributes( { borderType: newType } )
+                            setAttributes({ borderType: newType })
                         }
                         onChangeWidth={newWidth =>
-                            setAttributes( { borderWidth: newWidth } )
+                            setAttributes({ borderWidth: newWidth })
                         }
                         onChangeColor={colorValue =>
-                            setAttributes( { borderColor: colorValue.hex } )
+                            setAttributes({ borderColor: colorValue.hex })
                         }
                         onChangeRadius={newrRadius =>
-                            setAttributes( { borderRadius: newrRadius } )
+                            setAttributes({ borderRadius: newrRadius })
                         }
                     />
                     <PremiumBoxShadow
@@ -275,72 +275,72 @@ const edit = props => {
                         vertical={shadowVertical}
                         position={shadowPosition}
                         onChangeColor={newColor =>
-                            setAttributes( {
+                            setAttributes({
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
                                         : newColor.hex,
-                            } )
+                            })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes( {
+                            setAttributes({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur,
-                            } )
+                            })
                         }
                         onChangehHorizontal={newValue =>
-                            setAttributes( {
+                            setAttributes({
                                 shadowHorizontal:
                                     newValue === undefined ? 0 : newValue,
-                            } )
+                            })
                         }
                         onChangeVertical={newValue =>
-                            setAttributes( {
+                            setAttributes({
                                 shadowVertical:
                                     newValue === undefined ? 0 : newValue,
-                            } )
+                            })
                         }
                         onChangePosition={newValue =>
-                            setAttributes( {
+                            setAttributes({
                                 shadowPosition:
                                     newValue === undefined ? 0 : newValue,
-                            } )
+                            })
                         }
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__( "Spacings" )}
+                    title={__("Spacings")}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
                     <PremiumMargin
-                        directions={[ "all" ]}
+                        directions={["all"]}
                         marginTop={marginTop}
                         marginRight={marginRight}
                         marginBottom={marginBottom}
                         marginLeft={marginLeft}
                         onChangeMarTop={value =>
-                            setAttributes( {
+                            setAttributes({
                                 marginTop: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangeMarRight={value =>
-                            setAttributes( {
+                            setAttributes({
                                 marginRight: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangeMarBottom={value =>
-                            setAttributes( {
+                            setAttributes({
                                 marginBottom: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangeMarLeft={value =>
-                            setAttributes( {
+                            setAttributes({
                                 marginLeft: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue =>
-                            setAttributes( { marginUnit: newvalue } )
+                            setAttributes({ marginUnit: newvalue })
                         }
                     />
                     <PremiumPadding
@@ -349,29 +349,29 @@ const edit = props => {
                         paddingBottom={paddingBottom}
                         paddingLeft={paddingLeft}
                         onChangePadTop={value =>
-                            setAttributes( {
+                            setAttributes({
                                 paddingTop: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangePadRight={value =>
-                            setAttributes( {
+                            setAttributes({
                                 paddingRight: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangePadBottom={value =>
-                            setAttributes( {
+                            setAttributes({
                                 paddingBottom: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         onChangePadLeft={value =>
-                            setAttributes( {
+                            setAttributes({
                                 paddingLeft: value === undefined ? 0 : value,
-                            } )
+                            })
                         }
                         showUnits={true}
                         selectedUnit={paddingUnit}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes( { paddingUnit: newvalue } )
+                            setAttributes({ paddingUnit: newvalue })
                         }
                     />
                 </PanelBody>
@@ -379,27 +379,27 @@ const edit = props => {
                     Desktop={hideDesktop}
                     Tablet={hideTablet}
                     Mobile={hideMobile}
-                    onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
-                    onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
-                    onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                 />
             </InspectorControls>
         ),
         <div
 
-            className={`${ mainClasses } premium-container__stretch_${ stretchSection } premium-container__${ innerWidthType } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color
-                    ? hexToRgba( color, opacity )
+                    ? hexToRgba(color, opacity)
                     : "transparent",
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: imageURL ? `url('${ imageURL }')` : "none",
+                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -412,11 +412,11 @@ const edit = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
             }}
         >
             <div
-                className={`premium-container__content_wrap premium-container__${ vPos }`}
+                className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
                     maxWidth:
                         "boxed" == innerWidthType && stretchSection

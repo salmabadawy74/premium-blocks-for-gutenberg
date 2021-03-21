@@ -66,22 +66,22 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-    let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+    let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
-    const mainClasses = classnames( className, 'premium-countup' );
+    const mainClasses = classnames(className, 'premium-countup');
 
     return (
         <div
-            id={`premium-countup-${ block_id }`}
-            className={`${ mainClasses }__wrap premium-countup-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            id={`premium-countup-${block_id}`}
+            className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
                 backgroundColor: containerBack
-                    ? hexToRgba( containerBack, containerOpacity )
+                    ? hexToRgba(containerBack, containerOpacity)
                     : "transparent",
-                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                backgroundImage: `url('${ backgroundImageURL }')`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                backgroundImage: `url('${backgroundImageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -112,7 +112,7 @@ const save = props => {
                 >
                     {"icon" === icon && (
                         <i
-                            className={`premium-countup__icon ${ iconClass }`}
+                            className={`premium-countup__icon ${iconClass}`}
                             style={{
                                 fontSize: iconSize + "px",
                                 color: iconColor
@@ -180,7 +180,7 @@ const save = props => {
                         </p>
                     )}
                 </div>
-                {titleCheck && ( "row" === flexDir || "row-reverse" === flexDir ) && (
+                {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
                     <h3
                         className={`premium-countup__title`}
                         style={{
@@ -198,7 +198,7 @@ const save = props => {
                     </h3>
                 )}
             </div>
-            {titleCheck && ( "column" === flexDir || "column-reverse" === flexDir ) && (
+            {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
                 <h3
                     className={`premium-countup__title`}
                     style={{

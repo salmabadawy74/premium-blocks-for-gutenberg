@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) {
+function styling(props) {
     const {
         block_id,
         classMigrate,
@@ -22,41 +22,41 @@ function styling ( props ) {
 
     selectors = {
         " .premium-accordion__title": {
-            "font-size": generateCSSUnit( titleSize, titleSizeUnit ),
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size": generateCSSUnit( descSize, descSizeUnit )
+            "font-size": generateCSSUnit(descSize, descSizeUnit)
         }
     }
 
     tablet_selectors = {
         " .premium-accordion__title ": {
-            "font-size": generateCSSUnit( titleSizeTablet, titleSizeUnit ),
+            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size": generateCSSUnit( descSizeTablet, descSizeUnit )
+            "font-size": generateCSSUnit(descSizeTablet, descSizeUnit)
         }
     }
 
     mobile_selectors = {
         " .premium-accordion__title": {
-            "font-size": generateCSSUnit( titleSizeMobile, titleSizeUnit ),
+            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit),
         },
         " .premium-accordion__desc": {
-            "font-size": generateCSSUnit( descSizeMobile, descSizeUnit )
+            "font-size": generateCSSUnit(descSizeMobile, descSizeUnit)
         }
     }
 
     var styling_css = ""
-    var id = `#${ accordionId }`
-    if ( classMigrate ) {
-        id = `.premium-accordion-${ block_id }`
+    var id = `#${accordionId}`
+    if (classMigrate) {
+        id = `.premium-accordion-${block_id}`
     }
 
-    styling_css = generateCSS( selectors, id )
-    styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+    styling_css = generateCSS(selectors, id)
+    styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
-    styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+    styling_css += generateCSS(mobile_selectors, id, true, "mobile")
 
     return styling_css
 

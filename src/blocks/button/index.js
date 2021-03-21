@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 const buttonAttrs = {
     btnText: {
         type: "string",
-        default: __( "Premium Button" )
+        default: __("Premium Button")
     },
     btnSize: {
         type: "string",
@@ -169,8 +169,8 @@ const buttonAttrs = {
     }
 };
 
-registerBlockType( "premium/button", {
-    title: __( "Button" ),
+registerBlockType("premium/button", {
+    title: __("Button"),
     icon: <PbgIcon icon="button" />,
     category: "premium-blocks",
     attributes: buttonAttrs,
@@ -181,4 +181,4 @@ registerBlockType( "premium/button", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

@@ -26,15 +26,15 @@ const fancyAttributes = {
         type: "array",
         default: [
             {
-                title: __( "Designer" ),
+                title: __("Designer"),
                 edit: false,
             },
             {
-                title: __( "Developer" ),
+                title: __("Developer"),
                 edit: false,
             },
             {
-                title: __( "Awesome" ),
+                title: __("Awesome"),
                 edit: false,
             },
         ],
@@ -213,7 +213,7 @@ const fancyAttributes_1_0_1 = Object.assign(
 const deprecated = [
     {
         attributes: fancyAttributes_1_0_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 fancyTextBGOpacity: "",
                 textBGOpacity: "",
@@ -222,9 +222,9 @@ const deprecated = [
                 hideMobile: false
 
             };
-           return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const { attributes, className } = props;
             const {
                 block_id,
@@ -250,7 +250,7 @@ const deprecated = [
                 <div
                     className={classnames(
                         className,
-                        `premium-block-${ block_id }`
+                        `premium-block-${block_id}`
                     )}
                     style={{
                         textAlign: align,
@@ -258,24 +258,24 @@ const deprecated = [
                 >
                     {effect == "typing" ? (
                         <div
-                            id={`premium-fancy-text-${ block_id }`}
+                            id={`premium-fancy-text-${block_id}`}
                             className={`premium-fancy-text`}
                             style={{
                                 textAlign: align,
                             }}
-                            data-effect={`${ effect }`}
-                            data-strings={`${ repeaterFancyText.map(
-                                ( item, index ) => {
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map(
+                                (item, index) => {
                                     return item.title;
                                 }
-                            ) }`}
-                            data-typespeed={`${ typeSpeed }`}
-                            data-backspeed={`${ backSpeed }`}
-                            data-startdelay={`${ startdelay }`}
-                            data-backdelay={`${ backdelay }`}
-                            data-loop={`${ loop }`}
-                            data-cursorshow={`${ cursorShow }`}
-                            data-cursormark={`${ cursorMark }`}
+                            )}`}
+                            data-typespeed={`${typeSpeed}`}
+                            data-backspeed={`${backSpeed}`}
+                            data-startdelay={`${startdelay}`}
+                            data-backdelay={`${backdelay}`}
+                            data-loop={`${loop}`}
+                            data-cursorshow={`${cursorShow}`}
+                            data-cursormark={`${cursorMark}`}
                         >
                             <span className={`premium-fancy-text-prefix-text`}>
                                 {prefix}{" "}
@@ -289,44 +289,44 @@ const deprecated = [
                             </span>
                         </div>
                     ) : (
+                        <div
+                            className={`premium-fancy-text premium-fancy-slide`}
+                            style={{
+                                textAlign: align,
+                            }}
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map(
+                                (item, index) => {
+                                    return item.title;
+                                }
+                            )}`}
+                            data-animationspeed={`${animationSpeed}`}
+                            data-pausetime={`${pauseTime}`}
+                            data-hoverpause={`${hoverPause}`}
+                        >
+                            <span className={`premium-fancy-text-prefix-text`}>
+                                {prefix}{" "}
+                            </span>
                             <div
-                                className={`premium-fancy-text premium-fancy-slide`}
+                                className={`premium-fancy-text-title-slide`}
                                 style={{
-                                    textAlign: align,
+                                    textAlign: fancyalign,
                                 }}
-                                data-effect={`${ effect }`}
-                                data-strings={`${ repeaterFancyText.map(
-                                    ( item, index ) => {
-                                        return item.title;
-                                    }
-                                ) }`}
-                                data-animationspeed={`${ animationSpeed }`}
-                                data-pausetime={`${ pauseTime }`}
-                                data-hoverpause={`${ hoverPause }`}
                             >
-                                <span className={`premium-fancy-text-prefix-text`}>
-                                    {prefix}{" "}
-                                </span>
-                                <div
-                                    className={`premium-fancy-text-title-slide`}
-                                    style={{
-                                        textAlign: fancyalign,
-                                    }}
+                                <ul
+                                    className={`premium-fancy-text-title-slide-list`}
                                 >
-                                    <ul
-                                        className={`premium-fancy-text-title-slide-list`}
-                                    >
-                                        {repeaterFancyText.map( ( item, index ) => {
-                                            return <li>{item.title}</li>;
-                                        } )}
-                                    </ul>
-                                </div>
-                                <span className={`premium-fancy-text-suffix-text`}>
-                                    {" "}
-                                    {suffix}
-                                </span>
+                                    {repeaterFancyText.map((item, index) => {
+                                        return <li>{item.title}</li>;
+                                    })}
+                                </ul>
                             </div>
-                        )}
+                            <span className={`premium-fancy-text-suffix-text`}>
+                                {" "}
+                                {suffix}
+                            </span>
+                        </div>
+                    )}
                 </div>
             );
         },

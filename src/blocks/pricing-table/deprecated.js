@@ -378,7 +378,7 @@ const pricingAttrs_1_6_3 = {
     },
     badgeText: {
         type: "string",
-        default: __( "Popular" ),
+        default: __("Popular"),
     },
     listChecked: {
         type: "boolean",
@@ -828,7 +828,7 @@ const pricingAttrs_1_8_1 = {
     },
     badgeText: {
         type: "string",
-        default: __( "Popular" )
+        default: __("Popular")
     },
     listChecked: {
         type: "boolean",
@@ -1028,7 +1028,7 @@ const newAttributes_1_7 = {
     }
 }
 
-const pricingAttrs_1_7 = Object.assign( pricingAttrs_1_8_1, newAttributes_1_7 );
+const pricingAttrs_1_7 = Object.assign(pricingAttrs_1_8_1, newAttributes_1_7);
 
 
 const deprecatedContent = [
@@ -1074,7 +1074,7 @@ const deprecatedContent = [
                 hideTablet: false,
                 hideMobile: false
             }
-            return Object.assign( newAttributes, attributes );
+            return Object.assign(newAttributes, attributes);
         },
         save: props => {
             const {
@@ -1207,8 +1207,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -1217,12 +1217,12 @@ const deprecatedContent = [
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
                         padding: tablePadding + "px",
-                        boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`
+                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
                     }}
                 >
                     {badgeChecked && (
                         <div
-                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${ badgePos }`}
+                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
                         >
                             <div
                                 className={`premium-pricing-table__badge`}
@@ -1291,7 +1291,7 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
                                 }}
                             />
                         </div>
@@ -1383,7 +1383,7 @@ const deprecatedContent = [
                             }}
                         >
                             <ul
-                                className={`premium-pricing-table__list list-${ listStyle }`}
+                                className={`premium-pricing-table__list list-${listStyle}`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -1457,7 +1457,7 @@ const deprecatedContent = [
                                 <RichText.Content
                                     tagName="span"
                                     onChange={newText =>
-                                        setAttributes( { btnText: newText } )
+                                        setAttributes({ btnText: newText })
                                     }
                                     value={btnText}
                                     style={{
@@ -1468,11 +1468,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
-                                        `color: ${ btnHoverColor } !important;`,
-                                        `background: ${ btnHoverBack } !important`,
+                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
+                                        `color: ${btnHoverColor} !important;`,
+                                        `background: ${btnHoverBack} !important`,
                                         "}"
-                                    ].join( "\n" )
+                                    ].join("\n")
                                 }}
                             />
                         </div>
@@ -1483,10 +1483,10 @@ const deprecatedContent = [
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: ( attributes ) => {
-            return Object.assign( attributes, { featsAlign: "" } );
+        migrate: (attributes) => {
+            return Object.assign(attributes, { featsAlign: "" });
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 contentAlign,
                 tableBack,
@@ -1615,8 +1615,8 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -1625,15 +1625,15 @@ const deprecatedContent = [
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
                         padding: tablePadding + "px",
-                        boxShadow: `${ tableShadowHorizontal }px ${ tableShadowVertical }px ${ tableShadowBlur }px ${ tableShadowColor } ${ tableShadowPosition }`,
+                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
                     }}
                 >
                     {badgeChecked && (
                         <div
-                            className={`${ className }__badge_wrap ${ className }__badge_${ badgePos }`}
+                            className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
                         >
                             <div
-                                className={`${ className }__badge`}
+                                className={`${className}__badge`}
                                 style={{
                                     borderRightColor:
                                         "right" === badgePos
@@ -1684,7 +1684,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
                                 paddingBottom: titleMarginB + "px",
@@ -1692,7 +1692,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={title}
                                 style={{
                                     color: titleColor,
@@ -1707,14 +1707,14 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 }}
                             />
                         </div>
                     )}
                     {priceChecked && (
                         <div
-                            className={`${ className }__price_wrap`}
+                            className={`${className}__price_wrap`}
                             style={{
                                 background: priceBack,
                                 marginTop: priceMarginT + "px",
@@ -1725,7 +1725,7 @@ const deprecatedContent = [
                         >
                             {slashPrice && (
                                 <strike
-                                    className={`${ className }__slash`}
+                                    className={`${className}__slash`}
                                     style={{
                                         color: slashColor,
                                         fontSize: slashSize + "px",
@@ -1738,7 +1738,7 @@ const deprecatedContent = [
                             )}
                             {currPrice && (
                                 <span
-                                    className={`${ className }__currency`}
+                                    className={`${className}__currency`}
                                     style={{
                                         color: currColor,
                                         fontSize: currSize + "px",
@@ -1751,7 +1751,7 @@ const deprecatedContent = [
                             )}
                             {valPrice && (
                                 <span
-                                    className={`${ className }__val`}
+                                    className={`${className}__val`}
                                     style={{
                                         color: valColor,
                                         fontSize: valSize + "px",
@@ -1764,7 +1764,7 @@ const deprecatedContent = [
                             )}
                             {divPrice && (
                                 <span
-                                    className={`${ className }__divider`}
+                                    className={`${className}__divider`}
                                     style={{
                                         color: divColor,
                                         fontSize: divSize + "px",
@@ -1777,7 +1777,7 @@ const deprecatedContent = [
                             )}
                             {durPrice && (
                                 <span
-                                    className={`${ className }__dur`}
+                                    className={`${className}__dur`}
                                     style={{
                                         color: durColor,
                                         fontSize: durSize + "px",
@@ -1792,14 +1792,14 @@ const deprecatedContent = [
                     )}
                     {listChecked && (
                         <div
-                            className={`${ className }__list_wrap`}
+                            className={`${className}__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
                                 marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
-                                className={`${ className }__list list-${ listStyle }`}
+                                className={`${className}__list list-${listStyle}`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -1824,10 +1824,10 @@ const deprecatedContent = [
                         </div>
                     )}
                     {descChecked && (
-                        <div className={`${ className }__desc_wrap`}>
+                        <div className={`${className}__desc_wrap`}>
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={desc}
                                 style={{
                                     color: descColor,
@@ -1846,13 +1846,13 @@ const deprecatedContent = [
                     )}
                     {btnChecked && (
                         <div
-                            className={`${ className }__button`}
+                            className={`${className}__button`}
                             style={{
                                 width: btnWidth + "%",
                             }}
                         >
                             <a
-                                class={`${ className }__button_link`}
+                                class={`${className}__button_link`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 rel="noopener noreferrer"
@@ -1877,8 +1877,8 @@ const deprecatedContent = [
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={( newText ) =>
-                                        setAttributes( { btnText: newText } )
+                                    onChange={(newText) =>
+                                        setAttributes({ btnText: newText })
                                     }
                                     value={btnText}
                                     style={{
@@ -1891,11 +1891,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
-                                        `color: ${ btnHoverColor } !important;`,
-                                        `background: ${ btnHoverBack } !important`,
+                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
+                                        `color: ${btnHoverColor} !important;`,
+                                        `background: ${btnHoverBack} !important`,
                                         "}",
-                                    ].join( "\n" ),
+                                    ].join("\n"),
                                 }}
                             />
                         </div>
@@ -1906,10 +1906,10 @@ const deprecatedContent = [
     },
     {
         attributes: pricingAttrs_1_6_3,
-        migrate: ( attributes ) => {
-            return Object.assign( attributes, { btnPaddingU: "" } );
+        migrate: (attributes) => {
+            return Object.assign(attributes, { btnPaddingU: "" });
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 contentAlign,
                 tableBack,
@@ -2032,8 +2032,8 @@ const deprecatedContent = [
             } = props.attributes;
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: contentAlign,
                         background: tableBack,
@@ -2046,10 +2046,10 @@ const deprecatedContent = [
                 >
                     {badgeChecked && (
                         <div
-                            className={`${ className }__badge_wrap ${ className }__badge_${ badgePos }`}
+                            className={`${className}__badge_wrap ${className}__badge_${badgePos}`}
                         >
                             <div
-                                className={`${ className }__badge`}
+                                className={`${className}__badge`}
                                 style={{
                                     borderRightColor:
                                         "right" === badgePos
@@ -2100,7 +2100,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 paddingTop: titleMarginT + "px",
                                 paddingBottom: titleMarginB + "px",
@@ -2108,7 +2108,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={title}
                                 style={{
                                     color: titleColor,
@@ -2123,14 +2123,14 @@ const deprecatedContent = [
                                     lineHeight: titleLine + "px",
                                     marginBottom: titleMarginB + "px",
                                     padding: titlePadding + "px",
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 }}
                             />
                         </div>
                     )}
                     {priceChecked && (
                         <div
-                            className={`${ className }__price_wrap`}
+                            className={`${className}__price_wrap`}
                             style={{
                                 background: priceBack,
                                 marginTop: priceMarginT + "px",
@@ -2141,7 +2141,7 @@ const deprecatedContent = [
                         >
                             {slashPrice && (
                                 <strike
-                                    className={`${ className }__slash`}
+                                    className={`${className}__slash`}
                                     style={{
                                         color: slashColor,
                                         fontSize: slashSize + "px",
@@ -2154,7 +2154,7 @@ const deprecatedContent = [
                             )}
                             {currPrice && (
                                 <span
-                                    className={`${ className }__currency`}
+                                    className={`${className}__currency`}
                                     style={{
                                         color: currColor,
                                         fontSize: currSize + "px",
@@ -2167,7 +2167,7 @@ const deprecatedContent = [
                             )}
                             {valPrice && (
                                 <span
-                                    className={`${ className }__val`}
+                                    className={`${className}__val`}
                                     style={{
                                         color: valColor,
                                         fontSize: valSize + "px",
@@ -2180,7 +2180,7 @@ const deprecatedContent = [
                             )}
                             {divPrice && (
                                 <span
-                                    className={`${ className }__divider`}
+                                    className={`${className}__divider`}
                                     style={{
                                         color: divColor,
                                         fontSize: divSize + "px",
@@ -2193,7 +2193,7 @@ const deprecatedContent = [
                             )}
                             {durPrice && (
                                 <span
-                                    className={`${ className }__dur`}
+                                    className={`${className}__dur`}
                                     style={{
                                         color: durColor,
                                         fontSize: durSize + "px",
@@ -2208,14 +2208,14 @@ const deprecatedContent = [
                     )}
                     {listChecked && (
                         <div
-                            className={`${ className }__list_wrap`}
+                            className={`${className}__list_wrap`}
                             style={{
                                 marginTop: listMarginT + "px",
                                 marginBottom: listMarginB + "px",
                             }}
                         >
                             <ul
-                                className={`${ className }__list list-${ listStyle }`}
+                                className={`${className}__list list-${listStyle}`}
                                 style={{
                                     color: listColor,
                                     fontSize: listSize + "px",
@@ -2240,10 +2240,10 @@ const deprecatedContent = [
                         </div>
                     )}
                     {descChecked && (
-                        <div className={`${ className }__desc_wrap`}>
+                        <div className={`${className}__desc_wrap`}>
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={desc}
                                 style={{
                                     color: descColor,
@@ -2262,13 +2262,13 @@ const deprecatedContent = [
                     )}
                     {btnChecked && (
                         <div
-                            className={`${ className }__button`}
+                            className={`${className}__button`}
                             style={{
                                 width: btnWidth + "%",
                             }}
                         >
                             <a
-                                class={`${ className }__button_link`}
+                                class={`${className}__button_link`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 style={{
@@ -2292,8 +2292,8 @@ const deprecatedContent = [
                             >
                                 <RichText.Content
                                     tagName="span"
-                                    onChange={( newText ) =>
-                                        setAttributes( { btnText: newText } )
+                                    onChange={(newText) =>
+                                        setAttributes({ btnText: newText })
                                     }
                                     value={btnText}
                                     style={{
@@ -2306,11 +2306,11 @@ const deprecatedContent = [
                             <style
                                 dangerouslySetInnerHTML={{
                                     __html: [
-                                        `#premium-pricing-table-${ id } .premium-pricing-table__button_link:hover {`,
-                                        `color: ${ btnHoverColor } !important;`,
-                                        `background: ${ btnHoverBack } !important`,
+                                        `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
+                                        `color: ${btnHoverColor} !important;`,
+                                        `background: ${btnHoverBack} !important`,
                                         "}",
-                                    ].join( "\n" ),
+                                    ].join("\n"),
                                 }}
                             />
                         </div>

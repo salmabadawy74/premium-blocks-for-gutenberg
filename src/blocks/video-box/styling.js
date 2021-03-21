@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss'
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) {
+function styling(props) {
     const {
         block_id,
         videoBoxId,
@@ -10,7 +10,7 @@ function styling ( props ) {
         videoDescSize,
         videoDescSizeMobile,
         videoDescSizeTablet,
-     } = props.attributes;
+    } = props.attributes;
 
     let selectors = {}
     let tablet_selectors = {}
@@ -18,26 +18,26 @@ function styling ( props ) {
 
     selectors = {
         " .premium-video-box__desc_text": {
-          "font-size" : generateCSSUnit(videoDescSize,videoDescSizeUnit)
-      }  
+            "font-size": generateCSSUnit(videoDescSize, videoDescSizeUnit)
+        }
     };
 
     tablet_selectors = {
         " .premium-video-box__desc_text": {
-            "font-size" : generateCSSUnit(videoDescSizeTablet,videoDescSizeUnit)
-        } 
+            "font-size": generateCSSUnit(videoDescSizeTablet, videoDescSizeUnit)
+        }
     };
 
     mobile_selectors = {
         " .premium-video-box__desc_text": {
-            "font-size" : generateCSSUnit(videoDescSizeMobile,videoDescSizeUnit)
-        } 
+            "font-size": generateCSSUnit(videoDescSizeMobile, videoDescSizeUnit)
+        }
     }
 
     var styling_css = ""
     var id = `.premium-video-box-${block_id}`
     if (classMigrate) {
-       id = `#${videoBoxId}`
+        id = `#${videoBoxId}`
     }
 
     styling_css = generateCSS(selectors, id)
@@ -49,5 +49,5 @@ function styling ( props ) {
 
     return styling_css
 
- }
+}
 export default styling;

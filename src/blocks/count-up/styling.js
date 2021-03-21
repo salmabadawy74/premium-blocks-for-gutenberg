@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) {
+function styling(props) {
 
     const {
         numberSizeUnit,
@@ -30,57 +30,57 @@ function styling ( props ) {
 
     selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit( numberSize, numberSizeUnit ),
+            "font-size": generateCSSUnit(numberSize, numberSizeUnit),
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit( titleSize, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-countup__prefix": {
-            "font-size": generateCSSUnit( prefixSize, prefixSizeUnit )
+            "font-size": generateCSSUnit(prefixSize, prefixSizeUnit)
         },
         " .premium-countup__suffix": {
-            "font-size": generateCSSUnit( suffixSize, suffixSizeUnit )
+            "font-size": generateCSSUnit(suffixSize, suffixSizeUnit)
         }
     }
     tablet_selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit( numberSizeTablet, numberSizeUnit ),
+            "font-size": generateCSSUnit(numberSizeTablet, numberSizeUnit),
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit( titleSizeTablet, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-countup__prefix": {
-            "font-size": generateCSSUnit( prefixSizeTablet, prefixSizeUnit )
+            "font-size": generateCSSUnit(prefixSizeTablet, prefixSizeUnit)
         },
         " .premium-countup__suffix": {
-            "font-size": generateCSSUnit( suffixSizeTablet, suffixSizeUnit )
+            "font-size": generateCSSUnit(suffixSizeTablet, suffixSizeUnit)
         }
     }
     mobile_selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit( numberSizeMobile, numberSizeUnit ),
+            "font-size": generateCSSUnit(numberSizeMobile, numberSizeUnit),
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit( titleSizeMobile, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-countup__prefix": {
-            "font-size": generateCSSUnit( prefixSizeMobile, prefixSizeUnit )
+            "font-size": generateCSSUnit(prefixSizeMobile, prefixSizeUnit)
         },
         " .premium-countup__suffix": {
-            "font-size": generateCSSUnit( suffixSizeMobile, suffixSizeUnit )
+            "font-size": generateCSSUnit(suffixSizeMobile, suffixSizeUnit)
         }
     }
 
     var styling_css = ""
-    var id = `.premium-countup-${ block_id }`
-    if ( classMigrate ) {
-        id = `#premium-countup-${ block_id }`
+    var id = `.premium-countup-${block_id}`
+    if (classMigrate) {
+        id = `#premium-countup-${block_id}`
     }
 
-    styling_css = generateCSS( selectors, id )
-    styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+    styling_css = generateCSS(selectors, id)
+    styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
-    styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+    styling_css += generateCSS(mobile_selectors, id, true, "mobile")
 
     return styling_css
 

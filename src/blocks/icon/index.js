@@ -230,8 +230,8 @@ const iconAttrs = {
     }
 };
 
-registerBlockType( "premium/icon", {
-    title: __( "Icon" ),
+registerBlockType("premium/icon", {
+    title: __("Icon"),
     icon: <PbgIcon icon="icon" />,
     category: "premium-blocks",
     attributes: iconAttrs,
@@ -242,4 +242,4 @@ registerBlockType( "premium/icon", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

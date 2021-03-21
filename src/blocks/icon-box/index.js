@@ -70,7 +70,7 @@ const iconBoxAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __( "Awesome Title" )
+        default: __("Awesome Title")
     },
     titleTag: {
         type: "string",
@@ -201,7 +201,7 @@ const iconBoxAttrs = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __( "Click Here" )
+        default: __("Click Here")
     },
     btnLink: {
         type: "string",
@@ -432,8 +432,8 @@ const iconBoxAttrs = {
     },
 };
 
-registerBlockType( "premium/icon-box", {
-    title: __( "Icon Box" ),
+registerBlockType("premium/icon-box", {
+    title: __("Icon Box"),
     icon: <PbgIcon icon="icon-box" />,
     category: "premium-blocks",
     attributes: iconBoxAttrs,
@@ -444,4 +444,4 @@ registerBlockType( "premium/icon-box", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

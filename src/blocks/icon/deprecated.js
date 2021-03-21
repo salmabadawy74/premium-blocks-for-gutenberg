@@ -768,7 +768,7 @@ const deprecated_attributes_1_3_1 = {
 };
 
 
-const deprecated_attributes_1_6_2 = Object.assign( deprecated_attributes_1_6_1, newAttributes_1_6_2 )
+const deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2)
 const deprecatedContent = [
     {
         attributes: deprecated_attributes_1_6_2,
@@ -780,7 +780,7 @@ const deprecatedContent = [
                 iconOpacity: '',
                 backgroundOpacity: ''
             }
-            return Object.assign( attributes, newAttributes )
+            return Object.assign(attributes, newAttributes)
         },
         save: props => {
             const {
@@ -838,11 +838,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -851,9 +851,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical ||
-                            0 }px ${ wrapShadowBlur ||
-                            0 }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
+                            0}px ${wrapShadowBlur ||
+                            0}px ${wrapShadowColor} ${wrapShadowPosition}`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -871,11 +871,11 @@ const deprecatedContent = [
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`premium-icon ${ selectedIcon } premium-icon__${ hoverEffect }`}
+                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
-                                fontSize: ( iconSize || 50 ) + iconSizeUnit,
+                                fontSize: (iconSize || 50) + iconSizeUnit,
                                 paddingTop: paddingT + paddingU,
                                 paddingRight: paddingR + paddingU,
                                 paddingBottom: paddingB + paddingU,
@@ -888,8 +888,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical ||
-                                    0 }px ${ shadowBlur || 0 }px ${ shadowColor }`
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
+                                    0}px ${shadowBlur || 0}px ${shadowColor}`
                             }}
                         />
                     </a>
@@ -899,13 +899,13 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_5_6,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 paddingU: "px",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 selectedIcon,
                 align,
@@ -960,11 +960,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -973,9 +973,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
-                            }px ${ wrapShadowBlur || 0
-                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                            }px ${wrapShadowBlur || 0
+                            }px ${wrapShadowColor} ${wrapShadowPosition}`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -987,17 +987,17 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${ className }__link`}
+                        className={`${className}__link`}
                         href={urlCheck && link}
                         rel="noopener noreferrer"
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
+                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
-                                fontSize: ( iconSize || 50 ) + iconSizeUnit,
+                                fontSize: (iconSize || 50) + iconSizeUnit,
                                 paddingTop: paddingT,
                                 paddingRight: paddingR,
                                 paddingBottom: paddingB,
@@ -1010,8 +1010,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
-                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                                    }px ${shadowBlur || 0}px ${shadowColor}`,
                             }}
                         />
                     </a>
@@ -1021,13 +1021,13 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_5_5,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 iconSizeUnit: "px",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 selectedIcon,
                 align,
@@ -1081,11 +1081,11 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1094,9 +1094,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
-                            }px ${ wrapShadowBlur || 0
-                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                            }px ${wrapShadowBlur || 0
+                            }px ${wrapShadowColor} ${wrapShadowPosition}`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1108,13 +1108,13 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${ className }__link`}
+                        className={`${className}__link`}
                         href={urlCheck && link}
                         rel="noopener noreferrer"
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
+                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
@@ -1131,8 +1131,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
-                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                                    }px ${shadowBlur || 0}px ${shadowColor}`,
                             }}
                         />
                     </a>
@@ -1142,7 +1142,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_9,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 backgroundColor: attributes.background,
                 imageID: "",
@@ -1152,9 +1152,9 @@ const deprecatedContent = [
                 backgroundPosition: "top center",
                 backgroundSize: "auto",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 selectedIcon,
                 align,
@@ -1203,7 +1203,7 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: background,
@@ -1211,9 +1211,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
-                            }px ${ wrapShadowBlur || 0
-                            }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                            }px ${wrapShadowBlur || 0
+                            }px ${wrapShadowColor} ${wrapShadowPosition}`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -1225,12 +1225,12 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${ className }__link`}
+                        className={`${className}__link`}
                         href={urlCheck && link}
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
+                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
                             style={{
                                 color: iconColor || "#6ec1e4",
                                 backgroundColor: iconBack,
@@ -1247,8 +1247,8 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
-                                    }px ${ shadowBlur || 0 }px ${ shadowColor }`,
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                                    }px ${shadowBlur || 0}px ${shadowColor}`,
                             }}
                         />
                     </a>
@@ -1258,7 +1258,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_1,
-        save: ( props ) => {
+        save: (props) => {
             const {
                 selectedIcon,
                 align,
@@ -1302,7 +1302,7 @@ const deprecatedContent = [
 
             return (
                 <div
-                    className={`${ className }__container`}
+                    className={`${className}__container`}
                     style={{
                         textAlign: align,
                         backgroundColor: background,
@@ -1321,12 +1321,12 @@ const deprecatedContent = [
                     }}
                 >
                     <a
-                        className={`${ className }__link`}
+                        className={`${className}__link`}
                         href={urlCheck && link}
                         target={target ? "_blank" : "_self"}
                     >
                         <i
-                            className={`${ className } ${ selectedIcon } ${ className }__${ hoverEffect }`}
+                            className={`${className} ${selectedIcon} ${className}__${hoverEffect}`}
                             style={{
                                 color: iconColor,
                                 backgroundColor: iconBack,
@@ -1343,7 +1343,7 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius + "px",
                                 borderColor: borderColor,
-                                textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
+                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                             }}
                         />
                     </a>

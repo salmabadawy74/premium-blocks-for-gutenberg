@@ -34,21 +34,21 @@ const {
 export default class edit extends Component {
 
     constructor() {
-        super( ...arguments );
+        super(...arguments);
     }
 
-    componentDidMount () {
-        this.props.setAttributes( { classMigrate: true } );
+    componentDidMount() {
+        this.props.setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement( "style" );
+        const $style = document.createElement("style");
         $style.setAttribute(
             "id",
-            "premium-style-button-" + this.props.clientId.substr( 0, 6 )
+            "premium-style-button-" + this.props.clientId.substr(0, 6)
         );
-        document.head.appendChild( $style );
+        document.head.appendChild($style);
     }
-    render () {
+    render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
 
         const {
@@ -100,148 +100,148 @@ export default class edit extends Component {
         const SIZE = [
             {
                 value: "sm",
-                label: __( "Small" )
+                label: __("Small")
             },
             {
                 value: "md",
-                label: __( "Medium" )
+                label: __("Medium")
             },
             {
                 value: "lg",
-                label: __( "Large" )
+                label: __("Large")
             },
             {
                 value: "block",
-                label: __( "Block" )
+                label: __("Block")
             }
         ];
         const DIRECTION = [
             {
                 value: "top",
-                label: __( "Top to Bottom" )
+                label: __("Top to Bottom")
             },
             {
                 value: "bottom",
-                label: __( "Bottom to Top" )
+                label: __("Bottom to Top")
             },
             {
                 value: "left",
-                label: __( "Left to Right" )
+                label: __("Left to Right")
             },
             {
                 value: "right",
-                label: __( "Right to Left" )
+                label: __("Right to Left")
             }
         ];
         const SHUTTER = [
             {
                 value: "shutouthor",
-                label: __( "Shutter out Horizontal" )
+                label: __("Shutter out Horizontal")
             },
             {
                 value: "shutoutver",
-                label: __( "Shutter out Vertical" )
+                label: __("Shutter out Vertical")
             },
             {
                 value: "scshutoutver",
-                label: __( "Scaled Shutter Vertical" )
+                label: __("Scaled Shutter Vertical")
             },
             {
                 value: "scshutouthor",
-                label: __( "Scaled Shutter Horizontal" )
+                label: __("Scaled Shutter Horizontal")
             },
             {
                 value: "dshutinver",
-                label: __( "Tilted Left" )
+                label: __("Tilted Left")
             },
             {
                 value: "dshutinhor",
-                label: __( "Tilted Right" )
+                label: __("Tilted Right")
             }
         ];
         const RADIAL = [
             {
                 value: "radialin",
-                label: __( "Radial In" )
+                label: __("Radial In")
             },
             {
                 value: "radialout",
-                label: __( "Radial Out" )
+                label: __("Radial Out")
             },
             {
                 value: "rectin",
-                label: __( "Rectangle In" )
+                label: __("Rectangle In")
             },
             {
                 value: "rectout",
-                label: __( "Rectangle Out" )
+                label: __("Rectangle Out")
             }
         ];
         const EFFECTS = [
             {
                 value: "none",
-                label: __( "None" )
+                label: __("None")
             },
             {
                 value: "slide",
-                label: __( "Slide" )
+                label: __("Slide")
             },
             {
                 value: "shutter",
-                label: __( "Shutter" )
+                label: __("Shutter")
             },
             {
                 value: "radial",
-                label: __( "Radial" )
+                label: __("Radial")
             }
         ];
 
         const onChangeHover = newValue => {
-            props.setAttributes( { effect: newValue } );
-            switch ( newValue ) {
+            props.setAttributes({ effect: newValue });
+            switch (newValue) {
                 case "slide":
-                    props.setAttributes( { effectDir: "top" } );
+                    props.setAttributes({ effectDir: "top" });
                     break;
                 case "shutter":
-                    props.setAttributes( { effectDir: "shutouthor" } );
+                    props.setAttributes({ effectDir: "shutouthor" });
                     break;
                 case "radial":
-                    props.setAttributes( { effectDir: "radialin" } );
+                    props.setAttributes({ effectDir: "radialin" });
                     break;
             }
         };
-        setAttributes( { block_id: blockId } );
+        setAttributes({ block_id: blockId });
 
         const addFontToHead = fontFamily => {
             const head = document.head;
-            const link = document.createElement( "link" );
+            const link = document.createElement("link");
             link.type = "text/css";
             link.rel = "stylesheet";
             link.href =
                 "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace( /\s+/g, "+" ) +
+                fontFamily.replace(/\s+/g, "+") +
                 ":" +
                 "regular";
-            head.appendChild( link );
+            head.appendChild(link);
         };
 
         const onChangeTextFamily = fontFamily => {
-            setAttributes( { textFontFamily: fontFamily } );
-            if ( !fontFamily ) {
+            setAttributes({ textFontFamily: fontFamily });
+            if (!fontFamily) {
                 return;
             }
 
-            addFontToHead( fontFamily );
+            addFontToHead(fontFamily);
         };
 
-        const mainClasses = classnames( className, "premium-button" );
+        const mainClasses = classnames(className, "premium-button");
 
         var element = document.getElementById(
-            "premium-style-button-" + blockId.substr( 0, 6 )
+            "premium-style-button-" + blockId.substr(0, 6)
         );
 
-        if ( null != element && "undefined" != typeof element ) {
-            element.innerHTML = styling( this.props );
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
         }
 
         return [
@@ -249,107 +249,107 @@ export default class edit extends Component {
                 <BlockControls key="controls">
                     <AlignmentToolbar
                         value={btnAlign}
-                        onChange={newAlign => setAttributes( { btnAlign: newAlign } )}
+                        onChange={newAlign => setAttributes({ btnAlign: newAlign })}
                     />
                 </BlockControls>
             ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__( "General Settings" )}
+                        title={__("General Settings")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
                             options={EFFECTS}
-                            label={__( "Hover Effect" )}
+                            label={__("Hover Effect")}
                             value={effect}
                             onChange={onChangeHover}
                         />
                         {"slide" === effect && (
                             <SelectControl
                                 options={DIRECTION}
-                                label={__( "Direction" )}
+                                label={__("Direction")}
                                 value={effectDir}
-                                onChange={newValue => setAttributes( { effectDir: newValue } )}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         {"shutter" === effect && (
                             <SelectControl
                                 options={SHUTTER}
-                                label={__( "Shutter Direction" )}
+                                label={__("Shutter Direction")}
                                 value={effectDir}
-                                onChange={newValue => setAttributes( { effectDir: newValue } )}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         {"radial" === effect && (
                             <SelectControl
                                 options={RADIAL}
-                                label={__( "Style" )}
+                                label={__("Style")}
                                 value={effectDir}
-                                onChange={newValue => setAttributes( { effectDir: newValue } )}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         <SelectControl
                             options={SIZE}
-                            label={__( "Button Size" )}
+                            label={__("Button Size")}
                             value={btnSize}
-                            onChange={newSize => setAttributes( { btnSize: newSize } )}
+                            onChange={newSize => setAttributes({ btnSize: newSize })}
                         />
                         <ToggleControl
-                            label={__( "Open link in new tab" )}
+                            label={__("Open link in new tab")}
                             checked={btnTarget}
-                            onChange={newValue => setAttributes( { btnTarget: newValue } )}
+                            onChange={newValue => setAttributes({ btnTarget: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__( "Text Style" )}
+                        title={__("Text Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__( "Font Family" )}
+                            label={__("Font Family")}
                             value={textFontFamily}
                             options={FONTS}
                             onChange={onChangeTextFamily}
                         />
                         <PremiumTypo
-                            components={[ "responsiveSize", "weight", "line", "style", "upper", "spacing" ]}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
                             fontSizeType={{
                                 value: textSizeUnit,
-                                label: __( "textSizeUnit" ),
+                                label: __("textSizeUnit"),
                             }}
                             fontSize={{
                                 value: textSize,
-                                label: __( "textSize" ),
+                                label: __("textSize"),
                             }}
                             fontSizeMobile={{
                                 value: textSizeMobile,
-                                label: __( "textSizeMobile" ),
+                                label: __("textSizeMobile"),
                             }}
                             fontSizeTablet={{
                                 value: textSizeTablet,
-                                label: __( "textSizeTablet" ),
+                                label: __("textSizeTablet"),
                             }}
                             weight={textWeight}
                             style={textStyle}
                             spacing={textLetter}
                             upper={textUpper}
                             line={textLine}
-                            onChangeSize={newSize => setAttributes( { textSize: newSize } )}
-                            onChangeSizeTablet={newSize => setAttributes( { textSizeTablet: newSize } )}
-                            onChangeSizeMobile={newSize => setAttributes( { textSizeMobile: newSize } )}
+                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
+                            onChangeSizeTablet={newSize => setAttributes({ textSizeTablet: newSize })}
+                            onChangeSizeMobile={newSize => setAttributes({ textSizeMobile: newSize })}
                             onChangeWeight={newWeight =>
-                                setAttributes( { textWeight: newWeight } )
+                                setAttributes({ textWeight: newWeight })
                             }
-                            onChangeLine={newValue => setAttributes( { textLine: newValue } )}
-                            onChangeSize={newSize => setAttributes( { textSize: newSize } )}
-                            onChangeStyle={newStyle => setAttributes( { textStyle: newStyle } )}
+                            onChangeLine={newValue => setAttributes({ textLine: newValue })}
+                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
+                            onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
                             onChangeSpacing={newValue =>
-                                setAttributes( { textLetter: newValue } )
+                                setAttributes({ textLetter: newValue })
                             }
-                            onChangeUpper={check => setAttributes( { textUpper: check } )}
+                            onChangeUpper={check => setAttributes({ textUpper: check })}
                         />
                         <PremiumTextShadow
                             color={shadowColor}
@@ -357,23 +357,23 @@ export default class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes( { shadowColor: newColor.hex } )
+                                setAttributes({ shadowColor: newColor.hex })
                             }
-                            onChangeBlur={newBlur => setAttributes( { shadowBlur: newBlur } )}
+                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
-                                setAttributes( { shadowHorizontal: newValue } )
+                                setAttributes({ shadowHorizontal: newValue })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes( { shadowVertical: newValue } )
+                                setAttributes({ shadowVertical: newValue })
                             }
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__( "Button Style" )}
+                        title={__("Button Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <strong>{__( "Colors" )}</strong>
+                        <strong>{__("Colors")}</strong>
                         <TabPanel
                             className="premium-color-tabpanel"
                             activeClass="active-tab"
@@ -390,79 +390,79 @@ export default class edit extends Component {
                                 },
                             ]}
                         >
-                            {( tab ) => {
+                            {(tab) => {
                                 let tabout;
-                                if ( "normal" === tab.name ) {
+                                if ("normal" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__( "Text Color" )}</p>
+                                            <p>{__("Text Color")}</p>
                                             <ColorPalette
                                                 value={textColor}
                                                 onChange={newValue =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         textColor: newValue,
-                                                    } )
+                                                    })
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>
                                                 {"radial" !== effect
-                                                    ? __( "Background Color" )
-                                                    : __( "Background Hover Color" )}
+                                                    ? __("Background Color")
+                                                    : __("Background Hover Color")}
                                             </p>
                                             <PremiumBackground
                                                 type="color"
                                                 colorValue={backColor}
                                                 onChangeColor={newvalue =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         backColor: newvalue,
-                                                    } )
+                                                    })
                                                 }
                                                 opacityValue={backOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         backOpacity: value,
-                                                    } )
+                                                    })
                                                 }
                                             />
                                         </Fragment>
                                     );
                                 }
-                                if ( "hover" === tab.name ) {
+                                if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__( "Text Hover Color" )}</p>
+                                            <p>{__("Text Hover Color")}</p>
                                             <ColorPalette
                                                 value={textHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         textHoverColor: newValue,
-                                                    } )
+                                                    })
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>
                                                 {"radial" !== effect
-                                                    ? __( "Background Hover Color" )
-                                                    : __( "Background Color" )}
+                                                    ? __("Background Hover Color")
+                                                    : __("Background Color")}
                                             </p>
                                             <ColorPalette
                                                 value={backHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
-                                                    } )
+                                                    })
                                                 }
                                                 allowReset={true}
                                             />
-                                            <p>{__( "Border Hover Color" )}</p>
+                                            <p>{__("Border Hover Color")}</p>
                                             <ColorPalette
                                                 value={borderHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes( {
+                                                    setAttributes({
                                                         borderHoverColor: newValue,
-                                                    } )
+                                                    })
                                                 }
                                                 allowReset={true}
                                             />
@@ -482,13 +482,13 @@ export default class edit extends Component {
                             borderWidth={borderWidth}
                             borderColor={borderColor}
                             borderRadius={borderRadius}
-                            onChangeType={newType => setAttributes( { borderType: newType } )}
-                            onChangeWidth={newWidth => setAttributes( { borderWidth: newWidth } )}
+                            onChangeType={newType => setAttributes({ borderType: newType })}
+                            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
                             onChangeColor={colorValue =>
-                                setAttributes( { borderColor: colorValue.hex } )
+                                setAttributes({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={newrRadius =>
-                                setAttributes( { borderRadius: newrRadius } )
+                                setAttributes({ borderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
@@ -500,82 +500,82 @@ export default class edit extends Component {
                             vertical={btnShadowVertical}
                             position={btnShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes( {
+                                setAttributes({
                                     btnShadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
-                                } )
+                                })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes( {
+                                setAttributes({
                                     btnShadowBlur: newBlur === undefined ? 0 : newBlur
-                                } )
+                                })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes( {
+                                setAttributes({
                                     btnShadowHorizontal: newValue === undefined ? 0 : newValue
-                                } )
+                                })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes( {
+                                setAttributes({
                                     btnShadowVertical: newValue === undefined ? 0 : newValue
-                                } )
+                                })
                             }
                             onChangePosition={newValue =>
-                                setAttributes( {
+                                setAttributes({
                                     btnShadowPosition: newValue === undefined ? 0 : newValue
-                                } )
+                                })
                             }
                         />
                         <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes( { paddingU: newValue } )}
+                            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
                         />
                         <RangeControl
-                            label={__( "Padding" )}
+                            label={__("Padding")}
                             value={padding}
-                            onChange={newValue => setAttributes( { padding: newValue } )}
+                            onChange={newValue => setAttributes({ padding: newValue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
                         Tablet={hideTablet}
                         Mobile={hideMobile}
-                        onChangeDesktop={( value ) => setAttributes( { hideDesktop: value ? " premium-desktop-hidden" : "" } )}
-                        onChangeTablet={( value ) => setAttributes( { hideTablet: value ? " premium-tablet-hidden" : "" } )}
-                        onChangeMobile={( value ) => setAttributes( { hideMobile: value ? " premium-mobile-hidden" : "" } )}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                     />
                 </InspectorControls>
             ),
             <div
-                id={`premium-button-wrap-${ block_id }`}
-                className={`${ mainClasses }__wrap premium-button__${ effect } premium-button__${ effectDir } premium-button-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+                id={`premium-button-wrap-${block_id}`}
+                className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{ textAlign: btnAlign }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-button-wrap-${ block_id } .premium-button:hover {`,
-                            `color: ${ textHoverColor } !important;`,
-                            `border-color: ${ borderHoverColor } !important;`,
+                            `#premium-button-wrap-${block_id} .premium-button:hover {`,
+                            `color: ${textHoverColor} !important;`,
+                            `border-color: ${borderHoverColor} !important;`,
                             "}",
-                            `#premium-button-wrap-${ block_id }.premium-button__none .premium-button:hover {`,
-                            `background-color: ${ backHoverColor } !important;`,
+                            `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
+                            `background-color: ${backHoverColor} !important;`,
                             "}",
-                            `#premium-button-wrap-${ block_id }.premium-button__slide .premium-button::before,`,
-                            `#premium-button-wrap-${ block_id }.premium-button__shutter .premium-button::before,`,
-                            `#premium-button-wrap-${ block_id }.premium-button__radial .premium-button::before {`,
-                            `background-color: ${ slideColor }`,
+                            `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
+                            `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
+                            `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
+                            `background-color: ${slideColor}`,
                             "}"
-                        ].join( "\n" )
+                        ].join("\n")
                     }}
                 />
                 <RichText
-                    className={`premium-button premium-button__${ btnSize }`}
+                    className={`premium-button premium-button__${btnSize}`}
                     value={btnText}
-                    onChange={value => setAttributes( { btnText: value } )}
+                    onChange={value => setAttributes({ btnText: value })}
                     style={{
                         color: textColor,
                         backgroundColor: backColor
-                            ? hexToRgba( backColor, backOpacity )
+                            ? hexToRgba(backColor, backOpacity)
                             : "transparent",
                         fontFamily: textFontFamily,
                         letterSpacing: textLetter + "px",
@@ -583,8 +583,8 @@ export default class edit extends Component {
                         fontStyle: textStyle,
                         lineHeight: textLine + "px",
                         fontWeight: textWeight,
-                        textShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor }`,
-                        boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                         padding: padding + paddingU,
                         border: borderType,
                         borderWidth: borderWidth + "px",
@@ -595,7 +595,7 @@ export default class edit extends Component {
                 />
                 <URLInput
                     value={btnLink}
-                    onChange={newLink => setAttributes( { btnLink: newLink } )}
+                    onChange={newLink => setAttributes({ btnLink: newLink })}
                 />
             </div>
         ];

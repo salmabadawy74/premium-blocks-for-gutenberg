@@ -473,7 +473,7 @@ const pricingAttrs = {
     },
     badgeText: {
         type: "string",
-        default: __( "Popular" )
+        default: __("Popular")
     },
     listChecked: {
         type: "boolean",
@@ -586,8 +586,8 @@ const pricingAttrs = {
     }
 };
 
-registerBlockType( "premium/pricing-table", {
-    title: __( "Pricing Table" ),
+registerBlockType("premium/pricing-table", {
+    title: __("Pricing Table"),
     icon: <PbgIcon icon="pricing-table" />,
     category: "premium-blocks",
     attributes: pricingAttrs,
@@ -597,4 +597,4 @@ registerBlockType( "premium/pricing-table", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

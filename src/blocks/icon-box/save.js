@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
-const save = ( props ) => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -110,12 +110,12 @@ const save = ( props ) => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames( className, "premium-icon-box" );
+    const mainClasses = classnames(className, "premium-icon-box");
 
     return (
         <div
-            id={`premium-icon-box-${ block_id }`}
-            className={`${ mainClasses } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos } premium-icon-box-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            id={`premium-icon-box-${block_id}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 border: borderType,
@@ -130,11 +130,11 @@ const save = ( props ) => {
                 paddingRight: paddingR + paddingU,
                 paddingBottom: paddingB + paddingU,
                 paddingLeft: paddingL + paddingU,
-                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor
-                    ? hexToRgba( backColor, backOpacity )
+                    ? hexToRgba(backColor, backOpacity)
                     : "transparent",
-                backgroundImage: `url('${ imageURL }')`,
+                backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -145,34 +145,34 @@ const save = ( props ) => {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-icon-box-${ block_id }:hover {`,
-                            `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                            `#premium-icon-box-${block_id}:hover {`,
+                            `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                             "}",
-                            `#premium-icon-box-${ block_id } .premium-icon-box__btn:hover {`,
-                            `color: ${ btnHoverColor } !important;`,
-                            `border-color: ${ btnHoverBorder } !important;`,
+                            `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
+                            `color: ${btnHoverColor} !important;`,
+                            `border-color: ${btnHoverBorder} !important;`,
                             "}",
-                            `#premium-icon-box-${ block_id } .premium-button__none .premium-icon-box__btn:hover {`,
-                            `background-color: ${ btnHoverBack } !important;`,
+                            `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
+                            `background-color: ${btnHoverBack} !important;`,
                             "}",
-                            `#premium-icon-box-${ block_id } .premium-button__slide .premium-button::before {`,
-                            `background-color: ${ btnHoverBack } !important;`,
+                            `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
+                            `background-color: ${btnHoverBack} !important;`,
                             "}",
-                        ].join( "\n" ),
+                        ].join("\n"),
                     }}
                 />
             )}
             {iconChecked && (
                 <div
-                    className={`premium-icon-box__icon_wrap premium-icon-box__icon_${ iconVPos }`}
+                    className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
                 >
                     {"icon" === iconImage && selectedIcon && (
                         <i
-                            className={`${ selectedIcon } premium-icon-box__icon premium-icon__${ hoverEffect }`}
+                            className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor,
                                 backgroundColor: iconBackColor
-                                    ? hexToRgba( iconBackColor, iconOpacity )
+                                    ? hexToRgba(iconBackColor, iconOpacity)
                                     : "transparent",
                                 fontSize: iconSize,
                             }}
@@ -180,8 +180,8 @@ const save = ( props ) => {
                     )}
                     {"image" === iconImage && iconImgUrl && (
                         <img
-                            className={`premium-icon-box__icon premium-icon__${ hoverEffect }`}
-                            src={`${ iconImgUrl }`}
+                            className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
+                            src={`${iconImgUrl}`}
                             alt="Image Icon"
                             style={{
                                 width: iconSize + "px",
@@ -214,7 +214,7 @@ const save = ( props ) => {
                                     : "none",
                                 fontStyle: titleStyle,
                                 fontWeight: titleWeight,
-                                textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 lineHeight: titleLine + "px",
                             }}
                         />
@@ -243,7 +243,7 @@ const save = ( props ) => {
                 )}
                 {btnChecked && btnText && (
                     <div
-                        className={`premium-icon-box__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                        className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                         style={{
                             marginTop: btnMarginT,
                             marginBottom: btnMarginB,
@@ -259,7 +259,7 @@ const save = ( props ) => {
                             style={{
                                 color: btnColor,
                                 backgroundColor: btnBack
-                                    ? hexToRgba( btnBack, btnOpacity )
+                                    ? hexToRgba(btnBack, btnOpacity)
                                     : "transparent",
                                 letterSpacing: btnLetter + "px",
                                 textTransform: btnUpper ? "uppercase" : "none",
@@ -270,7 +270,7 @@ const save = ( props ) => {
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
                                 padding: btnPadding + btnPaddingU,
-                                boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                             }}
                         />
                     </div>

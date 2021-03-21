@@ -287,7 +287,7 @@ const deprecatedContent = [
                 opacity: "",
                 hideDesktop: false,
                 hideTablet: false,
-                hideMobile:false
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

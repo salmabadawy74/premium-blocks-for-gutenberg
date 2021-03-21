@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba";
 
 const { InnerBlocks } = wp.blockEditor;
 
-const save = ( props ) => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -47,23 +47,23 @@ const save = ( props ) => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames( className, 'premium-container' );
+    const mainClasses = classnames(className, 'premium-container');
 
     return (
         <div
-            className={`${ mainClasses } premium-container__stretch_${ stretchSection } premium-container__${ innerWidthType } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color
-                    ? hexToRgba( color, opacity )
+                    ? hexToRgba(color, opacity)
                     : "transparent",
                 border: borderType,
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: `url('${ imageURL }')`,
+                backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -76,11 +76,11 @@ const save = ( props ) => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
             }}
         >
             <div
-                className={`premium-container__content_wrap premium-container__${ vPos }`}
+                className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
                     maxWidth:
                         "boxed" == innerWidthType && stretchSection

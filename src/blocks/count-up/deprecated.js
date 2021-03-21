@@ -529,7 +529,7 @@ const newAttributes_2_1 = {
     }
 }
 
-const counterAttrs_2_1 = Object.assign( counterAttrs_2_0, newAttributes_2_1 );
+const counterAttrs_2_1 = Object.assign(counterAttrs_2_0, newAttributes_2_1);
 
 const deprecatedContent = [
     {
@@ -554,7 +554,7 @@ const deprecatedContent = [
                 hideTablet: false,
                 hideMobile: false
             }
-            return Object.assign( attributes, newAttributes )
+            return Object.assign(attributes, newAttributes)
         },
         save: props => {
             const {
@@ -617,17 +617,17 @@ const deprecatedContent = [
                 prefixFamily,
                 suffixFamily
             } = props.attributes;
-            let iconClass = "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+            let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                        backgroundImage: `url('${ backgroundImageURL }')`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundImage: `url('${backgroundImageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -658,7 +658,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`premium-countup__icon ${ iconClass }`}
+                                    className={`premium-countup__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor
@@ -729,7 +729,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                         </div>
-                        {titleCheck && ( "row" === flexDir || "row-reverse" === flexDir ) && (
+                        {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
                             <h3
                                 className={`premium-countup__title`}
                                 style={{
@@ -748,7 +748,7 @@ const deprecatedContent = [
                             </h3>
                         )}
                     </div>
-                    {titleCheck && ( "column" === flexDir || "column-reverse" === flexDir ) && (
+                    {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
                         <h3
                             className={`premium-countup__title`}
                             style={{
@@ -780,7 +780,7 @@ const deprecatedContent = [
                 borderRadius: "",
                 borderWidth: ""
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
         save: props => {
             const {
@@ -840,16 +840,16 @@ const deprecatedContent = [
                 suffixFamily
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                        backgroundImage: `url('${ backgroundImageURL }')`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundImage: `url('${backgroundImageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -883,7 +883,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`premium-countup__icon ${ iconClass }`}
+                                    className={`premium-countup__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -955,8 +955,8 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
                                     className={`premium-countup__title`}
                                     style={{
@@ -978,8 +978,8 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
                                 className={`premium-countup__title`}
                                 style={{
@@ -1006,16 +1006,16 @@ const deprecatedContent = [
     },
     {
         attributes: counterAttrs_1_6_4,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 borderType: "",
                 borderColor: "",
                 borderRadius: "",
                 borderWidth: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 increment,
                 time,
@@ -1073,16 +1073,16 @@ const deprecatedContent = [
                 suffixFamily,
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                        backgroundImage: `url('${ backgroundImageURL }')`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundImage: `url('${backgroundImageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1091,7 +1091,7 @@ const deprecatedContent = [
                 >
                     {iconCheck && (
                         <div
-                            className={`${ className }__icon_wrap`}
+                            className={`${className}__icon_wrap`}
                             style={{
                                 marginRight:
                                     "row" === flexDir ||
@@ -1112,7 +1112,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`${ className }__icon ${ iconClass }`}
+                                    className={`${className}__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -1132,7 +1132,7 @@ const deprecatedContent = [
                     )}
 
                     <div
-                        className={`${ className }__info`}
+                        className={`${className}__info`}
                         style={{
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
@@ -1140,10 +1140,10 @@ const deprecatedContent = [
                                     : selfAlign,
                         }}
                     >
-                        <div className={`${ className }__desc`}>
+                        <div className={`${className}__desc`}>
                             {prefix && (
                                 <p
-                                    className={`${ className }__prefix`}
+                                    className={`${className}__prefix`}
                                     style={{
                                         fontSize: prefixSize + "px",
                                         fontFamily: prefixFamily,
@@ -1156,7 +1156,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                             <p
-                                className={`${ className }__increment`}
+                                className={`${className}__increment`}
                                 data-interval={time}
                                 data-delay={delay}
                                 style={{
@@ -1170,7 +1170,7 @@ const deprecatedContent = [
                             </p>
                             {suffix && (
                                 <p
-                                    className={`${ className }__suffix`}
+                                    className={`${className}__suffix`}
                                     style={{
                                         fontSize: suffixSize + "px",
                                         fontFamily: suffixFamily,
@@ -1184,10 +1184,10 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     style={{
                                         fontSize: titleSize + "px",
                                         fontFamily: titleFamily,
@@ -1207,10 +1207,10 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 style={{
                                     fontSize: titleSize + "px",
                                     fontFamily: titleFamily,
@@ -1235,16 +1235,16 @@ const deprecatedContent = [
     },
     {
         attributes: counterAttrs_1_4_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 titleFamily: "",
                 counterFamily: "",
                 prefixFamily: "",
                 suffixFamily: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 increment,
                 time,
@@ -1298,16 +1298,16 @@ const deprecatedContent = [
                 backgroundSize,
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
-                        backgroundImage: `url('${ backgroundImageURL }')`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundImage: `url('${backgroundImageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1316,7 +1316,7 @@ const deprecatedContent = [
                 >
                     {iconCheck && (
                         <div
-                            className={`${ className }__icon_wrap`}
+                            className={`${className}__icon_wrap`}
                             style={{
                                 marginRight:
                                     "row" === flexDir ||
@@ -1337,7 +1337,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`${ className }__icon ${ iconClass }`}
+                                    className={`${className}__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -1357,7 +1357,7 @@ const deprecatedContent = [
                     )}
 
                     <div
-                        className={`${ className }__info`}
+                        className={`${className}__info`}
                         style={{
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
@@ -1365,7 +1365,7 @@ const deprecatedContent = [
                                     : selfAlign,
                         }}
                     >
-                        <div className={`${ className }__desc`}>
+                        <div className={`${className}__desc`}>
                             {prefix && (
                                 <p
                                     style={{
@@ -1379,7 +1379,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                             <p
-                                className={`${ className }__increment`}
+                                className={`${className}__increment`}
                                 data-interval={time}
                                 data-delay={delay}
                                 style={{
@@ -1404,10 +1404,10 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     style={{
                                         fontSize: titleSize + "px",
                                         marginTop: titleT + "px",
@@ -1426,10 +1426,10 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 style={{
                                     fontSize: titleSize + "px",
                                     marginTop: titleT + "px",
@@ -1453,7 +1453,7 @@ const deprecatedContent = [
     },
     {
         attributes: counterAttrs_1_3_7,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
                 shadowBlur: "0",
@@ -1467,9 +1467,9 @@ const deprecatedContent = [
                 backgroundPosition: "top center",
                 backgroundSize: "auto",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 increment,
                 time,
@@ -1518,20 +1518,20 @@ const deprecatedContent = [
                 shadowPosition,
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     {iconCheck && (
                         <div
-                            className={`${ className }__icon_wrap`}
+                            className={`${className}__icon_wrap`}
                             style={{
                                 marginRight:
                                     "row" === flexDir ||
@@ -1552,7 +1552,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`${ className }__icon ${ iconClass }`}
+                                    className={`${className}__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -1572,7 +1572,7 @@ const deprecatedContent = [
                     )}
 
                     <div
-                        className={`${ className }__info`}
+                        className={`${className}__info`}
                         style={{
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
@@ -1580,7 +1580,7 @@ const deprecatedContent = [
                                     : selfAlign,
                         }}
                     >
-                        <div className={`${ className }__desc`}>
+                        <div className={`${className}__desc`}>
                             {prefix && (
                                 <p
                                     style={{
@@ -1594,7 +1594,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                             <p
-                                className={`${ className }__increment`}
+                                className={`${className}__increment`}
                                 data-interval={time}
                                 data-delay={delay}
                                 style={{
@@ -1619,10 +1619,10 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     style={{
                                         fontSize: titleSize + "px",
                                         marginTop: titleT + "px",
@@ -1641,10 +1641,10 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 style={{
                                     fontSize: titleSize + "px",
                                     marginTop: titleT + "px",
@@ -1668,7 +1668,7 @@ const deprecatedContent = [
     },
     {
         attributes: counterAttrs_1_2_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
                 shadowBlur: "0",
@@ -1676,9 +1676,9 @@ const deprecatedContent = [
                 shadowVertical: "0",
                 shadowPosition: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 increment,
                 time,
@@ -1722,10 +1722,10 @@ const deprecatedContent = [
                 containerBack,
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
@@ -1734,7 +1734,7 @@ const deprecatedContent = [
                 >
                     {iconCheck && (
                         <div
-                            className={`${ className }__icon_wrap`}
+                            className={`${className}__icon_wrap`}
                             style={{
                                 marginRight:
                                     "row" === flexDir ||
@@ -1755,7 +1755,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`${ className }__icon ${ iconClass }`}
+                                    className={`${className}__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -1775,7 +1775,7 @@ const deprecatedContent = [
                     )}
 
                     <div
-                        className={`${ className }__info`}
+                        className={`${className}__info`}
                         style={{
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
@@ -1783,7 +1783,7 @@ const deprecatedContent = [
                                     : selfAlign,
                         }}
                     >
-                        <div className={`${ className }__desc`}>
+                        <div className={`${className}__desc`}>
                             {prefix && (
                                 <p
                                     style={{
@@ -1797,7 +1797,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                             <p
-                                className={`${ className }__increment`}
+                                className={`${className}__increment`}
                                 data-interval={time}
                                 data-delay={delay}
                                 style={{
@@ -1822,10 +1822,10 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     style={{
                                         fontSize: titleSize + "px",
                                         marginTop: titleT + "px",
@@ -1844,10 +1844,10 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 style={{
                                     fontSize: titleSize + "px",
                                     marginTop: titleT + "px",
@@ -1871,7 +1871,7 @@ const deprecatedContent = [
     },
     {
         attributes: counterAttrs_1_0_9,
-        save: ( props ) => {
+        save: (props) => {
             const {
                 increment,
                 time,
@@ -1914,10 +1914,10 @@ const deprecatedContent = [
                 faIcon,
             } = props.attributes;
             let iconClass =
-                "fa" === iconType ? `fa fa-${ faIcon }` : `dashicons ${ faIcon }`;
+                "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
             return (
                 <div
-                    className={`${ className }__wrap`}
+                    className={`${className}__wrap`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
@@ -1925,7 +1925,7 @@ const deprecatedContent = [
                 >
                     {iconCheck && (
                         <div
-                            className={`${ className }__icon_wrap`}
+                            className={`${className}__icon_wrap`}
                             style={{
                                 marginRight:
                                     "row" === flexDir ||
@@ -1946,7 +1946,7 @@ const deprecatedContent = [
                         >
                             {"icon" === icon && (
                                 <i
-                                    className={`${ className }__icon ${ iconClass }`}
+                                    className={`${className}__icon ${iconClass}`}
                                     style={{
                                         fontSize: iconSize + "px",
                                         color: iconColor,
@@ -1966,7 +1966,7 @@ const deprecatedContent = [
                     )}
 
                     <div
-                        className={`${ className }__info`}
+                        className={`${className}__info`}
                         style={{
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
@@ -1974,7 +1974,7 @@ const deprecatedContent = [
                                     : selfAlign,
                         }}
                     >
-                        <div className={`${ className }__desc`}>
+                        <div className={`${className}__desc`}>
                             {prefix && (
                                 <p
                                     style={{
@@ -1988,7 +1988,7 @@ const deprecatedContent = [
                                 </p>
                             )}
                             <p
-                                className={`${ className }__increment`}
+                                className={`${className}__increment`}
                                 data-interval={time}
                                 data-delay={delay}
                                 style={{
@@ -2013,10 +2013,10 @@ const deprecatedContent = [
                             )}
                         </div>
                         {titleCheck &&
-                            ( "row" === flexDir ||
-                                "row-reverse" === flexDir ) && (
+                            ("row" === flexDir ||
+                                "row-reverse" === flexDir) && (
                                 <h3
-                                    className={`${ className }__title`}
+                                    className={`${className}__title`}
                                     style={{
                                         fontSize: titleSize + "px",
                                         marginTop: titleT + "px",
@@ -2035,10 +2035,10 @@ const deprecatedContent = [
                             )}
                     </div>
                     {titleCheck &&
-                        ( "column" === flexDir ||
-                            "column-reverse" === flexDir ) && (
+                        ("column" === flexDir ||
+                            "column-reverse" === flexDir) && (
                             <h3
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 style={{
                                     fontSize: titleSize + "px",
                                     marginTop: titleT + "px",

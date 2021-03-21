@@ -302,8 +302,8 @@ const dualHeadingAttrs = {
         default: false
     }
 };
-registerBlockType( "premium/dheading-block", {
-    title: __( "Dual Heading" ),
+registerBlockType("premium/dheading-block", {
+    title: __("Dual Heading"),
     icon: <PbgIcon icon="dual-heading" />,
     category: "premium-blocks",
     attributes: dualHeadingAttrs,
@@ -314,4 +314,4 @@ registerBlockType( "premium/dheading-block", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent
-} );
+});

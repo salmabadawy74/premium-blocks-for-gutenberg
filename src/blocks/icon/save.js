@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
 
-const save = ( props ) => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -62,17 +62,17 @@ const save = ( props ) => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames( className, "premium-icon" );
+    const mainClasses = classnames(className, "premium-icon");
 
     return (
         <div
-            className={`${ mainClasses }__container ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 backgroundColor: backgroundColor
-                    ? hexToRgba( backgroundColor, backgroundOpacity )
+                    ? hexToRgba(backgroundColor, backgroundOpacity)
                     : "transparent",
-                backgroundImage: `url('${ imageURL }')`,
+                backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -81,9 +81,9 @@ const save = ( props ) => {
                 borderWidth: wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
-                boxShadow: `${ wrapShadowHorizontal || 0 }px ${ wrapShadowVertical || 0
-                    }px ${ wrapShadowBlur || 0
-                    }px ${ wrapShadowColor } ${ wrapShadowPosition }`,
+                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                    }px ${wrapShadowBlur || 0
+                    }px ${wrapShadowColor} ${wrapShadowPosition}`,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -101,13 +101,13 @@ const save = ( props ) => {
                 target={target ? "_blank" : "_self"}
             >
                 <i
-                    className={`premium-icon ${ selectedIcon } premium-icon__${ hoverEffect }`}
+                    className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack
-                            ? hexToRgba( iconBack, iconOpacity )
+                            ? hexToRgba(iconBack, iconOpacity)
                             : "transparent",
-                        fontSize: ( iconSize || 50 ) + iconSizeUnit,
+                        fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
                         paddingBottom: paddingB + paddingU,
@@ -120,8 +120,8 @@ const save = ( props ) => {
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: `${ shadowHorizontal || 0 }px ${ shadowVertical || 0
-                            }px ${ shadowBlur || 0 }px ${ shadowColor }`,
+                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                            }px ${shadowBlur || 0}px ${shadowColor}`,
                     }}
                 />
             </a>

@@ -6844,7 +6844,7 @@ var PremiumAccordion = function (_Component) {
                 null,
                 wp.element.createElement(
                     "div",
-                    { id: "" + accordionId, className: mainClasses + "  premium-accordion-" + block_id + hideDesktop + " " + hideTablet + " " + hideMobile },
+                    { id: "" + accordionId, className: mainClasses + "  premium-accordion-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile },
                     accordionItems,
                     wp.element.createElement(
                         "div",
@@ -13083,7 +13083,6 @@ var bannerAttrs = {
     },
     hideMobile: {
         type: 'boolean',
-
         default: false
     },
     titleSizeMobile: {
@@ -13094,7 +13093,6 @@ var bannerAttrs = {
     },
     classMigrate: {
         type: "boolean",
-
         default: false
     }
 };
@@ -50668,7 +50666,6 @@ var edit = function (_Component) {
                                     },
                                     style: {
                                         color: bodyColor,
-                                        fontSize: bodySize + "px",
                                         lineHeight: bodyLine + "px",
                                         marginTop: bodyTop + "px",
                                         marginBottom: bodyBottom + "px"
@@ -59605,7 +59602,7 @@ var deprecated = [{
             hideMobile: false
 
         };
-        Object.assign(attributes, newAttributes);
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var attributes = props.attributes,

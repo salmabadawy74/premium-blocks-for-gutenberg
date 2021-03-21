@@ -6,7 +6,7 @@ const { __ } = wp.i18n;
 
 const { RichText, InnerBlocks } = wp.blockEditor;
 
-const save = ( props ) => {
+const save = (props) => {
     const { className } = props;
 
     const { block_id,
@@ -68,18 +68,18 @@ const save = ( props ) => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames( className, 'premium-accordion' );
+    const mainClasses = classnames(className, 'premium-accordion');
 
-    const accordionItems = repeaterItems.map( ( item, index ) => {
+    const accordionItems = repeaterItems.map((item, index) => {
         return (
             <div
-                id={`premium-accordion__layer${ index }`}
+                id={`premium-accordion__layer${index}`}
                 className={`premium-accordion__content_wrap`}
             >
                 <div
-                    className={`premium-accordion__title_wrap premium-accordion__${ direction } premium-accordion__${ arrowPos }`}
+                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
                     style={{
-                        backgroundColor: titleBack ? hexToRgba( titleBack, titleOpacity ) : "transparent",
+                        backgroundColor: titleBack ? hexToRgba(titleBack, titleOpacity) : "transparent",
                         border: titleBorder,
                         borderWidth: titleBorderWidth + "px",
                         borderRadius: titleBorderRadius + "px",
@@ -101,7 +101,7 @@ const save = ( props ) => {
                                 textTransform: titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyle,
                                 fontWeight: titleWeight,
-                                textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                 lineHeight: titleLine + "px"
                             }}
                         />
@@ -117,7 +117,7 @@ const save = ( props ) => {
                             viewBox="0 0 20 20"
                             style={{
                                 fill: arrowColor,
-                                backgroundColor: arrowBack ? hexToRgba( arrowBack, arrowOpacity ) : "transparent",
+                                backgroundColor: arrowBack ? hexToRgba(arrowBack, arrowOpacity) : "transparent",
                                 padding: arrowPadding + "px",
                                 borderRadius: arrowRadius + "px"
                             }}
@@ -131,7 +131,7 @@ const save = ( props ) => {
                     style={{
                         textAlign: descAlign,
                         backgroundColor: descBack
-                            ? hexToRgba( descBack, descOpacity )
+                            ? hexToRgba(descBack, descOpacity)
                             : "transparent",
                         border: descBorder,
                         borderWidth: descBorderWidth + "px",
@@ -152,7 +152,7 @@ const save = ( props ) => {
                                 color: descColor,
                                 letterSpacing: descLetter + "px",
                                 textTransform: descUpper ? "uppercase" : "none",
-                                textShadow: `${ textShadowHorizontal }px ${ textShadowVertical }px ${ textShadowBlur }px ${ textShadowColor }`,
+                                textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
                                 fontStyle: descStyle,
                                 fontWeight: descWeight,
                                 lineHeight: descLine + "px"
@@ -163,9 +163,9 @@ const save = ( props ) => {
                 </div>
             </div>
         );
-    } );
+    });
     return (
-        <div id={accordionId} className={`${ mainClasses }  premium-accordion-${ block_id } ${ hideDesktop } ${ hideTablet } ${ hideMobile }`}>
+        <div id={accordionId} className={`${mainClasses}  premium-accordion-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
             {accordionItems}
         </div>
     );

@@ -246,25 +246,25 @@ const videoBoxAttrs = {
     }
 };
 
-const onChangeVideoURL = ( type, URL ) => {
+const onChangeVideoURL = (type, URL) => {
     let videoUrl;
-    switch ( type ) {
+    switch (type) {
         case "youtube":
-            if ( URL.startsWith( "http" ) ) {
+            if (URL.startsWith("http")) {
                 videoUrl = URL;
             } else {
                 videoUrl = "https://www.youtube.com/embed/" + URL;
             }
             break;
         case "vimeo":
-            if ( URL.startsWith( "http" ) ) {
+            if (URL.startsWith("http")) {
                 videoUrl = URL;
             } else {
                 videoUrl = "https://player.vimeo.com/video/" + URL;
             }
             break;
         case "daily":
-            if ( URL.startsWith( "http" ) ) {
+            if (URL.startsWith("http")) {
                 videoUrl = URL;
             } else {
                 videoUrl = "https://dailymotion.com/embed/video/" + URL;
@@ -276,8 +276,8 @@ const onChangeVideoURL = ( type, URL ) => {
 
 export default onChangeVideoURL;
 
-registerBlockType( "premium/video-box", {
-    title: __( "Video Box" ),
+registerBlockType("premium/video-box", {
+    title: __("Video Box"),
     icon: <PbgIcon icon="video" />,
     category: "premium-blocks",
     attributes: videoBoxAttrs,
@@ -288,4 +288,4 @@ registerBlockType( "premium/video-box", {
     edit: edit,
     save: save,
     deprecated: deprecatedContent,
-} );
+});

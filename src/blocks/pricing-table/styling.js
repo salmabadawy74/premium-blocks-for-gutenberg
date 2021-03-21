@@ -1,7 +1,7 @@
 import generateCSS from '../../../assets/js/blocks/generateCss'
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
-function styling ( props ) {
+function styling(props) {
     const {
         classMigrate,
         block_id,
@@ -53,114 +53,114 @@ function styling ( props ) {
 
     selectors = {
         " .premium-pricing-table__title": {
-            "font-size": generateCSSUnit( titleSize, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-pricing-table__slash": {
-            "font-size": generateCSSUnit( slashSize, slashSizeUnit )
+            "font-size": generateCSSUnit(slashSize, slashSizeUnit)
         },
         " .premium-pricing-table__currency": {
-            "font-size": generateCSSUnit( currSize, currSizeUnit )
+            "font-size": generateCSSUnit(currSize, currSizeUnit)
         },
         " .premium-pricing-table__val": {
-            "font-size": generateCSSUnit( valSize, valSizeUnit )
+            "font-size": generateCSSUnit(valSize, valSizeUnit)
         },
         " .premium-pricing-table__divider": {
-            "font-size": generateCSSUnit( divSize, divSizeUnit )
+            "font-size": generateCSSUnit(divSize, divSizeUnit)
         },
         ' .premium-pricing-table__dur': {
-            "font-size": generateCSSUnit( durSize, durSizeUnit )
+            "font-size": generateCSSUnit(durSize, durSizeUnit)
         },
         ' .premium-pricing-table__list': {
-            "font-size": generateCSSUnit( listSize, listSizeUnit )
+            "font-size": generateCSSUnit(listSize, listSizeUnit)
         },
         ' .premium-pricing-table__desc': {
-            "font-size": generateCSSUnit( descSize, descSizeUnit )
+            "font-size": generateCSSUnit(descSize, descSizeUnit)
         },
         ' .premium-pricing-table__button_link': {
-            "font-size": generateCSSUnit( btnSize, btnSizeUnit )
+            "font-size": generateCSSUnit(btnSize, btnSizeUnit)
         },
         " .premium-pricing-table__badge_wrap  span": {
-            "font-size": generateCSSUnit( badgeTextSize, badgeTextUnit )
+            "font-size": generateCSSUnit(badgeTextSize, badgeTextUnit)
         }
     }
 
     tablet_selectors = {
         " .premium-pricing-table__title": {
-            "font-size": generateCSSUnit( titleSizeTablet, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-pricing-table__slash": {
-            "font-size": generateCSSUnit( slashSizeTablet, slashSizeUnit )
+            "font-size": generateCSSUnit(slashSizeTablet, slashSizeUnit)
         },
         " .premium-pricing-table__currency": {
-            "font-size": generateCSSUnit( currSizeTablet, currSizeUnit )
+            "font-size": generateCSSUnit(currSizeTablet, currSizeUnit)
         },
         " .premium-pricing-table__val": {
-            "font-size": generateCSSUnit( valSizeTablet, valSizeUnit )
+            "font-size": generateCSSUnit(valSizeTablet, valSizeUnit)
         },
         " .premium-pricing-table__divider": {
-            "font-size": generateCSSUnit( divSizeTablet, divSizeUnit )
+            "font-size": generateCSSUnit(divSizeTablet, divSizeUnit)
         },
         ' .premium-pricing-table__dur': {
-            "font-size": generateCSSUnit( durSizeTablet, durSizeUnit )
+            "font-size": generateCSSUnit(durSizeTablet, durSizeUnit)
         },
         ' .premium-pricing-table__list': {
-            "font-size": generateCSSUnit( listSizeTablet, listSizeUnit )
+            "font-size": generateCSSUnit(listSizeTablet, listSizeUnit)
         },
         ' .premium-pricing-table__desc': {
-            "font-size": generateCSSUnit( descSizeTablet, descSizeUnit )
+            "font-size": generateCSSUnit(descSizeTablet, descSizeUnit)
         },
         ' .premium-pricing-table__button_link': {
-            "font-size": generateCSSUnit( btnSizeTablet, btnSizeUnit )
+            "font-size": generateCSSUnit(btnSizeTablet, btnSizeUnit)
         },
         " .premium-pricing-table__badge_wrap  span": {
-            "font-size": generateCSSUnit( badgeTextSizeTablet, badgeTextUnit )
+            "font-size": generateCSSUnit(badgeTextSizeTablet, badgeTextUnit)
         }
     }
 
     mobile_selectors = {
         " .premium-pricing-table__title": {
-            "font-size": generateCSSUnit( titleSizeMobile, titleSizeUnit )
+            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-pricing-table__slash": {
-            "font-size": generateCSSUnit( slashSizeMobile, slashSizeUnit )
+            "font-size": generateCSSUnit(slashSizeMobile, slashSizeUnit)
         },
         " .premium-pricing-table__currency": {
-            "font-size": generateCSSUnit( currSizeMobile, currSizeUnit )
+            "font-size": generateCSSUnit(currSizeMobile, currSizeUnit)
         },
         " .premium-pricing-table__val": {
-            "font-size": generateCSSUnit( valSizeMobile, valSizeUnit )
+            "font-size": generateCSSUnit(valSizeMobile, valSizeUnit)
         },
         " .premium-pricing-table__divider": {
-            "font-size": generateCSSUnit( divSizeMobile, divSizeUnit )
+            "font-size": generateCSSUnit(divSizeMobile, divSizeUnit)
         },
         ' .premium-pricing-table__dur': {
-            "font-size": generateCSSUnit( durSizeMobile, durSizeUnit )
+            "font-size": generateCSSUnit(durSizeMobile, durSizeUnit)
         },
         ' .premium-pricing-table__list': {
-            "font-size": generateCSSUnit( listSizeMobile, listSizeUnit )
+            "font-size": generateCSSUnit(listSizeMobile, listSizeUnit)
         },
         ' .premium-pricing-table__desc': {
-            "font-size": generateCSSUnit( descSizeMobile, descSizeUnit )
+            "font-size": generateCSSUnit(descSizeMobile, descSizeUnit)
         },
         ' .premium-pricing-table__button_link': {
-            "font-size": generateCSSUnit( btnSizeMobile, btnSizeUnit )
+            "font-size": generateCSSUnit(btnSizeMobile, btnSizeUnit)
         },
         " .premium-pricing-table__badge_wrap  span": {
-            "font-size": generateCSSUnit( badgeTextSizeMobile, badgeTextUnit )
+            "font-size": generateCSSUnit(badgeTextSizeMobile, badgeTextUnit)
         }
     }
 
     var styling_css = ""
-    var id = `#premium-pricing-table-${ block_id }`
-    if ( classMigrate ) {
-        id = `.premium-pricing-table-${ block_id }`
+    var id = `#premium-pricing-table-${block_id}`
+    if (classMigrate) {
+        id = `.premium-pricing-table-${block_id}`
     }
 
-    styling_css = generateCSS( selectors, id );
+    styling_css = generateCSS(selectors, id);
 
-    styling_css += generateCSS( tablet_selectors, id, true, "tablet" );
+    styling_css += generateCSS(tablet_selectors, id, true, "tablet");
 
-    styling_css += generateCSS( mobile_selectors, id, true, "mobile" );
+    styling_css += generateCSS(mobile_selectors, id, true, "mobile");
 
     return styling_css
 

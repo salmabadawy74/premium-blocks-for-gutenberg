@@ -573,21 +573,21 @@ const videoBoxAttrs_2_0 = {
 }
 const newAttributes_2_1 = {
     block_id: {
-        type:'string'  
+        type: 'string'
     },
     videoDescSizeUnit: {
         type: "string",
-      default:'px'  
+        default: 'px'
     },
     videoDescSizeMobile: {
-      type:'number'  
+        type: 'number'
     },
     videoDescSizeTablet: {
-      type:'number'  
+        type: 'number'
     },
     classMigrate: {
         type: 'boolean',
-        default:false
+        default: false
     },
     playOpacity: {
         type: "number",
@@ -598,19 +598,19 @@ const newAttributes_2_1 = {
         default: "1",
     },
     hideDesktop: {
-		type: 'boolean',
-		default:false
-	},
-	hideTablet: {
-		type: 'boolean',
-		default:false
-	},
-	hideMobile: {
-		type: 'boolean',
-		default:false
-	}
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 }
-const videoBoxAttrs_2_1 = Object.assign( videoBoxAttrs_2_0, newAttributes_2_1 );
+const videoBoxAttrs_2_1 = Object.assign(videoBoxAttrs_2_0, newAttributes_2_1);
 
 const deprecatedContent = [
     {
@@ -622,13 +622,13 @@ const deprecatedContent = [
                 videoDescSizeUnit: 'px',
                 videoDescSizeTablet: '',
                 videoDescSizeMobile: '',
-                playOpacity    : '',
+                playOpacity: '',
                 videoDescOpacity: '',
                 hideDesktop: false,
                 hideTablet: false,
-                hideMobile:false
+                hideMobile: false
             }
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
         save: props => {
             const {
@@ -687,697 +687,686 @@ const deprecatedContent = [
                 shadowHorizontal,
                 shadowVertical,
                 shadowPosition
-              } = props.attributes;
-              const loopVideo = () => {
+            } = props.attributes;
+            const loopVideo = () => {
                 if ("youtube" === videoType) {
-                  if (videoURL.startsWith("http")) {
-                    return loop
-                      ? `1&playlist=${videoURL.replace(
-                          "https://www.youtube.com/embed/",
-                          ""
-                        )}`
-                      : "0";
-                  } else {
-                    return loop ? `1&playlist=${videoURL}` : "0";
-                  }
+                    if (videoURL.startsWith("http")) {
+                        return loop
+                            ? `1&playlist=${videoURL.replace(
+                                "https://www.youtube.com/embed/",
+                                ""
+                            )}`
+                            : "0";
+                    } else {
+                        return loop ? `1&playlist=${videoURL}` : "0";
+                    }
                 } else {
-                  return loop ? "1" : "0";
+                    return loop ? "1" : "0";
                 }
-              };
-            
-              return (
+            };
+
+            return (
                 <div
-                  id={videoBoxId}
-                  className={`${className} video-overlay-${overlay}`}
-                  data-type={videoType}
-                  style={{
-                    border: boxBorderType,
-                    borderWidth: boxBorderWidth + "px",
-                    borderRadius: boxBorderRadius + "px",
-                    borderColor: boxBorderColor,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-                  }}
-                >
-                  <style
-                    dangerouslySetInnerHTML={{
-                      __html: [
-                        `#${videoBoxId} .premium-video-box__play:hover {`,
-                        `color: ${playHoverColor} !important;`,
-                        `background-color: ${playHoverBackColor} !important;`,
-                        "}"
-                      ].join("\n")
+                    id={videoBoxId}
+                    className={`${className} video-overlay-${overlay}`}
+                    data-type={videoType}
+                    style={{
+                        border: boxBorderType,
+                        borderWidth: boxBorderWidth + "px",
+                        borderRadius: boxBorderRadius + "px",
+                        borderColor: boxBorderColor,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
                     }}
-                  />
-                  <div className={`premium-video-box__container`}>
-                    {"self" !== videoType && (
-                      <iframe
-                        src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
-                          overlay ? 0 : autoPlay
-                        }&loop=${loopVideo()}&mute${
-                          "vimeo" == videoType ? "d" : ""
-                        }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${
-                          controls ? "1" : "0"
-                        }`}
-                        frameborder="0"
-                        gesture="media"
-                        allow="encrypted-media"
-                        allowfullscreen
-                      />
-                    )}
-                    {"self" === videoType && (
-                      <video
-                        src={videoURL}
-                        loop={loop ? true : false}
-                        muted={mute ? true : false}
-                        controls={controls ? true : false}
-                        autoplay={overlay ? false : autoPlay}
-                      />
-                    )}
-                  </div>
-                  {overlay && overlayImgURL && (
-                    <div
-                      className={`premium-video-box__overlay`}
-                      style={{
-                        backgroundImage: `url('${overlayImgURL}')`,
-                        filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-                      }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#${videoBoxId} .premium-video-box__play:hover {`,
+                                `color: ${playHoverColor} !important;`,
+                                `background-color: ${playHoverBackColor} !important;`,
+                                "}"
+                            ].join("\n")
+                        }}
                     />
-                  )}
-                  {overlay && playIcon && (
-                    <div
-                      className={`premium-video-box__play`}
-                      style={{
-                        top: playTop + "%",
-                        left: playLeft + "%",
-                        color: playColor,
-                        backgroundColor: playBack,
-                        border: playBorderType,
-                        borderWidth: playBorderWidth + "px",
-                        borderRadius: playBorderRadius + "px",
-                        borderColor: playBorderColor,
-                        padding: playPadding + "px"
-                      }}
-                    >
-                      <i
-                        className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
-                        style={{
-                          fontSize: playSize + "px"
-                        }}
-                      />
+                    <div className={`premium-video-box__container`}>
+                        {"self" !== videoType && (
+                            <iframe
+                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                    }`}
+                                frameborder="0"
+                                gesture="media"
+                                allow="encrypted-media"
+                                allowfullscreen
+                            />
+                        )}
+                        {"self" === videoType && (
+                            <video
+                                src={videoURL}
+                                loop={loop ? true : false}
+                                muted={mute ? true : false}
+                                controls={controls ? true : false}
+                                autoplay={overlay ? false : autoPlay}
+                            />
+                        )}
                     </div>
-                  )}
-                  {overlay && videoDesc && (
-                    <div
-                      className={`premium-video-box__desc`}
-                      style={{
-                        color: videoDescColor,
-                        backgroundColor: videoDescBack,
-                        padding: videoDescPadding,
-                        borderRadius: videoDescBorderRadius,
-                        top: descTop + "%",
-                        left: descLeft + "%"
-                      }}
-                    >
-                      <p
-                        className={`premium-video-box__desc_text`}
-                        style={{
-                          fontSize: videoDescSize + "px",
-                          fontFamily: videoDescFamily,
-                          fontWeight: videoDescWeight,
-                          letterSpacing: videoDescLetter + "px",
-                          textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-                          textTransform: videoDescUpper ? "uppercase" : "none",
-                          fontStyle: videoDescStyle
-                        }}
-                      >
-                        <span>{videoDescText}</span>
-                      </p>
-                    </div>
-                  )}
+                    {overlay && overlayImgURL && (
+                        <div
+                            className={`premium-video-box__overlay`}
+                            style={{
+                                backgroundImage: `url('${overlayImgURL}')`,
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            }}
+                        />
+                    )}
+                    {overlay && playIcon && (
+                        <div
+                            className={`premium-video-box__play`}
+                            style={{
+                                top: playTop + "%",
+                                left: playLeft + "%",
+                                color: playColor,
+                                backgroundColor: playBack,
+                                border: playBorderType,
+                                borderWidth: playBorderWidth + "px",
+                                borderRadius: playBorderRadius + "px",
+                                borderColor: playBorderColor,
+                                padding: playPadding + "px"
+                            }}
+                        >
+                            <i
+                                className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                style={{
+                                    fontSize: playSize + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {overlay && videoDesc && (
+                        <div
+                            className={`premium-video-box__desc`}
+                            style={{
+                                color: videoDescColor,
+                                backgroundColor: videoDescBack,
+                                padding: videoDescPadding,
+                                borderRadius: videoDescBorderRadius,
+                                top: descTop + "%",
+                                left: descLeft + "%"
+                            }}
+                        >
+                            <p
+                                className={`premium-video-box__desc_text`}
+                                style={{
+                                    fontSize: videoDescSize + "px",
+                                    fontFamily: videoDescFamily,
+                                    fontWeight: videoDescWeight,
+                                    letterSpacing: videoDescLetter + "px",
+                                    textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
+                                    textTransform: videoDescUpper ? "uppercase" : "none",
+                                    fontStyle: videoDescStyle
+                                }}
+                            >
+                                <span>{videoDescText}</span>
+                            </p>
+                        </div>
+                    )}
                 </div>
-              );
+            );
         }
     },
-  {
-    attributes: videoBoxAttrs_1_5_4,
-    migrate: attributes => {
-      let newAttributes = {
-        descShadowBlur: "0",
-        descShadowColor: "",
-        descShadowHorizontal: "0",
-        descShadowVertical: "0"
-      };
-      return Object.assign(attributes, newAttributes);
+    {
+        attributes: videoBoxAttrs_1_5_4,
+        migrate: attributes => {
+            let newAttributes = {
+                descShadowBlur: "0",
+                descShadowColor: "",
+                descShadowHorizontal: "0",
+                descShadowVertical: "0"
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                videoBoxId,
+                videoType,
+                videoURL,
+                autoPlay,
+                loop,
+                mute,
+                relatedVideos,
+                controls,
+                overlay,
+                overlayImgURL,
+                blur,
+                contrast,
+                saturation,
+                bright,
+                hue,
+                playTop,
+                playLeft,
+                playIcon,
+                playColor,
+                playHoverColor,
+                playHoverBackColor,
+                playSize,
+                playPadding,
+                playBack,
+                playBorderColor,
+                playBorderWidth,
+                playBorderRadius,
+                playBorderType,
+                videoDesc,
+                descTop,
+                descLeft,
+                videoDescText,
+                videoDescColor,
+                videoDescBack,
+                videoDescPadding,
+                videoDescSize,
+                videoDescFamily,
+                videoDescWeight,
+                videoDescLetter,
+                videoDescStyle,
+                videoDescUpper,
+                videoDescBorderRadius,
+                boxBorderColor,
+                boxBorderWidth,
+                boxBorderRadius,
+                boxBorderType,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition
+            } = props.attributes;
+            const loopVideo = () => {
+                if ("youtube" === videoType) {
+                    if (videoURL.startsWith("http")) {
+                        return loop
+                            ? `1&playlist=${videoURL.replace(
+                                "https://www.youtube.com/embed/",
+                                ""
+                            )}`
+                            : "0";
+                    } else {
+                        return loop ? `1&playlist=${videoURL}` : "0";
+                    }
+                } else {
+                    return loop ? "1" : "0";
+                }
+            };
+            return (
+                <div
+                    id={videoBoxId}
+                    className={`${className} video-overlay-${overlay}`}
+                    data-type={videoType}
+                    style={{
+                        border: boxBorderType,
+                        borderWidth: boxBorderWidth + "px",
+                        borderRadius: boxBorderRadius + "px",
+                        borderColor: boxBorderColor,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#${videoBoxId} .${className}__play:hover {`,
+                                `color: ${playHoverColor} !important;`,
+                                `background-color: ${playHoverBackColor} !important;`,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <div className={`${className}__container`}>
+                        {"self" !== videoType && (
+                            <iframe
+                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                    }`}
+                                frameborder="0"
+                                gesture="media"
+                                allow="encrypted-media"
+                                allowfullscreen
+                            />
+                        )}
+                        {"self" === videoType && (
+                            <video
+                                src={videoURL}
+                                loop={loop ? true : false}
+                                muted={mute ? true : false}
+                                controls={controls ? true : false}
+                                autoplay={overlay ? false : autoPlay}
+                            />
+                        )}
+                    </div>
+                    {overlay && overlayImgURL && (
+                        <div
+                            className={`${className}__overlay`}
+                            style={{
+                                backgroundImage: `url('${overlayImgURL}')`,
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            }}
+                        />
+                    )}
+                    {overlay && playIcon && (
+                        <div
+                            className={`${className}__play`}
+                            style={{
+                                top: playTop + "%",
+                                left: playLeft + "%",
+                                color: playColor,
+                                backgroundColor: playBack,
+                                border: playBorderType,
+                                borderWidth: playBorderWidth + "px",
+                                borderRadius: playBorderRadius + "px",
+                                borderColor: playBorderColor,
+                                padding: playPadding + "px"
+                            }}
+                        >
+                            <i
+                                className={`${className}__play_icon dashicons dashicons-controls-play`}
+                                style={{
+                                    fontSize: playSize + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {overlay && videoDesc && (
+                        <div
+                            className={`${className}__desc`}
+                            style={{
+                                color: videoDescColor,
+                                backgroundColor: videoDescBack,
+                                padding: videoDescPadding,
+                                borderRadius: videoDescBorderRadius,
+                                top: descTop + "%",
+                                left: descLeft + "%"
+                            }}
+                        >
+                            <p
+                                className={`${className}__desc_text`}
+                                style={{
+                                    fontSize: videoDescSize + "px",
+                                    fontFamily: videoDescFamily,
+                                    fontWeight: videoDescWeight,
+                                    letterSpacing: videoDescLetter + "px",
+                                    textTransform: videoDescUpper ? "uppercase" : "none",
+                                    fontStyle: videoDescStyle
+                                }}
+                            >
+                                <span>{videoDescText}</span>
+                            </p>
+                        </div>
+                    )}
+                </div>
+            );
+        }
     },
-    save: props => {
-      const {
-        videoBoxId,
-        videoType,
-        videoURL,
-        autoPlay,
-        loop,
-        mute,
-        relatedVideos,
-        controls,
-        overlay,
-        overlayImgURL,
-        blur,
-        contrast,
-        saturation,
-        bright,
-        hue,
-        playTop,
-        playLeft,
-        playIcon,
-        playColor,
-        playHoverColor,
-        playHoverBackColor,
-        playSize,
-        playPadding,
-        playBack,
-        playBorderColor,
-        playBorderWidth,
-        playBorderRadius,
-        playBorderType,
-        videoDesc,
-        descTop,
-        descLeft,
-        videoDescText,
-        videoDescColor,
-        videoDescBack,
-        videoDescPadding,
-        videoDescSize,
-        videoDescFamily,
-        videoDescWeight,
-        videoDescLetter,
-        videoDescStyle,
-        videoDescUpper,
-        videoDescBorderRadius,
-        boxBorderColor,
-        boxBorderWidth,
-        boxBorderRadius,
-        boxBorderType,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition
-      } = props.attributes;
-      const loopVideo = () => {
-        if ("youtube" === videoType) {
-          if (videoURL.startsWith("http")) {
-            return loop
-              ? `1&playlist=${videoURL.replace(
-                  "https://www.youtube.com/embed/",
-                  ""
-                )}`
-              : "0";
-          } else {
-            return loop ? `1&playlist=${videoURL}` : "0";
-          }
-        } else {
-          return loop ? "1" : "0";
+    {
+        attributes: videoBoxAttrs_1_2_7,
+        migrate: attributes => {
+            let newAttributes = {
+                videoDescFamily: ""
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                videoBoxId,
+                videoType,
+                videoURL,
+                autoPlay,
+                loop,
+                mute,
+                relatedVideos,
+                controls,
+                overlay,
+                overlayImgURL,
+                blur,
+                contrast,
+                saturation,
+                bright,
+                hue,
+                playTop,
+                playLeft,
+                playIcon,
+                playColor,
+                playHoverColor,
+                playHoverBackColor,
+                playSize,
+                playPadding,
+                playBack,
+                playBorderColor,
+                playBorderWidth,
+                playBorderRadius,
+                playBorderType,
+                videoDesc,
+                descTop,
+                descLeft,
+                videoDescText,
+                videoDescColor,
+                videoDescBack,
+                videoDescPadding,
+                videoDescSize,
+                videoDescWeight,
+                videoDescLetter,
+                videoDescStyle,
+                videoDescUpper,
+                videoDescBorderRadius,
+                boxBorderColor,
+                boxBorderWidth,
+                boxBorderRadius,
+                boxBorderType,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition
+            } = props.attributes;
+            const loopVideo = () => {
+                if ("youtube" === videoType) {
+                    if (videoURL.startsWith("http")) {
+                        return loop
+                            ? `1&playlist=${videoURL.replace(
+                                "https://www.youtube.com/embed/",
+                                ""
+                            )}`
+                            : "0";
+                    } else {
+                        return loop ? `1&playlist=${videoURL}` : "0";
+                    }
+                } else {
+                    return loop ? "1" : "0";
+                }
+            };
+            return (
+                <div
+                    id={videoBoxId}
+                    className={`${className} video-overlay-${overlay}`}
+                    data-type={videoType}
+                    style={{
+                        border: boxBorderType,
+                        borderWidth: boxBorderWidth + "px",
+                        borderRadius: boxBorderRadius + "px",
+                        borderColor: boxBorderColor,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#${videoBoxId} .${className}__play:hover {`,
+                                `color: ${playHoverColor} !important;`,
+                                `background-color: ${playHoverBackColor} !important;`,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <div className={`${className}__container`}>
+                        {"self" !== videoType && (
+                            <iframe
+                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                    }`}
+                                frameborder="0"
+                                gesture="media"
+                                allow="encrypted-media"
+                                allowfullscreen
+                            />
+                        )}
+                        {"self" === videoType && (
+                            <video
+                                src={videoURL}
+                                loop={loop ? true : false}
+                                muted={mute ? true : false}
+                                controls={controls ? true : false}
+                                autoplay={overlay ? false : autoPlay}
+                            />
+                        )}
+                    </div>
+                    {overlay && overlayImgURL && (
+                        <div
+                            className={`${className}__overlay`}
+                            style={{
+                                backgroundImage: `url('${overlayImgURL}')`,
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            }}
+                        />
+                    )}
+                    {overlay && playIcon && (
+                        <div
+                            className={`${className}__play`}
+                            style={{
+                                top: playTop + "%",
+                                left: playLeft + "%",
+                                color: playColor,
+                                backgroundColor: playBack,
+                                border: playBorderType,
+                                borderWidth: playBorderWidth + "px",
+                                borderRadius: playBorderRadius + "px",
+                                borderColor: playBorderColor,
+                                padding: playPadding + "px"
+                            }}
+                        >
+                            <i
+                                className={`${className}__play_icon dashicons dashicons-controls-play`}
+                                style={{
+                                    fontSize: playSize + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {overlay && videoDesc && (
+                        <div
+                            className={`${className}__desc`}
+                            style={{
+                                color: videoDescColor,
+                                backgroundColor: videoDescBack,
+                                padding: videoDescPadding,
+                                borderRadius: videoDescBorderRadius,
+                                top: descTop + "%",
+                                left: descLeft + "%"
+                            }}
+                        >
+                            <p
+                                className={`${className}__desc_text`}
+                                style={{
+                                    fontSize: videoDescSize + "px",
+                                    fontWeight: videoDescWeight,
+                                    letterSpacing: videoDescLetter + "px",
+                                    textTransform: videoDescUpper ? "uppercase" : "none",
+                                    fontStyle: videoDescStyle
+                                }}
+                            >
+                                <span>{videoDescText}</span>
+                            </p>
+                        </div>
+                    )}
+                </div>
+            );
         }
-      };
-      return (
-        <div
-          id={videoBoxId}
-          className={`${className} video-overlay-${overlay}`}
-          data-type={videoType}
-          style={{
-            border: boxBorderType,
-            borderWidth: boxBorderWidth + "px",
-            borderRadius: boxBorderRadius + "px",
-            borderColor: boxBorderColor,
-            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-          }}
-        >
-          <style
-            dangerouslySetInnerHTML={{
-              __html: [
-                `#${videoBoxId} .${className}__play:hover {`,
-                `color: ${playHoverColor} !important;`,
-                `background-color: ${playHoverBackColor} !important;`,
-                "}"
-              ].join("\n")
-            }}
-          />
-          <div className={`${className}__container`}>
-            {"self" !== videoType && (
-              <iframe
-                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
-                  overlay ? 0 : autoPlay
-                }&loop=${loopVideo()}&mute${
-                  "vimeo" == videoType ? "d" : ""
-                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${
-                  controls ? "1" : "0"
-                }`}
-                frameborder="0"
-                gesture="media"
-                allow="encrypted-media"
-                allowfullscreen
-              />
-            )}
-            {"self" === videoType && (
-              <video
-                src={videoURL}
-                loop={loop ? true : false}
-                muted={mute ? true : false}
-                controls={controls ? true : false}
-                autoplay={overlay ? false : autoPlay}
-              />
-            )}
-          </div>
-          {overlay && overlayImgURL && (
-            <div
-              className={`${className}__overlay`}
-              style={{
-                backgroundImage: `url('${overlayImgURL}')`,
-                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-              }}
-            />
-          )}
-          {overlay && playIcon && (
-            <div
-              className={`${className}__play`}
-              style={{
-                top: playTop + "%",
-                left: playLeft + "%",
-                color: playColor,
-                backgroundColor: playBack,
-                border: playBorderType,
-                borderWidth: playBorderWidth + "px",
-                borderRadius: playBorderRadius + "px",
-                borderColor: playBorderColor,
-                padding: playPadding + "px"
-              }}
-            >
-              <i
-                className={`${className}__play_icon dashicons dashicons-controls-play`}
-                style={{
-                  fontSize: playSize + "px"
-                }}
-              />
-            </div>
-          )}
-          {overlay && videoDesc && (
-            <div
-              className={`${className}__desc`}
-              style={{
-                color: videoDescColor,
-                backgroundColor: videoDescBack,
-                padding: videoDescPadding,
-                borderRadius: videoDescBorderRadius,
-                top: descTop + "%",
-                left: descLeft + "%"
-              }}
-            >
-              <p
-                className={`${className}__desc_text`}
-                style={{
-                  fontSize: videoDescSize + "px",
-                  fontFamily: videoDescFamily,
-                  fontWeight: videoDescWeight,
-                  letterSpacing: videoDescLetter + "px",
-                  textTransform: videoDescUpper ? "uppercase" : "none",
-                  fontStyle: videoDescStyle
-                }}
-              >
-                <span>{videoDescText}</span>
-              </p>
-            </div>
-          )}
-        </div>
-      );
-    }
-  },
-  {
-    attributes: videoBoxAttrs_1_2_7,
-    migrate: attributes => {
-      let newAttributes = {
-        videoDescFamily: ""
-      };
-      return Object.assign(attributes, newAttributes);
     },
-    save: props => {
-      const {
-        videoBoxId,
-        videoType,
-        videoURL,
-        autoPlay,
-        loop,
-        mute,
-        relatedVideos,
-        controls,
-        overlay,
-        overlayImgURL,
-        blur,
-        contrast,
-        saturation,
-        bright,
-        hue,
-        playTop,
-        playLeft,
-        playIcon,
-        playColor,
-        playHoverColor,
-        playHoverBackColor,
-        playSize,
-        playPadding,
-        playBack,
-        playBorderColor,
-        playBorderWidth,
-        playBorderRadius,
-        playBorderType,
-        videoDesc,
-        descTop,
-        descLeft,
-        videoDescText,
-        videoDescColor,
-        videoDescBack,
-        videoDescPadding,
-        videoDescSize,
-        videoDescWeight,
-        videoDescLetter,
-        videoDescStyle,
-        videoDescUpper,
-        videoDescBorderRadius,
-        boxBorderColor,
-        boxBorderWidth,
-        boxBorderRadius,
-        boxBorderType,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition
-      } = props.attributes;
-      const loopVideo = () => {
-        if ("youtube" === videoType) {
-          if (videoURL.startsWith("http")) {
-            return loop
-              ? `1&playlist=${videoURL.replace(
-                  "https://www.youtube.com/embed/",
-                  ""
-                )}`
-              : "0";
-          } else {
-            return loop ? `1&playlist=${videoURL}` : "0";
-          }
-        } else {
-          return loop ? "1" : "0";
+    {
+        attributes: videoBoxAttrs_1_2_7,
+        save: props => {
+            const {
+                videoBoxId,
+                videoType,
+                videoURL,
+                autoPlay,
+                loop,
+                mute,
+                controls,
+                overlay,
+                overlayImgURL,
+                blur,
+                contrast,
+                saturation,
+                bright,
+                hue,
+                playTop,
+                playLeft,
+                playIcon,
+                playColor,
+                playHoverColor,
+                playHoverBackColor,
+                playSize,
+                playPadding,
+                playBack,
+                playBorderColor,
+                playBorderWidth,
+                playBorderRadius,
+                playBorderType,
+                videoDesc,
+                descTop,
+                descLeft,
+                videoDescText,
+                videoDescColor,
+                videoDescBack,
+                videoDescPadding,
+                videoDescSize,
+                videoDescWeight,
+                videoDescLetter,
+                videoDescStyle,
+                videoDescUpper,
+                videoDescBorderRadius,
+                boxBorderColor,
+                boxBorderWidth,
+                boxBorderRadius,
+                boxBorderType,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition
+            } = props.attributes;
+            const loopVideo = () => {
+                if ("youtube" === videoType) {
+                    if (videoURL.startsWith("http")) {
+                        return loop
+                            ? `1&playlist=${videoURL.replace(
+                                "https://www.youtube.com/embed/",
+                                ""
+                            )}`
+                            : "0";
+                    } else {
+                        return loop ? `1&playlist=${videoURL}` : "0";
+                    }
+                } else {
+                    return loop ? "1" : "0";
+                }
+            };
+            return (
+                <div
+                    id={videoBoxId}
+                    className={`${className} video-overlay-${overlay}`}
+                    data-type={videoType}
+                    style={{
+                        border: boxBorderType,
+                        borderWidth: boxBorderWidth + "px",
+                        borderRadius: boxBorderRadius + "px",
+                        borderColor: boxBorderColor,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#${videoBoxId} .${className}__play:hover {`,
+                                `color: ${playHoverColor} !important;`,
+                                `background-color: ${playHoverBackColor} !important;`,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <div className={`${className}__container`}>
+                        {"self" !== videoType && (
+                            <iframe
+                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                    }=${mute}&controls=${controls ? "1" : "0"}`}
+                                frameborder="0"
+                                gesture="media"
+                                allow="encrypted-media"
+                                allowfullscreen
+                            />
+                        )}
+                        {"self" === videoType && (
+                            <video
+                                src={videoURL}
+                                loop={loop ? true : false}
+                                muted={mute ? true : false}
+                                controls={controls ? true : false}
+                                autoplay={overlay ? false : autoPlay}
+                            />
+                        )}
+                    </div>
+                    {overlay && overlayImgURL && (
+                        <div
+                            className={`${className}__overlay`}
+                            style={{
+                                backgroundImage: `url('${overlayImgURL}')`,
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            }}
+                        />
+                    )}
+                    {overlay && playIcon && (
+                        <div
+                            className={`${className}__play`}
+                            style={{
+                                top: playTop + "%",
+                                left: playLeft + "%",
+                                color: playColor,
+                                backgroundColor: playBack,
+                                border: playBorderType,
+                                borderWidth: playBorderWidth + "px",
+                                borderRadius: playBorderRadius + "px",
+                                borderColor: playBorderColor,
+                                padding: playPadding + "px"
+                            }}
+                        >
+                            <i
+                                className={`${className}__play_icon dashicons dashicons-controls-play`}
+                                style={{
+                                    fontSize: playSize + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {overlay && videoDesc && (
+                        <div
+                            className={`${className}__desc`}
+                            style={{
+                                color: videoDescColor,
+                                backgroundColor: videoDescBack,
+                                padding: videoDescPadding,
+                                borderRadius: videoDescBorderRadius,
+                                top: descTop + "%",
+                                left: descLeft + "%"
+                            }}
+                        >
+                            <p
+                                className={`${className}__desc_text`}
+                                style={{
+                                    fontSize: videoDescSize + "px",
+                                    fontWeight: videoDescWeight,
+                                    letterSpacing: videoDescLetter + "px",
+                                    textTransform: videoDescUpper ? "uppercase" : "none",
+                                    fontStyle: videoDescStyle
+                                }}
+                            >
+                                <span>{videoDescText}</span>
+                            </p>
+                        </div>
+                    )}
+                </div>
+            );
         }
-      };
-      return (
-        <div
-          id={videoBoxId}
-          className={`${className} video-overlay-${overlay}`}
-          data-type={videoType}
-          style={{
-            border: boxBorderType,
-            borderWidth: boxBorderWidth + "px",
-            borderRadius: boxBorderRadius + "px",
-            borderColor: boxBorderColor,
-            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-          }}
-        >
-          <style
-            dangerouslySetInnerHTML={{
-              __html: [
-                `#${videoBoxId} .${className}__play:hover {`,
-                `color: ${playHoverColor} !important;`,
-                `background-color: ${playHoverBackColor} !important;`,
-                "}"
-              ].join("\n")
-            }}
-          />
-          <div className={`${className}__container`}>
-            {"self" !== videoType && (
-              <iframe
-                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
-                  overlay ? 0 : autoPlay
-                }&loop=${loopVideo()}&mute${
-                  "vimeo" == videoType ? "d" : ""
-                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${
-                  controls ? "1" : "0"
-                }`}
-                frameborder="0"
-                gesture="media"
-                allow="encrypted-media"
-                allowfullscreen
-              />
-            )}
-            {"self" === videoType && (
-              <video
-                src={videoURL}
-                loop={loop ? true : false}
-                muted={mute ? true : false}
-                controls={controls ? true : false}
-                autoplay={overlay ? false : autoPlay}
-              />
-            )}
-          </div>
-          {overlay && overlayImgURL && (
-            <div
-              className={`${className}__overlay`}
-              style={{
-                backgroundImage: `url('${overlayImgURL}')`,
-                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-              }}
-            />
-          )}
-          {overlay && playIcon && (
-            <div
-              className={`${className}__play`}
-              style={{
-                top: playTop + "%",
-                left: playLeft + "%",
-                color: playColor,
-                backgroundColor: playBack,
-                border: playBorderType,
-                borderWidth: playBorderWidth + "px",
-                borderRadius: playBorderRadius + "px",
-                borderColor: playBorderColor,
-                padding: playPadding + "px"
-              }}
-            >
-              <i
-                className={`${className}__play_icon dashicons dashicons-controls-play`}
-                style={{
-                  fontSize: playSize + "px"
-                }}
-              />
-            </div>
-          )}
-          {overlay && videoDesc && (
-            <div
-              className={`${className}__desc`}
-              style={{
-                color: videoDescColor,
-                backgroundColor: videoDescBack,
-                padding: videoDescPadding,
-                borderRadius: videoDescBorderRadius,
-                top: descTop + "%",
-                left: descLeft + "%"
-              }}
-            >
-              <p
-                className={`${className}__desc_text`}
-                style={{
-                  fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight,
-                  letterSpacing: videoDescLetter + "px",
-                  textTransform: videoDescUpper ? "uppercase" : "none",
-                  fontStyle: videoDescStyle
-                }}
-              >
-                <span>{videoDescText}</span>
-              </p>
-            </div>
-          )}
-        </div>
-      );
     }
-  },
-  {
-    attributes: videoBoxAttrs_1_2_7,
-    save: props => {
-      const {
-        videoBoxId,
-        videoType,
-        videoURL,
-        autoPlay,
-        loop,
-        mute,
-        controls,
-        overlay,
-        overlayImgURL,
-        blur,
-        contrast,
-        saturation,
-        bright,
-        hue,
-        playTop,
-        playLeft,
-        playIcon,
-        playColor,
-        playHoverColor,
-        playHoverBackColor,
-        playSize,
-        playPadding,
-        playBack,
-        playBorderColor,
-        playBorderWidth,
-        playBorderRadius,
-        playBorderType,
-        videoDesc,
-        descTop,
-        descLeft,
-        videoDescText,
-        videoDescColor,
-        videoDescBack,
-        videoDescPadding,
-        videoDescSize,
-        videoDescWeight,
-        videoDescLetter,
-        videoDescStyle,
-        videoDescUpper,
-        videoDescBorderRadius,
-        boxBorderColor,
-        boxBorderWidth,
-        boxBorderRadius,
-        boxBorderType,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition
-      } = props.attributes;
-      const loopVideo = () => {
-        if ("youtube" === videoType) {
-          if (videoURL.startsWith("http")) {
-            return loop
-              ? `1&playlist=${videoURL.replace(
-                  "https://www.youtube.com/embed/",
-                  ""
-                )}`
-              : "0";
-          } else {
-            return loop ? `1&playlist=${videoURL}` : "0";
-          }
-        } else {
-          return loop ? "1" : "0";
-        }
-      };
-      return (
-        <div
-          id={videoBoxId}
-          className={`${className} video-overlay-${overlay}`}
-          data-type={videoType}
-          style={{
-            border: boxBorderType,
-            borderWidth: boxBorderWidth + "px",
-            borderRadius: boxBorderRadius + "px",
-            borderColor: boxBorderColor,
-            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
-          }}
-        >
-          <style
-            dangerouslySetInnerHTML={{
-              __html: [
-                `#${videoBoxId} .${className}__play:hover {`,
-                `color: ${playHoverColor} !important;`,
-                `background-color: ${playHoverBackColor} !important;`,
-                "}"
-              ].join("\n")
-            }}
-          />
-          <div className={`${className}__container`}>
-            {"self" !== videoType && (
-              <iframe
-                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${
-                  overlay ? 0 : autoPlay
-                }&loop=${loopVideo()}&mute${
-                  "vimeo" == videoType ? "d" : ""
-                }=${mute}&controls=${controls ? "1" : "0"}`}
-                frameborder="0"
-                gesture="media"
-                allow="encrypted-media"
-                allowfullscreen
-              />
-            )}
-            {"self" === videoType && (
-              <video
-                src={videoURL}
-                loop={loop ? true : false}
-                muted={mute ? true : false}
-                controls={controls ? true : false}
-                autoplay={overlay ? false : autoPlay}
-              />
-            )}
-          </div>
-          {overlay && overlayImgURL && (
-            <div
-              className={`${className}__overlay`}
-              style={{
-                backgroundImage: `url('${overlayImgURL}')`,
-                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-              }}
-            />
-          )}
-          {overlay && playIcon && (
-            <div
-              className={`${className}__play`}
-              style={{
-                top: playTop + "%",
-                left: playLeft + "%",
-                color: playColor,
-                backgroundColor: playBack,
-                border: playBorderType,
-                borderWidth: playBorderWidth + "px",
-                borderRadius: playBorderRadius + "px",
-                borderColor: playBorderColor,
-                padding: playPadding + "px"
-              }}
-            >
-              <i
-                className={`${className}__play_icon dashicons dashicons-controls-play`}
-                style={{
-                  fontSize: playSize + "px"
-                }}
-              />
-            </div>
-          )}
-          {overlay && videoDesc && (
-            <div
-              className={`${className}__desc`}
-              style={{
-                color: videoDescColor,
-                backgroundColor: videoDescBack,
-                padding: videoDescPadding,
-                borderRadius: videoDescBorderRadius,
-                top: descTop + "%",
-                left: descLeft + "%"
-              }}
-            >
-              <p
-                className={`${className}__desc_text`}
-                style={{
-                  fontSize: videoDescSize + "px",
-                  fontWeight: videoDescWeight,
-                  letterSpacing: videoDescLetter + "px",
-                  textTransform: videoDescUpper ? "uppercase" : "none",
-                  fontStyle: videoDescStyle
-                }}
-              >
-                <span>{videoDescText}</span>
-              </p>
-            </div>
-          )}
-        </div>
-      );
-    }
-  }
 ];
 
 export default deprecatedContent;

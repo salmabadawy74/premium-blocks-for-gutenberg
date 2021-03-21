@@ -51,7 +51,7 @@ const deprecated_attributes_1_3_4 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __( "Awesome Title" ),
+        default: __("Awesome Title"),
     },
     titleTag: {
         type: "string",
@@ -150,7 +150,7 @@ const deprecated_attributes_1_3_4 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __( "Click Here" ),
+        default: __("Click Here"),
     },
     btnLink: {
         type: "string",
@@ -370,7 +370,7 @@ const deprecated_attributes_1_3_0 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __( "Awesome Title" ),
+        default: __("Awesome Title"),
     },
     titleTag: {
         type: "string",
@@ -469,7 +469,7 @@ const deprecated_attributes_1_3_0 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __( "Click Here" ),
+        default: __("Click Here"),
     },
     btnLink: {
         type: "string",
@@ -762,7 +762,7 @@ const deprecated_attributes_2_0 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __( "Awesome Title" )
+        default: __("Awesome Title")
     },
     titleTag: {
         type: "string",
@@ -867,7 +867,7 @@ const deprecated_attributes_2_0 = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __( "Click Here" )
+        default: __("Click Here")
     },
     btnLink: {
         type: "string",
@@ -1126,7 +1126,7 @@ const newAttributes_2_1 = {
     },
 }
 
-const deprecated_attributes_2_1 = Object.assign( deprecated_attributes_2_0, newAttributes_2_1 );
+const deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
 
 
 
@@ -1154,7 +1154,7 @@ const deprecatedContent = [
                 hideTablet: false,
                 hideMobile: false
             }
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
 
 
@@ -1262,8 +1262,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`premium-icon-box-${ id }`}
-                    className={`${ className } premium-icon-box-${ iconPos } premium-icon-box-${ iconHPos }`}
+                    id={`premium-icon-box-${id}`}
+                    className={`${className} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -1278,9 +1278,9 @@ const deprecatedContent = [
                         paddingRight: paddingR + paddingU,
                         paddingBottom: paddingB + paddingU,
                         paddingLeft: paddingL + paddingU,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1291,30 +1291,30 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id }:hover {`,
-                                    `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                                    `#premium-icon-box-${id}:hover {`,
+                                    `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
                         <div
-                            className={`premium-icon-box__icon_wrap premium-icon-box__icon_${ iconVPos }`}
+                            className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
                         >
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } premium-icon-box__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         backgroundColor: iconBackColor,
@@ -1324,8 +1324,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`premium-icon-box__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -1359,7 +1359,7 @@ const deprecatedContent = [
                                             : "none",
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
-                                        textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                         lineHeight: titleLine + "px",
                                     }}
                                 />
@@ -1389,7 +1389,7 @@ const deprecatedContent = [
                         )}
                         {btnChecked && btnText && (
                             <div
-                                className={`premium-icon-box__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                                className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                                 style={{
                                     marginTop: btnMarginT,
                                     marginBottom: btnMarginB,
@@ -1417,7 +1417,7 @@ const deprecatedContent = [
                                         borderRadius: btnBorderRadius + "px",
                                         borderColor: btnBorderColor,
                                         padding: btnPadding + btnPaddingU,
-                                        boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                     }}
                                 />
                             </div>
@@ -1429,15 +1429,15 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_6_6,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 iconPos: "block",
                 iconHPos: "before",
                 iconVPos: "center",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -1538,8 +1538,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -1554,9 +1554,9 @@ const deprecatedContent = [
                         paddingRight: paddingR + paddingU,
                         paddingBottom: paddingB + paddingU,
                         paddingLeft: paddingL + paddingU,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1567,28 +1567,28 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id }:hover {`,
-                                    `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                                    `#premium-icon-box-${id}:hover {`,
+                                    `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         backgroundColor: iconBackColor,
@@ -1598,8 +1598,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -1612,7 +1612,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -1620,7 +1620,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -1632,7 +1632,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -1640,7 +1640,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -1648,7 +1648,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -1662,7 +1662,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -1670,7 +1670,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn premium-button`}
+                                className={`${className}__btn premium-button`}
                                 href={btnLink}
                                 rel="noopener noreferrer"
                                 target={btnTarget ? "_blank" : "_self"}
@@ -1690,7 +1690,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + btnPaddingU,
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
@@ -1701,14 +1701,14 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_5_7,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 paddingU: "",
                 btnPaddingU: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -1807,8 +1807,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -1823,9 +1823,9 @@ const deprecatedContent = [
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -1836,28 +1836,28 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id }:hover {`,
-                                    `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                                    `#premium-icon-box-${id}:hover {`,
+                                    `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         backgroundColor: iconBackColor,
@@ -1867,8 +1867,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -1881,7 +1881,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -1889,7 +1889,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -1901,7 +1901,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -1909,7 +1909,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -1917,7 +1917,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -1931,7 +1931,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -1939,7 +1939,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn premium-button`}
+                                className={`${className}__btn premium-button`}
                                 href={btnLink}
                                 rel="noopener noreferrer"
                                 target={btnTarget ? "_blank" : "_self"}
@@ -1959,7 +1959,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + "px",
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
@@ -1970,14 +1970,14 @@ const deprecatedContent = [
     },
     {
         attribute: deprecated_attributes_1_5_1,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 titleFont: "",
                 descFont: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -2074,8 +2074,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -2090,9 +2090,9 @@ const deprecatedContent = [
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -2103,28 +2103,28 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id }:hover {`,
-                                    `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                                    `#premium-icon-box-${id}:hover {`,
+                                    `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         backgroundColor: iconBackColor,
@@ -2134,8 +2134,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -2148,7 +2148,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -2156,7 +2156,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -2167,7 +2167,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -2175,7 +2175,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -2183,7 +2183,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -2196,7 +2196,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -2204,7 +2204,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn premium-button`}
+                                className={`${className}__btn premium-button`}
                                 href={btnLink}
                                 rel="noopener noreferrer"
                                 target={btnTarget ? "_blank" : "_self"}
@@ -2224,7 +2224,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + "px",
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
@@ -2235,13 +2235,13 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_4_9,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 iconBackColor: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -2337,8 +2337,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -2353,9 +2353,9 @@ const deprecatedContent = [
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -2366,28 +2366,28 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id }:hover {`,
-                                    `box-shadow: ${ hoverShadowHorizontal }px ${ hoverShadowVertical }px ${ hoverShadowBlur }px ${ hoverShadowColor } ${ hoverShadowPosition } !important`,
+                                    `#premium-icon-box-${id}:hover {`,
+                                    `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         fontSize: iconSize,
@@ -2396,8 +2396,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -2410,7 +2410,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -2418,7 +2418,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -2429,7 +2429,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -2437,7 +2437,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -2445,7 +2445,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -2458,7 +2458,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -2466,7 +2466,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn premium-button`}
+                                className={`${className}__btn premium-button`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 value={btnText}
@@ -2485,7 +2485,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + "px",
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
@@ -2496,7 +2496,7 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_4,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             let newAttributes = {
                 hoverShadowColor: "",
                 hoverShadowBlur: "",
@@ -2504,9 +2504,9 @@ const deprecatedContent = [
                 hoverShadowVertical: "",
                 hoverShadowPosition: "",
             };
-            return Object.assign( attributes, newAttributes );
+            return Object.assign(attributes, newAttributes);
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -2597,8 +2597,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -2613,9 +2613,9 @@ const deprecatedContent = [
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -2626,25 +2626,25 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                    `#premium-icon-box-${ id } .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${ btnHoverBack } !important;`,
+                                    `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnHoverBack} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         fontSize: iconSize,
@@ -2653,8 +2653,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -2667,7 +2667,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -2675,7 +2675,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -2686,7 +2686,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -2694,7 +2694,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -2702,7 +2702,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -2715,7 +2715,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap premium-button__${ btnEffect } premium-button__${ effectDir }`}
+                            className={`${className}__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -2723,7 +2723,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn premium-button`}
+                                className={`${className}__btn premium-button`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 value={btnText}
@@ -2742,7 +2742,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + "px",
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
@@ -2753,12 +2753,12 @@ const deprecatedContent = [
     },
     {
         attributes: deprecated_attributes_1_3_0,
-        migrate: ( attributes ) => {
+        migrate: (attributes) => {
             return {
                 iconSize: attributes.iconSize,
             };
         },
-        save: ( props ) => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -2848,8 +2848,8 @@ const deprecatedContent = [
 
             return (
                 <div
-                    id={`${ className }-${ id }`}
-                    className={`${ className }`}
+                    id={`${className}-${id}`}
+                    className={`${className}`}
                     style={{
                         textAlign: align,
                         border: borderType,
@@ -2864,9 +2864,9 @@ const deprecatedContent = [
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
-                        boxShadow: `${ shadowHorizontal }px ${ shadowVertical }px ${ shadowBlur }px ${ shadowColor } ${ shadowPosition }`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                         backgroundColor: backColor,
-                        backgroundImage: `url('${ imageURL }')`,
+                        backgroundImage: `url('${imageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
@@ -2877,20 +2877,20 @@ const deprecatedContent = [
                         <style
                             dangerouslySetInnerHTML={{
                                 __html: [
-                                    `#premium-icon-box-${ id } .premium-icon-box__btn:hover {`,
-                                    `color: ${ btnHoverColor } !important;`,
-                                    `background-color: ${ btnHoverBack } !important;`,
-                                    `border-color: ${ btnHoverBorder } !important;`,
+                                    `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnHoverColor} !important;`,
+                                    `background-color: ${btnHoverBack} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
                                     "}",
-                                ].join( "\n" ),
+                                ].join("\n"),
                             }}
                         />
                     )}
                     {iconChecked && (
-                        <div className={`${ className }__icon_wrap`}>
+                        <div className={`${className}__icon_wrap`}>
                             {"icon" === iconImage && selectedIcon && (
                                 <i
-                                    className={`${ selectedIcon } ${ className }__icon premium-icon__${ hoverEffect }`}
+                                    className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
                                     style={{
                                         color: iconColor,
                                         fontSize: iconSize,
@@ -2899,8 +2899,8 @@ const deprecatedContent = [
                             )}
                             {"image" === iconImage && iconImgUrl && (
                                 <img
-                                    className={`${ className }__icon premium-icon__${ hoverEffect }`}
-                                    src={`${ iconImgUrl }`}
+                                    className={`${className}__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
                                     alt="Image Icon"
                                     style={{
                                         width: iconSize + "px",
@@ -2913,7 +2913,7 @@ const deprecatedContent = [
                     )}
                     {titleChecked && titleText && (
                         <div
-                            className={`${ className }__title_wrap`}
+                            className={`${className}__title_wrap`}
                             style={{
                                 marginTop: titleMarginT,
                                 marginBottom: titleMarginB,
@@ -2921,7 +2921,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
-                                className={`${ className }__title`}
+                                className={`${className}__title`}
                                 value={titleText}
                                 style={{
                                     color: titleColor,
@@ -2932,7 +2932,7 @@ const deprecatedContent = [
                                         : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
-                                    textShadow: `${ titleShadowHorizontal }px ${ titleShadowVertical }px ${ titleShadowBlur }px ${ titleShadowColor }`,
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
                                     lineHeight: titleLine + "px",
                                 }}
                             />
@@ -2940,7 +2940,7 @@ const deprecatedContent = [
                     )}
                     {descChecked && descText && (
                         <div
-                            className={`${ className }__desc_wrap`}
+                            className={`${className}__desc_wrap`}
                             style={{
                                 marginTop: descMarginT,
                                 marginBottom: descMarginB,
@@ -2948,7 +2948,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="p"
-                                className={`${ className }__desc`}
+                                className={`${className}__desc`}
                                 value={descText}
                                 style={{
                                     color: descColor,
@@ -2961,7 +2961,7 @@ const deprecatedContent = [
                     )}
                     {btnChecked && btnText && (
                         <div
-                            className={`${ className }__btn_wrap`}
+                            className={`${className}__btn_wrap`}
                             style={{
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
@@ -2969,7 +2969,7 @@ const deprecatedContent = [
                         >
                             <RichText.Content
                                 tagName="a"
-                                className={`${ className }__btn`}
+                                className={`${className}__btn`}
                                 href={btnLink}
                                 target={btnTarget ? "_blank" : "_self"}
                                 value={btnText}
@@ -2988,7 +2988,7 @@ const deprecatedContent = [
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
                                     padding: btnPadding + "px",
-                                    boxShadow: `${ btnShadowHorizontal }px ${ btnShadowVertical }px ${ btnShadowBlur }px ${ btnShadowColor } ${ btnShadowPosition }`,
+                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                                 }}
                             />
                         </div>
