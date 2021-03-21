@@ -31,6 +31,7 @@ const edit = (props) => {
     const { isSelected, setAttributes, className, clientId: blockId } = props;
 
     const {
+        borderButton,
         id,
         btnText,
         btnSize,
@@ -53,6 +54,10 @@ const edit = (props) => {
         textStyle,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderRadius,
         borderColor,
         borderHoverColor,
@@ -66,7 +71,7 @@ const edit = (props) => {
         btnShadowColor,
         btnShadowHorizontal,
         btnShadowVertical,
-        btnShadowPosition
+        btnShadowPosition,
     } = props.attributes;
 
     const SIZE = [
@@ -420,14 +425,26 @@ const edit = (props) => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
+                        top={borderTop}
+                        right={borderRight}
+                        bottom={borderBottom}
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                        onChangeColor={colorValue =>
+                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                borderButton: true,
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -517,8 +534,10 @@ const edit = (props) => {
                     textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                     boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
                     padding: padding + paddingU,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
+                    borderStyle: borderType,
+                    borderWidth: borderButton
+                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                        : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor
                 }}

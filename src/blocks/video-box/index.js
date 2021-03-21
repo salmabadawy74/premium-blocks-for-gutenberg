@@ -9,6 +9,14 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const videoBoxAttrs = {
+    borderPlayUpdated: {
+        type: "boolean",
+        default: false
+    },
+    borderBoxUpdated: {
+        type: "boolean",
+        default: false
+    },
     videoBoxId: {
         type: "string"
     },
@@ -176,6 +184,30 @@ const videoBoxAttrs = {
     boxBorderWidth: {
         type: "number",
         default: "1"
+    },
+    boxBorderTop: {
+        type: "number"
+    },
+    boxBorderRight: {
+        type: "number"
+    },
+    boxBorderBottom: {
+        type: "number"
+    },
+    boxBorderLeft: {
+        type: "number"
+    },
+    playBorderTop: {
+        type: "number"
+    },
+    playBorderRight: {
+        type: "number"
+    },
+    playBorderBottom: {
+        type: "number"
+    },
+    playBorderLeft: {
+        type: "number",
     },
     boxBorderRadius: {
         type: "number"

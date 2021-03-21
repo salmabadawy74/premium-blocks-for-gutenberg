@@ -19,8 +19,12 @@ const save = props => {
         titleWeight,
         titleColor,
         titleBorder,
-        titleBorderColor,
         titleBorderWidth,
+        titleBorderColor,
+        titleBorderTop,
+        titleBorderRight,
+        titleBorderBottom,
+        titleBorderLeft,
         titleBorderRadius,
         titleBack,
         titleShadowBlur,
@@ -51,6 +55,10 @@ const save = props => {
         descBorderColor,
         descBorderRadius,
         descBorderWidth,
+        descBorderTop,
+        descBorderRight,
+        descBorderBottom,
+        descBorderLeft,
         textShadowBlur,
         textShadowColor,
         textShadowHorizontal,
@@ -58,7 +66,9 @@ const save = props => {
         descPaddingT,
         descPaddingR,
         descPaddingB,
-        descPaddingL
+        descPaddingL,
+        titleBorderUpdated,
+        descBorderUpdated,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion');
@@ -73,8 +83,10 @@ const save = props => {
                     className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
                     style={{
                         backgroundColor: titleBack,
-                        border: titleBorder,
-                        borderWidth: titleBorderWidth + "px",
+                        borderStyle: titleBorder,
+                        borderWidth: titleBorderUpdated
+                            ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                            : titleBorderWidth + "px",
                         borderRadius: titleBorderRadius + "px",
                         borderColor: titleBorderColor,
                         paddingTop: titlePaddingT,
@@ -125,8 +137,10 @@ const save = props => {
                     style={{
                         textAlign: descAlign,
                         backgroundColor: descBack,
-                        border: descBorder,
-                        borderWidth: descBorderWidth + "px",
+                        borderStyle: descBorder,
+                        borderWidth: descBorderUpdated
+                            ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                            : descBorderWidth + "px",
                         borderRadius: descBorderRadius + "px",
                         borderColor: descBorderColor,
                         paddingTop: descPaddingT,

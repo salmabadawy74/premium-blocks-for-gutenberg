@@ -28,6 +28,7 @@ const { Fragment } = wp.element;
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
+
     const {
         iconType,
         selectedIcon,
@@ -52,6 +53,11 @@ const edit = props => {
         marginL,
         borderType,
         borderWidth,
+        iconBorder,
+        iconBorderTop,
+        iconBorderRight,
+        iconBorderBottom,
+        iconBorderLeft,
         borderRadius,
         borderColor,
         backgroundColor,
@@ -62,7 +68,12 @@ const edit = props => {
         backgroundPosition,
         backgroundSize,
         wrapBorderType,
+        wrapBorder,
         wrapBorderWidth,
+        wrapBorderTop,
+        wrapBorderRight,
+        wrapBorderBottom,
+        wrapBorderLeft,
         wrapBorderRadius,
         wrapBorderColor,
         wrapShadowBlur,
@@ -219,14 +230,26 @@ const edit = props => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
+                        top={iconBorderTop}
+                        right={iconBorderRight}
+                        bottom={iconBorderBottom}
+                        left={iconBorderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                        onChangeColor={colorValue =>
+                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                iconBorder: true,
+                                iconBorderTop: top,
+                                iconBorderRight: right,
+                                iconBorderBottom: bottom,
+                                iconBorderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -356,16 +379,28 @@ const edit = props => {
                     <PremiumBorder
                         borderType={wrapBorderType}
                         borderWidth={wrapBorderWidth}
+                        top={wrapBorderTop}
+                        right={wrapBorderRight}
+                        bottom={wrapBorderBottom}
+                        left={wrapBorderLeft}
                         borderColor={wrapBorderColor}
                         borderRadius={wrapBorderRadius}
-                        onChangeType={newType => setAttributes({ wrapBorderType: newType })}
-                        onChangeWidth={newWidth =>
-                            setAttributes({ wrapBorderWidth: newWidth })
+                        onChangeType={(newType) =>
+                            setAttributes({ wrapBorderType: newType })
                         }
-                        onChangeColor={colorValue =>
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                wrapBorder: true,
+                                wrapBorderTop: top,
+                                wrapBorderRight: right,
+                                wrapBorderBottom: bottom,
+                                wrapBorderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) =>
                             setAttributes({ wrapBorderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ wrapBorderRadius: newrRadius })
                         }
                     />
@@ -471,8 +506,10 @@ const edit = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                border: wrapBorderType,
-                borderWidth: wrapBorderWidth + "px",
+                borderStyle: wrapBorderType,
+                borderWidth: wrapBorder
+                    ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                    : wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
                 boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
@@ -508,8 +545,10 @@ const edit = props => {
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth: iconBorder
+                            ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                            : borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
                         textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||

@@ -28,6 +28,7 @@ const edit = props => {
     const { isSelected, className, setAttributes } = props;
 
     const {
+        isUpdated,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -45,6 +46,10 @@ const edit = props => {
         backgroundSize,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderColor,
         borderRadius,
         marginTop,
@@ -63,6 +68,7 @@ const edit = props => {
         shadowVertical,
         shadowPosition
     } = props.attributes;
+
     const WIDTH = [
         {
             value: "boxed",
@@ -235,18 +241,26 @@ const edit = props => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
+                        top={borderTop}
+                        right={borderRight}
+                        bottom={borderBottom}
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={newType =>
-                            setAttributes({ borderType: newType })
+                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                                isUpdated: true,
+                            })
                         }
-                        onChangeWidth={newWidth =>
-                            setAttributes({ borderWidth: newWidth })
-                        }
-                        onChangeColor={colorValue =>
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -367,8 +381,10 @@ const edit = props => {
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color,
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: isUpdated
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 backgroundImage: imageURL ? `url('${imageURL}')` : 'none',

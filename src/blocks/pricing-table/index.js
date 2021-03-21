@@ -9,6 +9,14 @@ const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 
 const pricingAttrs = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -457,7 +465,31 @@ const pricingAttrs = {
     },
     id: {
         type: "string"
-    }
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
 };
 
 registerBlockType("premium/pricing-table", {

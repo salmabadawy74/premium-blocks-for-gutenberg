@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        isUpdated,
         stretchSection,
         horAlign,
         innerWidthType,
@@ -23,6 +24,10 @@ const save = props => {
         backgroundSize,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderColor,
         borderRadius,
         marginTop,
@@ -39,8 +44,9 @@ const save = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
+        shadowPosition,
     } = props.attributes;
+
 
     const mainClasses = classnames(className, 'premium-container');
 
@@ -51,8 +57,10 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: color,
-                border: borderType,
-                borderWidth: borderWidth + "px",
+                borderStyle: borderType,
+                borderWidth: isUpdated
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 backgroundImage: `url('${imageURL}')`,

@@ -10,6 +10,10 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const buttonAttrs = {
+    borderButton: {
+        type: "boolean",
+        default: false,
+    },
     btnText: {
         type: "string",
         default: __("Premium Button")
@@ -84,6 +88,18 @@ const buttonAttrs = {
     borderWidth: {
         type: "number",
         default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
     },
     borderRadius: {
         type: "number"

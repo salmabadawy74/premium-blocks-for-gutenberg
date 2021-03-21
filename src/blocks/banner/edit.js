@@ -31,7 +31,9 @@ const {
 
 const edit = props => {
     const { isSelected, setAttributes, className, clientId: blockID } = props;
+
     const {
+        borderBanner,
         id,
         imageID,
         imageURL,
@@ -50,6 +52,10 @@ const edit = props => {
         opacity,
         borderType,
         borderWidth,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         borderRadius,
         borderColor,
         titleColor,
@@ -89,6 +95,7 @@ const edit = props => {
         paddingL,
         paddingU
     } = props.attributes;
+
     const ALIGNS = [
         {
             value: "flex-start",
@@ -493,23 +500,31 @@ const edit = props => {
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
+                        top={borderTop}
+                        right={borderRight}
+                        bottom={borderBottom}
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth =>
+                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
-                                borderWidth: newWidth === undefined ? 0 : newWidth
+                                borderBanner: true,
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
                             })
                         }
-                        onChangeColor={colorValue =>
+                        onChangeColor={(colorValue) =>
                             setAttributes({
                                 borderColor:
-                                    colorValue === undefined ? "transparent" : colorValue.hex
+                                    colorValue === undefined ? "transparent" : colorValue.hex,
                             })
                         }
-                        onChangeRadius={newRadius =>
+                        onChangeRadius={(newRadius) =>
                             setAttributes({
-                                borderRadius: newRadius === undefined ? 0 : newRadius
+                                borderRadius: newRadius === undefined ? 0 : newRadius,
                             })
                         }
                     />
@@ -610,8 +625,10 @@ const edit = props => {
                     className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                     style={{
                         boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-                        border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth: borderBanner
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor
                     }}

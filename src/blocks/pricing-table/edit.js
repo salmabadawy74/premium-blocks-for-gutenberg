@@ -47,6 +47,8 @@ class PremiumPricingTable extends Component {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
+            borderUpdated,
+            btnBorderUpdated,
             contentAlign,
             tableBack,
             borderType,
@@ -95,6 +97,14 @@ class PremiumPricingTable extends Component {
             priceMarginB,
             pricePadding,
             slashPrice,
+            btnBorderTop,
+            btnBorderRight,
+            btnBorderBottom,
+            btnBorderLeft,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
             slashColor,
             slashSize,
             slashWeight,
@@ -172,7 +182,7 @@ class PremiumPricingTable extends Component {
             listPadding,
             listStyle,
             featsAlign,
-            id
+            id,
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -947,18 +957,28 @@ class PremiumPricingTable extends Component {
                             <PremiumBorder
                                 borderType={btnBorderType}
                                 borderWidth={btnBorderWidth}
+                                top={btnBorderTop}
+                                right={btnBorderRight}
+                                bottom={btnBorderBottom}
+                                left={btnBorderLeft}
                                 borderColor={btnBorderColor}
                                 borderRadius={btnBorderRadius}
-                                onChangeType={newType =>
+                                onChangeType={(newType) =>
                                     setAttributes({ btnBorderType: newType })
                                 }
-                                onChangeWidth={newWidth =>
-                                    setAttributes({ btnBorderWidth: newWidth })
+                                onChangeWidth={({ top, right, bottom, left }) =>
+                                    setAttributes({
+                                        btnBorderUpdated: true,
+                                        btnBorderTop: top,
+                                        btnBorderRight: right,
+                                        btnBorderBottom: bottom,
+                                        btnBorderLeft: left,
+                                    })
                                 }
-                                onChangeColor={colorValue =>
+                                onChangeColor={(colorValue) =>
                                     setAttributes({ btnBorderColor: colorValue.hex })
                                 }
-                                onChangeRadius={newrRadius =>
+                                onChangeRadius={(newrRadius) =>
                                     setAttributes({ btnBorderRadius: newrRadius })
                                 }
                             />
@@ -1127,14 +1147,26 @@ class PremiumPricingTable extends Component {
                         <PremiumBorder
                             borderType={borderType}
                             borderWidth={borderWidth}
+                            top={borderTop}
+                            right={borderRight}
+                            bottom={borderBottom}
+                            left={borderLeft}
                             borderColor={borderColor}
                             borderRadius={borderRadius}
-                            onChangeType={newType => setAttributes({ borderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                            onChangeColor={colorValue =>
+                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    borderUpdated: true,
+                                    borderTop: top,
+                                    borderRight: right,
+                                    borderBottom: bottom,
+                                    borderLeft: left,
+                                })
+                            }
+                            onChangeColor={(colorValue) =>
                                 setAttributes({ borderColor: colorValue.hex })
                             }
-                            onChangeRadius={newrRadius =>
+                            onChangeRadius={(newrRadius) =>
                                 setAttributes({ borderRadius: newrRadius })
                             }
                         />
@@ -1207,8 +1239,10 @@ class PremiumPricingTable extends Component {
                 style={{
                     textAlign: contentAlign,
                     background: tableBack,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
+                    borderStyle: borderType,
+                    borderWidth: borderUpdated
+                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                        : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     padding: tablePadding + "px",
@@ -1434,8 +1468,10 @@ class PremiumPricingTable extends Component {
                                 marginTop: btnMarginT,
                                 marginBottom: btnMarginB,
                                 padding: btnPadding + btnPaddingU,
-                                border: btnBorderType,
-                                borderWidth: btnBorderWidth + "px",
+                                borderStyle: btnBorderType,
+                                borderWidth: btnBorderUpdated
+                                    ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                    : btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor
                             }}
