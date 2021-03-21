@@ -59,6 +59,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.8.7 =
+
+- Tweak: Border control improved to set different value for each direction.
+
 = 1.8.6 =
 
 - Tweak: Normal/Hover Colors tabs added for better UX.
