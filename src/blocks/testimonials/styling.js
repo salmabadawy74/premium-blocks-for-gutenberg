@@ -16,7 +16,7 @@ function styling(props) {
         bodySize,
         bodySizeUnit,
         bodySizeMobile,
-        bodySizeTablet,
+        bodySizeTablet
     } = props.attributes;
 
     let selectors = {}

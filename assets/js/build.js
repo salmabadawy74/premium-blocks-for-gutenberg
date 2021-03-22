@@ -2174,10 +2174,8 @@ module.exports = toKey;
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var videoBoxAttrs = {
     block_id: {
@@ -2394,7 +2392,6 @@ var videoBoxAttrs = {
         type: "string",
         default: ""
     },
-
     // Old props
     playLeft: {
         type: "number"
@@ -2416,7 +2413,6 @@ var videoBoxAttrs = {
         default: false
     }
 };
-
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
     var videoUrl = void 0;
     switch (type) {
@@ -2444,9 +2440,7 @@ var onChangeVideoURL = function onChangeVideoURL(type, URL) {
     }
     return videoUrl;
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (onChangeVideoURL);
-
 registerBlockType("premium/video-box", {
     title: __("Video Box"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "video" }),
@@ -5698,11 +5692,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var accordionAttrs = {
     block_id: {
@@ -5939,7 +5930,6 @@ var accordionAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "accordion" }),
@@ -5987,7 +5977,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -6005,9 +5994,7 @@ var _wp$blockEditor = wp.blockEditor,
     InnerBlocks = _wp$blockEditor.InnerBlocks,
     ColorPalette = _wp$blockEditor.ColorPalette;
 
-
 var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }]];
-
 var isAccUpdated = null;
 
 var PremiumAccordion = function (_Component) {
@@ -6030,18 +6017,15 @@ var PremiumAccordion = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
-
             setAttributes({ block_id: clientId });
             if (!attributes.accordionId) {
-                this.props.setAttributes({ accordionId: "premium-accordion-" + clientId });
+                setAttributes({ accordionId: "premium-accordion-" + clientId });
             }
             this.props.setAttributes({ classMigrate: true });
-
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-accordion-" + this.props.clientId.substr(0, 6));
             document.head.appendChild($style);
-
             this.initAccordion();
         }
     }, {
@@ -6137,7 +6121,6 @@ var PremiumAccordion = function (_Component) {
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
 
-
             var DIRECTION = [{
                 value: "ltr",
                 label: "LTR"
@@ -6145,7 +6128,6 @@ var PremiumAccordion = function (_Component) {
                 value: "rtl",
                 label: "RTL"
             }];
-
             var ARROW = [{
                 value: "in",
                 label: __("In")
@@ -6153,7 +6135,6 @@ var PremiumAccordion = function (_Component) {
                 value: "out",
                 label: __("Out")
             }];
-
             var TYPE = [{
                 value: "text",
                 label: __("Text")
@@ -6161,29 +6142,21 @@ var PremiumAccordion = function (_Component) {
                 value: "block",
                 label: __("Gutenberg Block")
             }];
-
             var element = document.getElementById("premium-style-accordion-" + clientId.substr(0, 6));
-
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_5__styling__["a" /* default */])(this.props);
             }
-
             var ALIGNS = ["left", "center", "right"];
-
             var onAccordionChange = function onAccordionChange(attr, value, index) {
                 var items = repeaterItems;
-
                 return items.map(function (item, currIndex) {
                     if (index == currIndex) {
                         item[attr] = value;
                     }
-
                     return item;
                 });
             };
-
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-accordion");
-
             var accordionItems = repeaterItems.map(function (item, index) {
                 return wp.element.createElement(
                     "div",
@@ -6387,11 +6360,7 @@ var PremiumAccordion = function (_Component) {
                                     onToggle = _ref.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -6463,17 +6432,13 @@ var PremiumAccordion = function (_Component) {
                         horizontal: titleShadowHorizontal,
                         vertical: titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
-                                titleShadowColor: newColor.hex
-                            });
+                            return setAttributes({ titleShadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return setAttributes({ titleShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
-                                titleShadowHorizontal: newValue
-                            });
+                            return setAttributes({ titleShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ titleShadowVertical: newValue });
@@ -6545,11 +6510,7 @@ var PremiumAccordion = function (_Component) {
                                     onToggle = _ref2.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -6701,11 +6662,7 @@ var PremiumAccordion = function (_Component) {
                                         onToggle = _ref3.onToggle;
                                     return wp.element.createElement(
                                         Button,
-                                        {
-                                            isSmall: true,
-                                            onClick: onToggle,
-                                            "aria-expanded": isOpen
-                                        },
+                                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                         wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                     );
                                 },
@@ -6760,6 +6717,7 @@ var PremiumAccordion = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return setAttributes({ descBorder: newType });
                         },
+
                         onChangeWidth: function onChangeWidth(newWidth) {
                             return setAttributes({ descBorderWidth: newWidth });
                         },
@@ -6811,6 +6769,7 @@ var PremiumAccordion = function (_Component) {
                         onChangePadRight: function onChangePadRight(value) {
                             return setAttributes({
                                 descPaddingR: value === undefined ? 0 : value
+
                             });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
@@ -11873,7 +11832,6 @@ function styling(props) {
 
 
 
-var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     InnerBlocks = _wp$blockEditor.InnerBlocks;
@@ -11940,9 +11898,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-accordion');
-
     var accordionItems = repeaterItems.map(function (item, index) {
         return wp.element.createElement(
             "div",
@@ -12056,6 +12012,8 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var className = "premium-accordion";
 
 var __ = wp.i18n.__;
@@ -12248,7 +12206,7 @@ var deprecated_attributes = {
     }
 };
 
-var deprecated_attributes_1_0 = {
+var deprecated_attributes_1_6_1 = {
     accordionId: {
         type: "string"
     },
@@ -12432,7 +12390,39 @@ var deprecated_attributes_1_0 = {
     }
 };
 
-var newAttributes_1_1 = {
+var newAttributes_1_6_3 = {
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
     block_id: {
         type: "string"
     },
@@ -12474,26 +12464,22 @@ var newAttributes_1_1 = {
     }
 };
 
-var deprecated_attributes_1_1 = Object.assign(deprecated_attributes_1_0, newAttributes_1_1);
+var deprecated_attributes_1_6_3 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_3);
 
 var deprecated = [{
-    attributes: deprecated_attributes_1_1,
+    attributes: deprecated_attributes_1_6_3,
+
     migrate: function migrate(attributes) {
-        var newAttributes = {
-            classMigrate: false,
-            titleSizeUnit: 'px',
-            titleSizeTablet: '',
-            titleSizeMobile: '',
-            descSizeUnit: 'px',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            titleOpacity: "",
-            arrowOpacity: "",
-            descOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
+        var _newAttributes;
+
+        var newAttributes = (_newAttributes = {
+            descBorderUpdated: "",
+            titleBorderUpdated: "",
+            titleBorderTop: "",
+            titleBorderRight: "",
+            titleBorderBottom: "",
+            titleBorderLeft: ""
+        }, _defineProperty(_newAttributes, "titleBorderUpdated", ""), _defineProperty(_newAttributes, "descBorderTop", ""), _defineProperty(_newAttributes, "descBorderRight", ""), _defineProperty(_newAttributes, "descBorderBottom", ""), _defineProperty(_newAttributes, "descBorderLeft", ""), _defineProperty(_newAttributes, "classMigrate", false), _defineProperty(_newAttributes, "titleSizeUnit", 'px'), _defineProperty(_newAttributes, "titleSizeTablet", ''), _defineProperty(_newAttributes, "titleSizeMobile", ''), _defineProperty(_newAttributes, "descSizeUnit", 'px'), _defineProperty(_newAttributes, "descSizeTablet", ''), _defineProperty(_newAttributes, "descSizeMobile", ''), _defineProperty(_newAttributes, "titleOpacity", ""), _defineProperty(_newAttributes, "arrowOpacity", ""), _defineProperty(_newAttributes, "descOpacity", ""), _defineProperty(_newAttributes, "hideDesktop", false), _defineProperty(_newAttributes, "hideTablet", false), _defineProperty(_newAttributes, "hideMobile", false), _newAttributes);
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
@@ -12550,7 +12536,6 @@ var deprecated = [{
             descPaddingR = _props$attributes.descPaddingR,
             descPaddingB = _props$attributes.descPaddingB,
             descPaddingL = _props$attributes.descPaddingL;
-
 
         var accordionItems = repeaterItems.map(function (item, index) {
             return wp.element.createElement(
@@ -12839,11 +12824,8 @@ var deprecated = [{
 
 
 
-
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var bannerAttrs = {
     block_id: {
@@ -13018,7 +13000,6 @@ var bannerAttrs = {
     sepColor: {
         type: "string"
     },
-
     blur: {
         type: "number",
         default: "0"
@@ -14034,9 +14015,7 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
-
 var RichText = wp.blockEditor.RichText;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -14100,14 +14079,12 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-banner");
-
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-banner');
     return wp.element.createElement(
-        "div",
+        'div',
         {
-            id: "premium-banner-" + block_id,
-            className: mainClasses + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id,
+            id: 'premium-banner-' + block_id,
+            className: mainClasses + ' premium-banner__responsive_' + responsive + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile + ' premium-banner-' + block_id,
             style: {
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -14115,17 +14092,17 @@ var save = function save(props) {
                 paddingLeft: paddingL + paddingU
             }
         },
-        wp.element.createElement("style", {
+        wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                __html: ['#premium-banner-' + block_id + ' .premium-banner__effect3 .premium-banner__title_wrap::after{', 'background: ' + sepColor, "}", '#premium-banner-' + block_id + ' .premium-banner__inner {', 'background: ' + background, "}", '#premium-banner-' + block_id + ' .premium-banner__img.premium-banner__active {', 'opacity: ' + (background ? 1 - opacity / 100 : 1) + ' ', "}"].join("\n")
             }
         }),
         wp.element.createElement(
-            "div",
+            'div',
             {
-                className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                className: 'premium-banner__inner premium-banner__min premium-banner__' + effect + ' premium-banner__' + hoverEffect + ' hover_' + hovered,
                 style: {
-                    boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
+                    boxShadow: containerShadowHorizontal + 'px ' + containerShadowVertical + 'px ' + containerShadowBlur + 'px ' + containerShadowColor + ' ' + containerShadowPosition,
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
@@ -14133,81 +14110,80 @@ var save = function save(props) {
                 }
             },
             wp.element.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-banner__img_wrap premium-banner__" + height,
+                    className: 'premium-banner__img_wrap premium-banner__' + height,
                     style: {
                         minHeight: minHeight,
                         alignItems: verAlign
                     }
                 },
-                wp.element.createElement("img", {
-                    className: "premium-banner__img",
-                    alt: "Banner Image",
+                wp.element.createElement('img', {
+                    className: 'premium-banner__img',
+                    alt: 'Banner Image',
                     src: imageURL,
                     style: {
-                        filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
                     }
                 })
             ),
             wp.element.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-banner__content",
+                    className: 'premium-banner__content',
                     style: {
                         background: "effect2" === effect ? titleBack : "transparent"
                     }
                 },
                 wp.element.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-banner__title_wrap",
+                        className: 'premium-banner__title_wrap',
                         style: {
                             textAlign: contentAlign
                         }
                     },
                     wp.element.createElement(RichText.Content, {
                         tagName: titleTag.toLowerCase(),
-                        className: "premium-banner__title",
+                        className: 'premium-banner__title',
                         value: title,
                         style: {
                             color: titleColor,
                             fontWeight: titleWeight,
                             lineHeight: titleLine + "px",
-                            textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                            textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
                         }
                     })
                 ),
                 wp.element.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-banner__desc_wrap",
+                        className: 'premium-banner__desc_wrap',
                         style: {
                             textAlign: contentAlign
                         }
                     },
                     wp.element.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-banner__desc",
+                        tagName: 'p',
+                        className: 'premium-banner__desc',
                         value: desc,
                         style: {
                             color: descColor,
                             fontWeight: descWeight,
                             lineHeight: descLine + "px",
-                            textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                            textShadow: descShadowHorizontal + 'px ' + descShadowVertical + 'px ' + descShadowBlur + 'px ' + descShadowColor
                         }
                     })
                 )
             ),
-            urlCheck && "" !== url && wp.element.createElement("a", {
-                className: "premium-banner__link",
+            urlCheck && "" !== url && wp.element.createElement('a', {
+                className: 'premium-banner__link',
                 href: url,
                 target: target && "_blank"
             })
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -14442,222 +14418,23 @@ var newAttributes_1_6_7 = {
 
 var deprecated_attributes_1_6_7 = Object.assign(deprecated_attributes_1_5_3, newAttributes_1_6_7);
 
-var deprecated_attributes_1_7_1 = {
-    imageID: {
-        type: "number"
-    },
-    imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H3"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-    },
-    contentAlign: {
-        type: "string",
-        default: "left"
-    },
-    effect: {
-        type: "string",
-        default: "effect1"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    height: {
-        type: "string",
-        default: "default"
-    },
-    minHeight: {
-        type: "number"
-    },
-    verAlign: {
-        type: "string",
-        default: "top"
-    },
-    hovered: {
+var newAttributes_1_7_1 = (_newAttributes_1_7_ = {
+    borderBanner: {
         type: "boolean",
         default: false
     },
-    responsive: {
-        type: "boolean",
-        default: false
-    },
-    background: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: 50
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: "20"
-    },
-    titleLine: {
+    borderTop: {
         type: "number"
     },
-    titleWeight: {
+    borderRight: {
         type: "number"
     },
-    titleBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number",
-        default: "20"
-    },
-    descLine: {
+    borderBottom: {
         type: "number"
     },
-    descWeight: {
+    borderLeft: {
         type: "number"
     },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-    },
-    sepColor: {
-        type: "string"
-    },
-    id: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowColor: {
-        type: "string"
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_7_2 = (_newAttributes_1_7_ = {
     hideDesktop: {
         type: "boolean",
         default: false
@@ -14695,12 +14472,17 @@ var newAttributes_1_7_2 = (_newAttributes_1_7_ = {
     type: "number"
 }), _newAttributes_1_7_);
 
-var deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_7_1, newAttributes_1_7_2);
+var deprecated_attributes_1_7_1 = Object.assign(deprecated_attributes_1_6_7, newAttributes_1_7_1);
 
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_7_2,
+    attributes: deprecated_attributes_1_7_1,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            borderBottom: "",
+            borderTop: "",
+            borderRight: "",
+            borderLeft: "",
+            borderBanner: "",
             classMigrate: false,
             titleSizeUnit: 'px',
             titleSizeMobile: '',
@@ -15664,10 +15446,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var buttonAttrs = {
     btnText: {
@@ -15829,7 +15609,6 @@ var buttonAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/button", {
     title: __("Button"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "button" }),
@@ -16560,9 +16339,7 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var RichText = wp.blockEditor.RichText;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -16607,9 +16384,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-button");
-
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-button');
     return wp.element.createElement(
         "div",
         {
@@ -16649,7 +16424,6 @@ var save = function save(props) {
         })
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -16807,137 +16581,23 @@ var newAttributes_1_4_7 = {
 
 var buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
 
-var buttonAttrs_1_5_7 = {
-    btnText: {
-        type: "string",
-        default: __("Premium Button")
-    },
-    btnSize: {
-        type: "string",
-        default: "md"
-    },
-    btnAlign: {
-        type: "string",
-        default: "center"
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button"
-    },
-    btnTarget: {
+var newAttributes_1_4_9 = {
+    borderButton: {
         type: "boolean",
         default: false
     },
-    effect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    textColor: {
-        type: "string"
-    },
-    textHoverColor: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backHoverColor: {
-        type: "string"
-    },
-    slideColor: {
-        type: "string"
-    },
-    textSize: {
+    borderTop: {
         type: "number"
     },
-    textFontFamily: {
-        type: "string"
-    },
-    textLetter: {
+    borderRight: {
         type: "number"
     },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean"
-    },
-    textWeight: {
-        type: "number",
-        default: 500
-    },
-    textLine: {
+    borderBottom: {
         type: "number"
     },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
+    borderLeft: {
         type: "number"
     },
-    borderColor: {
-        type: "string"
-    },
-    borderHoverColor: {
-        type: "string"
-    },
-    padding: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    id: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_5_8 = {
     backOpacity: {
         type: "number",
         default: "1"
@@ -16973,12 +16633,17 @@ var newAttributes_1_5_8 = {
     }
 };
 
-var buttonAttrs_1_5_8 = Object.assign(buttonAttrs_1_5_7, newAttributes_1_5_8);
+var buttonAttrs_1_4_9 = Object.assign(buttonAttrs_1_4_7, newAttributes_1_4_9);
 
 var deprecatedContent = [{
-    attributes: buttonAttrs_1_5_8,
+    attributes: buttonAttrs_1_4_9,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            borderLeft: "",
+            borderButton: "",
             backOpacity: "",
             classMigrate: false,
             block_id: "",
@@ -17029,7 +16694,6 @@ var deprecatedContent = [{
             btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
             btnShadowVertical = _props$attributes.btnShadowVertical,
             btnShadowPosition = _props$attributes.btnShadowPosition;
-
 
         return wp.element.createElement(
             "div",
@@ -17491,10 +17155,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var counterAttrs = {
     block_id: {
@@ -17778,7 +17440,6 @@ var counterAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/countup", {
     title: __("CountUp"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__icons__["a" /* default */], { icon: "counter" }),
@@ -18932,7 +18593,6 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
@@ -18997,9 +18657,7 @@ var save = function save(props) {
         hideMobile = _props$attributes.hideMobile;
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-countup');
-
     return wp.element.createElement(
         "div",
         {
@@ -19136,7 +18794,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -19144,7 +18801,315 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
+
+
 var className = "premium-countup";
+
+var counterAttrs_1_7_4 = {
+    increment: {
+        type: "string",
+        default: 500
+    },
+    time: {
+        type: "string",
+        default: 1000
+    },
+    delay: {
+        type: "string",
+        default: 10
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    flexDir: {
+        type: "string",
+        default: "column"
+    },
+    numberSize: {
+        type: "number",
+        default: 30
+    },
+    numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    numberWeight: {
+        type: "number",
+        default: 900
+    },
+    prefix: {
+        type: "boolean",
+        default: true
+    },
+    prefixTxt: {
+        type: "string",
+        default: "Prefix"
+    },
+    prefixSize: {
+        type: "number",
+        default: 20
+    },
+    prefixColor: {
+        type: "string"
+    },
+    prefixWeight: {
+        type: "number"
+    },
+    prefixGap: {
+        type: "number",
+        default: 2
+    },
+    suffix: {
+        type: "boolean",
+        default: true
+    },
+    suffixTxt: {
+        type: "string",
+        default: "Suffix"
+    },
+    suffixSize: {
+        type: "number",
+        default: 20
+    },
+    suffixColor: {
+        type: "string"
+    },
+    suffixWeight: {
+        type: "number"
+    },
+    suffixGap: {
+        type: "number",
+        default: 2
+    },
+    icon: {
+        type: "string",
+        default: "icon"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    iconCheck: {
+        type: "boolean",
+        default: true
+    },
+    iconSize: {
+        type: "number",
+        default: 40
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    selfAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleTxt: {
+        type: "string",
+        default: "Premium Count Up"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    titleSpacing: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleT: {
+        type: "number",
+        default: 1
+    },
+    titleB: {
+        type: "number",
+        default: 1
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    faIcon: {
+        type: "string",
+        default: "dashicons-clock"
+    },
+    containerBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    backgroundImageID: {
+        type: "string"
+    },
+    backgroundImageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleFamily: {
+        type: "string"
+    },
+    counterFamily: {
+        type: "string"
+    },
+    prefixFamily: {
+        type: "string"
+    },
+    suffixFamily: {
+        type: "string"
+    }
+};
+
+var newAttributes_1_7_5 = {
+    borderCount: {
+        type: "boolean",
+        default: false
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    containerOpacity: {
+        type: "string",
+        default: "1"
+    },
+    block_id: {
+        type: 'string'
+    },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    numberSizeTablet: {
+        type: "number"
+    },
+    numberSizeMobile: {
+        type: "number"
+    },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    prefixSizeTablet: {
+        type: "number"
+    },
+    prefixSizeMobile: {
+        type: "number"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    suffixSizeTablet: {
+        type: "number"
+    },
+    suffixSizeMobile: {
+        type: 'number'
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var counterAttrs_1_7_5 = Object.assign(counterAttrs_1_7_4, newAttributes_1_7_5);
 
 var counterAttrs_1_0_9 = {
     increment: {
@@ -19375,298 +19340,15 @@ var counterAttrs_1_4_1 = Object.assign(counterAttrs_1_3_7, newAttributes_1_4_1);
 
 var counterAttrs_1_6_4 = Object.assign(counterAttrs_1_4_1, newAttributes_1_6_4);
 
-var counterAttrs_2_0 = {
-    increment: {
-        type: "string",
-        default: 500
-    },
-    time: {
-        type: "string",
-        default: 1000
-    },
-    delay: {
-        type: "string",
-        default: 10
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    flexDir: {
-        type: "string",
-        default: "column"
-    },
-    numberSize: {
-        type: "number",
-        default: 30
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    numberWeight: {
-        type: "number",
-        default: 900
-    },
-    prefix: {
-        type: "boolean",
-        default: true
-    },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix"
-    },
-    prefixSize: {
-        type: "number",
-        default: 20
-    },
-    prefixColor: {
-        type: "string"
-    },
-    prefixWeight: {
-        type: "number"
-    },
-    prefixGap: {
-        type: "number",
-        default: 2
-    },
-    suffix: {
-        type: "boolean",
-        default: true
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix"
-    },
-    suffixSize: {
-        type: "number",
-        default: 20
-    },
-    suffixColor: {
-        type: "string"
-    },
-    suffixWeight: {
-        type: "number"
-    },
-    suffixGap: {
-        type: "number",
-        default: 2
-    },
-    icon: {
-        type: "string",
-        default: "icon"
-    },
-    iconSpacing: {
-        type: "number",
-        default: 10
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    iconCheck: {
-        type: "boolean",
-        default: true
-    },
-    iconSize: {
-        type: "number",
-        default: 40
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    selfAlign: {
-        type: "string",
-        default: "center"
-    },
-    titleCheck: {
-        type: "boolean",
-        default: true
-    },
-    titleTxt: {
-        type: "string",
-        default: "Premium Count Up"
-    },
-    titleSize: {
-        type: "number",
-        default: 20
-    },
-    titleSpacing: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleT: {
-        type: "number",
-        default: 1
-    },
-    titleB: {
-        type: "number",
-        default: 1
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    faIcon: {
-        type: "string",
-        default: "dashicons-clock"
-    },
-    containerBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleFamily: {
-        type: "string"
-    },
-    counterFamily: {
-        type: "string"
-    },
-    prefixFamily: {
-        type: "string"
-    },
-    suffixFamily: {
-        type: "string"
-    }
-};
-
-var newAttributes_2_1 = {
-    containerOpacity: {
-        type: "string",
-        default: "1"
-    },
-    block_id: {
-        type: 'string'
-    },
-    numberSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    numberSizeTablet: {
-        type: "number"
-    },
-    numberSizeMobile: {
-        type: "number"
-    },
-    prefixSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    prefixSizeTablet: {
-        type: "number"
-    },
-    prefixSizeMobile: {
-        type: "number"
-    },
-    suffixSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    suffixSizeTablet: {
-        type: "number"
-    },
-    suffixSizeMobile: {
-        type: 'number'
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-var counterAttrs_2_1 = Object.assign(counterAttrs_2_0, newAttributes_2_1);
-
 var deprecatedContent = [{
-    attributes: counterAttrs_2_1,
+    attributes: counterAttrs_1_7_5,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            borderLeft: "",
+            borderCount: "",
             block_id: '',
             numberSizeUnit: 'px',
             numberSizeTablet: '',
@@ -19749,7 +19431,6 @@ var deprecatedContent = [{
             suffixFamily = _props$attributes.suffixFamily;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
-
         return wp.element.createElement(
             "div",
             {
@@ -19972,215 +19653,6 @@ var deprecatedContent = [{
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            },
-            iconCheck && wp.element.createElement(
-                "div",
-                {
-                    className: "premium-countup__icon_wrap",
-                    style: {
-                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-                    }
-                },
-                "icon" === icon && wp.element.createElement("i", {
-                    className: "premium-countup__icon " + iconClass,
-                    style: {
-                        fontSize: iconSize + "px",
-                        color: iconColor
-                    }
-                }),
-                "img" === icon && imageURL && wp.element.createElement("img", {
-                    src: imageURL,
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px"
-                    }
-                })
-            ),
-            wp.element.createElement(
-                "div",
-                {
-                    className: "premium-countup__info",
-                    style: {
-                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-                    }
-                },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-countup__desc" },
-                    prefix && wp.element.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__prefix",
-                            style: {
-                                fontSize: prefixSize + "px",
-                                fontFamily: prefixFamily,
-                                color: prefixColor,
-                                fontWeight: prefixWeight,
-                                marginRight: prefixGap + "px"
-                            }
-                        },
-                        prefixTxt
-                    ),
-                    wp.element.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
-                            style: {
-                                fontSize: numberSize + "px",
-                                fontFamily: counterFamily,
-                                color: numberColor,
-                                fontWeight: numberWeight
-                            }
-                        },
-                        increment
-                    ),
-                    suffix && wp.element.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__suffix",
-                            style: {
-                                fontSize: suffixSize + "px",
-                                fontFamily: suffixFamily,
-                                color: suffixColor,
-                                fontWeight: suffixWeight,
-                                marginLeft: suffixGap + "px"
-                            }
-                        },
-                        suffixTxt
-                    )
-                ),
-                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
-                    "h3",
-                    {
-                        className: "premium-countup__title",
-                        style: {
-                            fontSize: titleSize + "px",
-                            fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
-                            color: titleColor,
-                            letterSpacing: titleSpacing + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight
-                        }
-                    },
-                    titleTxt
-                )
-            ),
-            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
-                "h3",
-                {
-                    className: "premium-countup__title",
-                    style: {
-                        fontSize: titleSize + "px",
-                        fontFamily: titleFamily,
-                        marginTop: titleT + "px",
-                        marginBottom: titleB + "px",
-                        color: titleColor,
-                        letterSpacing: titleSpacing + "px",
-                        fontWeight: titleWeight,
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        alignSelf: selfAlign
-                    }
-                },
-                titleTxt
-            )
-        );
-    }
-}, {
-    attributes: counterAttrs_1_6_4,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            borderType: "",
-            borderColor: "",
-            borderRadius: "",
-            borderWidth: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            increment = _props$attributes3.increment,
-            time = _props$attributes3.time,
-            delay = _props$attributes3.delay,
-            align = _props$attributes3.align,
-            flexDir = _props$attributes3.flexDir,
-            numberSize = _props$attributes3.numberSize,
-            numberColor = _props$attributes3.numberColor,
-            numberWeight = _props$attributes3.numberWeight,
-            prefix = _props$attributes3.prefix,
-            prefixTxt = _props$attributes3.prefixTxt,
-            prefixSize = _props$attributes3.prefixSize,
-            prefixColor = _props$attributes3.prefixColor,
-            prefixWeight = _props$attributes3.prefixWeight,
-            prefixGap = _props$attributes3.prefixGap,
-            suffix = _props$attributes3.suffix,
-            suffixTxt = _props$attributes3.suffixTxt,
-            suffixSize = _props$attributes3.suffixSize,
-            suffixColor = _props$attributes3.suffixColor,
-            suffixWeight = _props$attributes3.suffixWeight,
-            suffixGap = _props$attributes3.suffixGap,
-            iconCheck = _props$attributes3.iconCheck,
-            icon = _props$attributes3.icon,
-            iconSpacing = _props$attributes3.iconSpacing,
-            iconType = _props$attributes3.iconType,
-            imageURL = _props$attributes3.imageURL,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            selfAlign = _props$attributes3.selfAlign,
-            titleCheck = _props$attributes3.titleCheck,
-            titleTxt = _props$attributes3.titleTxt,
-            titleColor = _props$attributes3.titleColor,
-            titleSize = _props$attributes3.titleSize,
-            titleSpacing = _props$attributes3.titleSpacing,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleT = _props$attributes3.titleT,
-            titleB = _props$attributes3.titleB,
-            titleWeight = _props$attributes3.titleWeight,
-            faIcon = _props$attributes3.faIcon,
-            containerBack = _props$attributes3.containerBack,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            backgroundImageURL = _props$attributes3.backgroundImageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            titleFamily = _props$attributes3.titleFamily,
-            counterFamily = _props$attributes3.counterFamily,
-            prefixFamily = _props$attributes3.prefixFamily,
-            suffixFamily = _props$attributes3.suffixFamily;
-
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
-        return wp.element.createElement(
-            "div",
-            {
-                className: className + "__wrap",
-                style: {
-                    justifyContent: align,
-                    flexDirection: flexDir,
-                    backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundImage: "url('" + backgroundImageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
@@ -20316,57 +19788,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            increment = _props$attributes4.increment,
-            time = _props$attributes4.time,
-            delay = _props$attributes4.delay,
-            align = _props$attributes4.align,
-            flexDir = _props$attributes4.flexDir,
-            numberSize = _props$attributes4.numberSize,
-            numberColor = _props$attributes4.numberColor,
-            numberWeight = _props$attributes4.numberWeight,
-            prefix = _props$attributes4.prefix,
-            prefixTxt = _props$attributes4.prefixTxt,
-            prefixSize = _props$attributes4.prefixSize,
-            prefixColor = _props$attributes4.prefixColor,
-            prefixWeight = _props$attributes4.prefixWeight,
-            prefixGap = _props$attributes4.prefixGap,
-            suffix = _props$attributes4.suffix,
-            suffixTxt = _props$attributes4.suffixTxt,
-            suffixSize = _props$attributes4.suffixSize,
-            suffixColor = _props$attributes4.suffixColor,
-            suffixWeight = _props$attributes4.suffixWeight,
-            suffixGap = _props$attributes4.suffixGap,
-            iconCheck = _props$attributes4.iconCheck,
-            icon = _props$attributes4.icon,
-            iconSpacing = _props$attributes4.iconSpacing,
-            iconType = _props$attributes4.iconType,
-            imageURL = _props$attributes4.imageURL,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            selfAlign = _props$attributes4.selfAlign,
-            titleCheck = _props$attributes4.titleCheck,
-            titleTxt = _props$attributes4.titleTxt,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleSpacing = _props$attributes4.titleSpacing,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleT = _props$attributes4.titleT,
-            titleB = _props$attributes4.titleB,
-            titleWeight = _props$attributes4.titleWeight,
-            faIcon = _props$attributes4.faIcon,
-            containerBack = _props$attributes4.containerBack,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            backgroundImageURL = _props$attributes4.backgroundImageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize;
+        var _props$attributes3 = props.attributes,
+            increment = _props$attributes3.increment,
+            time = _props$attributes3.time,
+            delay = _props$attributes3.delay,
+            align = _props$attributes3.align,
+            flexDir = _props$attributes3.flexDir,
+            numberSize = _props$attributes3.numberSize,
+            numberColor = _props$attributes3.numberColor,
+            numberWeight = _props$attributes3.numberWeight,
+            prefix = _props$attributes3.prefix,
+            prefixTxt = _props$attributes3.prefixTxt,
+            prefixSize = _props$attributes3.prefixSize,
+            prefixColor = _props$attributes3.prefixColor,
+            prefixWeight = _props$attributes3.prefixWeight,
+            prefixGap = _props$attributes3.prefixGap,
+            suffix = _props$attributes3.suffix,
+            suffixTxt = _props$attributes3.suffixTxt,
+            suffixSize = _props$attributes3.suffixSize,
+            suffixColor = _props$attributes3.suffixColor,
+            suffixWeight = _props$attributes3.suffixWeight,
+            suffixGap = _props$attributes3.suffixGap,
+            iconCheck = _props$attributes3.iconCheck,
+            icon = _props$attributes3.icon,
+            iconSpacing = _props$attributes3.iconSpacing,
+            iconType = _props$attributes3.iconType,
+            imageURL = _props$attributes3.imageURL,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            selfAlign = _props$attributes3.selfAlign,
+            titleCheck = _props$attributes3.titleCheck,
+            titleTxt = _props$attributes3.titleTxt,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleSpacing = _props$attributes3.titleSpacing,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleT = _props$attributes3.titleT,
+            titleB = _props$attributes3.titleB,
+            titleWeight = _props$attributes3.titleWeight,
+            faIcon = _props$attributes3.faIcon,
+            containerBack = _props$attributes3.containerBack,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            backgroundImageURL = _props$attributes3.backgroundImageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -20517,52 +19989,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            increment = _props$attributes5.increment,
-            time = _props$attributes5.time,
-            delay = _props$attributes5.delay,
-            align = _props$attributes5.align,
-            flexDir = _props$attributes5.flexDir,
-            numberSize = _props$attributes5.numberSize,
-            numberColor = _props$attributes5.numberColor,
-            numberWeight = _props$attributes5.numberWeight,
-            prefix = _props$attributes5.prefix,
-            prefixTxt = _props$attributes5.prefixTxt,
-            prefixSize = _props$attributes5.prefixSize,
-            prefixColor = _props$attributes5.prefixColor,
-            prefixWeight = _props$attributes5.prefixWeight,
-            prefixGap = _props$attributes5.prefixGap,
-            suffix = _props$attributes5.suffix,
-            suffixTxt = _props$attributes5.suffixTxt,
-            suffixSize = _props$attributes5.suffixSize,
-            suffixColor = _props$attributes5.suffixColor,
-            suffixWeight = _props$attributes5.suffixWeight,
-            suffixGap = _props$attributes5.suffixGap,
-            iconCheck = _props$attributes5.iconCheck,
-            icon = _props$attributes5.icon,
-            iconSpacing = _props$attributes5.iconSpacing,
-            iconType = _props$attributes5.iconType,
-            imageURL = _props$attributes5.imageURL,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            selfAlign = _props$attributes5.selfAlign,
-            titleCheck = _props$attributes5.titleCheck,
-            titleTxt = _props$attributes5.titleTxt,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleSpacing = _props$attributes5.titleSpacing,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleT = _props$attributes5.titleT,
-            titleB = _props$attributes5.titleB,
-            titleWeight = _props$attributes5.titleWeight,
-            faIcon = _props$attributes5.faIcon,
-            containerBack = _props$attributes5.containerBack,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+        var _props$attributes4 = props.attributes,
+            increment = _props$attributes4.increment,
+            time = _props$attributes4.time,
+            delay = _props$attributes4.delay,
+            align = _props$attributes4.align,
+            flexDir = _props$attributes4.flexDir,
+            numberSize = _props$attributes4.numberSize,
+            numberColor = _props$attributes4.numberColor,
+            numberWeight = _props$attributes4.numberWeight,
+            prefix = _props$attributes4.prefix,
+            prefixTxt = _props$attributes4.prefixTxt,
+            prefixSize = _props$attributes4.prefixSize,
+            prefixColor = _props$attributes4.prefixColor,
+            prefixWeight = _props$attributes4.prefixWeight,
+            prefixGap = _props$attributes4.prefixGap,
+            suffix = _props$attributes4.suffix,
+            suffixTxt = _props$attributes4.suffixTxt,
+            suffixSize = _props$attributes4.suffixSize,
+            suffixColor = _props$attributes4.suffixColor,
+            suffixWeight = _props$attributes4.suffixWeight,
+            suffixGap = _props$attributes4.suffixGap,
+            iconCheck = _props$attributes4.iconCheck,
+            icon = _props$attributes4.icon,
+            iconSpacing = _props$attributes4.iconSpacing,
+            iconType = _props$attributes4.iconType,
+            imageURL = _props$attributes4.imageURL,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            selfAlign = _props$attributes4.selfAlign,
+            titleCheck = _props$attributes4.titleCheck,
+            titleTxt = _props$attributes4.titleTxt,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            titleSpacing = _props$attributes4.titleSpacing,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleT = _props$attributes4.titleT,
+            titleB = _props$attributes4.titleB,
+            titleWeight = _props$attributes4.titleWeight,
+            faIcon = _props$attributes4.faIcon,
+            containerBack = _props$attributes4.containerBack,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -20702,47 +20174,47 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            increment = _props$attributes6.increment,
-            time = _props$attributes6.time,
-            delay = _props$attributes6.delay,
-            align = _props$attributes6.align,
-            flexDir = _props$attributes6.flexDir,
-            numberSize = _props$attributes6.numberSize,
-            numberColor = _props$attributes6.numberColor,
-            numberWeight = _props$attributes6.numberWeight,
-            prefix = _props$attributes6.prefix,
-            prefixTxt = _props$attributes6.prefixTxt,
-            prefixSize = _props$attributes6.prefixSize,
-            prefixColor = _props$attributes6.prefixColor,
-            prefixWeight = _props$attributes6.prefixWeight,
-            prefixGap = _props$attributes6.prefixGap,
-            suffix = _props$attributes6.suffix,
-            suffixTxt = _props$attributes6.suffixTxt,
-            suffixSize = _props$attributes6.suffixSize,
-            suffixColor = _props$attributes6.suffixColor,
-            suffixWeight = _props$attributes6.suffixWeight,
-            suffixGap = _props$attributes6.suffixGap,
-            iconCheck = _props$attributes6.iconCheck,
-            icon = _props$attributes6.icon,
-            iconSpacing = _props$attributes6.iconSpacing,
-            iconType = _props$attributes6.iconType,
-            imageURL = _props$attributes6.imageURL,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            selfAlign = _props$attributes6.selfAlign,
-            titleCheck = _props$attributes6.titleCheck,
-            titleTxt = _props$attributes6.titleTxt,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleSpacing = _props$attributes6.titleSpacing,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleT = _props$attributes6.titleT,
-            titleB = _props$attributes6.titleB,
-            titleWeight = _props$attributes6.titleWeight,
-            faIcon = _props$attributes6.faIcon,
-            containerBack = _props$attributes6.containerBack;
+        var _props$attributes5 = props.attributes,
+            increment = _props$attributes5.increment,
+            time = _props$attributes5.time,
+            delay = _props$attributes5.delay,
+            align = _props$attributes5.align,
+            flexDir = _props$attributes5.flexDir,
+            numberSize = _props$attributes5.numberSize,
+            numberColor = _props$attributes5.numberColor,
+            numberWeight = _props$attributes5.numberWeight,
+            prefix = _props$attributes5.prefix,
+            prefixTxt = _props$attributes5.prefixTxt,
+            prefixSize = _props$attributes5.prefixSize,
+            prefixColor = _props$attributes5.prefixColor,
+            prefixWeight = _props$attributes5.prefixWeight,
+            prefixGap = _props$attributes5.prefixGap,
+            suffix = _props$attributes5.suffix,
+            suffixTxt = _props$attributes5.suffixTxt,
+            suffixSize = _props$attributes5.suffixSize,
+            suffixColor = _props$attributes5.suffixColor,
+            suffixWeight = _props$attributes5.suffixWeight,
+            suffixGap = _props$attributes5.suffixGap,
+            iconCheck = _props$attributes5.iconCheck,
+            icon = _props$attributes5.icon,
+            iconSpacing = _props$attributes5.iconSpacing,
+            iconType = _props$attributes5.iconType,
+            imageURL = _props$attributes5.imageURL,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            selfAlign = _props$attributes5.selfAlign,
+            titleCheck = _props$attributes5.titleCheck,
+            titleTxt = _props$attributes5.titleTxt,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleSpacing = _props$attributes5.titleSpacing,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleT = _props$attributes5.titleT,
+            titleB = _props$attributes5.titleB,
+            titleWeight = _props$attributes5.titleWeight,
+            faIcon = _props$attributes5.faIcon,
+            containerBack = _props$attributes5.containerBack;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -20871,46 +20343,46 @@ var deprecatedContent = [{
 }, {
     attributes: counterAttrs_1_0_9,
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            increment = _props$attributes7.increment,
-            time = _props$attributes7.time,
-            delay = _props$attributes7.delay,
-            align = _props$attributes7.align,
-            flexDir = _props$attributes7.flexDir,
-            numberSize = _props$attributes7.numberSize,
-            numberColor = _props$attributes7.numberColor,
-            numberWeight = _props$attributes7.numberWeight,
-            prefix = _props$attributes7.prefix,
-            prefixTxt = _props$attributes7.prefixTxt,
-            prefixSize = _props$attributes7.prefixSize,
-            prefixColor = _props$attributes7.prefixColor,
-            prefixWeight = _props$attributes7.prefixWeight,
-            prefixGap = _props$attributes7.prefixGap,
-            suffix = _props$attributes7.suffix,
-            suffixTxt = _props$attributes7.suffixTxt,
-            suffixSize = _props$attributes7.suffixSize,
-            suffixColor = _props$attributes7.suffixColor,
-            suffixWeight = _props$attributes7.suffixWeight,
-            suffixGap = _props$attributes7.suffixGap,
-            iconCheck = _props$attributes7.iconCheck,
-            icon = _props$attributes7.icon,
-            iconSpacing = _props$attributes7.iconSpacing,
-            iconType = _props$attributes7.iconType,
-            imageURL = _props$attributes7.imageURL,
-            iconSize = _props$attributes7.iconSize,
-            iconColor = _props$attributes7.iconColor,
-            selfAlign = _props$attributes7.selfAlign,
-            titleCheck = _props$attributes7.titleCheck,
-            titleTxt = _props$attributes7.titleTxt,
-            titleColor = _props$attributes7.titleColor,
-            titleSize = _props$attributes7.titleSize,
-            titleSpacing = _props$attributes7.titleSpacing,
-            titleStyle = _props$attributes7.titleStyle,
-            titleUpper = _props$attributes7.titleUpper,
-            titleT = _props$attributes7.titleT,
-            titleB = _props$attributes7.titleB,
-            titleWeight = _props$attributes7.titleWeight,
-            faIcon = _props$attributes7.faIcon;
+        var _props$attributes6 = props.attributes,
+            increment = _props$attributes6.increment,
+            time = _props$attributes6.time,
+            delay = _props$attributes6.delay,
+            align = _props$attributes6.align,
+            flexDir = _props$attributes6.flexDir,
+            numberSize = _props$attributes6.numberSize,
+            numberColor = _props$attributes6.numberColor,
+            numberWeight = _props$attributes6.numberWeight,
+            prefix = _props$attributes6.prefix,
+            prefixTxt = _props$attributes6.prefixTxt,
+            prefixSize = _props$attributes6.prefixSize,
+            prefixColor = _props$attributes6.prefixColor,
+            prefixWeight = _props$attributes6.prefixWeight,
+            prefixGap = _props$attributes6.prefixGap,
+            suffix = _props$attributes6.suffix,
+            suffixTxt = _props$attributes6.suffixTxt,
+            suffixSize = _props$attributes6.suffixSize,
+            suffixColor = _props$attributes6.suffixColor,
+            suffixWeight = _props$attributes6.suffixWeight,
+            suffixGap = _props$attributes6.suffixGap,
+            iconCheck = _props$attributes6.iconCheck,
+            icon = _props$attributes6.icon,
+            iconSpacing = _props$attributes6.iconSpacing,
+            iconType = _props$attributes6.iconType,
+            imageURL = _props$attributes6.imageURL,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            selfAlign = _props$attributes6.selfAlign,
+            titleCheck = _props$attributes6.titleCheck,
+            titleTxt = _props$attributes6.titleTxt,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleSpacing = _props$attributes6.titleSpacing,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleT = _props$attributes6.titleT,
+            titleB = _props$attributes6.titleB,
+            titleWeight = _props$attributes6.titleWeight,
+            faIcon = _props$attributes6.faIcon;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -21054,10 +20526,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var dualHeadingAttrs = {
     block_id: {
@@ -22419,6 +21889,7 @@ function styling(props) {
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
@@ -22436,7 +21907,6 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
-
 
 
 var save = function save(props) {
@@ -22511,9 +21981,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
-
     return wp.element.createElement(
         "div",
         {
@@ -22598,7 +22066,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -22608,6 +22075,10 @@ var save = function save(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+var _newAttributes_1_9_;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var className = "premium-dheading-block";
@@ -22866,271 +22337,8 @@ var newAttributes_1_7_2 = {
 var deprecated_attributes_1_4_8 = Object.assign(deprecated_attributes_1_4_1, newAttributes_1_4_8);
 
 var deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_4_8, newAttributes_1_7_2);
-var deprecated_attributes_1_7_5 = {
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-    },
-    titleTag: {
-        type: "string",
-        default: "h1"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    firstSize: {
-        type: "number",
-        default: "20"
-    },
-    firstFamily: {
-        type: "string"
-    },
-    firstLetter: {
-        type: "number"
-    },
-    firstStyle: {
-        type: "string"
-    },
-    firstUpper: {
-        type: "boolean"
-    },
-    firstWeight: {
-        type: "number",
-        default: 500
-    },
-    firstBackground: {
-        type: "string"
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none"
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    firstBorderColor: {
-        type: "string"
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0"
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0"
-    },
-    firstPadding: {
-        type: "number",
-        default: "0"
-    },
-    firstClip: {
-        type: "boolean",
-        default: false
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false
-    },
-    firstStroke: {
-        type: "boolean",
-        default: false
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstShadowColor: {
-        type: "string"
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondSize: {
-        type: "number",
-        default: "20"
-    },
-    secondFamily: {
-        type: "string"
-    },
-    secondLetter: {
-        type: "number"
-    },
-    secondStyle: {
-        type: "string"
-    },
-    secondUpper: {
-        type: "boolean"
-    },
-    secondWeight: {
-        type: "number",
-        default: 500
-    },
-    secondBackground: {
-        type: "string"
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none"
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    secondBorderColor: {
-        type: "string"
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0"
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0"
-    },
-    secondPadding: {
-        type: "number",
-        default: "0"
-    },
-    secondClip: {
-        type: "boolean",
-        default: false
-    },
-    secondStroke: {
-        type: "boolean",
-        default: false
-    },
-    secondShadowColor: {
-        type: "string"
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    link: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    headingURL: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderType: {
-        type: "string",
-        default: "none"
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    containerBorderColor: {
-        type: "string"
-    }
-};
-var newAttributes_1_7_5 = {
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
 
-var deprecated_attributes_1_7_6 = Object.assign(deprecated_attributes_1_7_5, newAttributes_1_7_5);
-
-var deprecated_attributes_1_8_1 = {
+var deprecated_attributes_1_9_2 = {
     contentAlign: {
         type: "string",
         default: "center"
@@ -23378,307 +22586,97 @@ var deprecated_attributes_1_8_1 = {
     }
 };
 
-var newAttributes_1_8_2 = {
-    firstOpacity: {
-        type: "number",
-        default: "1"
+var newAttributes_1_9_5 = (_newAttributes_1_9_ = {
+    firstBorder: {
+        type: "boolean",
+        default: false
     },
-    secondOpacity: {
-        type: "number",
-        default: "1"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    }
-};
-
-var deprecated_attributes_1_8_2 = Object.assign(deprecated_attributes_1_8_1, newAttributes_1_8_2);
-
-var deprecated_attributes_2_0 = {
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-    },
-    titleTag: {
-        type: "string",
-        default: "h1"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    firstSize: {
-        type: "number",
-        default: "20"
-    },
-    firstFamily: {
-        type: "string"
-    },
-    firstLetter: {
+    firstBorderTop: {
         type: "number"
     },
-    firstStyle: {
-        type: "string"
+    firstBorderRight: {
+        type: "number"
     },
-    firstUpper: {
+    firstBorderBottom: {
+        type: "number"
+    },
+    firstBorderLeft: {
+        type: "number"
+    },
+    secondBorderTop: {
+        type: "number"
+    },
+    secondBorderRight: {
+        type: "number"
+    },
+    secondBorderBottom: {
+        type: "number"
+    },
+    secondBorderLeft: {
+        type: "number"
+    },
+    containerBorderTop: {
+        type: "number"
+    },
+    containerBorderRight: {
+        type: "number"
+    },
+    containerBorderBottom: {
+        type: "number"
+    },
+    containerBorderLeft: {
+        type: "number"
+    },
+    containerBorder: {
         type: "boolean"
     },
-    firstWeight: {
-        type: "number",
-        default: 500
-    },
-    firstBackground: {
-        type: "string"
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none"
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    firstBorderColor: {
-        type: "string"
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0"
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0"
-    },
-    firstPadding: {
-        type: "number",
-        default: "0"
-    },
-    firstClip: {
-        type: "boolean",
-        default: false
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false
-    },
-    firstStroke: {
-        type: "boolean",
-        default: false
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstShadowColor: {
-        type: "string"
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondSize: {
-        type: "number",
-        default: "20"
-    },
-    secondFamily: {
-        type: "string"
-    },
-    secondLetter: {
-        type: "number"
-    },
-    secondStyle: {
-        type: "string"
-    },
-    secondUpper: {
+    secondBorder: {
         type: "boolean"
-    },
-    secondWeight: {
-        type: "number",
-        default: 500
-    },
-    secondBackground: {
-        type: "string"
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none"
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    secondBorderColor: {
-        type: "string"
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0"
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0"
-    },
-    secondPadding: {
-        type: "number",
-        default: "0"
-    },
-    secondClip: {
-        type: "boolean",
-        default: false
-    },
-    secondStroke: {
-        type: "boolean",
-        default: false
-    },
-    secondShadowColor: {
-        type: "string"
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    link: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    headingURL: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderType: {
-        type: "string",
-        default: "none"
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    containerBorderColor: {
-        type: "string"
     }
-};
+}, _defineProperty(_newAttributes_1_9_, "firstBorder", {
+    type: "boolean"
+}), _defineProperty(_newAttributes_1_9_, "block_id", {
+    type: "string"
+}), _defineProperty(_newAttributes_1_9_, "firstSizeUnit", {
+    type: "string",
+    default: 'px'
+}), _defineProperty(_newAttributes_1_9_, "firstSizeTablet", {
+    type: "number"
+}), _defineProperty(_newAttributes_1_9_, "firstSizeMobile", {
+    type: "number"
+}), _defineProperty(_newAttributes_1_9_, "secondSizeUnit", {
+    type: "string",
+    default: 'px'
+}), _defineProperty(_newAttributes_1_9_, "secondSizeTablet", {
+    type: "number"
+}), _defineProperty(_newAttributes_1_9_, "secondSizeMobile", {
+    type: "number"
+}), _defineProperty(_newAttributes_1_9_, "classMigrate", {
+    type: "boolean",
+    default: false
+}), _newAttributes_1_9_);
 
-var newAttributes_2_1 = {
-    block_id: {
-        type: "string"
-    },
-    firstSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    firstSizeTablet: {
-        type: "number"
-    },
-    firstSizeMobile: {
-        type: "number"
-    },
-    secondSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    secondSizeTablet: {
-        type: "number"
-    },
-    secondSizeMobile: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    }
-};
-
-var deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
+var deprecated_attributes_1_9_5 = Object.assign(deprecated_attributes_1_9_2, newAttributes_1_9_5);
 
 var deprecatedContent = [{
-    attributes: deprecated_attributes_2_1,
+    attributes: deprecated_attributes_1_9_5,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            firstBorder: "",
+            secondBorder: "",
+            containerBorder: "",
+            containerBorderTop: "",
+            containerBorderRight: "",
+            containerBorderBottom: "",
+            containerBorderLeft: "",
+            firstBorderTop: "",
+            firstBorderRight: "",
+            firstBorderBottom: "",
+            firstBorderLeft: "",
+            secondBorderTop: "",
+            secondBorderRight: "",
+            secondBorderBottom: "",
+            secondBorderLeft: "",
             classMigrate: false,
             block_id: '',
             secondSizeUnit: 'px',
@@ -23761,7 +22759,8 @@ var deprecatedContent = [{
             containerBorderRadius = _props$attributes.containerBorderRadius,
             containerBorderColor = _props$attributes.containerBorderColor;
 
-        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-dheading-block__container');
+
+        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
 
         return wp.element.createElement(
             "div",
@@ -23848,7 +22847,6 @@ var deprecatedContent = [{
             )
         );
     }
-
 }, {
     attributes: deprecated_attributes_1_7_2,
     migrate: function migrate(attributes) {
@@ -23922,7 +22920,7 @@ var deprecatedContent = [{
             containerBorderColor = _props$attributes2.containerBorderColor;
 
 
-        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-dheading-block__container');
+        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
 
         return wp.element.createElement(
             "div",
@@ -24082,321 +23080,6 @@ var deprecatedContent = [{
         return wp.element.createElement(
             "div",
             {
-                className: "" + mainClasses,
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: containerBorderType,
-                    borderWidth: containerBorderWidth + "px",
-                    borderRadius: containerBorderRadius + "px",
-                    borderColor: containerBorderColor
-                }
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-dheading-block__wrap" },
-                wp.element.createElement(
-                    "h2",
-                    { className: "premium-dheading-block__title" },
-                    wp.element.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    wp.element.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && wp.element.createElement("a", {
-                    className: "premium-dheading-block__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: deprecated_attributes_1_7_2,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            firstStroke: false,
-            secondStroke: false
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes4 = props.attributes,
-            contentAlign = _props$attributes4.contentAlign,
-            firstHeading = _props$attributes4.firstHeading,
-            secondHeading = _props$attributes4.secondHeading,
-            display = _props$attributes4.display,
-            firstColor = _props$attributes4.firstColor,
-            firstBackground = _props$attributes4.firstBackground,
-            firstSize = _props$attributes4.firstSize,
-            firstFamily = _props$attributes4.firstFamily,
-            firstStyle = _props$attributes4.firstStyle,
-            firstUpper = _props$attributes4.firstUpper,
-            firstLetter = _props$attributes4.firstLetter,
-            firstWeight = _props$attributes4.firstWeight,
-            firstBorderType = _props$attributes4.firstBorderType,
-            firstBorderWidth = _props$attributes4.firstBorderWidth,
-            firstBorderRadius = _props$attributes4.firstBorderRadius,
-            firstBorderColor = _props$attributes4.firstBorderColor,
-            firstPadding = _props$attributes4.firstPadding,
-            firstMargin = _props$attributes4.firstMargin,
-            firstClip = _props$attributes4.firstClip,
-            firstAnim = _props$attributes4.firstAnim,
-            firstClipColor = _props$attributes4.firstClipColor,
-            firstShadowBlur = _props$attributes4.firstShadowBlur,
-            firstShadowColor = _props$attributes4.firstShadowColor,
-            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes4.firstShadowVertical,
-            secondColor = _props$attributes4.secondColor,
-            secondBackground = _props$attributes4.secondBackground,
-            secondSize = _props$attributes4.secondSize,
-            secondFamily = _props$attributes4.secondFamily,
-            secondLetter = _props$attributes4.secondLetter,
-            secondUpper = _props$attributes4.secondUpper,
-            secondWeight = _props$attributes4.secondWeight,
-            secondStyle = _props$attributes4.secondStyle,
-            secondBorderType = _props$attributes4.secondBorderType,
-            secondBorderWidth = _props$attributes4.secondBorderWidth,
-            secondBorderRadius = _props$attributes4.secondBorderRadius,
-            secondBorderColor = _props$attributes4.secondBorderColor,
-            secondPadding = _props$attributes4.secondPadding,
-            secondMargin = _props$attributes4.secondMargin,
-            secondClip = _props$attributes4.secondClip,
-            secondAnim = _props$attributes4.secondAnim,
-            secondClipColor = _props$attributes4.secondClipColor,
-            secondShadowBlur = _props$attributes4.secondShadowBlur,
-            secondShadowColor = _props$attributes4.secondShadowColor,
-            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes4.secondShadowVertical,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target,
-            headingURL = _props$attributes4.headingURL,
-            containerBack = _props$attributes4.containerBack,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            containerBorderType = _props$attributes4.containerBorderType,
-            containerBorderWidth = _props$attributes4.containerBorderWidth,
-            containerBorderRadius = _props$attributes4.containerBorderRadius,
-            containerBorderColor = _props$attributes4.containerBorderColor;
-
-
-        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
-
-        return wp.element.createElement(
-            "div",
-            {
-                className: "" + mainClasses,
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: containerBorderType,
-                    borderWidth: containerBorderWidth + "px",
-                    borderRadius: containerBorderRadius + "px",
-                    borderColor: containerBorderColor
-                }
-            },
-            wp.element.createElement(
-                "div",
-                { className: "premium-dheading-block__wrap" },
-                wp.element.createElement(
-                    "h2",
-                    { className: "premium-dheading-block__title" },
-                    wp.element.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    wp.element.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && wp.element.createElement("a", {
-                    className: "premium-dheading-block__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: deprecated_attributes_1_4_8,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            containerBorderType: "none",
-            containerBorderWidth: "1",
-            containerBorderRadius: "0",
-            containerBorderColor: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            contentAlign = _props$attributes5.contentAlign,
-            firstHeading = _props$attributes5.firstHeading,
-            secondHeading = _props$attributes5.secondHeading,
-            display = _props$attributes5.display,
-            firstColor = _props$attributes5.firstColor,
-            firstBackground = _props$attributes5.firstBackground,
-            firstSize = _props$attributes5.firstSize,
-            firstFamily = _props$attributes5.firstFamily,
-            firstStyle = _props$attributes5.firstStyle,
-            firstUpper = _props$attributes5.firstUpper,
-            firstLetter = _props$attributes5.firstLetter,
-            firstWeight = _props$attributes5.firstWeight,
-            firstBorderType = _props$attributes5.firstBorderType,
-            firstBorderWidth = _props$attributes5.firstBorderWidth,
-            firstBorderRadius = _props$attributes5.firstBorderRadius,
-            firstBorderColor = _props$attributes5.firstBorderColor,
-            firstPadding = _props$attributes5.firstPadding,
-            firstMargin = _props$attributes5.firstMargin,
-            firstClip = _props$attributes5.firstClip,
-            firstAnim = _props$attributes5.firstAnim,
-            firstClipColor = _props$attributes5.firstClipColor,
-            firstShadowBlur = _props$attributes5.firstShadowBlur,
-            firstShadowColor = _props$attributes5.firstShadowColor,
-            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes5.firstShadowVertical,
-            secondColor = _props$attributes5.secondColor,
-            secondBackground = _props$attributes5.secondBackground,
-            secondSize = _props$attributes5.secondSize,
-            secondFamily = _props$attributes5.secondFamily,
-            secondLetter = _props$attributes5.secondLetter,
-            secondUpper = _props$attributes5.secondUpper,
-            secondWeight = _props$attributes5.secondWeight,
-            secondStyle = _props$attributes5.secondStyle,
-            secondBorderType = _props$attributes5.secondBorderType,
-            secondBorderWidth = _props$attributes5.secondBorderWidth,
-            secondBorderRadius = _props$attributes5.secondBorderRadius,
-            secondBorderColor = _props$attributes5.secondBorderColor,
-            secondPadding = _props$attributes5.secondPadding,
-            secondMargin = _props$attributes5.secondMargin,
-            secondClip = _props$attributes5.secondClip,
-            secondAnim = _props$attributes5.secondAnim,
-            secondClipColor = _props$attributes5.secondClipColor,
-            secondShadowBlur = _props$attributes5.secondShadowBlur,
-            secondShadowColor = _props$attributes5.secondShadowColor,
-            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes5.secondShadowVertical,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target,
-            headingURL = _props$attributes5.headingURL,
-            containerBack = _props$attributes5.containerBack,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize;
-
-
-        return wp.element.createElement(
-            "div",
-            {
                 className: className + "__container",
                 style: {
                     textAlign: contentAlign,
@@ -24485,60 +23168,60 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            contentAlign = _props$attributes6.contentAlign,
-            firstHeading = _props$attributes6.firstHeading,
-            secondHeading = _props$attributes6.secondHeading,
-            display = _props$attributes6.display,
-            firstColor = _props$attributes6.firstColor,
-            firstBackground = _props$attributes6.firstBackground,
-            firstSize = _props$attributes6.firstSize,
-            firstStyle = _props$attributes6.firstStyle,
-            firstUpper = _props$attributes6.firstUpper,
-            firstLetter = _props$attributes6.firstLetter,
-            firstWeight = _props$attributes6.firstWeight,
-            firstBorderType = _props$attributes6.firstBorderType,
-            firstBorderWidth = _props$attributes6.firstBorderWidth,
-            firstBorderRadius = _props$attributes6.firstBorderRadius,
-            firstBorderColor = _props$attributes6.firstBorderColor,
-            firstPadding = _props$attributes6.firstPadding,
-            firstMargin = _props$attributes6.firstMargin,
-            firstClip = _props$attributes6.firstClip,
-            firstAnim = _props$attributes6.firstAnim,
-            firstClipColor = _props$attributes6.firstClipColor,
-            firstShadowBlur = _props$attributes6.firstShadowBlur,
-            firstShadowColor = _props$attributes6.firstShadowColor,
-            firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes6.firstShadowVertical,
-            secondColor = _props$attributes6.secondColor,
-            secondBackground = _props$attributes6.secondBackground,
-            secondSize = _props$attributes6.secondSize,
-            secondLetter = _props$attributes6.secondLetter,
-            secondUpper = _props$attributes6.secondUpper,
-            secondWeight = _props$attributes6.secondWeight,
-            secondStyle = _props$attributes6.secondStyle,
-            secondBorderType = _props$attributes6.secondBorderType,
-            secondBorderWidth = _props$attributes6.secondBorderWidth,
-            secondBorderRadius = _props$attributes6.secondBorderRadius,
-            secondBorderColor = _props$attributes6.secondBorderColor,
-            secondPadding = _props$attributes6.secondPadding,
-            secondMargin = _props$attributes6.secondMargin,
-            secondClip = _props$attributes6.secondClip,
-            secondAnim = _props$attributes6.secondAnim,
-            secondClipColor = _props$attributes6.secondClipColor,
-            secondShadowBlur = _props$attributes6.secondShadowBlur,
-            secondShadowColor = _props$attributes6.secondShadowColor,
-            secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes6.secondShadowVertical,
-            link = _props$attributes6.link,
-            target = _props$attributes6.target,
-            headingURL = _props$attributes6.headingURL,
-            containerBack = _props$attributes6.containerBack,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize;
+        var _props$attributes4 = props.attributes,
+            contentAlign = _props$attributes4.contentAlign,
+            firstHeading = _props$attributes4.firstHeading,
+            secondHeading = _props$attributes4.secondHeading,
+            display = _props$attributes4.display,
+            firstColor = _props$attributes4.firstColor,
+            firstBackground = _props$attributes4.firstBackground,
+            firstSize = _props$attributes4.firstSize,
+            firstStyle = _props$attributes4.firstStyle,
+            firstUpper = _props$attributes4.firstUpper,
+            firstLetter = _props$attributes4.firstLetter,
+            firstWeight = _props$attributes4.firstWeight,
+            firstBorderType = _props$attributes4.firstBorderType,
+            firstBorderWidth = _props$attributes4.firstBorderWidth,
+            firstBorderRadius = _props$attributes4.firstBorderRadius,
+            firstBorderColor = _props$attributes4.firstBorderColor,
+            firstPadding = _props$attributes4.firstPadding,
+            firstMargin = _props$attributes4.firstMargin,
+            firstClip = _props$attributes4.firstClip,
+            firstAnim = _props$attributes4.firstAnim,
+            firstClipColor = _props$attributes4.firstClipColor,
+            firstShadowBlur = _props$attributes4.firstShadowBlur,
+            firstShadowColor = _props$attributes4.firstShadowColor,
+            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes4.firstShadowVertical,
+            secondColor = _props$attributes4.secondColor,
+            secondBackground = _props$attributes4.secondBackground,
+            secondSize = _props$attributes4.secondSize,
+            secondLetter = _props$attributes4.secondLetter,
+            secondUpper = _props$attributes4.secondUpper,
+            secondWeight = _props$attributes4.secondWeight,
+            secondStyle = _props$attributes4.secondStyle,
+            secondBorderType = _props$attributes4.secondBorderType,
+            secondBorderWidth = _props$attributes4.secondBorderWidth,
+            secondBorderRadius = _props$attributes4.secondBorderRadius,
+            secondBorderColor = _props$attributes4.secondBorderColor,
+            secondPadding = _props$attributes4.secondPadding,
+            secondMargin = _props$attributes4.secondMargin,
+            secondClip = _props$attributes4.secondClip,
+            secondAnim = _props$attributes4.secondAnim,
+            secondClipColor = _props$attributes4.secondClipColor,
+            secondShadowBlur = _props$attributes4.secondShadowBlur,
+            secondShadowColor = _props$attributes4.secondShadowColor,
+            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes4.secondShadowVertical,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target,
+            headingURL = _props$attributes4.headingURL,
+            containerBack = _props$attributes4.containerBack,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize;
 
 
         return wp.element.createElement(
@@ -24634,55 +23317,55 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            contentAlign = _props$attributes7.contentAlign,
-            firstHeading = _props$attributes7.firstHeading,
-            secondHeading = _props$attributes7.secondHeading,
-            display = _props$attributes7.display,
-            firstColor = _props$attributes7.firstColor,
-            firstBackground = _props$attributes7.firstBackground,
-            firstSize = _props$attributes7.firstSize,
-            firstStyle = _props$attributes7.firstStyle,
-            firstUpper = _props$attributes7.firstUpper,
-            firstLetter = _props$attributes7.firstLetter,
-            firstWeight = _props$attributes7.firstWeight,
-            firstBorderType = _props$attributes7.firstBorderType,
-            firstBorderWidth = _props$attributes7.firstBorderWidth,
-            firstBorderRadius = _props$attributes7.firstBorderRadius,
-            firstBorderColor = _props$attributes7.firstBorderColor,
-            firstPadding = _props$attributes7.firstPadding,
-            firstMargin = _props$attributes7.firstMargin,
-            firstClip = _props$attributes7.firstClip,
-            firstAnim = _props$attributes7.firstAnim,
-            firstClipColor = _props$attributes7.firstClipColor,
-            firstShadowBlur = _props$attributes7.firstShadowBlur,
-            firstShadowColor = _props$attributes7.firstShadowColor,
-            firstShadowHorizontal = _props$attributes7.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes7.firstShadowVertical,
-            secondColor = _props$attributes7.secondColor,
-            secondBackground = _props$attributes7.secondBackground,
-            secondSize = _props$attributes7.secondSize,
-            secondLetter = _props$attributes7.secondLetter,
-            secondUpper = _props$attributes7.secondUpper,
-            secondWeight = _props$attributes7.secondWeight,
-            secondStyle = _props$attributes7.secondStyle,
-            secondBorderType = _props$attributes7.secondBorderType,
-            secondBorderWidth = _props$attributes7.secondBorderWidth,
-            secondBorderRadius = _props$attributes7.secondBorderRadius,
-            secondBorderColor = _props$attributes7.secondBorderColor,
-            secondPadding = _props$attributes7.secondPadding,
-            secondMargin = _props$attributes7.secondMargin,
-            secondClip = _props$attributes7.secondClip,
-            secondAnim = _props$attributes7.secondAnim,
-            secondClipColor = _props$attributes7.secondClipColor,
-            secondShadowBlur = _props$attributes7.secondShadowBlur,
-            secondShadowColor = _props$attributes7.secondShadowColor,
-            secondShadowHorizontal = _props$attributes7.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes7.secondShadowVertical,
-            link = _props$attributes7.link,
-            target = _props$attributes7.target,
-            headingURL = _props$attributes7.headingURL,
-            containerBack = _props$attributes7.containerBack;
+        var _props$attributes5 = props.attributes,
+            contentAlign = _props$attributes5.contentAlign,
+            firstHeading = _props$attributes5.firstHeading,
+            secondHeading = _props$attributes5.secondHeading,
+            display = _props$attributes5.display,
+            firstColor = _props$attributes5.firstColor,
+            firstBackground = _props$attributes5.firstBackground,
+            firstSize = _props$attributes5.firstSize,
+            firstStyle = _props$attributes5.firstStyle,
+            firstUpper = _props$attributes5.firstUpper,
+            firstLetter = _props$attributes5.firstLetter,
+            firstWeight = _props$attributes5.firstWeight,
+            firstBorderType = _props$attributes5.firstBorderType,
+            firstBorderWidth = _props$attributes5.firstBorderWidth,
+            firstBorderRadius = _props$attributes5.firstBorderRadius,
+            firstBorderColor = _props$attributes5.firstBorderColor,
+            firstPadding = _props$attributes5.firstPadding,
+            firstMargin = _props$attributes5.firstMargin,
+            firstClip = _props$attributes5.firstClip,
+            firstAnim = _props$attributes5.firstAnim,
+            firstClipColor = _props$attributes5.firstClipColor,
+            firstShadowBlur = _props$attributes5.firstShadowBlur,
+            firstShadowColor = _props$attributes5.firstShadowColor,
+            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes5.firstShadowVertical,
+            secondColor = _props$attributes5.secondColor,
+            secondBackground = _props$attributes5.secondBackground,
+            secondSize = _props$attributes5.secondSize,
+            secondLetter = _props$attributes5.secondLetter,
+            secondUpper = _props$attributes5.secondUpper,
+            secondWeight = _props$attributes5.secondWeight,
+            secondStyle = _props$attributes5.secondStyle,
+            secondBorderType = _props$attributes5.secondBorderType,
+            secondBorderWidth = _props$attributes5.secondBorderWidth,
+            secondBorderRadius = _props$attributes5.secondBorderRadius,
+            secondBorderColor = _props$attributes5.secondBorderColor,
+            secondPadding = _props$attributes5.secondPadding,
+            secondMargin = _props$attributes5.secondMargin,
+            secondClip = _props$attributes5.secondClip,
+            secondAnim = _props$attributes5.secondAnim,
+            secondClipColor = _props$attributes5.secondClipColor,
+            secondShadowBlur = _props$attributes5.secondShadowBlur,
+            secondShadowColor = _props$attributes5.secondShadowColor,
+            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes5.secondShadowVertical,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target,
+            headingURL = _props$attributes5.headingURL,
+            containerBack = _props$attributes5.containerBack;
 
 
         return wp.element.createElement(
@@ -24763,55 +23446,55 @@ var deprecatedContent = [{
     attributes: deprecated_attributes_1_3_0,
     save: function save(props) {
         {
-            var _props$attributes8 = props.attributes,
-                contentAlign = _props$attributes8.contentAlign,
-                firstHeading = _props$attributes8.firstHeading,
-                secondHeading = _props$attributes8.secondHeading,
-                display = _props$attributes8.display,
-                firstColor = _props$attributes8.firstColor,
-                firstBackground = _props$attributes8.firstBackground,
-                firstSize = _props$attributes8.firstSize,
-                firstStyle = _props$attributes8.firstStyle,
-                firstUpper = _props$attributes8.firstUpper,
-                firstLetter = _props$attributes8.firstLetter,
-                firstWeight = _props$attributes8.firstWeight,
-                firstBorderType = _props$attributes8.firstBorderType,
-                firstBorderWidth = _props$attributes8.firstBorderWidth,
-                firstBorderRadius = _props$attributes8.firstBorderRadius,
-                firstBorderColor = _props$attributes8.firstBorderColor,
-                firstPadding = _props$attributes8.firstPadding,
-                firstMargin = _props$attributes8.firstMargin,
-                firstClip = _props$attributes8.firstClip,
-                firstAnim = _props$attributes8.firstAnim,
-                firstClipColor = _props$attributes8.firstClipColor,
-                firstShadowBlur = _props$attributes8.firstShadowBlur,
-                firstShadowColor = _props$attributes8.firstShadowColor,
-                firstShadowHorizontal = _props$attributes8.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes8.firstShadowVertical,
-                secondColor = _props$attributes8.secondColor,
-                secondBackground = _props$attributes8.secondBackground,
-                secondSize = _props$attributes8.secondSize,
-                secondLetter = _props$attributes8.secondLetter,
-                secondUpper = _props$attributes8.secondUpper,
-                secondWeight = _props$attributes8.secondWeight,
-                secondStyle = _props$attributes8.secondStyle,
-                secondBorderType = _props$attributes8.secondBorderType,
-                secondBorderWidth = _props$attributes8.secondBorderWidth,
-                secondBorderRadius = _props$attributes8.secondBorderRadius,
-                secondBorderColor = _props$attributes8.secondBorderColor,
-                secondPadding = _props$attributes8.secondPadding,
-                secondMargin = _props$attributes8.secondMargin,
-                secondClip = _props$attributes8.secondClip,
-                secondAnim = _props$attributes8.secondAnim,
-                secondClipColor = _props$attributes8.secondClipColor,
-                secondShadowBlur = _props$attributes8.secondShadowBlur,
-                secondShadowColor = _props$attributes8.secondShadowColor,
-                secondShadowHorizontal = _props$attributes8.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes8.secondShadowVertical,
-                link = _props$attributes8.link,
-                target = _props$attributes8.target,
-                headingURL = _props$attributes8.headingURL,
-                containerBack = _props$attributes8.containerBack;
+            var _props$attributes6 = props.attributes,
+                contentAlign = _props$attributes6.contentAlign,
+                firstHeading = _props$attributes6.firstHeading,
+                secondHeading = _props$attributes6.secondHeading,
+                display = _props$attributes6.display,
+                firstColor = _props$attributes6.firstColor,
+                firstBackground = _props$attributes6.firstBackground,
+                firstSize = _props$attributes6.firstSize,
+                firstStyle = _props$attributes6.firstStyle,
+                firstUpper = _props$attributes6.firstUpper,
+                firstLetter = _props$attributes6.firstLetter,
+                firstWeight = _props$attributes6.firstWeight,
+                firstBorderType = _props$attributes6.firstBorderType,
+                firstBorderWidth = _props$attributes6.firstBorderWidth,
+                firstBorderRadius = _props$attributes6.firstBorderRadius,
+                firstBorderColor = _props$attributes6.firstBorderColor,
+                firstPadding = _props$attributes6.firstPadding,
+                firstMargin = _props$attributes6.firstMargin,
+                firstClip = _props$attributes6.firstClip,
+                firstAnim = _props$attributes6.firstAnim,
+                firstClipColor = _props$attributes6.firstClipColor,
+                firstShadowBlur = _props$attributes6.firstShadowBlur,
+                firstShadowColor = _props$attributes6.firstShadowColor,
+                firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
+                firstShadowVertical = _props$attributes6.firstShadowVertical,
+                secondColor = _props$attributes6.secondColor,
+                secondBackground = _props$attributes6.secondBackground,
+                secondSize = _props$attributes6.secondSize,
+                secondLetter = _props$attributes6.secondLetter,
+                secondUpper = _props$attributes6.secondUpper,
+                secondWeight = _props$attributes6.secondWeight,
+                secondStyle = _props$attributes6.secondStyle,
+                secondBorderType = _props$attributes6.secondBorderType,
+                secondBorderWidth = _props$attributes6.secondBorderWidth,
+                secondBorderRadius = _props$attributes6.secondBorderRadius,
+                secondBorderColor = _props$attributes6.secondBorderColor,
+                secondPadding = _props$attributes6.secondPadding,
+                secondMargin = _props$attributes6.secondMargin,
+                secondClip = _props$attributes6.secondClip,
+                secondAnim = _props$attributes6.secondAnim,
+                secondClipColor = _props$attributes6.secondClipColor,
+                secondShadowBlur = _props$attributes6.secondShadowBlur,
+                secondShadowColor = _props$attributes6.secondShadowColor,
+                secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
+                secondShadowVertical = _props$attributes6.secondShadowVertical,
+                link = _props$attributes6.link,
+                target = _props$attributes6.target,
+                headingURL = _props$attributes6.headingURL,
+                containerBack = _props$attributes6.containerBack;
 
 
             return wp.element.createElement(
@@ -24907,10 +23590,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var iconAttrs = {
     iconType: {
@@ -25119,7 +23800,6 @@ var iconAttrs = {
     target: {
         type: "boolean"
     },
-
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -25133,7 +23813,6 @@ var iconAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/icon", {
     title: __("Icon"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon" }),
@@ -25182,7 +23861,6 @@ registerBlockType("premium/icon", {
 
 
 
-
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -25197,7 +23875,6 @@ var _wp$blockEditor = wp.blockEditor,
     ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 var Fragment = wp.element.Fragment;
-
 
 var edit = function edit(props) {
     var isSelected = props.isSelected,
@@ -25262,7 +23939,6 @@ var edit = function edit(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var EFFECTS = [{
         value: "none",
         label: __("None")
@@ -25285,11 +23961,8 @@ var edit = function edit(props) {
         value: "wobble",
         label: __("Wobble")
     }];
-
     var ALIGNS = ["left", "center", "right"];
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
-
     return [isSelected && wp.element.createElement(
         InspectorControls,
         { key: "inspector" },
@@ -25392,11 +24065,7 @@ var edit = function edit(props) {
                             onToggle = _ref.onToggle;
                         return wp.element.createElement(
                             Button,
-                            {
-                                isSmall: true,
-                                onClick: onToggle,
-                                "aria-expanded": isOpen
-                            },
+                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                             wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                         );
                     },
@@ -25564,7 +24233,7 @@ var edit = function edit(props) {
                         return setAttributes({ backgroundOpacity: newvalue });
                     }
                 }),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_background__["a" /* default */], {
+                wp.element.createElement(PremiumBackgroud, {
                     imageID: imageID,
                     imageURL: imageURL,
                     backgroundPosition: backgroundPosition,
@@ -25774,7 +24443,6 @@ var edit = function edit(props) {
         })
     )];
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
@@ -35137,7 +33805,6 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
@@ -35197,9 +33864,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
-
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-icon');
     return wp.element.createElement(
         "div",
         {
@@ -35259,7 +33924,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -35269,7 +33933,7 @@ var save = function save(props) {
 "use strict";
 var className = "premium-icon";
 
-var deprecated_attributes_1_6_1 = {
+var deprecated_attributes_1_6_2 = {
     iconType: {
         type: "string",
         default: "dash"
@@ -35359,6 +34023,7 @@ var deprecated_attributes_1_6_1 = {
         type: "number",
         default: "1"
     },
+
     borderRadius: {
         type: "number",
         default: 100
@@ -35402,6 +34067,7 @@ var deprecated_attributes_1_6_1 = {
         type: "number",
         default: "1"
     },
+
     wrapBorderRadius: {
         type: "number"
     },
@@ -35470,7 +34136,37 @@ var deprecated_attributes_1_6_1 = {
     }
 };
 
-var newAttributes_1_6_2 = {
+var newAttributes_1_6_3 = {
+    iconBorderTop: {
+        type: "number"
+    },
+    iconBorderRight: {
+        type: "number"
+    },
+    iconBorderBottom: {
+        type: "number"
+    },
+    iconBorderLeft: {
+        type: "number"
+    },
+    wrapBorderTop: {
+        type: "number"
+    },
+    wrapBorderRight: {
+        type: "number"
+    },
+    wrapBorderBottom: {
+        type: "number"
+    },
+    wrapBorderLeft: {
+        type: "number"
+    },
+    iconBorder: {
+        type: "boolean"
+    },
+    wrapBorder: {
+        type: "boolean"
+    },
     iconOpacity: {
         type: "number",
         default: "1"
@@ -35492,6 +34188,8 @@ var newAttributes_1_6_2 = {
         default: false
     }
 };
+
+var deprecated_attributes_1_6_3 = Object.assign(deprecated_attributes_1_6_2, newAttributes_1_6_3);
 
 var deprecated_attributes_1_5_5 = {
     iconType: {
@@ -36031,11 +34729,20 @@ var deprecated_attributes_1_3_1 = {
     }
 };
 
-var deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2);
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_6_2,
+    attributes: deprecated_attributes_1_6_3,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            iconBorderTop: "",
+            iconBorderRight: "",
+            iconBorderBottom: "",
+            iconBorderLeft: "",
+            wrapBorderTop: "",
+            wrapBorderRight: "",
+            wrapBorderBottom: "",
+            wrapBorderLeft: "",
+            iconBorder: "",
+            wrapBorder: "",
             hideDesktop: false,
             hideTablet: false,
             hideMobile: false,
@@ -36158,10 +34865,15 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_6,
+    attributes: deprecated_attributes_1_6_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            paddingU: "px"
+            borderWidth: {
+                type: "number"
+            },
+            wrapBorderWidth: {
+                type: "number"
+            }
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36182,6 +34894,7 @@ var deprecatedContent = [{
             paddingR = _props$attributes2.paddingR,
             paddingB = _props$attributes2.paddingB,
             paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
             marginT = _props$attributes2.marginT,
             marginR = _props$attributes2.marginR,
             marginB = _props$attributes2.marginB,
@@ -36248,21 +34961,21 @@ var deprecatedContent = [{
             wp.element.createElement(
                 "a",
                 {
-                    className: className + "__link",
+                    className: "premium-icon__link",
                     href: urlCheck && link,
                     rel: "noopener noreferrer",
                     target: target ? "_blank" : "_self"
                 },
                 wp.element.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
                         fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,
@@ -36278,10 +34991,10 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_5,
+    attributes: deprecated_attributes_1_5_6,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            iconSizeUnit: "px"
+            paddingU: "px"
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36291,6 +35004,7 @@ var deprecatedContent = [{
             align = _props$attributes3.align,
             hoverEffect = _props$attributes3.hoverEffect,
             iconSize = _props$attributes3.iconSize,
+            iconSizeUnit = _props$attributes3.iconSizeUnit,
             iconColor = _props$attributes3.iconColor,
             iconBack = _props$attributes3.iconBack,
             shadowBlur = _props$attributes3.shadowBlur,
@@ -36377,6 +35091,125 @@ var deprecatedContent = [{
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
+                        fontSize: (iconSize || 50) + iconSizeUnit,
+                        paddingTop: paddingT,
+                        paddingRight: paddingR,
+                        paddingBottom: paddingB,
+                        paddingLeft: paddingL,
+                        marginTop: marginT,
+                        marginRight: marginR,
+                        marginBottom: marginB,
+                        marginLeft: marginL,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius || 100 + "px",
+                        borderColor: borderColor,
+                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                    }
+                })
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_5_5,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            iconSizeUnit: "px"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            selectedIcon = _props$attributes4.selectedIcon,
+            align = _props$attributes4.align,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBack = _props$attributes4.iconBack,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            backgroundColor = _props$attributes4.backgroundColor,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            wrapBorderType = _props$attributes4.wrapBorderType,
+            wrapBorderWidth = _props$attributes4.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes4.wrapBorderRadius,
+            wrapBorderColor = _props$attributes4.wrapBorderColor,
+            wrapShadowBlur = _props$attributes4.wrapShadowBlur,
+            wrapShadowColor = _props$attributes4.wrapShadowColor,
+            wrapShadowHorizontal = _props$attributes4.wrapShadowHorizontal,
+            wrapShadowVertical = _props$attributes4.wrapShadowVertical,
+            wrapShadowPosition = _props$attributes4.wrapShadowPosition,
+            wrapPaddingT = _props$attributes4.wrapPaddingT,
+            wrapPaddingR = _props$attributes4.wrapPaddingR,
+            wrapPaddingB = _props$attributes4.wrapPaddingB,
+            wrapPaddingL = _props$attributes4.wrapPaddingL,
+            wrapMarginT = _props$attributes4.wrapMarginT,
+            wrapMarginR = _props$attributes4.wrapMarginR,
+            wrapMarginB = _props$attributes4.wrapMarginB,
+            wrapMarginL = _props$attributes4.wrapMarginL,
+            urlCheck = _props$attributes4.urlCheck,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: align,
+                    backgroundColor: backgroundColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: wrapBorderType,
+                    borderWidth: wrapBorderWidth + "px",
+                    borderRadius: wrapBorderRadius + "px",
+                    borderColor: wrapBorderColor,
+                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    paddingTop: wrapPaddingT,
+                    paddingRight: wrapPaddingR,
+                    paddingBottom: wrapPaddingB,
+                    paddingLeft: wrapPaddingL,
+                    marginTop: wrapMarginT,
+                    marginRight: wrapMarginR,
+                    marginBottom: wrapMarginB,
+                    marginLeft: wrapMarginL
+                }
+            },
+            wp.element.createElement(
+                "a",
+                {
+                    className: className + "__link",
+                    href: urlCheck && link,
+                    rel: "noopener noreferrer",
+                    target: target ? "_blank" : "_self"
+                },
+                wp.element.createElement("i", {
+                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    style: {
+                        color: iconColor || "#6ec1e4",
+                        backgroundColor: iconBack,
                         fontSize: iconSize || 50,
                         paddingTop: paddingT,
                         paddingRight: paddingR,
@@ -36411,50 +35244,50 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            selectedIcon = _props$attributes4.selectedIcon,
-            align = _props$attributes4.align,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBack = _props$attributes4.iconBack,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            background = _props$attributes4.background,
-            wrapBorderType = _props$attributes4.wrapBorderType,
-            wrapBorderWidth = _props$attributes4.wrapBorderWidth,
-            wrapBorderRadius = _props$attributes4.wrapBorderRadius,
-            wrapBorderColor = _props$attributes4.wrapBorderColor,
-            wrapShadowBlur = _props$attributes4.wrapShadowBlur,
-            wrapShadowColor = _props$attributes4.wrapShadowColor,
-            wrapShadowHorizontal = _props$attributes4.wrapShadowHorizontal,
-            wrapShadowVertical = _props$attributes4.wrapShadowVertical,
-            wrapShadowPosition = _props$attributes4.wrapShadowPosition,
-            wrapPaddingT = _props$attributes4.wrapPaddingT,
-            wrapPaddingR = _props$attributes4.wrapPaddingR,
-            wrapPaddingB = _props$attributes4.wrapPaddingB,
-            wrapPaddingL = _props$attributes4.wrapPaddingL,
-            wrapMarginT = _props$attributes4.wrapMarginT,
-            wrapMarginR = _props$attributes4.wrapMarginR,
-            wrapMarginB = _props$attributes4.wrapMarginB,
-            wrapMarginL = _props$attributes4.wrapMarginL,
-            urlCheck = _props$attributes4.urlCheck,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target;
+        var _props$attributes5 = props.attributes,
+            selectedIcon = _props$attributes5.selectedIcon,
+            align = _props$attributes5.align,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBack = _props$attributes5.iconBack,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            background = _props$attributes5.background,
+            wrapBorderType = _props$attributes5.wrapBorderType,
+            wrapBorderWidth = _props$attributes5.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes5.wrapBorderRadius,
+            wrapBorderColor = _props$attributes5.wrapBorderColor,
+            wrapShadowBlur = _props$attributes5.wrapShadowBlur,
+            wrapShadowColor = _props$attributes5.wrapShadowColor,
+            wrapShadowHorizontal = _props$attributes5.wrapShadowHorizontal,
+            wrapShadowVertical = _props$attributes5.wrapShadowVertical,
+            wrapShadowPosition = _props$attributes5.wrapShadowPosition,
+            wrapPaddingT = _props$attributes5.wrapPaddingT,
+            wrapPaddingR = _props$attributes5.wrapPaddingR,
+            wrapPaddingB = _props$attributes5.wrapPaddingB,
+            wrapPaddingL = _props$attributes5.wrapPaddingL,
+            wrapMarginT = _props$attributes5.wrapMarginT,
+            wrapMarginR = _props$attributes5.wrapMarginR,
+            wrapMarginB = _props$attributes5.wrapMarginB,
+            wrapMarginL = _props$attributes5.wrapMarginL,
+            urlCheck = _props$attributes5.urlCheck,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target;
 
 
         return wp.element.createElement(
@@ -36513,45 +35346,45 @@ var deprecatedContent = [{
 }, {
     attributes: deprecated_attributes_1_3_1,
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            selectedIcon = _props$attributes5.selectedIcon,
-            align = _props$attributes5.align,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            iconBack = _props$attributes5.iconBack,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            background = _props$attributes5.background,
-            wrapBorderType = _props$attributes5.wrapBorderType,
-            wrapBorderWidth = _props$attributes5.wrapBorderWidth,
-            wrapBorderRadius = _props$attributes5.wrapBorderRadius,
-            wrapBorderColor = _props$attributes5.wrapBorderColor,
-            wrapPaddingT = _props$attributes5.wrapPaddingT,
-            wrapPaddingR = _props$attributes5.wrapPaddingR,
-            wrapPaddingB = _props$attributes5.wrapPaddingB,
-            wrapPaddingL = _props$attributes5.wrapPaddingL,
-            wrapMarginT = _props$attributes5.wrapMarginT,
-            wrapMarginR = _props$attributes5.wrapMarginR,
-            wrapMarginB = _props$attributes5.wrapMarginB,
-            wrapMarginL = _props$attributes5.wrapMarginL,
-            urlCheck = _props$attributes5.urlCheck,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target;
+        var _props$attributes6 = props.attributes,
+            selectedIcon = _props$attributes6.selectedIcon,
+            align = _props$attributes6.align,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            iconBack = _props$attributes6.iconBack,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            background = _props$attributes6.background,
+            wrapBorderType = _props$attributes6.wrapBorderType,
+            wrapBorderWidth = _props$attributes6.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes6.wrapBorderRadius,
+            wrapBorderColor = _props$attributes6.wrapBorderColor,
+            wrapPaddingT = _props$attributes6.wrapPaddingT,
+            wrapPaddingR = _props$attributes6.wrapPaddingR,
+            wrapPaddingB = _props$attributes6.wrapPaddingB,
+            wrapPaddingL = _props$attributes6.wrapPaddingL,
+            wrapMarginT = _props$attributes6.wrapMarginT,
+            wrapMarginR = _props$attributes6.wrapMarginR,
+            wrapMarginB = _props$attributes6.wrapMarginB,
+            wrapMarginL = _props$attributes6.wrapMarginL,
+            urlCheck = _props$attributes6.urlCheck,
+            link = _props$attributes6.link,
+            target = _props$attributes6.target;
 
 
         return wp.element.createElement(
@@ -36625,10 +35458,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var iconBoxAttrs = {
     block_id: {
@@ -37025,7 +35856,6 @@ var iconBoxAttrs = {
     classMigrate: {
         type: "boolean",
         default: false
-
     },
     hideDesktop: {
         type: 'boolean',
@@ -37052,7 +35882,6 @@ var iconBoxAttrs = {
         default: "1"
     }
 };
-
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "icon-box" }),
@@ -38558,9 +37387,7 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var RichText = wp.blockEditor.RichText;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -38667,9 +37494,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-box");
-
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-icon-box');
     return wp.element.createElement(
         "div",
         {
@@ -38811,7 +37636,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -39506,7 +38330,7 @@ var newAttributes_1_6_6 = {
 
 var deprecated_attributes_1_6_6 = Object.assign(deprecated_attributes_1_5_7, newAttributes_1_6_6);
 
-var deprecated_attributes_2_0 = {
+var deprecated_attributes_1_7_1 = {
     id: {
         type: "string"
     },
@@ -39861,7 +38685,39 @@ var deprecated_attributes_2_0 = {
     }
 };
 
-var newAttributes_2_1 = {
+var newAttributes_1_7_2 = {
+    borderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
     block_id: {
         type: "string"
     },
@@ -39931,12 +38787,22 @@ var newAttributes_2_1 = {
     }
 };
 
-var deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
+var deprecated_attributes_1_7_2 = Object.assign(newAttributes_1_7_2, deprecated_attributes_1_7_1);
 
 var deprecatedContent = [{
-    attributes: deprecated_attributes_2_1,
+    attributes: deprecated_attributes_1_7_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            borderLeft: "",
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            btnBorderBottom: "",
+            btnBorderLeft: "",
+            btnBorderTop: "",
+            btnBorderRight: "",
+            borderIconBox: "",
+            btnBorderIconBox: "",
             classMigrate: false,
             block_id: '',
             titleSizeUnit: "px",
@@ -39957,7 +38823,6 @@ var deprecatedContent = [{
         };
         return Object.assign(attributes, newAttributes);
     },
-
     save: function save(props) {
         var _props$attributes = props.attributes,
             id = _props$attributes.id,
@@ -42744,10 +41609,8 @@ registerBlockType("premium/maps", {
 
 
 
-
 var registerBlockType = wp.blocks.registerBlockType;
 var __ = wp.i18n.__;
-
 
 var pricingAttrs = {
     contentAlign: {
@@ -43311,7 +42174,6 @@ var pricingAttrs = {
         type: "number",
         default: "1"
     },
-
     hideDesktop: {
         type: "boolean",
         default: false
@@ -43325,7 +42187,6 @@ var pricingAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "pricing-table" }),
@@ -43358,14 +42219,11 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_responsive_tabs__ = __webpack_require__(5);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -43415,21 +42273,16 @@ var PremiumPricingTable = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
-
-            setAttributes({ block_id: clientId });
+            setAttributes({ id: clientId });
             setAttributes({ classMigrate: true });
-
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
-
             $style.setAttribute("id", "premium-style-pricing-" + clientId);
             document.head.appendChild($style);
         }
     }, {
         key: "render",
         value: function render() {
-            var _wp$element$createEle, _wp$element$createEle2, _wp$element$createEle3;
-
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
@@ -43598,7 +42451,6 @@ var PremiumPricingTable = function (_Component) {
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
 
-
             var ALIGNS = [{
                 value: "flex-start",
                 label: __("Top")
@@ -43609,7 +42461,6 @@ var PremiumPricingTable = function (_Component) {
                 value: "flex-end",
                 label: __("Bottom")
             }];
-
             var PRICE = [{
                 value: "slash",
                 label: __("Slashed Price")
@@ -43626,7 +42477,6 @@ var PremiumPricingTable = function (_Component) {
                 value: "duration",
                 label: __("Duration")
             }];
-
             var TYPE = [{
                 value: "none",
                 label: __("None")
@@ -43643,7 +42493,6 @@ var PremiumPricingTable = function (_Component) {
                 value: "square",
                 label: __("Square")
             }];
-
             var POSITION = [{
                 value: "right",
                 label: __("Right")
@@ -43651,17 +42500,12 @@ var PremiumPricingTable = function (_Component) {
                 value: "left",
                 label: __("Left")
             }];
-
             var element = document.getElementById("premium-style-pricing-" + this.props.clientId);
-
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_8__styling__["a" /* default */])(this.props);
             }
-
             var FEATURES_ALIGN = ["left", "center", "right"];
-
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-pricing-table");
-
             return [isSelected && wp.element.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -43795,17 +42639,13 @@ var PremiumPricingTable = function (_Component) {
                         colorSettings: [{
                             value: titleColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    titleColor: newColor
-                                });
+                                return setAttributes({ titleColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
                             value: titleBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    titleBack: newColor
-                                });
+                                return setAttributes({ titleBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -43816,22 +42656,16 @@ var PremiumPricingTable = function (_Component) {
                         horizontal: titleShadowHorizontal,
                         vertical: titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
-                                titleShadowColor: newColor.hex
-                            });
+                            return setAttributes({ titleShadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return setAttributes({ titleShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
-                                titleShadowHorizontal: newValue
-                            });
+                            return setAttributes({ titleShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
-                                titleShadowVertical: newValue
-                            });
+                            return setAttributes({ titleShadowVertical: newValue });
                         }
                     }),
                     wp.element.createElement(
@@ -43851,11 +42685,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -43869,9 +42699,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "10",
                                         max: "80",
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({
-                                                titleMarginT: newSize
-                                            });
+                                            return setAttributes({ titleMarginT: newSize });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -43880,9 +42708,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({
-                                                titleMarginB: newMargin
-                                            });
+                                            return setAttributes({ titleMarginB: newMargin });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -43891,9 +42717,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                titlePadding: newPadding
-                                            });
+                                            return setAttributes({ titlePadding: newPadding });
                                         }
                                     })
                                 );
@@ -43955,9 +42779,7 @@ var PremiumPricingTable = function (_Component) {
                             options: PRICE,
                             value: selectedStyle,
                             onChange: function onChange(newElem) {
-                                return setAttributes({
-                                    selectedStyle: newElem
-                                });
+                                return setAttributes({ selectedStyle: newElem });
                             }
                         }),
                         "slash" === selectedStyle && wp.element.createElement(
@@ -43984,9 +42806,7 @@ var PremiumPricingTable = function (_Component) {
                                 },
                                 weight: slashWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
-                                        slashWeight: newWeight
-                                    });
+                                    return setAttributes({ slashWeight: newWeight });
                                 }
                             }),
                             wp.element.createElement(SelectControl, {
@@ -43994,9 +42814,7 @@ var PremiumPricingTable = function (_Component) {
                                 options: ALIGNS,
                                 value: slashV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        slashV: newValue
-                                    });
+                                    return setAttributes({ slashV: newValue });
                                 }
                             }),
                             wp.element.createElement(
@@ -44101,9 +42919,7 @@ var PremiumPricingTable = function (_Component) {
                                 size: valSize,
                                 weight: valWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
-                                        valWeight: newWeight
-                                    });
+                                    return setAttributes({ valWeight: newWeight });
                                 }
                             }),
                             wp.element.createElement(SelectControl, {
@@ -44111,9 +42927,7 @@ var PremiumPricingTable = function (_Component) {
                                 options: ALIGNS,
                                 value: valV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        valV: newValue
-                                    });
+                                    return setAttributes({ valV: newValue });
                                 }
                             }),
                             wp.element.createElement(
@@ -44159,9 +42973,7 @@ var PremiumPricingTable = function (_Component) {
                                 },
                                 weight: divWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
-                                        divWeight: newWeight
-                                    });
+                                    return setAttributes({ divWeight: newWeight });
                                 }
                             }),
                             wp.element.createElement(SelectControl, {
@@ -44169,9 +42981,7 @@ var PremiumPricingTable = function (_Component) {
                                 options: ALIGNS,
                                 value: divV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        divV: newValue
-                                    });
+                                    return setAttributes({ divV: newValue });
                                 }
                             }),
                             wp.element.createElement(
@@ -44217,9 +43027,7 @@ var PremiumPricingTable = function (_Component) {
                                 },
                                 weight: durWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
-                                        durWeight: newWeight
-                                    });
+                                    return setAttributes({ durWeight: newWeight });
                                 }
                             }),
                             wp.element.createElement(SelectControl, {
@@ -44227,9 +43035,7 @@ var PremiumPricingTable = function (_Component) {
                                 options: ALIGNS,
                                 value: durV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        durV: newValue
-                                    });
+                                    return setAttributes({ durV: newValue });
                                 }
                             }),
                             wp.element.createElement(
@@ -44269,11 +43075,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref2.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -44287,9 +43089,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({
-                                                priceMarginT: newMargin
-                                            });
+                                            return setAttributes({ priceMarginT: newMargin });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44298,9 +43098,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                priceMarginB: newPadding
-                                            });
+                                            return setAttributes({ priceMarginB: newPadding });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44309,9 +43107,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                pricePadding: newPadding
-                                            });
+                                            return setAttributes({ pricePadding: newPadding });
                                         }
                                     })
                                 );
@@ -44359,9 +43155,7 @@ var PremiumPricingTable = function (_Component) {
                                 icon: "editor-align" + contentAlign,
                                 isActive: contentAlign === featsAlign,
                                 onClick: function onClick() {
-                                    return setAttributes({
-                                        featsAlign: contentAlign
-                                    });
+                                    return setAttributes({ featsAlign: contentAlign });
                                 }
                             };
                         })
@@ -44374,7 +43168,7 @@ var PremiumPricingTable = function (_Component) {
                             return setAttributes({ listStyle: newType });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                         setAttributes: setAttributes,
                         fontSizeType: {
@@ -44400,18 +43194,20 @@ var PremiumPricingTable = function (_Component) {
                         upper: listUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ listWeight: newWeight });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ listItemsStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ listLetter: newValue });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ listLine: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ listUpper: check });
                         }
-                    }, _defineProperty(_wp$element$createEle, "onChangeWeight", function onChangeWeight(newWeight) {
-                        return setAttributes({ listWeight: newWeight });
-                    }), _defineProperty(_wp$element$createEle, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ listItemsStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ listLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle, "onChangeLine", function onChangeLine(newValue) {
-                        return setAttributes({ listLine: newValue });
-                    }), _defineProperty(_wp$element$createEle, "onChangeUpper", function onChangeUpper(check) {
-                        return setAttributes({ listUpper: check });
-                    }), _wp$element$createEle)),
+                    }),
                     wp.element.createElement(PanelColorSettings, {
                         title: __("Colors"),
                         className: "premium-panel-body-inner",
@@ -44419,17 +43215,13 @@ var PremiumPricingTable = function (_Component) {
                         colorSettings: [{
                             value: listColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    listColor: newColor
-                                });
+                                return setAttributes({ listColor: newColor });
                             },
                             label: __("List Items Color")
                         }, {
                             value: listBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    listBack: newColor
-                                });
+                                return setAttributes({ listBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -44451,11 +43243,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref3.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -44467,27 +43255,21 @@ var PremiumPricingTable = function (_Component) {
                                         label: __("Margin Top (PX)"),
                                         value: listMarginT,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({
-                                                listMarginT: newSize
-                                            });
+                                            return setAttributes({ listMarginT: newSize });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
                                         label: __("Margin Bottom (PX)"),
                                         value: listMarginB,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({
-                                                listMarginB: newSize
-                                            });
+                                            return setAttributes({ listMarginB: newSize });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
                                         label: __("Padding (PX)"),
                                         value: listPadding,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({
-                                                listPadding: newSize
-                                            });
+                                            return setAttributes({ listPadding: newSize });
                                         }
                                     })
                                 );
@@ -44502,7 +43284,7 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "spacing", "line"],
                         setAttributes: setAttributes,
                         fontSizeType: {
@@ -44528,16 +43310,17 @@ var PremiumPricingTable = function (_Component) {
                         line: descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ descWeight: newWeight });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ descStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ descLetter: newValue });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ descLine: newValue });
                         }
-                    }, _defineProperty(_wp$element$createEle2, "onChangeWeight", function onChangeWeight(newWeight) {
-                        return setAttributes({ descWeight: newWeight });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ descStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ descLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle2, "onChangeLine", function onChangeLine(newValue) {
-                        return setAttributes({ descLine: newValue });
-                    }), _wp$element$createEle2)),
+                    }),
                     wp.element.createElement(PanelColorSettings, {
                         title: __("Colors"),
                         className: "premium-panel-body-inner",
@@ -44545,17 +43328,13 @@ var PremiumPricingTable = function (_Component) {
                         colorSettings: [{
                             value: descColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    descColor: newColor
-                                });
+                                return setAttributes({ descColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
                             value: descBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    descBack: newColor
-                                });
+                                return setAttributes({ descBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -44577,11 +43356,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref4.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -44595,9 +43370,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({
-                                                descMarginT: newMargin
-                                            });
+                                            return setAttributes({ descMarginT: newMargin });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44606,9 +43379,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({
-                                                descMarginB: newMargin
-                                            });
+                                            return setAttributes({ descMarginB: newMargin });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44617,9 +43388,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                descPadding: newPadding
-                                            });
+                                            return setAttributes({ descPadding: newPadding });
                                         }
                                     })
                                 );
@@ -44634,7 +43403,7 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle3 = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
                         setAttributes: setAttributes,
                         fontSizeType: {
@@ -44660,18 +43429,20 @@ var PremiumPricingTable = function (_Component) {
                         upper: btnUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ btnWeight: newWeight });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ btnStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ btnLetter: newValue });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return setAttributes({ btnLine: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ btnUpper: check });
                         }
-                    }, _defineProperty(_wp$element$createEle3, "onChangeWeight", function onChangeWeight(newWeight) {
-                        return setAttributes({ btnWeight: newWeight });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ btnStyle: newStyle });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ btnLetter: newValue });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeLine", function onChangeLine(newValue) {
-                        return setAttributes({ btnLine: newValue });
-                    }), _defineProperty(_wp$element$createEle3, "onChangeUpper", function onChangeUpper(check) {
-                        return setAttributes({ btnUpper: check });
-                    }), _wp$element$createEle3)),
+                    }),
                     wp.element.createElement(PanelColorSettings, {
                         title: __("Colors"),
                         className: "premium-panel-body-inner",
@@ -44679,33 +43450,25 @@ var PremiumPricingTable = function (_Component) {
                         colorSettings: [{
                             value: btnColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    btnColor: newColor
-                                });
+                                return setAttributes({ btnColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
                             value: btnHoverColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    btnHoverColor: newColor
-                                });
+                                return setAttributes({ btnHoverColor: newColor });
                             },
                             label: __("Text Hover Color")
                         }, {
                             value: btnBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    btnBack: newColor
-                                });
+                                return setAttributes({ btnBack: newColor });
                             },
                             label: __("Background Color")
                         }, {
                             value: btnHoverBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    btnHoverBack: newColor
-                                });
+                                return setAttributes({ btnHoverBack: newColor });
                             },
                             label: __("Background Hover Color")
                         }]
@@ -44722,14 +43485,10 @@ var PremiumPricingTable = function (_Component) {
                             return setAttributes({ btnBorderWidth: newWidth });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
-                                btnBorderColor: colorValue.hex
-                            });
+                            return setAttributes({ btnBorderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({
-                                btnBorderRadius: newrRadius
-                            });
+                            return setAttributes({ btnBorderRadius: newrRadius });
                         }
                     }),
                     wp.element.createElement(
@@ -44749,11 +43508,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref5.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -44765,9 +43520,7 @@ var PremiumPricingTable = function (_Component) {
                                         label: __("Width (%)"),
                                         value: btnWidth,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({
-                                                btnWidth: newSize
-                                            });
+                                            return setAttributes({ btnWidth: newSize });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44776,9 +43529,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                btnMarginT: newPadding
-                                            });
+                                            return setAttributes({ btnMarginT: newPadding });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44787,16 +43538,12 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                btnMarginB: newPadding
-                                            });
+                                            return setAttributes({ btnMarginB: newPadding });
                                         }
                                     }),
                                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__["a" /* default */], {
                                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                            return setAttributes({
-                                                btnPaddingU: newValue
-                                            });
+                                            return setAttributes({ btnPaddingU: newValue });
                                         }
                                     }),
                                     wp.element.createElement(RangeControl, {
@@ -44805,9 +43552,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({
-                                                btnPadding: newPadding
-                                            });
+                                            return setAttributes({ btnPadding: newPadding });
                                         }
                                     })
                                 );
@@ -44887,17 +43632,13 @@ var PremiumPricingTable = function (_Component) {
                         colorSettings: [{
                             value: badgeColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    badgeColor: newColor
-                                });
+                                return setAttributes({ badgeColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
                             value: badgeBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({
-                                    badgeBack: newColor
-                                });
+                                return setAttributes({ badgeBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -45031,11 +43772,7 @@ var PremiumPricingTable = function (_Component) {
                                     onToggle = _ref6.onToggle;
                                 return wp.element.createElement(
                                     Button,
-                                    {
-                                        isSmall: true,
-                                        onClick: onToggle,
-                                        "aria-expanded": isOpen
-                                    },
+                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
                                     wp.element.createElement("i", { className: "dashicons dashicons-edit" })
                                 );
                             },
@@ -45049,9 +43786,7 @@ var PremiumPricingTable = function (_Component) {
                                         min: "0",
                                         max: "50",
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
-                                                tablePadding: newValue
-                                            });
+                                            return setAttributes({ tablePadding: newValue });
                                         }
                                     })
                                 );
@@ -45534,9 +44269,7 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var RichText = wp.blockEditor.RichText;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -45672,9 +44405,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-pricing-table");
-
     return wp.element.createElement(
         "div",
         {
@@ -45928,7 +44659,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -45936,6 +44666,8 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var className = "premium-pricing-table";
 
 var __ = wp.i18n.__;
@@ -46391,7 +45123,7 @@ var pricingAttrs_1_6_3 = {
     }
 };
 
-var pricingAttrs_1_8_1 = {
+var pricingAttrs_1_6_9 = {
     contentAlign: {
         type: "string",
         default: "center"
@@ -46843,7 +45575,39 @@ var pricingAttrs_1_8_1 = {
     }
 };
 
-var newAttributes_1_7 = {
+var newAttributes_1_8_8 = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
     block_id: {
         type: "string"
     },
@@ -46965,51 +45729,18 @@ var newAttributes_1_7 = {
     }
 };
 
-var pricingAttrs_1_7 = Object.assign(pricingAttrs_1_8_1, newAttributes_1_7);
+var pricingAttrs_1_8_8 = Object.assign(pricingAttrs_1_6_9, newAttributes_1_8_8);
 
 var deprecatedContent = [{
-    attributes: pricingAttrs_1_7,
+    attributes: pricingAttrs_1_8_8,
     migrate: function migrate(attributes) {
-        var newAttributes = {
-            classMigrate: false,
-            block_id: '',
-            titleSizeUnit: 'px',
-            titleSizeMobile: '',
-            titleSizeTablet: '',
-            valSizeUnit: "px",
-            valSizeTablet: '',
-            valSizeMobile: '',
-            badgeTextUnit: "px",
-            badgeTextSizeTablet: '',
-            badgeTextSizeMobile: '',
-            btnSizeUnit: 'px',
-            btnSizeMobile: '',
-            btnSizeTablet: '',
-            currSizeUnit: 'px',
-            currSizeMobile: '',
-            currSizeTablet: '',
-            descSizeUnit: 'px',
-            descSizeMobile: '',
-            descSizeTablet: '',
-            divSizeUnit: 'px',
-            divSizeMobile: '',
-            divSizeTablet: '',
-            durSizeUnit: "px",
-            durSizeTablet: '',
-            durSizeMobile: '',
-            listSizeUnit: 'px',
-            listSizeMobile: '',
-            listSizeTablet: '',
-            slashSizeUnit: 'px',
-            slashSizeMobile: '',
-            slashSizeTablet: '',
-            tableOpacity: "",
-            priceOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
-        return Object.assign(newAttributes, attributes);
+        var _newAttributes;
+
+        var newAttributes = (_newAttributes = {
+            borderLeft: "",
+            borderTop: ""
+        }, _defineProperty(_newAttributes, "borderLeft", ""), _defineProperty(_newAttributes, "borderRight", ""), _defineProperty(_newAttributes, "btnBorderRight", ""), _defineProperty(_newAttributes, "btnBorderTop", ""), _defineProperty(_newAttributes, "btnBorderBottom", ""), _defineProperty(_newAttributes, "btnBorderLeft", ""), _defineProperty(_newAttributes, "borderUpdated", ""), _defineProperty(_newAttributes, "btnBorderUpdated", ""), _defineProperty(_newAttributes, "classMigrate", false), _defineProperty(_newAttributes, "block_id", ''), _defineProperty(_newAttributes, "titleSizeUnit", 'px'), _defineProperty(_newAttributes, "titleSizeMobile", ''), _defineProperty(_newAttributes, "titleSizeTablet", ''), _defineProperty(_newAttributes, "valSizeUnit", "px"), _defineProperty(_newAttributes, "valSizeTablet", ''), _defineProperty(_newAttributes, "valSizeMobile", ''), _defineProperty(_newAttributes, "badgeTextUnit", "px"), _defineProperty(_newAttributes, "badgeTextSizeTablet", ''), _defineProperty(_newAttributes, "badgeTextSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeUnit", 'px'), _defineProperty(_newAttributes, "btnSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeTablet", ''), _defineProperty(_newAttributes, "currSizeUnit", 'px'), _defineProperty(_newAttributes, "currSizeMobile", ''), _defineProperty(_newAttributes, "currSizeTablet", ''), _defineProperty(_newAttributes, "descSizeUnit", 'px'), _defineProperty(_newAttributes, "descSizeMobile", ''), _defineProperty(_newAttributes, "descSizeTablet", ''), _defineProperty(_newAttributes, "divSizeUnit", 'px'), _defineProperty(_newAttributes, "divSizeMobile", ''), _defineProperty(_newAttributes, "divSizeTablet", ''), _defineProperty(_newAttributes, "durSizeUnit", "px"), _defineProperty(_newAttributes, "durSizeTablet", ''), _defineProperty(_newAttributes, "durSizeMobile", ''), _defineProperty(_newAttributes, "listSizeUnit", 'px'), _defineProperty(_newAttributes, "listSizeMobile", ''), _defineProperty(_newAttributes, "listSizeTablet", ''), _defineProperty(_newAttributes, "slashSizeUnit", 'px'), _defineProperty(_newAttributes, "slashSizeMobile", ''), _defineProperty(_newAttributes, "slashSizeTablet", ''), _defineProperty(_newAttributes, "tableOpacity", ""), _defineProperty(_newAttributes, "priceOpacity", ""), _defineProperty(_newAttributes, "hideDesktop", false), _defineProperty(_newAttributes, "hideTablet", false), _defineProperty(_newAttributes, "hideMobile", false), _newAttributes);
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
@@ -47138,7 +45869,6 @@ var deprecatedContent = [{
             listStyle = _props$attributes.listStyle,
             featsAlign = _props$attributes.featsAlign,
             id = _props$attributes.id;
-
 
         return wp.element.createElement(
             "div",
@@ -48204,11 +46934,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var containerAttrs = {
     stretchSection: {
@@ -48348,7 +47075,6 @@ var containerAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/container", {
     title: __("Section"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "section" }),
@@ -48393,7 +47119,6 @@ registerBlockType("premium/container", {
 
 
 
-
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -48408,9 +47133,7 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     ColorPalette = _wp$blockEditor.ColorPalette;
 
-
 var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ") }]];
-
 var edit = function edit(props) {
     var isSelected = props.isSelected,
         className = props.className,
@@ -48455,7 +47178,6 @@ var edit = function edit(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var WIDTH = [{
         value: "boxed",
         label: __("Boxed")
@@ -48463,7 +47185,6 @@ var edit = function edit(props) {
         value: "full",
         label: __("Full Width")
     }];
-
     var HEIGHT = [{
         value: "fit",
         label: __("Fit to Screen")
@@ -48471,7 +47192,6 @@ var edit = function edit(props) {
         value: "min",
         label: __("Min Height")
     }];
-
     var VPOSITION = [{
         value: "top",
         label: __("Top")
@@ -48482,9 +47202,7 @@ var edit = function edit(props) {
         value: "bottom",
         label: __("Bottom")
     }];
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
-
     return [isSelected && wp.element.createElement(
         BlockControls,
         { key: "controls" },
@@ -48765,7 +47483,6 @@ var edit = function edit(props) {
     ), wp.element.createElement(
         "div",
         {
-
             className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: horAlign,
@@ -48775,7 +47492,7 @@ var edit = function edit(props) {
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
+                backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -48807,7 +47524,6 @@ var edit = function edit(props) {
         )
     )];
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
@@ -48821,9 +47537,7 @@ var edit = function edit(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 
 
-
 var InnerBlocks = wp.blockEditor.InnerBlocks;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -48867,9 +47581,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-container');
-
     return wp.element.createElement(
         "div",
         {
@@ -48914,7 +47626,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -48926,6 +47637,162 @@ var InnerBlocks = wp.editor.InnerBlocks;
 
 
 var className = "premium-container";
+
+var deprecated_attributes_1_5_11 = {
+    stretchSection: {
+        type: "boolean",
+        default: false
+    },
+    innerWidthType: {
+        type: "string",
+        default: "boxed"
+    },
+    horAlign: {
+        type: "string",
+        default: "center"
+    },
+    height: {
+        type: "string",
+        default: "min"
+    },
+    innerWidth: {
+        type: "number"
+    },
+    minHeight: {
+        type: "number"
+    },
+    minHeightUnit: {
+        type: "string"
+    },
+    vPos: {
+        type: "string",
+        default: "top"
+    },
+    color: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginTop: {
+        type: "number"
+    },
+    marginBottom: {
+        type: "number"
+    },
+    marginLeft: {
+        type: "number"
+    },
+    marginRight: {
+        type: "number"
+    },
+    marginUnit: {
+        type: "string"
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    }
+};
+var newAttributes_1_5_12 = {
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    isUpdated: {
+        type: "boolean",
+        default: false
+    },
+    opacity: {
+        type: "number",
+        default: "1"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var deprecated_attributes_1_5_12 = Object.assign(deprecated_attributes_1_5_11, newAttributes_1_5_12);
 
 var containerAttrs_1_0_1 = {
     stretchSection: {
@@ -49054,151 +47921,15 @@ var newAttributes_1_6_2 = {
 
 var deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2);
 
-var deprecated_attributes_1_8_1 = {
-    stretchSection: {
-        type: "boolean",
-        default: false
-    },
-    innerWidthType: {
-        type: "string",
-        default: "boxed"
-    },
-    horAlign: {
-        type: "string",
-        default: "center"
-    },
-    height: {
-        type: "string",
-        default: "min"
-    },
-    innerWidth: {
-        type: "number"
-    },
-    minHeight: {
-        type: "number"
-    },
-    minHeightUnit: {
-        type: "string"
-    },
-    vPos: {
-        type: "string",
-        default: "top"
-    },
-    color: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginTop: {
-        type: "number"
-    },
-    marginBottom: {
-        type: "number"
-    },
-    marginLeft: {
-        type: "number"
-    },
-    marginRight: {
-        type: "number"
-    },
-    marginUnit: {
-        type: "string"
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var newAttributes_1_8_2 = {
-    opacity: {
-        type: "number",
-        default: "1"
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-var deprecated_attributes_1_8_2 = Object.assign(deprecated_attributes_1_8_1, newAttributes_1_8_2);
-
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_8_2,
+    attributes: deprecated_attributes_1_5_12,
     migrate: function migrate(attributes) {
         var newAttributes = {
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            borderLeft: "",
+            isUpdated: "",
             opacity: "",
             hideDesktop: false,
             hideTablet: false,
@@ -49610,9 +48341,7 @@ var deprecatedContent = [{
                 "div",
                 {
                     className: className + "__content_wrap " + className + "__" + vPos,
-                    style: {
-                        width: innerWidth ? innerWidth + "%" : "100%"
-                    }
+                    style: { width: innerWidth ? innerWidth + "%" : "100%" }
                 },
                 wp.element.createElement(
                     "div",
@@ -49641,10 +48370,8 @@ var deprecatedContent = [{
 
 
 
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var testimonialsAttrs = {
     block_id: {
@@ -49868,9 +48595,7 @@ var testimonialsAttrs = {
         type: 'boolean',
         default: false
     }
-
 };
-
 registerBlockType("premium/testimonial", {
     title: __("Testimonial"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "testimonials" }),
@@ -50842,9 +49567,7 @@ function styling(props) {
 
 
 
-
 var RichText = wp.blockEditor.RichText;
-
 
 var save = function save(props) {
     var className = props.className;
@@ -50902,9 +49625,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
 
-
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-testimonial");
-
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-testimonial');
     return wp.element.createElement(
         "div",
         {
@@ -51036,7 +49757,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -52358,7 +51078,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
@@ -52374,7 +51093,6 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     ColorPalette = _wp$blockEditor.ColorPalette;
 var __ = wp.i18n.__;
-
 
 var isBoxUpdated = null;
 
@@ -52399,12 +51117,10 @@ var edit = function (_Component) {
                 clientId = _props.clientId;
 
             setAttributes({ block_id: clientId });
-
             if (!attributes.videoBoxId) {
                 setAttributes({ videoBoxId: "premium-video-box-" + clientId });
             }
             this.props.setAttributes({ classMigrate: true });
-
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-videoBox-" + this.props.clientId.substr(0, 6));
@@ -52422,25 +51138,19 @@ var edit = function (_Component) {
         value: function initVideoBox() {
             var videoBoxId = this.props.attributes.videoBoxId;
 
-
             if (!videoBoxId) return null;
-
             var videoBox = document.getElementById(videoBoxId),
                 video = void 0,
                 src = void 0;
-
             videoBox.addEventListener("click", function () {
                 videoBox.classList.add("video-overlay-false");
-
                 var type = videoBox.getAttribute("data-type");
-
                 if ("self" !== type) {
                     video = videoBox.getElementsByTagName("iframe")[0];
                     src = video.getAttribute("src");
                 } else {
                     video = videoBox.getElementsByTagName("video")[0];
                 }
-
                 setTimeout(function () {
                     if ("self" !== type) {
                         video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
@@ -52527,7 +51237,6 @@ var edit = function (_Component) {
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
 
-
             var TYPE = [{
                 value: "youtube",
                 label: __("Youtube")
@@ -52541,7 +51250,6 @@ var edit = function (_Component) {
                 value: "self",
                 label: __("Self Hosted")
             }];
-
             var loopVideo = function loopVideo() {
                 if ("youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
@@ -52553,7 +51261,6 @@ var edit = function (_Component) {
                     return loop ? "1" : "0";
                 }
             };
-
             var getHelp = function getHelp(Type) {
                 switch (Type) {
                     case "youtube":
@@ -52564,7 +51271,6 @@ var edit = function (_Component) {
                         return __("Enter video ID, for example: x5gifqg or Embed URL, for example: https://dailymotion.com/embed/video/x5gifqg");
                 }
             };
-
             var addFontToHead = function addFontToHead(fontFamily) {
                 var head = document.head;
                 var link = document.createElement("link");
@@ -52573,31 +51279,24 @@ var edit = function (_Component) {
                 link.href = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/\s+/g, "+") + ":" + "regular";
                 head.appendChild(link);
             };
-
             var onChangeDescFamily = function onChangeDescFamily(fontFamily) {
                 setAttributes({ videoDescFamily: fontFamily });
                 if (!fontFamily) {
                     return;
                 }
-
                 addFontToHead(fontFamily);
             };
-
             var element = document.getElementById("premium-style-videoBox-" + clientId.substr(0, 6));
-
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_9__styling__["a" /* default */])(this.props);
             }
-
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-video-box");
-
             var changeVideoType = function changeVideoType(newvalue) {
                 if (newvalue === "self") {
                     setAttributes({ videoURL: "" });
                 }
                 setAttributes({ videoType: newvalue });
             };
-
             return [isSelected && wp.element.createElement(
                 InspectorControls,
                 { key: "inspector" },
@@ -52716,9 +51415,7 @@ var edit = function (_Component) {
                         saturation: saturation,
                         hue: hue,
                         onChangeBlur: function onChangeBlur(value) {
-                            return setAttributes({
-                                blur: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ blur: value === undefined ? 0 : value });
                         },
                         onChangeBright: function onChangeBright(value) {
                             return setAttributes({
@@ -52736,9 +51433,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeHue: function onChangeHue(value) {
-                            return setAttributes({
-                                hue: value === undefined ? 100 : value
-                            });
+                            return setAttributes({ hue: value === undefined ? 100 : value });
                         }
                     })
                 ),
@@ -52796,14 +51491,10 @@ var edit = function (_Component) {
                                     });
                                 },
                                 onChangeColor: function onChangeColor(colorValue) {
-                                    return setAttributes({
-                                        playBorderColor: colorValue.hex
-                                    });
+                                    return setAttributes({ playBorderColor: colorValue.hex });
                                 },
                                 onChangeRadius: function onChangeRadius(newrRadius) {
-                                    return setAttributes({
-                                        playBorderRadius: newrRadius
-                                    });
+                                    return setAttributes({ playBorderRadius: newrRadius });
                                 }
                             }),
                             wp.element.createElement(RangeControl, {
@@ -52838,9 +51529,7 @@ var edit = function (_Component) {
                                 label: __("Description Text"),
                                 value: videoDescText,
                                 onChange: function onChange(newText) {
-                                    return setAttributes({
-                                        videoDescText: newText
-                                    });
+                                    return setAttributes({ videoDescText: newText });
                                 }
                             }),
                             wp.element.createElement(SelectControl, {
@@ -52870,27 +51559,19 @@ var edit = function (_Component) {
                                 },
                                 weight: videoDescWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
-                                        videoDescWeight: newWeight
-                                    });
+                                    return setAttributes({ videoDescWeight: newWeight });
                                 },
                                 style: videoDescStyle,
                                 spacing: videoDescLetter,
                                 upper: videoDescUpper,
                                 onChangeStyle: function onChangeStyle(newStyle) {
-                                    return setAttributes({
-                                        videoDescStyle: newStyle
-                                    });
+                                    return setAttributes({ videoDescStyle: newStyle });
                                 },
                                 onChangeSpacing: function onChangeSpacing(newValue) {
-                                    return setAttributes({
-                                        videoDescLetter: newValue
-                                    });
+                                    return setAttributes({ videoDescLetter: newValue });
                                 },
                                 onChangeUpper: function onChangeUpper(check) {
-                                    return setAttributes({
-                                        videoDescUpper: check
-                                    });
+                                    return setAttributes({ videoDescUpper: check });
                                 }
                             }),
                             wp.element.createElement(RangeControl, {
@@ -52922,9 +51603,7 @@ var edit = function (_Component) {
                                     });
                                 },
                                 onChangeBlur: function onChangeBlur(newBlur) {
-                                    return setAttributes({
-                                        descShadowBlur: newBlur || "0"
-                                    });
+                                    return setAttributes({ descShadowBlur: newBlur || "0" });
                                 },
                                 onChangehHorizontal: function onChangehHorizontal(newValue) {
                                     return setAttributes({
@@ -52932,9 +51611,7 @@ var edit = function (_Component) {
                                     });
                                 },
                                 onChangeVertical: function onChangeVertical(newValue) {
-                                    return setAttributes({
-                                        descShadowVertical: newValue || "0"
-                                    });
+                                    return setAttributes({ descShadowVertical: newValue || "0" });
                                 }
                             }),
                             wp.element.createElement(RangeControl, {
@@ -53347,7 +52024,6 @@ function styling(props) {
 
 
 
-
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
@@ -53357,18 +52033,18 @@ var save = function save(props) {
         videoURL = _props$attributes.videoURL,
         autoPlay = _props$attributes.autoPlay,
         loop = _props$attributes.loop,
-        controls = _props$attributes.controls,
-        relatedVideos = _props$attributes.relatedVideos,
         mute = _props$attributes.mute,
+        relatedVideos = _props$attributes.relatedVideos,
+        controls = _props$attributes.controls,
         overlay = _props$attributes.overlay,
         overlayImgURL = _props$attributes.overlayImgURL,
         blur = _props$attributes.blur,
-        bright = _props$attributes.bright,
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
+        bright = _props$attributes.bright,
         hue = _props$attributes.hue,
-        playLeft = _props$attributes.playLeft,
         playTop = _props$attributes.playTop,
+        playLeft = _props$attributes.playLeft,
         playIcon = _props$attributes.playIcon,
         playColor = _props$attributes.playColor,
         playHoverColor = _props$attributes.playHoverColor,
@@ -53423,9 +52099,7 @@ var save = function save(props) {
             return loop ? "1" : "0";
         }
     };
-
     var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-video-box');
-
     return wp.element.createElement(
         'div',
         {
@@ -53433,7 +52107,7 @@ var save = function save(props) {
             className: mainClasses + ' video-overlay-' + overlay + '  premium-video-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             'data-type': videoType,
             style: {
-                border: boxBorderType,
+                borderStyle: boxBorderType,
                 borderWidth: boxBorderWidth + "px",
                 borderRadius: boxBorderRadius + "px",
                 borderColor: boxBorderColor,
@@ -53528,7 +52202,6 @@ var save = function save(props) {
         )
     );
 };
-
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
@@ -53537,6 +52210,8 @@ var save = function save(props) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(33);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var className = "premium-video-box";
@@ -53910,207 +52585,39 @@ var videoBoxAttrs_1_5_4 = {
     }
 };
 
-var videoBoxAttrs_2_0 = {
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
+var newAttributes_1_5_8 = {
+    borderPlayUpdated: {
         type: "boolean",
         default: false
     },
-    loop: {
+    borderBoxUpdated: {
         type: "boolean",
         default: false
     },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: 0
-    },
-    bright: {
-        type: "number",
-        default: 100
-    },
-    contrast: {
-        type: "number",
-        default: 100
-    },
-    saturation: {
-        type: "number",
-        default: 100
-    },
-    hue: {
-        type: "number",
-        default: 0
-    },
-    playTop: {
+    boxBorderTop: {
         type: "number"
     },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    playSize: {
+    boxBorderRight: {
         type: "number"
     },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
+    boxBorderBottom: {
         type: "number"
     },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    playBorderRadius: {
+    boxBorderLeft: {
         type: "number"
     },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
+    playBorderTop: {
         type: "number"
     },
-    descTop: {
+    playBorderRight: {
         type: "number"
     },
-    videoDescSize: {
+    playBorderBottom: {
         type: "number"
     },
-    videoDescFamily: {
-        type: "string"
-    },
-    videoDescWeight: {
+    playBorderLeft: {
         type: "number"
     },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-
-    // Old props
-    playLeft: {
-        type: "number"
-    }
-};
-var newAttributes_2_1 = {
     block_id: {
         type: 'string'
     },
@@ -54149,23 +52656,23 @@ var newAttributes_2_1 = {
         default: false
     }
 };
-var videoBoxAttrs_2_1 = Object.assign(videoBoxAttrs_2_0, newAttributes_2_1);
+
+var videoBoxAttrs_1_5_8 = Object.assign(newAttributes_1_5_8, videoBoxAttrs_1_5_4);
 
 var deprecatedContent = [{
-    attributes: videoBoxAttrs_2_1,
+    attributes: videoBoxAttrs_1_5_8,
     migrate: function migrate(attributes) {
-        var newAttributes = {
-            classMigrate: false,
-            block_id: '',
-            videoDescSizeUnit: 'px',
-            videoDescSizeTablet: '',
-            videoDescSizeMobile: '',
-            playOpacity: '',
-            videoDescOpacity: '',
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
+        var _newAttributes;
+
+        var newAttributes = (_newAttributes = {
+            playBorderTop: "",
+            playBorderRight: "",
+            playBorderBottom: "",
+            playBorderLeft: "",
+            boxBorderBottom: "",
+            boxBorderLeft: "",
+            boxBorderTop: ""
+        }, _defineProperty(_newAttributes, "boxBorderLeft", ""), _defineProperty(_newAttributes, "borderBoxUpdated", ""), _defineProperty(_newAttributes, "borderPlayUpdated", ""), _defineProperty(_newAttributes, "classMigrate", false), _defineProperty(_newAttributes, "block_id", ''), _defineProperty(_newAttributes, "videoDescSizeUnit", 'px'), _defineProperty(_newAttributes, "videoDescSizeTablet", ''), _defineProperty(_newAttributes, "videoDescSizeMobile", ''), _defineProperty(_newAttributes, "playOpacity", ''), _defineProperty(_newAttributes, "videoDescOpacity", ''), _defineProperty(_newAttributes, "hideDesktop", false), _defineProperty(_newAttributes, "hideTablet", false), _defineProperty(_newAttributes, "hideMobile", false), _newAttributes);
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
@@ -54237,7 +52744,6 @@ var deprecatedContent = [{
                 return loop ? "1" : "0";
             }
         };
-
         return wp.element.createElement(
             "div",
             {
@@ -54877,11 +53383,8 @@ var deprecatedContent = [{
 
 
 
-
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-
 
 var fancyTextAttrs = {
     block_id: {
@@ -55078,7 +53581,6 @@ var fancyTextAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/fancy-text", {
     title: __("Fancy Text"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__icons__["a" /* default */], { icon: "fancy-text" }),
@@ -55101,7 +53603,6 @@ registerBlockType("premium/fancy-text", {
 /* harmony export (immutable) */ __webpack_exports__["a"] = save;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-
 
 function save(props) {
     var attributes = props.attributes,
@@ -55127,21 +53628,18 @@ function save(props) {
         hideTablet = attributes.hideTablet,
         hideMobile = attributes.hideMobile;
 
-
     return wp.element.createElement(
         "div",
         {
             className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
             style: {
                 textAlign: align
-            }
-        },
-        effect == "typing" ? wp.element.createElement(
+            } },
+        effect == 'typing' ? wp.element.createElement(
             "div",
             {
                 id: "premium-fancy-text-" + block_id,
-                className: "premium-fancy-text",
-                style: {
+                className: "premium-fancy-text", style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -55175,9 +53673,7 @@ function save(props) {
             )
         ) : wp.element.createElement(
             "div",
-            {
-                className: "premium-fancy-text premium-fancy-slide",
-                style: {
+            { className: "premium-fancy-text premium-fancy-slide", style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -55196,12 +53692,9 @@ function save(props) {
             ),
             wp.element.createElement(
                 "div",
-                {
-                    className: "premium-fancy-text-title-slide",
-                    style: {
+                { className: "premium-fancy-text-title-slide", style: {
                         textAlign: fancyalign
-                    }
-                },
+                    } },
                 wp.element.createElement(
                     "ul",
                     { className: "premium-fancy-text-title-slide-list" },
@@ -55255,8 +53748,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -55272,7 +53763,6 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
     Toolbar = _wp$components.Toolbar;
-
 
 var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_6_react_sortable_hoc__["b" /* SortableElement */])(function (_ref) {
     var edit = _ref.edit,
@@ -55321,7 +53811,6 @@ var SortableItem = Object(__WEBPACK_IMPORTED_MODULE_6_react_sortable_hoc__["b" /
         )
     );
 });
-
 var SortableList = Object(__WEBPACK_IMPORTED_MODULE_6_react_sortable_hoc__["a" /* SortableContainer */])(function (_ref2) {
     var items = _ref2.items,
         removeItem = _ref2.removeItem,
@@ -55368,19 +53857,16 @@ var edit = function (_Component) {
                 block_id: this.props.clientId.substr(0, 6)
             });
             this.props.setAttributes({ classMigrate: true });
-
             // Pushing Style tag for this block css.
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId.substr(0, 6));
             document.head.appendChild($style);
-
             this.renderFancyText();
         }
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
             var effect = this.props.attributes.effect;
-
 
             if (effect == "typing" && this.typed != undefined) {
                 this.typed.destroy();
@@ -55401,13 +53887,10 @@ var edit = function (_Component) {
                 backdelay = _props$attributes.backdelay,
                 effect = _props$attributes.effect;
 
-
             if (!repeaterFancyText) return null;
-
             var txt = repeaterFancyText.map(function (item) {
                 return item.title;
             });
-
             if (effect === "typing") {
                 var options = {
                     strings: txt,
@@ -55489,9 +53972,7 @@ var edit = function (_Component) {
                 hideTablet = attributes.hideTablet,
                 hideMobile = attributes.hideMobile;
 
-
             var ALIGNS = ["left", "center", "right"];
-
             var EFFECT = [{
                 label: __("Typing"),
                 value: "typing"
@@ -55499,13 +53980,10 @@ var edit = function (_Component) {
                 label: __("Slide"),
                 value: "slide"
             }];
-
             var element = document.getElementById("premium-style-fancy-text-" + block_id);
-
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
             }
-
             var onResetClickfancyTextTypo = function onResetClickfancyTextTypo() {
                 setAttributes({
                     fancyTextWeight: 600,
@@ -55518,7 +53996,6 @@ var edit = function (_Component) {
                     fancyTextUpper: false
                 });
             };
-
             var onResetClickTextTypo = function onResetClickTextTypo() {
                 setAttributes({
                     textWeight: 600,
@@ -55531,7 +54008,6 @@ var edit = function (_Component) {
                     textUpper: false
                 });
             };
-
             var onResetClickLabelTextShadow = function onResetClickLabelTextShadow() {
                 setAttributes({
                     shadowColor: "",
@@ -55540,13 +54016,11 @@ var edit = function (_Component) {
                     shadowVertical: "0"
                 });
             };
-
             var changeFancyValue = function changeFancyValue(newText, newIndex) {
                 setAttributes({
                     repeaterFancyText: onRepeaterChange("title", newText, newIndex)
                 });
             };
-
             var onSortEndSingle = function onSortEndSingle(_ref3) {
                 var oldIndex = _ref3.oldIndex,
                     newIndex = _ref3.newIndex;
@@ -55559,14 +54033,12 @@ var edit = function (_Component) {
                     repeaterFancyText: sortedArray
                 });
             };
-
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
                 if (["button", "div", "input", "textarea", "i"].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
-
             var onRepeaterChange = function onRepeaterChange(attr, value, index) {
                 return repeaterFancyText.map(function (item, currIndex) {
                     if (index == currIndex) {
@@ -55575,7 +54047,6 @@ var edit = function (_Component) {
                     return item;
                 });
             };
-
             var _edit = function _edit(index) {
                 return repeaterFancyText.map(function (item, i) {
                     if (index == i) {
@@ -55589,7 +54060,6 @@ var edit = function (_Component) {
                     }
                 });
             };
-
             var _removeItem = function _removeItem(index, item) {
                 var array = repeaterFancyText.map(function (cont, currIndex) {
                     return cont;
@@ -55600,7 +54070,6 @@ var edit = function (_Component) {
                     repeaterFancyText: array
                 });
             };
-
             var addNewFancyText = function addNewFancyText() {
                 setAttributes({
                     repeaterFancyText: repeaterFancyText.concat([{
@@ -55609,7 +54078,6 @@ var edit = function (_Component) {
                     }])
                 });
             };
-
             return [isSelected && wp.element.createElement(
                 BlockControls,
                 null,
@@ -55683,7 +54151,7 @@ var edit = function (_Component) {
                                     wp.element.createElement(
                                         "span",
                                         null,
-                                        __("Add New Item")
+                                        __('Add New Item')
                                     )
                                 )
                             )
@@ -55725,7 +54193,7 @@ var edit = function (_Component) {
                                     typeSpeed: parseInt(newValue)
                                 });
                             },
-                            help: __("Set typing effect speed in milliseconds.")
+                            help: __('Set typing effect speed in milliseconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Speed"),
@@ -55736,7 +54204,7 @@ var edit = function (_Component) {
                                     backSpeed: parseInt(newValue)
                                 });
                             },
-                            help: __("Set a speed for backspace effect in milliseconds.")
+                            help: __('Set a speed for backspace effect in milliseconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Start Delay"),
@@ -55747,7 +54215,7 @@ var edit = function (_Component) {
                                     startdelay: parseInt(newValue)
                                 });
                             },
-                            help: __("If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.")
+                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.')
                         }),
                         wp.element.createElement(TextControl, {
                             label: __("Back Delay"),
@@ -56165,7 +54633,6 @@ var edit = function (_Component) {
 
 
 
-
 function styling(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
@@ -56198,15 +54665,13 @@ function styling(props) {
         fancyTextBGOpacity = _props$attributes.fancyTextBGOpacity,
         textBGOpacity = _props$attributes.textBGOpacity;
 
-
     var selectors = {};
     var tablet_selectors = {};
     var mobile_selectors = {};
-
     selectors = {
         " .premium-fancy-text-title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(fancyTextfontSize, fancyTextfontSizeUnit),
-            color: fancyTextColor,
+            "color": fancyTextColor,
             "font-weight": fancyTextWeight,
             "letter-spacing": fancyTextLetter + "px",
             "text-transform": fancyTextUpper ? "uppercase" : "none",
@@ -56216,7 +54681,7 @@ function styling(props) {
         },
         " .premium-fancy-text-title-slide": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(fancyTextfontSize, fancyTextfontSizeUnit),
-            color: fancyTextColor,
+            "color": fancyTextColor,
             "font-weight": fancyTextWeight,
             "letter-spacing": fancyTextLetter + "px",
             "text-transform": fancyTextUpper ? "uppercase" : "none",
@@ -56225,11 +54690,11 @@ function styling(props) {
             "text-shadow": shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
         },
         " .typed-cursor": {
-            color: cursorColor
+            "color": cursorColor
         },
         " .premium-fancy-text-prefix-text": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(textfontSize, textfontSizeUnit),
-            color: textColor,
+            "color": textColor,
             "font-weight": textWeight,
             "letter-spacing": textLetter + "px",
             "text-transform": textUpper ? "uppercase" : "none",
@@ -56238,7 +54703,7 @@ function styling(props) {
         },
         " .premium-fancy-text-suffix-text": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(textfontSize, textfontSizeUnit),
-            color: textColor,
+            "color": textColor,
             "font-weight": textWeight,
             "letter-spacing": textLetter + "px",
             "text-transform": textUpper ? "uppercase" : "none",
@@ -56246,7 +54711,6 @@ function styling(props) {
             "background-color": textBGColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(textBGColor, textBGOpacity) : "transparent"
         }
     };
-
     mobile_selectors = {
         " .premium-fancy-text-title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(fancyTextfontSizeMobile, fancyTextfontSizeUnit)
@@ -56261,7 +54725,6 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(textfontSizeMobile, textfontSizeUnit)
         }
     };
-
     tablet_selectors = {
         " .premium-fancy-text-title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(fancyTextfontSizeTablet, fancyTextfontSizeUnit)
@@ -56276,20 +54739,16 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__["a" /* default */])(textfontSizeTablet, textfontSizeUnit)
         }
     };
-
     var styling_css = "";
     var id = "#premium-fancy-text-" + block_id;
     if (classMigrate) {
         id = ".premium-block-" + block_id;
     }
-
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
     return styling_css;
 }
-
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
@@ -59657,18 +58116,12 @@ var deprecated = [{
                 wp.element.createElement(
                     "span",
                     { className: "premium-fancy-text-prefix-text" },
-                    prefix,
-                    " "
+                    prefix
                 ),
-                wp.element.createElement(
-                    "span",
-                    { className: "premium-fancy-text-title" },
-                    " "
-                ),
+                wp.element.createElement("span", { className: "premium-fancy-text-title" }),
                 wp.element.createElement(
                     "span",
                     { className: "premium-fancy-text-suffix-text" },
-                    " ",
                     suffix
                 )
             ) : wp.element.createElement(
@@ -59689,8 +58142,7 @@ var deprecated = [{
                 wp.element.createElement(
                     "span",
                     { className: "premium-fancy-text-prefix-text" },
-                    prefix,
-                    " "
+                    prefix
                 ),
                 wp.element.createElement(
                     "div",
@@ -59717,7 +58169,6 @@ var deprecated = [{
                 wp.element.createElement(
                     "span",
                     { className: "premium-fancy-text-suffix-text" },
-                    " ",
                     suffix
                 )
             )

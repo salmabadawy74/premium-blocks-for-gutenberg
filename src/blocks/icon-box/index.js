@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const iconBoxAttrs = {
     block_id: {
         type: "string"
@@ -40,7 +37,7 @@ const iconBoxAttrs = {
     },
     iconHPos: {
         type: "string",
-        default: "before",
+        default: "before"
     },
     iconVPos: {
         type: "string",
@@ -140,7 +137,7 @@ const iconBoxAttrs = {
         source: "children",
         selector: ".premium-icon-box__desc",
         default:
-            "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+            "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
     },
     descChecked: {
         type: "boolean",
@@ -404,7 +401,6 @@ const iconBoxAttrs = {
     classMigrate: {
         type: "boolean",
         default: false
-
     },
     hideDesktop: {
         type: 'boolean',
@@ -431,17 +427,16 @@ const iconBoxAttrs = {
         default: "1"
     },
 };
-
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: <PbgIcon icon="icon-box" />,
     category: "premium-blocks",
     attributes: iconBoxAttrs,
     supports: {
-        inserter: iconBox,
+        inserter: iconBox
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

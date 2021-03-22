@@ -1,9 +1,7 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
-
-const save = (props) => {
+const save = props => {
     const { className } = props;
-
     const {
         selectedIcon,
         align,
@@ -61,9 +59,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
-    const mainClasses = classnames(className, "premium-icon");
-
+    const mainClasses = classnames(className, 'premium-icon');
     return (
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
@@ -81,9 +77,9 @@ const save = (props) => {
                 borderWidth: wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
-                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
-                    }px ${wrapShadowBlur || 0
-                    }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
+                    0}px ${wrapShadowBlur ||
+                    0}px ${wrapShadowColor} ${wrapShadowPosition}`,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -91,7 +87,7 @@ const save = (props) => {
                 marginTop: wrapMarginT,
                 marginRight: wrapMarginR,
                 marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL,
+                marginLeft: wrapMarginL
             }}
         >
             <a
@@ -120,13 +116,12 @@ const save = (props) => {
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
-                            }px ${shadowBlur || 0}px ${shadowColor}`,
+                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
+                            0}px ${shadowBlur || 0}px ${shadowColor}`
                     }}
                 />
             </a>
         </div>
     );
 };
-
 export default save;

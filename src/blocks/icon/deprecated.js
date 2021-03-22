@@ -1,6 +1,6 @@
 const className = "premium-icon";
 
-const deprecated_attributes_1_6_1 = {
+const deprecated_attributes_1_6_2 = {
     iconType: {
         type: "string",
         default: "dash",
@@ -90,6 +90,7 @@ const deprecated_attributes_1_6_1 = {
         type: "number",
         default: "1",
     },
+
     borderRadius: {
         type: "number",
         default: 100,
@@ -133,6 +134,7 @@ const deprecated_attributes_1_6_1 = {
         type: "number",
         default: "1",
     },
+
     wrapBorderRadius: {
         type: "number",
     },
@@ -201,7 +203,37 @@ const deprecated_attributes_1_6_1 = {
     },
 };
 
-const newAttributes_1_6_2 = {
+const newAttributes_1_6_3 = {
+    iconBorderTop: {
+        type: "number",
+    },
+    iconBorderRight: {
+        type: "number",
+    },
+    iconBorderBottom: {
+        type: "number",
+    },
+    iconBorderLeft: {
+        type: "number",
+    },
+    wrapBorderTop: {
+        type: "number",
+    },
+    wrapBorderRight: {
+        type: "number",
+    },
+    wrapBorderBottom: {
+        type: "number",
+    },
+    wrapBorderLeft: {
+        type: "number",
+    },
+    iconBorder: {
+        type: "boolean",
+    },
+    wrapBorder: {
+        type: "boolean",
+    },
     iconOpacity: {
         type: "number",
         default: "1",
@@ -224,7 +256,10 @@ const newAttributes_1_6_2 = {
     }
 };
 
-
+const deprecated_attributes_1_6_3 = Object.assign(
+    deprecated_attributes_1_6_2,
+    newAttributes_1_6_3
+);
 
 const deprecated_attributes_1_5_5 = {
     iconType: {
@@ -767,22 +802,30 @@ const deprecated_attributes_1_3_1 = {
     },
 };
 
-
-const deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2)
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes_1_6_2,
-        migrate: attributes => {
+        attributes: deprecated_attributes_1_6_3,
+        migrate: (attributes) => {
             let newAttributes = {
+                iconBorderTop: "",
+                iconBorderRight: "",
+                iconBorderBottom: "",
+                iconBorderLeft: "",
+                wrapBorderTop: "",
+                wrapBorderRight: "",
+                wrapBorderBottom: "",
+                wrapBorderLeft: "",
+                iconBorder: "",
+                wrapBorder: "",
                 hideDesktop: false,
                 hideTablet: false,
                 hideMobile: false,
                 iconOpacity: '',
                 backgroundOpacity: ''
-            }
-            return Object.assign(attributes, newAttributes)
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 selectedIcon,
                 align,
@@ -833,7 +876,7 @@ const deprecatedContent = [
                 wrapMarginL,
                 urlCheck,
                 link,
-                target
+                target,
             } = props.attributes;
 
             return (
@@ -851,9 +894,9 @@ const deprecatedContent = [
                         borderWidth: wrapBorderWidth + "px",
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
-                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-                            0}px ${wrapShadowBlur ||
-                            0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                            }px ${wrapShadowBlur || 0
+                            }px ${wrapShadowColor} ${wrapShadowPosition}`,
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
@@ -861,7 +904,7 @@ const deprecatedContent = [
                         marginTop: wrapMarginT,
                         marginRight: wrapMarginR,
                         marginBottom: wrapMarginB,
-                        marginLeft: wrapMarginL
+                        marginLeft: wrapMarginL,
                     }}
                 >
                     <a
@@ -888,14 +931,142 @@ const deprecatedContent = [
                                 borderWidth: borderWidth + "px",
                                 borderRadius: borderRadius || 100 + "px",
                                 borderColor: borderColor,
-                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                                    0}px ${shadowBlur || 0}px ${shadowColor}`
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                                    }px ${shadowBlur || 0}px ${shadowColor}`,
                             }}
                         />
                     </a>
                 </div>
             );
-        }
+        },
+    },
+    {
+        attributes: deprecated_attributes_1_6_2,
+        migrate: (attributes) => {
+            let newAttributes = {
+                borderWidth: {
+                    type: "number",
+                },
+                wrapBorderWidth: {
+                    type: "number",
+                },
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: (props) => {
+            const {
+                selectedIcon,
+                align,
+                hoverEffect,
+                iconSize,
+                iconSizeUnit,
+                iconColor,
+                iconBack,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                paddingT,
+                paddingR,
+                paddingB,
+                paddingL,
+                paddingU,
+                marginT,
+                marginR,
+                marginB,
+                marginL,
+                borderType,
+                borderWidth,
+                borderRadius,
+                borderColor,
+                backgroundColor,
+                imageURL,
+                fixed,
+                backgroundRepeat,
+                backgroundPosition,
+                backgroundSize,
+                wrapBorderType,
+                wrapBorderWidth,
+                wrapBorderRadius,
+                wrapBorderColor,
+                wrapShadowBlur,
+                wrapShadowColor,
+                wrapShadowHorizontal,
+                wrapShadowVertical,
+                wrapShadowPosition,
+                wrapPaddingT,
+                wrapPaddingR,
+                wrapPaddingB,
+                wrapPaddingL,
+                wrapMarginT,
+                wrapMarginR,
+                wrapMarginB,
+                wrapMarginL,
+                urlCheck,
+                link,
+                target,
+            } = props.attributes;
+
+            return (
+                <div
+                    className={`${className}__container`}
+                    style={{
+                        textAlign: align,
+                        backgroundColor: backgroundColor,
+                        backgroundImage: `url('${imageURL}')`,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        border: wrapBorderType,
+                        borderWidth: wrapBorderWidth + "px",
+                        borderRadius: wrapBorderRadius + "px",
+                        borderColor: wrapBorderColor,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
+                            }px ${wrapShadowBlur || 0
+                            }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        paddingTop: wrapPaddingT,
+                        paddingRight: wrapPaddingR,
+                        paddingBottom: wrapPaddingB,
+                        paddingLeft: wrapPaddingL,
+                        marginTop: wrapMarginT,
+                        marginRight: wrapMarginR,
+                        marginBottom: wrapMarginB,
+                        marginLeft: wrapMarginL,
+                    }}
+                >
+                    <a
+                        className={`premium-icon__link`}
+                        href={urlCheck && link}
+                        rel="noopener noreferrer"
+                        target={target ? "_blank" : "_self"}
+                    >
+                        <i
+                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                            style={{
+                                color: iconColor || "#6ec1e4",
+                                backgroundColor: iconBack,
+                                fontSize: (iconSize || 50) + iconSizeUnit,
+                                paddingTop: paddingT + paddingU,
+                                paddingRight: paddingR + paddingU,
+                                paddingBottom: paddingB + paddingU,
+                                paddingLeft: paddingL + paddingU,
+                                marginTop: marginT,
+                                marginRight: marginR,
+                                marginBottom: marginB,
+                                marginLeft: marginL,
+                                border: borderType,
+                                borderWidth: borderWidth + "px",
+                                borderRadius: borderRadius || 100 + "px",
+                                borderColor: borderColor,
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
+                                    }px ${shadowBlur || 0}px ${shadowColor}`,
+                            }}
+                        />
+                    </a>
+                </div>
+            );
+        },
     },
     {
         attributes: deprecated_attributes_1_5_6,

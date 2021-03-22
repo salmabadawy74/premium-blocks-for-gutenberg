@@ -2,6 +2,165 @@ const { InnerBlocks } = wp.editor;
 
 const className = "premium-container";
 
+const deprecated_attributes_1_5_11 = {
+    stretchSection: {
+        type: "boolean",
+        default: false,
+    },
+    innerWidthType: {
+        type: "string",
+        default: "boxed",
+    },
+    horAlign: {
+        type: "string",
+        default: "center",
+    },
+    height: {
+        type: "string",
+        default: "min",
+    },
+    innerWidth: {
+        type: "number",
+    },
+    minHeight: {
+        type: "number",
+    },
+    minHeightUnit: {
+        type: "string",
+    },
+    vPos: {
+        type: "string",
+        default: "top",
+    },
+    color: {
+        type: "string",
+    },
+    imageID: {
+        type: "string",
+    },
+    imageURL: {
+        type: "string",
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat",
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center",
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto",
+    },
+    fixed: {
+        type: "boolean",
+        default: false,
+    },
+    borderType: {
+        type: "string",
+        default: "none",
+    },
+    borderWidth: {
+        type: "number",
+        default: "1",
+    },
+    borderRadius: {
+        type: "number",
+    },
+    borderColor: {
+        type: "string",
+    },
+    marginTop: {
+        type: "number",
+    },
+    marginBottom: {
+        type: "number",
+    },
+    marginLeft: {
+        type: "number",
+    },
+    marginRight: {
+        type: "number",
+    },
+    marginUnit: {
+        type: "string",
+    },
+    paddingTop: {
+        type: "number",
+    },
+    paddingRight: {
+        type: "number",
+    },
+    paddingBottom: {
+        type: "number",
+    },
+    paddingLeft: {
+        type: "number",
+    },
+    paddingUnit: {
+        type: "string",
+    },
+    shadowColor: {
+        type: "string",
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0",
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0",
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0",
+    },
+    shadowPosition: {
+        type: "string",
+        default: "",
+    },
+};
+const newAttributes_1_5_12 = {
+    borderTop: {
+        type: "number",
+    },
+    borderRight: {
+        type: "number",
+    },
+    borderBottom: {
+        type: "number",
+    },
+    borderLeft: {
+        type: "number",
+    },
+    isUpdated: {
+        type: "boolean",
+        default: false,
+    },
+    opacity: {
+        type: "number",
+        default: "1",
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+const deprecated_attributes_1_5_12 = Object.assign(
+    deprecated_attributes_1_5_11,
+    newAttributes_1_5_12
+);
+
 const containerAttrs_1_0_1 = {
     stretchSection: {
         type: "boolean",
@@ -135,155 +294,16 @@ const deprecated_attributes_1_6_2 = Object.assign(
     newAttributes_1_6_2
 );
 
-const deprecated_attributes_1_8_1 = {
-    stretchSection: {
-        type: "boolean",
-        default: false,
-    },
-    innerWidthType: {
-        type: "string",
-        default: "boxed",
-    },
-    horAlign: {
-        type: "string",
-        default: "center",
-    },
-    height: {
-        type: "string",
-        default: "min",
-    },
-    innerWidth: {
-        type: "number",
-    },
-    minHeight: {
-        type: "number",
-    },
-    minHeightUnit: {
-        type: "string",
-    },
-    vPos: {
-        type: "string",
-        default: "top",
-    },
-    color: {
-        type: "string",
-    },
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-    },
-    borderColor: {
-        type: "string",
-    },
-    marginTop: {
-        type: "number",
-    },
-    marginBottom: {
-        type: "number",
-    },
-    marginLeft: {
-        type: "number",
-    },
-    marginRight: {
-        type: "number",
-    },
-    marginUnit: {
-        type: "string",
-    },
-    paddingTop: {
-        type: "number",
-    },
-    paddingRight: {
-        type: "number",
-    },
-    paddingBottom: {
-        type: "number",
-    },
-    paddingLeft: {
-        type: "number",
-    },
-    paddingUnit: {
-        type: "string",
-    },
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    shadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const newAttributes_1_8_2 = {
-    opacity: {
-        type: "number",
-        default: "1",
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-const deprecated_attributes_1_8_2 = Object.assign(
-    deprecated_attributes_1_8_1,
-    newAttributes_1_8_2
-);
-
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes_1_8_2,
+        attributes: deprecated_attributes_1_5_12,
         migrate: (attributes) => {
             let newAttributes = {
+                borderTop: "",
+                borderRight: "",
+                borderBottom: "",
+                borderLeft: "",
+                isUpdated: "",
                 opacity: "",
                 hideDesktop: false,
                 hideTablet: false,
@@ -333,10 +353,7 @@ const deprecatedContent = [
                     className={`${className} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
                     style={{
                         textAlign: horAlign,
-                        minHeight:
-                            "fit" === height
-                                ? "100vh"
-                                : minHeight + minHeightUnit,
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                         backgroundColor: color,
                         border: borderType,
                         borderWidth: borderWidth + "px",
@@ -703,9 +720,7 @@ const deprecatedContent = [
                 >
                     <div
                         className={`${className}__content_wrap ${className}__${vPos}`}
-                        style={{
-                            width: innerWidth ? innerWidth + "%" : "100%",
-                        }}
+                        style={{ width: innerWidth ? innerWidth + "%" : "100%" }}
                     >
                         <div className={`${className}__content_inner`}>
                             <InnerBlocks.Content />

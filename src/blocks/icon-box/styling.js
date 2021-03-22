@@ -16,7 +16,7 @@ function styling(props) {
         btnSizeUnit,
         btnSize,
         btnSizeTablet,
-        btnSizeMobile,
+        btnSizeMobile
     } = props.attributes;
 
     let selectors = {}

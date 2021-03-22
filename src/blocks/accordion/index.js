@@ -1,14 +1,10 @@
 import { accordion } from "../../../assets/js/settings";
-
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecated from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const accordionAttrs = {
     block_id: {
         type: "string"
@@ -22,9 +18,9 @@ const accordionAttrs = {
             {
                 titleText: __("Awesome Title"),
                 descText:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            },
-        ],
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+        ]
     },
     direction: {
         type: "string",
@@ -247,17 +243,16 @@ const accordionAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
     icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: accordionAttrs,
     supports: {
-        inserter: accordion,
+        inserter: accordion
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecated,
+    deprecated: deprecated
 });

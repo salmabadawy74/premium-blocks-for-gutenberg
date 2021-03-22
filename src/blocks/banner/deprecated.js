@@ -228,222 +228,23 @@ const deprecated_attributes_1_6_7 = Object.assign(
     newAttributes_1_6_7
 );
 
-const deprecated_attributes_1_7_1 = {
-    imageID: {
-        type: "number"
-    },
-    imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H3"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-    },
-    contentAlign: {
-        type: "string",
-        default: "left"
-    },
-    effect: {
-        type: "string",
-        default: "effect1"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    height: {
-        type: "string",
-        default: "default"
-    },
-    minHeight: {
-        type: "number"
-    },
-    verAlign: {
-        type: "string",
-        default: "top"
-    },
-    hovered: {
+const newAttributes_1_7_1 = {
+    borderBanner: {
         type: "boolean",
-        default: false
+        default: false,
     },
-    responsive: {
-        type: "boolean",
-        default: false
-    },
-    background: {
-        type: "string"
-    },
-    opacity: {
+    borderTop: {
         type: "number",
-        default: 50
     },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
+    borderRight: {
         type: "number",
-        default: "1"
     },
-    borderRadius: {
+    borderBottom: {
         type: "number",
-        default: "0"
     },
-    borderColor: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
+    borderLeft: {
         type: "number",
-        default: "20"
     },
-    titleLine: {
-        type: "number"
-    },
-    titleWeight: {
-        type: "number"
-    },
-    titleBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number",
-        default: "20"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-    },
-    sepColor: {
-        type: "string"
-    },
-    id: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowColor: {
-        type: "string"
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    }
-}
-
-const newAttributes_1_7_2 = {
     hideDesktop: {
         type: "boolean",
         default: false
@@ -487,16 +288,23 @@ const newAttributes_1_7_2 = {
     descSizeMobile: {
         type: "number"
     },
-}
+};
 
-const deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_7_1, newAttributes_1_7_2)
+const deprecated_attributes_1_7_1 = Object.assign(
+    deprecated_attributes_1_6_7,
+    newAttributes_1_7_1
+);
 
 const deprecatedContent = [
-
     {
-        attributes: deprecated_attributes_1_7_2,
-        migrate: attributes => {
+        attributes: deprecated_attributes_1_7_1,
+        migrate: (attributes) => {
             let newAttributes = {
+                borderBottom: "",
+                borderTop: "",
+                borderRight: "",
+                borderLeft: "",
+                borderBanner: "",
                 classMigrate: false,
                 titleSizeUnit: 'px',
                 titleSizeMobile: '',
@@ -508,10 +316,10 @@ const deprecatedContent = [
                 hideDesktop: false,
                 hideTablet: false,
                 hideMobile: false
-            }
-            return Object.assign(attributes, newAttributes)
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 imageURL,
@@ -567,7 +375,7 @@ const deprecatedContent = [
                 paddingT,
                 paddingR,
                 paddingL,
-                paddingU
+                paddingU,
             } = props.attributes;
 
             return (
@@ -578,7 +386,7 @@ const deprecatedContent = [
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
                         paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU
+                        paddingLeft: paddingL + paddingU,
                     }}
                 >
                     <style
@@ -592,8 +400,8 @@ const deprecatedContent = [
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
                                 `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div
@@ -603,14 +411,14 @@ const deprecatedContent = [
                             border: borderType,
                             borderWidth: borderWidth + "px",
                             borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderColor: borderColor,
                         }}
                     >
                         <div
                             className={`premium-banner__img_wrap premium-banner__${height}`}
                             style={{
                                 minHeight: minHeight,
-                                alignItems: verAlign
+                                alignItems: verAlign,
                             }}
                         >
                             <img
@@ -618,7 +426,7 @@ const deprecatedContent = [
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                 }}
                             />
                         </div>
@@ -626,13 +434,13 @@ const deprecatedContent = [
                         <div
                             className={`premium-banner__content`}
                             style={{
-                                background: "effect2" === effect ? titleBack : "transparent"
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div
                                 className={`premium-banner__title_wrap`}
                                 style={{
-                                    textAlign: contentAlign
+                                    textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
@@ -644,14 +452,14 @@ const deprecatedContent = [
                                         fontSize: titleSize + "px",
                                         fontWeight: titleWeight,
                                         lineHeight: titleLine + "px",
-                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                     }}
                                 />
                             </div>
                             <div
                                 className={`premium-banner__desc_wrap`}
                                 style={{
-                                    textAlign: contentAlign
+                                    textAlign: contentAlign,
                                 }}
                             >
                                 <RichText.Content
@@ -663,7 +471,7 @@ const deprecatedContent = [
                                         fontSize: descSize + "px",
                                         fontWeight: descWeight,
                                         lineHeight: descLine + "px",
-                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
+                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                                     }}
                                 />
                             </div>
@@ -678,9 +486,8 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
-    }
-    ,
+        },
+    },
     {
         attributes: deprecated_attributes_1_6_7,
         migrate: (attributes) => {
@@ -764,8 +571,7 @@ const deprecatedContent = [
                                 `background: ${background}`,
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1
-                                } `,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}",
                             ].join("\n"),
                         }}
@@ -799,10 +605,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleBack
-                                        : "transparent",
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div
@@ -931,8 +734,7 @@ const deprecatedContent = [
                                 `background: ${background}`,
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1
-                                } `,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}",
                             ].join("\n"),
                         }}
@@ -966,10 +768,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleBack
-                                        : "transparent",
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div
@@ -1093,8 +892,7 @@ const deprecatedContent = [
                                 `background: ${background}`,
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1
-                                } `,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}",
                             ].join("\n"),
                         }}
@@ -1128,10 +926,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleBack
-                                        : "transparent",
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div
@@ -1250,8 +1045,7 @@ const deprecatedContent = [
                                 `background: ${background}`,
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1
-                                } `,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}",
                             ].join("\n"),
                         }}
@@ -1282,10 +1076,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleBack
-                                        : "transparent",
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div
@@ -1399,8 +1190,7 @@ const deprecatedContent = [
                                 `background: ${background}`,
                                 "}",
                                 `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1
-                                } `,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
                                 "}",
                             ].join("\n"),
                         }}
@@ -1431,10 +1221,7 @@ const deprecatedContent = [
                         <div
                             className={`${className}__content`}
                             style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleBack
-                                        : "transparent",
+                                background: "effect2" === effect ? titleBack : "transparent",
                             }}
                         >
                             <div

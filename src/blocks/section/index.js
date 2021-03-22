@@ -1,14 +1,10 @@
 import { container } from "../../../assets/js/settings";
-
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import PbgIcon from "../icons";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const containerAttrs = {
     stretchSection: {
         type: "boolean",
@@ -30,10 +26,10 @@ const containerAttrs = {
         type: "number"
     },
     minHeight: {
-        type: "number",
+        type: "number"
     },
     minHeightUnit: {
-        type: "string",
+        type: "string"
     },
     vPos: {
         type: "string",
@@ -70,7 +66,7 @@ const containerAttrs = {
     },
     borderType: {
         type: "string",
-        default: "none",
+        default: "none"
     },
     borderWidth: {
         type: "number",
@@ -147,7 +143,6 @@ const containerAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/container", {
     title: __("Section"),
     icon: <PbgIcon icon="section" />,
@@ -156,7 +151,7 @@ registerBlockType("premium/container", {
     supports: {
         inserter: container,
         align: true,
-        align: ["center", "wide", "full"],
+        align: ["center", "wide", "full"]
     },
     example: {
         attributes: {
@@ -165,5 +160,5 @@ registerBlockType("premium/container", {
     },
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

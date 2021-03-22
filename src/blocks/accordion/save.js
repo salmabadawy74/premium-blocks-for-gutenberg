@@ -1,14 +1,11 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
 
-const { __ } = wp.i18n;
-
-
 const { RichText, InnerBlocks } = wp.blockEditor;
 
 const save = (props) => {
     const { className } = props;
-
+    
     const { block_id,
         accordionId,
         repeaterItems,
@@ -67,9 +64,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-accordion');
-
     const accordionItems = repeaterItems.map((item, index) => {
         return (
             <div

@@ -1,10 +1,7 @@
-import classnames from "classnames";
-
+import classnames from 'classnames'
 const { RichText } = wp.blockEditor;
-
-const save = (props) => {
+const save = props => {
     const { className } = props;
-
     const {
         block_id,
         imageURL,
@@ -65,9 +62,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
-    const mainClasses = classnames(className, "premium-banner");
-
+    const mainClasses = classnames(className, 'premium-banner');
     return (
         <div
             id={`premium-banner-${block_id}`}
@@ -76,7 +71,7 @@ const save = (props) => {
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
                 paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
+                paddingLeft: paddingL + paddingU
             }}
         >
             <style
@@ -90,8 +85,8 @@ const save = (props) => {
                         "}",
                         `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
                         `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                        "}",
-                    ].join("\n"),
+                        "}"
+                    ].join("\n")
                 }}
             />
             <div
@@ -101,14 +96,14 @@ const save = (props) => {
                     border: borderType,
                     borderWidth: borderWidth + "px",
                     borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
+                    borderColor: borderColor
                 }}
             >
                 <div
                     className={`premium-banner__img_wrap premium-banner__${height}`}
                     style={{
                         minHeight: minHeight,
-                        alignItems: verAlign,
+                        alignItems: verAlign
                     }}
                 >
                     <img
@@ -116,22 +111,20 @@ const save = (props) => {
                         alt="Banner Image"
                         src={imageURL}
                         style={{
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
                         }}
                     />
                 </div>
-
                 <div
                     className={`premium-banner__content`}
                     style={{
-                        background:
-                            "effect2" === effect ? titleBack : "transparent",
+                        background: "effect2" === effect ? titleBack : "transparent"
                     }}
                 >
                     <div
                         className={`premium-banner__title_wrap`}
                         style={{
-                            textAlign: contentAlign,
+                            textAlign: contentAlign
                         }}
                     >
                         <RichText.Content
@@ -142,14 +135,14 @@ const save = (props) => {
                                 color: titleColor,
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + "px",
-                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
                             }}
                         />
                     </div>
                     <div
                         className={`premium-banner__desc_wrap`}
                         style={{
-                            textAlign: contentAlign,
+                            textAlign: contentAlign
                         }}
                     >
                         <RichText.Content
@@ -160,7 +153,7 @@ const save = (props) => {
                                 color: descColor,
                                 fontWeight: descWeight,
                                 lineHeight: descLine + "px",
-                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
+                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
                             }}
                         />
                     </div>
@@ -176,5 +169,4 @@ const save = (props) => {
         </div>
     );
 };
-
 export default save;

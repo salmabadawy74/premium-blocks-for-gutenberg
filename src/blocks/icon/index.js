@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const iconAttrs = {
     iconType: {
         type: "string",
@@ -215,7 +212,6 @@ const iconAttrs = {
     target: {
         type: "boolean"
     },
-
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -229,17 +225,16 @@ const iconAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/icon", {
     title: __("Icon"),
     icon: <PbgIcon icon="icon" />,
     category: "premium-blocks",
     attributes: iconAttrs,
     supports: {
-        inserter: icon,
+        inserter: icon
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

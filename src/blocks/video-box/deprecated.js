@@ -371,207 +371,39 @@ const videoBoxAttrs_1_5_4 = {
     },
 };
 
-const videoBoxAttrs_2_0 = {
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
+const newAttributes_1_5_8 = {
+    borderPlayUpdated: {
         type: "boolean",
-        default: false
+        default: false,
     },
-    loop: {
+    borderBoxUpdated: {
         type: "boolean",
-        default: false
+        default: false,
     },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
+    boxBorderTop: {
         type: "number",
-        default: 0
     },
-    bright: {
+    boxBorderRight: {
         type: "number",
-        default: 100
     },
-    contrast: {
+    boxBorderBottom: {
         type: "number",
-        default: 100
     },
-    saturation: {
+    boxBorderLeft: {
         type: "number",
-        default: 100
     },
-    hue: {
+    playBorderTop: {
         type: "number",
-        default: 0
     },
-    playTop: {
-        type: "number"
-    },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    playSize: {
-        type: "number"
-    },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
-        type: "number"
-    },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
+    playBorderRight: {
         type: "number",
-        default: "1"
     },
-    playBorderRadius: {
-        type: "number"
-    },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
-        type: "number"
-    },
-    descTop: {
-        type: "number"
-    },
-    videoDescSize: {
-        type: "number"
-    },
-    videoDescFamily: {
-        type: "string"
-    },
-    videoDescWeight: {
-        type: "number"
-    },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
+    playBorderBottom: {
         type: "number",
-        default: "0"
     },
-    descShadowHorizontal: {
+    playBorderLeft: {
         type: "number",
-        default: "0"
     },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-
-    // Old props
-    playLeft: {
-        type: "number"
-    }
-}
-const newAttributes_2_1 = {
     block_id: {
         type: 'string'
     },
@@ -609,14 +441,28 @@ const newAttributes_2_1 = {
         type: 'boolean',
         default: false
     }
-}
-const videoBoxAttrs_2_1 = Object.assign(videoBoxAttrs_2_0, newAttributes_2_1);
+};
+
+const videoBoxAttrs_1_5_8 = Object.assign(
+    newAttributes_1_5_8,
+    videoBoxAttrs_1_5_4
+);
 
 const deprecatedContent = [
     {
-        attributes: videoBoxAttrs_2_1,
-        migrate: attributes => {
+        attributes: videoBoxAttrs_1_5_8,
+        migrate: (attributes) => {
             let newAttributes = {
+                playBorderTop: "",
+                playBorderRight: "",
+                playBorderBottom: "",
+                playBorderLeft: "",
+                boxBorderBottom: "",
+                boxBorderLeft: "",
+                boxBorderTop: "",
+                boxBorderLeft: "",
+                borderBoxUpdated: "",
+                borderPlayUpdated: "",
                 classMigrate: false,
                 block_id: '',
                 videoDescSizeUnit: 'px',
@@ -627,10 +473,10 @@ const deprecatedContent = [
                 hideDesktop: false,
                 hideTablet: false,
                 hideMobile: false
-            }
+            };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -686,7 +532,7 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
@@ -704,7 +550,6 @@ const deprecatedContent = [
                     return loop ? "1" : "0";
                 }
             };
-
             return (
                 <div
                     id={videoBoxId}
@@ -715,7 +560,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -724,8 +569,8 @@ const deprecatedContent = [
                                 `#${videoBoxId} .premium-video-box__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`premium-video-box__container`}>
@@ -756,7 +601,7 @@ const deprecatedContent = [
                             className={`premium-video-box__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -772,13 +617,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -792,7 +637,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -804,7 +649,7 @@ const deprecatedContent = [
                                     letterSpacing: videoDescLetter + "px",
                                     textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
                                     textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -813,20 +658,20 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs_1_5_4,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 descShadowBlur: "0",
                 descShadowColor: "",
                 descShadowHorizontal: "0",
-                descShadowVertical: "0"
+                descShadowVertical: "0",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -878,7 +723,7 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
@@ -906,7 +751,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -915,8 +760,8 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
@@ -947,7 +792,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -963,13 +808,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -983,7 +828,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -994,7 +839,7 @@ const deprecatedContent = [
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
                                     textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1003,17 +848,17 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs_1_2_7,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
-                videoDescFamily: ""
+                videoDescFamily: "",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -1064,7 +909,7 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
@@ -1092,7 +937,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1101,8 +946,8 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
@@ -1133,7 +978,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1149,13 +994,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1169,7 +1014,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1179,7 +1024,7 @@ const deprecatedContent = [
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
                                     textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1188,11 +1033,11 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs_1_2_7,
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -1242,7 +1087,7 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
@@ -1270,7 +1115,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1279,8 +1124,8 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
@@ -1310,7 +1155,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1326,13 +1171,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1346,7 +1191,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1356,7 +1201,7 @@ const deprecatedContent = [
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
                                     textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1365,8 +1210,8 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 
 export default deprecatedContent;

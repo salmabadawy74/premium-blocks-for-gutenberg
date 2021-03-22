@@ -699,364 +699,395 @@ const deprecated_attributes_1_6_6 = Object.assign(
     newAttributes_1_6_6
 );
 
-
-const deprecated_attributes_2_0 = {
+const deprecated_attributes_1_7_1 = {
     id: {
-        type: "string"
+        type: "string",
     },
     align: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     iconImage: {
         type: "string",
-        default: "icon"
+        default: "icon",
     },
     iconImgId: {
-        type: "string"
+        type: "string",
     },
     iconImgUrl: {
-        type: "string"
+        type: "string",
     },
     hoverEffect: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     iconChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     iconPos: {
         type: "string",
-        default: "block"
+        default: "block",
     },
     iconHPos: {
         type: "string",
-        default: "before"
+        default: "before",
     },
     iconVPos: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     iconSize: {
-        type: "number"
+        type: "number",
     },
     iconRadius: {
-        type: "number"
+        type: "number",
     },
     iconColor: {
-        type: "string"
+        type: "string",
     },
     iconBackColor: {
-        type: "string"
+        type: "string",
     },
     selectedIcon: {
         type: "string",
-        default: "dashicons dashicons-admin-site"
+        default: "dashicons dashicons-admin-site",
     },
     titleChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     titleText: {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
+        default: __("Awesome Title"),
     },
     titleTag: {
         type: "string",
-        default: "H2"
+        default: "H2",
     },
     titleFont: {
-        type: "string"
+        type: "string",
     },
     titleColor: {
-        type: "string"
+        type: "string",
     },
     titleSize: {
-        type: "number"
+        type: "number",
     },
     titleLine: {
-        type: "number"
+        type: "number",
     },
     titleLetter: {
-        type: "number"
+        type: "number",
     },
     titleStyle: {
-        type: "string"
+        type: "string",
     },
     titleUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     titleWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     titleShadowColor: {
-        type: "string"
+        type: "string",
     },
     titleShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     titleMarginT: {
-        type: "number"
+        type: "number",
     },
     titleMarginB: {
-        type: "number"
+        type: "number",
     },
     descText: {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__desc",
         default:
-            "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+            "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
     },
     descChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     descFont: {
-        type: "string"
+        type: "string",
     },
     descColor: {
-        type: "string"
+        type: "string",
     },
     descSize: {
-        type: "number"
+        type: "number",
     },
     descLine: {
-        type: "number"
+        type: "number",
     },
     descWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     descMarginT: {
-        type: "number"
+        type: "number",
     },
     descMarginB: {
-        type: "number"
+        type: "number",
     },
     btnChecked: {
         type: "boolean",
-        default: true
+        default: true,
     },
     btnEffect: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     effectDir: {
         type: "string",
-        default: "top"
+        default: "top",
     },
     btnTarget: {
         type: "boolean",
-        default: false
+        default: false,
     },
     btnText: {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __("Click Here")
+        default: __("Click Here"),
     },
     btnLink: {
         type: "string",
         source: "attribute",
         attribute: "href",
-        selector: ".premium-icon-box__btn"
+        selector: ".premium-icon-box__btn",
     },
     btnColor: {
-        type: "string"
+        type: "string",
     },
     btnHoverColor: {
-        type: "string"
+        type: "string",
     },
     btnBack: {
-        type: "string"
+        type: "string",
     },
     btnHoverBack: {
-        type: "string"
+        type: "string",
     },
     btnHoverBorder: {
-        type: "string"
+        type: "string",
     },
     btnSize: {
-        type: "number"
+        type: "number",
     },
     btnLine: {
-        type: "number"
+        type: "number",
     },
     btnLetter: {
-        type: "number"
+        type: "number",
     },
     btnStyle: {
-        type: "string"
+        type: "string",
     },
     btnUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     btnWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     btnBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     btnBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     btnBorderRadius: {
-        type: "number"
+        type: "number",
     },
     btnBorderColor: {
-        type: "string"
+        type: "string",
     },
     btnPadding: {
-        type: "number"
+        type: "number",
     },
     btnPaddingU: {
-        type: "string"
+        type: "string",
     },
     btnMarginT: {
-        type: "number"
+        type: "number",
     },
     btnMarginB: {
-        type: "number"
+        type: "number",
     },
     btnShadowColor: {
-        type: "string"
+        type: "string",
     },
     btnShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     btnShadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
     imageID: {
-        type: "string"
+        type: "string",
     },
     imageURL: {
-        type: "string"
+        type: "string",
     },
     backColor: {
-        type: "string"
+        type: "string",
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat"
+        default: "no-repeat",
     },
     backgroundPosition: {
         type: "string",
-        default: "top center"
+        default: "top center",
     },
     backgroundSize: {
         type: "string",
-        default: "auto"
+        default: "auto",
     },
     fixed: {
         type: "boolean",
-        default: false
+        default: false,
     },
     borderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     borderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     borderRadius: {
-        type: "number"
+        type: "number",
     },
     borderColor: {
-        type: "string"
+        type: "string",
     },
     marginT: {
-        type: "number"
+        type: "number",
     },
     marginR: {
-        type: "number"
+        type: "number",
     },
     marginB: {
-        type: "number"
+        type: "number",
     },
     marginL: {
-        type: "number"
+        type: "number",
     },
     paddingT: {
-        type: "number"
+        type: "number",
     },
     paddingR: {
-        type: "number"
+        type: "number",
     },
     paddingB: {
-        type: "number"
+        type: "number",
     },
     paddingL: {
-        type: "number"
+        type: "number",
     },
     paddingU: {
-        type: "string"
+        type: "string",
     },
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
     hoverShadowColor: {
-        type: "string"
+        type: "string",
     },
     hoverShadowBlur: {
-        type: "number"
+        type: "number",
     },
     hoverShadowHorizontal: {
-        type: "number"
+        type: "number",
     },
     hoverShadowVertical: {
-        type: "number"
+        type: "number",
     },
     hoverShadowPosition: {
-        type: "string"
-    }
-}
+        type: "string",
+    },
+};
 
-const newAttributes_2_1 = {
+const newAttributes_1_7_2 = {
+    borderIconBox: {
+        type: "boolean",
+        default: false,
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false,
+    },
+    btnBorderTop: {
+        type: "number",
+    },
+    btnBorderRight: {
+        type: "number",
+    },
+    btnBorderBottom: {
+        type: "number",
+    },
+    btnBorderLeft: {
+        type: "number",
+    },
+    borderTop: {
+        type: "number",
+    },
+    borderRight: {
+        type: "number",
+    },
+    borderBottom: {
+        type: "number",
+    },
+    borderLeft: {
+        type: "number",
+    },
     block_id: {
         type: "string"
     },
@@ -1124,18 +1155,28 @@ const newAttributes_2_1 = {
         type: "number",
         default: "1",
     },
-}
+};
 
-const deprecated_attributes_2_1 = Object.assign(deprecated_attributes_2_0, newAttributes_2_1);
-
-
+const deprecated_attributes_1_7_2 = Object.assign(
+    newAttributes_1_7_2,
+    deprecated_attributes_1_7_1
+);
 
 const deprecatedContent = [
-
     {
-        attributes: deprecated_attributes_2_1,
-        migrate: attributes => {
+        attributes: deprecated_attributes_1_7_2,
+        migrate: (attributes) => {
             let newAttributes = {
+                borderLeft: "",
+                borderTop: "",
+                borderRight: "",
+                borderBottom: "",
+                btnBorderBottom: "",
+                btnBorderLeft: "",
+                btnBorderTop: "",
+                btnBorderRight: "",
+                borderIconBox: "",
+                btnBorderIconBox: "",
                 classMigrate: false,
                 block_id: '',
                 titleSizeUnit: "px",
@@ -1153,12 +1194,10 @@ const deprecatedContent = [
                 hideDesktop: false,
                 hideTablet: false,
                 hideMobile: false
-            }
+            };
             return Object.assign(attributes, newAttributes);
         },
-
-
-        save: props => {
+        save: (props) => {
             const {
                 id,
                 align,
@@ -1257,7 +1296,7 @@ const deprecatedContent = [
                 hoverShadowColor,
                 hoverShadowHorizontal,
                 hoverShadowVertical,
-                hoverShadowPosition
+                hoverShadowPosition,
             } = props.attributes;
 
             return (
@@ -1354,9 +1393,7 @@ const deprecatedContent = [
                                         fontSize: titleSize + "px",
                                         fontFamily: titleFont,
                                         letterSpacing: titleLetter + "px",
-                                        textTransform: titleUpper
-                                            ? "uppercase"
-                                            : "none",
+                                        textTransform: titleUpper ? "uppercase" : "none",
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
                                         textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -1407,9 +1444,7 @@ const deprecatedContent = [
                                         backgroundColor: btnBack,
                                         fontSize: btnSize + "px",
                                         letterSpacing: btnLetter + "px",
-                                        textTransform: btnUpper
-                                            ? "uppercase"
-                                            : "none",
+                                        textTransform: btnUpper ? "uppercase" : "none",
                                         fontStyle: btnStyle,
                                         fontWeight: btnWeight,
                                         border: btnBorderType,
@@ -1627,9 +1662,7 @@ const deprecatedContent = [
                                     fontSize: titleSize + "px",
                                     fontFamily: titleFont,
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -1680,9 +1713,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,
@@ -1896,9 +1927,7 @@ const deprecatedContent = [
                                     fontSize: titleSize + "px",
                                     fontFamily: titleFont,
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -1949,9 +1978,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,
@@ -2162,9 +2189,7 @@ const deprecatedContent = [
                                     color: titleColor,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -2214,9 +2239,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,
@@ -2424,9 +2447,7 @@ const deprecatedContent = [
                                     color: titleColor,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -2475,9 +2496,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,
@@ -2681,9 +2700,7 @@ const deprecatedContent = [
                                     color: titleColor,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -2732,9 +2749,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,
@@ -2927,9 +2942,7 @@ const deprecatedContent = [
                                     color: titleColor,
                                     fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
                                     fontWeight: titleWeight,
                                     textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
@@ -2978,9 +2991,7 @@ const deprecatedContent = [
                                     backgroundColor: btnBack,
                                     fontSize: btnSize + "px",
                                     letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper
-                                        ? "uppercase"
-                                        : "none",
+                                    textTransform: btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyle,
                                     fontWeight: btnWeight,
                                     border: btnBorderType,

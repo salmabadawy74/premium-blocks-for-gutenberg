@@ -7,28 +7,21 @@ import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-
 const { __ } = wp.i18n;
-
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
-
 const { Fragment } = wp.element;
-
 const {
     BlockControls,
     AlignmentToolbar,
     InnerBlocks,
     InspectorControls,
-    ColorPalette,
+    ColorPalette
 } = wp.blockEditor;
-
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert your text or select a block ") }],
+    ["core/paragraph", { content: __("Insert your text or select a block ") }]
 ];
-
 const edit = props => {
     const { isSelected, className, setAttributes } = props;
-
     const {
         stretchSection,
         horAlign,
@@ -69,54 +62,47 @@ const edit = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const WIDTH = [
         {
             value: "boxed",
-            label: __("Boxed"),
+            label: __("Boxed")
         },
         {
             value: "full",
-            label: __("Full Width"),
-        },
+            label: __("Full Width")
+        }
     ];
-
     const HEIGHT = [
         {
             value: "fit",
-            label: __("Fit to Screen"),
+            label: __("Fit to Screen")
         },
         {
             value: "min",
-            label: __("Min Height"),
-        },
+            label: __("Min Height")
+        }
     ];
-
     const VPOSITION = [
         {
             value: "top",
-            label: __("Top"),
+            label: __("Top")
         },
         {
             value: "middle",
-            label: __("Middle"),
+            label: __("Middle")
         },
         {
             value: "bottom",
-            label: __("Bottom"),
-        },
+            label: __("Bottom")
+        }
     ];
-
     const mainClasses = classnames(className, "premium-container");
-
     return [
         isSelected && (
             <BlockControls key="controls">
                 <AlignmentToolbar
                     value={horAlign}
-                    onChange={newAlign =>
-                        setAttributes({ horAlign: newAlign })
-                    }
+                    onChange={newAlign => setAttributes({ horAlign: newAlign })}
                 />
             </BlockControls>
         ),
@@ -192,9 +178,7 @@ const edit = props => {
                         )}
                         options={VPOSITION}
                         value={vPos}
-                        onChange={newValue =>
-                            setAttributes({ vPos: newValue })
-                        }
+                        onChange={newValue => setAttributes({ vPos: newValue })}
                     />
                 </PanelBody>
                 <PanelBody
@@ -224,7 +208,7 @@ const edit = props => {
                         onSelectMedia={media => {
                             setAttributes({
                                 imageID: media.id,
-                                imageURL: media.url,
+                                imageURL: media.url
                             });
                         }}
                         onRemoveImage={value =>
@@ -260,10 +244,10 @@ const edit = props => {
                         onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={colorValue =>
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -279,30 +263,30 @@ const edit = props => {
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
-                                        : newColor.hex,
+                                        : newColor.hex
                             })
                         }
                         onChangeBlur={newBlur =>
                             setAttributes({
-                                shadowBlur: newBlur === undefined ? 0 : newBlur,
+                                shadowBlur: newBlur === undefined ? 0 : newBlur
                             })
                         }
                         onChangehHorizontal={newValue =>
                             setAttributes({
                                 shadowHorizontal:
-                                    newValue === undefined ? 0 : newValue,
+                                    newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangeVertical={newValue =>
                             setAttributes({
                                 shadowVertical:
-                                    newValue === undefined ? 0 : newValue,
+                                    newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangePosition={newValue =>
                             setAttributes({
                                 shadowPosition:
-                                    newValue === undefined ? 0 : newValue,
+                                    newValue === undefined ? 0 : newValue
                             })
                         }
                     />
@@ -320,22 +304,22 @@ const edit = props => {
                         marginLeft={marginLeft}
                         onChangeMarTop={value =>
                             setAttributes({
-                                marginTop: value === undefined ? 0 : value,
+                                marginTop: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarRight={value =>
                             setAttributes({
-                                marginRight: value === undefined ? 0 : value,
+                                marginRight: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarBottom={value =>
                             setAttributes({
-                                marginBottom: value === undefined ? 0 : value,
+                                marginBottom: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarLeft={value =>
                             setAttributes({
-                                marginLeft: value === undefined ? 0 : value,
+                                marginLeft: value === undefined ? 0 : value
                             })
                         }
                         showUnits={true}
@@ -350,22 +334,22 @@ const edit = props => {
                         paddingLeft={paddingLeft}
                         onChangePadTop={value =>
                             setAttributes({
-                                paddingTop: value === undefined ? 0 : value,
+                                paddingTop: value === undefined ? 0 : value
                             })
                         }
                         onChangePadRight={value =>
                             setAttributes({
-                                paddingRight: value === undefined ? 0 : value,
+                                paddingRight: value === undefined ? 0 : value
                             })
                         }
                         onChangePadBottom={value =>
                             setAttributes({
-                                paddingBottom: value === undefined ? 0 : value,
+                                paddingBottom: value === undefined ? 0 : value
                             })
                         }
                         onChangePadLeft={value =>
                             setAttributes({
-                                paddingLeft: value === undefined ? 0 : value,
+                                paddingLeft: value === undefined ? 0 : value
                             })
                         }
                         showUnits={true}
@@ -386,7 +370,6 @@ const edit = props => {
             </InspectorControls>
         ),
         <div
-
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
@@ -399,7 +382,7 @@ const edit = props => {
                 borderWidth: borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
+                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -412,7 +395,7 @@ const edit = props => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
             }}
         >
             <div
@@ -423,15 +406,14 @@ const edit = props => {
                             ? innerWidth
                                 ? innerWidth + "px"
                                 : "1140px"
-                            : "100%",
+                            : "100%"
                 }}
             >
                 <div className={`premium-container__content_inner`}>
                     <InnerBlocks template={CONTENT} />
                 </div>
             </div>
-        </div>,
+        </div>
     ];
 };
-
 export default edit;

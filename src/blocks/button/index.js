@@ -3,11 +3,8 @@ import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import PbgIcon from "../icons";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const buttonAttrs = {
     btnText: {
         type: "string",
@@ -29,7 +26,7 @@ const buttonAttrs = {
     },
     btnTarget: {
         type: "boolean",
-        default: false,
+        default: false
     },
     effect: {
         type: "string",
@@ -168,17 +165,16 @@ const buttonAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/button", {
     title: __("Button"),
     icon: <PbgIcon icon="button" />,
     category: "premium-blocks",
     attributes: buttonAttrs,
     supports: {
-        inserter: button,
+        inserter: button
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

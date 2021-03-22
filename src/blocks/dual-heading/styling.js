@@ -52,14 +52,12 @@ function styling ( props ) {
     }
 
     styling_css = generateCSS( selectors, id )
+    
     styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
     styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
     return styling_css
-
-
-
 
 }
 export default styling;

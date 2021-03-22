@@ -3,12 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
-
 const { registerBlockType } = wp.blocks;
-
 const { __ } = wp.i18n;
-
 const pricingAttrs = {
     contentAlign: {
         type: "string",
@@ -49,7 +45,7 @@ const pricingAttrs = {
     },
     tableShadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     tableShadowPosition: {
         type: "string",
@@ -107,7 +103,7 @@ const pricingAttrs = {
     },
     titleShadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     titleShadowVertical: {
         type: "number",
@@ -234,7 +230,7 @@ const pricingAttrs = {
     },
     currSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     currSizeUnit: {
         type: "string",
@@ -450,7 +446,7 @@ const pricingAttrs = {
         type: 'number'
     },
     badgeTop: {
-        type: "number",
+        type: "number"
     },
     badgeHorizontal: {
         type: "number"
@@ -571,7 +567,6 @@ const pricingAttrs = {
         type: "number",
         default: "1"
     },
-
     hideDesktop: {
         type: "boolean",
         default: false
@@ -585,16 +580,15 @@ const pricingAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
     icon: <PbgIcon icon="pricing-table" />,
     category: "premium-blocks",
     attributes: pricingAttrs,
     supports: {
-        inserter: pricingTable,
+        inserter: pricingTable
     },
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

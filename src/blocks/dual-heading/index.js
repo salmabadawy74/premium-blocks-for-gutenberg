@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const dualHeadingAttrs = {
     block_id: {
         type: "string"
@@ -90,7 +87,7 @@ const dualHeadingAttrs = {
         default: "0"
     },
     firstBorderColor: {
-        type: "string",
+        type: "string"
     },
     firstMarginR: {
         type: "number",
@@ -308,7 +305,7 @@ registerBlockType("premium/dheading-block", {
     category: "premium-blocks",
     attributes: dualHeadingAttrs,
     supports: {
-        inserter: dualHeading,
+        inserter: dualHeading
     },
     example: {},
     edit: edit,

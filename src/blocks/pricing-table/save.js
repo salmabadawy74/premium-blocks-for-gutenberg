@@ -1,11 +1,8 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
-
 const { RichText } = wp.blockEditor;
-
-const save = (props) => {
+const save = props => {
     const { className } = props;
-
     const {
         priceOpacity,
         tableOpacity,
@@ -138,9 +135,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, "premium-pricing-table");
-
     return (
         <div
             id={`${mainClasses}-${block_id}`}
@@ -155,7 +150,7 @@ const save = (props) => {
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
                 padding: tablePadding + "px",
-                boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`,
+                boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
             }}
         >
             {badgeChecked && (
@@ -176,9 +171,7 @@ const save = (props) => {
                             borderTopWidth:
                                 "left" === badgePos ? badgeSize + "px" : "none",
                             borderLeftWidth:
-                                "right" === badgePos
-                                    ? badgeSize + "px"
-                                    : "none",
+                                "right" === badgePos ? badgeSize + "px" : "none"
                         }}
                     >
                         <span
@@ -199,7 +192,7 @@ const save = (props) => {
                                 right:
                                     "right" === badgePos
                                         ? badgeHorizontal + "px"
-                                        : "auto",
+                                        : "auto"
                             }}
                         >
                             {badgeText}
@@ -212,7 +205,7 @@ const save = (props) => {
                     className={`premium-pricing-table__title_wrap`}
                     style={{
                         paddingTop: titleMarginT + "px",
-                        paddingBottom: titleMarginB + "px",
+                        paddingBottom: titleMarginB + "px"
                     }}
                 >
                     <RichText.Content
@@ -229,7 +222,7 @@ const save = (props) => {
                             lineHeight: titleLine + "px",
                             marginBottom: titleMarginB + "px",
                             padding: titlePadding + "px",
-                            textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                            textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
                         }}
                     />
                 </div>
@@ -244,7 +237,7 @@ const save = (props) => {
                         marginTop: priceMarginT + "px",
                         marginBottom: priceMarginB + "px",
                         padding: pricePadding + "px",
-                        justifyContent: contentAlign,
+                        justifyContent: contentAlign
                     }}
                 >
                     {slashPrice && (
@@ -253,7 +246,7 @@ const save = (props) => {
                             style={{
                                 color: slashColor,
                                 fontWeight: slashWeight,
-                                alignSelf: slashV,
+                                alignSelf: slashV
                             }}
                         >
                             {slashPrice}
@@ -265,7 +258,7 @@ const save = (props) => {
                             style={{
                                 color: currColor,
                                 fontWeight: currWeight,
-                                alignSelf: currV,
+                                alignSelf: currV
                             }}
                         >
                             {currPrice}
@@ -277,7 +270,7 @@ const save = (props) => {
                             style={{
                                 color: valColor,
                                 fontWeight: valWeight,
-                                alignSelf: valV,
+                                alignSelf: valV
                             }}
                         >
                             {valPrice}
@@ -289,7 +282,7 @@ const save = (props) => {
                             style={{
                                 color: divColor,
                                 fontWeight: divWeight,
-                                alignSelf: divV,
+                                alignSelf: divV
                             }}
                         >
                             {divPrice}
@@ -301,7 +294,7 @@ const save = (props) => {
                             style={{
                                 color: durColor,
                                 fontWeight: durWeight,
-                                alignSelf: durV,
+                                alignSelf: durV
                             }}
                         >
                             {durPrice}
@@ -314,7 +307,7 @@ const save = (props) => {
                     className={`premium-pricing-table__list_wrap`}
                     style={{
                         marginTop: listMarginT + "px",
-                        marginBottom: listMarginB + "px",
+                        marginBottom: listMarginB + "px"
                     }}
                 >
                     <ul
@@ -331,7 +324,7 @@ const save = (props) => {
                             textTransform: listUpper ? "uppercase" : "none",
                             fontStyle: listItemsStyle,
                             lineHeight: listLine + "px",
-                            textAlign: featsAlign ? featsAlign : contentAlign,
+                            textAlign: featsAlign ? featsAlign : contentAlign
                         }}
                     >
                         {listItems}
@@ -353,7 +346,7 @@ const save = (props) => {
                             fontStyle: descStyle,
                             marginTop: descMarginT + "px",
                             marginBottom: descMarginB + "px",
-                            padding: descPadding + "px",
+                            padding: descPadding + "px"
                         }}
                     />
                 </div>
@@ -362,7 +355,7 @@ const save = (props) => {
                 <div
                     className={`premium-pricing-table__button`}
                     style={{
-                        width: btnWidth + "%",
+                        width: btnWidth + "%"
                     }}
                 >
                     <a
@@ -383,17 +376,17 @@ const save = (props) => {
                             border: btnBorderType,
                             borderWidth: btnBorderWidth + "px",
                             borderRadius: btnBorderRadius + "px",
-                            borderColor: btnBorderColor,
+                            borderColor: btnBorderColor
                         }}
                     >
                         <RichText.Content
                             tagName="span"
-                            onChange={(newText) =>
+                            onChange={newText =>
                                 setAttributes({ btnText: newText })
                             }
                             value={btnText}
                             style={{
-                                textTransform: btnUpper ? "uppercase" : "none",
+                                textTransform: btnUpper ? "uppercase" : "none"
                             }}
                         />
                     </a>
@@ -403,8 +396,8 @@ const save = (props) => {
                                 `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
                                 `color: ${btnHoverColor} !important;`,
                                 `background: ${btnHoverBack} !important`,
-                                "}",
-                            ].join("\n"),
+                                "}"
+                            ].join("\n")
                         }}
                     />
                 </div>
@@ -412,5 +405,4 @@ const save = (props) => {
         </div>
     );
 };
-
 export default save;

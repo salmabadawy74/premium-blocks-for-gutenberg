@@ -1,5 +1,5 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
-import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit';
 
 function styling(props) {
     const {
@@ -17,7 +17,7 @@ function styling(props) {
 
     selectors = {
         " .premium-button": {
-            "font-size": generateCSSUnit(textSize, textSizeUnit),
+            "font-size": generateCSSUnit(textSize, textSizeUnit)
         }
     }
     tablet_selectors = {

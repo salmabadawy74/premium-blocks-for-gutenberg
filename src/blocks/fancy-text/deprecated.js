@@ -4,192 +4,192 @@ const { __ } = wp.i18n;
 
 const fancyAttributes = {
     block_id: {
-        type: "string",
+        type: "string"
     },
     classMigrate: {
         type: "boolean",
-        default: false,
+        default: false
     },
     align: {
         type: "string",
-        default: "center",
+        default: "center"
     },
     prefix: {
         type: "string",
-        default: "This is",
+        default: "This is"
     },
     suffix: {
         type: "string",
-        default: "Text",
+        default: "Text"
     },
     repeaterFancyText: {
         type: "array",
         default: [
             {
                 title: __("Designer"),
-                edit: false,
+                edit: false
             },
             {
                 title: __("Developer"),
-                edit: false,
+                edit: false
             },
             {
                 title: __("Awesome"),
-                edit: false,
-            },
-        ],
+                edit: false
+            }
+        ]
     },
     effect: {
         type: "string",
-        default: "typing",
+        default: "typing"
     },
     fancyTextColor: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     cursorColor: {
         type: "string",
-        default: "#6ec1e4",
+        default: "#6ec1e4"
     },
     fancyTextLetter: {
-        type: "number",
+        type: "number"
     },
     fancyTextStyle: {
-        type: "string",
+        type: "string"
     },
     fancyTextUpper: {
         type: "boolean",
-        default: false,
+        default: false
     },
     fancyTextWeight: {
         type: "number",
-        default: 600,
+        default: 600
     },
     fancyTextfontSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     fancyTextfontSizeUnit: {
         type: "string",
-        default: "px",
+        default: "px"
     },
     fancyTextfontSizeMobile: {
         type: "number",
-        default: 20,
+        default: 20
     },
     fancyTextfontSizeTablet: {
         type: "number",
-        default: 20,
+        default: 20
     },
     fancyTextBGColor: {
-        type: "string",
+        type: "string"
     },
     shadowColor: {
-        type: "string",
+        type: "string"
     },
     shadowBlur: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowHorizontal: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     shadowVertical: {
         type: "number",
-        default: "0",
+        default: "0"
     },
     textColor: {
         type: "string",
-        default: "#54595f",
+        default: "#54595f"
     },
     textLetter: {
-        type: "number",
+        type: "number"
     },
     textStyle: {
-        type: "string",
+        type: "string"
     },
     textUpper: {
         type: "boolean",
-        default: false,
+        default: false
     },
     textWeight: {
         type: "number",
-        default: 600,
+        default: 600
     },
     textfontSize: {
         type: "number",
-        default: 20,
+        default: 20
     },
     textfontSizeUnit: {
         type: "string",
-        default: "px",
+        default: "px"
     },
     textfontSizeMobile: {
         type: "number",
-        default: 20,
+        default: 20
     },
     textfontSizeTablet: {
         type: "number",
-        default: 20,
+        default: 20
     },
     textBGColor: {
-        type: "string",
+        type: "string"
     },
     loop: {
         type: "boolean",
-        default: "true",
+        default: "true"
     },
     cursorShow: {
         type: "boolean",
-        default: "true",
+        default: "true"
     },
     cursorMark: {
         type: "string",
-        default: "|",
+        default: "|"
     },
     typeSpeed: {
         type: "number",
-        default: 100,
+        default: 100
     },
     backdelay: {
         type: "number",
-        default: 30,
+        default: 30
     },
     startdelay: {
         type: "number",
-        default: 30,
+        default: 30
     },
     backSpeed: {
         type: "number",
-        default: 30,
+        default: 30
     },
     animationSpeed: {
         type: "number",
-        default: 200,
+        default: 200
     },
     pauseTime: {
         type: "number",
-        default: 3000,
+        default: 3000
     },
     hoverPause: {
         type: "boolean",
-        default: false,
+        default: false
     },
     fancyalign: {
         type: "string",
-        default: "center",
+        default: "center"
     },
 };
 
 const newAtrributes_1_0_1 = {
     fancyTextBGOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     textBGOpacity: {
         type: "number",
-        default: "1",
+        default: "1"
     },
     hideDesktop: {
         type: 'boolean',
@@ -243,7 +243,7 @@ const deprecated = [
                 animationSpeed,
                 pauseTime,
                 hoverPause,
-                fancyalign,
+                fancyalign
             } = attributes;
 
             return (
@@ -278,13 +278,11 @@ const deprecated = [
                             data-cursormark={`${cursorMark}`}
                         >
                             <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}{" "}
+                                {prefix}
                             </span>
                             <span className={`premium-fancy-text-title`}>
-                                {" "}
                             </span>
                             <span className={`premium-fancy-text-suffix-text`}>
-                                {" "}
                                 {suffix}
                             </span>
                         </div>
@@ -305,7 +303,7 @@ const deprecated = [
                             data-hoverpause={`${hoverPause}`}
                         >
                             <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}{" "}
+                                {prefix}
                             </span>
                             <div
                                 className={`premium-fancy-text-title-slide`}
@@ -322,7 +320,7 @@ const deprecated = [
                                 </ul>
                             </div>
                             <span className={`premium-fancy-text-suffix-text`}>
-                                {" "}
+                              
                                 {suffix}
                             </span>
                         </div>

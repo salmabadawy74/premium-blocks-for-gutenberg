@@ -3,11 +3,8 @@ import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import PbgIcon from "../icons";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const testimonialsAttrs = {
     block_id: {
         type: "string"
@@ -230,19 +227,17 @@ const testimonialsAttrs = {
         type: 'boolean',
         default: false
     }
-
 };
-
 registerBlockType("premium/testimonial", {
     title: __("Testimonial"),
     icon: <PbgIcon icon="testimonials" />,
     category: "premium-blocks",
     attributes: testimonialsAttrs,
     supports: {
-        inserter: testimonial,
+        inserter: testimonial
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

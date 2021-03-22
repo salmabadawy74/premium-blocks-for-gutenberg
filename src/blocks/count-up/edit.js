@@ -238,8 +238,7 @@ class edit extends Component {
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props);
         }
-
-
+        
         const mainClasses = classnames(className, "premium-countup");
 
         return [

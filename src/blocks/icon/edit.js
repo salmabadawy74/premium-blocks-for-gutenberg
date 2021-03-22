@@ -11,9 +11,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-
 const { __ } = wp.i18n;
-
 const {
     PanelBody,
     Toolbar,
@@ -21,16 +19,12 @@ const {
     RangeControl,
     ToggleControl,
     Dropdown,
-    Button,
+    Button
 } = wp.components;
-
 const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
-
 const { Fragment } = wp.element;
-
-const edit = (props) => {
+const edit = props => {
     const { isSelected, setAttributes, className } = props;
-
     const {
         iconType,
         selectedIcon,
@@ -90,42 +84,38 @@ const edit = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const EFFECTS = [
         {
             value: "none",
-            label: __("None"),
+            label: __("None")
         },
         {
             value: "pulse",
-            label: __("Pulse"),
+            label: __("Pulse")
         },
         {
             value: "rotate",
-            label: __("Rotate"),
+            label: __("Rotate")
         },
         {
             value: "drotate",
-            label: __("3D Rotate"),
+            label: __("3D Rotate")
         },
         {
             value: "buzz",
-            label: __("Buzz"),
+            label: __("Buzz")
         },
         {
             value: "drop",
-            label: __("Drop Shadow"),
+            label: __("Drop Shadow")
         },
         {
             value: "wobble",
-            label: __("Wobble"),
-        },
+            label: __("Wobble")
+        }
     ];
-
     const ALIGNS = ["left", "center", "right"];
-
     const mainClasses = classnames(className, "premium-icon");
-
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -134,14 +124,10 @@ const edit = (props) => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <p className="premium-editor-paragraph">
-                        {__("Select Icon")}
-                    </p>
+                    <p className="premium-editor-paragraph">{__("Select Icon")}</p>
                     <FontIconPicker
                         icons={iconsList}
-                        onChange={newIcon =>
-                            setAttributes({ selectedIcon: newIcon })
-                        }
+                        onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                         value={selectedIcon}
                         isMulti={false}
                         appendTo="body"
@@ -151,32 +137,26 @@ const edit = (props) => {
                         label={__("Hover Effect")}
                         options={EFFECTS}
                         value={hoverEffect}
-                        onChange={newEffect =>
-                            setAttributes({ hoverEffect: newEffect })
-                        }
+                        onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                     />
                     <p>{__("Align")}</p>
                     <Toolbar
-                        controls={ALIGNS.map((iconAlign) => ({
+                        controls={ALIGNS.map(iconAlign => ({
                             icon: "editor-align" + iconAlign,
                             isActive: iconAlign === align,
-                            onClick: () => setAttributes({ align: iconAlign }),
+                            onClick: () => setAttributes({ align: iconAlign })
                         }))}
                     />
                     <ToggleControl
                         label={__("Link")}
                         checked={urlCheck}
-                        onChange={newValue =>
-                            setAttributes({ urlCheck: newValue })
-                        }
+                        onChange={newValue => setAttributes({ urlCheck: newValue })}
                     />
                     {urlCheck && (
                         <ToggleControl
                             label={__("Open link in new tab")}
                             checked={target}
-                            onChange={newValue =>
-                                setAttributes({ target: newValue })
-                            }
+                            onChange={newValue => setAttributes({ target: newValue })}
                         />
                     )}
                 </PanelBody>
@@ -193,9 +173,7 @@ const edit = (props) => {
                     <RangeControl
                         label={__("Size")}
                         value={iconSize}
-                        onChange={newValue =>
-                            setAttributes({ iconSize: newValue })
-                        }
+                        onChange={newValue => setAttributes({ iconSize: newValue })}
                         initialPosition={50}
                         allowReset={true}
                     />
@@ -206,11 +184,7 @@ const edit = (props) => {
                             contentClassName="premium-control-toggle-content"
                             position="bottom right"
                             renderToggle={({ isOpen, onToggle }) => (
-                                <Button
-                                    isSmall
-                                    onClick={onToggle}
-                                    aria-expanded={isOpen}
-                                >
+                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
                                     <i className="dashicons dashicons-edit" />
                                 </Button>
                             )}
@@ -221,7 +195,7 @@ const edit = (props) => {
                                         value={iconColor}
                                         onChange={newValue =>
                                             setAttributes({
-                                                iconColor: newValue,
+                                                iconColor: newValue
                                             })
                                         }
                                         allowReset={true}
@@ -255,10 +229,10 @@ const edit = (props) => {
                         onChangeWidth={newWidth =>
                             setAttributes({ borderWidth: newWidth })
                         }
-                        onChangeColor={colorValue =>
+                        onChangeColor={(colorValue) =>
                             setAttributes({ borderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
@@ -271,9 +245,7 @@ const edit = (props) => {
                         onChangeColor={newColor =>
                             setAttributes({ shadowColor: newColor.hex })
                         }
-                        onChangeBlur={newBlur =>
-                            setAttributes({ shadowBlur: newBlur })
-                        }
+                        onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
                         onChangehHorizontal={newValue =>
                             setAttributes({ shadowHorizontal: newValue })
                         }
@@ -281,31 +253,30 @@ const edit = (props) => {
                             setAttributes({ shadowVertical: newValue })
                         }
                     />
-
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={marginT}
                         marginRight={marginR}
                         marginBottom={marginB}
                         marginLeft={marginL}
-                        onChangeMarTop={(value) =>
+                        onChangeMarTop={value =>
                             setAttributes({
-                                marginT: value,
+                                marginT: value
                             })
                         }
                         onChangeMarRight={value =>
                             setAttributes({
-                                marginR: value,
+                                marginR: value
                             })
                         }
                         onChangeMarBottom={value =>
                             setAttributes({
-                                marginB: value,
+                                marginB: value
                             })
                         }
                         onChangeMarLeft={value =>
                             setAttributes({
-                                marginL: value,
+                                marginL: value
                             })
                         }
                     />
@@ -316,22 +287,22 @@ const edit = (props) => {
                         paddingLeft={paddingL}
                         onChangePadTop={value =>
                             setAttributes({
-                                paddingT: value,
+                                paddingT: value
                             })
                         }
                         onChangePadRight={value =>
                             setAttributes({
-                                paddingR: value,
+                                paddingR: value
                             })
                         }
                         onChangePadBottom={value =>
                             setAttributes({
-                                paddingB: value,
+                                paddingB: value
                             })
                         }
                         onChangePadLeft={value =>
                             setAttributes({
-                                paddingL: value,
+                                paddingL: value
                             })
                         }
                         showUnits={true}
@@ -361,8 +332,7 @@ const edit = (props) => {
                                 setAttributes({ backgroundOpacity: newvalue })
                             }
                         />
-
-                        <PremiumBackground
+                        <PremiumBackgroud
                             imageID={imageID}
                             imageURL={imageURL}
                             backgroundPosition={backgroundPosition}
@@ -372,7 +342,7 @@ const edit = (props) => {
                             onSelectMedia={media => {
                                 setAttributes({
                                     imageID: media.id,
-                                    imageURL: media.url,
+                                    imageURL: media.url
                                 });
                             }}
                             onRemoveImage={value =>
@@ -387,31 +357,27 @@ const edit = (props) => {
                             onChangeBackSize={newValue =>
                                 setAttributes({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check =>
-                                setAttributes({ fixed: check })
-                            }
+                            onChangeFixed={check => setAttributes({ fixed: check })}
                         />
                     </Fragment>
-
                     <PremiumBorder
                         borderType={wrapBorderType}
                         borderWidth={wrapBorderWidth}
                         borderColor={wrapBorderColor}
                         borderRadius={wrapBorderRadius}
-                        onChangeType={newType =>
+                        onChangeType={(newType) =>
                             setAttributes({ wrapBorderType: newType })
                         }
                         onChangeWidth={newWidth =>
                             setAttributes({ wrapBorderWidth: newWidth })
                         }
-                        onChangeColor={colorValue =>
+                        onChangeColor={(colorValue) =>
                             setAttributes({ wrapBorderColor: colorValue.hex })
                         }
-                        onChangeRadius={newrRadius =>
+                        onChangeRadius={(newrRadius) =>
                             setAttributes({ wrapBorderRadius: newrRadius })
                         }
                     />
-
                     <PremiumBoxShadow
                         inner={true}
                         color={wrapShadowColor}
@@ -419,33 +385,32 @@ const edit = (props) => {
                         horizontal={wrapShadowHorizontal}
                         vertical={wrapShadowVertical}
                         position={wrapShadowPosition}
-                        onChangeColor={(newColor) =>
+                        onChangeColor={newColor =>
                             setAttributes({
-                                wrapShadowColor: newColor.hex,
+                                wrapShadowColor: newColor.hex
                             })
                         }
                         onChangeBlur={newBlur =>
                             setAttributes({
-                                wrapShadowBlur: newBlur,
+                                wrapShadowBlur: newBlur
                             })
                         }
                         onChangehHorizontal={newValue =>
                             setAttributes({
-                                wrapShadowHorizontal: newValue,
+                                wrapShadowHorizontal: newValue
                             })
                         }
                         onChangeVertical={newValue =>
                             setAttributes({
-                                wrapShadowVertical: newValue,
+                                wrapShadowVertical: newValue
                             })
                         }
                         onChangePosition={newValue =>
                             setAttributes({
-                                wrapShadowPosition: newValue,
+                                wrapShadowPosition: newValue
                             })
                         }
                     />
-
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={wrapMarginT}
@@ -454,22 +419,22 @@ const edit = (props) => {
                         marginLeft={wrapMarginL}
                         onChangeMarTop={value =>
                             setAttributes({
-                                wrapMarginT: value,
+                                wrapMarginT: value
                             })
                         }
                         onChangeMarRight={value =>
                             setAttributes({
-                                wrapMarginR: value,
+                                wrapMarginR: value
                             })
                         }
                         onChangeMarBottom={value =>
                             setAttributes({
-                                wrapMarginB: value,
+                                wrapMarginB: value
                             })
                         }
                         onChangeMarLeft={value =>
                             setAttributes({
-                                wrapMarginL: value,
+                                wrapMarginL: value
                             })
                         }
                     />
@@ -480,22 +445,22 @@ const edit = (props) => {
                         paddingLeft={wrapPaddingL}
                         onChangePadTop={value =>
                             setAttributes({
-                                wrapPaddingT: value,
+                                wrapPaddingT: value
                             })
                         }
                         onChangePadRight={value =>
                             setAttributes({
-                                wrapPaddingR: value,
+                                wrapPaddingR: value
                             })
                         }
                         onChangePadBottom={value =>
                             setAttributes({
-                                wrapPaddingB: value,
+                                wrapPaddingB: value
                             })
                         }
                         onChangePadLeft={value =>
                             setAttributes({
-                                wrapPaddingL: value,
+                                wrapPaddingL: value
                             })
                         }
                     />
@@ -510,7 +475,6 @@ const edit = (props) => {
                 />
             </InspectorControls>
         ),
-
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
@@ -527,9 +491,9 @@ const edit = (props) => {
                 borderWidth: wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
-                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical || 0
-                    }px ${wrapShadowBlur || 0
-                    }px ${wrapShadowColor} ${wrapShadowPosition}`,
+                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
+                    0}px ${wrapShadowBlur ||
+                    0}px ${wrapShadowColor} ${wrapShadowPosition}`,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -537,14 +501,12 @@ const edit = (props) => {
                 marginTop: wrapMarginT,
                 marginRight: wrapMarginR,
                 marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL,
+                marginLeft: wrapMarginL
             }}
         >
             {iconType === "fa" && 1 != FontAwesomeEnabled && (
                 <p className={`premium-icon__alert`}>
-                    {__(
-                        "Please Enable Font Awesome Icons from Plugin settings"
-                    )}
+                    {__("Please Enable Font Awesome Icons from Plugin settings")}
                 </p>
             )}
             {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
@@ -568,19 +530,18 @@ const edit = (props) => {
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical || 0
-                            }px ${shadowBlur || 0}px ${shadowColor}`,
+                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
+                            0}px ${shadowBlur || 0}px ${shadowColor}`
                     }}
                 />
             )}
             {urlCheck && isSelected && (
                 <URLInput
                     value={link}
-                    onChange={(newUrl) => setAttributes({ link: newUrl })}
+                    onChange={newUrl => setAttributes({ link: newUrl })}
                 />
             )}
-        </div>,
+        </div>
     ];
 };
-
 export default edit;

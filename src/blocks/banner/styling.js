@@ -1,5 +1,5 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
-import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit';
 
 function styling(props) {
     const {
@@ -21,7 +21,7 @@ function styling(props) {
 
     selectors = {
         " .premium-banner__title": {
-            "font-size": generateCSSUnit(titleSize, titleSizeUnit),
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-banner__desc": {
             "font-size": generateCSSUnit(descSize, descSizeUnit)

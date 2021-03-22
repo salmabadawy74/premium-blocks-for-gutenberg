@@ -9,7 +9,7 @@ function styling(props) {
         videoDescSizeUnit,
         videoDescSize,
         videoDescSizeMobile,
-        videoDescSizeTablet,
+        videoDescSizeTablet
     } = props.attributes;
 
     let selectors = {}

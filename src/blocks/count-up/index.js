@@ -3,11 +3,8 @@ import edit from "./edit";
 import save from "./save";
 import PbgIcon from "../icons";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const counterAttrs = {
     block_id: {
         type: "string"
@@ -290,17 +287,16 @@ const counterAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/countup", {
     title: __("CountUp"),
     icon: <PbgIcon icon="counter" />,
     category: "premium-blocks",
     attributes: counterAttrs,
     supports: {
-        inserter: countUp,
+        inserter: countUp
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent,
+    deprecated: deprecatedContent
 });

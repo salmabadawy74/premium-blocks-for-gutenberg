@@ -30,7 +30,7 @@ function styling(props) {
 
     selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit(numberSize, numberSizeUnit),
+            "font-size": generateCSSUnit(numberSize, numberSizeUnit)
         },
         " .premium-countup__title": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
@@ -44,7 +44,7 @@ function styling(props) {
     }
     tablet_selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit(numberSizeTablet, numberSizeUnit),
+            "font-size": generateCSSUnit(numberSizeTablet, numberSizeUnit)
         },
         " .premium-countup__title": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
@@ -58,7 +58,7 @@ function styling(props) {
     }
     mobile_selectors = {
         " .premium-countup__increment": {
-            "font-size": generateCSSUnit(numberSizeMobile, numberSizeUnit),
+            "font-size": generateCSSUnit(numberSizeMobile, numberSizeUnit)
         },
         " .premium-countup__title": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)

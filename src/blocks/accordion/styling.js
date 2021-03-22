@@ -13,7 +13,7 @@ function styling(props) {
         descSizeUnit,
         descSize,
         descSizeTablet,
-        descSizeMobile,
+        descSizeMobile
     } = props.attributes
 
     var selectors = {}
@@ -22,7 +22,7 @@ function styling(props) {
 
     selectors = {
         " .premium-accordion__title": {
-            "font-size": generateCSSUnit(titleSize, titleSizeUnit),
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-accordion__desc": {
             "font-size": generateCSSUnit(descSize, descSizeUnit)
@@ -31,7 +31,7 @@ function styling(props) {
 
     tablet_selectors = {
         " .premium-accordion__title ": {
-            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit),
+            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-accordion__desc": {
             "font-size": generateCSSUnit(descSizeTablet, descSizeUnit)
@@ -40,7 +40,7 @@ function styling(props) {
 
     mobile_selectors = {
         " .premium-accordion__title": {
-            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit),
+            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-accordion__desc": {
             "font-size": generateCSSUnit(descSizeMobile, descSizeUnit)

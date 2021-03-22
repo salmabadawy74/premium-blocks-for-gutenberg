@@ -1,10 +1,7 @@
-import classnames from "classnames";
+import classnames from 'classnames'
 import hexToRgba from "hex-to-rgba";
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         increment,
@@ -67,9 +64,7 @@ const save = props => {
         hideMobile
     } = props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-
     const mainClasses = classnames(className, 'premium-countup');
-
     return (
         <div
             id={`premium-countup-${block_id}`}
@@ -130,7 +125,6 @@ const save = props => {
                     )}
                 </div>
             )}
-
             <div
                 className={`premium-countup__info`}
                 style={{
@@ -219,5 +213,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

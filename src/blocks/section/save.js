@@ -1,11 +1,8 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
-
 const { InnerBlocks } = wp.blockEditor;
-
-const save = (props) => {
+const save = props => {
     const { className } = props;
-
     const {
         block_id,
         stretchSection,
@@ -46,9 +43,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-container');
-
     return (
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
@@ -76,7 +71,7 @@ const save = (props) => {
                 paddingBottom: paddingBottom + paddingUnit,
                 paddingLeft: paddingLeft + paddingUnit,
                 paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
             }}
         >
             <div
@@ -87,7 +82,7 @@ const save = (props) => {
                             ? innerWidth
                                 ? innerWidth + "px"
                                 : "1140px"
-                            : "100%",
+                            : "100%"
                 }}
             >
                 <div className={`premium-container__content_inner`}>
@@ -97,5 +92,4 @@ const save = (props) => {
         </div>
     );
 };
-
 export default save;

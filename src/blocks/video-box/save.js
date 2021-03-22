@@ -1,11 +1,8 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
 import hexToRgba from 'hex-to-rgba';
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         videoBoxId,
@@ -13,18 +10,18 @@ const save = props => {
         videoURL,
         autoPlay,
         loop,
-        controls,
-        relatedVideos,
         mute,
+        relatedVideos,
+        controls,
         overlay,
         overlayImgURL,
         blur,
-        bright,
         contrast,
         saturation,
+        bright,
         hue,
-        playLeft,
         playTop,
+        playLeft,
         playIcon,
         playColor,
         playHoverColor,
@@ -84,17 +81,15 @@ const save = props => {
             return loop ? "1" : "0";
         }
     };
-
     const mainClasses = classnames(className, 'premium-video-box');
-
     return (
         <div
             id={videoBoxId}
             className={`${mainClasses} video-overlay-${overlay}  premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             data-type={videoType}
             style={{
-                border: boxBorderType,
-                borderWidth: boxBorderWidth + "px",
+                borderStyle: boxBorderType,
+                borderWidth: boxBorderWidth+ "px",
                 borderRadius: boxBorderRadius + "px",
                 borderColor: boxBorderColor,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
@@ -195,5 +190,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

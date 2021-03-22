@@ -1,14 +1,11 @@
-import classnames from "classnames";
+import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import hexToRgba from "hex-to-rgba";
-
 const { RichText } = wp.blockEditor;
-
-const save = (props) => {
+const save = props => {
     const { className } = props;
-
     const {
         block_id,
         align,
@@ -63,9 +60,7 @@ const save = (props) => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
-    const mainClasses = classnames(className, "premium-testimonial");
-
+    const mainClasses = classnames(className, 'premium-testimonial');
     return (
         <div
             id={`premium-testimonial-${block_id}`}
@@ -97,7 +92,7 @@ const save = (props) => {
                 <div
                     className={`premium-testimonial__content`}
                     style={{
-                        textAlign: align,
+                        textAlign: align
                     }}
                 >
                     <div className={`premium-testimonial__img_wrap`}>
@@ -111,13 +106,11 @@ const save = (props) => {
                                     borderRadius: imgRadius,
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
-                                    height: imgSize + "px",
+                                    height: imgSize + "px"
                                 }}
                             />
                         )}
-                        {!authorImgUrl && (
-                            <DefaultImage className={className} />
-                        )}
+                        {!authorImgUrl && <DefaultImage className={className} />}
                     </div>
                     <div className={`premium-testimonial__text_wrap`}>
                         <div>
@@ -129,7 +122,7 @@ const save = (props) => {
                                     color: bodyColor,
                                     lineHeight: bodyLine + "px",
                                     marginTop: bodyTop + "px",
-                                    marginBottom: bodyBottom + "px",
+                                    marginBottom: bodyBottom + "px"
                                 }}
                             />
                         </div>
@@ -142,21 +135,19 @@ const save = (props) => {
                             style={{
                                 color: authorColor,
                                 letterSpacing: authorLetter + "px",
-                                textTransform: authorUpper
-                                    ? "uppercase"
-                                    : "none",
+                                textTransform: authorUpper ? "uppercase" : "none",
                                 fontStyle: authorStyle,
-                                fontWeight: authorWeight,
+                                fontWeight: authorWeight
                             }}
                         />
                         <span
                             className={`premium-testimonial__sep`}
                             style={{
-                                color: dashColor,
+                                color: dashColor
                             }}
                         >
                             &nbsp;-&nbsp;
-                        </span>
+            </span>
                         <div className={`premium-testimonial__link_wrap`}>
                             <RichText.Content
                                 tagName={authorComTag.toLowerCase()}
@@ -187,5 +178,4 @@ const save = (props) => {
         </div>
     );
 };
-
 export default save;

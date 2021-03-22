@@ -20,7 +20,7 @@ const {
     RangeControl,
     ToggleControl,
     Dropdown,
-    Button,
+    Button
 } = wp.components;
 
 const {
@@ -28,7 +28,7 @@ const {
     InspectorControls,
     AlignmentToolbar,
     ColorPalette,
-    URLInput,
+    URLInput
 } = wp.blockEditor;
 
 class edit extends Component {
