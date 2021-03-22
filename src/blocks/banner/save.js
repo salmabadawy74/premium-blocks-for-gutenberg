@@ -7,8 +7,8 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         borderBanner,
-        id,
         imageURL,
         title,
         titleTag,
@@ -33,7 +33,6 @@ const save = props => {
         borderColor,
         titleColor,
         titleBack,
-        titleSize,
         titleWeight,
         titleLine,
         shadowBlur,
@@ -41,7 +40,6 @@ const save = props => {
         shadowHorizontal,
         shadowVertical,
         descColor,
-        descSize,
         descLine,
         descWeight,
         descShadowBlur,
@@ -67,14 +65,17 @@ const save = props => {
         paddingR,
         paddingL,
         paddingU,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
 
     return (
         <div
-            id={`premium-banner-${id}`}
-            className={`${mainClasses} premium-banner__responsive_${responsive}`}
+            id={`premium-banner-${block_id}`}
+            className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
             style={{
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -85,13 +86,13 @@ const save = props => {
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-banner-${id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                        `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
                         `background: ${sepColor}`,
                         "}",
-                        `#premium-banner-${id} .premium-banner__inner {`,
+                        `#premium-banner-${block_id} .premium-banner__inner {`,
                         `background: ${background}`,
                         "}",
-                        `#premium-banner-${id} .premium-banner__img.premium-banner__active {`,
+                        `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
                         `opacity: ${background ? 1 - opacity / 100 : 1} `,
                         "}"
                     ].join("\n")
@@ -144,7 +145,6 @@ const save = props => {
                             value={title}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 fontWeight: titleWeight,
                                 lineHeight: titleLine + "px",
                                 textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
@@ -163,7 +163,6 @@ const save = props => {
                             value={desc}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 fontWeight: descWeight,
                                 lineHeight: descLine + "px",
                                 textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`

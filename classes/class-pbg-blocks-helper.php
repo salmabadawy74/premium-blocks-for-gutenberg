@@ -74,9 +74,9 @@ class PBG_Blocks_Helper {
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 
 		// Register Premium Blocks category.
-        add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
-        
-        // Generate Blocks Stylesheet.
+		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+
+		// Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 
 		// Enqueue Generated stylesheet to WP Head.
@@ -485,8 +485,8 @@ class PBG_Blocks_Helper {
 
 		// self::file_write( self::$stylesheet, 'css' );
 
-        ob_start();
-        
+		ob_start();
+
 		?>
 			<style type="text/css" media="all" id="premium-style-frontend"><?php echo self::$stylesheet; ?></style>
 		<?php
@@ -497,9 +497,9 @@ class PBG_Blocks_Helper {
 	 * Get Block CSS
 	 *
 	 * Generates CSS recurrsively.
-     * 
-     * @since 1.8.2
-     * @access public
+	 *
+	 * @since 1.8.2
+	 * @access public
 	 *
 	 * @param object $block The block object.
 	 */
@@ -531,6 +531,33 @@ class PBG_Blocks_Helper {
 		switch ( $name ) {
 			case 'premium/fancy-text':
 				$css += $this->get_fancy_text_css( $blockattr, $block_id );
+				break;
+			case 'premium/accordion':
+				$css += $this->get_accordion_css( $blockattr, $block_id );
+				break;
+			case 'premium/banner':
+				$css += $this->get_banner_css( $blockattr, $block_id );
+				break;
+			case 'premium/button':
+				$css += $this->get_button_css( $blockattr, $block_id );
+				break;
+			case 'premium/countup':
+				$css += $this->get_countup_css( $blockattr, $block_id );
+				break;
+			case 'premium/dheading-block':
+				$css += $this->get_dual_css( $blockattr, $block_id );
+				break;
+			case 'premium/icon-box':
+				$css += $this->get_iconBox_css( $blockattr, $block_id );
+				break;
+			case 'premium/testimonial':
+				$css += $this->get_testimonial_css( $blockattr, $block_id );
+				break;
+			case 'premium/video-box':
+				$css += $this->get_videoBox_css( $blockattr, $block_id );
+				break;
+			case 'premium/pricing-table':
+				$css += $this->get_pricing_css( $blockattr, $block_id );
 				break;
 			default:
 				// Nothing to do here.
@@ -585,7 +612,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title'       => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'],
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -595,7 +622,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-title-slide' => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'],
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
@@ -608,7 +635,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-prefix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'],
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -617,7 +644,7 @@ class PBG_Blocks_Helper {
 			' .premium-fancy-text-suffix-text' => array(
 				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'],
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
 				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
 				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
@@ -645,7 +672,7 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' .premium-fancy-text-title'        => array(
+			' .premium-fancy-text-title'       => array(
 				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
 			),
 			' .premium-fancy-text-title-slide' => array(
@@ -661,6 +688,619 @@ class PBG_Blocks_Helper {
 		// Mobile CSS End.
 
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-fancy-text-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_accordion_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/accordion']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+
+			'  .premium-accordion__title_text ' => array(
+				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+			),
+			'  .premium-accordion__desc '       => array(
+				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-accordion__title_text  ' => array(
+				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+			),
+			'  .premium-accordion__desc '       => array(
+				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-accordion__title_text  ' => array(
+				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-accordion__desc'         => array(
+				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+			),
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#block-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_banner_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/banner']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+
+			' .premium-banner__title' => array(
+				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-banner__desc'  => array(
+				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+			),
+		);
+			// Desktop Icon Size CSS ends.
+
+			// Tablet CSS Start.
+			$t_selectors = array(
+				' .premium-banner__title' => array(
+					'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				),
+				' .premium-banner__desc'  => array(
+					'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+				),
+			);
+			// Tablet CSS End.
+
+			// Mobile CSS Start.
+			$m_selectors = array(
+				' .premium-banner__title' => array(
+					'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				),
+				' .premium-banner__desc'  => array(
+					'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+				),
+			);
+			// Mobile CSS End.
+
+			$base_selector = ( $attr['classMigrate'] ) ? '#premium-banner-' : '.premium-banner-';
+
+			$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+			$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
+	}
+
+	public static function get_button_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/button']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' .premium-button' => array(
+				'font-size' => self::get_css_value( $attr['textSize'], $attr['textSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-button' => array(
+				'font-size' => self::get_css_value( $attr['textSizeTablet'], $attr['textSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-button' => array(
+				'font-size' => self::get_css_value( $attr['textSizeMobile'], $attr['textSizeUnit'] ),
+			),
+
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-button-wrap-' : '.premium-button-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_countup_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/countup']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' .premium-countup__increment' => array(
+				'font-size' => self::get_css_value( $attr['numberSize'], $attr['numberSizeUnit'] ),
+			),
+			' .premium-countup__title'     => array(
+				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-countup__prefix'    => array(
+				'font-size' => self::get_css_value( $attr['prefixSize'], $attr['prefixSizeUnit'] ),
+			),
+			' .premium-countup__suffix'    => array(
+				'font-size' => self::get_css_value( $attr['suffixSize'], $attr['suffixSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-countup__increment' => array(
+				'font-size' => self::get_css_value( $attr['numberSizeTablet'], $attr['numberSizeUnit'] ),
+			),
+			' .premium-countup__title'     => array(
+				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-countup__prefix'    => array(
+				'font-size' => self::get_css_value( $attr['prefixSizeTablet'], $attr['prefixSizeUnit'] ),
+			),
+			' .premium-countup__suffix'    => array(
+				'font-size' => self::get_css_value( $attr['suffixSizeTablet'], $attr['suffixSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-countup__increment' => array(
+				'font-size' => self::get_css_value( $attr['numberSizeMobile'], $attr['numberSizeUnit'] ),
+			),
+			' .premium-countup__title'     => array(
+				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-countup__prefix'    => array(
+				'font-size' => self::get_css_value( $attr['prefixSizeMobile'], $attr['prefixSizeUnit'] ),
+			),
+			' .premium-countup__suffix'    => array(
+				'font-size' => self::get_css_value( $attr['suffixSizeMobile'], $attr['suffixSizeUnit'] ),
+			),
+
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-countup-' : '#premium-countup-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_dual_css( $attr, $id ) {
+
+		$defaults = self::$block_atts['premium/dheading-block']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' .premium-dheading-block__first'  => array(
+				'font-size' => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
+			),
+			' .premium-dheading-block__second' => array(
+				'font-size' => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-dheading-block__first'   => array(
+				'font-size' => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
+			),
+			'  .premium-dheading-block__second' => array(
+				'font-size' => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-dheading-block__first'   => array(
+				'font-size' => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
+			),
+			'  .premium-dheading-block__second' => array(
+				'font-size' => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
+			),
+
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-dheading-block-' : '.premium-dheading-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_iconBox_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/icon-box']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			'  .premium-icon-box__title' => array(
+				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-icon-box__desc'   => array(
+				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+			),
+			' .premium-icon-box__btn'    => array(
+				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			'  .premium-icon-box__title' => array(
+				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-icon-box__desc'   => array(
+				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+			),
+			' .premium-icon-box__btn'    => array(
+				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			'  .premium-icon-box__title' => array(
+				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-icon-box__desc'   => array(
+				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+			),
+			' .premium-icon-box__btn'    => array(
+				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+			),
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-icon-box-' : '.premium-icon-box-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_pricing_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/pricing-table']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' .premium-pricing-table__title'            => array(
+				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-pricing-table__slash'            => array(
+				'font-size' => self::get_css_value( $attr['slashSize'], $attr['slashSizeUnit'] ),
+			),
+			' .premium-pricing-table__currency'         => array(
+				'font-size' => self::get_css_value( $attr['currSize'], $attr['currSizeUnit'] ),
+			),
+			' .premium-pricing-table__val'              => array(
+				'font-size' => self::get_css_value( $attr['valSize'], $attr['valSizeUnit'] ),
+			),
+			' .premium-pricing-table__divider'          => array(
+				'font-size' => self::get_css_value( $attr['divSize'], $attr['divSizeUnit'] ),
+			),
+			' .premium-pricing-table__dur'              => array(
+				'font-size' => self::get_css_value( $attr['durSize'], $attr['durSizeUnit'] ),
+			),
+			' .premium-pricing-table__list'             => array(
+				'font-size' => self::get_css_value( $attr['listSize'], $attr['listSizeUnit'] ),
+			),
+			' .premium-pricing-table__desc'             => array(
+				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+			),
+			' .premium-pricing-table__button_link'      => array(
+				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+			),
+			' .premium-pricing-table__badge_wrap  span' => array(
+				'font-size' => self::get_css_value( $attr['badgeTextSize'], $attr['badgeTextUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-pricing-table__title'            => array(
+				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-pricing-table__slash'            => array(
+				'font-size' => self::get_css_value( $attr['slashSizeTablet'], $attr['slashSizeUnit'] ),
+			),
+			' .premium-pricing-table__currency'         => array(
+				'font-size' => self::get_css_value( $attr['currSizeTablet'], $attr['currSizeUnit'] ),
+			),
+			' .premium-pricing-table__val'              => array(
+				'font-size' => self::get_css_value( $attr['valSizeTablet'], $attr['valSizeUnit'] ),
+			),
+			' .premium-pricing-table__divider'          => array(
+				'font-size' => self::get_css_value( $attr['divSizeTablet'], $attr['divSizeUnit'] ),
+			),
+			' .premium-pricing-table__dur'              => array(
+				'font-size' => self::get_css_value( $attr['durSizeTablet'], $attr['durSizeUnit'] ),
+			),
+			' .premium-pricing-table__list'             => array(
+				'font-size' => self::get_css_value( $attr['listSizeTablet'], $attr['listSizeUnit'] ),
+			),
+			' .premium-pricing-table__desc'             => array(
+				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+			),
+			' .premium-pricing-table__button_link'      => array(
+				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+			),
+			' .premium-pricing-table__badge_wrap  span' => array(
+				'font-size' => self::get_css_value( $attr['badgeTextSizeTablet'], $attr['badgeTextUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-pricing-table__title'            => array(
+				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+			),
+			' .premium-pricing-table__slash'            => array(
+				'font-size' => self::get_css_value( $attr['slashSizeMobile'], $attr['slashSizeUnit'] ),
+			),
+			' .premium-pricing-table__currency'         => array(
+				'font-size' => self::get_css_value( $attr['currSizeMobile'], $attr['currSizeUnit'] ),
+			),
+			' .premium-pricing-table__val'              => array(
+				'font-size' => self::get_css_value( $attr['valSizeMobile'], $attr['valSizeUnit'] ),
+			),
+			' .premium-pricing-table__divider'          => array(
+				'font-size' => self::get_css_value( $attr['divSizeMobile'], $attr['divSizeUnit'] ),
+			),
+			' .premium-pricing-table__dur'              => array(
+				'font-size' => self::get_css_value( $attr['durSizeMobile'], $attr['durSizeUnit'] ),
+			),
+			' .premium-pricing-table__list'             => array(
+				'font-size' => self::get_css_value( $attr['listSizeMobile'], $attr['listSizeUnit'] ),
+			),
+			' .premium-pricing-table__desc'             => array(
+				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+			),
+			' .premium-pricing-table__button_link'      => array(
+				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+			),
+			' .premium-pricing-table__badge_wrap  span' => array(
+				'font-size' => self::get_css_value( $attr['badgeTextSizeMobile'], $attr['badgeTextUnit'] ),
+			),
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-pricing-table-' : '.premium-pricing-table-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_testimonial_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/testimonial']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' .premium-testimonial__author'      => array(
+				'font-size' => self::get_css_value( $attr['authorSize'], $attr['authorSizeUnit'] ),
+			),
+			' .premium-testimonial__author_comp' => array(
+				'font-size' => self::get_css_value( $attr['authorComSize'], $attr['authorComSizeUnit'] ),
+			),
+			' .premium-testimonial__text'        => array(
+				'font-size' => self::get_css_value( $attr['bodySize'], $attr['bodySizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-testimonial__author'      => array(
+				'font-size' => self::get_css_value( $attr['authorSizeTablet'], $attr['authorSizeUnit'] ),
+			),
+			' .premium-testimonial__author_comp' => array(
+				'font-size' => self::get_css_value( $attr['authorComSizeTablet'], $attr['authorComSizeUnit'] ),
+			),
+			' .premium-testimonial__text'        => array(
+				'font-size' => self::get_css_value( $attr['bodySizeTablet'], $attr['bodySizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-testimonial__author'      => array(
+				'font-size' => self::get_css_value( $attr['authorSizeMobile'], $attr['authorSizeUnit'] ),
+			),
+			' .premium-testimonial__author_comp' => array(
+				'font-size' => self::get_css_value( $attr['authorComSizeMobile'], $attr['authorComSizeUnit'] ),
+			),
+			' .premium-testimonial__text'        => array(
+				'font-size' => self::get_css_value( $attr['bodySizeMobile'], $attr['bodySizeUnit'] ),
+			),
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-testimonial-' : '.premium-testimonial-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_videoBox_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/video-box']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			'  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSize'], $attr['videoDescSizeUnit'] ),
+			),
+		);
+		// Desktop Icon Size CSS ends.
+
+		// Tablet CSS Start.
+		$t_selectors = array(
+			'  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSizeTablet'], $attr['videoDescSizeUnit'] ),
+			),
+		);
+		// Tablet CSS End.
+
+		// Mobile CSS Start.
+		$m_selectors = array(
+			'  .premium-video-box__desc_text' => array(
+				'font-size' => self::get_css_value( $attr['videoDescSizeMobile'], $attr['videoDescSizeUnit'] ),
+			),
+		);
+		// Mobile CSS End.
+
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-video-box-' : '#premium-video-box-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
@@ -722,9 +1362,9 @@ class PBG_Blocks_Helper {
 	/**
 	 * Get CSS value
 	 *
-     * @since 1.8.2
-     * @access public
-     * 
+	 * @since 1.8.2
+	 * @access public
+	 *
 	 * @param string $value  CSS value.
 	 * @param string $unit  CSS unit.
 	 */
@@ -742,6 +1382,35 @@ class PBG_Blocks_Helper {
 		}
 
 		return $css_val;
+	}
+
+	/**
+	 * Get CSS value
+	 *
+	 * @since 1.8.2
+	 * @access public
+	 *
+	 * @param string $hexColor value of Color.
+	 */
+	public static function hex_to_rgba( $hexColor ) {
+
+		$color = str_replace( '#', '', $hexColor );
+
+		if ( strlen( $color ) > 3 ) {
+			$rgb =
+				hexdec( substr( $color, 0, 2 ) ) . ',' . hexdec( substr( $color, 2, 2 ) ) .
+
+				',' . hexdec( substr( $color, 4, 2 ) );
+
+		} else {
+			$color = str_replace( '#', '', $hexColor );
+			$r     = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
+			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
+			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+			$rgb   = hexdec( $r ) . ',' . hexdec( $g ) . ',' . hexdec( $b );
+		}
+
+		return $rgb;
 	}
 
 	/**
@@ -834,7 +1503,7 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * @return object
 	 */
 	function pbg_blocks_helper() {
-        return pbg_blocks_helper::get_instance();
+		return pbg_blocks_helper::get_instance();
 	}
 }
 pbg_blocks_helper();

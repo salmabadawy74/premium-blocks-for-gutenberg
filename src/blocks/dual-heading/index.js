@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const dualHeadingAttrs = {
+    block_id: {
+        type: "string"
+    },
     contentAlign: {
         type: "string",
         default: "center"
@@ -41,6 +44,16 @@ const dualHeadingAttrs = {
         type: "number",
         default: "20"
     },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    firstSizeTablet: {
+        type: "number"
+    },
+    firstSizeMobile: {
+        type: "number"
+    },
     firstFamily: {
         type: "string"
     },
@@ -59,6 +72,10 @@ const dualHeadingAttrs = {
     },
     firstBackground: {
         type: "string"
+    },
+    firstOpacity: {
+        type: "number",
+        default: "1"
     },
     firstBorderType: {
         type: "string",
@@ -142,6 +159,16 @@ const dualHeadingAttrs = {
         type: "number",
         default: "20"
     },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    secondSizeTablet: {
+        type: "number"
+    },
+    secondSizeMobile: {
+        type: "number"
+    },
     secondFamily: {
         type: "string"
     },
@@ -160,6 +187,10 @@ const dualHeadingAttrs = {
     },
     secondBackground: {
         type: "string"
+    },
+    secondOpacity: {
+        type: "number",
+        default: "1"
     },
     secondBorderType: {
         type: "string",
@@ -249,6 +280,10 @@ const dualHeadingAttrs = {
     containerBack: {
         type: "string"
     },
+    containerOpacity: {
+        type: "number",
+        default: "1"
+    },
     imageID: {
         type: "string"
     },
@@ -301,6 +336,18 @@ const dualHeadingAttrs = {
     },
     containerBorderColor: {
         type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

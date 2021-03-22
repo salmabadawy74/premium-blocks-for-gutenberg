@@ -715,6 +715,7 @@ a.premium-dheading-block__link:hover {
     -ms-transform: scale(1);
     transform: scale(1);
 }
+
 /**
 * Responsive
 */
@@ -1743,4 +1744,22 @@ a.premium-dheading-block__link:hover {
 }
 .premium-fancy-slide .typed-cursor {
     visibility: hidden;
+}
+
+/************ Responsive **************/
+
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
+    }
 }

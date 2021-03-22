@@ -53,13 +53,28 @@ const buttonAttrs = {
     backColor: {
         type: "string"
     },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
     backHoverColor: {
         type: "string"
     },
     slideColor: {
         type: "string"
     },
+    textSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     textSize: {
+        type: "number",
+        default: '20'
+    },
+    textSizeTablet: {
+        type: "number"
+    },
+    textSizeMobile: {
         type: "number"
     },
     textFontFamily: {
@@ -150,8 +165,24 @@ const buttonAttrs = {
         type: "string",
         default: ""
     },
-    id: {
+    block_id: {
         type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 
