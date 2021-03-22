@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const counterAttrs = {
+    block_id: {
+        type: "string"
+    },
     borderCount: {
         type: "boolean",
         default: false
@@ -33,9 +36,19 @@ const counterAttrs = {
         type: "string",
         default: "column"
     },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
+    },
     numberSize: {
         type: "number",
         default: 30
+    },
+    numberSizeTablet: {
+        type: "number"
+    },
+    numberSizeMobile: {
+        type: "number"
     },
     numberColor: {
         type: "string",
@@ -57,6 +70,16 @@ const counterAttrs = {
         type: "number",
         default: 20
     },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    prefixSizeTablet: {
+        type: "number"
+    },
+    prefixSizeMobile: {
+        type: "number"
+    },
     prefixColor: {
         type: "string"
     },
@@ -75,9 +98,19 @@ const counterAttrs = {
         type: "string",
         default: "Suffix"
     },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     suffixSize: {
         type: "number",
         default: 20
+    },
+    suffixSizeTablet: {
+        type: "number"
+    },
+    suffixSizeMobile: {
+        type: 'number'
     },
     suffixColor: {
         type: "string"
@@ -135,6 +168,16 @@ const counterAttrs = {
         type: "number",
         default: 20
     },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
     titleSpacing: {
         type: "number"
     },
@@ -165,6 +208,10 @@ const counterAttrs = {
     },
     containerBack: {
         type: "string"
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1"
     },
     shadowColor: {
         type: "string"
@@ -245,6 +292,18 @@ const counterAttrs = {
     },
     suffixFamily: {
         type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

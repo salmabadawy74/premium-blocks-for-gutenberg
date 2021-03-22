@@ -1,28 +1,26 @@
 import classnames from 'classnames'
-
+import hexToRgba from "hex-to-rgba";
 const save = props => {
 
     const { className } = props;
 
     const {
+        block_id,
         borderCount,
         increment,
         time,
         delay,
         align,
         flexDir,
-        numberSize,
         numberColor,
         numberWeight,
         prefix,
         prefixTxt,
-        prefixSize,
         prefixColor,
         prefixWeight,
         prefixGap,
         suffix,
         suffixTxt,
-        suffixSize,
         suffixColor,
         suffixWeight,
         suffixGap,
@@ -37,7 +35,6 @@ const save = props => {
         titleCheck,
         titleTxt,
         titleColor,
-        titleSize,
         titleSpacing,
         titleStyle,
         titleUpper,
@@ -46,6 +43,7 @@ const save = props => {
         titleWeight,
         faIcon,
         containerBack,
+        containerOpacity,
         shadowBlur,
         shadowColor,
         shadowHorizontal,
@@ -68,6 +66,9 @@ const save = props => {
         counterFamily,
         prefixFamily,
         suffixFamily,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -76,11 +77,14 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}__wrap`}
+            id={`premium-countup-${block_id}`}
+            className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerBack,
+                backgroundColor: containerBack
+                    ? hexToRgba(containerBack, containerOpacity)
+                    : "transparent",
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundImage: `url('${backgroundImageURL}')`,
                 backgroundRepeat: backgroundRepeat,
@@ -148,7 +152,6 @@ const save = props => {
                         <p
                             className={`premium-countup__prefix`}
                             style={{
-                                fontSize: prefixSize + "px",
                                 fontFamily: prefixFamily,
                                 color: prefixColor,
                                 fontWeight: prefixWeight,
@@ -163,7 +166,6 @@ const save = props => {
                         data-interval={time}
                         data-delay={delay}
                         style={{
-                            fontSize: numberSize + "px",
                             fontFamily: counterFamily,
                             color: numberColor,
                             fontWeight: numberWeight
@@ -175,7 +177,6 @@ const save = props => {
                         <p
                             className={`premium-countup__suffix`}
                             style={{
-                                fontSize: suffixSize + "px",
                                 fontFamily: suffixFamily,
                                 color: suffixColor,
                                 fontWeight: suffixWeight,
@@ -190,7 +191,6 @@ const save = props => {
                     <h3
                         className={`premium-countup__title`}
                         style={{
-                            fontSize: titleSize + "px",
                             fontFamily: titleFamily,
                             marginTop: titleT + "px",
                             marginBottom: titleB + "px",
@@ -209,7 +209,6 @@ const save = props => {
                 <h3
                     className={`premium-countup__title`}
                     style={{
-                        fontSize: titleSize + "px",
                         fontFamily: titleFamily,
                         marginTop: titleT + "px",
                         marginBottom: titleB + "px",

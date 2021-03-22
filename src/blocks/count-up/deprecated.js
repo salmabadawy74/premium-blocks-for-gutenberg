@@ -243,6 +243,65 @@ const newAttributes_1_7_5 = {
     borderLeft: {
         type: "number",
     },
+    containerOpacity: {
+        type: "string",
+        default: "1"
+    },
+    block_id: {
+        type: 'string'
+    },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    numberSizeTablet: {
+        type: "number"
+    },
+    numberSizeMobile: {
+        type: "number"
+    },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    prefixSizeTablet: {
+        type: "number"
+    },
+    prefixSizeMobile: {
+        type: "number"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    suffixSizeTablet: {
+        type: "number"
+    },
+    suffixSizeMobile: {
+        type: 'number'
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
 const counterAttrs_1_7_5 = Object.assign(
@@ -501,6 +560,23 @@ const deprecatedContent = [
                 borderBottom: "",
                 borderLeft: "",
                 borderCount: "",
+                block_id: '',
+                numberSizeUnit: 'px',
+                numberSizeTablet: '',
+                numberSizeMobile: '',
+                prefixSizeUnit: 'px',
+                prefixSizeTablet: '',
+                prefixSizeMobile: '',
+                suffixSizeUnit: 'px',
+                suffixSizeTablet: '',
+                suffixSizeMobile: '',
+                titleSizeUnit: 'px',
+                titleSizeTablet: '',
+                titleSizeMobile: '',
+                containerOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

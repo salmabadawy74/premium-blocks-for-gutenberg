@@ -564,6 +564,33 @@ const newAttributes_1_9_5 = {
     firstBorder: {
         type: "boolean",
     },
+    block_id: {
+        type: "string"
+    },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    firstSizeTablet: {
+        type: "number"
+    },
+    firstSizeMobile: {
+        type: "number"
+    },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    secondSizeTablet: {
+        type: "number"
+    },
+    secondSizeMobile: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    }
 };
 
 const deprecated_attributes_1_9_5 = Object.assign(
@@ -591,6 +618,20 @@ const deprecatedContent = [
                 secondBorderRight: "",
                 secondBorderBottom: "",
                 secondBorderLeft: "",
+                classMigrate: false,
+                block_id: '',
+                secondSizeUnit: 'px',
+                secondSizeTablet: '',
+                secondSizeMobile: '',
+                firstSizeUnit: 'px',
+                firstSizeTablet: '',
+                firstSizeMobile: '',
+                firstOpacity: "",
+                secondOpacity: "",
+                containerOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

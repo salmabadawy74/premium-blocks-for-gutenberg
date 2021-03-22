@@ -10,6 +10,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const bannerAttrs = {
+    block_id: {
+        type: "string"
+    },
     borderBanner: {
         type: "boolean",
         default: false,
@@ -111,6 +114,10 @@ const bannerAttrs = {
         type: "number",
         default: "20"
     },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     titleLine: {
         type: "number"
     },
@@ -142,6 +149,16 @@ const bannerAttrs = {
     descSize: {
         type: "number",
         default: "20"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
     },
     descLine: {
         type: "number"
@@ -179,9 +196,6 @@ const bannerAttrs = {
         selector: ".premium-banner__link"
     },
     sepColor: {
-        type: "string"
-    },
-    id: {
         type: "string"
     },
     blur: {
@@ -237,6 +251,28 @@ const bannerAttrs = {
     },
     paddingU: {
         type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
     }
 };
 
