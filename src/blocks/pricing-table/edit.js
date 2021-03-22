@@ -35,7 +35,7 @@ class PremiumPricingTable extends Component {
     }
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        setAttributes({ id: clientId });
+        setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");

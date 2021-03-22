@@ -24,7 +24,7 @@ function styling(props) {
     let mobile_selectors = {}
 
     selectors = {
-        "  .premium-icon-box__title": {
+        " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
@@ -36,7 +36,7 @@ function styling(props) {
     }
 
     tablet_selectors = {
-        " .premium-icon-box__title": {
+        " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
@@ -48,7 +48,7 @@ function styling(props) {
     }
 
     mobile_selectors = {
-        " .premium-icon-box__title": {
+        " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
@@ -70,7 +70,7 @@ function styling(props) {
     styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
     styling_css += generateCSS(mobile_selectors, id, true, "mobile")
-    console.log(styling_css)
+
     return styling_css
 
 }

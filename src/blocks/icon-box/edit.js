@@ -1122,7 +1122,7 @@ class edit extends Component {
             ),
             <div
                 id={`premium-icon-box-${block_id}`}
-                className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id}`}
+                className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
                     border: borderType,

@@ -52,7 +52,7 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
-        " .premium-pricing-table__title": {
+        " .premium-pricing-table__title_wrap .premium-pricing-table__title": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-pricing-table__slash": {

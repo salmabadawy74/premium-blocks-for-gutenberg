@@ -21,7 +21,7 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
-        " .premium-accordion__title": {
+        " .premium-accordion__title .premium-accordion__title_text ": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-accordion__desc": {
@@ -30,7 +30,7 @@ function styling(props) {
     }
 
     tablet_selectors = {
-        " .premium-accordion__title ": {
+        " .premium-accordion__title .premium-accordion__title_text ": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-accordion__desc": {
@@ -39,7 +39,7 @@ function styling(props) {
     }
 
     mobile_selectors = {
-        " .premium-accordion__title": {
+        " .premium-accordion__title .premium-accordion__title_text": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-accordion__desc": {

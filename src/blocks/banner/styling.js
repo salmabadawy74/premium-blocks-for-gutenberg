@@ -20,7 +20,7 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
-        " .premium-banner__title": {
+        " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-banner__desc": {
@@ -28,7 +28,7 @@ function styling(props) {
         }
     }
     tablet_selectors = {
-        " .premium-banner__title": {
+        " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-banner__desc": {
@@ -36,7 +36,7 @@ function styling(props) {
         }
     }
     mobile_selectors = {
-        " .premium-banner__title": {
+        " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
         " .premium-banner__desc": {

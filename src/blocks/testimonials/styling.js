@@ -24,10 +24,10 @@ function styling(props) {
     let mobile_selectors = {}
 
     selectors = {
-        " .premium-testimonial__author": {
+        "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": generateCSSUnit(authorSize, authorSizeUnit)
         },
-        " .premium-testimonial__author_comp": {
+        "   .premium-testimonial__info .premium-testimonial__author_comp": {
             "font-size": generateCSSUnit(authorComSize, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {
@@ -36,10 +36,10 @@ function styling(props) {
     };
 
     tablet_selectors = {
-        " .premium-testimonial__author": {
+        "  .premium-testimonial__info .premium-testimonial__author ": {
             "font-size": generateCSSUnit(authorSizeTablet, authorSizeUnit)
         },
-        " .premium-testimonial__author_comp": {
+        "   .premium-testimonial__info .premium-testimonial__author_comp ": {
             "font-size": generateCSSUnit(authorComSizeTablet, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {
@@ -48,10 +48,10 @@ function styling(props) {
     };
 
     mobile_selectors = {
-        " .premium-testimonial__author": {
+        "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": generateCSSUnit(authorSizeMobile, authorSizeUnit)
         },
-        " .premium-testimonial__author_comp": {
+        "   .premium-testimonial__info .premium-testimonial__author_comp ": {
             "font-size": generateCSSUnit(authorComSizeMobile, authorComSizeUnit)
         },
         ' .premium-testimonial__text': {

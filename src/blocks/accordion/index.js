@@ -133,7 +133,7 @@ const accordionAttrs = {
     },
     descSizeUnit: {
         type: "string",
-        default: "number"
+        default: "px"
     },
     arrowSize: {
         type: "number",

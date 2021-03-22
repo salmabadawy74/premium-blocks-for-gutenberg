@@ -332,7 +332,7 @@ const edit = props => {
                                 setAttributes({ backgroundOpacity: newvalue })
                             }
                         />
-                        <PremiumBackgroud
+                        <PremiumBackground
                             imageID={imageID}
                             imageURL={imageURL}
                             backgroundPosition={backgroundPosition}
