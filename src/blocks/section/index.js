@@ -46,6 +46,10 @@ const containerAttrs = {
     color: {
         type: "string"
     },
+    opacity: {
+        type: "number",
+        default: "1"
+    },
     imageID: {
         type: "string"
     },
@@ -142,6 +146,21 @@ const containerAttrs = {
     shadowPosition: {
         type: "string",
         default: ""
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

@@ -404,6 +404,43 @@ const newAttributes_1_5_8 = {
     playBorderLeft: {
         type: "number",
     },
+    block_id: {
+        type: 'string'
+    },
+    videoDescSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    videoDescSizeMobile: {
+        type: 'number'
+    },
+    videoDescSizeTablet: {
+        type: 'number'
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    playOpacity: {
+        type: "number",
+        default: "1",
+    },
+    videoDescOpacity: {
+        type: "number",
+        default: "1",
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
 const videoBoxAttrs_1_5_8 = Object.assign(
@@ -426,6 +463,16 @@ const deprecatedContent = [
                 boxBorderLeft: "",
                 borderBoxUpdated: "",
                 borderPlayUpdated: "",
+                classMigrate: false,
+                block_id: '',
+                videoDescSizeUnit: 'px',
+                videoDescSizeTablet: '',
+                videoDescSizeMobile: '',
+                playOpacity: '',
+                videoDescOpacity: '',
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

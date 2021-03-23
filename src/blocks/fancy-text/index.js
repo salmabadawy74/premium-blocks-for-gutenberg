@@ -4,6 +4,7 @@ import {
 
 import save from "./save";
 import edit from "./edit";
+import deprecated from './deprecated'
 import PbgIcon from "../icons";
 
 const {
@@ -95,6 +96,10 @@ const fancyTextAttrs = {
     fancyTextBGColor: {
         type: "string"
     },
+    fancyTextBGOpacity: {
+        type: "number",
+        default: "1"
+    },
     shadowColor: {
         type: "string"
     },
@@ -147,6 +152,10 @@ const fancyTextAttrs = {
     textBGColor: {
         type: "string"
     },
+    textBGOpacity: {
+        type: "number",
+        default: "1"
+    },
     loop: {
         type: "boolean",
         default: "true"
@@ -190,6 +199,18 @@ const fancyTextAttrs = {
     fancyalign: {
         type: "string",
         default: "center"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 
@@ -203,5 +224,6 @@ registerBlockType("premium/fancy-text", {
     },
     example: {},
     edit: edit,
-    save: save
+    save: save,
+    deprecated: deprecated
 });

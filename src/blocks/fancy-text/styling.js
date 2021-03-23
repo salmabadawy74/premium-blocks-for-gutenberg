@@ -1,8 +1,7 @@
-import generateCSS from '../../../assets/js/blocks/generateCss'
-import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
-
+import hexToRgba from "hex-to-rgba";
+import generateCSS from "../../../assets/js/blocks/generateCss";
+import generateCSSUnit from "../../../assets/js/blocks/generateCssUnit";
 function styling(props) {
-
     const {
         block_id,
         classMigrate,
@@ -30,13 +29,13 @@ function styling(props) {
         textLetter,
         textUpper,
         textStyle,
-        textBGColor
-    } = props.attributes
-
+        textBGColor,
+        fancyTextBGOpacity,
+        textBGOpacity,
+    } = props.attributes;
     var selectors = {}
     var tablet_selectors = {}
     var mobile_selectors = {}
-
     selectors = {
         " .premium-fancy-text-title": {
             "font-size": generateCSSUnit(fancyTextfontSize, fancyTextfontSizeUnit),
@@ -45,7 +44,9 @@ function styling(props) {
             "letter-spacing": fancyTextLetter + "px",
             "text-transform": fancyTextUpper ? "uppercase" : "none",
             "font-style": fancyTextStyle,
-            "background-color": fancyTextBGColor,
+            "background-color": fancyTextBGColor
+                ? hexToRgba(fancyTextBGColor, fancyTextBGOpacity)
+                : "transparent",
             "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
         },
         " .premium-fancy-text-title-slide": {
@@ -55,7 +56,9 @@ function styling(props) {
             "letter-spacing": fancyTextLetter + "px",
             "text-transform": fancyTextUpper ? "uppercase" : "none",
             "font-style": fancyTextStyle,
-            "background-color": fancyTextBGColor,
+            "background-color": fancyTextBGColor
+                ? hexToRgba(fancyTextBGColor, fancyTextBGOpacity)
+                : "transparent",
             "text-shadow": `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
         },
         " .typed-cursor": {
@@ -69,6 +72,8 @@ function styling(props) {
             "text-transform": textUpper ? "uppercase" : "none",
             "font-style": textStyle,
             "background-color": textBGColor
+                ? hexToRgba(textBGColor, textBGOpacity)
+                : "transparent",
         },
         " .premium-fancy-text-suffix-text": {
             "font-size": generateCSSUnit(textfontSize, textfontSizeUnit),
@@ -78,9 +83,10 @@ function styling(props) {
             "text-transform": textUpper ? "uppercase" : "none",
             "font-style": textStyle,
             "background-color": textBGColor
+                ? hexToRgba(textBGColor, textBGOpacity)
+                : "transparent",
         },
-    }
-
+    };
     mobile_selectors = {
         " .premium-fancy-text-title": {
             "font-size": generateCSSUnit(fancyTextfontSizeMobile, fancyTextfontSizeUnit)
@@ -95,7 +101,6 @@ function styling(props) {
             "font-size": generateCSSUnit(textfontSizeMobile, textfontSizeUnit)
         },
     }
-
     tablet_selectors = {
         " .premium-fancy-text-title": {
             "font-size": generateCSSUnit(fancyTextfontSizeTablet, fancyTextfontSizeUnit)
@@ -110,19 +115,14 @@ function styling(props) {
             "font-size": generateCSSUnit(textfontSizeTablet, textfontSizeUnit)
         },
     }
-
     var styling_css = ""
     var id = `#premium-fancy-text-${block_id}`
     if (classMigrate) {
         id = `.premium-block-${block_id}`
     }
-
     styling_css = generateCSS(selectors, id)
     styling_css += generateCSS(tablet_selectors, id, true, "tablet")
-
     styling_css += generateCSS(mobile_selectors, id, true, "mobile")
-
     return styling_css
 }
-
 export default styling

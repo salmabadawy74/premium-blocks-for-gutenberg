@@ -1,11 +1,13 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
+import hexToRgba from 'hex-to-rgba'
 
 const save = props => {
 
     const { className } = props;
 
     const {
+        block_id,
         borderPlayUpdated,
         borderBoxUpdated,
         videoBoxId,
@@ -32,6 +34,7 @@ const save = props => {
         playSize,
         playPadding,
         playBack,
+        playOpacity,
         playBorderColor,
         playBorderWidth,
         playBorderRadius,
@@ -42,8 +45,8 @@ const save = props => {
         videoDescText,
         videoDescColor,
         videoDescBack,
+        videoDescOpacity,
         videoDescPadding,
-        videoDescSize,
         videoDescFamily,
         videoDescWeight,
         videoDescLetter,
@@ -71,6 +74,9 @@ const save = props => {
         shadowHorizontal,
         shadowVertical,
         shadowPosition,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
 
@@ -96,7 +102,7 @@ const save = props => {
     return (
         <div
             id={videoBoxId}
-            className={`${mainClasses} video-overlay-${overlay}`}
+            className={`${mainClasses} video-overlay-${overlay}  premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             data-type={videoType}
             style={{
                 borderStyle: boxBorderType,
@@ -157,7 +163,7 @@ const save = props => {
                         top: playTop + "%",
                         left: playLeft + "%",
                         color: playColor,
-                        backgroundColor: playBack,
+                        backgroundColor: playBack ? hexToRgba(playBack, playOpacity) : 'transparent',
                         borderStyle: playBorderType,
                         borderWidth: borderPlayUpdated
                             ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
@@ -180,7 +186,7 @@ const save = props => {
                     className={`premium-video-box__desc`}
                     style={{
                         color: videoDescColor,
-                        backgroundColor: videoDescBack,
+                        backgroundColor: videoDescBack ? hexToRgba(videoDescBack, videoDescOpacity) : "transparent",
                         padding: videoDescPadding,
                         borderRadius: videoDescBorderRadius,
                         top: descTop + "%",
@@ -190,7 +196,6 @@ const save = props => {
                     <p
                         className={`premium-video-box__desc_text`}
                         style={{
-                            fontSize: videoDescSize + "px",
                             fontFamily: videoDescFamily,
                             fontWeight: videoDescWeight,
                             letterSpacing: videoDescLetter + "px",

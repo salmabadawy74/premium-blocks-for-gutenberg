@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import hexToRgba from 'hex-to-rgba'
 
 const save = props => {
 
@@ -65,16 +66,23 @@ const save = props => {
         urlCheck,
         link,
         target,
+        iconOpacity,
+        backgroundOpacity,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon');
 
     return (
         <div
-            className={`${mainClasses}__container`}
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: backgroundColor,
+                backgroundColor: backgroundColor
+                    ? hexToRgba(backgroundColor, backgroundOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -109,7 +117,9 @@ const save = props => {
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack,
+                        backgroundColor: iconBack
+                            ? hexToRgba(iconBack, iconOpacity)
+                            : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
@@ -8,6 +9,8 @@ const save = props => {
     const {
         borderUpdated,
         btnBorderUpdated,
+        priceOpacity,
+        tableOpacity,
         contentAlign,
         tableBack,
         borderType,
@@ -24,7 +27,6 @@ const save = props => {
         title,
         titleTag,
         titleColor,
-        titleSize,
         titleLetter,
         titleUpper,
         titleStyle,
@@ -41,7 +43,6 @@ const save = props => {
         descChecked,
         desc,
         descColor,
-        descSize,
         descLine,
         descWeight,
         descStyle,
@@ -57,27 +58,22 @@ const save = props => {
         pricePadding,
         slashPrice,
         slashColor,
-        slashSize,
         slashWeight,
         slashV,
         currPrice,
         currColor,
-        currSize,
         currWeight,
         currV,
         valPrice,
         valColor,
-        valSize,
         valWeight,
         valV,
         divPrice,
         divColor,
-        divSize,
         divWeight,
         divV,
         durPrice,
         durColor,
-        durSize,
         durWeight,
         durV,
         btnChecked,
@@ -86,7 +82,6 @@ const save = props => {
         btnTarget,
         btnColor,
         btnHoverColor,
-        btnSize,
         btnWeight,
         btnLine,
         btnLetter,
@@ -119,7 +114,6 @@ const save = props => {
         badgeHorizontal,
         badgeWidth,
         badgeSize,
-        badgeTextSize,
         badgeWeight,
         badgeLetter,
         badgeStyle,
@@ -128,7 +122,6 @@ const save = props => {
         listChecked,
         listColor,
         listWeight,
-        listSize,
         listItemsStyle,
         listLine,
         listUpper,
@@ -140,18 +133,23 @@ const save = props => {
         listPadding,
         listStyle,
         featsAlign,
-        id,
+        block_id,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-pricing-table");
 
     return (
         <div
-            id={`${mainClasses}-${id}`}
-            className={`${mainClasses}`}
+            id={`${mainClasses}-${block_id}`}
+            className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
-                background: tableBack,
+                backgroundColor: tableBack
+                    ? hexToRgba(tableBack, tableOpacity)
+                    : "transparent",
                 borderStyle: borderType,
                 borderWidth: borderUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
@@ -185,7 +183,6 @@ const save = props => {
                     >
                         <span
                             style={{
-                                fontSize: badgeTextSize + "px",
                                 color: badgeColor,
                                 fontWeight: badgeWeight,
                                 textTransform: badgeUpper
@@ -225,7 +222,6 @@ const save = props => {
                         style={{
                             color: titleColor,
                             background: titleBack,
-                            fontSize: titleSize + "px",
                             letterSpacing: titleLetter + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyle,
@@ -242,7 +238,9 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__price_wrap`}
                     style={{
-                        background: priceBack,
+                        backgroundColor: priceBack
+                            ? hexToRgba(priceBack, priceOpacity)
+                            : "transparent",
                         marginTop: priceMarginT + "px",
                         marginBottom: priceMarginB + "px",
                         padding: pricePadding + "px",
@@ -254,7 +252,6 @@ const save = props => {
                             className={`premium-pricing-table__slash`}
                             style={{
                                 color: slashColor,
-                                fontSize: slashSize + "px",
                                 fontWeight: slashWeight,
                                 alignSelf: slashV
                             }}
@@ -267,7 +264,6 @@ const save = props => {
                             className={`premium-pricing-table__currency`}
                             style={{
                                 color: currColor,
-                                fontSize: currSize + "px",
                                 fontWeight: currWeight,
                                 alignSelf: currV
                             }}
@@ -280,7 +276,6 @@ const save = props => {
                             className={`premium-pricing-table__val`}
                             style={{
                                 color: valColor,
-                                fontSize: valSize + "px",
                                 fontWeight: valWeight,
                                 alignSelf: valV
                             }}
@@ -293,7 +288,6 @@ const save = props => {
                             className={`premium-pricing-table__divider`}
                             style={{
                                 color: divColor,
-                                fontSize: divSize + "px",
                                 fontWeight: divWeight,
                                 alignSelf: divV
                             }}
@@ -306,7 +300,6 @@ const save = props => {
                             className={`premium-pricing-table__dur`}
                             style={{
                                 color: durColor,
-                                fontSize: durSize + "px",
                                 fontWeight: durWeight,
                                 alignSelf: durV
                             }}
@@ -328,7 +321,6 @@ const save = props => {
                         className={`premium-pricing-table__list list-${listStyle}`}
                         style={{
                             color: listColor,
-                            fontSize: listSize + "px",
                             background: listBack,
                             padding: listPadding + "px",
                             listStyle:
@@ -355,7 +347,6 @@ const save = props => {
                         style={{
                             color: descColor,
                             background: descBack,
-                            fontSize: descSize + "px",
                             fontWeight: descWeight,
                             lineHeight: descLine + "px",
                             letterSpacing: descLetter + "px",
@@ -382,7 +373,6 @@ const save = props => {
                         style={{
                             color: btnColor,
                             background: btnBack ? btnBack : "transparent",
-                            fontSize: btnSize + "px",
                             fontWeight: btnWeight,
                             letterSpacing: btnLetter + "px",
                             fontStyle: btnStyle,
@@ -412,7 +402,7 @@ const save = props => {
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
+                                `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
                                 `color: ${btnHoverColor} !important;`,
                                 `background: ${btnHoverBack} !important`,
                                 "}"

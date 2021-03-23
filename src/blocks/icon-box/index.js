@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconBoxAttrs = {
+    block_id: {
+        type: "string"
+    },
     borderIconBox: {
         type: "boolean",
         default: false
@@ -16,9 +19,6 @@ const iconBoxAttrs = {
     btnBorderIconBox: {
         type: "boolean",
         default: false
-    },
-    id: {
-        type: "string"
     },
     align: {
         type: "string",
@@ -91,7 +91,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     titleSize: {
-        type: "number"
+        type: "number",
+        default: '20'
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: 'number',
+        default: '20'
+    },
+    titleSizeMobile: {
+        type: 'number',
+        default: '20'
     },
     titleLine: {
         type: "number"
@@ -148,7 +161,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     descSize: {
-        type: "number"
+        type: "number",
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    descSizeMobile: {
+        type: "number",
+        default: '20'
     },
     descLine: {
         type: "number"
@@ -207,7 +233,20 @@ const iconBoxAttrs = {
         type: "string"
     },
     btnSize: {
-        type: "number"
+        type: "number",
+        default: '20'
+    },
+    btnSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    btnSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeMobile: {
+        type: "number",
+        default: '20'
     },
     btnLine: {
         type: "number"
@@ -393,7 +432,35 @@ const iconBoxAttrs = {
     },
     hoverShadowPosition: {
         type: "string"
-    }
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backOpacity: {
+        type: "number",
+        default: "1",
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+    btnOpacity: {
+        type: "number",
+        default: "1"
+    },
 };
 
 registerBlockType("premium/icon-box", {

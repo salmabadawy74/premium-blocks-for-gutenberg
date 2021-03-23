@@ -3,8 +3,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
+import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -16,8 +18,7 @@ const {
     BlockControls,
     AlignmentToolbar,
     InnerBlocks,
-    InspectorControls,
-    ColorPalette
+    InspectorControls
 } = wp.blockEditor;
 
 const CONTENT = [
@@ -38,6 +39,7 @@ const edit = props => {
         vPos,
         height,
         color,
+        opacity,
         imageID,
         imageURL,
         fixed,
@@ -66,7 +68,10 @@ const edit = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        shadowPosition
+        shadowPosition,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const WIDTH = [
@@ -196,16 +201,18 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <p>{__("Background Color")}</p>
-                    <ColorPalette
-                        value={color}
-                        onChange={newValue =>
-                            setAttributes({
-                                color: newValue
-                            })
+                    <PremiumBackground
+                        type="color"
+                        colorValue={color}
+                        onChangeColor={newvalue =>
+                            setAttributes({ color: newvalue })
                         }
-                        allowReset={true}
+                        opacityValue={opacity}
+                        onChangeOpacity={value =>
+                            setAttributes({ opacity: value })
+                        }
                     />
-                    <PremiumBackgroud
+                    <PremiumBackground
                         imageID={imageID}
                         imageURL={imageURL}
                         backgroundPosition={backgroundPosition}
@@ -230,7 +237,9 @@ const edit = props => {
                         onChangeBackSize={newValue =>
                             setAttributes({ backgroundSize: newValue })
                         }
-                        onChangeFixed={check => setAttributes({ fixed: check })}
+                        onChangeFixed={check =>
+                            setAttributes({ fixed: check })
+                        }
                     />
                 </PanelBody>
                 <PanelBody
@@ -372,15 +381,25 @@ const edit = props => {
                         }
                     />
                 </PanelBody>
+                <PremiumResponsiveTabs
+                    Desktop={hideDesktop}
+                    Tablet={hideTablet}
+                    Mobile={hideMobile}
+                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                />
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color,
+                backgroundColor: color
+                    ? hexToRgba(color, opacity)
+                    : "transparent",
                 borderStyle: borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
