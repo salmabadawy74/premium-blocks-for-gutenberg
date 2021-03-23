@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.6.2
+Tested up to: 5.7
 Requires PHP: 5.4
-Stable tag: 1.8.6
+Stable tag: 1.8.7
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -61,7 +61,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 = 1.8.7 =
 
+- New: Responsive Controls added to Show/Hide Block on specific devices.
 - Tweak: Border control improved to set different value for each direction.
+- Tweak: Added responsive controls to Font Size control in all blocks.
+- Tweak: Added Opacity control to Background Color control in all blocks.
 
 = 1.8.6 =
 
@@ -252,15 +255,15 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 = 1.4.2 =
 
-- Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block. 
+- Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block.
 
 = 1.4.1 =
 
-- Tweak: Added `Font Family` option for Dual Heading block. 
+- Tweak: Added `Font Family` option for Dual Heading block.
 
 = 1.4.0 =
 
-- Tweak: Added `Background Image` options group for container in Icon block. 
+- Tweak: Added `Background Image` options group for container in Icon block.
 - Tweak: Added `Background Color/Image` option for container in Testimonial block.
 - Tweak: Code refactored to minimize size.
 
