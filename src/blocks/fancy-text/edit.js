@@ -3,6 +3,8 @@ import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
+import PremiumBackground from "../../components/premium-background";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 import {
     SortableContainer,
@@ -97,6 +99,7 @@ class edit extends Component {
 
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
+
         this.props.setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
@@ -207,6 +210,11 @@ class edit extends Component {
             pauseTime,
             hoverPause,
             fancyalign,
+            fancyTextBGOpacity,
+            textBGOpacity,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = attributes;
 
         const ALIGNS = ["left", "center", "right"];
@@ -590,31 +598,33 @@ class edit extends Component {
                             style={fancyTextStyle}
                             spacing={fancyTextLetter}
                             upper={fancyTextUpper}
-                            onChangeWeight={(newWeight) =>
+                            onChangeWeight={newWeight =>
                                 setAttributes({
                                     fancyTextWeight: newWeight || 500,
                                 })
                             }
-                            onChangeStyle={(newStyle) =>
+                            onChangeStyle={newStyle =>
                                 setAttributes({ fancyTextStyle: newStyle })
                             }
-                            onChangeSpacing={(newValue) =>
+                            onChangeSpacing={newValue =>
                                 setAttributes({ fancyTextLetter: newValue })
                             }
-                            onChangeUpper={(check) =>
+                            onChangeUpper={check =>
                                 setAttributes({ fancyTextUpper: check })
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
                         <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={fancyTextBGColor}
-                            onChange={(newValue) =>
-                                setAttributes({
-                                    fancyTextBGColor: newValue,
-                                })
+                        <PremiumBackground
+                            type="color"
+                            colorValue={fancyTextBGColor}
+                            onChangeColor={newvalue =>
+                                setAttributes({ fancyTextBGColor: newvalue })
                             }
-                            allowReset={true}
+                            opacityValue={fancyTextBGOpacity}
+                            onChangeOpacity={value =>
+                                setAttributes({ fancyTextBGOpacity: value })
+                            }
                         />
                         <PremiumTextShadow
                             color={shadowColor}
@@ -709,23 +719,30 @@ class edit extends Component {
                             onResetClick={onResetClickTextTypo}
                         />
                         <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={textBGColor}
-                            onChange={(newValue) =>
-                                setAttributes({
-                                    textBGColor: newValue,
-                                })
+                        <PremiumBackground
+                            type="color"
+                            colorValue={textBGColor}
+                            onChangeColor={newvalue =>
+                                setAttributes({ textBGColor: newvalue })
                             }
-                            allowReset={true}
+                            opacityValue={textBGOpacity}
+                            onChangeOpacity={value =>
+                                setAttributes({ textBGOpacity: value })
+                            }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
                 </InspectorControls>
             ),
             <div
-                className={classnames(
-                    className,
-                    `premium-block-${block_id}`
-                )}
+                className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                 style={{
                     textAlign: align,
                 }}

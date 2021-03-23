@@ -47,6 +47,10 @@ const iconAttrs = {
     iconBack: {
         type: "string"
     },
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
     padding: {
         type: "string",
         default: "up"
@@ -131,6 +135,10 @@ const iconAttrs = {
     },
     backgroundColor: {
         type: "string"
+    },
+    backgroundOpacity: {
+        type: "number",
+        default: "1"
     },
     background: {
         type: "string"
@@ -246,6 +254,18 @@ const iconAttrs = {
     },
     target: {
         type: "boolean"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

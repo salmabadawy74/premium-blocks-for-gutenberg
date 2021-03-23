@@ -7,6 +7,10 @@ import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
+import styling from './styling';
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const {
     PanelBody,
@@ -35,10 +39,18 @@ class edit extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-
+        setAttributes({ block_id: clientId })
         if (!attributes.videoBoxId) {
             setAttributes({ videoBoxId: "premium-video-box-" + clientId });
         }
+        this.props.setAttributes({ classMigrate: true });
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-videoBox-" + this.props.clientId.substr(0, 6)
+        );
+        document.head.appendChild($style);
         this.initVideoBox();
     }
 
@@ -86,9 +98,10 @@ class edit extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, className } = this.props;
+        const { isSelected, setAttributes, className, clientId } = this.props;
 
         const {
+            block_id,
             borderPlayUpdated,
             borderBoxUpdated,
             videoBoxId,
@@ -117,6 +130,7 @@ class edit extends Component {
             playSize,
             playPadding,
             playBack,
+            playOpacity,
             playBorderColor,
             playBorderWidth,
             boxBorderTop,
@@ -135,8 +149,12 @@ class edit extends Component {
             videoDescText,
             videoDescColor,
             videoDescBack,
+            videoDescOpacity,
             videoDescPadding,
             videoDescSize,
+            videoDescSizeUnit,
+            videoDescSizeTablet,
+            videoDescSizeMobile,
             videoDescFamily,
             videoDescWeight,
             videoDescLetter,
@@ -156,6 +174,9 @@ class edit extends Component {
             shadowHorizontal,
             shadowVertical,
             shadowPosition,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const TYPE = [
@@ -232,6 +253,12 @@ class edit extends Component {
             addFontToHead(fontFamily);
         };
 
+        let element = document.getElementById(
+            "premium-style-videoBox-" + clientId.substr(0, 6)
+        );
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
         const mainClasses = classnames(className, "premium-video-box");
 
         const changeVideoType = (newvalue) => {
@@ -413,8 +440,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-                                        <strong>{__("Colors")}</strong>
-
                                         <PremiumBorder
                                             borderType={playBorderType}
                                             borderWidth={playBorderWidth}
@@ -482,17 +507,30 @@ class edit extends Component {
                                         />
                                         <PremiumTypo
                                             components={[
-                                                "size",
+                                                "responsiveSize",
                                                 "weight",
                                                 "style",
                                                 "upper",
-                                                "spacing"
+                                                "spacing",
                                             ]}
-                                            size={videoDescSize}
+                                            setAttributes={setAttributes}
+                                            fontSizeType={{
+                                                value: videoDescSizeUnit,
+                                                label: __("videoDescSizeUnit"),
+                                            }}
+                                            fontSize={{
+                                                value: videoDescSize,
+                                                label: __("videoDescSize"),
+                                            }}
+                                            fontSizeMobile={{
+                                                value: videoDescSizeMobile,
+                                                label: __("videoDescSizeMobile"),
+                                            }}
+                                            fontSizeTablet={{
+                                                value: videoDescSizeTablet,
+                                                label: __("videoDescSizeTablet"),
+                                            }}
                                             weight={videoDescWeight}
-                                            onChangeSize={newSize =>
-                                                setAttributes({ videoDescSize: newSize })
-                                            }
                                             onChangeWeight={newWeight =>
                                                 setAttributes({ videoDescWeight: newWeight })
                                             }
@@ -592,7 +630,6 @@ class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <p>{__("Icon Color")}</p>
-
                                             <ColorPalette
                                                 value={playColor}
                                                 onChange={newValue =>
@@ -603,14 +640,20 @@ class edit extends Component {
                                                 allowReset={true}
                                             />
                                             <p>{__("Icon Background Color")}</p>
-                                            <ColorPalette
-                                                value={playBack}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        playBack: newValue,
-                                                    })
+                                            <PremiumBackground
+                                                type="color"
+                                                colorValue={
+                                                    playBack
                                                 }
-                                                allowReset={true}
+                                                onChangeColor={newvalue => {
+                                                    setAttributes({ playBack: newvalue })
+                                                }}
+                                                opacityValue={
+                                                    playOpacity
+                                                }
+                                                onChangeOpacity={value => {
+                                                    setAttributes({ playOpacity: value })
+                                                }}
                                             />
                                             {videoDesc && (
                                                 <Fragment>
@@ -625,14 +668,24 @@ class edit extends Component {
                                                         allowReset={true}
                                                     />
                                                     <p>{__("Description Background Color")}</p>
-                                                    <ColorPalette
-                                                        value={videoDescBack}
-                                                        onChange={newValue =>
-                                                            setAttributes({
-                                                                videoDescBack: newValue,
-                                                            })
+                                                    <PremiumBackground
+                                                        type="color"
+                                                        colorValue={
+                                                            videoDescBack
                                                         }
-                                                        allowReset={true}
+                                                        onChangeColor={newvalue => {
+                                                            setAttributes({
+                                                                videoDescBack: newvalue,
+                                                            })
+                                                        }}
+                                                        opacityValue={
+                                                            videoDescOpacity
+                                                        }
+                                                        onChangeOpacity={value => {
+                                                            setAttributes({
+                                                                videoDescOpacity: value,
+                                                            })
+                                                        }}
                                                     />
                                                 </Fragment>
                                             )}
@@ -742,11 +795,19 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
                 </InspectorControls>
             ),
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay}`}
+                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-type={videoType}
                 style={{
                     borderStyle: boxBorderType,
@@ -807,7 +868,9 @@ class edit extends Component {
                             top: playTop + "%",
                             left: playLeft + "%",
                             color: playColor,
-                            backgroundColor: playBack,
+                            backgroundColor: playBack
+                                ? hexToRgba(playBack, playOpacity)
+                                : "transparent",
                             borderStyle: playBorderType,
                             borderWidth: borderPlayUpdated
                                 ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
@@ -830,7 +893,9 @@ class edit extends Component {
                         className={`premium-video-box__desc`}
                         style={{
                             color: videoDescColor,
-                            backgroundColor: videoDescBack,
+                            backgroundColor: videoDescBack
+                                ? hexToRgba(videoDescBack, videoDescOpacity)
+                                : "transparent",
                             padding: videoDescPadding,
                             borderRadius: videoDescBorderRadius,
                             top: descTop + "%",
@@ -840,7 +905,6 @@ class edit extends Component {
                         <p
                             className={`premium-video-box__desc_text`}
                             style={{
-                                fontSize: videoDescSize + "px",
                                 fontFamily: videoDescFamily,
                                 fontWeight: videoDescWeight,
                                 letterSpacing: videoDescLetter + "px",

@@ -8,7 +8,9 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackgroud from "../../components/premium-background";
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
@@ -38,6 +40,7 @@ const edit = props => {
         iconSizeUnit,
         iconColor,
         iconBack,
+        iconOpacity,
         shadowBlur,
         shadowColor,
         shadowHorizontal,
@@ -61,6 +64,7 @@ const edit = props => {
         borderRadius,
         borderColor,
         backgroundColor,
+        backgroundOpacity,
         imageID,
         imageURL,
         fixed,
@@ -91,7 +95,10 @@ const edit = props => {
         wrapMarginL,
         urlCheck,
         link,
-        target
+        target,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const EFFECTS = [
@@ -214,14 +221,18 @@ const edit = props => {
                                         allowReset={true}
                                     />
                                     <p>{__("Background Color")}</p>
-                                    <ColorPalette
-                                        value={iconBack}
-                                        onChange={newValue =>
+                                    <PremiumBackground
+                                        type="color"
+                                        colorValue={iconBack}
+                                        onChangeColor={value =>
+                                            setAttributes({ iconBack: value })
+                                        }
+                                        opacityValue={iconOpacity}
+                                        onChangeOpacity={newvalue =>
                                             setAttributes({
-                                                iconBack: newValue
+                                                iconOpacity: newvalue,
                                             })
                                         }
-                                        allowReset={true}
                                     />
                                 </Fragment>
                             )}
@@ -338,16 +349,20 @@ const edit = props => {
                 >
                     <Fragment>
                         <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={backgroundColor}
-                            onChange={newValue =>
+                        <PremiumBackground
+                            type="color"
+                            colorValue={backgroundColor}
+                            onChangeColor={value =>
                                 setAttributes({
-                                    backgroundColor: newValue
+                                    backgroundColor: value,
                                 })
                             }
-                            allowReset={true}
+                            opacityValue={backgroundOpacity}
+                            onChangeOpacity={newvalue =>
+                                setAttributes({ backgroundOpacity: newvalue })
+                            }
                         />
-                        <PremiumBackgroud
+                        <PremiumBackground
                             imageID={imageID}
                             imageURL={imageURL}
                             backgroundPosition={backgroundPosition}
@@ -493,15 +508,25 @@ const edit = props => {
                         }
                     />
                 </PanelBody>
+                <PremiumResponsiveTabs
+                    Desktop={hideDesktop}
+                    Tablet={hideTablet}
+                    Mobile={hideMobile}
+                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                />
             </InspectorControls>
         ),
 
         <div
-            className={`${mainClasses}__container`}
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: backgroundColor,
-                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
+                backgroundColor: backgroundColor
+                    ? hexToRgba(backgroundColor, backgroundOpacity)
+                    : "transparent",
+                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
@@ -535,7 +560,9 @@ const edit = props => {
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack,
+                        backgroundColor: iconBack
+                            ? hexToRgba(iconBack, iconOpacity)
+                            : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

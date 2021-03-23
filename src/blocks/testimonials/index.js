@@ -9,6 +9,13 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const testimonialsAttrs = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     align: {
         type: "string",
         default: "center"
@@ -49,6 +56,16 @@ const testimonialsAttrs = {
     authorSize: {
         type: "number"
     },
+    authorSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    authorSizeMobile: {
+        type: "number"
+    },
+    authorSizeTablet: {
+        type: "number"
+    },
     authorLetter: {
         type: "number"
     },
@@ -83,6 +100,16 @@ const testimonialsAttrs = {
     authorComSize: {
         type: "number"
     },
+    authorComSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    authorComSizeMobile: {
+        type: 'number'
+    },
+    authorComSizeTablet: {
+        type: 'number'
+    },
     urlCheck: {
         type: "boolean",
         default: false
@@ -108,6 +135,16 @@ const testimonialsAttrs = {
     },
     bodySize: {
         type: "number"
+    },
+    bodySizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    bodySizeMobile: {
+        type: "number"
+    },
+    bodySizeTablet: {
+        type: "string"
     },
     bodyLine: {
         type: "number"
@@ -138,6 +175,10 @@ const testimonialsAttrs = {
     },
     backColor: {
         type: "string"
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
     },
     imageID: {
         type: "string"
@@ -176,6 +217,18 @@ const testimonialsAttrs = {
     paddingUnit: {
         type: "string",
         default: "px"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

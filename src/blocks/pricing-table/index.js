@@ -76,7 +76,17 @@ const pricingAttrs = {
         type: "string",
         default: "#6ec1e4"
     },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
     titleSize: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: 'number'
+    },
+    titleSizeTablet: {
         type: "number"
     },
     titleLine: {
@@ -137,6 +147,16 @@ const pricingAttrs = {
     descSize: {
         type: "number"
     },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: 'number'
+    },
+    descSizeMobile: {
+        type: 'number'
+    },
     descWeight: {
         type: "number"
     },
@@ -195,9 +215,19 @@ const pricingAttrs = {
     slashColor: {
         type: "string"
     },
+    slashSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     slashSize: {
         type: "number",
         default: 20
+    },
+    slashSizeMobile: {
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
     },
     slashWeight: {
         type: "number"
@@ -213,6 +243,16 @@ const pricingAttrs = {
         type: "number",
         default: 20
     },
+    currSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeMobile: {
+        type: "number"
+    },
+    currSizeTablet: {
+        type: "number"
+    },
     currWeight: {
         type: "number"
     },
@@ -223,9 +263,19 @@ const pricingAttrs = {
     valColor: {
         type: "string"
     },
+    valSizeUnit: {
+        type: "string",
+        default: "px"
+    },
     valSize: {
         type: "number",
         default: 50
+    },
+    valSizeMobile: {
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
     },
     valWeight: {
         type: "number"
@@ -241,6 +291,16 @@ const pricingAttrs = {
         type: "number",
         default: 20
     },
+    divSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    divSizeMobile: {
+        type: "number"
+    },
+    divSizeTablet: {
+        type: "number"
+    },
     divWeight: {
         type: "number"
     },
@@ -251,9 +311,19 @@ const pricingAttrs = {
     durColor: {
         type: "string"
     },
+    durSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
     durSize: {
         type: "number",
         default: 20
+    },
+    durSizeMobile: {
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
     },
     durWeight: {
         type: "number"
@@ -292,6 +362,16 @@ const pricingAttrs = {
     },
     btnSize: {
         type: "number"
+    },
+    btnSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    btnSizeTablet: {
+        type: 'number'
+    },
+    btnSizeMobile: {
+        type: 'number'
     },
     btnWeight: {
         type: "number",
@@ -366,6 +446,16 @@ const pricingAttrs = {
     badgeSize: {
         type: "number"
     },
+    badgeTextUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    badgeTextSizeTablet: {
+        type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
     badgeTop: {
         type: "number"
     },
@@ -401,6 +491,16 @@ const pricingAttrs = {
     },
     listSize: {
         type: "number"
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
     },
     listWeight: {
         type: "number",
@@ -463,7 +563,7 @@ const pricingAttrs = {
         type: "string",
         default: "center"
     },
-    id: {
+    block_id: {
         type: "string"
     },
     btnBorderTop: {
@@ -490,6 +590,30 @@ const pricingAttrs = {
     borderLeft: {
         type: "number"
     },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    tableOpacity: {
+        type: "number",
+        default: "1",
+    },
+    priceOpacity: {
+        type: "number",
+        default: "1"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
 registerBlockType("premium/pricing-table", {

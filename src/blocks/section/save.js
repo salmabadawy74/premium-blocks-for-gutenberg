@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import hexToRgba from 'hex-to-rgba'
 
 const { InnerBlocks } = wp.blockEditor;
 
@@ -7,6 +8,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         isUpdated,
         stretchSection,
         horAlign,
@@ -17,6 +19,7 @@ const save = props => {
         minHeight,
         minHeightUnit,
         color,
+        opacity,
         imageURL,
         fixed,
         backgroundRepeat,
@@ -45,6 +48,9 @@ const save = props => {
         shadowHorizontal,
         shadowVertical,
         shadowPosition,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
 
@@ -52,11 +58,14 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
+            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color,
+                minHeight:
+                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                backgroundColor: color
+                    ? hexToRgba(color, opacity)
+                    : "transparent",
                 borderStyle: borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`

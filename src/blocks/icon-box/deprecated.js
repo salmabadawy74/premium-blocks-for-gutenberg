@@ -1088,6 +1088,73 @@ const newAttributes_1_7_2 = {
     borderLeft: {
         type: "number",
     },
+    block_id: {
+        type: "string"
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: 'number',
+        default: '20'
+    },
+    titleSizeMobile: {
+        type: 'number',
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    descSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    btnSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backOpacity: {
+        type: "number",
+        default: "1",
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1",
+    },
+    btnOpacity: {
+        type: "number",
+        default: "1",
+    },
 };
 
 const deprecated_attributes_1_7_2 = Object.assign(
@@ -1110,6 +1177,23 @@ const deprecatedContent = [
                 btnBorderRight: "",
                 borderIconBox: "",
                 btnBorderIconBox: "",
+                classMigrate: false,
+                block_id: '',
+                titleSizeUnit: "px",
+                titleSizeTablet: '',
+                titleSizeMobile: '',
+                descSizeUnit: 'px',
+                descSizeTablet: '',
+                descSizeMobile: '',
+                btnSizeUnit: 'px',
+                btnSizeTablet: '',
+                btnSizeMobile: '',
+                btnOpacity: "",
+                iconOpacity: "",
+                backOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

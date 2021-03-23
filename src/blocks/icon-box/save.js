@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import hexToRgba from 'hex-to-rgba'
 
 const { RichText } = wp.blockEditor;
 
@@ -7,9 +8,9 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         borderIconBox,
         btnBorderIconBox,
-        id,
         align,
         iconImage,
         iconImgUrl,
@@ -28,7 +29,6 @@ const save = props => {
         titleTag,
         titleColor,
         titleFont,
-        titleSize,
         titleLine,
         titleLetter,
         titleStyle,
@@ -44,7 +44,6 @@ const save = props => {
         descText,
         descColor,
         descFont,
-        descSize,
         descLine,
         descWeight,
         descMarginT,
@@ -55,7 +54,6 @@ const save = props => {
         btnText,
         btnTarget,
         btnLink,
-        btnSize,
         btnStyle,
         btnUpper,
         btnWeight,
@@ -115,14 +113,20 @@ const save = props => {
         hoverShadowHorizontal,
         hoverShadowVertical,
         hoverShadowPosition,
+        iconOpacity,
+        btnOpacity,
+        backOpacity,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
 
     return (
         <div
-            id={`premium-icon-box-${id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`}
+            id={`premium-icon-box-${block_id}`}
+            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 borderStyle: borderType,
@@ -140,7 +144,9 @@ const save = props => {
                 paddingBottom: paddingB + paddingU,
                 paddingLeft: paddingL + paddingU,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor,
+                backgroundColor: backColor
+                    ? hexToRgba(backColor, backOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -152,17 +158,17 @@ const save = props => {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#premium-icon-box-${id}:hover {`,
+                            `#premium-icon-box-${block_id}:hover {`,
                             `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
                             "}",
-                            `#premium-icon-box-${id} .premium-icon-box__btn:hover {`,
+                            `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
                             `color: ${btnHoverColor} !important;`,
                             `border-color: ${btnHoverBorder} !important;`,
                             "}",
-                            `#premium-icon-box-${id} .premium-button__none .premium-icon-box__btn:hover {`,
+                            `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
                             `background-color: ${btnHoverBack} !important;`,
                             "}",
-                            `#premium-icon-box-${id} .premium-button__slide .premium-button::before {`,
+                            `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
                             `background-color: ${btnHoverBack} !important;`,
                             "}"
                         ].join("\n")
@@ -178,8 +184,10 @@ const save = props => {
                             className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor,
-                                backgroundColor: iconBackColor,
-                                fontSize: iconSize
+                                backgroundColor: iconBackColor
+                                    ? hexToRgba(iconBackColor, iconOpacity)
+                                    : "transparent",
+                                fontSize: iconSize,
                             }}
                         />
                     )}
@@ -212,7 +220,6 @@ const save = props => {
                             value={titleText}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 fontFamily: titleFont,
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
@@ -238,7 +245,6 @@ const save = props => {
                             value={descText}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 fontFamily: descFont,
                                 lineHeight: descLine + "px",
                                 fontWeight: descWeight
@@ -263,8 +269,9 @@ const save = props => {
                             value={btnText}
                             style={{
                                 color: btnColor,
-                                backgroundColor: btnBack,
-                                fontSize: btnSize + "px",
+                                backgroundColor: btnBack
+                                    ? hexToRgba(btnBack, btnOpacity)
+                                    : "transparent",
                                 letterSpacing: btnLetter + "px",
                                 textTransform: btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyle,

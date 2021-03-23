@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const videoBoxAttrs = {
+    block_id: {
+        type: 'string'
+    },
     borderPlayUpdated: {
         type: "boolean",
         default: false
@@ -97,6 +100,10 @@ const videoBoxAttrs = {
     playBack: {
         type: "string"
     },
+    playOpacity: {
+        type: "number",
+        default: "1"
+    },
     playHoverColor: {
         type: "string"
     },
@@ -135,6 +142,16 @@ const videoBoxAttrs = {
     videoDescSize: {
         type: "number"
     },
+    videoDescSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    videoDescSizeMobile: {
+        type: 'number'
+    },
+    videoDescSizeTablet: {
+        type: 'number'
+    },
     videoDescFamily: {
         type: "string"
     },
@@ -155,6 +172,10 @@ const videoBoxAttrs = {
     },
     videoDescBack: {
         type: "string"
+    },
+    videoDescOpacity: {
+        type: "number",
+        default: "1"
     },
     videoDescPadding: {
         type: "number"
@@ -238,6 +259,22 @@ const videoBoxAttrs = {
     // Old props
     playLeft: {
         type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
 

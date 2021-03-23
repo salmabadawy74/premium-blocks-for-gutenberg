@@ -938,6 +938,125 @@ const newAttributes_1_8_8 = {
     borderLeft: {
         type: "number",
     },
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px',
+    },
+    titleSizeMobile: {
+        type: 'number'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: 'number'
+    },
+    descSizeMobile: {
+        type: 'number'
+    },
+    slashSizeMobile: {
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
+    },
+    slashSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeMobile: {
+        type: "number"
+    },
+    currSizeTablet: {
+        type: "number"
+    },
+    valSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    valSizeMobile: {
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
+    },
+    divSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    divSizeMobile: {
+        type: "number"
+    },
+    divSizeTablet: {
+        type: "number"
+    },
+    durSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    durSizeMobile: {
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
+    },
+    btnSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    btnSizeTablet: {
+        type: 'number'
+    },
+    btnSizeMobile: {
+        type: 'number'
+    },
+    badgeTextUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    badgeTextSizeTablet: {
+        type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
 const pricingAttrs_1_8_8 = Object.assign(
@@ -960,6 +1079,43 @@ const deprecatedContent = [
                 btnBorderLeft: "",
                 borderUpdated: "",
                 btnBorderUpdated: "",
+                classMigrate: false,
+                block_id: '',
+                titleSizeUnit: 'px',
+                titleSizeMobile: '',
+                titleSizeTablet: '',
+                valSizeUnit: "px",
+                valSizeTablet: '',
+                valSizeMobile: '',
+                badgeTextUnit: "px",
+                badgeTextSizeTablet: '',
+                badgeTextSizeMobile: '',
+                btnSizeUnit: 'px',
+                btnSizeMobile: '',
+                btnSizeTablet: '',
+                currSizeUnit: 'px',
+                currSizeMobile: '',
+                currSizeTablet: '',
+                descSizeUnit: 'px',
+                descSizeMobile: '',
+                descSizeTablet: '',
+                divSizeUnit: 'px',
+                divSizeMobile: '',
+                divSizeTablet: '',
+                durSizeUnit: "px",
+                durSizeTablet: '',
+                durSizeMobile: '',
+                listSizeUnit: 'px',
+                listSizeMobile: '',
+                listSizeTablet: '',
+                slashSizeUnit: 'px',
+                slashSizeMobile: '',
+                slashSizeTablet: '',
+                tableOpacity: "",
+                priceOpacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

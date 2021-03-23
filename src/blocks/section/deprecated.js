@@ -138,6 +138,22 @@ const newAttributes_1_5_12 = {
         type: "boolean",
         default: false,
     },
+    opacity: {
+        type: "number",
+        default: "1",
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
 };
 
 const deprecated_attributes_1_5_12 = Object.assign(
@@ -288,6 +304,10 @@ const deprecatedContent = [
                 borderBottom: "",
                 borderLeft: "",
                 isUpdated: "",
+                opacity: "",
+                hideDesktop: false,
+                hideTablet: false,
+                hideMobile: false
             };
             return Object.assign(attributes, newAttributes);
         },

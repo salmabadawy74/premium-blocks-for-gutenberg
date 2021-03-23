@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
@@ -10,6 +11,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         align,
         authorImgUrl,
         imgRadius,
@@ -19,7 +21,6 @@ const save = props => {
         text,
         authorTag,
         authorColor,
-        authorSize,
         authorLetter,
         authorStyle,
         authorUpper,
@@ -27,13 +28,11 @@ const save = props => {
         author,
         authorComTag,
         authorComColor,
-        authorComSize,
         authorCom,
         quotSize,
         quotColor,
         quotOpacity,
         bodyColor,
-        bodySize,
         bodyLine,
         bodyTop,
         bodyBottom,
@@ -47,6 +46,7 @@ const save = props => {
         shadowVertical,
         shadowPosition,
         backColor,
+        backOpacity,
         imageURL,
         fixed,
         backgroundRepeat,
@@ -56,17 +56,23 @@ const save = props => {
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit
+        paddingUnit,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-testimonial');
 
     return (
         <div
-            className={`${mainClasses}__wrap`}
+            id={`premium-testimonial-${block_id}`}
+            className={`${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor,
+                backgroundColor: backColor
+                    ? hexToRgba(backColor, backOpacity)
+                    : "transparent",
                 backgroundImage: `url('${imageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -117,7 +123,6 @@ const save = props => {
                                 value={text}
                                 style={{
                                     color: bodyColor,
-                                    fontSize: bodySize + "px",
                                     lineHeight: bodyLine + "px",
                                     marginTop: bodyTop + "px",
                                     marginBottom: bodyBottom + "px"
@@ -132,7 +137,6 @@ const save = props => {
                             value={author}
                             style={{
                                 color: authorColor,
-                                fontSize: authorSize + "px",
                                 letterSpacing: authorLetter + "px",
                                 textTransform: authorUpper ? "uppercase" : "none",
                                 fontStyle: authorStyle,
@@ -154,7 +158,6 @@ const save = props => {
                                 value={authorCom}
                                 style={{
                                     color: authorComColor,
-                                    fontSize: authorComSize + "px"
                                 }}
                             />
                             {urlCheck && (
