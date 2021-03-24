@@ -59,6 +59,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.8.8 =
+
+- Fixed: Call to undefined function premium_gutenberg_get_sysinfo() on System Info tab.
+
 = 1.8.7 =
 
 - New: Responsive Controls added to Show/Hide Block on specific devices.
