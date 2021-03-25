@@ -149,7 +149,7 @@ class edit extends Component {
 
         let play_animation = true;
 
-        if ('none' === trigger || 'scroll' === trigger || 'undefined' === typeof trigger) {
+        if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger||'undefined' === typeof trigger) {
             play_animation = false;
         }
         const reversedir = (reverse) ? -1 : 1;

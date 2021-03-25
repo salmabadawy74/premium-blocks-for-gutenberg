@@ -72,127 +72,125 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 			register_block_type(
 				'premium/lottie',
 				array(
-					'attributes'      => array(
-						'block_id'         => array(
-							'type' => 'string',
+					'attributes'          =>     array(
+						'block_id'        =>    array(
+							'type'        =>    'string'
 						),
-						'lottieURl'        => array(
-							'type'    => 'string',
-							'default' => '',
+						'lottieURl'       =>    array(
+							'type'        =>    'string',
+							'default'     =>    ''
 						),
-						'lottieJson'       => array(
-							'type' => 'object',
+						'lottieJson'      =>    array(
+							'type'        =>    'object'
 						),
 						// Controls.
-						'loop'             => array(
-							'type'    => 'boolean',
-							'default' => true,
+						'loop'            =>    array(
+							'type'        =>    'boolean',
+							'default'     =>    true,
 						),
-						'speed'            => array(
-							'type'    => 'number',
-							'default' => 1,
+						'speed'           =>    array(
+							'type'        =>    'number',
+							'default'     =>    1,
 						),
-						'reverse'          => array(
-							'type'    => 'boolean',
-							'default' => false,
+						'reverse'         =>    array(
+							'type'        =>    'boolean',
+							'default'     =>    false,
 						),
 
-						'trigger'           => array(
-							'type'    => 'string',
-							'default' => 'none',
+						'trigger'         =>    array(
+						  'type'          =>    'string',
+						  'default'       =>    'none',
 						),
+                        'top'         =>    array(
+                            'type'        =>    'number',
+                          ),
+                        'bottom'         =>    array(
+                            'type'        =>    'number',
+                          ),
 						// Style.
-						'size'       => array(
-							'type' => 'number',
+						'size'            =>     array(
+						  'type'          =>    'number',
 						),
-                        'render'       => array(
-							'type' => 'string',
-                            'default' => 'svg'
+                        'render'          =>    array(
+						    'type'        =>    'string',
+                            'default'     =>    'svg'
 						),
-                        'rotate'           => array(
-							'type' => 'number',
-                            'default' => 0
+                        'rotate'          =>    array(
+						    'type'        =>    'number',
+                            'default'     =>    0
 						),
-						'backgroundColor'  => array(
-							'type'    => 'string',
-							'default' => '',
+                        'align'           =>      array(
+						     'type'       =>    'string',
+						    'default'     =>    'center'
 						),
-						'backgroundHColor' => array(
-							'type'    => 'string',
-							'default' => ''
+                        'link'            =>    array(
+						    'type'        =>    'boolean',
+						   'default'      =>    false
 						),
-                        'align' => array(
-							'type'    => 'string',
-							'default' => 'center'
-						),
-                        'link'          => array(
-							'type'    => 'boolean',
-							'default' => false
-						),
-                        'url'        =>array(
-                            'type'  => 'string'
+                        'url'             =>    array(
+                           'type'         =>    'string'
                         ),
-                        'backColor'  =>array(
-                            'type'  =>  'string'
+                        'backColor'       =>    array(
+                            'type'        =>     'string'
                         ),
-                        'backOpacity' =>array(
-                            'type' => 'number',
-                            'default' => 1
+                        'backOpacity'     =>     array(
+                            'type'        =>    'number',
+                            'default'     =>      1
                         ),
-                        'blur' =>  array(
-                            'type' => 'number',
-                            'default' =>0
+                        'blur'            =>     array(
+                            'type'        =>    'number',
+                            'default'     =>       0
                         ),
-                        'bright' =>array(
-                            'type' =>'number',
-                            'default' =>100
+                        'bright'          =>   array(
+                            'type'        =>   'number',
+                            'default'     =>     100
                         ),
-                        'contrast' =>array(
-                            'type' =>'number',
-                            'default' =>100
+                        'contrast'        =>   array(
+                            'type'        =>   'number',
+                            'default'     =>   100
                         ),
-                        'saturation' =>array(
-                            'type'=>'number',
-                            'default' =>'100'
+                        'saturation'      =>   array(
+                            'type'        =>   'number',
+                            'default'     =>   '100'
                         ),
-                        'hue' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                        'hue'             =>    array(
+                            'type'        =>    'number',
+                            'default'     =>    0
                         ),
-                        'borderType' =>array(
-                            'type' =>'string',
-                            'default'=>'none'
+                        'borderType'      =>   array(
+                            'type'        =>   'string',
+                            'default'     =>   'none'
                         ),
-                        'borderWidth' =>array(
-                            'type' => 'number',
-                            'default' => 0
+                        'borderWidth'     =>   array(
+                            'type'        =>    'number',
+                            'default'     =>    0
                         ),
-                        'borderColor' =>array(
-                            'type' =>'string'
+                        'borderColor'     =>   array(
+                            'type'        =>   'string'
                         ),
-                        'borderRadius' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                        'borderRadius'    =>    array(
+                            'type'        =>    'number',
+                            'default'     =>    0
                         ),
-                        'paddingT' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                        'paddingT'        =>    array(
+                            'type'        =>    'number',
+                            'default'     =>   0
                         ),
-                        'paddingR' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                        'paddingR'        =>   array(
+                            'type'        =>   'number',
+                            'default'     =>   0
                         ),
-                        'paddingB' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                        'paddingB'        =>   array(
+                            'type'        =>   'number',
+                            'default'     =>   0
                         ),
-                        'paddingL' =>array(
-                            'type' =>'number',
-                            'default' =>0
+                    'paddingL'            =>   array(
+                        'type'            =>   'number',
+                        'default'         =>   0
                         ),
-                        'paddingU' =>array(
-                            'type' =>'string',
-                            'default' =>'px'
+                    'paddingU'            =>   array(
+                        'type'            =>   'string',
+                        'default'         =>       'px'
                         )
 
 					),
@@ -248,7 +246,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                 container: document.querySelector('.premium-lottie-animation'),
                 renderer:'<?php echo esc_html( $value['render'] ); ?>',
                 loop: Boolean( '<?php echo esc_html( $value['loop'] ); ?>' ),
-                autoplay: Boolean( '<?php echo esc_html( $value['trigger'] )  ==='none'? true : false  ?>' ) ,
+                autoplay: Boolean('<?php echo esc_html( $value['trigger'] )  ==='none' || 'viewport' ? true : false  ?>' ) ,
                 path:'<?php echo esc_html( $value['lottieURl'] ); ?>' ,
                 rendererSettings: {
                     preserveAspectRatio: 'xMidYMid',
@@ -274,14 +272,18 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                 lottieContainer.addEventListener("click", function() {
                     animation.stop();
                     animation.play();
-
-
-
                 });
             } else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
                     animation.stop();
                     animation.play();
+                });
+            }
+            else if ( 'viewport' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
+                window.addEventListener("scroll", function() {
+                    if( <?php echo esc_html( $value['top'] ); ?> > $(this).scrollTop()){
+                        animation.stop();
+                    }
                 });
             }
        })

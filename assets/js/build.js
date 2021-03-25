@@ -59919,7 +59919,7 @@ var edit = function (_Component) {
 
             var play_animation = true;
 
-            if ('none' === trigger || 'scroll' === trigger || 'undefined' === typeof trigger) {
+            if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger || 'undefined' === typeof trigger) {
                 play_animation = false;
             }
             var reversedir = reverse ? -1 : 1;
