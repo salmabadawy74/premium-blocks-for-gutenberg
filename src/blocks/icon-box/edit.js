@@ -71,6 +71,7 @@ class edit extends Component {
             align,
             iconChecked,
             iconImage,
+            iconImgId,
             iconImgUrl,
             iconType,
             selectedIcon,
@@ -432,18 +433,18 @@ class edit extends Component {
                                 <Fragment>
                                     <PremiumMediaUpload
                                         type="image"
-                                        imageID={imageID}
-                                        imageURL={imageURL}
+                                        imageID={iconImgId}
+                                        imageURL={iconImgUrl}
                                         onSelectMedia={media => {
                                             setAttributes({
-                                                imageID: media.id,
-                                                imageURL: media.url
+                                                iconImgId: media.id,
+                                                iconImgUrl: media.url
                                             });
                                         }}
                                         onRemoveImage={() =>
                                             setAttributes({
-                                                imageURL: "",
-                                                imageURL: ""
+                                                iconImgUrl: "",
+                                                iconImgId: ""
                                             })
                                         }
                                     />
