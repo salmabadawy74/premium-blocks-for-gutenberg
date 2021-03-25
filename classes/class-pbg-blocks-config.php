@@ -261,6 +261,40 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'videoDescSizeUnit'   => 'px',
 						),
 					),
+                    'premium/lottie'       =>array(
+                        'slug'       => '',
+						'default'    => true,
+                        'attributes' => array(
+                            'block_id'            => '',
+							'classMigrate'        => false,
+                            'size'                => '',                           
+                            'rotate'          =>'',
+                            'align'        => '',
+                            'backColor'     => '',
+                            'backOpacity'   => '1 ',
+                            'blur'           => '0',
+                            'bright'        => '100',
+                            'contrast'       =>'100',
+                            'saturation'     =>'100',
+                            'hue'             =>'0',
+                            'backHColor'     => '',
+                            'backHOpacity'   => '1 ',
+                            'blurH'           => '0',
+                            'brightH'        => '100',
+                            'contrastH'       =>'100',
+                            'saturationH'     =>'100',
+                            'hueH'             =>'0',
+                            'borderType'   =>'none',
+                            'borderWidth'  => '0',
+                            'borderColor'  => '',
+                            'borderRadius'  => '0',
+                            'paddingT'      => '0',
+                            'paddingR'      => '0',
+                            'paddingB'      => '0',
+                            'paddingL'      => '0',
+                            'paddingU'      =>'px'
+                      )
+                    )
 				);
 			}
 			return self::$block_attributes;
