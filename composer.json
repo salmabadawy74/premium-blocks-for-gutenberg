@@ -3,7 +3,7 @@
         "squizlabs/php_codesniffer": "*"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "wp-coding-standards/wpcs": "^2.3",
         "phpcompatibility/phpcompatibility-wp": "*"
     },
