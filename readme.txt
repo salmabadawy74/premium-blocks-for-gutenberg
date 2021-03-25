@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.7
 Requires PHP: 5.4
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -62,6 +62,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 = 1.8.8 =
 
 - Fixed: Call to undefined function premium_gutenberg_get_sysinfo() on System Info tab.
+- Fixed: Image Icon not showing on the editor in Icon Box block.
 
 = 1.8.7 =
 
