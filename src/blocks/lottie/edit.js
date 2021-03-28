@@ -71,7 +71,17 @@ class edit extends Component {
 
     }
 
+
+
     render() {
+        window.addEventListener("scroll", function() {
+       // var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
+        console.log("document.documentElement.scrollHeight",document.documentElement.scrollHeight);
+        console.log("document.documentElement.clientHeight",document.documentElement.clientHeight);
+        //console.log("elementHeight",elementHeight);
+        console.log("document.documentElement.scrollTop",document.documentElement.scrollTop);
+        console.log("document.body.scrollTop",document.body.scrollTop);
+        });
         const { attributes, setAttributes, className } = this.props;
 
         const {

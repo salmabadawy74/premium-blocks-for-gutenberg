@@ -101,11 +101,13 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 						  'type'          =>    'string',
 						  'default'       =>    'none',
 						),
-                        'top'         =>    array(
+                        'top'             =>    array(
                             'type'        =>    'number',
+                            'default'     =>     '0'
                           ),
-                        'bottom'         =>    array(
+                        'bottom'          =>    array(
                             'type'        =>    'number',
+                            'default'     =>     '0'
                           ),
 						// Style.
 						'size'            =>     array(
@@ -281,9 +283,25 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
             }
             else if ( 'viewport' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
-                    if( <?php echo esc_html( $value['top'] ); ?> > $(this).scrollTop()){
-                        animation.stop();
-                    }
+
+                 var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
+                 var top=<?php echo esc_html( $value['top'] ); ?>;
+                 var bottom=<?php echo esc_html( $value['bottom'] ); ?>;
+                 var scrollHeight=document.documentElement.scrollHeight;
+                 var scrollTop=document.documentElement.scrollTop;
+                 var pageRange=document.documentElement.clientHeight;
+                 var precentage= (scrollTop*100) /pageRange;
+                 var pageEnd=((scrollTop+pageRange)*100)/scrollHeight;
+
+                 if('<?php echo esc_html( $value['bottom'] ); ?>' > precentage && pageEnd < '<?php echo esc_html( $value['top'] ); ?>'  ){
+
+                    animation.stop();
+                 }
+                 else{
+
+                    animation.play();
+                 }
+
                 });
             }
        })
