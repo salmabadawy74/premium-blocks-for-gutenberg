@@ -375,18 +375,18 @@ const edit = props => {
                             <Fragment>
                                 <PremiumMediaUpload
                                     type="image"
-                                    imageID={imageID}
-                                    imageURL={imageURL}
+                                    imageID={iconImgId}
+                                    imageURL={iconImgUrl}
                                     onSelectMedia={media => {
                                         setAttributes({
-                                            imageID: media.id,
-                                            imageURL: media.url
+                                            iconImgId: media.id,
+                                            iconImgUrl: media.url
                                         });
                                     }}
                                     onRemoveImage={() =>
                                         setAttributes({
-                                            imageURL: "",
-                                            imageURL: ""
+                                            iconImgUrl: "",
+                                            iconImgId: ""
                                         })
                                     }
                                 />
@@ -672,7 +672,7 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    {imageURL && <img src={imageURL} width="100%" height="auto" />}
+                 
                     <PremiumBackgroud
                         imageID={imageID}
                         imageURL={imageURL}
