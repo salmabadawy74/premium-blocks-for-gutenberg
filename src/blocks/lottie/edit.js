@@ -167,17 +167,12 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
-                    <Fragment>
                     <ToggleControl
                         label={__(`loop`)}
                         checked={loop}
-                        onChange={() => setAttributes({ loop: !loop })}
+                        onChange={(value) => setAttributes({ loop: value })}
+                        help={loop ? '' : `This setting will only take effect once you are on the live page, and not while you're editing`}
                     />
-                    <p>
-                    {__('This setting will only take effect once you are on the live page')}
-                    </p>
-                    </Fragment>
-
                     <ToggleControl
                         label={__(`Reverse`)}
                         checked={reverse}
