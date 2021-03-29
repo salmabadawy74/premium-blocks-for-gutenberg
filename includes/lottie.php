@@ -51,7 +51,6 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
         add_action( 'wp_footer', array( $this, 'render_lottie_script' ), 1000 );
 
 		}
-
 		/**
 		 * Registers the `PBG/lottie` block on server.
 		 *
@@ -249,8 +248,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                     preserveAspectRatio: 'xMidYMid',
                     className:"premium-lottie-inner"
                 },
-
-                })
+            })
 
             animation.setSpeed(<?php echo esc_html( $value['speed'] ); ?>)
 
@@ -266,15 +264,14 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                     animation.stop()
                 });
 
-            } else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
+            }
+            else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
-
                     animation.play();
                 });
             }
             else if ( 'viewport' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
-
                  var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
                  var top=<?php echo esc_html( $value['top'] ); ?>;
                  var bottom=<?php echo esc_html( $value['bottom'] ); ?>;
