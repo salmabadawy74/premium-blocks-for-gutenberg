@@ -215,12 +215,21 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 				'premium-lottie-' . $block_id,
 				'premium-lottie-wrap',
 			);
+            $main_id = array(
+                'premium-lottie-animation-' . $block_id
+            );
 			ob_start();
 
 	        ?>
   			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
-                <div class="premium-lottie-animation">
-                    <a href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+                <div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>"  class="premium-lottie-animation">
+                    <?php
+                    if($attributes['link']){
+                        ?>
+                        <a href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+                        <?php
+                    }
+              ?>
                 </div>
             </div>
 
@@ -237,9 +246,11 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
             <script id="Lottie-script" type="text/javascript">
 
             jQuery( document ).ready( function( $ ) {
+
                 var lottieContainer= document.querySelector('.premium-lottie-wrap');
+
                 var animation = bodymovin.loadAnimation({
-                container: document.querySelector('.premium-lottie-animation'),
+                container: document.getElementById('premium-lottie-animation-<?php echo esc_html( $value['block_id'] ); ?>'),
                 renderer:'<?php echo esc_html( $value['render'] ); ?>',
                 loop: Boolean( '<?php echo esc_html( $value['loop'] ); ?>' ),
                 autoplay: Boolean('<?php echo esc_html( $value['trigger'] )  ==='none'  ?>' ) ,
@@ -289,6 +300,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                  }
                 });
             }
+
        })
 
          </script>
