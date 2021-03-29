@@ -11,7 +11,6 @@ import {
     SortableElement,
     arrayMove,
 } from "react-sortable-hoc";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const {
