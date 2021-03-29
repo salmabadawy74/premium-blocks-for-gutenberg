@@ -3,11 +3,12 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-
+import styling from './styling';
+import PremiumBackground from "../../components/premium-background";
+import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 const { Component, Fragment } = wp.element;
-
 const { __ } = wp.i18n;
-
 const {
     Toolbar,
     PanelBody,
@@ -16,35 +17,36 @@ const {
     Dropdown,
     Button
 } = wp.components;
-
 const { InspectorControls, RichText, InnerBlocks, ColorPalette } = wp.blockEditor;
-
 const CONTENT = [
     ["core/paragraph", { content: __("Insert Your Content Here") }]
 ];
-
 let isAccUpdated = null;
-
 class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
-
         this.initAccordion = this.initAccordion.bind(this);
     }
-
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
+        setAttributes({ block_id: clientId })
         if (!attributes.accordionId) {
             setAttributes({ accordionId: "premium-accordion-" + clientId });
         }
+        this.props.setAttributes({ classMigrate: true });
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-accordion-" + this.props.clientId.substr(0, 6)
+        );
+        document.head.appendChild($style);
         this.initAccordion();
     }
-
     componentDidUpdate(prevProps, prevState) {
         clearTimeout(isAccUpdated);
         isAccUpdated = setTimeout(this.initAccordion, 500);
     }
-
     initAccordion() {
         const { accordionId } = this.props.attributes;
         if (!this.props.attributes.accordionId) return null;
@@ -58,17 +60,20 @@ class PremiumAccordion extends Component {
             title.nextSibling.classList.toggle("premium-accordion__desc_close");
         });
     }
-
     render() {
         const { isSelected, setAttributes, clientId, className } = this.props;
 
         const {
+            block_id,
             accordionId,
             repeaterItems,
             direction,
             titleTag,
             titleColor,
+            titleSizeUnit,
             titleSize,
+            titleSizeTablet,
+            titleSizeMobile,
             titleLine,
             titleLetter,
             titleStyle,
@@ -83,6 +88,7 @@ class PremiumAccordion extends Component {
             titleBorderColor,
             titleBorderRadius,
             titleBack,
+            titleOpacity,
             titleShadowBlur,
             titleShadowColor,
             titleShadowHorizontal,
@@ -93,6 +99,7 @@ class PremiumAccordion extends Component {
             titlePaddingL,
             arrowColor,
             arrowBack,
+            arrowOpacity,
             arrowPos,
             arrowPadding,
             arrowRadius,
@@ -101,6 +108,7 @@ class PremiumAccordion extends Component {
             descAlign,
             descColor,
             descBack,
+            descOpacity,
             descBorder,
             descBorderColor,
             descBorderRadius,
@@ -110,6 +118,8 @@ class PremiumAccordion extends Component {
             descBorderBottom,
             descBorderLeft,
             descSize,
+            descSizeTablet,
+            descSizeMobile,
             descLine,
             descLetter,
             descStyle,
@@ -126,7 +136,6 @@ class PremiumAccordion extends Component {
             titleBorderUpdated,
             descBorderUpdated
         } = this.props.attributes;
-
         const DIRECTION = [
             {
                 value: "ltr",
@@ -137,7 +146,6 @@ class PremiumAccordion extends Component {
                 label: "RTL"
             }
         ];
-
         const ARROW = [
             {
                 value: "in",
@@ -148,7 +156,6 @@ class PremiumAccordion extends Component {
                 label: __("Out")
             }
         ];
-
         const TYPE = [
             {
                 value: "text",
@@ -159,23 +166,23 @@ class PremiumAccordion extends Component {
                 label: __("Gutenberg Block")
             }
         ];
-
+        let element = document.getElementById(
+            "premium-style-accordion-" + clientId.substr(0, 6)
+        );
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
         const ALIGNS = ["left", "center", "right"];
-
         const onAccordionChange = (attr, value, index) => {
             const items = repeaterItems;
-
             return items.map(function (item, currIndex) {
                 if (index == currIndex) {
                     item[attr] = value;
                 }
-
                 return item;
             });
         };
-
         const mainClasses = classnames(className, "premium-accordion");
-
         const accordionItems = repeaterItems.map((item, index) => {
             return (
                 <div
@@ -215,7 +222,6 @@ class PremiumAccordion extends Component {
                                 value={item.titleText}
                                 style={{
                                     color: titleColor,
-                                    fontSize: titleSize + "px",
                                     letterSpacing: titleLetter + "px",
                                     textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
@@ -236,7 +242,9 @@ class PremiumAccordion extends Component {
                                 viewBox="0 0 20 20"
                                 style={{
                                     fill: arrowColor,
-                                    backgroundColor: arrowBack,
+                                    backgroundColor: arrowBack
+                                        ? hexToRgba(arrowBack, arrowOpacity)
+                                        : "transparent",
                                     padding: arrowPadding + "px",
                                     borderRadius: arrowRadius + "px"
                                 }}
@@ -274,7 +282,6 @@ class PremiumAccordion extends Component {
                                 value={item.descText}
                                 style={{
                                     color: descColor,
-                                    fontSize: descSize + "px",
                                     letterSpacing: descLetter + "px",
                                     textTransform: descUpper ? "uppercase" : "none",
                                     textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
@@ -312,23 +319,37 @@ class PremiumAccordion extends Component {
                             value={direction}
                             onChange={newEffect => setAttributes({ direction: newEffect })}
                         />
-
                         <PremiumTypo
                             components={[
-                                "size",
+                                "responsiveSize",
                                 "weight",
                                 "style",
                                 "upper",
                                 "spacing",
                                 "line"
                             ]}
-                            size={titleSize}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: titleSizeUnit,
+                                label: __("titleSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: titleSize,
+                                label: __("titleSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: titleSizeMobile,
+                                label: __("titleSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: titleSizeTablet,
+                                label: __("titleSizeTablet"),
+                            }}
                             weight={titleWeight}
                             style={titleStyle}
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
@@ -365,14 +386,20 @@ class PremiumAccordion extends Component {
                                             allowReset={true}
                                         />
                                         <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={titleBack}
-                                            onChange={newValue =>
+                                        <PremiumBackground
+                                            type="color"
+                                            colorValue={titleBack}
+                                            onChangeColor={newvalue =>
                                                 setAttributes({
-                                                    titleBack: newValue
+                                                    titleBack: newvalue,
                                                 })
                                             }
-                                            allowReset={true}
+                                            opacityValue={titleOpacity}
+                                            onChangeOpacity={value =>
+                                                setAttributes({
+                                                    titleOpacity: value,
+                                                })
+                                            }
                                         />
                                     </Fragment>
                                 )}
@@ -424,7 +451,6 @@ class PremiumAccordion extends Component {
                                 setAttributes({ titleShadowVertical: newValue })
                             }
                         />
-
                         <PremiumPadding
                             paddingTop={titlePaddingT}
                             paddingRight={titlePaddingR}
@@ -492,14 +518,20 @@ class PremiumAccordion extends Component {
                                             allowReset={true}
                                         />
                                         <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={arrowBack}
-                                            onChange={newValue =>
+                                        <PremiumBackground
+                                            type="color"
+                                            colorValue={arrowBack}
+                                            onChangeColor={newvalue =>
                                                 setAttributes({
-                                                    arrowBack: newValue
+                                                    arrowBack: newvalue,
                                                 })
                                             }
-                                            allowReset={true}
+                                            opacityValue={arrowOpacity}
+                                            onChangeOpacity={value =>
+                                                setAttributes({
+                                                    arrowOpacity: value,
+                                                })
+                                            }
                                         />
                                     </Fragment>
                                 )}
@@ -547,20 +579,35 @@ class PremiumAccordion extends Component {
                             <Fragment>
                                 <PremiumTypo
                                     components={[
-                                        "size",
+                                        "responsiveSize",
                                         "weight",
                                         "style",
                                         "upper",
                                         "spacing",
-                                        "line"
+                                        "line",
                                     ]}
-                                    size={descSize}
+                                    setAttributes={setAttributes}
+                                    fontSizeType={{
+                                        value: descSizeUnit,
+                                        label: __("descSizeUnit"),
+                                    }}
+                                    fontSize={{
+                                        value: descSize,
+                                        label: __("descSize"),
+                                    }}
+                                    fontSizeMobile={{
+                                        value: descSizeMobile,
+                                        label: __("descSizeMobile"),
+                                    }}
+                                    fontSizeTablet={{
+                                        value: descSizeTablet,
+                                        label: __("descSizeTablet"),
+                                    }}
                                     weight={descWeight}
                                     style={descStyle}
                                     spacing={descLetter}
                                     line={descLine}
                                     upper={descUpper}
-                                    onChangeSize={newSize => setAttributes({ descSize: newSize })}
                                     onChangeWeight={newWeight =>
                                         setAttributes({ descWeight: newWeight })
                                     }
@@ -599,14 +646,20 @@ class PremiumAccordion extends Component {
                                                     allowReset={true}
                                                 />
                                                 <p>{__("Background Color")}</p>
-                                                <ColorPalette
-                                                    value={descBack}
-                                                    onChange={newValue =>
+                                                <PremiumBackground
+                                                    type="color"
+                                                    colorValue={descBack}
+                                                    onChangeColor={newvalue =>
                                                         setAttributes({
-                                                            descBack: newValue
+                                                            descBack: newvalue,
                                                         })
                                                     }
-                                                    allowReset={true}
+                                                    opacityValue={descOpacity}
+                                                    onChangeOpacity={value =>
+                                                        setAttributes({
+                                                            descOpacity: value,
+                                                        })
+                                                    }
                                                 />
                                             </Fragment>
                                         )}
@@ -614,7 +667,6 @@ class PremiumAccordion extends Component {
                                 </div>
                             </Fragment>
                         )}
-
                         <PremiumBorder
                             borderType={descBorder}
                             borderWidth={descBorderWidth}
@@ -641,7 +693,6 @@ class PremiumAccordion extends Component {
                                 setAttributes({ descBorderRadius: newrRadius })
                             }
                         />
-
                         {"text" === contentType && (
                             <PremiumTextShadow
                                 color={textShadowColor}
@@ -684,6 +735,7 @@ class PremiumAccordion extends Component {
                             onChangePadRight={value =>
                                 setAttributes({
                                     descPaddingR: value === undefined ? 0 : value
+
                                 })
                             }
                             onChangePadBottom={value =>
@@ -698,34 +750,41 @@ class PremiumAccordion extends Component {
                             }
                         />
                     </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
                 </InspectorControls>
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses}`}>
+                <div id={`${accordionId}`} className={`${mainClasses}  premium-accordion-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
                     {accordionItems}
-                </div>
-                <div className={"premium-repeater"}>
-                    <button
-                        className={"premium-repeater-btn"}
-                        onClick={() => {
-                            return setAttributes({
-                                repeaterItems: repeaterItems.concat([
-                                    {
-                                        titleText: __("Awesome Title"),
-                                        descText: __("Cool Description")
-                                    }
-                                ])
-                            });
-                        }}
-                    >
-                        <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item")}
-                    </button>
-                    <p>{__("Add the items you need then reload the page")}</p>
+                    <div className={"premium-repeater"}>
+                        <button
+                            className={"premium-repeater-btn"}
+                            onClick={() => {
+                                return setAttributes({
+                                    repeaterItems: repeaterItems.concat([
+                                        {
+                                            titleText: __("Awesome Title"),
+                                            descText: __("Cool Description"),
+                                        },
+                                    ]),
+                                });
+                            }}
+                        >
+                            <i className="dashicons dashicons-plus premium-repeater-icon" />
+                            {__("Add New Item")}
+                        </button>
+                        <p>{__("Add the items you need then reload the page")}</p>
+                    </div>
                 </div>
             </Fragment>
         ];
     }
 }
-
 export default PremiumAccordion;

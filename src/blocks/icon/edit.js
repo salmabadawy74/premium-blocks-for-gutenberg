@@ -11,9 +11,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-
 const { __ } = wp.i18n;
-
 const {
     PanelBody,
     Toolbar,
@@ -23,11 +21,8 @@ const {
     Dropdown,
     Button
 } = wp.components;
-
 const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
-
 const { Fragment } = wp.element;
-
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
 
@@ -100,7 +95,6 @@ const edit = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const EFFECTS = [
         {
             value: "none",
@@ -131,11 +125,8 @@ const edit = props => {
             label: __("Wobble")
         }
     ];
-
     const ALIGNS = ["left", "center", "right"];
-
     const mainClasses = classnames(className, "premium-icon");
-
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -264,7 +255,6 @@ const edit = props => {
                             setAttributes({ borderRadius: newrRadius })
                         }
                     />
-
                     <PremiumTextShadow
                         label="Shadow"
                         color={shadowColor}
@@ -282,7 +272,6 @@ const edit = props => {
                             setAttributes({ shadowVertical: newValue })
                         }
                     />
-
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={marginT}
@@ -390,7 +379,6 @@ const edit = props => {
                             onChangeFixed={check => setAttributes({ fixed: check })}
                         />
                     </Fragment>
-
                     <PremiumBorder
                         borderType={wrapBorderType}
                         borderWidth={wrapBorderWidth}
@@ -419,7 +407,6 @@ const edit = props => {
                             setAttributes({ wrapBorderRadius: newrRadius })
                         }
                     />
-
                     <PremiumBoxShadow
                         inner={true}
                         color={wrapShadowColor}
@@ -453,7 +440,6 @@ const edit = props => {
                             })
                         }
                     />
-
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={wrapMarginT}
@@ -518,7 +504,6 @@ const edit = props => {
                 />
             </InspectorControls>
         ),
-
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
@@ -592,5 +577,4 @@ const edit = props => {
         </div>
     ];
 };
-
 export default edit;

@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const dualHeadingAttrs = {
     block_id: {
         type: "string"

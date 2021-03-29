@@ -1,15 +1,14 @@
 import { accordion } from "../../../assets/js/settings";
-
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecated from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const accordionAttrs = {
+    block_id: {
+        type: "string"
+    },
     accordionId: {
         type: "string"
     },
@@ -34,11 +33,21 @@ const accordionAttrs = {
     titleColor: {
         type: "string"
     },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
     titleSize: {
         type: "number"
     },
-    titleLine: {
+    titleSizeTablet: {
         type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number",
     },
     titleLetter: {
         type: "number"
@@ -87,6 +96,10 @@ const accordionAttrs = {
     titleBack: {
         type: "string"
     },
+    titleOpacity: {
+        type: "number",
+        default: "1"
+    },
     titleShadowColor: {
         type: "string"
     },
@@ -120,6 +133,10 @@ const accordionAttrs = {
     arrowBack: {
         type: "string"
     },
+    arrowOpacity: {
+        type: "number",
+        default: "1"
+    },
     arrowPos: {
         type: "string",
         default: "out"
@@ -129,6 +146,10 @@ const accordionAttrs = {
     },
     arrowRadius: {
         type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: "px"
     },
     arrowSize: {
         type: "number",
@@ -147,6 +168,10 @@ const accordionAttrs = {
     },
     descBack: {
         type: "string"
+    },
+    descOpacity: {
+        type: "number",
+        default: "1"
     },
     descBorder: {
         type: "string",
@@ -183,6 +208,13 @@ const accordionAttrs = {
         type: "string"
     },
     descSize: {
+        type: "number",
+        default: "20"
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
         type: "number"
     },
     descLine: {
@@ -228,9 +260,24 @@ const accordionAttrs = {
     descPaddingL: {
         type: "number",
         default: 10
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
 };
-
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
     icon: <PbgIcon icon="accordion" />,

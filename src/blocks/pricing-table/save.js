@@ -1,11 +1,8 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
-
 const { RichText } = wp.blockEditor;
-
 const save = props => {
     const { className } = props;
-
     const {
         borderUpdated,
         btnBorderUpdated,
@@ -138,9 +135,7 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, "premium-pricing-table");
-
     return (
         <div
             id={`${mainClasses}-${block_id}`}
@@ -414,5 +409,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

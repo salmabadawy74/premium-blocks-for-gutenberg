@@ -594,7 +594,6 @@ const deprecated = [
             );
         },
     },
-
     {
         attributes: deprecated_attributes,
         save: (props) => {

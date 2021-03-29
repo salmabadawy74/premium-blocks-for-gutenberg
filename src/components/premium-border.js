@@ -1,4 +1,4 @@
-import { Component } from "react";
+ import { Component } from "react";
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;

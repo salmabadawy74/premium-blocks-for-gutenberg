@@ -1,14 +1,10 @@
 import { banner } from "../../../assets/js/settings";
-
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const bannerAttrs = {
     block_id: {
         type: "string"

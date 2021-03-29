@@ -5,20 +5,22 @@ export default function PremiumIcon(props) {
     const {
         iconType,
         selectedIcon,
-        onChangeType = () => { },
-        onChangeIcon = () => { }
+        onChangeType = () => {},
+        onChangeIcon = () => {},
     } = props;
     let iconClass =
-        "fa" === iconType ? `fa fa-${selectedIcon}` : `dashicons ${selectedIcon}`;
+        "fa" === iconType
+            ? `fa fa-${selectedIcon}`
+            : `dashicons ${selectedIcon}`;
     const TYPE = [
         {
             value: "fa",
-            label: "Font Awesome Icon"
+            label: "Font Awesome Icon",
         },
         {
             value: "dash",
-            label: "Dashicon"
-        }
+            label: "Dashicon",
+        },
     ];
     return (
         <Fragment>
@@ -47,10 +49,10 @@ export default function PremiumIcon(props) {
                         target="_blank"
                     >
                         &nbsp;
-            {__("here")}
+                        {__("here")}
                     </a>,
                     __(" , for example: "),
-                    "fa" === iconType ? "address-book" : "dashicons-admin-site"
+                    "fa" === iconType ? "address-book" : "dashicons-admin-site",
                 ]}
                 onChange={onChangeIcon}
             />

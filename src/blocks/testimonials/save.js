@@ -3,13 +3,9 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import hexToRgba from "hex-to-rgba";
-
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         align,
@@ -61,9 +57,7 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-testimonial');
-
     return (
         <div
             id={`premium-testimonial-${block_id}`}
@@ -181,5 +175,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

@@ -1,14 +1,10 @@
 import { container } from "../../../assets/js/settings";
-
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import PbgIcon from "../icons";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const containerAttrs = {
     stretchSection: {
         type: "boolean",

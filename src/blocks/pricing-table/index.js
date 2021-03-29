@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { registerBlockType } = wp.blocks;
-
 const { __ } = wp.i18n;
-
 const pricingAttrs = {
     borderUpdated: {
         type: "boolean",
@@ -615,7 +612,6 @@ const pricingAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
     icon: <PbgIcon icon="pricing-table" />,

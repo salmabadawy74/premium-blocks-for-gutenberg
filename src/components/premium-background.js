@@ -40,31 +40,31 @@ export default function PremiumBackground(props) {
         },
         {
             value: "top center",
-            label: __("Top Center")
+            label: __("Top Center"),
         },
         {
             value: "top right",
-            label: __("Top Right")
+            label: __("Top Right"),
         },
         {
             value: "center left",
-            label: __("Center Left")
+            label: __("Center Left"),
         },
         {
             value: "center center",
-            label: __("Center Center")
+            label: __("Center Center"),
         },
         {
             value: "center right",
-            label: __("Center Right")
+            label: __("Center Right"),
         },
         {
             value: "bottom left",
-            label: __("Bottom Left")
+            label: __("Bottom Left"),
         },
         {
             value: "bottom center",
-            label: __("Bottom Center")
+            label: __("Bottom Center"),
         },
         {
             value: "bottom right",

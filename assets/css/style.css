@@ -723,6 +723,9 @@ a.premium-dheading-block__link:hover {
     .premium-banner__responsive_true .premium-banner__desc_wrap {
         display: none;
     }
+    .premium-tablet-hidden{
+        display: none !important;
+    }
 }
 /**
 * Global
@@ -1745,11 +1748,32 @@ a.premium-dheading-block__link:hover {
 .premium-fancy-slide .typed-cursor {
     visibility: hidden;
 }
+/**************** Premium lottie Animation *****************/
+/*******************************************************/
+.premium-lottie-wrap .premium-lottie-animation {
+    position: relative;
+    -js-display: inline-flex;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+ }
+
+    .premium-lottie-wrap .premium-lottie-animation a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
 
 /************ Responsive **************/
 
 @media (min-width: 977px) {
-    .premium-desktop-hidden {
+	.premium-desktop-hidden{
         display: none !important;
     }
 }

@@ -2,11 +2,8 @@ import classnames from 'classnames'
 import hexToRgba from 'hex-to-rgba'
 
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderButton,
@@ -56,7 +53,6 @@ const save = props => {
 
 
     const mainClasses = classnames(className, 'premium-button');
-
     return (
         <div
             id={`${mainClasses}-wrap-${block_id}`}
@@ -113,5 +109,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

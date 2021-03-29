@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const videoBoxAttrs = {
     block_id: {
         type: 'string'
@@ -255,7 +252,6 @@ const videoBoxAttrs = {
         type: "string",
         default: ""
     },
-
     // Old props
     playLeft: {
         type: "number"
@@ -277,7 +273,6 @@ const videoBoxAttrs = {
         default: false
     }
 };
-
 const onChangeVideoURL = (type, URL) => {
     let videoUrl;
     switch (type) {
@@ -305,9 +300,7 @@ const onChangeVideoURL = (type, URL) => {
     }
     return videoUrl;
 };
-
 export default onChangeVideoURL;
-
 registerBlockType("premium/video-box", {
     title: __("Video Box"),
     icon: <PbgIcon icon="video" />,

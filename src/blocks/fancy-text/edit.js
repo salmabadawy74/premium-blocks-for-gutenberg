@@ -11,18 +11,15 @@ import {
     SortableElement,
     arrayMove,
 } from "react-sortable-hoc";
-
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 const { __ } = wp.i18n;
-
 const { Component, Fragment } = wp.element;
-
 const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
     ColorPalette,
 } = wp.blockEditor;
-
 const {
     PanelBody,
     SelectControl,
@@ -30,7 +27,6 @@ const {
     ToggleControl,
     Toolbar,
 } = wp.components;
-
 const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
         <div className="premium-repeater-item">
@@ -42,7 +38,6 @@ const SortableItem = SortableElement(
                 >
                     {value.title}{" "}
                 </div>
-
                 {items.length != 1 ? (
                     <button
                         className="premium-repeater-item__trashicon fa fa-trash"
@@ -65,7 +60,6 @@ const SortableItem = SortableElement(
         </div>
     )
 );
-
 const SortableList = SortableContainer(
     ({ items, removeItem, edit, changeFancyValue }) => {
         return (
@@ -87,21 +81,16 @@ const SortableList = SortableContainer(
         );
     }
 );
-
 class edit extends Component {
-
     constructor() {
         super(...arguments);
         this.renderFancyText = this.renderFancyText.bind(this);
     }
-
     componentDidMount() {
-
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
         this.props.setAttributes({ classMigrate: true });
-
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");
         $style.setAttribute(
@@ -109,19 +98,15 @@ class edit extends Component {
             "premium-style-fancy-text-" + this.props.clientId.substr(0, 6)
         );
         document.head.appendChild($style);
-
         this.renderFancyText();
     }
-
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-
         if (effect == "typing" && this.typed != undefined) {
             this.typed.destroy();
         }
         this.renderFancyText();
     }
-
     renderFancyText() {
         const {
             repeaterFancyText,
@@ -134,13 +119,10 @@ class edit extends Component {
             backdelay,
             effect,
         } = this.props.attributes;
-
         if (!repeaterFancyText) return null;
-
         let txt = repeaterFancyText.map((item) => {
             return item.title;
         });
-
         if (effect === "typing") {
             const options = {
                 strings: txt,
@@ -155,17 +137,14 @@ class edit extends Component {
             this.typed = new Typed(this.el, options);
         }
     }
-
     componentWillUnmount() {
         const { effect } = this.props.attributes;
         // Make sure to destroy Typed instance on unmounting
         // to prevent memory leaks
         effect === "typing" ? this.typed.destroy() : "";
     }
-
     render() {
         const { attributes, setAttributes, isSelected } = this.props;
-
         const {
             block_id,
             align,
@@ -216,7 +195,6 @@ class edit extends Component {
             hideTablet,
             hideMobile
         } = attributes;
-
         const ALIGNS = ["left", "center", "right"];
         const EFFECT = [
             {
@@ -228,15 +206,12 @@ class edit extends Component {
                 value: "slide",
             },
         ];
-
         var element = document.getElementById(
             "premium-style-fancy-text-" + block_id
         );
-
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props);
         }
-
         const onResetClickfancyTextTypo = () => {
             setAttributes({
                 fancyTextWeight: 600,
@@ -249,7 +224,6 @@ class edit extends Component {
                 fancyTextUpper: false,
             });
         };
-
         const onResetClickTextTypo = () => {
             setAttributes({
                 textWeight: 600,
@@ -262,7 +236,6 @@ class edit extends Component {
                 textUpper: false,
             });
         };
-
         const onResetClickLabelTextShadow = () => {
             setAttributes({
                 shadowColor: "",
@@ -271,23 +244,18 @@ class edit extends Component {
                 shadowVertical: "0",
             });
         };
-
         const changeFancyValue = (newText, newIndex) => {
             setAttributes({
                 repeaterFancyText: onRepeaterChange("title", newText, newIndex),
             });
         };
-
         const onSortEndSingle = ({ oldIndex, newIndex }) => {
             let arrayItem = repeaterFancyText.map((cont) => cont);
-
             const sortedArray = arrayMove(arrayItem, oldIndex, newIndex);
-
             setAttributes({
                 repeaterFancyText: sortedArray,
             });
         };
-
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
             if (
@@ -298,9 +266,7 @@ class edit extends Component {
                 return true; // Return true to cancel sorting
             }
         };
-
         const onRepeaterChange = (attr, value, index) => {
-
             return repeaterFancyText.map(function (item, currIndex) {
                 if (index == currIndex) {
                     item[attr] = value;
@@ -308,7 +274,6 @@ class edit extends Component {
                 return item;
             });
         };
-
         const edit = (index) => {
             return repeaterFancyText.map((item, i) => {
                 if (index == i) {
@@ -326,7 +291,6 @@ class edit extends Component {
                 }
             });
         };
-
         const removeItem = (index, item) => {
             let array = repeaterFancyText
                 .map((cont, currIndex) => {
@@ -337,7 +301,6 @@ class edit extends Component {
                 repeaterFancyText: array,
             });
         };
-
         const addNewFancyText = () => {
             setAttributes({
                 repeaterFancyText: repeaterFancyText.concat([
@@ -348,7 +311,6 @@ class edit extends Component {
                 ]),
             });
         };
-
         return [
             isSelected && (
                 <BlockControls>
@@ -827,5 +789,4 @@ class edit extends Component {
         ];
     }
 }
-
 export default edit;

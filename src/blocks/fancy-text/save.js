@@ -1,9 +1,6 @@
 import classnames from "classnames"
-
 export default function save(props) {
-
     const { attributes, className } = props
-
     const {
         block_id,
         align,

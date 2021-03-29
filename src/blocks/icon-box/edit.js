@@ -928,6 +928,10 @@ class edit extends Component {
                                     marginL: value || 0
                                 })
                             }
+                            selectedUnit={paddingU}
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ paddingU: newvalue })
+                            }
                         />
                         <PremiumPadding
                             paddingTop={paddingT}

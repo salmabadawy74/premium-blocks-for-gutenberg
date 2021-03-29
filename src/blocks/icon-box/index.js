@@ -3,11 +3,8 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const iconBoxAttrs = {
     block_id: {
         type: "string"
@@ -462,7 +459,6 @@ const iconBoxAttrs = {
         default: "1"
     },
 };
-
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: <PbgIcon icon="icon-box" />,

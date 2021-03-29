@@ -7,27 +7,20 @@ import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-
 const { __ } = wp.i18n;
-
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
-
 const { Fragment } = wp.element;
-
 const {
     BlockControls,
     AlignmentToolbar,
     InnerBlocks,
     InspectorControls
 } = wp.blockEditor;
-
 const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ") }]
 ];
-
 const edit = props => {
     const { isSelected, className, setAttributes } = props;
-
     const {
         isUpdated,
         stretchSection,
@@ -108,9 +101,7 @@ const edit = props => {
             label: __("Bottom")
         }
     ];
-
     const mainClasses = classnames(className, "premium-container");
-
     return [
         isSelected && (
             <BlockControls key="controls">
@@ -440,5 +431,4 @@ const edit = props => {
         </div>
     ];
 };
-
 export default edit;

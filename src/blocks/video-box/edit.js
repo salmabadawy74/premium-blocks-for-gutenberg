@@ -11,7 +11,6 @@ import styling from './styling';
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-
 const {
     PanelBody,
     SelectControl,
@@ -21,22 +20,15 @@ const {
     ToggleControl,
     TabPanel,
 } = wp.components;
-
 const { Component, Fragment } = wp.element;
-
 const { InspectorControls, ColorPalette } = wp.blockEditor;
-
 const { __ } = wp.i18n;
-
 let isBoxUpdated = null;
-
 class edit extends Component {
     constructor() {
         super(...arguments);
-
         this.initVideoBox = this.initVideoBox.bind(this);
     }
-
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId })
@@ -53,37 +45,25 @@ class edit extends Component {
         document.head.appendChild($style);
         this.initVideoBox();
     }
-
     componentDidUpdate() {
         clearTimeout(isBoxUpdated);
         isBoxUpdated = setTimeout(this.initVideoBox, 500);
     }
-
     initVideoBox() {
-
         const { videoBoxId } = this.props.attributes;
-
         if (!videoBoxId) return null;
-
         let videoBox = document.getElementById(videoBoxId),
             video, src;
-
-
         videoBox.addEventListener("click", () => {
-
             videoBox.classList.add("video-overlay-false");
-
             let type = videoBox.getAttribute("data-type");
-
             if ("self" !== type) {
                 video = videoBox.getElementsByTagName("iframe")[0];
                 src = video.getAttribute("src");
             } else {
                 video = videoBox.getElementsByTagName("video")[0];
             }
-
             setTimeout(() => {
-
                 if ("self" !== type) {
                     video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
                 } else {
@@ -92,11 +72,9 @@ class edit extends Component {
                         .remove();
                     video.play();
                 }
-
             }, 300);
         });
     }
-
     render() {
         const { isSelected, setAttributes, className, clientId } = this.props;
 
@@ -178,7 +156,6 @@ class edit extends Component {
             hideTablet,
             hideMobile
         } = this.props.attributes;
-
         const TYPE = [
             {
                 value: "youtube",
@@ -197,7 +174,6 @@ class edit extends Component {
                 label: __("Self Hosted")
             }
         ];
-
         const loopVideo = () => {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
@@ -230,7 +206,6 @@ class edit extends Component {
                     );
             }
         };
-
         const addFontToHead = fontFamily => {
             const head = document.head;
             const link = document.createElement("link");
@@ -243,16 +218,13 @@ class edit extends Component {
                 "regular";
             head.appendChild(link);
         };
-
         const onChangeDescFamily = fontFamily => {
             setAttributes({ videoDescFamily: fontFamily });
             if (!fontFamily) {
                 return;
             }
-
             addFontToHead(fontFamily);
         };
-
         let element = document.getElementById(
             "premium-style-videoBox-" + clientId.substr(0, 6)
         );
@@ -260,14 +232,12 @@ class edit extends Component {
             element.innerHTML = styling(this.props);
         }
         const mainClasses = classnames(className, "premium-video-box");
-
         const changeVideoType = (newvalue) => {
             if (newvalue === "self") {
                 setAttributes({ videoURL: "" })
             }
             setAttributes({ videoType: newvalue })
         }
-
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -376,7 +346,6 @@ class edit extends Component {
                                     })
                                 }
                             />
-
                             <PremiumFilters
                                 blur={blur}
                                 bright={bright}
@@ -430,7 +399,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playTop}
@@ -921,5 +889,4 @@ class edit extends Component {
         ];
     }
 }
-
 export default edit;

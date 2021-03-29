@@ -8,11 +8,8 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-
 const { __ } = wp.i18n;
-
 const { Component, Fragment } = wp.element;
-
 const {
     Toolbar,
     PanelBody,
@@ -23,7 +20,6 @@ const {
     Dropdown,
     Button
 } = wp.components;
-
 const {
     BlockControls,
     InspectorControls,
@@ -33,15 +29,11 @@ const {
     ColorPalette,
     URLInput
 } = wp.blockEditor;
-
 class PremiumPricingTable extends Component {
-
     constructor() {
         super(...arguments)
     }
-
     componentDidMount() {
-
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
@@ -53,10 +45,8 @@ class PremiumPricingTable extends Component {
         );
         document.head.appendChild($style);
     }
-
     render() {
         const { isSelected, setAttributes, className } = this.props;
-
         const {
             block_id,
             borderUpdated,
@@ -231,7 +221,6 @@ class PremiumPricingTable extends Component {
             hideTablet,
             hideMobile
         } = this.props.attributes;
-
         const ALIGNS = [
             {
                 value: "flex-start",
@@ -305,9 +294,7 @@ class PremiumPricingTable extends Component {
             element.innerHTML = styling(this.props);
         }
         const FEATURES_ALIGN = ["left", "center", "right"];
-
         const mainClasses = classnames(className, "premium-pricing-table");
-
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -1709,7 +1696,5 @@ class PremiumPricingTable extends Component {
             </div>
         ];
     }
-
 }
-
 export default PremiumPricingTable;

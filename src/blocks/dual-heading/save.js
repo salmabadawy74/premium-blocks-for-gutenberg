@@ -1,9 +1,7 @@
 import classnames from "classnames";
 import hexToRgba from "hex-to-rgba";
-
 const save = props => {
     const { className } = props;
-
     const {
         block_id,
         contentAlign,
@@ -87,12 +85,10 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
     );
-
     return (
         <div
             id={`premium-dheading-block-${block_id}`}
@@ -191,5 +187,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

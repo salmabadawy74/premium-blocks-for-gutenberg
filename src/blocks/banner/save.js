@@ -1,11 +1,7 @@
 import classnames from 'classnames'
-
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderBanner,
@@ -69,9 +65,7 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-banner');
-
     return (
         <div
             id={`premium-banner-${block_id}`}
@@ -126,7 +120,6 @@ const save = props => {
                         }}
                     />
                 </div>
-
                 <div
                     className={`premium-banner__content`}
                     style={{
@@ -181,5 +174,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

@@ -1,23 +1,25 @@
-import classnames from 'classnames'
+import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const { RichText, InnerBlocks } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
-    const {
+    const { block_id,
         accordionId,
         repeaterItems,
         direction,
         titleTag,
-        titleSize,
         titleLine,
         titleLetter,
         titleStyle,
         titleUpper,
         titleWeight,
         titleColor,
+        titleOpacity,
+        arrowOpacity,
+        descOpacity,
         titleBorder,
         titleBorderWidth,
         titleBorderColor,
@@ -43,7 +45,6 @@ const save = props => {
         arrowRadius,
         contentType,
         descAlign,
-        descSize,
         descLine,
         descLetter,
         descStyle,
@@ -70,9 +71,7 @@ const save = props => {
         titleBorderUpdated,
         descBorderUpdated,
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-accordion');
-
     const accordionItems = repeaterItems.map((item, index) => {
         return (
             <div
@@ -102,7 +101,6 @@ const save = props => {
                             value={item.titleText}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyle,
@@ -123,7 +121,7 @@ const save = props => {
                             viewBox="0 0 20 20"
                             style={{
                                 fill: arrowColor,
-                                backgroundColor: arrowBack,
+                                backgroundColor: arrowBack ? hexToRgba(arrowBack, arrowOpacity) : "transparent",
                                 padding: arrowPadding + "px",
                                 borderRadius: arrowRadius + "px"
                             }}
@@ -156,7 +154,6 @@ const save = props => {
                             value={item.descText}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 letterSpacing: descLetter + "px",
                                 textTransform: descUpper ? "uppercase" : "none",
                                 textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
@@ -172,7 +169,7 @@ const save = props => {
         );
     });
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+        <div id={accordionId} className={`${mainClasses}  premium-accordion-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
             {accordionItems}
         </div>
     );

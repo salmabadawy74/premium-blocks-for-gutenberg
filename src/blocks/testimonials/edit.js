@@ -13,6 +13,8 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
 
+
+
 const {
     Toolbar,
     PanelBody,

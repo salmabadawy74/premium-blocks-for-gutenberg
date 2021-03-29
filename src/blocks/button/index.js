@@ -1,14 +1,10 @@
 import { button } from "../../../assets/js/settings";
-
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import PbgIcon from "../icons";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
-
 const buttonAttrs = {
     borderButton: {
         type: "boolean",
@@ -185,7 +181,6 @@ const buttonAttrs = {
         default: false
     }
 };
-
 registerBlockType("premium/button", {
     title: __("Button"),
     icon: <PbgIcon icon="button" />,

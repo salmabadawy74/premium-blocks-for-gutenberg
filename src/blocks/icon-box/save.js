@@ -2,11 +2,8 @@ import classnames from 'classnames'
 import hexToRgba from 'hex-to-rgba'
 
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderIconBox,
@@ -120,9 +117,7 @@ const save = props => {
         hideTablet,
         hideMobile
     } = props.attributes;
-
     const mainClasses = classnames(className, 'premium-icon-box');
-
     return (
         <div
             id={`premium-icon-box-${block_id}`}
@@ -292,5 +287,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

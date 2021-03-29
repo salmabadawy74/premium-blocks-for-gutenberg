@@ -137,7 +137,6 @@ const save = props => {
                     )}
                 </div>
             )}
-
             <div
                 className={`premium-countup__info`}
                 style={{
@@ -226,5 +225,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

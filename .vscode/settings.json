@@ -1,0 +1,5 @@
+{
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "http.proxyAuthorization": null,
+    "files.trimTrailingWhitespace": true
+}

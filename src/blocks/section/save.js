@@ -2,11 +2,8 @@ import classnames from 'classnames'
 import hexToRgba from 'hex-to-rgba'
 
 const { InnerBlocks } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         isUpdated,
@@ -55,7 +52,6 @@ const save = props => {
 
 
     const mainClasses = classnames(className, 'premium-container');
-
     return (
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
@@ -106,5 +102,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;
