@@ -14,61 +14,56 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 	/**
 	 * Class PBG_Lottie.
 	 *
-	 * @since 1.20.0
+	 * @since 1.8.8
 	 */
 	class PBG_Lottie {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since 1.20.0
+		 * @since 1.8.8
 		 * @var instance
 		 */
 		private static $instance;
+
         private static $grid_settings;
 
 		/**
 		 *  Initiator
 		 *
-		 * @since 1.20.0
+		 * @since 1.8.8
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
 			}
-			return self::$instance;
+		 return self::$instance;
 		}
 
 		/**
 		 * Constructor
 		 *
-		 * @since 1.20.0
+		 * @since 1.8.8
 		 */
 		public function __construct() {
 			// Activation hook.
-            $this->register_blocks();
-            add_action( 'wp_footer', array( $this, 'render_lottie_script' ), 1000 );
+        $this->register_blocks();
+        add_action( 'wp_footer', array( $this, 'render_lottie_script' ), 1000 );
 
 		}
-
-
-
 
 		/**
 		 * Registers the `PBG/lottie` block on server.
 		 *
-		 * @since 1.20.0
+		 * @since 1.8.8
 		 */
-
 
 		public  function register_blocks() {
 
 			// Check if the register function exists.
 			if ( ! function_exists( 'register_block_type' ) ) {
-
+                return ;
 			}
-
-
 			register_block_type(
 				'premium/lottie',
 				array(
@@ -206,7 +201,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since 1.20.0
+		 * @since 1.8.8
 		 */
 		public static function render_html( $attributes ) {
 
@@ -223,15 +218,13 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 			);
 			ob_start();
 
-	?>
-  				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
-                  <div class="premium-lottie-animation">
-                  </div>
-                  </div>
+	        ?>
+  			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
+                <div class="premium-lottie-animation"></div>
+            </div>
 
-
-    <?php
-				return ob_get_clean();
+            <?php
+			return ob_get_clean();
         }
 
         public function render_lottie_script()
@@ -248,7 +241,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                 container: document.querySelector('.premium-lottie-animation'),
                 renderer:'<?php echo esc_html( $value['render'] ); ?>',
                 loop: Boolean( '<?php echo esc_html( $value['loop'] ); ?>' ),
-                autoplay: Boolean('<?php echo esc_html( $value['trigger'] )  ==='none' || 'viewport' ? true : false  ?>' ) ,
+                autoplay: Boolean('<?php echo esc_html( $value['trigger'] )  ==='none'  ?>' ) ,
                 path:'<?php echo esc_html( $value['lottieURl'] ); ?>' ,
                 rendererSettings: {
                     preserveAspectRatio: 'xMidYMid',
@@ -257,7 +250,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
                 })
 
-                animation.setSpeed(<?php echo esc_html( $value['speed'] ); ?>)
+            animation.setSpeed(<?php echo esc_html( $value['speed'] ); ?>)
 
             const reversedir = Boolean( <?php echo esc_html( $value['reverse'] ); ?> ) ? -1 : 1
 
@@ -270,11 +263,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                 lottieContainer.addEventListener("mouseleave", function() {
                     animation.stop()
                 });
-            } else if ( 'click' === '<?php echo esc_html( $value['trigger'] ); ?>'){
-                lottieContainer.addEventListener("click", function() {
-                    animation.stop();
-                    animation.play();
-                });
+
             } else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
                     animation.stop();
@@ -290,18 +279,15 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
                  var scrollHeight=document.documentElement.scrollHeight;
                  var scrollTop=document.documentElement.scrollTop;
                  var pageRange=document.documentElement.clientHeight;
-                 var precentage= (scrollTop*100) /pageRange;
+                 var precentage= (scrollTop*100) /scrollHeight;
                  var pageEnd=((scrollTop+pageRange)*100)/scrollHeight;
 
-                 if('<?php echo esc_html( $value['bottom'] ); ?>' > precentage && pageEnd < '<?php echo esc_html( $value['top'] ); ?>'  ){
-
-                    animation.stop();
-                 }
-                 else{
-
+                 if('<?php echo esc_html( $value['bottom'] ); ?>' < precentage && pageEnd < '<?php echo esc_html( $value['top'] ); ?>'  ){
                     animation.play();
                  }
-
+                 else{
+                    animation.stop();
+                 }
                 });
             }
        })
@@ -309,14 +295,8 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
          </script>
          <?php
         }
-
     }
 }
-
-
-
-
-
 	/**
 	 *  Prepare if class 'PBG_Lottie' exist.
 	 *  Kicking this off by calling 'get_instance()' method
