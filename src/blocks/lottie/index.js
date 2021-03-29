@@ -126,7 +126,19 @@ const LottieAttr = {
         type: "string",
         default: 'none'
     },
-    borderWidth: {
+    borderTop: {
+        type: "number",
+        default: 0
+    },
+    borderRight: {
+        type: "number",
+        default: 0
+    },
+    borderBottom: {
+        type: "number",
+        default: 0
+    },
+    borderLeft: {
         type: "number",
         default: 0
     },

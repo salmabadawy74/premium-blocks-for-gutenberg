@@ -2,7 +2,7 @@ import classnames from "classnames";
 
 import Lottie from 'react-lottie';
 import PremiumFilters from "../../components/premium-filters";
-import PremiumSizeUnits from "../../components/premium-size-units";
+
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumBackground from '../../components/premium-background';
@@ -74,14 +74,6 @@ class edit extends Component {
 
 
     render() {
-        window.addEventListener("scroll", function() {
-       // var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
-        console.log("document.documentElement.scrollHeight",document.documentElement.scrollHeight);
-        console.log("document.documentElement.clientHeight",document.documentElement.clientHeight);
-        //console.log("elementHeight",elementHeight);
-        console.log("document.documentElement.scrollTop",document.documentElement.scrollTop);
-        console.log("document.body.scrollTop",document.body.scrollTop);
-        });
         const { attributes, setAttributes, className } = this.props;
 
         const {
@@ -115,7 +107,10 @@ class edit extends Component {
             saturationH,
             brightH,
             borderType,
-            borderWidth,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
             borderColor,
             borderRadius,
             paddingT,
@@ -197,7 +192,6 @@ class edit extends Component {
                         options={[
                             { value: 'none', label: __("None") },
                             { value: "hover", label: __("On Hover") },
-                            { value: "click", label: __("On Click") },
                             { value: "scroll", label: __("Scroll") },
                             { value: "viewport", label: __("Viewport") },
 
@@ -374,14 +368,20 @@ class edit extends Component {
 
                     <PremiumBorder
                         borderType={borderType}
-                        borderWidth={borderWidth}
+                        top={borderTop}
+                        right={borderRight}
+                        bottom={borderBottom}
+                        left={borderLeft}
                         borderColor={borderColor}
                         borderRadius={borderRadius}
                         onChangeType={(newType) => setAttributes({ borderType: newType })}
-                        onChangeWidth={(newWidth) =>
-                            setAttributes({
-                                borderWidth: newWidth === undefined ? 0 : newWidth,
-                            })
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                        setAttributes({
+                            borderTop: top,
+                            borderRight: right,
+                            borderBottom: bottom,
+                            borderLeft: left,
+                        })
                         }
                         onChangeColor={(colorValue) =>
                             setAttributes({
@@ -431,7 +431,6 @@ class edit extends Component {
             <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses}`}
                 onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => play_animation = true}
                 onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => play_animation = true}
-                onClick={'click' === trigger ? handleLottieMouseEnter : () => play_animation = true}
             >
                 <div className={`premium-lottie-animation`}
 
@@ -465,7 +464,7 @@ class edit extends Component {
                             `background-color:${backColor ? hexToRgba(backColor, backOpacity) : "transparent"};`,
                             `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg );`,
                             `border-style : ${borderType};`,
-                            `border-width : ${borderWidth}px;`,
+                            `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`,
                             `border-radius : ${borderRadius}px;`,
                             `border-color : ${borderColor}; `,
                             `padding-top : ${paddingT}${paddingU};`,
