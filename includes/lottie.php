@@ -220,7 +220,9 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 	        ?>
   			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
-                <div class="premium-lottie-animation"></div>
+                <div class="premium-lottie-animation">
+                    <a href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+                </div>
             </div>
 
             <?php
@@ -266,7 +268,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
             } else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
                 window.addEventListener("scroll", function() {
-                    animation.stop();
+
                     animation.play();
                 });
             }
