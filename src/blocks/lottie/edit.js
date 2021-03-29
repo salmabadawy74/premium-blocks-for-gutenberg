@@ -167,11 +167,17 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
+                    <Fragment>
                     <ToggleControl
                         label={__(`loop`)}
                         checked={loop}
                         onChange={() => setAttributes({ loop: !loop })}
                     />
+                    <p>
+                    {__('This setting will only take effect once you are on the live page')}
+                    </p>
+                    </Fragment>
+
                     <ToggleControl
                         label={__(`Reverse`)}
                         checked={reverse}
@@ -435,7 +441,7 @@ class edit extends Component {
                 <div className={`premium-lottie-animation`}
 
                 >
-                    {link && '' === url && <a href={url}></a>}
+
                     <Lottie
                         ref={this.lottieplayer}
                         options={{
@@ -453,6 +459,7 @@ class edit extends Component {
                         height={size}
                         width={size}
                     />
+                      {link &&  url !== ' ' && <a href={url}></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
