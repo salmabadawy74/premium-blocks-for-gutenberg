@@ -1361,6 +1361,11 @@ class PBG_Blocks_Helper {
             '  .premium-lottie-animation:hover .premium-lottie-inner' =>array(
                 'background-color' => $attr['backHColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backHColor'] ) . ',' . $attr['backHOpacity'] . ')' : 'transparent',
                 'filter' => 'brightness(' . $attr['brightH'] . '%)' . 'contrast(' . $attr['contrastH'] . '%) ' . 'saturate(' . $attr['saturationH'] . '%) ' . 'blur(' . $attr['blurH'] . 'px) ' . 'hue-rotate(' . $attr['hueH'] . 'deg)',
+            ),
+            '  .premium-lottie-animation  canvas'  =>array(
+                'width' => $attr['size'] . "px" .  " " .'!important',
+                'height' => $attr['size'] . "px" . " " .'!important',
+                'transform-origin' => ' unset !important'
             )
             );
 
