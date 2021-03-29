@@ -1349,7 +1349,7 @@ class PBG_Blocks_Helper {
                 'background-color' => $attr['backColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backColor'] ) . ',' . $attr['backOpacity'] . ')' : 'transparent',
                 'filter' => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%) ' . 'saturate(' . $attr['saturation'] . '%) ' . 'blur(' . $attr['blur'] . 'px) ' . 'hue-rotate(' . $attr['hue'] . 'deg)',
                 'border-style' => $attr['borderType'],
-                'border-width' => $attr['borderWidth'] . 'px',
+                'border-width' => $attr['borderTop'] . 'px' . " " . $attr['borderRight'] . 'px'  . " " . $attr['borderBottom'] . 'px'  . " " . $attr['borderLeft'] . 'px',
                 'border-radius' =>$attr['borderRadius'] . 'px',
                 'border-color'  => $attr['borderColor'],
                 'padding-top'   =>$attr['paddingT'] . $attr['paddingU'],
