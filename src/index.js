@@ -10,5 +10,11 @@ import "./blocks/pricing-table";
 import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
+import "./blocks/person";
+import "./blocks/icon-list"
+import "./blocks/content-switcher"
+import "./blocks/progress-bar"
+import "./blocks/tab"
 import "./blocks/fancy-text"
+import "./blocks/title"
 //import "./blocks/test";

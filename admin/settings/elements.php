@@ -15,7 +15,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
 
         protected $slug = 'premium-gutenberg';
 
-        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText'];
+        public static $pbg_blocks = ['dualHeading','banner','pricingTable','maps','testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'iconList', 'contentSwitcher', 'progressBar', 'persons', 'tab', 'fancyText', 'title'];
 
         private $pbg_default;
 
@@ -193,6 +193,17 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                    <th><?php echo __('Premium Banner', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="banner" name="banner" <?php checked(1, $this->pbg_get_settings['banner'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
                                     <th><?php echo __('Premium Count Up', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -200,8 +211,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
+                                    
                                     <th><?php echo __('Premium Dual Heading', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -209,6 +219,18 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                </tr>
+                                <tr>
+                                    
+                                    <th><?php echo __('Premium Content Switcher', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="contentSwitcher" name="contentSwitcher" <?php checked(1, $this->pbg_get_settings['contentSwitcher'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
                                     <th><?php echo __('Premium Icon', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -216,8 +238,10 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
                                 </tr>
                                 <tr>
+                                    
                                     <th><?php echo __('Premium Icon Box', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -225,7 +249,18 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                    <th><?php echo __('Premium Icon List', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="iconList" name="iconList" <?php checked(1, $this->pbg_get_settings['iconList'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
 
+                                </tr>
+                                <tr>
+                                    
                                     <th><?php echo __('Premium Maps', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -233,8 +268,18 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                    <th><?php echo __('Premium Persons', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="persons" name="persons" <?php checked(1, $this->pbg_get_settings['persons'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
                                 </tr>
                                 <tr>
+                                    
                                     <th><?php echo __('Premium Pricing Table', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -242,6 +287,34 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                    <th><?php echo __('Premium Progress Bar', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="progressBar" name="progressBar" <?php checked(1, $this->pbg_get_settings['progressBar'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+
+                                    <th><?php echo __('Premium Fancy Text', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="fancyText" name="fancyText" <?php checked(1, $this->pbg_get_settings['fancyText'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+
+                                    <th><?php echo __('Premium Title', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="title" name="title" <?php checked(1, $this->pbg_get_settings['title'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    
                                     <th><?php echo __('Premium Section', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -249,8 +322,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                </tr>
-                                <tr>
+                                    
                                     <th><?php echo __('Premium Testimonials', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -258,6 +330,10 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    
+                                </tr>
+                                <tr>
+                                    
                                     <th><?php echo __('Premium Video Box', 'premium-gutenberg'); ?></th>
                                     <td>
                                         <label class="switch">
@@ -265,7 +341,18 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-
+                                    
+                                </tr>
+                                <tr>
+                                    
+                                    <th><?php echo __('Premium Tab', 'premium-gutenberg'); ?></th>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" id="tab" name="tab" <?php checked(1, $this->pbg_get_settings['tab'], true) ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    
                                 </tr>
 
                                 <tr>
@@ -341,6 +428,7 @@ if ( ! class_exists('Premium_Guten_Blocks') ) {
                 'iconBox'       => intval( $settings['iconBox'] ? 1 : 0 ),
                 'videoBox'      => intval( $settings['videoBox'] ? 1 : 0 ),
                 'fancyText'     => intval( $settings['fancyText'] ? 1 : 0 ),
+                'title'          => intval( $settings['title'] ? 1 : 0 )
             );
 
             update_option( 'pbg_settings', $this->pbg_settings );
