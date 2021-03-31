@@ -7,6 +7,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumBackground from '../../components/premium-background';
 import hexToRgba from "hex-to-rgba";
+import PremiumResponsive from "../../components/premium-responsive";
 
 const { __ } = wp.i18n;
 
@@ -46,6 +47,7 @@ class edit extends Component {
         document.head.appendChild($style);
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
+
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -54,6 +56,7 @@ class edit extends Component {
         if (null !== element && undefined !== element) {
             //element.innerHTML = styling( this.props )
         }
+
     }
 
 
@@ -87,6 +90,9 @@ class edit extends Component {
             bottom,
             top,
             size,
+            sizeTablet,
+            sizeMobile,
+            sizeUnit,
             rotate,
             align,
             link,
@@ -152,9 +158,11 @@ class edit extends Component {
             this.lottieplayer.current.anim.stop();
         };
 
+
+
         let play_animation = true;
 
-        if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger||'undefined' === typeof trigger) {
+        if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger || 'undefined' === typeof trigger) {
             play_animation = false;
         }
         const reversedir = (reverse) ? -1 : 1;
@@ -167,11 +175,12 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
+                    <button className="lottie-remove" onClick={() => setAttributes({ lottieURl: "" })}>Remove</button>
                     <ToggleControl
                         label={__(`loop`)}
                         checked={loop}
                         onChange={(value) => setAttributes({ loop: value })}
-                        help={loop ? '' : `This setting will only take effect once you are on the live page, and not while you're editing`}
+                        help={loop ? '' : `This option works only on the preview page"`}
                     />
                     <ToggleControl
                         label={__(`Reverse`)}
@@ -216,15 +225,28 @@ class edit extends Component {
                             max={100}
                         />
                     </Fragment>}
+                    {/* <PremiumResponsive
+                  type={sizeUnit}
+                  typeLabel={marginTopType.label}
+                  sizeMobile={marginTopMobile.value}
+                  sizeMobileLabel={marginTopMobile.label}
+                  sizeTablet={marginTopTablet.value}
+                  sizeTabletLabel={marginTopTablet.label}
+                  size={marginTop.value}
+                  sizeLabel={marginTop.label}
+                  sizeMobileText={
+                    !marginTop.label ? __("Margin Top") : marginTop.label
+                  }
+                  sizeTabletText={
+                    !marginTop.label ? __("Margin Top") : marginTop.label
+                  }
+                  sizeText={
+                    !marginTop.label ? __("Margin Top") : marginTop.label
+                  }
+                  steps={0.1}
 
-                    <RangeControl
-                        label={__("Size")}
-                        value={size}
-                        onChange={(newValue) => setAttributes({ size: newValue })}
-                        min={1}
-                        max={800}
-                        step={1}
-                    />
+                /> */}
+
                     <RangeControl
                         label={__("Rotate (Degree)")}
                         value={rotate}
@@ -377,12 +399,12 @@ class edit extends Component {
                         borderRadius={borderRadius}
                         onChangeType={(newType) => setAttributes({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
-                            borderTop: top,
-                            borderRight: right,
-                            borderBottom: bottom,
-                            borderLeft: left,
-                        })
+                            setAttributes({
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                            })
                         }
                         onChangeColor={(colorValue) =>
                             setAttributes({
@@ -451,10 +473,8 @@ class edit extends Component {
                         speed={speed}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
-                        height={size}
-                        width={size}
                     />
-                      {link &&  url !== ' ' && <a href={url}></a>}
+                    {link && url !== ' ' && <a href={url}></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
@@ -474,6 +494,7 @@ class edit extends Component {
                             `padding-bottom : ${paddingB}${paddingU};`,
                             `padding-left : ${paddingL}${paddingU};`,
                             `transform: rotate(${rotate}deg) !important;`,
+
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover .premium-lottie-inner {`,
                             `background-color:${backHColor ? hexToRgba(backHColor, backHOpacity) : "transparent"};`,

@@ -1759,8 +1759,13 @@ a.premium-dheading-block__link:hover {
     display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-transition: all 0.3s ease-in-out;
+    transition: all 1s ease-in-out;
+ }
+ .premium-lottie-wrap  .premium-lottie-animation:hover .premium-lottie-inner {
+    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
  }
+
 
     .premium-lottie-wrap .premium-lottie-animation a {
       position:absolute;

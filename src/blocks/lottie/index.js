@@ -31,7 +31,7 @@ const LottieAttr = {
     },
     speed: {
         type: "number",
-        default: 1
+        default:"1"
     },
     trigger: {
         type: 'string',
