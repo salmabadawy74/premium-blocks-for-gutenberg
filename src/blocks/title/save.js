@@ -23,6 +23,9 @@ export default function save(props) {
         iconAlign,
         stripePosition,
         stripeAlign,
+        hideDesktop,
+        hideTablet,
+        hideMobile
     } = attributes
     
 
@@ -30,7 +33,7 @@ export default function save(props) {
         <div className={classnames(
             className,
             `premium-block-${block_id}`
-        )}
+        ) + `${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
             }}>

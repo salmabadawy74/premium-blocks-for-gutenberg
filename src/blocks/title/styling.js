@@ -59,7 +59,9 @@ function styling(props) {
         iconSpacing,
         iconSpacingType,
         iconSpacingMobile,
-        iconSpacingTablet
+        iconSpacingTablet,
+        strokeColor,
+        strokeFull,
     } = props.attributes
 
     var selectors = {}
@@ -150,6 +152,9 @@ function styling(props) {
         " .premium-title-text-title":{
             "margin": generateCSSUnit(titleMargin, titleMarginType),
             "padding": generateCSSUnit(titlePadding, titlePaddingType),
+            "-webkit-text-stroke-color" : strokeColor,
+            "-webkit-text-stroke-width" : `${strokeFull}px`,
+
         },
         " .premium-title-header img":{
             "width": generateCSSUnit(iconSize, iconSizeType),
