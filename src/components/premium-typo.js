@@ -97,7 +97,7 @@ export default class PremiumTypo extends Component {
                                             ? __("Font Size")
                                             : this.props.fontSizeLabel
                                     }
-                                    steps={0.1}
+                                    steps={props.step || 0.1}
                                     onResetClick={onResetClick}
                                     {...this.props}
                                 />

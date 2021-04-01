@@ -7,7 +7,8 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumBackground from '../../components/premium-background';
 import hexToRgba from "hex-to-rgba";
-import PremiumResponsive from "../../components/premium-responsive";
+import styling from './styling';
+import PremiumSizeUnits from "../../components/premium-size-units";
 
 const { __ } = wp.i18n;
 
@@ -54,7 +55,7 @@ class edit extends Component {
         var element = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
 
         if (null !== element && undefined !== element) {
-            //element.innerHTML = styling( this.props )
+            element.innerHTML = styling(this.props)
         }
 
     }
@@ -160,10 +161,10 @@ class edit extends Component {
 
 
 
-        let play_animation = true;
+        let stop_animation = true;
 
         if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger || 'undefined' === typeof trigger) {
-            play_animation = false;
+            stop_animation = false;
         }
         const reversedir = (reverse) ? -1 : 1;
 
@@ -225,27 +226,64 @@ class edit extends Component {
                             max={100}
                         />
                     </Fragment>}
-                    {/* <PremiumResponsive
-                  type={sizeUnit}
-                  typeLabel={marginTopType.label}
-                  sizeMobile={marginTopMobile.value}
-                  sizeMobileLabel={marginTopMobile.label}
-                  sizeTablet={marginTopTablet.value}
-                  sizeTabletLabel={marginTopTablet.label}
-                  size={marginTop.value}
-                  sizeLabel={marginTop.label}
-                  sizeMobileText={
-                    !marginTop.label ? __("Margin Top") : marginTop.label
-                  }
-                  sizeTabletText={
-                    !marginTop.label ? __("Margin Top") : marginTop.label
-                  }
-                  sizeText={
-                    !marginTop.label ? __("Margin Top") : marginTop.label
-                  }
-                  steps={0.1}
+                    <PremiumSizeUnits
+                            onChangeSizeUnit={newValue => setAttributes({ sizeUnit: newValue })}
+                        />
+                    <TabPanel
+                        className="premium-size-type-field-tabs"
+                        activeClass="active-tab"
+                        tabs={[
+                            {
+                                name: "mobile",
+                                title: <Dashicon icon="desktop" />,
+                                className: "premium-desktop-tab premium-responsive-tabs",
+                            },
+                            {
+                                name: "tablet",
+                                title: <Dashicon icon="tablet" />,
+                                className: "premium-tablet-tab premium-responsive-tabs",
 
-                /> */}
+                            },
+                            {
+                                name: "desktop",
+                                title: <Dashicon icon="smartphone" />,
+                                className: "premium-mobile-tab premium-responsive-tabs",
+
+                            },
+                        ]}
+                    >
+                        {(tab) => {
+                            let tabout;
+                            if ("mobile" === tab.name) {
+                                tabout = (
+                                    <RangeControl
+                                        label={__("Size ")}
+                                        value={size}
+                                        onChange={(value) => setAttributes({ size: value })}
+                                    />
+                                );
+                            } else if ("tablet" === tab.name) {
+                                tabout = (
+                                    <RangeControl
+                                        label={__("Size Tablet")}
+                                        value={sizeTablet}
+                                        onChange={(value) => setAttributes({ sizeTablet: value })}
+                                    />
+                                );
+                            } else {
+                                tabout = (
+                                    <RangeControl
+                                        label={__("Size Mobile")}
+                                        value={sizeMobile}
+                                        onChange={(value) => setAttributes({ sizeMobile: value })}
+                                    />
+                                );
+                            }
+
+                            return <div>{tabout}</div>;
+                        }}
+                    </TabPanel>,
+
 
                     <RangeControl
                         label={__("Rotate (Degree)")}
@@ -312,6 +350,7 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
+
                     <TabPanel
                         className="premium-color-tabpanel"
                         activeClass="active-tab"
@@ -452,8 +491,8 @@ class edit extends Component {
                 </PanelBody>
             </InspectorControls>,
             <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses}`}
-                onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => play_animation = true}
-                onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => play_animation = true}
+                onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stop_animation = true}
+                onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stop_animation = true}
             >
                 <div className={`premium-lottie-animation`}
 
@@ -469,8 +508,8 @@ class edit extends Component {
                                 className: "premium-lottie-inner"
                             }
                         }}
-                        isStopped={play_animation}
-                        speed={speed}
+                        isStopped={stop_animation}
+                        speed={speed ? speed : 1}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />

@@ -1,5 +1,14 @@
 {
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "http.proxyAuthorization": null,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "phpcs.standard": "WordPress",
+    "phpSniffer.run": "never",
+    "editor.formatOnSave": true
 }

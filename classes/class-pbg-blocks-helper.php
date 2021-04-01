@@ -187,7 +187,7 @@ class PBG_Blocks_Helper {
 
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
 
-         $is_lottie_enabled  = self::$blocks['lottie'];
+		 $is_lottie_enabled = self::$blocks['lottie'];
 
 		wp_enqueue_style(
 			'pbg-frontend',
@@ -261,8 +261,8 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
-        if ( $is_lottie_enabled ) {
-            wp_enqueue_script(
+		if ( $is_lottie_enabled ) {
+			wp_enqueue_script(
 				'lottie-min-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/lottie.min.js',
 				array( 'jquery' ),
@@ -569,9 +569,9 @@ class PBG_Blocks_Helper {
 			case 'premium/pricing-table':
 				$css += $this->get_pricing_css( $blockattr, $block_id );
 				break;
-            case 'premium/lottie':
-                $css += $this->get_lottie_css( $blockattr, $block_id );
-                break;
+			case 'premium/lottie':
+				$css += $this->get_lottie_css( $blockattr, $block_id );
+				break;
 			default:
 				// Nothing to do here.
 				break;
@@ -1330,47 +1330,61 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-    public static function get_lottie_css($attr , $id) {
-        $defaults = self::$block_atts['premium/lottie']['attributes'];
+	public static function get_lottie_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/lottie']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
 
 		$m_selectors = array();
 		$t_selectors = array();
 
-        $selectors = array(
-            ''=>array(
-                'text-align' => $attr['align']
-            ),
-            ' .premium-lottie-animation .premium-lottie-inner' =>array(
-                'width' =>$attr['size'] . 'px',
-                'height' => $attr['size'] . 'px',
-                'transform' =>'rotate(' . $attr['rotate'] . 'deg)',
-                'background-color' => $attr['backColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backColor'] ) . ',' . $attr['backOpacity'] . ')' : 'transparent',
-                'filter' => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%) ' . 'saturate(' . $attr['saturation'] . '%) ' . 'blur(' . $attr['blur'] . 'px) ' . 'hue-rotate(' . $attr['hue'] . 'deg)',
-                'border-style' => $attr['borderType'],
-                'border-width' => $attr['borderTop'] . 'px' . " " . $attr['borderRight'] . 'px'  . " " . $attr['borderBottom'] . 'px'  . " " . $attr['borderLeft'] . 'px',
-                'border-radius' =>$attr['borderRadius'] . 'px',
-                'border-color'  => $attr['borderColor'],
-                'padding-top'   =>$attr['paddingT'] . $attr['paddingU'],
-                'padding-right' => $attr['paddingR'] . $attr['paddingU'],
-                'padding-bottom' =>$attr['paddingB'] . $attr['paddingU'],
-                'padding-left' => $attr['paddingL'] . $attr['paddingU']
-            ),
+		$selectors = array(
+			''                                    => array(
+				'text-align' => $attr['align'],
+			),
+			' .premium-lottie-animation .premium-lottie-inner' => array(
+				'width'            => $attr['size'] . $attr['sizeUnit'],
+				'height'           => $attr['size'] . $attr['sizeUnit'],
+				'transform'        => 'rotate(' . $attr['rotate'] . 'deg)',
+				'background-color' => $attr['backColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backColor'] ) . ',' . $attr['backOpacity'] . ')' : 'transparent',
+				'filter'           => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%) ' . 'saturate(' . $attr['saturation'] . '%) ' . 'blur(' . $attr['blur'] . 'px) ' . 'hue-rotate(' . $attr['hue'] . 'deg)',
+				'border-style'     => $attr['borderType'],
+				'border-width'     => $attr['borderTop'] . 'px' . ' ' . $attr['borderRight'] . 'px' . ' ' . $attr['borderBottom'] . 'px' . ' ' . $attr['borderLeft'] . 'px',
+				'border-radius'    => $attr['borderRadius'] . 'px',
+				'border-color'     => $attr['borderColor'],
+				'padding-top'      => $attr['paddingT'] . $attr['paddingU'],
+				'padding-right'    => $attr['paddingR'] . $attr['paddingU'],
+				'padding-bottom'   => $attr['paddingB'] . $attr['paddingU'],
+				'padding-left'     => $attr['paddingL'] . $attr['paddingU'],
+			),
 
-            '  .premium-lottie-animation:hover .premium-lottie-inner' =>array(
-                'background-color' => $attr['backHColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backHColor'] ) . ',' . $attr['backHOpacity'] . ')' : 'transparent',
-                'filter' => 'brightness(' . $attr['brightH'] . '%)' . 'contrast(' . $attr['contrastH'] . '%) ' . 'saturate(' . $attr['saturationH'] . '%) ' . 'blur(' . $attr['blurH'] . 'px) ' . 'hue-rotate(' . $attr['hueH'] . 'deg)',
-            ),
-            '  .premium-lottie-animation  canvas'  =>array(
-                'width' => $attr['size'] . "px" .  " " .'!important',
-                'height' => $attr['size'] . "px" . " " .'!important',
-                'transform-origin' => ' unset !important'
-            )
-            );
+			'  .premium-lottie-animation:hover .premium-lottie-inner' => array(
+				'background-color' => $attr['backHColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backHColor'] ) . ',' . $attr['backHOpacity'] . ')' : 'transparent',
+				'filter'           => 'brightness(' . $attr['brightH'] . '%)' . 'contrast(' . $attr['contrastH'] . '%) ' . 'saturate(' . $attr['saturationH'] . '%) ' . 'blur(' . $attr['blurH'] . 'px) ' . 'hue-rotate(' . $attr['hueH'] . 'deg)',
+			),
+			'  .premium-lottie-animation  canvas' => array(
+				'width'            => $attr['size'] . 'px' . ' ' . '!important',
+				'height'           => $attr['size'] . 'px' . ' ' . '!important',
+				'transform-origin' => ' unset !important',
+			),
+		);
 
-        $base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
-        $desktop = self::generate_css( $selectors, $base_selector . $id );
+		$t_selectors = array(
+			' .premium-lottie-animation .premium-lottie-inner' => array(
+				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
+				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
+			),
+		);
+
+		$m_selectors = array(
+			' .premium-lottie-animation .premium-lottie-inner' => array(
+				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
+				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
+			),
+		);
+
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
+		$desktop       = self::generate_css( $selectors, $base_selector . $id );
 
 		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
 

@@ -329,9 +329,7 @@ Lottie button
 /**
 * Color Tabs
 */
-.premium-color-tabpanel {
-    margin: 10px !important;
-}
+
 
 .premium-color-tabpanel button.components-tab-panel__tabs-item {
     display: block;
