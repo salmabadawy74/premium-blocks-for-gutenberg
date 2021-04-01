@@ -16,21 +16,23 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
-        " .premium-lottie-animation .premium-lottie-inner ": {
-            "width": generateCSSUnit(size, sizeUnit),
-            "height": generateCSSUnit(size, sizeUnit)
+        " .premium-lottie-animation  ": {
+            "width": `${size}${sizeUnit} !important`,
+            "height": `${size}${sizeUnit} !important`
         },
+
     }
 
     tablet_selectors = {
-        " .premium-lottie-animation .premium-lottie-inner ": {
-            "width": generateCSSUnit(sizeTablet, sizeUnit),
-            "height": generateCSSUnit(sizeTablet, sizeUnit)
+        " .premium-lottie-animation  ": {
+            "width": `${sizeTablet}${sizeUnit} !important`,
+            "height": `${sizeTablet}${sizeUnit} !important`
         },
+
     }
 
     mobile_selectors = {
-        " .premium-lottie-animation .premium-lottie-inner ": {
+        " .premium-lottie-animation  ": {
             "width": generateCSSUnit(sizeMobile, sizeUnit),
             "height": generateCSSUnit(sizeMobile, sizeUnit)
         },
@@ -47,7 +49,9 @@ function styling(props) {
 
     styling_css += generateCSS(mobile_selectors, id, true, "mobile")
 
+
     return styling_css
+
 
 }
 export default styling

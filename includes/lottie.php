@@ -242,97 +242,91 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 			foreach ( self::$grid_settings['lottie'] as $key => $value ) {
 				?>
 
-			<script id="Lottie-script" type="text/javascript">
+		<script id="Lottie-script" type="text/javascript">
 
 			jQuery( document ).ready( function( $ ) {
 
-				var lottieContainer= document.querySelector('.premium-lottie-wrap-<?php echo esc_html( $value['block_id'] ); ?>');
+				var lottieContainer= document.querySelector('.premium-lottie-<?php echo esc_html( $value['block_id'] ); ?>');
 				var setSpeed = <?php echo esc_html( $value['speed'] ); ?>;
-				var tigger = <?php echo esc_html( $value['trigger'] ); ?>;
+				var trigger = '<?php echo esc_html( $value['trigger'] ); ?>' ;
 				var loop = '<?php echo esc_html( $value['loop'] ); ?>' ;
 				var path ='<?php echo esc_html( $value['lottieURl'] ); ?>';
 				var render ='<?php echo esc_html( $value['render'] ); ?>' ;
-				var reverse = <?php echo esc_html( $value['reverse'] ); ?> ;
+				var reverse =  Boolean(<?php echo esc_html( $value['reverse'] ); ?> );
+				var scrollHeight=document.documentElement.scrollHeight;
+				var scrollTop=document.documentElement.scrollTop;
+				var pageRange=document.documentElement.clientHeight;
+				var theWindow = $(window);
+				var winHeight = theWindow.height();
+				var animDuration = winHeight * setSpeed;
+
+
 
 				var animation = bodymovin.loadAnimation({
 				container: document.getElementById('premium-lottie-animation-<?php echo esc_html( $value['block_id'] ); ?>'),
 				renderer:render || 'svg',
 				loop: Boolean( loop ),
-				autoplay: Boolean(trigger ==='none' ) ,
+				autoplay:Boolean(trigger  ==='none'  ) ,
 				path:path ,
 				rendererSettings: {
 					preserveAspectRatio: 'xMidYMid',
 					className:"premium-lottie-inner"
 				},
-			})
+			  })
 
-			animation.setSpeed(setSpeed)
+				animation.setSpeed(setSpeed)
 
-			const reversedir = Boolean( reverse ) ? -1 : 1
+				const reversedir = Boolean( reverse ) ? -1 : 1
 
-			animation.setDirection(reversedir)
-			animation.addEventListener('DOMLoaded', function () {
-				if (scroll || viewPort) {
-					animation.pause();
-				}
+				animation.setDirection(reversedir)
+				animation.addEventListener('DOMLoaded', function () {
+					if (trigger==='scroll'  ) {
+							$( window ).scroll(function() {
+							animatebodymovin(animDuration, animation);
+						});
+					}
 
+					if(trigger==='hover'){
+							animation.pause();
+							lottieContainer.hover(function () {
+								animation.play();
+							}, function () {
+								animation.pause();
+							});
+					}
 
-			})
+					if(trigger === 'viewport'){
 
-			function initLottie(event) {
-					// function visible(selector, partial, hidden) {
+						window.addEventListener("scroll", function() {
+						var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
+						var top=<?php echo esc_html( $value['top'] ); ?>;
+						var bottom=<?php echo esc_html( $value['bottom'] ); ?>;
 
-					var vpHeight = $(window).outerHeight(),
-						clientSize = true;
+						var precentage= (scrollTop*100) /scrollHeight;
+						var pageEnd=((scrollTop+pageRange)*100)/scrollHeight;
 
-						if (typeof $layer[0].getBoundingClientRect === "function") {
-
-						var rec = lottieContainer.getBoundingClientRect();
-
-						var tViz = rec.top >= 0 && rec.top < vpHeight,
-							bViz = rec.bottom > 0 && rec.bottom <= vpHeight,
-							vVisible = false ? tViz || bViz : tViz && bViz,
-							vVisible = rec.top < 0 && rec.bottom > vpHeight ? true : vVisible;
-							clientSize && vVisible ? animItem.play() : animItem.pause();
+						if('<?php echo esc_html( $value['bottom'] ); ?>' < precentage && pageEnd < '<?php echo esc_html( $value['top'] ); ?>'  ){
+							animation.play();
 						}
+						else{
+							animation.stop();
+						}
+						});
 
-				}
+					}
 
-			if( 'hover' === '<?php echo esc_html( $value['trigger'] ); ?>'){
-				lottieContainer.addEventListener("mouseenter", function() {
-					animation.play()
-				});
-				lottieContainer.addEventListener("mouseleave", function() {
-					animation.stop()
-				});
+				})
+
+			function animatebodymovin(duration, animObject) {
+				console.log(duration,theWindow.scrollTop())
+				var scrollPosition = theWindow.scrollTop();
+				var maxFrames = animObject.totalFrames;
+				var frame = (maxFrames / 100) * (scrollPosition / (duration / 100));
+
+				animObject.goToAndStop(frame, true);
 
 			}
-			else if ( 'scroll' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
-				window.addEventListener("scroll", function() {
-					animation.play();
-				});
-			}
-			else if ( 'viewport' ==='<?php echo esc_html( $value['trigger'] ); ?>') {
-				window.addEventListener("scroll", function() {
-				 var elementHeight=document.querySelector('.premium-lottie-inner').clientHeight;
-				 var top=<?php echo esc_html( $value['top'] ); ?>;
-				 var bottom=<?php echo esc_html( $value['bottom'] ); ?>;
-				 var scrollHeight=document.documentElement.scrollHeight;
-				 var scrollTop=document.documentElement.scrollTop;
-				 var pageRange=document.documentElement.clientHeight;
-				 var precentage= (scrollTop*100) /scrollHeight;
-				 var pageEnd=((scrollTop+pageRange)*100)/scrollHeight;
-
-				 if('<?php echo esc_html( $value['bottom'] ); ?>' < precentage && pageEnd < '<?php echo esc_html( $value['top'] ); ?>'  ){
-					animation.play();
-				 }
-				 else{
-					animation.stop();
-				 }
-				});
-			}
-
-	   })
+		})
 
 		 </script>
 				<?php

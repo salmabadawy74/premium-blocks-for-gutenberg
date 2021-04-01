@@ -30,8 +30,7 @@ const LottieAttr = {
         default: false
     },
     speed: {
-        type: "number",
-        default:"1"
+        type: "number"
     },
     trigger: {
         type: 'string',
@@ -48,7 +47,16 @@ const LottieAttr = {
     size: {
         type: "number"
     },
-
+    sizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    sizeMobile: {
+        type: "number"
+    },
+    sizeTablet: {
+        type: "number"
+    },
     rotate: {
         type: "number",
         default: 0

@@ -1,8 +1,6 @@
 import classnames from "classnames";
-
-import Lottie from 'react-lottie';
+import Lottie from 'react-lottie-with-segments';
 import PremiumFilters from "../../components/premium-filters";
-
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumBackground from '../../components/premium-background';
@@ -28,6 +26,7 @@ const {
     SelectControl,
     IconButton,
     TabPanel,
+    Dashicon,
 } = wp.components
 
 class edit extends Component {
@@ -38,6 +37,7 @@ class edit extends Component {
     }
 
     componentDidMount() {
+
         const { setAttributes, clientId } = this.props;
 
         setAttributes({ block_id: clientId });
@@ -49,7 +49,13 @@ class edit extends Component {
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
 
+        const blockContainer = document.querySelector('.editor-styles-wrapper');
+        // blockContainer.onScroll(() => {
+        //     console.log("Hello");
+        // })
+
     }
+
 
     componentDidUpdate(prevProps, prevState) {
         var element = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
@@ -64,19 +70,14 @@ class edit extends Component {
     onSelectLottieJSON(media) {
 
         const { setAttributes } = this.props
-
         if (!media || !media.url) {
             setAttributes({ jsonLottie: null })
             return
         }
-
         setAttributes({ jsonLottie: media })
         setAttributes({ lottieURl: media.url })
 
     }
-
-
-
     render() {
         const { attributes, setAttributes, className } = this.props;
 
@@ -93,7 +94,6 @@ class edit extends Component {
             size,
             sizeTablet,
             sizeMobile,
-            sizeUnit,
             rotate,
             align,
             link,
@@ -169,6 +169,9 @@ class edit extends Component {
         const reversedir = (reverse) ? -1 : 1;
 
         const mainClasses = classnames(className, 'premium-lottie-wrap')
+        console.log(speed);
+
+
         return [
             <InspectorControls>
                 <PanelBody
@@ -188,16 +191,14 @@ class edit extends Component {
                         checked={reverse}
                         onChange={() => setAttributes({ reverse: !reverse })}
                     />
-                    <Fragment>
-                        <p>{__('Animation Speed')} </p>
-                        <RangeControl
-                            value={speed}
-                            onChange={newValue => setAttributes({ speed: newValue })}
-                            min={1}
-                            max={2.5}
-                            step={0.1}
-                        />
-                    </Fragment>
+                    <RangeControl
+                        label={__('Animation Speed')}
+                        value={speed}
+                        onChange={newValue => setAttributes({ speed: newValue ? newValue : 1 })}
+                        max={2.5}
+                        min={1}
+                        step={0.1}
+                    />
                     <SelectControl
                         label={__('Trigger')}
                         options={[
@@ -227,8 +228,9 @@ class edit extends Component {
                         />
                     </Fragment>}
                     <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes({ sizeUnit: newValue })}
-                        />
+
+                        onChangeSizeUnit={newValue => setAttributes({ sizeUnit: newValue })}
+                    />
                     <TabPanel
                         className="premium-size-type-field-tabs"
                         activeClass="active-tab"
@@ -236,18 +238,18 @@ class edit extends Component {
                             {
                                 name: "mobile",
                                 title: <Dashicon icon="desktop" />,
-                                className: "premium-desktop-tab premium-responsive-tabs",
+                                className: "premium-desktop-tab premium-size-type-field-tabs",
                             },
                             {
                                 name: "tablet",
                                 title: <Dashicon icon="tablet" />,
-                                className: "premium-tablet-tab premium-responsive-tabs",
+                                className: "premium-tablet-tab premium-size-type-field-tabs",
 
                             },
                             {
                                 name: "desktop",
                                 title: <Dashicon icon="smartphone" />,
-                                className: "premium-mobile-tab premium-responsive-tabs",
+                                className: "premium-mobile-tab premium-size-type-field-tabs",
 
                             },
                         ]}
@@ -259,6 +261,7 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size ")}
                                         value={size}
+                                        max={800}
                                         onChange={(value) => setAttributes({ size: value })}
                                     />
                                 );
@@ -267,6 +270,7 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size Tablet")}
                                         value={sizeTablet}
+                                        max={800}
                                         onChange={(value) => setAttributes({ sizeTablet: value })}
                                     />
                                 );
@@ -275,6 +279,7 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size Mobile")}
                                         value={sizeMobile}
+                                        max={800}
                                         onChange={(value) => setAttributes({ sizeMobile: value })}
                                     />
                                 );
@@ -509,7 +514,7 @@ class edit extends Component {
                             }
                         }}
                         isStopped={stop_animation}
-                        speed={speed ? speed : 1}
+                        speed={speed || 1}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />

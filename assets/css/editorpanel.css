@@ -77,9 +77,19 @@
 }
 
 /* .premium-size-type-field-tabs {
+    position: relative;
     margin-bottom: 20px;
     margin-top: 20px;
   } */
+.premium-size-type-field-tabs {
+      position: relative;
+}
+.premium-size-responsive-tab{
+    position: absolute;
+top: -18px;
+right: 148px;
+left: 4px;
+}
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
     position: absolute;
