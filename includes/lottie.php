@@ -388,11 +388,9 @@ if (!class_exists('PBG_Lottie')) {
 
 								if (trigger === "viewport") {
 									if (startEvent !== percents && endEvent !== percents) {
-										console.log("OH")
 										lottieInstance.play();
 									} else {
 										lottieInstance.pause();
-										console.log("BYE")
 									}
 								} else {
 									lottieInstance.goToAndStop(currframe, true);
