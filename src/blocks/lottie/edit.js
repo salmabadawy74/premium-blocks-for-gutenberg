@@ -91,6 +91,7 @@ class edit extends Component {
             trigger,
             bottom,
             top,
+            scrollSpeed,
             size,
             sizeTablet,
             sizeMobile,
@@ -132,6 +133,7 @@ class edit extends Component {
         if (lottieURl && lottieURl.endsWith('.json')) {
             validJsonPath = 'valid'
         }
+        console.log(lottieURl);
 
         if (validJsonPath === 'invalid') {
             return (
@@ -169,7 +171,6 @@ class edit extends Component {
         const reversedir = (reverse) ? -1 : 1;
 
         const mainClasses = classnames(className, 'premium-lottie-wrap')
-        console.log(speed);
 
 
         return [
@@ -211,7 +212,17 @@ class edit extends Component {
                         value={trigger}
                         onChange={newValue => setAttributes({ trigger: newValue })}
                     />
-                    {'viewport' === trigger && <Fragment>
+                    {'scroll' === trigger && <Fragment>
+                        <RangeControl
+                            label={__('Scroll Speed')}
+                            value={scrollSpeed}
+                            onChange={(newValue) => setAttributes({ scrollSpeed: newValue })}
+                            min={1}
+                            max={10}
+
+                        />
+                    </Fragment>}
+                    {(trigger === 'viewport' || trigger === 'scroll') && <Fragment>
                         <RangeControl
                             label={__('Bottom')}
                             value={bottom}
@@ -514,7 +525,7 @@ class edit extends Component {
                             }
                         }}
                         isStopped={stop_animation}
-                        speed={speed || 1}
+                        speed={speed === "" ? 1 : speed}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />

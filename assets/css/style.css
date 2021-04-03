@@ -7,6 +7,7 @@
     display: inline-block;
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
+    background-color: rgba(0, 0, 0, 0.45);
 }
 .premium-dheading-block__wrap {
     position: relative;

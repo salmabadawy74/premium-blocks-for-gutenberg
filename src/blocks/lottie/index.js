@@ -30,7 +30,8 @@ const LottieAttr = {
         default: false
     },
     speed: {
-        type: "number"
+        type: "number",
+        default: "1"
     },
     trigger: {
         type: 'string',
@@ -43,6 +44,10 @@ const LottieAttr = {
     top: {
         type: "number",
         default: "100%"
+    },
+    scrollSpeed: {
+        type: "number",
+        default: "0"
     },
     size: {
         type: "number"
