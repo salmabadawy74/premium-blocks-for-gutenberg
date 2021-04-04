@@ -1758,25 +1758,26 @@ a.premium-dheading-block__link:hover {
     display: -webkit-inline-flex;
     display: -moz-inline-box;
     display: -ms-inline-flexbox;
+    z-index: 999;
     display: inline-flex;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
  }
  .premium-lottie-wrap  .premium-lottie-animation:hover .premium-lottie-inner {
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
  }
 
 
-    .premium-lottie-wrap .premium-lottie-animation a {
-      position:absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      z-index: 99;
-    }
+.premium-lottie-wrap .premium-lottie-animation a {
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 9999;
+}
 
 /************ Responsive **************/
 
