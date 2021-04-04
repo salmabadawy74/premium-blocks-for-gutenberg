@@ -43,24 +43,27 @@ const LottieAttr = {
     },
     top: {
         type: "number",
-        default: "100%"
+        default: "100"
     },
     scrollSpeed: {
         type: "number",
         default: "0"
     },
     size: {
-        type: "number"
+        type: "number",
+        default: "200"
     },
     sizeUnit: {
         type: "string",
         default: 'px'
     },
     sizeMobile: {
-        type: "number"
+        type: "number",
+        default: "200"
     },
     sizeTablet: {
-        type: "number"
+        type: "number",
+        default: "200"
     },
     rotate: {
         type: "number",
@@ -86,7 +89,7 @@ const LottieAttr = {
     },
     backOpacity: {
         type: "number",
-        default: 1
+        default: "1"
     },
     backHColor: {
         type: "string"
@@ -160,19 +163,23 @@ const LottieAttr = {
     },
     borderRadius: {
         type: "number",
-        default: 0
+        default: "0"
     },
     paddingT: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     paddingR: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     paddingB: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     paddingL: {
-        type: "number"
+        type: "number",
+        default: "0"
     },
     paddingU: {
         type: "string",

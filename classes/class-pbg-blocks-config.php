@@ -450,10 +450,10 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 						'attributes' => array(
 							'block_id'     => '',
 							'classMigrate' => false,
-							'size'         => '',
+							'size'         => '200',
 							'sizeUnit'     => 'px',
-							'sizeTablet'   => '',
-							'sizeMobile'   => '',
+							'sizeTablet'   => '200',
+							'sizeMobile'   => '200',
 							'rotate'       => '',
 							'align'        => '',
 							'backColor'    => '',

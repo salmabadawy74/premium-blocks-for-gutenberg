@@ -31,15 +31,16 @@ const {
 
 class edit extends Component {
 
-    constructor() {
-        super(...arguments);
+    constructor(props) {
+        super(...props);
         this.lottieplayer = React.createRef();
+        this.handleScrollLottie = this.handleScrollLottie.bind(this);
     }
 
     componentDidMount() {
 
         const { setAttributes, clientId } = this.props;
-
+        const { trigger } = this.props.attributes;
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
 
@@ -49,13 +50,17 @@ class edit extends Component {
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
 
-        const blockContainer = document.querySelector('.editor-styles-wrapper');
-        // blockContainer.onScroll(() => {
-        //     console.log("Hello");
-        // })
+        const element = document.querySelector('.interface-interface-skeleton__content');
+        if (element) {
+            element.addEventListener('scroll', function () {
+                if ('scroll' === trigger || 'viewport' === trigger) {
+                    this.handleScrollLottie();
+                }
+            })
+
+        }
 
     }
-
 
     componentDidUpdate(prevProps, prevState) {
         var element = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
@@ -65,7 +70,6 @@ class edit extends Component {
         }
 
     }
-
 
     onSelectLottieJSON(media) {
 
@@ -78,6 +82,10 @@ class edit extends Component {
         setAttributes({ lottieURl: media.url })
 
     }
+    handleScrollLottie() {
+
+        this.lottieplayer.current.anim.pause();
+    };
     render() {
         const { attributes, setAttributes, className } = this.props;
 
@@ -92,6 +100,7 @@ class edit extends Component {
             bottom,
             top,
             scrollSpeed,
+            sizeUnit,
             size,
             sizeTablet,
             sizeMobile,
@@ -125,15 +134,13 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
-            paddingU,
+            paddingU
         } = attributes
-
 
         let validJsonPath = 'invalid';
         if (lottieURl && lottieURl.endsWith('.json')) {
             validJsonPath = 'valid'
         }
-        console.log(lottieURl);
 
         if (validJsonPath === 'invalid') {
             return (
@@ -158,10 +165,52 @@ class edit extends Component {
         };
 
         const handleLottieMouseLeave = () => {
-            this.lottieplayer.current.anim.stop();
+
+            this.lottieplayer.current.anim.pause();
         };
 
-
+        const handleRemoveLottie = () => {
+            setAttributes({
+                lottieURl: "",
+                loop: true,
+                reverse: false,
+                speed: 1,
+                trigger: "none",
+                bottom: "0",
+                top: "100",
+                size: "200",
+                sizeTablet: "200",
+                sizeMobile: "200",
+                rotate: "0",
+                link: false,
+                render: "svg",
+                backColor: "",
+                backOpacity: '1',
+                backHColor: "",
+                backHOpacity: "1",
+                blur: '0',
+                blurH: "0",
+                bright: '100',
+                brightH: "100",
+                contrast: '100',
+                contrastH: '100',
+                saturation: '100',
+                saturationH: '100',
+                hue: '0',
+                hueH: '0',
+                borderType: 'none',
+                borderTop: '0',
+                borderRight: '0',
+                borderBottom: '0',
+                borderLeft: '0',
+                borderRadius: '0',
+                paddingT: '0',
+                paddingU: 'px',
+                paddingR: '0',
+                paddingB: '0',
+                paddingL: '0'
+            })
+        }
 
         let stop_animation = true;
 
@@ -172,7 +221,6 @@ class edit extends Component {
 
         const mainClasses = classnames(className, 'premium-lottie-wrap')
 
-
         return [
             <InspectorControls>
                 <PanelBody
@@ -180,7 +228,8 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
-                    <button className="lottie-remove" onClick={() => setAttributes({ lottieURl: "" })}>Remove</button>
+                    <button className="lottie-remove" onClick={handleRemoveLottie}>Remove</button>
+
                     <ToggleControl
                         label={__(`loop`)}
                         checked={loop}
@@ -195,31 +244,35 @@ class edit extends Component {
                     <RangeControl
                         label={__('Animation Speed')}
                         value={speed}
-                        onChange={newValue => setAttributes({ speed: newValue ? newValue : 1 })}
+                        onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
                         max={2.5}
                         min={1}
                         step={0.1}
+                        initialPosition={1}
                     />
                     <SelectControl
                         label={__('Trigger')}
                         options={[
                             { value: 'none', label: __("None") },
-                            { value: "hover", label: __("On Hover") },
+                            { value: "hover", label: __("Hover") },
                             { value: "scroll", label: __("Scroll") },
                             { value: "viewport", label: __("Viewport") },
 
                         ]}
                         value={trigger}
                         onChange={newValue => setAttributes({ trigger: newValue })}
+                        help={`This options scroll and viewport works only on the preview page .`}
+
                     />
                     {'scroll' === trigger && <Fragment>
                         <RangeControl
                             label={__('Scroll Speed')}
                             value={scrollSpeed}
-                            onChange={(newValue) => setAttributes({ scrollSpeed: newValue })}
+                            onChange={(newValue) => setAttributes({ scrollSpeed: (value !== "") ? value : 200 })}
                             min={1}
                             max={10}
-
+                            step={.1}
+                            initialPosition={0}
                         />
                     </Fragment>}
                     {(trigger === 'viewport' || trigger === 'scroll') && <Fragment>
@@ -229,6 +282,7 @@ class edit extends Component {
                             onChange={(newValue) => setAttributes({ bottom: newValue })}
                             min={0}
                             max={50}
+                            initialPosition={0}
                         />
                         <RangeControl
                             label={__('Top')}
@@ -236,6 +290,7 @@ class edit extends Component {
                             onChange={(newValue) => setAttributes({ top: newValue })}
                             min={50}
                             max={100}
+                            initialPosition={100}
                         />
                     </Fragment>}
                     <PremiumSizeUnits
@@ -249,12 +304,12 @@ class edit extends Component {
                             {
                                 name: "mobile",
                                 title: <Dashicon icon="desktop" />,
-                                className: "premium-desktop-tab premium-size-type-field-tabs",
+                                className: "premium-desktop-tab premium-responsive-tabs",
                             },
                             {
                                 name: "tablet",
                                 title: <Dashicon icon="tablet" />,
-                                className: "premium-tablet-tab premium-size-type-field-tabs",
+                                className: "premium-tablet-tab premium-responsive-tabs",
 
                             },
                             {
@@ -272,8 +327,9 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size ")}
                                         value={size}
-                                        max={800}
-                                        onChange={(value) => setAttributes({ size: value })}
+                                        max={sizeUnit === '%' ? 100 : 800}
+                                        onChange={(value) => setAttributes({ size: (value !== "") ? value : 200 })}
+                                        initialPosition={200}
                                     />
                                 );
                             } else if ("tablet" === tab.name) {
@@ -281,8 +337,9 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size Tablet")}
                                         value={sizeTablet}
-                                        max={800}
-                                        onChange={(value) => setAttributes({ sizeTablet: value })}
+                                        max={sizeUnit === '%' ? 100 : 800}
+                                        onChange={(value) => setAttributes({ sizeTablet: (value !== "") ? value : 200 })}
+                                        initialPosition={200}
                                     />
                                 );
                             } else {
@@ -290,8 +347,9 @@ class edit extends Component {
                                     <RangeControl
                                         label={__("Size Mobile")}
                                         value={sizeMobile}
-                                        max={800}
-                                        onChange={(value) => setAttributes({ sizeMobile: value })}
+                                        max={sizeUnit === '%' ? 100 : 800}
+                                        onChange={(value) => setAttributes({ sizeMobile: (value !== "") ? value : 200 })}
+                                        initialPosition={200}
                                     />
                                 );
                             }
@@ -308,6 +366,7 @@ class edit extends Component {
                         max={180}
                         onChange={(newValue) => setAttributes({ rotate: newValue })}
                         step={1}
+                        initialPosition={0}
                     />
                     <h2> {__("Alignment")}</h2>
                     <IconButton
@@ -507,11 +566,10 @@ class edit extends Component {
                 </PanelBody>
             </InspectorControls>,
             <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses}`}
-                onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stop_animation = true}
-                onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stop_animation = true}
             >
                 <div className={`premium-lottie-animation`}
-
+                    onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stop_animation = true}
+                    onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stop_animation = true}
                 >
 
                     <Lottie
@@ -549,7 +607,6 @@ class edit extends Component {
                             `padding-bottom : ${paddingB}${paddingU};`,
                             `padding-left : ${paddingL}${paddingU};`,
                             `transform: rotate(${rotate}deg) !important;`,
-
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover .premium-lottie-inner {`,
                             `background-color:${backHColor ? hexToRgba(backHColor, backHOpacity) : "transparent"};`,
