@@ -380,7 +380,8 @@ if (!class_exists('PBG_Lottie')) {
 
 								self.animate = function(percents) {
 
-									//	var stopFrame = lottieInstance.totalFrames;
+										var stopFrame = lottieInstance.totalFrames;
+
 
 									if (startEvent && endEvent) {
 
@@ -394,7 +395,8 @@ if (!class_exists('PBG_Lottie')) {
 
 									}
 
-									//var currframe = ((percents) / 100) * (stopFrame);
+									var currframe = ((percents) / 100) * (stopFrame);
+                                    console.log(currframe,stopFrame,percents);
 
 									if (trigger === "viewport") {
 										if (startEvent !== percents && endEvent !== percents) {

@@ -29,20 +29,19 @@ const {
     Dashicon,
 } = wp.components
 
+
+
 class edit extends Component {
 
     constructor() {
         super(...arguments);
         this.lottieplayer = React.createRef();
-        this.state = {
-            percents: null
-        }
+
     }
 
     componentDidMount() {
 
         const { setAttributes, clientId } = this.props;
-        const { trigger, scrollSpeed, bottom: startEvent, top: endEvent } = this.props.attributes;
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
 
@@ -52,134 +51,16 @@ class edit extends Component {
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
 
-        const element = document.querySelector('.interface-interface-skeleton__content');
-        if (element) {
-            element.addEventListener('scroll', function () {
-                if ('scroll' === trigger || 'viewport' === trigger) {
-                    var animateSettings = {
-                        animate: {
-                            speed: trigger === 'viewport' ? "viewport" : scrollSpeed,
-                            range: {
-                                start: startEvent,
-                                end: endEvent
-                            }
-                        },
-                        effects: ['animate']
-                    };
-                    var lottieContainer = document.querySelector('.premium-lottie-animation');
-
-
-
-                    let animateInstance = new premiumEffects(lottieContainer, animateSettings, this.lottieplayer);
-
-                    animateInstance.initScroll();
-                }
-            })
-
-            window.premiumEffects = function (element, settings, lottieInstance) {
-
-
-                var self = this,
-                    $el = element,
-                    elementSettings = settings;
-                self.elementRules = {};
-
-                // self.init = function () {
-
-                //     $(window).on('scroll load', self.initScroll)
-
-                // };
-                self.getPercents = function () {
-
-                    var dimensions = self.getDimensions();
-
-                    let elementTopWindowPoint = dimensions.elementTop - pageYOffset,
-                        elementEntrancePoint = elementTopWindowPoint - innerHeight;
-
-                    let passedRangePercents = 100 / dimensions.range * (elementEntrancePoint * -1);
-
-                    return passedRangePercents;
-
-                };
-
-                self.initScroll = function () {
-
-                    self.initScrollEffects();
-
-                };
-
-                self.initScrollEffects = function () {
-
-                    var percents = self.getPercents();
-
-
-                    if (elementSettings.effects.includes('animate')) {
-                        self.animate(percents);
-                    }
-
-                };
-                self.getDimensions = function () {
-
-
-
-                    var dimensions = {
-                        elementHeight: $el.offsetHeight,
-                        elementTop: $el.offsetTop,
-                        elementLeft: $el.offsetLeft
-                    };
-
-                    dimensions.range = dimensions.elementHeight + innerHeight;
-
-                    return dimensions;
-
-                };
-
-                self.animate = function (percents) {
-                    this.setState({ percents: percents })
-
-                    // var stopFrame = lottieInstance.totalFrames;
-
-                    // if (startEvent && endEvent) {
-
-                    //     if (startEvent > percents) {
-                    //         percents = startEvent;
-                    //     }
-
-                    //     if (endEvent < percents) {
-                    //         percents = endEvent;
-                    //     }
-
-                    // }
-
-                    // var currframe = ((percents) / 100) * (stopFrame);
-
-                    // if (trigger === "viewport") {
-                    //     if (startEvent !== percents && endEvent !== percents) {
-                    //         lottieInstance.current.anim.play();
-                    //     } else {
-                    //         console.log("Ok")
-                    //     }
-                    // } else {
-                    //     lottieInstance.goToAndStop(currframe, true);
-                    // }
-
-                };
-
-
-            };
-
-        }
 
     }
 
 
     componentDidUpdate(prevProps, prevState) {
-        var element = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
+        var elementstyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
 
-        if (null !== element && undefined !== element) {
-            element.innerHTML = styling(this.props)
+        if (null !== elementstyle && undefined !== elementstyle) {
+            elementstyle.innerHTML = styling(this.props)
         }
-
     }
 
     onSelectLottieJSON(media) {
@@ -193,7 +74,6 @@ class edit extends Component {
         setAttributes({ lottieURl: media.url })
 
     }
-
 
     render() {
         const { attributes, setAttributes, className } = this.props;
@@ -277,22 +157,76 @@ class edit extends Component {
 
             this.lottieplayer.current.anim.pause();
         };
-        const handleTrigger = (newValue) => {
-            const { percents } = this.state;
-            setAttributes({ trigger: newValue })
-            // if (bottom > percents) {
-            //     this.setState({ percents: bottom })
-            // }
 
-            // if (top < percents) {
-            //     this.setState({ percents: top })
-            // }
-            //  let currframe = ((percents) / 100) * (stopFrame);
-            if ('scroll' === newValue) {
-                setAttributes({ trigger: newValue })
+        const handleLottieSegments = (x, y) => {
+            let stopFrame = this.lottieplayer.current.anim.totalFrames;
+            let currframe = (y / 100) * stopFrame;
+            this.lottieplayer.current.anim.goToAndStop(currframe, true)
+        }
 
-                console.log(percents)
-            }
+        if (trigger === 'scroll' || trigger === 'viewport') {
+
+            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {
+                var animateSettings = {
+                    animate: {
+                        speed: trigger === 'viewport' ? "viewport" : scrollSpeed,
+                        range: {
+                            start: bottom,
+                            end: top
+                        }
+                    },
+                    effects: ['animate']
+                };
+                var lottieContainer = document.querySelector(`.premium-lottie-animation`);
+
+
+                let animateInstance = new premiumEffects(lottieContainer, animateSettings, this.lottieplayer);
+
+                animateInstance.initScroll();
+
+            })
+        }
+
+        window.premiumEffects = function (element, settings) {
+            var self = this,
+                $el = element,
+                elementSettings = settings;
+            self.elementRules = {};
+
+
+
+            self.initScroll = function () {
+
+                self.initScrollEffects();
+
+            };
+            self.initScrollEffects = function () {
+
+                if (elementSettings.effects.includes('animate')) {
+                    self.animate();
+                }
+
+            };
+
+            self.animate = function () {
+                var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight;
+                var scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop;
+                var pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight;
+                var precentage = (scrollTop * 100) / scrollHeight;
+                var pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
+
+
+                if (trigger === "viewport") {
+                    if (bottom < precentage && pageEnd < top)
+                        handleLottieMouseEnter()
+                    else {
+                        handleLottieMouseLeave()
+                    }
+                } else {
+                    handleLottieSegments(pageEnd, precentage)
+                }
+            };
+
         }
 
         const handleRemoveLottie = () => {
@@ -340,7 +274,7 @@ class edit extends Component {
 
         let stop_animation = true;
 
-        if ('none' === trigger || 'scroll' === trigger || 'viewport' === trigger || 'undefined' === typeof trigger) {
+        if ('none' === trigger || 'undefined' === typeof trigger) {
             stop_animation = false;
         }
         const reversedir = (reverse) ? -1 : 1;
@@ -383,14 +317,12 @@ class edit extends Component {
                             { value: "hover", label: __("Hover") },
                             { value: "scroll", label: __("Scroll") },
                             { value: "viewport", label: __("Viewport") },
-
                         ]}
                         value={trigger}
-                        onChange={handleTrigger}
-                        help={`This options scroll and viewport works only on the preview page .`}
+                        onChange={(newValue) => setAttributes({ trigger: newValue })}
 
                     />
-                    {'scroll' === trigger && <Fragment>
+                    {('scroll' === trigger && !reverse) && <Fragment>
                         <RangeControl
                             label={__('Scroll Speed')}
                             value={scrollSpeed}
@@ -401,7 +333,7 @@ class edit extends Component {
                             initialPosition={0}
                         />
                     </Fragment>}
-                    {(trigger === 'viewport' || trigger === 'scroll') && <Fragment>
+                    {((trigger === 'viewport' || trigger === 'scroll') && !reverse) && <Fragment>
                         <RangeControl
                             label={__('Bottom')}
                             value={bottom}
@@ -712,7 +644,6 @@ class edit extends Component {
                         speed={speed === "" ? 1 : speed}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
-                    //playSegments={sequence}
                     />
                     {link && url !== ' ' && <a href={url}></a>}
                 </div>
@@ -736,7 +667,7 @@ class edit extends Component {
                             `transform: rotate(${rotate}deg) !important;`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover .premium-lottie-inner {`,
-                            `background-color:${backHColor ? hexToRgba(backHColor, backHOpacity) : "transparent"};`,
+                            `background-color:${backHColor ? hexToRgba(backHColor, backHOpacity) : backColor};`,
                             `filter: brightness( ${brightH}% ) contrast( ${contrastH}% ) saturate( ${saturationH}% ) blur( ${blurH}px ) hue-rotate( ${hueH}deg );`,
 
                             "}",
