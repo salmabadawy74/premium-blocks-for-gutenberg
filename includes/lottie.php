@@ -6,19 +6,19 @@
  * @package PBG_lottie
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if (!class_exists('PBG_Lottie')) {
+if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 	/**
 	 * Class PBG_Lottie.
 	 *
 	 * @since 1.8.8
 	 */
-	class PBG_Lottie
-	{
+	class PBG_Lottie {
+
 
 
 		/**
@@ -36,9 +36,8 @@ if (!class_exists('PBG_Lottie')) {
 		 *
 		 * @since 1.8.8
 		 */
-		public static function get_instance()
-		{
-			if (!isset(self::$instance)) {
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
 			}
 			return self::$instance;
@@ -49,11 +48,10 @@ if (!class_exists('PBG_Lottie')) {
 		 *
 		 * @since 1.8.8
 		 */
-		public function __construct()
-		{
-			// Activation hook.
+		public function __construct() {
+			 // Activation hook.
 			$this->register_blocks();
-			add_action('wp_footer', array($this, 'render_lottie_script'), 1000);
+			add_action( 'wp_footer', array( $this, 'render_lottie_script' ), 1000 );
 		}
 		/**
 		 * Registers the `PBG/lottie` block on server.
@@ -61,10 +59,9 @@ if (!class_exists('PBG_Lottie')) {
 		 * @since 1.8.8
 		 */
 
-		public function register_blocks()
-		{
-			// Check if the register function exists.
-			if (!function_exists('register_block_type')) {
+		public function register_blocks() {
+			 // Check if the register function exists.
+			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
 			register_block_type(
@@ -207,7 +204,7 @@ if (!class_exists('PBG_Lottie')) {
 						),
 
 					),
-					'render_callback' => array($this, 'render_html'),
+					'render_callback' => array( $this, 'render_html' ),
 				)
 			);
 		}
@@ -219,15 +216,14 @@ if (!class_exists('PBG_Lottie')) {
 		 *
 		 * @since 1.8.8
 		 */
-		public static function render_html($attributes)
-		{
+		public static function render_html( $attributes ) {
 
 			$block_id = '';
 
-			if (isset($attributes['block_id'])) {
+			if ( isset( $attributes['block_id'] ) ) {
 				$block_id = $attributes['block_id'];
 			}
-			self::$grid_settings['lottie'][$attributes['block_id']] = $attributes;
+			self::$grid_settings['lottie'][ $attributes['block_id'] ] = $attributes;
 
 			$main_classes = array(
 				'premium-lottie-' . $block_id,
@@ -239,14 +235,14 @@ if (!class_exists('PBG_Lottie')) {
 			);
 			ob_start();
 
-?>
-			<div class="<?php echo esc_attr(implode(' ', $main_classes)); ?>">
-				<div id="<?php echo esc_attr(implode(' ', $main_id)); ?>" class="premium-lottie-animation">
+			?>
+			<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
+				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>" class="premium-lottie-animation">
 					<?php
-					if ($attributes['link']) {
-					?>
-						<a href='<?php echo esc_html($attributes['url']); ?>'></a>
-					<?php
+					if ( $attributes['link'] ) {
+						?>
+						<a href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+						<?php
 					}
 					?>
 				</div>
@@ -256,27 +252,26 @@ if (!class_exists('PBG_Lottie')) {
 			return ob_get_clean();
 		}
 
-		public function render_lottie_script()
-		{
-			if (isset(self::$grid_settings['lottie']) && !empty(self::$grid_settings['lottie'])) {
-				foreach (self::$grid_settings['lottie'] as $key => $value) {
-			?>
+		public function render_lottie_script() {
+			if ( isset( self::$grid_settings['lottie'] ) && ! empty( self::$grid_settings['lottie'] ) ) {
+				foreach ( self::$grid_settings['lottie'] as $key => $value ) {
+					?>
 
 					<script id="Lottie-script" type="text/javascript">
 						jQuery(document).ready(function($) {
 
-							var lottieContainer = document.querySelector('.premium-lottie-<?php echo esc_html($value['block_id']); ?>');
-							var setSpeed = <?php echo esc_html($value['speed']); ?>;
-							var trigger = '<?php echo esc_html($value['trigger']); ?>';
-							var loop = '<?php echo esc_html($value['loop']); ?>';
-							var path = '<?php echo esc_html($value['lottieURl']); ?>';
-							var render = '<?php echo esc_html($value['render']); ?>';
-							var endEvent = '<?php echo esc_html($value['top']); ?>';
-							var startEvent = '<?php echo esc_html($value['bottom']); ?>';
-							var scrollSpeed = '<?php echo esc_html($value['scrollSpeed']); ?>';
-							var reverse = Boolean(<?php echo esc_html($value['reverse']); ?>);
+							var lottieContainer = document.querySelector('.premium-lottie-<?php echo esc_html( $value['block_id'] ); ?>');
+							var setSpeed = <?php echo esc_html( $value['speed'] ); ?>;
+							var trigger = '<?php echo esc_html( $value['trigger'] ); ?>';
+							var loop = '<?php echo esc_html( $value['loop'] ); ?>';
+							var path = '<?php echo esc_html( $value['lottieURl'] ); ?>';
+							var render = '<?php echo esc_html( $value['render'] ); ?>';
+							var endEvent = '<?php echo esc_html( $value['top'] ); ?>';
+							var startEvent = '<?php echo esc_html( $value['bottom'] ); ?>';
+							var scrollSpeed = '<?php echo esc_html( $value['scrollSpeed'] ); ?>';
+							var reverse = Boolean(<?php echo esc_html( $value['reverse'] ); ?>);
 							var animation = bodymovin.loadAnimation({
-								container: document.getElementById('premium-lottie-animation-<?php echo esc_html($value['block_id']); ?>'),
+								container: document.getElementById('premium-lottie-animation-<?php echo esc_html( $value['block_id'] ); ?>'),
 								renderer: render || 'svg',
 								loop: Boolean(loop),
 								autoplay: Boolean(trigger === 'none'),
@@ -396,7 +391,7 @@ if (!class_exists('PBG_Lottie')) {
 									}
 
 									var currframe = ((percents) / 100) * (stopFrame);
-                                    console.log(currframe,stopFrame,percents);
+									console.log(currframe,stopFrame,percents);
 
 									if (trigger === "viewport") {
 										if (startEvent !== percents && endEvent !== percents) {
@@ -415,7 +410,7 @@ if (!class_exists('PBG_Lottie')) {
 
 						})
 					</script>
-<?php
+					<?php
 				}
 			}
 		}
