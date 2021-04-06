@@ -305,8 +305,10 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 											range: {
 												start: startEvent,
 												end: endEvent
-											}
+											},
+											triggerEvent:trigger
 										},
+
 										effects: ['animate']
 									};
 
@@ -317,6 +319,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 							})
 
 							window.premiumEffects = function(element, settings, lottieInstance) {
+								console.log(element,settings,"settings")
 
 								var self = this,
 									$el = $(element),
@@ -337,6 +340,8 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 									passedRangePercents = 100 / dimensions.range * (elementEntrancePoint * -1);
 
+
+
 									return passedRangePercents;
 
 								};
@@ -353,7 +358,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 
 									if (elementSettings.effects.includes('animate')) {
-										self.animate(percents);
+										self.animate(percents,elementSettings.animate);
 									}
 
 								};
@@ -373,27 +378,30 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								};
 
-								self.animate = function(percents) {
+								self.animate = function(percents,data) {
 
 										var stopFrame = lottieInstance.totalFrames;
+										console.log(percents,data.range)
 
 
-									if (startEvent && endEvent) {
 
-										if (startEvent > percents) {
-											percents = startEvent;
-										}
+									 if (data.range) {
 
-										if (endEvent < percents) {
-											percents = endEvent;
-										}
+				if (data.range.start > percents) {
+					percents = data.range.start;
+				}
 
-									}
+				if (data.range.end < percents) {
+					percents = data.range.end;
+				}
+
+			}
 
 									var currframe = ((percents) / 100) * (stopFrame);
-									console.log(currframe,stopFrame,percents);
+									console.log(currframe,percents)
 
-									if (trigger === "viewport") {
+
+									if (data.triggerEvent === "viewport") {
 										if (startEvent !== percents && endEvent !== percents) {
 											lottieInstance.play();
 										} else {
