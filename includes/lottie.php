@@ -98,7 +98,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 						),
 						'top'          => array(
 							'type'    => 'number',
-							'default' => '0',
+							'default' => '100',
 						),
 						'bottom'       => array(
 							'type'    => 'number',
@@ -312,9 +312,10 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 										effects: ['animate']
 									};
 
+
 									animateInstance = new premiumEffects(lottieContainer, animateSettings, animation);
 
-									animateInstance..initScroll();
+									animateInstance.init();
 								}
 							})
 
@@ -341,6 +342,11 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								};
 
+								self.init = function () {
+
+			                	$(window).on('scroll load', self.initScroll);
+
+		                         };
 								self.initScroll = function() {
 
 									self.initScrollEffects();
@@ -375,26 +381,29 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								self.animate = function(percents,data) {
 
+
 									var stopFrame = lottieInstance.totalFrames;
 
 									if (data.range) {
 
-                                        if (data.range.start > percents) {
-                                            percents = data.range.start;
-                                        }
+										if (data.range.start > percents) {
+											percents = data.range.start;
+										}
 
-                                        if (data.range.end < percents) {
-                                            percents = data.range.end;
-                                        }
+										if (data.range.end < percents) {
+											percents = data.range.end;
+										}
 
-                                    }
+									}
 
 									var currframe = ((percents) / 100) * (stopFrame);
 
-									if (data.triggerEvent === "viewport") {
-										if (startEvent !== percents && endEvent !== percents) {
+									if (data.speed === "viewport") {
+
+										if (data.range.start !== percents && data.range.end !== percents) {
 											lottieInstance.play();
 										} else {
+
 											lottieInstance.pause();
 										}
 									} else {
