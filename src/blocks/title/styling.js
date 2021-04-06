@@ -62,6 +62,24 @@ function styling(props) {
         iconSpacingTablet,
         strokeColor,
         strokeFull,
+        BackText,
+        textBackColor,
+        textBackfontSizeType,
+        textBackfontSize,
+        textBackfontSizeMobile,
+        textBackfontSizeTablet,
+        textBackWeight,
+        textBackStyle,
+        textBackLetter,
+        textBackUpper,
+        textBackshadowColor,
+        textBackshadowBlur,
+        textBackshadowHorizontal,
+        textBackshadowVertical,
+        horizontalText,
+        verticalText,
+        blend,
+        z_index,
     } = props.attributes
 
     var selectors = {}
@@ -69,23 +87,40 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
+
+        " .premium-title-bg-text:before": {
+            "content": BackText,
+            "position": "absolute",
+            "top": verticalText,
+            "left": horizontalText,
+            "color": textBackColor,
+            "font-size": generateCSSUnit(textBackfontSize, textBackfontSizeType),
+            "font-weight": textBackWeight,
+            "font-style": textBackStyle,
+            "text-transform": textBackUpper ? "uppercase" : "none",
+            "letter-spacing": textBackLetter + 'px',
+            "text-shadow": textBackshadowHorizontal + textBackshadowVertical + textBackshadowBlur + textBackshadowColor,
+            "mix-blend-mode": blend,
+            "z-index": z_index
+
+        },
         " .premium-title-style7-stripe__wrap": {
             "margin-top": generateCSSUnit(stripeTopSpacing, 'px'),
             "margin-bottom": generateCSSUnit(stripeBottomSpacing, 'px'),
         },
         " .premium-title-style7-stripe-span": {
-          "width": generateCSSUnit(stripeWidth, 'px'),
-          "height": generateCSSUnit(stripeHeight, 'px'),
-          "background-color": stripeColor
+            "width": generateCSSUnit(stripeWidth, 'px'),
+            "height": generateCSSUnit(stripeHeight, 'px'),
+            "background-color": stripeColor
         },
         " .premium-title-header": {
-          "color": titleColor + "!important",
-          "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
-          "letter-spacing": titleLetter + "px",
-          "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-          "font-style": titleStyle + "!important",
-          "font-weight": titleWeight + "!important",
-          "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`
+            "color": titleColor + "!important",
+            "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
+            "letter-spacing": titleLetter + "px",
+            "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+            "font-style": titleStyle + "!important",
+            "font-weight": titleWeight + "!important",
+            "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`
         },
         " .premium-title .style1 .premium-title-header": {
             "border-left": titleborderWidth >= '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
@@ -95,10 +130,10 @@ function styling(props) {
             "border-radius": generateCSSUnit(titleborderRadius, "px"),
         },
         " .premium-title-style2__wrap": {
-          "background-color": BGColor
+            "background-color": BGColor
         },
-        " .premium-title-style3__wrap":{
-          "background-color": BGColor
+        " .premium-title-style3__wrap": {
+            "background-color": BGColor
         },
         " .premium-title .style2": {
             "border-bottom": titleborderWidth >= '1' ? `${titleborderWidth}px ${titleborderType} ${titleborderColor} !important` : "",
@@ -137,7 +172,7 @@ function styling(props) {
         " .premium-title-style6__wrap:before": {
             "border-bottom-color": triangleColor
         },
-        " .premium-title-icon":{
+        " .premium-title-icon": {
             "color": iconColor,
             "font-size": generateCSSUnit(iconSize, iconSizeType),
             "border-style": iconborderType,
@@ -149,14 +184,14 @@ function styling(props) {
             "padding": generateCSSUnit(iconPadding, iconPaddingType),
             "margin": generateCSSUnit(iconSpacing, iconSpacingType)
         },
-        " .premium-title-text-title":{
+        " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMargin, titleMarginType),
             "padding": generateCSSUnit(titlePadding, titlePaddingType),
-            "-webkit-text-stroke-color" : strokeColor,
-            "-webkit-text-stroke-width" : `${strokeFull}px`,
+            "-webkit-text-stroke-color": strokeColor,
+            "-webkit-text-stroke-width": `${strokeFull}px`,
 
         },
-        " .premium-title-header img":{
+        " .premium-title-header img": {
             "width": generateCSSUnit(iconSize, iconSizeType),
             "height": generateCSSUnit(iconSize, iconSizeType)
         }

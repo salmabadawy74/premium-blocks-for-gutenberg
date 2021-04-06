@@ -69531,7 +69531,8 @@ var edit = function (_Component) {
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
                 isSelected = _props.isSelected;
-            var align = attributes.align,
+            var block_id = attributes.block_id,
+                align = attributes.align,
                 className = attributes.className,
                 style = attributes.style,
                 title = attributes.title,
@@ -69975,7 +69976,7 @@ var edit = function (_Component) {
                         label: __('background Text'),
                         checked: backgroundText,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ backgroundText: newValue });
+                            return setAttributes({ backgroundText: newValue ? 'premium-title-bg-text' : '' });
                         }
                     }),
                     backgroundText && wp.element.createElement(
@@ -70461,7 +70462,7 @@ var edit = function (_Component) {
                         horizontal: textBackshadowHorizontal,
                         vertical: textBackshadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ textBackshadowColor: newColor.hex });
+                            return setAttributes({ textBackshadowColor: newColor2 });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return setAttributes({ textBackshadowBlur: newBlur });
@@ -70471,8 +70472,8 @@ var edit = function (_Component) {
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return setAttributes({ textBackshadowVertical: newValue });
-                        },
-                        onResetClick: onResetClicktextBackTextShadow
+                        }
+
                     }),
                     wp.element.createElement("hr", null),
                     wp.element.createElement(SelectControl, {
@@ -70509,14 +70510,14 @@ var edit = function (_Component) {
                 })
             ), wp.element.createElement(
                 "div",
-                { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + this.props.clientId) + ("  premium-title-bg-text  " + hideDesktop + " " + hideTablet + " " + hideMobile), style: {
+                { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id) + ("  premium-title-bg-text  " + hideDesktop + " " + hideTablet + " " + hideMobile), style: {
                         textAlign: align
-                    }, "data-backgroundText": BackText },
+                    } },
                 wp.element.createElement(
                     "div",
-                    { className: "premium-title", style: {
+                    { className: "premium-title  " + backgroundText, style: {
                             textAlign: align
-                        } },
+                        }, "data-backgroundText": BackText },
                     wp.element.createElement(
                         "div",
                         { className: style + " " + style + "-" + align },
@@ -70645,7 +70646,25 @@ function styling(props) {
         iconSpacingMobile = _props$attributes.iconSpacingMobile,
         iconSpacingTablet = _props$attributes.iconSpacingTablet,
         strokeColor = _props$attributes.strokeColor,
-        strokeFull = _props$attributes.strokeFull;
+        strokeFull = _props$attributes.strokeFull,
+        BackText = _props$attributes.BackText,
+        textBackColor = _props$attributes.textBackColor,
+        textBackfontSizeType = _props$attributes.textBackfontSizeType,
+        textBackfontSize = _props$attributes.textBackfontSize,
+        textBackfontSizeMobile = _props$attributes.textBackfontSizeMobile,
+        textBackfontSizeTablet = _props$attributes.textBackfontSizeTablet,
+        textBackWeight = _props$attributes.textBackWeight,
+        textBackStyle = _props$attributes.textBackStyle,
+        textBackLetter = _props$attributes.textBackLetter,
+        textBackUpper = _props$attributes.textBackUpper,
+        textBackshadowColor = _props$attributes.textBackshadowColor,
+        textBackshadowBlur = _props$attributes.textBackshadowBlur,
+        textBackshadowHorizontal = _props$attributes.textBackshadowHorizontal,
+        textBackshadowVertical = _props$attributes.textBackshadowVertical,
+        horizontalText = _props$attributes.horizontalText,
+        verticalText = _props$attributes.verticalText,
+        blend = _props$attributes.blend,
+        z_index = _props$attributes.z_index;
 
 
     var selectors = {};
@@ -70653,6 +70672,23 @@ function styling(props) {
     var mobile_selectors = {};
 
     selectors = {
+
+        " .premium-title-bg-text:before": {
+            "content": BackText,
+            "position": "absolute",
+            "top": verticalText,
+            "left": horizontalText,
+            "color": textBackColor,
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(textBackfontSize, textBackfontSizeType),
+            "font-weight": textBackWeight,
+            "font-style": textBackStyle,
+            "text-transform": textBackUpper ? "uppercase" : "none",
+            "letter-spacing": textBackLetter + 'px',
+            "text-shadow": textBackshadowHorizontal + textBackshadowVertical + textBackshadowBlur + textBackshadowColor,
+            "mix-blend-mode": blend,
+            "z-index": z_index
+
+        },
         " .premium-title-style7-stripe__wrap": {
             "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeTopSpacing, 'px'),
             "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeBottomSpacing, 'px')

@@ -51,6 +51,7 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected } = this.props
 
         const {
+            block_id,
             align,
             className,
             style,
@@ -271,7 +272,7 @@ class edit extends Component {
                 titleUpper: false
             });
         }
-      
+
         const onResetClickTitleTextShadow = () => {
             setAttributes({
                 titleshadowColor: "",
@@ -466,7 +467,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__('background Text')}
                             checked={backgroundText}
-                            onChange={(newValue) => setAttributes({ backgroundText: newValue })}
+                            onChange={(newValue) => setAttributes({ backgroundText: newValue ? 'premium-title-bg-text' : '' })}
                         />
                         {backgroundText &&
                             <Fragment>
@@ -868,7 +869,7 @@ class edit extends Component {
                                 horizontal={textBackshadowHorizontal}
                                 vertical={textBackshadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({ textBackshadowColor: newColor.hex })
+                                    setAttributes({ textBackshadowColor: newColor2 })
                                 }
                                 onChangeBlur={newBlur => setAttributes({ textBackshadowBlur: newBlur })}
                                 onChangehHorizontal={newValue =>
@@ -877,7 +878,7 @@ class edit extends Component {
                                 onChangeVertical={newValue =>
                                     setAttributes({ textBackshadowVertical: newValue })
                                 }
-                                onResetClick={onResetClicktextBackTextShadow}
+
                             />
                             <hr />
 
@@ -908,14 +909,16 @@ class edit extends Component {
             ),
             <div className={classnames(
                 className,
-                `premium-block-${this.props.clientId}`
+                `premium-block-${block_id}`
             ) + `  premium-title-bg-text  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
                 textAlign: align,
-            }} data-backgroundText={BackText}>
-                <div className={`premium-title`} style={{
+            }} >
+
+                <div className={`premium-title  ${backgroundText}`} style={{
                     textAlign: align,
-                }}>
+                }} data-backgroundText={BackText}>
                     <div className={`${style} ${style}-${align}`}>
+
                         <h2 className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
                             {style === 'style7' ? <Fragment>
                                 {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
@@ -951,6 +954,7 @@ class edit extends Component {
                             }
                             {link && <a href={`${url}`}></a>}
                         </h2>
+
                     </div>
                 </div>
             </div>
