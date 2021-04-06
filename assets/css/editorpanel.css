@@ -81,11 +81,15 @@
     margin-top: 20px;
   } */
 
+.premium-size-type-field-tabs{
+      position: relative;
+  }
 .premium-size-type-field-tabs .components-tab-panel__tabs {
     position: absolute;
-    top: 10px;
-    right: 50px;
+    top: -20px;
+    left: 0;
 }
+
 
 .premium-size-type-field-tabs.premium-without-size-type .components-tab-panel__tabs {
     margin-right: 0;
