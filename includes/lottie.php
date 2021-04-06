@@ -314,23 +314,18 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 									animateInstance = new premiumEffects(lottieContainer, animateSettings, animation);
 
-									animateInstance.init();
+									animateInstance..initScroll();
 								}
 							})
 
 							window.premiumEffects = function(element, settings, lottieInstance) {
-								console.log(element,settings,"settings")
+
 
 								var self = this,
 									$el = $(element),
 									elementSettings = settings;
 								self.elementRules = {};
 
-								self.init = function() {
-
-									$(window).on('scroll load', self.initScroll)
-
-								};
 								self.getPercents = function() {
 
 									var dimensions = self.getDimensions();
@@ -380,26 +375,21 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								self.animate = function(percents,data) {
 
-										var stopFrame = lottieInstance.totalFrames;
-										console.log(percents,data.range)
+									var stopFrame = lottieInstance.totalFrames;
 
+									if (data.range) {
 
+                                        if (data.range.start > percents) {
+                                            percents = data.range.start;
+                                        }
 
-									 if (data.range) {
+                                        if (data.range.end < percents) {
+                                            percents = data.range.end;
+                                        }
 
-				if (data.range.start > percents) {
-					percents = data.range.start;
-				}
-
-				if (data.range.end < percents) {
-					percents = data.range.end;
-				}
-
-			}
+                                    }
 
 									var currframe = ((percents) / 100) * (stopFrame);
-									console.log(currframe,percents)
-
 
 									if (data.triggerEvent === "viewport") {
 										if (startEvent !== percents && endEvent !== percents) {
