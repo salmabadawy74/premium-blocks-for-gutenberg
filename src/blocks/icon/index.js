@@ -9,6 +9,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const iconAttrs = {
+    block_id: {
+        type: "string"
+    },
     iconBorder: {
         type: "boolean",
         default: false,

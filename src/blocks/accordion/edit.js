@@ -1,8 +1,8 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
-import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 
 const { Component, Fragment } = wp.element;
 
@@ -424,8 +424,7 @@ class PremiumAccordion extends Component {
                                 setAttributes({ titleShadowVertical: newValue })
                             }
                         />
-
-                        <PremiumPadding
+                        <PremiumResponsivePadding
                             paddingTop={titlePaddingT}
                             paddingRight={titlePaddingR}
                             paddingBottom={titlePaddingB}
@@ -450,6 +449,56 @@ class PremiumAccordion extends Component {
                                     titlePaddingL: value === undefined ? 0 : value
                                 })
                             }
+                            paddingTopTablet={titlePaddingT}
+                            paddingRightTablet={titlePaddingR}
+                            paddingBottomTablet={titlePaddingB}
+                            paddingLeftTablet={titlePaddingL}
+                            onChangePadTopTablet={value =>
+                                setAttributes({
+                                    titlePaddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightTablet={value =>
+                                setAttributes({
+                                    titlePaddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomTablet={value =>
+                                setAttributes({
+                                    titlePaddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftTablet={value =>
+                                setAttributes({
+                                    titlePaddingL: value === undefined ? 0 : value
+                                })
+                            }
+                            paddingTopMobile={titlePaddingT}
+                            paddingRightMobile={titlePaddingR}
+                            paddingBottomMobile={titlePaddingB}
+                            paddingLeftMobile={titlePaddingL}
+                            onChangePadTopMobile={value =>
+                                setAttributes({
+                                    titlePaddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightMobile={value =>
+                                setAttributes({
+                                    titlePaddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomMobile={value =>
+                                setAttributes({
+                                    titlePaddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftMobile={value =>
+                                setAttributes({
+                                    titlePaddingL: value === undefined ? 0 : value
+                                })
+                            }
+
+
                         />
                     </PanelBody>
                     <PanelBody
@@ -671,7 +720,8 @@ class PremiumAccordion extends Component {
                                 }
                             />
                         )}
-                        <PremiumPadding
+
+                        <PremiumResponsivePadding
                             paddingTop={descPaddingT}
                             paddingRight={descPaddingR}
                             paddingBottom={descPaddingB}
@@ -696,7 +746,58 @@ class PremiumAccordion extends Component {
                                     descPaddingL: value === undefined ? 0 : value
                                 })
                             }
+                            paddingTopTablet={descPaddingT}
+                            paddingRightTablet={descPaddingR}
+                            paddingBottomTablet={descPaddingB}
+                            paddingLeftTablet={descPaddingL}
+                            onChangePadTopTablet={value =>
+                                setAttributes({
+                                    descPaddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightTablet={value =>
+                                setAttributes({
+                                    descPaddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomTablet={value =>
+                                setAttributes({
+                                    descPaddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftTablet={value =>
+                                setAttributes({
+                                    descPaddingL: value === undefined ? 0 : value
+                                })
+                            }
+                            paddingTopMobile={descPaddingT}
+                            paddingRightMobile={descPaddingR}
+                            paddingBottomMobile={descPaddingB}
+                            paddingLeftMobile={descPaddingL}
+                            onChangePadTopMobile={value =>
+                                setAttributes({
+                                    descPaddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightMobile={value =>
+                                setAttributes({
+                                    descPaddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomMobile={value =>
+                                setAttributes({
+                                    descPaddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftMobile={value =>
+                                setAttributes({
+                                    descPaddingL: value === undefined ? 0 : value
+                                })
+                            }
+
+
                         />
+
                     </PanelBody>
                 </InspectorControls>
             ),

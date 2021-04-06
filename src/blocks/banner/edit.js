@@ -4,7 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
-import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding'
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
@@ -627,7 +627,88 @@ export default class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumPadding
+                        <PremiumResponsivePadding
+                            paddingTop={paddingT}
+                            paddingRight={paddingR}
+                            paddingBottom={paddingB}
+                            paddingLeft={paddingL}
+                            onChangePadTop={value =>
+                                setAttributes({
+                                    paddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRight={value =>
+                                setAttributes({
+                                    paddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottom={value =>
+                                setAttributes({
+                                    paddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeft={value =>
+                                setAttributes({
+                                    paddingL: value === undefined ? 0 : value
+                                })
+                            }
+                            paddingTopTablet={paddingT}
+                            paddingRightTablet={paddingR}
+                            paddingBottomTablet={paddingB}
+                            paddingLeftTablet={paddingL}
+                            onChangePadTopTablet={value =>
+                                setAttributes({
+                                    paddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightTablet={value =>
+                                setAttributes({
+                                    paddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomTablet={value =>
+                                setAttributes({
+                                    paddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftTablet={value =>
+                                setAttributes({
+                                    paddingL: value === undefined ? 0 : value
+                                })
+                            }
+                            paddingTopMobile={paddingT}
+                            paddingRightMobile={paddingR}
+                            paddingBottomMobile={paddingB}
+                            paddingLeftMobile={paddingL}
+                            onChangePadTopMobile={value =>
+                                setAttributes({
+                                    paddingT: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadRightMobile={value =>
+                                setAttributes({
+                                    paddingR: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadBottomMobile={value =>
+                                setAttributes({
+                                    paddingB: value === undefined ? 0 : value
+                                })
+                            }
+                            onChangePadLeftMobile={value =>
+                                setAttributes({
+                                    paddingL: value === undefined ? 0 : value
+                                })
+                            }
+                            showUnits={true}
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ paddingU: newvalue })
+                            }
+
+
+                        />
+
+                        {/* <PremiumPadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
@@ -657,7 +738,7 @@ export default class edit extends Component {
                             onChangePadSizeUnit={newvalue =>
                                 setAttributes({ paddingU: newvalue })
                             }
-                        />
+                        /> */}
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
