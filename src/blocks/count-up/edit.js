@@ -9,6 +9,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 
 const { __ } = wp.i18n;
 
@@ -75,6 +76,10 @@ class edit extends Component {
             titleUpper,
             titleT,
             titleB,
+            titleTTablet,
+            titleBTablet,
+            titleTMobile,
+            titleBMobile,
             titleWeight,
             imageID,
             imageURL,
@@ -657,15 +662,38 @@ class edit extends Component {
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
-                                <RangeControl
-                                    label={__("Margin Top (PX)")}
-                                    value={titleT}
-                                    onChange={newValue => setAttributes({ titleT: newValue })}
-                                />
-                                <RangeControl
-                                    label={__("Margin Bottom (PX)")}
-                                    value={titleB}
-                                    onChange={newValue => setAttributes({ titleB: newValue })}
+
+                                <PremiumResponsiveMargin
+                                    directions={["top", "bottom"]}
+                                    marginTop={titleT}
+                                    marginBottom={titleB}
+                                    marginTopTablet={titleTTablet}
+                                    marginBottomTablet={titleBTablet}
+                                    marginTopMobile={titleTMobile}
+                                    marginBottomMobile={titleBMobile}
+                                    onChangeMarTop={(device) => {
+                                        if (device === "Desktop") {
+                                            (newValue) => setAttributes({ titleT: newValue })
+
+                                        } else if (device === "tablet") {
+                                            (valuetablet) => setAttributes({ titleTTablet: valuetablet })
+                                        }
+                                        else {
+                                            (valueMobile) => setAttributes({ titleTMobile: valueMobile })
+                                        }
+                                    }
+                                    }
+                                    onChangeMarBottom={(device) => {
+                                        if (device === "Desktop") {
+                                            (newValue) => setAttributes({ titleB: newValue })
+                                        } else if (device === "tablet") {
+                                            (valuetablet) => setAttributes({ titleBTablet: valuetablet })
+                                        }
+                                        else {
+                                            (valueMobile) => setAttributes({ titleBMobile: valueMobile })
+                                        }
+                                    }
+                                    }
                                 />
                             </PanelBody>
                         </PanelBody>

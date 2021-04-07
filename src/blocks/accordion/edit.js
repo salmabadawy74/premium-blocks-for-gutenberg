@@ -3,6 +3,9 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import styling from './styling';
+
 
 const { Component, Fragment } = wp.element;
 
@@ -34,9 +37,18 @@ class PremiumAccordion extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
+        setAttributes({ block_id: clientId })
         if (!attributes.accordionId) {
             setAttributes({ accordionId: "premium-accordion-" + clientId });
         }
+        this.props.setAttributes({ classMigrate: true });
+        // Pushing Style tag for this block css.
+        const $style = document.createElement("style");
+        $style.setAttribute(
+            "id",
+            "premium-style-accordion-" + this.props.clientId.substr(0, 6)
+        );
+        document.head.appendChild($style);
         this.initAccordion();
     }
 
@@ -63,6 +75,7 @@ class PremiumAccordion extends Component {
         const { isSelected, setAttributes, clientId, className } = this.props;
 
         const {
+            block_id,
             accordionId,
             repeaterItems,
             direction,
@@ -91,10 +104,29 @@ class PremiumAccordion extends Component {
             titlePaddingR,
             titlePaddingB,
             titlePaddingL,
+            titlePaddingTTablet,
+            titlePaddingRTablet,
+            titlePaddingBTablet,
+            titlePaddingLTablet,
+            titlePaddingTMobile,
+            titlePaddingRMobile,
+            titlePaddingBMobile,
+            titlePaddingLMobile,
             arrowColor,
             arrowBack,
             arrowPos,
-            arrowPadding,
+            arrowPaddingT,
+            arrowPaddingR,
+            arrowPaddingB,
+            arrowPaddingL,
+            arrowPaddingTTablet,
+            arrowPaddingRTablet,
+            arrowPaddingBTablet,
+            arrowPaddingLTablet,
+            arrowPaddingTMobile,
+            arrowPaddingRMobile,
+            arrowPaddingBMobile,
+            arrowPaddingLMobile,
             arrowRadius,
             arrowSize,
             contentType,
@@ -123,8 +155,19 @@ class PremiumAccordion extends Component {
             descPaddingR,
             descPaddingB,
             descPaddingL,
+            descPaddingTTablet,
+            descPaddingRTablet,
+            descPaddingBTablet,
+            descPaddingLTablet,
+            descPaddingTMobile,
+            descPaddingRMobile,
+            descPaddingBMobile,
+            descPaddingLMobile,
             titleBorderUpdated,
-            descBorderUpdated
+            descBorderUpdated,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -160,6 +203,13 @@ class PremiumAccordion extends Component {
             }
         ];
 
+        let element = document.getElementById(
+            "premium-style-accordion-" + clientId.substr(0, 6)
+        );
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
+
         const ALIGNS = ["left", "center", "right"];
 
         const onAccordionChange = (attr, value, index) => {
@@ -173,6 +223,7 @@ class PremiumAccordion extends Component {
                 return item;
             });
         };
+
 
         const mainClasses = classnames(className, "premium-accordion");
 
@@ -192,10 +243,6 @@ class PremiumAccordion extends Component {
                                 : titleBorderWidth + "px",
                             borderRadius: titleBorderRadius + "px",
                             borderColor: titleBorderColor,
-                            paddingTop: titlePaddingT,
-                            paddingRight: titlePaddingR,
-                            paddingBottom: titlePaddingB,
-                            paddingLeft: titlePaddingL
                         }}
                     >
                         <div className={`premium-accordion__title`}>
@@ -237,7 +284,6 @@ class PremiumAccordion extends Component {
                                 style={{
                                     fill: arrowColor,
                                     backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
                                     borderRadius: arrowRadius + "px"
                                 }}
                             >
@@ -255,11 +301,7 @@ class PremiumAccordion extends Component {
                                 ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
                                 : descBorderWidth + "px",
                             borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
-                            paddingTop: descPaddingT,
-                            paddingRight: descPaddingR,
-                            paddingBottom: descPaddingB,
-                            paddingLeft: descPaddingL
+                            borderColor: descBorderColor
                         }}
                     >
                         {"text" === contentType && (
@@ -341,6 +383,7 @@ class PremiumAccordion extends Component {
                             onChangeLine={newValue => setAttributes({ titleLine: newValue })}
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
                         />
+
                         <div className="premium-control-toggle">
                             <strong>{__("Colors")}</strong>
                             <Dropdown
@@ -429,76 +472,59 @@ class PremiumAccordion extends Component {
                             paddingRight={titlePaddingR}
                             paddingBottom={titlePaddingB}
                             paddingLeft={titlePaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    titlePaddingT: value === undefined ? 0 : value
-                                })
+                            paddingTopTablet={titlePaddingTTablet}
+                            paddingRightTablet={titlePaddingRTablet}
+                            paddingBottomTablet={titlePaddingBTablet}
+                            paddingLeftTablet={titlePaddingLTablet}
+                            paddingTopMobile={titlePaddingTMobile}
+                            paddingRightMobile={titlePaddingRMobile}
+                            paddingBottomMobile={titlePaddingBMobile}
+                            paddingLeftMobile={titlePaddingLMobile}
+                            onChangePadTop={(device) => {
+                                if (device === "mobile") {
+                                    (valueMobile) => setAttributes({ titlePaddingTMobile: valueMobile })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (newValue) => setAttributes({ titlePaddingT: newValue })
+                                    console.log(titlePaddingT)
+                                }
                             }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    titlePaddingR: value === undefined ? 0 : value
-                                })
                             }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    titlePaddingB: value === undefined ? 0 : value
-                                })
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingR: 30 })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingRTablet: 50 })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingRMobile: 20 })
+                                }
                             }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    titlePaddingL: value === undefined ? 0 : value
-                                })
                             }
-                            paddingTopTablet={titlePaddingT}
-                            paddingRightTablet={titlePaddingR}
-                            paddingBottomTablet={titlePaddingB}
-                            paddingLeftTablet={titlePaddingL}
-                            onChangePadTopTablet={value =>
-                                setAttributes({
-                                    titlePaddingT: value === undefined ? 0 : value
-                                })
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingBMobile: valueMobile })
+                                }
                             }
-                            onChangePadRightTablet={value =>
-                                setAttributes({
-                                    titlePaddingR: value === undefined ? 0 : value
-                                })
                             }
-                            onChangePadBottomTablet={value =>
-                                setAttributes({
-                                    titlePaddingB: value === undefined ? 0 : value
-                                })
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingLMobile: valueMobile })
+                                }
                             }
-                            onChangePadLeftTablet={value =>
-                                setAttributes({
-                                    titlePaddingL: value === undefined ? 0 : value
-                                })
                             }
-                            paddingTopMobile={titlePaddingT}
-                            paddingRightMobile={titlePaddingR}
-                            paddingBottomMobile={titlePaddingB}
-                            paddingLeftMobile={titlePaddingL}
-                            onChangePadTopMobile={value =>
-                                setAttributes({
-                                    titlePaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRightMobile={value =>
-                                setAttributes({
-                                    titlePaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottomMobile={value =>
-                                setAttributes({
-                                    titlePaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeftMobile={value =>
-                                setAttributes({
-                                    titlePaddingL: value === undefined ? 0 : value
-                                })
-                            }
-
-
                         />
                     </PanelBody>
                     <PanelBody
@@ -563,13 +589,63 @@ class PremiumAccordion extends Component {
                                 })
                             }
                         />
-                        <RangeControl
-                            label={__("Padding (PX)")}
-                            value={arrowPadding}
-                            onChange={newValue =>
-                                setAttributes({
-                                    arrowPadding: newValue === undefined ? 0 : newValue
-                                })
+                        <PremiumResponsivePadding
+                            paddingTop={arrowPaddingT}
+                            paddingRight={arrowPaddingR}
+                            paddingBottom={arrowPaddingB}
+                            paddingLeft={arrowPaddingL}
+                            paddingTopTablet={arrowPaddingTTablet}
+                            paddingRightTablet={arrowPaddingRTablet}
+                            paddingBottomTablet={arrowPaddingBTablet}
+                            paddingLeftTablet={arrowPaddingLTablet}
+                            paddingTopMobile={arrowPaddingTMobile}
+                            paddingRightMobile={arrowPaddingRMobile}
+                            paddingBottomMobile={arrowPaddingBMobile}
+                            paddingLeftMobile={arrowPaddingLMobile}
+                            onChangePadTop={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingT: newValue })
+
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingTMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingR: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingRTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingRMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingBMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ titlePaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ titlePaddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ titlePaddingLMobile: valueMobile })
+                                }
+                            }
                             }
                         />
                     </PanelBody>
@@ -726,103 +802,95 @@ class PremiumAccordion extends Component {
                             paddingRight={descPaddingR}
                             paddingBottom={descPaddingB}
                             paddingLeft={descPaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    descPaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    descPaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    descPaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    descPaddingL: value === undefined ? 0 : value
-                                })
-                            }
-                            paddingTopTablet={descPaddingT}
-                            paddingRightTablet={descPaddingR}
-                            paddingBottomTablet={descPaddingB}
-                            paddingLeftTablet={descPaddingL}
-                            onChangePadTopTablet={value =>
-                                setAttributes({
-                                    descPaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRightTablet={value =>
-                                setAttributes({
-                                    descPaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottomTablet={value =>
-                                setAttributes({
-                                    descPaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeftTablet={value =>
-                                setAttributes({
-                                    descPaddingL: value === undefined ? 0 : value
-                                })
-                            }
-                            paddingTopMobile={descPaddingT}
-                            paddingRightMobile={descPaddingR}
-                            paddingBottomMobile={descPaddingB}
-                            paddingLeftMobile={descPaddingL}
-                            onChangePadTopMobile={value =>
-                                setAttributes({
-                                    descPaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRightMobile={value =>
-                                setAttributes({
-                                    descPaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottomMobile={value =>
-                                setAttributes({
-                                    descPaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeftMobile={value =>
-                                setAttributes({
-                                    descPaddingL: value === undefined ? 0 : value
-                                })
-                            }
+                            paddingTopTablet={descPaddingTTablet}
+                            paddingRightTablet={descPaddingRTablet}
+                            paddingBottomTablet={descPaddingBTablet}
+                            paddingLeftTablet={descPaddingLTablet}
+                            paddingTopMobile={descPaddingTMobile}
+                            paddingRightMobile={descPaddingRMobile}
+                            paddingBottomMobile={descPaddingBMobile}
+                            paddingLeftMobile={descPaddingLMobile}
+                            onChangePadTop={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ descPaddingT: newValue })
 
-
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ descPaddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ descPaddingTMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ descPaddingR: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ descPaddingRTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ descPaddingRMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ descPaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ descPaddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ descPaddingBMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ descPaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ descPaddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ descPaddingLMobile: valueMobile })
+                                }
+                            }
+                            }
                         />
 
                     </PanelBody>
-                </InspectorControls>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
+
+                </InspectorControls >
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses}`}>
+                <div id={`${accordionId}`} className={`${mainClasses}  premium-accordion-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
                     {accordionItems}
-                </div>
-                <div className={"premium-repeater"}>
-                    <button
-                        className={"premium-repeater-btn"}
-                        onClick={() => {
-                            return setAttributes({
-                                repeaterItems: repeaterItems.concat([
-                                    {
-                                        titleText: __("Awesome Title"),
-                                        descText: __("Cool Description")
-                                    }
-                                ])
-                            });
-                        }}
-                    >
-                        <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item")}
-                    </button>
-                    <p>{__("Add the items you need then reload the page")}</p>
+                    <div className={"premium-repeater"}>
+                        <button
+                            className={"premium-repeater-btn"}
+                            onClick={() => {
+                                return setAttributes({
+                                    repeaterItems: repeaterItems.concat([
+                                        {
+                                            titleText: __("Awesome Title"),
+                                            descText: __("Cool Description"),
+                                        },
+                                    ]),
+                                });
+                            }}
+                        >
+                            <i className="dashicons dashicons-plus premium-repeater-icon" />
+                            {__("Add New Item")}
+                        </button>
+                        <p>{__("Add the items you need then reload the page")}</p>
+                    </div>
                 </div>
             </Fragment>
         ];

@@ -7,6 +7,8 @@ import FONTS from "../../components/premium-fonts";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
+import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 
 const { __ } = wp.i18n;
 
@@ -84,6 +86,10 @@ class edit extends Component {
             firstPadding,
             firstMarginR,
             firstMarginL,
+            firstMarginRTablet,
+            firstMarginLTablet,
+            firstMarginRMobile,
+            firstMarginLMobile,
             firstClip,
             firstAnim,
             firstStroke,
@@ -451,34 +457,98 @@ class edit extends Component {
                                 setAttributes({ firstShadowVertical: newValue || "0" })
                             }
                         />
+                        <PremiumResponsiveMargin
+                            directions={["left", "right"]}
+                            marginRight={firstMarginR}
+                            marginLeft={firstMarginL}
+                            marginRightTablet={firstMarginRTablet}
+                            marginLeftTablet={firstMarginLTablet}
+                            marginRightMobile={firstMarginRMobile}
+                            marginLeftMobile={firstMarginLMobile}
+                            onChangeMarRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstMarginR: newValue })
 
-                        <p>{__("Margin Left")}</p>
-                        <RangeControl
-                            value={firstMarginL}
-                            min="0"
-                            max="100"
-                            onChange={newMargin =>
-                                setAttributes({ firstMarginL: newMargin || "0" })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstMarginRTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstMarginRMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangeMarLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstMarginL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstMarginLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstMarginLMobile: valueMobile })
+                                }
+                            }
                             }
                         />
-                        <p>{__("Margin Right")}</p>
-                        <RangeControl
-                            value={firstMarginR}
-                            min="0"
-                            max="100"
-                            onChange={newMargin =>
-                                setAttributes({ firstMarginR: newMargin || "0" })
+                        <PremiumResponsivePadding
+                            paddingTop={firstPaddingT}
+                            paddingRight={firstPaddingR}
+                            paddingBottom={firstPaddingB}
+                            paddingLeft={firstPaddingL}
+                            paddingTopTablet={firstPaddingTTablet}
+                            paddingRightTablet={firstPaddingRTablet}
+                            paddingBottomTablet={firstPaddingBTablet}
+                            paddingLeftTablet={firstPaddingLTablet}
+                            paddingTopMobile={firstPaddingTMobile}
+                            paddingRightMobile={firstPaddingRMobile}
+                            paddingBottomMobile={firstPaddingBMobile}
+                            paddingLeftMobile={firstPaddingLMobile}
+                            onChangePadTop={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstPaddingT: newValue })
+
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstPaddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstPaddingTMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstPaddingR: 30 })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstPaddingRTablet: 50 })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstPaddingRMobile: 20 })
+                                }
+                            }
+                            }
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstPaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstPaddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstPaddingBMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ firstPaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ firstPaddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ firstPaddingLMobile: valueMobile })
+                                }
+                            }
                             }
                         />
-                        <p>{__("Padding")}</p>
-                        <RangeControl
-                            value={firstPadding}
-                            min="0"
-                            max="100"
-                            onChange={newPadding =>
-                                setAttributes({ firstPadding: newPadding || "0" })
-                            }
-                        />
+
                     </PanelBody>
                     <PanelBody
                         title={__("Second Heading Style")}
@@ -679,31 +749,96 @@ class edit extends Component {
                                 setAttributes({ secondShadowVertical: newValue || "0" })
                             }
                         />
-                        <p>{__("Margin Left")}</p>
-                        <RangeControl
-                            value={secondMarginL}
-                            min="0"
-                            max="100"
-                            onChange={newMargin =>
-                                setAttributes({ secondMarginL: newMargin || "0" })
+
+                        <PremiumResponsiveMargin
+                            directions={["left", "right"]}
+                            marginRight={secondMarginR}
+                            marginLeft={secondMarginL}
+                            marginRightTablet={secondMarginRTablet}
+                            marginLeftTablet={secondMarginLTablet}
+                            marginRightMobile={secondMarginRMobile}
+                            marginLeftMobile={secondMarginLMobile}
+                            onChangeMarRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondMarginR: newValue })
+
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondMarginRTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondMarginRMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangeMarLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondMarginL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondMarginLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondMarginLMobile: valueMobile })
+                                }
+                            }
                             }
                         />
-                        <p>{__("Margin Right")}</p>
-                        <RangeControl
-                            value={secondMarginR}
-                            min="0"
-                            max="100"
-                            onChange={newMargin =>
-                                setAttributes({ secondMarginR: newMargin || "0" })
+                        <PremiumResponsivePadding
+                            paddingTop={secondPaddingT}
+                            paddingRight={secondPaddingR}
+                            paddingBottom={secondPaddingB}
+                            paddingLeft={secondPaddingL}
+                            paddingTopTablet={secondPaddingTTablet}
+                            paddingRightTablet={secondPaddingRTablet}
+                            paddingBottomTablet={secondPaddingBTablet}
+                            paddingLeftTablet={secondPaddingLTablet}
+                            paddingTopMobile={secondPaddingTMobile}
+                            paddingRightMobile={secondPaddingRMobile}
+                            paddingBottomMobile={secondPaddingBMobile}
+                            paddingLeftMobile={secondPaddingLMobile}
+                            onChangePadTop={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondPaddingT: newValue })
+
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondPaddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondPaddingTMobile: valueMobile })
+                                }
                             }
-                        />
-                        <p>{__("Padding")}</p>
-                        <RangeControl
-                            value={secondPadding}
-                            min="0"
-                            max="100"
-                            onChange={newPadding =>
-                                setAttributes({ secondPadding: newPadding || "0" })
+                            }
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondPaddingR: 30 })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondPaddingRTablet: 50 })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondPaddingRMobile: 20 })
+                                }
+                            }
+                            }
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondPaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondPaddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondPaddingBMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ secondPaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ secondPaddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ secondPaddingLMobile: valueMobile })
+                                }
+                            }
                             }
                         />
                     </PanelBody>

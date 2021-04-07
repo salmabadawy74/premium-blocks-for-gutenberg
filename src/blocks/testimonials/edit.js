@@ -6,6 +6,7 @@ import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
@@ -532,16 +533,23 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumPadding
+                        <PremiumResponsivePadding
+                            showUnits={true}
+                            selectedUnit={paddingUnit}
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ paddingUnit: newvalue })
+                            }
                             paddingTop={paddingTop}
                             paddingRight={paddingRight}
                             paddingBottom={paddingBottom}
                             paddingLeft={paddingLeft}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingTop: value
-                                })
+                            onChangePadTop={
+                                value =>
+                                    setAttributes({
+                                        paddingRight: value
+                                    })
                             }
+
                             onChangePadRight={value =>
                                 setAttributes({
                                     paddingRight: value
@@ -557,12 +565,50 @@ class edit extends Component {
                                     paddingLeft: value
                                 })
                             }
-                            showUnits={true}
-                            selectedUnit={paddingUnit}
-                            onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingUnit: newvalue })
+
+                            paddingTopTablet={paddingTop}
+                            paddingRightTablet={paddingRight}
+                            paddingBottomTablet={paddingBottom}
+                            paddingLeftTablet={paddingLeft}
+
+                            onChangePadRightTablet={value =>
+                                setAttributes({
+                                    paddingRight: value
+                                })
                             }
+                            onChangePadBottomTablet={value =>
+                                setAttributes({
+                                    paddingBottom: value
+                                })
+                            }
+                            onChangePadLeftTablet={value =>
+                                setAttributes({
+                                    paddingLeft: value
+                                })
+                            }
+                            paddingTopMobile={paddingTop}
+                            paddingRightMobile={paddingRight}
+                            paddingBottomMobile={paddingBottom}
+                            paddingLeftMobile={paddingLeft}
+
+                            onChangePadRightMobile={value =>
+                                setAttributes({
+                                    paddingRight: value
+                                })
+                            }
+                            onChangePadBottomMobile={value =>
+                                setAttributes({
+                                    paddingBottom: value
+                                })
+                            }
+                            onChangePadLeftMobile={value =>
+                                setAttributes({
+                                    paddingLeft: value
+                                })
+                            }
+
                         />
+
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}

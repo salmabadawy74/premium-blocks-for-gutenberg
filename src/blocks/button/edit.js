@@ -9,6 +9,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 
 const { __ } = wp.i18n;
 
@@ -90,7 +91,18 @@ export default class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
-            padding,
+            paddingT,
+            paddingR,
+            paddingB,
+            paddingL,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
             paddingU,
             btnShadowBlur,
             btnShadowColor,
@@ -543,13 +555,69 @@ export default class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
-                        />
-                        <RangeControl
-                            label={__("Padding")}
-                            value={padding}
-                            onChange={newValue => setAttributes({ padding: newValue })}
+                        <PremiumResponsivePadding
+                            paddingTop={paddingT}
+                            paddingRight={paddingR}
+                            paddingBottom={paddingB}
+                            paddingLeft={paddingL}
+                            paddingTopTablet={paddingTTablet}
+                            paddingRightTablet={paddingRTablet}
+                            paddingBottomTablet={paddingBTablet}
+                            paddingLeftTablet={paddingLTablet}
+                            paddingTopMobile={paddingTMobile}
+                            paddingRightMobile={paddingRMobile}
+                            paddingBottomMobile={paddingBMobile}
+                            paddingLeftMobile={paddingLMobile}
+                            showUnit={true}
+                            selectedUnit={paddingU}
+                            onChangePadTop={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ paddingT: newValue })
+
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ paddingTTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ paddingTMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadRight={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ paddingR: 30 })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ paddingRTablet: 50 })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ paddingRMobile: 20 })
+                                }
+                            }
+                            }
+                            onChangePadBottom={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ paddingB: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ paddingBTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ paddingBMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadLeft={(device) => {
+                                if (device === "Desktop") {
+                                    (newValue) => setAttributes({ paddingL: newValue })
+                                } else if (device === "tablet") {
+                                    (valuetablet) => setAttributes({ paddingLTablet: valuetablet })
+                                }
+                                else {
+                                    (valueMobile) => setAttributes({ paddingLMobile: valueMobile })
+                                }
+                            }
+                            }
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ paddingU: newvalue })
+                            }
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -602,7 +670,6 @@ export default class edit extends Component {
                         fontWeight: textWeight,
                         textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                         boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-                        padding: padding + paddingU,
                         borderStyle: borderType,
                         borderWidth: borderButton
                             ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`

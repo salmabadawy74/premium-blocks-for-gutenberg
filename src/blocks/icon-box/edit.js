@@ -4,8 +4,8 @@ import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import PremiumBorder from "../../components/premium-border";
-import PremiumPadding from "../../components/premium-padding";
-import PremiumMargin from "../../components/premium-margin";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
@@ -556,7 +556,7 @@ class edit extends Component {
                                     setAttributes({ titleShadowVertical: newValue || 0 })
                                 }
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={titleMarginT}
                                 marginBottom={titleMarginB}
@@ -570,7 +570,33 @@ class edit extends Component {
                                         titleMarginB: value || 0
                                     })
                                 }
+                                marginTopTablet={titleMarginT}
+                                marginBottomTablet={titleMarginB}
+                                onChangeMarTopTablet={value =>
+                                    setAttributes({
+                                        titleMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomTablet={value =>
+                                    setAttributes({
+                                        titleMarginB: value || 0
+                                    })
+                                }
+                                marginTopMobile={titleMarginT}
+                                marginBottomMobile={titleMarginB}
+                                onChangeMarTopMobile={value =>
+                                    setAttributes({
+                                        titleMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomMobile={value =>
+                                    setAttributes({
+                                        titleMarginB: value || 0
+                                    })
+                                }
+
                             />
+
                         </PanelBody>
                     )}
                     {descChecked && (
@@ -611,7 +637,7 @@ class edit extends Component {
                                 }
                                 onChangeLine={newValue => setAttributes({ descLine: newValue })}
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={descMarginT}
                                 marginBottom={descMarginB}
@@ -625,7 +651,32 @@ class edit extends Component {
                                         descMarginB: value || 0
                                     })
                                 }
+                                marginTopTablet={descMarginT}
+                                marginBottomTablet={descMarginB}
+                                onChangeMarTopTablet={value =>
+                                    setAttributes({
+                                        descMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomTablet={value =>
+                                    setAttributes({
+                                        descMarginB: value || 0
+                                    })
+                                }
+                                marginTopMobile={descMarginT}
+                                marginBottomMobile={descMarginB}
+                                onChangeMarTopMobile={value =>
+                                    setAttributes({
+                                        descMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomMobile={value =>
+                                    setAttributes({
+                                        descMarginB: value || 0
+                                    })
+                                }
                             />
+
                         </PanelBody>
                     )}
 
@@ -749,17 +800,90 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            <PremiumSizeUnits
-                                onChangeSizeUnit={newValue =>
-                                    setAttributes({ btnPaddingU: newValue })
+
+                            <PremiumResponsivePadding
+                                paddingTop={btnPadding}
+                                paddingRight={btnPadding}
+                                paddingBottom={btnPadding}
+                                paddingLeft={btnPadding}
+                                showUnits={true}
+                                onChangePadTop={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadRight={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadBottom={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadLeft={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+
+                                paddingTopTablet={btnPadding}
+                                paddingRightTablet={btnPadding}
+                                paddingBottomTablet={btnPadding}
+                                paddingLeftTablet={btnPadding}
+                                onChangePadTopTablet={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadRightTablet={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadBottomTablet={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadLeftTablet={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+
+                                paddingTopMobile={btnPadding}
+                                paddingRightMobile={btnPadding}
+                                paddingBottomMobile={btnPadding}
+                                paddingLeftMobile={btnPadding}
+                                onChangePadTopMobile={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadRightMobile={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadBottomMobile={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                onChangePadLeftMobile={value =>
+                                    setAttributes({
+                                        btnPadding: value || 0
+                                    })
+                                }
+                                selectedUnit={btnPaddingU}
+                                onChangePadSizeUnit={newvalue =>
+                                    setAttributes({ btnPaddingU: newvalue })
                                 }
                             />
-                            <RangeControl
-                                label={__("Padding")}
-                                value={btnPadding}
-                                onChange={newValue => setAttributes({ btnPadding: newValue })}
-                            />
-                            <PremiumMargin
+
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={btnMarginT}
                                 marginBottom={btnMarginB}
@@ -773,7 +897,32 @@ class edit extends Component {
                                         btnMarginB: value || 0
                                     })
                                 }
+                                marginTopTablet={btnMarginT}
+                                marginBottomTablet={btnMarginB}
+                                onChangeMarTopTablet={value =>
+                                    setAttributes({
+                                        btnMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomTablet={value =>
+                                    setAttributes({
+                                        btnMarginB: value || 0
+                                    })
+                                }
+                                marginTopMobile={btnMarginT}
+                                marginBottomMobile={btnMarginB}
+                                onChangeMarTopMobile={value =>
+                                    setAttributes({
+                                        btnMarginT: value || 0
+                                    })
+                                }
+                                onChangeMarBottomMobile={value =>
+                                    setAttributes({
+                                        btnMarginB: value || 0
+                                    })
+                                }
                             />
+
                         </PanelBody>
                     )}
 
@@ -902,7 +1051,7 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumMargin
+                        <PremiumResponsiveMargin
                             directions={["all"]}
                             marginTop={marginT}
                             marginRight={marginR}
@@ -928,8 +1077,56 @@ class edit extends Component {
                                     marginL: value || 0
                                 })
                             }
+                            marginTopTablet={marginT}
+                            marginRightTablet={marginR}
+                            marginBottomTablet={marginB}
+                            marginLeftTablet={marginL}
+                            onChangeMarTopTablet={value =>
+                                setAttributes({
+                                    marginT: value || 0
+                                })
+                            }
+                            onChangeMarRightTablet={value =>
+                                setAttributes({
+                                    marginR: value || 0
+                                })
+                            }
+                            onChangeMarBottomTablet={value =>
+                                setAttributes({
+                                    marginB: value || 0
+                                })
+                            }
+                            onChangeMarLeftTablet={value =>
+                                setAttributes({
+                                    marginL: value || 0
+                                })
+                            }
+                            marginTopMobile={marginT}
+                            marginRightMobile={marginR}
+                            marginBottomMobile={marginB}
+                            marginLeftMobile={marginL}
+                            onChangeMarTopMobile={value =>
+                                setAttributes({
+                                    marginT: value || 0
+                                })
+                            }
+                            onChangeMarRightMobile={value =>
+                                setAttributes({
+                                    marginR: value || 0
+                                })
+                            }
+                            onChangeMarBottomMobile={value =>
+                                setAttributes({
+                                    marginB: value || 0
+                                })
+                            }
+                            onChangeMarLeftMobile={value =>
+                                setAttributes({
+                                    marginL: value || 0
+                                })
+                            }
                         />
-                        <PremiumPadding
+                        <PremiumResponsivePadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
@@ -951,6 +1148,57 @@ class edit extends Component {
                                 })
                             }
                             onChangePadLeft={value =>
+                                setAttributes({
+                                    paddingL: value || 0
+                                })
+                            }
+
+                            paddingTopTablet={paddingT}
+                            paddingRightTablet={paddingR}
+                            paddingBottomTablet={paddingB}
+                            paddingLeftTablet={paddingL}
+                            onChangePadTopTablet={value =>
+                                setAttributes({
+                                    paddingT: value || 0
+                                })
+                            }
+                            onChangePadRightTablet={value =>
+                                setAttributes({
+                                    paddingR: value || 0
+                                })
+                            }
+                            onChangePadBottomTablet={value =>
+                                setAttributes({
+                                    paddingB: value || 0
+                                })
+                            }
+                            onChangePadLeftTablet={value =>
+                                setAttributes({
+                                    paddingL: value || 0
+                                })
+                            }
+
+                            paddingTopMobile={paddingT}
+                            paddingRightMobile={paddingR}
+                            paddingBottomMobile={paddingB}
+                            paddingLeftMobile={paddingL}
+                            showUnits={true}
+                            onChangePadTopMobile={value =>
+                                setAttributes({
+                                    paddingT: value || 0
+                                })
+                            }
+                            onChangePadRightMobile={value =>
+                                setAttributes({
+                                    paddingR: value || 0
+                                })
+                            }
+                            onChangePadBottomMobile={value =>
+                                setAttributes({
+                                    paddingB: value || 0
+                                })
+                            }
+                            onChangePadLeftMobile={value =>
                                 setAttributes({
                                     paddingL: value || 0
                                 })

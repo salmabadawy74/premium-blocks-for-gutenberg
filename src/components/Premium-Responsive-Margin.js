@@ -9,6 +9,25 @@ const {
 } = wp.components;
 
 function PremiumResponsiveMargin(props) {
+    const {
+        directions,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft,
+        onChangeMarTop = () => { },
+        onChangeMarRight = () => { },
+        onChangeMarBottom = () => { },
+        onChangeMarLeft = () => { },
+        marginTopTablet,
+        marginRightTablet,
+        marginBottomTablet,
+        marginLeftTablet,
+        marginTopMobile,
+        marginRightMobile,
+        marginBottomMobile,
+        marginLeftMobile,
+    } = props;
     return (
         < TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
             tabs={[
@@ -33,54 +52,54 @@ function PremiumResponsiveMargin(props) {
                 if ("mobile" === tab.neme) {
                     tabout = (
                         <PremiumMargin
-                            directions={props.directions}
-                            marginTop={props.marginTop}
-                            marginRight={props.marginRight}
-                            marginBottom={props.marginBottom}
-                            marginLeft={props.marginLeft}
-                            onChangeMarTop={props.onChangeMarTop
+                            directions={directions}
+                            marginTop={marginTop}
+                            marginRight={marginRight}
+                            marginBottom={marginBottom}
+                            marginLeft={marginLeft}
+                            onChangeMarTop={() => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={props.onChangeMarRight
+                            onChangeMarRight={() => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={props.onChangeMarBottom
+                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={props.onChangeMarLeft
+                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
                             }
                         />
                     )
                 } else if ("tablet" === tab.name) {
                     tabout = (
                         <PremiumMargin
-                            directions={props.directions}
-                            marginTop={props.marginTopTable}
-                            marginRight={props.marginRightTablet}
-                            marginBottom={props.marginBottomTablet}
-                            marginLeft={props.marginLeftTablet}
-                            onChangeMarTop={props.onChangeMarTopTablet
+                            directions={directions}
+                            marginTop={marginTopTablet}
+                            marginRight={marginRightTablet}
+                            marginBottom={marginBottomTablet}
+                            marginLeft={marginLeftTablet}
+                            onChangeMarTop={() => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={props.onChangeMarRightTablet
+                            onChangeMarRight={() => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={props.onChangeMarBottomTablet
+                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={props.onChangeMarLeftTablet
+                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
                             }
                         />
                     )
                 } else {
                     tabout = (
                         <PremiumMargin
-                            directions={props.directions}
-                            marginTop={props.marginTopTableMobile}
-                            marginRight={props.marginRightTabletMobile}
-                            marginBottom={props.marginBottomTabletMobile}
-                            marginLeft={props.marginLeftTabletMobile}
-                            onChangeMarTop={props.onChangeMarTopTabletMobile
+                            directions={directions}
+                            marginTop={marginTopMobile}
+                            marginRight={marginRightMobile}
+                            marginBottom={marginBottomMobile}
+                            marginLeft={marginLeftMobile}
+                            onChangeMarTop={() => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={props.onChangeMarRightTabletMobile
+                            onChangeMarRight={() => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={props.onChangeMarBottomTabletMobile
+                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={props.onChangeMarLeftTabletMobile
+                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
                             }
                         />
                     )

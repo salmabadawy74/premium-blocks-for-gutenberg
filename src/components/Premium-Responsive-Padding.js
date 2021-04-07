@@ -14,26 +14,18 @@ function PremiumResponsivePadding(props) {
         paddingR,
         paddingB,
         paddingL,
-        onChangePadTop,
-        onChangePadRight,
-        onChangePadBottom,
-        onChangePadLeft,
+        onChangePadTop = () => { },
+        onChangePadRight = () => { },
+        onChangePadBottom = () => { },
+        onChangePadLeft = () => { },
         paddingTTablet,
         paddingRTablet,
         paddingBTablet,
         paddingLTablet,
-        onChangePadTopTablet,
-        onChangePadRightTablet,
-        onChangePadBottomTablet,
-        onChangePadLeftTablet,
         paddingTMobile,
         paddingRMobile,
         paddingBMobile,
         paddingLMobile,
-        onChangePadTopMobile,
-        onChangePadBottomMobile,
-        onChangePadRightMobile,
-        onChangePadLeftMobile
     } = props;
     return (
         <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
@@ -65,13 +57,13 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
-                            onChangePadTop={onChangePadTop
+                            onChangePadTop={() => onChangePadTop(tab.name)
                             }
-                            onChangePadRight={onChangePadRight
+                            onChangePadRight={() => onChangePadRight(tab.name)
                             }
-                            onChangePadBottom={onChangePadBottom
+                            onChangePadBottom={() => onChangePadBottom(tab.name)
                             }
-                            onChangePadLeft={onChangePadLeft
+                            onChangePadLeft={() => onChangePadLeft(tab.name)
                             }
                             showUnits={showUnits}
                             selectedUnit={selectedUnit}
@@ -85,13 +77,13 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRTablet}
                             paddingBottom={paddingBTablet}
                             paddingLeft={paddingLTablet}
-                            onChangePadTop={onChangePadTopTablet
+                            onChangePadTop={() => onChangePadTop(tab.name)
                             }
-                            onChangePadRight={onChangePadRightTablet
+                            onChangePadRight={() => onChangePadRight(tab.name)
                             }
-                            onChangePadBottom={onChangePadBottomTablet
+                            onChangePadBottom={() => onChangePadBottom(tab.name)
                             }
-                            onChangePadLeft={onChangePadLeftTablet
+                            onChangePadLeft={() => onChangePadLeft(tab.name)
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU}
@@ -105,13 +97,13 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRMobile}
                             paddingBottom={paddingBMobile}
                             paddingLeft={paddingLMobile}
-                            onChangePadTop={onChangePadTopMobile
+                            onChangePadTop={() => onChangePadTop(tab.name)
                             }
-                            onChangePadRight={onChangePadRightMobile
+                            onChangePadRight={() => onChangePadRight(tab.name)
                             }
-                            onChangePadBottom={onChangePadBottomMobile
+                            onChangePadBottom={() => onChangePadBottom(tab.name)
                             }
-                            onChangePadLeft={onChangePadLeftMobile
+                            onChangePadLeft={() => onChangePadLeft(tab.name)
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU}

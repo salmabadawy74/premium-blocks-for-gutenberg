@@ -103,7 +103,8 @@ const accordionAttrs = {
         default: "0"
     },
     titlePaddingT: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingR: {
         type: "number"
@@ -112,6 +113,30 @@ const accordionAttrs = {
         type: "number"
     },
     titlePaddingL: {
+        type: "number"
+    },
+    titlePaddingTTablet: {
+        type: "number"
+    },
+    titlePaddingRTablet: {
+        type: "number"
+    },
+    titlePaddingBTablet: {
+        type: "number"
+    },
+    titlePaddingLTablet: {
+        type: "number"
+    },
+    titlePaddingTMobile: {
+        type: "number"
+    },
+    titlePaddingRMobile: {
+        type: "number"
+    },
+    titlePaddingBMobile: {
+        type: "number"
+    },
+    titlePaddingLMobile: {
         type: "number"
     },
     arrowColor: {
@@ -124,7 +149,40 @@ const accordionAttrs = {
         type: "string",
         default: "out"
     },
-    arrowPadding: {
+    arrowPaddingT: {
+        type: "number"
+    },
+    arrowPaddingR: {
+        type: "number"
+    },
+    arrowPaddingB: {
+        type: "number"
+    },
+    arrowPaddingL: {
+        type: "number"
+    },
+    arrowPaddingTTablet: {
+        type: "number"
+    },
+    arrowPaddingRTablet: {
+        type: "number"
+    },
+    arrowPaddingBTablet: {
+        type: "number"
+    },
+    arrowPaddingLTablet: {
+        type: "number"
+    },
+    arrowPaddingTMobile: {
+        type: "number"
+    },
+    arrowPaddingRMobile: {
+        type: "number"
+    },
+    arrowPaddingBMobile: {
+        type: "number"
+    },
+    arrowPaddingLMobile: {
         type: "number"
     },
     arrowRadius: {
@@ -226,6 +284,32 @@ const accordionAttrs = {
         type: "number"
     },
     descPaddingL: {
+        type: "number",
+        default: 10
+    },
+    descPaddingTTablet: {
+        type: "number"
+    },
+    descPaddingRTablet: {
+        type: "number"
+    },
+    descPaddingBTablet: {
+        type: "number"
+    },
+    descPaddingLTablet: {
+        type: "number",
+        default: 10
+    },
+    descPaddingTMobile: {
+        type: "number"
+    },
+    descPaddingRMobile: {
+        type: "number"
+    },
+    descPaddingBMobile: {
+        type: "number"
+    },
+    descPaddingLMobile: {
         type: "number",
         default: 10
     }

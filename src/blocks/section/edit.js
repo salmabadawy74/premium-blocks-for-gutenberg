@@ -1,7 +1,9 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMargin from "../../components/premium-margin";
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
@@ -318,7 +320,7 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <PremiumMargin
+                    <PremiumResponsiveMargin
                         directions={["all"]}
                         marginTop={marginTop}
                         marginRight={marginRight}
@@ -344,12 +346,62 @@ const edit = props => {
                                 marginLeft: value === undefined ? 0 : value
                             })
                         }
+                        marginTopTablet={marginTop}
+                        marginRightTablet={marginRight}
+                        marginBottomTablet={marginBottom}
+                        marginLeftTablet={marginLeft}
+                        onChangeMarTopTablet={value =>
+                            setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarRightTablet={value =>
+                            setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarBottomTablet={value =>
+                            setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarLeftTablet={value =>
+                            setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            })
+                        }
+                        marginTopMobile={marginTop}
+                        marginRightMobile={marginRight}
+                        marginBottomMobile={marginBottom}
+                        marginLeftMobile={marginLeft}
+                        onChangeMarTopMobile={value =>
+                            setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarRightMobile={value =>
+                            setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarBottomMobile={value =>
+                            setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangeMarLeftMobile={value =>
+                            setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            })
+                        }
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue =>
                             setAttributes({ marginUnit: newvalue })
                         }
+
                     />
-                    <PremiumPadding
+
+                    <PremiumResponsivePadding
                         paddingTop={paddingTop}
                         paddingRight={paddingRight}
                         paddingBottom={paddingBottom}
@@ -374,12 +426,63 @@ const edit = props => {
                                 paddingLeft: value === undefined ? 0 : value
                             })
                         }
+
+                        paddingTopTablet={paddingTop}
+                        paddingRightTablet={paddingRight}
+                        paddingBottomTablet={paddingBottom}
+                        paddingLeftTablet={paddingLeft}
+                        onChangePadTopTablet={value =>
+                            setAttributes({
+                                paddingTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadRightTablet={value =>
+                            setAttributes({
+                                paddingRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadBottomTablet={value =>
+                            setAttributes({
+                                paddingBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadLeftTablet={value =>
+                            setAttributes({
+                                paddingLeft: value === undefined ? 0 : value
+                            })
+                        }
+                        paddingTopMobile={paddingTop}
+                        paddingRightMobile={paddingRight}
+                        paddingBottomMobile={paddingBottom}
+                        paddingLeftMobile={paddingLeft}
+                        onChangePadTopMobile={value =>
+                            setAttributes({
+                                paddingTop: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadRightMobile={value =>
+                            setAttributes({
+                                paddingRight: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadBottomMobile={value =>
+                            setAttributes({
+                                paddingBottom: value === undefined ? 0 : value
+                            })
+                        }
+                        onChangePadLeftMobile={value =>
+                            setAttributes({
+                                paddingLeft: value === undefined ? 0 : value
+                            })
+                        }
+
                         showUnits={true}
                         selectedUnit={paddingUnit}
                         onChangePadSizeUnit={newvalue =>
                             setAttributes({ paddingUnit: newvalue })
                         }
                     />
+
                 </PanelBody>
                 <PremiumResponsiveTabs
                     Desktop={hideDesktop}
