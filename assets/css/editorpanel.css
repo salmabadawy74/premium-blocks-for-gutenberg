@@ -315,9 +315,9 @@ Lottie button
     background-color: rgb(240, 240, 240);
     color: #000;
     font-size: 16px;
-    padding: 16px 25px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 100;
     text-transform: capitalize;
     outline: none;
     border: none;
