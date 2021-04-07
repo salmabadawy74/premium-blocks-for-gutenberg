@@ -1,31 +1,70 @@
 <?php
 
-// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
-// Declare `Premium_Guten_Blocks` if not declared yet.
 if ( ! class_exists( 'PBG_Rollback' ) ) {
 
+	/**
+	 * Class PBG_Rollback.
+	 */
 	class PBG_Rollback {
 
+		/**
+		 * Plugin URL
+		 *
+		 * @var package_url
+		 */
 		protected $package_url;
 
+		/**
+		 * Plugin Version
+		 *
+		 * @var version
+		 */
 		protected $version;
 
+		/**
+		 * Plugin Name
+		 *
+		 * @var plugin_name
+		 */
 		protected $plugin_name;
 
+		/**
+		 * Plugin Slug
+		 *
+		 * @var plugin_slug
+		 */
 		protected $plugin_slug;
 
+		/**
+		 * Class instance
+		 *
+		 * @var instance
+		 */
 		private static $instance = null;
 
+		/**
+		 * Constructor for the class
+		 *
+		 * @param array $args plugin args.
+		 */
 		public function __construct( $args = array() ) {
 			foreach ( $args as $key => $value ) {
 				$this->{$key} = $value;
 			}
 		}
 
+		/**
+		 * Print Inline Style
+		 *
+		 * Used to print inline style on rollback page
+		 *
+		 * @since 1.0.0
+		 * @access private
+		 */
 		private function print_inline_style() {
 			?>
 			<style>
@@ -50,6 +89,12 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 			<?php
 		}
 
+		/**
+		 * Apply package
+		 *
+		 * @since 1.0.0
+		 * @access private
+		 */
 		protected function apply_package() {
 			$update_plugins = get_site_transient( 'update_plugins' );
 			if ( ! is_object( $update_plugins ) ) {
@@ -68,6 +113,14 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 			set_site_transient( 'update_plugins', $update_plugins );
 		}
 
+		/**
+		 * Upgrade
+		 *
+		 * Rollback update
+		 *
+		 * @since 1.0.0
+		 * @access private
+		 */
 		protected function upgrade() {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
@@ -77,7 +130,7 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 				'url'    => 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $this->plugin_name ),
 				'plugin' => $this->plugin_name,
 				'nonce'  => 'upgrade-plugin_' . $this->plugin_name,
-				'title'  => '<img src="' . $logo_url . '" alt="Premium Blocks">' . __( 'Rolling Back to Version ' . PREMIUM_BLOCKS_STABLE_VERSION, 'premium-gutenberg' ),
+				'title'  => '<img src="' . $logo_url . '" alt="Premium Blocks">' . sprintf( 'Rolling Back to Version %s', PREMIUM_BLOCKS_STABLE_VERSION ),
 			);
 
 			$this->print_inline_style();
@@ -86,15 +139,36 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 			$upgrader->upgrade( $this->plugin_name );
 		}
 
+		/**
+		 * Run
+		 *
+		 * Trigger rollback functions
+		 *
+		 * @since 0.0.1
+		 * @access private
+		 */
 		public function run() {
 			$this->apply_package();
 			$this->upgrade();
 		}
 
+		/**
+		 *
+		 * Creates and returns an instance of the class
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 *
+		 * @return object
+		 */
 		public static function get_instance() {
-			if ( self::$instance == null ) {
+
+			if ( ! isset( self::$instance ) ) {
+
 				self::$instance = new self();
+
 			}
+
 			return self::$instance;
 		}
 
@@ -103,6 +177,12 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 
 if ( ! function_exists( 'pbg_rollback' ) ) {
 
+	/**
+	 * Returns an instance of the plugin class.
+	 *
+	 * @since  1.1.1
+	 * @return object
+	 */
 	function pbg_rollback() {
 		return PBG_Rollback::get_instance();
 	}
