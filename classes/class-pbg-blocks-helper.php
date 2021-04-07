@@ -1,6 +1,5 @@
 <?php
 
-// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
@@ -10,10 +9,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class PBG_Blocks_Helper {
 
+	/**
+	 * Class instance
+	 *
+	 * @var instance
+	 */
 	private static $instance = null;
 
+	/**
+	 * Blocks
+	 *
+	 * @var blocks
+	 */
 	public static $blocks;
 
+	/**
+	 * Config
+	 *
+	 * @var config
+	 */
 	public static $config;
 
 	/**
@@ -61,16 +75,16 @@ class PBG_Blocks_Helper {
 	 */
 	public function __construct() {
 
-		// Gets Active Blocks
+		// Gets Active Blocks.
 		self::$blocks = PBG_Admin::get_enabled_keys();
 
-		// Gets Plugin Admin Settings
+		// Gets Plugin Admin Settings.
 		self::$config = PBG_Settings::get_enabled_keys();
 
-		// Enqueue Editor Assets
+		// Enqueue Editor Assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
 
-		// Enqueue Frontend Styles
+		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 
 		// Register Premium Blocks category.
@@ -112,7 +126,8 @@ class PBG_Blocks_Helper {
 				'wp-data',
 				'wp-editor',
 			),
-			PREMIUM_BLOCKS_VERSION
+			PREMIUM_BLOCKS_VERSION,
+			true
 		);
 
 		wp_enqueue_style(
@@ -206,7 +221,8 @@ class PBG_Blocks_Helper {
 				'banner-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -215,7 +231,8 @@ class PBG_Blocks_Helper {
 				'button-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -224,7 +241,8 @@ class PBG_Blocks_Helper {
 				'dual-heading-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -233,21 +251,24 @@ class PBG_Blocks_Helper {
 				'waypoints_lib',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 
 			wp_enqueue_script(
 				'counter_lib',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 
 			wp_enqueue_script(
 				'countup-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -256,7 +277,8 @@ class PBG_Blocks_Helper {
 				'accordion-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -265,7 +287,8 @@ class PBG_Blocks_Helper {
 				'section-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 
 			$is_rtl = is_rtl() ? true : false;
@@ -284,7 +307,8 @@ class PBG_Blocks_Helper {
 				'video-box-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -293,7 +317,8 @@ class PBG_Blocks_Helper {
 				'icon-box-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
@@ -302,30 +327,36 @@ class PBG_Blocks_Helper {
 				'fancy-text-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 
 			wp_enqueue_script(
 				'pbg-vticker-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 
 			wp_enqueue_script(
 				'pbg-typed-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
 				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION
+				PREMIUM_BLOCKS_VERSION,
+				true
 			);
 		}
 
-		// Enqueue Google Maps API Script
+		// Enqueue Google Maps API Script.
 		if ( $is_maps_enabled && $is_enabled ) {
 			if ( ! empty( $api_key ) && '1' != $api_key ) {
 				wp_enqueue_script(
 					'premium-map-block',
-					'https://maps.googleapis.com/maps/api/js?key=' . $api_key
+					'https://maps.googleapis.com/maps/api/js?key=' . $api_key,
+					array(),
+					PREMIUM_BLOCKS_VERSION,
+					false
 				);
 			}
 		}
@@ -338,7 +369,7 @@ class PBG_Blocks_Helper {
 	 * @since 1.0.0
 	 * @access public
 	 *
-	 * @return void
+	 * @param array $categories blocks categories.
 	 */
 	public function register_premium_category( $categories ) {
 
@@ -394,7 +425,7 @@ class PBG_Blocks_Helper {
 			}
 
 			if ( is_object( $this_post ) ) {
-				$this->_generate_post_stylesheet( $this_post );
+				$this->generate_post_stylesheet( $this_post );
 				return;
 			}
 		}
@@ -408,14 +439,14 @@ class PBG_Blocks_Helper {
 				return;
 			}
 
-			$this->_generate_post_stylesheet( $this_post );
+			$this->generate_post_stylesheet( $this_post );
 
 		} elseif ( is_archive() || is_home() || is_search() ) {
 
 			global $wp_query;
 
 			foreach ( $wp_query as $post ) {
-				$this->_generate_post_stylesheet( $post );
+				$this->generate_post_stylesheet( $post );
 			}
 		}
 
@@ -427,7 +458,7 @@ class PBG_Blocks_Helper {
 	 * @param object $this_post Current Post Object.
 	 * @since 1.8.2
 	 */
-	public function _generate_post_stylesheet( $this_post ) {
+	public function generate_post_stylesheet( $this_post ) {
 
 		if ( ! is_object( $this_post ) ) {
 			return;
@@ -482,8 +513,6 @@ class PBG_Blocks_Helper {
 		}
 
 		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
-
-		// self::file_write( self::$stylesheet, 'css' );
 
 		ob_start();
 
@@ -548,13 +577,13 @@ class PBG_Blocks_Helper {
 				$css += $this->get_dual_css( $blockattr, $block_id );
 				break;
 			case 'premium/icon-box':
-				$css += $this->get_iconBox_css( $blockattr, $block_id );
+				$css += $this->get_iconbox_css( $blockattr, $block_id );
 				break;
 			case 'premium/testimonial':
 				$css += $this->get_testimonial_css( $blockattr, $block_id );
 				break;
 			case 'premium/video-box':
-				$css += $this->get_videoBox_css( $blockattr, $block_id );
+				$css += $this->get_videobox_css( $blockattr, $block_id );
 				break;
 			case 'premium/pricing-table':
 				$css += $this->get_pricing_css( $blockattr, $block_id );
@@ -566,7 +595,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $block['innerBlocks'] ) ) {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-				if ( 'core/block' == $inner_block['blockName'] ) {
+				if ( 'core/block' === $inner_block['blockName'] ) {
 					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 
 					if ( $id ) {
@@ -598,6 +627,16 @@ class PBG_Blocks_Helper {
 		return $css;
 	}
 
+	/**
+	 * Get Fancy Text Block CSS
+	 *
+	 * Return Frontend CSS for Fancy Text.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_fancy_text_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/fancy-text']['attributes'];
@@ -704,6 +743,16 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Accordion Block CSS
+	 *
+	 * Return Frontend CSS for Accordion.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_accordion_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/accordion']['attributes'];
@@ -763,6 +812,16 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Banner Block CSS
+	 *
+	 * Return Frontend CSS for Banner.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_banner_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/banner']['attributes'];
@@ -822,6 +881,16 @@ class PBG_Blocks_Helper {
 			return $generated_css;
 	}
 
+	/**
+	 * Get Button Block CSS
+	 *
+	 * Return Frontend CSS for Button.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_button_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/button']['attributes'];
@@ -872,6 +941,16 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Count Up Block CSS
+	 *
+	 * Return Frontend CSS for Count Up.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_countup_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/countup']['attributes'];
@@ -949,6 +1028,16 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Dual Heading Block CSS
+	 *
+	 * Return Frontend CSS for Dual Heading.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_dual_css( $attr, $id ) {
 
 		$defaults = self::$block_atts['premium/dheading-block']['attributes'];
@@ -1008,7 +1097,18 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_iconBox_css( $attr, $id ) {
+	/**
+	 * Get Icon Box Block CSS
+	 *
+	 * Return Frontend CSS for Icon Box.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
+	public static function get_iconbox_css( $attr, $id ) {
+
 		$defaults = self::$block_atts['premium/icon-box']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1074,7 +1174,18 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Pricing Table Block CSS
+	 *
+	 * Return Frontend CSS for Pricing Table.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_pricing_css( $attr, $id ) {
+
 		$defaults = self::$block_atts['premium/pricing-table']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1203,7 +1314,18 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
+	/**
+	 * Get Testimonial Block CSS
+	 *
+	 * Return Frontend CSS for Testimonial.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public static function get_testimonial_css( $attr, $id ) {
+
 		$defaults = self::$block_atts['premium/testimonial']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1269,7 +1391,18 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_videoBox_css( $attr, $id ) {
+	/**
+	 * Get Video Box Block CSS
+	 *
+	 * Return Frontend CSS for Video Box.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
+	public static function get_videobox_css( $attr, $id ) {
+
 		$defaults = self::$block_atts['premium/video-box']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
@@ -1370,7 +1503,7 @@ class PBG_Blocks_Helper {
 	 */
 	public static function get_css_value( $value = '', $unit = '' ) {
 
-		// Ignore PHPCS Comment For Strict Comparison.
+		// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 		if ( '' == $value ) {
 			return $value;
 		}
@@ -1390,11 +1523,11 @@ class PBG_Blocks_Helper {
 	 * @since 1.8.2
 	 * @access public
 	 *
-	 * @param string $hexColor value of Color.
+	 * @param string $hex_color value of Color.
 	 */
-	public static function hex_to_rgba( $hexColor ) {
+	public static function hex_to_rgba( $hex_color ) {
 
-		$color = str_replace( '#', '', $hexColor );
+		$color = str_replace( '#', '', $hex_color );
 
 		if ( strlen( $color ) > 3 ) {
 			$rgb =
@@ -1403,7 +1536,7 @@ class PBG_Blocks_Helper {
 				',' . hexdec( substr( $color, 4, 2 ) );
 
 		} else {
-			$color = str_replace( '#', '', $hexColor );
+			$color = str_replace( '#', '', $hex_color );
 			$r     = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
 			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
 			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
