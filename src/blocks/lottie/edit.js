@@ -24,7 +24,7 @@ const {
     TextControl,
     ToggleControl,
     SelectControl,
-    IconButton,
+    Button,
     TabPanel,
     Dashicon,
 } = wp.components
@@ -55,7 +55,7 @@ class edit extends Component {
     }
 
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
         var elementstyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
 
         if (null !== elementstyle && undefined !== elementstyle) {
@@ -294,7 +294,7 @@ class edit extends Component {
                         label={__(`loop`)}
                         checked={loop}
                         onChange={(value) => setAttributes({ loop: value })}
-                        help={loop ? '' : __('This option works only on the preview page')}
+                        help={loop ? __('This option works only on the preview page') : ''}
                     />
                     <ToggleControl
                         label={__(`Reverse`)}
@@ -427,7 +427,7 @@ class edit extends Component {
                         initialPosition={0}
                     />
                     <h2> {__("Alignment")}</h2>
-                    <IconButton
+                    <Button
                         key={"left"}
                         icon="editor-alignleft"
                         label="Left"
@@ -435,7 +435,7 @@ class edit extends Component {
                         aria-pressed={"left" === align}
                         isPrimary={"left" === align}
                     />
-                    <IconButton
+                    <Button
                         key={"center"}
                         icon="editor-aligncenter"
                         label="Right"
@@ -445,7 +445,7 @@ class edit extends Component {
                         aria-pressed={"center" === align}
                         isPrimary={"center" === align}
                     />
-                    <IconButton
+                    <Button
                         key={"right"}
                         icon="editor-alignright"
                         label="Right"
@@ -471,9 +471,9 @@ class edit extends Component {
                             { label: "SVG", value: 'svg' },
                             { label: 'Canvas', value: 'canvas' }
                         ]}
-                        help={`Set render type to canvas if you're having performance issues on the page.
+                        help={__(`Set render type to canvas if you're having performance issues on the page.
                     This setting will only take effect once you are on the live page, and not while you're editing.
-                    `}
+                    `)}
                         onChange={(newValue) => setAttributes({ render: newValue })}
                     />
                 </PanelBody>
@@ -651,7 +651,7 @@ class edit extends Component {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#premium-lottie-${block_id}{`,
-                            `text-align:${align} ;`,
+                            `text-align:${align};`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation .premium-lottie-inner {`,
                             `background-color:${backColor ? hexToRgba(backColor, backOpacity) : "transparent"};`,
