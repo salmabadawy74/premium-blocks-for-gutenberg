@@ -82,19 +82,18 @@
     margin-top: 20px;
   } */
 .premium-size-type-field-tabs {
-      position: relative;
+    position: relative;
 }
-.premium-size-responsive-tab{
+.premium-size-responsive-tab {
     position: absolute;
-top: -18px;
-right: 148px;
-left: 4px;
+    top: -18px;
+    right: 148px;
+    left: 4px;
 }
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
     position: absolute;
     top: -20px !important;
-
 }
 
 .premium-size-type-field-tabs.premium-without-size-type .components-tab-panel__tabs {
@@ -311,14 +310,14 @@ left: 4px;
 /**********
 Lottie button
 *******/
-.lottie-remove{
+.lottie-remove {
     display: block;
     background-color: rgb(240, 240, 240);
     color: #000;
     font-size: 16px;
     padding: 16px 25px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: capitalize;
     outline: none;
     border: none;
@@ -332,14 +331,14 @@ Lottie button
     -webkit-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    width: 88%;
-    margin: 10px auto;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1em;
 }
 
 /**
 * Color Tabs
 */
-
 
 .premium-color-tabpanel button.components-tab-panel__tabs-item {
     display: block;

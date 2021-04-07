@@ -288,13 +288,13 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
-                    <button className="lottie-remove" onClick={handleRemoveLottie}>Remove</button>
+                    <button className="lottie-remove" onClick={handleRemoveLottie}>{__('Change Animation')}</button>
 
                     <ToggleControl
                         label={__(`loop`)}
                         checked={loop}
                         onChange={(value) => setAttributes({ loop: value })}
-                        help={loop ? '' : `This option works only on the preview page"`}
+                        help={loop ? '' : __('This option works only on the preview page')}
                     />
                     <ToggleControl
                         label={__(`Reverse`)}
@@ -412,9 +412,9 @@ class edit extends Component {
                                 );
                             }
 
-                            return <div>{tabout}</div>;
+                            return <div>{tabout}</div>
                         }}
-                    </TabPanel>,
+                    </TabPanel>
 
 
                     <RangeControl
