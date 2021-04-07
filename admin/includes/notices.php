@@ -104,7 +104,7 @@ class Premium_Gutenberg_Admin_Notices {
 				<a href="<?php echo esc_url( $optout_url ); ?>"><span class="dashicons dashicons-dismiss"></span></a>
 			</div>
 		</div>
-			
+
 			<?php
 		}
 
