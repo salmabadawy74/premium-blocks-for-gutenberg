@@ -140,6 +140,10 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 						'url'          => array(
 							'type' => 'string',
 						),
+						'target'       => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 						'backColor'    => array(
 							'type' => 'string',
 						),
@@ -233,15 +237,17 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 				'premium-lottie-animation-' . $block_id,
 
 			);
+			$wrap_class = array( 'premium-lottie-animation', 'premium-lottie-' . $attributes['render'] );
+
 			ob_start();
 
 			?>
 			<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
-				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>" class="premium-lottie-animation">
+				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>"  class="<?php echo esc_attr( implode( ' ', $wrap_class ) ); ?>"  >
 					<?php
 					if ( $attributes['link'] ) {
 						?>
-						<a href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+						<a target='<?php echo esc_html( $attributes['target'] ) ? '_blank' : '_self'; ?> ' href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
 						<?php
 					}
 					?>
@@ -280,6 +286,8 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 									preserveAspectRatio: 'xMidYMid',
 									className: "premium-lottie-inner"
 								},
+								width:'<?php echo esc_html( $value['size'] ); ?>',
+								height:'<?php echo esc_html( $value['size'] ); ?>'
 							})
 
 							animation.setSpeed(setSpeed)
@@ -344,9 +352,9 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								self.init = function () {
 
-			                	$(window).on('scroll load', self.initScroll);
+								$(window).on('scroll load', self.initScroll);
 
-		                         };
+								 };
 								self.initScroll = function() {
 
 									self.initScrollEffects();
@@ -356,7 +364,6 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 								self.initScrollEffects = function() {
 
 									var percents = self.getPercents();
-
 
 									if (elementSettings.effects.includes('animate')) {
 										self.animate(percents,elementSettings.animate);

@@ -29,8 +29,7 @@ const {
     Dashicon,
 } = wp.components
 
-
-
+let isLottieUpdated = null;
 class edit extends Component {
 
     constructor() {
@@ -41,9 +40,14 @@ class edit extends Component {
 
     componentDidMount() {
 
-        const { setAttributes, clientId } = this.props;
+        const { setAttributes, clientId, attributes } = this.props;
+        const { block_id } = attributes;
+
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
+        if (!attributes.lottieId) {
+            setAttributes({ lottieId: "premium-lottie-" + block_id });
+        }
 
         const $style = document.createElement("style")
         $style.setAttribute("id", "lottie-style-" + clientId.substr(0, 6))
@@ -51,16 +55,20 @@ class edit extends Component {
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
 
+        this.initLottieAnimation = this.initLottieAnimation.bind(this);
 
     }
 
 
     componentDidUpdate() {
-        var elementstyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
+        var elementStyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
 
-        if (null !== elementstyle && undefined !== elementstyle) {
-            elementstyle.innerHTML = styling(this.props)
+        if (null !== elementStyle && undefined !== elementStyle) {
+            elementStyle.innerHTML = styling(this.props)
         }
+
+        clearTimeout(isLottieUpdated);
+        isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
     }
 
     onSelectLottieJSON(media) {
@@ -74,6 +82,51 @@ class edit extends Component {
         setAttributes({ lottieURl: media.url })
 
     }
+
+    initLottieAnimation() {
+        const { block_id } = this.props.attributes;
+        if (block_id) {
+            let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
+            let animate = this.lottieplayer.current;
+            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {
+                let triggerEvent = lottieContainer.getAttribute("data-trigger");
+                let startEvent = lottieContainer.getAttribute('data-start');
+                let endEvent = lottieContainer.getAttribute('data-end');
+
+                if (triggerEvent === "scroll" || triggerEvent === "viewport") {
+
+                    var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight;
+                    var scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop;
+                    var pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight;
+                    var precentage = (scrollTop * 100) / scrollHeight;
+                    var pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
+
+
+                    if (triggerEvent === "viewport") {
+                        console.log("viewport")
+                        if (startEvent < precentage && pageEnd < endEvent)
+                            animate.anim.play();
+                        else {
+                            animate.anim.pause();
+                        }
+                    } else {
+                        console.log("scroll")
+                        let stopFrame = animate.anim.totalFrames;
+                        let currframe = (precentage / 100) * stopFrame;
+                        animate.anim.goToAndStop(currframe, true)
+
+                    }
+                }
+
+            })
+
+
+
+
+        }
+    }
+
+
 
     render() {
         const { attributes, setAttributes, className } = this.props;
@@ -97,6 +150,7 @@ class edit extends Component {
             align,
             link,
             url,
+            target,
             render,
             backColor,
             backOpacity,
@@ -158,124 +212,17 @@ class edit extends Component {
             this.lottieplayer.current.anim.pause();
         };
 
-        const handleLottieSegments = (x, y) => {
-            let stopFrame = this.lottieplayer.current.anim.totalFrames;
-            let currframe = (y / 100) * stopFrame;
-            this.lottieplayer.current.anim.goToAndStop(currframe, true)
-        }
-
-        if (trigger === 'scroll' || trigger === 'viewport') {
-
-            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {
-                var animateSettings = {
-                    animate: {
-                        speed: trigger === 'viewport' ? "viewport" : scrollSpeed,
-                        range: {
-                            start: bottom,
-                            end: top
-                        }
-                    },
-                    effects: ['animate']
-                };
-                var lottieContainer = document.querySelector(`.premium-lottie-animation`);
-
-
-                let animateInstance = new premiumEffects(lottieContainer, animateSettings, this.lottieplayer);
-
-                animateInstance.initScroll();
-
-            })
-        }
-
-        window.premiumEffects = function (element, settings) {
-            var self = this,
-                $el = element,
-                elementSettings = settings;
-            self.elementRules = {};
-
-
-
-            self.initScroll = function () {
-
-                self.initScrollEffects();
-
-            };
-            self.initScrollEffects = function () {
-
-                if (elementSettings.effects.includes('animate')) {
-                    self.animate();
-                }
-
-            };
-
-            self.animate = function () {
-                var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight;
-                var scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop;
-                var pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight;
-                var precentage = (scrollTop * 100) / scrollHeight;
-                var pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
-
-
-                if (trigger === "viewport") {
-                    if (bottom < precentage && pageEnd < top)
-                        handleLottieMouseEnter()
-                    else {
-                        handleLottieMouseLeave()
-                    }
-                } else {
-                    handleLottieSegments(pageEnd, precentage)
-                }
-            };
-
-        }
 
         const handleRemoveLottie = () => {
             setAttributes({
-                lottieURl: "",
-                loop: true,
-                reverse: false,
-                speed: 1,
-                trigger: "none",
-                bottom: "0",
-                top: "100",
-                size: "200",
-                sizeTablet: "200",
-                sizeMobile: "200",
-                rotate: "0",
-                link: false,
-                render: "svg",
-                backColor: "",
-                backOpacity: '1',
-                backHColor: "",
-                backHOpacity: "1",
-                blur: '0',
-                blurH: "0",
-                bright: '100',
-                brightH: "100",
-                contrast: '100',
-                contrastH: '100',
-                saturation: '100',
-                saturationH: '100',
-                hue: '0',
-                hueH: '0',
-                borderType: 'none',
-                borderTop: '0',
-                borderRight: '0',
-                borderBottom: '0',
-                borderLeft: '0',
-                borderRadius: '0',
-                paddingT: '0',
-                paddingU: 'px',
-                paddingR: '0',
-                paddingB: '0',
-                paddingL: '0'
+                lottieURl: ""
             })
         }
 
-        let stop_animation = true;
+        let stopAnimation = true;
 
         if ('none' === trigger || 'undefined' === typeof trigger) {
-            stop_animation = false;
+            stopAnimation = false;
         }
         const reversedir = (reverse) ? -1 : 1;
 
@@ -305,8 +252,8 @@ class edit extends Component {
                         label={__('Animation Speed')}
                         value={speed}
                         onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
-                        max={2.5}
-                        min={1}
+                        max={3}
+                        min={.1}
                         step={0.1}
                         initialPosition={1}
                     />
@@ -459,11 +406,18 @@ class edit extends Component {
                         checked={link}
                         onChange={() => setAttributes({ link: !link })}
                     />
-                    {link && <TextControl
-                        label={__("URL")}
-                        value={url}
-                        onChange={(newURL) => setAttributes({ url: newURL })}
-                    />}
+                    {link && <Fragment>
+                        <TextControl
+                            label={__("URL")}
+                            value={url}
+                            onChange={(newURL) => setAttributes({ url: newURL })}
+                        />
+                        <ToggleControl
+                            label={__("Open link in new tab")}
+                            checked={target}
+                            onChange={(newValue) => setAttributes({ target: newValue })}
+                        />
+                    </Fragment>}
                     <SelectControl
                         label={__('Render As')}
                         value={render}
@@ -624,10 +578,11 @@ class edit extends Component {
                 </PanelBody>
             </InspectorControls>,
             <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses}`}
+                data-lottieURl={lottieURl} data-trigger={trigger} data-start={bottom} data-end={top}
             >
                 <div className={`premium-lottie-animation`}
-                    onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stop_animation = true}
-                    onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stop_animation = true}
+                    onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stopAnimation = true}
+                    onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stopAnimation = true}
                 >
 
                     <Lottie
@@ -640,12 +595,12 @@ class edit extends Component {
                                 className: "premium-lottie-inner"
                             }
                         }}
-                        isStopped={stop_animation}
+                        isStopped={stopAnimation}
                         speed={speed === "" ? 1 : speed}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />
-                    {link && url !== ' ' && <a href={url}></a>}
+                    {link && url !== ' ' && <a target={`${target ? "_blank" : "_self"}`} href={url}></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
@@ -653,7 +608,7 @@ class edit extends Component {
                             `#premium-lottie-${block_id}{`,
                             `text-align:${align};`,
                             "}",
-                            `#premium-lottie-${block_id}  .premium-lottie-animation .premium-lottie-inner {`,
+                            `#premium-lottie-${block_id}  .premium-lottie-animation  {`,
                             `background-color:${backColor ? hexToRgba(backColor, backOpacity) : "transparent"};`,
                             `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg );`,
                             `border-style : ${borderType};`,
@@ -677,5 +632,6 @@ class edit extends Component {
             </div>
         ]
     }
+
 }
 export default edit;

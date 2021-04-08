@@ -7,6 +7,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const LottieAttr = {
+    lottieId: {
+        type: "string"
+    },
     block_id: {
         type: "string"
     },
@@ -47,7 +50,7 @@ const LottieAttr = {
     },
     scrollSpeed: {
         type: "number",
-        default: "0"
+        default: "4"
     },
     size: {
         type: "number",
@@ -79,6 +82,10 @@ const LottieAttr = {
     },
     url: {
         type: "string"
+    },
+    target: {
+        type: "boolean",
+        default: false
     },
     render: {
         type: 'string',
