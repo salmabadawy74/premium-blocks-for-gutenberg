@@ -85,7 +85,8 @@ class edit extends Component {
 
     initLottieAnimation() {
         const { block_id } = this.props.attributes;
-        if (block_id) {
+        let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
+        if (lottieContainer !== null) {
             let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
             let animate = this.lottieplayer.current;
             document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {
@@ -103,14 +104,12 @@ class edit extends Component {
 
 
                     if (triggerEvent === "viewport") {
-                        console.log("viewport")
                         if (startEvent < precentage && pageEnd < endEvent)
                             animate.anim.play();
                         else {
                             animate.anim.pause();
                         }
                     } else {
-                        console.log("scroll")
                         let stopFrame = animate.anim.totalFrames;
                         let currframe = (precentage / 100) * stopFrame;
                         animate.anim.goToAndStop(currframe, true)
@@ -120,13 +119,8 @@ class edit extends Component {
 
             })
 
-
-
-
         }
     }
-
-
 
     render() {
         const { attributes, setAttributes, className } = this.props;
