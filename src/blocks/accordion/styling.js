@@ -42,11 +42,9 @@ function styling(props) {
         descPaddingBMobile,
         descPaddingLMobile
     } = props.attributes
-    console.log(arrowPaddingT, titlePaddingT, descPaddingT)
     var selectors = {}
     var tablet_selectors = {}
     var mobile_selectors = {}
-
     selectors = {
         " .premium-accordion__icon_wrap": {
             "padding-top": `${arrowPaddingT}px`,

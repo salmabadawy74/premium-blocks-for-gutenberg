@@ -107,37 +107,48 @@ const accordionAttrs = {
         default: 20
     },
     titlePaddingR: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingB: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingL: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     arrowColor: {
         type: "string"

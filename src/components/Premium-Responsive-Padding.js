@@ -6,27 +6,38 @@ const {
 } = wp.components;
 
 function PremiumResponsivePadding(props) {
+
     const {
         showUnits,
+        setAttributes,
         paddingU,
         onChangePadSizeUnit,
         paddingT,
         paddingR,
         paddingB,
         paddingL,
-        onChangePadTop = () => { },
-        onChangePadRight = () => { },
-        onChangePadBottom = () => { },
-        onChangePadLeft = () => { },
+        onChangePadTop,
+        onChangePadRight,
+        onChangePadBottom,
+        onChangePadLeft,
         paddingTTablet,
         paddingRTablet,
         paddingBTablet,
         paddingLTablet,
+        onChangePadTopTablet,
+        onChangePadRightTablet,
+        onChangePadBottomTablet,
+        onChangePadLeftTablet,
         paddingTMobile,
         paddingRMobile,
         paddingBMobile,
         paddingLMobile,
+        onChangePadTopMobile,
+        onChangePadBottomMobile,
+        onChangePadRightMobile,
+        onChangePadLeftMobile
     } = props;
+
     return (
         <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
             tabs={
@@ -53,17 +64,17 @@ function PremiumResponsivePadding(props) {
                 if ("mobile" === tab.neme) {
                     tabout = (
                         <PremiumPadding
-                            paddingTop={paddingT}
+                            paddingTop={20}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={alert("OK")}
+
+                            onChangePadRight={(newValue) => setAttributes({ paddingR: newValue })
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadBottom={(newValue) => setAttributes({ paddingB: newValue })
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
-                            }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(newValue) => setAttributes({ paddingL: newValue })
                             }
                             showUnits={showUnits}
                             selectedUnit={selectedUnit}
@@ -77,13 +88,13 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRTablet}
                             paddingBottom={paddingBTablet}
                             paddingLeft={paddingLTablet}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={(newValue) => setAttributes({ paddingTTablet: newValue })
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadRight={(newValue) => setAttributes({ paddingRTablet: newValue })
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
+                            onChangePadBottom={(newValue) => setAttributes({ paddingBTablet: newValue })
                             }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(newValue) => setAttributes({ paddingLTablet: newValue })
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU}
@@ -97,13 +108,13 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRMobile}
                             paddingBottom={paddingBMobile}
                             paddingLeft={paddingLMobile}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={(newValue) => setAttributes({ paddingTMobile: newValue })
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadRight={(newValue) => setAttributes({ paddingRMobile: newValue })
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
+                            onChangePadBottom={(newValue) => setAttributes({ paddingBMobile: newValue })
                             }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(newValue) => setAttributes({ paddingLMobile: newValue })
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU}

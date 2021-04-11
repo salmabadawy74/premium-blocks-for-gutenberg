@@ -1565,28 +1565,34 @@ var _wp$components = wp.components,
 
 function PremiumResponsivePadding(props) {
     var showUnits = props.showUnits,
+        setAttributes = props.setAttributes,
         paddingU = props.paddingU,
         onChangePadSizeUnit = props.onChangePadSizeUnit,
         paddingT = props.paddingT,
         paddingR = props.paddingR,
         paddingB = props.paddingB,
         paddingL = props.paddingL,
-        _props$onChangePadTop = props.onChangePadTop,
-        _onChangePadTop = _props$onChangePadTop === undefined ? function () {} : _props$onChangePadTop,
-        _props$onChangePadRig = props.onChangePadRight,
-        _onChangePadRight = _props$onChangePadRig === undefined ? function () {} : _props$onChangePadRig,
-        _props$onChangePadBot = props.onChangePadBottom,
-        _onChangePadBottom = _props$onChangePadBot === undefined ? function () {} : _props$onChangePadBot,
-        _props$onChangePadLef = props.onChangePadLeft,
-        _onChangePadLeft = _props$onChangePadLef === undefined ? function () {} : _props$onChangePadLef,
+        onChangePadTop = props.onChangePadTop,
+        onChangePadRight = props.onChangePadRight,
+        onChangePadBottom = props.onChangePadBottom,
+        onChangePadLeft = props.onChangePadLeft,
         paddingTTablet = props.paddingTTablet,
         paddingRTablet = props.paddingRTablet,
         paddingBTablet = props.paddingBTablet,
         paddingLTablet = props.paddingLTablet,
+        onChangePadTopTablet = props.onChangePadTopTablet,
+        onChangePadRightTablet = props.onChangePadRightTablet,
+        onChangePadBottomTablet = props.onChangePadBottomTablet,
+        onChangePadLeftTablet = props.onChangePadLeftTablet,
         paddingTMobile = props.paddingTMobile,
         paddingRMobile = props.paddingRMobile,
         paddingBMobile = props.paddingBMobile,
-        paddingLMobile = props.paddingLMobile;
+        paddingLMobile = props.paddingLMobile,
+        onChangePadTopMobile = props.onChangePadTopMobile,
+        onChangePadBottomMobile = props.onChangePadBottomMobile,
+        onChangePadRightMobile = props.onChangePadRightMobile,
+        onChangePadLeftMobile = props.onChangePadLeftMobile;
+
 
     return wp.element.createElement(
         TabPanel,
@@ -1609,21 +1615,20 @@ function PremiumResponsivePadding(props) {
             var tabout = void 0;
             if ("mobile" === tab.neme) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_padding__["a" /* default */], {
-                    paddingTop: paddingT,
+                    paddingTop: 20,
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    onChangePadTop: function onChangePadTop() {
-                        return _onChangePadTop(tab.name);
+                    onChangePadTop: alert("OK"),
+
+                    onChangePadRight: function onChangePadRight(newValue) {
+                        return setAttributes({ paddingR: newValue });
                     },
-                    onChangePadRight: function onChangePadRight() {
-                        return _onChangePadRight(tab.name);
+                    onChangePadBottom: function onChangePadBottom(newValue) {
+                        return setAttributes({ paddingB: newValue });
                     },
-                    onChangePadBottom: function onChangePadBottom() {
-                        return _onChangePadBottom(tab.name);
-                    },
-                    onChangePadLeft: function onChangePadLeft() {
-                        return _onChangePadLeft(tab.name);
+                    onChangePadLeft: function onChangePadLeft(newValue) {
+                        return setAttributes({ paddingL: newValue });
                     },
                     showUnits: showUnits,
                     selectedUnit: selectedUnit,
@@ -1635,17 +1640,17 @@ function PremiumResponsivePadding(props) {
                     paddingRight: paddingRTablet,
                     paddingBottom: paddingBTablet,
                     paddingLeft: paddingLTablet,
-                    onChangePadTop: function onChangePadTop() {
-                        return _onChangePadTop(tab.name);
+                    onChangePadTop: function onChangePadTop(newValue) {
+                        return setAttributes({ paddingTTablet: newValue });
                     },
-                    onChangePadRight: function onChangePadRight() {
-                        return _onChangePadRight(tab.name);
+                    onChangePadRight: function onChangePadRight(newValue) {
+                        return setAttributes({ paddingRTablet: newValue });
                     },
-                    onChangePadBottom: function onChangePadBottom() {
-                        return _onChangePadBottom(tab.name);
+                    onChangePadBottom: function onChangePadBottom(newValue) {
+                        return setAttributes({ paddingBTablet: newValue });
                     },
-                    onChangePadLeft: function onChangePadLeft() {
-                        return _onChangePadLeft(tab.name);
+                    onChangePadLeft: function onChangePadLeft(newValue) {
+                        return setAttributes({ paddingLTablet: newValue });
                     },
                     showUnits: showUnits,
                     selectedUnit: paddingU,
@@ -1657,17 +1662,17 @@ function PremiumResponsivePadding(props) {
                     paddingRight: paddingRMobile,
                     paddingBottom: paddingBMobile,
                     paddingLeft: paddingLMobile,
-                    onChangePadTop: function onChangePadTop() {
-                        return _onChangePadTop(tab.name);
+                    onChangePadTop: function onChangePadTop(newValue) {
+                        return setAttributes({ paddingTMobile: newValue });
                     },
-                    onChangePadRight: function onChangePadRight() {
-                        return _onChangePadRight(tab.name);
+                    onChangePadRight: function onChangePadRight(newValue) {
+                        return setAttributes({ paddingRMobile: newValue });
                     },
-                    onChangePadBottom: function onChangePadBottom() {
-                        return _onChangePadBottom(tab.name);
+                    onChangePadBottom: function onChangePadBottom(newValue) {
+                        return setAttributes({ paddingBMobile: newValue });
                     },
-                    onChangePadLeft: function onChangePadLeft() {
-                        return _onChangePadLeft(tab.name);
+                    onChangePadLeft: function onChangePadLeft(newValue) {
+                        return setAttributes({ paddingLMobile: newValue });
                     },
                     showUnits: showUnits,
                     selectedUnit: paddingU,
@@ -6230,37 +6235,48 @@ var accordionAttrs = {
         default: 20
     },
     titlePaddingR: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingB: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingL: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     arrowColor: {
         type: "string"
@@ -6975,79 +6991,20 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL,
-                        paddingTopTablet: titlePaddingTTablet,
-                        paddingRightTablet: titlePaddingRTablet,
-                        paddingBottomTablet: titlePaddingBTablet,
-                        paddingLeftTablet: titlePaddingLTablet,
-                        paddingTopMobile: titlePaddingTMobile,
-                        paddingRightMobile: titlePaddingRMobile,
-                        paddingBottomMobile: titlePaddingBMobile,
-                        paddingLeftMobile: titlePaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "mobile") {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingTMobile: valueMobile });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingT: newValue });
-                                });
-                                console.log(titlePaddingT);
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingRMobile: 20 });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingLMobile: valueMobile });
-                                });
-                            }
-                        }
+                        setAttributes: setAttributes,
+                        paddingT: titlePaddingT,
+                        paddingR: titlePaddingR,
+                        paddingB: titlePaddingB,
+                        paddingL: titlePaddingL,
+                        paddingTTablet: titlePaddingTTablet,
+                        paddingRTablet: titlePaddingRTablet,
+                        paddingBTablet: titlePaddingBTablet,
+                        paddingLTablet: titlePaddingLTablet,
+                        paddingTMobile: titlePaddingTMobile,
+                        paddingRMobile: titlePaddingRMobile,
+                        paddingBMobile: titlePaddingBMobile,
+                        paddingLMobile: titlePaddingLMobile
+
                     })
                 ),
                 wp.element.createElement(
@@ -7139,6 +7096,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
+                        setAttributes: setAttributes,
                         paddingTop: arrowPaddingT,
                         paddingRight: arrowPaddingR,
                         paddingBottom: arrowPaddingB,
@@ -7150,67 +7108,7 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: arrowPaddingTMobile,
                         paddingRightMobile: arrowPaddingRMobile,
                         paddingBottomMobile: arrowPaddingBMobile,
-                        paddingLeftMobile: arrowPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingLMobile: valueMobile });
-                                });
-                            }
-                        }
+                        paddingLeftMobile: arrowPaddingLMobile
                     })
                 ),
                 wp.element.createElement(
@@ -7387,6 +7285,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
+                        setAttributes: setAttributes,
                         paddingTop: descPaddingT,
                         paddingRight: descPaddingR,
                         paddingBottom: descPaddingB,
@@ -7398,67 +7297,8 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: descPaddingTMobile,
                         paddingRightMobile: descPaddingRMobile,
                         paddingBottomMobile: descPaddingBMobile,
-                        paddingLeftMobile: descPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingLMobile: valueMobile });
-                                });
-                            }
-                        }
+                        paddingLeftMobile: descPaddingLMobile
+
                     })
                 ),
                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_responsive_tabs__["a" /* default */], {
@@ -12471,11 +12311,9 @@ function styling(props) {
         descPaddingBMobile = _props$attributes.descPaddingBMobile,
         descPaddingLMobile = _props$attributes.descPaddingLMobile;
 
-    console.log(arrowPaddingT, titlePaddingT, descPaddingT);
     var selectors = {};
     var tablet_selectors = {};
     var mobile_selectors = {};
-
     selectors = {
         " .premium-accordion__icon_wrap": {
             "padding-top": arrowPaddingT + "px",
