@@ -283,7 +283,6 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 								autoplay: Boolean(trigger === 'none'),
 								path: path,
 								rendererSettings: {
-									preserveAspectRatio: 'xMidYMid',
 									className: "premium-lottie-inner"
 								},
 								width:'<?php echo esc_html( $value['size'] ); ?>',
@@ -352,7 +351,8 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 
 								self.init = function () {
 
-								$(window).on('scroll load', self.initScroll);
+								$(window).on(' scroll', self.initScroll);
+								$(document).ready(self.initScroll);
 
 								 };
 								self.initScroll = function() {
@@ -387,7 +387,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 								};
 
 								self.animate = function(percents,data) {
-
+									console.log(percents,data.range)
 
 									var stopFrame = lottieInstance.totalFrames;
 
