@@ -89,19 +89,20 @@ class edit extends Component {
         if (lottieContainer !== null) {
             let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
             let animate = this.lottieplayer.current;
-            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {
-                let triggerEvent = lottieContainer.getAttribute("data-trigger");
-                let startEvent = lottieContainer.getAttribute('data-start');
-                let endEvent = lottieContainer.getAttribute('data-end');
+            document.addEventListener("load", initScroll)
+            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', initScroll)
 
+            function initScroll() {
+                let triggerEvent = lottieContainer.getAttribute("data-trigger"),
+                    startEvent = lottieContainer.getAttribute('data-start'),
+                    endEvent = lottieContainer.getAttribute('data-end');
                 if (triggerEvent === "scroll" || triggerEvent === "viewport") {
 
-                    var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight;
-                    var scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop;
-                    var pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight;
-                    var precentage = (scrollTop * 100) / scrollHeight;
-                    var pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
-
+                    var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight,
+                        scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop,
+                        pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight,
+                        precentage = (scrollTop * 100) / scrollHeight,
+                        pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
 
                     if (triggerEvent === "viewport") {
                         if (startEvent < precentage && pageEnd < endEvent)
@@ -116,10 +117,12 @@ class edit extends Component {
 
                     }
                 }
-
-            })
-
+            }
         }
+
+
+
+
     }
 
     render() {
@@ -357,7 +360,6 @@ class edit extends Component {
                         }}
                     </TabPanel>
 
-
                     <RangeControl
                         label={__("Rotate (Degree)")}
                         value={rotate}
@@ -400,18 +402,19 @@ class edit extends Component {
                         checked={link}
                         onChange={() => setAttributes({ link: !link })}
                     />
-                    {link && <Fragment>
-                        <TextControl
-                            label={__("URL")}
-                            value={url}
-                            onChange={(newURL) => setAttributes({ url: newURL })}
-                        />
-                        <ToggleControl
-                            label={__("Open link in new tab")}
-                            checked={target}
-                            onChange={(newValue) => setAttributes({ target: newValue })}
-                        />
-                    </Fragment>}
+                    {link &&
+                        <Fragment>
+                            <TextControl
+                                label={__("URL")}
+                                value={url}
+                                onChange={(newURL) => setAttributes({ url: newURL })}
+                            />
+                            <ToggleControl
+                                label={__("Open link in new tab")}
+                                checked={target}
+                                onChange={(newValue) => setAttributes({ target: newValue })}
+                            />
+                        </Fragment>}
                     <SelectControl
                         label={__('Render As')}
                         value={render}
@@ -594,7 +597,7 @@ class edit extends Component {
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />
-                    {link && url !== ' ' && <a target={`${target ? "_blank" : "_self"}`} href={url}></a>}
+                    {link && url !== ' ' && <a href="javascript:void(0)" ></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
