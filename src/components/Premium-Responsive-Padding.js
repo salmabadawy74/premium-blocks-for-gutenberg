@@ -6,10 +6,12 @@ const {
 } = wp.components;
 
 function PremiumResponsivePadding(props) {
+
     const {
         setAttributes,
         selectedUnit,
         showUnits,
+        setAttributes,
         paddingU,
         onChangePadSizeUnit,
         paddingT,
@@ -20,10 +22,18 @@ function PremiumResponsivePadding(props) {
         paddingRTablet,
         paddingBTablet,
         paddingLTablet,
+        onChangePadTopTablet,
+        onChangePadRightTablet,
+        onChangePadBottomTablet,
+        onChangePadLeftTablet,
         paddingTMobile,
         paddingRMobile,
         paddingBMobile,
         paddingLMobile,
+        onChangePadTopMobile,
+        onChangePadBottomMobile,
+        onChangePadRightMobile,
+        onChangePadLeftMobile
     } = props;
 
     console.log(props);
@@ -54,7 +64,7 @@ function PremiumResponsivePadding(props) {
                 if ("desktop" === tab.name) {
                     tabout = (
                         <PremiumPadding
-                            paddingTop={paddingT}
+                            paddingTop={20}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}

@@ -1577,10 +1577,19 @@ function PremiumResponsivePadding(props) {
         paddingRTablet = props.paddingRTablet,
         paddingBTablet = props.paddingBTablet,
         paddingLTablet = props.paddingLTablet,
+        onChangePadTopTablet = props.onChangePadTopTablet,
+        onChangePadRightTablet = props.onChangePadRightTablet,
+        onChangePadBottomTablet = props.onChangePadBottomTablet,
+        onChangePadLeftTablet = props.onChangePadLeftTablet,
         paddingTMobile = props.paddingTMobile,
         paddingRMobile = props.paddingRMobile,
         paddingBMobile = props.paddingBMobile,
-        paddingLMobile = props.paddingLMobile;
+        paddingLMobile = props.paddingLMobile,
+        onChangePadTopMobile = props.onChangePadTopMobile,
+        onChangePadBottomMobile = props.onChangePadBottomMobile,
+        onChangePadRightMobile = props.onChangePadRightMobile,
+        onChangePadLeftMobile = props.onChangePadLeftMobile;
+
 
 
     console.log(props);
@@ -1607,7 +1616,7 @@ function PremiumResponsivePadding(props) {
             var tabout = void 0;
             if ("desktop" === tab.name) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_padding__["a" /* default */], {
-                    paddingTop: paddingT,
+                    paddingTop: 20,
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
@@ -6229,37 +6238,48 @@ var accordionAttrs = {
         default: 20
     },
     titlePaddingR: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingB: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingL: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLTablet: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingTMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingRMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingBMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     titlePaddingLMobile: {
-        type: "number"
+        type: "number",
+        default: 20
     },
     arrowColor: {
         type: "string"
@@ -7140,6 +7160,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
+                        setAttributes: setAttributes,
                         paddingTop: arrowPaddingT,
                         paddingRight: arrowPaddingR,
                         paddingBottom: arrowPaddingB,
@@ -7151,67 +7172,7 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: arrowPaddingTMobile,
                         paddingRightMobile: arrowPaddingRMobile,
                         paddingBottomMobile: arrowPaddingBMobile,
-                        paddingLeftMobile: arrowPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ titlePaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ titlePaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ titlePaddingLMobile: valueMobile });
-                                });
-                            }
-                        }
+                        paddingLeftMobile: arrowPaddingLMobile
                     })
                 ),
                 wp.element.createElement(
@@ -7388,6 +7349,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
+                        setAttributes: setAttributes,
                         paddingTop: descPaddingT,
                         paddingRight: descPaddingR,
                         paddingBottom: descPaddingB,
@@ -7399,67 +7361,8 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: descPaddingTMobile,
                         paddingRightMobile: descPaddingRMobile,
                         paddingBottomMobile: descPaddingBMobile,
-                        paddingLeftMobile: descPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ descPaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ descPaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ descPaddingLMobile: valueMobile });
-                                });
-                            }
-                        }
+                        paddingLeftMobile: descPaddingLMobile
+
                     })
                 ),
                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_responsive_tabs__["a" /* default */], {
@@ -12475,7 +12378,6 @@ function styling(props) {
     var selectors = {};
     var tablet_selectors = {};
     var mobile_selectors = {};
-
     selectors = {
         " .premium-accordion__icon_wrap": {
             "padding-top": arrowPaddingT + "px",
