@@ -1,5 +1,5 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
-import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit';
 
 function styling(props) {
     const {
@@ -16,7 +16,33 @@ function styling(props) {
         btnSizeUnit,
         btnSize,
         btnSizeTablet,
-        btnSizeMobile
+        btnSizeMobile,
+        paddingT,
+        paddingR,
+        paddingB,
+        paddingL,
+        paddingTTablet,
+        paddingRTablet,
+        paddingBTablet,
+        paddingLTablet,
+        paddingTMobile,
+        paddingRMobile,
+        paddingBMobile,
+        paddingLMobile,
+        paddingU,
+        btnPaddingU,
+        btnPaddingT,
+        btnPaddingR,
+        btnPaddingB,
+        btnPaddingL,
+        btnPaddingTTablet,
+        btnPaddingRTablet,
+        btnPaddingBTablet,
+        btnPaddingLTablet,
+        btnPaddingTMobile,
+        btnPaddingRMobile,
+        btnPaddingBMobile,
+        btnPaddingLMobile
     } = props.attributes;
 
     let selectors = {}
@@ -24,6 +50,12 @@ function styling(props) {
     let mobile_selectors = {}
 
     selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingT, paddingU),
+            "padding-right": generateCSSUnit(paddingR, paddingU),
+            "padding-bottom": generateCSSUnit(paddingB, paddingU),
+            "padding-left": generateCSSUnit(paddingL, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
@@ -31,11 +63,21 @@ function styling(props) {
             "font-size": generateCSSUnit(descSize, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": generateCSSUnit(btnSize, btnSizeUnit)
+            "font-size": generateCSSUnit(btnSize, btnSizeUnit),
+            "padding-top": generateCSSUnit(btnPaddingT, btnPaddingU),
+            "padding-right": generateCSSUnit(btnPaddingR, btnPaddingU),
+            "padding-bottom": generateCSSUnit(btnPaddingB, btnPaddingU),
+            "padding-left": generateCSSUnit(btnPaddingL, btnPaddingU)
         }
     }
 
     tablet_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTTablet, paddingU),
+            "padding-right": generateCSSUnit(paddingRTablet, paddingU),
+            "padding-bottom": generateCSSUnit(paddingBTablet, paddingU),
+            "padding-left": generateCSSUnit(paddingLTablet, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
@@ -43,11 +85,21 @@ function styling(props) {
             "font-size": generateCSSUnit(descSizeTablet, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": generateCSSUnit(btnSizeTablet, btnSizeUnit)
+            "font-size": generateCSSUnit(btnSizeTablet, btnSizeUnit),
+            "padding-top": generateCSSUnit(btnPaddingTTablet, btnPaddingU),
+            "padding-right": generateCSSUnit(btnPaddingRTablet, btnPaddingU),
+            "padding-bottom": generateCSSUnit(btnPaddingBTablet, btnPaddingU),
+            "padding-left": generateCSSUnit(btnPaddingLTablet, btnPaddingU)
         }
     }
 
     mobile_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTMobile, paddingU),
+            "padding-right": generateCSSUnit(paddingRMobile, paddingU),
+            "padding-bottom": generateCSSUnit(paddingBMobile, paddingU),
+            "padding-left": generateCSSUnit(paddingLMobile, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
@@ -55,7 +107,11 @@ function styling(props) {
             "font-size": generateCSSUnit(descSizeMobile, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": generateCSSUnit(btnSizeMobile, btnSizeUnit)
+            "font-size": generateCSSUnit(btnSizeMobile, btnSizeUnit),
+            "padding-top": generateCSSUnit(btnPaddingTMobile, btnPaddingU),
+            "padding-right": generateCSSUnit(btnPaddingRMobile, btnPaddingU),
+            "padding-bottom": generateCSSUnit(btnPaddingBMobile, btnPaddingU),
+            "padding-left": generateCSSUnit(btnPaddingLMobile, btnPaddingU)
         }
     }
 

@@ -568,56 +568,23 @@ export default class edit extends Component {
                             paddingRightMobile={paddingRMobile}
                             paddingBottomMobile={paddingBMobile}
                             paddingLeftMobile={paddingLMobile}
-                            showUnit={true}
-                            selectedUnit={paddingU}
-                            onChangePadTop={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingT: newValue })
-
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingTMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingLMobile: valueMobile })
-                                }
-                            }
-                            }
+                            showUnits={true}
                             onChangePadSizeUnit={newvalue =>
                                 setAttributes({ paddingU: newvalue })
                             }
+                            selectedUnit={paddingU}
+                            onChangePadTopDesk={(val) => setAttributes({ paddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ paddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ paddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ paddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ paddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ paddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ paddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ paddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLMobile: valM })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

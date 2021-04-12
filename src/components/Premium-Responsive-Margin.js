@@ -15,10 +15,6 @@ function PremiumResponsiveMargin(props) {
         marginRight,
         marginBottom,
         marginLeft,
-        onChangeMarTop = () => { },
-        onChangeMarRight = () => { },
-        onChangeMarBottom = () => { },
-        onChangeMarLeft = () => { },
         marginTopTablet,
         marginRightTablet,
         marginBottomTablet,
@@ -49,7 +45,7 @@ function PremiumResponsiveMargin(props) {
             ]}>
             {(tab) => {
                 let tabout;
-                if ("mobile" === tab.neme) {
+                if ("mobile" === tab.name) {
                     tabout = (
                         <PremiumMargin
                             directions={directions}

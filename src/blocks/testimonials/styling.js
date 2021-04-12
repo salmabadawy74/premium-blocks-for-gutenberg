@@ -16,7 +16,20 @@ function styling(props) {
         bodySize,
         bodySizeUnit,
         bodySizeMobile,
-        bodySizeTablet
+        bodySizeTablet,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+        paddingTopTablet,
+        paddingRightTablet,
+        paddingBottomTablet,
+        paddingLeftTablet,
+        paddingTopMobile,
+        paddingRightMobile,
+        paddingBottomMobile,
+        paddingLeftMobile,
+        paddingUnit,
     } = props.attributes;
 
     let selectors = {}
@@ -24,6 +37,12 @@ function styling(props) {
     let mobile_selectors = {}
 
     selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTop, paddingUnit),
+            "padding-right": generateCSSUnit(paddingRight, paddingUnit),
+            "padding-bottom": generateCSSUnit(paddingBottom, paddingUnit),
+            "padding-left": generateCSSUnit(paddingLeft, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": generateCSSUnit(authorSize, authorSizeUnit)
         },
@@ -36,6 +55,12 @@ function styling(props) {
     };
 
     tablet_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTopTablet, paddingUnit),
+            "padding-right": generateCSSUnit(paddingRightTablet, paddingUnit),
+            "padding-bottom": generateCSSUnit(paddingBottomTablet, paddingUnit),
+            "padding-left": generateCSSUnit(paddingLeftTablet, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author ": {
             "font-size": generateCSSUnit(authorSizeTablet, authorSizeUnit)
         },
@@ -48,6 +73,12 @@ function styling(props) {
     };
 
     mobile_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTopMobile, paddingUnit),
+            "padding-right": generateCSSUnit(paddingRightMobile, paddingUnit),
+            "padding-bottom": generateCSSUnit(paddingBottomMobile, paddingUnit),
+            "padding-left": generateCSSUnit(paddingLeftMobile, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": generateCSSUnit(authorSizeMobile, authorSizeUnit)
         },

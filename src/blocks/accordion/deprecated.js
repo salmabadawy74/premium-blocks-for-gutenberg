@@ -413,12 +413,370 @@ const newAttributes_1_6_3 = {
     },
 };
 
+const newAttributes_1_6_5 = {
+    titlePaddingT: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingR: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingB: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingL: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingTTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingRTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingBTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingLTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingTMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingRMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingBMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingLMobile: {
+        type: "number",
+        default: 20
+    },
+    arrowPaddingT: {
+        type: "number"
+    },
+    arrowPaddingR: {
+        type: "number"
+    },
+    arrowPaddingB: {
+        type: "number"
+    },
+    arrowPaddingL: {
+        type: "number"
+    },
+    arrowPaddingTTablet: {
+        type: "number"
+    },
+    arrowPaddingRTablet: {
+        type: "number"
+    },
+    arrowPaddingBTablet: {
+        type: "number"
+    },
+    arrowPaddingLTablet: {
+        type: "number"
+    },
+    arrowPaddingTMobile: {
+        type: "number"
+    },
+    arrowPaddingRMobile: {
+        type: "number"
+    },
+    arrowPaddingBMobile: {
+        type: "number"
+    },
+    arrowPaddingLMobile: {
+        type: "number"
+    },
+    descPaddingT: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingR: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingB: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingL: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingTTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingRTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingBTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingLTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingTMobile: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingRMobile: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingBMobile: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingLMobile: {
+        type: "number",
+        default: 10
+    }
+}
+
 const deprecated_attributes_1_6_3 = Object.assign(
     deprecated_attributes_1_6_1,
     newAttributes_1_6_3
 );
 
+const deprecated_attributes_1_6_5 = Object.assign(deprecated_attributes_1_6_3, newAttributes_1_6_5)
+
 const deprecated = [
+    {
+        attributes: deprecated_attributes_1_6_5,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titlePaddingT: " ",
+                titlePaddingR: "",
+                titlePaddingB: "",
+                titlePaddingL: "",
+                titlePaddingTTablet: " ",
+                titlePaddingRTablet: "",
+                titlePaddingBTablet: "",
+                titlePaddingLTablet: "",
+                titlePaddingTMobile: " ",
+                titlePaddingRMobile: "",
+                titlePaddingBMobile: "",
+                titlePaddingLMobile: "",
+                arrowPaddingT: " ",
+                arrowPaddingR: "",
+                arrowPaddingB: "",
+                arrowPaddingL: "",
+                arrowPaddingTTablet: " ",
+                arrowPaddingRTablet: "",
+                arrowPaddingBTablet: "",
+                arrowPaddingLTablet: "",
+                arrowPaddingTMobile: " ",
+                arrowPaddingRMobile: "",
+                arrowPaddingBMobile: "",
+                arrowPaddingLMobile: "",
+                descPaddingT: " ",
+                descPaddingR: "",
+                descPaddingB: "",
+                descPaddingL: "",
+                descPaddingTTablet: " ",
+                descPaddingRTablet: "",
+                descPaddingBTablet: "",
+                descPaddingLTablet: "",
+                descPaddingTMobile: " ",
+                descPaddingRMobile: "",
+                descPaddingBMobile: "",
+                descPaddingLMobile: "",
+
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: (props) => {
+            const {
+                accordionId,
+                repeaterItems,
+                direction,
+                titleTag,
+                titleSize,
+                titleLine,
+                titleLetter,
+                titleStyle,
+                titleUpper,
+                titleWeight,
+                titleColor,
+                titleBorder,
+                titleBorderWidth,
+                titleBorderColor,
+                titleBorderTop,
+                titleBorderRight,
+                titleBorderBottom,
+                titleBorderLeft,
+                titleBorderRadius,
+                titleBack,
+                titleShadowBlur,
+                titleShadowColor,
+                titleShadowHorizontal,
+                titleShadowVertical,
+                titlePaddingT,
+                titlePaddingR,
+                titlePaddingB,
+                titlePaddingL,
+                arrowColor,
+                arrowBack,
+                arrowPos,
+                arrowPadding,
+                arrowSize,
+                arrowRadius,
+                contentType,
+                descAlign,
+                descSize,
+                descLine,
+                descLetter,
+                descStyle,
+                descUpper,
+                descWeight,
+                descColor,
+                descBack,
+                descBorder,
+                descBorderColor,
+                descBorderRadius,
+                descBorderWidth,
+                descBorderTop,
+                descBorderRight,
+                descBorderBottom,
+                descBorderLeft,
+                textShadowBlur,
+                textShadowColor,
+                textShadowHorizontal,
+                textShadowVertical,
+                descPaddingT,
+                descPaddingR,
+                descPaddingB,
+                descPaddingL,
+                titleBorderUpdated,
+                descBorderUpdated,
+            } = props.attributes;
+
+
+            const accordionItems = repeaterItems.map((item, index) => {
+                return (
+                    <div
+                        id={`premium-accordion__layer${index}`}
+                        className={`premium-accordion__content_wrap`}
+                    >
+                        <div
+                            className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                            style={{
+                                backgroundColor: titleBack,
+                                borderStyle: titleBorder,
+                                borderWidth: titleBorderUpdated
+                                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                    : titleBorderWidth + "px",
+                                borderRadius: titleBorderRadius + "px",
+                                borderColor: titleBorderColor,
+                                paddingTop: titlePaddingT,
+                                paddingRight: titlePaddingR,
+                                paddingBottom: titlePaddingB,
+                                paddingLeft: titlePaddingL
+                            }}
+                        >
+                            <div className={`premium-accordion__title`}>
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-accordion__title_text`}
+                                    value={item.titleText}
+                                    style={{
+                                        color: titleColor,
+                                        fontSize: titleSize + "px",
+                                        letterSpacing: titleLetter + "px",
+                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyle,
+                                        fontWeight: titleWeight,
+                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                        lineHeight: titleLine + "px"
+                                    }}
+                                />
+                            </div>
+                            <div className={`premium-accordion__icon_wrap`}>
+                                <svg
+                                    className={`premium-accordion__icon premium-accordion__closed`}
+                                    role="img"
+                                    focusable="false"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={arrowSize}
+                                    height={arrowSize}
+                                    viewBox="0 0 20 20"
+                                    style={{
+                                        fill: arrowColor,
+                                        backgroundColor: arrowBack,
+                                        padding: arrowPadding + "px",
+                                        borderRadius: arrowRadius + "px"
+                                    }}
+                                >
+                                    <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+                            style={{
+                                textAlign: descAlign,
+                                backgroundColor: descBack,
+                                borderStyle: descBorder,
+                                borderWidth: descBorderUpdated
+                                    ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                                    : descBorderWidth + "px",
+                                borderRadius: descBorderRadius + "px",
+                                borderColor: descBorderColor,
+                                paddingTop: descPaddingT,
+                                paddingRight: descPaddingR,
+                                paddingBottom: descPaddingB,
+                                paddingLeft: descPaddingL
+                            }}
+                        >
+                            {"text" === contentType && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-accordion__desc`}
+                                    value={item.descText}
+                                    style={{
+                                        color: descColor,
+                                        fontSize: descSize + "px",
+                                        letterSpacing: descLetter + "px",
+                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                        fontStyle: descStyle,
+                                        fontWeight: descWeight,
+                                        lineHeight: descLine + "px"
+                                    }}
+                                />
+                            )}
+                            {"block" === contentType && <InnerBlocks.Content />}
+                        </div>
+                    </div>
+                );
+            });
+            return (
+                <div id={accordionId} className={`${className}`}>
+                    {accordionItems}
+                </div>
+            );
+        }
+    },
     {
         attributes: deprecated_attributes_1_6_3,
 

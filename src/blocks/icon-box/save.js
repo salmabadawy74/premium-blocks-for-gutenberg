@@ -139,10 +139,6 @@ const save = props => {
                 marginRight: marginR,
                 marginBottom: marginB,
                 marginLeft: marginL,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor
                     ? hexToRgba(backColor, backOpacity)
@@ -282,7 +278,6 @@ const save = props => {
                                     : btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
-                                padding: btnPadding + btnPaddingU,
                                 boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
                             }}
                         />

@@ -202,7 +202,174 @@ const newAttributes_1_4_9 = {
 
 const buttonAttrs_1_4_9 = Object.assign(buttonAttrs_1_4_7, newAttributes_1_4_9);
 
+const newAttributes_1_5_11 = {
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    }
+}
+
+const buttonAttrs_1_5_11 = Object.assign(buttonAttrs_1_4_9, newAttributes_1_5_11)
+
 const deprecatedContent = [
+    {
+        attributes: buttonAttrs_1_5_11,
+        migrate: attributes => {
+            let newAttributes = {
+                paddingT: "",
+                paddingR: "",
+                paddingB: "",
+                paddingL: "",
+                paddingTTablet: "",
+                paddingRTablet: "",
+                paddingBTablet: "",
+                paddingLTablet: "",
+                paddingTMobile: "",
+                paddingRMobile: "",
+                paddingBMobile: "",
+                paddingLMobile: ""
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const {
+                block_id,
+                borderButton,
+                btnText,
+                btnSize,
+                btnAlign,
+                btnLink,
+                btnTarget,
+                effect,
+                effectDir,
+                textColor,
+                textHoverColor,
+                backColor,
+                backHoverColor,
+                slideColor,
+                textFontFamily,
+                textWeight,
+                textLine,
+                textLetter,
+                textStyle,
+                backOpacity,
+                textUpper,
+                borderType,
+                borderWidth,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+                borderRadius,
+                borderColor,
+                borderHoverColor,
+                padding,
+                paddingU,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                btnShadowBlur,
+                btnShadowColor,
+                btnShadowHorizontal,
+                btnShadowVertical,
+                btnShadowPosition,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+
+
+            return (
+                <div
+                    id={`${className}-wrap-${block_id}`}
+                    className={`${className}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{ textAlign: btnAlign }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-button-wrap-${block_id} .premium-button:hover {`,
+                                `color: ${textHoverColor} !important;`,
+                                `border-color: ${borderHoverColor} !important;`,
+                                "}",
+                                `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
+                                `background-color: ${backHoverColor} !important;`,
+                                "}",
+                                `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
+                                `background-color: ${slideColor}`,
+                                "}",
+                            ].join("\n"),
+                        }}
+                    />
+                    <RichText.Content
+                        tagName="a"
+                        value={btnText}
+                        className={`premium-button premium-button__${btnSize}`}
+                        href={btnLink}
+                        rel="noopener noreferrer"
+                        target={btnTarget ? "_blank" : "_self"}
+                        style={{
+                            color: textColor,
+                            backgroundColor: backColor
+                                ? hexToRgba(backColor, backOpacity)
+                                : "transparent",
+                            fontFamily: textFontFamily,
+                            letterSpacing: textLetter + "px",
+                            textTransform: textUpper ? "uppercase" : "none",
+                            fontStyle: textStyle,
+                            lineHeight: textLine + "px",
+                            fontWeight: textWeight,
+                            textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
+                            boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                            padding: padding + paddingU,
+                            borderStyle: borderType,
+                            borderWidth: borderButton
+                                ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: borderRadius + "px",
+                            borderColor: borderColor
+                        }}
+                    />
+                </div>
+            );
+        }
+    },
     {
         attributes: buttonAttrs_1_4_9,
         migrate: (attributes) => {

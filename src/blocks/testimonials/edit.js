@@ -5,7 +5,6 @@ import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
-import PremiumPadding from "../../components/premium-padding";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
@@ -114,6 +113,14 @@ class edit extends Component {
             paddingRight,
             paddingBottom,
             paddingLeft,
+            paddingTopTablet,
+            paddingRightTablet,
+            paddingBottomTablet,
+            paddingLeftTablet,
+            paddingTopMobile,
+            paddingRightMobile,
+            paddingBottomMobile,
+            paddingLeftMobile,
             paddingUnit,
             hideDesktop,
             hideTablet,
@@ -543,69 +550,26 @@ class edit extends Component {
                             paddingRight={paddingRight}
                             paddingBottom={paddingBottom}
                             paddingLeft={paddingLeft}
-                            onChangePadTop={
-                                value =>
-                                    setAttributes({
-                                        paddingRight: value
-                                    })
-                            }
-
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingRight: value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingBottom: value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingLeft: value
-                                })
-                            }
-
-                            paddingTopTablet={paddingTop}
-                            paddingRightTablet={paddingRight}
-                            paddingBottomTablet={paddingBottom}
-                            paddingLeftTablet={paddingLeft}
-
-                            onChangePadRightTablet={value =>
-                                setAttributes({
-                                    paddingRight: value
-                                })
-                            }
-                            onChangePadBottomTablet={value =>
-                                setAttributes({
-                                    paddingBottom: value
-                                })
-                            }
-                            onChangePadLeftTablet={value =>
-                                setAttributes({
-                                    paddingLeft: value
-                                })
-                            }
-                            paddingTopMobile={paddingTop}
-                            paddingRightMobile={paddingRight}
-                            paddingBottomMobile={paddingBottom}
-                            paddingLeftMobile={paddingLeft}
-
-                            onChangePadRightMobile={value =>
-                                setAttributes({
-                                    paddingRight: value
-                                })
-                            }
-                            onChangePadBottomMobile={value =>
-                                setAttributes({
-                                    paddingBottom: value
-                                })
-                            }
-                            onChangePadLeftMobile={value =>
-                                setAttributes({
-                                    paddingLeft: value
-                                })
-                            }
+                            paddingTopTablet={paddingTopTablet}
+                            paddingRightTablet={paddingRightTablet}
+                            paddingBottomTablet={paddingBottomTablet}
+                            paddingLeftTablet={paddingLeftTablet}
+                            paddingTopMobile={paddingTopMobile}
+                            paddingRightMobile={paddingRightMobile}
+                            paddingBottomMobile={paddingBottomMobile}
+                            paddingLeftMobile={paddingLeftMobile}
+                            onChangePadTopDesk={(val) => setAttributes({ paddingTop: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ paddingRight: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ paddingBottom: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ paddingLeft: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ paddingTopTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ paddingRightTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBottomTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLeftTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ paddingTopMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ paddingRightMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBottomMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLeftMobile: valM })}
 
                         />
 
@@ -633,10 +597,6 @@ class edit extends Component {
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
-                    paddingTop: paddingTop + paddingUnit,
-                    paddingBottom: paddingBottom + paddingUnit,
-                    paddingLeft: paddingLeft + paddingUnit,
-                    paddingRight: paddingRight + paddingUnit
                 }}
             >
                 <div className={`premium-testimonial__container`}>

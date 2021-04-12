@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 78);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = ty
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(51)) === 'object' && __webpack_require__(51)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(49)) === 'object' && __webpack_require__(49)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -483,9 +483,9 @@ var PbgIcon = function (_wp$element$Component) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(83);
+  module.exports = __webpack_require__(81);
 } else {
-  module.exports = __webpack_require__(84);
+  module.exports = __webpack_require__(82);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -539,6 +539,72 @@ function PremiumResponsiveTabs(props) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function generateCSS(selectors, id) {
+	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+	var styling_css = "";
+	var breakpoint = "";
+	var gen_styling_css = "";
+	var res_styling_css = "";
+
+	if (responsiveType == "tablet") {
+		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+	} else if (responsiveType == "mobile") {
+		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+	}
+
+	for (var i in selectors) {
+
+		var sel = selectors[i];
+		var css = "";
+
+		for (var j in sel) {
+
+			var checkString = true;
+
+			if (typeof sel[j] === "string" && sel[j].length === 0) {
+				checkString = false;
+			}
+
+			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+				continue;
+			}
+
+			if (typeof sel[j] != "undefined" && checkString) {
+				css += j + ": " + sel[j] + ";";
+			}
+		}
+
+		if (css.length !== 0) {
+			gen_styling_css += id;
+			gen_styling_css += i + "{";
+			gen_styling_css += css;
+			gen_styling_css += "}";
+		}
+	}
+
+	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+		res_styling_css += gen_styling_css;
+		res_styling_css += "}";
+	}
+
+	if (isResponsive) {
+		return res_styling_css;
+	} else {
+		return gen_styling_css;
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -796,11 +862,11 @@ var PremiumBorder = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumBorder);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_responsive__ = __webpack_require__(83);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -967,73 +1033,25 @@ var PremiumTypo = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumTypo);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function generateCSS(selectors, id) {
-	var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-	var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+function generateCSSUnit(value, unit) {
 
+    var css = "";
 
-	var styling_css = "";
-	var breakpoint = "";
-	var gen_styling_css = "";
-	var res_styling_css = "";
+    if (typeof value != "undefined") {
+        css += value + unit;
+    }
 
-	if (responsiveType == "tablet") {
-		breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-	} else if (responsiveType == "mobile") {
-		breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-	}
-
-	for (var i in selectors) {
-
-		var sel = selectors[i];
-		var css = "";
-
-		for (var j in sel) {
-
-			var checkString = true;
-
-			if (typeof sel[j] === "string" && sel[j].length === 0) {
-				checkString = false;
-			}
-
-			if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-				continue;
-			}
-
-			if (typeof sel[j] != "undefined" && checkString) {
-				css += j + ": " + sel[j] + ";";
-			}
-		}
-
-		if (css.length !== 0) {
-			gen_styling_css += id;
-			gen_styling_css += i + "{";
-			gen_styling_css += css;
-			gen_styling_css += "}";
-		}
-	}
-
-	if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-		res_styling_css += gen_styling_css;
-		res_styling_css += "}";
-	}
-
-	if (isResponsive) {
-		return res_styling_css;
-	} else {
-		return gen_styling_css;
-	}
+    return css;
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (generateCSS);
+/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1255,12 +1273,12 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(56);
+var freeGlobal = __webpack_require__(54);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -1271,7 +1289,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /**
@@ -1302,7 +1320,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1398,7 +1416,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1508,24 +1526,6 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSSUnit(value, unit) {
-
-    var css = "";
-
-    if (typeof value != "undefined") {
-        css += value + unit;
-    }
-
-    return css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
-
-/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1537,7 +1537,7 @@ function generateCSSUnit(value, unit) {
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(69);
+  var ReactIs = __webpack_require__(67);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -1555,7 +1555,7 @@ if (process.env.NODE_ENV !== 'production') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_padding__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_padding__ = __webpack_require__(170);
 
 
 var _wp$components = wp.components,
@@ -1564,8 +1564,7 @@ var _wp$components = wp.components,
 
 
 function PremiumResponsivePadding(props) {
-    var setAttributes = props.setAttributes,
-        selectedUnit = props.selectedUnit,
+    var selectedUnit = props.selectedUnit,
         showUnits = props.showUnits,
         paddingU = props.paddingU,
         onChangePadSizeUnit = props.onChangePadSizeUnit,
@@ -1589,7 +1588,6 @@ function PremiumResponsivePadding(props) {
         onChangePadBottomMobile = props.onChangePadBottomMobile,
         onChangePadRightMobile = props.onChangePadRightMobile,
         onChangePadLeftMobile = props.onChangePadLeftMobile;
-
 
 
     console.log(props);
@@ -1739,8 +1737,8 @@ function PremiumSizeUnits(props) {
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(100),
-    getValue = __webpack_require__(105);
+var baseIsNative = __webpack_require__(98),
+    getValue = __webpack_require__(103);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -1943,8 +1941,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(29),
-    getRawTag = __webpack_require__(101),
-    objectToString = __webpack_require__(102);
+    getRawTag = __webpack_require__(99),
+    objectToString = __webpack_require__(100);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2028,7 +2026,7 @@ var FONTS = [{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_margin__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_margin__ = __webpack_require__(187);
 
 
 
@@ -2043,14 +2041,6 @@ function PremiumResponsiveMargin(props) {
         marginRight = props.marginRight,
         marginBottom = props.marginBottom,
         marginLeft = props.marginLeft,
-        _props$onChangeMarTop = props.onChangeMarTop,
-        _onChangeMarTop = _props$onChangeMarTop === undefined ? function () {} : _props$onChangeMarTop,
-        _props$onChangeMarRig = props.onChangeMarRight,
-        _onChangeMarRight = _props$onChangeMarRig === undefined ? function () {} : _props$onChangeMarRig,
-        _props$onChangeMarBot = props.onChangeMarBottom,
-        _onChangeMarBottom = _props$onChangeMarBot === undefined ? function () {} : _props$onChangeMarBot,
-        _props$onChangeMarLef = props.onChangeMarLeft,
-        _onChangeMarLeft = _props$onChangeMarLef === undefined ? function () {} : _props$onChangeMarLef,
         marginTopTablet = props.marginTopTablet,
         marginRightTablet = props.marginRightTablet,
         marginBottomTablet = props.marginBottomTablet,
@@ -2078,25 +2068,65 @@ function PremiumResponsiveMargin(props) {
             }] },
         function (tab) {
             var tabout = void 0;
-            if ("mobile" === tab.neme) {
+            if ("mobile" === tab.name) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_margin__["a" /* default */], {
                     directions: directions,
                     marginTop: marginTop,
                     marginRight: marginRight,
                     marginBottom: marginBottom,
                     marginLeft: marginLeft,
-                    onChangeMarTop: function onChangeMarTop(tab) {
-                        return _onChangeMarTop(tab.name);
-                    },
-                    onChangeMarRight: function onChangeMarRight(tab) {
-                        return _onChangeMarRight(tab.name);
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(tab) {
-                        return _onChangeMarBottom(tab.name);
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(tab) {
-                        return _onChangeMarLeft(tab.name);
-                    }
+                    onChangeMarTop: function (_onChangeMarTop) {
+                        function onChangeMarTop(_x) {
+                            return _onChangeMarTop.apply(this, arguments);
+                        }
+
+                        onChangeMarTop.toString = function () {
+                            return _onChangeMarTop.toString();
+                        };
+
+                        return onChangeMarTop;
+                    }(function (tab) {
+                        return onChangeMarTop(tab.name);
+                    }),
+                    onChangeMarRight: function (_onChangeMarRight) {
+                        function onChangeMarRight(_x2) {
+                            return _onChangeMarRight.apply(this, arguments);
+                        }
+
+                        onChangeMarRight.toString = function () {
+                            return _onChangeMarRight.toString();
+                        };
+
+                        return onChangeMarRight;
+                    }(function (tab) {
+                        return onChangeMarRight(tab.name);
+                    }),
+                    onChangeMarBottom: function (_onChangeMarBottom) {
+                        function onChangeMarBottom(_x3) {
+                            return _onChangeMarBottom.apply(this, arguments);
+                        }
+
+                        onChangeMarBottom.toString = function () {
+                            return _onChangeMarBottom.toString();
+                        };
+
+                        return onChangeMarBottom;
+                    }(function (tab) {
+                        return onChangeMarBottom(tab.name);
+                    }),
+                    onChangeMarLeft: function (_onChangeMarLeft) {
+                        function onChangeMarLeft(_x4) {
+                            return _onChangeMarLeft.apply(this, arguments);
+                        }
+
+                        onChangeMarLeft.toString = function () {
+                            return _onChangeMarLeft.toString();
+                        };
+
+                        return onChangeMarLeft;
+                    }(function (tab) {
+                        return onChangeMarLeft(tab.name);
+                    })
                 });
             } else if ("tablet" === tab.name) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_margin__["a" /* default */], {
@@ -2105,18 +2135,58 @@ function PremiumResponsiveMargin(props) {
                     marginRight: marginRightTablet,
                     marginBottom: marginBottomTablet,
                     marginLeft: marginLeftTablet,
-                    onChangeMarTop: function onChangeMarTop(tab) {
-                        return _onChangeMarTop(tab.name);
-                    },
-                    onChangeMarRight: function onChangeMarRight(tab) {
-                        return _onChangeMarRight(tab.name);
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(tab) {
-                        return _onChangeMarBottom(tab.name);
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(tab) {
-                        return _onChangeMarLeft(tab.name);
-                    }
+                    onChangeMarTop: function (_onChangeMarTop2) {
+                        function onChangeMarTop(_x5) {
+                            return _onChangeMarTop2.apply(this, arguments);
+                        }
+
+                        onChangeMarTop.toString = function () {
+                            return _onChangeMarTop2.toString();
+                        };
+
+                        return onChangeMarTop;
+                    }(function (tab) {
+                        return onChangeMarTop(tab.name);
+                    }),
+                    onChangeMarRight: function (_onChangeMarRight2) {
+                        function onChangeMarRight(_x6) {
+                            return _onChangeMarRight2.apply(this, arguments);
+                        }
+
+                        onChangeMarRight.toString = function () {
+                            return _onChangeMarRight2.toString();
+                        };
+
+                        return onChangeMarRight;
+                    }(function (tab) {
+                        return onChangeMarRight(tab.name);
+                    }),
+                    onChangeMarBottom: function (_onChangeMarBottom2) {
+                        function onChangeMarBottom(_x7) {
+                            return _onChangeMarBottom2.apply(this, arguments);
+                        }
+
+                        onChangeMarBottom.toString = function () {
+                            return _onChangeMarBottom2.toString();
+                        };
+
+                        return onChangeMarBottom;
+                    }(function (tab) {
+                        return onChangeMarBottom(tab.name);
+                    }),
+                    onChangeMarLeft: function (_onChangeMarLeft2) {
+                        function onChangeMarLeft(_x8) {
+                            return _onChangeMarLeft2.apply(this, arguments);
+                        }
+
+                        onChangeMarLeft.toString = function () {
+                            return _onChangeMarLeft2.toString();
+                        };
+
+                        return onChangeMarLeft;
+                    }(function (tab) {
+                        return onChangeMarLeft(tab.name);
+                    })
                 });
             } else {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_margin__["a" /* default */], {
@@ -2125,18 +2195,58 @@ function PremiumResponsiveMargin(props) {
                     marginRight: marginRightMobile,
                     marginBottom: marginBottomMobile,
                     marginLeft: marginLeftMobile,
-                    onChangeMarTop: function onChangeMarTop(tab) {
-                        return _onChangeMarTop(tab.name);
-                    },
-                    onChangeMarRight: function onChangeMarRight(tab) {
-                        return _onChangeMarRight(tab.name);
-                    },
-                    onChangeMarBottom: function onChangeMarBottom(tab) {
-                        return _onChangeMarBottom(tab.name);
-                    },
-                    onChangeMarLeft: function onChangeMarLeft(tab) {
-                        return _onChangeMarLeft(tab.name);
-                    }
+                    onChangeMarTop: function (_onChangeMarTop3) {
+                        function onChangeMarTop(_x9) {
+                            return _onChangeMarTop3.apply(this, arguments);
+                        }
+
+                        onChangeMarTop.toString = function () {
+                            return _onChangeMarTop3.toString();
+                        };
+
+                        return onChangeMarTop;
+                    }(function (tab) {
+                        return onChangeMarTop(tab.name);
+                    }),
+                    onChangeMarRight: function (_onChangeMarRight3) {
+                        function onChangeMarRight(_x10) {
+                            return _onChangeMarRight3.apply(this, arguments);
+                        }
+
+                        onChangeMarRight.toString = function () {
+                            return _onChangeMarRight3.toString();
+                        };
+
+                        return onChangeMarRight;
+                    }(function (tab) {
+                        return onChangeMarRight(tab.name);
+                    }),
+                    onChangeMarBottom: function (_onChangeMarBottom3) {
+                        function onChangeMarBottom(_x11) {
+                            return _onChangeMarBottom3.apply(this, arguments);
+                        }
+
+                        onChangeMarBottom.toString = function () {
+                            return _onChangeMarBottom3.toString();
+                        };
+
+                        return onChangeMarBottom;
+                    }(function (tab) {
+                        return onChangeMarBottom(tab.name);
+                    }),
+                    onChangeMarLeft: function (_onChangeMarLeft3) {
+                        function onChangeMarLeft(_x12) {
+                            return _onChangeMarLeft3.apply(this, arguments);
+                        }
+
+                        onChangeMarLeft.toString = function () {
+                            return _onChangeMarLeft3.toString();
+                        };
+
+                        return onChangeMarLeft;
+                    }(function (tab) {
+                        return onChangeMarLeft(tab.name);
+                    })
                 });
             }
             return wp.element.createElement(
@@ -2195,11 +2305,11 @@ if (process.env.NODE_ENV === 'production') {
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(90),
-    listCacheDelete = __webpack_require__(91),
-    listCacheGet = __webpack_require__(92),
-    listCacheHas = __webpack_require__(93),
-    listCacheSet = __webpack_require__(94);
+var listCacheClear = __webpack_require__(88),
+    listCacheDelete = __webpack_require__(89),
+    listCacheGet = __webpack_require__(90),
+    listCacheHas = __webpack_require__(91),
+    listCacheSet = __webpack_require__(92);
 
 /**
  * Creates an list cache object.
@@ -2232,7 +2342,7 @@ module.exports = ListCache;
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(54);
+var eq = __webpack_require__(52);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -2258,7 +2368,7 @@ module.exports = assocIndexOf;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(11);
+var root = __webpack_require__(12);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -2280,7 +2390,7 @@ module.exports = nativeCreate;
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(114);
+var isKeyable = __webpack_require__(112);
 
 /**
  * Gets the data for `map`.
@@ -2328,7 +2438,7 @@ module.exports = function (module) {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(46);
+var isSymbol = __webpack_require__(45);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -2355,226 +2465,11 @@ module.exports = toKey;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var __ = wp.i18n.__;
-
-
-
-
-var PremiumPadding = function (_Component) {
-    _inherits(PremiumPadding, _Component);
-
-    function PremiumPadding(props) {
-        _classCallCheck(this, PremiumPadding);
-
-        var _this = _possibleConstructorReturn(this, (PremiumPadding.__proto__ || Object.getPrototypeOf(PremiumPadding)).call(this, props));
-
-        _this.state = {
-            isLinked: false,
-            top: _this.props.paddingTop || 0,
-            right: _this.props.paddingRight || 0,
-            bottom: _this.props.paddingBottom || 0,
-            left: _this.props.paddingLeft || 0,
-            showUnits: _this.props.showUnits || false
-        };
-
-        _this.onInputChange = _this.onInputChange.bind(_this);
-        _this.onButtonClick = _this.onButtonClick.bind(_this);
-        _this.changeFunction = _this.changeFunction.bind(_this);
-        return _this;
-    }
-
-    _createClass(PremiumPadding, [{
-        key: "onButtonClick",
-        value: function onButtonClick() {
-            this.setState({ isLinked: !this.state.isLinked });
-        }
-    }, {
-        key: "changeFunction",
-        value: function changeFunction() {
-            var _state = this.state,
-                top = _state.top,
-                right = _state.right,
-                bottom = _state.bottom,
-                left = _state.left;
-
-            this.props.onChangePadTop(top);
-            this.props.onChangePadRight(right);
-            this.props.onChangePadBottom(bottom);
-            this.props.onChangePadLeft(left);
-        }
-    }, {
-        key: "onInputChange",
-        value: function onInputChange(event) {
-            var _this2 = this;
-
-            var _state2 = this.state,
-                isLinked = _state2.isLinked,
-                top = _state2.top,
-                right = _state2.right,
-                bottom = _state2.bottom,
-                left = _state2.left;
-            var _event$target = event.target,
-                name = _event$target.name,
-                value = _event$target.value;
-
-            if (isLinked) {
-                top = right = bottom = left = parseInt(value) || 0;
-                this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
-                    _this2.changeFunction();
-                });
-            } else {
-                this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-                    _this2.changeFunction();
-                });
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            // console.log(this.props)
-            var _state3 = this.state,
-                top = _state3.top,
-                right = _state3.right,
-                bottom = _state3.bottom,
-                left = _state3.left,
-                showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked;
-            var _props = this.props,
-                _props$onChangePadSiz = _props.onChangePadSizeUnit,
-                onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
-                selectedUnit = _props.selectedUnit;
-
-
-            return wp.element.createElement(
-                "div",
-                { className: "premium-control-group" },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-label-container" },
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-label" },
-                        wp.element.createElement(
-                            "strong",
-                            null,
-                            __("Padding")
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-units" },
-                        showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], {
-                            activeUnit: selectedUnit,
-                            onChangeSizeUnit: onChangePadSizeUnit
-                        })
-                    )
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-controls-container" },
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "top",
-                            value: top || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Top"
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "right",
-                            value: right || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Right"
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "bottom",
-                            value: bottom || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Bottom"
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "left",
-                            value: left || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Left"
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        null,
-                        wp.element.createElement("button", {
-                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
-                            onClick: this.onButtonClick
-                        })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return PremiumPadding;
-}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumPadding);
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(241);
 
 
 
@@ -2900,7 +2795,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2918,7 +2813,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(37);
+  var ReactPropTypesSecret = __webpack_require__(36);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -2999,7 +2894,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3017,11 +2912,11 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(19),
-    root = __webpack_require__(11);
+    root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -3029,7 +2924,7 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3056,7 +2951,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3094,14 +2989,14 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(106),
-    mapCacheDelete = __webpack_require__(113),
-    mapCacheGet = __webpack_require__(115),
-    mapCacheHas = __webpack_require__(116),
-    mapCacheSet = __webpack_require__(117);
+var mapCacheClear = __webpack_require__(104),
+    mapCacheDelete = __webpack_require__(111),
+    mapCacheGet = __webpack_require__(113),
+    mapCacheHas = __webpack_require__(114),
+    mapCacheSet = __webpack_require__(115);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3131,12 +3026,12 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(135),
-    baseKeys = __webpack_require__(142),
-    isArrayLike = __webpack_require__(44);
+var arrayLikeKeys = __webpack_require__(133),
+    baseKeys = __webpack_require__(140),
+    isArrayLike = __webpack_require__(43);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -3173,7 +3068,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -3212,11 +3107,11 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(55),
-    isLength = __webpack_require__(43);
+var isFunction = __webpack_require__(53),
+    isLength = __webpack_require__(42);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -3250,13 +3145,13 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(12),
-    isSymbol = __webpack_require__(46);
+var isArray = __webpack_require__(13),
+    isSymbol = __webpack_require__(45);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -3284,7 +3179,7 @@ function isKey(value, object) {
 module.exports = isKey;
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3319,232 +3214,7 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(18);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var __ = wp.i18n.__;
-
-var PremiumMargin = function (_Component) {
-    _inherits(PremiumMargin, _Component);
-
-    function PremiumMargin(props) {
-        _classCallCheck(this, PremiumMargin);
-
-        var _this = _possibleConstructorReturn(this, (PremiumMargin.__proto__ || Object.getPrototypeOf(PremiumMargin)).call(this, props));
-
-        _this.state = {
-            isLinked: false,
-            top: _this.props.marginTop || 0,
-            right: _this.props.marginRight || 0,
-            bottom: _this.props.marginBottom || 0,
-            left: _this.props.marginLeft || 0,
-            directions: _this.props.directions,
-            showUnits: _this.props.showUnits || false
-        };
-
-        _this.onInputChange = _this.onInputChange.bind(_this);
-        _this.onButtonClick = _this.onButtonClick.bind(_this);
-        _this.changeFunction = _this.changeFunction.bind(_this);
-
-        return _this;
-    }
-
-    _createClass(PremiumMargin, [{
-        key: "onButtonClick",
-        value: function onButtonClick() {
-            this.setState({ isLinked: !this.state.isLinked });
-        }
-    }, {
-        key: "changeFunction",
-        value: function changeFunction() {
-            var _state = this.state,
-                top = _state.top,
-                right = _state.right,
-                bottom = _state.bottom,
-                left = _state.left,
-                directions = _state.directions;
-
-            if (directions.includes("all") || directions.includes("top")) {
-                this.props.onChangeMarTop(top);
-            }
-            if (directions.includes("all") || directions.includes("right")) {
-                this.props.onChangeMarRight(right);
-            }
-            if (directions.includes("all") || directions.includes("bottom")) {
-                this.props.onChangeMarBottom(bottom);
-            }
-            if (directions.includes("all") || directions.includes("left")) {
-                this.props.onChangeMarLeft(left);
-            }
-        }
-    }, {
-        key: "onInputChange",
-        value: function onInputChange(event) {
-            var _this2 = this;
-
-            var _state2 = this.state,
-                isLinked = _state2.isLinked,
-                top = _state2.top,
-                right = _state2.right,
-                bottom = _state2.bottom,
-                left = _state2.left;
-            var _event$target = event.target,
-                name = _event$target.name,
-                value = _event$target.value;
-
-            if (isLinked) {
-                top = right = bottom = left = parseInt(value) || 0;
-                this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
-                    _this2.changeFunction();
-                });
-            } else {
-                this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-                    _this2.changeFunction();
-                });
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _state3 = this.state,
-                top = _state3.top,
-                right = _state3.right,
-                bottom = _state3.bottom,
-                left = _state3.left,
-                directions = _state3.directions,
-                showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked;
-            var _props = this.props,
-                _props$onChangeMarSiz = _props.onChangeMarSizeUnit,
-                onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
-                selectedUnit = _props.selectedUnit;
-
-
-            return wp.element.createElement(
-                "div",
-                { className: "premium-control-group" },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-control-label-container" },
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-label" },
-                        wp.element.createElement(
-                            "strong",
-                            null,
-                            __("Margin")
-                        )
-                    ),
-                    wp.element.createElement(
-                        "div",
-                        { className: "premium-control-units" },
-                        showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_size_units__["a" /* default */], {
-                            activeUnit: selectedUnit,
-                            onChangeSizeUnit: onChangeMarSizeUnit
-                        })
-                    )
-                ),
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-controls-container" },
-                    (directions.includes("all") || directions.includes("top")) && wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "top",
-                            value: top || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Top"
-                        )
-                    ),
-                    (directions.includes("all") || directions.includes("right")) && wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "right",
-                            value: right || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Right"
-                        )
-                    ),
-                    (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "bottom",
-                            value: bottom || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Bottom"
-                        )
-                    ),
-                    (directions.includes("all") || directions.includes("left")) && wp.element.createElement(
-                        "div",
-                        { className: "premium-control-wrapper" },
-                        wp.element.createElement("input", {
-                            type: "number",
-                            name: "left",
-                            value: left || 0,
-                            onChange: this.onInputChange
-                        }),
-                        wp.element.createElement(
-                            "label",
-                            { className: "premium-control-label" },
-                            "Left"
-                        )
-                    ),
-                    (directions.length > 1 || directions.includes("all")) && wp.element.createElement(
-                        "div",
-                        null,
-                        wp.element.createElement("button", {
-                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
-                            onClick: this.onButtonClick
-                        })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return PremiumMargin;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (PremiumMargin);
-
-/***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3582,7 +3252,7 @@ var DefaultImage = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (DefaultImage);
 
 /***/ }),
-/* 49 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3644,7 +3314,7 @@ var PremiumLowerQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumLowerQuote);
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3707,7 +3377,7 @@ var PremiumUpperQuote = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumUpperQuote);
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -3716,7 +3386,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 52 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -3742,15 +3412,15 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 53 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(27),
-    stackClear = __webpack_require__(95),
-    stackDelete = __webpack_require__(96),
-    stackGet = __webpack_require__(97),
-    stackHas = __webpack_require__(98),
-    stackSet = __webpack_require__(99);
+    stackClear = __webpack_require__(93),
+    stackDelete = __webpack_require__(94),
+    stackGet = __webpack_require__(95),
+    stackHas = __webpack_require__(96),
+    stackSet = __webpack_require__(97);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -3774,7 +3444,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 54 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /**
@@ -3816,11 +3486,11 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(22),
-    isObject = __webpack_require__(40);
+    isObject = __webpack_require__(39);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -3858,7 +3528,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -3867,10 +3537,10 @@ module.exports = isFunction;
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38)))
 
 /***/ }),
-/* 57 */
+/* 55 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -3901,10 +3571,10 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 58 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(118),
+var baseIsEqualDeep = __webpack_require__(116),
     isObjectLike = __webpack_require__(23);
 
 /**
@@ -3934,12 +3604,12 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 59 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(119),
-    arraySome = __webpack_require__(122),
-    cacheHas = __webpack_require__(123);
+var SetCache = __webpack_require__(117),
+    arraySome = __webpack_require__(120),
+    cacheHas = __webpack_require__(121);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -4017,10 +3687,10 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 60 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(137),
+var baseIsArguments = __webpack_require__(135),
     isObjectLike = __webpack_require__(23);
 
 /** Used for built-in method references. */
@@ -4059,13 +3729,13 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 61 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(11),
-    stubFalse = __webpack_require__(138);
+var root = __webpack_require__(12),
+    stubFalse = __webpack_require__(136);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -4105,7 +3775,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 62 */
+/* 60 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -4134,12 +3804,12 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 63 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(139),
-    baseUnary = __webpack_require__(140),
-    nodeUtil = __webpack_require__(141);
+var baseIsTypedArray = __webpack_require__(137),
+    baseUnary = __webpack_require__(138),
+    nodeUtil = __webpack_require__(139);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -4166,10 +3836,10 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 64 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(40);
+var isObject = __webpack_require__(39);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -4186,7 +3856,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 65 */
+/* 63 */
 /***/ (function(module, exports) {
 
 /**
@@ -4210,10 +3880,10 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 66 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(67),
+var castPath = __webpack_require__(65),
     toKey = __webpack_require__(33);
 
 /**
@@ -4239,13 +3909,13 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 67 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(12),
-    isKey = __webpack_require__(45),
-    stringToPath = __webpack_require__(154),
-    toString = __webpack_require__(157);
+var isArray = __webpack_require__(13),
+    isKey = __webpack_require__(44),
+    stringToPath = __webpack_require__(152),
+    toString = __webpack_require__(155);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -4265,7 +3935,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 68 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4374,7 +4044,7 @@ function PremiumFilters(props) {
 }
 
 /***/ }),
-/* 69 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4388,7 +4058,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 70 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -4411,7 +4081,7 @@ if (process.env.NODE_ENV === 'production') {
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(16), __webpack_require__(5), __webpack_require__(0), __webpack_require__(26), __webpack_require__(72)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(16), __webpack_require__(5), __webpack_require__(0), __webpack_require__(26), __webpack_require__(72)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(16), __webpack_require__(5), __webpack_require__(0), __webpack_require__(26), __webpack_require__(70)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(16), __webpack_require__(5), __webpack_require__(0), __webpack_require__(26), __webpack_require__(70)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -4956,7 +4626,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 71 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4970,7 +4640,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 72 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4980,9 +4650,9 @@ var _CSSTransition = _interopRequireDefault(__webpack_require__(208));
 
 var _ReplaceTransition = _interopRequireDefault(__webpack_require__(213));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(76));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(74));
 
-var _Transition = _interopRequireDefault(__webpack_require__(73));
+var _Transition = _interopRequireDefault(__webpack_require__(71));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -4996,7 +4666,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 73 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5011,9 +4681,9 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(26));
 
-var _reactLifecyclesCompat = __webpack_require__(74);
+var _reactLifecyclesCompat = __webpack_require__(72);
 
-var _PropTypes = __webpack_require__(75);
+var _PropTypes = __webpack_require__(73);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -5636,7 +5306,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 74 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5768,7 +5438,7 @@ function polyfill(Component) {
 
 
 /***/ }),
-/* 75 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5805,7 +5475,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 76 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5818,7 +5488,7 @@ var _propTypes = _interopRequireDefault(__webpack_require__(16));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _reactLifecyclesCompat = __webpack_require__(74);
+var _reactLifecyclesCompat = __webpack_require__(72);
 
 var _ChildMapping = __webpack_require__(214);
 
@@ -6042,19 +5712,19 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 77 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (iconsList);
 
 /***/ }),
-/* 78 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6075,7 +5745,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 79 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6089,24 +5759,24 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 80 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(242);
 
 
 
@@ -6123,15 +5793,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import "./blocks/test";
 
 /***/ }),
-/* 81 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(173);
 
 
 
@@ -6486,18 +6156,18 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 82 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_responsive_tabs__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(171);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6687,20 +6357,7 @@ var PremiumAccordion = function (_Component) {
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
-            // console.log(
-            //     titlePaddingT + ' ' +
-            //     titlePaddingR + ' ' +
-            //     titlePaddingB + ' ' +
-            //     titlePaddingL + ' ' +
-            //     titlePaddingTTablet + ' ' +
-            //     titlePaddingRTablet + ' ' +
-            //     titlePaddingBTablet + ' ' +
-            //     titlePaddingLTablet + ' ' +
-            //     titlePaddingTMobile + ' ' +
-            //     titlePaddingRMobile + ' ' +
-            //     titlePaddingBMobile + ' ' +
-            //     titlePaddingLMobile
-            // )
+
 
             var DIRECTION = [{
                 value: "ltr",
@@ -7160,7 +6817,6 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
-                        setAttributes: setAttributes,
                         paddingTop: arrowPaddingT,
                         paddingRight: arrowPaddingR,
                         paddingBottom: arrowPaddingB,
@@ -7172,7 +6828,43 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: arrowPaddingTMobile,
                         paddingRightMobile: arrowPaddingRMobile,
                         paddingBottomMobile: arrowPaddingBMobile,
-                        paddingLeftMobile: arrowPaddingLMobile
+                        paddingLeftMobile: arrowPaddingLMobile,
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ arrowPaddingT: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ arrowPaddingR: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ arrowPaddingB: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ arrowPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ arrowPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ arrowPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ arrowPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ arrowPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ arrowPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ arrowPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ arrowPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ arrowPaddingLMobile: valM });
+                        }
                     })
                 ),
                 wp.element.createElement(
@@ -7349,7 +7041,6 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
-                        setAttributes: setAttributes,
                         paddingTop: descPaddingT,
                         paddingRight: descPaddingR,
                         paddingBottom: descPaddingB,
@@ -7361,8 +7052,43 @@ var PremiumAccordion = function (_Component) {
                         paddingTopMobile: descPaddingTMobile,
                         paddingRightMobile: descPaddingRMobile,
                         paddingBottomMobile: descPaddingBMobile,
-                        paddingLeftMobile: descPaddingLMobile
-
+                        paddingLeftMobile: descPaddingLMobile,
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ descPaddingT: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ descPaddingR: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ descPaddingB: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ descPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ descPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ descPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ descPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ descPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ descPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ descPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ descPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ descPaddingLMobile: valM });
+                        }
                     })
                 ),
                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_responsive_tabs__["a" /* default */], {
@@ -7422,7 +7148,7 @@ var PremiumAccordion = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumAccordion);
 
 /***/ }),
-/* 83 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7606,7 +7332,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 84 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7628,7 +7354,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(21);
-    var checkPropTypes = __webpack_require__(36);
+    var checkPropTypes = __webpack_require__(35);
 
     // TODO: this is special because it gets imported during build.
 
@@ -9509,11 +9235,11 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 85 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_map__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -9660,13 +9386,13 @@ function PremiumResponsive(props) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumResponsive);
 
 /***/ }),
-/* 86 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(52),
-    baseIteratee = __webpack_require__(87),
-    baseMap = __webpack_require__(166),
-    isArray = __webpack_require__(12);
+var arrayMap = __webpack_require__(50),
+    baseIteratee = __webpack_require__(85),
+    baseMap = __webpack_require__(164),
+    isArray = __webpack_require__(13);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -9718,16 +9444,16 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 87 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(88),
-    baseMatchesProperty = __webpack_require__(152),
-    identity = __webpack_require__(162),
-    isArray = __webpack_require__(12),
-    property = __webpack_require__(163);
+var baseMatches = __webpack_require__(86),
+    baseMatchesProperty = __webpack_require__(150),
+    identity = __webpack_require__(160),
+    isArray = __webpack_require__(13),
+    property = __webpack_require__(161);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -9754,12 +9480,12 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 88 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(89),
-    getMatchData = __webpack_require__(151),
-    matchesStrictComparable = __webpack_require__(65);
+var baseIsMatch = __webpack_require__(87),
+    getMatchData = __webpack_require__(149),
+    matchesStrictComparable = __webpack_require__(63);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -9781,11 +9507,11 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 89 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(53),
-    baseIsEqual = __webpack_require__(58);
+var Stack = __webpack_require__(51),
+    baseIsEqual = __webpack_require__(56);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -9842,7 +9568,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 90 */
+/* 88 */
 /***/ (function(module, exports) {
 
 /**
@@ -9860,7 +9586,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 91 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(28);
@@ -9900,7 +9626,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 92 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(28);
@@ -9924,7 +9650,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 93 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(28);
@@ -9945,7 +9671,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 94 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(28);
@@ -9976,7 +9702,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 95 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(27);
@@ -9996,7 +9722,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 96 */
+/* 94 */
 /***/ (function(module, exports) {
 
 /**
@@ -10019,7 +9745,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 97 */
+/* 95 */
 /***/ (function(module, exports) {
 
 /**
@@ -10038,7 +9764,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 98 */
+/* 96 */
 /***/ (function(module, exports) {
 
 /**
@@ -10057,12 +9783,12 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 99 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(27),
-    Map = __webpack_require__(38),
-    MapCache = __webpack_require__(41);
+    Map = __webpack_require__(37),
+    MapCache = __webpack_require__(40);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -10096,13 +9822,13 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 100 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(55),
-    isMasked = __webpack_require__(103),
-    isObject = __webpack_require__(40),
-    toSource = __webpack_require__(57);
+var isFunction = __webpack_require__(53),
+    isMasked = __webpack_require__(101),
+    isObject = __webpack_require__(39),
+    toSource = __webpack_require__(55);
 
 /**
  * Used to match `RegExp`
@@ -10145,7 +9871,7 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 101 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(29);
@@ -10196,7 +9922,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 102 */
+/* 100 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -10223,10 +9949,10 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 103 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(104);
+var coreJsData = __webpack_require__(102);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -10248,10 +9974,10 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 104 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(11);
+var root = __webpack_require__(12);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -10259,7 +9985,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 105 */
+/* 103 */
 /***/ (function(module, exports) {
 
 /**
@@ -10277,12 +10003,12 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 106 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(107),
+var Hash = __webpack_require__(105),
     ListCache = __webpack_require__(27),
-    Map = __webpack_require__(38);
+    Map = __webpack_require__(37);
 
 /**
  * Removes all key-value entries from the map.
@@ -10303,14 +10029,14 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 107 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(108),
-    hashDelete = __webpack_require__(109),
-    hashGet = __webpack_require__(110),
-    hashHas = __webpack_require__(111),
-    hashSet = __webpack_require__(112);
+var hashClear = __webpack_require__(106),
+    hashDelete = __webpack_require__(107),
+    hashGet = __webpack_require__(108),
+    hashHas = __webpack_require__(109),
+    hashSet = __webpack_require__(110);
 
 /**
  * Creates a hash object.
@@ -10340,7 +10066,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 108 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(30);
@@ -10360,7 +10086,7 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 109 */
+/* 107 */
 /***/ (function(module, exports) {
 
 /**
@@ -10382,7 +10108,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 110 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(30);
@@ -10417,7 +10143,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 111 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(30);
@@ -10445,7 +10171,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 112 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(30);
@@ -10473,7 +10199,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 113 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(31);
@@ -10496,7 +10222,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 114 */
+/* 112 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -10516,7 +10242,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 115 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(31);
@@ -10537,7 +10263,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 116 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(31);
@@ -10558,7 +10284,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 117 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(31);
@@ -10585,17 +10311,17 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 118 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(53),
-    equalArrays = __webpack_require__(59),
-    equalByTag = __webpack_require__(124),
-    equalObjects = __webpack_require__(128),
-    getTag = __webpack_require__(146),
-    isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(61),
-    isTypedArray = __webpack_require__(63);
+var Stack = __webpack_require__(51),
+    equalArrays = __webpack_require__(57),
+    equalByTag = __webpack_require__(122),
+    equalObjects = __webpack_require__(126),
+    getTag = __webpack_require__(144),
+    isArray = __webpack_require__(13),
+    isBuffer = __webpack_require__(59),
+    isTypedArray = __webpack_require__(61);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -10671,12 +10397,12 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 119 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(41),
-    setCacheAdd = __webpack_require__(120),
-    setCacheHas = __webpack_require__(121);
+var MapCache = __webpack_require__(40),
+    setCacheAdd = __webpack_require__(118),
+    setCacheHas = __webpack_require__(119);
 
 /**
  *
@@ -10703,7 +10429,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 120 */
+/* 118 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -10727,7 +10453,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 121 */
+/* 119 */
 /***/ (function(module, exports) {
 
 /**
@@ -10746,7 +10472,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 122 */
+/* 120 */
 /***/ (function(module, exports) {
 
 /**
@@ -10774,7 +10500,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 123 */
+/* 121 */
 /***/ (function(module, exports) {
 
 /**
@@ -10792,15 +10518,15 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 124 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(29),
-    Uint8Array = __webpack_require__(125),
-    eq = __webpack_require__(54),
-    equalArrays = __webpack_require__(59),
-    mapToArray = __webpack_require__(126),
-    setToArray = __webpack_require__(127);
+    Uint8Array = __webpack_require__(123),
+    eq = __webpack_require__(52),
+    equalArrays = __webpack_require__(57),
+    mapToArray = __webpack_require__(124),
+    setToArray = __webpack_require__(125);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -10907,10 +10633,10 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 125 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(11);
+var root = __webpack_require__(12);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -10918,7 +10644,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 126 */
+/* 124 */
 /***/ (function(module, exports) {
 
 /**
@@ -10941,7 +10667,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 127 */
+/* 125 */
 /***/ (function(module, exports) {
 
 /**
@@ -10964,10 +10690,10 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 128 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(129);
+var getAllKeys = __webpack_require__(127);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -11051,12 +10777,12 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 129 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(130),
-    getSymbols = __webpack_require__(132),
-    keys = __webpack_require__(42);
+var baseGetAllKeys = __webpack_require__(128),
+    getSymbols = __webpack_require__(130),
+    keys = __webpack_require__(41);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -11072,11 +10798,11 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 130 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(131),
-    isArray = __webpack_require__(12);
+var arrayPush = __webpack_require__(129),
+    isArray = __webpack_require__(13);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -11097,7 +10823,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 131 */
+/* 129 */
 /***/ (function(module, exports) {
 
 /**
@@ -11122,11 +10848,11 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 132 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(133),
-    stubArray = __webpack_require__(134);
+var arrayFilter = __webpack_require__(131),
+    stubArray = __webpack_require__(132);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11157,7 +10883,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 133 */
+/* 131 */
 /***/ (function(module, exports) {
 
 /**
@@ -11187,7 +10913,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 134 */
+/* 132 */
 /***/ (function(module, exports) {
 
 /**
@@ -11215,15 +10941,15 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 135 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(136),
-    isArguments = __webpack_require__(60),
-    isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(61),
-    isIndex = __webpack_require__(62),
-    isTypedArray = __webpack_require__(63);
+var baseTimes = __webpack_require__(134),
+    isArguments = __webpack_require__(58),
+    isArray = __webpack_require__(13),
+    isBuffer = __webpack_require__(59),
+    isIndex = __webpack_require__(60),
+    isTypedArray = __webpack_require__(61);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11267,7 +10993,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 136 */
+/* 134 */
 /***/ (function(module, exports) {
 
 /**
@@ -11292,7 +11018,7 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 137 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(22),
@@ -11315,7 +11041,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 138 */
+/* 136 */
 /***/ (function(module, exports) {
 
 /**
@@ -11338,11 +11064,11 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 139 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(22),
-    isLength = __webpack_require__(43),
+    isLength = __webpack_require__(42),
     isObjectLike = __webpack_require__(23);
 
 /** `Object#toString` result references. */
@@ -11391,7 +11117,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 140 */
+/* 138 */
 /***/ (function(module, exports) {
 
 /**
@@ -11410,12 +11136,12 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 141 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(56);
+var freeGlobal = __webpack_require__(54);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -11448,11 +11174,11 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 142 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(143),
-    nativeKeys = __webpack_require__(144);
+var isPrototype = __webpack_require__(141),
+    nativeKeys = __webpack_require__(142);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11483,7 +11209,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 143 */
+/* 141 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -11506,10 +11232,10 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 144 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(145);
+var overArg = __webpack_require__(143);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -11517,7 +11243,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 145 */
+/* 143 */
 /***/ (function(module, exports) {
 
 /**
@@ -11537,16 +11263,16 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 146 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(147),
-    Map = __webpack_require__(38),
-    Promise = __webpack_require__(148),
-    Set = __webpack_require__(149),
-    WeakMap = __webpack_require__(150),
+var DataView = __webpack_require__(145),
+    Map = __webpack_require__(37),
+    Promise = __webpack_require__(146),
+    Set = __webpack_require__(147),
+    WeakMap = __webpack_require__(148),
     baseGetTag = __webpack_require__(22),
-    toSource = __webpack_require__(57);
+    toSource = __webpack_require__(55);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -11601,11 +11327,11 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 147 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(19),
-    root = __webpack_require__(11);
+    root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -11613,11 +11339,11 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 148 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(19),
-    root = __webpack_require__(11);
+    root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -11625,11 +11351,11 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 149 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(19),
-    root = __webpack_require__(11);
+    root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -11637,11 +11363,11 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 150 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(19),
-    root = __webpack_require__(11);
+    root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -11649,11 +11375,11 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 151 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isStrictComparable = __webpack_require__(64),
-    keys = __webpack_require__(42);
+var isStrictComparable = __webpack_require__(62),
+    keys = __webpack_require__(41);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -11678,15 +11404,15 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 152 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(58),
-    get = __webpack_require__(153),
-    hasIn = __webpack_require__(159),
-    isKey = __webpack_require__(45),
-    isStrictComparable = __webpack_require__(64),
-    matchesStrictComparable = __webpack_require__(65),
+var baseIsEqual = __webpack_require__(56),
+    get = __webpack_require__(151),
+    hasIn = __webpack_require__(157),
+    isKey = __webpack_require__(44),
+    isStrictComparable = __webpack_require__(62),
+    matchesStrictComparable = __webpack_require__(63),
     toKey = __webpack_require__(33);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -11714,10 +11440,10 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 153 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(66);
+var baseGet = __webpack_require__(64);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -11752,10 +11478,10 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 154 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(155);
+var memoizeCapped = __webpack_require__(153);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -11784,10 +11510,10 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 155 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(156);
+var memoize = __webpack_require__(154);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -11815,10 +11541,10 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 156 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(41);
+var MapCache = __webpack_require__(40);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -11893,10 +11619,10 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 157 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(158);
+var baseToString = __webpack_require__(156);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -11926,13 +11652,13 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 158 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(29),
-    arrayMap = __webpack_require__(52),
-    isArray = __webpack_require__(12),
-    isSymbol = __webpack_require__(46);
+    arrayMap = __webpack_require__(50),
+    isArray = __webpack_require__(13),
+    isSymbol = __webpack_require__(45);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -11968,11 +11694,11 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 159 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(160),
-    hasPath = __webpack_require__(161);
+var baseHasIn = __webpack_require__(158),
+    hasPath = __webpack_require__(159);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -12007,7 +11733,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 160 */
+/* 158 */
 /***/ (function(module, exports) {
 
 /**
@@ -12025,14 +11751,14 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 161 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(67),
-    isArguments = __webpack_require__(60),
-    isArray = __webpack_require__(12),
-    isIndex = __webpack_require__(62),
-    isLength = __webpack_require__(43),
+var castPath = __webpack_require__(65),
+    isArguments = __webpack_require__(58),
+    isArray = __webpack_require__(13),
+    isIndex = __webpack_require__(60),
+    isLength = __webpack_require__(42),
     toKey = __webpack_require__(33);
 
 /**
@@ -12068,7 +11794,7 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 162 */
+/* 160 */
 /***/ (function(module, exports) {
 
 /**
@@ -12094,12 +11820,12 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 163 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(164),
-    basePropertyDeep = __webpack_require__(165),
-    isKey = __webpack_require__(45),
+var baseProperty = __webpack_require__(162),
+    basePropertyDeep = __webpack_require__(163),
+    isKey = __webpack_require__(44),
     toKey = __webpack_require__(33);
 
 /**
@@ -12131,7 +11857,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 164 */
+/* 162 */
 /***/ (function(module, exports) {
 
 /**
@@ -12150,10 +11876,10 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 165 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(66);
+var baseGet = __webpack_require__(64);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -12171,11 +11897,11 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 166 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(167),
-    isArrayLike = __webpack_require__(44);
+var baseEach = __webpack_require__(165),
+    isArrayLike = __webpack_require__(43);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -12198,11 +11924,11 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 167 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(168),
-    createBaseEach = __webpack_require__(171);
+var baseForOwn = __webpack_require__(166),
+    createBaseEach = __webpack_require__(169);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -12217,11 +11943,11 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 168 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(169),
-    keys = __webpack_require__(42);
+var baseFor = __webpack_require__(167),
+    keys = __webpack_require__(41);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -12238,10 +11964,10 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 169 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(170);
+var createBaseFor = __webpack_require__(168);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -12259,7 +11985,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 170 */
+/* 168 */
 /***/ (function(module, exports) {
 
 /**
@@ -12289,10 +12015,10 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 171 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(44);
+var isArrayLike = __webpack_require__(43);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -12326,11 +12052,226 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 172 */
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var __ = wp.i18n.__;
+
+
+
+
+var PremiumPadding = function (_Component) {
+    _inherits(PremiumPadding, _Component);
+
+    function PremiumPadding(props) {
+        _classCallCheck(this, PremiumPadding);
+
+        var _this = _possibleConstructorReturn(this, (PremiumPadding.__proto__ || Object.getPrototypeOf(PremiumPadding)).call(this, props));
+
+        _this.state = {
+            isLinked: false,
+            top: _this.props.paddingTop || 0,
+            right: _this.props.paddingRight || 0,
+            bottom: _this.props.paddingBottom || 0,
+            left: _this.props.paddingLeft || 0,
+            showUnits: _this.props.showUnits || false
+        };
+
+        _this.onInputChange = _this.onInputChange.bind(_this);
+        _this.onButtonClick = _this.onButtonClick.bind(_this);
+        _this.changeFunction = _this.changeFunction.bind(_this);
+        return _this;
+    }
+
+    _createClass(PremiumPadding, [{
+        key: "onButtonClick",
+        value: function onButtonClick() {
+            this.setState({ isLinked: !this.state.isLinked });
+        }
+    }, {
+        key: "changeFunction",
+        value: function changeFunction() {
+            var _state = this.state,
+                top = _state.top,
+                right = _state.right,
+                bottom = _state.bottom,
+                left = _state.left;
+
+            this.props.onChangePadTop(top);
+            this.props.onChangePadRight(right);
+            this.props.onChangePadBottom(bottom);
+            this.props.onChangePadLeft(left);
+        }
+    }, {
+        key: "onInputChange",
+        value: function onInputChange(event) {
+            var _this2 = this;
+
+            var _state2 = this.state,
+                isLinked = _state2.isLinked,
+                top = _state2.top,
+                right = _state2.right,
+                bottom = _state2.bottom,
+                left = _state2.left;
+            var _event$target = event.target,
+                name = _event$target.name,
+                value = _event$target.value;
+
+            if (isLinked) {
+                top = right = bottom = left = parseInt(value) || 0;
+                this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
+                    _this2.changeFunction();
+                });
+            } else {
+                this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
+                    _this2.changeFunction();
+                });
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            // console.log(this.props)
+            var _state3 = this.state,
+                top = _state3.top,
+                right = _state3.right,
+                bottom = _state3.bottom,
+                left = _state3.left,
+                showUnits = _state3.showUnits,
+                isLinked = _state3.isLinked;
+            var _props = this.props,
+                _props$onChangePadSiz = _props.onChangePadSizeUnit,
+                onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
+                selectedUnit = _props.selectedUnit;
+
+
+            return wp.element.createElement(
+                "div",
+                { className: "premium-control-group" },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-label-container" },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-label" },
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Padding")
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-units" },
+                        showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_size_units__["a" /* default */], {
+                            activeUnit: selectedUnit,
+                            onChangeSizeUnit: onChangePadSizeUnit
+                        })
+                    )
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-controls-container" },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "top",
+                            value: top || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Top"
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "right",
+                            value: right || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Right"
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "bottom",
+                            value: bottom || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Bottom"
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "left",
+                            value: left || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Left"
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        null,
+                        wp.element.createElement("button", {
+                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                            onClick: this.onButtonClick
+                        })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return PremiumPadding;
+}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumPadding);
+
+/***/ }),
+/* 171 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
 
 
 function styling(props) {
@@ -12460,7 +12401,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12500,14 +12441,9 @@ var save = function save(props) {
         titleShadowColor = _props$attributes.titleShadowColor,
         titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
         titleShadowVertical = _props$attributes.titleShadowVertical,
-        titlePaddingT = _props$attributes.titlePaddingT,
-        titlePaddingR = _props$attributes.titlePaddingR,
-        titlePaddingB = _props$attributes.titlePaddingB,
-        titlePaddingL = _props$attributes.titlePaddingL,
         arrowColor = _props$attributes.arrowColor,
         arrowBack = _props$attributes.arrowBack,
         arrowPos = _props$attributes.arrowPos,
-        arrowPadding = _props$attributes.arrowPadding,
         arrowSize = _props$attributes.arrowSize,
         arrowRadius = _props$attributes.arrowRadius,
         contentType = _props$attributes.contentType,
@@ -12532,10 +12468,6 @@ var save = function save(props) {
         textShadowColor = _props$attributes.textShadowColor,
         textShadowHorizontal = _props$attributes.textShadowHorizontal,
         textShadowVertical = _props$attributes.textShadowVertical,
-        descPaddingT = _props$attributes.descPaddingT,
-        descPaddingR = _props$attributes.descPaddingR,
-        descPaddingB = _props$attributes.descPaddingB,
-        descPaddingL = _props$attributes.descPaddingL,
         titleBorderUpdated = _props$attributes.titleBorderUpdated,
         descBorderUpdated = _props$attributes.descBorderUpdated;
 
@@ -12558,11 +12490,8 @@ var save = function save(props) {
                         borderStyle: titleBorder,
                         borderWidth: titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px",
                         borderRadius: titleBorderRadius + "px",
-                        borderColor: titleBorderColor,
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL
+                        borderColor: titleBorderColor
+
                     }
                 },
                 wp.element.createElement(
@@ -12600,7 +12529,6 @@ var save = function save(props) {
                             style: {
                                 fill: arrowColor,
                                 backgroundColor: arrowBack,
-                                padding: arrowPadding + "px",
                                 borderRadius: arrowRadius + "px"
                             }
                         },
@@ -12618,11 +12546,8 @@ var save = function save(props) {
                         borderStyle: descBorder,
                         borderWidth: descBorderUpdated ? descBorderTop + 'px ' + descBorderRight + 'px ' + descBorderBottom + 'px ' + descBorderLeft + 'px' : descBorderWidth + "px",
                         borderRadius: descBorderRadius + "px",
-                        borderColor: descBorderColor,
-                        paddingTop: descPaddingT,
-                        paddingRight: descPaddingR,
-                        paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL
+                        borderColor: descBorderColor
+
                     }
                 },
                 "text" === contentType && wp.element.createElement(RichText.Content, {
@@ -12653,7 +12578,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13070,22 +12995,192 @@ var newAttributes_1_6_3 = {
     }
 };
 
+var newAttributes_1_6_5 = {
+    titlePaddingT: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingR: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingB: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingL: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingTTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingRTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingBTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingLTablet: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingTMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingRMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingBMobile: {
+        type: "number",
+        default: 20
+    },
+    titlePaddingLMobile: {
+        type: "number",
+        default: 20
+    },
+    arrowPaddingT: {
+        type: "number"
+    },
+    arrowPaddingR: {
+        type: "number"
+    },
+    arrowPaddingB: {
+        type: "number"
+    },
+    arrowPaddingL: {
+        type: "number"
+    },
+    arrowPaddingTTablet: {
+        type: "number"
+    },
+    arrowPaddingRTablet: {
+        type: "number"
+    },
+    arrowPaddingBTablet: {
+        type: "number"
+    },
+    arrowPaddingLTablet: {
+        type: "number"
+    },
+    arrowPaddingTMobile: {
+        type: "number"
+    },
+    arrowPaddingRMobile: {
+        type: "number"
+    },
+    arrowPaddingBMobile: {
+        type: "number"
+    },
+    arrowPaddingLMobile: {
+        type: "number"
+    },
+    descPaddingT: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingR: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingB: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingL: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingTTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingRTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingBTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingLTablet: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingTMobile: {
+        type: "number",
+        default: "10"
+    },
+    descPaddingRMobile: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingBMobile: {
+        type: "number",
+        default: "10"
+
+    },
+    descPaddingLMobile: {
+        type: "number",
+        default: 10
+    }
+};
+
 var deprecated_attributes_1_6_3 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_3);
 
+var deprecated_attributes_1_6_5 = Object.assign(deprecated_attributes_1_6_3, newAttributes_1_6_5);
+
 var deprecated = [{
-    attributes: deprecated_attributes_1_6_3,
-
+    attributes: deprecated_attributes_1_6_5,
     migrate: function migrate(attributes) {
-        var _newAttributes;
+        var newAttributes = {
+            titlePaddingT: " ",
+            titlePaddingR: "",
+            titlePaddingB: "",
+            titlePaddingL: "",
+            titlePaddingTTablet: " ",
+            titlePaddingRTablet: "",
+            titlePaddingBTablet: "",
+            titlePaddingLTablet: "",
+            titlePaddingTMobile: " ",
+            titlePaddingRMobile: "",
+            titlePaddingBMobile: "",
+            titlePaddingLMobile: "",
+            arrowPaddingT: " ",
+            arrowPaddingR: "",
+            arrowPaddingB: "",
+            arrowPaddingL: "",
+            arrowPaddingTTablet: " ",
+            arrowPaddingRTablet: "",
+            arrowPaddingBTablet: "",
+            arrowPaddingLTablet: "",
+            arrowPaddingTMobile: " ",
+            arrowPaddingRMobile: "",
+            arrowPaddingBMobile: "",
+            arrowPaddingLMobile: "",
+            descPaddingT: " ",
+            descPaddingR: "",
+            descPaddingB: "",
+            descPaddingL: "",
+            descPaddingTTablet: " ",
+            descPaddingRTablet: "",
+            descPaddingBTablet: "",
+            descPaddingLTablet: "",
+            descPaddingTMobile: " ",
+            descPaddingRMobile: "",
+            descPaddingBMobile: "",
+            descPaddingLMobile: ""
 
-        var newAttributes = (_newAttributes = {
-            descBorderUpdated: "",
-            titleBorderUpdated: "",
-            titleBorderTop: "",
-            titleBorderRight: "",
-            titleBorderBottom: "",
-            titleBorderLeft: ""
-        }, _defineProperty(_newAttributes, "titleBorderUpdated", ""), _defineProperty(_newAttributes, "descBorderTop", ""), _defineProperty(_newAttributes, "descBorderRight", ""), _defineProperty(_newAttributes, "descBorderBottom", ""), _defineProperty(_newAttributes, "descBorderLeft", ""), _newAttributes);
+        };
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
@@ -13102,8 +13197,12 @@ var deprecated = [{
             titleWeight = _props$attributes.titleWeight,
             titleColor = _props$attributes.titleColor,
             titleBorder = _props$attributes.titleBorder,
-            titleBorderColor = _props$attributes.titleBorderColor,
             titleBorderWidth = _props$attributes.titleBorderWidth,
+            titleBorderColor = _props$attributes.titleBorderColor,
+            titleBorderTop = _props$attributes.titleBorderTop,
+            titleBorderRight = _props$attributes.titleBorderRight,
+            titleBorderBottom = _props$attributes.titleBorderBottom,
+            titleBorderLeft = _props$attributes.titleBorderLeft,
             titleBorderRadius = _props$attributes.titleBorderRadius,
             titleBack = _props$attributes.titleBack,
             titleShadowBlur = _props$attributes.titleShadowBlur,
@@ -13134,6 +13233,10 @@ var deprecated = [{
             descBorderColor = _props$attributes.descBorderColor,
             descBorderRadius = _props$attributes.descBorderRadius,
             descBorderWidth = _props$attributes.descBorderWidth,
+            descBorderTop = _props$attributes.descBorderTop,
+            descBorderRight = _props$attributes.descBorderRight,
+            descBorderBottom = _props$attributes.descBorderBottom,
+            descBorderLeft = _props$attributes.descBorderLeft,
             textShadowBlur = _props$attributes.textShadowBlur,
             textShadowColor = _props$attributes.textShadowColor,
             textShadowHorizontal = _props$attributes.textShadowHorizontal,
@@ -13141,7 +13244,189 @@ var deprecated = [{
             descPaddingT = _props$attributes.descPaddingT,
             descPaddingR = _props$attributes.descPaddingR,
             descPaddingB = _props$attributes.descPaddingB,
-            descPaddingL = _props$attributes.descPaddingL;
+            descPaddingL = _props$attributes.descPaddingL,
+            titleBorderUpdated = _props$attributes.titleBorderUpdated,
+            descBorderUpdated = _props$attributes.descBorderUpdated;
+
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return wp.element.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            borderStyle: titleBorder,
+                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        wp.element.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            wp.element.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            borderStyle: descBorder,
+                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && wp.element.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && wp.element.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return wp.element.createElement(
+            "div",
+            { id: accordionId, className: "" + className },
+            accordionItems
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_6_3,
+
+    migrate: function migrate(attributes) {
+        var _newAttributes;
+
+        var newAttributes = (_newAttributes = {
+            descBorderUpdated: "",
+            titleBorderUpdated: "",
+            titleBorderTop: "",
+            titleBorderRight: "",
+            titleBorderBottom: "",
+            titleBorderLeft: ""
+        }, _defineProperty(_newAttributes, "titleBorderUpdated", ""), _defineProperty(_newAttributes, "descBorderTop", ""), _defineProperty(_newAttributes, "descBorderRight", ""), _defineProperty(_newAttributes, "descBorderBottom", ""), _defineProperty(_newAttributes, "descBorderLeft", ""), _newAttributes);
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            accordionId = _props$attributes2.accordionId,
+            repeaterItems = _props$attributes2.repeaterItems,
+            direction = _props$attributes2.direction,
+            titleTag = _props$attributes2.titleTag,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleColor = _props$attributes2.titleColor,
+            titleBorder = _props$attributes2.titleBorder,
+            titleBorderColor = _props$attributes2.titleBorderColor,
+            titleBorderWidth = _props$attributes2.titleBorderWidth,
+            titleBorderRadius = _props$attributes2.titleBorderRadius,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titlePaddingT = _props$attributes2.titlePaddingT,
+            titlePaddingR = _props$attributes2.titlePaddingR,
+            titlePaddingB = _props$attributes2.titlePaddingB,
+            titlePaddingL = _props$attributes2.titlePaddingL,
+            arrowColor = _props$attributes2.arrowColor,
+            arrowBack = _props$attributes2.arrowBack,
+            arrowPos = _props$attributes2.arrowPos,
+            arrowPadding = _props$attributes2.arrowPadding,
+            arrowSize = _props$attributes2.arrowSize,
+            arrowRadius = _props$attributes2.arrowRadius,
+            contentType = _props$attributes2.contentType,
+            descAlign = _props$attributes2.descAlign,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descLetter = _props$attributes2.descLetter,
+            descStyle = _props$attributes2.descStyle,
+            descUpper = _props$attributes2.descUpper,
+            descWeight = _props$attributes2.descWeight,
+            descColor = _props$attributes2.descColor,
+            descBack = _props$attributes2.descBack,
+            descBorder = _props$attributes2.descBorder,
+            descBorderColor = _props$attributes2.descBorderColor,
+            descBorderRadius = _props$attributes2.descBorderRadius,
+            descBorderWidth = _props$attributes2.descBorderWidth,
+            textShadowBlur = _props$attributes2.textShadowBlur,
+            textShadowColor = _props$attributes2.textShadowColor,
+            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
+            textShadowVertical = _props$attributes2.textShadowVertical,
+            descPaddingT = _props$attributes2.descPaddingT,
+            descPaddingR = _props$attributes2.descPaddingR,
+            descPaddingB = _props$attributes2.descPaddingB,
+            descPaddingL = _props$attributes2.descPaddingL;
 
         var accordionItems = repeaterItems.map(function (item, index) {
             return wp.element.createElement(
@@ -13254,55 +13539,55 @@ var deprecated = [{
 }, {
     attributes: deprecated_attributes,
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            accordionId = _props$attributes2.accordionId,
-            repeaterItems = _props$attributes2.repeaterItems,
-            direction = _props$attributes2.direction,
-            titleTag = _props$attributes2.titleTag,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleColor = _props$attributes2.titleColor,
-            titleBorder = _props$attributes2.titleBorder,
-            titleBorderColor = _props$attributes2.titleBorderColor,
-            titleBorderWidth = _props$attributes2.titleBorderWidth,
-            titleBorderRadius = _props$attributes2.titleBorderRadius,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titlePaddingT = _props$attributes2.titlePaddingT,
-            titlePaddingR = _props$attributes2.titlePaddingR,
-            titlePaddingB = _props$attributes2.titlePaddingB,
-            titlePaddingL = _props$attributes2.titlePaddingL,
-            arrowColor = _props$attributes2.arrowColor,
-            arrowBack = _props$attributes2.arrowBack,
-            arrowPos = _props$attributes2.arrowPos,
-            arrowPadding = _props$attributes2.arrowPadding,
-            arrowSize = _props$attributes2.arrowSize,
-            arrowRadius = _props$attributes2.arrowRadius,
-            contentType = _props$attributes2.contentType,
-            descAlign = _props$attributes2.descAlign,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descLetter = _props$attributes2.descLetter,
-            descStyle = _props$attributes2.descStyle,
-            descUpper = _props$attributes2.descUpper,
-            descWeight = _props$attributes2.descWeight,
-            descColor = _props$attributes2.descColor,
-            descBack = _props$attributes2.descBack,
-            descBorder = _props$attributes2.descBorder,
-            descBorderColor = _props$attributes2.descBorderColor,
-            descBorderRadius = _props$attributes2.descBorderRadius,
-            descBorderWidth = _props$attributes2.descBorderWidth,
-            descPaddingT = _props$attributes2.descPaddingT,
-            descPaddingR = _props$attributes2.descPaddingR,
-            descPaddingB = _props$attributes2.descPaddingB,
-            descPaddingL = _props$attributes2.descPaddingL;
+        var _props$attributes3 = props.attributes,
+            accordionId = _props$attributes3.accordionId,
+            repeaterItems = _props$attributes3.repeaterItems,
+            direction = _props$attributes3.direction,
+            titleTag = _props$attributes3.titleTag,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleColor = _props$attributes3.titleColor,
+            titleBorder = _props$attributes3.titleBorder,
+            titleBorderColor = _props$attributes3.titleBorderColor,
+            titleBorderWidth = _props$attributes3.titleBorderWidth,
+            titleBorderRadius = _props$attributes3.titleBorderRadius,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titlePaddingT = _props$attributes3.titlePaddingT,
+            titlePaddingR = _props$attributes3.titlePaddingR,
+            titlePaddingB = _props$attributes3.titlePaddingB,
+            titlePaddingL = _props$attributes3.titlePaddingL,
+            arrowColor = _props$attributes3.arrowColor,
+            arrowBack = _props$attributes3.arrowBack,
+            arrowPos = _props$attributes3.arrowPos,
+            arrowPadding = _props$attributes3.arrowPadding,
+            arrowSize = _props$attributes3.arrowSize,
+            arrowRadius = _props$attributes3.arrowRadius,
+            contentType = _props$attributes3.contentType,
+            descAlign = _props$attributes3.descAlign,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descLetter = _props$attributes3.descLetter,
+            descStyle = _props$attributes3.descStyle,
+            descUpper = _props$attributes3.descUpper,
+            descWeight = _props$attributes3.descWeight,
+            descColor = _props$attributes3.descColor,
+            descBack = _props$attributes3.descBack,
+            descBorder = _props$attributes3.descBorder,
+            descBorderColor = _props$attributes3.descBorderColor,
+            descBorderRadius = _props$attributes3.descBorderRadius,
+            descBorderWidth = _props$attributes3.descBorderWidth,
+            descPaddingT = _props$attributes3.descPaddingT,
+            descPaddingR = _props$attributes3.descPaddingR,
+            descPaddingB = _props$attributes3.descPaddingB,
+            descPaddingL = _props$attributes3.descPaddingL;
 
 
         var accordionItems = repeaterItems.map(function (item, index) {
@@ -13416,15 +13701,15 @@ var deprecated = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(178);
 
 
 
@@ -13676,6 +13961,30 @@ var bannerAttrs = {
     paddingL: {
         type: "number"
     },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
     paddingU: {
         type: "string"
     },
@@ -13718,20 +14027,20 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_responsive_tabs__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14442,65 +14751,41 @@ var edit = function (_Component) {
                         paddingRightMobile: paddingRMobile,
                         paddingBottomMobile: paddingBMobile,
                         paddingLeftMobile: paddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingTMobile: valueMobile });
-                                });
-                            }
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ titlePaddingT: val });
                         },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingRMobile: 20 });
-                                });
-                            }
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ titlePaddingR: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingBMobile: valueMobile });
-                                });
-                            }
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ titlePaddingB: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingLMobile: valueMobile });
-                                });
-                            }
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ titlePaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ titlePaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ titlePaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ titlePaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ titlePaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ titlePaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ titlePaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ titlePaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ titlePaddingLMobile: valM });
                         },
                         showUnits: true,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -14526,13 +14811,7 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-banner-" + block_id,
-                    className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                    style: {
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU
-                    }
+                    className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile
                 },
                 wp.element.createElement("style", {
                     dangerouslySetInnerHTML: {
@@ -14638,12 +14917,12 @@ var edit = function (_Component) {
 ;
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -14658,7 +14937,20 @@ function styling(props) {
         descSizeTablet = _props$attributes.descSizeTablet,
         descSizeMobile = _props$attributes.descSizeMobile,
         block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate;
+        classMigrate = _props$attributes.classMigrate,
+        paddingB = _props$attributes.paddingB,
+        paddingT = _props$attributes.paddingT,
+        paddingR = _props$attributes.paddingR,
+        paddingL = _props$attributes.paddingL,
+        paddingBTablet = _props$attributes.paddingBTablet,
+        paddingTTablet = _props$attributes.paddingTTablet,
+        paddingRTablet = _props$attributes.paddingRTablet,
+        paddingLTablet = _props$attributes.paddingLTablet,
+        paddingBMobile = _props$attributes.paddingBMobile,
+        paddingTMobile = _props$attributes.paddingTMobile,
+        paddingRMobile = _props$attributes.paddingRMobile,
+        paddingLMobile = _props$attributes.paddingLMobile,
+        paddingU = _props$attributes.paddingU;
 
 
     var selectors = {};
@@ -14666,6 +14958,12 @@ function styling(props) {
     var mobile_selectors = {};
 
     selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
         },
@@ -14674,6 +14972,12 @@ function styling(props) {
         }
     };
     tablet_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
         },
@@ -14682,6 +14986,12 @@ function styling(props) {
         }
     };
     mobile_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
         },
@@ -14706,7 +15016,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14773,11 +15083,6 @@ var save = function save(props) {
         containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
         containerShadowVertical = _props$attributes.containerShadowVertical,
         containerShadowPosition = _props$attributes.containerShadowPosition,
-        paddingB = _props$attributes.paddingB,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
@@ -14789,13 +15094,7 @@ var save = function save(props) {
         'div',
         {
             id: 'premium-banner-' + block_id,
-            className: mainClasses + ' premium-banner__responsive_' + responsive + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile + ' premium-banner-' + block_id,
-            style: {
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU
-            }
+            className: mainClasses + ' premium-banner__responsive_' + responsive + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile + ' premium-banner-' + block_id
         },
         wp.element.createElement('style', {
             dangerouslySetInnerHTML: {
@@ -14893,7 +15192,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15180,32 +15479,54 @@ var newAttributes_1_7_1 = (_newAttributes_1_7_ = {
 
 var deprecated_attributes_1_7_1 = Object.assign(deprecated_attributes_1_6_7, newAttributes_1_7_1);
 
+var newAttributes_1_7_5 = {
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    }
+};
+
+var deprecated_attributes_1_7_5 = Object.assign(newAttributes_1_7_5, deprecated_attributes_1_7_1);
+
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_7_1,
+    attributes: deprecated_attributes_1_7_5,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            borderBottom: "",
-            borderTop: "",
-            borderRight: "",
-            borderLeft: "",
-            borderBanner: "",
-            classMigrate: false,
-            titleSizeUnit: 'px',
-            titleSizeMobile: '',
-            titleSizeTablet: '',
-            descSizeUnit: 'px',
-            descSizeMobile: '',
-            descSizeTablet: '',
-            block_id: '',
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
+            paddingTTablet: "",
+            paddingRTablet: "",
+            paddingBTablet: " ",
+            paddingLTablet: "",
+            paddingTMobile: "",
+            paddingRMobile: "",
+            paddingBMobile: "",
+            paddingLMobile: ""
         };
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderBanner = _props$attributes.borderBanner,
             imageURL = _props$attributes.imageURL,
             title = _props$attributes.title,
             titleTag = _props$attributes.titleTag,
@@ -15222,11 +15543,14 @@ var deprecatedContent = [{
             opacity = _props$attributes.opacity,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             borderRadius = _props$attributes.borderRadius,
             borderColor = _props$attributes.borderColor,
             titleColor = _props$attributes.titleColor,
             titleBack = _props$attributes.titleBack,
-            titleSize = _props$attributes.titleSize,
             titleWeight = _props$attributes.titleWeight,
             titleLine = _props$attributes.titleLine,
             shadowBlur = _props$attributes.shadowBlur,
@@ -15234,7 +15558,6 @@ var deprecatedContent = [{
             shadowHorizontal = _props$attributes.shadowHorizontal,
             shadowVertical = _props$attributes.shadowVertical,
             descColor = _props$attributes.descColor,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descShadowBlur = _props$attributes.descShadowBlur,
@@ -15259,7 +15582,197 @@ var deprecatedContent = [{
             paddingT = _props$attributes.paddingT,
             paddingR = _props$attributes.paddingR,
             paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU;
+            paddingU = _props$attributes.paddingU,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-banner-" + block_id,
+                className: className + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id,
+                style: {
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU
+                }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(
+                "div",
+                {
+                    className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                    style: {
+                        boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
+                        borderStyle: borderType,
+                        borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor
+                    }
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__img_wrap premium-banner__" + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    wp.element.createElement("img", {
+                        className: "premium-banner__img",
+                        alt: "Banner Image",
+                        src: imageURL,
+                        style: {
+                            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__content",
+                        style: {
+                            background: "effect2" === effect ? titleBack : "transparent"
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__title_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-banner__title",
+                            value: title,
+                            style: {
+                                color: titleColor,
+                                fontWeight: titleWeight,
+                                lineHeight: titleLine + "px",
+                                textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                            }
+                        })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__desc_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-banner__desc",
+                            value: desc,
+                            style: {
+                                color: descColor,
+                                fontWeight: descWeight,
+                                lineHeight: descLine + "px",
+                                textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                            }
+                        })
+                    )
+                ),
+                urlCheck && "" !== url && wp.element.createElement("a", {
+                    className: "premium-banner__link",
+                    href: url,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+
+}, {
+    attributes: deprecated_attributes_1_7_1,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            borderBottom: "",
+            borderTop: "",
+            borderRight: "",
+            borderLeft: "",
+            borderBanner: "",
+            classMigrate: false,
+            titleSizeUnit: 'px',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            descSizeUnit: 'px',
+            descSizeMobile: '',
+            descSizeTablet: '',
+            block_id: '',
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            imageURL = _props$attributes2.imageURL,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            desc = _props$attributes2.desc,
+            contentAlign = _props$attributes2.contentAlign,
+            effect = _props$attributes2.effect,
+            hoverEffect = _props$attributes2.hoverEffect,
+            height = _props$attributes2.height,
+            minHeight = _props$attributes2.minHeight,
+            verAlign = _props$attributes2.verAlign,
+            hovered = _props$attributes2.hovered,
+            responsive = _props$attributes2.responsive,
+            background = _props$attributes2.background,
+            opacity = _props$attributes2.opacity,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            titleColor = _props$attributes2.titleColor,
+            titleBack = _props$attributes2.titleBack,
+            titleSize = _props$attributes2.titleSize,
+            titleWeight = _props$attributes2.titleWeight,
+            titleLine = _props$attributes2.titleLine,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descShadowBlur = _props$attributes2.descShadowBlur,
+            descShadowColor = _props$attributes2.descShadowColor,
+            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
+            descShadowVertical = _props$attributes2.descShadowVertical,
+            urlCheck = _props$attributes2.urlCheck,
+            url = _props$attributes2.url,
+            target = _props$attributes2.target,
+            sepColor = _props$attributes2.sepColor,
+            blur = _props$attributes2.blur,
+            bright = _props$attributes2.bright,
+            contrast = _props$attributes2.contrast,
+            saturation = _props$attributes2.saturation,
+            hue = _props$attributes2.hue,
+            containerShadowBlur = _props$attributes2.containerShadowBlur,
+            containerShadowColor = _props$attributes2.containerShadowColor,
+            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes2.containerShadowVertical,
+            containerShadowPosition = _props$attributes2.containerShadowPosition,
+            paddingB = _props$attributes2.paddingB,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU;
 
 
         return wp.element.createElement(
@@ -15381,57 +15894,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            imageURL = _props$attributes2.imageURL,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            desc = _props$attributes2.desc,
-            contentAlign = _props$attributes2.contentAlign,
-            effect = _props$attributes2.effect,
-            hoverEffect = _props$attributes2.hoverEffect,
-            height = _props$attributes2.height,
-            minHeight = _props$attributes2.minHeight,
-            verAlign = _props$attributes2.verAlign,
-            hovered = _props$attributes2.hovered,
-            responsive = _props$attributes2.responsive,
-            background = _props$attributes2.background,
-            opacity = _props$attributes2.opacity,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            titleColor = _props$attributes2.titleColor,
-            titleBack = _props$attributes2.titleBack,
-            titleSize = _props$attributes2.titleSize,
-            titleWeight = _props$attributes2.titleWeight,
-            titleLine = _props$attributes2.titleLine,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descShadowBlur = _props$attributes2.descShadowBlur,
-            descShadowColor = _props$attributes2.descShadowColor,
-            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
-            descShadowVertical = _props$attributes2.descShadowVertical,
-            urlCheck = _props$attributes2.urlCheck,
-            url = _props$attributes2.url,
-            target = _props$attributes2.target,
-            sepColor = _props$attributes2.sepColor,
-            blur = _props$attributes2.blur,
-            bright = _props$attributes2.bright,
-            contrast = _props$attributes2.contrast,
-            saturation = _props$attributes2.saturation,
-            hue = _props$attributes2.hue,
-            containerShadowBlur = _props$attributes2.containerShadowBlur,
-            containerShadowColor = _props$attributes2.containerShadowColor,
-            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
-            containerShadowVertical = _props$attributes2.containerShadowVertical,
-            containerShadowPosition = _props$attributes2.containerShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            imageURL = _props$attributes3.imageURL,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            desc = _props$attributes3.desc,
+            contentAlign = _props$attributes3.contentAlign,
+            effect = _props$attributes3.effect,
+            hoverEffect = _props$attributes3.hoverEffect,
+            height = _props$attributes3.height,
+            minHeight = _props$attributes3.minHeight,
+            verAlign = _props$attributes3.verAlign,
+            hovered = _props$attributes3.hovered,
+            responsive = _props$attributes3.responsive,
+            background = _props$attributes3.background,
+            opacity = _props$attributes3.opacity,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            titleColor = _props$attributes3.titleColor,
+            titleBack = _props$attributes3.titleBack,
+            titleSize = _props$attributes3.titleSize,
+            titleWeight = _props$attributes3.titleWeight,
+            titleLine = _props$attributes3.titleLine,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descShadowBlur = _props$attributes3.descShadowBlur,
+            descShadowColor = _props$attributes3.descShadowColor,
+            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
+            descShadowVertical = _props$attributes3.descShadowVertical,
+            urlCheck = _props$attributes3.urlCheck,
+            url = _props$attributes3.url,
+            target = _props$attributes3.target,
+            sepColor = _props$attributes3.sepColor,
+            blur = _props$attributes3.blur,
+            bright = _props$attributes3.bright,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            hue = _props$attributes3.hue,
+            containerShadowBlur = _props$attributes3.containerShadowBlur,
+            containerShadowColor = _props$attributes3.containerShadowColor,
+            containerShadowHorizontal = _props$attributes3.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes3.containerShadowVertical,
+            containerShadowPosition = _props$attributes3.containerShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -15548,52 +16061,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            imageURL = _props$attributes3.imageURL,
-            title = _props$attributes3.title,
-            titleTag = _props$attributes3.titleTag,
-            desc = _props$attributes3.desc,
-            contentAlign = _props$attributes3.contentAlign,
-            effect = _props$attributes3.effect,
-            hoverEffect = _props$attributes3.hoverEffect,
-            height = _props$attributes3.height,
-            minHeight = _props$attributes3.minHeight,
-            verAlign = _props$attributes3.verAlign,
-            hovered = _props$attributes3.hovered,
-            responsive = _props$attributes3.responsive,
-            background = _props$attributes3.background,
-            opacity = _props$attributes3.opacity,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            titleColor = _props$attributes3.titleColor,
-            titleBack = _props$attributes3.titleBack,
-            titleSize = _props$attributes3.titleSize,
-            titleWeight = _props$attributes3.titleWeight,
-            titleLine = _props$attributes3.titleLine,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descShadowBlur = _props$attributes3.descShadowBlur,
-            descShadowColor = _props$attributes3.descShadowColor,
-            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
-            descShadowVertical = _props$attributes3.descShadowVertical,
-            urlCheck = _props$attributes3.urlCheck,
-            url = _props$attributes3.url,
-            target = _props$attributes3.target,
-            sepColor = _props$attributes3.sepColor,
-            blur = _props$attributes3.blur,
-            bright = _props$attributes3.bright,
-            contrast = _props$attributes3.contrast,
-            saturation = _props$attributes3.saturation,
-            hue = _props$attributes3.hue;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            imageURL = _props$attributes4.imageURL,
+            title = _props$attributes4.title,
+            titleTag = _props$attributes4.titleTag,
+            desc = _props$attributes4.desc,
+            contentAlign = _props$attributes4.contentAlign,
+            effect = _props$attributes4.effect,
+            hoverEffect = _props$attributes4.hoverEffect,
+            height = _props$attributes4.height,
+            minHeight = _props$attributes4.minHeight,
+            verAlign = _props$attributes4.verAlign,
+            hovered = _props$attributes4.hovered,
+            responsive = _props$attributes4.responsive,
+            background = _props$attributes4.background,
+            opacity = _props$attributes4.opacity,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            titleColor = _props$attributes4.titleColor,
+            titleBack = _props$attributes4.titleBack,
+            titleSize = _props$attributes4.titleSize,
+            titleWeight = _props$attributes4.titleWeight,
+            titleLine = _props$attributes4.titleLine,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descShadowBlur = _props$attributes4.descShadowBlur,
+            descShadowColor = _props$attributes4.descShadowColor,
+            descShadowHorizontal = _props$attributes4.descShadowHorizontal,
+            descShadowVertical = _props$attributes4.descShadowVertical,
+            urlCheck = _props$attributes4.urlCheck,
+            url = _props$attributes4.url,
+            target = _props$attributes4.target,
+            sepColor = _props$attributes4.sepColor,
+            blur = _props$attributes4.blur,
+            bright = _props$attributes4.bright,
+            contrast = _props$attributes4.contrast,
+            saturation = _props$attributes4.saturation,
+            hue = _props$attributes4.hue;
 
         return wp.element.createElement(
             "div",
@@ -15706,48 +16219,48 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            imageURL = _props$attributes4.imageURL,
-            title = _props$attributes4.title,
-            titleTag = _props$attributes4.titleTag,
-            desc = _props$attributes4.desc,
-            contentAlign = _props$attributes4.contentAlign,
-            effect = _props$attributes4.effect,
-            hoverEffect = _props$attributes4.hoverEffect,
-            height = _props$attributes4.height,
-            minHeight = _props$attributes4.minHeight,
-            verAlign = _props$attributes4.verAlign,
-            hovered = _props$attributes4.hovered,
-            responsive = _props$attributes4.responsive,
-            background = _props$attributes4.background,
-            opacity = _props$attributes4.opacity,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            titleColor = _props$attributes4.titleColor,
-            titleBack = _props$attributes4.titleBack,
-            titleSize = _props$attributes4.titleSize,
-            titleWeight = _props$attributes4.titleWeight,
-            titleLine = _props$attributes4.titleLine,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descWeight = _props$attributes4.descWeight,
-            descLine = _props$attributes4.descLine,
-            urlCheck = _props$attributes4.urlCheck,
-            url = _props$attributes4.url,
-            target = _props$attributes4.target,
-            sepColor = _props$attributes4.sepColor,
-            blur = _props$attributes4.blur,
-            bright = _props$attributes4.bright,
-            contrast = _props$attributes4.contrast,
-            saturation = _props$attributes4.saturation,
-            hue = _props$attributes4.hue;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            imageURL = _props$attributes5.imageURL,
+            title = _props$attributes5.title,
+            titleTag = _props$attributes5.titleTag,
+            desc = _props$attributes5.desc,
+            contentAlign = _props$attributes5.contentAlign,
+            effect = _props$attributes5.effect,
+            hoverEffect = _props$attributes5.hoverEffect,
+            height = _props$attributes5.height,
+            minHeight = _props$attributes5.minHeight,
+            verAlign = _props$attributes5.verAlign,
+            hovered = _props$attributes5.hovered,
+            responsive = _props$attributes5.responsive,
+            background = _props$attributes5.background,
+            opacity = _props$attributes5.opacity,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            titleColor = _props$attributes5.titleColor,
+            titleBack = _props$attributes5.titleBack,
+            titleSize = _props$attributes5.titleSize,
+            titleWeight = _props$attributes5.titleWeight,
+            titleLine = _props$attributes5.titleLine,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descWeight = _props$attributes5.descWeight,
+            descLine = _props$attributes5.descLine,
+            urlCheck = _props$attributes5.urlCheck,
+            url = _props$attributes5.url,
+            target = _props$attributes5.target,
+            sepColor = _props$attributes5.sepColor,
+            blur = _props$attributes5.blur,
+            bright = _props$attributes5.bright,
+            contrast = _props$attributes5.contrast,
+            saturation = _props$attributes5.saturation,
+            hue = _props$attributes5.hue;
 
         return wp.element.createElement(
             "div",
@@ -15860,43 +16373,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            imageURL = _props$attributes5.imageURL,
-            title = _props$attributes5.title,
-            titleTag = _props$attributes5.titleTag,
-            desc = _props$attributes5.desc,
-            contentAlign = _props$attributes5.contentAlign,
-            effect = _props$attributes5.effect,
-            hoverEffect = _props$attributes5.hoverEffect,
-            height = _props$attributes5.height,
-            minHeight = _props$attributes5.minHeight,
-            verAlign = _props$attributes5.verAlign,
-            hovered = _props$attributes5.hovered,
-            responsive = _props$attributes5.responsive,
-            background = _props$attributes5.background,
-            opacity = _props$attributes5.opacity,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            titleColor = _props$attributes5.titleColor,
-            titleBack = _props$attributes5.titleBack,
-            titleSize = _props$attributes5.titleSize,
-            titleWeight = _props$attributes5.titleWeight,
-            titleLine = _props$attributes5.titleLine,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descWeight = _props$attributes5.descWeight,
-            descLine = _props$attributes5.descLine,
-            urlCheck = _props$attributes5.urlCheck,
-            url = _props$attributes5.url,
-            target = _props$attributes5.target,
-            sepColor = _props$attributes5.sepColor;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            imageURL = _props$attributes6.imageURL,
+            title = _props$attributes6.title,
+            titleTag = _props$attributes6.titleTag,
+            desc = _props$attributes6.desc,
+            contentAlign = _props$attributes6.contentAlign,
+            effect = _props$attributes6.effect,
+            hoverEffect = _props$attributes6.hoverEffect,
+            height = _props$attributes6.height,
+            minHeight = _props$attributes6.minHeight,
+            verAlign = _props$attributes6.verAlign,
+            hovered = _props$attributes6.hovered,
+            responsive = _props$attributes6.responsive,
+            background = _props$attributes6.background,
+            opacity = _props$attributes6.opacity,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            titleColor = _props$attributes6.titleColor,
+            titleBack = _props$attributes6.titleBack,
+            titleSize = _props$attributes6.titleSize,
+            titleWeight = _props$attributes6.titleWeight,
+            titleLine = _props$attributes6.titleLine,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descWeight = _props$attributes6.descWeight,
+            descLine = _props$attributes6.descLine,
+            urlCheck = _props$attributes6.urlCheck,
+            url = _props$attributes6.url,
+            target = _props$attributes6.target,
+            sepColor = _props$attributes6.sepColor;
 
         return wp.element.createElement(
             "div",
@@ -16005,39 +16518,39 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            imageURL = _props$attributes6.imageURL,
-            title = _props$attributes6.title,
-            titleTag = _props$attributes6.titleTag,
-            desc = _props$attributes6.desc,
-            contentAlign = _props$attributes6.contentAlign,
-            effect = _props$attributes6.effect,
-            hoverEffect = _props$attributes6.hoverEffect,
-            height = _props$attributes6.height,
-            minHeight = _props$attributes6.minHeight,
-            verAlign = _props$attributes6.verAlign,
-            hovered = _props$attributes6.hovered,
-            responsive = _props$attributes6.responsive,
-            background = _props$attributes6.background,
-            opacity = _props$attributes6.opacity,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            titleColor = _props$attributes6.titleColor,
-            titleBack = _props$attributes6.titleBack,
-            titleSize = _props$attributes6.titleSize,
-            titleWeight = _props$attributes6.titleWeight,
-            titleLine = _props$attributes6.titleLine,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descWeight = _props$attributes6.descWeight,
-            descLine = _props$attributes6.descLine,
-            urlCheck = _props$attributes6.urlCheck,
-            url = _props$attributes6.url,
-            target = _props$attributes6.target,
-            sepColor = _props$attributes6.sepColor;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            imageURL = _props$attributes7.imageURL,
+            title = _props$attributes7.title,
+            titleTag = _props$attributes7.titleTag,
+            desc = _props$attributes7.desc,
+            contentAlign = _props$attributes7.contentAlign,
+            effect = _props$attributes7.effect,
+            hoverEffect = _props$attributes7.hoverEffect,
+            height = _props$attributes7.height,
+            minHeight = _props$attributes7.minHeight,
+            verAlign = _props$attributes7.verAlign,
+            hovered = _props$attributes7.hovered,
+            responsive = _props$attributes7.responsive,
+            background = _props$attributes7.background,
+            opacity = _props$attributes7.opacity,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            titleColor = _props$attributes7.titleColor,
+            titleBack = _props$attributes7.titleBack,
+            titleSize = _props$attributes7.titleSize,
+            titleWeight = _props$attributes7.titleWeight,
+            titleLine = _props$attributes7.titleLine,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descWeight = _props$attributes7.descWeight,
+            descLine = _props$attributes7.descLine,
+            urlCheck = _props$attributes7.urlCheck,
+            url = _props$attributes7.url,
+            target = _props$attributes7.target,
+            sepColor = _props$attributes7.sepColor;
 
         return wp.element.createElement(
             "div",
@@ -16138,14 +16651,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(183);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 
 
@@ -16274,11 +16787,45 @@ var buttonAttrs = {
     borderHoverColor: {
         type: "string"
     },
-    padding: {
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
         type: "number"
     },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     shadowColor: {
         type: "string"
@@ -16350,22 +16897,22 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(181);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -16964,70 +17511,46 @@ var edit = function (_Component) {
                         paddingRightMobile: paddingRMobile,
                         paddingBottomMobile: paddingBMobile,
                         paddingLeftMobile: paddingLMobile,
-                        showUnit: true,
-                        selectedUnit: paddingU,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingRMobile: 20 });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingLMobile: valueMobile });
-                                });
-                            }
-                        },
+                        showUnits: true,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingU: newvalue });
+                        },
+                        selectedUnit: paddingU,
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ paddingT: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ paddingR: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ paddingB: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ paddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ paddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ paddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ paddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ paddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ paddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ paddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ paddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ paddingLMobile: valM });
                         }
                     })
                 ),
@@ -17098,12 +17621,12 @@ var edit = function (_Component) {
 ;
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -17114,7 +17637,20 @@ function styling(props) {
         textSizeTablet = _props$attributes.textSizeTablet,
         textSizeMobile = _props$attributes.textSizeMobile,
         block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate;
+        classMigrate = _props$attributes.classMigrate,
+        paddingT = _props$attributes.paddingT,
+        paddingR = _props$attributes.paddingR,
+        paddingB = _props$attributes.paddingB,
+        paddingL = _props$attributes.paddingL,
+        paddingTTablet = _props$attributes.paddingTTablet,
+        paddingRTablet = _props$attributes.paddingRTablet,
+        paddingBTablet = _props$attributes.paddingBTablet,
+        paddingLTablet = _props$attributes.paddingLTablet,
+        paddingTMobile = _props$attributes.paddingTMobile,
+        paddingRMobile = _props$attributes.paddingRMobile,
+        paddingBMobile = _props$attributes.paddingBMobile,
+        paddingLMobile = _props$attributes.paddingLMobile,
+        paddingU = _props$attributes.paddingU;
 
 
     var selectors = {};
@@ -17123,17 +17659,29 @@ function styling(props) {
 
     selectors = {
         " .premium-button": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSize, textSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSize, textSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
         }
     };
     tablet_selectors = {
         " .premium-button": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeTablet, textSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeTablet, textSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
         }
     };
     mobile_selectors = {
         " .premium-button": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeMobile, textSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(textSizeMobile, textSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
         }
     };
 
@@ -17153,7 +17701,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17200,8 +17748,6 @@ var save = function save(props) {
         borderRadius = _props$attributes.borderRadius,
         borderColor = _props$attributes.borderColor,
         borderHoverColor = _props$attributes.borderHoverColor,
-        padding = _props$attributes.padding,
-        paddingU = _props$attributes.paddingU,
         shadowBlur = _props$attributes.shadowBlur,
         shadowColor = _props$attributes.shadowColor,
         shadowHorizontal = _props$attributes.shadowHorizontal,
@@ -17248,7 +17794,6 @@ var save = function save(props) {
                 fontWeight: textWeight,
                 textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
                 boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                padding: padding + paddingU,
                 borderStyle: borderType,
                 borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
                 borderRadius: borderRadius + "px",
@@ -17261,7 +17806,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17469,7 +18014,154 @@ var newAttributes_1_4_9 = {
 
 var buttonAttrs_1_4_9 = Object.assign(buttonAttrs_1_4_7, newAttributes_1_4_9);
 
+var newAttributes_1_5_11 = {
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    }
+};
+
+var buttonAttrs_1_5_11 = Object.assign(buttonAttrs_1_4_9, newAttributes_1_5_11);
+
 var deprecatedContent = [{
+    attributes: buttonAttrs_1_5_11,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            paddingT: "",
+            paddingR: "",
+            paddingB: "",
+            paddingL: "",
+            paddingTTablet: "",
+            paddingRTablet: "",
+            paddingBTablet: "",
+            paddingLTablet: "",
+            paddingTMobile: "",
+            paddingRMobile: "",
+            paddingBMobile: "",
+            paddingLMobile: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderButton = _props$attributes.borderButton,
+            btnText = _props$attributes.btnText,
+            btnSize = _props$attributes.btnSize,
+            btnAlign = _props$attributes.btnAlign,
+            btnLink = _props$attributes.btnLink,
+            btnTarget = _props$attributes.btnTarget,
+            effect = _props$attributes.effect,
+            effectDir = _props$attributes.effectDir,
+            textColor = _props$attributes.textColor,
+            textHoverColor = _props$attributes.textHoverColor,
+            backColor = _props$attributes.backColor,
+            backHoverColor = _props$attributes.backHoverColor,
+            slideColor = _props$attributes.slideColor,
+            textFontFamily = _props$attributes.textFontFamily,
+            textWeight = _props$attributes.textWeight,
+            textLine = _props$attributes.textLine,
+            textLetter = _props$attributes.textLetter,
+            textStyle = _props$attributes.textStyle,
+            backOpacity = _props$attributes.backOpacity,
+            textUpper = _props$attributes.textUpper,
+            borderType = _props$attributes.borderType,
+            borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
+            borderRadius = _props$attributes.borderRadius,
+            borderColor = _props$attributes.borderColor,
+            borderHoverColor = _props$attributes.borderHoverColor,
+            padding = _props$attributes.padding,
+            paddingU = _props$attributes.paddingU,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            btnShadowBlur = _props$attributes.btnShadowBlur,
+            btnShadowColor = _props$attributes.btnShadowColor,
+            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes.btnShadowVertical,
+            btnShadowPosition = _props$attributes.btnShadowPosition,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + block_id,
+                className: className + "__wrap premium-button__" + effect + " premium-button__" + effectDir + " premium-button-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + block_id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: "premium-button premium-button__" + btnSize,
+                href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + paddingU,
+                    borderStyle: borderType,
+                    borderWidth: borderButton ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
     attributes: buttonAttrs_1_4_9,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -17491,43 +18183,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            id = _props$attributes.id,
-            btnText = _props$attributes.btnText,
-            btnSize = _props$attributes.btnSize,
-            btnAlign = _props$attributes.btnAlign,
-            btnLink = _props$attributes.btnLink,
-            btnTarget = _props$attributes.btnTarget,
-            effect = _props$attributes.effect,
-            effectDir = _props$attributes.effectDir,
-            textColor = _props$attributes.textColor,
-            textHoverColor = _props$attributes.textHoverColor,
-            backColor = _props$attributes.backColor,
-            backHoverColor = _props$attributes.backHoverColor,
-            slideColor = _props$attributes.slideColor,
-            textSize = _props$attributes.textSize,
-            textFontFamily = _props$attributes.textFontFamily,
-            textWeight = _props$attributes.textWeight,
-            textLine = _props$attributes.textLine,
-            textLetter = _props$attributes.textLetter,
-            textStyle = _props$attributes.textStyle,
-            textUpper = _props$attributes.textUpper,
-            borderType = _props$attributes.borderType,
-            borderWidth = _props$attributes.borderWidth,
-            borderRadius = _props$attributes.borderRadius,
-            borderColor = _props$attributes.borderColor,
-            borderHoverColor = _props$attributes.borderHoverColor,
-            padding = _props$attributes.padding,
-            paddingU = _props$attributes.paddingU,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            btnShadowBlur = _props$attributes.btnShadowBlur,
-            btnShadowColor = _props$attributes.btnShadowColor,
-            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes.btnShadowVertical,
-            btnShadowPosition = _props$attributes.btnShadowPosition;
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            btnText = _props$attributes2.btnText,
+            btnSize = _props$attributes2.btnSize,
+            btnAlign = _props$attributes2.btnAlign,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            effect = _props$attributes2.effect,
+            effectDir = _props$attributes2.effectDir,
+            textColor = _props$attributes2.textColor,
+            textHoverColor = _props$attributes2.textHoverColor,
+            backColor = _props$attributes2.backColor,
+            backHoverColor = _props$attributes2.backHoverColor,
+            slideColor = _props$attributes2.slideColor,
+            textSize = _props$attributes2.textSize,
+            textFontFamily = _props$attributes2.textFontFamily,
+            textWeight = _props$attributes2.textWeight,
+            textLine = _props$attributes2.textLine,
+            textLetter = _props$attributes2.textLetter,
+            textStyle = _props$attributes2.textStyle,
+            textUpper = _props$attributes2.textUpper,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            borderHoverColor = _props$attributes2.borderHoverColor,
+            padding = _props$attributes2.padding,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -17574,86 +18266,6 @@ var deprecatedContent = [{
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { paddingU: "" });
     },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            btnText = _props$attributes2.btnText,
-            btnSize = _props$attributes2.btnSize,
-            btnAlign = _props$attributes2.btnAlign,
-            btnLink = _props$attributes2.btnLink,
-            btnTarget = _props$attributes2.btnTarget,
-            effect = _props$attributes2.effect,
-            effectDir = _props$attributes2.effectDir,
-            textColor = _props$attributes2.textColor,
-            textHoverColor = _props$attributes2.textHoverColor,
-            backColor = _props$attributes2.backColor,
-            backHoverColor = _props$attributes2.backHoverColor,
-            slideColor = _props$attributes2.slideColor,
-            textSize = _props$attributes2.textSize,
-            textFontFamily = _props$attributes2.textFontFamily,
-            textWeight = _props$attributes2.textWeight,
-            textLine = _props$attributes2.textLine,
-            textLetter = _props$attributes2.textLetter,
-            textStyle = _props$attributes2.textStyle,
-            textUpper = _props$attributes2.textUpper,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            borderHoverColor = _props$attributes2.borderHoverColor,
-            padding = _props$attributes2.padding,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition;
-
-        return wp.element.createElement(
-            "div",
-            {
-                id: className + "-wrap-" + id,
-                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            wp.element.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-                }
-            }),
-            wp.element.createElement(RichText.Content, {
-                tagName: "a",
-                value: btnText,
-                className: className + " " + className + "__" + btnSize,
-                href: btnLink,
-                rel: "noopener noreferrer",
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: buttonAttrs_1_4_7,
     save: function save(props) {
         var _props$attributes3 = props.attributes,
             id = _props$attributes3.id,
@@ -17709,6 +18321,86 @@ var deprecatedContent = [{
                 value: btnText,
                 className: className + " " + className + "__" + btnSize,
                 href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: buttonAttrs_1_4_7,
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            btnText = _props$attributes4.btnText,
+            btnSize = _props$attributes4.btnSize,
+            btnAlign = _props$attributes4.btnAlign,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            effect = _props$attributes4.effect,
+            effectDir = _props$attributes4.effectDir,
+            textColor = _props$attributes4.textColor,
+            textHoverColor = _props$attributes4.textHoverColor,
+            backColor = _props$attributes4.backColor,
+            backHoverColor = _props$attributes4.backHoverColor,
+            slideColor = _props$attributes4.slideColor,
+            textSize = _props$attributes4.textSize,
+            textFontFamily = _props$attributes4.textFontFamily,
+            textWeight = _props$attributes4.textWeight,
+            textLine = _props$attributes4.textLine,
+            textLetter = _props$attributes4.textLetter,
+            textStyle = _props$attributes4.textStyle,
+            textUpper = _props$attributes4.textUpper,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            borderHoverColor = _props$attributes4.borderHoverColor,
+            padding = _props$attributes4.padding,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition;
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            wp.element.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
                 target: btnTarget ? "_blank" : "_self",
                 style: {
                     color: textColor,
@@ -17737,41 +18429,41 @@ var deprecatedContent = [{
         return Object.assign(attributes, { textFontFamily: "" });
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            btnText = _props$attributes4.btnText,
-            btnSize = _props$attributes4.btnSize,
-            btnAlign = _props$attributes4.btnAlign,
-            btnLink = _props$attributes4.btnLink,
-            btnTarget = _props$attributes4.btnTarget,
-            effect = _props$attributes4.effect,
-            effectDir = _props$attributes4.effectDir,
-            textColor = _props$attributes4.textColor,
-            textHoverColor = _props$attributes4.textHoverColor,
-            backColor = _props$attributes4.backColor,
-            backHoverColor = _props$attributes4.backHoverColor,
-            slideColor = _props$attributes4.slideColor,
-            textSize = _props$attributes4.textSize,
-            textWeight = _props$attributes4.textWeight,
-            textLine = _props$attributes4.textLine,
-            textLetter = _props$attributes4.textLetter,
-            textStyle = _props$attributes4.textStyle,
-            textUpper = _props$attributes4.textUpper,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            borderHoverColor = _props$attributes4.borderHoverColor,
-            padding = _props$attributes4.padding,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            btnText = _props$attributes5.btnText,
+            btnSize = _props$attributes5.btnSize,
+            btnAlign = _props$attributes5.btnAlign,
+            btnLink = _props$attributes5.btnLink,
+            btnTarget = _props$attributes5.btnTarget,
+            effect = _props$attributes5.effect,
+            effectDir = _props$attributes5.effectDir,
+            textColor = _props$attributes5.textColor,
+            textHoverColor = _props$attributes5.textHoverColor,
+            backColor = _props$attributes5.backColor,
+            backHoverColor = _props$attributes5.backHoverColor,
+            slideColor = _props$attributes5.slideColor,
+            textSize = _props$attributes5.textSize,
+            textWeight = _props$attributes5.textWeight,
+            textLine = _props$attributes5.textLine,
+            textLetter = _props$attributes5.textLetter,
+            textStyle = _props$attributes5.textStyle,
+            textUpper = _props$attributes5.textUpper,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            borderHoverColor = _props$attributes5.borderHoverColor,
+            padding = _props$attributes5.padding,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -17817,40 +18509,40 @@ var deprecatedContent = [{
         return Object.assign(attributes, { borderHoverColor: "" });
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            btnText = _props$attributes5.btnText,
-            btnSize = _props$attributes5.btnSize,
-            btnAlign = _props$attributes5.btnAlign,
-            btnLink = _props$attributes5.btnLink,
-            btnTarget = _props$attributes5.btnTarget,
-            effect = _props$attributes5.effect,
-            effectDir = _props$attributes5.effectDir,
-            textColor = _props$attributes5.textColor,
-            textHoverColor = _props$attributes5.textHoverColor,
-            backColor = _props$attributes5.backColor,
-            backHoverColor = _props$attributes5.backHoverColor,
-            slideColor = _props$attributes5.slideColor,
-            textSize = _props$attributes5.textSize,
-            textWeight = _props$attributes5.textWeight,
-            textLine = _props$attributes5.textLine,
-            textLetter = _props$attributes5.textLetter,
-            textStyle = _props$attributes5.textStyle,
-            textUpper = _props$attributes5.textUpper,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            padding = _props$attributes5.padding,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            btnText = _props$attributes6.btnText,
+            btnSize = _props$attributes6.btnSize,
+            btnAlign = _props$attributes6.btnAlign,
+            btnLink = _props$attributes6.btnLink,
+            btnTarget = _props$attributes6.btnTarget,
+            effect = _props$attributes6.effect,
+            effectDir = _props$attributes6.effectDir,
+            textColor = _props$attributes6.textColor,
+            textHoverColor = _props$attributes6.textHoverColor,
+            backColor = _props$attributes6.backColor,
+            backHoverColor = _props$attributes6.backHoverColor,
+            slideColor = _props$attributes6.slideColor,
+            textSize = _props$attributes6.textSize,
+            textWeight = _props$attributes6.textWeight,
+            textLine = _props$attributes6.textLine,
+            textLetter = _props$attributes6.textLetter,
+            textStyle = _props$attributes6.textStyle,
+            textUpper = _props$attributes6.textUpper,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            padding = _props$attributes6.padding,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -17903,35 +18595,35 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            btnText = _props$attributes6.btnText,
-            btnSize = _props$attributes6.btnSize,
-            btnAlign = _props$attributes6.btnAlign,
-            btnLink = _props$attributes6.btnLink,
-            btnTarget = _props$attributes6.btnTarget,
-            effect = _props$attributes6.effect,
-            effectDir = _props$attributes6.effectDir,
-            textColor = _props$attributes6.textColor,
-            textHoverColor = _props$attributes6.textHoverColor,
-            backColor = _props$attributes6.backColor,
-            backHoverColor = _props$attributes6.backHoverColor,
-            slideColor = _props$attributes6.slideColor,
-            textSize = _props$attributes6.textSize,
-            textWeight = _props$attributes6.textWeight,
-            textLine = _props$attributes6.textLine,
-            textLetter = _props$attributes6.textLetter,
-            textStyle = _props$attributes6.textStyle,
-            textUpper = _props$attributes6.textUpper,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            padding = _props$attributes6.padding,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            btnText = _props$attributes7.btnText,
+            btnSize = _props$attributes7.btnSize,
+            btnAlign = _props$attributes7.btnAlign,
+            btnLink = _props$attributes7.btnLink,
+            btnTarget = _props$attributes7.btnTarget,
+            effect = _props$attributes7.effect,
+            effectDir = _props$attributes7.effectDir,
+            textColor = _props$attributes7.textColor,
+            textHoverColor = _props$attributes7.textHoverColor,
+            backColor = _props$attributes7.backColor,
+            backHoverColor = _props$attributes7.backHoverColor,
+            slideColor = _props$attributes7.slideColor,
+            textSize = _props$attributes7.textSize,
+            textWeight = _props$attributes7.textWeight,
+            textLine = _props$attributes7.textLine,
+            textLetter = _props$attributes7.textLetter,
+            textStyle = _props$attributes7.textStyle,
+            textUpper = _props$attributes7.textUpper,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            padding = _props$attributes7.padding,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical;
 
         return wp.element.createElement(
             "div",
@@ -17975,12 +18667,12 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(189);
@@ -18308,20 +19000,20 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__ = __webpack_require__(6);
@@ -19049,53 +19741,11 @@ var edit = function (_Component) {
                             allowReset: true
                         })
                     ),
-                    wp.element.createElement(
-                        PanelBody,
-                        {
-                            title: __("Spacings"),
-                            className: "premium-panel-body-inner",
-                            initialOpen: false
-                        },
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Margin__["a" /* default */], {
-                            directions: ["top", "bottom"],
-                            marginTop: titleT,
-                            marginBottom: titleB,
-                            marginTopTablet: titleTTablet,
-                            marginBottomTablet: titleBTablet,
-                            marginTopMobile: titleTMobile,
-                            marginBottomMobile: titleBMobile,
-                            onChangeMarTop: function onChangeMarTop(device) {
-                                if (device === "Desktop") {
-                                    (function (newValue) {
-                                        return setAttributes({ titleT: newValue });
-                                    });
-                                } else if (device === "tablet") {
-                                    (function (valuetablet) {
-                                        return setAttributes({ titleTTablet: valuetablet });
-                                    });
-                                } else {
-                                    (function (valueMobile) {
-                                        return setAttributes({ titleTMobile: valueMobile });
-                                    });
-                                }
-                            },
-                            onChangeMarBottom: function onChangeMarBottom(device) {
-                                if (device === "Desktop") {
-                                    (function (newValue) {
-                                        return setAttributes({ titleB: newValue });
-                                    });
-                                } else if (device === "tablet") {
-                                    (function (valuetablet) {
-                                        return setAttributes({ titleBTablet: valuetablet });
-                                    });
-                                } else {
-                                    (function (valueMobile) {
-                                        return setAttributes({ titleBMobile: valueMobile });
-                                    });
-                                }
-                            }
-                        })
-                    )
+                    wp.element.createElement(PanelBody, {
+                        title: __("Spacings"),
+                        className: "premium-panel-body-inner",
+                        initialOpen: false
+                    })
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -19392,12 +20042,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -19484,6 +20134,231 @@ function styling(props) {
     return styling_css;
 }
 /* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(18);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var __ = wp.i18n.__;
+
+var PremiumMargin = function (_Component) {
+    _inherits(PremiumMargin, _Component);
+
+    function PremiumMargin(props) {
+        _classCallCheck(this, PremiumMargin);
+
+        var _this = _possibleConstructorReturn(this, (PremiumMargin.__proto__ || Object.getPrototypeOf(PremiumMargin)).call(this, props));
+
+        _this.state = {
+            isLinked: false,
+            top: _this.props.marginTop || 0,
+            right: _this.props.marginRight || 0,
+            bottom: _this.props.marginBottom || 0,
+            left: _this.props.marginLeft || 0,
+            directions: _this.props.directions,
+            showUnits: _this.props.showUnits || false
+        };
+
+        _this.onInputChange = _this.onInputChange.bind(_this);
+        _this.onButtonClick = _this.onButtonClick.bind(_this);
+        _this.changeFunction = _this.changeFunction.bind(_this);
+
+        return _this;
+    }
+
+    _createClass(PremiumMargin, [{
+        key: "onButtonClick",
+        value: function onButtonClick() {
+            this.setState({ isLinked: !this.state.isLinked });
+        }
+    }, {
+        key: "changeFunction",
+        value: function changeFunction() {
+            var _state = this.state,
+                top = _state.top,
+                right = _state.right,
+                bottom = _state.bottom,
+                left = _state.left,
+                directions = _state.directions;
+
+            if (directions.includes("all") || directions.includes("top")) {
+                this.props.onChangeMarTop(top);
+            }
+            if (directions.includes("all") || directions.includes("right")) {
+                this.props.onChangeMarRight(right);
+            }
+            if (directions.includes("all") || directions.includes("bottom")) {
+                this.props.onChangeMarBottom(bottom);
+            }
+            if (directions.includes("all") || directions.includes("left")) {
+                this.props.onChangeMarLeft(left);
+            }
+        }
+    }, {
+        key: "onInputChange",
+        value: function onInputChange(event) {
+            var _this2 = this;
+
+            var _state2 = this.state,
+                isLinked = _state2.isLinked,
+                top = _state2.top,
+                right = _state2.right,
+                bottom = _state2.bottom,
+                left = _state2.left;
+            var _event$target = event.target,
+                name = _event$target.name,
+                value = _event$target.value;
+
+            if (isLinked) {
+                top = right = bottom = left = parseInt(value) || 0;
+                this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
+                    _this2.changeFunction();
+                });
+            } else {
+                this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
+                    _this2.changeFunction();
+                });
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _state3 = this.state,
+                top = _state3.top,
+                right = _state3.right,
+                bottom = _state3.bottom,
+                left = _state3.left,
+                directions = _state3.directions,
+                showUnits = _state3.showUnits,
+                isLinked = _state3.isLinked;
+            var _props = this.props,
+                _props$onChangeMarSiz = _props.onChangeMarSizeUnit,
+                onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
+                selectedUnit = _props.selectedUnit;
+
+
+            return wp.element.createElement(
+                "div",
+                { className: "premium-control-group" },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-control-label-container" },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-label" },
+                        wp.element.createElement(
+                            "strong",
+                            null,
+                            __("Margin")
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-control-units" },
+                        showUnits && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__premium_size_units__["a" /* default */], {
+                            activeUnit: selectedUnit,
+                            onChangeSizeUnit: onChangeMarSizeUnit
+                        })
+                    )
+                ),
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-controls-container" },
+                    (directions.includes("all") || directions.includes("top")) && wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "top",
+                            value: top || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Top"
+                        )
+                    ),
+                    (directions.includes("all") || directions.includes("right")) && wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "right",
+                            value: right || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Right"
+                        )
+                    ),
+                    (directions.includes("all") || directions.includes("bottom")) && wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "bottom",
+                            value: bottom || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Bottom"
+                        )
+                    ),
+                    (directions.includes("all") || directions.includes("left")) && wp.element.createElement(
+                        "div",
+                        { className: "premium-control-wrapper" },
+                        wp.element.createElement("input", {
+                            type: "number",
+                            name: "left",
+                            value: left || 0,
+                            onChange: this.onInputChange
+                        }),
+                        wp.element.createElement(
+                            "label",
+                            { className: "premium-control-label" },
+                            "Left"
+                        )
+                    ),
+                    (directions.length > 1 || directions.includes("all")) && wp.element.createElement(
+                        "div",
+                        null,
+                        wp.element.createElement("button", {
+                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                            onClick: this.onButtonClick
+                        })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return PremiumMargin;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PremiumMargin);
 
 /***/ }),
 /* 188 */
@@ -21748,11 +22623,11 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(69);
+var ReactIs = __webpack_require__(67);
 var assign = __webpack_require__(21);
 
-var ReactPropTypesSecret = __webpack_require__(37);
-var checkPropTypes = __webpack_require__(36);
+var ReactPropTypesSecret = __webpack_require__(36);
+var checkPropTypes = __webpack_require__(35);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -22324,7 +23199,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(37);
+var ReactPropTypesSecret = __webpack_require__(36);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -22504,7 +23379,51 @@ var dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
-    firstPadding: {
+    firstPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLMobile: {
         type: "number",
         default: "0"
     },
@@ -22619,7 +23538,51 @@ var dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
-    secondPadding: {
+    secondPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLMobile: {
         type: "number",
         default: "0"
     },
@@ -22760,10 +23723,10 @@ registerBlockType("premium/dheading-block", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(2);
@@ -22864,7 +23827,18 @@ var edit = function (_Component) {
                 firstBorderLeft = _props$attributes.firstBorderLeft,
                 firstBorderRadius = _props$attributes.firstBorderRadius,
                 firstBorderColor = _props$attributes.firstBorderColor,
-                firstPadding = _props$attributes.firstPadding,
+                firstPaddingT = _props$attributes.firstPaddingT,
+                firstPaddingR = _props$attributes.firstPaddingR,
+                firstPaddingB = _props$attributes.firstPaddingB,
+                firstPaddingL = _props$attributes.firstPaddingL,
+                firstPaddingTTablet = _props$attributes.firstPaddingTTablet,
+                firstPaddingRTablet = _props$attributes.firstPaddingRTablet,
+                firstPaddingBTablet = _props$attributes.firstPaddingBTablet,
+                firstPaddingLTablet = _props$attributes.firstPaddingLTablet,
+                firstPaddingTMobile = _props$attributes.firstPaddingTMobile,
+                firstPaddingRMobile = _props$attributes.firstPaddingRMobile,
+                firstPaddingBMobile = _props$attributes.firstPaddingBMobile,
+                firstPaddingLMobile = _props$attributes.firstPaddingLMobile,
                 firstMarginR = _props$attributes.firstMarginR,
                 firstMarginL = _props$attributes.firstMarginL,
                 firstMarginRTablet = _props$attributes.firstMarginRTablet,
@@ -22899,7 +23873,18 @@ var edit = function (_Component) {
                 secondBorderLeft = _props$attributes.secondBorderLeft,
                 secondBorderRadius = _props$attributes.secondBorderRadius,
                 secondBorderColor = _props$attributes.secondBorderColor,
-                secondPadding = _props$attributes.secondPadding,
+                secondPaddingT = _props$attributes.secondPaddingT,
+                secondPaddingR = _props$attributes.secondPaddingR,
+                secondPaddingB = _props$attributes.secondPaddingB,
+                secondPaddingL = _props$attributes.secondPaddingL,
+                secondPaddingTTablet = _props$attributes.secondPaddingTTablet,
+                secondPaddingRTablet = _props$attributes.secondPaddingRTablet,
+                secondPaddingBTablet = _props$attributes.secondPaddingBTablet,
+                secondPaddingLTablet = _props$attributes.secondPaddingLTablet,
+                secondPaddingTMobile = _props$attributes.secondPaddingTMobile,
+                secondPaddingRMobile = _props$attributes.secondPaddingRMobile,
+                secondPaddingBMobile = _props$attributes.secondPaddingBMobile,
+                secondPaddingLMobile = _props$attributes.secondPaddingLMobile,
                 secondMarginL = _props$attributes.secondMarginL,
                 secondMarginR = _props$attributes.secondMarginR,
                 secondClip = _props$attributes.secondClip,
@@ -23284,45 +24269,6 @@ var edit = function (_Component) {
                             return setAttributes({ firstShadowVertical: newValue || "0" });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["left", "right"],
-                        marginRight: firstMarginR,
-                        marginLeft: firstMarginL,
-                        marginRightTablet: firstMarginRTablet,
-                        marginLeftTablet: firstMarginLTablet,
-                        marginRightMobile: firstMarginRMobile,
-                        marginLeftMobile: firstMarginLMobile,
-                        onChangeMarRight: function onChangeMarRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginLMobile: valueMobile });
-                                });
-                            }
-                        }
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: firstPaddingT,
                         paddingRight: firstPaddingR,
@@ -23336,65 +24282,41 @@ var edit = function (_Component) {
                         paddingRightMobile: firstPaddingRMobile,
                         paddingBottomMobile: firstPaddingBMobile,
                         paddingLeftMobile: firstPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstPaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstPaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstPaddingTMobile: valueMobile });
-                                });
-                            }
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ firstPaddingT: val });
                         },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstPaddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstPaddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstPaddingRMobile: 20 });
-                                });
-                            }
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ firstPaddingR: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstPaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstPaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstPaddingBMobile: valueMobile });
-                                });
-                            }
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ firstPaddingB: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstPaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstPaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstPaddingLMobile: valueMobile });
-                                });
-                            }
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ firstPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ firstPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ firstPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ firstPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ firstPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ firstPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ firstPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ firstPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ firstPaddingLMobile: valM });
                         }
                     })
                 ),
@@ -23646,45 +24568,6 @@ var edit = function (_Component) {
                             return setAttributes({ secondShadowVertical: newValue || "0" });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["left", "right"],
-                        marginRight: secondMarginR,
-                        marginLeft: secondMarginL,
-                        marginRightTablet: secondMarginRTablet,
-                        marginLeftTablet: secondMarginLTablet,
-                        marginRightMobile: secondMarginRMobile,
-                        marginLeftMobile: secondMarginLMobile,
-                        onChangeMarRight: function onChangeMarRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondMarginLMobile: valueMobile });
-                                });
-                            }
-                        }
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: secondPaddingT,
                         paddingRight: secondPaddingR,
@@ -23698,66 +24581,43 @@ var edit = function (_Component) {
                         paddingRightMobile: secondPaddingRMobile,
                         paddingBottomMobile: secondPaddingBMobile,
                         paddingLeftMobile: secondPaddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondPaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondPaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondPaddingTMobile: valueMobile });
-                                });
-                            }
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ secondPaddingT: val });
                         },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondPaddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondPaddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondPaddingRMobile: 20 });
-                                });
-                            }
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ secondPaddingR: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondPaddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondPaddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondPaddingBMobile: valueMobile });
-                                });
-                            }
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ secondPaddingB: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ secondPaddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ secondPaddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ secondPaddingLMobile: valueMobile });
-                                });
-                            }
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ secondPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ secondPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ secondPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ secondPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ secondPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ secondPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ secondPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ secondPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ secondPaddingLMobile: valM });
                         }
+
                     })
                 ),
                 wp.element.createElement(
@@ -23906,7 +24766,6 @@ var edit = function (_Component) {
                                     borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
                                     borderRadius: firstBorderRadius + "px",
                                     borderColor: firstBorderColor,
-                                    padding: firstPadding + "px",
                                     marginLeft: firstMarginL + "px",
                                     marginRight: firstMarginR + "px",
                                     textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
@@ -23932,7 +24791,6 @@ var edit = function (_Component) {
                                     borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
                                     borderRadius: secondBorderRadius + "px",
                                     borderColor: secondBorderColor,
-                                    padding: secondPadding + "px",
                                     marginLeft: secondMarginL + "px",
                                     marginRight: secondMarginR + "px",
                                     textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
@@ -23963,8 +24821,8 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -23979,7 +24837,31 @@ function styling(props) {
         secondSize = _props$attributes.secondSize,
         secondSizeUnit = _props$attributes.secondSizeUnit,
         secondSizeTablet = _props$attributes.secondSizeTablet,
-        secondSizeMobile = _props$attributes.secondSizeMobile;
+        secondSizeMobile = _props$attributes.secondSizeMobile,
+        firstPaddingT = _props$attributes.firstPaddingT,
+        firstPaddingR = _props$attributes.firstPaddingR,
+        firstPaddingB = _props$attributes.firstPaddingB,
+        firstPaddingL = _props$attributes.firstPaddingL,
+        firstPaddingTTablet = _props$attributes.firstPaddingTTablet,
+        firstPaddingRTablet = _props$attributes.firstPaddingRTablet,
+        firstPaddingBTablet = _props$attributes.firstPaddingBTablet,
+        firstPaddingLTablet = _props$attributes.firstPaddingLTablet,
+        firstPaddingTMobile = _props$attributes.firstPaddingTMobile,
+        firstPaddingRMobile = _props$attributes.firstPaddingRMobile,
+        firstPaddingBMobile = _props$attributes.firstPaddingBMobile,
+        firstPaddingLMobile = _props$attributes.firstPaddingLMobile,
+        secondPaddingT = _props$attributes.secondPaddingT,
+        secondPaddingR = _props$attributes.secondPaddingR,
+        secondPaddingB = _props$attributes.secondPaddingB,
+        secondPaddingL = _props$attributes.secondPaddingL,
+        secondPaddingTTablet = _props$attributes.secondPaddingTTablet,
+        secondPaddingRTablet = _props$attributes.secondPaddingRTablet,
+        secondPaddingBTablet = _props$attributes.secondPaddingBTablet,
+        secondPaddingLTablet = _props$attributes.secondPaddingLTablet,
+        secondPaddingTMobile = _props$attributes.secondPaddingTMobile,
+        secondPaddingRMobile = _props$attributes.secondPaddingRMobile,
+        secondPaddingBMobile = _props$attributes.secondPaddingBMobile,
+        secondPaddingLMobile = _props$attributes.secondPaddingLMobile;
 
 
     var selectors = {};
@@ -23988,26 +24870,50 @@ function styling(props) {
 
     selectors = {
         " .premium-dheading-block__first": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSize, firstSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSize, firstSizeUnit),
+            "padding-top": firstPaddingT + 'px',
+            "padding-right": firstPaddingR + 'px',
+            "padding-bottom": firstPaddingB + 'px',
+            "padding-left": firstPaddingL + 'px'
         },
         " .premium-dheading-block__second": {
-            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSize, secondSizeUnit)
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSize, secondSizeUnit),
+            "padding-top": secondPaddingT + 'px',
+            "padding-right": secondPaddingR + 'px',
+            "padding-bottom": secondPaddingB + 'px',
+            "padding-left": secondPaddingL + 'px'
         }
     };
     tablet_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeTablet, firstSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeTablet, firstSizeUnit),
+            "padding-top": firstPaddingTTablet + 'px',
+            "padding-right": firstPaddingRTablet + 'px',
+            "padding-bottom": firstPaddingBTablet + 'px',
+            "padding-left": firstPaddingLTablet + 'px'
         },
         " .premium-dheading-block__second": {
-            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeTablet, secondSizeUnit)
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeTablet, secondSizeUnit),
+            "padding-top": secondPaddingTTablet + 'px',
+            "padding-right": secondPaddingRTablet + 'px',
+            "padding-bottom": secondPaddingBTablet + 'px',
+            "padding-left": secondPaddingLTablet + 'px'
         }
     };
     mobile_selectors = {
         " .premium-dheading-block__first": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeMobile, firstSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeMobile, firstSizeUnit),
+            "padding-top": firstPaddingTMobile + 'px',
+            "padding-right": firstPaddingRMobile + 'px',
+            "padding-bottom": firstPaddingBMobile + 'px',
+            "padding-left": firstPaddingLMobile + 'px'
         },
         " .premium-dheading-block__second": {
-            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeMobile, secondSizeUnit)
+            'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeMobile, secondSizeUnit),
+            "padding-top": secondPaddingTMobile + 'px',
+            "padding-right": secondPaddingRMobile + 'px',
+            "padding-bottom": secondPaddingBMobile + 'px',
+            "padding-left": secondPaddingLMobile + 'px'
         }
     };
 
@@ -24170,7 +25076,6 @@ var save = function save(props) {
                             borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
-                            padding: firstPadding + "px",
                             margin: firstMargin + "px",
                             textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
                         }
@@ -24195,7 +25100,6 @@ var save = function save(props) {
                             borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
-                            padding: secondPadding + "px",
                             margin: secondMargin + "px",
                             textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
                         }
@@ -24804,7 +25708,308 @@ var newAttributes_1_9_5 = (_newAttributes_1_9_ = {
 
 var deprecated_attributes_1_9_5 = Object.assign(deprecated_attributes_1_9_2, newAttributes_1_9_5);
 
+var newAttributes_1_8_1 = {
+    firstPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLMobile: {
+        type: "number",
+        default: "0"
+    }
+};
+
+var deprecated_attributes_1_8_1 = Object.assign(deprecated_attributes_1_9_5, newAttributes_1_8_1);
+
 var deprecatedContent = [{
+    attributes: deprecated_attributes_1_8_1,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstPaddingT: "",
+            firstPaddingR: "",
+            firstPaddingB: "",
+            firstPaddingL: "",
+            firstPaddingTTablet: "",
+            firstPaddingRTablet: "",
+            firstPaddingBTablet: "",
+            firstPaddingLTablet: "",
+            firstPaddingTMobile: "",
+            firstPaddingRMobile: "",
+            firstPaddingBMobile: "",
+            firstPaddingLMobile: "",
+            secondPaddingT: "",
+            secondPaddingR: "",
+            secondPaddingB: "",
+            secondPaddingL: "",
+            secondPaddingTTablet: "",
+            secondPaddingRTablet: "",
+            secondPaddingBTablet: "",
+            secondPaddingLTablet: "",
+            secondPaddingTMobile: "",
+            secondPaddingRMobile: "",
+            secondPaddingBMobile: "",
+            secondPaddingLMobile: ""
+        };
+        return Object.assign(newAttributes, attributes);
+    },
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            contentAlign = _props$attributes.contentAlign,
+            firstHeading = _props$attributes.firstHeading,
+            secondHeading = _props$attributes.secondHeading,
+            display = _props$attributes.display,
+            firstColor = _props$attributes.firstColor,
+            firstBackground = _props$attributes.firstBackground,
+            firstFamily = _props$attributes.firstFamily,
+            firstStyle = _props$attributes.firstStyle,
+            firstUpper = _props$attributes.firstUpper,
+            firstLetter = _props$attributes.firstLetter,
+            firstWeight = _props$attributes.firstWeight,
+            firstBorderType = _props$attributes.firstBorderType,
+            firstBorderWidth = _props$attributes.firstBorderWidth,
+            firstBorderTop = _props$attributes.firstBorderTop,
+            firstBorderRight = _props$attributes.firstBorderRight,
+            firstBorderBottom = _props$attributes.firstBorderBottom,
+            firstBorderLeft = _props$attributes.firstBorderLeft,
+            firstBorderRadius = _props$attributes.firstBorderRadius,
+            firstBorderColor = _props$attributes.firstBorderColor,
+            firstPadding = _props$attributes.firstPadding,
+            firstMargin = _props$attributes.firstMargin,
+            firstClip = _props$attributes.firstClip,
+            firstAnim = _props$attributes.firstAnim,
+            firstStroke = _props$attributes.firstStroke,
+            firstClipColor = _props$attributes.firstClipColor,
+            firstShadowBlur = _props$attributes.firstShadowBlur,
+            firstShadowColor = _props$attributes.firstShadowColor,
+            firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes.firstShadowVertical,
+            secondColor = _props$attributes.secondColor,
+            secondBackground = _props$attributes.secondBackground,
+            secondFamily = _props$attributes.secondFamily,
+            secondLetter = _props$attributes.secondLetter,
+            secondUpper = _props$attributes.secondUpper,
+            secondWeight = _props$attributes.secondWeight,
+            secondStyle = _props$attributes.secondStyle,
+            secondBorderType = _props$attributes.secondBorderType,
+            secondBorderWidth = _props$attributes.secondBorderWidth,
+            secondBorderTop = _props$attributes.secondBorderTop,
+            secondBorderRight = _props$attributes.secondBorderRight,
+            secondBorderBottom = _props$attributes.secondBorderBottom,
+            secondBorderLeft = _props$attributes.secondBorderLeft,
+            secondBorderRadius = _props$attributes.secondBorderRadius,
+            secondBorderColor = _props$attributes.secondBorderColor,
+            secondPadding = _props$attributes.secondPadding,
+            secondMargin = _props$attributes.secondMargin,
+            secondClip = _props$attributes.secondClip,
+            secondStroke = _props$attributes.secondStroke,
+            secondAnim = _props$attributes.secondAnim,
+            secondClipColor = _props$attributes.secondClipColor,
+            secondShadowBlur = _props$attributes.secondShadowBlur,
+            secondShadowColor = _props$attributes.secondShadowColor,
+            secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes.secondShadowVertical,
+            link = _props$attributes.link,
+            target = _props$attributes.target,
+            headingURL = _props$attributes.headingURL,
+            containerBack = _props$attributes.containerBack,
+            imageURL = _props$attributes.imageURL,
+            fixed = _props$attributes.fixed,
+            backgroundRepeat = _props$attributes.backgroundRepeat,
+            backgroundPosition = _props$attributes.backgroundPosition,
+            backgroundSize = _props$attributes.backgroundSize,
+            containerBorderType = _props$attributes.containerBorderType,
+            containerBorderWidth = _props$attributes.containerBorderWidth,
+            containerBorderTop = _props$attributes.containerBorderTop,
+            containerBorderRight = _props$attributes.containerBorderRight,
+            containerBorderBottom = _props$attributes.containerBorderBottom,
+            containerBorderLeft = _props$attributes.containerBorderLeft,
+            containerBorderRadius = _props$attributes.containerBorderRadius,
+            containerBorderColor = _props$attributes.containerBorderColor,
+            firstBorder = _props$attributes.firstBorder,
+            secondBorder = _props$attributes.secondBorder,
+            containerBorder = _props$attributes.containerBorder,
+            firstOpacity = _props$attributes.firstOpacity,
+            secondOpacity = _props$attributes.secondOpacity,
+            containerOpacity = _props$attributes.containerOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-dheading-block-" + block_id,
+                className: className + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    borderStyle: containerBorderType,
+                    borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
+                    borderRadius: containerBorderRadius + "px",
+                    borderColor: containerBorderColor
+                }
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                wp.element.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    wp.element.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground ? hexToRgba(firstBackground, firstOpacity) : "transparent",
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                borderStyle: firstBorderType,
+                                borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    wp.element.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground ? hexToRgba(secondBackground, secondOpacity) : "transparent",
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                borderStyle: secondBorderType,
+                                borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && wp.element.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
     attributes: deprecated_attributes_1_9_5,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -24842,68 +26047,68 @@ var deprecatedContent = [{
     },
     save: function save(props) {
         var className = props.className;
-        var _props$attributes = props.attributes,
-            contentAlign = _props$attributes.contentAlign,
-            firstHeading = _props$attributes.firstHeading,
-            secondHeading = _props$attributes.secondHeading,
-            display = _props$attributes.display,
-            firstColor = _props$attributes.firstColor,
-            firstBackground = _props$attributes.firstBackground,
-            firstSize = _props$attributes.firstSize,
-            firstFamily = _props$attributes.firstFamily,
-            firstStyle = _props$attributes.firstStyle,
-            firstUpper = _props$attributes.firstUpper,
-            firstLetter = _props$attributes.firstLetter,
-            firstWeight = _props$attributes.firstWeight,
-            firstBorderType = _props$attributes.firstBorderType,
-            firstBorderWidth = _props$attributes.firstBorderWidth,
-            firstBorderRadius = _props$attributes.firstBorderRadius,
-            firstBorderColor = _props$attributes.firstBorderColor,
-            firstPadding = _props$attributes.firstPadding,
-            firstMargin = _props$attributes.firstMargin,
-            firstClip = _props$attributes.firstClip,
-            firstAnim = _props$attributes.firstAnim,
-            firstStroke = _props$attributes.firstStroke,
-            firstClipColor = _props$attributes.firstClipColor,
-            firstShadowBlur = _props$attributes.firstShadowBlur,
-            firstShadowColor = _props$attributes.firstShadowColor,
-            firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes.firstShadowVertical,
-            secondColor = _props$attributes.secondColor,
-            secondBackground = _props$attributes.secondBackground,
-            secondSize = _props$attributes.secondSize,
-            secondFamily = _props$attributes.secondFamily,
-            secondLetter = _props$attributes.secondLetter,
-            secondUpper = _props$attributes.secondUpper,
-            secondWeight = _props$attributes.secondWeight,
-            secondStyle = _props$attributes.secondStyle,
-            secondBorderType = _props$attributes.secondBorderType,
-            secondBorderWidth = _props$attributes.secondBorderWidth,
-            secondBorderRadius = _props$attributes.secondBorderRadius,
-            secondBorderColor = _props$attributes.secondBorderColor,
-            secondPadding = _props$attributes.secondPadding,
-            secondMargin = _props$attributes.secondMargin,
-            secondClip = _props$attributes.secondClip,
-            secondStroke = _props$attributes.secondStroke,
-            secondAnim = _props$attributes.secondAnim,
-            secondClipColor = _props$attributes.secondClipColor,
-            secondShadowBlur = _props$attributes.secondShadowBlur,
-            secondShadowColor = _props$attributes.secondShadowColor,
-            secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes.secondShadowVertical,
-            link = _props$attributes.link,
-            target = _props$attributes.target,
-            headingURL = _props$attributes.headingURL,
-            containerBack = _props$attributes.containerBack,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            containerBorderType = _props$attributes.containerBorderType,
-            containerBorderWidth = _props$attributes.containerBorderWidth,
-            containerBorderRadius = _props$attributes.containerBorderRadius,
-            containerBorderColor = _props$attributes.containerBorderColor;
+        var _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            firstHeading = _props$attributes2.firstHeading,
+            secondHeading = _props$attributes2.secondHeading,
+            display = _props$attributes2.display,
+            firstColor = _props$attributes2.firstColor,
+            firstBackground = _props$attributes2.firstBackground,
+            firstSize = _props$attributes2.firstSize,
+            firstFamily = _props$attributes2.firstFamily,
+            firstStyle = _props$attributes2.firstStyle,
+            firstUpper = _props$attributes2.firstUpper,
+            firstLetter = _props$attributes2.firstLetter,
+            firstWeight = _props$attributes2.firstWeight,
+            firstBorderType = _props$attributes2.firstBorderType,
+            firstBorderWidth = _props$attributes2.firstBorderWidth,
+            firstBorderRadius = _props$attributes2.firstBorderRadius,
+            firstBorderColor = _props$attributes2.firstBorderColor,
+            firstPadding = _props$attributes2.firstPadding,
+            firstMargin = _props$attributes2.firstMargin,
+            firstClip = _props$attributes2.firstClip,
+            firstAnim = _props$attributes2.firstAnim,
+            firstStroke = _props$attributes2.firstStroke,
+            firstClipColor = _props$attributes2.firstClipColor,
+            firstShadowBlur = _props$attributes2.firstShadowBlur,
+            firstShadowColor = _props$attributes2.firstShadowColor,
+            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes2.firstShadowVertical,
+            secondColor = _props$attributes2.secondColor,
+            secondBackground = _props$attributes2.secondBackground,
+            secondSize = _props$attributes2.secondSize,
+            secondFamily = _props$attributes2.secondFamily,
+            secondLetter = _props$attributes2.secondLetter,
+            secondUpper = _props$attributes2.secondUpper,
+            secondWeight = _props$attributes2.secondWeight,
+            secondStyle = _props$attributes2.secondStyle,
+            secondBorderType = _props$attributes2.secondBorderType,
+            secondBorderWidth = _props$attributes2.secondBorderWidth,
+            secondBorderRadius = _props$attributes2.secondBorderRadius,
+            secondBorderColor = _props$attributes2.secondBorderColor,
+            secondPadding = _props$attributes2.secondPadding,
+            secondMargin = _props$attributes2.secondMargin,
+            secondClip = _props$attributes2.secondClip,
+            secondStroke = _props$attributes2.secondStroke,
+            secondAnim = _props$attributes2.secondAnim,
+            secondClipColor = _props$attributes2.secondClipColor,
+            secondShadowBlur = _props$attributes2.secondShadowBlur,
+            secondShadowColor = _props$attributes2.secondShadowColor,
+            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes2.secondShadowVertical,
+            link = _props$attributes2.link,
+            target = _props$attributes2.target,
+            headingURL = _props$attributes2.headingURL,
+            containerBack = _props$attributes2.containerBack,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            containerBorderType = _props$attributes2.containerBorderType,
+            containerBorderWidth = _props$attributes2.containerBorderWidth,
+            containerBorderRadius = _props$attributes2.containerBorderRadius,
+            containerBorderColor = _props$attributes2.containerBorderColor;
 
 
         var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
@@ -25004,66 +26209,66 @@ var deprecatedContent = [{
     },
     save: function save(props) {
         var className = props.className;
-        var _props$attributes2 = props.attributes,
-            contentAlign = _props$attributes2.contentAlign,
-            firstHeading = _props$attributes2.firstHeading,
-            secondHeading = _props$attributes2.secondHeading,
-            display = _props$attributes2.display,
-            firstColor = _props$attributes2.firstColor,
-            firstBackground = _props$attributes2.firstBackground,
-            firstSize = _props$attributes2.firstSize,
-            firstFamily = _props$attributes2.firstFamily,
-            firstStyle = _props$attributes2.firstStyle,
-            firstUpper = _props$attributes2.firstUpper,
-            firstLetter = _props$attributes2.firstLetter,
-            firstWeight = _props$attributes2.firstWeight,
-            firstBorderType = _props$attributes2.firstBorderType,
-            firstBorderWidth = _props$attributes2.firstBorderWidth,
-            firstBorderRadius = _props$attributes2.firstBorderRadius,
-            firstBorderColor = _props$attributes2.firstBorderColor,
-            firstPadding = _props$attributes2.firstPadding,
-            firstMargin = _props$attributes2.firstMargin,
-            firstClip = _props$attributes2.firstClip,
-            firstAnim = _props$attributes2.firstAnim,
-            firstClipColor = _props$attributes2.firstClipColor,
-            firstShadowBlur = _props$attributes2.firstShadowBlur,
-            firstShadowColor = _props$attributes2.firstShadowColor,
-            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes2.firstShadowVertical,
-            secondColor = _props$attributes2.secondColor,
-            secondBackground = _props$attributes2.secondBackground,
-            secondSize = _props$attributes2.secondSize,
-            secondFamily = _props$attributes2.secondFamily,
-            secondLetter = _props$attributes2.secondLetter,
-            secondUpper = _props$attributes2.secondUpper,
-            secondWeight = _props$attributes2.secondWeight,
-            secondStyle = _props$attributes2.secondStyle,
-            secondBorderType = _props$attributes2.secondBorderType,
-            secondBorderWidth = _props$attributes2.secondBorderWidth,
-            secondBorderRadius = _props$attributes2.secondBorderRadius,
-            secondBorderColor = _props$attributes2.secondBorderColor,
-            secondPadding = _props$attributes2.secondPadding,
-            secondMargin = _props$attributes2.secondMargin,
-            secondClip = _props$attributes2.secondClip,
-            secondAnim = _props$attributes2.secondAnim,
-            secondClipColor = _props$attributes2.secondClipColor,
-            secondShadowBlur = _props$attributes2.secondShadowBlur,
-            secondShadowColor = _props$attributes2.secondShadowColor,
-            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes2.secondShadowVertical,
-            link = _props$attributes2.link,
-            target = _props$attributes2.target,
-            headingURL = _props$attributes2.headingURL,
-            containerBack = _props$attributes2.containerBack,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            containerBorderType = _props$attributes2.containerBorderType,
-            containerBorderWidth = _props$attributes2.containerBorderWidth,
-            containerBorderRadius = _props$attributes2.containerBorderRadius,
-            containerBorderColor = _props$attributes2.containerBorderColor;
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            firstHeading = _props$attributes3.firstHeading,
+            secondHeading = _props$attributes3.secondHeading,
+            display = _props$attributes3.display,
+            firstColor = _props$attributes3.firstColor,
+            firstBackground = _props$attributes3.firstBackground,
+            firstSize = _props$attributes3.firstSize,
+            firstFamily = _props$attributes3.firstFamily,
+            firstStyle = _props$attributes3.firstStyle,
+            firstUpper = _props$attributes3.firstUpper,
+            firstLetter = _props$attributes3.firstLetter,
+            firstWeight = _props$attributes3.firstWeight,
+            firstBorderType = _props$attributes3.firstBorderType,
+            firstBorderWidth = _props$attributes3.firstBorderWidth,
+            firstBorderRadius = _props$attributes3.firstBorderRadius,
+            firstBorderColor = _props$attributes3.firstBorderColor,
+            firstPadding = _props$attributes3.firstPadding,
+            firstMargin = _props$attributes3.firstMargin,
+            firstClip = _props$attributes3.firstClip,
+            firstAnim = _props$attributes3.firstAnim,
+            firstClipColor = _props$attributes3.firstClipColor,
+            firstShadowBlur = _props$attributes3.firstShadowBlur,
+            firstShadowColor = _props$attributes3.firstShadowColor,
+            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes3.firstShadowVertical,
+            secondColor = _props$attributes3.secondColor,
+            secondBackground = _props$attributes3.secondBackground,
+            secondSize = _props$attributes3.secondSize,
+            secondFamily = _props$attributes3.secondFamily,
+            secondLetter = _props$attributes3.secondLetter,
+            secondUpper = _props$attributes3.secondUpper,
+            secondWeight = _props$attributes3.secondWeight,
+            secondStyle = _props$attributes3.secondStyle,
+            secondBorderType = _props$attributes3.secondBorderType,
+            secondBorderWidth = _props$attributes3.secondBorderWidth,
+            secondBorderRadius = _props$attributes3.secondBorderRadius,
+            secondBorderColor = _props$attributes3.secondBorderColor,
+            secondPadding = _props$attributes3.secondPadding,
+            secondMargin = _props$attributes3.secondMargin,
+            secondClip = _props$attributes3.secondClip,
+            secondAnim = _props$attributes3.secondAnim,
+            secondClipColor = _props$attributes3.secondClipColor,
+            secondShadowBlur = _props$attributes3.secondShadowBlur,
+            secondShadowColor = _props$attributes3.secondShadowColor,
+            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes3.secondShadowVertical,
+            link = _props$attributes3.link,
+            target = _props$attributes3.target,
+            headingURL = _props$attributes3.headingURL,
+            containerBack = _props$attributes3.containerBack,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            containerBorderType = _props$attributes3.containerBorderType,
+            containerBorderWidth = _props$attributes3.containerBorderWidth,
+            containerBorderRadius = _props$attributes3.containerBorderRadius,
+            containerBorderColor = _props$attributes3.containerBorderColor;
 
 
         var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
@@ -25165,62 +26370,62 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            contentAlign = _props$attributes3.contentAlign,
-            firstHeading = _props$attributes3.firstHeading,
-            secondHeading = _props$attributes3.secondHeading,
-            display = _props$attributes3.display,
-            firstColor = _props$attributes3.firstColor,
-            firstBackground = _props$attributes3.firstBackground,
-            firstSize = _props$attributes3.firstSize,
-            firstFamily = _props$attributes3.firstFamily,
-            firstStyle = _props$attributes3.firstStyle,
-            firstUpper = _props$attributes3.firstUpper,
-            firstLetter = _props$attributes3.firstLetter,
-            firstWeight = _props$attributes3.firstWeight,
-            firstBorderType = _props$attributes3.firstBorderType,
-            firstBorderWidth = _props$attributes3.firstBorderWidth,
-            firstBorderRadius = _props$attributes3.firstBorderRadius,
-            firstBorderColor = _props$attributes3.firstBorderColor,
-            firstPadding = _props$attributes3.firstPadding,
-            firstMargin = _props$attributes3.firstMargin,
-            firstClip = _props$attributes3.firstClip,
-            firstAnim = _props$attributes3.firstAnim,
-            firstClipColor = _props$attributes3.firstClipColor,
-            firstShadowBlur = _props$attributes3.firstShadowBlur,
-            firstShadowColor = _props$attributes3.firstShadowColor,
-            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes3.firstShadowVertical,
-            secondColor = _props$attributes3.secondColor,
-            secondBackground = _props$attributes3.secondBackground,
-            secondSize = _props$attributes3.secondSize,
-            secondFamily = _props$attributes3.secondFamily,
-            secondLetter = _props$attributes3.secondLetter,
-            secondUpper = _props$attributes3.secondUpper,
-            secondWeight = _props$attributes3.secondWeight,
-            secondStyle = _props$attributes3.secondStyle,
-            secondBorderType = _props$attributes3.secondBorderType,
-            secondBorderWidth = _props$attributes3.secondBorderWidth,
-            secondBorderRadius = _props$attributes3.secondBorderRadius,
-            secondBorderColor = _props$attributes3.secondBorderColor,
-            secondPadding = _props$attributes3.secondPadding,
-            secondMargin = _props$attributes3.secondMargin,
-            secondClip = _props$attributes3.secondClip,
-            secondAnim = _props$attributes3.secondAnim,
-            secondClipColor = _props$attributes3.secondClipColor,
-            secondShadowBlur = _props$attributes3.secondShadowBlur,
-            secondShadowColor = _props$attributes3.secondShadowColor,
-            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes3.secondShadowVertical,
-            link = _props$attributes3.link,
-            target = _props$attributes3.target,
-            headingURL = _props$attributes3.headingURL,
-            containerBack = _props$attributes3.containerBack,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize;
+        var _props$attributes4 = props.attributes,
+            contentAlign = _props$attributes4.contentAlign,
+            firstHeading = _props$attributes4.firstHeading,
+            secondHeading = _props$attributes4.secondHeading,
+            display = _props$attributes4.display,
+            firstColor = _props$attributes4.firstColor,
+            firstBackground = _props$attributes4.firstBackground,
+            firstSize = _props$attributes4.firstSize,
+            firstFamily = _props$attributes4.firstFamily,
+            firstStyle = _props$attributes4.firstStyle,
+            firstUpper = _props$attributes4.firstUpper,
+            firstLetter = _props$attributes4.firstLetter,
+            firstWeight = _props$attributes4.firstWeight,
+            firstBorderType = _props$attributes4.firstBorderType,
+            firstBorderWidth = _props$attributes4.firstBorderWidth,
+            firstBorderRadius = _props$attributes4.firstBorderRadius,
+            firstBorderColor = _props$attributes4.firstBorderColor,
+            firstPadding = _props$attributes4.firstPadding,
+            firstMargin = _props$attributes4.firstMargin,
+            firstClip = _props$attributes4.firstClip,
+            firstAnim = _props$attributes4.firstAnim,
+            firstClipColor = _props$attributes4.firstClipColor,
+            firstShadowBlur = _props$attributes4.firstShadowBlur,
+            firstShadowColor = _props$attributes4.firstShadowColor,
+            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes4.firstShadowVertical,
+            secondColor = _props$attributes4.secondColor,
+            secondBackground = _props$attributes4.secondBackground,
+            secondSize = _props$attributes4.secondSize,
+            secondFamily = _props$attributes4.secondFamily,
+            secondLetter = _props$attributes4.secondLetter,
+            secondUpper = _props$attributes4.secondUpper,
+            secondWeight = _props$attributes4.secondWeight,
+            secondStyle = _props$attributes4.secondStyle,
+            secondBorderType = _props$attributes4.secondBorderType,
+            secondBorderWidth = _props$attributes4.secondBorderWidth,
+            secondBorderRadius = _props$attributes4.secondBorderRadius,
+            secondBorderColor = _props$attributes4.secondBorderColor,
+            secondPadding = _props$attributes4.secondPadding,
+            secondMargin = _props$attributes4.secondMargin,
+            secondClip = _props$attributes4.secondClip,
+            secondAnim = _props$attributes4.secondAnim,
+            secondClipColor = _props$attributes4.secondClipColor,
+            secondShadowBlur = _props$attributes4.secondShadowBlur,
+            secondShadowColor = _props$attributes4.secondShadowColor,
+            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes4.secondShadowVertical,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target,
+            headingURL = _props$attributes4.headingURL,
+            containerBack = _props$attributes4.containerBack,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize;
 
 
         return wp.element.createElement(
@@ -25314,60 +26519,60 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            contentAlign = _props$attributes4.contentAlign,
-            firstHeading = _props$attributes4.firstHeading,
-            secondHeading = _props$attributes4.secondHeading,
-            display = _props$attributes4.display,
-            firstColor = _props$attributes4.firstColor,
-            firstBackground = _props$attributes4.firstBackground,
-            firstSize = _props$attributes4.firstSize,
-            firstStyle = _props$attributes4.firstStyle,
-            firstUpper = _props$attributes4.firstUpper,
-            firstLetter = _props$attributes4.firstLetter,
-            firstWeight = _props$attributes4.firstWeight,
-            firstBorderType = _props$attributes4.firstBorderType,
-            firstBorderWidth = _props$attributes4.firstBorderWidth,
-            firstBorderRadius = _props$attributes4.firstBorderRadius,
-            firstBorderColor = _props$attributes4.firstBorderColor,
-            firstPadding = _props$attributes4.firstPadding,
-            firstMargin = _props$attributes4.firstMargin,
-            firstClip = _props$attributes4.firstClip,
-            firstAnim = _props$attributes4.firstAnim,
-            firstClipColor = _props$attributes4.firstClipColor,
-            firstShadowBlur = _props$attributes4.firstShadowBlur,
-            firstShadowColor = _props$attributes4.firstShadowColor,
-            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes4.firstShadowVertical,
-            secondColor = _props$attributes4.secondColor,
-            secondBackground = _props$attributes4.secondBackground,
-            secondSize = _props$attributes4.secondSize,
-            secondLetter = _props$attributes4.secondLetter,
-            secondUpper = _props$attributes4.secondUpper,
-            secondWeight = _props$attributes4.secondWeight,
-            secondStyle = _props$attributes4.secondStyle,
-            secondBorderType = _props$attributes4.secondBorderType,
-            secondBorderWidth = _props$attributes4.secondBorderWidth,
-            secondBorderRadius = _props$attributes4.secondBorderRadius,
-            secondBorderColor = _props$attributes4.secondBorderColor,
-            secondPadding = _props$attributes4.secondPadding,
-            secondMargin = _props$attributes4.secondMargin,
-            secondClip = _props$attributes4.secondClip,
-            secondAnim = _props$attributes4.secondAnim,
-            secondClipColor = _props$attributes4.secondClipColor,
-            secondShadowBlur = _props$attributes4.secondShadowBlur,
-            secondShadowColor = _props$attributes4.secondShadowColor,
-            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes4.secondShadowVertical,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target,
-            headingURL = _props$attributes4.headingURL,
-            containerBack = _props$attributes4.containerBack,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize;
+        var _props$attributes5 = props.attributes,
+            contentAlign = _props$attributes5.contentAlign,
+            firstHeading = _props$attributes5.firstHeading,
+            secondHeading = _props$attributes5.secondHeading,
+            display = _props$attributes5.display,
+            firstColor = _props$attributes5.firstColor,
+            firstBackground = _props$attributes5.firstBackground,
+            firstSize = _props$attributes5.firstSize,
+            firstStyle = _props$attributes5.firstStyle,
+            firstUpper = _props$attributes5.firstUpper,
+            firstLetter = _props$attributes5.firstLetter,
+            firstWeight = _props$attributes5.firstWeight,
+            firstBorderType = _props$attributes5.firstBorderType,
+            firstBorderWidth = _props$attributes5.firstBorderWidth,
+            firstBorderRadius = _props$attributes5.firstBorderRadius,
+            firstBorderColor = _props$attributes5.firstBorderColor,
+            firstPadding = _props$attributes5.firstPadding,
+            firstMargin = _props$attributes5.firstMargin,
+            firstClip = _props$attributes5.firstClip,
+            firstAnim = _props$attributes5.firstAnim,
+            firstClipColor = _props$attributes5.firstClipColor,
+            firstShadowBlur = _props$attributes5.firstShadowBlur,
+            firstShadowColor = _props$attributes5.firstShadowColor,
+            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes5.firstShadowVertical,
+            secondColor = _props$attributes5.secondColor,
+            secondBackground = _props$attributes5.secondBackground,
+            secondSize = _props$attributes5.secondSize,
+            secondLetter = _props$attributes5.secondLetter,
+            secondUpper = _props$attributes5.secondUpper,
+            secondWeight = _props$attributes5.secondWeight,
+            secondStyle = _props$attributes5.secondStyle,
+            secondBorderType = _props$attributes5.secondBorderType,
+            secondBorderWidth = _props$attributes5.secondBorderWidth,
+            secondBorderRadius = _props$attributes5.secondBorderRadius,
+            secondBorderColor = _props$attributes5.secondBorderColor,
+            secondPadding = _props$attributes5.secondPadding,
+            secondMargin = _props$attributes5.secondMargin,
+            secondClip = _props$attributes5.secondClip,
+            secondAnim = _props$attributes5.secondAnim,
+            secondClipColor = _props$attributes5.secondClipColor,
+            secondShadowBlur = _props$attributes5.secondShadowBlur,
+            secondShadowColor = _props$attributes5.secondShadowColor,
+            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes5.secondShadowVertical,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target,
+            headingURL = _props$attributes5.headingURL,
+            containerBack = _props$attributes5.containerBack,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize;
 
 
         return wp.element.createElement(
@@ -25463,55 +26668,55 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            contentAlign = _props$attributes5.contentAlign,
-            firstHeading = _props$attributes5.firstHeading,
-            secondHeading = _props$attributes5.secondHeading,
-            display = _props$attributes5.display,
-            firstColor = _props$attributes5.firstColor,
-            firstBackground = _props$attributes5.firstBackground,
-            firstSize = _props$attributes5.firstSize,
-            firstStyle = _props$attributes5.firstStyle,
-            firstUpper = _props$attributes5.firstUpper,
-            firstLetter = _props$attributes5.firstLetter,
-            firstWeight = _props$attributes5.firstWeight,
-            firstBorderType = _props$attributes5.firstBorderType,
-            firstBorderWidth = _props$attributes5.firstBorderWidth,
-            firstBorderRadius = _props$attributes5.firstBorderRadius,
-            firstBorderColor = _props$attributes5.firstBorderColor,
-            firstPadding = _props$attributes5.firstPadding,
-            firstMargin = _props$attributes5.firstMargin,
-            firstClip = _props$attributes5.firstClip,
-            firstAnim = _props$attributes5.firstAnim,
-            firstClipColor = _props$attributes5.firstClipColor,
-            firstShadowBlur = _props$attributes5.firstShadowBlur,
-            firstShadowColor = _props$attributes5.firstShadowColor,
-            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes5.firstShadowVertical,
-            secondColor = _props$attributes5.secondColor,
-            secondBackground = _props$attributes5.secondBackground,
-            secondSize = _props$attributes5.secondSize,
-            secondLetter = _props$attributes5.secondLetter,
-            secondUpper = _props$attributes5.secondUpper,
-            secondWeight = _props$attributes5.secondWeight,
-            secondStyle = _props$attributes5.secondStyle,
-            secondBorderType = _props$attributes5.secondBorderType,
-            secondBorderWidth = _props$attributes5.secondBorderWidth,
-            secondBorderRadius = _props$attributes5.secondBorderRadius,
-            secondBorderColor = _props$attributes5.secondBorderColor,
-            secondPadding = _props$attributes5.secondPadding,
-            secondMargin = _props$attributes5.secondMargin,
-            secondClip = _props$attributes5.secondClip,
-            secondAnim = _props$attributes5.secondAnim,
-            secondClipColor = _props$attributes5.secondClipColor,
-            secondShadowBlur = _props$attributes5.secondShadowBlur,
-            secondShadowColor = _props$attributes5.secondShadowColor,
-            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes5.secondShadowVertical,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target,
-            headingURL = _props$attributes5.headingURL,
-            containerBack = _props$attributes5.containerBack;
+        var _props$attributes6 = props.attributes,
+            contentAlign = _props$attributes6.contentAlign,
+            firstHeading = _props$attributes6.firstHeading,
+            secondHeading = _props$attributes6.secondHeading,
+            display = _props$attributes6.display,
+            firstColor = _props$attributes6.firstColor,
+            firstBackground = _props$attributes6.firstBackground,
+            firstSize = _props$attributes6.firstSize,
+            firstStyle = _props$attributes6.firstStyle,
+            firstUpper = _props$attributes6.firstUpper,
+            firstLetter = _props$attributes6.firstLetter,
+            firstWeight = _props$attributes6.firstWeight,
+            firstBorderType = _props$attributes6.firstBorderType,
+            firstBorderWidth = _props$attributes6.firstBorderWidth,
+            firstBorderRadius = _props$attributes6.firstBorderRadius,
+            firstBorderColor = _props$attributes6.firstBorderColor,
+            firstPadding = _props$attributes6.firstPadding,
+            firstMargin = _props$attributes6.firstMargin,
+            firstClip = _props$attributes6.firstClip,
+            firstAnim = _props$attributes6.firstAnim,
+            firstClipColor = _props$attributes6.firstClipColor,
+            firstShadowBlur = _props$attributes6.firstShadowBlur,
+            firstShadowColor = _props$attributes6.firstShadowColor,
+            firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes6.firstShadowVertical,
+            secondColor = _props$attributes6.secondColor,
+            secondBackground = _props$attributes6.secondBackground,
+            secondSize = _props$attributes6.secondSize,
+            secondLetter = _props$attributes6.secondLetter,
+            secondUpper = _props$attributes6.secondUpper,
+            secondWeight = _props$attributes6.secondWeight,
+            secondStyle = _props$attributes6.secondStyle,
+            secondBorderType = _props$attributes6.secondBorderType,
+            secondBorderWidth = _props$attributes6.secondBorderWidth,
+            secondBorderRadius = _props$attributes6.secondBorderRadius,
+            secondBorderColor = _props$attributes6.secondBorderColor,
+            secondPadding = _props$attributes6.secondPadding,
+            secondMargin = _props$attributes6.secondMargin,
+            secondClip = _props$attributes6.secondClip,
+            secondAnim = _props$attributes6.secondAnim,
+            secondClipColor = _props$attributes6.secondClipColor,
+            secondShadowBlur = _props$attributes6.secondShadowBlur,
+            secondShadowColor = _props$attributes6.secondShadowColor,
+            secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes6.secondShadowVertical,
+            link = _props$attributes6.link,
+            target = _props$attributes6.target,
+            headingURL = _props$attributes6.headingURL,
+            containerBack = _props$attributes6.containerBack;
 
 
         return wp.element.createElement(
@@ -25592,55 +26797,55 @@ var deprecatedContent = [{
     attributes: deprecated_attributes_1_3_0,
     save: function save(props) {
         {
-            var _props$attributes6 = props.attributes,
-                contentAlign = _props$attributes6.contentAlign,
-                firstHeading = _props$attributes6.firstHeading,
-                secondHeading = _props$attributes6.secondHeading,
-                display = _props$attributes6.display,
-                firstColor = _props$attributes6.firstColor,
-                firstBackground = _props$attributes6.firstBackground,
-                firstSize = _props$attributes6.firstSize,
-                firstStyle = _props$attributes6.firstStyle,
-                firstUpper = _props$attributes6.firstUpper,
-                firstLetter = _props$attributes6.firstLetter,
-                firstWeight = _props$attributes6.firstWeight,
-                firstBorderType = _props$attributes6.firstBorderType,
-                firstBorderWidth = _props$attributes6.firstBorderWidth,
-                firstBorderRadius = _props$attributes6.firstBorderRadius,
-                firstBorderColor = _props$attributes6.firstBorderColor,
-                firstPadding = _props$attributes6.firstPadding,
-                firstMargin = _props$attributes6.firstMargin,
-                firstClip = _props$attributes6.firstClip,
-                firstAnim = _props$attributes6.firstAnim,
-                firstClipColor = _props$attributes6.firstClipColor,
-                firstShadowBlur = _props$attributes6.firstShadowBlur,
-                firstShadowColor = _props$attributes6.firstShadowColor,
-                firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes6.firstShadowVertical,
-                secondColor = _props$attributes6.secondColor,
-                secondBackground = _props$attributes6.secondBackground,
-                secondSize = _props$attributes6.secondSize,
-                secondLetter = _props$attributes6.secondLetter,
-                secondUpper = _props$attributes6.secondUpper,
-                secondWeight = _props$attributes6.secondWeight,
-                secondStyle = _props$attributes6.secondStyle,
-                secondBorderType = _props$attributes6.secondBorderType,
-                secondBorderWidth = _props$attributes6.secondBorderWidth,
-                secondBorderRadius = _props$attributes6.secondBorderRadius,
-                secondBorderColor = _props$attributes6.secondBorderColor,
-                secondPadding = _props$attributes6.secondPadding,
-                secondMargin = _props$attributes6.secondMargin,
-                secondClip = _props$attributes6.secondClip,
-                secondAnim = _props$attributes6.secondAnim,
-                secondClipColor = _props$attributes6.secondClipColor,
-                secondShadowBlur = _props$attributes6.secondShadowBlur,
-                secondShadowColor = _props$attributes6.secondShadowColor,
-                secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes6.secondShadowVertical,
-                link = _props$attributes6.link,
-                target = _props$attributes6.target,
-                headingURL = _props$attributes6.headingURL,
-                containerBack = _props$attributes6.containerBack;
+            var _props$attributes7 = props.attributes,
+                contentAlign = _props$attributes7.contentAlign,
+                firstHeading = _props$attributes7.firstHeading,
+                secondHeading = _props$attributes7.secondHeading,
+                display = _props$attributes7.display,
+                firstColor = _props$attributes7.firstColor,
+                firstBackground = _props$attributes7.firstBackground,
+                firstSize = _props$attributes7.firstSize,
+                firstStyle = _props$attributes7.firstStyle,
+                firstUpper = _props$attributes7.firstUpper,
+                firstLetter = _props$attributes7.firstLetter,
+                firstWeight = _props$attributes7.firstWeight,
+                firstBorderType = _props$attributes7.firstBorderType,
+                firstBorderWidth = _props$attributes7.firstBorderWidth,
+                firstBorderRadius = _props$attributes7.firstBorderRadius,
+                firstBorderColor = _props$attributes7.firstBorderColor,
+                firstPadding = _props$attributes7.firstPadding,
+                firstMargin = _props$attributes7.firstMargin,
+                firstClip = _props$attributes7.firstClip,
+                firstAnim = _props$attributes7.firstAnim,
+                firstClipColor = _props$attributes7.firstClipColor,
+                firstShadowBlur = _props$attributes7.firstShadowBlur,
+                firstShadowColor = _props$attributes7.firstShadowColor,
+                firstShadowHorizontal = _props$attributes7.firstShadowHorizontal,
+                firstShadowVertical = _props$attributes7.firstShadowVertical,
+                secondColor = _props$attributes7.secondColor,
+                secondBackground = _props$attributes7.secondBackground,
+                secondSize = _props$attributes7.secondSize,
+                secondLetter = _props$attributes7.secondLetter,
+                secondUpper = _props$attributes7.secondUpper,
+                secondWeight = _props$attributes7.secondWeight,
+                secondStyle = _props$attributes7.secondStyle,
+                secondBorderType = _props$attributes7.secondBorderType,
+                secondBorderWidth = _props$attributes7.secondBorderWidth,
+                secondBorderRadius = _props$attributes7.secondBorderRadius,
+                secondBorderColor = _props$attributes7.secondBorderColor,
+                secondPadding = _props$attributes7.secondPadding,
+                secondMargin = _props$attributes7.secondMargin,
+                secondClip = _props$attributes7.secondClip,
+                secondAnim = _props$attributes7.secondAnim,
+                secondClipColor = _props$attributes7.secondClipColor,
+                secondShadowBlur = _props$attributes7.secondShadowBlur,
+                secondShadowColor = _props$attributes7.secondShadowColor,
+                secondShadowHorizontal = _props$attributes7.secondShadowHorizontal,
+                secondShadowVertical = _props$attributes7.secondShadowVertical,
+                link = _props$attributes7.link,
+                target = _props$attributes7.target,
+                headingURL = _props$attributes7.headingURL,
+                containerBack = _props$attributes7.containerBack;
 
 
             return wp.element.createElement(
@@ -25729,8 +26934,8 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(217);
 
 
 
@@ -25744,6 +26949,10 @@ var registerBlockType = wp.blocks.registerBlockType;
 var iconAttrs = {
     block_id: {
         type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
     },
     iconBorder: {
         type: "boolean",
@@ -25816,6 +27025,30 @@ var iconAttrs = {
         type: "number"
     },
     paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
         type: "number"
     },
     paddingU: {
@@ -25966,6 +27199,30 @@ var iconAttrs = {
     wrapPaddingL: {
         type: "number"
     },
+    wrapPaddingTTablet: {
+        type: "number"
+    },
+    wrapPaddingRTablet: {
+        type: "number"
+    },
+    wrapPaddingBTablet: {
+        type: "number"
+    },
+    wrapPaddingLTablet: {
+        type: "number"
+    },
+    wrapPaddingTMobile: {
+        type: "number"
+    },
+    wrapPaddingRMobile: {
+        type: "number"
+    },
+    wrapPaddingBMobile: {
+        type: "number"
+    },
+    wrapPaddingLMobile: {
+        type: "number"
+    },
     wrapMargin: {
         type: "string",
         default: "up"
@@ -26027,21 +27284,20 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_padding__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_background__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_hex_to_rgba__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__styling__ = __webpack_require__(215);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26049,7 +27305,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -26134,6 +27389,14 @@ var edit = function (_Component) {
                 paddingR = _props$attributes.paddingR,
                 paddingB = _props$attributes.paddingB,
                 paddingL = _props$attributes.paddingL,
+                paddingTTablet = _props$attributes.paddingTTablet,
+                paddingRTablet = _props$attributes.paddingRTablet,
+                paddingBTablet = _props$attributes.paddingBTablet,
+                paddingLTablet = _props$attributes.paddingLTablet,
+                paddingTMobile = _props$attributes.paddingTMobile,
+                paddingRMobile = _props$attributes.paddingRMobile,
+                paddingBMobile = _props$attributes.paddingBMobile,
+                paddingLMobile = _props$attributes.paddingLMobile,
                 paddingU = _props$attributes.paddingU,
                 marginT = _props$attributes.marginT,
                 marginR = _props$attributes.marginR,
@@ -26174,6 +27437,14 @@ var edit = function (_Component) {
                 wrapPaddingR = _props$attributes.wrapPaddingR,
                 wrapPaddingB = _props$attributes.wrapPaddingB,
                 wrapPaddingL = _props$attributes.wrapPaddingL,
+                wrapPaddingTTablet = _props$attributes.wrapPaddingTTablet,
+                wrapPaddingRTablet = _props$attributes.wrapPaddingRTablet,
+                wrapPaddingBTablet = _props$attributes.wrapPaddingBTablet,
+                wrapPaddingLTablet = _props$attributes.wrapPaddingLTablet,
+                wrapPaddingTMobile = _props$attributes.wrapPaddingTMobile,
+                wrapPaddingRMobile = _props$attributes.wrapPaddingRMobile,
+                wrapPaddingBMobile = _props$attributes.wrapPaddingBMobile,
+                wrapPaddingLMobile = _props$attributes.wrapPaddingLMobile,
                 wrapMarginT = _props$attributes.wrapMarginT,
                 wrapMarginR = _props$attributes.wrapMarginR,
                 wrapMarginB = _props$attributes.wrapMarginB,
@@ -26210,6 +27481,12 @@ var edit = function (_Component) {
             }];
 
             var ALIGNS = ["left", "center", "right"];
+
+            var element = document.getElementById("premium-style-icon-" + this.props.clientId.substr(0, 6));
+
+            if (null != element && "undefined" != typeof element) {
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_13__styling__["a" /* default */])(this.props);
+            }
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon");
 
@@ -26342,7 +27619,7 @@ var edit = function (_Component) {
                                         null,
                                         __("Background Color")
                                     ),
-                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_background__["a" /* default */], {
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_background__["a" /* default */], {
                                         type: "color",
                                         colorValue: iconBack,
                                         onChangeColor: function onChangeColor(value) {
@@ -26391,7 +27668,7 @@ var edit = function (_Component) {
                             return setAttributes({ borderRadius: newrRadius });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_text_shadow__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__["a" /* default */], {
                         label: "Shadow",
                         color: shadowColor,
                         blur: shadowBlur,
@@ -26410,82 +27687,6 @@ var edit = function (_Component) {
                             return setAttributes({ shadowVertical: newValue });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["all"],
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        marginTopTablet: marginTTablet,
-                        marginRightTablet: marginRTablet,
-                        marginBottomTablet: marginBTablet,
-                        marginLeftTablet: marginLTablet,
-                        marginTopMobile: marginTMobile,
-                        marginRightMobile: marginRMobile,
-                        marginBottomMobile: marginBMobile,
-                        marginLeftMobile: marginLMobile,
-                        onChangeMarTop: function onChangeMarTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarRight: function onChangeMarRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginLMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarBottom: function onChangeMarBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginLMobile: valueMobile });
-                                });
-                            }
-                        }
-
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: paddingT,
                         paddingRight: paddingR,
@@ -26499,70 +27700,47 @@ var edit = function (_Component) {
                         paddingRightMobile: paddingRMobile,
                         paddingBottomMobile: paddingBMobile,
                         paddingLeftMobile: paddingLMobile,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ PaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ PaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ PaddingTMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingRMobile: 20 });
-                                });
-                            }
-                        },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingBMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingLMobile: valueMobile });
-                                });
-                            }
-                        },
+
                         showUnits: true,
                         selectedUnit: paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingU: newvalue });
+                        },
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ paddingT: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ paddingR: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ paddingB: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ paddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ paddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ paddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ paddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ paddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ paddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ paddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ paddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ paddingLMobile: valM });
                         }
                     })
                 ),
@@ -26581,7 +27759,7 @@ var edit = function (_Component) {
                             null,
                             __("Background Color")
                         ),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_background__["a" /* default */], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_background__["a" /* default */], {
                             type: "color",
                             colorValue: backgroundColor,
                             onChangeColor: function onChangeColor(value) {
@@ -26594,7 +27772,7 @@ var edit = function (_Component) {
                                 return setAttributes({ backgroundOpacity: newvalue });
                             }
                         }),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_background__["a" /* default */], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_background__["a" /* default */], {
                             imageID: imageID,
                             imageURL: imageURL,
                             backgroundPosition: backgroundPosition,
@@ -26656,7 +27834,7 @@ var edit = function (_Component) {
                             return setAttributes({ wrapBorderRadius: newrRadius });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_box_shadow__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__["a" /* default */], {
                         inner: true,
                         color: wrapShadowColor,
                         blur: wrapShadowBlur,
@@ -26689,157 +27867,58 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["all"],
-                        marginTop: wrapMarginT,
-                        marginRight: wrapMarginR,
-                        marginBottom: wrapMarginB,
-                        marginLeft: wrapMarginL,
-                        marginTopTablet: wrapMarginTTablet,
-                        marginRightTablet: wrapMarginRTablet,
-                        marginBottomTablet: wrapMarginBTablet,
-                        marginLeftTablet: wrapMarginLTablet,
-                        marginTopMobile: wrapMarginTMobile,
-                        marginRightMobile: wrapMarginRMobile,
-                        marginBottomMobile: wrapMarginBMobile,
-                        marginLeftMobile: wrapMarginLMobile,
-                        onChangeMarTop: function onChangeMarTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarRight: function onChangeMarRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginLMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarBottom: function onChangeMarBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginR: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginRTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginRMobile: valueMobile });
-                                });
-                            }
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ firstMarginL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ firstMarginLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ firstMarginLMobile: valueMobile });
-                                });
-                            }
-                        }
-                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
                         paddingBottom: wrapPaddingB,
                         paddingLeft: wrapPaddingL,
-                        paddingTopTablet: wrapPaddingT,
-                        paddingRightTablet: wrapPaddingR,
-                        paddingBottomTablet: wrapPaddingB,
-                        paddingLeftTablet: wrapPaddingL,
-                        paddingTopMobile: wrapPaddingT,
-                        paddingRightMobile: wrapPaddingR,
-                        paddingBottomMobile: wrapPaddingB,
-                        paddingLeftMobile: wrapPaddingL,
-                        onChangePadTop: function onChangePadTop(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ PaddingT: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ PaddingTTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ PaddingTMobile: valueMobile });
-                                });
-                            }
+                        paddingTopTablet: wrapPaddingTTablet,
+                        paddingRightTablet: wrapPaddingRTablet,
+                        paddingBottomTablet: wrapPaddingBTablet,
+                        paddingLeftTablet: wrapPaddingLTablet,
+                        paddingTopMobile: wrapPaddingTMobile,
+                        paddingRightMobile: wrapPaddingRMobile,
+                        paddingBottomMobile: wrapPaddingBMobile,
+                        paddingLeftMobile: wrapPaddingLMobile,
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ wrapPaddingT: val });
                         },
-                        onChangePadRight: function onChangePadRight(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingR: 30 });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingRTablet: 50 });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingRMobile: 20 });
-                                });
-                            }
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ wrapPaddingR: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingB: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingBTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingBMobile: valueMobile });
-                                });
-                            }
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ wrapPaddingB: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(device) {
-                            if (device === "Desktop") {
-                                (function (newValue) {
-                                    return setAttributes({ paddingL: newValue });
-                                });
-                            } else if (device === "tablet") {
-                                (function (valuetablet) {
-                                    return setAttributes({ paddingLTablet: valuetablet });
-                                });
-                            } else {
-                                (function (valueMobile) {
-                                    return setAttributes({ paddingLMobile: valueMobile });
-                                });
-                            }
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ wrapPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ wrapPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ wrapPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ wrapPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ wrapPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ wrapPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ wrapPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ wrapPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ wrapPaddingLMobile: valM });
                         }
                     })
                 ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_14__components_premium_responsive_tabs__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_responsive_tabs__["a" /* default */], {
                     Desktop: hideDesktop,
                     Tablet: hideTablet,
                     Mobile: hideMobile,
@@ -26857,10 +27936,10 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-icon-" + block_id,
-                    className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    className: mainClasses + "__container premium-icon-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: align,
-                        backgroundColor: backgroundColor ? __WEBPACK_IMPORTED_MODULE_13_hex_to_rgba___default()(backgroundColor, backgroundOpacity) : "transparent",
+                        backgroundColor: backgroundColor ? __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default()(backgroundColor, backgroundOpacity) : "transparent",
                         backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
@@ -26871,10 +27950,6 @@ var edit = function (_Component) {
                         borderRadius: wrapBorderRadius + "px",
                         borderColor: wrapBorderColor,
                         boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
-                        paddingTop: wrapPaddingT,
-                        paddingRight: wrapPaddingR,
-                        paddingBottom: wrapPaddingB,
-                        paddingLeft: wrapPaddingL,
                         marginTop: wrapMarginT,
                         marginRight: wrapMarginR,
                         marginBottom: wrapMarginB,
@@ -26890,7 +27965,7 @@ var edit = function (_Component) {
                     className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack ? __WEBPACK_IMPORTED_MODULE_13_hex_to_rgba___default()(iconBack, iconOpacity) : "transparent",
+                        backgroundColor: iconBack ? __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default()(iconBack, iconOpacity) : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
@@ -26946,7 +28021,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var aa = __webpack_require__(5),
     n = __webpack_require__(21),
-    r = __webpack_require__(71);function ba(a, b, c, d, e, f, g, h) {
+    r = __webpack_require__(69);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var l = [c, d, e, f, g, h],
@@ -29470,7 +30545,7 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return d;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38)))
 
 /***/ }),
 /* 203 */
@@ -30176,7 +31251,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38)))
 
 /***/ }),
 /* 204 */
@@ -30190,7 +31265,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(21);var checkPropTypes=__webpack_require__(36);var scheduler=__webpack_require__(71);var tracing=__webpack_require__(205);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(21);var checkPropTypes=__webpack_require__(35);var scheduler=__webpack_require__(69);var tracing=__webpack_require__(205);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -34554,9 +35629,9 @@ var _removeClass = _interopRequireDefault(__webpack_require__(212));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _Transition = _interopRequireDefault(__webpack_require__(73));
+var _Transition = _interopRequireDefault(__webpack_require__(71));
 
-var _PropTypes = __webpack_require__(75);
+var _PropTypes = __webpack_require__(73);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -35015,7 +36090,7 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = __webpack_require__(26);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(76));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(74));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -35324,6 +36399,116 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        classMigrate = _props$attributes.classMigrate,
+        block_id = _props$attributes.block_id,
+        paddingT = _props$attributes.paddingT,
+        paddingR = _props$attributes.paddingR,
+        paddingB = _props$attributes.paddingB,
+        paddingL = _props$attributes.paddingL,
+        paddingTTablet = _props$attributes.paddingTTablet,
+        paddingRTablet = _props$attributes.paddingRTablet,
+        paddingBTablet = _props$attributes.paddingBTablet,
+        paddingLTablet = _props$attributes.paddingLTablet,
+        paddingTMobile = _props$attributes.paddingTMobile,
+        paddingRMobile = _props$attributes.paddingRMobile,
+        paddingBMobile = _props$attributes.paddingBMobile,
+        paddingLMobile = _props$attributes.paddingLMobile,
+        paddingU = _props$attributes.paddingU,
+        wrapPaddingT = _props$attributes.wrapPaddingT,
+        wrapPaddingR = _props$attributes.wrapPaddingR,
+        wrapPaddingB = _props$attributes.wrapPaddingB,
+        wrapPaddingL = _props$attributes.wrapPaddingL,
+        wrapPaddingTTablet = _props$attributes.wrapPaddingTTablet,
+        wrapPaddingRTablet = _props$attributes.wrapPaddingRTablet,
+        wrapPaddingBTablet = _props$attributes.wrapPaddingBTablet,
+        wrapPaddingLTablet = _props$attributes.wrapPaddingLTablet,
+        wrapPaddingTMobile = _props$attributes.wrapPaddingTMobile,
+        wrapPaddingRMobile = _props$attributes.wrapPaddingRMobile,
+        wrapPaddingBMobile = _props$attributes.wrapPaddingBMobile,
+        wrapPaddingLMobile = _props$attributes.wrapPaddingLMobile;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " .premium-icon": {
+
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
+        },
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingT, 'px'),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingR, 'px'),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingB, 'px'),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingL, 'px')
+        }
+    };
+
+    tablet_selectors = {
+        " .premium-icon": {
+
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
+        },
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingTTablet, 'px'),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingRTablet, 'px'),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingBTablet, 'px'),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLTablet, 'px')
+        }
+    };
+
+    mobile_selectors = {
+        " .premium-icon": {
+
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
+        },
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingTMobile, 'px'),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingRMobile, 'px'),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingBMobile, 'px'),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLMobile, 'px')
+        }
+    };
+
+    var styling_css = "";
+    var id = '#premium-icon-' + block_id;
+    if (classMigrate) {
+        id = '.premium-icon-' + block_id;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 216 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__ = __webpack_require__(2);
@@ -35334,6 +36519,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         wrapBorder = _props$attributes.wrapBorder,
         iconBorder = _props$attributes.iconBorder,
         selectedIcon = _props$attributes.selectedIcon,
@@ -35347,11 +36533,6 @@ var save = function save(props) {
         shadowColor = _props$attributes.shadowColor,
         shadowHorizontal = _props$attributes.shadowHorizontal,
         shadowVertical = _props$attributes.shadowVertical,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
         marginT = _props$attributes.marginT,
         marginR = _props$attributes.marginR,
         marginB = _props$attributes.marginB,
@@ -35383,10 +36564,6 @@ var save = function save(props) {
         wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
         wrapShadowVertical = _props$attributes.wrapShadowVertical,
         wrapShadowPosition = _props$attributes.wrapShadowPosition,
-        wrapPaddingT = _props$attributes.wrapPaddingT,
-        wrapPaddingR = _props$attributes.wrapPaddingR,
-        wrapPaddingB = _props$attributes.wrapPaddingB,
-        wrapPaddingL = _props$attributes.wrapPaddingL,
         wrapMarginT = _props$attributes.wrapMarginT,
         wrapMarginR = _props$attributes.wrapMarginR,
         wrapMarginB = _props$attributes.wrapMarginB,
@@ -35406,7 +36583,8 @@ var save = function save(props) {
     return wp.element.createElement(
         'div',
         {
-            className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+            id: 'premium-icon-' + block_id,
+            className: mainClasses + '__container premium-icon-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
                 backgroundColor: backgroundColor ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(backgroundColor, backgroundOpacity) : "transparent",
@@ -35420,10 +36598,6 @@ var save = function save(props) {
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
                 boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
                 marginTop: wrapMarginT,
                 marginRight: wrapMarginR,
                 marginBottom: wrapMarginB,
@@ -35444,10 +36618,6 @@ var save = function save(props) {
                     color: iconColor || "#6ec1e4",
                     backgroundColor: iconBack ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(iconBack, iconOpacity) : "transparent",
                     fontSize: (iconSize || 50) + iconSizeUnit,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
                     marginTop: marginT,
                     marginRight: marginR,
                     marginBottom: marginB,
@@ -35466,11 +36636,14 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
 var className = "premium-icon";
+
 
 var deprecated_attributes_1_6_2 = {
     iconType: {
@@ -36268,30 +37441,123 @@ var deprecated_attributes_1_3_1 = {
     }
 };
 
+var newAttributes_1_6_6 = {
+    wrapPaddingT: {
+        type: "number"
+    },
+    wrapPaddingR: {
+        type: "number"
+    },
+    wrapPaddingB: {
+        type: "number"
+    },
+    wrapPaddingL: {
+        type: "number"
+    },
+    wrapPaddingTTablet: {
+        type: "number"
+    },
+    wrapPaddingRTablet: {
+        type: "number"
+    },
+    wrapPaddingBTablet: {
+        type: "number"
+    },
+    wrapPaddingLTablet: {
+        type: "number"
+    },
+    wrapPaddingTMobile: {
+        type: "number"
+    },
+    wrapPaddingRMobile: {
+        type: "number"
+    },
+    wrapPaddingBMobile: {
+        type: "number"
+    },
+    wrapPaddingLMobile: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    }
+};
+
+var deprecated_attributes_1_6_6 = Object.assign(newAttributes_1_6_6, deprecated_attributes_1_6_3);
+
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_6_3,
+    attributes: deprecated_attributes_1_6_6,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            iconBorderTop: "",
-            iconBorderRight: "",
-            iconBorderBottom: "",
-            iconBorderLeft: "",
-            wrapBorderTop: "",
-            wrapBorderRight: "",
-            wrapBorderBottom: "",
-            wrapBorderLeft: "",
-            iconBorder: "",
-            wrapBorder: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false,
-            iconOpacity: '',
-            backgroundOpacity: ''
+            wrapPaddingT: "",
+            wrapPaddingR: "",
+            wrapPaddingB: "",
+            wrapPaddingL: "",
+            wrapPaddingTTablet: "",
+            wrapPaddingRTablet: "",
+            wrapPaddingBTablet: "",
+            wrapPaddingLTablet: "",
+            wrapPaddingTMobile: "",
+            wrapPaddingRMobile: "",
+            wrapPaddingBMobile: "",
+            wrapPaddingLMobile: "",
+            paddingT: "",
+            paddingR: "",
+            paddingB: "",
+            paddingL: "",
+            paddingTTablet: "",
+            paddingRTablet: "",
+            paddingBTablet: "",
+            paddingLTablet: "",
+            paddingTMobile: "",
+            paddingRMobile: "",
+            paddingBMobile: "",
+            paddingLMobile: "",
+            paddingU: "px"
         };
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
+            wrapBorder = _props$attributes.wrapBorder,
+            iconBorder = _props$attributes.iconBorder,
             selectedIcon = _props$attributes.selectedIcon,
             align = _props$attributes.align,
             hoverEffect = _props$attributes.hoverEffect,
@@ -36314,6 +37580,10 @@ var deprecatedContent = [{
             marginL = _props$attributes.marginL,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            iconBorderTop = _props$attributes.iconBorderTop,
+            iconBorderRight = _props$attributes.iconBorderRight,
+            iconBorderBottom = _props$attributes.iconBorderBottom,
+            iconBorderLeft = _props$attributes.iconBorderLeft,
             borderRadius = _props$attributes.borderRadius,
             borderColor = _props$attributes.borderColor,
             backgroundColor = _props$attributes.backgroundColor,
@@ -36324,6 +37594,10 @@ var deprecatedContent = [{
             backgroundSize = _props$attributes.backgroundSize,
             wrapBorderType = _props$attributes.wrapBorderType,
             wrapBorderWidth = _props$attributes.wrapBorderWidth,
+            wrapBorderTop = _props$attributes.wrapBorderTop,
+            wrapBorderRight = _props$attributes.wrapBorderRight,
+            wrapBorderBottom = _props$attributes.wrapBorderBottom,
+            wrapBorderLeft = _props$attributes.wrapBorderLeft,
             wrapBorderRadius = _props$attributes.wrapBorderRadius,
             wrapBorderColor = _props$attributes.wrapBorderColor,
             wrapShadowBlur = _props$attributes.wrapShadowBlur,
@@ -36341,23 +37615,28 @@ var deprecatedContent = [{
             wrapMarginL = _props$attributes.wrapMarginL,
             urlCheck = _props$attributes.urlCheck,
             link = _props$attributes.link,
-            target = _props$attributes.target;
+            target = _props$attributes.target,
+            iconOpacity = _props$attributes.iconOpacity,
+            backgroundOpacity = _props$attributes.backgroundOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
 
 
         return wp.element.createElement(
             "div",
             {
-                className: className + "__container",
+                className: className + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: align,
-                    backgroundColor: backgroundColor,
+                    backgroundColor: backgroundColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(backgroundColor, backgroundOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: wrapBorderType,
-                    borderWidth: wrapBorderWidth + "px",
+                    borderStyle: wrapBorderType,
+                    borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
                     boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
@@ -36383,7 +37662,7 @@ var deprecatedContent = [{
                     className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack,
+                        backgroundColor: iconBack ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(iconBack, iconOpacity) : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
@@ -36393,8 +37672,8 @@ var deprecatedContent = [{
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
                         textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
@@ -36404,15 +37683,24 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_6_2,
+    attributes: deprecated_attributes_1_6_3,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            borderWidth: {
-                type: "number"
-            },
-            wrapBorderWidth: {
-                type: "number"
-            }
+            iconBorderTop: "",
+            iconBorderRight: "",
+            iconBorderBottom: "",
+            iconBorderLeft: "",
+            wrapBorderTop: "",
+            wrapBorderRight: "",
+            wrapBorderBottom: "",
+            wrapBorderLeft: "",
+            iconBorder: "",
+            wrapBorder: "",
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false,
+            iconOpacity: '',
+            backgroundOpacity: ''
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36530,10 +37818,15 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_6,
+    attributes: deprecated_attributes_1_6_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            paddingU: "px"
+            borderWidth: {
+                type: "number"
+            },
+            wrapBorderWidth: {
+                type: "number"
+            }
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36554,6 +37847,7 @@ var deprecatedContent = [{
             paddingR = _props$attributes3.paddingR,
             paddingB = _props$attributes3.paddingB,
             paddingL = _props$attributes3.paddingL,
+            paddingU = _props$attributes3.paddingU,
             marginT = _props$attributes3.marginT,
             marginR = _props$attributes3.marginR,
             marginB = _props$attributes3.marginB,
@@ -36620,21 +37914,21 @@ var deprecatedContent = [{
             wp.element.createElement(
                 "a",
                 {
-                    className: className + "__link",
+                    className: "premium-icon__link",
                     href: urlCheck && link,
                     rel: "noopener noreferrer",
                     target: target ? "_blank" : "_self"
                 },
                 wp.element.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
                         fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,
@@ -36650,10 +37944,10 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_5,
+    attributes: deprecated_attributes_1_5_6,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            iconSizeUnit: "px"
+            paddingU: "px"
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36663,6 +37957,7 @@ var deprecatedContent = [{
             align = _props$attributes4.align,
             hoverEffect = _props$attributes4.hoverEffect,
             iconSize = _props$attributes4.iconSize,
+            iconSizeUnit = _props$attributes4.iconSizeUnit,
             iconColor = _props$attributes4.iconColor,
             iconBack = _props$attributes4.iconBack,
             shadowBlur = _props$attributes4.shadowBlur,
@@ -36749,6 +38044,125 @@ var deprecatedContent = [{
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
+                        fontSize: (iconSize || 50) + iconSizeUnit,
+                        paddingTop: paddingT,
+                        paddingRight: paddingR,
+                        paddingBottom: paddingB,
+                        paddingLeft: paddingL,
+                        marginTop: marginT,
+                        marginRight: marginR,
+                        marginBottom: marginB,
+                        marginLeft: marginL,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius || 100 + "px",
+                        borderColor: borderColor,
+                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                    }
+                })
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_5_5,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            iconSizeUnit: "px"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes5 = props.attributes,
+            selectedIcon = _props$attributes5.selectedIcon,
+            align = _props$attributes5.align,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBack = _props$attributes5.iconBack,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            backgroundColor = _props$attributes5.backgroundColor,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            wrapBorderType = _props$attributes5.wrapBorderType,
+            wrapBorderWidth = _props$attributes5.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes5.wrapBorderRadius,
+            wrapBorderColor = _props$attributes5.wrapBorderColor,
+            wrapShadowBlur = _props$attributes5.wrapShadowBlur,
+            wrapShadowColor = _props$attributes5.wrapShadowColor,
+            wrapShadowHorizontal = _props$attributes5.wrapShadowHorizontal,
+            wrapShadowVertical = _props$attributes5.wrapShadowVertical,
+            wrapShadowPosition = _props$attributes5.wrapShadowPosition,
+            wrapPaddingT = _props$attributes5.wrapPaddingT,
+            wrapPaddingR = _props$attributes5.wrapPaddingR,
+            wrapPaddingB = _props$attributes5.wrapPaddingB,
+            wrapPaddingL = _props$attributes5.wrapPaddingL,
+            wrapMarginT = _props$attributes5.wrapMarginT,
+            wrapMarginR = _props$attributes5.wrapMarginR,
+            wrapMarginB = _props$attributes5.wrapMarginB,
+            wrapMarginL = _props$attributes5.wrapMarginL,
+            urlCheck = _props$attributes5.urlCheck,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: align,
+                    backgroundColor: backgroundColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: wrapBorderType,
+                    borderWidth: wrapBorderWidth + "px",
+                    borderRadius: wrapBorderRadius + "px",
+                    borderColor: wrapBorderColor,
+                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    paddingTop: wrapPaddingT,
+                    paddingRight: wrapPaddingR,
+                    paddingBottom: wrapPaddingB,
+                    paddingLeft: wrapPaddingL,
+                    marginTop: wrapMarginT,
+                    marginRight: wrapMarginR,
+                    marginBottom: wrapMarginB,
+                    marginLeft: wrapMarginL
+                }
+            },
+            wp.element.createElement(
+                "a",
+                {
+                    className: className + "__link",
+                    href: urlCheck && link,
+                    rel: "noopener noreferrer",
+                    target: target ? "_blank" : "_self"
+                },
+                wp.element.createElement("i", {
+                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    style: {
+                        color: iconColor || "#6ec1e4",
+                        backgroundColor: iconBack,
                         fontSize: iconSize || 50,
                         paddingTop: paddingT,
                         paddingRight: paddingR,
@@ -36783,50 +38197,50 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            selectedIcon = _props$attributes5.selectedIcon,
-            align = _props$attributes5.align,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            iconBack = _props$attributes5.iconBack,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            background = _props$attributes5.background,
-            wrapBorderType = _props$attributes5.wrapBorderType,
-            wrapBorderWidth = _props$attributes5.wrapBorderWidth,
-            wrapBorderRadius = _props$attributes5.wrapBorderRadius,
-            wrapBorderColor = _props$attributes5.wrapBorderColor,
-            wrapShadowBlur = _props$attributes5.wrapShadowBlur,
-            wrapShadowColor = _props$attributes5.wrapShadowColor,
-            wrapShadowHorizontal = _props$attributes5.wrapShadowHorizontal,
-            wrapShadowVertical = _props$attributes5.wrapShadowVertical,
-            wrapShadowPosition = _props$attributes5.wrapShadowPosition,
-            wrapPaddingT = _props$attributes5.wrapPaddingT,
-            wrapPaddingR = _props$attributes5.wrapPaddingR,
-            wrapPaddingB = _props$attributes5.wrapPaddingB,
-            wrapPaddingL = _props$attributes5.wrapPaddingL,
-            wrapMarginT = _props$attributes5.wrapMarginT,
-            wrapMarginR = _props$attributes5.wrapMarginR,
-            wrapMarginB = _props$attributes5.wrapMarginB,
-            wrapMarginL = _props$attributes5.wrapMarginL,
-            urlCheck = _props$attributes5.urlCheck,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target;
+        var _props$attributes6 = props.attributes,
+            selectedIcon = _props$attributes6.selectedIcon,
+            align = _props$attributes6.align,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            iconBack = _props$attributes6.iconBack,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            background = _props$attributes6.background,
+            wrapBorderType = _props$attributes6.wrapBorderType,
+            wrapBorderWidth = _props$attributes6.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes6.wrapBorderRadius,
+            wrapBorderColor = _props$attributes6.wrapBorderColor,
+            wrapShadowBlur = _props$attributes6.wrapShadowBlur,
+            wrapShadowColor = _props$attributes6.wrapShadowColor,
+            wrapShadowHorizontal = _props$attributes6.wrapShadowHorizontal,
+            wrapShadowVertical = _props$attributes6.wrapShadowVertical,
+            wrapShadowPosition = _props$attributes6.wrapShadowPosition,
+            wrapPaddingT = _props$attributes6.wrapPaddingT,
+            wrapPaddingR = _props$attributes6.wrapPaddingR,
+            wrapPaddingB = _props$attributes6.wrapPaddingB,
+            wrapPaddingL = _props$attributes6.wrapPaddingL,
+            wrapMarginT = _props$attributes6.wrapMarginT,
+            wrapMarginR = _props$attributes6.wrapMarginR,
+            wrapMarginB = _props$attributes6.wrapMarginB,
+            wrapMarginL = _props$attributes6.wrapMarginL,
+            urlCheck = _props$attributes6.urlCheck,
+            link = _props$attributes6.link,
+            target = _props$attributes6.target;
 
 
         return wp.element.createElement(
@@ -36885,45 +38299,45 @@ var deprecatedContent = [{
 }, {
     attributes: deprecated_attributes_1_3_1,
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            selectedIcon = _props$attributes6.selectedIcon,
-            align = _props$attributes6.align,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            iconBack = _props$attributes6.iconBack,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            background = _props$attributes6.background,
-            wrapBorderType = _props$attributes6.wrapBorderType,
-            wrapBorderWidth = _props$attributes6.wrapBorderWidth,
-            wrapBorderRadius = _props$attributes6.wrapBorderRadius,
-            wrapBorderColor = _props$attributes6.wrapBorderColor,
-            wrapPaddingT = _props$attributes6.wrapPaddingT,
-            wrapPaddingR = _props$attributes6.wrapPaddingR,
-            wrapPaddingB = _props$attributes6.wrapPaddingB,
-            wrapPaddingL = _props$attributes6.wrapPaddingL,
-            wrapMarginT = _props$attributes6.wrapMarginT,
-            wrapMarginR = _props$attributes6.wrapMarginR,
-            wrapMarginB = _props$attributes6.wrapMarginB,
-            wrapMarginL = _props$attributes6.wrapMarginL,
-            urlCheck = _props$attributes6.urlCheck,
-            link = _props$attributes6.link,
-            target = _props$attributes6.target;
+        var _props$attributes7 = props.attributes,
+            selectedIcon = _props$attributes7.selectedIcon,
+            align = _props$attributes7.align,
+            hoverEffect = _props$attributes7.hoverEffect,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            iconBack = _props$attributes7.iconBack,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            paddingT = _props$attributes7.paddingT,
+            paddingR = _props$attributes7.paddingR,
+            paddingB = _props$attributes7.paddingB,
+            paddingL = _props$attributes7.paddingL,
+            marginT = _props$attributes7.marginT,
+            marginR = _props$attributes7.marginR,
+            marginB = _props$attributes7.marginB,
+            marginL = _props$attributes7.marginL,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            background = _props$attributes7.background,
+            wrapBorderType = _props$attributes7.wrapBorderType,
+            wrapBorderWidth = _props$attributes7.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes7.wrapBorderRadius,
+            wrapBorderColor = _props$attributes7.wrapBorderColor,
+            wrapPaddingT = _props$attributes7.wrapPaddingT,
+            wrapPaddingR = _props$attributes7.wrapPaddingR,
+            wrapPaddingB = _props$attributes7.wrapPaddingB,
+            wrapPaddingL = _props$attributes7.wrapPaddingL,
+            wrapMarginT = _props$attributes7.wrapMarginT,
+            wrapMarginR = _props$attributes7.wrapMarginR,
+            wrapMarginB = _props$attributes7.wrapMarginB,
+            wrapMarginL = _props$attributes7.wrapMarginL,
+            urlCheck = _props$attributes7.urlCheck,
+            link = _props$attributes7.link,
+            target = _props$attributes7.target;
 
 
         return wp.element.createElement(
@@ -36983,15 +38397,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(222);
 
 
 
@@ -37295,11 +38709,45 @@ var iconBoxAttrs = {
     btnBorderColor: {
         type: "string"
     },
-    btnPadding: {
+    btnPaddingT: {
+        type: "number"
+    },
+    btnPaddingR: {
+        type: "number"
+    },
+    btnPaddingB: {
+        type: "number"
+    },
+    btnPaddingL: {
+        type: "number"
+    },
+    btnPaddingTTablet: {
+        type: "number"
+    },
+    btnPaddingRTablet: {
+        type: "number"
+    },
+    btnPaddingBTablet: {
+        type: "number"
+    },
+    btnPaddingLTablet: {
+        type: "number"
+    },
+    btnPaddingTMobile: {
+        type: "number"
+    },
+    btnPaddingRMobile: {
+        type: "number"
+    },
+    btnPaddingBMobile: {
+        type: "number"
+    },
+    btnPaddingLMobile: {
         type: "number"
     },
     btnPaddingU: {
-        type: "string"
+        type: "string",
+        default: "px"
     },
     btnMarginT: {
         type: "number"
@@ -37389,8 +38837,33 @@ var iconBoxAttrs = {
     paddingL: {
         type: "number"
     },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: "px"
     },
     shadowColor: {
         type: "string"
@@ -37471,40 +38944,36 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styling__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_fonts__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_media_upload__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__styling__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_hex_to_rgba__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_premium_responsive_tabs__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -37571,8 +39040,6 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _wp$element$createEle;
-
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
@@ -37658,7 +39125,18 @@ var edit = function (_Component) {
                 btnBorderLeft = attributes.btnBorderLeft,
                 btnBorderRadius = attributes.btnBorderRadius,
                 btnBorderType = attributes.btnBorderType,
-                btnPadding = attributes.btnPadding,
+                btnPaddingT = attributes.btnPaddingT,
+                btnPaddingR = attributes.btnPaddingR,
+                btnPaddingB = attributes.btnPaddingB,
+                btnPaddingL = attributes.btnPaddingL,
+                btnPaddingTTablet = attributes.btnPaddingTTablet,
+                btnPaddingRTablet = attributes.btnPaddingRTablet,
+                btnPaddingBTablet = attributes.btnPaddingBTablet,
+                btnPaddingLTablet = attributes.btnPaddingLTablet,
+                btnPaddingTMobile = attributes.btnPaddingTMobile,
+                btnPaddingRMobile = attributes.btnPaddingRMobile,
+                btnPaddingBMobile = attributes.btnPaddingBMobile,
+                btnPaddingLMobile = attributes.btnPaddingLMobile,
                 btnPaddingU = attributes.btnPaddingU,
                 btnMarginT = attributes.btnMarginT,
                 btnMarginB = attributes.btnMarginB,
@@ -37691,6 +39169,14 @@ var edit = function (_Component) {
                 paddingR = attributes.paddingR,
                 paddingB = attributes.paddingB,
                 paddingL = attributes.paddingL,
+                paddingTTablet = attributes.paddingTTablet,
+                paddingRTablet = attributes.paddingRTablet,
+                paddingBTablet = attributes.paddingBTablet,
+                paddingLTablet = attributes.paddingLTablet,
+                paddingTMobile = attributes.paddingTMobile,
+                paddingRMobile = attributes.paddingRMobile,
+                paddingBMobile = attributes.paddingBMobile,
+                paddingLMobile = attributes.paddingLMobile,
                 paddingU = attributes.paddingU,
                 shadowBlur = attributes.shadowBlur,
                 shadowColor = attributes.shadowColor,
@@ -37819,7 +39305,7 @@ var edit = function (_Component) {
             var element = document.getElementById("premium-style-iconBox-" + blockId);
 
             if (null != element && "undefined" != typeof element) {
-                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_14__styling__["a" /* default */])(this.props);
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_13__styling__["a" /* default */])(this.props);
             }
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-icon-box");
@@ -37937,7 +39423,7 @@ var edit = function (_Component) {
                     "image" === iconImage && wp.element.createElement(
                         Fragment,
                         null,
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_13__components_premium_media_upload__["a" /* default */], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_media_upload__["a" /* default */], {
                             type: "image",
                             imageID: iconImgId,
                             imageURL: iconImgUrl,
@@ -38007,7 +39493,7 @@ var edit = function (_Component) {
                     wp.element.createElement(SelectControl, {
                         label: __("Font Family"),
                         value: titleFont,
-                        options: __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__["a" /* default */],
+                        options: __WEBPACK_IMPORTED_MODULE_11__components_premium_fonts__["a" /* default */],
                         onChange: onChangeTitleFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
@@ -38121,7 +39607,7 @@ var edit = function (_Component) {
                     wp.element.createElement(SelectControl, {
                         label: __("Font Family"),
                         value: descFont,
-                        options: __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__["a" /* default */],
+                        options: __WEBPACK_IMPORTED_MODULE_11__components_premium_fonts__["a" /* default */],
                         onChange: onChangeDescFamily
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
@@ -38325,84 +39811,58 @@ var edit = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
-                        paddingTop: btnPadding,
-                        paddingRight: btnPadding,
-                        paddingBottom: btnPadding,
-                        paddingLeft: btnPadding,
+                        paddingTop: btnPaddingT,
+                        paddingRight: btnPaddingR,
+                        paddingBottom: btnPaddingB,
+                        paddingLeft: btnPaddingL,
+                        paddingTopTablet: btnPaddingTTablet,
+                        paddingRightTablet: btnPaddingRTablet,
+                        paddingBottomTablet: btnPaddingBTablet,
+                        paddingLeftTablet: btnPaddingLTablet,
+                        paddingTopMobile: btnPaddingTMobile,
+                        paddingRightMobile: btnPaddingRMobile,
+                        paddingBottomMobile: btnPaddingBMobile,
+                        paddingLeftMobile: btnPaddingLMobile,
                         showUnits: true,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-
-                        paddingTopTablet: btnPadding,
-                        paddingRightTablet: btnPadding,
-                        paddingBottomTablet: btnPadding,
-                        paddingLeftTablet: btnPadding,
-                        onChangePadTopTablet: function onChangePadTopTablet(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-
-                        paddingTopMobile: btnPadding,
-                        paddingRightMobile: btnPadding,
-                        paddingBottomMobile: btnPadding,
-                        paddingLeftMobile: btnPadding,
-                        onChangePadTopMobile: function onChangePadTopMobile(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(value) {
-                            return setAttributes({
-                                btnPadding: value || 0
-                            });
-                        },
                         selectedUnit: btnPaddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ btnPaddingU: newvalue });
+                        },
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ btnPaddingT: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ btnPaddingR: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ btnPaddingB: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ btnPaddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ btnPaddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ btnPaddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ btnPaddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ btnPaddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ btnPaddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ btnPaddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ btnPaddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ btnPaddingLMobile: valM });
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
@@ -38655,81 +40115,62 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], (_wp$element$createEle = {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: paddingT,
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
+                        paddingTopTablet: paddingTTablet,
+                        paddingRightTablet: paddingRTablet,
+                        paddingBottomTablet: paddingBTablet,
+                        paddingLeftTablet: paddingLTablet,
+                        paddingTopMobile: paddingTMobile,
+                        paddingRightMobile: paddingRMobile,
+                        paddingBottomMobile: paddingBMobile,
+                        paddingLeftMobile: paddingLMobile,
                         showUnits: true,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingT: value || 0
-                            });
+                        selectedUnit: paddingU,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return setAttributes({ paddingU: newvalue });
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingR: value || 0
-                            });
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ paddingT: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingB: value || 0
-                            });
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ paddingR: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingL: value || 0
-                            });
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ paddingB: val });
                         },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ paddingL: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ paddingTTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ paddingRTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ paddingBTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ paddingLTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ paddingTMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ paddingRMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ paddingBMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ paddingLMobile: valM });
+                        }
 
-                        paddingTopTablet: paddingT,
-                        paddingRightTablet: paddingR,
-                        paddingBottomTablet: paddingB,
-                        paddingLeftTablet: paddingL,
-                        onChangePadTopTablet: function onChangePadTopTablet(value) {
-                            return setAttributes({
-                                paddingT: value || 0
-                            });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(value) {
-                            return setAttributes({
-                                paddingR: value || 0
-                            });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(value) {
-                            return setAttributes({
-                                paddingB: value || 0
-                            });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(value) {
-                            return setAttributes({
-                                paddingL: value || 0
-                            });
-                        },
-
-                        paddingTopMobile: paddingT,
-                        paddingRightMobile: paddingR,
-                        paddingBottomMobile: paddingB,
-                        paddingLeftMobile: paddingL
-                    }, _defineProperty(_wp$element$createEle, "showUnits", true), _defineProperty(_wp$element$createEle, "onChangePadTopMobile", function onChangePadTopMobile(value) {
-                        return setAttributes({
-                            paddingT: value || 0
-                        });
-                    }), _defineProperty(_wp$element$createEle, "onChangePadRightMobile", function onChangePadRightMobile(value) {
-                        return setAttributes({
-                            paddingR: value || 0
-                        });
-                    }), _defineProperty(_wp$element$createEle, "onChangePadBottomMobile", function onChangePadBottomMobile(value) {
-                        return setAttributes({
-                            paddingB: value || 0
-                        });
-                    }), _defineProperty(_wp$element$createEle, "onChangePadLeftMobile", function onChangePadLeftMobile(value) {
-                        return setAttributes({
-                            paddingL: value || 0
-                        });
-                    }), _defineProperty(_wp$element$createEle, "selectedUnit", paddingU), _defineProperty(_wp$element$createEle, "onChangePadSizeUnit", function onChangePadSizeUnit(newvalue) {
-                        return setAttributes({ paddingU: newvalue });
-                    }), _wp$element$createEle))
+                    })
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -38950,7 +40391,7 @@ var edit = function (_Component) {
                         }
                     )
                 ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_16__components_premium_responsive_tabs__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_15__components_premium_responsive_tabs__["a" /* default */], {
                     Desktop: hideDesktop,
                     Tablet: hideTablet,
                     Mobile: hideMobile,
@@ -38979,12 +40420,8 @@ var edit = function (_Component) {
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
                         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
+                        backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                         backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
@@ -39014,7 +40451,7 @@ var edit = function (_Component) {
                             className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
                             style: {
                                 color: iconColor,
-                                backgroundColor: iconBackColor ? __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba___default()(iconBackColor, iconOpacity) : "transparent",
+                                backgroundColor: iconBackColor ? __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba___default()(iconBackColor, iconOpacity) : "transparent",
                                 fontSize: iconSize
                             }
                         })
@@ -39109,7 +40546,7 @@ var edit = function (_Component) {
                             value: btnText,
                             style: {
                                 color: btnColor,
-                                backgroundColor: btnBack ? __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba___default()(btnBack, btnOpacity) : "transparent",
+                                backgroundColor: btnBack ? __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba___default()(btnBack, btnOpacity) : "transparent",
                                 letterSpacing: btnLetter + "px",
                                 textTransform: btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyle,
@@ -39118,7 +40555,6 @@ var edit = function (_Component) {
                                 borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
                                 borderRadius: btnBorderRadius + "px",
                                 borderColor: btnBorderColor,
-                                padding: btnPadding + btnPaddingU,
                                 boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
                             },
                             keepPlaceholderOnFocus: true
@@ -39143,12 +40579,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -39167,7 +40603,33 @@ function styling(props) {
         btnSizeUnit = _props$attributes.btnSizeUnit,
         btnSize = _props$attributes.btnSize,
         btnSizeTablet = _props$attributes.btnSizeTablet,
-        btnSizeMobile = _props$attributes.btnSizeMobile;
+        btnSizeMobile = _props$attributes.btnSizeMobile,
+        paddingT = _props$attributes.paddingT,
+        paddingR = _props$attributes.paddingR,
+        paddingB = _props$attributes.paddingB,
+        paddingL = _props$attributes.paddingL,
+        paddingTTablet = _props$attributes.paddingTTablet,
+        paddingRTablet = _props$attributes.paddingRTablet,
+        paddingBTablet = _props$attributes.paddingBTablet,
+        paddingLTablet = _props$attributes.paddingLTablet,
+        paddingTMobile = _props$attributes.paddingTMobile,
+        paddingRMobile = _props$attributes.paddingRMobile,
+        paddingBMobile = _props$attributes.paddingBMobile,
+        paddingLMobile = _props$attributes.paddingLMobile,
+        paddingU = _props$attributes.paddingU,
+        btnPaddingU = _props$attributes.btnPaddingU,
+        btnPaddingT = _props$attributes.btnPaddingT,
+        btnPaddingR = _props$attributes.btnPaddingR,
+        btnPaddingB = _props$attributes.btnPaddingB,
+        btnPaddingL = _props$attributes.btnPaddingL,
+        btnPaddingTTablet = _props$attributes.btnPaddingTTablet,
+        btnPaddingRTablet = _props$attributes.btnPaddingRTablet,
+        btnPaddingBTablet = _props$attributes.btnPaddingBTablet,
+        btnPaddingLTablet = _props$attributes.btnPaddingLTablet,
+        btnPaddingTMobile = _props$attributes.btnPaddingTMobile,
+        btnPaddingRMobile = _props$attributes.btnPaddingRMobile,
+        btnPaddingBMobile = _props$attributes.btnPaddingBMobile,
+        btnPaddingLMobile = _props$attributes.btnPaddingLMobile;
 
 
     var selectors = {};
@@ -39175,6 +40637,12 @@ function styling(props) {
     var mobile_selectors = {};
 
     selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
         },
@@ -39182,11 +40650,21 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingT, btnPaddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingR, btnPaddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingB, btnPaddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingL, btnPaddingU)
         }
     };
 
     tablet_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
         },
@@ -39194,11 +40672,21 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeTablet, btnSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeTablet, btnSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingTTablet, btnPaddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingRTablet, btnPaddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingBTablet, btnPaddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingLTablet, btnPaddingU)
         }
     };
 
     mobile_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
+        },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
         },
@@ -39206,7 +40694,11 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descSizeUnit)
         },
         " .premium-icon-box__btn": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeMobile, btnSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeMobile, btnSizeUnit),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingTMobile, btnPaddingU),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingRMobile, btnPaddingU),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingBMobile, btnPaddingU),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingLMobile, btnPaddingU)
         }
     };
 
@@ -39226,7 +40718,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39373,10 +40865,6 @@ var save = function save(props) {
                 marginRight: marginR,
                 marginBottom: marginB,
                 marginLeft: marginL,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
                 boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                 backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                 backgroundImage: 'url(\'' + imageURL + '\')',
@@ -39491,7 +40979,6 @@ var save = function save(props) {
                         borderWidth: btnBorderIconBox ? btnBorderTop + 'px ' + btnBorderRight + 'px ' + btnBorderBottom + 'px ' + btnBorderLeft + 'px' : btnBorderWidth + "px",
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
-                        padding: btnPadding + btnPaddingU,
                         boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
@@ -39503,7 +40990,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40652,44 +42139,129 @@ var newAttributes_1_7_2 = {
 };
 
 var deprecated_attributes_1_7_2 = Object.assign(newAttributes_1_7_2, deprecated_attributes_1_7_1);
+var newAttributes_1_7_3 = {
+    btnPaddingT: {
+        type: "number"
+    },
+    btnPaddingR: {
+        type: "number"
+    },
+    btnPaddingB: {
+        type: "number"
+    },
+    btnPaddingL: {
+        type: "number"
+    },
+    btnPaddingTTablet: {
+        type: "number"
+    },
+    btnPaddingRTablet: {
+        type: "number"
+    },
+    btnPaddingBTablet: {
+        type: "number"
+    },
+    btnPaddingLTablet: {
+        type: "number"
+    },
+    btnPaddingTMobile: {
+        type: "number"
+    },
+    btnPaddingRMobile: {
+        type: "number"
+    },
+    btnPaddingBMobile: {
+        type: "number"
+    },
+    btnPaddingLMobile: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string",
+        default: "px"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    }
+};
+var deprecated_attributes_1_7_3 = Object.assign(deprecated_attributes_1_7_2, newAttributes_1_7_3);
 
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_7_2,
+    attributes: deprecated_attributes_1_7_3,
+
     migrate: function migrate(attributes) {
         var newAttributes = {
-            borderLeft: "",
-            borderTop: "",
-            borderRight: "",
-            borderBottom: "",
-            btnBorderBottom: "",
-            btnBorderLeft: "",
-            btnBorderTop: "",
-            btnBorderRight: "",
-            borderIconBox: "",
-            btnBorderIconBox: "",
-            classMigrate: false,
-            block_id: '',
-            titleSizeUnit: "px",
-            titleSizeTablet: '',
-            titleSizeMobile: '',
-            descSizeUnit: 'px',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            btnSizeUnit: 'px',
-            btnSizeTablet: '',
-            btnSizeMobile: '',
-            btnOpacity: "",
-            iconOpacity: "",
-            backOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
+            btnPaddingT: "",
+            btnPaddingR: "",
+            btnPaddingB: "",
+            btnPaddingL: "",
+            btnPaddingTTablet: "",
+            btnPaddingRTablet: "",
+            btnPaddingBTablet: "",
+            btnPaddingLTablet: "",
+            btnPaddingTMobile: "",
+            btnPaddingRMobile: "",
+            btnPaddingBMobile: "",
+            btnPaddingLMobile: "",
+            btnPaddingU: "",
+            paddingT: "",
+            paddingR: "",
+            paddingB: "",
+            paddingL: "",
+            paddingTTablet: "",
+            paddingRTablet: "",
+            paddingBTablet: "",
+            paddingLTablet: "",
+            paddingTMobile: "",
+            paddingRMobile: "",
+            paddingBMobile: "",
+            paddingLMobile: "",
+            paddingU: ""
         };
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderIconBox = _props$attributes.borderIconBox,
+            btnBorderIconBox = _props$attributes.btnBorderIconBox,
             align = _props$attributes.align,
             iconImage = _props$attributes.iconImage,
             iconImgUrl = _props$attributes.iconImgUrl,
@@ -40708,7 +42280,6 @@ var deprecatedContent = [{
             titleTag = _props$attributes.titleTag,
             titleColor = _props$attributes.titleColor,
             titleFont = _props$attributes.titleFont,
-            titleSize = _props$attributes.titleSize,
             titleLine = _props$attributes.titleLine,
             titleLetter = _props$attributes.titleLetter,
             titleStyle = _props$attributes.titleStyle,
@@ -40724,7 +42295,6 @@ var deprecatedContent = [{
             descText = _props$attributes.descText,
             descColor = _props$attributes.descColor,
             descFont = _props$attributes.descFont,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descMarginT = _props$attributes.descMarginT,
@@ -40735,7 +42305,6 @@ var deprecatedContent = [{
             btnText = _props$attributes.btnText,
             btnTarget = _props$attributes.btnTarget,
             btnLink = _props$attributes.btnLink,
-            btnSize = _props$attributes.btnSize,
             btnStyle = _props$attributes.btnStyle,
             btnUpper = _props$attributes.btnUpper,
             btnWeight = _props$attributes.btnWeight,
@@ -40746,6 +42315,14 @@ var deprecatedContent = [{
             btnBack = _props$attributes.btnBack,
             btnHoverBack = _props$attributes.btnHoverBack,
             btnBorderWidth = _props$attributes.btnBorderWidth,
+            btnBorderTop = _props$attributes.btnBorderTop,
+            btnBorderRight = _props$attributes.btnBorderRight,
+            btnBorderBottom = _props$attributes.btnBorderBottom,
+            btnBorderLeft = _props$attributes.btnBorderLeft,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             btnBorderRadius = _props$attributes.btnBorderRadius,
             btnBorderColor = _props$attributes.btnBorderColor,
             btnBorderType = _props$attributes.btnBorderType,
@@ -40786,7 +42363,291 @@ var deprecatedContent = [{
             hoverShadowColor = _props$attributes.hoverShadowColor,
             hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
             hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition;
+            hoverShadowPosition = _props$attributes.hoverShadowPosition,
+            iconOpacity = _props$attributes.iconOpacity,
+            btnOpacity = _props$attributes.btnOpacity,
+            backOpacity = _props$attributes.backOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-icon-box-" + block_id,
+                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: align,
+                    borderStyle: borderType,
+                    borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            btnChecked && btnText && wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                }
+            }),
+            iconChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && wp.element.createElement("i", {
+                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
+                    style: {
+                        color: iconColor,
+                        backgroundColor: iconBackColor ? hexToRgba(iconBackColor, iconOpacity) : "transparent",
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && wp.element.createElement("img", {
+                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
+                    src: "" + iconImgUrl,
+                    alt: "Image Icon",
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-icon-box__content_wrap" },
+                titleChecked && titleText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__title_wrap",
+                        style: {
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: "premium-icon-box__title",
+                        value: titleText,
+                        style: {
+                            color: titleColor,
+                            fontFamily: titleFont,
+                            letterSpacing: titleLetter + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight,
+                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                            lineHeight: titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__desc_wrap",
+                        style: {
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-icon-box__desc",
+                        value: descText,
+                        style: {
+                            color: descColor,
+                            fontFamily: descFont,
+                            lineHeight: descLine + "px",
+                            fontWeight: descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                        style: {
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "a",
+                        className: "premium-icon-box__btn premium-button",
+                        href: btnLink,
+                        rel: "noopener noreferrer",
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnColor,
+                            backgroundColor: btnBack ? hexToRgba(btnBack, btnOpacity) : "transparent",
+                            letterSpacing: btnLetter + "px",
+                            textTransform: btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyle,
+                            fontWeight: btnWeight,
+                            borderStyle: btnBorderType,
+                            borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor,
+                            padding: btnPadding + btnPaddingU,
+                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        }
+                    })
+                )
+            )
+        );
+    }
+
+}, {
+    attributes: deprecated_attributes_1_7_2,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            borderLeft: "",
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            btnBorderBottom: "",
+            btnBorderLeft: "",
+            btnBorderTop: "",
+            btnBorderRight: "",
+            borderIconBox: "",
+            btnBorderIconBox: "",
+            classMigrate: false,
+            block_id: '',
+            titleSizeUnit: "px",
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            descSizeUnit: 'px',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            btnSizeUnit: 'px',
+            btnSizeTablet: '',
+            btnSizeMobile: '',
+            btnOpacity: "",
+            iconOpacity: "",
+            backOpacity: "",
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            align = _props$attributes2.align,
+            iconImage = _props$attributes2.iconImage,
+            iconImgUrl = _props$attributes2.iconImgUrl,
+            iconRadius = _props$attributes2.iconRadius,
+            selectedIcon = _props$attributes2.selectedIcon,
+            iconChecked = _props$attributes2.iconChecked,
+            hoverEffect = _props$attributes2.hoverEffect,
+            iconPos = _props$attributes2.iconPos,
+            iconHPos = _props$attributes2.iconHPos,
+            iconVPos = _props$attributes2.iconVPos,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            iconBackColor = _props$attributes2.iconBackColor,
+            titleChecked = _props$attributes2.titleChecked,
+            titleText = _props$attributes2.titleText,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleFont = _props$attributes2.titleFont,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            descChecked = _props$attributes2.descChecked,
+            descText = _props$attributes2.descText,
+            descColor = _props$attributes2.descColor,
+            descFont = _props$attributes2.descFont,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            btnChecked = _props$attributes2.btnChecked,
+            btnEffect = _props$attributes2.btnEffect,
+            effectDir = _props$attributes2.effectDir,
+            btnText = _props$attributes2.btnText,
+            btnTarget = _props$attributes2.btnTarget,
+            btnLink = _props$attributes2.btnLink,
+            btnSize = _props$attributes2.btnSize,
+            btnStyle = _props$attributes2.btnStyle,
+            btnUpper = _props$attributes2.btnUpper,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLetter = _props$attributes2.btnLetter,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnHoverBorder = _props$attributes2.btnHoverBorder,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            marginT = _props$attributes2.marginT,
+            marginR = _props$attributes2.marginR,
+            marginB = _props$attributes2.marginB,
+            marginL = _props$attributes2.marginL,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
+            hoverShadowColor = _props$attributes2.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -40944,102 +42805,102 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            align = _props$attributes3.align,
+            iconImage = _props$attributes3.iconImage,
+            iconImgUrl = _props$attributes3.iconImgUrl,
+            iconRadius = _props$attributes3.iconRadius,
+            selectedIcon = _props$attributes3.selectedIcon,
+            iconChecked = _props$attributes3.iconChecked,
+            hoverEffect = _props$attributes3.hoverEffect,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            iconBackColor = _props$attributes3.iconBackColor,
+            titleChecked = _props$attributes3.titleChecked,
+            titleText = _props$attributes3.titleText,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleFont = _props$attributes3.titleFont,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            descChecked = _props$attributes3.descChecked,
+            descText = _props$attributes3.descText,
+            descColor = _props$attributes3.descColor,
+            descFont = _props$attributes3.descFont,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            btnChecked = _props$attributes3.btnChecked,
+            btnEffect = _props$attributes3.btnEffect,
+            effectDir = _props$attributes3.effectDir,
+            btnText = _props$attributes3.btnText,
+            btnTarget = _props$attributes3.btnTarget,
+            btnLink = _props$attributes3.btnLink,
+            btnSize = _props$attributes3.btnSize,
+            btnStyle = _props$attributes3.btnStyle,
+            btnUpper = _props$attributes3.btnUpper,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLetter = _props$attributes3.btnLetter,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnHoverBorder = _props$attributes3.btnHoverBorder,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnPadding = _props$attributes3.btnPadding,
+            btnPaddingU = _props$attributes3.btnPaddingU,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition,
+            backColor = _props$attributes3.backColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            marginT = _props$attributes3.marginT,
+            marginR = _props$attributes3.marginR,
+            marginB = _props$attributes3.marginB,
+            marginL = _props$attributes3.marginL,
+            paddingT = _props$attributes3.paddingT,
+            paddingR = _props$attributes3.paddingR,
+            paddingB = _props$attributes3.paddingB,
+            paddingL = _props$attributes3.paddingL,
+            paddingU = _props$attributes3.paddingU,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
+            hoverShadowColor = _props$attributes3.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -41190,100 +43051,100 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            align = _props$attributes3.align,
-            iconImage = _props$attributes3.iconImage,
-            iconImgUrl = _props$attributes3.iconImgUrl,
-            iconRadius = _props$attributes3.iconRadius,
-            selectedIcon = _props$attributes3.selectedIcon,
-            iconChecked = _props$attributes3.iconChecked,
-            hoverEffect = _props$attributes3.hoverEffect,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            iconBackColor = _props$attributes3.iconBackColor,
-            titleChecked = _props$attributes3.titleChecked,
-            titleText = _props$attributes3.titleText,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleFont = _props$attributes3.titleFont,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            descChecked = _props$attributes3.descChecked,
-            descText = _props$attributes3.descText,
-            descColor = _props$attributes3.descColor,
-            descFont = _props$attributes3.descFont,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            btnChecked = _props$attributes3.btnChecked,
-            btnEffect = _props$attributes3.btnEffect,
-            effectDir = _props$attributes3.effectDir,
-            btnText = _props$attributes3.btnText,
-            btnTarget = _props$attributes3.btnTarget,
-            btnLink = _props$attributes3.btnLink,
-            btnSize = _props$attributes3.btnSize,
-            btnStyle = _props$attributes3.btnStyle,
-            btnUpper = _props$attributes3.btnUpper,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLetter = _props$attributes3.btnLetter,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnHoverBorder = _props$attributes3.btnHoverBorder,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnPadding = _props$attributes3.btnPadding,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition,
-            backColor = _props$attributes3.backColor,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            marginT = _props$attributes3.marginT,
-            marginR = _props$attributes3.marginR,
-            marginB = _props$attributes3.marginB,
-            marginL = _props$attributes3.marginL,
-            paddingT = _props$attributes3.paddingT,
-            paddingR = _props$attributes3.paddingR,
-            paddingB = _props$attributes3.paddingB,
-            paddingL = _props$attributes3.paddingL,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
-            hoverShadowColor = _props$attributes3.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            align = _props$attributes4.align,
+            iconImage = _props$attributes4.iconImage,
+            iconImgUrl = _props$attributes4.iconImgUrl,
+            iconRadius = _props$attributes4.iconRadius,
+            selectedIcon = _props$attributes4.selectedIcon,
+            iconChecked = _props$attributes4.iconChecked,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBackColor = _props$attributes4.iconBackColor,
+            titleChecked = _props$attributes4.titleChecked,
+            titleText = _props$attributes4.titleText,
+            titleTag = _props$attributes4.titleTag,
+            titleColor = _props$attributes4.titleColor,
+            titleFont = _props$attributes4.titleFont,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titleMarginT = _props$attributes4.titleMarginT,
+            titleMarginB = _props$attributes4.titleMarginB,
+            descChecked = _props$attributes4.descChecked,
+            descText = _props$attributes4.descText,
+            descColor = _props$attributes4.descColor,
+            descFont = _props$attributes4.descFont,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descMarginT = _props$attributes4.descMarginT,
+            descMarginB = _props$attributes4.descMarginB,
+            btnChecked = _props$attributes4.btnChecked,
+            btnEffect = _props$attributes4.btnEffect,
+            effectDir = _props$attributes4.effectDir,
+            btnText = _props$attributes4.btnText,
+            btnTarget = _props$attributes4.btnTarget,
+            btnLink = _props$attributes4.btnLink,
+            btnSize = _props$attributes4.btnSize,
+            btnStyle = _props$attributes4.btnStyle,
+            btnUpper = _props$attributes4.btnUpper,
+            btnWeight = _props$attributes4.btnWeight,
+            btnLetter = _props$attributes4.btnLetter,
+            btnColor = _props$attributes4.btnColor,
+            btnHoverColor = _props$attributes4.btnHoverColor,
+            btnHoverBorder = _props$attributes4.btnHoverBorder,
+            btnBack = _props$attributes4.btnBack,
+            btnHoverBack = _props$attributes4.btnHoverBack,
+            btnBorderWidth = _props$attributes4.btnBorderWidth,
+            btnBorderRadius = _props$attributes4.btnBorderRadius,
+            btnBorderColor = _props$attributes4.btnBorderColor,
+            btnBorderType = _props$attributes4.btnBorderType,
+            btnPadding = _props$attributes4.btnPadding,
+            btnMarginT = _props$attributes4.btnMarginT,
+            btnMarginB = _props$attributes4.btnMarginB,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition,
+            backColor = _props$attributes4.backColor,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
+            hoverShadowColor = _props$attributes4.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -41434,98 +43295,98 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            align = _props$attributes4.align,
-            iconImage = _props$attributes4.iconImage,
-            iconImgUrl = _props$attributes4.iconImgUrl,
-            iconRadius = _props$attributes4.iconRadius,
-            selectedIcon = _props$attributes4.selectedIcon,
-            iconChecked = _props$attributes4.iconChecked,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBackColor = _props$attributes4.iconBackColor,
-            titleChecked = _props$attributes4.titleChecked,
-            titleText = _props$attributes4.titleText,
-            titleTag = _props$attributes4.titleTag,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titleMarginT = _props$attributes4.titleMarginT,
-            titleMarginB = _props$attributes4.titleMarginB,
-            descChecked = _props$attributes4.descChecked,
-            descText = _props$attributes4.descText,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descMarginT = _props$attributes4.descMarginT,
-            descMarginB = _props$attributes4.descMarginB,
-            btnChecked = _props$attributes4.btnChecked,
-            btnEffect = _props$attributes4.btnEffect,
-            effectDir = _props$attributes4.effectDir,
-            btnText = _props$attributes4.btnText,
-            btnTarget = _props$attributes4.btnTarget,
-            btnLink = _props$attributes4.btnLink,
-            btnSize = _props$attributes4.btnSize,
-            btnStyle = _props$attributes4.btnStyle,
-            btnUpper = _props$attributes4.btnUpper,
-            btnWeight = _props$attributes4.btnWeight,
-            btnLetter = _props$attributes4.btnLetter,
-            btnColor = _props$attributes4.btnColor,
-            btnHoverColor = _props$attributes4.btnHoverColor,
-            btnHoverBorder = _props$attributes4.btnHoverBorder,
-            btnBack = _props$attributes4.btnBack,
-            btnHoverBack = _props$attributes4.btnHoverBack,
-            btnBorderWidth = _props$attributes4.btnBorderWidth,
-            btnBorderRadius = _props$attributes4.btnBorderRadius,
-            btnBorderColor = _props$attributes4.btnBorderColor,
-            btnBorderType = _props$attributes4.btnBorderType,
-            btnPadding = _props$attributes4.btnPadding,
-            btnMarginT = _props$attributes4.btnMarginT,
-            btnMarginB = _props$attributes4.btnMarginB,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition,
-            backColor = _props$attributes4.backColor,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
-            hoverShadowColor = _props$attributes4.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            align = _props$attributes5.align,
+            iconImage = _props$attributes5.iconImage,
+            iconImgUrl = _props$attributes5.iconImgUrl,
+            iconRadius = _props$attributes5.iconRadius,
+            selectedIcon = _props$attributes5.selectedIcon,
+            iconChecked = _props$attributes5.iconChecked,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBackColor = _props$attributes5.iconBackColor,
+            titleChecked = _props$attributes5.titleChecked,
+            titleText = _props$attributes5.titleText,
+            titleTag = _props$attributes5.titleTag,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleLine = _props$attributes5.titleLine,
+            titleLetter = _props$attributes5.titleLetter,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleWeight = _props$attributes5.titleWeight,
+            titleShadowBlur = _props$attributes5.titleShadowBlur,
+            titleShadowColor = _props$attributes5.titleShadowColor,
+            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes5.titleShadowVertical,
+            titleMarginT = _props$attributes5.titleMarginT,
+            titleMarginB = _props$attributes5.titleMarginB,
+            descChecked = _props$attributes5.descChecked,
+            descText = _props$attributes5.descText,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descLine = _props$attributes5.descLine,
+            descWeight = _props$attributes5.descWeight,
+            descMarginT = _props$attributes5.descMarginT,
+            descMarginB = _props$attributes5.descMarginB,
+            btnChecked = _props$attributes5.btnChecked,
+            btnEffect = _props$attributes5.btnEffect,
+            effectDir = _props$attributes5.effectDir,
+            btnText = _props$attributes5.btnText,
+            btnTarget = _props$attributes5.btnTarget,
+            btnLink = _props$attributes5.btnLink,
+            btnSize = _props$attributes5.btnSize,
+            btnStyle = _props$attributes5.btnStyle,
+            btnUpper = _props$attributes5.btnUpper,
+            btnWeight = _props$attributes5.btnWeight,
+            btnLetter = _props$attributes5.btnLetter,
+            btnColor = _props$attributes5.btnColor,
+            btnHoverColor = _props$attributes5.btnHoverColor,
+            btnHoverBorder = _props$attributes5.btnHoverBorder,
+            btnBack = _props$attributes5.btnBack,
+            btnHoverBack = _props$attributes5.btnHoverBack,
+            btnBorderWidth = _props$attributes5.btnBorderWidth,
+            btnBorderRadius = _props$attributes5.btnBorderRadius,
+            btnBorderColor = _props$attributes5.btnBorderColor,
+            btnBorderType = _props$attributes5.btnBorderType,
+            btnPadding = _props$attributes5.btnPadding,
+            btnMarginT = _props$attributes5.btnMarginT,
+            btnMarginB = _props$attributes5.btnMarginB,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition,
+            backColor = _props$attributes5.backColor,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition,
+            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
+            hoverShadowColor = _props$attributes5.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -41673,97 +43534,97 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            align = _props$attributes5.align,
-            iconImage = _props$attributes5.iconImage,
-            iconImgUrl = _props$attributes5.iconImgUrl,
-            iconRadius = _props$attributes5.iconRadius,
-            selectedIcon = _props$attributes5.selectedIcon,
-            iconChecked = _props$attributes5.iconChecked,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            titleChecked = _props$attributes5.titleChecked,
-            titleText = _props$attributes5.titleText,
-            titleTag = _props$attributes5.titleTag,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleLine = _props$attributes5.titleLine,
-            titleLetter = _props$attributes5.titleLetter,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleWeight = _props$attributes5.titleWeight,
-            titleShadowBlur = _props$attributes5.titleShadowBlur,
-            titleShadowColor = _props$attributes5.titleShadowColor,
-            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes5.titleShadowVertical,
-            titleMarginT = _props$attributes5.titleMarginT,
-            titleMarginB = _props$attributes5.titleMarginB,
-            descChecked = _props$attributes5.descChecked,
-            descText = _props$attributes5.descText,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descLine = _props$attributes5.descLine,
-            descWeight = _props$attributes5.descWeight,
-            descMarginT = _props$attributes5.descMarginT,
-            descMarginB = _props$attributes5.descMarginB,
-            btnChecked = _props$attributes5.btnChecked,
-            btnEffect = _props$attributes5.btnEffect,
-            effectDir = _props$attributes5.effectDir,
-            btnText = _props$attributes5.btnText,
-            btnTarget = _props$attributes5.btnTarget,
-            btnLink = _props$attributes5.btnLink,
-            btnSize = _props$attributes5.btnSize,
-            btnStyle = _props$attributes5.btnStyle,
-            btnUpper = _props$attributes5.btnUpper,
-            btnWeight = _props$attributes5.btnWeight,
-            btnLetter = _props$attributes5.btnLetter,
-            btnColor = _props$attributes5.btnColor,
-            btnHoverColor = _props$attributes5.btnHoverColor,
-            btnHoverBorder = _props$attributes5.btnHoverBorder,
-            btnBack = _props$attributes5.btnBack,
-            btnHoverBack = _props$attributes5.btnHoverBack,
-            btnBorderWidth = _props$attributes5.btnBorderWidth,
-            btnBorderRadius = _props$attributes5.btnBorderRadius,
-            btnBorderColor = _props$attributes5.btnBorderColor,
-            btnBorderType = _props$attributes5.btnBorderType,
-            btnPadding = _props$attributes5.btnPadding,
-            btnMarginT = _props$attributes5.btnMarginT,
-            btnMarginB = _props$attributes5.btnMarginB,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition,
-            backColor = _props$attributes5.backColor,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition,
-            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
-            hoverShadowColor = _props$attributes5.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            align = _props$attributes6.align,
+            iconImage = _props$attributes6.iconImage,
+            iconImgUrl = _props$attributes6.iconImgUrl,
+            iconRadius = _props$attributes6.iconRadius,
+            selectedIcon = _props$attributes6.selectedIcon,
+            iconChecked = _props$attributes6.iconChecked,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            titleChecked = _props$attributes6.titleChecked,
+            titleText = _props$attributes6.titleText,
+            titleTag = _props$attributes6.titleTag,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleLine = _props$attributes6.titleLine,
+            titleLetter = _props$attributes6.titleLetter,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleWeight = _props$attributes6.titleWeight,
+            titleShadowBlur = _props$attributes6.titleShadowBlur,
+            titleShadowColor = _props$attributes6.titleShadowColor,
+            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes6.titleShadowVertical,
+            titleMarginT = _props$attributes6.titleMarginT,
+            titleMarginB = _props$attributes6.titleMarginB,
+            descChecked = _props$attributes6.descChecked,
+            descText = _props$attributes6.descText,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descLine = _props$attributes6.descLine,
+            descWeight = _props$attributes6.descWeight,
+            descMarginT = _props$attributes6.descMarginT,
+            descMarginB = _props$attributes6.descMarginB,
+            btnChecked = _props$attributes6.btnChecked,
+            btnEffect = _props$attributes6.btnEffect,
+            effectDir = _props$attributes6.effectDir,
+            btnText = _props$attributes6.btnText,
+            btnTarget = _props$attributes6.btnTarget,
+            btnLink = _props$attributes6.btnLink,
+            btnSize = _props$attributes6.btnSize,
+            btnStyle = _props$attributes6.btnStyle,
+            btnUpper = _props$attributes6.btnUpper,
+            btnWeight = _props$attributes6.btnWeight,
+            btnLetter = _props$attributes6.btnLetter,
+            btnColor = _props$attributes6.btnColor,
+            btnHoverColor = _props$attributes6.btnHoverColor,
+            btnHoverBorder = _props$attributes6.btnHoverBorder,
+            btnBack = _props$attributes6.btnBack,
+            btnHoverBack = _props$attributes6.btnHoverBack,
+            btnBorderWidth = _props$attributes6.btnBorderWidth,
+            btnBorderRadius = _props$attributes6.btnBorderRadius,
+            btnBorderColor = _props$attributes6.btnBorderColor,
+            btnBorderType = _props$attributes6.btnBorderType,
+            btnPadding = _props$attributes6.btnPadding,
+            btnMarginT = _props$attributes6.btnMarginT,
+            btnMarginB = _props$attributes6.btnMarginB,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition,
+            backColor = _props$attributes6.backColor,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition,
+            hoverShadowBlur = _props$attributes6.hoverShadowBlur,
+            hoverShadowColor = _props$attributes6.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes6.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes6.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes6.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -41913,92 +43774,92 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            align = _props$attributes6.align,
-            iconImage = _props$attributes6.iconImage,
-            iconImgUrl = _props$attributes6.iconImgUrl,
-            iconRadius = _props$attributes6.iconRadius,
-            selectedIcon = _props$attributes6.selectedIcon,
-            iconChecked = _props$attributes6.iconChecked,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            titleChecked = _props$attributes6.titleChecked,
-            titleText = _props$attributes6.titleText,
-            titleTag = _props$attributes6.titleTag,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleLine = _props$attributes6.titleLine,
-            titleLetter = _props$attributes6.titleLetter,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleWeight = _props$attributes6.titleWeight,
-            titleShadowBlur = _props$attributes6.titleShadowBlur,
-            titleShadowColor = _props$attributes6.titleShadowColor,
-            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes6.titleShadowVertical,
-            titleMarginT = _props$attributes6.titleMarginT,
-            titleMarginB = _props$attributes6.titleMarginB,
-            descChecked = _props$attributes6.descChecked,
-            descText = _props$attributes6.descText,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descLine = _props$attributes6.descLine,
-            descWeight = _props$attributes6.descWeight,
-            descMarginT = _props$attributes6.descMarginT,
-            descMarginB = _props$attributes6.descMarginB,
-            btnChecked = _props$attributes6.btnChecked,
-            btnEffect = _props$attributes6.btnEffect,
-            effectDir = _props$attributes6.effectDir,
-            btnText = _props$attributes6.btnText,
-            btnTarget = _props$attributes6.btnTarget,
-            btnLink = _props$attributes6.btnLink,
-            btnSize = _props$attributes6.btnSize,
-            btnStyle = _props$attributes6.btnStyle,
-            btnUpper = _props$attributes6.btnUpper,
-            btnWeight = _props$attributes6.btnWeight,
-            btnLetter = _props$attributes6.btnLetter,
-            btnColor = _props$attributes6.btnColor,
-            btnHoverColor = _props$attributes6.btnHoverColor,
-            btnHoverBorder = _props$attributes6.btnHoverBorder,
-            btnBack = _props$attributes6.btnBack,
-            btnHoverBack = _props$attributes6.btnHoverBack,
-            btnBorderWidth = _props$attributes6.btnBorderWidth,
-            btnBorderRadius = _props$attributes6.btnBorderRadius,
-            btnBorderColor = _props$attributes6.btnBorderColor,
-            btnBorderType = _props$attributes6.btnBorderType,
-            btnPadding = _props$attributes6.btnPadding,
-            btnMarginT = _props$attributes6.btnMarginT,
-            btnMarginB = _props$attributes6.btnMarginB,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition,
-            backColor = _props$attributes6.backColor,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            align = _props$attributes7.align,
+            iconImage = _props$attributes7.iconImage,
+            iconImgUrl = _props$attributes7.iconImgUrl,
+            iconRadius = _props$attributes7.iconRadius,
+            selectedIcon = _props$attributes7.selectedIcon,
+            iconChecked = _props$attributes7.iconChecked,
+            hoverEffect = _props$attributes7.hoverEffect,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            titleChecked = _props$attributes7.titleChecked,
+            titleText = _props$attributes7.titleText,
+            titleTag = _props$attributes7.titleTag,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleLine = _props$attributes7.titleLine,
+            titleLetter = _props$attributes7.titleLetter,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleWeight = _props$attributes7.titleWeight,
+            titleShadowBlur = _props$attributes7.titleShadowBlur,
+            titleShadowColor = _props$attributes7.titleShadowColor,
+            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes7.titleShadowVertical,
+            titleMarginT = _props$attributes7.titleMarginT,
+            titleMarginB = _props$attributes7.titleMarginB,
+            descChecked = _props$attributes7.descChecked,
+            descText = _props$attributes7.descText,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descLine = _props$attributes7.descLine,
+            descWeight = _props$attributes7.descWeight,
+            descMarginT = _props$attributes7.descMarginT,
+            descMarginB = _props$attributes7.descMarginB,
+            btnChecked = _props$attributes7.btnChecked,
+            btnEffect = _props$attributes7.btnEffect,
+            effectDir = _props$attributes7.effectDir,
+            btnText = _props$attributes7.btnText,
+            btnTarget = _props$attributes7.btnTarget,
+            btnLink = _props$attributes7.btnLink,
+            btnSize = _props$attributes7.btnSize,
+            btnStyle = _props$attributes7.btnStyle,
+            btnUpper = _props$attributes7.btnUpper,
+            btnWeight = _props$attributes7.btnWeight,
+            btnLetter = _props$attributes7.btnLetter,
+            btnColor = _props$attributes7.btnColor,
+            btnHoverColor = _props$attributes7.btnHoverColor,
+            btnHoverBorder = _props$attributes7.btnHoverBorder,
+            btnBack = _props$attributes7.btnBack,
+            btnHoverBack = _props$attributes7.btnHoverBack,
+            btnBorderWidth = _props$attributes7.btnBorderWidth,
+            btnBorderRadius = _props$attributes7.btnBorderRadius,
+            btnBorderColor = _props$attributes7.btnBorderColor,
+            btnBorderType = _props$attributes7.btnBorderType,
+            btnPadding = _props$attributes7.btnPadding,
+            btnMarginT = _props$attributes7.btnMarginT,
+            btnMarginB = _props$attributes7.btnMarginB,
+            btnShadowBlur = _props$attributes7.btnShadowBlur,
+            btnShadowColor = _props$attributes7.btnShadowColor,
+            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes7.btnShadowVertical,
+            btnShadowPosition = _props$attributes7.btnShadowPosition,
+            backColor = _props$attributes7.backColor,
+            imageURL = _props$attributes7.imageURL,
+            fixed = _props$attributes7.fixed,
+            backgroundRepeat = _props$attributes7.backgroundRepeat,
+            backgroundPosition = _props$attributes7.backgroundPosition,
+            backgroundSize = _props$attributes7.backgroundSize,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            marginT = _props$attributes7.marginT,
+            marginR = _props$attributes7.marginR,
+            marginB = _props$attributes7.marginB,
+            marginL = _props$attributes7.marginL,
+            paddingT = _props$attributes7.paddingT,
+            paddingR = _props$attributes7.paddingR,
+            paddingB = _props$attributes7.paddingB,
+            paddingL = _props$attributes7.paddingL,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            shadowPosition = _props$attributes7.shadowPosition;
 
 
         return wp.element.createElement(
@@ -42143,91 +44004,91 @@ var deprecatedContent = [{
         };
     },
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            align = _props$attributes7.align,
-            iconType = _props$attributes7.iconType,
-            iconImage = _props$attributes7.iconImage,
-            iconImgUrl = _props$attributes7.iconImgUrl,
-            iconRadius = _props$attributes7.iconRadius,
-            selectedIcon = _props$attributes7.selectedIcon,
-            iconChecked = _props$attributes7.iconChecked,
-            hoverEffect = _props$attributes7.hoverEffect,
-            iconSize = _props$attributes7.iconSize,
-            iconColor = _props$attributes7.iconColor,
-            titleChecked = _props$attributes7.titleChecked,
-            titleText = _props$attributes7.titleText,
-            titleTag = _props$attributes7.titleTag,
-            titleColor = _props$attributes7.titleColor,
-            titleSize = _props$attributes7.titleSize,
-            titleLine = _props$attributes7.titleLine,
-            titleLetter = _props$attributes7.titleLetter,
-            titleStyle = _props$attributes7.titleStyle,
-            titleUpper = _props$attributes7.titleUpper,
-            titleWeight = _props$attributes7.titleWeight,
-            titleShadowBlur = _props$attributes7.titleShadowBlur,
-            titleShadowColor = _props$attributes7.titleShadowColor,
-            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes7.titleShadowVertical,
-            titleMarginT = _props$attributes7.titleMarginT,
-            titleMarginB = _props$attributes7.titleMarginB,
-            descChecked = _props$attributes7.descChecked,
-            descText = _props$attributes7.descText,
-            descColor = _props$attributes7.descColor,
-            descSize = _props$attributes7.descSize,
-            descLine = _props$attributes7.descLine,
-            descWeight = _props$attributes7.descWeight,
-            descMarginT = _props$attributes7.descMarginT,
-            descMarginB = _props$attributes7.descMarginB,
-            btnChecked = _props$attributes7.btnChecked,
-            btnText = _props$attributes7.btnText,
-            btnTarget = _props$attributes7.btnTarget,
-            btnLink = _props$attributes7.btnLink,
-            btnSize = _props$attributes7.btnSize,
-            btnStyle = _props$attributes7.btnStyle,
-            btnUpper = _props$attributes7.btnUpper,
-            btnWeight = _props$attributes7.btnWeight,
-            btnLetter = _props$attributes7.btnLetter,
-            btnColor = _props$attributes7.btnColor,
-            btnHoverColor = _props$attributes7.btnHoverColor,
-            btnHoverBorder = _props$attributes7.btnHoverBorder,
-            btnBack = _props$attributes7.btnBack,
-            btnHoverBack = _props$attributes7.btnHoverBack,
-            btnBorderWidth = _props$attributes7.btnBorderWidth,
-            btnBorderRadius = _props$attributes7.btnBorderRadius,
-            btnBorderColor = _props$attributes7.btnBorderColor,
-            btnBorderType = _props$attributes7.btnBorderType,
-            btnPadding = _props$attributes7.btnPadding,
-            btnMarginT = _props$attributes7.btnMarginT,
-            btnMarginB = _props$attributes7.btnMarginB,
-            btnShadowBlur = _props$attributes7.btnShadowBlur,
-            btnShadowColor = _props$attributes7.btnShadowColor,
-            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes7.btnShadowVertical,
-            btnShadowPosition = _props$attributes7.btnShadowPosition,
-            backColor = _props$attributes7.backColor,
-            imageURL = _props$attributes7.imageURL,
-            fixed = _props$attributes7.fixed,
-            backgroundRepeat = _props$attributes7.backgroundRepeat,
-            backgroundPosition = _props$attributes7.backgroundPosition,
-            backgroundSize = _props$attributes7.backgroundSize,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            marginT = _props$attributes7.marginT,
-            marginR = _props$attributes7.marginR,
-            marginB = _props$attributes7.marginB,
-            marginL = _props$attributes7.marginL,
-            paddingT = _props$attributes7.paddingT,
-            paddingR = _props$attributes7.paddingR,
-            paddingB = _props$attributes7.paddingB,
-            paddingL = _props$attributes7.paddingL,
-            shadowBlur = _props$attributes7.shadowBlur,
-            shadowColor = _props$attributes7.shadowColor,
-            shadowHorizontal = _props$attributes7.shadowHorizontal,
-            shadowVertical = _props$attributes7.shadowVertical,
-            shadowPosition = _props$attributes7.shadowPosition;
+        var _props$attributes8 = props.attributes,
+            id = _props$attributes8.id,
+            align = _props$attributes8.align,
+            iconType = _props$attributes8.iconType,
+            iconImage = _props$attributes8.iconImage,
+            iconImgUrl = _props$attributes8.iconImgUrl,
+            iconRadius = _props$attributes8.iconRadius,
+            selectedIcon = _props$attributes8.selectedIcon,
+            iconChecked = _props$attributes8.iconChecked,
+            hoverEffect = _props$attributes8.hoverEffect,
+            iconSize = _props$attributes8.iconSize,
+            iconColor = _props$attributes8.iconColor,
+            titleChecked = _props$attributes8.titleChecked,
+            titleText = _props$attributes8.titleText,
+            titleTag = _props$attributes8.titleTag,
+            titleColor = _props$attributes8.titleColor,
+            titleSize = _props$attributes8.titleSize,
+            titleLine = _props$attributes8.titleLine,
+            titleLetter = _props$attributes8.titleLetter,
+            titleStyle = _props$attributes8.titleStyle,
+            titleUpper = _props$attributes8.titleUpper,
+            titleWeight = _props$attributes8.titleWeight,
+            titleShadowBlur = _props$attributes8.titleShadowBlur,
+            titleShadowColor = _props$attributes8.titleShadowColor,
+            titleShadowHorizontal = _props$attributes8.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes8.titleShadowVertical,
+            titleMarginT = _props$attributes8.titleMarginT,
+            titleMarginB = _props$attributes8.titleMarginB,
+            descChecked = _props$attributes8.descChecked,
+            descText = _props$attributes8.descText,
+            descColor = _props$attributes8.descColor,
+            descSize = _props$attributes8.descSize,
+            descLine = _props$attributes8.descLine,
+            descWeight = _props$attributes8.descWeight,
+            descMarginT = _props$attributes8.descMarginT,
+            descMarginB = _props$attributes8.descMarginB,
+            btnChecked = _props$attributes8.btnChecked,
+            btnText = _props$attributes8.btnText,
+            btnTarget = _props$attributes8.btnTarget,
+            btnLink = _props$attributes8.btnLink,
+            btnSize = _props$attributes8.btnSize,
+            btnStyle = _props$attributes8.btnStyle,
+            btnUpper = _props$attributes8.btnUpper,
+            btnWeight = _props$attributes8.btnWeight,
+            btnLetter = _props$attributes8.btnLetter,
+            btnColor = _props$attributes8.btnColor,
+            btnHoverColor = _props$attributes8.btnHoverColor,
+            btnHoverBorder = _props$attributes8.btnHoverBorder,
+            btnBack = _props$attributes8.btnBack,
+            btnHoverBack = _props$attributes8.btnHoverBack,
+            btnBorderWidth = _props$attributes8.btnBorderWidth,
+            btnBorderRadius = _props$attributes8.btnBorderRadius,
+            btnBorderColor = _props$attributes8.btnBorderColor,
+            btnBorderType = _props$attributes8.btnBorderType,
+            btnPadding = _props$attributes8.btnPadding,
+            btnMarginT = _props$attributes8.btnMarginT,
+            btnMarginB = _props$attributes8.btnMarginB,
+            btnShadowBlur = _props$attributes8.btnShadowBlur,
+            btnShadowColor = _props$attributes8.btnShadowColor,
+            btnShadowHorizontal = _props$attributes8.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes8.btnShadowVertical,
+            btnShadowPosition = _props$attributes8.btnShadowPosition,
+            backColor = _props$attributes8.backColor,
+            imageURL = _props$attributes8.imageURL,
+            fixed = _props$attributes8.fixed,
+            backgroundRepeat = _props$attributes8.backgroundRepeat,
+            backgroundPosition = _props$attributes8.backgroundPosition,
+            backgroundSize = _props$attributes8.backgroundSize,
+            borderType = _props$attributes8.borderType,
+            borderWidth = _props$attributes8.borderWidth,
+            borderRadius = _props$attributes8.borderRadius,
+            borderColor = _props$attributes8.borderColor,
+            marginT = _props$attributes8.marginT,
+            marginR = _props$attributes8.marginR,
+            marginB = _props$attributes8.marginB,
+            marginL = _props$attributes8.marginL,
+            paddingT = _props$attributes8.paddingT,
+            paddingR = _props$attributes8.paddingR,
+            paddingB = _props$attributes8.paddingB,
+            paddingL = _props$attributes8.paddingL,
+            shadowBlur = _props$attributes8.shadowBlur,
+            shadowColor = _props$attributes8.shadowColor,
+            shadowHorizontal = _props$attributes8.shadowHorizontal,
+            shadowVertical = _props$attributes8.shadowVertical,
+            shadowPosition = _props$attributes8.shadowPosition;
 
 
         return wp.element.createElement(
@@ -42369,7 +44230,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43460,15 +45321,15 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(228);
 
 
 
@@ -44101,21 +45962,21 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_responsive_tabs__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46026,12 +47887,12 @@ var PremiumPricingTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPricingTable);
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -46201,7 +48062,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46609,7 +48470,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48865,14 +50726,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -49003,6 +50864,30 @@ var containerAttrs = {
     paddingLeft: {
         type: "number"
     },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
     paddingUnit: {
         type: "string"
     },
@@ -49062,24 +50947,28 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Premium_Responsive_Padding__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_margin__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Premium_Responsive_Margin__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Premium_Responsive_Padding__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Premium_Responsive_Margin__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__ = __webpack_require__(6);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
@@ -49097,7 +50986,9 @@ var _wp$components = wp.components,
     ToggleControl = _wp$components.ToggleControl,
     RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl;
-var Fragment = wp.element.Fragment;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
@@ -49107,522 +50998,537 @@ var _wp$blockEditor = wp.blockEditor,
 
 var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ") }]];
 
-var edit = function edit(props) {
-    var isSelected = props.isSelected,
-        className = props.className,
-        setAttributes = props.setAttributes;
-    var _props$attributes = props.attributes,
-        isUpdated = _props$attributes.isUpdated,
-        stretchSection = _props$attributes.stretchSection,
-        horAlign = _props$attributes.horAlign,
-        innerWidthType = _props$attributes.innerWidthType,
-        innerWidth = _props$attributes.innerWidth,
-        minHeight = _props$attributes.minHeight,
-        minHeightUnit = _props$attributes.minHeightUnit,
-        vPos = _props$attributes.vPos,
-        height = _props$attributes.height,
-        color = _props$attributes.color,
-        opacity = _props$attributes.opacity,
-        imageID = _props$attributes.imageID,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderColor = _props$attributes.borderColor,
-        borderRadius = _props$attributes.borderRadius,
-        marginTop = _props$attributes.marginTop,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        marginRight = _props$attributes.marginRight,
-        marginUnit = _props$attributes.marginUnit,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
-        hideDesktop = _props$attributes.hideDesktop,
-        hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
 
 
-    var WIDTH = [{
-        value: "boxed",
-        label: __("Boxed")
-    }, {
-        value: "full",
-        label: __("Full Width")
-    }];
-    var HEIGHT = [{
-        value: "fit",
-        label: __("Fit to Screen")
-    }, {
-        value: "min",
-        label: __("Min Height")
-    }];
-    var VPOSITION = [{
-        value: "top",
-        label: __("Top")
-    }, {
-        value: "middle",
-        label: __("Middle")
-    }, {
-        value: "bottom",
-        label: __("Bottom")
-    }];
+            setAttributes({ block_id: clientId });
 
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
+            setAttributes({ classMigrate: true });
 
-    return [isSelected && wp.element.createElement(
-        BlockControls,
-        { key: "controls" },
-        wp.element.createElement(AlignmentToolbar, {
-            value: horAlign,
-            onChange: function onChange(newAlign) {
-                return setAttributes({ horAlign: newAlign });
-            }
-        })
-    ), isSelected && wp.element.createElement(
-        InspectorControls,
-        { key: "inspector" },
-        wp.element.createElement(
-            PanelBody,
-            {
-                title: __("General Settings"),
-                className: "premium-panel-body premium-stretch-section",
-                initialOpen: true
-            },
-            wp.element.createElement(ToggleControl, {
-                label: __("Stretch Section"),
-                checked: stretchSection,
-                onChange: function onChange(check) {
-                    return setAttributes({ stretchSection: check });
-                },
-                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.")
-            }),
-            stretchSection && wp.element.createElement(SelectControl, {
-                label: __("Content Width"),
-                options: WIDTH,
-                value: innerWidthType,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ innerWidthType: newValue });
-                }
-            }),
-            "boxed" === innerWidthType && stretchSection && wp.element.createElement(RangeControl, {
-                label: __("Max Width (%)"),
-                min: "1",
-                max: "1600",
-                value: innerWidth,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ innerWidth: newValue });
-                }
-            }),
-            wp.element.createElement(SelectControl, {
-                label: __("Height"),
-                options: HEIGHT,
-                value: height,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ height: newValue });
-                }
-            }),
-            "min" === height && wp.element.createElement(
-                Fragment,
-                null,
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__["a" /* default */], {
-                    units: ["px", "vh", "vw"],
-                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                        return setAttributes({ minHeightUnit: newValue });
-                    }
-                }),
-                wp.element.createElement(RangeControl, {
-                    label: __("Min Height"),
-                    value: minHeight,
-                    min: "1",
-                    max: "800",
-                    onChange: function onChange(newValue) {
-                        return setAttributes({ minHeight: newValue });
+            // Pushing Style tag for this block css.
+            var $style = document.createElement("style");
+            $style.setAttribute("id", "premium-style-section-" + clientId);
+            document.head.appendChild($style);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props2 = props,
+                isSelected = _props2.isSelected,
+                className = _props2.className,
+                setAttributes = _props2.setAttributes;
+            var _props$attributes = props.attributes,
+                isUpdated = _props$attributes.isUpdated,
+                stretchSection = _props$attributes.stretchSection,
+                horAlign = _props$attributes.horAlign,
+                innerWidthType = _props$attributes.innerWidthType,
+                innerWidth = _props$attributes.innerWidth,
+                minHeight = _props$attributes.minHeight,
+                minHeightUnit = _props$attributes.minHeightUnit,
+                vPos = _props$attributes.vPos,
+                height = _props$attributes.height,
+                color = _props$attributes.color,
+                opacity = _props$attributes.opacity,
+                imageID = _props$attributes.imageID,
+                imageURL = _props$attributes.imageURL,
+                fixed = _props$attributes.fixed,
+                backgroundRepeat = _props$attributes.backgroundRepeat,
+                backgroundPosition = _props$attributes.backgroundPosition,
+                backgroundSize = _props$attributes.backgroundSize,
+                borderType = _props$attributes.borderType,
+                borderWidth = _props$attributes.borderWidth,
+                borderTop = _props$attributes.borderTop,
+                borderRight = _props$attributes.borderRight,
+                borderBottom = _props$attributes.borderBottom,
+                borderLeft = _props$attributes.borderLeft,
+                borderColor = _props$attributes.borderColor,
+                borderRadius = _props$attributes.borderRadius,
+                marginTop = _props$attributes.marginTop,
+                marginBottom = _props$attributes.marginBottom,
+                marginLeft = _props$attributes.marginLeft,
+                marginRight = _props$attributes.marginRight,
+                marginUnit = _props$attributes.marginUnit,
+                paddingTop = _props$attributes.paddingTop,
+                paddingRight = _props$attributes.paddingRight,
+                paddingBottom = _props$attributes.paddingBottom,
+                paddingLeft = _props$attributes.paddingLeft,
+                paddingTopTablet = _props$attributes.paddingTopTablet,
+                paddingRightTablet = _props$attributes.paddingRightTablet,
+                paddingBottomTablet = _props$attributes.paddingBottomTablet,
+                paddingLeftTablet = _props$attributes.paddingLeftTablet,
+                paddingTopMobile = _props$attributes.paddingTopMobile,
+                paddingRightMobile = _props$attributes.paddingRightMobile,
+                paddingBottomMobile = _props$attributes.paddingBottomMobile,
+                paddingLeftMobile = _props$attributes.paddingLeftMobile,
+                paddingUnit = _props$attributes.paddingUnit,
+                shadowBlur = _props$attributes.shadowBlur,
+                shadowColor = _props$attributes.shadowColor,
+                shadowHorizontal = _props$attributes.shadowHorizontal,
+                shadowVertical = _props$attributes.shadowVertical,
+                shadowPosition = _props$attributes.shadowPosition,
+                hideDesktop = _props$attributes.hideDesktop,
+                hideTablet = _props$attributes.hideTablet,
+                hideMobile = _props$attributes.hideMobile;
+
+
+            var WIDTH = [{
+                value: "boxed",
+                label: __("Boxed")
+            }, {
+                value: "full",
+                label: __("Full Width")
+            }];
+            var HEIGHT = [{
+                value: "fit",
+                label: __("Fit to Screen")
+            }, {
+                value: "min",
+                label: __("Min Height")
+            }];
+            var VPOSITION = [{
+                value: "top",
+                label: __("Top")
+            }, {
+                value: "middle",
+                label: __("Middle")
+            }, {
+                value: "bottom",
+                label: __("Bottom")
+            }];
+
+            var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
+
+            return [isSelected && wp.element.createElement(
+                BlockControls,
+                { key: "controls" },
+                wp.element.createElement(AlignmentToolbar, {
+                    value: horAlign,
+                    onChange: function onChange(newAlign) {
+                        return setAttributes({ horAlign: newAlign });
                     }
                 })
-            ),
-            wp.element.createElement(SelectControl, {
-                label: __("Content Position"),
-                help: __("If you have two or more inner columns then this option will work only on the preview page"),
-                options: VPOSITION,
-                value: vPos,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ vPos: newValue });
-                }
-            })
-        ),
-        wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Background"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(
-                "p",
-                null,
-                __("Background Color")
-            ),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_background__["a" /* default */], {
-                type: "color",
-                colorValue: color,
-                onChangeColor: function onChangeColor(newvalue) {
-                    return setAttributes({ color: newvalue });
-                },
-                opacityValue: opacity,
-                onChangeOpacity: function onChangeOpacity(value) {
-                    return setAttributes({ opacity: value });
-                }
-            }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_background__["a" /* default */], {
-                imageID: imageID,
-                imageURL: imageURL,
-                backgroundPosition: backgroundPosition,
-                backgroundRepeat: backgroundRepeat,
-                backgroundSize: backgroundSize,
-                fixed: fixed,
-                onSelectMedia: function onSelectMedia(media) {
-                    setAttributes({
-                        imageID: media.id,
-                        imageURL: media.url
-                    });
-                },
-                onRemoveImage: function onRemoveImage(value) {
-                    return setAttributes({ imageURL: "", imageID: "" });
-                },
-                onChangeBackPos: function onChangeBackPos(newValue) {
-                    return setAttributes({ backgroundPosition: newValue });
-                },
-                onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                    return setAttributes({ backgroundRepeat: newValue });
-                },
-                onChangeBackSize: function onChangeBackSize(newValue) {
-                    return setAttributes({ backgroundSize: newValue });
-                },
-                onChangeFixed: function onChangeFixed(check) {
-                    return setAttributes({ fixed: check });
-                }
-            })
-        ),
-        wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Border"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
-                borderType: borderType,
-                borderWidth: borderWidth,
-                top: borderTop,
-                right: borderRight,
-                bottom: borderBottom,
-                left: borderLeft,
-                borderColor: borderColor,
-                borderRadius: borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return setAttributes({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref) {
-                    var top = _ref.top,
-                        right = _ref.right,
-                        bottom = _ref.bottom,
-                        left = _ref.left;
-                    return setAttributes({
-                        borderTop: top,
-                        borderRight: right,
-                        borderBottom: bottom,
-                        borderLeft: left,
-                        isUpdated: true
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return setAttributes({ borderColor: colorValue.hex });
-                },
-                onChangeRadius: function onChangeRadius(newrRadius) {
-                    return setAttributes({ borderRadius: newrRadius });
-                }
-            }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_box_shadow__["a" /* default */], {
-                inner: false,
-                color: shadowColor,
-                blur: shadowBlur,
-                horizontal: shadowHorizontal,
-                vertical: shadowVertical,
-                position: shadowPosition,
-                onChangeColor: function onChangeColor(newColor) {
-                    return setAttributes({
-                        shadowColor: newColor === undefined ? "transparent" : newColor.hex
-                    });
-                },
-                onChangeBlur: function onChangeBlur(newBlur) {
-                    return setAttributes({
-                        shadowBlur: newBlur === undefined ? 0 : newBlur
-                    });
-                },
-                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return setAttributes({
-                        shadowHorizontal: newValue === undefined ? 0 : newValue
-                    });
-                },
-                onChangeVertical: function onChangeVertical(newValue) {
-                    return setAttributes({
-                        shadowVertical: newValue === undefined ? 0 : newValue
-                    });
-                },
-                onChangePosition: function onChangePosition(newValue) {
-                    return setAttributes({
-                        shadowPosition: newValue === undefined ? 0 : newValue
-                    });
-                }
-            })
-        ),
-        wp.element.createElement(
-            PanelBody,
-            {
-                title: __("Spacings"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Premium_Responsive_Margin__["a" /* default */], {
-                directions: ["all"],
-                marginTop: marginTop,
-                marginRight: marginRight,
-                marginBottom: marginBottom,
-                marginLeft: marginLeft,
-                onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({
-                        marginTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({
-                        marginRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({
-                        marginBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({
-                        marginLeft: value === undefined ? 0 : value
-                    });
-                },
-                marginTopTablet: marginTop,
-                marginRightTablet: marginRight,
-                marginBottomTablet: marginBottom,
-                marginLeftTablet: marginLeft,
-                onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                    return setAttributes({
-                        marginTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarRightTablet: function onChangeMarRightTablet(value) {
-                    return setAttributes({
-                        marginRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                    return setAttributes({
-                        marginBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarLeftTablet: function onChangeMarLeftTablet(value) {
-                    return setAttributes({
-                        marginLeft: value === undefined ? 0 : value
-                    });
-                },
-                marginTopMobile: marginTop,
-                marginRightMobile: marginRight,
-                marginBottomMobile: marginBottom,
-                marginLeftMobile: marginLeft,
-                onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                    return setAttributes({
-                        marginTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarRightMobile: function onChangeMarRightMobile(value) {
-                    return setAttributes({
-                        marginRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                    return setAttributes({
-                        marginBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangeMarLeftMobile: function onChangeMarLeftMobile(value) {
-                    return setAttributes({
-                        marginLeft: value === undefined ? 0 : value
-                    });
-                },
-                showUnits: true,
-                onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                    return setAttributes({ marginUnit: newvalue });
-                }
+            ), isSelected && wp.element.createElement(
+                InspectorControls,
+                { key: "inspector" },
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("General Settings"),
+                        className: "premium-panel-body premium-stretch-section",
+                        initialOpen: true
+                    },
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Stretch Section"),
+                        checked: stretchSection,
+                        onChange: function onChange(check) {
+                            return setAttributes({ stretchSection: check });
+                        },
+                        help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.")
+                    }),
+                    stretchSection && wp.element.createElement(SelectControl, {
+                        label: __("Content Width"),
+                        options: WIDTH,
+                        value: innerWidthType,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ innerWidthType: newValue });
+                        }
+                    }),
+                    "boxed" === innerWidthType && stretchSection && wp.element.createElement(RangeControl, {
+                        label: __("Max Width (%)"),
+                        min: "1",
+                        max: "1600",
+                        value: innerWidth,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ innerWidth: newValue });
+                        }
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Height"),
+                        options: HEIGHT,
+                        value: height,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ height: newValue });
+                        }
+                    }),
+                    "min" === height && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__["a" /* default */], {
+                            units: ["px", "vh", "vw"],
+                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                                return setAttributes({ minHeightUnit: newValue });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Min Height"),
+                            value: minHeight,
+                            min: "1",
+                            max: "800",
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ minHeight: newValue });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Content Position"),
+                        help: __("If you have two or more inner columns then this option will work only on the preview page"),
+                        options: VPOSITION,
+                        value: vPos,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ vPos: newValue });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Background"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_background__["a" /* default */], {
+                        type: "color",
+                        colorValue: color,
+                        onChangeColor: function onChangeColor(newvalue) {
+                            return setAttributes({ color: newvalue });
+                        },
+                        opacityValue: opacity,
+                        onChangeOpacity: function onChangeOpacity(value) {
+                            return setAttributes({ opacity: value });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_background__["a" /* default */], {
+                        imageID: imageID,
+                        imageURL: imageURL,
+                        backgroundPosition: backgroundPosition,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundSize: backgroundSize,
+                        fixed: fixed,
+                        onSelectMedia: function onSelectMedia(media) {
+                            setAttributes({
+                                imageID: media.id,
+                                imageURL: media.url
+                            });
+                        },
+                        onRemoveImage: function onRemoveImage(value) {
+                            return setAttributes({ imageURL: "", imageID: "" });
+                        },
+                        onChangeBackPos: function onChangeBackPos(newValue) {
+                            return setAttributes({ backgroundPosition: newValue });
+                        },
+                        onchangeBackRepeat: function onchangeBackRepeat(newValue) {
+                            return setAttributes({ backgroundRepeat: newValue });
+                        },
+                        onChangeBackSize: function onChangeBackSize(newValue) {
+                            return setAttributes({ backgroundSize: newValue });
+                        },
+                        onChangeFixed: function onChangeFixed(check) {
+                            return setAttributes({ fixed: check });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Border"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_border__["a" /* default */], {
+                        borderType: borderType,
+                        borderWidth: borderWidth,
+                        top: borderTop,
+                        right: borderRight,
+                        bottom: borderBottom,
+                        left: borderLeft,
+                        borderColor: borderColor,
+                        borderRadius: borderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ borderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
+                            return setAttributes({
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                                isUpdated: true
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ borderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ borderRadius: newrRadius });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__["a" /* default */], {
+                        inner: false,
+                        color: shadowColor,
+                        blur: shadowBlur,
+                        horizontal: shadowHorizontal,
+                        vertical: shadowVertical,
+                        position: shadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({
+                                shadowColor: newColor === undefined ? "transparent" : newColor.hex
+                            });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({
+                                shadowBlur: newBlur === undefined ? 0 : newBlur
+                            });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({
+                                shadowHorizontal: newValue === undefined ? 0 : newValue
+                            });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({
+                                shadowVertical: newValue === undefined ? 0 : newValue
+                            });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return setAttributes({
+                                shadowPosition: newValue === undefined ? 0 : newValue
+                            });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Spacings"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["all"],
+                        marginTop: marginTop,
+                        marginRight: marginRight,
+                        marginBottom: marginBottom,
+                        marginLeft: marginLeft,
+                        onChangeMarTop: function onChangeMarTop(value) {
+                            return setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarRight: function onChangeMarRight(value) {
+                            return setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarBottom: function onChangeMarBottom(value) {
+                            return setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarLeft: function onChangeMarLeft(value) {
+                            return setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            });
+                        },
+                        marginTopTablet: marginTop,
+                        marginRightTablet: marginRight,
+                        marginBottomTablet: marginBottom,
+                        marginLeftTablet: marginLeft,
+                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
+                            return setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarRightTablet: function onChangeMarRightTablet(value) {
+                            return setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
+                            return setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarLeftTablet: function onChangeMarLeftTablet(value) {
+                            return setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            });
+                        },
+                        marginTopMobile: marginTop,
+                        marginRightMobile: marginRight,
+                        marginBottomMobile: marginBottom,
+                        marginLeftMobile: marginLeft,
+                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
+                            return setAttributes({
+                                marginTop: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarRightMobile: function onChangeMarRightMobile(value) {
+                            return setAttributes({
+                                marginRight: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
+                            return setAttributes({
+                                marginBottom: value === undefined ? 0 : value
+                            });
+                        },
+                        onChangeMarLeftMobile: function onChangeMarLeftMobile(value) {
+                            return setAttributes({
+                                marginLeft: value === undefined ? 0 : value
+                            });
+                        },
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return setAttributes({ marginUnit: newvalue });
+                        }
 
-            }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Premium_Responsive_Padding__["a" /* default */], {
-                paddingTop: paddingTop,
-                paddingRight: paddingRight,
-                paddingBottom: paddingBottom,
-                paddingLeft: paddingLeft,
-                onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({
-                        paddingTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({
-                        paddingRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({
-                        paddingBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({
-                        paddingLeft: value === undefined ? 0 : value
-                    });
-                },
-
-                paddingTopTablet: paddingTop,
-                paddingRightTablet: paddingRight,
-                paddingBottomTablet: paddingBottom,
-                paddingLeftTablet: paddingLeft,
-                onChangePadTopTablet: function onChangePadTopTablet(value) {
-                    return setAttributes({
-                        paddingTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadRightTablet: function onChangePadRightTablet(value) {
-                    return setAttributes({
-                        paddingRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadBottomTablet: function onChangePadBottomTablet(value) {
-                    return setAttributes({
-                        paddingBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadLeftTablet: function onChangePadLeftTablet(value) {
-                    return setAttributes({
-                        paddingLeft: value === undefined ? 0 : value
-                    });
-                },
-                paddingTopMobile: paddingTop,
-                paddingRightMobile: paddingRight,
-                paddingBottomMobile: paddingBottom,
-                paddingLeftMobile: paddingLeft,
-                onChangePadTopMobile: function onChangePadTopMobile(value) {
-                    return setAttributes({
-                        paddingTop: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadRightMobile: function onChangePadRightMobile(value) {
-                    return setAttributes({
-                        paddingRight: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadBottomMobile: function onChangePadBottomMobile(value) {
-                    return setAttributes({
-                        paddingBottom: value === undefined ? 0 : value
-                    });
-                },
-                onChangePadLeftMobile: function onChangePadLeftMobile(value) {
-                    return setAttributes({
-                        paddingLeft: value === undefined ? 0 : value
-                    });
-                },
-
-                showUnits: true,
-                selectedUnit: paddingUnit,
-                onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                    return setAttributes({ paddingUnit: newvalue });
-                }
-            })
-        ),
-        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__["a" /* default */], {
-            Desktop: hideDesktop,
-            Tablet: hideTablet,
-            Mobile: hideMobile,
-            onChangeDesktop: function onChangeDesktop(value) {
-                return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
-            },
-            onChangeTablet: function onChangeTablet(value) {
-                return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
-            },
-            onChangeMobile: function onChangeMobile(value) {
-                return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
-            }
-        })
-    ), wp.element.createElement(
-        "div",
-        {
-            className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-            style: {
-                textAlign: horAlign,
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color ? __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba___default()(color, opacity) : "transparent",
-                borderStyle: borderType,
-                borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
-            }
-        },
-        wp.element.createElement(
-            "div",
-            {
-                className: "premium-container__content_wrap premium-container__" + vPos,
-                style: {
-                    maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
-                }
-            },
-            wp.element.createElement(
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Premium_Responsive_Padding__["a" /* default */], {
+                        paddingTop: paddingTop,
+                        paddingRight: paddingRight,
+                        paddingBottom: paddingBottom,
+                        paddingLeft: paddingLeft,
+                        paddingTopTablet: paddingTopTablet,
+                        paddingRightTablet: paddingRightTablet,
+                        paddingBottomTablet: paddingBottomTablet,
+                        paddingLeftTablet: paddingLeftTablet,
+                        paddingTopMobile: paddingTopMobile,
+                        paddingRightMobile: paddingRightMobile,
+                        paddingBottomMobile: paddingBottomMobile,
+                        paddingLeftMobile: paddingLeftMobile,
+                        showUnits: true,
+                        selectedUnit: paddingUnit,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return setAttributes({ paddingUnit: newvalue });
+                        },
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ paddingTop: val });
+                        },
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ paddingRight: val });
+                        },
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ paddingBottom: val });
+                        },
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ paddingLeft: val });
+                        },
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ paddingTopTablet: valT });
+                        },
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ paddingRightTablet: valT });
+                        },
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ paddingBottomTablet: valT });
+                        },
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ paddingLeftTablet: valT });
+                        },
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ paddingTopMobile: valM });
+                        },
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ paddingRightMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ paddingBottomMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ paddingLeftMobile: valM });
+                        }
+                    })
+                ),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__["a" /* default */], {
+                    Desktop: hideDesktop,
+                    Tablet: hideTablet,
+                    Mobile: hideMobile,
+                    onChangeDesktop: function onChangeDesktop(value) {
+                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
+                    },
+                    onChangeTablet: function onChangeTablet(value) {
+                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
+                    },
+                    onChangeMobile: function onChangeMobile(value) {
+                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
+                    }
+                })
+            ), wp.element.createElement(
                 "div",
-                { className: "premium-container__content_inner" },
-                wp.element.createElement(InnerBlocks, { template: CONTENT })
-            )
-        )
-    )];
-};
+                {
+                    className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    style: {
+                        textAlign: horAlign,
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                        backgroundColor: color ? __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default()(color, opacity) : "transparent",
+                        borderStyle: borderType,
+                        borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor,
+                        backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        marginTop: marginTop + marginUnit,
+                        marginBottom: marginBottom + marginUnit,
+                        marginLeft: marginLeft + marginUnit,
+                        marginRight: marginRight + marginUnit,
+                        paddingTop: paddingTop + paddingUnit,
+                        paddingBottom: paddingBottom + paddingUnit,
+                        paddingLeft: paddingLeft + paddingUnit,
+                        paddingRight: paddingRight + paddingUnit,
+                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+                    }
+                },
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-container__content_wrap premium-container__" + vPos,
+                        style: {
+                            maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-container__content_inner" },
+                        wp.element.createElement(InnerBlocks, { template: CONTENT })
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49734,7 +51640,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50461,14 +52367,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 
 
@@ -50686,6 +52592,30 @@ var testimonialsAttrs = {
     paddingLeft: {
         type: "number"
     },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
     paddingUnit: {
         type: "string",
         default: "px"
@@ -50719,25 +52649,24 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Premium_Responsive_Padding__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styling__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Padding__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_responsive_tabs__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50745,7 +52674,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -50872,6 +52800,14 @@ var edit = function (_Component) {
                 paddingRight = _props$attributes.paddingRight,
                 paddingBottom = _props$attributes.paddingBottom,
                 paddingLeft = _props$attributes.paddingLeft,
+                paddingTopTablet = _props$attributes.paddingTopTablet,
+                paddingRightTablet = _props$attributes.paddingRightTablet,
+                paddingBottomTablet = _props$attributes.paddingBottomTablet,
+                paddingLeftTablet = _props$attributes.paddingLeftTablet,
+                paddingTopMobile = _props$attributes.paddingTopMobile,
+                paddingRightMobile = _props$attributes.paddingRightMobile,
+                paddingBottomMobile = _props$attributes.paddingBottomMobile,
+                paddingLeftMobile = _props$attributes.paddingLeftMobile,
                 paddingUnit = _props$attributes.paddingUnit,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
@@ -50892,7 +52828,7 @@ var edit = function (_Component) {
             var element = document.getElementById("premium-style-testimonial-" + this.props.clientId.substr(0, 6));
 
             if (null != element && "undefined" != typeof element) {
-                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_10__styling__["a" /* default */])(this.props);
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_9__styling__["a" /* default */])(this.props);
             }
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-testimonial");
@@ -50929,7 +52865,7 @@ var edit = function (_Component) {
                             __("Author Image")
                         ),
                         !authorImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_default_image__["a" /* default */], null),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_media_upload__["a" /* default */], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__["a" /* default */], {
                             type: "image",
                             imageID: authorImgId,
                             imageURL: authorImgUrl,
@@ -51382,7 +53318,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_Premium_Responsive_Padding__["a" /* default */], {
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Padding__["a" /* default */], {
                         showUnits: true,
                         selectedUnit: paddingUnit,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -51392,72 +53328,54 @@ var edit = function (_Component) {
                         paddingRight: paddingRight,
                         paddingBottom: paddingBottom,
                         paddingLeft: paddingLeft,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingRight: value
-                            });
+                        paddingTopTablet: paddingTopTablet,
+                        paddingRightTablet: paddingRightTablet,
+                        paddingBottomTablet: paddingBottomTablet,
+                        paddingLeftTablet: paddingLeftTablet,
+                        paddingTopMobile: paddingTopMobile,
+                        paddingRightMobile: paddingRightMobile,
+                        paddingBottomMobile: paddingBottomMobile,
+                        paddingLeftMobile: paddingLeftMobile,
+                        onChangePadTopDesk: function onChangePadTopDesk(val) {
+                            return setAttributes({ paddingTop: val });
                         },
-
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingRight: value
-                            });
+                        onChangePadRightDesk: function onChangePadRightDesk(val) {
+                            return setAttributes({ paddingRight: val });
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingBottom: value
-                            });
+                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
+                            return setAttributes({ paddingBottom: val });
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingLeft: value
-                            });
+                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
+                            return setAttributes({ paddingLeft: val });
                         },
-
-                        paddingTopTablet: paddingTop,
-                        paddingRightTablet: paddingRight,
-                        paddingBottomTablet: paddingBottom,
-                        paddingLeftTablet: paddingLeft,
-
-                        onChangePadRightTablet: function onChangePadRightTablet(value) {
-                            return setAttributes({
-                                paddingRight: value
-                            });
+                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
+                            return setAttributes({ paddingTopTablet: valT });
                         },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(value) {
-                            return setAttributes({
-                                paddingBottom: value
-                            });
+                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
+                            return setAttributes({ paddingRightTablet: valT });
                         },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(value) {
-                            return setAttributes({
-                                paddingLeft: value
-                            });
+                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
+                            return setAttributes({ paddingBottomTablet: valT });
                         },
-                        paddingTopMobile: paddingTop,
-                        paddingRightMobile: paddingRight,
-                        paddingBottomMobile: paddingBottom,
-                        paddingLeftMobile: paddingLeft,
-
-                        onChangePadRightMobile: function onChangePadRightMobile(value) {
-                            return setAttributes({
-                                paddingRight: value
-                            });
+                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
+                            return setAttributes({ paddingLeftTablet: valT });
                         },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(value) {
-                            return setAttributes({
-                                paddingBottom: value
-                            });
+                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
+                            return setAttributes({ paddingTopMobile: valM });
                         },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(value) {
-                            return setAttributes({
-                                paddingLeft: value
-                            });
+                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
+                            return setAttributes({ paddingRightMobile: valM });
+                        },
+                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
+                            return setAttributes({ paddingBottomMobile: valM });
+                        },
+                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
+                            return setAttributes({ paddingLeftMobile: valM });
                         }
 
                     })
                 ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_responsive_tabs__["a" /* default */], {
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_responsive_tabs__["a" /* default */], {
                     Desktop: hideDesktop,
                     Tablet: hideTablet,
                     Mobile: hideMobile,
@@ -51478,16 +53396,12 @@ var edit = function (_Component) {
                     className: mainClasses + "__wrap premium-testimonial-" + block_id,
                     style: {
                         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
+                        backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                         backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
                         backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset",
-                        paddingTop: paddingTop + paddingUnit,
-                        paddingBottom: paddingBottom + paddingUnit,
-                        paddingLeft: paddingLeft + paddingUnit,
-                        paddingRight: paddingRight + paddingUnit
+                        backgroundAttachment: fixed ? "fixed" : "unset"
                     }
                 },
                 wp.element.createElement(
@@ -51620,12 +53534,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -51644,7 +53558,20 @@ function styling(props) {
         bodySize = _props$attributes.bodySize,
         bodySizeUnit = _props$attributes.bodySizeUnit,
         bodySizeMobile = _props$attributes.bodySizeMobile,
-        bodySizeTablet = _props$attributes.bodySizeTablet;
+        bodySizeTablet = _props$attributes.bodySizeTablet,
+        paddingTop = _props$attributes.paddingTop,
+        paddingRight = _props$attributes.paddingRight,
+        paddingBottom = _props$attributes.paddingBottom,
+        paddingLeft = _props$attributes.paddingLeft,
+        paddingTopTablet = _props$attributes.paddingTopTablet,
+        paddingRightTablet = _props$attributes.paddingRightTablet,
+        paddingBottomTablet = _props$attributes.paddingBottomTablet,
+        paddingLeftTablet = _props$attributes.paddingLeftTablet,
+        paddingTopMobile = _props$attributes.paddingTopMobile,
+        paddingRightMobile = _props$attributes.paddingRightMobile,
+        paddingBottomMobile = _props$attributes.paddingBottomMobile,
+        paddingLeftMobile = _props$attributes.paddingLeftMobile,
+        paddingUnit = _props$attributes.paddingUnit;
 
 
     var selectors = {};
@@ -51652,6 +53579,12 @@ function styling(props) {
     var mobile_selectors = {};
 
     selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTop, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRight, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottom, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeft, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(authorSize, authorSizeUnit)
         },
@@ -51664,6 +53597,12 @@ function styling(props) {
     };
 
     tablet_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTopTablet, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRightTablet, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottomTablet, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeftTablet, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(authorSizeTablet, authorSizeUnit)
         },
@@ -51676,6 +53615,12 @@ function styling(props) {
     };
 
     mobile_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTopMobile, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRightMobile, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottomMobile, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeftMobile, paddingUnit)
+        },
         "  .premium-testimonial__info .premium-testimonial__author": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(authorSizeMobile, authorSizeUnit)
         },
@@ -51704,15 +53649,15 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_default_image__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_upper_quote__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_lower_quote__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_hex_to_rgba__);
 
@@ -51792,11 +53737,7 @@ var save = function save(props) {
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit
+                backgroundAttachment: fixed ? "fixed" : "unset"
             }
         },
         wp.element.createElement(
@@ -51915,13 +53856,13 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(48);
 
 
 
@@ -52310,7 +54251,254 @@ var newAttributes_2_2 = {
 };
 var testimonialsAttrs_2_2 = Object.assign(testimonialsAttrs_2_0, newAttributes_2_2);
 
+var newAttributes_2_3 = {
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string",
+        default: "px"
+    }
+};
+var testimonialsAttrs_2_3 = Object.assign(testimonialsAttrs_2_2, newAttributes_2_3);
 var deprecatedContent = [{
+    attributes: testimonialsAttrs_2_3,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            paddingTop: "",
+            paddingRight: "",
+            paddingBottom: "",
+            paddingLeft: "",
+            paddingTopTablet: "",
+            paddingRightTablet: "",
+            paddingBottomTablet: "",
+            paddingLeftTablet: "",
+            paddingTopMobile: "",
+            paddingRightMobile: "",
+            paddingBottomMobile: "",
+            paddingLeftMobile: "",
+            paddingUnit: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            align = _props$attributes.align,
+            authorImgUrl = _props$attributes.authorImgUrl,
+            imgRadius = _props$attributes.imgRadius,
+            imgBorder = _props$attributes.imgBorder,
+            imgBorderColor = _props$attributes.imgBorderColor,
+            imgSize = _props$attributes.imgSize,
+            text = _props$attributes.text,
+            authorTag = _props$attributes.authorTag,
+            authorColor = _props$attributes.authorColor,
+            authorLetter = _props$attributes.authorLetter,
+            authorStyle = _props$attributes.authorStyle,
+            authorUpper = _props$attributes.authorUpper,
+            authorWeight = _props$attributes.authorWeight,
+            author = _props$attributes.author,
+            authorComTag = _props$attributes.authorComTag,
+            authorComColor = _props$attributes.authorComColor,
+            authorCom = _props$attributes.authorCom,
+            quotSize = _props$attributes.quotSize,
+            quotColor = _props$attributes.quotColor,
+            quotOpacity = _props$attributes.quotOpacity,
+            bodyColor = _props$attributes.bodyColor,
+            bodyLine = _props$attributes.bodyLine,
+            bodyTop = _props$attributes.bodyTop,
+            bodyBottom = _props$attributes.bodyBottom,
+            dashColor = _props$attributes.dashColor,
+            urlCheck = _props$attributes.urlCheck,
+            urlText = _props$attributes.urlText,
+            urlTarget = _props$attributes.urlTarget,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            shadowPosition = _props$attributes.shadowPosition,
+            backColor = _props$attributes.backColor,
+            backOpacity = _props$attributes.backOpacity,
+            imageURL = _props$attributes.imageURL,
+            fixed = _props$attributes.fixed,
+            backgroundRepeat = _props$attributes.backgroundRepeat,
+            backgroundPosition = _props$attributes.backgroundPosition,
+            backgroundSize = _props$attributes.backgroundSize,
+            paddingTop = _props$attributes.paddingTop,
+            paddingRight = _props$attributes.paddingRight,
+            paddingBottom = _props$attributes.paddingBottom,
+            paddingLeft = _props$attributes.paddingLeft,
+            paddingUnit = _props$attributes.paddingUnit,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-testimonial-" + block_id,
+                className: className + "__wrap premium-testimonial-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    paddingTop: paddingTop + paddingUnit,
+                    paddingBottom: paddingBottom + paddingUnit,
+                    paddingLeft: paddingLeft + paddingUnit,
+                    paddingRight: paddingRight + paddingUnit
+                }
+            },
+            wp.element.createElement(
+                "div",
+                { className: "premium-testimonial__container" },
+                wp.element.createElement(
+                    "span",
+                    { className: "premium-testimonial__upper" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__["a" /* default */], {
+                        size: quotSize,
+                        color: quotColor,
+                        opacity: quotOpacity
+                    })
+                ),
+                wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-testimonial__content",
+                        style: {
+                            textAlign: align
+                        }
+                    },
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__img_wrap" },
+                        authorImgUrl && wp.element.createElement("img", {
+                            className: "premium-testimonial__img",
+                            src: "" + authorImgUrl,
+                            alt: "Author",
+                            style: {
+                                borderWidth: imgBorder + "px",
+                                borderRadius: imgRadius,
+                                borderColor: imgBorderColor,
+                                width: imgSize + "px",
+                                height: imgSize + "px"
+                            }
+                        }),
+                        !authorImgUrl && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components_default_image__["a" /* default */], { className: className })
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__text_wrap" },
+                        wp.element.createElement(
+                            "div",
+                            null,
+                            wp.element.createElement(RichText.Content, {
+                                tagName: "p",
+                                className: "premium-testimonial__text",
+                                value: text,
+                                style: {
+                                    color: bodyColor,
+                                    lineHeight: bodyLine + "px",
+                                    marginTop: bodyTop + "px",
+                                    marginBottom: bodyBottom + "px"
+                                }
+                            })
+                        )
+                    ),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-testimonial__info" },
+                        wp.element.createElement(RichText.Content, {
+                            tagName: authorTag.toLowerCase(),
+                            className: "premium-testimonial__author",
+                            value: author,
+                            style: {
+                                color: authorColor,
+                                letterSpacing: authorLetter + "px",
+                                textTransform: authorUpper ? "uppercase" : "none",
+                                fontStyle: authorStyle,
+                                fontWeight: authorWeight
+                            }
+                        }),
+                        wp.element.createElement(
+                            "span",
+                            {
+                                className: "premium-testimonial__sep",
+                                style: {
+                                    color: dashColor
+                                }
+                            },
+                            "\xA0-\xA0"
+                        ),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-testimonial__link_wrap" },
+                            wp.element.createElement(RichText.Content, {
+                                tagName: authorComTag.toLowerCase(),
+                                className: "premium-testimonial__author_comp",
+                                value: authorCom,
+                                style: {
+                                    color: authorComColor
+                                }
+                            }),
+                            urlCheck && wp.element.createElement("a", {
+                                rel: "noopener noreferrer",
+                                href: urlText,
+                                target: urlTarget ? "_blank" : ""
+                            })
+                        )
+                    )
+                ),
+                wp.element.createElement(
+                    "span",
+                    { className: "premium-testimonial__lower" },
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__["a" /* default */], {
+                        color: quotColor,
+                        size: quotSize,
+                        opacity: quotOpacity
+                    })
+                )
+            )
+        );
+    }
+}, {
     attributes: testimonialsAttrs_2_2,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -52330,54 +54518,54 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            align = _props$attributes.align,
-            authorImgUrl = _props$attributes.authorImgUrl,
-            imgRadius = _props$attributes.imgRadius,
-            imgBorder = _props$attributes.imgBorder,
-            imgBorderColor = _props$attributes.imgBorderColor,
-            imgSize = _props$attributes.imgSize,
-            text = _props$attributes.text,
-            authorTag = _props$attributes.authorTag,
-            authorColor = _props$attributes.authorColor,
-            authorSize = _props$attributes.authorSize,
-            authorLetter = _props$attributes.authorLetter,
-            authorStyle = _props$attributes.authorStyle,
-            authorUpper = _props$attributes.authorUpper,
-            authorWeight = _props$attributes.authorWeight,
-            author = _props$attributes.author,
-            authorComTag = _props$attributes.authorComTag,
-            authorComColor = _props$attributes.authorComColor,
-            authorComSize = _props$attributes.authorComSize,
-            authorCom = _props$attributes.authorCom,
-            quotSize = _props$attributes.quotSize,
-            quotColor = _props$attributes.quotColor,
-            quotOpacity = _props$attributes.quotOpacity,
-            bodyColor = _props$attributes.bodyColor,
-            bodySize = _props$attributes.bodySize,
-            bodyLine = _props$attributes.bodyLine,
-            bodyTop = _props$attributes.bodyTop,
-            bodyBottom = _props$attributes.bodyBottom,
-            dashColor = _props$attributes.dashColor,
-            urlCheck = _props$attributes.urlCheck,
-            urlText = _props$attributes.urlText,
-            urlTarget = _props$attributes.urlTarget,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            backColor = _props$attributes.backColor,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            paddingTop = _props$attributes.paddingTop,
-            paddingRight = _props$attributes.paddingRight,
-            paddingBottom = _props$attributes.paddingBottom,
-            paddingLeft = _props$attributes.paddingLeft,
-            paddingUnit = _props$attributes.paddingUnit;
+        var _props$attributes2 = props.attributes,
+            align = _props$attributes2.align,
+            authorImgUrl = _props$attributes2.authorImgUrl,
+            imgRadius = _props$attributes2.imgRadius,
+            imgBorder = _props$attributes2.imgBorder,
+            imgBorderColor = _props$attributes2.imgBorderColor,
+            imgSize = _props$attributes2.imgSize,
+            text = _props$attributes2.text,
+            authorTag = _props$attributes2.authorTag,
+            authorColor = _props$attributes2.authorColor,
+            authorSize = _props$attributes2.authorSize,
+            authorLetter = _props$attributes2.authorLetter,
+            authorStyle = _props$attributes2.authorStyle,
+            authorUpper = _props$attributes2.authorUpper,
+            authorWeight = _props$attributes2.authorWeight,
+            author = _props$attributes2.author,
+            authorComTag = _props$attributes2.authorComTag,
+            authorComColor = _props$attributes2.authorComColor,
+            authorComSize = _props$attributes2.authorComSize,
+            authorCom = _props$attributes2.authorCom,
+            quotSize = _props$attributes2.quotSize,
+            quotColor = _props$attributes2.quotColor,
+            quotOpacity = _props$attributes2.quotOpacity,
+            bodyColor = _props$attributes2.bodyColor,
+            bodySize = _props$attributes2.bodySize,
+            bodyLine = _props$attributes2.bodyLine,
+            bodyTop = _props$attributes2.bodyTop,
+            bodyBottom = _props$attributes2.bodyBottom,
+            dashColor = _props$attributes2.dashColor,
+            urlCheck = _props$attributes2.urlCheck,
+            urlText = _props$attributes2.urlText,
+            urlTarget = _props$attributes2.urlTarget,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            paddingTop = _props$attributes2.paddingTop,
+            paddingRight = _props$attributes2.paddingRight,
+            paddingBottom = _props$attributes2.paddingBottom,
+            paddingLeft = _props$attributes2.paddingLeft,
+            paddingUnit = _props$attributes2.paddingUnit;
 
 
         return wp.element.createElement(
@@ -52528,49 +54716,49 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            align = _props$attributes2.align,
-            authorImgUrl = _props$attributes2.authorImgUrl,
-            imgRadius = _props$attributes2.imgRadius,
-            imgBorder = _props$attributes2.imgBorder,
-            imgBorderColor = _props$attributes2.imgBorderColor,
-            imgSize = _props$attributes2.imgSize,
-            text = _props$attributes2.text,
-            authorTag = _props$attributes2.authorTag,
-            authorColor = _props$attributes2.authorColor,
-            authorSize = _props$attributes2.authorSize,
-            authorLetter = _props$attributes2.authorLetter,
-            authorStyle = _props$attributes2.authorStyle,
-            authorUpper = _props$attributes2.authorUpper,
-            authorWeight = _props$attributes2.authorWeight,
-            author = _props$attributes2.author,
-            authorComTag = _props$attributes2.authorComTag,
-            authorComColor = _props$attributes2.authorComColor,
-            authorComSize = _props$attributes2.authorComSize,
-            authorCom = _props$attributes2.authorCom,
-            quotSize = _props$attributes2.quotSize,
-            quotColor = _props$attributes2.quotColor,
-            quotOpacity = _props$attributes2.quotOpacity,
-            bodyColor = _props$attributes2.bodyColor,
-            bodySize = _props$attributes2.bodySize,
-            bodyLine = _props$attributes2.bodyLine,
-            bodyTop = _props$attributes2.bodyTop,
-            bodyBottom = _props$attributes2.bodyBottom,
-            dashColor = _props$attributes2.dashColor,
-            urlCheck = _props$attributes2.urlCheck,
-            urlText = _props$attributes2.urlText,
-            urlTarget = _props$attributes2.urlTarget,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize;
+        var _props$attributes3 = props.attributes,
+            align = _props$attributes3.align,
+            authorImgUrl = _props$attributes3.authorImgUrl,
+            imgRadius = _props$attributes3.imgRadius,
+            imgBorder = _props$attributes3.imgBorder,
+            imgBorderColor = _props$attributes3.imgBorderColor,
+            imgSize = _props$attributes3.imgSize,
+            text = _props$attributes3.text,
+            authorTag = _props$attributes3.authorTag,
+            authorColor = _props$attributes3.authorColor,
+            authorSize = _props$attributes3.authorSize,
+            authorLetter = _props$attributes3.authorLetter,
+            authorStyle = _props$attributes3.authorStyle,
+            authorUpper = _props$attributes3.authorUpper,
+            authorWeight = _props$attributes3.authorWeight,
+            author = _props$attributes3.author,
+            authorComTag = _props$attributes3.authorComTag,
+            authorComColor = _props$attributes3.authorComColor,
+            authorComSize = _props$attributes3.authorComSize,
+            authorCom = _props$attributes3.authorCom,
+            quotSize = _props$attributes3.quotSize,
+            quotColor = _props$attributes3.quotColor,
+            quotOpacity = _props$attributes3.quotOpacity,
+            bodyColor = _props$attributes3.bodyColor,
+            bodySize = _props$attributes3.bodySize,
+            bodyLine = _props$attributes3.bodyLine,
+            bodyTop = _props$attributes3.bodyTop,
+            bodyBottom = _props$attributes3.bodyBottom,
+            dashColor = _props$attributes3.dashColor,
+            urlCheck = _props$attributes3.urlCheck,
+            urlText = _props$attributes3.urlText,
+            urlTarget = _props$attributes3.urlTarget,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            backColor = _props$attributes3.backColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize;
 
 
         return wp.element.createElement(
@@ -52717,43 +54905,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            align = _props$attributes3.align,
-            authorImgUrl = _props$attributes3.authorImgUrl,
-            imgRadius = _props$attributes3.imgRadius,
-            imgBorder = _props$attributes3.imgBorder,
-            imgBorderColor = _props$attributes3.imgBorderColor,
-            imgSize = _props$attributes3.imgSize,
-            text = _props$attributes3.text,
-            authorTag = _props$attributes3.authorTag,
-            authorColor = _props$attributes3.authorColor,
-            authorSize = _props$attributes3.authorSize,
-            authorLetter = _props$attributes3.authorLetter,
-            authorStyle = _props$attributes3.authorStyle,
-            authorUpper = _props$attributes3.authorUpper,
-            authorWeight = _props$attributes3.authorWeight,
-            author = _props$attributes3.author,
-            authorComTag = _props$attributes3.authorComTag,
-            authorComColor = _props$attributes3.authorComColor,
-            authorComSize = _props$attributes3.authorComSize,
-            authorCom = _props$attributes3.authorCom,
-            quotSize = _props$attributes3.quotSize,
-            quotColor = _props$attributes3.quotColor,
-            quotOpacity = _props$attributes3.quotOpacity,
-            bodyColor = _props$attributes3.bodyColor,
-            bodySize = _props$attributes3.bodySize,
-            bodyLine = _props$attributes3.bodyLine,
-            bodyTop = _props$attributes3.bodyTop,
-            bodyBottom = _props$attributes3.bodyBottom,
-            dashColor = _props$attributes3.dashColor,
-            urlCheck = _props$attributes3.urlCheck,
-            urlText = _props$attributes3.urlText,
-            urlTarget = _props$attributes3.urlTarget,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition;
+        var _props$attributes4 = props.attributes,
+            align = _props$attributes4.align,
+            authorImgUrl = _props$attributes4.authorImgUrl,
+            imgRadius = _props$attributes4.imgRadius,
+            imgBorder = _props$attributes4.imgBorder,
+            imgBorderColor = _props$attributes4.imgBorderColor,
+            imgSize = _props$attributes4.imgSize,
+            text = _props$attributes4.text,
+            authorTag = _props$attributes4.authorTag,
+            authorColor = _props$attributes4.authorColor,
+            authorSize = _props$attributes4.authorSize,
+            authorLetter = _props$attributes4.authorLetter,
+            authorStyle = _props$attributes4.authorStyle,
+            authorUpper = _props$attributes4.authorUpper,
+            authorWeight = _props$attributes4.authorWeight,
+            author = _props$attributes4.author,
+            authorComTag = _props$attributes4.authorComTag,
+            authorComColor = _props$attributes4.authorComColor,
+            authorComSize = _props$attributes4.authorComSize,
+            authorCom = _props$attributes4.authorCom,
+            quotSize = _props$attributes4.quotSize,
+            quotColor = _props$attributes4.quotColor,
+            quotOpacity = _props$attributes4.quotOpacity,
+            bodyColor = _props$attributes4.bodyColor,
+            bodySize = _props$attributes4.bodySize,
+            bodyLine = _props$attributes4.bodyLine,
+            bodyTop = _props$attributes4.bodyTop,
+            bodyBottom = _props$attributes4.bodyBottom,
+            dashColor = _props$attributes4.dashColor,
+            urlCheck = _props$attributes4.urlCheck,
+            urlText = _props$attributes4.urlText,
+            urlTarget = _props$attributes4.urlTarget,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition;
 
 
         return wp.element.createElement(
@@ -52891,38 +55079,38 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            align = _props$attributes4.align,
-            authorImgUrl = _props$attributes4.authorImgUrl,
-            imgRadius = _props$attributes4.imgRadius,
-            imgBorder = _props$attributes4.imgBorder,
-            imgBorderColor = _props$attributes4.imgBorderColor,
-            imgSize = _props$attributes4.imgSize,
-            text = _props$attributes4.text,
-            authorTag = _props$attributes4.authorTag,
-            authorColor = _props$attributes4.authorColor,
-            authorSize = _props$attributes4.authorSize,
-            authorLetter = _props$attributes4.authorLetter,
-            authorStyle = _props$attributes4.authorStyle,
-            authorUpper = _props$attributes4.authorUpper,
-            authorWeight = _props$attributes4.authorWeight,
-            author = _props$attributes4.author,
-            authorComTag = _props$attributes4.authorComTag,
-            authorComColor = _props$attributes4.authorComColor,
-            authorComSize = _props$attributes4.authorComSize,
-            authorCom = _props$attributes4.authorCom,
-            quotSize = _props$attributes4.quotSize,
-            quotColor = _props$attributes4.quotColor,
-            quotOpacity = _props$attributes4.quotOpacity,
-            bodyColor = _props$attributes4.bodyColor,
-            bodySize = _props$attributes4.bodySize,
-            bodyLine = _props$attributes4.bodyLine,
-            bodyTop = _props$attributes4.bodyTop,
-            bodyBottom = _props$attributes4.bodyBottom,
-            dashColor = _props$attributes4.dashColor,
-            urlCheck = _props$attributes4.urlCheck,
-            urlText = _props$attributes4.urlText,
-            urlTarget = _props$attributes4.urlTarget;
+        var _props$attributes5 = props.attributes,
+            align = _props$attributes5.align,
+            authorImgUrl = _props$attributes5.authorImgUrl,
+            imgRadius = _props$attributes5.imgRadius,
+            imgBorder = _props$attributes5.imgBorder,
+            imgBorderColor = _props$attributes5.imgBorderColor,
+            imgSize = _props$attributes5.imgSize,
+            text = _props$attributes5.text,
+            authorTag = _props$attributes5.authorTag,
+            authorColor = _props$attributes5.authorColor,
+            authorSize = _props$attributes5.authorSize,
+            authorLetter = _props$attributes5.authorLetter,
+            authorStyle = _props$attributes5.authorStyle,
+            authorUpper = _props$attributes5.authorUpper,
+            authorWeight = _props$attributes5.authorWeight,
+            author = _props$attributes5.author,
+            authorComTag = _props$attributes5.authorComTag,
+            authorComColor = _props$attributes5.authorComColor,
+            authorComSize = _props$attributes5.authorComSize,
+            authorCom = _props$attributes5.authorCom,
+            quotSize = _props$attributes5.quotSize,
+            quotColor = _props$attributes5.quotColor,
+            quotOpacity = _props$attributes5.quotOpacity,
+            bodyColor = _props$attributes5.bodyColor,
+            bodySize = _props$attributes5.bodySize,
+            bodyLine = _props$attributes5.bodyLine,
+            bodyTop = _props$attributes5.bodyTop,
+            bodyBottom = _props$attributes5.bodyBottom,
+            dashColor = _props$attributes5.dashColor,
+            urlCheck = _props$attributes5.urlCheck,
+            urlText = _props$attributes5.urlText,
+            urlTarget = _props$attributes5.urlTarget;
 
 
         return wp.element.createElement(
@@ -53045,34 +55233,34 @@ var deprecatedContent = [{
 }, {
     attributes: testimonialsAttrs_1_0_1,
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            align = _props$attributes5.align,
-            authorImgUrl = _props$attributes5.authorImgUrl,
-            imgRadius = _props$attributes5.imgRadius,
-            imgBorder = _props$attributes5.imgBorder,
-            imgBorderColor = _props$attributes5.imgBorderColor,
-            imgSize = _props$attributes5.imgSize,
-            text = _props$attributes5.text,
-            authorTag = _props$attributes5.authorTag,
-            authorColor = _props$attributes5.authorColor,
-            authorSize = _props$attributes5.authorSize,
-            author = _props$attributes5.author,
-            authorComTag = _props$attributes5.authorComTag,
-            authorComColor = _props$attributes5.authorComColor,
-            authorComSize = _props$attributes5.authorComSize,
-            authorCom = _props$attributes5.authorCom,
-            quotSize = _props$attributes5.quotSize,
-            quotColor = _props$attributes5.quotColor,
-            quotOpacity = _props$attributes5.quotOpacity,
-            bodyColor = _props$attributes5.bodyColor,
-            bodySize = _props$attributes5.bodySize,
-            bodyLine = _props$attributes5.bodyLine,
-            bodyTop = _props$attributes5.bodyTop,
-            bodyBottom = _props$attributes5.bodyBottom,
-            dashColor = _props$attributes5.dashColor,
-            urlCheck = _props$attributes5.urlCheck,
-            urlText = _props$attributes5.urlText,
-            urlTarget = _props$attributes5.urlTarget;
+        var _props$attributes6 = props.attributes,
+            align = _props$attributes6.align,
+            authorImgUrl = _props$attributes6.authorImgUrl,
+            imgRadius = _props$attributes6.imgRadius,
+            imgBorder = _props$attributes6.imgBorder,
+            imgBorderColor = _props$attributes6.imgBorderColor,
+            imgSize = _props$attributes6.imgSize,
+            text = _props$attributes6.text,
+            authorTag = _props$attributes6.authorTag,
+            authorColor = _props$attributes6.authorColor,
+            authorSize = _props$attributes6.authorSize,
+            author = _props$attributes6.author,
+            authorComTag = _props$attributes6.authorComTag,
+            authorComColor = _props$attributes6.authorComColor,
+            authorComSize = _props$attributes6.authorComSize,
+            authorCom = _props$attributes6.authorCom,
+            quotSize = _props$attributes6.quotSize,
+            quotColor = _props$attributes6.quotColor,
+            quotOpacity = _props$attributes6.quotOpacity,
+            bodyColor = _props$attributes6.bodyColor,
+            bodySize = _props$attributes6.bodySize,
+            bodyLine = _props$attributes6.bodyLine,
+            bodyTop = _props$attributes6.bodyTop,
+            bodyBottom = _props$attributes6.bodyBottom,
+            dashColor = _props$attributes6.dashColor,
+            urlCheck = _props$attributes6.urlCheck,
+            urlText = _props$attributes6.urlText,
+            urlTarget = _props$attributes6.urlTarget;
 
 
         return wp.element.createElement(
@@ -53193,22 +55381,22 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_responsive_tabs__ = __webpack_require__(6);
@@ -54157,12 +56345,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -54217,13 +56405,13 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hex_to_rgba__);
 
@@ -54425,11 +56613,11 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(34);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -55589,14 +57777,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 
 
@@ -55820,7 +58008,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55943,20 +58131,20 @@ function save(props) {
 }
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_typed_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_responsive_tabs__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__ = __webpack_require__(247);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56874,14 +59062,14 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
 
 
 
@@ -57004,7 +59192,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -58113,7 +60301,7 @@ function styling(props) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58124,25 +60312,25 @@ function styling(props) {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(262);
 
 
 
@@ -59729,7 +61917,7 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59753,14 +61941,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(252);
 
 
 
@@ -59769,7 +61957,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59779,7 +61967,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59811,7 +61999,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59821,12 +62009,12 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _objectSpread;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defineProperty__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defineProperty__ = __webpack_require__(76);
 
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -59848,7 +62036,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59860,7 +62048,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59882,13 +62070,13 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(77);
 
 
 function _possibleConstructorReturn(self, call) {
@@ -59900,7 +62088,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59934,7 +62122,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59947,12 +62135,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(260);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -59970,7 +62158,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59985,7 +62173,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60038,14 +62226,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(265);
 
 
 
@@ -60054,7 +62242,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60070,7 +62258,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60080,7 +62268,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60090,7 +62278,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

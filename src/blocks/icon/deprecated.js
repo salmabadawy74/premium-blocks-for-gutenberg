@@ -1,4 +1,6 @@
 const className = "premium-icon";
+import hexToRgba from 'hex-to-rgba'
+
 
 const deprecated_attributes_1_6_2 = {
     iconType: {
@@ -802,7 +804,258 @@ const deprecated_attributes_1_3_1 = {
     },
 };
 
+const newAttributes_1_6_6 = {
+    wrapPaddingT: {
+        type: "number"
+    },
+    wrapPaddingR: {
+        type: "number"
+    },
+    wrapPaddingB: {
+        type: "number"
+    },
+    wrapPaddingL: {
+        type: "number"
+    },
+    wrapPaddingTTablet: {
+        type: "number"
+    },
+    wrapPaddingRTablet: {
+        type: "number"
+    },
+    wrapPaddingBTablet: {
+        type: "number"
+    },
+    wrapPaddingLTablet: {
+        type: "number"
+    },
+    wrapPaddingTMobile: {
+        type: "number"
+    },
+    wrapPaddingRMobile: {
+        type: "number"
+    },
+    wrapPaddingBMobile: {
+        type: "number"
+    },
+    wrapPaddingLMobile: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
+}
+
+const deprecated_attributes_1_6_6 = Object.assign(newAttributes_1_6_6, deprecated_attributes_1_6_3)
+
 const deprecatedContent = [
+    {
+        attributes: deprecated_attributes_1_6_6,
+        migrate: attributes => {
+            let newAttributes = {
+                wrapPaddingT: "",
+                wrapPaddingR: "",
+                wrapPaddingB: "",
+                wrapPaddingL: "",
+                wrapPaddingTTablet: "",
+                wrapPaddingRTablet: "",
+                wrapPaddingBTablet: "",
+                wrapPaddingLTablet: "",
+                wrapPaddingTMobile: "",
+                wrapPaddingRMobile: "",
+                wrapPaddingBMobile: "",
+                wrapPaddingLMobile: "",
+                paddingT: "",
+                paddingR: "",
+                paddingB: "",
+                paddingL: "",
+                paddingTTablet: "",
+                paddingRTablet: "",
+                paddingBTablet: "",
+                paddingLTablet: "",
+                paddingTMobile: "",
+                paddingRMobile: "",
+                paddingBMobile: "",
+                paddingLMobile: "",
+                paddingU: "px",
+            }
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                wrapBorder,
+                iconBorder,
+                selectedIcon,
+                align,
+                hoverEffect,
+                iconSize,
+                iconSizeUnit,
+                iconColor,
+                iconBack,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                paddingT,
+                paddingR,
+                paddingB,
+                paddingL,
+                paddingU,
+                marginT,
+                marginR,
+                marginB,
+                marginL,
+                borderType,
+                borderWidth,
+                iconBorderTop,
+                iconBorderRight,
+                iconBorderBottom,
+                iconBorderLeft,
+                borderRadius,
+                borderColor,
+                backgroundColor,
+                imageURL,
+                fixed,
+                backgroundRepeat,
+                backgroundPosition,
+                backgroundSize,
+                wrapBorderType,
+                wrapBorderWidth,
+                wrapBorderTop,
+                wrapBorderRight,
+                wrapBorderBottom,
+                wrapBorderLeft,
+                wrapBorderRadius,
+                wrapBorderColor,
+                wrapShadowBlur,
+                wrapShadowColor,
+                wrapShadowHorizontal,
+                wrapShadowVertical,
+                wrapShadowPosition,
+                wrapPaddingT,
+                wrapPaddingR,
+                wrapPaddingB,
+                wrapPaddingL,
+                wrapMarginT,
+                wrapMarginR,
+                wrapMarginB,
+                wrapMarginL,
+                urlCheck,
+                link,
+                target,
+                iconOpacity,
+                backgroundOpacity,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+            return (
+                <div
+                    className={`${className}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: align,
+                        backgroundColor: backgroundColor
+                            ? hexToRgba(backgroundColor, backgroundOpacity)
+                            : "transparent",
+                        backgroundImage: `url('${imageURL}')`,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        borderStyle: wrapBorderType,
+                        borderWidth: wrapBorder
+                            ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                            : wrapBorderWidth + "px",
+                        borderRadius: wrapBorderRadius + "px",
+                        borderColor: wrapBorderColor,
+                        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
+                            0}px ${wrapShadowBlur ||
+                            0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+                        paddingTop: wrapPaddingT,
+                        paddingRight: wrapPaddingR,
+                        paddingBottom: wrapPaddingB,
+                        paddingLeft: wrapPaddingL,
+                        marginTop: wrapMarginT,
+                        marginRight: wrapMarginR,
+                        marginBottom: wrapMarginB,
+                        marginLeft: wrapMarginL
+                    }}
+                >
+                    <a
+                        className={`premium-icon__link`}
+                        href={urlCheck && link}
+                        rel="noopener noreferrer"
+                        target={target ? "_blank" : "_self"}
+                    >
+                        <i
+                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                            style={{
+                                color: iconColor || "#6ec1e4",
+                                backgroundColor: iconBack
+                                    ? hexToRgba(iconBack, iconOpacity)
+                                    : "transparent",
+                                fontSize: (iconSize || 50) + iconSizeUnit,
+                                paddingTop: paddingT + paddingU,
+                                paddingRight: paddingR + paddingU,
+                                paddingBottom: paddingB + paddingU,
+                                paddingLeft: paddingL + paddingU,
+                                marginTop: marginT,
+                                marginRight: marginR,
+                                marginBottom: marginB,
+                                marginLeft: marginL,
+                                borderStyle: borderType,
+                                borderWidth: iconBorder
+                                    ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                                    : borderWidth + "px",
+                                borderRadius: borderRadius || 100 + "px",
+                                borderColor: borderColor,
+                                textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
+                                    0}px ${shadowBlur || 0}px ${shadowColor}`
+                            }}
+                        />
+                    </a>
+                </div>
+            );
+        }
+    },
     {
         attributes: deprecated_attributes_1_6_3,
         migrate: (attributes) => {

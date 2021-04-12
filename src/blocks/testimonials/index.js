@@ -214,6 +214,30 @@ const testimonialsAttrs = {
     paddingLeft: {
         type: "number"
     },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
     paddingUnit: {
         type: "string",
         default: "px"

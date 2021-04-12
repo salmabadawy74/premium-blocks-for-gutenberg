@@ -83,7 +83,18 @@ class edit extends Component {
             firstBorderLeft,
             firstBorderRadius,
             firstBorderColor,
-            firstPadding,
+            firstPaddingT,
+            firstPaddingR,
+            firstPaddingB,
+            firstPaddingL,
+            firstPaddingTTablet,
+            firstPaddingRTablet,
+            firstPaddingBTablet,
+            firstPaddingLTablet,
+            firstPaddingTMobile,
+            firstPaddingRMobile,
+            firstPaddingBMobile,
+            firstPaddingLMobile,
             firstMarginR,
             firstMarginL,
             firstMarginRTablet,
@@ -118,7 +129,18 @@ class edit extends Component {
             secondBorderLeft,
             secondBorderRadius,
             secondBorderColor,
-            secondPadding,
+            secondPaddingT,
+            secondPaddingR,
+            secondPaddingB,
+            secondPaddingL,
+            secondPaddingTTablet,
+            secondPaddingRTablet,
+            secondPaddingBTablet,
+            secondPaddingLTablet,
+            secondPaddingTMobile,
+            secondPaddingRMobile,
+            secondPaddingBMobile,
+            secondPaddingLMobile,
             secondMarginL,
             secondMarginR,
             secondClip,
@@ -457,10 +479,10 @@ class edit extends Component {
                                 setAttributes({ firstShadowVertical: newValue || "0" })
                             }
                         />
-                        <PremiumResponsiveMargin
+                        {/* <PremiumResponsiveMargin
                             directions={["left", "right"]}
                             marginRight={firstMarginR}
-                            marginLeft={firstMarginL}
+                            // marginLeft={firstMarginL}
                             marginRightTablet={firstMarginRTablet}
                             marginLeftTablet={firstMarginLTablet}
                             marginRightMobile={firstMarginRMobile}
@@ -488,7 +510,7 @@ class edit extends Component {
                                 }
                             }
                             }
-                        />
+                        /> */}
                         <PremiumResponsivePadding
                             paddingTop={firstPaddingT}
                             paddingRight={firstPaddingR}
@@ -502,51 +524,18 @@ class edit extends Component {
                             paddingRightMobile={firstPaddingRMobile}
                             paddingBottomMobile={firstPaddingBMobile}
                             paddingLeftMobile={firstPaddingLMobile}
-                            onChangePadTop={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ firstPaddingT: newValue })
-
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ firstPaddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ firstPaddingTMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ firstPaddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ firstPaddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ firstPaddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ firstPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ firstPaddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ firstPaddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ firstPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ firstPaddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ firstPaddingLMobile: valueMobile })
-                                }
-                            }
-                            }
+                            onChangePadTopDesk={(val) => setAttributes({ firstPaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ firstPaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ firstPaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ firstPaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ firstPaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ firstPaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ firstPaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ firstPaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ firstPaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ firstPaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ firstPaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ firstPaddingLMobile: valM })}
                         />
 
                     </PanelBody>
@@ -750,7 +739,7 @@ class edit extends Component {
                             }
                         />
 
-                        <PremiumResponsiveMargin
+                        {/* <PremiumResponsiveMargin
                             directions={["left", "right"]}
                             marginRight={secondMarginR}
                             marginLeft={secondMarginL}
@@ -781,7 +770,7 @@ class edit extends Component {
                                 }
                             }
                             }
-                        />
+                        /> */}
                         <PremiumResponsivePadding
                             paddingTop={secondPaddingT}
                             paddingRight={secondPaddingR}
@@ -795,51 +784,19 @@ class edit extends Component {
                             paddingRightMobile={secondPaddingRMobile}
                             paddingBottomMobile={secondPaddingBMobile}
                             paddingLeftMobile={secondPaddingLMobile}
-                            onChangePadTop={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ secondPaddingT: newValue })
+                            onChangePadTopDesk={(val) => setAttributes({ secondPaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ secondPaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ secondPaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ secondPaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ secondPaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ secondPaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ secondPaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ secondPaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ secondPaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ secondPaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ secondPaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ secondPaddingLMobile: valM })}
 
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ secondPaddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ secondPaddingTMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ secondPaddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ secondPaddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ secondPaddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ secondPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ secondPaddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ secondPaddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ secondPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ secondPaddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ secondPaddingLMobile: valueMobile })
-                                }
-                            }
-                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -972,7 +929,6 @@ class edit extends Component {
                                     : firstBorderWidth + "px",
                                 borderRadius: firstBorderRadius + "px",
                                 borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
                                 marginLeft: firstMarginL + "px",
                                 marginRight: firstMarginR + "px",
                                 textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
@@ -1000,7 +956,6 @@ class edit extends Component {
                                     : secondBorderWidth + "px",
                                 borderRadius: secondBorderRadius + "px",
                                 borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
                                 marginLeft: secondMarginL + "px",
                                 marginRight: secondMarginR + "px",
                                 textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`

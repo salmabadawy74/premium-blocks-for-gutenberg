@@ -8,10 +8,10 @@ const {
 function PremiumResponsivePadding(props) {
 
     const {
-        setAttributes,
+
         selectedUnit,
         showUnits,
-        setAttributes,
+
         paddingU,
         onChangePadSizeUnit,
         paddingT,

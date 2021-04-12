@@ -125,11 +125,45 @@ const buttonAttrs = {
     borderHoverColor: {
         type: "string"
     },
-    padding: {
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
         type: "number"
     },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     shadowColor: {
         type: "string"

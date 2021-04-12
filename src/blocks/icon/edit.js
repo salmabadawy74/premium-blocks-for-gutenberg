@@ -6,13 +6,12 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
-import PremiumMargin from "../../components/premium-margin";
-import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import styling from './styling';
 
 const { __ } = wp.i18n;
 
@@ -73,6 +72,14 @@ export default class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
             paddingU,
             marginT,
             marginR,
@@ -113,6 +120,14 @@ export default class edit extends Component {
             wrapPaddingR,
             wrapPaddingB,
             wrapPaddingL,
+            wrapPaddingTTablet,
+            wrapPaddingRTablet,
+            wrapPaddingBTablet,
+            wrapPaddingLTablet,
+            wrapPaddingTMobile,
+            wrapPaddingRMobile,
+            wrapPaddingBMobile,
+            wrapPaddingLMobile,
             wrapMarginT,
             wrapMarginR,
             wrapMarginB,
@@ -157,6 +172,14 @@ export default class edit extends Component {
         ];
 
         const ALIGNS = ["left", "center", "right"];
+
+        let element = document.getElementById(
+            "premium-style-icon-" + this.props.clientId.substr(0, 6)
+        );
+
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props);
+        }
 
 
         const mainClasses = classnames(className, "premium-icon");
@@ -307,7 +330,7 @@ export default class edit extends Component {
                                 setAttributes({ shadowVertical: newValue })
                             }
                         />
-                        <PremiumResponsiveMargin
+                        {/* <PremiumResponsiveMargin
                             directions={["all"]}
                             marginTop={marginT}
                             marginRight={marginR}
@@ -368,7 +391,7 @@ export default class edit extends Component {
                             }
                             }
 
-                        />
+                        /> */}
                         <PremiumResponsivePadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
@@ -382,56 +405,24 @@ export default class edit extends Component {
                             paddingRightMobile={paddingRMobile}
                             paddingBottomMobile={paddingBMobile}
                             paddingLeftMobile={paddingLMobile}
-                            onChangePadTop={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ PaddingT: newValue })
 
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ PaddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ PaddingTMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingLMobile: valueMobile })
-                                }
-                            }
-                            }
                             showUnits={true}
                             selectedUnit={paddingU}
                             onChangePadSizeUnit={newvalue =>
                                 setAttributes({ paddingU: newvalue })
                             }
+                            onChangePadTopDesk={(val) => setAttributes({ paddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ paddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ paddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ paddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ paddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ paddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ paddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ paddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLMobile: valM })}
                         />
 
 
@@ -547,7 +538,7 @@ export default class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumResponsiveMargin
+                        {/* <PremiumResponsiveMargin
                             directions={["all"]}
                             marginTop={wrapMarginT}
                             marginRight={wrapMarginR}
@@ -607,66 +598,32 @@ export default class edit extends Component {
                                 }
                             }
                             }
-                        />
-
+                        /> */}
                         <PremiumResponsivePadding
                             paddingTop={wrapPaddingT}
                             paddingRight={wrapPaddingR}
                             paddingBottom={wrapPaddingB}
                             paddingLeft={wrapPaddingL}
-                            paddingTopTablet={wrapPaddingT}
-                            paddingRightTablet={wrapPaddingR}
-                            paddingBottomTablet={wrapPaddingB}
-                            paddingLeftTablet={wrapPaddingL}
-                            paddingTopMobile={wrapPaddingT}
-                            paddingRightMobile={wrapPaddingR}
-                            paddingBottomMobile={wrapPaddingB}
-                            paddingLeftMobile={wrapPaddingL}
-                            onChangePadTop={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ PaddingT: newValue })
-
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ PaddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ PaddingTMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ paddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ paddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ paddingLMobile: valueMobile })
-                                }
-                            }
-                            }
+                            paddingTopTablet={wrapPaddingTTablet}
+                            paddingRightTablet={wrapPaddingRTablet}
+                            paddingBottomTablet={wrapPaddingBTablet}
+                            paddingLeftTablet={wrapPaddingLTablet}
+                            paddingTopMobile={wrapPaddingTMobile}
+                            paddingRightMobile={wrapPaddingRMobile}
+                            paddingBottomMobile={wrapPaddingBMobile}
+                            paddingLeftMobile={wrapPaddingLMobile}
+                            onChangePadTopDesk={(val) => setAttributes({ wrapPaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ wrapPaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ wrapPaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ wrapPaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ wrapPaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ wrapPaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ wrapPaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ wrapPaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ wrapPaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ wrapPaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ wrapPaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ wrapPaddingLMobile: valM })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -682,7 +639,7 @@ export default class edit extends Component {
 
             <div
                 id={`premium-icon-${block_id}`}
-                className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses}__container premium-icon-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
                     backgroundColor: backgroundColor
@@ -702,10 +659,6 @@ export default class edit extends Component {
                     boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
                         0}px ${wrapShadowBlur ||
                         0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-                    paddingTop: wrapPaddingT,
-                    paddingRight: wrapPaddingR,
-                    paddingBottom: wrapPaddingB,
-                    paddingLeft: wrapPaddingL,
                     marginTop: wrapMarginT,
                     marginRight: wrapMarginR,
                     marginBottom: wrapMarginB,

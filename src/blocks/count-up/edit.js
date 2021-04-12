@@ -663,7 +663,7 @@ class edit extends Component {
                                 initialOpen={false}
                             >
 
-                                <PremiumResponsiveMargin
+                                {/* <PremiumResponsiveMargin
                                     directions={["top", "bottom"]}
                                     marginTop={titleT}
                                     marginBottom={titleB}
@@ -671,30 +671,8 @@ class edit extends Component {
                                     marginBottomTablet={titleBTablet}
                                     marginTopMobile={titleTMobile}
                                     marginBottomMobile={titleBMobile}
-                                    onChangeMarTop={(device) => {
-                                        if (device === "Desktop") {
-                                            (newValue) => setAttributes({ titleT: newValue })
 
-                                        } else if (device === "tablet") {
-                                            (valuetablet) => setAttributes({ titleTTablet: valuetablet })
-                                        }
-                                        else {
-                                            (valueMobile) => setAttributes({ titleTMobile: valueMobile })
-                                        }
-                                    }
-                                    }
-                                    onChangeMarBottom={(device) => {
-                                        if (device === "Desktop") {
-                                            (newValue) => setAttributes({ titleB: newValue })
-                                        } else if (device === "tablet") {
-                                            (valuetablet) => setAttributes({ titleBTablet: valuetablet })
-                                        }
-                                        else {
-                                            (valueMobile) => setAttributes({ titleBMobile: valueMobile })
-                                        }
-                                    }
-                                    }
-                                />
+                                /> */}
                             </PanelBody>
                         </PanelBody>
                     )}

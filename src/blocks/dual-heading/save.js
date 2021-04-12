@@ -141,7 +141,6 @@ const save = props => {
                                 : firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
-                            padding: firstPadding + "px",
                             margin: firstMargin + "px",
                             textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
                         }}
@@ -172,7 +171,6 @@ const save = props => {
                                 : secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
-                            padding: secondPadding + "px",
                             margin: secondMargin + "px",
                             textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
                         }}

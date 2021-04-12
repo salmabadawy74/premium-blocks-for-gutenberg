@@ -116,7 +116,51 @@ const dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
-    firstPadding: {
+    firstPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstPaddingLMobile: {
         type: "number",
         default: "0"
     },
@@ -231,7 +275,51 @@ const dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
-    secondPadding: {
+    secondPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondPaddingLMobile: {
         type: "number",
         default: "0"
     },

@@ -60,11 +60,6 @@ const save = props => {
         containerShadowHorizontal,
         containerShadowVertical,
         containerShadowPosition,
-        paddingB,
-        paddingT,
-        paddingR,
-        paddingL,
-        paddingU,
         hideDesktop,
         hideTablet,
         hideMobile
@@ -76,12 +71,6 @@ const save = props => {
         <div
             id={`premium-banner-${block_id}`}
             className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
-            style={{
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU
-            }}
         >
             <style
                 dangerouslySetInnerHTML={{

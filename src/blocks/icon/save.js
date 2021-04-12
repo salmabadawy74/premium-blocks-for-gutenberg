@@ -6,6 +6,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         wrapBorder,
         iconBorder,
         selectedIcon,
@@ -19,11 +20,6 @@ const save = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        paddingT,
-        paddingR,
-        paddingB,
-        paddingL,
-        paddingU,
         marginT,
         marginR,
         marginB,
@@ -55,10 +51,6 @@ const save = props => {
         wrapShadowHorizontal,
         wrapShadowVertical,
         wrapShadowPosition,
-        wrapPaddingT,
-        wrapPaddingR,
-        wrapPaddingB,
-        wrapPaddingL,
         wrapMarginT,
         wrapMarginR,
         wrapMarginB,
@@ -77,7 +69,8 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            id={`premium-icon-${block_id}`}
+            className={`${mainClasses}__container premium-icon-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
                 backgroundColor: backgroundColor
@@ -97,10 +90,6 @@ const save = props => {
                 boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
                     0}px ${wrapShadowBlur ||
                     0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
                 marginTop: wrapMarginT,
                 marginRight: wrapMarginR,
                 marginBottom: wrapMarginB,
@@ -121,10 +110,6 @@ const save = props => {
                             ? hexToRgba(iconBack, iconOpacity)
                             : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,

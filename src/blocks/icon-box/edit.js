@@ -9,7 +9,6 @@ import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin'
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
-import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
@@ -144,7 +143,18 @@ class edit extends Component {
             btnBorderLeft,
             btnBorderRadius,
             btnBorderType,
-            btnPadding,
+            btnPaddingT,
+            btnPaddingR,
+            btnPaddingB,
+            btnPaddingL,
+            btnPaddingTTablet,
+            btnPaddingRTablet,
+            btnPaddingBTablet,
+            btnPaddingLTablet,
+            btnPaddingTMobile,
+            btnPaddingRMobile,
+            btnPaddingBMobile,
+            btnPaddingLMobile,
             btnPaddingU,
             btnMarginT,
             btnMarginB,
@@ -177,6 +187,14 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
             paddingU,
             shadowBlur,
             shadowColor,
@@ -802,85 +820,35 @@ class edit extends Component {
                             />
 
                             <PremiumResponsivePadding
-                                paddingTop={btnPadding}
-                                paddingRight={btnPadding}
-                                paddingBottom={btnPadding}
-                                paddingLeft={btnPadding}
+                                paddingTop={btnPaddingT}
+                                paddingRight={btnPaddingR}
+                                paddingBottom={btnPaddingB}
+                                paddingLeft={btnPaddingL}
+                                paddingTopTablet={btnPaddingTTablet}
+                                paddingRightTablet={btnPaddingRTablet}
+                                paddingBottomTablet={btnPaddingBTablet}
+                                paddingLeftTablet={btnPaddingLTablet}
+                                paddingTopMobile={btnPaddingTMobile}
+                                paddingRightMobile={btnPaddingRMobile}
+                                paddingBottomMobile={btnPaddingBMobile}
+                                paddingLeftMobile={btnPaddingLMobile}
                                 showUnits={true}
-                                onChangePadTop={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadRight={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadBottom={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadLeft={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-
-                                paddingTopTablet={btnPadding}
-                                paddingRightTablet={btnPadding}
-                                paddingBottomTablet={btnPadding}
-                                paddingLeftTablet={btnPadding}
-                                onChangePadTopTablet={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadRightTablet={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadBottomTablet={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadLeftTablet={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-
-                                paddingTopMobile={btnPadding}
-                                paddingRightMobile={btnPadding}
-                                paddingBottomMobile={btnPadding}
-                                paddingLeftMobile={btnPadding}
-                                onChangePadTopMobile={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadRightMobile={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadBottomMobile={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
-                                onChangePadLeftMobile={value =>
-                                    setAttributes({
-                                        btnPadding: value || 0
-                                    })
-                                }
                                 selectedUnit={btnPaddingU}
                                 onChangePadSizeUnit={newvalue =>
                                     setAttributes({ btnPaddingU: newvalue })
                                 }
+                                onChangePadTopDesk={(val) => setAttributes({ btnPaddingT: val })}
+                                onChangePadRightDesk={(val) => setAttributes({ btnPaddingR: val })}
+                                onChangePadBottomDesk={(val) => setAttributes({ btnPaddingB: val })}
+                                onChangePadLeftDesk={(val) => setAttributes({ btnPaddingL: val })}
+                                onChangePadTopTablet={(valT) => setAttributes({ btnPaddingTTablet: valT })}
+                                onChangePadRightTablet={(valT) => setAttributes({ btnPaddingRTablet: valT })}
+                                onChangePadBottomTablet={(valT) => setAttributes({ btnPaddingBTablet: valT })}
+                                onChangePadLeftTablet={(valT) => setAttributes({ btnPaddingLTablet: valT })}
+                                onChangePadTopMobile={(valM) => setAttributes({ btnPaddingTMobile: valM })}
+                                onChangePadRightMobile={(valM) => setAttributes({ btnPaddingRMobile: valM })}
+                                onChangePadBottomMobile={(valM) => setAttributes({ btnPaddingBMobile: valM })}
+                                onChangePadLeftMobile={(valM) => setAttributes({ btnPaddingLMobile: valM })}
                             />
 
                             <PremiumResponsiveMargin
@@ -1131,82 +1099,33 @@ class edit extends Component {
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
+                            paddingTopTablet={paddingTTablet}
+                            paddingRightTablet={paddingRTablet}
+                            paddingBottomTablet={paddingBTablet}
+                            paddingLeftTablet={paddingLTablet}
+                            paddingTopMobile={paddingTMobile}
+                            paddingRightMobile={paddingRMobile}
+                            paddingBottomMobile={paddingBMobile}
+                            paddingLeftMobile={paddingLMobile}
                             showUnits={true}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
-
-                            paddingTopTablet={paddingT}
-                            paddingRightTablet={paddingR}
-                            paddingBottomTablet={paddingB}
-                            paddingLeftTablet={paddingL}
-                            onChangePadTopTablet={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRightTablet={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottomTablet={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeftTablet={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
-
-                            paddingTopMobile={paddingT}
-                            paddingRightMobile={paddingR}
-                            paddingBottomMobile={paddingB}
-                            paddingLeftMobile={paddingL}
-                            showUnits={true}
-                            onChangePadTopMobile={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRightMobile={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottomMobile={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeftMobile={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
                             selectedUnit={paddingU}
                             onChangePadSizeUnit={newvalue =>
                                 setAttributes({ paddingU: newvalue })
                             }
+                            onChangePadTopDesk={(val) => setAttributes({ paddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ paddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ paddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ paddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ paddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ paddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ paddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ paddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLMobile: valM })}
+
+
                         />
                     </PanelBody>
                     <PanelBody
@@ -1415,10 +1334,6 @@ class edit extends Component {
                     marginRight: marginR,
                     marginBottom: marginB,
                     marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
                     boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     backgroundColor: backColor
                         ? hexToRgba(backColor, backOpacity)
@@ -1576,7 +1491,6 @@ class edit extends Component {
                                         : btnBorderWidth + "px",
                                     borderRadius: btnBorderRadius + "px",
                                     borderColor: btnBorderColor,
-                                    padding: btnPadding + btnPaddingU,
                                     boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
                                 }}
                                 keepPlaceholderOnFocus

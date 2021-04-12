@@ -392,7 +392,242 @@ const newAttributes_2_2 = {
 const testimonialsAttrs_2_2 = Object.assign(testimonialsAttrs_2_0, newAttributes_2_2);
 
 
+const newAttributes_2_3 = {
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string",
+        default: "px"
+    }
+}
+const testimonialsAttrs_2_3 = Object.assign(testimonialsAttrs_2_2, newAttributes_2_3)
 const deprecatedContent = [
+    {
+        attributes: testimonialsAttrs_2_3,
+        migrate: attributes => {
+            let newAttributes = {
+                paddingTop: "",
+                paddingRight: "",
+                paddingBottom: "",
+                paddingLeft: "",
+                paddingTopTablet: "",
+                paddingRightTablet: "",
+                paddingBottomTablet: "",
+                paddingLeftTablet: "",
+                paddingTopMobile: "",
+                paddingRightMobile: "",
+                paddingBottomMobile: "",
+                paddingLeftMobile: "",
+                paddingUnit: ""
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+
+            const {
+                block_id,
+                align,
+                authorImgUrl,
+                imgRadius,
+                imgBorder,
+                imgBorderColor,
+                imgSize,
+                text,
+                authorTag,
+                authorColor,
+                authorLetter,
+                authorStyle,
+                authorUpper,
+                authorWeight,
+                author,
+                authorComTag,
+                authorComColor,
+                authorCom,
+                quotSize,
+                quotColor,
+                quotOpacity,
+                bodyColor,
+                bodyLine,
+                bodyTop,
+                bodyBottom,
+                dashColor,
+                urlCheck,
+                urlText,
+                urlTarget,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition,
+                backColor,
+                backOpacity,
+                imageURL,
+                fixed,
+                backgroundRepeat,
+                backgroundPosition,
+                backgroundSize,
+                paddingTop,
+                paddingRight,
+                paddingBottom,
+                paddingLeft,
+                paddingUnit,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+            return (
+                <div
+                    id={`premium-testimonial-${block_id}`}
+                    className={`${className}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundColor: backColor
+                            ? hexToRgba(backColor, backOpacity)
+                            : "transparent",
+                        backgroundImage: `url('${imageURL}')`,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        paddingTop: paddingTop + paddingUnit,
+                        paddingBottom: paddingBottom + paddingUnit,
+                        paddingLeft: paddingLeft + paddingUnit,
+                        paddingRight: paddingRight + paddingUnit
+                    }}
+                >
+                    <div className={`premium-testimonial__container`}>
+                        <span className={`premium-testimonial__upper`}>
+                            <PremiumUpperQuote
+                                size={quotSize}
+                                color={quotColor}
+                                opacity={quotOpacity}
+                            />
+                        </span>
+                        <div
+                            className={`premium-testimonial__content`}
+                            style={{
+                                textAlign: align
+                            }}
+                        >
+                            <div className={`premium-testimonial__img_wrap`}>
+                                {authorImgUrl && (
+                                    <img
+                                        className={`premium-testimonial__img`}
+                                        src={`${authorImgUrl}`}
+                                        alt="Author"
+                                        style={{
+                                            borderWidth: imgBorder + "px",
+                                            borderRadius: imgRadius,
+                                            borderColor: imgBorderColor,
+                                            width: imgSize + "px",
+                                            height: imgSize + "px"
+                                        }}
+                                    />
+                                )}
+                                {!authorImgUrl && <DefaultImage className={className} />}
+                            </div>
+                            <div className={`premium-testimonial__text_wrap`}>
+                                <div>
+                                    <RichText.Content
+                                        tagName="p"
+                                        className={`premium-testimonial__text`}
+                                        value={text}
+                                        style={{
+                                            color: bodyColor,
+                                            lineHeight: bodyLine + "px",
+                                            marginTop: bodyTop + "px",
+                                            marginBottom: bodyBottom + "px"
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className={`premium-testimonial__info`}>
+                                <RichText.Content
+                                    tagName={authorTag.toLowerCase()}
+                                    className={`premium-testimonial__author`}
+                                    value={author}
+                                    style={{
+                                        color: authorColor,
+                                        letterSpacing: authorLetter + "px",
+                                        textTransform: authorUpper ? "uppercase" : "none",
+                                        fontStyle: authorStyle,
+                                        fontWeight: authorWeight
+                                    }}
+                                />
+                                <span
+                                    className={`premium-testimonial__sep`}
+                                    style={{
+                                        color: dashColor
+                                    }}
+                                >
+                                    &nbsp;-&nbsp;
+            </span>
+                                <div className={`premium-testimonial__link_wrap`}>
+                                    <RichText.Content
+                                        tagName={authorComTag.toLowerCase()}
+                                        className={`premium-testimonial__author_comp`}
+                                        value={authorCom}
+                                        style={{
+                                            color: authorComColor,
+                                        }}
+                                    />
+                                    {urlCheck && (
+                                        <a
+                                            rel="noopener noreferrer"
+                                            href={urlText}
+                                            target={urlTarget ? "_blank" : ""}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <span className={`premium-testimonial__lower`}>
+                            <PremiumLowerQuote
+                                color={quotColor}
+                                size={quotSize}
+                                opacity={quotOpacity}
+                            />
+                        </span>
+                    </div>
+                </div>
+            );
+        }
+    },
 
     {
         attributes: testimonialsAttrs_2_2,

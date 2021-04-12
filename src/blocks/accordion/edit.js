@@ -169,20 +169,7 @@ class PremiumAccordion extends Component {
             hideTablet,
             hideMobile
         } = this.props.attributes;
-        // console.log(
-        //     titlePaddingT + ' ' +
-        //     titlePaddingR + ' ' +
-        //     titlePaddingB + ' ' +
-        //     titlePaddingL + ' ' +
-        //     titlePaddingTTablet + ' ' +
-        //     titlePaddingRTablet + ' ' +
-        //     titlePaddingBTablet + ' ' +
-        //     titlePaddingLTablet + ' ' +
-        //     titlePaddingTMobile + ' ' +
-        //     titlePaddingRMobile + ' ' +
-        //     titlePaddingBMobile + ' ' +
-        //     titlePaddingLMobile
-        // )
+
 
         const DIRECTION = [
             {
@@ -571,7 +558,6 @@ class PremiumAccordion extends Component {
                             }
                         />
                         <PremiumResponsivePadding
-                            setAttributes={setAttributes}
                             paddingTop={arrowPaddingT}
                             paddingRight={arrowPaddingR}
                             paddingBottom={arrowPaddingB}
@@ -584,6 +570,18 @@ class PremiumAccordion extends Component {
                             paddingRightMobile={arrowPaddingRMobile}
                             paddingBottomMobile={arrowPaddingBMobile}
                             paddingLeftMobile={arrowPaddingLMobile}
+                            onChangePadTopDesk={(val) => setAttributes({ arrowPaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ arrowPaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ arrowPaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ arrowPaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ arrowPaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ arrowPaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ arrowPaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ arrowPaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ arrowPaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ arrowPaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ arrowPaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ arrowPaddingLMobile: valM })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -735,7 +733,6 @@ class PremiumAccordion extends Component {
                         )}
 
                         <PremiumResponsivePadding
-                            setAttributes={setAttributes}
                             paddingTop={descPaddingT}
                             paddingRight={descPaddingR}
                             paddingBottom={descPaddingB}
@@ -748,7 +745,18 @@ class PremiumAccordion extends Component {
                             paddingRightMobile={descPaddingRMobile}
                             paddingBottomMobile={descPaddingBMobile}
                             paddingLeftMobile={descPaddingLMobile}
-
+                            onChangePadTopDesk={(val) => setAttributes({ descPaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ descPaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ descPaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ descPaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ descPaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ descPaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ descPaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ descPaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ descPaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ descPaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ descPaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ descPaddingLMobile: valM })}
                         />
 
                     </PanelBody>

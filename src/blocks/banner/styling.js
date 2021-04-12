@@ -12,7 +12,20 @@ function styling(props) {
         descSizeTablet,
         descSizeMobile,
         block_id,
-        classMigrate
+        classMigrate,
+        paddingB,
+        paddingT,
+        paddingR,
+        paddingL,
+        paddingBTablet,
+        paddingTTablet,
+        paddingRTablet,
+        paddingLTablet,
+        paddingBMobile,
+        paddingTMobile,
+        paddingRMobile,
+        paddingLMobile,
+        paddingU,
     } = props.attributes;
 
     var selectors = {}
@@ -20,6 +33,12 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingT, paddingU),
+            "padding-right": generateCSSUnit(paddingR, paddingU),
+            "padding-bottom": generateCSSUnit(paddingB, paddingU),
+            "padding-left": generateCSSUnit(paddingL, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
@@ -28,6 +47,12 @@ function styling(props) {
         }
     }
     tablet_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTTablet, paddingU),
+            "padding-right": generateCSSUnit(paddingRTablet, paddingU),
+            "padding-bottom": generateCSSUnit(paddingBTablet, paddingU),
+            "padding-left": generateCSSUnit(paddingLTablet, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
@@ -36,6 +61,12 @@ function styling(props) {
         }
     }
     mobile_selectors = {
+        " ": {
+            "padding-top": generateCSSUnit(paddingTMobile, paddingU),
+            "padding-right": generateCSSUnit(paddingRMobile, paddingU),
+            "padding-bottom": generateCSSUnit(paddingBMobile, paddingU),
+            "padding-left": generateCSSUnit(paddingLMobile, paddingU)
+        },
         " .premium-banner__title_wrap .premium-banner__title": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },

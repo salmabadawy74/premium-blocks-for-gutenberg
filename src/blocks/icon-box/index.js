@@ -302,11 +302,45 @@ const iconBoxAttrs = {
     btnBorderColor: {
         type: "string"
     },
-    btnPadding: {
+    btnPaddingT: {
+        type: "number"
+    },
+    btnPaddingR: {
+        type: "number"
+    },
+    btnPaddingB: {
+        type: "number"
+    },
+    btnPaddingL: {
+        type: "number"
+    },
+    btnPaddingTTablet: {
+        type: "number"
+    },
+    btnPaddingRTablet: {
+        type: "number"
+    },
+    btnPaddingBTablet: {
+        type: "number"
+    },
+    btnPaddingLTablet: {
+        type: "number"
+    },
+    btnPaddingTMobile: {
+        type: "number"
+    },
+    btnPaddingRMobile: {
+        type: "number"
+    },
+    btnPaddingBMobile: {
+        type: "number"
+    },
+    btnPaddingLMobile: {
         type: "number"
     },
     btnPaddingU: {
-        type: "string"
+        type: "string",
+        default: "px"
     },
     btnMarginT: {
         type: "number"
@@ -396,8 +430,33 @@ const iconBoxAttrs = {
     paddingL: {
         type: "number"
     },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: "px"
     },
     shadowColor: {
         type: "string"

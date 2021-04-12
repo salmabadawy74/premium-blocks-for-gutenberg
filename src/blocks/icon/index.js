@@ -12,6 +12,10 @@ const iconAttrs = {
     block_id: {
         type: "string"
     },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     iconBorder: {
         type: "boolean",
         default: false,
@@ -83,6 +87,30 @@ const iconAttrs = {
         type: "number"
     },
     paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
         type: "number"
     },
     paddingU: {
@@ -231,6 +259,30 @@ const iconAttrs = {
         type: "number"
     },
     wrapPaddingL: {
+        type: "number"
+    },
+    wrapPaddingTTablet: {
+        type: "number"
+    },
+    wrapPaddingRTablet: {
+        type: "number"
+    },
+    wrapPaddingBTablet: {
+        type: "number"
+    },
+    wrapPaddingLTablet: {
+        type: "number"
+    },
+    wrapPaddingTMobile: {
+        type: "number"
+    },
+    wrapPaddingRMobile: {
+        type: "number"
+    },
+    wrapPaddingBMobile: {
+        type: "number"
+    },
+    wrapPaddingLMobile: {
         type: "number"
     },
     wrapMargin: {

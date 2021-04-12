@@ -31,14 +31,9 @@ const save = props => {
         titleShadowColor,
         titleShadowHorizontal,
         titleShadowVertical,
-        titlePaddingT,
-        titlePaddingR,
-        titlePaddingB,
-        titlePaddingL,
         arrowColor,
         arrowBack,
         arrowPos,
-        arrowPadding,
         arrowSize,
         arrowRadius,
         contentType,
@@ -63,10 +58,7 @@ const save = props => {
         textShadowColor,
         textShadowHorizontal,
         textShadowVertical,
-        descPaddingT,
-        descPaddingR,
-        descPaddingB,
-        descPaddingL,
+
         titleBorderUpdated,
         descBorderUpdated,
     } = props.attributes;
@@ -89,10 +81,7 @@ const save = props => {
                             : titleBorderWidth + "px",
                         borderRadius: titleBorderRadius + "px",
                         borderColor: titleBorderColor,
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL
+
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -124,7 +113,6 @@ const save = props => {
                             style={{
                                 fill: arrowColor,
                                 backgroundColor: arrowBack,
-                                padding: arrowPadding + "px",
                                 borderRadius: arrowRadius + "px"
                             }}
                         >
@@ -143,10 +131,7 @@ const save = props => {
                             : descBorderWidth + "px",
                         borderRadius: descBorderRadius + "px",
                         borderColor: descBorderColor,
-                        paddingTop: descPaddingT,
-                        paddingRight: descPaddingR,
-                        paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL
+
                     }}
                 >
                     {"text" === contentType && (
