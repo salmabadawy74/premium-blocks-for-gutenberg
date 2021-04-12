@@ -48,7 +48,7 @@ class PremiumPadding extends Component {
     }
 
     render() {
-
+        // console.log(this.props)
         const { top, right, bottom, left, showUnits, isLinked } = this.state;
 
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;

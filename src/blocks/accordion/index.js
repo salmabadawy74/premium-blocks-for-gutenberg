@@ -275,39 +275,53 @@ const accordionAttrs = {
         default: "0"
     },
     descPaddingT: {
-        type: "number"
+        type: "number",
+        default: "10"
+
     },
     descPaddingR: {
-        type: "number"
+        type: "number",
+        default: "10"
+
     },
     descPaddingB: {
-        type: "number"
+        type: "number",
+        default: "10"
+
     },
     descPaddingL: {
         type: "number",
-        default: 10
+        default: "10"
     },
     descPaddingTTablet: {
-        type: "number"
+        type: "number",
+        default: "10"
     },
     descPaddingRTablet: {
-        type: "number"
+        type: "number",
+        default: "10"
     },
     descPaddingBTablet: {
-        type: "number"
+        type: "number",
+        default: "10"
     },
     descPaddingLTablet: {
         type: "number",
-        default: 10
+        default: "10"
     },
     descPaddingTMobile: {
-        type: "number"
+        type: "number",
+        default: "10"
     },
     descPaddingRMobile: {
-        type: "number"
+        type: "number",
+        default: "10"
+
     },
     descPaddingBMobile: {
-        type: "number"
+        type: "number",
+        default: "10"
+
     },
     descPaddingLMobile: {
         type: "number",

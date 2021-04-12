@@ -57,13 +57,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRight}
                             marginBottom={marginBottom}
                             marginLeft={marginLeft}
-                            onChangeMarTop={() => onChangeMarTop(tab.name)
+                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={() => onChangeMarRight(tab.name)
+                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
                             }
                         />
                     )
@@ -75,13 +75,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightTablet}
                             marginBottom={marginBottomTablet}
                             marginLeft={marginLeftTablet}
-                            onChangeMarTop={() => onChangeMarTop(tab.name)
+                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={() => onChangeMarRight(tab.name)
+                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
                             }
                         />
                     )
@@ -93,13 +93,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightMobile}
                             marginBottom={marginBottomMobile}
                             marginLeft={marginLeftMobile}
-                            onChangeMarTop={() => onChangeMarTop(tab.name)
+                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
                             }
-                            onChangeMarRight={() => onChangeMarRight(tab.name)
+                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
                             }
-                            onChangeMarBottom={() => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
                             }
-                            onChangeMarLeft={() => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
                             }
                         />
                     )

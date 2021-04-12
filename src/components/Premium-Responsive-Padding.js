@@ -7,6 +7,8 @@ const {
 
 function PremiumResponsivePadding(props) {
     const {
+        setAttributes,
+        selectedUnit,
         showUnits,
         paddingU,
         onChangePadSizeUnit,
@@ -14,10 +16,6 @@ function PremiumResponsivePadding(props) {
         paddingR,
         paddingB,
         paddingL,
-        onChangePadTop = () => { },
-        onChangePadRight = () => { },
-        onChangePadBottom = () => { },
-        onChangePadLeft = () => { },
         paddingTTablet,
         paddingRTablet,
         paddingBTablet,
@@ -27,46 +25,53 @@ function PremiumResponsivePadding(props) {
         paddingBMobile,
         paddingLMobile,
     } = props;
+
+    console.log(props);
     return (
-        <TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
-            tabs={
-                [
-                    {
-                        name: "desktop",
-                        title: <Dashicon icon="desktop" />,
-                        className: "premium-desktop-tab premium-responsive-tabs",
-                    },
-                    {
-                        name: "tablet",
-                        title: <Dashicon icon="tablet" />,
-                        className: "premium-tablet-tab premium-responsive-tabs",
-                    },
-                    {
-                        name: "mobile",
-                        title: <Dashicon icon="smartphone" />,
-                        className: "premium-mobile-tab premium-responsive-tabs",
-                    },
-                ]}
+        <TabPanel
+            className="premium-size-type-field-tabs"
+            activeClass="active-tab"
+            tabs={[
+                {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className: "premium-desktop-tab premium-responsive-tabs",
+                },
+                {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className: "premium-tablet-tab premium-responsive-tabs",
+                },
+                {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className: "premium-mobile-tab premium-responsive-tabs",
+                },
+            ]}
         >
             {(tab) => {
                 let tabout;
-                if ("mobile" === tab.neme) {
+                if ("desktop" === tab.name) {
                     tabout = (
                         <PremiumPadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={(paddingT) =>
+                                props.onChangePadTopDesk(paddingT)
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadRight={(paddingR) =>
+                                props.onChangePadRightDesk(paddingR)
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
+                            onChangePadBottom={(paddingB) =>
+                                props.onChangePadBottomDesk(paddingB)
                             }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(paddingL) =>
+                                props.onChangePadLeftDesk(paddingL)
                             }
                             showUnits={showUnits}
-                            selectedUnit={selectedUnit}
+                            selectedUnit={paddingU || "px"}
                             onChangePadSizeUnit={onChangePadSizeUnit}
                         />
                     )
@@ -77,44 +82,51 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRTablet}
                             paddingBottom={paddingBTablet}
                             paddingLeft={paddingLTablet}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={(paddingTTablet) =>
+                                props.onChangePadTopTablet(paddingTTablet)
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadRight={(paddingRTablet) =>
+                                props.onChangePadRightTablet(paddingRTablet)
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
+                            onChangePadBottom={(paddingBTablet) =>
+                                props.onChangePadBottomTablet(paddingBTablet)
                             }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(paddingLTablet) =>
+                                props.onChangePadLeftTablet(paddingLTablet)
                             }
                             showUnits={showUnits}
-                            selectedUnit={paddingU}
+                            selectedUnit={paddingU || 'px'}
                             onChangePadSizeUnit={onChangePadSizeUnit}
                         />
                     )
-                } else {
+                } else if ("mobile" === tab.name) {
                     tabout = (
+
                         <PremiumPadding
                             paddingTop={paddingTMobile}
                             paddingRight={paddingRMobile}
                             paddingBottom={paddingBMobile}
                             paddingLeft={paddingLMobile}
-                            onChangePadTop={() => onChangePadTop(tab.name)
+                            onChangePadTop={(paddingTMobile) =>
+                                props.onChangePadTopMobile(paddingTMobile)
                             }
-                            onChangePadRight={() => onChangePadRight(tab.name)
+                            onChangePadRight={(paddingRMobile) =>
+                                props.onChangePadRightMobile(paddingRMobile)
                             }
-                            onChangePadBottom={() => onChangePadBottom(tab.name)
+                            onChangePadBottom={(paddingBMobile) =>
+                                props.onChangePadBottomTablet(paddingBTablet)
                             }
-                            onChangePadLeft={() => onChangePadLeft(tab.name)
+                            onChangePadLeft={(paddingLMobile) =>
+                                props.onChangePadLeftTablet(paddingLMobile)
                             }
                             showUnits={showUnits}
-                            selectedUnit={paddingU}
+                            selectedUnit={selectedUnit || 'px'}
                             onChangePadSizeUnit={onChangePadSizeUnit}
                         />
                     )
                 }
-                return <div>{tabout}</div>
-            }
-
-            }
+                return <div>{tabout}</div>;
+            }}
 
         </TabPanel>
     )

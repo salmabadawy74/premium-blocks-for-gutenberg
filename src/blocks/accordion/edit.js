@@ -169,6 +169,20 @@ class PremiumAccordion extends Component {
             hideTablet,
             hideMobile
         } = this.props.attributes;
+        // console.log(
+        //     titlePaddingT + ' ' +
+        //     titlePaddingR + ' ' +
+        //     titlePaddingB + ' ' +
+        //     titlePaddingL + ' ' +
+        //     titlePaddingTTablet + ' ' +
+        //     titlePaddingRTablet + ' ' +
+        //     titlePaddingBTablet + ' ' +
+        //     titlePaddingLTablet + ' ' +
+        //     titlePaddingTMobile + ' ' +
+        //     titlePaddingRMobile + ' ' +
+        //     titlePaddingBMobile + ' ' +
+        //     titlePaddingLMobile
+        // )
 
         const DIRECTION = [
             {
@@ -468,63 +482,30 @@ class PremiumAccordion extends Component {
                             }
                         />
                         <PremiumResponsivePadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            paddingTopTablet={titlePaddingTTablet}
-                            paddingRightTablet={titlePaddingRTablet}
-                            paddingBottomTablet={titlePaddingBTablet}
-                            paddingLeftTablet={titlePaddingLTablet}
-                            paddingTopMobile={titlePaddingTMobile}
-                            paddingRightMobile={titlePaddingRMobile}
-                            paddingBottomMobile={titlePaddingBMobile}
-                            paddingLeftMobile={titlePaddingLMobile}
-                            onChangePadTop={(device) => {
-                                if (device === "mobile") {
-                                    (valueMobile) => setAttributes({ titlePaddingTMobile: valueMobile })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ titlePaddingTTablet: valuetablet })
-                                }
-                                else {
-                                    (newValue) => setAttributes({ titlePaddingT: newValue })
-                                    console.log(titlePaddingT)
-                                }
-                            }
-                            }
-                            onChangePadRight={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ titlePaddingR: 30 })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ titlePaddingRTablet: 50 })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ titlePaddingRMobile: 20 })
-                                }
-                            }
-                            }
-                            onChangePadBottom={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ titlePaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ titlePaddingBTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ titlePaddingBMobile: valueMobile })
-                                }
-                            }
-                            }
-                            onChangePadLeft={(device) => {
-                                if (device === "Desktop") {
-                                    (newValue) => setAttributes({ titlePaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    (valuetablet) => setAttributes({ titlePaddingLTablet: valuetablet })
-                                }
-                                else {
-                                    (valueMobile) => setAttributes({ titlePaddingLMobile: valueMobile })
-                                }
-                            }
-                            }
+                            paddingT={titlePaddingT || 0}
+                            paddingR={titlePaddingR || 0}
+                            paddingB={titlePaddingB || 0}
+                            paddingL={titlePaddingL || 0}
+                            paddingTTablet={titlePaddingTTablet || 0}
+                            paddingRTablet={titlePaddingRTablet || 0}
+                            paddingBTablet={titlePaddingBTablet || 0}
+                            paddingLTablet={titlePaddingLTablet || 0}
+                            paddingTMobile={titlePaddingTMobile || 0}
+                            paddingRMobile={titlePaddingRMobile || 0}
+                            paddingBMobile={titlePaddingBMobile || 0}
+                            paddingLMobile={titlePaddingLMobile || 0}
+                            onChangePadTopDesk={(val) => setAttributes({ titlePaddingT: val })}
+                            onChangePadRightDesk={(val) => setAttributes({ titlePaddingR: val })}
+                            onChangePadBottomDesk={(val) => setAttributes({ titlePaddingB: val })}
+                            onChangePadLeftDesk={(val) => setAttributes({ titlePaddingL: val })}
+                            onChangePadTopTablet={(valT) => setAttributes({ titlePaddingTTablet: valT })}
+                            onChangePadRightTablet={(valT) => setAttributes({ titlePaddingRTablet: valT })}
+                            onChangePadBottomTablet={(valT) => setAttributes({ titlePaddingBTablet: valT })}
+                            onChangePadLeftTablet={(valT) => setAttributes({ titlePaddingLTablet: valT })}
+                            onChangePadTopMobile={(valM) => setAttributes({ titlePaddingTMobile: valM })}
+                            onChangePadRightMobile={(valM) => setAttributes({ titlePaddingRMobile: valM })}
+                            onChangePadBottomMobile={(valM) => setAttributes({ titlePaddingBMobile: valM })}
+                            onChangePadLeftMobile={(valM) => setAttributes({ titlePaddingLMobile: valM })}
                         />
                     </PanelBody>
                     <PanelBody
