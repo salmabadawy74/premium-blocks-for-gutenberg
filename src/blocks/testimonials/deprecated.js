@@ -1,6 +1,7 @@
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
+import hexToRgba from "hex-to-rgba";
 
 const className = "premium-testimonial";
 

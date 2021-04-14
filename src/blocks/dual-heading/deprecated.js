@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import hexToRgba from "hex-to-rgba";
 
 const className = "premium-dheading-block";
 

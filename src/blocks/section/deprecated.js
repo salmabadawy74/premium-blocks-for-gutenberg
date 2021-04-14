@@ -1,4 +1,5 @@
 const { InnerBlocks } = wp.editor;
+import hexToRgba from "hex-to-rgba";
 
 const className = "premium-container";
 

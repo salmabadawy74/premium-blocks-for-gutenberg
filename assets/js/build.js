@@ -17697,7 +17697,10 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
 //import { merge } from "lodash";
+
 
 var className = "premium-button";
 
@@ -18030,7 +18033,7 @@ var deprecatedContent = [{
                 target: btnTarget ? "_blank" : "_self",
                 style: {
                     color: textColor,
-                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                     fontFamily: textFontFamily,
                     letterSpacing: textLetter + "px",
                     textTransform: textUpper ? "uppercase" : "none",
@@ -20531,6 +20534,9 @@ var save = function save(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
+
 
 
 var className = "premium-countup";
@@ -21177,7 +21183,7 @@ var deprecatedContent = [{
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
-                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    backgroundColor: containerBack ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(containerBack, containerOpacity) : "transparent",
                     boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
                     backgroundImage: "url('" + backgroundImageURL + "')",
                     backgroundRepeat: backgroundRepeat,
@@ -25412,9 +25418,12 @@ var save = function save(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__);
 var _newAttributes_1_9_;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -26259,7 +26268,7 @@ var deprecatedContent = [{
                 className: className + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: contentAlign,
-                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    backgroundColor: containerBack ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(containerBack, containerOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -26284,7 +26293,7 @@ var deprecatedContent = [{
                             style: {
                                 display: display,
                                 color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground ? hexToRgba(firstBackground, firstOpacity) : "transparent",
+                                backgroundColor: firstClip ? "none" : firstBackground ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(firstBackground, firstOpacity) : "transparent",
                                 backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
                                 fontFamily: firstFamily,
                                 letterSpacing: firstLetter + "px",
@@ -26309,7 +26318,7 @@ var deprecatedContent = [{
                             style: {
                                 display: display,
                                 color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground ? hexToRgba(secondBackground, secondOpacity) : "transparent",
+                                backgroundColor: secondClip ? "none" : secondBackground ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(secondBackground, secondOpacity) : "transparent",
                                 backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
                                 fontFamily: secondFamily,
                                 letterSpacing: secondLetter + "px",
@@ -41692,7 +41701,10 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
 var className = "premium-icon-box";
+
 
 var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
@@ -43574,7 +43586,7 @@ var deprecatedContent = [{
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
                     boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -43596,7 +43608,7 @@ var deprecatedContent = [{
                     className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor,
-                        backgroundColor: iconBackColor ? hexToRgba(iconBackColor, iconOpacity) : "transparent",
+                        backgroundColor: iconBackColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(iconBackColor, iconOpacity) : "transparent",
                         fontSize: iconSize
                     }
                 }),
@@ -43678,7 +43690,7 @@ var deprecatedContent = [{
                         value: btnText,
                         style: {
                             color: btnColor,
-                            backgroundColor: btnBack ? hexToRgba(btnBack, btnOpacity) : "transparent",
+                            backgroundColor: btnBack ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(btnBack, btnOpacity) : "transparent",
                             letterSpacing: btnLetter + "px",
                             textTransform: btnUpper ? "uppercase" : "none",
                             fontStyle: btnStyle,
@@ -52931,7 +52943,10 @@ var save = function save(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
 var InnerBlocks = wp.editor.InnerBlocks;
+
 
 
 var className = "premium-container";
@@ -53392,7 +53407,7 @@ var deprecatedContent = [{
                 style: {
                     textAlign: horAlign,
                     minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                    backgroundColor: color ? hexToRgba(color, opacity) : "transparent",
+                    backgroundColor: color ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(color, opacity) : "transparent",
                     borderStyle: borderType,
                     borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
                     borderRadius: borderRadius + "px",
@@ -55354,6 +55369,9 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_default_image__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_testimonials_upper_quote__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_testimonials_lower_quote__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_hex_to_rgba__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hex_to_rgba__);
+
 
 
 
@@ -55865,7 +55883,7 @@ var deprecatedContent = [{
                 className: className + "__wrap premium-testimonial-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_3_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,

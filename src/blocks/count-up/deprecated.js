@@ -1,4 +1,5 @@
 import { object } from "prop-types";
+import hexToRgba from "hex-to-rgba";
 
 const className = "premium-countup";
 

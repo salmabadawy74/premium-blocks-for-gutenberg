@@ -1,4 +1,5 @@
 const className = "premium-icon-box";
+import hexToRgba from "hex-to-rgba";
 
 const { __ } = wp.i18n;
 
