@@ -377,18 +377,168 @@ const deprecated_attributes_1_6_2 = Object.assign(
     deprecated_attributes_1_6_1,
     newAttributes_1_6_2
 );
+const sectionAttributes = {
+    stretchSection: {
+        type: "boolean",
+        default: false
+    },
+    innerWidthType: {
+        type: "string",
+        default: "boxed"
+    },
+    isUpdated: {
+        type: "boolean",
+        default: false
+    },
+    horAlign: {
+        type: "string",
+        default: "center"
+    },
+    height: {
+        type: "string",
+        default: "min"
+    },
+    innerWidth: {
+        type: "number"
+    },
+    minHeight: {
+        type: "number"
+    },
+    minHeightUnit: {
+        type: "string"
+    },
+    vPos: {
+        type: "string",
+        default: "top"
+    },
+    color: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: "1"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginTop: {
+        type: "number"
+    },
+    marginBottom: {
+        type: "number"
+    },
+    marginLeft: {
+        type: "number"
+    },
+    marginRight: {
+        type: "number"
+    },
+    marginUnit: {
+        type: "string"
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
 
-const deprecated_attributes_1_5_13 = Object.assign(deprecated_attributes_1_5_12, newAttributes_1_5_13)
+const deprecated_attributes_1_5_13 = Object.assign(sectionAttributes, newAttributes_1_5_13)
 
 const deprecatedContent = [
     {
         attributes: deprecated_attributes_1_5_13,
         migrate: attributes => {
             let newAttributes = {
-                marginTop: "",
-                marginBottom: "",
-                marginLeft: "",
-                marginRight: "",
                 marginTopTablet: "",
                 marginBottomTablet: "",
                 marginLeftTablet: "",
@@ -397,11 +547,6 @@ const deprecatedContent = [
                 marginBottomMobile: "",
                 marginLeftMobile: "",
                 marginRightMobile: "",
-                marginUnit: 'px',
-                paddingTop: "",
-                paddingRight: "",
-                paddingBottom: "",
-                paddingLeft: "",
                 paddingTopTablet: "",
                 paddingRightTablet: "",
                 paddingBottomTablet: "",
@@ -410,13 +555,10 @@ const deprecatedContent = [
                 paddingRightMobile: "",
                 paddingBottomMobile: "",
                 paddingLeftMobile: "",
-                paddingUnit: "px",
             }
             return Object.assign(attributes, newAttributes)
         },
         save: props => {
-            const { className } = props;
-
             const {
                 block_id,
                 isUpdated,
@@ -462,6 +604,8 @@ const deprecatedContent = [
                 hideTablet,
                 hideMobile
             } = props.attributes;
+
+
 
             return (
                 <div
