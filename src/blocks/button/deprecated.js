@@ -260,7 +260,8 @@ const deprecatedContent = [
                 paddingTMobile: "",
                 paddingRMobile: "",
                 paddingBMobile: "",
-                paddingLMobile: ""
+                paddingLMobile: "",
+                paddingU: 'px'
             }
             return Object.assign(attributes, newAttributes)
         },
