@@ -266,6 +266,10 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'secondMarginRTablet'  => '1',
 							'secondMarginLMobile'  => '1',
 							'secondMarginRMobile'  => '1',
+							'firstPadUpdate'       => false,
+							'secondPadUpdate'      => false,
+							'firstPadding'         => '0',
+							'secondPadding'        => '0',
 						),
 					),
 					'premium/icon'           => array(

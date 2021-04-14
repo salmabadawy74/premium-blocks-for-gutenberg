@@ -14,6 +14,8 @@ function styling(props) {
         secondSizeUnit,
         secondSizeTablet,
         secondSizeMobile,
+        firstPadding,
+        secondPadding,
         firstPaddingT,
         firstPaddingR,
         firstPaddingB,
@@ -49,7 +51,9 @@ function styling(props) {
         secondMarginLTablet,
         secondMarginRTablet,
         secondMarginLMobile,
-        secondMarginRMobile
+        secondMarginRMobile,
+        firstPadUpdate,
+        secondPadUpdate
     } = props.attributes;
 
     var selectors = {}
@@ -59,20 +63,14 @@ function styling(props) {
     selectors = {
         " .premium-dheading-block__first": {
             "font-size": generateCSSUnit(firstSize, firstSizeUnit),
-            "padding-top": `${firstPaddingT}px`,
-            "padding-right": `${firstPaddingR}px`,
-            "padding-bottom": `${firstPaddingB}px`,
-            "padding-left": `${firstPaddingL}px`,
+            "padding": firstPadUpdate ? `${firstPaddingT}px ${firstPaddingR}px ${firstPaddingB}px ${firstPaddingL}px` : `${firstPadding}px`,
             "margin-right": `${firstMarginR}px`,
             "margin-left": `${firstMarginL} px`
 
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSize, secondSizeUnit),
-            "padding-top": `${secondPaddingT}px`,
-            "padding-right": `${secondPaddingR}px`,
-            "padding-bottom": `${secondPaddingB}px`,
-            "padding-left": `${secondPaddingL}px`,
+            "padding": secondPadUpdate ? `${secondPaddingT}px ${secondPaddingR}px ${secondPaddingB}px ${secondPaddingL}px` : `${secondPadding}px`,
             "margin-right": `${secondMarginR}px`,
             "margin-left": `${secondMarginL} px`
         }
@@ -80,19 +78,14 @@ function styling(props) {
     tablet_selectors = {
         " .premium-dheading-block__first": {
             "font-size": generateCSSUnit(firstSizeTablet, firstSizeUnit),
-            "padding-top": `${firstPaddingTTablet}px`,
-            "padding-right": `${firstPaddingRTablet}px`,
-            "padding-bottom": `${firstPaddingBTablet}px`,
-            "padding-left": `${firstPaddingLTablet}px`,
+            "padding": firstPadUpdate ? `${firstPaddingTTablet}px ${firstPaddingRTablet}px ${firstPaddingBTablet}px ${firstPaddingLTablet}px` : `${firstPadding}px`,
+
             "margin-right": `${firstMarginRTablet}px`,
             "margin-left": `${firstMarginLTablet} px`
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSizeTablet, secondSizeUnit),
-            "padding-top": `${secondPaddingTTablet}px`,
-            "padding-right": `${secondPaddingRTablet}px`,
-            "padding-bottom": `${secondPaddingBTablet}px`,
-            "padding-left": `${secondPaddingLTablet}px`,
+            "padding": secondPadUpdate ? `${secondPaddingTTablet}px ${secondPaddingRTablet}px ${secondPaddingBTablet}px ${secondPaddingLTablet}px` : `${secondPadding}px`,
             "margin-right": `${secondMarginRTablet}px`,
             "margin-left": `${secondMarginLTablet} px`
         }
@@ -100,19 +93,15 @@ function styling(props) {
     mobile_selectors = {
         " .premium-dheading-block__first": {
             "font-size": generateCSSUnit(firstSizeMobile, firstSizeUnit),
-            "padding-top": `${firstPaddingTMobile}px`,
-            "padding-right": `${firstPaddingRMobile}px`,
-            "padding-bottom": `${firstPaddingBMobile}px`,
-            "padding-left": `${firstPaddingLMobile}px`,
+            "padding": firstPadUpdate ? `${firstPaddingTMobile}px ${firstPaddingRMobile}px ${firstPaddingBMobile}px ${firstPaddingLMobile}px` : `${firstPadding}px`,
+
             "margin-right": `${firstMarginRMobile}px`,
             "margin-left": `${firstMarginLMobile} px`
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSizeMobile, secondSizeUnit),
-            "padding-top": `${secondPaddingTMobile}px`,
-            "padding-right": `${secondPaddingRMobile}px`,
-            "padding-bottom": `${secondPaddingBMobile}px`,
-            "padding-left": `${secondPaddingLMobile}px`,
+            "padding": secondPadUpdate ? `${secondPaddingTMobile}px ${secondPaddingRMobile}px ${secondPaddingBMobile}px ${secondPaddingLMobile}px` : `${secondPadding}px`,
+
             "margin-right": `${secondMarginRMobile}px`,
             "margin-left": `${secondMarginLMobile} px`
         }

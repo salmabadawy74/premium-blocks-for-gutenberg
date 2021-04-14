@@ -24024,6 +24024,14 @@ var dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
+    firstPadding: {
+        type: "number",
+        default: "0"
+    },
+    secondPadding: {
+        type: "number",
+        default: "0"
+    },
     firstPaddingT: {
         type: "number",
         default: "0"
@@ -24360,6 +24368,14 @@ var dualHeadingAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    firstPadUpdate: {
+        type: "boolean",
+        default: false
+    },
+    secondPadUpdate: {
+        type: "boolean",
+        default: false
     }
 };
 
@@ -24584,7 +24600,9 @@ var edit = function (_Component) {
                 secondBorder = _props$attributes.secondBorder,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                firstPadUpdate = _props$attributes.firstPadUpdate,
+                secondPadUpdate = _props$attributes.secondPadUpdate;
 
 
             var DISPLAY = [{
@@ -24983,6 +25001,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ firstPaddingTMobile: newValue });
                             }
+                            setAttributes({ firstPadUpdate: true });
                         },
                         onChangePaddingRight: function onChangePaddingRight(device, newValue) {
                             if (device === "desktop") {
@@ -24992,6 +25011,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ firstPaddingRMobile: newValue });
                             }
+                            setAttributes({ firstPadUpdate: true });
                         },
                         onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
                             if (device === "desktop") {
@@ -25001,6 +25021,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ firstPaddingBMobile: newValue });
                             }
+                            setAttributes({ firstPadUpdate: true });
                         },
                         onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
                             if (device === "desktop") {
@@ -25010,6 +25031,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ firstPaddingLMobile: newValue });
                             }
+                            setAttributes({ firstPadUpdate: true });
                         }
                     })
                 ),
@@ -25309,6 +25331,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ secondPaddingTMobile: newValue });
                             }
+                            setAttributes({ secondPadUpdate: true });
                         },
                         onChangePaddingRight: function onChangePaddingRight(device, newValue) {
                             if (device === "desktop") {
@@ -25318,6 +25341,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ secondPaddingRMobile: newValue });
                             }
+                            setAttributes({ secondPadUpdate: true });
                         },
                         onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
                             if (device === "desktop") {
@@ -25327,6 +25351,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ secondPaddingBMobile: newValue });
                             }
+                            setAttributes({ secondPadUpdate: true });
                         },
                         onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
                             if (device === "desktop") {
@@ -25336,6 +25361,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ secondPaddingLMobile: newValue });
                             }
+                            setAttributes({ secondPadUpdate: true });
                         }
                     })
                 ),
@@ -25553,6 +25579,8 @@ function styling(props) {
         secondSizeUnit = _props$attributes.secondSizeUnit,
         secondSizeTablet = _props$attributes.secondSizeTablet,
         secondSizeMobile = _props$attributes.secondSizeMobile,
+        firstPadding = _props$attributes.firstPadding,
+        secondPadding = _props$attributes.secondPadding,
         firstPaddingT = _props$attributes.firstPaddingT,
         firstPaddingR = _props$attributes.firstPaddingR,
         firstPaddingB = _props$attributes.firstPaddingB,
@@ -25588,7 +25616,9 @@ function styling(props) {
         secondMarginLTablet = _props$attributes.secondMarginLTablet,
         secondMarginRTablet = _props$attributes.secondMarginRTablet,
         secondMarginLMobile = _props$attributes.secondMarginLMobile,
-        secondMarginRMobile = _props$attributes.secondMarginRMobile;
+        secondMarginRMobile = _props$attributes.secondMarginRMobile,
+        firstPadUpdate = _props$attributes.firstPadUpdate,
+        secondPadUpdate = _props$attributes.secondPadUpdate;
 
 
     var selectors = {};
@@ -25598,20 +25628,14 @@ function styling(props) {
     selectors = {
         " .premium-dheading-block__first": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSize, firstSizeUnit),
-            "padding-top": firstPaddingT + 'px',
-            "padding-right": firstPaddingR + 'px',
-            "padding-bottom": firstPaddingB + 'px',
-            "padding-left": firstPaddingL + 'px',
+            "padding": firstPadUpdate ? firstPaddingT + 'px ' + firstPaddingR + 'px ' + firstPaddingB + 'px ' + firstPaddingL + 'px' : firstPadding + 'px',
             "margin-right": firstMarginR + 'px',
             "margin-left": firstMarginL + ' px'
 
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSize, secondSizeUnit),
-            "padding-top": secondPaddingT + 'px',
-            "padding-right": secondPaddingR + 'px',
-            "padding-bottom": secondPaddingB + 'px',
-            "padding-left": secondPaddingL + 'px',
+            "padding": secondPadUpdate ? secondPaddingT + 'px ' + secondPaddingR + 'px ' + secondPaddingB + 'px ' + secondPaddingL + 'px' : secondPadding + 'px',
             "margin-right": secondMarginR + 'px',
             "margin-left": secondMarginL + ' px'
         }
@@ -25619,19 +25643,14 @@ function styling(props) {
     tablet_selectors = {
         " .premium-dheading-block__first": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeTablet, firstSizeUnit),
-            "padding-top": firstPaddingTTablet + 'px',
-            "padding-right": firstPaddingRTablet + 'px',
-            "padding-bottom": firstPaddingBTablet + 'px',
-            "padding-left": firstPaddingLTablet + 'px',
+            "padding": firstPadUpdate ? firstPaddingTTablet + 'px ' + firstPaddingRTablet + 'px ' + firstPaddingBTablet + 'px ' + firstPaddingLTablet + 'px' : firstPadding + 'px',
+
             "margin-right": firstMarginRTablet + 'px',
             "margin-left": firstMarginLTablet + ' px'
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeTablet, secondSizeUnit),
-            "padding-top": secondPaddingTTablet + 'px',
-            "padding-right": secondPaddingRTablet + 'px',
-            "padding-bottom": secondPaddingBTablet + 'px',
-            "padding-left": secondPaddingLTablet + 'px',
+            "padding": secondPadUpdate ? secondPaddingTTablet + 'px ' + secondPaddingRTablet + 'px ' + secondPaddingBTablet + 'px ' + secondPaddingLTablet + 'px' : secondPadding + 'px',
             "margin-right": secondMarginRTablet + 'px',
             "margin-left": secondMarginLTablet + ' px'
         }
@@ -25639,19 +25658,15 @@ function styling(props) {
     mobile_selectors = {
         " .premium-dheading-block__first": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(firstSizeMobile, firstSizeUnit),
-            "padding-top": firstPaddingTMobile + 'px',
-            "padding-right": firstPaddingRMobile + 'px',
-            "padding-bottom": firstPaddingBMobile + 'px',
-            "padding-left": firstPaddingLMobile + 'px',
+            "padding": firstPadUpdate ? firstPaddingTMobile + 'px ' + firstPaddingRMobile + 'px ' + firstPaddingBMobile + 'px ' + firstPaddingLMobile + 'px' : firstPadding + 'px',
+
             "margin-right": firstMarginRMobile + 'px',
             "margin-left": firstMarginLMobile + ' px'
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeMobile, secondSizeUnit),
-            "padding-top": secondPaddingTMobile + 'px',
-            "padding-right": secondPaddingRMobile + 'px',
-            "padding-bottom": secondPaddingBMobile + 'px',
-            "padding-left": secondPaddingLMobile + 'px',
+            "padding": secondPadUpdate ? secondPaddingTMobile + 'px ' + secondPaddingRMobile + 'px ' + secondPaddingBMobile + 'px ' + secondPaddingLMobile + 'px' : secondPadding + 'px',
+
             "margin-right": secondMarginRMobile + 'px',
             "margin-left": secondMarginLMobile + ' px'
         }
@@ -26580,7 +26595,350 @@ var newAttributes_1_8_1 = {
     }
 };
 
-var deprecated_attributes_1_8_1 = Object.assign(deprecated_attributes_1_9_5, newAttributes_1_8_1);
+var dualAttributes = {
+    block_id: {
+        type: "string"
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    firstHeading: {
+        type: "array",
+        source: "children",
+        default: "Premium ",
+        selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+        type: "array",
+        source: "children",
+        default: "Blocks",
+        selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
+        type: "string",
+        default: "h1"
+    },
+    display: {
+        type: "string",
+        default: "inline"
+    },
+    firstColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    firstSize: {
+        type: "number",
+        default: "20"
+    },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    firstSizeTablet: {
+        type: "number"
+    },
+    firstSizeMobile: {
+        type: "number"
+    },
+    firstFamily: {
+        type: "string"
+    },
+    firstLetter: {
+        type: "number"
+    },
+    firstStyle: {
+        type: "string"
+    },
+    firstUpper: {
+        type: "boolean"
+    },
+    firstWeight: {
+        type: "number",
+        default: 500
+    },
+    firstBackground: {
+        type: "string"
+    },
+    firstOpacity: {
+        type: "number",
+        default: "1"
+    },
+    firstBorderType: {
+        type: "string",
+        default: "none"
+    },
+    firstBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstBorder: {
+        type: "boolean",
+        default: false
+    },
+    firstBorderTop: {
+        type: "number"
+    },
+    firstBorderRight: {
+        type: "number"
+    },
+    firstBorderBottom: {
+        type: "number"
+    },
+    firstBorderLeft: {
+        type: "number"
+    },
+    firstBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    firstBorderColor: {
+        type: "string"
+    },
+    firstMarginR: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginL: {
+        type: "number",
+        default: "0"
+    },
+    firstPadding: {
+        type: "number",
+        default: "0"
+    },
+    firstClip: {
+        type: "boolean",
+        default: false
+    },
+    firstAnim: {
+        type: "boolean",
+        default: false
+    },
+    firstStroke: {
+        type: "boolean",
+        default: false
+    },
+    firstClipColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    firstShadowColor: {
+        type: "string"
+    },
+    firstShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    firstShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    firstShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    secondColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    secondSize: {
+        type: "number",
+        default: "20"
+    },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    secondSizeTablet: {
+        type: "number"
+    },
+    secondSizeMobile: {
+        type: "number"
+    },
+    secondFamily: {
+        type: "string"
+    },
+    secondLetter: {
+        type: "number"
+    },
+    secondStyle: {
+        type: "string"
+    },
+    secondUpper: {
+        type: "boolean"
+    },
+    secondWeight: {
+        type: "number",
+        default: 500
+    },
+    secondBackground: {
+        type: "string"
+    },
+    secondOpacity: {
+        type: "number",
+        default: "1"
+    },
+    secondBorderType: {
+        type: "string",
+        default: "none"
+    },
+    secondBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondBorder: {
+        type: "boolean",
+        default: false
+    },
+    secondBorderTop: {
+        type: "number"
+    },
+    secondBorderRight: {
+        type: "number"
+    },
+    secondBorderBottom: {
+        type: "number"
+    },
+    secondBorderLeft: {
+        type: "number"
+    },
+    secondBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    secondBorderColor: {
+        type: "string"
+    },
+    secondMarginR: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginL: {
+        type: "number",
+        default: "0"
+    },
+    secondPadding: {
+        type: "number",
+        default: "0"
+    },
+    secondClip: {
+        type: "boolean",
+        default: false
+    },
+    secondStroke: {
+        type: "boolean",
+        default: false
+    },
+    secondShadowColor: {
+        type: "string"
+    },
+    secondShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    secondShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    secondShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    secondAnim: {
+        type: "boolean",
+        default: false
+    },
+    secondClipColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    link: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    headingURL: {
+        type: "string"
+    },
+    containerBack: {
+        type: "string"
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderType: {
+        type: "string",
+        default: "none"
+    },
+    containerBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    containerBorder: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderTop: {
+        type: "number"
+    },
+    containerBorderRight: {
+        type: "number"
+    },
+    containerBorderBottom: {
+        type: "number"
+    },
+    containerBorderLeft: {
+        type: "number"
+    },
+    containerBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    containerBorderColor: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var deprecated_attributes_1_8_1 = Object.assign(dualAttributes, newAttributes_1_8_1);
 
 var deprecatedContent = [{
     attributes: deprecated_attributes_1_8_1,
@@ -26617,11 +26975,14 @@ var deprecatedContent = [{
             secondMarginRTablet: "",
             secondMarginLTablet: "",
             secondMarginRMobile: "",
-            secondMarginLMobile: ""
+            secondMarginLMobile: "",
+            firstPadUpdate: false,
+            secondPadUpdate: false
         };
         return Object.assign(newAttributes, attributes);
     },
     save: function save(props) {
+        var className = props.className;
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
             contentAlign = _props$attributes.contentAlign,
@@ -26706,11 +27067,13 @@ var deprecatedContent = [{
             hideMobile = _props$attributes.hideMobile;
 
 
+        var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-dheading-block__container");
+
         return wp.element.createElement(
             "div",
             {
                 id: "premium-dheading-block-" + block_id,
-                className: className + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: contentAlign,
                     backgroundColor: containerBack ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(containerBack, containerOpacity) : "transparent",

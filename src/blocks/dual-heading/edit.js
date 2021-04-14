@@ -179,7 +179,9 @@ class edit extends Component {
             secondBorder,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            firstPadUpdate,
+            secondPadUpdate
         } = this.props.attributes;
 
         const DISPLAY = [
@@ -537,6 +539,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ firstPaddingTMobile: newValue })
                                     }
+                                    setAttributes({ firstPadUpdate: true })
                                 }
                             }
                             onChangePaddingRight={
@@ -548,6 +551,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ firstPaddingRMobile: newValue })
                                     }
+                                    setAttributes({ firstPadUpdate: true })
                                 }
                             }
                             onChangePaddingBottom={
@@ -559,6 +563,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ firstPaddingBMobile: newValue })
                                     }
+                                    setAttributes({ firstPadUpdate: true })
                                 }
                             }
                             onChangePaddingLeft={
@@ -570,6 +575,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ firstPaddingLMobile: newValue })
                                     }
+                                    setAttributes({ firstPadUpdate: true })
                                 }
                             }
                         />
@@ -828,7 +834,9 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ secondPaddingTMobile: newValue })
                                     }
+                                    setAttributes({ secondPadUpdate: true })
                                 }
+
                             }
                             onChangePaddingRight={
                                 (device, newValue) => {
@@ -839,6 +847,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ secondPaddingRMobile: newValue })
                                     }
+                                    setAttributes({ secondPadUpdate: true })
                                 }
                             }
                             onChangePaddingBottom={
@@ -850,6 +859,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ secondPaddingBMobile: newValue })
                                     }
+                                    setAttributes({ secondPadUpdate: true })
                                 }
                             }
                             onChangePaddingLeft={
@@ -861,6 +871,7 @@ class edit extends Component {
                                     } else {
                                         setAttributes({ secondPaddingLMobile: newValue })
                                     }
+                                    setAttributes({ secondPadUpdate: true })
                                 }
                             }
                         />

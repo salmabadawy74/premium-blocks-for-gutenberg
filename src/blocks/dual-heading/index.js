@@ -132,6 +132,14 @@ const dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
+    firstPadding: {
+        type: "number",
+        default: "0"
+    },
+    secondPadding: {
+        type: "number",
+        default: "0"
+    },
     firstPaddingT: {
         type: "number",
         default: "0"
@@ -468,7 +476,15 @@ const dualHeadingAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
-    }
+    },
+    firstPadUpdate: {
+        type: "boolean",
+        default: false
+    },
+    secondPadUpdate: {
+        type: "boolean",
+        default: false
+    },
 };
 
 registerBlockType("premium/dheading-block", {
