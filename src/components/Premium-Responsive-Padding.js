@@ -11,7 +11,6 @@ function PremiumResponsivePadding(props) {
 
         selectedUnit,
         showUnits,
-
         paddingU,
         onChangePadSizeUnit,
         paddingT,
@@ -22,21 +21,13 @@ function PremiumResponsivePadding(props) {
         paddingRTablet,
         paddingBTablet,
         paddingLTablet,
-        onChangePadTopTablet,
-        onChangePadRightTablet,
-        onChangePadBottomTablet,
-        onChangePadLeftTablet,
         paddingTMobile,
         paddingRMobile,
         paddingBMobile,
         paddingLMobile,
-        onChangePadTopMobile,
-        onChangePadBottomMobile,
-        onChangePadRightMobile,
-        onChangePadLeftMobile
+
     } = props;
 
-    console.log(props);
     return (
         <TabPanel
             className="premium-size-type-field-tabs"

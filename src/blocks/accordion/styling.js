@@ -1,4 +1,5 @@
 import generateCSS from '../../../assets/js/blocks/generateCss';
+import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
 function styling(props) {
     const {
@@ -40,12 +41,27 @@ function styling(props) {
         descPaddingTMobile,
         descPaddingRMobile,
         descPaddingBMobile,
-        descPaddingLMobile
+        descPaddingLMobile,
+        titleSize,
+        titleSizeUnit,
+        descSize,
+        descSizeUnit,
+        titleSizeTablet,
+        titleSizeMobile,
+        descSizeTablet,
+        descSizeMobile
     } = props.attributes
     var selectors = {}
     var tablet_selectors = {}
     var mobile_selectors = {}
     selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': `${titleSize}${titleSizeUnit} !important`
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': `${descSize}${descSizeUnit} important`
+        },
+
         " .premium-accordion__icon_wrap": {
             "padding-top": `${arrowPaddingT}px`,
             "padding-right": `${arrowPaddingR}px`,
@@ -69,6 +85,12 @@ function styling(props) {
     }
 
     tablet_selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': `${titleSizeTablet}${titleSizeUnit} !important`
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': `${descSizeTablet}${descSizeUnit} important`
+        },
         " .premium-accordion__icon_wrap": {
             "padding-top": `${arrowPaddingTTablet}px`,
             "padding-right": `${arrowPaddingRTablet}px`,
@@ -92,6 +114,12 @@ function styling(props) {
     }
 
     mobile_selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': `${titleSizeMobile}${titleSizeUnit} important`
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': `${descSizeMobile}${descSizeUnit} important`
+        },
         " .premium-accordion__icon_wrap": {
             "padding-top": `${arrowPaddingTMobile}px`,
             "padding-right": `${arrowPaddingRMobile}px`,

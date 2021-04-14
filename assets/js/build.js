@@ -1576,21 +1576,12 @@ function PremiumResponsivePadding(props) {
         paddingRTablet = props.paddingRTablet,
         paddingBTablet = props.paddingBTablet,
         paddingLTablet = props.paddingLTablet,
-        onChangePadTopTablet = props.onChangePadTopTablet,
-        onChangePadRightTablet = props.onChangePadRightTablet,
-        onChangePadBottomTablet = props.onChangePadBottomTablet,
-        onChangePadLeftTablet = props.onChangePadLeftTablet,
         paddingTMobile = props.paddingTMobile,
         paddingRMobile = props.paddingRMobile,
         paddingBMobile = props.paddingBMobile,
-        paddingLMobile = props.paddingLMobile,
-        onChangePadTopMobile = props.onChangePadTopMobile,
-        onChangePadBottomMobile = props.onChangePadBottomMobile,
-        onChangePadRightMobile = props.onChangePadRightMobile,
-        onChangePadLeftMobile = props.onChangePadLeftMobile;
+        paddingLMobile = props.paddingLMobile;
 
 
-    console.log(props);
     return wp.element.createElement(
         TabPanel,
         {
@@ -2050,7 +2041,6 @@ function PremiumResponsiveMargin(props) {
         marginBottomMobile = props.marginBottomMobile,
         marginLeftMobile = props.marginLeftMobile;
 
-    console.log(props);
     return wp.element.createElement(
         TabPanel,
         { className: "premium-size-type-field-tabs", activeClass: "active-tab",
@@ -5722,6 +5712,16 @@ var accordionAttrs = {
     titleSize: {
         type: "number"
     },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
     titleLine: {
         type: "number"
     },
@@ -5937,6 +5937,17 @@ var accordionAttrs = {
         type: "string"
     },
     descSize: {
+        type: "number",
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
         type: "number"
     },
     descLine: {
@@ -6155,6 +6166,9 @@ var PremiumAccordion = function (_Component) {
                 titleTag = _props$attributes.titleTag,
                 titleColor = _props$attributes.titleColor,
                 titleSize = _props$attributes.titleSize,
+                titleSizeUnit = _props$attributes.titleSizeUnit,
+                titleSizeTablet = _props$attributes.titleSizeTablet,
+                titleSizeMobile = _props$attributes.titleSizeMobile,
                 titleLine = _props$attributes.titleLine,
                 titleLetter = _props$attributes.titleLetter,
                 titleStyle = _props$attributes.titleStyle,
@@ -6215,6 +6229,9 @@ var PremiumAccordion = function (_Component) {
                 descBorderBottom = _props$attributes.descBorderBottom,
                 descBorderLeft = _props$attributes.descBorderLeft,
                 descSize = _props$attributes.descSize,
+                descSizeUnit = _props$attributes.descSizeUnit,
+                descSizeMobile = _props$attributes.descSizeMobile,
+                descSizeTablet = _props$attributes.descSizeTablet,
                 descLine = _props$attributes.descLine,
                 descLetter = _props$attributes.descLetter,
                 descStyle = _props$attributes.descStyle,
@@ -6322,7 +6339,7 @@ var PremiumAccordion = function (_Component) {
                                 value: item.titleText,
                                 style: {
                                     color: titleColor,
-                                    fontSize: titleSize + "px",
+
                                     letterSpacing: titleLetter + "px",
                                     textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
@@ -6379,7 +6396,6 @@ var PremiumAccordion = function (_Component) {
                             value: item.descText,
                             style: {
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 letterSpacing: descLetter + "px",
                                 textTransform: descUpper ? "uppercase" : "none",
                                 textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
@@ -6428,16 +6444,29 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["size", "weight", "style", "upper", "spacing", "line"],
-                        size: titleSize,
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                        setAttributes: setAttributes,
+                        fontSizeType: {
+                            value: titleSizeUnit,
+                            label: __("titleSizeUnit")
+                        },
+                        fontSize: {
+                            value: titleSize,
+                            label: __("titleSize")
+                        },
+                        fontSizeMobile: {
+                            value: titleSizeMobile,
+                            label: __("titleSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: titleSizeTablet,
+                            label: __("titleSizeTablet")
+                        },
                         weight: titleWeight,
                         style: titleStyle,
                         spacing: titleLetter,
                         line: titleLine,
                         upper: titleUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ titleSize: newSize });
-                        },
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return setAttributes({ titleWeight: newWeight });
                         },
@@ -6782,16 +6811,29 @@ var PremiumAccordion = function (_Component) {
                         Fragment,
                         null,
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                            components: ["size", "weight", "style", "upper", "spacing", "line"],
-                            size: descSize,
+                            components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
+                            setAttributes: setAttributes,
+                            fontSizeType: {
+                                value: descSizeUnit,
+                                label: __("DescSizeUnit")
+                            },
+                            fontSize: {
+                                value: descSize,
+                                label: __("DescSize")
+                            },
+                            fontSizeMobile: {
+                                value: descSizeMobile,
+                                label: __("DescSizeMobile")
+                            },
+                            fontSizeTablet: {
+                                value: descSizeTablet,
+                                label: __("DescSizeTablet")
+                            },
                             weight: descWeight,
                             style: descStyle,
                             spacing: descLetter,
                             line: descLine,
                             upper: descUpper,
-                            onChangeSize: function onChangeSize(newSize) {
-                                return setAttributes({ descSize: newSize });
-                            },
                             onChangeWeight: function onChangeWeight(newWeight) {
                                 return setAttributes({ descWeight: newWeight });
                             },
@@ -12031,7 +12073,6 @@ var PremiumPadding = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            // console.log(this.props)
             var _state3 = this.state,
                 top = _state3.top,
                 right = _state3.right,
@@ -12156,6 +12197,8 @@ var PremiumPadding = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
 
 
 function styling(props) {
@@ -12198,81 +12241,108 @@ function styling(props) {
         descPaddingTMobile = _props$attributes.descPaddingTMobile,
         descPaddingRMobile = _props$attributes.descPaddingRMobile,
         descPaddingBMobile = _props$attributes.descPaddingBMobile,
-        descPaddingLMobile = _props$attributes.descPaddingLMobile;
+        descPaddingLMobile = _props$attributes.descPaddingLMobile,
+        titleSize = _props$attributes.titleSize,
+        titleSizeUnit = _props$attributes.titleSizeUnit,
+        descSize = _props$attributes.descSize,
+        descSizeUnit = _props$attributes.descSizeUnit,
+        titleSizeTablet = _props$attributes.titleSizeTablet,
+        titleSizeMobile = _props$attributes.titleSizeMobile,
+        descSizeTablet = _props$attributes.descSizeTablet,
+        descSizeMobile = _props$attributes.descSizeMobile;
 
     var selectors = {};
     var tablet_selectors = {};
     var mobile_selectors = {};
     selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': '' + titleSize + titleSizeUnit + ' !important'
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': '' + descSize + descSizeUnit + ' important'
+        },
+
         " .premium-accordion__icon_wrap": {
-            "padding-top": arrowPaddingT + "px",
-            "padding-right": arrowPaddingR + "px",
-            "padding-bottom": arrowPaddingB + "px",
-            "padding-left": arrowPaddingL + "px"
+            "padding-top": arrowPaddingT + 'px',
+            "padding-right": arrowPaddingR + 'px',
+            "padding-bottom": arrowPaddingB + 'px',
+            "padding-left": arrowPaddingL + 'px'
         },
         " .premium-accordion__title_wrap": {
-            "padding-top": titlePaddingT + "px",
-            "padding-right": titlePaddingR + "px",
-            "padding-bottom": titlePaddingB + "px",
-            "padding-left": titlePaddingL + "px"
+            "padding-top": titlePaddingT + 'px',
+            "padding-right": titlePaddingR + 'px',
+            "padding-bottom": titlePaddingB + 'px',
+            "padding-left": titlePaddingL + 'px'
         },
         " .premium-accordion__desc_wrap": {
-            "padding-top": descPaddingT + "px",
-            "padding-right": descPaddingR + "px",
-            "padding-bottom": descPaddingB + "px",
-            "padding-left": descPaddingL + "px"
+            "padding-top": descPaddingT + 'px',
+            "padding-right": descPaddingR + 'px',
+            "padding-bottom": descPaddingB + 'px',
+            "padding-left": descPaddingL + 'px'
         }
 
     };
 
     tablet_selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': '' + titleSizeTablet + titleSizeUnit + ' !important'
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': '' + descSizeTablet + descSizeUnit + ' important'
+        },
         " .premium-accordion__icon_wrap": {
-            "padding-top": arrowPaddingTTablet + "px",
-            "padding-right": arrowPaddingRTablet + "px",
-            "padding-bottom": arrowPaddingBTablet + "px",
-            "padding-left": arrowPaddingLTablet + "px"
+            "padding-top": arrowPaddingTTablet + 'px',
+            "padding-right": arrowPaddingRTablet + 'px',
+            "padding-bottom": arrowPaddingBTablet + 'px',
+            "padding-left": arrowPaddingLTablet + 'px'
         },
         " .premium-accordion__title_wrap": {
-            "padding-top": titlePaddingTTablet + "px",
-            "padding-right": titlePaddingRTablet + "px",
-            "padding-bottom": titlePaddingBTablet + "px",
-            "padding-left": titlePaddingLTablet + "px"
+            "padding-top": titlePaddingTTablet + 'px',
+            "padding-right": titlePaddingRTablet + 'px',
+            "padding-bottom": titlePaddingBTablet + 'px',
+            "padding-left": titlePaddingLTablet + 'px'
         },
         " .premium-accordion__desc_wrap": {
-            "padding-top": descPaddingTTablet + "px",
-            "padding-right": descPaddingRTablet + "px",
-            "padding-bottom": descPaddingBTablet + "px",
-            "padding-left": descPaddingLTablet + "px"
+            "padding-top": descPaddingTTablet + 'px',
+            "padding-right": descPaddingRTablet + 'px',
+            "padding-bottom": descPaddingBTablet + 'px',
+            "padding-left": descPaddingLTablet + 'px'
         }
 
     };
 
     mobile_selectors = {
+        '  .premium-accordion__title_text ': {
+            'font-size': '' + titleSizeMobile + titleSizeUnit + ' important'
+        },
+        '  .premium-accordion__desc ': {
+            'font-size': '' + descSizeMobile + descSizeUnit + ' important'
+        },
         " .premium-accordion__icon_wrap": {
-            "padding-top": arrowPaddingTMobile + "px",
-            "padding-right": arrowPaddingRMobile + "px",
-            "padding-bottom": arrowPaddingBMobile + "px",
-            "padding-left": arrowPaddingLMobile + "px"
+            "padding-top": arrowPaddingTMobile + 'px',
+            "padding-right": arrowPaddingRMobile + 'px',
+            "padding-bottom": arrowPaddingBMobile + 'px',
+            "padding-left": arrowPaddingLMobile + 'px'
         },
         " .premium-accordion__title_wrap": {
-            "padding-top": titlePaddingTMobile + "px",
-            "padding-right": titlePaddingRMobile + "px",
-            "padding-bottom": titlePaddingBMobile + "px",
-            "padding-left": titlePaddingLMobile + "px"
+            "padding-top": titlePaddingTMobile + 'px',
+            "padding-right": titlePaddingRMobile + 'px',
+            "padding-bottom": titlePaddingBMobile + 'px',
+            "padding-left": titlePaddingLMobile + 'px'
         },
         " .premium-accordion__desc_wrap": {
-            "padding-top": descPaddingTMobile + "px",
-            "padding-right": descPaddingRMobile + "px",
-            "padding-bottom": descPaddingBMobile + "px",
-            "padding-left": descPaddingLMobile + "px"
+            "padding-top": descPaddingTMobile + 'px',
+            "padding-right": descPaddingRMobile + 'px',
+            "padding-bottom": descPaddingBMobile + 'px',
+            "padding-left": descPaddingLMobile + 'px'
         }
 
     };
 
     var styling_css = "";
-    var id = "#" + accordionId;
+    var id = '#' + accordionId;
     if (classMigrate) {
-        id = ".premium-accordion-" + block_id;
+        id = '.premium-accordion-' + block_id;
     }
 
     styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
@@ -12306,7 +12376,6 @@ var save = function save(props) {
         repeaterItems = _props$attributes.repeaterItems,
         direction = _props$attributes.direction,
         titleTag = _props$attributes.titleTag,
-        titleSize = _props$attributes.titleSize,
         titleLine = _props$attributes.titleLine,
         titleLetter = _props$attributes.titleLetter,
         titleStyle = _props$attributes.titleStyle,
@@ -12388,7 +12457,6 @@ var save = function save(props) {
                         value: item.titleText,
                         style: {
                             color: titleColor,
-                            fontSize: titleSize + "px",
                             letterSpacing: titleLetter + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyle,
@@ -12441,7 +12509,6 @@ var save = function save(props) {
                     value: item.descText,
                     style: {
                         color: descColor,
-                        fontSize: descSize + "px",
                         letterSpacing: descLetter + "px",
                         textTransform: descUpper ? "uppercase" : "none",
                         textShadow: textShadowHorizontal + 'px ' + textShadowVertical + 'px ' + textShadowBlur + 'px ' + textShadowColor,
@@ -56074,7 +56141,6 @@ function styling(props) {
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-    console.log(styling_css);
 
     return styling_css;
 }
@@ -59046,8 +59112,6 @@ function styling(props) {
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
 
     styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
-    console.log(styling_css);
 
     return styling_css;
 }

@@ -24,7 +24,6 @@ function PremiumResponsiveMargin(props) {
         marginBottomMobile,
         marginLeftMobile,
     } = props;
-    console.log(props)
     return (
         < TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
             tabs={[
