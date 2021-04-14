@@ -881,6 +881,78 @@ const newAttributes_1_6_6 = {
         type: "string",
         default: "px"
     },
+    wrapMarginT: {
+        type: "number"
+    },
+    wrapMarginR: {
+        type: "number"
+    },
+    wrapMarginB: {
+        type: "number"
+    },
+    wrapMarginL: {
+        type: "number"
+    },
+    wrapMarginTTablet: {
+        type: "number"
+    },
+    wrapMarginRTablet: {
+        type: "number"
+    },
+    wrapMarginBTablet: {
+        type: "number"
+    },
+    wrapMarginLTablet: {
+        type: "number"
+    },
+    wrapMarginTMobile: {
+        type: "number"
+    },
+    wrapMarginRMobile: {
+        type: "number"
+    },
+    wrapMarginBMobile: {
+        type: "number"
+    },
+    wrapMarginLMobile: {
+        type: "number"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
+    },
 }
 
 const deprecated_attributes_1_6_6 = Object.assign(newAttributes_1_6_6, deprecated_attributes_1_6_3)
@@ -915,6 +987,30 @@ const deprecatedContent = [
                 paddingBMobile: "",
                 paddingLMobile: "",
                 paddingU: "px",
+                marginT: " ",
+                marginR: " ",
+                marginB: " ",
+                marginL: " ",
+                marginTTablet: " ",
+                marginRTablet: " ",
+                marginBTablet: " ",
+                marginLTablet: " ",
+                marginTMobile: " ",
+                marginRMobile: " ",
+                marginBMobile: " ",
+                marginLMobile: " ",
+                wrapMarginT: "",
+                wrapMarginR: "",
+                wrapMarginB: "",
+                wrapMarginL: "",
+                wrapMarginTTablet: "",
+                wrapMarginRTablet: "",
+                wrapMarginBTablet: "",
+                wrapMarginLTablet: "",
+                wrapMarginTMobile: "",
+                wrapMarginRMobile: "",
+                wrapMarginBMobile: "",
+                wrapMarginLMobile: "",
             }
             return Object.assign(attributes, newAttributes);
         },

@@ -695,6 +695,38 @@ const newAttributes_1_8_1 = {
         type: "number",
         default: "0"
     },
+    firstMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLMobile: {
+        type: "number",
+        default: "0"
+    },
 }
 
 const deprecated_attributes_1_8_1 = Object.assign(
@@ -731,6 +763,14 @@ const deprecatedContent = [
                 secondPaddingRMobile: "",
                 secondPaddingBMobile: "",
                 secondPaddingLMobile: "",
+                firstMarginRTablet: "",
+                firstMarginLTablet: "",
+                firstMarginRMobile: "",
+                firstMarginLMobile: "",
+                secondMarginRTablet: "",
+                secondMarginLTablet: "",
+                secondMarginRMobile: "",
+                secondMarginLMobile: "",
             }
             return Object.assign(newAttributes, attributes)
         },
