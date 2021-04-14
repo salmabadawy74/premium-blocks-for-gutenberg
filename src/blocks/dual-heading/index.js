@@ -116,6 +116,22 @@ const dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
+    firstMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLMobile: {
+        type: "number",
+        default: "0"
+    },
     firstPaddingT: {
         type: "number",
         default: "0"
@@ -272,6 +288,22 @@ const dualHeadingAttrs = {
         default: "0"
     },
     secondMarginL: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLMobile: {
         type: "number",
         default: "0"
     },

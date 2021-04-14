@@ -110,8 +110,33 @@ const containerAttrs = {
     marginRight: {
         type: "number"
     },
+    marginTopTablet: {
+        type: "number"
+    },
+    marginBottomTablet: {
+        type: "number"
+    },
+    marginLeftTablet: {
+        type: "number"
+    },
+    marginRightTablet: {
+        type: "number"
+    },
+    marginTopMobile: {
+        type: "number"
+    },
+    marginBottomMobile: {
+        type: "number"
+    },
+    marginLeftMobile: {
+        type: "number"
+    },
+    marginRightMobile: {
+        type: "number"
+    },
     marginUnit: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     paddingTop: {
         type: "number"
@@ -150,7 +175,8 @@ const containerAttrs = {
         type: "number"
     },
     paddingUnit: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     shadowColor: {
         type: "string"

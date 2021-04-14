@@ -558,19 +558,50 @@ class edit extends Component {
                             paddingRightMobile={paddingRightMobile}
                             paddingBottomMobile={paddingBottomMobile}
                             paddingLeftMobile={paddingLeftMobile}
-                            onChangePadTopDesk={(val) => setAttributes({ paddingTop: val })}
-                            onChangePadRightDesk={(val) => setAttributes({ paddingRight: val })}
-                            onChangePadBottomDesk={(val) => setAttributes({ paddingBottom: val })}
-                            onChangePadLeftDesk={(val) => setAttributes({ paddingLeft: val })}
-                            onChangePadTopTablet={(valT) => setAttributes({ paddingTopTablet: valT })}
-                            onChangePadRightTablet={(valT) => setAttributes({ paddingRightTablet: valT })}
-                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBottomTablet: valT })}
-                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLeftTablet: valT })}
-                            onChangePadTopMobile={(valM) => setAttributes({ paddingTopMobile: valM })}
-                            onChangePadRightMobile={(valM) => setAttributes({ paddingRightMobile: valM })}
-                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBottomMobile: valM })}
-                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLeftMobile: valM })}
-
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTopTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTopMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRightTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRightMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBottomTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBottomMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLeftTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLeftMobile: newValue })
+                                    }
+                                }
+                            }
                         />
 
                     </PanelBody>

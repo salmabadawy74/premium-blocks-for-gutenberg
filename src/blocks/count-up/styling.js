@@ -20,6 +20,12 @@ function styling(props) {
         suffixSize,
         suffixSizeTablet,
         suffixSizeMobile,
+        titleT,
+        titleB,
+        titleTTablet,
+        titleBTablet,
+        titleTMobile,
+        titleBMobile,
         block_id,
         classMigrate
     } = props.attributes;
@@ -33,7 +39,10 @@ function styling(props) {
             "font-size": generateCSSUnit(numberSize, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit(titleSize, titleSizeUnit)
+            "font-size": generateCSSUnit(titleSize, titleSizeUnit),
+            "margin-top": `${titleT}px`,
+            "margin-bottom": `${titleB}px`
+
         },
         " .premium-countup__prefix": {
             "font-size": generateCSSUnit(prefixSize, prefixSizeUnit)
@@ -47,7 +56,9 @@ function styling(props) {
             "font-size": generateCSSUnit(numberSizeTablet, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
+            "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit),
+            "margin-top": `${titleTTablet}px`,
+            "margin-bottom": `${titleBTablet}px`
         },
         " .premium-countup__prefix": {
             "font-size": generateCSSUnit(prefixSizeTablet, prefixSizeUnit)
@@ -61,7 +72,9 @@ function styling(props) {
             "font-size": generateCSSUnit(numberSizeMobile, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
+            "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit),
+            "margin-top": `${titleTMobile}px`,
+            "margin-bottom": `${titleBMobile}px`
         },
         " .premium-countup__prefix": {
             "font-size": generateCSSUnit(prefixSizeMobile, prefixSizeUnit)

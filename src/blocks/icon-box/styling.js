@@ -42,7 +42,37 @@ function styling(props) {
         btnPaddingTMobile,
         btnPaddingRMobile,
         btnPaddingBMobile,
-        btnPaddingLMobile
+        btnPaddingLMobile,
+        marginT,
+        marginR,
+        marginB,
+        marginL,
+        marginTTablet,
+        marginRTablet,
+        marginBTablet,
+        marginLTablet,
+        marginTMobile,
+        marginRMobile,
+        marginBMobile,
+        marginLMobile,
+        titleMarginT,
+        titleMarginB,
+        titleMarginTTablet,
+        titleMarginBTablet,
+        titleMarginTMobile,
+        titleMarginBMobile,
+        descMarginT,
+        descMarginB,
+        descMarginTTablet,
+        descMarginBTablet,
+        descMarginTMobile,
+        descMarginBMobile,
+        btnMarginT,
+        btnMarginB,
+        btnMarginTTablet,
+        btnMarginBTablet,
+        btnMarginTMobile,
+        btnMarginBMobile,
     } = props.attributes;
 
     let selectors = {}
@@ -54,13 +84,29 @@ function styling(props) {
             "padding-top": generateCSSUnit(paddingT, paddingU),
             "padding-right": generateCSSUnit(paddingR, paddingU),
             "padding-bottom": generateCSSUnit(paddingB, paddingU),
-            "padding-left": generateCSSUnit(paddingL, paddingU)
+            "padding-left": generateCSSUnit(paddingL, paddingU),
+            "margin-top": `${marginT}px`,
+            "margin-right": `${marginR}px`,
+            "margin-bottom": `${marginB}px`,
+            "margin-left": `${marginL}px`
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSize, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": generateCSSUnit(descSize, descSizeUnit)
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": `${titleMarginT}px`,
+            "margin-bottom": `${titleMarginB}px`,
+        },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": `${descMarginT}px`,
+            "margin-bottom": `${descMarginB}px`,
+        },
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": `${btnMarginT}px`,
+            "margin-bottom": `${btnMarginB}px`,
         },
         " .premium-icon-box__btn": {
             "font-size": generateCSSUnit(btnSize, btnSizeUnit),
@@ -76,13 +122,29 @@ function styling(props) {
             "padding-top": generateCSSUnit(paddingTTablet, paddingU),
             "padding-right": generateCSSUnit(paddingRTablet, paddingU),
             "padding-bottom": generateCSSUnit(paddingBTablet, paddingU),
-            "padding-left": generateCSSUnit(paddingLTablet, paddingU)
+            "padding-left": generateCSSUnit(paddingLTablet, paddingU),
+            "margin-top": `${marginTTablet}px`,
+            "margin-right": `${marginRTablet}px`,
+            "margin-bottom": `${marginBTablet}px`,
+            "margin-left": `${marginLTablet}px`
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeTablet, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": generateCSSUnit(descSizeTablet, descSizeUnit)
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": `${titleMarginTTablet}px`,
+            "margin-bottom": `${titleMarginBTablet}px`,
+        },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": `${descMarginTTablet}px`,
+            "margin-bottom": `${descMarginBTablet}px`,
+        },
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": `${btnMarginTTablet}px`,
+            "margin-bottom": `${btnMarginBTablet}px`,
         },
         " .premium-icon-box__btn": {
             "font-size": generateCSSUnit(btnSizeTablet, btnSizeUnit),
@@ -98,13 +160,30 @@ function styling(props) {
             "padding-top": generateCSSUnit(paddingTMobile, paddingU),
             "padding-right": generateCSSUnit(paddingRMobile, paddingU),
             "padding-bottom": generateCSSUnit(paddingBMobile, paddingU),
-            "padding-left": generateCSSUnit(paddingLMobile, paddingU)
+            "padding-left": generateCSSUnit(paddingLMobile, paddingU),
+            "margin-top": `${marginTMobile}px`,
+            "margin-right": `${marginRMobile}px`,
+            "margin-bottom": `${marginBMobile}px`,
+            "margin-left": `${marginLMobile}px`
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": `${titleMarginTMobile}px`,
+            "margin-bottom": `${titleMarginBMobile}px`,
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": generateCSSUnit(titleSizeMobile, titleSizeUnit)
         },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": `${descMarginTMobile}px`,
+            "margin-bottom": `${descMarginBMobile}px`,
+        },
         " .premium-icon-box__desc": {
             "font-size": generateCSSUnit(descSizeMobile, descSizeUnit)
+        },
+
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": `${btnMarginTMobile}px`,
+            "margin-bottom": `${btnMarginBMobile}px`,
         },
         " .premium-icon-box__btn": {
             "font-size": generateCSSUnit(btnSizeMobile, btnSizeUnit),

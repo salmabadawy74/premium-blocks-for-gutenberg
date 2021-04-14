@@ -103,6 +103,10 @@ class edit extends Component {
             titleShadowVertical,
             titleMarginT,
             titleMarginB,
+            titleMarginTTablet,
+            titleMarginBTablet,
+            titleMarginTMobile,
+            titleMarginBMobile,
             descChecked,
             descText,
             descColor,
@@ -115,6 +119,10 @@ class edit extends Component {
             descWeight,
             descMarginT,
             descMarginB,
+            descMarginTTablet,
+            descMarginBTablet,
+            descMarginTMobile,
+            descMarginBMobile,
             btnChecked,
             btnEffect,
             effectDir,
@@ -158,6 +166,10 @@ class edit extends Component {
             btnPaddingU,
             btnMarginT,
             btnMarginB,
+            btnMarginTTablet,
+            btnMarginBTablet,
+            btnMarginTMobile,
+            btnMarginBMobile,
             btnShadowBlur,
             btnShadowColor,
             btnShadowHorizontal,
@@ -183,6 +195,14 @@ class edit extends Component {
             marginR,
             marginB,
             marginL,
+            marginTTablet,
+            marginRTablet,
+            marginBTablet,
+            marginLTablet,
+            marginTMobile,
+            marginRMobile,
+            marginBMobile,
+            marginLMobile,
             paddingT,
             paddingR,
             paddingB,
@@ -578,39 +598,31 @@ class edit extends Component {
                                 directions={["top", "bottom"]}
                                 marginTop={titleMarginT}
                                 marginBottom={titleMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        titleMarginT: value || 0
-                                    })
+                                marginTopTablet={titleMarginTTablet}
+                                marginBottomTablet={titleMarginBTablet}
+                                marginTopMobile={titleMarginTMobile}
+                                marginBottomMobile={titleMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        titleMarginB: value || 0
-                                    })
-                                }
-                                marginTopTablet={titleMarginT}
-                                marginBottomTablet={titleMarginB}
-                                onChangeMarTopTablet={value =>
-                                    setAttributes({
-                                        titleMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomTablet={value =>
-                                    setAttributes({
-                                        titleMarginB: value || 0
-                                    })
-                                }
-                                marginTopMobile={titleMarginT}
-                                marginBottomMobile={titleMarginB}
-                                onChangeMarTopMobile={value =>
-                                    setAttributes({
-                                        titleMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomMobile={value =>
-                                    setAttributes({
-                                        titleMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginBMobile: newValue })
+                                        }
+                                    }
                                 }
 
                             />
@@ -659,40 +671,33 @@ class edit extends Component {
                                 directions={["top", "bottom"]}
                                 marginTop={descMarginT}
                                 marginBottom={descMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        descMarginT: value || 0
-                                    })
+                                marginTopTablet={descMarginTTablet}
+                                marginBottomTablet={descMarginBTablet}
+                                marginTopMobile={descMarginTMobile}
+                                marginBottomMobile={descMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        descMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginBMobile: newValue })
+                                        }
+                                    }
                                 }
-                                marginTopTablet={descMarginT}
-                                marginBottomTablet={descMarginB}
-                                onChangeMarTopTablet={value =>
-                                    setAttributes({
-                                        descMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomTablet={value =>
-                                    setAttributes({
-                                        descMarginB: value || 0
-                                    })
-                                }
-                                marginTopMobile={descMarginT}
-                                marginBottomMobile={descMarginB}
-                                onChangeMarTopMobile={value =>
-                                    setAttributes({
-                                        descMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomMobile={value =>
-                                    setAttributes({
-                                        descMarginB: value || 0
-                                    })
-                                }
+
                             />
 
                         </PanelBody>
@@ -837,57 +842,81 @@ class edit extends Component {
                                 onChangePadSizeUnit={newvalue =>
                                     setAttributes({ btnPaddingU: newvalue })
                                 }
-                                onChangePadTopDesk={(val) => setAttributes({ btnPaddingT: val })}
-                                onChangePadRightDesk={(val) => setAttributes({ btnPaddingR: val })}
-                                onChangePadBottomDesk={(val) => setAttributes({ btnPaddingB: val })}
-                                onChangePadLeftDesk={(val) => setAttributes({ btnPaddingL: val })}
-                                onChangePadTopTablet={(valT) => setAttributes({ btnPaddingTTablet: valT })}
-                                onChangePadRightTablet={(valT) => setAttributes({ btnPaddingRTablet: valT })}
-                                onChangePadBottomTablet={(valT) => setAttributes({ btnPaddingBTablet: valT })}
-                                onChangePadLeftTablet={(valT) => setAttributes({ btnPaddingLTablet: valT })}
-                                onChangePadTopMobile={(valM) => setAttributes({ btnPaddingTMobile: valM })}
-                                onChangePadRightMobile={(valM) => setAttributes({ btnPaddingRMobile: valM })}
-                                onChangePadBottomMobile={(valM) => setAttributes({ btnPaddingBMobile: valM })}
-                                onChangePadLeftMobile={(valM) => setAttributes({ btnPaddingLMobile: valM })}
+                                onChangePaddingTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnPaddingT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnPaddingTTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnPaddingTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnPaddingR: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnPaddingRTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnPaddingRMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnPaddingB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnPaddingBTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnPaddingBMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnPaddingL: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnPaddingLTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnPaddingLMobile: newValue })
+                                        }
+                                    }
+                                }
                             />
 
                             <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={btnMarginT}
                                 marginBottom={btnMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        btnMarginT: value || 0
-                                    })
+                                marginTopTablet={btnMarginTTablet}
+                                marginBottomTablet={btnMarginBTablet}
+                                marginTopMobile={btnMarginTMobile}
+                                marginBottomMobile={btnMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnMarginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        btnMarginB: value || 0
-                                    })
-                                }
-                                marginTopTablet={btnMarginT}
-                                marginBottomTablet={btnMarginB}
-                                onChangeMarTopTablet={value =>
-                                    setAttributes({
-                                        btnMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomTablet={value =>
-                                    setAttributes({
-                                        btnMarginB: value || 0
-                                    })
-                                }
-                                marginTopMobile={btnMarginT}
-                                marginBottomMobile={btnMarginB}
-                                onChangeMarTopMobile={value =>
-                                    setAttributes({
-                                        btnMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottomMobile={value =>
-                                    setAttributes({
-                                        btnMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnMarginBMobile: newValue })
+                                        }
+                                    }
                                 }
                             />
 
@@ -1025,73 +1054,57 @@ class edit extends Component {
                             marginRight={marginR}
                             marginBottom={marginB}
                             marginLeft={marginL}
-                            onChangeMarTop={value =>
-                                setAttributes({
-                                    marginT: value || 0
-                                })
+                            marginTopTablet={marginTTablet}
+                            marginRightTablet={marginRTablet}
+                            marginBottomTablet={marginBTablet}
+                            marginLeftTablet={marginLTablet}
+                            marginTopMobile={marginTMobile}
+                            marginRightMobile={marginRMobile}
+                            marginBottomMobile={marginBMobile}
+                            marginLeftMobile={marginLMobile}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginTMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarRight={value =>
-                                setAttributes({
-                                    marginR: value || 0
-                                })
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginRMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarBottom={value =>
-                                setAttributes({
-                                    marginB: value || 0
-                                })
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginBMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarLeft={value =>
-                                setAttributes({
-                                    marginL: value || 0
-                                })
-                            }
-                            marginTopTablet={marginT}
-                            marginRightTablet={marginR}
-                            marginBottomTablet={marginB}
-                            marginLeftTablet={marginL}
-                            onChangeMarTopTablet={value =>
-                                setAttributes({
-                                    marginT: value || 0
-                                })
-                            }
-                            onChangeMarRightTablet={value =>
-                                setAttributes({
-                                    marginR: value || 0
-                                })
-                            }
-                            onChangeMarBottomTablet={value =>
-                                setAttributes({
-                                    marginB: value || 0
-                                })
-                            }
-                            onChangeMarLeftTablet={value =>
-                                setAttributes({
-                                    marginL: value || 0
-                                })
-                            }
-                            marginTopMobile={marginT}
-                            marginRightMobile={marginR}
-                            marginBottomMobile={marginB}
-                            marginLeftMobile={marginL}
-                            onChangeMarTopMobile={value =>
-                                setAttributes({
-                                    marginT: value || 0
-                                })
-                            }
-                            onChangeMarRightMobile={value =>
-                                setAttributes({
-                                    marginR: value || 0
-                                })
-                            }
-                            onChangeMarBottomMobile={value =>
-                                setAttributes({
-                                    marginB: value || 0
-                                })
-                            }
-                            onChangeMarLeftMobile={value =>
-                                setAttributes({
-                                    marginL: value || 0
-                                })
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginLMobile: newValue })
+                                    }
+                                }
                             }
                         />
                         <PremiumResponsivePadding
@@ -1112,20 +1125,50 @@ class edit extends Component {
                             onChangePadSizeUnit={newvalue =>
                                 setAttributes({ paddingU: newvalue })
                             }
-                            onChangePadTopDesk={(val) => setAttributes({ paddingT: val })}
-                            onChangePadRightDesk={(val) => setAttributes({ paddingR: val })}
-                            onChangePadBottomDesk={(val) => setAttributes({ paddingB: val })}
-                            onChangePadLeftDesk={(val) => setAttributes({ paddingL: val })}
-                            onChangePadTopTablet={(valT) => setAttributes({ paddingTTablet: valT })}
-                            onChangePadRightTablet={(valT) => setAttributes({ paddingRTablet: valT })}
-                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBTablet: valT })}
-                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLTablet: valT })}
-                            onChangePadTopMobile={(valM) => setAttributes({ paddingTMobile: valM })}
-                            onChangePadRightMobile={(valM) => setAttributes({ paddingRMobile: valM })}
-                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBMobile: valM })}
-                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLMobile: valM })}
-
-
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -1330,10 +1373,6 @@ class edit extends Component {
                         : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
                     boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     backgroundColor: backColor
                         ? hexToRgba(backColor, backOpacity)
@@ -1412,10 +1451,6 @@ class edit extends Component {
                     {titleChecked && titleText && (
                         <div
                             className={`premium-icon-box__title_wrap`}
-                            style={{
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
-                            }}
                         >
                             <RichText
                                 tagName={titleTag.toLowerCase()}

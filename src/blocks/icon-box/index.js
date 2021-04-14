@@ -143,6 +143,18 @@ const iconBoxAttrs = {
     titleMarginB: {
         type: "number"
     },
+    titleMarginTTablet: {
+        type: "number"
+    },
+    titleMarginBTablet: {
+        type: "number"
+    },
+    titleMarginTMobile: {
+        type: "number"
+    },
+    titleMarginBMobile: {
+        type: "number"
+    },
     descText: {
         type: "array",
         source: "children",
@@ -187,6 +199,18 @@ const iconBoxAttrs = {
         type: "number"
     },
     descMarginB: {
+        type: "number"
+    },
+    descMarginTTablet: {
+        type: "number"
+    },
+    descMarginBTablet: {
+        type: "number"
+    },
+    descMarginTMobile: {
+        type: "number"
+    },
+    descMarginBMobile: {
         type: "number"
     },
     btnChecked: {
@@ -348,6 +372,18 @@ const iconBoxAttrs = {
     btnMarginB: {
         type: "number"
     },
+    btnMarginTTablet: {
+        type: "number"
+    },
+    btnMarginBTablet: {
+        type: "number"
+    },
+    btnMarginTMobile: {
+        type: "number"
+    },
+    btnMarginBMobile: {
+        type: "number"
+    },
     btnShadowColor: {
         type: "string"
     },
@@ -416,6 +452,30 @@ const iconBoxAttrs = {
         type: "number"
     },
     marginL: {
+        type: "number"
+    },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
         type: "number"
     },
     paddingT: {

@@ -20,10 +20,6 @@ const save = props => {
         shadowColor,
         shadowHorizontal,
         shadowVertical,
-        marginT,
-        marginR,
-        marginB,
-        marginL,
         borderType,
         borderWidth,
         iconBorderTop,
@@ -51,10 +47,6 @@ const save = props => {
         wrapShadowHorizontal,
         wrapShadowVertical,
         wrapShadowPosition,
-        wrapMarginT,
-        wrapMarginR,
-        wrapMarginB,
-        wrapMarginL,
         urlCheck,
         link,
         target,
@@ -89,11 +81,7 @@ const save = props => {
                 borderColor: wrapBorderColor,
                 boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
                     0}px ${wrapShadowBlur ||
-                    0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                    0}px ${wrapShadowColor} ${wrapShadowPosition}`
             }}
         >
             <a
@@ -110,10 +98,6 @@ const save = props => {
                             ? hexToRgba(iconBack, iconOpacity)
                             : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
                         borderStyle: borderType,
                         borderWidth: iconBorder
                             ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`

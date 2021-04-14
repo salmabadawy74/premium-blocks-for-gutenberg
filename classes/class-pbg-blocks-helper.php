@@ -553,6 +553,9 @@ class PBG_Blocks_Helper {
 			case 'premium/icon-box':
 				$css += $this->get_iconBox_css( $blockattr, $block_id );
 				break;
+			case 'premium/container':
+				$css += $this->get_section_css( $blockattr, $block_id );
+				break;
 			case 'premium/testimonial':
 				$css += $this->get_testimonial_css( $blockattr, $block_id );
 				break;
@@ -804,7 +807,7 @@ class PBG_Blocks_Helper {
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#block-';
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#premium-accordion-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
@@ -977,7 +980,9 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['numberSize'], $attr['numberSizeUnit'] ),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size'     => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'margin-top'    => $attr['titleT'] . 'px',
+				'margin-bottom' => $attr['titleB'] . 'px',
 			),
 			' .premium-countup__prefix'    => array(
 				'font-size' => self::get_css_value( $attr['prefixSize'], $attr['prefixSizeUnit'] ),
@@ -994,7 +999,9 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['numberSizeTablet'], $attr['numberSizeUnit'] ),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'font-size'     => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'margin-top'    => $attr['titleTTablet'] . 'px',
+				'margin-bottom' => $attr['titleBTablet'] . 'px',
 			),
 			' .premium-countup__prefix'    => array(
 				'font-size' => self::get_css_value( $attr['prefixSizeTablet'], $attr['prefixSizeUnit'] ),
@@ -1011,7 +1018,9 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['numberSizeMobile'], $attr['numberSizeUnit'] ),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'font-size'     => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'margin-top'    => $attr['titleTMobile'] . 'px',
+				'margin-bottom' => $attr['titleBMobile'] . 'px',
 			),
 			' .premium-countup__prefix'    => array(
 				'font-size' => self::get_css_value( $attr['prefixSizeMobile'], $attr['prefixSizeUnit'] ),
@@ -1050,63 +1059,75 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-			' .premium-dheading-block__first'  => array(
+			' .premium-dheading-block__first'       => array(
 				'font-size'      => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
 				'padding-top'    => $attr['firstPaddingT'] . 'px',
 				'padding-right'  => $attr['firstPaddingR'] . 'px',
 				'padding-bottom' => $attr['firstPaddingB'] . 'px',
 				'padding-left'   => $attr['firstPaddingL'] . 'px',
+				'margin-right'   => $attr['firstMarginR'] . 'px',
+				'margin-left'    => $attr['firstMarginL'] . 'px',
 			),
-			' .premium-dheading-block__second' => array(
-				'font-size'      => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
+			' . premium - dheading - block__second' => array(
+				'font - size'    => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
 				'padding-top'    => $attr['secondPaddingT'] . 'px',
 				'padding-right'  => $attr['secondPaddingR'] . 'px',
 				'padding-bottom' => $attr['secondPaddingB'] . 'px',
 				'padding-left'   => $attr['secondPaddingL'] . 'px',
+				'margin-right'   => $attr['secondMarginR'] . 'px',
+				'margin-left'    => $attr['secondMarginL'] . 'px',
 			),
 		);
 		// Desktop Icon Size CSS ends.
 
 		// Tablet CSS Start.
 		$t_selectors = array(
-			' .premium-dheading-block__first'   => array(
-				'font-size'      => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
+			' . premium - dheading - block__first' => array(
+				'font - size'    => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
 				'padding-top'    => $attr['firstPaddingTTablet'] . 'px',
 				'padding-right'  => $attr['firstPaddingRTablet'] . 'px',
 				'padding-bottom' => $attr['firstPaddingBTablet'] . 'px',
 				'padding-left'   => $attr['firstPaddingLTablet'] . 'px',
+				'margin-right'   => $attr['firstMarginRTablet'] . 'px',
+				'margin-left'    => $attr['firstMarginLTablet'] . 'px',
 			),
-			'  .premium-dheading-block__second' => array(
+			' . premium-dheading-block__second'    => array(
 				'font-size'      => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
 				'padding-top'    => $attr['secondPaddingTTablet'] . 'px',
 				'padding-right'  => $attr['secondPaddingRTablet'] . 'px',
 				'padding-bottom' => $attr['secondPaddingBTablet'] . 'px',
 				'padding-left'   => $attr['secondPaddingLTablet'] . 'px',
+				'margin-right'   => $attr['secondMarginRTablet'] . 'px',
+				'margin-left'    => $attr['secondMarginLTablet'] . 'px',
 			),
 		);
 		// Tablet CSS End.
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' .premium-dheading-block__first'   => array(
-				'font-size'      => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
-				'padding-top'    => $attr['firstPaddingTMobile'] . 'px',
-				'padding-right'  => $attr['firstPaddingRMobile'] . 'px',
-				'padding-bottom' => $attr['firstPaddingBMobile'] . 'px',
-				'padding-left'   => $attr['firstPaddingLMobile'] . 'px',
+			' . premium - dheading - block__first'  => array(
+				'font - size'      => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
+				'padding - top'    => $attr['firstPaddingTMobile'] . 'px',
+				'padding - right'  => $attr['firstPaddingRMobile'] . 'px',
+				'padding - bottom' => $attr['firstPaddingBMobile'] . 'px',
+				'padding - left'   => $attr['firstPaddingLMobile'] . 'px',
+				'margin-right'     => $attr['firstMarginRMobile'] . 'px',
+				'margin-left'      => $attr['firstMarginLMobile'] . 'px',
 			),
-			'  .premium-dheading-block__second' => array(
-				'font-size'      => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
-				'padding-top'    => $attr['secondPaddingTMobile'] . 'px',
-				'padding-right'  => $attr['secondPaddingRMobile'] . 'px',
-				'padding-bottom' => $attr['secondPaddingBMobile'] . 'px',
-				'padding-left'   => $attr['secondPaddingLMobile'] . 'px',
+			' . premium - dheading - block__second' => array(
+				'font - size'      => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
+				'padding - top'    => $attr['secondPaddingTMobile'] . 'px',
+				'padding - right'  => $attr['secondPaddingRMobile'] . 'px',
+				'padding - bottom' => $attr['secondPaddingBMobile'] . 'px',
+				'padding - left'   => $attr['secondPaddingLMobile'] . 'px',
+				'margin-right'     => $attr['secondMarginRMobile'] . 'px',
+				'margin-left'      => $attr['secondMarginLMobile'] . 'px',
 			),
 
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-dheading-block-' : '.premium-dheading-';
+		$base_selector = ( $attr['classMigrate'] ) ? '// premium-dheading-block-' : '.premium-dheading-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
@@ -1136,12 +1157,20 @@ class PBG_Blocks_Helper {
 				'padding-right'  => $attr['wrapPaddingR'] . 'px',
 				'padding-bottom' => $attr['wrapPaddingB'] . 'px',
 				'padding-left'   => $attr['wrapPaddingL'] . 'px',
+				'margin-top'     => $attr['wrapMarginT'] . 'px',
+				'margin-right'   => $attr['wrapMarginR'] . 'px',
+				'margin-bottom'  => $attr['wrapMarginB'] . 'px',
+				'margin-left'    => $attr['wrapMarginL'] . 'px',
 			),
 			' .premium-icon' => array(
 				'padding-top'    => self::get_css_value( $attr['paddingT'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingR'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingB'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingL'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginT'] . 'px',
+				'margin-right'   => $attr['marginR'] . 'px',
+				'margin-bottom'  => $attr['marginB'] . 'px',
+				'margin-left'    => $attr['marginL'] . 'px',
 			),
 		);
 
@@ -1151,12 +1180,20 @@ class PBG_Blocks_Helper {
 				'padding-right'  => $attr['wrapPaddingRTablet'] . 'px',
 				'padding-bottom' => $attr['wrapPaddingBTablet'] . 'px',
 				'padding-left'   => $attr['wrapPaddingLTablet'] . 'px',
+				'margin-top'     => $attr['wrapMarginTTablet'] . 'px',
+				'margin-right'   => $attr['wrapMarginRTablet'] . 'px',
+				'margin-bottom'  => $attr['wrapMarginBTablet'] . 'px',
+				'margin-left'    => $attr['wrapMarginLTablet'] . 'px',
 			),
 			' .premium-icon' => array(
 				'padding-top'    => self::get_css_value( $attr['paddingTTablet'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingRTablet'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingBTablet'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingLTablet'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginTTablet'] . 'px',
+				'margin-right'   => $attr['marginRTablet'] . 'px',
+				'margin-bottom'  => $attr['marginBTablet'] . 'px',
+				'margin-left'    => $attr['marginLTablet'] . 'px',
 			),
 		);
 
@@ -1166,12 +1203,20 @@ class PBG_Blocks_Helper {
 				'padding-right'  => $attr['wrapPaddingRMobile'] . 'px',
 				'padding-bottom' => $attr['wrapPaddingBMobile'] . 'px',
 				'padding-left'   => $attr['wrapPaddingLMobile'] . 'px',
+				'margin-top'     => $attr['wrapMarginTMobile'] . 'px',
+				'margin-right'   => $attr['wrapMarginRMobile'] . 'px',
+				'margin-bottom'  => $attr['wrapMarginBMobile'] . 'px',
+				'margin-left'    => $attr['wrapMarginLMobile'] . 'px',
 			),
 			' .premium-icon' => array(
 				'padding-top'    => self::get_css_value( $attr['paddingTMobile'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingRMobile'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingBMobile'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingLMobile'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginTMobile'] . 'px',
+				'margin-right'   => $attr['marginRMobile'] . 'px',
+				'margin-bottom'  => $attr['marginBMobile'] . 'px',
+				'margin-left'    => $attr['marginLMobile'] . 'px',
 			),
 		);
 		$base_selector = ( $attr['classMigrate'] ) ? '#premium-icon-' : '.premium-icon-';
@@ -1201,19 +1246,35 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-			' '                          => array(
+			' '                              => array(
 				'padding-top'    => self::get_css_value( $attr['paddingT'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingR'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingB'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingL'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginT'] . 'px',
+				'margin-right'   => $attr['marginR'] . 'px',
+				'margin-bottom'  => $attr['marginB'] . 'px',
+				'margin-left'    => $attr['marginL'] . 'px',
 			),
-			'  .premium-icon-box__title' => array(
+			' .premium-icon-box__title_wrap  .premium-icon-box__title_wrap' => array(
+				'margin-top'    => $attr['titleMarginT'] . 'px',
+				'margin-bottom' => $attr['titleMarginB'] . 'px',
+			),
+			'  .premium-icon-box__desc_wrap' => array(
+				'margin-top'    => $attr['descMarginT'] . 'px',
+				'margin-bottom' => $attr['descMarginB'] . 'px',
+			),
+			' .premium-icon-box__btn_wrap'   => array(
+				'margin-top'    => $attr['btnMarginT'] . 'px',
+				'margin-bottom' => $attr['btnMarginB'] . 'px',
+			),
+			'  .premium-icon-box__title'     => array(
 				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
 			),
-			' .premium-icon-box__desc'   => array(
+			' .premium-icon-box__desc'       => array(
 				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
 			),
-			' .premium-icon-box__btn'    => array(
+			' .premium-icon-box__btn'        => array(
 				'font-size'      => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
 				'padding-top'    => self::get_css_value( $attr['btnPaddingT'], $attr['btnPaddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['btnPaddingR'], $attr['btnPaddingU'] ),
@@ -1225,19 +1286,35 @@ class PBG_Blocks_Helper {
 
 		// Tablet CSS Start.
 		$t_selectors = array(
-			' '                          => array(
+			' '                              => array(
 				'padding-top'    => self::get_css_value( $attr['paddingTTablet'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingRTablet'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingBTablet'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingLTablet'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginTTablet'] . 'px',
+				'margin-right'   => $attr['marginRTablet'] . 'px',
+				'margin-bottom'  => $attr['marginBTablet'] . 'px',
+				'margin-left'    => $attr['marginLTablet'] . 'px',
 			),
-			'  .premium-icon-box__title' => array(
+			' .premium-icon-box__title_wrap  .premium-icon-box__title_wrap' => array(
+				'margin-top'    => $attr['titleMarginTTablet'] . 'px',
+				'margin-bottom' => $attr['titleMarginBTablet'] . 'px',
+			),
+			'  .premium-icon-box__desc_wrap' => array(
+				'margin-top'    => $attr['descMarginTTablet'] . 'px',
+				'margin-bottom' => $attr['descMarginBTablet'] . 'px',
+			),
+			' .premium-icon-box__btn_wrap'   => array(
+				'margin-top'    => $attr['btnMarginTTablet'] . 'px',
+				'margin-bottom' => $attr['btnMarginBTablet'] . 'px',
+			),
+			'  .premium-icon-box__title'     => array(
 				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
 			),
-			' .premium-icon-box__desc'   => array(
+			' .premium-icon-box__desc'       => array(
 				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
 			),
-			' .premium-icon-box__btn'    => array(
+			' .premium-icon-box__btn'        => array(
 				'font-size'      => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
 				'padding-top'    => self::get_css_value( $attr['btnPaddingTTablet'], $attr['btnPaddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['btnPaddingRTablet'], $attr['btnPaddingU'] ),
@@ -1249,19 +1326,35 @@ class PBG_Blocks_Helper {
 
 		// Mobile CSS Start.
 		$m_selectors = array(
-			' '                          => array(
+			' '                              => array(
 				'padding-top'    => self::get_css_value( $attr['paddingTMobile'], $attr['paddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['paddingRMobile'], $attr['paddingU'] ),
 				'padding-bottom' => self::get_css_value( $attr['paddingBMobile'], $attr['paddingU'] ),
 				'padding-left'   => self::get_css_value( $attr['paddingLMobile'], $attr['paddingU'] ),
+				'margin-top'     => $attr['marginTMobile'] . 'px',
+				'margin-right'   => $attr['marginRMobile'] . 'px',
+				'margin-bottom'  => $attr['marginBMobile'] . 'px',
+				'margin-left'    => $attr['marginLMobile'] . 'px',
 			),
-			'  .premium-icon-box__title' => array(
+			' .premium-icon-box__title_wrap  .premium-icon-box__title_wrap' => array(
+				'margin-top'    => $attr['titleMarginTMobile'] . 'px',
+				'margin-bottom' => $attr['titleMarginBMobile'] . 'px',
+			),
+			'  .premium-icon-box__desc_wrap' => array(
+				'margin-top'    => $attr['descMarginTMobile'] . 'px',
+				'margin-bottom' => $attr['descMarginBMobile'] . 'px',
+			),
+			' .premium-icon-box__btn_wrap'   => array(
+				'margin-top'    => $attr['btnMarginTMobile'] . 'px',
+				'margin-bottom' => $attr['btnMarginBMobile'] . 'px',
+			),
+			'  .premium-icon-box__title'     => array(
 				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
 			),
-			' .premium-icon-box__desc'   => array(
+			' .premium-icon-box__desc'       => array(
 				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
 			),
-			' .premium-icon-box__btn'    => array(
+			' .premium-icon-box__btn'        => array(
 				'font-size'      => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
 				'padding-top'    => self::get_css_value( $attr['btnPaddingTMobile'], $attr['btnPaddingU'] ),
 				'padding-right'  => self::get_css_value( $attr['btnPaddingRMobile'], $attr['btnPaddingU'] ),
@@ -1286,6 +1379,73 @@ class PBG_Blocks_Helper {
 		);
 
 		return $generated_css;
+	}
+
+	public static function get_section_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/container']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+			' ' => array(
+				'padding-top'    => $attr['paddingTop'] . 'px',
+				'padding-right'  => $attr['paddingRight'] . 'px',
+				'padding-bottom' => $attr['paddingBottom'] . 'px',
+				'padding-left'   => $attr['paddingLeft'] . 'px',
+				'margin-top'     => $attr['marginTop'] . 'px',
+				'margin-right'   => $attr['marginRight'] . 'px',
+				'margin-bottom'  => $attr['marginBottom'] . 'px',
+				'margin-left'    => $attr['marginLeft'] . 'px',
+			),
+
+		);
+
+		$t_selectors = array(
+			' ' => array(
+				'padding-top'    => $attr['paddingTopTablet'] . 'px',
+				'padding-right'  => $attr['paddingRightTablet'] . 'px',
+				'padding-bottom' => $attr['paddingBottomTablet'] . 'px',
+				'padding-left'   => $attr['paddingLeftTablet'] . 'px',
+				'margin-top'     => $attr['marginTopTablet'] . 'px',
+				'margin-right'   => $attr['marginRightTablet'] . 'px',
+				'margin-bottom'  => $attr['marginBottomTablet'] . 'px',
+				'margin-left'    => $attr['marginLeftTablet'] . 'px',
+			),
+
+		);
+
+		$m_selectors = array(
+			' ' => array(
+				'padding-top'    => $attr['paddingTopMobile'] . 'px',
+				'padding-right'  => $attr['paddingRightMobile'] . 'px',
+				'padding-bottom' => $attr['paddingBottomMobile'] . 'px',
+				'padding-left'   => $attr['paddingLeftMobile'] . 'px',
+				'margin-top'     => $attr['marginTopMobile'] . 'px',
+				'margin-right'   => $attr['marginRightMobile'] . 'px',
+				'margin-bottom'  => $attr['marginBottomMobile'] . 'px',
+				'margin-left'    => $attr['marginLeftMobile'] . 'px',
+			),
+
+		);
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-container-' : '.premium-container-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+
 	}
 
 	public static function get_pricing_css( $attr, $id ) {
@@ -1435,6 +1595,14 @@ class PBG_Blocks_Helper {
 			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySize'], $attr['bodySizeUnit'] ),
 			),
+
+			''                                   => array(
+				'padding-top'    => self::get_css_value( $attr['paddingTop'], $attr['paddingUnit'] ),
+				'padding-right'  => self::get_css_value( $attr['paddingRight'], $attr['paddingUnit'] ),
+				'padding-bottom' => self::get_css_value( $attr['paddingBottom'], $attr['paddingUnit'] ),
+				'padding-left'   => self::get_css_value( $attr['paddingLeft'], $attr['paddingUnit'] ),
+			),
+
 		);
 		// Desktop Icon Size CSS ends.
 
@@ -1449,6 +1617,12 @@ class PBG_Blocks_Helper {
 			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySizeTablet'], $attr['bodySizeUnit'] ),
 			),
+			''                                   => array(
+				'padding-top'    => self::get_css_value( $attr['paddingTopTablet'], $attr['paddingUnit'] ),
+				'padding-right'  => self::get_css_value( $attr['paddingRightTablet'], $attr['paddingUnit'] ),
+				'padding-bottom' => self::get_css_value( $attr['paddingBottomTablet'], $attr['paddingUnit'] ),
+				'padding-left'   => self::get_css_value( $attr['paddingLeftTablet'], $attr['paddingUnit'] ),
+			),
 		);
 		// Tablet CSS End.
 
@@ -1462,6 +1636,12 @@ class PBG_Blocks_Helper {
 			),
 			' .premium-testimonial__text'        => array(
 				'font-size' => self::get_css_value( $attr['bodySizeMobile'], $attr['bodySizeUnit'] ),
+			),
+			''                                   => array(
+				'padding-top'    => self::get_css_value( $attr['paddingTopMobile'], $attr['paddingUnit'] ),
+				'padding-right'  => self::get_css_value( $attr['paddingRightMobile'], $attr['paddingUnit'] ),
+				'padding-bottom' => self::get_css_value( $attr['paddingBottomMobile'], $attr['paddingUnit'] ),
+				'padding-left'   => self::get_css_value( $attr['paddingLeftMobile'], $attr['paddingUnit'] ),
 			),
 		);
 		// Mobile CSS End.

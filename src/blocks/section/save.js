@@ -33,16 +33,6 @@ const save = props => {
         borderLeft,
         borderColor,
         borderRadius,
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        marginUnit,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
-        paddingUnit,
         shadowBlur,
         shadowColor,
         shadowHorizontal,
@@ -57,8 +47,8 @@ const save = props => {
     const mainClasses = classnames(className, 'premium-container');
 
     return (
-        <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+        <div id={`premium-container-${block_id}`}
+            className={`${mainClasses} premium-container-${block_id} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
                 minHeight:
@@ -77,14 +67,6 @@ const save = props => {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
             }}
         >

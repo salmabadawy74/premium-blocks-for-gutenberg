@@ -133,6 +133,30 @@ const iconAttrs = {
     marginL: {
         type: "number"
     },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
+    },
     borderType: {
         type: "string",
         default: "none"
@@ -299,6 +323,30 @@ const iconAttrs = {
         type: "number"
     },
     wrapMarginL: {
+        type: "number"
+    },
+    wrapMarginTTablet: {
+        type: "number"
+    },
+    wrapMarginRTablet: {
+        type: "number"
+    },
+    wrapMarginBTablet: {
+        type: "number"
+    },
+    wrapMarginLTablet: {
+        type: "number"
+    },
+    wrapMarginTMobile: {
+        type: "number"
+    },
+    wrapMarginRMobile: {
+        type: "number"
+    },
+    wrapMarginBMobile: {
+        type: "number"
+    },
+    wrapMarginLMobile: {
         type: "number"
     },
     urlCheck: {

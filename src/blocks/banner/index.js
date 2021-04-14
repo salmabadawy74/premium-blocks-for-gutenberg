@@ -274,7 +274,9 @@ const bannerAttrs = {
         type: "number"
     },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: 'px'
+
     },
     hideDesktop: {
         type: 'boolean',

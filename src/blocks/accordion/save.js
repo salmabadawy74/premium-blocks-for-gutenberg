@@ -7,6 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         accordionId,
         repeaterItems,
         direction,
@@ -157,7 +158,7 @@ const save = props => {
         );
     });
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+        <div id={accordionId} className={`${mainClasses} premium-accordion-${block_id}`}>
             {accordionItems}
         </div>
     );

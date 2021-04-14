@@ -663,7 +663,7 @@ class edit extends Component {
                                 initialOpen={false}
                             >
 
-                                {/* <PremiumResponsiveMargin
+                                <PremiumResponsiveMargin
                                     directions={["top", "bottom"]}
                                     marginTop={titleT}
                                     marginBottom={titleB}
@@ -671,8 +671,32 @@ class edit extends Component {
                                     marginBottomTablet={titleBTablet}
                                     marginTopMobile={titleTMobile}
                                     marginBottomMobile={titleBMobile}
+                                    onChangeMarginTop={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ titleT: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ titleTTablet: newValue })
+                                            } else {
+                                                setAttributes({ titleTMobile: newValue })
+                                            }
+                                        }
+                                    }
 
-                                /> */}
+                                    onChangeMarginBottom={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ titleB: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ titleBTablet: newValue })
+                                            } else {
+                                                setAttributes({ titleBMobile: newValue })
+                                            }
+                                        }
+                                    }
+
+
+                                />
                             </PanelBody>
                         </PanelBody>
                     )}
@@ -921,8 +945,6 @@ class edit extends Component {
                             className={`premium-countup__title`}
                             style={{
                                 fontFamily: titleFamily,
-                                marginTop: titleT + "px",
-                                marginBottom: titleB + "px",
                                 color: titleColor,
                                 letterSpacing: titleSpacing + "px",
                                 fontWeight: titleWeight,
@@ -939,8 +961,6 @@ class edit extends Component {
                         className={`premium-countup__title`}
                         style={{
                             fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
                             color: titleColor,
                             letterSpacing: titleSpacing + "px",
                             fontWeight: titleWeight,

@@ -608,6 +608,24 @@ function generateCSS(selectors, id) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function generateCSSUnit(value, unit) {
+
+    var css = "";
+
+    if (typeof value != "undefined") {
+        css += value + unit;
+    }
+
+    return css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -862,7 +880,7 @@ var PremiumBorder = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumBorder);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1031,24 +1049,6 @@ var PremiumTypo = function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (PremiumTypo);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function generateCSSUnit(value, unit) {
-
-    var css = "";
-
-    if (typeof value != "undefined") {
-        css += value + unit;
-    }
-
-    return css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (generateCSSUnit);
 
 /***/ }),
 /* 11 */
@@ -1614,21 +1614,21 @@ function PremiumResponsivePadding(props) {
             var tabout = void 0;
             if ("desktop" === tab.name) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_padding__["a" /* default */], {
-                    paddingTop: 20,
+                    paddingTop: paddingT,
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    onChangePadTop: function onChangePadTop(paddingT) {
-                        return props.onChangePadTopDesk(paddingT);
+                    onChangePadTop: function onChangePadTop(paddingTop) {
+                        return props.onChangePaddingTop("desktop", paddingTop);
                     },
-                    onChangePadRight: function onChangePadRight(paddingR) {
-                        return props.onChangePadRightDesk(paddingR);
+                    onChangePadRight: function onChangePadRight(paddingRight) {
+                        return props.onChangePaddingRight("desktop", paddingRight);
                     },
-                    onChangePadBottom: function onChangePadBottom(paddingB) {
-                        return props.onChangePadBottomDesk(paddingB);
+                    onChangePadBottom: function onChangePadBottom(paddingBottom) {
+                        return props.onChangePaddingBottom("desktop", paddingBottom);
                     },
-                    onChangePadLeft: function onChangePadLeft(paddingL) {
-                        return props.onChangePadLeftDesk(paddingL);
+                    onChangePadLeft: function onChangePadLeft(paddingLeft) {
+                        return props.onChangePaddingLeft("desktop", paddingLeft);
                     },
                     showUnits: showUnits,
                     selectedUnit: paddingU || "px",
@@ -1640,17 +1640,17 @@ function PremiumResponsivePadding(props) {
                     paddingRight: paddingRTablet,
                     paddingBottom: paddingBTablet,
                     paddingLeft: paddingLTablet,
-                    onChangePadTop: function onChangePadTop(paddingTTablet) {
-                        return props.onChangePadTopTablet(paddingTTablet);
+                    onChangePadTop: function onChangePadTop(paddingTop) {
+                        return props.onChangePaddingTop("tablet", paddingTop);
                     },
-                    onChangePadRight: function onChangePadRight(paddingRTablet) {
-                        return props.onChangePadRightTablet(paddingRTablet);
+                    onChangePadRight: function onChangePadRight(paddingRight) {
+                        return props.onChangePaddingRight("tablet", paddingRight);
                     },
-                    onChangePadBottom: function onChangePadBottom(paddingBTablet) {
-                        return props.onChangePadBottomTablet(paddingBTablet);
+                    onChangePadBottom: function onChangePadBottom(paddingBottom) {
+                        return props.onChangePaddingBottom("tablet", paddingBottom);
                     },
-                    onChangePadLeft: function onChangePadLeft(paddingLTablet) {
-                        return props.onChangePadLeftTablet(paddingLTablet);
+                    onChangePadLeft: function onChangePadLeft(paddingLeft) {
+                        return props.onChangePaddingLeft("tablet", paddingLeft);
                     },
                     showUnits: showUnits,
                     selectedUnit: paddingU || 'px',
@@ -1662,17 +1662,17 @@ function PremiumResponsivePadding(props) {
                     paddingRight: paddingRMobile,
                     paddingBottom: paddingBMobile,
                     paddingLeft: paddingLMobile,
-                    onChangePadTop: function onChangePadTop(paddingTMobile) {
-                        return props.onChangePadTopMobile(paddingTMobile);
+                    onChangePadTop: function onChangePadTop(paddingTop) {
+                        return props.onChangePaddingTop("mobile", paddingTop);
                     },
-                    onChangePadRight: function onChangePadRight(paddingRMobile) {
-                        return props.onChangePadRightMobile(paddingRMobile);
+                    onChangePadRight: function onChangePadRight(paddingRight) {
+                        return props.onChangePaddingRight("mobile", paddingRight);
                     },
-                    onChangePadBottom: function onChangePadBottom(paddingBMobile) {
-                        return props.onChangePadBottomTablet(paddingBTablet);
+                    onChangePadBottom: function onChangePadBottom(paddingBottom) {
+                        return props.onChangePaddingBottom("mobile", paddingBottom);
                     },
-                    onChangePadLeft: function onChangePadLeft(paddingLMobile) {
-                        return props.onChangePadLeftTablet(paddingLMobile);
+                    onChangePadLeft: function onChangePadLeft(paddingLeft) {
+                        return props.onChangePaddingLeft("mobile", paddingLeft);
                     },
                     showUnits: showUnits,
                     selectedUnit: selectedUnit || 'px',
@@ -1691,6 +1691,28 @@ function PremiumResponsivePadding(props) {
 
 /***/ }),
 /* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseIsNative = __webpack_require__(98),
+    getValue = __webpack_require__(103);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+module.exports = getNative;
+
+/***/ }),
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1732,28 +1754,6 @@ function PremiumSizeUnits(props) {
         })
     );
 }
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsNative = __webpack_require__(98),
-    getValue = __webpack_require__(103);
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
 
 /***/ }),
 /* 20 */
@@ -2050,6 +2050,7 @@ function PremiumResponsiveMargin(props) {
         marginBottomMobile = props.marginBottomMobile,
         marginLeftMobile = props.marginLeftMobile;
 
+    console.log(props);
     return wp.element.createElement(
         TabPanel,
         { className: "premium-size-type-field-tabs", activeClass: "active-tab",
@@ -2075,58 +2076,18 @@ function PremiumResponsiveMargin(props) {
                     marginRight: marginRight,
                     marginBottom: marginBottom,
                     marginLeft: marginLeft,
-                    onChangeMarTop: function (_onChangeMarTop) {
-                        function onChangeMarTop(_x) {
-                            return _onChangeMarTop.apply(this, arguments);
-                        }
-
-                        onChangeMarTop.toString = function () {
-                            return _onChangeMarTop.toString();
-                        };
-
-                        return onChangeMarTop;
-                    }(function (tab) {
-                        return onChangeMarTop(tab.name);
-                    }),
-                    onChangeMarRight: function (_onChangeMarRight) {
-                        function onChangeMarRight(_x2) {
-                            return _onChangeMarRight.apply(this, arguments);
-                        }
-
-                        onChangeMarRight.toString = function () {
-                            return _onChangeMarRight.toString();
-                        };
-
-                        return onChangeMarRight;
-                    }(function (tab) {
-                        return onChangeMarRight(tab.name);
-                    }),
-                    onChangeMarBottom: function (_onChangeMarBottom) {
-                        function onChangeMarBottom(_x3) {
-                            return _onChangeMarBottom.apply(this, arguments);
-                        }
-
-                        onChangeMarBottom.toString = function () {
-                            return _onChangeMarBottom.toString();
-                        };
-
-                        return onChangeMarBottom;
-                    }(function (tab) {
-                        return onChangeMarBottom(tab.name);
-                    }),
-                    onChangeMarLeft: function (_onChangeMarLeft) {
-                        function onChangeMarLeft(_x4) {
-                            return _onChangeMarLeft.apply(this, arguments);
-                        }
-
-                        onChangeMarLeft.toString = function () {
-                            return _onChangeMarLeft.toString();
-                        };
-
-                        return onChangeMarLeft;
-                    }(function (tab) {
-                        return onChangeMarLeft(tab.name);
-                    })
+                    onChangeMarTop: function onChangeMarTop(marginTop) {
+                        return props.onChangeMarginTop("mobile", marginTop);
+                    },
+                    onChangeMarRight: function onChangeMarRight(marginRight) {
+                        return props.onChangeMarginRight("mobile", marginRight);
+                    },
+                    onChangeMarBottom: function onChangeMarBottom(marginBottom) {
+                        return props.onChangeMarginBottom("mobile", marginBottom);
+                    },
+                    onChangeMarLeft: function onChangeMarLeft(marginLeft) {
+                        return props.onChangeMarginLeft("mobile", marginLeft);
+                    }
                 });
             } else if ("tablet" === tab.name) {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_margin__["a" /* default */], {
@@ -2135,58 +2096,18 @@ function PremiumResponsiveMargin(props) {
                     marginRight: marginRightTablet,
                     marginBottom: marginBottomTablet,
                     marginLeft: marginLeftTablet,
-                    onChangeMarTop: function (_onChangeMarTop2) {
-                        function onChangeMarTop(_x5) {
-                            return _onChangeMarTop2.apply(this, arguments);
-                        }
-
-                        onChangeMarTop.toString = function () {
-                            return _onChangeMarTop2.toString();
-                        };
-
-                        return onChangeMarTop;
-                    }(function (tab) {
-                        return onChangeMarTop(tab.name);
-                    }),
-                    onChangeMarRight: function (_onChangeMarRight2) {
-                        function onChangeMarRight(_x6) {
-                            return _onChangeMarRight2.apply(this, arguments);
-                        }
-
-                        onChangeMarRight.toString = function () {
-                            return _onChangeMarRight2.toString();
-                        };
-
-                        return onChangeMarRight;
-                    }(function (tab) {
-                        return onChangeMarRight(tab.name);
-                    }),
-                    onChangeMarBottom: function (_onChangeMarBottom2) {
-                        function onChangeMarBottom(_x7) {
-                            return _onChangeMarBottom2.apply(this, arguments);
-                        }
-
-                        onChangeMarBottom.toString = function () {
-                            return _onChangeMarBottom2.toString();
-                        };
-
-                        return onChangeMarBottom;
-                    }(function (tab) {
-                        return onChangeMarBottom(tab.name);
-                    }),
-                    onChangeMarLeft: function (_onChangeMarLeft2) {
-                        function onChangeMarLeft(_x8) {
-                            return _onChangeMarLeft2.apply(this, arguments);
-                        }
-
-                        onChangeMarLeft.toString = function () {
-                            return _onChangeMarLeft2.toString();
-                        };
-
-                        return onChangeMarLeft;
-                    }(function (tab) {
-                        return onChangeMarLeft(tab.name);
-                    })
+                    onChangeMarTop: function onChangeMarTop(marginTop) {
+                        return props.onChangeMarginTop("tablet", marginTop);
+                    },
+                    onChangeMarRight: function onChangeMarRight(marginRight) {
+                        return props.onChangeMarginRight("tablet", marginRight);
+                    },
+                    onChangeMarBottom: function onChangeMarBottom(marginBottom) {
+                        return props.onChangeMarginBottom("tablet", marginBottom);
+                    },
+                    onChangeMarLeft: function onChangeMarLeft(marginLeft) {
+                        return props.onChangeMarginLeft("tablet", marginLeft);
+                    }
                 });
             } else {
                 tabout = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__premium_margin__["a" /* default */], {
@@ -2195,58 +2116,18 @@ function PremiumResponsiveMargin(props) {
                     marginRight: marginRightMobile,
                     marginBottom: marginBottomMobile,
                     marginLeft: marginLeftMobile,
-                    onChangeMarTop: function (_onChangeMarTop3) {
-                        function onChangeMarTop(_x9) {
-                            return _onChangeMarTop3.apply(this, arguments);
-                        }
-
-                        onChangeMarTop.toString = function () {
-                            return _onChangeMarTop3.toString();
-                        };
-
-                        return onChangeMarTop;
-                    }(function (tab) {
-                        return onChangeMarTop(tab.name);
-                    }),
-                    onChangeMarRight: function (_onChangeMarRight3) {
-                        function onChangeMarRight(_x10) {
-                            return _onChangeMarRight3.apply(this, arguments);
-                        }
-
-                        onChangeMarRight.toString = function () {
-                            return _onChangeMarRight3.toString();
-                        };
-
-                        return onChangeMarRight;
-                    }(function (tab) {
-                        return onChangeMarRight(tab.name);
-                    }),
-                    onChangeMarBottom: function (_onChangeMarBottom3) {
-                        function onChangeMarBottom(_x11) {
-                            return _onChangeMarBottom3.apply(this, arguments);
-                        }
-
-                        onChangeMarBottom.toString = function () {
-                            return _onChangeMarBottom3.toString();
-                        };
-
-                        return onChangeMarBottom;
-                    }(function (tab) {
-                        return onChangeMarBottom(tab.name);
-                    }),
-                    onChangeMarLeft: function (_onChangeMarLeft3) {
-                        function onChangeMarLeft(_x12) {
-                            return _onChangeMarLeft3.apply(this, arguments);
-                        }
-
-                        onChangeMarLeft.toString = function () {
-                            return _onChangeMarLeft3.toString();
-                        };
-
-                        return onChangeMarLeft;
-                    }(function (tab) {
-                        return onChangeMarLeft(tab.name);
-                    })
+                    onChangeMarTop: function onChangeMarTop(marginTop) {
+                        return props.onChangeMarginTop("desktop", marginTop);
+                    },
+                    onChangeMarRight: function onChangeMarRight(marginRight) {
+                        return props.onChangeMarginRight("desktop", marginRight);
+                    },
+                    onChangeMarBottom: function onChangeMarBottom(marginBottom) {
+                        return props.onChangeMarginBottom("desktop", marginBottom);
+                    },
+                    onChangeMarLeft: function onChangeMarLeft(marginLeft) {
+                        return props.onChangeMarginLeft("desktop", marginLeft);
+                    }
                 });
             }
             return wp.element.createElement(
@@ -2379,7 +2260,7 @@ module.exports = _Symbol;
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19);
+var getNative = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -2467,9 +2348,9 @@ module.exports = toKey;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(242);
 
 
 
@@ -2915,7 +2796,7 @@ module.exports = ReactPropTypesSecret;
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19),
+var getNative = __webpack_require__(18),
     root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
@@ -5774,9 +5655,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(243);
 
 
 
@@ -5815,6 +5696,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 var accordionAttrs = {
     accordionId: {
+        type: "string"
+    },
+    block_id: {
         type: "string"
     },
     repeaterItems: {
@@ -5920,36 +5804,36 @@ var accordionAttrs = {
         default: 20
     },
     titlePaddingTTablet: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingRTablet: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingBTablet: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingLTablet: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingTMobile: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingRMobile: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingBMobile: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     titlePaddingLMobile: {
-        type: "number",
-        default: 20
+        type: "number"
+
     },
     arrowColor: {
         type: "string"
@@ -6162,8 +6046,8 @@ registerBlockType("premium/accordion", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_responsive_tabs__ = __webpack_require__(6);
@@ -6678,53 +6562,53 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Premium_Responsive_Padding__["a" /* default */], {
-                        paddingT: titlePaddingT || 0,
-                        paddingR: titlePaddingR || 0,
-                        paddingB: titlePaddingB || 0,
-                        paddingL: titlePaddingL || 0,
-                        paddingTTablet: titlePaddingTTablet || 0,
-                        paddingRTablet: titlePaddingRTablet || 0,
-                        paddingBTablet: titlePaddingBTablet || 0,
-                        paddingLTablet: titlePaddingLTablet || 0,
-                        paddingTMobile: titlePaddingTMobile || 0,
-                        paddingRMobile: titlePaddingRMobile || 0,
-                        paddingBMobile: titlePaddingBMobile || 0,
-                        paddingLMobile: titlePaddingLMobile || 0,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ titlePaddingT: val });
+                        paddingT: titlePaddingT,
+                        paddingR: titlePaddingR,
+                        paddingB: titlePaddingB,
+                        paddingL: titlePaddingL,
+                        paddingTTablet: titlePaddingTTablet,
+                        paddingRTablet: titlePaddingRTablet,
+                        paddingBTablet: titlePaddingBTablet,
+                        paddingLTablet: titlePaddingLTablet,
+                        paddingTMobile: titlePaddingTMobile,
+                        paddingRMobile: titlePaddingRMobile,
+                        paddingBMobile: titlePaddingBMobile,
+                        paddingLMobile: titlePaddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ titlePaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ titlePaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ titlePaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ titlePaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ titlePaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ titlePaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ titlePaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ titlePaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ titlePaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ titlePaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ titlePaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -6829,41 +6713,41 @@ var PremiumAccordion = function (_Component) {
                         paddingRightMobile: arrowPaddingRMobile,
                         paddingBottomMobile: arrowPaddingBMobile,
                         paddingLeftMobile: arrowPaddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ arrowPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ arrowPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ arrowPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ arrowPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ arrowPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ arrowPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ arrowPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ arrowPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ arrowPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ arrowPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ arrowPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ arrowPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ arrowPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ arrowPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ arrowPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ arrowPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ arrowPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ arrowPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ arrowPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ arrowPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ arrowPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ arrowPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ arrowPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ arrowPaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -7053,41 +6937,41 @@ var PremiumAccordion = function (_Component) {
                         paddingRightMobile: descPaddingRMobile,
                         paddingBottomMobile: descPaddingBMobile,
                         paddingLeftMobile: descPaddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ descPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ descPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ descPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ descPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ descPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ descPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ descPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ descPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ descPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ descPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ descPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ descPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -11330,7 +11214,7 @@ module.exports = getTag;
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19),
+var getNative = __webpack_require__(18),
     root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
@@ -11342,7 +11226,7 @@ module.exports = DataView;
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19),
+var getNative = __webpack_require__(18),
     root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
@@ -11354,7 +11238,7 @@ module.exports = Promise;
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19),
+var getNative = __webpack_require__(18),
     root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
@@ -11366,7 +11250,7 @@ module.exports = Set;
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(19),
+var getNative = __webpack_require__(18),
     root = __webpack_require__(12);
 
 /* Built-in method references that are verified to be native. */
@@ -12056,7 +11940,7 @@ module.exports = createBaseEach;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -12417,6 +12301,7 @@ var _wp$blockEditor = wp.blockEditor,
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
         accordionId = _props$attributes.accordionId,
         repeaterItems = _props$attributes.repeaterItems,
         direction = _props$attributes.direction,
@@ -12571,7 +12456,7 @@ var save = function save(props) {
     });
     return wp.element.createElement(
         'div',
-        { id: accordionId, className: '' + mainClasses },
+        { id: accordionId, className: mainClasses + ' premium-accordion-' + block_id },
         accordionItems
     );
 };
@@ -13986,7 +13871,9 @@ var bannerAttrs = {
         type: "number"
     },
     paddingU: {
-        type: "string"
+        type: "string",
+        default: 'px'
+
     },
     hideDesktop: {
         type: 'boolean',
@@ -14033,8 +13920,8 @@ registerBlockType("premium/banner", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(66);
@@ -14751,45 +14638,45 @@ var edit = function (_Component) {
                         paddingRightMobile: paddingRMobile,
                         paddingBottomMobile: paddingBMobile,
                         paddingLeftMobile: paddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ titlePaddingT: val });
-                        },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ titlePaddingR: val });
-                        },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ titlePaddingB: val });
-                        },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ titlePaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ titlePaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ titlePaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ titlePaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ titlePaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ titlePaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ titlePaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ titlePaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ titlePaddingLMobile: valM });
-                        },
                         showUnits: true,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingU: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -14922,7 +14809,7 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -16903,11 +16790,11 @@ registerBlockType("premium/button", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_hex_to_rgba__ = __webpack_require__(2);
@@ -17516,41 +17403,41 @@ var edit = function (_Component) {
                             return setAttributes({ paddingU: newvalue });
                         },
                         selectedUnit: paddingU,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ paddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ paddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ paddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ paddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ paddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ paddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ paddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ paddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ paddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ paddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ paddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ paddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -17626,7 +17513,7 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -18873,6 +18760,22 @@ var counterAttrs = {
         type: "number",
         default: 1
     },
+    titleTTablet: {
+        type: "number",
+        default: 1
+    },
+    titleBTablet: {
+        type: "number",
+        default: 1
+    },
+    titleTMobile: {
+        type: "number",
+        default: 1
+    },
+    titleBMobile: {
+        type: "number",
+        default: 1
+    },
     titleColor: {
         type: "string"
     },
@@ -19007,10 +18910,10 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(186);
@@ -19741,11 +19644,43 @@ var edit = function (_Component) {
                             allowReset: true
                         })
                     ),
-                    wp.element.createElement(PanelBody, {
-                        title: __("Spacings"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false
-                    })
+                    wp.element.createElement(
+                        PanelBody,
+                        {
+                            title: __("Spacings"),
+                            className: "premium-panel-body-inner",
+                            initialOpen: false
+                        },
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Margin__["a" /* default */], {
+                            directions: ["top", "bottom"],
+                            marginTop: titleT,
+                            marginBottom: titleB,
+                            marginTopTablet: titleTTablet,
+                            marginBottomTablet: titleBTablet,
+                            marginTopMobile: titleTMobile,
+                            marginBottomMobile: titleBMobile,
+                            onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                                if (device === "desktop") {
+                                    setAttributes({ titleT: newValue });
+                                } else if (device === "tablet") {
+                                    setAttributes({ titleTTablet: newValue });
+                                } else {
+                                    setAttributes({ titleTMobile: newValue });
+                                }
+                            },
+
+                            onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                                if (device === "desktop") {
+                                    setAttributes({ titleB: newValue });
+                                } else if (device === "tablet") {
+                                    setAttributes({ titleBTablet: newValue });
+                                } else {
+                                    setAttributes({ titleBMobile: newValue });
+                                }
+                            }
+
+                        })
+                    )
                 ),
                 wp.element.createElement(
                     PanelBody,
@@ -20000,8 +19935,6 @@ var edit = function (_Component) {
                             className: "premium-countup__title",
                             style: {
                                 fontFamily: titleFamily,
-                                marginTop: titleT + "px",
-                                marginBottom: titleB + "px",
                                 color: titleColor,
                                 letterSpacing: titleSpacing + "px",
                                 fontWeight: titleWeight,
@@ -20018,8 +19951,6 @@ var edit = function (_Component) {
                         className: "premium-countup__title",
                         style: {
                             fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
                             color: titleColor,
                             letterSpacing: titleSpacing + "px",
                             fontWeight: titleWeight,
@@ -20047,7 +19978,7 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -20069,6 +20000,12 @@ function styling(props) {
         suffixSize = _props$attributes.suffixSize,
         suffixSizeTablet = _props$attributes.suffixSizeTablet,
         suffixSizeMobile = _props$attributes.suffixSizeMobile,
+        titleT = _props$attributes.titleT,
+        titleB = _props$attributes.titleB,
+        titleTTablet = _props$attributes.titleTTablet,
+        titleBTablet = _props$attributes.titleBTablet,
+        titleTMobile = _props$attributes.titleTMobile,
+        titleBMobile = _props$attributes.titleBMobile,
         block_id = _props$attributes.block_id,
         classMigrate = _props$attributes.classMigrate;
 
@@ -20082,7 +20019,10 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSize, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit),
+            "margin-top": titleT + 'px',
+            "margin-bottom": titleB + 'px'
+
         },
         " .premium-countup__prefix": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSize, prefixSizeUnit)
@@ -20096,7 +20036,9 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSizeTablet, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit),
+            "margin-top": titleTTablet + 'px',
+            "margin-bottom": titleBTablet + 'px'
         },
         " .premium-countup__prefix": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSizeTablet, prefixSizeUnit)
@@ -20110,7 +20052,9 @@ function styling(props) {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(numberSizeMobile, numberSizeUnit)
         },
         " .premium-countup__title": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit),
+            "margin-top": titleTMobile + 'px',
+            "margin-bottom": titleBMobile + 'px'
         },
         " .premium-countup__prefix": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(prefixSizeMobile, prefixSizeUnit)
@@ -20142,7 +20086,7 @@ function styling(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(19);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -20548,8 +20492,7 @@ var save = function save(props) {
                     className: "premium-countup__title",
                     style: {
                         fontFamily: titleFamily,
-                        marginTop: titleT + "px",
-                        marginBottom: titleB + "px",
+
                         color: titleColor,
                         letterSpacing: titleSpacing + "px",
                         textTransform: titleUpper ? "uppercase" : "none",
@@ -20566,8 +20509,6 @@ var save = function save(props) {
                 className: "premium-countup__title",
                 style: {
                     fontFamily: titleFamily,
-                    marginTop: titleT + "px",
-                    marginBottom: titleB + "px",
                     color: titleColor,
                     letterSpacing: titleSpacing + "px",
                     fontWeight: titleWeight,
@@ -21127,7 +21068,244 @@ var counterAttrs_1_4_1 = Object.assign(counterAttrs_1_3_7, newAttributes_1_4_1);
 
 var counterAttrs_1_6_4 = Object.assign(counterAttrs_1_4_1, newAttributes_1_6_4);
 
+var newAttributes_1_7_7 = {
+    titleTTablet: {
+        type: "number",
+        default: 1
+    },
+    titleBTablet: {
+        type: "number",
+        default: 1
+    },
+    titleTMobile: {
+        type: "number",
+        default: 1
+    },
+    titleBMobile: {
+        type: "number",
+        default: 1
+    }
+};
+var counterAttrs_1_7_7 = Object.assign(newAttributes_1_7_7, counterAttrs_1_7_5);
+
 var deprecatedContent = [{
+    attributes: counterAttrs_1_7_7,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleTTablet: "",
+            titleBTablet: "",
+            titleTMobile: "",
+            titleBMobile: ""
+        };
+        return Object.assign(newAttributes, attributes);
+    },
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderCount = _props$attributes.borderCount,
+            increment = _props$attributes.increment,
+            time = _props$attributes.time,
+            delay = _props$attributes.delay,
+            align = _props$attributes.align,
+            flexDir = _props$attributes.flexDir,
+            numberColor = _props$attributes.numberColor,
+            numberWeight = _props$attributes.numberWeight,
+            prefix = _props$attributes.prefix,
+            prefixTxt = _props$attributes.prefixTxt,
+            prefixColor = _props$attributes.prefixColor,
+            prefixWeight = _props$attributes.prefixWeight,
+            prefixGap = _props$attributes.prefixGap,
+            suffix = _props$attributes.suffix,
+            suffixTxt = _props$attributes.suffixTxt,
+            suffixColor = _props$attributes.suffixColor,
+            suffixWeight = _props$attributes.suffixWeight,
+            suffixGap = _props$attributes.suffixGap,
+            iconCheck = _props$attributes.iconCheck,
+            icon = _props$attributes.icon,
+            iconSpacing = _props$attributes.iconSpacing,
+            iconType = _props$attributes.iconType,
+            imageURL = _props$attributes.imageURL,
+            iconSize = _props$attributes.iconSize,
+            iconColor = _props$attributes.iconColor,
+            selfAlign = _props$attributes.selfAlign,
+            titleCheck = _props$attributes.titleCheck,
+            titleTxt = _props$attributes.titleTxt,
+            titleColor = _props$attributes.titleColor,
+            titleSpacing = _props$attributes.titleSpacing,
+            titleStyle = _props$attributes.titleStyle,
+            titleUpper = _props$attributes.titleUpper,
+            titleT = _props$attributes.titleT,
+            titleB = _props$attributes.titleB,
+            titleWeight = _props$attributes.titleWeight,
+            faIcon = _props$attributes.faIcon,
+            containerBack = _props$attributes.containerBack,
+            containerOpacity = _props$attributes.containerOpacity,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            shadowPosition = _props$attributes.shadowPosition,
+            backgroundImageURL = _props$attributes.backgroundImageURL,
+            fixed = _props$attributes.fixed,
+            backgroundRepeat = _props$attributes.backgroundRepeat,
+            backgroundPosition = _props$attributes.backgroundPosition,
+            backgroundSize = _props$attributes.backgroundSize,
+            borderType = _props$attributes.borderType,
+            borderColor = _props$attributes.borderColor,
+            borderRadius = _props$attributes.borderRadius,
+            borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
+            titleFamily = _props$attributes.titleFamily,
+            counterFamily = _props$attributes.counterFamily,
+            prefixFamily = _props$attributes.prefixFamily,
+            suffixFamily = _props$attributes.suffixFamily,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-countup-" + block_id,
+                className: className + "__wrap premium-countup-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    justifyContent: align,
+                    flexDirection: flexDir,
+                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    borderStyle: borderType,
+                    borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            },
+            iconCheck && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-countup__icon_wrap",
+                    style: {
+                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                "icon" === icon && wp.element.createElement("i", {
+                    className: "premium-countup__icon " + iconClass,
+                    style: {
+                        fontSize: iconSize + "px",
+                        color: iconColor
+                    }
+                }),
+                "img" === icon && imageURL && wp.element.createElement("img", {
+                    src: imageURL,
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px"
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                {
+                    className: "premium-countup__info",
+                    style: {
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-countup__desc" },
+                    prefix && wp.element.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__prefix",
+                            style: {
+                                fontFamily: prefixFamily,
+                                color: prefixColor,
+                                fontWeight: prefixWeight,
+                                marginRight: prefixGap + "px"
+                            }
+                        },
+                        prefixTxt
+                    ),
+                    wp.element.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
+                            style: {
+                                fontFamily: counterFamily,
+                                color: numberColor,
+                                fontWeight: numberWeight
+                            }
+                        },
+                        increment
+                    ),
+                    suffix && wp.element.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__suffix",
+                            style: {
+                                fontFamily: suffixFamily,
+                                color: suffixColor,
+                                fontWeight: suffixWeight,
+                                marginLeft: suffixGap + "px"
+                            }
+                        },
+                        suffixTxt
+                    )
+                ),
+                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && wp.element.createElement(
+                    "h3",
+                    {
+                        className: "premium-countup__title",
+                        style: {
+                            fontFamily: titleFamily,
+                            marginTop: titleT + "px",
+                            marginBottom: titleB + "px",
+                            color: titleColor,
+                            letterSpacing: titleSpacing + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight
+                        }
+                    },
+                    titleTxt
+                )
+            ),
+            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && wp.element.createElement(
+                "h3",
+                {
+                    className: "premium-countup__title",
+                    style: {
+                        fontFamily: titleFamily,
+                        marginTop: titleT + "px",
+                        marginBottom: titleB + "px",
+                        color: titleColor,
+                        letterSpacing: titleSpacing + "px",
+                        fontWeight: titleWeight,
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        alignSelf: selfAlign
+                    }
+                },
+                titleTxt
+            )
+        );
+    }
+}, {
     attributes: counterAttrs_1_7_5,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -21157,65 +21335,65 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            increment = _props$attributes.increment,
-            time = _props$attributes.time,
-            delay = _props$attributes.delay,
-            align = _props$attributes.align,
-            flexDir = _props$attributes.flexDir,
-            numberSize = _props$attributes.numberSize,
-            numberColor = _props$attributes.numberColor,
-            numberWeight = _props$attributes.numberWeight,
-            prefix = _props$attributes.prefix,
-            prefixTxt = _props$attributes.prefixTxt,
-            prefixSize = _props$attributes.prefixSize,
-            prefixColor = _props$attributes.prefixColor,
-            prefixWeight = _props$attributes.prefixWeight,
-            prefixGap = _props$attributes.prefixGap,
-            suffix = _props$attributes.suffix,
-            suffixTxt = _props$attributes.suffixTxt,
-            suffixSize = _props$attributes.suffixSize,
-            suffixColor = _props$attributes.suffixColor,
-            suffixWeight = _props$attributes.suffixWeight,
-            suffixGap = _props$attributes.suffixGap,
-            iconCheck = _props$attributes.iconCheck,
-            icon = _props$attributes.icon,
-            iconSpacing = _props$attributes.iconSpacing,
-            iconType = _props$attributes.iconType,
-            imageURL = _props$attributes.imageURL,
-            iconSize = _props$attributes.iconSize,
-            iconColor = _props$attributes.iconColor,
-            selfAlign = _props$attributes.selfAlign,
-            titleCheck = _props$attributes.titleCheck,
-            titleTxt = _props$attributes.titleTxt,
-            titleColor = _props$attributes.titleColor,
-            titleSize = _props$attributes.titleSize,
-            titleSpacing = _props$attributes.titleSpacing,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleT = _props$attributes.titleT,
-            titleB = _props$attributes.titleB,
-            titleWeight = _props$attributes.titleWeight,
-            faIcon = _props$attributes.faIcon,
-            containerBack = _props$attributes.containerBack,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            backgroundImageURL = _props$attributes.backgroundImageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            borderType = _props$attributes.borderType,
-            borderColor = _props$attributes.borderColor,
-            borderRadius = _props$attributes.borderRadius,
-            borderWidth = _props$attributes.borderWidth,
-            titleFamily = _props$attributes.titleFamily,
-            counterFamily = _props$attributes.counterFamily,
-            prefixFamily = _props$attributes.prefixFamily,
-            suffixFamily = _props$attributes.suffixFamily;
+        var _props$attributes2 = props.attributes,
+            increment = _props$attributes2.increment,
+            time = _props$attributes2.time,
+            delay = _props$attributes2.delay,
+            align = _props$attributes2.align,
+            flexDir = _props$attributes2.flexDir,
+            numberSize = _props$attributes2.numberSize,
+            numberColor = _props$attributes2.numberColor,
+            numberWeight = _props$attributes2.numberWeight,
+            prefix = _props$attributes2.prefix,
+            prefixTxt = _props$attributes2.prefixTxt,
+            prefixSize = _props$attributes2.prefixSize,
+            prefixColor = _props$attributes2.prefixColor,
+            prefixWeight = _props$attributes2.prefixWeight,
+            prefixGap = _props$attributes2.prefixGap,
+            suffix = _props$attributes2.suffix,
+            suffixTxt = _props$attributes2.suffixTxt,
+            suffixSize = _props$attributes2.suffixSize,
+            suffixColor = _props$attributes2.suffixColor,
+            suffixWeight = _props$attributes2.suffixWeight,
+            suffixGap = _props$attributes2.suffixGap,
+            iconCheck = _props$attributes2.iconCheck,
+            icon = _props$attributes2.icon,
+            iconSpacing = _props$attributes2.iconSpacing,
+            iconType = _props$attributes2.iconType,
+            imageURL = _props$attributes2.imageURL,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            selfAlign = _props$attributes2.selfAlign,
+            titleCheck = _props$attributes2.titleCheck,
+            titleTxt = _props$attributes2.titleTxt,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleSpacing = _props$attributes2.titleSpacing,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleT = _props$attributes2.titleT,
+            titleB = _props$attributes2.titleB,
+            titleWeight = _props$attributes2.titleWeight,
+            faIcon = _props$attributes2.faIcon,
+            containerBack = _props$attributes2.containerBack,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            backgroundImageURL = _props$attributes2.backgroundImageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderColor = _props$attributes2.borderColor,
+            borderRadius = _props$attributes2.borderRadius,
+            borderWidth = _props$attributes2.borderWidth,
+            titleFamily = _props$attributes2.titleFamily,
+            counterFamily = _props$attributes2.counterFamily,
+            prefixFamily = _props$attributes2.prefixFamily,
+            suffixFamily = _props$attributes2.suffixFamily;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -21370,61 +21548,61 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            increment = _props$attributes2.increment,
-            time = _props$attributes2.time,
-            delay = _props$attributes2.delay,
-            align = _props$attributes2.align,
-            flexDir = _props$attributes2.flexDir,
-            numberSize = _props$attributes2.numberSize,
-            numberColor = _props$attributes2.numberColor,
-            numberWeight = _props$attributes2.numberWeight,
-            prefix = _props$attributes2.prefix,
-            prefixTxt = _props$attributes2.prefixTxt,
-            prefixSize = _props$attributes2.prefixSize,
-            prefixColor = _props$attributes2.prefixColor,
-            prefixWeight = _props$attributes2.prefixWeight,
-            prefixGap = _props$attributes2.prefixGap,
-            suffix = _props$attributes2.suffix,
-            suffixTxt = _props$attributes2.suffixTxt,
-            suffixSize = _props$attributes2.suffixSize,
-            suffixColor = _props$attributes2.suffixColor,
-            suffixWeight = _props$attributes2.suffixWeight,
-            suffixGap = _props$attributes2.suffixGap,
-            iconCheck = _props$attributes2.iconCheck,
-            icon = _props$attributes2.icon,
-            iconSpacing = _props$attributes2.iconSpacing,
-            iconType = _props$attributes2.iconType,
-            imageURL = _props$attributes2.imageURL,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            selfAlign = _props$attributes2.selfAlign,
-            titleCheck = _props$attributes2.titleCheck,
-            titleTxt = _props$attributes2.titleTxt,
-            titleColor = _props$attributes2.titleColor,
-            titleSize = _props$attributes2.titleSize,
-            titleSpacing = _props$attributes2.titleSpacing,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleT = _props$attributes2.titleT,
-            titleB = _props$attributes2.titleB,
-            titleWeight = _props$attributes2.titleWeight,
-            faIcon = _props$attributes2.faIcon,
-            containerBack = _props$attributes2.containerBack,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            backgroundImageURL = _props$attributes2.backgroundImageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            titleFamily = _props$attributes2.titleFamily,
-            counterFamily = _props$attributes2.counterFamily,
-            prefixFamily = _props$attributes2.prefixFamily,
-            suffixFamily = _props$attributes2.suffixFamily;
+        var _props$attributes3 = props.attributes,
+            increment = _props$attributes3.increment,
+            time = _props$attributes3.time,
+            delay = _props$attributes3.delay,
+            align = _props$attributes3.align,
+            flexDir = _props$attributes3.flexDir,
+            numberSize = _props$attributes3.numberSize,
+            numberColor = _props$attributes3.numberColor,
+            numberWeight = _props$attributes3.numberWeight,
+            prefix = _props$attributes3.prefix,
+            prefixTxt = _props$attributes3.prefixTxt,
+            prefixSize = _props$attributes3.prefixSize,
+            prefixColor = _props$attributes3.prefixColor,
+            prefixWeight = _props$attributes3.prefixWeight,
+            prefixGap = _props$attributes3.prefixGap,
+            suffix = _props$attributes3.suffix,
+            suffixTxt = _props$attributes3.suffixTxt,
+            suffixSize = _props$attributes3.suffixSize,
+            suffixColor = _props$attributes3.suffixColor,
+            suffixWeight = _props$attributes3.suffixWeight,
+            suffixGap = _props$attributes3.suffixGap,
+            iconCheck = _props$attributes3.iconCheck,
+            icon = _props$attributes3.icon,
+            iconSpacing = _props$attributes3.iconSpacing,
+            iconType = _props$attributes3.iconType,
+            imageURL = _props$attributes3.imageURL,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            selfAlign = _props$attributes3.selfAlign,
+            titleCheck = _props$attributes3.titleCheck,
+            titleTxt = _props$attributes3.titleTxt,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleSpacing = _props$attributes3.titleSpacing,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleT = _props$attributes3.titleT,
+            titleB = _props$attributes3.titleB,
+            titleWeight = _props$attributes3.titleWeight,
+            faIcon = _props$attributes3.faIcon,
+            containerBack = _props$attributes3.containerBack,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            backgroundImageURL = _props$attributes3.backgroundImageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            titleFamily = _props$attributes3.titleFamily,
+            counterFamily = _props$attributes3.counterFamily,
+            prefixFamily = _props$attributes3.prefixFamily,
+            suffixFamily = _props$attributes3.suffixFamily;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -21575,57 +21753,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            increment = _props$attributes3.increment,
-            time = _props$attributes3.time,
-            delay = _props$attributes3.delay,
-            align = _props$attributes3.align,
-            flexDir = _props$attributes3.flexDir,
-            numberSize = _props$attributes3.numberSize,
-            numberColor = _props$attributes3.numberColor,
-            numberWeight = _props$attributes3.numberWeight,
-            prefix = _props$attributes3.prefix,
-            prefixTxt = _props$attributes3.prefixTxt,
-            prefixSize = _props$attributes3.prefixSize,
-            prefixColor = _props$attributes3.prefixColor,
-            prefixWeight = _props$attributes3.prefixWeight,
-            prefixGap = _props$attributes3.prefixGap,
-            suffix = _props$attributes3.suffix,
-            suffixTxt = _props$attributes3.suffixTxt,
-            suffixSize = _props$attributes3.suffixSize,
-            suffixColor = _props$attributes3.suffixColor,
-            suffixWeight = _props$attributes3.suffixWeight,
-            suffixGap = _props$attributes3.suffixGap,
-            iconCheck = _props$attributes3.iconCheck,
-            icon = _props$attributes3.icon,
-            iconSpacing = _props$attributes3.iconSpacing,
-            iconType = _props$attributes3.iconType,
-            imageURL = _props$attributes3.imageURL,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            selfAlign = _props$attributes3.selfAlign,
-            titleCheck = _props$attributes3.titleCheck,
-            titleTxt = _props$attributes3.titleTxt,
-            titleColor = _props$attributes3.titleColor,
-            titleSize = _props$attributes3.titleSize,
-            titleSpacing = _props$attributes3.titleSpacing,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleT = _props$attributes3.titleT,
-            titleB = _props$attributes3.titleB,
-            titleWeight = _props$attributes3.titleWeight,
-            faIcon = _props$attributes3.faIcon,
-            containerBack = _props$attributes3.containerBack,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            backgroundImageURL = _props$attributes3.backgroundImageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize;
+        var _props$attributes4 = props.attributes,
+            increment = _props$attributes4.increment,
+            time = _props$attributes4.time,
+            delay = _props$attributes4.delay,
+            align = _props$attributes4.align,
+            flexDir = _props$attributes4.flexDir,
+            numberSize = _props$attributes4.numberSize,
+            numberColor = _props$attributes4.numberColor,
+            numberWeight = _props$attributes4.numberWeight,
+            prefix = _props$attributes4.prefix,
+            prefixTxt = _props$attributes4.prefixTxt,
+            prefixSize = _props$attributes4.prefixSize,
+            prefixColor = _props$attributes4.prefixColor,
+            prefixWeight = _props$attributes4.prefixWeight,
+            prefixGap = _props$attributes4.prefixGap,
+            suffix = _props$attributes4.suffix,
+            suffixTxt = _props$attributes4.suffixTxt,
+            suffixSize = _props$attributes4.suffixSize,
+            suffixColor = _props$attributes4.suffixColor,
+            suffixWeight = _props$attributes4.suffixWeight,
+            suffixGap = _props$attributes4.suffixGap,
+            iconCheck = _props$attributes4.iconCheck,
+            icon = _props$attributes4.icon,
+            iconSpacing = _props$attributes4.iconSpacing,
+            iconType = _props$attributes4.iconType,
+            imageURL = _props$attributes4.imageURL,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            selfAlign = _props$attributes4.selfAlign,
+            titleCheck = _props$attributes4.titleCheck,
+            titleTxt = _props$attributes4.titleTxt,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            titleSpacing = _props$attributes4.titleSpacing,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleT = _props$attributes4.titleT,
+            titleB = _props$attributes4.titleB,
+            titleWeight = _props$attributes4.titleWeight,
+            faIcon = _props$attributes4.faIcon,
+            containerBack = _props$attributes4.containerBack,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            backgroundImageURL = _props$attributes4.backgroundImageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -21776,52 +21954,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            increment = _props$attributes4.increment,
-            time = _props$attributes4.time,
-            delay = _props$attributes4.delay,
-            align = _props$attributes4.align,
-            flexDir = _props$attributes4.flexDir,
-            numberSize = _props$attributes4.numberSize,
-            numberColor = _props$attributes4.numberColor,
-            numberWeight = _props$attributes4.numberWeight,
-            prefix = _props$attributes4.prefix,
-            prefixTxt = _props$attributes4.prefixTxt,
-            prefixSize = _props$attributes4.prefixSize,
-            prefixColor = _props$attributes4.prefixColor,
-            prefixWeight = _props$attributes4.prefixWeight,
-            prefixGap = _props$attributes4.prefixGap,
-            suffix = _props$attributes4.suffix,
-            suffixTxt = _props$attributes4.suffixTxt,
-            suffixSize = _props$attributes4.suffixSize,
-            suffixColor = _props$attributes4.suffixColor,
-            suffixWeight = _props$attributes4.suffixWeight,
-            suffixGap = _props$attributes4.suffixGap,
-            iconCheck = _props$attributes4.iconCheck,
-            icon = _props$attributes4.icon,
-            iconSpacing = _props$attributes4.iconSpacing,
-            iconType = _props$attributes4.iconType,
-            imageURL = _props$attributes4.imageURL,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            selfAlign = _props$attributes4.selfAlign,
-            titleCheck = _props$attributes4.titleCheck,
-            titleTxt = _props$attributes4.titleTxt,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleSpacing = _props$attributes4.titleSpacing,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleT = _props$attributes4.titleT,
-            titleB = _props$attributes4.titleB,
-            titleWeight = _props$attributes4.titleWeight,
-            faIcon = _props$attributes4.faIcon,
-            containerBack = _props$attributes4.containerBack,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition;
+        var _props$attributes5 = props.attributes,
+            increment = _props$attributes5.increment,
+            time = _props$attributes5.time,
+            delay = _props$attributes5.delay,
+            align = _props$attributes5.align,
+            flexDir = _props$attributes5.flexDir,
+            numberSize = _props$attributes5.numberSize,
+            numberColor = _props$attributes5.numberColor,
+            numberWeight = _props$attributes5.numberWeight,
+            prefix = _props$attributes5.prefix,
+            prefixTxt = _props$attributes5.prefixTxt,
+            prefixSize = _props$attributes5.prefixSize,
+            prefixColor = _props$attributes5.prefixColor,
+            prefixWeight = _props$attributes5.prefixWeight,
+            prefixGap = _props$attributes5.prefixGap,
+            suffix = _props$attributes5.suffix,
+            suffixTxt = _props$attributes5.suffixTxt,
+            suffixSize = _props$attributes5.suffixSize,
+            suffixColor = _props$attributes5.suffixColor,
+            suffixWeight = _props$attributes5.suffixWeight,
+            suffixGap = _props$attributes5.suffixGap,
+            iconCheck = _props$attributes5.iconCheck,
+            icon = _props$attributes5.icon,
+            iconSpacing = _props$attributes5.iconSpacing,
+            iconType = _props$attributes5.iconType,
+            imageURL = _props$attributes5.imageURL,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            selfAlign = _props$attributes5.selfAlign,
+            titleCheck = _props$attributes5.titleCheck,
+            titleTxt = _props$attributes5.titleTxt,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleSpacing = _props$attributes5.titleSpacing,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleT = _props$attributes5.titleT,
+            titleB = _props$attributes5.titleB,
+            titleWeight = _props$attributes5.titleWeight,
+            faIcon = _props$attributes5.faIcon,
+            containerBack = _props$attributes5.containerBack,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -21961,47 +22139,47 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            increment = _props$attributes5.increment,
-            time = _props$attributes5.time,
-            delay = _props$attributes5.delay,
-            align = _props$attributes5.align,
-            flexDir = _props$attributes5.flexDir,
-            numberSize = _props$attributes5.numberSize,
-            numberColor = _props$attributes5.numberColor,
-            numberWeight = _props$attributes5.numberWeight,
-            prefix = _props$attributes5.prefix,
-            prefixTxt = _props$attributes5.prefixTxt,
-            prefixSize = _props$attributes5.prefixSize,
-            prefixColor = _props$attributes5.prefixColor,
-            prefixWeight = _props$attributes5.prefixWeight,
-            prefixGap = _props$attributes5.prefixGap,
-            suffix = _props$attributes5.suffix,
-            suffixTxt = _props$attributes5.suffixTxt,
-            suffixSize = _props$attributes5.suffixSize,
-            suffixColor = _props$attributes5.suffixColor,
-            suffixWeight = _props$attributes5.suffixWeight,
-            suffixGap = _props$attributes5.suffixGap,
-            iconCheck = _props$attributes5.iconCheck,
-            icon = _props$attributes5.icon,
-            iconSpacing = _props$attributes5.iconSpacing,
-            iconType = _props$attributes5.iconType,
-            imageURL = _props$attributes5.imageURL,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            selfAlign = _props$attributes5.selfAlign,
-            titleCheck = _props$attributes5.titleCheck,
-            titleTxt = _props$attributes5.titleTxt,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleSpacing = _props$attributes5.titleSpacing,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleT = _props$attributes5.titleT,
-            titleB = _props$attributes5.titleB,
-            titleWeight = _props$attributes5.titleWeight,
-            faIcon = _props$attributes5.faIcon,
-            containerBack = _props$attributes5.containerBack;
+        var _props$attributes6 = props.attributes,
+            increment = _props$attributes6.increment,
+            time = _props$attributes6.time,
+            delay = _props$attributes6.delay,
+            align = _props$attributes6.align,
+            flexDir = _props$attributes6.flexDir,
+            numberSize = _props$attributes6.numberSize,
+            numberColor = _props$attributes6.numberColor,
+            numberWeight = _props$attributes6.numberWeight,
+            prefix = _props$attributes6.prefix,
+            prefixTxt = _props$attributes6.prefixTxt,
+            prefixSize = _props$attributes6.prefixSize,
+            prefixColor = _props$attributes6.prefixColor,
+            prefixWeight = _props$attributes6.prefixWeight,
+            prefixGap = _props$attributes6.prefixGap,
+            suffix = _props$attributes6.suffix,
+            suffixTxt = _props$attributes6.suffixTxt,
+            suffixSize = _props$attributes6.suffixSize,
+            suffixColor = _props$attributes6.suffixColor,
+            suffixWeight = _props$attributes6.suffixWeight,
+            suffixGap = _props$attributes6.suffixGap,
+            iconCheck = _props$attributes6.iconCheck,
+            icon = _props$attributes6.icon,
+            iconSpacing = _props$attributes6.iconSpacing,
+            iconType = _props$attributes6.iconType,
+            imageURL = _props$attributes6.imageURL,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            selfAlign = _props$attributes6.selfAlign,
+            titleCheck = _props$attributes6.titleCheck,
+            titleTxt = _props$attributes6.titleTxt,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleSpacing = _props$attributes6.titleSpacing,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleT = _props$attributes6.titleT,
+            titleB = _props$attributes6.titleB,
+            titleWeight = _props$attributes6.titleWeight,
+            faIcon = _props$attributes6.faIcon,
+            containerBack = _props$attributes6.containerBack;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -22130,46 +22308,46 @@ var deprecatedContent = [{
 }, {
     attributes: counterAttrs_1_0_9,
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            increment = _props$attributes6.increment,
-            time = _props$attributes6.time,
-            delay = _props$attributes6.delay,
-            align = _props$attributes6.align,
-            flexDir = _props$attributes6.flexDir,
-            numberSize = _props$attributes6.numberSize,
-            numberColor = _props$attributes6.numberColor,
-            numberWeight = _props$attributes6.numberWeight,
-            prefix = _props$attributes6.prefix,
-            prefixTxt = _props$attributes6.prefixTxt,
-            prefixSize = _props$attributes6.prefixSize,
-            prefixColor = _props$attributes6.prefixColor,
-            prefixWeight = _props$attributes6.prefixWeight,
-            prefixGap = _props$attributes6.prefixGap,
-            suffix = _props$attributes6.suffix,
-            suffixTxt = _props$attributes6.suffixTxt,
-            suffixSize = _props$attributes6.suffixSize,
-            suffixColor = _props$attributes6.suffixColor,
-            suffixWeight = _props$attributes6.suffixWeight,
-            suffixGap = _props$attributes6.suffixGap,
-            iconCheck = _props$attributes6.iconCheck,
-            icon = _props$attributes6.icon,
-            iconSpacing = _props$attributes6.iconSpacing,
-            iconType = _props$attributes6.iconType,
-            imageURL = _props$attributes6.imageURL,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            selfAlign = _props$attributes6.selfAlign,
-            titleCheck = _props$attributes6.titleCheck,
-            titleTxt = _props$attributes6.titleTxt,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleSpacing = _props$attributes6.titleSpacing,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleT = _props$attributes6.titleT,
-            titleB = _props$attributes6.titleB,
-            titleWeight = _props$attributes6.titleWeight,
-            faIcon = _props$attributes6.faIcon;
+        var _props$attributes7 = props.attributes,
+            increment = _props$attributes7.increment,
+            time = _props$attributes7.time,
+            delay = _props$attributes7.delay,
+            align = _props$attributes7.align,
+            flexDir = _props$attributes7.flexDir,
+            numberSize = _props$attributes7.numberSize,
+            numberColor = _props$attributes7.numberColor,
+            numberWeight = _props$attributes7.numberWeight,
+            prefix = _props$attributes7.prefix,
+            prefixTxt = _props$attributes7.prefixTxt,
+            prefixSize = _props$attributes7.prefixSize,
+            prefixColor = _props$attributes7.prefixColor,
+            prefixWeight = _props$attributes7.prefixWeight,
+            prefixGap = _props$attributes7.prefixGap,
+            suffix = _props$attributes7.suffix,
+            suffixTxt = _props$attributes7.suffixTxt,
+            suffixSize = _props$attributes7.suffixSize,
+            suffixColor = _props$attributes7.suffixColor,
+            suffixWeight = _props$attributes7.suffixWeight,
+            suffixGap = _props$attributes7.suffixGap,
+            iconCheck = _props$attributes7.iconCheck,
+            icon = _props$attributes7.icon,
+            iconSpacing = _props$attributes7.iconSpacing,
+            iconType = _props$attributes7.iconType,
+            imageURL = _props$attributes7.imageURL,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            selfAlign = _props$attributes7.selfAlign,
+            titleCheck = _props$attributes7.titleCheck,
+            titleTxt = _props$attributes7.titleTxt,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleSpacing = _props$attributes7.titleSpacing,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleT = _props$attributes7.titleT,
+            titleB = _props$attributes7.titleB,
+            titleWeight = _props$attributes7.titleWeight,
+            faIcon = _props$attributes7.faIcon;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return wp.element.createElement(
@@ -23379,6 +23557,22 @@ var dualHeadingAttrs = {
         type: "number",
         default: "0"
     },
+    firstMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLMobile: {
+        type: "number",
+        default: "0"
+    },
     firstPaddingT: {
         type: "number",
         default: "0"
@@ -23535,6 +23729,22 @@ var dualHeadingAttrs = {
         default: "0"
     },
     secondMarginL: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLMobile: {
         type: "number",
         default: "0"
     },
@@ -23723,8 +23933,8 @@ registerBlockType("premium/dheading-block", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(24);
@@ -23887,6 +24097,10 @@ var edit = function (_Component) {
                 secondPaddingLMobile = _props$attributes.secondPaddingLMobile,
                 secondMarginL = _props$attributes.secondMarginL,
                 secondMarginR = _props$attributes.secondMarginR,
+                secondMarginLTablet = _props$attributes.secondMarginLTablet,
+                secondMarginRTablet = _props$attributes.secondMarginRTablet,
+                secondMarginLMobile = _props$attributes.secondMarginLMobile,
+                secondMarginRMobile = _props$attributes.secondMarginRMobile,
                 secondClip = _props$attributes.secondClip,
                 secondStroke = _props$attributes.secondStroke,
                 secondAnim = _props$attributes.secondAnim,
@@ -24269,6 +24483,34 @@ var edit = function (_Component) {
                             return setAttributes({ firstShadowVertical: newValue || "0" });
                         }
                     }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["left", "right"],
+                        marginRight: firstMarginR,
+                        marginLeft: firstMarginL,
+                        marginRightTablet: firstMarginRTablet,
+                        marginLeftTablet: firstMarginLTablet,
+                        marginRightMobile: firstMarginRMobile,
+                        marginLeftMobile: firstMarginLMobile,
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ firstMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ firstMarginLMobile: newValue });
+                            }
+                        }
+
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: firstPaddingT,
                         paddingRight: firstPaddingR,
@@ -24282,41 +24524,41 @@ var edit = function (_Component) {
                         paddingRightMobile: firstPaddingRMobile,
                         paddingBottomMobile: firstPaddingBMobile,
                         paddingLeftMobile: firstPaddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ firstPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ firstPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ firstPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ firstPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ firstPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ firstPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ firstPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ firstPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ firstPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ firstPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ firstPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ firstPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ firstPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ firstPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ firstPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ firstPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ firstPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ firstPaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -24568,6 +24810,33 @@ var edit = function (_Component) {
                             return setAttributes({ secondShadowVertical: newValue || "0" });
                         }
                     }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["left", "right"],
+                        marginRight: secondMarginR,
+                        marginLeft: secondMarginL,
+                        marginRightTablet: secondMarginRTablet,
+                        marginLeftTablet: secondMarginLTablet,
+                        marginRightMobile: secondMarginRMobile,
+                        marginLeftMobile: secondMarginLMobile,
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ secondMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ secondMarginLMobile: newValue });
+                            }
+                        }
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: secondPaddingT,
                         paddingRight: secondPaddingR,
@@ -24581,43 +24850,42 @@ var edit = function (_Component) {
                         paddingRightMobile: secondPaddingRMobile,
                         paddingBottomMobile: secondPaddingBMobile,
                         paddingLeftMobile: secondPaddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ secondPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ secondPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ secondPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ secondPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ secondPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ secondPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ secondPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ secondPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ secondPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ secondPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ secondPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ secondPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ secondPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ secondPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ secondPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ secondPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ secondPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ secondPaddingLMobile: newValue });
+                            }
                         }
-
                     })
                 ),
                 wp.element.createElement(
@@ -24766,8 +25034,6 @@ var edit = function (_Component) {
                                     borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
                                     borderRadius: firstBorderRadius + "px",
                                     borderColor: firstBorderColor,
-                                    marginLeft: firstMarginL + "px",
-                                    marginRight: firstMarginR + "px",
                                     textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
                                 }
                             },
@@ -24791,8 +25057,6 @@ var edit = function (_Component) {
                                     borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
                                     borderRadius: secondBorderRadius + "px",
                                     borderColor: secondBorderColor,
-                                    marginLeft: secondMarginL + "px",
-                                    marginRight: secondMarginR + "px",
                                     textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
                                 }
                             },
@@ -24822,7 +25086,7 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -24861,7 +25125,19 @@ function styling(props) {
         secondPaddingTMobile = _props$attributes.secondPaddingTMobile,
         secondPaddingRMobile = _props$attributes.secondPaddingRMobile,
         secondPaddingBMobile = _props$attributes.secondPaddingBMobile,
-        secondPaddingLMobile = _props$attributes.secondPaddingLMobile;
+        secondPaddingLMobile = _props$attributes.secondPaddingLMobile,
+        firstMarginR = _props$attributes.firstMarginR,
+        firstMarginL = _props$attributes.firstMarginL,
+        firstMarginRTablet = _props$attributes.firstMarginRTablet,
+        firstMarginLTablet = _props$attributes.firstMarginLTablet,
+        firstMarginRMobile = _props$attributes.firstMarginRMobile,
+        firstMarginLMobile = _props$attributes.firstMarginLMobile,
+        secondMarginL = _props$attributes.secondMarginL,
+        secondMarginR = _props$attributes.secondMarginR,
+        secondMarginLTablet = _props$attributes.secondMarginLTablet,
+        secondMarginRTablet = _props$attributes.secondMarginRTablet,
+        secondMarginLMobile = _props$attributes.secondMarginLMobile,
+        secondMarginRMobile = _props$attributes.secondMarginRMobile;
 
 
     var selectors = {};
@@ -24874,14 +25150,19 @@ function styling(props) {
             "padding-top": firstPaddingT + 'px',
             "padding-right": firstPaddingR + 'px',
             "padding-bottom": firstPaddingB + 'px',
-            "padding-left": firstPaddingL + 'px'
+            "padding-left": firstPaddingL + 'px',
+            "margin-right": firstMarginR + 'px',
+            "margin-left": firstMarginL + ' px'
+
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSize, secondSizeUnit),
             "padding-top": secondPaddingT + 'px',
             "padding-right": secondPaddingR + 'px',
             "padding-bottom": secondPaddingB + 'px',
-            "padding-left": secondPaddingL + 'px'
+            "padding-left": secondPaddingL + 'px',
+            "margin-right": secondMarginR + 'px',
+            "margin-left": secondMarginL + ' px'
         }
     };
     tablet_selectors = {
@@ -24890,14 +25171,18 @@ function styling(props) {
             "padding-top": firstPaddingTTablet + 'px',
             "padding-right": firstPaddingRTablet + 'px',
             "padding-bottom": firstPaddingBTablet + 'px',
-            "padding-left": firstPaddingLTablet + 'px'
+            "padding-left": firstPaddingLTablet + 'px',
+            "margin-right": firstMarginRTablet + 'px',
+            "margin-left": firstMarginLTablet + ' px'
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeTablet, secondSizeUnit),
             "padding-top": secondPaddingTTablet + 'px',
             "padding-right": secondPaddingRTablet + 'px',
             "padding-bottom": secondPaddingBTablet + 'px',
-            "padding-left": secondPaddingLTablet + 'px'
+            "padding-left": secondPaddingLTablet + 'px',
+            "margin-right": secondMarginRTablet + 'px',
+            "margin-left": secondMarginLTablet + ' px'
         }
     };
     mobile_selectors = {
@@ -24906,14 +25191,18 @@ function styling(props) {
             "padding-top": firstPaddingTMobile + 'px',
             "padding-right": firstPaddingRMobile + 'px',
             "padding-bottom": firstPaddingBMobile + 'px',
-            "padding-left": firstPaddingLMobile + 'px'
+            "padding-left": firstPaddingLMobile + 'px',
+            "margin-right": firstMarginRMobile + 'px',
+            "margin-left": firstMarginLMobile + ' px'
         },
         " .premium-dheading-block__second": {
             'font-size': Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(secondSizeMobile, secondSizeUnit),
             "padding-top": secondPaddingTMobile + 'px',
             "padding-right": secondPaddingRMobile + 'px',
             "padding-bottom": secondPaddingBMobile + 'px',
-            "padding-left": secondPaddingLMobile + 'px'
+            "padding-left": secondPaddingLMobile + 'px',
+            "margin-right": secondMarginRMobile + 'px',
+            "margin-left": secondMarginLMobile + ' px'
         }
     };
 
@@ -25076,7 +25365,6 @@ var save = function save(props) {
                             borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
                             borderRadius: firstBorderRadius + "px",
                             borderColor: firstBorderColor,
-                            margin: firstMargin + "px",
                             textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
                         }
                     },
@@ -25100,7 +25388,6 @@ var save = function save(props) {
                             borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
                             borderRadius: secondBorderRadius + "px",
                             borderColor: secondBorderColor,
-                            margin: secondMargin + "px",
                             textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
                         }
                     },
@@ -25804,6 +26091,38 @@ var newAttributes_1_8_1 = {
     secondPaddingLMobile: {
         type: "number",
         default: "0"
+    },
+    firstMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginLMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginLMobile: {
+        type: "number",
+        default: "0"
     }
 };
 
@@ -25836,7 +26155,15 @@ var deprecatedContent = [{
             secondPaddingTMobile: "",
             secondPaddingRMobile: "",
             secondPaddingBMobile: "",
-            secondPaddingLMobile: ""
+            secondPaddingLMobile: "",
+            firstMarginRTablet: "",
+            firstMarginLTablet: "",
+            firstMarginRMobile: "",
+            firstMarginLMobile: "",
+            secondMarginRTablet: "",
+            secondMarginLTablet: "",
+            secondMarginRMobile: "",
+            secondMarginLMobile: ""
         };
         return Object.assign(newAttributes, attributes);
     },
@@ -27071,6 +27398,30 @@ var iconAttrs = {
     marginL: {
         type: "number"
     },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
+    },
     borderType: {
         type: "string",
         default: "none"
@@ -27239,6 +27590,30 @@ var iconAttrs = {
     wrapMarginL: {
         type: "number"
     },
+    wrapMarginTTablet: {
+        type: "number"
+    },
+    wrapMarginRTablet: {
+        type: "number"
+    },
+    wrapMarginBTablet: {
+        type: "number"
+    },
+    wrapMarginLTablet: {
+        type: "number"
+    },
+    wrapMarginTMobile: {
+        type: "number"
+    },
+    wrapMarginRMobile: {
+        type: "number"
+    },
+    wrapMarginBMobile: {
+        type: "number"
+    },
+    wrapMarginLMobile: {
+        type: "number"
+    },
     urlCheck: {
         type: "boolean"
     },
@@ -27287,8 +27662,8 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(15);
@@ -27402,6 +27777,14 @@ var edit = function (_Component) {
                 marginR = _props$attributes.marginR,
                 marginB = _props$attributes.marginB,
                 marginL = _props$attributes.marginL,
+                marginTTablet = _props$attributes.marginTTablet,
+                marginRTablet = _props$attributes.marginRTablet,
+                marginBTablet = _props$attributes.marginBTablet,
+                marginLTablet = _props$attributes.marginLTablet,
+                marginTMobile = _props$attributes.marginTMobile,
+                marginRMobile = _props$attributes.marginRMobile,
+                marginBMobile = _props$attributes.marginBMobile,
+                marginLMobile = _props$attributes.marginLMobile,
                 borderType = _props$attributes.borderType,
                 borderWidth = _props$attributes.borderWidth,
                 iconBorder = _props$attributes.iconBorder,
@@ -27449,6 +27832,14 @@ var edit = function (_Component) {
                 wrapMarginR = _props$attributes.wrapMarginR,
                 wrapMarginB = _props$attributes.wrapMarginB,
                 wrapMarginL = _props$attributes.wrapMarginL,
+                wrapMarginTTablet = _props$attributes.wrapMarginTTablet,
+                wrapMarginRTablet = _props$attributes.wrapMarginRTablet,
+                wrapMarginBTablet = _props$attributes.wrapMarginBTablet,
+                wrapMarginLTablet = _props$attributes.wrapMarginLTablet,
+                wrapMarginTMobile = _props$attributes.wrapMarginTMobile,
+                wrapMarginRMobile = _props$attributes.wrapMarginRMobile,
+                wrapMarginBMobile = _props$attributes.wrapMarginBMobile,
+                wrapMarginLMobile = _props$attributes.wrapMarginLMobile,
                 urlCheck = _props$attributes.urlCheck,
                 link = _props$attributes.link,
                 target = _props$attributes.target,
@@ -27687,6 +28078,58 @@ var edit = function (_Component) {
                             return setAttributes({ shadowVertical: newValue });
                         }
                     }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["all"],
+                        marginTop: marginT,
+                        marginRight: marginR,
+                        marginBottom: marginB,
+                        marginLeft: marginL,
+                        marginTopTablet: marginTTablet,
+                        marginRightTablet: marginRTablet,
+                        marginBottomTablet: marginBTablet,
+                        marginLeftTablet: marginLTablet,
+                        marginTopMobile: marginTMobile,
+                        marginRightMobile: marginRMobile,
+                        marginBottomMobile: marginBMobile,
+                        marginLeftMobile: marginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginTTablet: newValue });
+                            } else {
+                                setAttributes({ marginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginRTablet: newValue });
+                            } else {
+                                setAttributes({ marginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginBTablet: newValue });
+                            } else {
+                                setAttributes({ marginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginLTablet: newValue });
+                            } else {
+                                setAttributes({ marginLMobile: newValue });
+                            }
+                        }
+
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: paddingT,
                         paddingRight: paddingR,
@@ -27706,41 +28149,41 @@ var edit = function (_Component) {
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingU: newvalue });
                         },
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ paddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ paddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ paddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ paddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ paddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ paddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ paddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ paddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ paddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ paddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ paddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ paddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -27867,6 +28310,58 @@ var edit = function (_Component) {
                             });
                         }
                     }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["all"],
+                        marginTop: wrapMarginT,
+                        marginRight: wrapMarginR,
+                        marginBottom: wrapMarginB,
+                        marginLeft: wrapMarginL,
+                        marginTopTablet: wrapMarginTTablet,
+                        marginRightTablet: wrapMarginRTablet,
+                        marginBottomTablet: wrapMarginBTablet,
+                        marginLeftTablet: wrapMarginLTablet,
+                        marginTopMobile: wrapMarginTMobile,
+                        marginRightMobile: wrapMarginRMobile,
+                        marginBottomMobile: wrapMarginBMobile,
+                        marginLeftMobile: wrapMarginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ wrapMarginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ wrapMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ wrapMarginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ wrapMarginLMobile: newValue });
+                            }
+                        }
+
+                    }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: wrapPaddingT,
                         paddingRight: wrapPaddingR,
@@ -27880,41 +28375,41 @@ var edit = function (_Component) {
                         paddingRightMobile: wrapPaddingRMobile,
                         paddingBottomMobile: wrapPaddingBMobile,
                         paddingLeftMobile: wrapPaddingLMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ wrapPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ wrapPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ wrapPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ wrapPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ wrapPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ wrapPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ wrapPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ wrapPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ wrapPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ wrapPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ wrapPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ wrapPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ wrapPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ wrapPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ wrapPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ wrapPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ wrapPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ wrapPaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -36400,7 +36895,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -36432,7 +36927,31 @@ function styling(props) {
         wrapPaddingTMobile = _props$attributes.wrapPaddingTMobile,
         wrapPaddingRMobile = _props$attributes.wrapPaddingRMobile,
         wrapPaddingBMobile = _props$attributes.wrapPaddingBMobile,
-        wrapPaddingLMobile = _props$attributes.wrapPaddingLMobile;
+        wrapPaddingLMobile = _props$attributes.wrapPaddingLMobile,
+        wrapMarginT = _props$attributes.wrapMarginT,
+        wrapMarginR = _props$attributes.wrapMarginR,
+        wrapMarginB = _props$attributes.wrapMarginB,
+        wrapMarginL = _props$attributes.wrapMarginL,
+        wrapMarginTTablet = _props$attributes.wrapMarginTTablet,
+        wrapMarginRTablet = _props$attributes.wrapMarginRTablet,
+        wrapMarginBTablet = _props$attributes.wrapMarginBTablet,
+        wrapMarginLTablet = _props$attributes.wrapMarginLTablet,
+        wrapMarginTMobile = _props$attributes.wrapMarginTMobile,
+        wrapMarginRMobile = _props$attributes.wrapMarginRMobile,
+        wrapMarginBMobile = _props$attributes.wrapMarginBMobile,
+        wrapMarginLMobile = _props$attributes.wrapMarginLMobile,
+        marginT = _props$attributes.marginT,
+        marginR = _props$attributes.marginR,
+        marginB = _props$attributes.marginB,
+        marginL = _props$attributes.marginL,
+        marginTTablet = _props$attributes.marginTTablet,
+        marginRTablet = _props$attributes.marginRTablet,
+        marginBTablet = _props$attributes.marginBTablet,
+        marginLTablet = _props$attributes.marginLTablet,
+        marginTMobile = _props$attributes.marginTMobile,
+        marginRMobile = _props$attributes.marginRMobile,
+        marginBMobile = _props$attributes.marginBMobile,
+        marginLMobile = _props$attributes.marginLMobile;
 
 
     var selectors = {};
@@ -36445,13 +36964,21 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginT, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginR, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginB, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginL, 'px')
         },
         " ": {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingT, 'px'),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingR, 'px'),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingB, 'px'),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingL, 'px')
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingL, 'px'),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginT, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginR, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginB, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginL, 'px')
         }
     };
 
@@ -36461,13 +36988,21 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginTTablet, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginRTablet, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginBTablet, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginLTablet, 'px')
         },
         " ": {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingTTablet, 'px'),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingRTablet, 'px'),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingBTablet, 'px'),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLTablet, 'px')
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLTablet, 'px'),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginTTablet, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginRTablet, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginBTablet, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginLTablet, 'px')
         }
     };
 
@@ -36477,13 +37012,21 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginTMobile, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginRMobile, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginBMobile, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginLMobile, 'px')
         },
         " ": {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingTMobile, 'px'),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingRMobile, 'px'),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingBMobile, 'px'),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLMobile, 'px')
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapPaddingLMobile, 'px'),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginTMobile, 'px'),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginRMobile, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginBMobile, 'px'),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(wrapMarginLMobile, 'px')
         }
     };
 
@@ -36533,10 +37076,6 @@ var save = function save(props) {
         shadowColor = _props$attributes.shadowColor,
         shadowHorizontal = _props$attributes.shadowHorizontal,
         shadowVertical = _props$attributes.shadowVertical,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
         borderType = _props$attributes.borderType,
         borderWidth = _props$attributes.borderWidth,
         iconBorderTop = _props$attributes.iconBorderTop,
@@ -36564,10 +37103,6 @@ var save = function save(props) {
         wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
         wrapShadowVertical = _props$attributes.wrapShadowVertical,
         wrapShadowPosition = _props$attributes.wrapShadowPosition,
-        wrapMarginT = _props$attributes.wrapMarginT,
-        wrapMarginR = _props$attributes.wrapMarginR,
-        wrapMarginB = _props$attributes.wrapMarginB,
-        wrapMarginL = _props$attributes.wrapMarginL,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
@@ -36597,11 +37132,7 @@ var save = function save(props) {
                 borderWidth: wrapBorder ? wrapBorderTop + 'px ' + wrapBorderRight + 'px ' + wrapBorderBottom + 'px ' + wrapBorderLeft + 'px' : wrapBorderWidth + "px",
                 borderRadius: wrapBorderRadius + "px",
                 borderColor: wrapBorderColor,
-                boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition
             }
         },
         wp.element.createElement(
@@ -36618,10 +37149,6 @@ var save = function save(props) {
                     color: iconColor || "#6ec1e4",
                     backgroundColor: iconBack ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(iconBack, iconOpacity) : "transparent",
                     fontSize: (iconSize || 50) + iconSizeUnit,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
                     borderStyle: borderType,
                     borderWidth: iconBorder ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : borderWidth + "px",
                     borderRadius: borderRadius || 100 + "px",
@@ -37517,6 +38044,78 @@ var newAttributes_1_6_6 = {
     paddingU: {
         type: "string",
         default: "px"
+    },
+    wrapMarginT: {
+        type: "number"
+    },
+    wrapMarginR: {
+        type: "number"
+    },
+    wrapMarginB: {
+        type: "number"
+    },
+    wrapMarginL: {
+        type: "number"
+    },
+    wrapMarginTTablet: {
+        type: "number"
+    },
+    wrapMarginRTablet: {
+        type: "number"
+    },
+    wrapMarginBTablet: {
+        type: "number"
+    },
+    wrapMarginLTablet: {
+        type: "number"
+    },
+    wrapMarginTMobile: {
+        type: "number"
+    },
+    wrapMarginRMobile: {
+        type: "number"
+    },
+    wrapMarginBMobile: {
+        type: "number"
+    },
+    wrapMarginLMobile: {
+        type: "number"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
     }
 };
 
@@ -37550,7 +38149,31 @@ var deprecatedContent = [{
             paddingRMobile: "",
             paddingBMobile: "",
             paddingLMobile: "",
-            paddingU: "px"
+            paddingU: "px",
+            marginT: " ",
+            marginR: " ",
+            marginB: " ",
+            marginL: " ",
+            marginTTablet: " ",
+            marginRTablet: " ",
+            marginBTablet: " ",
+            marginLTablet: " ",
+            marginTMobile: " ",
+            marginRMobile: " ",
+            marginBMobile: " ",
+            marginLMobile: " ",
+            wrapMarginT: "",
+            wrapMarginR: "",
+            wrapMarginB: "",
+            wrapMarginL: "",
+            wrapMarginTTablet: "",
+            wrapMarginRTablet: "",
+            wrapMarginBTablet: "",
+            wrapMarginLTablet: "",
+            wrapMarginTMobile: "",
+            wrapMarginRMobile: "",
+            wrapMarginBMobile: "",
+            wrapMarginLMobile: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -38551,6 +39174,18 @@ var iconBoxAttrs = {
     titleMarginB: {
         type: "number"
     },
+    titleMarginTTablet: {
+        type: "number"
+    },
+    titleMarginBTablet: {
+        type: "number"
+    },
+    titleMarginTMobile: {
+        type: "number"
+    },
+    titleMarginBMobile: {
+        type: "number"
+    },
     descText: {
         type: "array",
         source: "children",
@@ -38594,6 +39229,18 @@ var iconBoxAttrs = {
         type: "number"
     },
     descMarginB: {
+        type: "number"
+    },
+    descMarginTTablet: {
+        type: "number"
+    },
+    descMarginBTablet: {
+        type: "number"
+    },
+    descMarginTMobile: {
+        type: "number"
+    },
+    descMarginBMobile: {
         type: "number"
     },
     btnChecked: {
@@ -38755,6 +39402,18 @@ var iconBoxAttrs = {
     btnMarginB: {
         type: "number"
     },
+    btnMarginTTablet: {
+        type: "number"
+    },
+    btnMarginBTablet: {
+        type: "number"
+    },
+    btnMarginTMobile: {
+        type: "number"
+    },
+    btnMarginBMobile: {
+        type: "number"
+    },
     btnShadowColor: {
         type: "string"
     },
@@ -38823,6 +39482,30 @@ var iconBoxAttrs = {
         type: "number"
     },
     marginL: {
+        type: "number"
+    },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
         type: "number"
     },
     paddingT: {
@@ -38951,11 +39634,11 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(14);
@@ -39085,6 +39768,10 @@ var edit = function (_Component) {
                 titleShadowVertical = attributes.titleShadowVertical,
                 titleMarginT = attributes.titleMarginT,
                 titleMarginB = attributes.titleMarginB,
+                titleMarginTTablet = attributes.titleMarginTTablet,
+                titleMarginBTablet = attributes.titleMarginBTablet,
+                titleMarginTMobile = attributes.titleMarginTMobile,
+                titleMarginBMobile = attributes.titleMarginBMobile,
                 descChecked = attributes.descChecked,
                 descText = attributes.descText,
                 descColor = attributes.descColor,
@@ -39097,6 +39784,10 @@ var edit = function (_Component) {
                 descWeight = attributes.descWeight,
                 descMarginT = attributes.descMarginT,
                 descMarginB = attributes.descMarginB,
+                descMarginTTablet = attributes.descMarginTTablet,
+                descMarginBTablet = attributes.descMarginBTablet,
+                descMarginTMobile = attributes.descMarginTMobile,
+                descMarginBMobile = attributes.descMarginBMobile,
                 btnChecked = attributes.btnChecked,
                 btnEffect = attributes.btnEffect,
                 effectDir = attributes.effectDir,
@@ -39140,6 +39831,10 @@ var edit = function (_Component) {
                 btnPaddingU = attributes.btnPaddingU,
                 btnMarginT = attributes.btnMarginT,
                 btnMarginB = attributes.btnMarginB,
+                btnMarginTTablet = attributes.btnMarginTTablet,
+                btnMarginBTablet = attributes.btnMarginBTablet,
+                btnMarginTMobile = attributes.btnMarginTMobile,
+                btnMarginBMobile = attributes.btnMarginBMobile,
                 btnShadowBlur = attributes.btnShadowBlur,
                 btnShadowColor = attributes.btnShadowColor,
                 btnShadowHorizontal = attributes.btnShadowHorizontal,
@@ -39165,6 +39860,14 @@ var edit = function (_Component) {
                 marginR = attributes.marginR,
                 marginB = attributes.marginB,
                 marginL = attributes.marginL,
+                marginTTablet = attributes.marginTTablet,
+                marginRTablet = attributes.marginRTablet,
+                marginBTablet = attributes.marginBTablet,
+                marginLTablet = attributes.marginLTablet,
+                marginTMobile = attributes.marginTMobile,
+                marginRMobile = attributes.marginRMobile,
+                marginBMobile = attributes.marginBMobile,
+                marginLMobile = attributes.marginLMobile,
                 paddingT = attributes.paddingT,
                 paddingR = attributes.paddingR,
                 paddingB = attributes.paddingB,
@@ -39560,39 +40263,27 @@ var edit = function (_Component) {
                         directions: ["top", "bottom"],
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                titleMarginT: value || 0
-                            });
+                        marginTopTablet: titleMarginTTablet,
+                        marginBottomTablet: titleMarginBTablet,
+                        marginTopMobile: titleMarginTMobile,
+                        marginBottomMobile: titleMarginBMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginTMobile: newValue });
+                            }
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                titleMarginB: value || 0
-                            });
-                        },
-                        marginTopTablet: titleMarginT,
-                        marginBottomTablet: titleMarginB,
-                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                            return setAttributes({
-                                titleMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                            return setAttributes({
-                                titleMarginB: value || 0
-                            });
-                        },
-                        marginTopMobile: titleMarginT,
-                        marginBottomMobile: titleMarginB,
-                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                            return setAttributes({
-                                titleMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                            return setAttributes({
-                                titleMarginB: value || 0
-                            });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginBMobile: newValue });
+                            }
                         }
 
                     })
@@ -39642,40 +40333,29 @@ var edit = function (_Component) {
                         directions: ["top", "bottom"],
                         marginTop: descMarginT,
                         marginBottom: descMarginB,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                descMarginT: value || 0
-                            });
+                        marginTopTablet: descMarginTTablet,
+                        marginBottomTablet: descMarginBTablet,
+                        marginTopMobile: descMarginTMobile,
+                        marginBottomMobile: descMarginBMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ descMarginTMobile: newValue });
+                            }
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                descMarginB: value || 0
-                            });
-                        },
-                        marginTopTablet: descMarginT,
-                        marginBottomTablet: descMarginB,
-                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                            return setAttributes({
-                                descMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                            return setAttributes({
-                                descMarginB: value || 0
-                            });
-                        },
-                        marginTopMobile: descMarginT,
-                        marginBottomMobile: descMarginB,
-                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                            return setAttributes({
-                                descMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                            return setAttributes({
-                                descMarginB: value || 0
-                            });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ descMarginBMobile: newValue });
+                            }
                         }
+
                     })
                 ),
                 btnChecked && wp.element.createElement(
@@ -39828,80 +40508,68 @@ var edit = function (_Component) {
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ btnPaddingU: newvalue });
                         },
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ btnPaddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ btnPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ btnPaddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ btnPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ btnPaddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ btnPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ btnPaddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ btnPaddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ btnPaddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ btnPaddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ btnPaddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ btnPaddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ btnPaddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ btnPaddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ btnPaddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ btnPaddingLMobile: newValue });
+                            }
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
                         directions: ["top", "bottom"],
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                btnMarginT: value || 0
-                            });
+                        marginTopTablet: btnMarginTTablet,
+                        marginBottomTablet: btnMarginBTablet,
+                        marginTopMobile: btnMarginTMobile,
+                        marginBottomMobile: btnMarginBMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ btnMarginTMobile: newValue });
+                            }
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                btnMarginB: value || 0
-                            });
-                        },
-                        marginTopTablet: btnMarginT,
-                        marginBottomTablet: btnMarginB,
-                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                            return setAttributes({
-                                btnMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                            return setAttributes({
-                                btnMarginB: value || 0
-                            });
-                        },
-                        marginTopMobile: btnMarginT,
-                        marginBottomMobile: btnMarginB,
-                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                            return setAttributes({
-                                btnMarginT: value || 0
-                            });
-                        },
-                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                            return setAttributes({
-                                btnMarginB: value || 0
-                            });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ btnMarginBMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -40046,73 +40714,49 @@ var edit = function (_Component) {
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                marginT: value || 0
-                            });
+                        marginTopTablet: marginTTablet,
+                        marginRightTablet: marginRTablet,
+                        marginBottomTablet: marginBTablet,
+                        marginLeftTablet: marginLTablet,
+                        marginTopMobile: marginTMobile,
+                        marginRightMobile: marginRMobile,
+                        marginBottomMobile: marginBMobile,
+                        marginLeftMobile: marginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginTTablet: newValue });
+                            } else {
+                                setAttributes({ marginTMobile: newValue });
+                            }
                         },
-                        onChangeMarRight: function onChangeMarRight(value) {
-                            return setAttributes({
-                                marginR: value || 0
-                            });
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginRTablet: newValue });
+                            } else {
+                                setAttributes({ marginRMobile: newValue });
+                            }
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                marginB: value || 0
-                            });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginBTablet: newValue });
+                            } else {
+                                setAttributes({ marginBMobile: newValue });
+                            }
                         },
-                        onChangeMarLeft: function onChangeMarLeft(value) {
-                            return setAttributes({
-                                marginL: value || 0
-                            });
-                        },
-                        marginTopTablet: marginT,
-                        marginRightTablet: marginR,
-                        marginBottomTablet: marginB,
-                        marginLeftTablet: marginL,
-                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                            return setAttributes({
-                                marginT: value || 0
-                            });
-                        },
-                        onChangeMarRightTablet: function onChangeMarRightTablet(value) {
-                            return setAttributes({
-                                marginR: value || 0
-                            });
-                        },
-                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                            return setAttributes({
-                                marginB: value || 0
-                            });
-                        },
-                        onChangeMarLeftTablet: function onChangeMarLeftTablet(value) {
-                            return setAttributes({
-                                marginL: value || 0
-                            });
-                        },
-                        marginTopMobile: marginT,
-                        marginRightMobile: marginR,
-                        marginBottomMobile: marginB,
-                        marginLeftMobile: marginL,
-                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                            return setAttributes({
-                                marginT: value || 0
-                            });
-                        },
-                        onChangeMarRightMobile: function onChangeMarRightMobile(value) {
-                            return setAttributes({
-                                marginR: value || 0
-                            });
-                        },
-                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                            return setAttributes({
-                                marginB: value || 0
-                            });
-                        },
-                        onChangeMarLeftMobile: function onChangeMarLeftMobile(value) {
-                            return setAttributes({
-                                marginL: value || 0
-                            });
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginLTablet: newValue });
+                            } else {
+                                setAttributes({ marginLMobile: newValue });
+                            }
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Premium_Responsive_Padding__["a" /* default */], {
@@ -40133,43 +40777,42 @@ var edit = function (_Component) {
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingU: newvalue });
                         },
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ paddingT: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ paddingR: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ paddingB: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ paddingL: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ paddingTTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ paddingRTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ paddingBTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ paddingLTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ paddingTMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ paddingRMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ paddingBMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ paddingLMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
-
                     })
                 ),
                 wp.element.createElement(
@@ -40416,10 +41059,6 @@ var edit = function (_Component) {
                         borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
                         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
                         backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_14_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                         backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
@@ -40473,11 +41112,7 @@ var edit = function (_Component) {
                     titleChecked && titleText && wp.element.createElement(
                         "div",
                         {
-                            className: "premium-icon-box__title_wrap",
-                            style: {
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
-                            }
+                            className: "premium-icon-box__title_wrap"
                         },
                         wp.element.createElement(RichText, {
                             tagName: titleTag.toLowerCase(),
@@ -40584,7 +41219,7 @@ var edit = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -40629,7 +41264,37 @@ function styling(props) {
         btnPaddingTMobile = _props$attributes.btnPaddingTMobile,
         btnPaddingRMobile = _props$attributes.btnPaddingRMobile,
         btnPaddingBMobile = _props$attributes.btnPaddingBMobile,
-        btnPaddingLMobile = _props$attributes.btnPaddingLMobile;
+        btnPaddingLMobile = _props$attributes.btnPaddingLMobile,
+        marginT = _props$attributes.marginT,
+        marginR = _props$attributes.marginR,
+        marginB = _props$attributes.marginB,
+        marginL = _props$attributes.marginL,
+        marginTTablet = _props$attributes.marginTTablet,
+        marginRTablet = _props$attributes.marginRTablet,
+        marginBTablet = _props$attributes.marginBTablet,
+        marginLTablet = _props$attributes.marginLTablet,
+        marginTMobile = _props$attributes.marginTMobile,
+        marginRMobile = _props$attributes.marginRMobile,
+        marginBMobile = _props$attributes.marginBMobile,
+        marginLMobile = _props$attributes.marginLMobile,
+        titleMarginT = _props$attributes.titleMarginT,
+        titleMarginB = _props$attributes.titleMarginB,
+        titleMarginTTablet = _props$attributes.titleMarginTTablet,
+        titleMarginBTablet = _props$attributes.titleMarginBTablet,
+        titleMarginTMobile = _props$attributes.titleMarginTMobile,
+        titleMarginBMobile = _props$attributes.titleMarginBMobile,
+        descMarginT = _props$attributes.descMarginT,
+        descMarginB = _props$attributes.descMarginB,
+        descMarginTTablet = _props$attributes.descMarginTTablet,
+        descMarginBTablet = _props$attributes.descMarginBTablet,
+        descMarginTMobile = _props$attributes.descMarginTMobile,
+        descMarginBMobile = _props$attributes.descMarginBMobile,
+        btnMarginT = _props$attributes.btnMarginT,
+        btnMarginB = _props$attributes.btnMarginB,
+        btnMarginTTablet = _props$attributes.btnMarginTTablet,
+        btnMarginBTablet = _props$attributes.btnMarginBTablet,
+        btnMarginTMobile = _props$attributes.btnMarginTMobile,
+        btnMarginBMobile = _props$attributes.btnMarginBMobile;
 
 
     var selectors = {};
@@ -40641,13 +41306,29 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingT, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingR, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingB, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingL, paddingU),
+            "margin-top": marginT + 'px',
+            "margin-right": marginR + 'px',
+            "margin-bottom": marginB + 'px',
+            "margin-left": marginL + 'px'
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSize, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSize, descSizeUnit)
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": titleMarginT + 'px',
+            "margin-bottom": titleMarginB + 'px'
+        },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": descMarginT + 'px',
+            "margin-bottom": descMarginB + 'px'
+        },
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": btnMarginT + 'px',
+            "margin-bottom": btnMarginB + 'px'
         },
         " .premium-icon-box__btn": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnSizeUnit),
@@ -40663,13 +41344,29 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTTablet, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRTablet, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBTablet, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLTablet, paddingU),
+            "margin-top": marginTTablet + 'px',
+            "margin-right": marginRTablet + 'px',
+            "margin-bottom": marginBTablet + 'px',
+            "margin-left": marginLTablet + 'px'
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeTablet, titleSizeUnit)
         },
         " .premium-icon-box__desc": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeTablet, descSizeUnit)
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": titleMarginTTablet + 'px',
+            "margin-bottom": titleMarginBTablet + 'px'
+        },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": descMarginTTablet + 'px',
+            "margin-bottom": descMarginBTablet + 'px'
+        },
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": btnMarginTTablet + 'px',
+            "margin-bottom": btnMarginBTablet + 'px'
         },
         " .premium-icon-box__btn": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeTablet, btnSizeUnit),
@@ -40685,13 +41382,30 @@ function styling(props) {
             "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTMobile, paddingU),
             "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRMobile, paddingU),
             "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBMobile, paddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU)
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLMobile, paddingU),
+            "margin-top": marginTMobile + 'px',
+            "margin-right": marginRMobile + 'px',
+            "margin-bottom": marginBMobile + 'px',
+            "margin-left": marginLMobile + 'px'
+        },
+        " .premium-icon-box__title_wrap  .premium-icon-box__title_wrap": {
+            "margin-top": titleMarginTMobile + 'px',
+            "margin-bottom": titleMarginBMobile + 'px'
         },
         " .premium-icon-box__title_wrap .premium-icon-box__title ": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(titleSizeMobile, titleSizeUnit)
         },
+        " .premium-icon-box__desc_wrap": {
+            "margin-top": descMarginTMobile + 'px',
+            "margin-bottom": descMarginBMobile + 'px'
+        },
         " .premium-icon-box__desc": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(descSizeMobile, descSizeUnit)
+        },
+
+        " .premium-icon-box__btn_wrap": {
+            "margin-top": btnMarginTMobile + 'px',
+            "margin-bottom": btnMarginBMobile + 'px'
         },
         " .premium-icon-box__btn": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSizeMobile, btnSizeUnit),
@@ -40861,10 +41575,6 @@ var save = function save(props) {
                 borderWidth: borderIconBox ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
                 boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                 backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                 backgroundImage: 'url(\'' + imageURL + '\')',
@@ -40909,11 +41619,7 @@ var save = function save(props) {
             titleChecked && titleText && wp.element.createElement(
                 'div',
                 {
-                    className: 'premium-icon-box__title_wrap',
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
+                    className: 'premium-icon-box__title_wrap'
                 },
                 wp.element.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
@@ -40934,11 +41640,7 @@ var save = function save(props) {
             descChecked && descText && wp.element.createElement(
                 'div',
                 {
-                    className: 'premium-icon-box__desc_wrap',
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
+                    className: 'premium-icon-box__desc_wrap'
                 },
                 wp.element.createElement(RichText.Content, {
                     tagName: 'p',
@@ -40955,11 +41657,7 @@ var save = function save(props) {
             btnChecked && btnText && wp.element.createElement(
                 'div',
                 {
-                    className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
+                    className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir
                 },
                 wp.element.createElement(RichText.Content, {
                     tagName: 'a',
@@ -42223,45 +42921,247 @@ var newAttributes_1_7_3 = {
 };
 var deprecated_attributes_1_7_3 = Object.assign(deprecated_attributes_1_7_2, newAttributes_1_7_3);
 
-var deprecatedContent = [{
-    attributes: deprecated_attributes_1_7_3,
+var newAttributes_1_7_7 = {
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    titleMarginTTablet: {
+        type: "number"
+    },
+    titleMarginBTablet: {
+        type: "number"
+    },
+    titleMarginTMobile: {
+        type: "number"
+    },
+    titleMarginBMobile: {
+        type: "number"
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    descMarginTTablet: {
+        type: "number"
+    },
+    descMarginBTablet: {
+        type: "number"
+    },
+    descMarginTMobile: {
+        type: "number"
+    },
+    descMarginBMobile: {
+        type: "number"
+    },
+    btnPaddingT: {
+        type: "number"
+    },
+    btnPaddingR: {
+        type: "number"
+    },
+    btnPaddingB: {
+        type: "number"
+    },
+    btnPaddingL: {
+        type: "number"
+    },
+    btnPaddingTTablet: {
+        type: "number"
+    },
+    btnPaddingRTablet: {
+        type: "number"
+    },
+    btnPaddingBTablet: {
+        type: "number"
+    },
+    btnPaddingLTablet: {
+        type: "number"
+    },
+    btnPaddingTMobile: {
+        type: "number"
+    },
+    btnPaddingRMobile: {
+        type: "number"
+    },
+    btnPaddingBMobile: {
+        type: "number"
+    },
+    btnPaddingLMobile: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string",
+        default: "px"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    btnMarginTTablet: {
+        type: "number"
+    },
+    btnMarginBTablet: {
+        type: "number"
+    },
+    btnMarginTMobile: {
+        type: "number"
+    },
+    btnMarginBMobile: {
+        type: "number"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    }
+};
 
+var deprecated_attributes_1_7_7 = Object.assign(newAttributes_1_7_7, deprecated_attributes_1_7_3);
+
+var deprecatedContent = [{
+    attributes: deprecated_attributes_1_7_7,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            btnPaddingT: "",
-            btnPaddingR: "",
-            btnPaddingB: "",
-            btnPaddingL: "",
-            btnPaddingTTablet: "",
-            btnPaddingRTablet: "",
-            btnPaddingBTablet: "",
-            btnPaddingLTablet: "",
-            btnPaddingTMobile: "",
-            btnPaddingRMobile: "",
-            btnPaddingBMobile: "",
-            btnPaddingLMobile: "",
-            btnPaddingU: "",
-            paddingT: "",
-            paddingR: "",
-            paddingB: "",
-            paddingL: "",
-            paddingTTablet: "",
-            paddingRTablet: "",
-            paddingBTablet: "",
-            paddingLTablet: "",
-            paddingTMobile: "",
-            paddingRMobile: "",
+            titleMarginT: '',
+            titleMarginB: '',
+            titleMarginTTablet: '',
+            titleMarginBTablet: '',
+            titleMarginTMobile: '',
+            titleMarginBMobile: '',
+            descMarginT: '',
+            descMarginB: '',
+            descMarginTTablet: '',
+            descMarginBTablet: '',
+            descMarginTMobile: '',
+            descMarginBMobile: '',
+            btnPaddingT: '',
+            btnPaddingR: '',
+            btnPaddingB: '',
+            btnPaddingL: '',
+            btnPaddingTTablet: '',
+            btnPaddingRTablet: '',
+            btnPaddingBTablet: '',
+            btnPaddingLTablet: '',
+            btnPaddingTMobile: '',
+            btnPaddingRMobile: '',
+            btnPaddingBMobile: '',
+            btnPaddingLMobile: '',
+            btnPaddingU: '',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnMarginTTablet: '',
+            btnMarginBTablet: '',
+            btnMarginTMobile: '',
+            btnMarginBMobile: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            marginTTablet: '',
+            marginRTablet: '',
+            marginBTablet: '',
+            marginLTablet: '',
+            marginTMobile: '',
+            marginRMobile: '',
+            marginBMobile: '',
+            marginLMobile: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingTTablet: '',
+            paddingRTablet: '',
+            paddingBTablet: '',
+            paddingLTablet: '',
+            paddingTMobile: '',
+            paddingRMobile: '',
             paddingBMobile: "",
             paddingLMobile: "",
-            paddingU: ""
+            paddingU: "px"
         };
-        return Object.assign(attributes, newAttributes);
+        return Object.assign(newAttributes, attributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderIconBox = _props$attributes.borderIconBox,
-            btnBorderIconBox = _props$attributes.btnBorderIconBox,
+            id = _props$attributes.id,
             align = _props$attributes.align,
             iconImage = _props$attributes.iconImage,
             iconImgUrl = _props$attributes.iconImgUrl,
@@ -42280,6 +43180,7 @@ var deprecatedContent = [{
             titleTag = _props$attributes.titleTag,
             titleColor = _props$attributes.titleColor,
             titleFont = _props$attributes.titleFont,
+            titleSize = _props$attributes.titleSize,
             titleLine = _props$attributes.titleLine,
             titleLetter = _props$attributes.titleLetter,
             titleStyle = _props$attributes.titleStyle,
@@ -42295,6 +43196,7 @@ var deprecatedContent = [{
             descText = _props$attributes.descText,
             descColor = _props$attributes.descColor,
             descFont = _props$attributes.descFont,
+            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descMarginT = _props$attributes.descMarginT,
@@ -42305,6 +43207,7 @@ var deprecatedContent = [{
             btnText = _props$attributes.btnText,
             btnTarget = _props$attributes.btnTarget,
             btnLink = _props$attributes.btnLink,
+            btnSize = _props$attributes.btnSize,
             btnStyle = _props$attributes.btnStyle,
             btnUpper = _props$attributes.btnUpper,
             btnWeight = _props$attributes.btnWeight,
@@ -42315,14 +43218,6 @@ var deprecatedContent = [{
             btnBack = _props$attributes.btnBack,
             btnHoverBack = _props$attributes.btnHoverBack,
             btnBorderWidth = _props$attributes.btnBorderWidth,
-            btnBorderTop = _props$attributes.btnBorderTop,
-            btnBorderRight = _props$attributes.btnBorderRight,
-            btnBorderBottom = _props$attributes.btnBorderBottom,
-            btnBorderLeft = _props$attributes.btnBorderLeft,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
             btnBorderRadius = _props$attributes.btnBorderRadius,
             btnBorderColor = _props$attributes.btnBorderColor,
             btnBorderType = _props$attributes.btnBorderType,
@@ -42363,13 +43258,300 @@ var deprecatedContent = [{
             hoverShadowColor = _props$attributes.hoverShadowColor,
             hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
             hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition,
-            iconOpacity = _props$attributes.iconOpacity,
-            btnOpacity = _props$attributes.btnOpacity,
-            backOpacity = _props$attributes.backOpacity,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
+            hoverShadowPosition = _props$attributes.hoverShadowPosition;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                id: "premium-icon-box-" + id,
+                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
+                style: {
+                    textAlign: align,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            btnChecked && btnText && wp.element.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                }
+            }),
+            iconChecked && wp.element.createElement(
+                "div",
+                {
+                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && wp.element.createElement("i", {
+                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
+                    style: {
+                        color: iconColor,
+                        backgroundColor: iconBackColor,
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && wp.element.createElement("img", {
+                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
+                    src: "" + iconImgUrl,
+                    alt: "Image Icon",
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            wp.element.createElement(
+                "div",
+                { className: "premium-icon-box__content_wrap" },
+                titleChecked && titleText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__title_wrap",
+                        style: {
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: "premium-icon-box__title",
+                        value: titleText,
+                        style: {
+                            color: titleColor,
+                            fontSize: titleSize + "px",
+                            fontFamily: titleFont,
+                            letterSpacing: titleLetter + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight,
+                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                            lineHeight: titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__desc_wrap",
+                        style: {
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-icon-box__desc",
+                        value: descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            fontFamily: descFont,
+                            lineHeight: descLine + "px",
+                            fontWeight: descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && wp.element.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                        style: {
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
+                        }
+                    },
+                    wp.element.createElement(RichText.Content, {
+                        tagName: "a",
+                        className: "premium-icon-box__btn premium-button",
+                        href: btnLink,
+                        rel: "noopener noreferrer",
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnColor,
+                            backgroundColor: btnBack,
+                            fontSize: btnSize + "px",
+                            letterSpacing: btnLetter + "px",
+                            textTransform: btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyle,
+                            fontWeight: btnWeight,
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor,
+                            padding: btnPadding + btnPaddingU,
+                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        }
+                    })
+                )
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_7_3,
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            btnPaddingT: "",
+            btnPaddingR: "",
+            btnPaddingB: "",
+            btnPaddingL: "",
+            btnPaddingTTablet: "",
+            btnPaddingRTablet: "",
+            btnPaddingBTablet: "",
+            btnPaddingLTablet: "",
+            btnPaddingTMobile: "",
+            btnPaddingRMobile: "",
+            btnPaddingBMobile: "",
+            btnPaddingLMobile: "",
+            btnPaddingU: "",
+            paddingT: "",
+            paddingR: "",
+            paddingB: "",
+            paddingL: "",
+            paddingTTablet: "",
+            paddingRTablet: "",
+            paddingBTablet: "",
+            paddingLTablet: "",
+            paddingTMobile: "",
+            paddingRMobile: "",
+            paddingBMobile: "",
+            paddingLMobile: "",
+            paddingU: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            borderIconBox = _props$attributes2.borderIconBox,
+            btnBorderIconBox = _props$attributes2.btnBorderIconBox,
+            align = _props$attributes2.align,
+            iconImage = _props$attributes2.iconImage,
+            iconImgUrl = _props$attributes2.iconImgUrl,
+            iconRadius = _props$attributes2.iconRadius,
+            selectedIcon = _props$attributes2.selectedIcon,
+            iconChecked = _props$attributes2.iconChecked,
+            hoverEffect = _props$attributes2.hoverEffect,
+            iconPos = _props$attributes2.iconPos,
+            iconHPos = _props$attributes2.iconHPos,
+            iconVPos = _props$attributes2.iconVPos,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            iconBackColor = _props$attributes2.iconBackColor,
+            titleChecked = _props$attributes2.titleChecked,
+            titleText = _props$attributes2.titleText,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleFont = _props$attributes2.titleFont,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            descChecked = _props$attributes2.descChecked,
+            descText = _props$attributes2.descText,
+            descColor = _props$attributes2.descColor,
+            descFont = _props$attributes2.descFont,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            btnChecked = _props$attributes2.btnChecked,
+            btnEffect = _props$attributes2.btnEffect,
+            effectDir = _props$attributes2.effectDir,
+            btnText = _props$attributes2.btnText,
+            btnTarget = _props$attributes2.btnTarget,
+            btnLink = _props$attributes2.btnLink,
+            btnStyle = _props$attributes2.btnStyle,
+            btnUpper = _props$attributes2.btnUpper,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLetter = _props$attributes2.btnLetter,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnHoverBorder = _props$attributes2.btnHoverBorder,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderTop = _props$attributes2.btnBorderTop,
+            btnBorderRight = _props$attributes2.btnBorderRight,
+            btnBorderBottom = _props$attributes2.btnBorderBottom,
+            btnBorderLeft = _props$attributes2.btnBorderLeft,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            marginT = _props$attributes2.marginT,
+            marginR = _props$attributes2.marginR,
+            marginB = _props$attributes2.marginB,
+            marginL = _props$attributes2.marginL,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
+            hoverShadowColor = _props$attributes2.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes2.hoverShadowPosition,
+            iconOpacity = _props$attributes2.iconOpacity,
+            btnOpacity = _props$attributes2.btnOpacity,
+            backOpacity = _props$attributes2.backOpacity,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
 
 
         return wp.element.createElement(
@@ -42549,105 +43731,105 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconPos = _props$attributes2.iconPos,
-            iconHPos = _props$attributes2.iconHPos,
-            iconVPos = _props$attributes2.iconVPos,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            align = _props$attributes3.align,
+            iconImage = _props$attributes3.iconImage,
+            iconImgUrl = _props$attributes3.iconImgUrl,
+            iconRadius = _props$attributes3.iconRadius,
+            selectedIcon = _props$attributes3.selectedIcon,
+            iconChecked = _props$attributes3.iconChecked,
+            hoverEffect = _props$attributes3.hoverEffect,
+            iconPos = _props$attributes3.iconPos,
+            iconHPos = _props$attributes3.iconHPos,
+            iconVPos = _props$attributes3.iconVPos,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            iconBackColor = _props$attributes3.iconBackColor,
+            titleChecked = _props$attributes3.titleChecked,
+            titleText = _props$attributes3.titleText,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleFont = _props$attributes3.titleFont,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            descChecked = _props$attributes3.descChecked,
+            descText = _props$attributes3.descText,
+            descColor = _props$attributes3.descColor,
+            descFont = _props$attributes3.descFont,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            btnChecked = _props$attributes3.btnChecked,
+            btnEffect = _props$attributes3.btnEffect,
+            effectDir = _props$attributes3.effectDir,
+            btnText = _props$attributes3.btnText,
+            btnTarget = _props$attributes3.btnTarget,
+            btnLink = _props$attributes3.btnLink,
+            btnSize = _props$attributes3.btnSize,
+            btnStyle = _props$attributes3.btnStyle,
+            btnUpper = _props$attributes3.btnUpper,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLetter = _props$attributes3.btnLetter,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnHoverBorder = _props$attributes3.btnHoverBorder,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnPadding = _props$attributes3.btnPadding,
+            btnPaddingU = _props$attributes3.btnPaddingU,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition,
+            backColor = _props$attributes3.backColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            marginT = _props$attributes3.marginT,
+            marginR = _props$attributes3.marginR,
+            marginB = _props$attributes3.marginB,
+            marginL = _props$attributes3.marginL,
+            paddingT = _props$attributes3.paddingT,
+            paddingR = _props$attributes3.paddingR,
+            paddingB = _props$attributes3.paddingB,
+            paddingL = _props$attributes3.paddingL,
+            paddingU = _props$attributes3.paddingU,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
+            hoverShadowColor = _props$attributes3.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -42805,102 +43987,102 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            align = _props$attributes3.align,
-            iconImage = _props$attributes3.iconImage,
-            iconImgUrl = _props$attributes3.iconImgUrl,
-            iconRadius = _props$attributes3.iconRadius,
-            selectedIcon = _props$attributes3.selectedIcon,
-            iconChecked = _props$attributes3.iconChecked,
-            hoverEffect = _props$attributes3.hoverEffect,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            iconBackColor = _props$attributes3.iconBackColor,
-            titleChecked = _props$attributes3.titleChecked,
-            titleText = _props$attributes3.titleText,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleFont = _props$attributes3.titleFont,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            descChecked = _props$attributes3.descChecked,
-            descText = _props$attributes3.descText,
-            descColor = _props$attributes3.descColor,
-            descFont = _props$attributes3.descFont,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            btnChecked = _props$attributes3.btnChecked,
-            btnEffect = _props$attributes3.btnEffect,
-            effectDir = _props$attributes3.effectDir,
-            btnText = _props$attributes3.btnText,
-            btnTarget = _props$attributes3.btnTarget,
-            btnLink = _props$attributes3.btnLink,
-            btnSize = _props$attributes3.btnSize,
-            btnStyle = _props$attributes3.btnStyle,
-            btnUpper = _props$attributes3.btnUpper,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLetter = _props$attributes3.btnLetter,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnHoverBorder = _props$attributes3.btnHoverBorder,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnPadding = _props$attributes3.btnPadding,
-            btnPaddingU = _props$attributes3.btnPaddingU,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition,
-            backColor = _props$attributes3.backColor,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            marginT = _props$attributes3.marginT,
-            marginR = _props$attributes3.marginR,
-            marginB = _props$attributes3.marginB,
-            marginL = _props$attributes3.marginL,
-            paddingT = _props$attributes3.paddingT,
-            paddingR = _props$attributes3.paddingR,
-            paddingB = _props$attributes3.paddingB,
-            paddingL = _props$attributes3.paddingL,
-            paddingU = _props$attributes3.paddingU,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
-            hoverShadowColor = _props$attributes3.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            align = _props$attributes4.align,
+            iconImage = _props$attributes4.iconImage,
+            iconImgUrl = _props$attributes4.iconImgUrl,
+            iconRadius = _props$attributes4.iconRadius,
+            selectedIcon = _props$attributes4.selectedIcon,
+            iconChecked = _props$attributes4.iconChecked,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBackColor = _props$attributes4.iconBackColor,
+            titleChecked = _props$attributes4.titleChecked,
+            titleText = _props$attributes4.titleText,
+            titleTag = _props$attributes4.titleTag,
+            titleColor = _props$attributes4.titleColor,
+            titleFont = _props$attributes4.titleFont,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titleMarginT = _props$attributes4.titleMarginT,
+            titleMarginB = _props$attributes4.titleMarginB,
+            descChecked = _props$attributes4.descChecked,
+            descText = _props$attributes4.descText,
+            descColor = _props$attributes4.descColor,
+            descFont = _props$attributes4.descFont,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descMarginT = _props$attributes4.descMarginT,
+            descMarginB = _props$attributes4.descMarginB,
+            btnChecked = _props$attributes4.btnChecked,
+            btnEffect = _props$attributes4.btnEffect,
+            effectDir = _props$attributes4.effectDir,
+            btnText = _props$attributes4.btnText,
+            btnTarget = _props$attributes4.btnTarget,
+            btnLink = _props$attributes4.btnLink,
+            btnSize = _props$attributes4.btnSize,
+            btnStyle = _props$attributes4.btnStyle,
+            btnUpper = _props$attributes4.btnUpper,
+            btnWeight = _props$attributes4.btnWeight,
+            btnLetter = _props$attributes4.btnLetter,
+            btnColor = _props$attributes4.btnColor,
+            btnHoverColor = _props$attributes4.btnHoverColor,
+            btnHoverBorder = _props$attributes4.btnHoverBorder,
+            btnBack = _props$attributes4.btnBack,
+            btnHoverBack = _props$attributes4.btnHoverBack,
+            btnBorderWidth = _props$attributes4.btnBorderWidth,
+            btnBorderRadius = _props$attributes4.btnBorderRadius,
+            btnBorderColor = _props$attributes4.btnBorderColor,
+            btnBorderType = _props$attributes4.btnBorderType,
+            btnPadding = _props$attributes4.btnPadding,
+            btnPaddingU = _props$attributes4.btnPaddingU,
+            btnMarginT = _props$attributes4.btnMarginT,
+            btnMarginB = _props$attributes4.btnMarginB,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition,
+            backColor = _props$attributes4.backColor,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            paddingU = _props$attributes4.paddingU,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
+            hoverShadowColor = _props$attributes4.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -43051,100 +44233,100 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            align = _props$attributes4.align,
-            iconImage = _props$attributes4.iconImage,
-            iconImgUrl = _props$attributes4.iconImgUrl,
-            iconRadius = _props$attributes4.iconRadius,
-            selectedIcon = _props$attributes4.selectedIcon,
-            iconChecked = _props$attributes4.iconChecked,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBackColor = _props$attributes4.iconBackColor,
-            titleChecked = _props$attributes4.titleChecked,
-            titleText = _props$attributes4.titleText,
-            titleTag = _props$attributes4.titleTag,
-            titleColor = _props$attributes4.titleColor,
-            titleFont = _props$attributes4.titleFont,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titleMarginT = _props$attributes4.titleMarginT,
-            titleMarginB = _props$attributes4.titleMarginB,
-            descChecked = _props$attributes4.descChecked,
-            descText = _props$attributes4.descText,
-            descColor = _props$attributes4.descColor,
-            descFont = _props$attributes4.descFont,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descMarginT = _props$attributes4.descMarginT,
-            descMarginB = _props$attributes4.descMarginB,
-            btnChecked = _props$attributes4.btnChecked,
-            btnEffect = _props$attributes4.btnEffect,
-            effectDir = _props$attributes4.effectDir,
-            btnText = _props$attributes4.btnText,
-            btnTarget = _props$attributes4.btnTarget,
-            btnLink = _props$attributes4.btnLink,
-            btnSize = _props$attributes4.btnSize,
-            btnStyle = _props$attributes4.btnStyle,
-            btnUpper = _props$attributes4.btnUpper,
-            btnWeight = _props$attributes4.btnWeight,
-            btnLetter = _props$attributes4.btnLetter,
-            btnColor = _props$attributes4.btnColor,
-            btnHoverColor = _props$attributes4.btnHoverColor,
-            btnHoverBorder = _props$attributes4.btnHoverBorder,
-            btnBack = _props$attributes4.btnBack,
-            btnHoverBack = _props$attributes4.btnHoverBack,
-            btnBorderWidth = _props$attributes4.btnBorderWidth,
-            btnBorderRadius = _props$attributes4.btnBorderRadius,
-            btnBorderColor = _props$attributes4.btnBorderColor,
-            btnBorderType = _props$attributes4.btnBorderType,
-            btnPadding = _props$attributes4.btnPadding,
-            btnMarginT = _props$attributes4.btnMarginT,
-            btnMarginB = _props$attributes4.btnMarginB,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition,
-            backColor = _props$attributes4.backColor,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
-            hoverShadowColor = _props$attributes4.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            align = _props$attributes5.align,
+            iconImage = _props$attributes5.iconImage,
+            iconImgUrl = _props$attributes5.iconImgUrl,
+            iconRadius = _props$attributes5.iconRadius,
+            selectedIcon = _props$attributes5.selectedIcon,
+            iconChecked = _props$attributes5.iconChecked,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBackColor = _props$attributes5.iconBackColor,
+            titleChecked = _props$attributes5.titleChecked,
+            titleText = _props$attributes5.titleText,
+            titleTag = _props$attributes5.titleTag,
+            titleColor = _props$attributes5.titleColor,
+            titleFont = _props$attributes5.titleFont,
+            titleSize = _props$attributes5.titleSize,
+            titleLine = _props$attributes5.titleLine,
+            titleLetter = _props$attributes5.titleLetter,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleWeight = _props$attributes5.titleWeight,
+            titleShadowBlur = _props$attributes5.titleShadowBlur,
+            titleShadowColor = _props$attributes5.titleShadowColor,
+            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes5.titleShadowVertical,
+            titleMarginT = _props$attributes5.titleMarginT,
+            titleMarginB = _props$attributes5.titleMarginB,
+            descChecked = _props$attributes5.descChecked,
+            descText = _props$attributes5.descText,
+            descColor = _props$attributes5.descColor,
+            descFont = _props$attributes5.descFont,
+            descSize = _props$attributes5.descSize,
+            descLine = _props$attributes5.descLine,
+            descWeight = _props$attributes5.descWeight,
+            descMarginT = _props$attributes5.descMarginT,
+            descMarginB = _props$attributes5.descMarginB,
+            btnChecked = _props$attributes5.btnChecked,
+            btnEffect = _props$attributes5.btnEffect,
+            effectDir = _props$attributes5.effectDir,
+            btnText = _props$attributes5.btnText,
+            btnTarget = _props$attributes5.btnTarget,
+            btnLink = _props$attributes5.btnLink,
+            btnSize = _props$attributes5.btnSize,
+            btnStyle = _props$attributes5.btnStyle,
+            btnUpper = _props$attributes5.btnUpper,
+            btnWeight = _props$attributes5.btnWeight,
+            btnLetter = _props$attributes5.btnLetter,
+            btnColor = _props$attributes5.btnColor,
+            btnHoverColor = _props$attributes5.btnHoverColor,
+            btnHoverBorder = _props$attributes5.btnHoverBorder,
+            btnBack = _props$attributes5.btnBack,
+            btnHoverBack = _props$attributes5.btnHoverBack,
+            btnBorderWidth = _props$attributes5.btnBorderWidth,
+            btnBorderRadius = _props$attributes5.btnBorderRadius,
+            btnBorderColor = _props$attributes5.btnBorderColor,
+            btnBorderType = _props$attributes5.btnBorderType,
+            btnPadding = _props$attributes5.btnPadding,
+            btnMarginT = _props$attributes5.btnMarginT,
+            btnMarginB = _props$attributes5.btnMarginB,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition,
+            backColor = _props$attributes5.backColor,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition,
+            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
+            hoverShadowColor = _props$attributes5.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -43295,98 +44477,98 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            align = _props$attributes5.align,
-            iconImage = _props$attributes5.iconImage,
-            iconImgUrl = _props$attributes5.iconImgUrl,
-            iconRadius = _props$attributes5.iconRadius,
-            selectedIcon = _props$attributes5.selectedIcon,
-            iconChecked = _props$attributes5.iconChecked,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            iconBackColor = _props$attributes5.iconBackColor,
-            titleChecked = _props$attributes5.titleChecked,
-            titleText = _props$attributes5.titleText,
-            titleTag = _props$attributes5.titleTag,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleLine = _props$attributes5.titleLine,
-            titleLetter = _props$attributes5.titleLetter,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleWeight = _props$attributes5.titleWeight,
-            titleShadowBlur = _props$attributes5.titleShadowBlur,
-            titleShadowColor = _props$attributes5.titleShadowColor,
-            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes5.titleShadowVertical,
-            titleMarginT = _props$attributes5.titleMarginT,
-            titleMarginB = _props$attributes5.titleMarginB,
-            descChecked = _props$attributes5.descChecked,
-            descText = _props$attributes5.descText,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descLine = _props$attributes5.descLine,
-            descWeight = _props$attributes5.descWeight,
-            descMarginT = _props$attributes5.descMarginT,
-            descMarginB = _props$attributes5.descMarginB,
-            btnChecked = _props$attributes5.btnChecked,
-            btnEffect = _props$attributes5.btnEffect,
-            effectDir = _props$attributes5.effectDir,
-            btnText = _props$attributes5.btnText,
-            btnTarget = _props$attributes5.btnTarget,
-            btnLink = _props$attributes5.btnLink,
-            btnSize = _props$attributes5.btnSize,
-            btnStyle = _props$attributes5.btnStyle,
-            btnUpper = _props$attributes5.btnUpper,
-            btnWeight = _props$attributes5.btnWeight,
-            btnLetter = _props$attributes5.btnLetter,
-            btnColor = _props$attributes5.btnColor,
-            btnHoverColor = _props$attributes5.btnHoverColor,
-            btnHoverBorder = _props$attributes5.btnHoverBorder,
-            btnBack = _props$attributes5.btnBack,
-            btnHoverBack = _props$attributes5.btnHoverBack,
-            btnBorderWidth = _props$attributes5.btnBorderWidth,
-            btnBorderRadius = _props$attributes5.btnBorderRadius,
-            btnBorderColor = _props$attributes5.btnBorderColor,
-            btnBorderType = _props$attributes5.btnBorderType,
-            btnPadding = _props$attributes5.btnPadding,
-            btnMarginT = _props$attributes5.btnMarginT,
-            btnMarginB = _props$attributes5.btnMarginB,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition,
-            backColor = _props$attributes5.backColor,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition,
-            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
-            hoverShadowColor = _props$attributes5.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            align = _props$attributes6.align,
+            iconImage = _props$attributes6.iconImage,
+            iconImgUrl = _props$attributes6.iconImgUrl,
+            iconRadius = _props$attributes6.iconRadius,
+            selectedIcon = _props$attributes6.selectedIcon,
+            iconChecked = _props$attributes6.iconChecked,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            iconBackColor = _props$attributes6.iconBackColor,
+            titleChecked = _props$attributes6.titleChecked,
+            titleText = _props$attributes6.titleText,
+            titleTag = _props$attributes6.titleTag,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleLine = _props$attributes6.titleLine,
+            titleLetter = _props$attributes6.titleLetter,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleWeight = _props$attributes6.titleWeight,
+            titleShadowBlur = _props$attributes6.titleShadowBlur,
+            titleShadowColor = _props$attributes6.titleShadowColor,
+            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes6.titleShadowVertical,
+            titleMarginT = _props$attributes6.titleMarginT,
+            titleMarginB = _props$attributes6.titleMarginB,
+            descChecked = _props$attributes6.descChecked,
+            descText = _props$attributes6.descText,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descLine = _props$attributes6.descLine,
+            descWeight = _props$attributes6.descWeight,
+            descMarginT = _props$attributes6.descMarginT,
+            descMarginB = _props$attributes6.descMarginB,
+            btnChecked = _props$attributes6.btnChecked,
+            btnEffect = _props$attributes6.btnEffect,
+            effectDir = _props$attributes6.effectDir,
+            btnText = _props$attributes6.btnText,
+            btnTarget = _props$attributes6.btnTarget,
+            btnLink = _props$attributes6.btnLink,
+            btnSize = _props$attributes6.btnSize,
+            btnStyle = _props$attributes6.btnStyle,
+            btnUpper = _props$attributes6.btnUpper,
+            btnWeight = _props$attributes6.btnWeight,
+            btnLetter = _props$attributes6.btnLetter,
+            btnColor = _props$attributes6.btnColor,
+            btnHoverColor = _props$attributes6.btnHoverColor,
+            btnHoverBorder = _props$attributes6.btnHoverBorder,
+            btnBack = _props$attributes6.btnBack,
+            btnHoverBack = _props$attributes6.btnHoverBack,
+            btnBorderWidth = _props$attributes6.btnBorderWidth,
+            btnBorderRadius = _props$attributes6.btnBorderRadius,
+            btnBorderColor = _props$attributes6.btnBorderColor,
+            btnBorderType = _props$attributes6.btnBorderType,
+            btnPadding = _props$attributes6.btnPadding,
+            btnMarginT = _props$attributes6.btnMarginT,
+            btnMarginB = _props$attributes6.btnMarginB,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition,
+            backColor = _props$attributes6.backColor,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition,
+            hoverShadowBlur = _props$attributes6.hoverShadowBlur,
+            hoverShadowColor = _props$attributes6.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes6.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes6.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes6.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -43534,97 +44716,97 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            align = _props$attributes6.align,
-            iconImage = _props$attributes6.iconImage,
-            iconImgUrl = _props$attributes6.iconImgUrl,
-            iconRadius = _props$attributes6.iconRadius,
-            selectedIcon = _props$attributes6.selectedIcon,
-            iconChecked = _props$attributes6.iconChecked,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            titleChecked = _props$attributes6.titleChecked,
-            titleText = _props$attributes6.titleText,
-            titleTag = _props$attributes6.titleTag,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleLine = _props$attributes6.titleLine,
-            titleLetter = _props$attributes6.titleLetter,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleWeight = _props$attributes6.titleWeight,
-            titleShadowBlur = _props$attributes6.titleShadowBlur,
-            titleShadowColor = _props$attributes6.titleShadowColor,
-            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes6.titleShadowVertical,
-            titleMarginT = _props$attributes6.titleMarginT,
-            titleMarginB = _props$attributes6.titleMarginB,
-            descChecked = _props$attributes6.descChecked,
-            descText = _props$attributes6.descText,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descLine = _props$attributes6.descLine,
-            descWeight = _props$attributes6.descWeight,
-            descMarginT = _props$attributes6.descMarginT,
-            descMarginB = _props$attributes6.descMarginB,
-            btnChecked = _props$attributes6.btnChecked,
-            btnEffect = _props$attributes6.btnEffect,
-            effectDir = _props$attributes6.effectDir,
-            btnText = _props$attributes6.btnText,
-            btnTarget = _props$attributes6.btnTarget,
-            btnLink = _props$attributes6.btnLink,
-            btnSize = _props$attributes6.btnSize,
-            btnStyle = _props$attributes6.btnStyle,
-            btnUpper = _props$attributes6.btnUpper,
-            btnWeight = _props$attributes6.btnWeight,
-            btnLetter = _props$attributes6.btnLetter,
-            btnColor = _props$attributes6.btnColor,
-            btnHoverColor = _props$attributes6.btnHoverColor,
-            btnHoverBorder = _props$attributes6.btnHoverBorder,
-            btnBack = _props$attributes6.btnBack,
-            btnHoverBack = _props$attributes6.btnHoverBack,
-            btnBorderWidth = _props$attributes6.btnBorderWidth,
-            btnBorderRadius = _props$attributes6.btnBorderRadius,
-            btnBorderColor = _props$attributes6.btnBorderColor,
-            btnBorderType = _props$attributes6.btnBorderType,
-            btnPadding = _props$attributes6.btnPadding,
-            btnMarginT = _props$attributes6.btnMarginT,
-            btnMarginB = _props$attributes6.btnMarginB,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition,
-            backColor = _props$attributes6.backColor,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition,
-            hoverShadowBlur = _props$attributes6.hoverShadowBlur,
-            hoverShadowColor = _props$attributes6.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes6.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes6.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes6.hoverShadowPosition;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            align = _props$attributes7.align,
+            iconImage = _props$attributes7.iconImage,
+            iconImgUrl = _props$attributes7.iconImgUrl,
+            iconRadius = _props$attributes7.iconRadius,
+            selectedIcon = _props$attributes7.selectedIcon,
+            iconChecked = _props$attributes7.iconChecked,
+            hoverEffect = _props$attributes7.hoverEffect,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            titleChecked = _props$attributes7.titleChecked,
+            titleText = _props$attributes7.titleText,
+            titleTag = _props$attributes7.titleTag,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleLine = _props$attributes7.titleLine,
+            titleLetter = _props$attributes7.titleLetter,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleWeight = _props$attributes7.titleWeight,
+            titleShadowBlur = _props$attributes7.titleShadowBlur,
+            titleShadowColor = _props$attributes7.titleShadowColor,
+            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes7.titleShadowVertical,
+            titleMarginT = _props$attributes7.titleMarginT,
+            titleMarginB = _props$attributes7.titleMarginB,
+            descChecked = _props$attributes7.descChecked,
+            descText = _props$attributes7.descText,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descLine = _props$attributes7.descLine,
+            descWeight = _props$attributes7.descWeight,
+            descMarginT = _props$attributes7.descMarginT,
+            descMarginB = _props$attributes7.descMarginB,
+            btnChecked = _props$attributes7.btnChecked,
+            btnEffect = _props$attributes7.btnEffect,
+            effectDir = _props$attributes7.effectDir,
+            btnText = _props$attributes7.btnText,
+            btnTarget = _props$attributes7.btnTarget,
+            btnLink = _props$attributes7.btnLink,
+            btnSize = _props$attributes7.btnSize,
+            btnStyle = _props$attributes7.btnStyle,
+            btnUpper = _props$attributes7.btnUpper,
+            btnWeight = _props$attributes7.btnWeight,
+            btnLetter = _props$attributes7.btnLetter,
+            btnColor = _props$attributes7.btnColor,
+            btnHoverColor = _props$attributes7.btnHoverColor,
+            btnHoverBorder = _props$attributes7.btnHoverBorder,
+            btnBack = _props$attributes7.btnBack,
+            btnHoverBack = _props$attributes7.btnHoverBack,
+            btnBorderWidth = _props$attributes7.btnBorderWidth,
+            btnBorderRadius = _props$attributes7.btnBorderRadius,
+            btnBorderColor = _props$attributes7.btnBorderColor,
+            btnBorderType = _props$attributes7.btnBorderType,
+            btnPadding = _props$attributes7.btnPadding,
+            btnMarginT = _props$attributes7.btnMarginT,
+            btnMarginB = _props$attributes7.btnMarginB,
+            btnShadowBlur = _props$attributes7.btnShadowBlur,
+            btnShadowColor = _props$attributes7.btnShadowColor,
+            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes7.btnShadowVertical,
+            btnShadowPosition = _props$attributes7.btnShadowPosition,
+            backColor = _props$attributes7.backColor,
+            imageURL = _props$attributes7.imageURL,
+            fixed = _props$attributes7.fixed,
+            backgroundRepeat = _props$attributes7.backgroundRepeat,
+            backgroundPosition = _props$attributes7.backgroundPosition,
+            backgroundSize = _props$attributes7.backgroundSize,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            marginT = _props$attributes7.marginT,
+            marginR = _props$attributes7.marginR,
+            marginB = _props$attributes7.marginB,
+            marginL = _props$attributes7.marginL,
+            paddingT = _props$attributes7.paddingT,
+            paddingR = _props$attributes7.paddingR,
+            paddingB = _props$attributes7.paddingB,
+            paddingL = _props$attributes7.paddingL,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            shadowPosition = _props$attributes7.shadowPosition,
+            hoverShadowBlur = _props$attributes7.hoverShadowBlur,
+            hoverShadowColor = _props$attributes7.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes7.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes7.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes7.hoverShadowPosition;
 
 
         return wp.element.createElement(
@@ -43774,92 +44956,92 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            align = _props$attributes7.align,
-            iconImage = _props$attributes7.iconImage,
-            iconImgUrl = _props$attributes7.iconImgUrl,
-            iconRadius = _props$attributes7.iconRadius,
-            selectedIcon = _props$attributes7.selectedIcon,
-            iconChecked = _props$attributes7.iconChecked,
-            hoverEffect = _props$attributes7.hoverEffect,
-            iconSize = _props$attributes7.iconSize,
-            iconColor = _props$attributes7.iconColor,
-            titleChecked = _props$attributes7.titleChecked,
-            titleText = _props$attributes7.titleText,
-            titleTag = _props$attributes7.titleTag,
-            titleColor = _props$attributes7.titleColor,
-            titleSize = _props$attributes7.titleSize,
-            titleLine = _props$attributes7.titleLine,
-            titleLetter = _props$attributes7.titleLetter,
-            titleStyle = _props$attributes7.titleStyle,
-            titleUpper = _props$attributes7.titleUpper,
-            titleWeight = _props$attributes7.titleWeight,
-            titleShadowBlur = _props$attributes7.titleShadowBlur,
-            titleShadowColor = _props$attributes7.titleShadowColor,
-            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes7.titleShadowVertical,
-            titleMarginT = _props$attributes7.titleMarginT,
-            titleMarginB = _props$attributes7.titleMarginB,
-            descChecked = _props$attributes7.descChecked,
-            descText = _props$attributes7.descText,
-            descColor = _props$attributes7.descColor,
-            descSize = _props$attributes7.descSize,
-            descLine = _props$attributes7.descLine,
-            descWeight = _props$attributes7.descWeight,
-            descMarginT = _props$attributes7.descMarginT,
-            descMarginB = _props$attributes7.descMarginB,
-            btnChecked = _props$attributes7.btnChecked,
-            btnEffect = _props$attributes7.btnEffect,
-            effectDir = _props$attributes7.effectDir,
-            btnText = _props$attributes7.btnText,
-            btnTarget = _props$attributes7.btnTarget,
-            btnLink = _props$attributes7.btnLink,
-            btnSize = _props$attributes7.btnSize,
-            btnStyle = _props$attributes7.btnStyle,
-            btnUpper = _props$attributes7.btnUpper,
-            btnWeight = _props$attributes7.btnWeight,
-            btnLetter = _props$attributes7.btnLetter,
-            btnColor = _props$attributes7.btnColor,
-            btnHoverColor = _props$attributes7.btnHoverColor,
-            btnHoverBorder = _props$attributes7.btnHoverBorder,
-            btnBack = _props$attributes7.btnBack,
-            btnHoverBack = _props$attributes7.btnHoverBack,
-            btnBorderWidth = _props$attributes7.btnBorderWidth,
-            btnBorderRadius = _props$attributes7.btnBorderRadius,
-            btnBorderColor = _props$attributes7.btnBorderColor,
-            btnBorderType = _props$attributes7.btnBorderType,
-            btnPadding = _props$attributes7.btnPadding,
-            btnMarginT = _props$attributes7.btnMarginT,
-            btnMarginB = _props$attributes7.btnMarginB,
-            btnShadowBlur = _props$attributes7.btnShadowBlur,
-            btnShadowColor = _props$attributes7.btnShadowColor,
-            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes7.btnShadowVertical,
-            btnShadowPosition = _props$attributes7.btnShadowPosition,
-            backColor = _props$attributes7.backColor,
-            imageURL = _props$attributes7.imageURL,
-            fixed = _props$attributes7.fixed,
-            backgroundRepeat = _props$attributes7.backgroundRepeat,
-            backgroundPosition = _props$attributes7.backgroundPosition,
-            backgroundSize = _props$attributes7.backgroundSize,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            marginT = _props$attributes7.marginT,
-            marginR = _props$attributes7.marginR,
-            marginB = _props$attributes7.marginB,
-            marginL = _props$attributes7.marginL,
-            paddingT = _props$attributes7.paddingT,
-            paddingR = _props$attributes7.paddingR,
-            paddingB = _props$attributes7.paddingB,
-            paddingL = _props$attributes7.paddingL,
-            shadowBlur = _props$attributes7.shadowBlur,
-            shadowColor = _props$attributes7.shadowColor,
-            shadowHorizontal = _props$attributes7.shadowHorizontal,
-            shadowVertical = _props$attributes7.shadowVertical,
-            shadowPosition = _props$attributes7.shadowPosition;
+        var _props$attributes8 = props.attributes,
+            id = _props$attributes8.id,
+            align = _props$attributes8.align,
+            iconImage = _props$attributes8.iconImage,
+            iconImgUrl = _props$attributes8.iconImgUrl,
+            iconRadius = _props$attributes8.iconRadius,
+            selectedIcon = _props$attributes8.selectedIcon,
+            iconChecked = _props$attributes8.iconChecked,
+            hoverEffect = _props$attributes8.hoverEffect,
+            iconSize = _props$attributes8.iconSize,
+            iconColor = _props$attributes8.iconColor,
+            titleChecked = _props$attributes8.titleChecked,
+            titleText = _props$attributes8.titleText,
+            titleTag = _props$attributes8.titleTag,
+            titleColor = _props$attributes8.titleColor,
+            titleSize = _props$attributes8.titleSize,
+            titleLine = _props$attributes8.titleLine,
+            titleLetter = _props$attributes8.titleLetter,
+            titleStyle = _props$attributes8.titleStyle,
+            titleUpper = _props$attributes8.titleUpper,
+            titleWeight = _props$attributes8.titleWeight,
+            titleShadowBlur = _props$attributes8.titleShadowBlur,
+            titleShadowColor = _props$attributes8.titleShadowColor,
+            titleShadowHorizontal = _props$attributes8.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes8.titleShadowVertical,
+            titleMarginT = _props$attributes8.titleMarginT,
+            titleMarginB = _props$attributes8.titleMarginB,
+            descChecked = _props$attributes8.descChecked,
+            descText = _props$attributes8.descText,
+            descColor = _props$attributes8.descColor,
+            descSize = _props$attributes8.descSize,
+            descLine = _props$attributes8.descLine,
+            descWeight = _props$attributes8.descWeight,
+            descMarginT = _props$attributes8.descMarginT,
+            descMarginB = _props$attributes8.descMarginB,
+            btnChecked = _props$attributes8.btnChecked,
+            btnEffect = _props$attributes8.btnEffect,
+            effectDir = _props$attributes8.effectDir,
+            btnText = _props$attributes8.btnText,
+            btnTarget = _props$attributes8.btnTarget,
+            btnLink = _props$attributes8.btnLink,
+            btnSize = _props$attributes8.btnSize,
+            btnStyle = _props$attributes8.btnStyle,
+            btnUpper = _props$attributes8.btnUpper,
+            btnWeight = _props$attributes8.btnWeight,
+            btnLetter = _props$attributes8.btnLetter,
+            btnColor = _props$attributes8.btnColor,
+            btnHoverColor = _props$attributes8.btnHoverColor,
+            btnHoverBorder = _props$attributes8.btnHoverBorder,
+            btnBack = _props$attributes8.btnBack,
+            btnHoverBack = _props$attributes8.btnHoverBack,
+            btnBorderWidth = _props$attributes8.btnBorderWidth,
+            btnBorderRadius = _props$attributes8.btnBorderRadius,
+            btnBorderColor = _props$attributes8.btnBorderColor,
+            btnBorderType = _props$attributes8.btnBorderType,
+            btnPadding = _props$attributes8.btnPadding,
+            btnMarginT = _props$attributes8.btnMarginT,
+            btnMarginB = _props$attributes8.btnMarginB,
+            btnShadowBlur = _props$attributes8.btnShadowBlur,
+            btnShadowColor = _props$attributes8.btnShadowColor,
+            btnShadowHorizontal = _props$attributes8.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes8.btnShadowVertical,
+            btnShadowPosition = _props$attributes8.btnShadowPosition,
+            backColor = _props$attributes8.backColor,
+            imageURL = _props$attributes8.imageURL,
+            fixed = _props$attributes8.fixed,
+            backgroundRepeat = _props$attributes8.backgroundRepeat,
+            backgroundPosition = _props$attributes8.backgroundPosition,
+            backgroundSize = _props$attributes8.backgroundSize,
+            borderType = _props$attributes8.borderType,
+            borderWidth = _props$attributes8.borderWidth,
+            borderRadius = _props$attributes8.borderRadius,
+            borderColor = _props$attributes8.borderColor,
+            marginT = _props$attributes8.marginT,
+            marginR = _props$attributes8.marginR,
+            marginB = _props$attributes8.marginB,
+            marginL = _props$attributes8.marginL,
+            paddingT = _props$attributes8.paddingT,
+            paddingR = _props$attributes8.paddingR,
+            paddingB = _props$attributes8.paddingB,
+            paddingL = _props$attributes8.paddingL,
+            shadowBlur = _props$attributes8.shadowBlur,
+            shadowColor = _props$attributes8.shadowColor,
+            shadowHorizontal = _props$attributes8.shadowHorizontal,
+            shadowVertical = _props$attributes8.shadowVertical,
+            shadowPosition = _props$attributes8.shadowPosition;
 
 
         return wp.element.createElement(
@@ -44004,91 +45186,91 @@ var deprecatedContent = [{
         };
     },
     save: function save(props) {
-        var _props$attributes8 = props.attributes,
-            id = _props$attributes8.id,
-            align = _props$attributes8.align,
-            iconType = _props$attributes8.iconType,
-            iconImage = _props$attributes8.iconImage,
-            iconImgUrl = _props$attributes8.iconImgUrl,
-            iconRadius = _props$attributes8.iconRadius,
-            selectedIcon = _props$attributes8.selectedIcon,
-            iconChecked = _props$attributes8.iconChecked,
-            hoverEffect = _props$attributes8.hoverEffect,
-            iconSize = _props$attributes8.iconSize,
-            iconColor = _props$attributes8.iconColor,
-            titleChecked = _props$attributes8.titleChecked,
-            titleText = _props$attributes8.titleText,
-            titleTag = _props$attributes8.titleTag,
-            titleColor = _props$attributes8.titleColor,
-            titleSize = _props$attributes8.titleSize,
-            titleLine = _props$attributes8.titleLine,
-            titleLetter = _props$attributes8.titleLetter,
-            titleStyle = _props$attributes8.titleStyle,
-            titleUpper = _props$attributes8.titleUpper,
-            titleWeight = _props$attributes8.titleWeight,
-            titleShadowBlur = _props$attributes8.titleShadowBlur,
-            titleShadowColor = _props$attributes8.titleShadowColor,
-            titleShadowHorizontal = _props$attributes8.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes8.titleShadowVertical,
-            titleMarginT = _props$attributes8.titleMarginT,
-            titleMarginB = _props$attributes8.titleMarginB,
-            descChecked = _props$attributes8.descChecked,
-            descText = _props$attributes8.descText,
-            descColor = _props$attributes8.descColor,
-            descSize = _props$attributes8.descSize,
-            descLine = _props$attributes8.descLine,
-            descWeight = _props$attributes8.descWeight,
-            descMarginT = _props$attributes8.descMarginT,
-            descMarginB = _props$attributes8.descMarginB,
-            btnChecked = _props$attributes8.btnChecked,
-            btnText = _props$attributes8.btnText,
-            btnTarget = _props$attributes8.btnTarget,
-            btnLink = _props$attributes8.btnLink,
-            btnSize = _props$attributes8.btnSize,
-            btnStyle = _props$attributes8.btnStyle,
-            btnUpper = _props$attributes8.btnUpper,
-            btnWeight = _props$attributes8.btnWeight,
-            btnLetter = _props$attributes8.btnLetter,
-            btnColor = _props$attributes8.btnColor,
-            btnHoverColor = _props$attributes8.btnHoverColor,
-            btnHoverBorder = _props$attributes8.btnHoverBorder,
-            btnBack = _props$attributes8.btnBack,
-            btnHoverBack = _props$attributes8.btnHoverBack,
-            btnBorderWidth = _props$attributes8.btnBorderWidth,
-            btnBorderRadius = _props$attributes8.btnBorderRadius,
-            btnBorderColor = _props$attributes8.btnBorderColor,
-            btnBorderType = _props$attributes8.btnBorderType,
-            btnPadding = _props$attributes8.btnPadding,
-            btnMarginT = _props$attributes8.btnMarginT,
-            btnMarginB = _props$attributes8.btnMarginB,
-            btnShadowBlur = _props$attributes8.btnShadowBlur,
-            btnShadowColor = _props$attributes8.btnShadowColor,
-            btnShadowHorizontal = _props$attributes8.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes8.btnShadowVertical,
-            btnShadowPosition = _props$attributes8.btnShadowPosition,
-            backColor = _props$attributes8.backColor,
-            imageURL = _props$attributes8.imageURL,
-            fixed = _props$attributes8.fixed,
-            backgroundRepeat = _props$attributes8.backgroundRepeat,
-            backgroundPosition = _props$attributes8.backgroundPosition,
-            backgroundSize = _props$attributes8.backgroundSize,
-            borderType = _props$attributes8.borderType,
-            borderWidth = _props$attributes8.borderWidth,
-            borderRadius = _props$attributes8.borderRadius,
-            borderColor = _props$attributes8.borderColor,
-            marginT = _props$attributes8.marginT,
-            marginR = _props$attributes8.marginR,
-            marginB = _props$attributes8.marginB,
-            marginL = _props$attributes8.marginL,
-            paddingT = _props$attributes8.paddingT,
-            paddingR = _props$attributes8.paddingR,
-            paddingB = _props$attributes8.paddingB,
-            paddingL = _props$attributes8.paddingL,
-            shadowBlur = _props$attributes8.shadowBlur,
-            shadowColor = _props$attributes8.shadowColor,
-            shadowHorizontal = _props$attributes8.shadowHorizontal,
-            shadowVertical = _props$attributes8.shadowVertical,
-            shadowPosition = _props$attributes8.shadowPosition;
+        var _props$attributes9 = props.attributes,
+            id = _props$attributes9.id,
+            align = _props$attributes9.align,
+            iconType = _props$attributes9.iconType,
+            iconImage = _props$attributes9.iconImage,
+            iconImgUrl = _props$attributes9.iconImgUrl,
+            iconRadius = _props$attributes9.iconRadius,
+            selectedIcon = _props$attributes9.selectedIcon,
+            iconChecked = _props$attributes9.iconChecked,
+            hoverEffect = _props$attributes9.hoverEffect,
+            iconSize = _props$attributes9.iconSize,
+            iconColor = _props$attributes9.iconColor,
+            titleChecked = _props$attributes9.titleChecked,
+            titleText = _props$attributes9.titleText,
+            titleTag = _props$attributes9.titleTag,
+            titleColor = _props$attributes9.titleColor,
+            titleSize = _props$attributes9.titleSize,
+            titleLine = _props$attributes9.titleLine,
+            titleLetter = _props$attributes9.titleLetter,
+            titleStyle = _props$attributes9.titleStyle,
+            titleUpper = _props$attributes9.titleUpper,
+            titleWeight = _props$attributes9.titleWeight,
+            titleShadowBlur = _props$attributes9.titleShadowBlur,
+            titleShadowColor = _props$attributes9.titleShadowColor,
+            titleShadowHorizontal = _props$attributes9.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes9.titleShadowVertical,
+            titleMarginT = _props$attributes9.titleMarginT,
+            titleMarginB = _props$attributes9.titleMarginB,
+            descChecked = _props$attributes9.descChecked,
+            descText = _props$attributes9.descText,
+            descColor = _props$attributes9.descColor,
+            descSize = _props$attributes9.descSize,
+            descLine = _props$attributes9.descLine,
+            descWeight = _props$attributes9.descWeight,
+            descMarginT = _props$attributes9.descMarginT,
+            descMarginB = _props$attributes9.descMarginB,
+            btnChecked = _props$attributes9.btnChecked,
+            btnText = _props$attributes9.btnText,
+            btnTarget = _props$attributes9.btnTarget,
+            btnLink = _props$attributes9.btnLink,
+            btnSize = _props$attributes9.btnSize,
+            btnStyle = _props$attributes9.btnStyle,
+            btnUpper = _props$attributes9.btnUpper,
+            btnWeight = _props$attributes9.btnWeight,
+            btnLetter = _props$attributes9.btnLetter,
+            btnColor = _props$attributes9.btnColor,
+            btnHoverColor = _props$attributes9.btnHoverColor,
+            btnHoverBorder = _props$attributes9.btnHoverBorder,
+            btnBack = _props$attributes9.btnBack,
+            btnHoverBack = _props$attributes9.btnHoverBack,
+            btnBorderWidth = _props$attributes9.btnBorderWidth,
+            btnBorderRadius = _props$attributes9.btnBorderRadius,
+            btnBorderColor = _props$attributes9.btnBorderColor,
+            btnBorderType = _props$attributes9.btnBorderType,
+            btnPadding = _props$attributes9.btnPadding,
+            btnMarginT = _props$attributes9.btnMarginT,
+            btnMarginB = _props$attributes9.btnMarginB,
+            btnShadowBlur = _props$attributes9.btnShadowBlur,
+            btnShadowColor = _props$attributes9.btnShadowColor,
+            btnShadowHorizontal = _props$attributes9.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes9.btnShadowVertical,
+            btnShadowPosition = _props$attributes9.btnShadowPosition,
+            backColor = _props$attributes9.backColor,
+            imageURL = _props$attributes9.imageURL,
+            fixed = _props$attributes9.fixed,
+            backgroundRepeat = _props$attributes9.backgroundRepeat,
+            backgroundPosition = _props$attributes9.backgroundPosition,
+            backgroundSize = _props$attributes9.backgroundSize,
+            borderType = _props$attributes9.borderType,
+            borderWidth = _props$attributes9.borderWidth,
+            borderRadius = _props$attributes9.borderRadius,
+            borderColor = _props$attributes9.borderColor,
+            marginT = _props$attributes9.marginT,
+            marginR = _props$attributes9.marginR,
+            marginB = _props$attributes9.marginB,
+            marginL = _props$attributes9.marginL,
+            paddingT = _props$attributes9.paddingT,
+            paddingR = _props$attributes9.paddingR,
+            paddingB = _props$attributes9.paddingB,
+            paddingL = _props$attributes9.paddingL,
+            shadowBlur = _props$attributes9.shadowBlur,
+            shadowColor = _props$attributes9.shadowColor,
+            shadowHorizontal = _props$attributes9.shadowHorizontal,
+            shadowVertical = _props$attributes9.shadowVertical,
+            shadowPosition = _props$attributes9.shadowPosition;
 
 
         return wp.element.createElement(
@@ -45968,11 +47150,11 @@ registerBlockType("premium/pricing-table", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
@@ -47892,7 +49074,7 @@ var PremiumPricingTable = function (_Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -50732,8 +51914,8 @@ var deprecatedContent = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -50849,8 +52031,33 @@ var containerAttrs = {
     marginRight: {
         type: "number"
     },
+    marginTopTablet: {
+        type: "number"
+    },
+    marginBottomTablet: {
+        type: "number"
+    },
+    marginLeftTablet: {
+        type: "number"
+    },
+    marginRightTablet: {
+        type: "number"
+    },
+    marginTopMobile: {
+        type: "number"
+    },
+    marginBottomMobile: {
+        type: "number"
+    },
+    marginLeftMobile: {
+        type: "number"
+    },
+    marginRightMobile: {
+        type: "number"
+    },
     marginUnit: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     paddingTop: {
         type: "number"
@@ -50889,7 +52096,8 @@ var containerAttrs = {
         type: "number"
     },
     paddingUnit: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     shadowColor: {
         type: "string"
@@ -50953,15 +52161,16 @@ registerBlockType("premium/container", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Premium_Responsive_Margin__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(231);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50969,6 +52178,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -51027,62 +52237,71 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _props2 = props,
+            var _props2 = this.props,
                 isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
                 className = _props2.className,
-                setAttributes = _props2.setAttributes;
-            var _props$attributes = props.attributes,
-                isUpdated = _props$attributes.isUpdated,
-                stretchSection = _props$attributes.stretchSection,
-                horAlign = _props$attributes.horAlign,
-                innerWidthType = _props$attributes.innerWidthType,
-                innerWidth = _props$attributes.innerWidth,
-                minHeight = _props$attributes.minHeight,
-                minHeightUnit = _props$attributes.minHeightUnit,
-                vPos = _props$attributes.vPos,
-                height = _props$attributes.height,
-                color = _props$attributes.color,
-                opacity = _props$attributes.opacity,
-                imageID = _props$attributes.imageID,
-                imageURL = _props$attributes.imageURL,
-                fixed = _props$attributes.fixed,
-                backgroundRepeat = _props$attributes.backgroundRepeat,
-                backgroundPosition = _props$attributes.backgroundPosition,
-                backgroundSize = _props$attributes.backgroundSize,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                borderColor = _props$attributes.borderColor,
-                borderRadius = _props$attributes.borderRadius,
-                marginTop = _props$attributes.marginTop,
-                marginBottom = _props$attributes.marginBottom,
-                marginLeft = _props$attributes.marginLeft,
-                marginRight = _props$attributes.marginRight,
-                marginUnit = _props$attributes.marginUnit,
-                paddingTop = _props$attributes.paddingTop,
-                paddingRight = _props$attributes.paddingRight,
-                paddingBottom = _props$attributes.paddingBottom,
-                paddingLeft = _props$attributes.paddingLeft,
-                paddingTopTablet = _props$attributes.paddingTopTablet,
-                paddingRightTablet = _props$attributes.paddingRightTablet,
-                paddingBottomTablet = _props$attributes.paddingBottomTablet,
-                paddingLeftTablet = _props$attributes.paddingLeftTablet,
-                paddingTopMobile = _props$attributes.paddingTopMobile,
-                paddingRightMobile = _props$attributes.paddingRightMobile,
-                paddingBottomMobile = _props$attributes.paddingBottomMobile,
-                paddingLeftMobile = _props$attributes.paddingLeftMobile,
-                paddingUnit = _props$attributes.paddingUnit,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                shadowPosition = _props$attributes.shadowPosition,
-                hideDesktop = _props$attributes.hideDesktop,
-                hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                attributes = _props2.attributes;
+            var block_id = attributes.block_id,
+                isUpdated = attributes.isUpdated,
+                stretchSection = attributes.stretchSection,
+                horAlign = attributes.horAlign,
+                innerWidthType = attributes.innerWidthType,
+                innerWidth = attributes.innerWidth,
+                minHeight = attributes.minHeight,
+                minHeightUnit = attributes.minHeightUnit,
+                vPos = attributes.vPos,
+                height = attributes.height,
+                color = attributes.color,
+                opacity = attributes.opacity,
+                imageID = attributes.imageID,
+                imageURL = attributes.imageURL,
+                fixed = attributes.fixed,
+                backgroundRepeat = attributes.backgroundRepeat,
+                backgroundPosition = attributes.backgroundPosition,
+                backgroundSize = attributes.backgroundSize,
+                borderType = attributes.borderType,
+                borderWidth = attributes.borderWidth,
+                borderTop = attributes.borderTop,
+                borderRight = attributes.borderRight,
+                borderBottom = attributes.borderBottom,
+                borderLeft = attributes.borderLeft,
+                borderColor = attributes.borderColor,
+                borderRadius = attributes.borderRadius,
+                marginTop = attributes.marginTop,
+                marginBottom = attributes.marginBottom,
+                marginLeft = attributes.marginLeft,
+                marginRight = attributes.marginRight,
+                marginTopTablet = attributes.marginTopTablet,
+                marginBottomTablet = attributes.marginBottomTablet,
+                marginLeftTablet = attributes.marginLeftTablet,
+                marginRightTablet = attributes.marginRightTablet,
+                marginTopMobile = attributes.marginTopMobile,
+                marginBottomMobile = attributes.marginBottomMobile,
+                marginLeftMobile = attributes.marginLeftMobile,
+                marginRightMobile = attributes.marginRightMobile,
+                marginUnit = attributes.marginUnit,
+                paddingTop = attributes.paddingTop,
+                paddingRight = attributes.paddingRight,
+                paddingBottom = attributes.paddingBottom,
+                paddingLeft = attributes.paddingLeft,
+                paddingTopTablet = attributes.paddingTopTablet,
+                paddingRightTablet = attributes.paddingRightTablet,
+                paddingBottomTablet = attributes.paddingBottomTablet,
+                paddingLeftTablet = attributes.paddingLeftTablet,
+                paddingTopMobile = attributes.paddingTopMobile,
+                paddingRightMobile = attributes.paddingRightMobile,
+                paddingBottomMobile = attributes.paddingBottomMobile,
+                paddingLeftMobile = attributes.paddingLeftMobile,
+                paddingUnit = attributes.paddingUnit,
+                shadowBlur = attributes.shadowBlur,
+                shadowColor = attributes.shadowColor,
+                shadowHorizontal = attributes.shadowHorizontal,
+                shadowVertical = attributes.shadowVertical,
+                shadowPosition = attributes.shadowPosition,
+                hideDesktop = attributes.hideDesktop,
+                hideTablet = attributes.hideTablet,
+                hideMobile = attributes.hideMobile;
 
 
             var WIDTH = [{
@@ -51111,6 +52330,12 @@ var edit = function (_Component) {
             }];
 
             var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-container");
+
+            var element = document.getElementById("premium-style-section-" + this.props.clientId);
+
+            if (null != element && "undefined" != typeof element) {
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_9__styling__["a" /* default */])(this.props);
+            }
 
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -51332,79 +52557,54 @@ var edit = function (_Component) {
                         marginRight: marginRight,
                         marginBottom: marginBottom,
                         marginLeft: marginLeft,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                marginTop: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarRight: function onChangeMarRight(value) {
-                            return setAttributes({
-                                marginRight: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                marginBottom: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarLeft: function onChangeMarLeft(value) {
-                            return setAttributes({
-                                marginLeft: value === undefined ? 0 : value
-                            });
-                        },
-                        marginTopTablet: marginTop,
-                        marginRightTablet: marginRight,
-                        marginBottomTablet: marginBottom,
-                        marginLeftTablet: marginLeft,
-                        onChangeMarTopTablet: function onChangeMarTopTablet(value) {
-                            return setAttributes({
-                                marginTop: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarRightTablet: function onChangeMarRightTablet(value) {
-                            return setAttributes({
-                                marginRight: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarBottomTablet: function onChangeMarBottomTablet(value) {
-                            return setAttributes({
-                                marginBottom: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarLeftTablet: function onChangeMarLeftTablet(value) {
-                            return setAttributes({
-                                marginLeft: value === undefined ? 0 : value
-                            });
-                        },
-                        marginTopMobile: marginTop,
-                        marginRightMobile: marginRight,
-                        marginBottomMobile: marginBottom,
-                        marginLeftMobile: marginLeft,
-                        onChangeMarTopMobile: function onChangeMarTopMobile(value) {
-                            return setAttributes({
-                                marginTop: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarRightMobile: function onChangeMarRightMobile(value) {
-                            return setAttributes({
-                                marginRight: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarBottomMobile: function onChangeMarBottomMobile(value) {
-                            return setAttributes({
-                                marginBottom: value === undefined ? 0 : value
-                            });
-                        },
-                        onChangeMarLeftMobile: function onChangeMarLeftMobile(value) {
-                            return setAttributes({
-                                marginLeft: value === undefined ? 0 : value
-                            });
-                        },
+                        marginTopTablet: marginTopTablet,
+                        marginRightTablet: marginRightTablet,
+                        marginBottomTablet: marginBottomTablet,
+                        marginLeftTablet: marginLeftTablet,
+                        marginTopMobile: marginTopMobile,
+                        marginRightMobile: marginRightMobile,
+                        marginBottomMobile: marginBottomMobile,
+                        marginLeftMobile: marginLeftMobile,
                         showUnits: true,
                         onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
                             return setAttributes({ marginUnit: newvalue });
+                        },
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginTop: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginTopTablet: newValue });
+                            } else {
+                                setAttributes({ marginTopMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginRight: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginRightTablet: newValue });
+                            } else {
+                                setAttributes({ marginRightMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginBottom: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginBottomTablet: newValue });
+                            } else {
+                                setAttributes({ marginBottomMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginLeft: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginLeftTablet: newValue });
+                            } else {
+                                setAttributes({ marginLeftMobile: newValue });
+                            }
                         }
-
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Premium_Responsive_Padding__["a" /* default */], {
                         paddingTop: paddingTop,
@@ -51424,41 +52624,41 @@ var edit = function (_Component) {
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
                             return setAttributes({ paddingUnit: newvalue });
                         },
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ paddingTop: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingTop: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTopTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTopMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ paddingRight: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingRight: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRightTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRightMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ paddingBottom: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingBottom: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBottomTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBottomMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ paddingLeft: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ paddingTopTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ paddingRightTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ paddingBottomTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ paddingLeftTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ paddingTopMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ paddingRightMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ paddingBottomMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ paddingLeftMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingLeft: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLeftTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLeftMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -51479,7 +52679,8 @@ var edit = function (_Component) {
             ), wp.element.createElement(
                 "div",
                 {
-                    className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    id: "premium-container-" + block_id,
+                    className: mainClasses + " premium-container-" + block_id + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: horAlign,
                         minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -51532,6 +52733,110 @@ var edit = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        classMigrate = _props$attributes.classMigrate,
+        marginTop = _props$attributes.marginTop,
+        marginBottom = _props$attributes.marginBottom,
+        marginLeft = _props$attributes.marginLeft,
+        marginRight = _props$attributes.marginRight,
+        marginTopTablet = _props$attributes.marginTopTablet,
+        marginBottomTablet = _props$attributes.marginBottomTablet,
+        marginLeftTablet = _props$attributes.marginLeftTablet,
+        marginRightTablet = _props$attributes.marginRightTablet,
+        marginTopMobile = _props$attributes.marginTopMobile,
+        marginBottomMobile = _props$attributes.marginBottomMobile,
+        marginLeftMobile = _props$attributes.marginLeftMobile,
+        marginRightMobile = _props$attributes.marginRightMobile,
+        marginUnit = _props$attributes.marginUnit,
+        paddingTop = _props$attributes.paddingTop,
+        paddingRight = _props$attributes.paddingRight,
+        paddingBottom = _props$attributes.paddingBottom,
+        paddingLeft = _props$attributes.paddingLeft,
+        paddingTopTablet = _props$attributes.paddingTopTablet,
+        paddingRightTablet = _props$attributes.paddingRightTablet,
+        paddingBottomTablet = _props$attributes.paddingBottomTablet,
+        paddingLeftTablet = _props$attributes.paddingLeftTablet,
+        paddingTopMobile = _props$attributes.paddingTopMobile,
+        paddingRightMobile = _props$attributes.paddingRightMobile,
+        paddingBottomMobile = _props$attributes.paddingBottomMobile,
+        paddingLeftMobile = _props$attributes.paddingLeftMobile,
+        paddingUnit = _props$attributes.paddingUnit;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTop, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRight, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottom, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeft, paddingUnit),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginTop, marginUnit),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginRight, marginUnit),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginBottom, marginUnit),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginLeft, marginUnit)
+
+        }
+
+    };
+
+    tablet_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTopTablet, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRightTablet, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottomTablet, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeftTablet, paddingUnit),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginTopTablet, marginUnit),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginRightTablet, marginUnit),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginBottomTablet, marginUnit),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginLeftTablet, marginUnit)
+        }
+
+    };
+
+    mobile_selectors = {
+        " ": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingTopMobile, paddingUnit),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingRightMobile, paddingUnit),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingBottomMobile, paddingUnit),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(paddingLeftMobile, paddingUnit),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginTopMobile, marginUnit),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginRightMobile, marginUnit),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginBottomMobile, marginUnit),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(marginLeftMobile, marginUnit)
+        }
+
+    };
+
+    var styling_css = '';
+    var id = '#premium-container-' + block_id;
+    if (classMigrate) {
+        id = '.premium-container-' + block_id;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+/* harmony default export */ __webpack_exports__["a"] = (styling);
+
+/***/ }),
+/* 232 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_hex_to_rgba__ = __webpack_require__(2);
@@ -51570,16 +52875,6 @@ var save = function save(props) {
         borderLeft = _props$attributes.borderLeft,
         borderColor = _props$attributes.borderColor,
         borderRadius = _props$attributes.borderRadius,
-        marginTop = _props$attributes.marginTop,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        marginRight = _props$attributes.marginRight,
-        marginUnit = _props$attributes.marginUnit,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
         shadowBlur = _props$attributes.shadowBlur,
         shadowColor = _props$attributes.shadowColor,
         shadowHorizontal = _props$attributes.shadowHorizontal,
@@ -51594,8 +52889,8 @@ var save = function save(props) {
 
     return wp.element.createElement(
         'div',
-        {
-            className: mainClasses + ' premium-container__stretch_' + stretchSection + ' premium-container__' + innerWidthType + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+        { id: 'premium-container-' + block_id,
+            className: mainClasses + ' premium-container-' + block_id + ' premium-container__stretch_' + stretchSection + ' premium-container__' + innerWidthType + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -51609,14 +52904,6 @@ var save = function save(props) {
                 backgroundPosition: backgroundPosition,
                 backgroundSize: backgroundSize,
                 backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
                 boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
             }
         },
@@ -51640,7 +52927,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51805,6 +53092,89 @@ var newAttributes_1_5_12 = {
 
 var deprecated_attributes_1_5_12 = Object.assign(deprecated_attributes_1_5_11, newAttributes_1_5_12);
 
+var newAttributes_1_5_13 = {
+    marginTop: {
+        type: "number"
+    },
+    marginBottom: {
+        type: "number"
+    },
+    marginLeft: {
+        type: "number"
+    },
+    marginRight: {
+        type: "number"
+    },
+    marginTopTablet: {
+        type: "number"
+    },
+    marginBottomTablet: {
+        type: "number"
+    },
+    marginLeftTablet: {
+        type: "number"
+    },
+    marginRightTablet: {
+        type: "number"
+    },
+    marginTopMobile: {
+        type: "number"
+    },
+    marginBottomMobile: {
+        type: "number"
+    },
+    marginLeftMobile: {
+        type: "number"
+    },
+    marginRightMobile: {
+        type: "number"
+    },
+    marginUnit: {
+        type: "string",
+        default: 'px'
+    },
+    paddingTop: {
+        type: "number"
+    },
+    paddingRight: {
+        type: "number"
+    },
+    paddingBottom: {
+        type: "number"
+    },
+    paddingLeft: {
+        type: "number"
+    },
+    paddingTopTablet: {
+        type: "number"
+    },
+    paddingRightTablet: {
+        type: "number"
+    },
+    paddingBottomTablet: {
+        type: "number"
+    },
+    paddingLeftTablet: {
+        type: "number"
+    },
+    paddingTopMobile: {
+        type: "number"
+    },
+    paddingRightMobile: {
+        type: "number"
+    },
+    paddingBottomMobile: {
+        type: "number"
+    },
+    paddingLeftMobile: {
+        type: "number"
+    },
+    paddingUnit: {
+        type: "string",
+        default: 'px'
+    }
+};
+
 var containerAttrs_1_0_1 = {
     stretchSection: {
         type: "boolean",
@@ -51932,24 +53302,46 @@ var newAttributes_1_6_2 = {
 
 var deprecated_attributes_1_6_2 = Object.assign(deprecated_attributes_1_6_1, newAttributes_1_6_2);
 
+var deprecated_attributes_1_5_13 = Object.assign(deprecated_attributes_1_5_12, newAttributes_1_5_13);
+
 var deprecatedContent = [{
-    attributes: deprecated_attributes_1_5_12,
+    attributes: deprecated_attributes_1_5_13,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            borderTop: "",
-            borderRight: "",
-            borderBottom: "",
-            borderLeft: "",
-            isUpdated: "",
-            opacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
+            marginTop: "",
+            marginBottom: "",
+            marginLeft: "",
+            marginRight: "",
+            marginTopTablet: "",
+            marginBottomTablet: "",
+            marginLeftTablet: "",
+            marginRightTablet: "",
+            marginTopMobile: "",
+            marginBottomMobile: "",
+            marginLeftMobile: "",
+            marginRightMobile: "",
+            marginUnit: 'px',
+            paddingTop: "",
+            paddingRight: "",
+            paddingBottom: "",
+            paddingLeft: "",
+            paddingTopTablet: "",
+            paddingRightTablet: "",
+            paddingBottomTablet: "",
+            paddingLeftTablet: "",
+            paddingTopMobile: "",
+            paddingRightMobile: "",
+            paddingBottomMobile: "",
+            paddingLeftMobile: "",
+            paddingUnit: "px"
         };
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
+        var className = props.className;
         var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            isUpdated = _props$attributes.isUpdated,
             stretchSection = _props$attributes.stretchSection,
             horAlign = _props$attributes.horAlign,
             innerWidthType = _props$attributes.innerWidthType,
@@ -51959,6 +53351,7 @@ var deprecatedContent = [{
             minHeight = _props$attributes.minHeight,
             minHeightUnit = _props$attributes.minHeightUnit,
             color = _props$attributes.color,
+            opacity = _props$attributes.opacity,
             imageURL = _props$attributes.imageURL,
             fixed = _props$attributes.fixed,
             backgroundRepeat = _props$attributes.backgroundRepeat,
@@ -51966,6 +53359,10 @@ var deprecatedContent = [{
             backgroundSize = _props$attributes.backgroundSize,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             borderColor = _props$attributes.borderColor,
             borderRadius = _props$attributes.borderRadius,
             marginTop = _props$attributes.marginTop,
@@ -51982,7 +53379,107 @@ var deprecatedContent = [{
             shadowColor = _props$attributes.shadowColor,
             shadowHorizontal = _props$attributes.shadowHorizontal,
             shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition;
+            shadowPosition = _props$attributes.shadowPosition,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return wp.element.createElement(
+            "div",
+            {
+                className: className + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: horAlign,
+                    minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    backgroundColor: color ? hexToRgba(color, opacity) : "transparent",
+                    borderStyle: borderType,
+                    borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    marginTop: marginTop + marginUnit,
+                    marginBottom: marginBottom + marginUnit,
+                    marginLeft: marginLeft + marginUnit,
+                    marginRight: marginRight + marginUnit,
+                    paddingTop: paddingTop + paddingUnit,
+                    paddingBottom: paddingBottom + paddingUnit,
+                    paddingLeft: paddingLeft + paddingUnit,
+                    paddingRight: paddingRight + paddingUnit,
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+                }
+            },
+            wp.element.createElement(
+                "div",
+                {
+                    className: "premium-container__content_wrap premium-container__" + vPos,
+                    style: {
+                        maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%"
+                    }
+                },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-container__content_inner" },
+                    wp.element.createElement(InnerBlocks.Content, null)
+                )
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes_1_5_12,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            borderLeft: "",
+            isUpdated: "",
+            opacity: "",
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            stretchSection = _props$attributes2.stretchSection,
+            horAlign = _props$attributes2.horAlign,
+            innerWidthType = _props$attributes2.innerWidthType,
+            innerWidth = _props$attributes2.innerWidth,
+            height = _props$attributes2.height,
+            vPos = _props$attributes2.vPos,
+            minHeight = _props$attributes2.minHeight,
+            minHeightUnit = _props$attributes2.minHeightUnit,
+            color = _props$attributes2.color,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderColor = _props$attributes2.borderColor,
+            borderRadius = _props$attributes2.borderRadius,
+            marginTop = _props$attributes2.marginTop,
+            marginBottom = _props$attributes2.marginBottom,
+            marginLeft = _props$attributes2.marginLeft,
+            marginRight = _props$attributes2.marginRight,
+            marginUnit = _props$attributes2.marginUnit,
+            paddingTop = _props$attributes2.paddingTop,
+            paddingRight = _props$attributes2.paddingRight,
+            paddingBottom = _props$attributes2.paddingBottom,
+            paddingLeft = _props$attributes2.paddingLeft,
+            paddingUnit = _props$attributes2.paddingUnit,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition;
 
 
         return wp.element.createElement(
@@ -52038,39 +53535,39 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            stretchSection = _props$attributes2.stretchSection,
-            horAlign = _props$attributes2.horAlign,
-            innerWidthType = _props$attributes2.innerWidthType,
-            innerWidth = _props$attributes2.innerWidth,
-            height = _props$attributes2.height,
-            vPos = _props$attributes2.vPos,
-            minHeight = _props$attributes2.minHeight,
-            color = _props$attributes2.color,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderColor = _props$attributes2.borderColor,
-            borderRadius = _props$attributes2.borderRadius,
-            marginTop = _props$attributes2.marginTop,
-            marginBottom = _props$attributes2.marginBottom,
-            marginLeft = _props$attributes2.marginLeft,
-            marginRight = _props$attributes2.marginRight,
-            marginUnit = _props$attributes2.marginUnit,
-            paddingTop = _props$attributes2.paddingTop,
-            paddingRight = _props$attributes2.paddingRight,
-            paddingBottom = _props$attributes2.paddingBottom,
-            paddingLeft = _props$attributes2.paddingLeft,
-            paddingUnit = _props$attributes2.paddingUnit,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition;
+        var _props$attributes3 = props.attributes,
+            stretchSection = _props$attributes3.stretchSection,
+            horAlign = _props$attributes3.horAlign,
+            innerWidthType = _props$attributes3.innerWidthType,
+            innerWidth = _props$attributes3.innerWidth,
+            height = _props$attributes3.height,
+            vPos = _props$attributes3.vPos,
+            minHeight = _props$attributes3.minHeight,
+            color = _props$attributes3.color,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderColor = _props$attributes3.borderColor,
+            borderRadius = _props$attributes3.borderRadius,
+            marginTop = _props$attributes3.marginTop,
+            marginBottom = _props$attributes3.marginBottom,
+            marginLeft = _props$attributes3.marginLeft,
+            marginRight = _props$attributes3.marginRight,
+            marginUnit = _props$attributes3.marginUnit,
+            paddingTop = _props$attributes3.paddingTop,
+            paddingRight = _props$attributes3.paddingRight,
+            paddingBottom = _props$attributes3.paddingBottom,
+            paddingLeft = _props$attributes3.paddingLeft,
+            paddingUnit = _props$attributes3.paddingUnit,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -52125,38 +53622,38 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            stretchSection = _props$attributes3.stretchSection,
-            horAlign = _props$attributes3.horAlign,
-            innerWidthType = _props$attributes3.innerWidthType,
-            innerWidth = _props$attributes3.innerWidth,
-            height = _props$attributes3.height,
-            vPos = _props$attributes3.vPos,
-            minHeight = _props$attributes3.minHeight,
-            color = _props$attributes3.color,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderColor = _props$attributes3.borderColor,
-            borderRadius = _props$attributes3.borderRadius,
-            marginTop = _props$attributes3.marginTop,
-            marginBottom = _props$attributes3.marginBottom,
-            marginLeft = _props$attributes3.marginLeft,
-            marginRight = _props$attributes3.marginRight,
-            paddingTop = _props$attributes3.paddingTop,
-            paddingRight = _props$attributes3.paddingRight,
-            paddingBottom = _props$attributes3.paddingBottom,
-            paddingLeft = _props$attributes3.paddingLeft,
-            paddingUnit = _props$attributes3.paddingUnit,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition;
+        var _props$attributes4 = props.attributes,
+            stretchSection = _props$attributes4.stretchSection,
+            horAlign = _props$attributes4.horAlign,
+            innerWidthType = _props$attributes4.innerWidthType,
+            innerWidth = _props$attributes4.innerWidth,
+            height = _props$attributes4.height,
+            vPos = _props$attributes4.vPos,
+            minHeight = _props$attributes4.minHeight,
+            color = _props$attributes4.color,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderColor = _props$attributes4.borderColor,
+            borderRadius = _props$attributes4.borderRadius,
+            marginTop = _props$attributes4.marginTop,
+            marginBottom = _props$attributes4.marginBottom,
+            marginLeft = _props$attributes4.marginLeft,
+            marginRight = _props$attributes4.marginRight,
+            paddingTop = _props$attributes4.paddingTop,
+            paddingRight = _props$attributes4.paddingRight,
+            paddingBottom = _props$attributes4.paddingBottom,
+            paddingLeft = _props$attributes4.paddingLeft,
+            paddingUnit = _props$attributes4.paddingUnit,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -52211,37 +53708,37 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            stretchSection = _props$attributes4.stretchSection,
-            horAlign = _props$attributes4.horAlign,
-            innerWidthType = _props$attributes4.innerWidthType,
-            innerWidth = _props$attributes4.innerWidth,
-            height = _props$attributes4.height,
-            vPos = _props$attributes4.vPos,
-            minHeight = _props$attributes4.minHeight,
-            color = _props$attributes4.color,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderColor = _props$attributes4.borderColor,
-            borderRadius = _props$attributes4.borderRadius,
-            marginTop = _props$attributes4.marginTop,
-            marginBottom = _props$attributes4.marginBottom,
-            marginLeft = _props$attributes4.marginLeft,
-            marginRight = _props$attributes4.marginRight,
-            paddingTop = _props$attributes4.paddingTop,
-            paddingRight = _props$attributes4.paddingRight,
-            paddingBottom = _props$attributes4.paddingBottom,
-            paddingLeft = _props$attributes4.paddingLeft,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition;
+        var _props$attributes5 = props.attributes,
+            stretchSection = _props$attributes5.stretchSection,
+            horAlign = _props$attributes5.horAlign,
+            innerWidthType = _props$attributes5.innerWidthType,
+            innerWidth = _props$attributes5.innerWidth,
+            height = _props$attributes5.height,
+            vPos = _props$attributes5.vPos,
+            minHeight = _props$attributes5.minHeight,
+            color = _props$attributes5.color,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderColor = _props$attributes5.borderColor,
+            borderRadius = _props$attributes5.borderRadius,
+            marginTop = _props$attributes5.marginTop,
+            marginBottom = _props$attributes5.marginBottom,
+            marginLeft = _props$attributes5.marginLeft,
+            marginRight = _props$attributes5.marginRight,
+            paddingTop = _props$attributes5.paddingTop,
+            paddingRight = _props$attributes5.paddingRight,
+            paddingBottom = _props$attributes5.paddingBottom,
+            paddingLeft = _props$attributes5.paddingLeft,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -52290,35 +53787,35 @@ var deprecatedContent = [{
 }, {
     attributes: containerAttrs_1_0_1,
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            horAlign = _props$attributes5.horAlign,
-            innerWidth = _props$attributes5.innerWidth,
-            height = _props$attributes5.height,
-            vPos = _props$attributes5.vPos,
-            minHeight = _props$attributes5.minHeight,
-            color = _props$attributes5.color,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderColor = _props$attributes5.borderColor,
-            borderRadius = _props$attributes5.borderRadius,
-            marginTop = _props$attributes5.marginTop,
-            marginBottom = _props$attributes5.marginBottom,
-            marginLeft = _props$attributes5.marginLeft,
-            marginRight = _props$attributes5.marginRight,
-            paddingTop = _props$attributes5.paddingTop,
-            paddingRight = _props$attributes5.paddingRight,
-            paddingBottom = _props$attributes5.paddingBottom,
-            paddingLeft = _props$attributes5.paddingLeft,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+        var _props$attributes6 = props.attributes,
+            horAlign = _props$attributes6.horAlign,
+            innerWidth = _props$attributes6.innerWidth,
+            height = _props$attributes6.height,
+            vPos = _props$attributes6.vPos,
+            minHeight = _props$attributes6.minHeight,
+            color = _props$attributes6.color,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderColor = _props$attributes6.borderColor,
+            borderRadius = _props$attributes6.borderRadius,
+            marginTop = _props$attributes6.marginTop,
+            marginBottom = _props$attributes6.marginBottom,
+            marginLeft = _props$attributes6.marginLeft,
+            marginRight = _props$attributes6.marginRight,
+            paddingTop = _props$attributes6.paddingTop,
+            paddingRight = _props$attributes6.paddingRight,
+            paddingBottom = _props$attributes6.paddingBottom,
+            paddingLeft = _props$attributes6.paddingLeft,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition;
 
         return wp.element.createElement(
             "div",
@@ -52367,14 +53864,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 
 
@@ -52649,13 +54146,13 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_default_image__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_testimonials_upper_quote__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(48);
@@ -52663,7 +54160,7 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Padding__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_responsive_tabs__ = __webpack_require__(6);
@@ -53336,43 +54833,42 @@ var edit = function (_Component) {
                         paddingRightMobile: paddingRightMobile,
                         paddingBottomMobile: paddingBottomMobile,
                         paddingLeftMobile: paddingLeftMobile,
-                        onChangePadTopDesk: function onChangePadTopDesk(val) {
-                            return setAttributes({ paddingTop: val });
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingTop: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTopTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTopMobile: newValue });
+                            }
                         },
-                        onChangePadRightDesk: function onChangePadRightDesk(val) {
-                            return setAttributes({ paddingRight: val });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingRight: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRightTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRightMobile: newValue });
+                            }
                         },
-                        onChangePadBottomDesk: function onChangePadBottomDesk(val) {
-                            return setAttributes({ paddingBottom: val });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingBottom: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBottomTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBottomMobile: newValue });
+                            }
                         },
-                        onChangePadLeftDesk: function onChangePadLeftDesk(val) {
-                            return setAttributes({ paddingLeft: val });
-                        },
-                        onChangePadTopTablet: function onChangePadTopTablet(valT) {
-                            return setAttributes({ paddingTopTablet: valT });
-                        },
-                        onChangePadRightTablet: function onChangePadRightTablet(valT) {
-                            return setAttributes({ paddingRightTablet: valT });
-                        },
-                        onChangePadBottomTablet: function onChangePadBottomTablet(valT) {
-                            return setAttributes({ paddingBottomTablet: valT });
-                        },
-                        onChangePadLeftTablet: function onChangePadLeftTablet(valT) {
-                            return setAttributes({ paddingLeftTablet: valT });
-                        },
-                        onChangePadTopMobile: function onChangePadTopMobile(valM) {
-                            return setAttributes({ paddingTopMobile: valM });
-                        },
-                        onChangePadRightMobile: function onChangePadRightMobile(valM) {
-                            return setAttributes({ paddingRightMobile: valM });
-                        },
-                        onChangePadBottomMobile: function onChangePadBottomMobile(valM) {
-                            return setAttributes({ paddingBottomMobile: valM });
-                        },
-                        onChangePadLeftMobile: function onChangePadLeftMobile(valM) {
-                            return setAttributes({ paddingLeftMobile: valM });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingLeft: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLeftTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLeftMobile: newValue });
+                            }
                         }
-
                     })
                 ),
                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_premium_responsive_tabs__["a" /* default */], {
@@ -53534,12 +55030,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -53649,7 +55145,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53713,11 +55209,6 @@ var save = function save(props) {
         backgroundRepeat = _props$attributes.backgroundRepeat,
         backgroundPosition = _props$attributes.backgroundPosition,
         backgroundSize = _props$attributes.backgroundSize,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
@@ -53856,7 +55347,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55381,21 +56872,21 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__);
@@ -56345,12 +57836,12 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -56405,7 +57896,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56613,7 +58104,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57777,14 +59268,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(267);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(4);
 
 
@@ -58008,7 +59499,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58131,20 +59622,20 @@ function save(props) {
 }
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(245);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_typed_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_responsive_tabs__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_sortable_hoc__ = __webpack_require__(248);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59062,14 +60553,14 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCss__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_js_blocks_generateCssUnit__ = __webpack_require__(8);
 
 
 
@@ -59192,7 +60683,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -60301,7 +61792,7 @@ function styling(props) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60312,14 +61803,14 @@ function styling(props) {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(5);
@@ -60328,9 +61819,9 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(263);
 
 
 
@@ -61917,7 +63408,7 @@ function sortableElement(WrappedComponent) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61941,14 +63432,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(253);
 
 
 
@@ -61957,7 +63448,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61967,7 +63458,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61999,7 +63490,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62009,7 +63500,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62036,7 +63527,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62048,7 +63539,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62070,12 +63561,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(77);
 
 
@@ -62088,7 +63579,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62122,7 +63613,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62135,12 +63626,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(261);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -62158,7 +63649,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62173,7 +63664,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62226,14 +63717,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(266);
 
 
 
@@ -62242,7 +63733,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62258,7 +63749,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62268,7 +63759,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62278,7 +63769,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

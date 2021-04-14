@@ -192,8 +192,7 @@ const save = props => {
                         className={`premium-countup__title`}
                         style={{
                             fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
+
                             color: titleColor,
                             letterSpacing: titleSpacing + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
@@ -210,8 +209,6 @@ const save = props => {
                     className={`premium-countup__title`}
                     style={{
                         fontFamily: titleFamily,
-                        marginTop: titleT + "px",
-                        marginBottom: titleB + "px",
                         color: titleColor,
                         letterSpacing: titleSpacing + "px",
                         fontWeight: titleWeight,

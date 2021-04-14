@@ -195,6 +195,22 @@ const counterAttrs = {
         type: "number",
         default: 1
     },
+    titleTTablet: {
+        type: "number",
+        default: 1
+    },
+    titleBTablet: {
+        type: "number",
+        default: 1
+    },
+    titleTMobile: {
+        type: "number",
+        default: 1
+    },
+    titleBMobile: {
+        type: "number",
+        default: 1
+    },
     titleColor: {
         type: "string"
     },

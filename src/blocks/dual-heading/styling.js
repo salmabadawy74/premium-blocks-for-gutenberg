@@ -38,6 +38,18 @@ function styling(props) {
         secondPaddingRMobile,
         secondPaddingBMobile,
         secondPaddingLMobile,
+        firstMarginR,
+        firstMarginL,
+        firstMarginRTablet,
+        firstMarginLTablet,
+        firstMarginRMobile,
+        firstMarginLMobile,
+        secondMarginL,
+        secondMarginR,
+        secondMarginLTablet,
+        secondMarginRTablet,
+        secondMarginLMobile,
+        secondMarginRMobile
     } = props.attributes;
 
     var selectors = {}
@@ -51,6 +63,9 @@ function styling(props) {
             "padding-right": `${firstPaddingR}px`,
             "padding-bottom": `${firstPaddingB}px`,
             "padding-left": `${firstPaddingL}px`,
+            "margin-right": `${firstMarginR}px`,
+            "margin-left": `${firstMarginL} px`
+
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSize, secondSizeUnit),
@@ -58,6 +73,8 @@ function styling(props) {
             "padding-right": `${secondPaddingR}px`,
             "padding-bottom": `${secondPaddingB}px`,
             "padding-left": `${secondPaddingL}px`,
+            "margin-right": `${secondMarginR}px`,
+            "margin-left": `${secondMarginL} px`
         }
     }
     tablet_selectors = {
@@ -67,6 +84,8 @@ function styling(props) {
             "padding-right": `${firstPaddingRTablet}px`,
             "padding-bottom": `${firstPaddingBTablet}px`,
             "padding-left": `${firstPaddingLTablet}px`,
+            "margin-right": `${firstMarginRTablet}px`,
+            "margin-left": `${firstMarginLTablet} px`
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSizeTablet, secondSizeUnit),
@@ -74,6 +93,8 @@ function styling(props) {
             "padding-right": `${secondPaddingRTablet}px`,
             "padding-bottom": `${secondPaddingBTablet}px`,
             "padding-left": `${secondPaddingLTablet}px`,
+            "margin-right": `${secondMarginRTablet}px`,
+            "margin-left": `${secondMarginLTablet} px`
         }
     }
     mobile_selectors = {
@@ -83,6 +104,8 @@ function styling(props) {
             "padding-right": `${firstPaddingRMobile}px`,
             "padding-bottom": `${firstPaddingBMobile}px`,
             "padding-left": `${firstPaddingLMobile}px`,
+            "margin-right": `${firstMarginRMobile}px`,
+            "margin-left": `${firstMarginLMobile} px`
         },
         " .premium-dheading-block__second": {
             'font-size': generateCSSUnit(secondSizeMobile, secondSizeUnit),
@@ -90,6 +113,8 @@ function styling(props) {
             "padding-right": `${secondPaddingRMobile}px`,
             "padding-bottom": `${secondPaddingBMobile}px`,
             "padding-left": `${secondPaddingLMobile}px`,
+            "margin-right": `${secondMarginRMobile}px`,
+            "margin-left": `${secondMarginLMobile} px`
         }
     }
 

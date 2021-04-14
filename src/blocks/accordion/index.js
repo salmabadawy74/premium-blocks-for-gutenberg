@@ -13,6 +13,9 @@ const accordionAttrs = {
     accordionId: {
         type: "string"
     },
+    block_id: {
+        type: "string"
+    },
     repeaterItems: {
         type: "array",
         default: [
@@ -120,35 +123,35 @@ const accordionAttrs = {
     },
     titlePaddingTTablet: {
         type: "number",
-        default: 20
+
     },
     titlePaddingRTablet: {
         type: "number",
-        default: 20
+
     },
     titlePaddingBTablet: {
         type: "number",
-        default: 20
+
     },
     titlePaddingLTablet: {
         type: "number",
-        default: 20
+
     },
     titlePaddingTMobile: {
         type: "number",
-        default: 20
+
     },
     titlePaddingRMobile: {
         type: "number",
-        default: 20
+
     },
     titlePaddingBMobile: {
         type: "number",
-        default: 20
+
     },
     titlePaddingLMobile: {
         type: "number",
-        default: 20
+
     },
     arrowColor: {
         type: "string"

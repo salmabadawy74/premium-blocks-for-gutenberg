@@ -135,10 +135,6 @@ const save = props => {
                     : borderWidth + "px",
                 borderRadius: borderRadius + "px",
                 borderColor: borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
                 boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                 backgroundColor: backColor
                     ? hexToRgba(backColor, backOpacity)
@@ -205,10 +201,6 @@ const save = props => {
                 {titleChecked && titleText && (
                     <div
                         className={`premium-icon-box__title_wrap`}
-                        style={{
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName={titleTag.toLowerCase()}
@@ -230,10 +222,6 @@ const save = props => {
                 {descChecked && descText && (
                     <div
                         className={`premium-icon-box__desc_wrap`}
-                        style={{
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="p"
@@ -251,10 +239,6 @@ const save = props => {
                 {btnChecked && btnText && (
                     <div
                         className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-                        style={{
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="a"

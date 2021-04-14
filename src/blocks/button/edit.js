@@ -573,18 +573,50 @@ export default class edit extends Component {
                                 setAttributes({ paddingU: newvalue })
                             }
                             selectedUnit={paddingU}
-                            onChangePadTopDesk={(val) => setAttributes({ paddingT: val })}
-                            onChangePadRightDesk={(val) => setAttributes({ paddingR: val })}
-                            onChangePadBottomDesk={(val) => setAttributes({ paddingB: val })}
-                            onChangePadLeftDesk={(val) => setAttributes({ paddingL: val })}
-                            onChangePadTopTablet={(valT) => setAttributes({ paddingTTablet: valT })}
-                            onChangePadRightTablet={(valT) => setAttributes({ paddingRTablet: valT })}
-                            onChangePadBottomTablet={(valT) => setAttributes({ paddingBTablet: valT })}
-                            onChangePadLeftTablet={(valT) => setAttributes({ paddingLTablet: valT })}
-                            onChangePadTopMobile={(valM) => setAttributes({ paddingTMobile: valM })}
-                            onChangePadRightMobile={(valM) => setAttributes({ paddingRMobile: valM })}
-                            onChangePadBottomMobile={(valM) => setAttributes({ paddingBMobile: valM })}
-                            onChangePadLeftMobile={(valM) => setAttributes({ paddingLMobile: valM })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

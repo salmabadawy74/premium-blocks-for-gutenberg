@@ -52,11 +52,6 @@ const save = props => {
         backgroundRepeat,
         backgroundPosition,
         backgroundSize,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
-        paddingUnit,
         hideDesktop,
         hideTablet,
         hideMobile
