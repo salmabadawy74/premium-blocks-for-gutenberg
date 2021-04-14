@@ -40,6 +40,16 @@ const accordionAttrs = {
     titleSize: {
         type: "number"
     },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
     titleLine: {
         type: "number"
     },
@@ -255,6 +265,17 @@ const accordionAttrs = {
         type: "string"
     },
     descSize: {
+        type: "number",
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
         type: "number"
     },
     descLine: {

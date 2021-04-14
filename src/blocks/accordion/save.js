@@ -12,7 +12,6 @@ const save = props => {
         repeaterItems,
         direction,
         titleTag,
-        titleSize,
         titleLine,
         titleLetter,
         titleStyle,
@@ -92,7 +91,6 @@ const save = props => {
                             value={item.titleText}
                             style={{
                                 color: titleColor,
-                                fontSize: titleSize + "px",
                                 letterSpacing: titleLetter + "px",
                                 textTransform: titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyle,
@@ -142,7 +140,6 @@ const save = props => {
                             value={item.descText}
                             style={{
                                 color: descColor,
-                                fontSize: descSize + "px",
                                 letterSpacing: descLetter + "px",
                                 textTransform: descUpper ? "uppercase" : "none",
                                 textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,

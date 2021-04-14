@@ -82,6 +82,9 @@ class PremiumAccordion extends Component {
             titleTag,
             titleColor,
             titleSize,
+            titleSizeUnit,
+            titleSizeTablet,
+            titleSizeMobile,
             titleLine,
             titleLetter,
             titleStyle,
@@ -142,6 +145,9 @@ class PremiumAccordion extends Component {
             descBorderBottom,
             descBorderLeft,
             descSize,
+            descSizeUnit,
+            descSizeMobile,
+            descSizeTablet,
             descLine,
             descLetter,
             descStyle,
@@ -225,7 +231,6 @@ class PremiumAccordion extends Component {
             });
         };
 
-
         const mainClasses = classnames(className, "premium-accordion");
 
         const accordionItems = repeaterItems.map((item, index) => {
@@ -263,7 +268,7 @@ class PremiumAccordion extends Component {
                                 value={item.titleText}
                                 style={{
                                     color: titleColor,
-                                    fontSize: titleSize + "px",
+
                                     letterSpacing: titleLetter + "px",
                                     textTransform: titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyle,
@@ -317,7 +322,6 @@ class PremiumAccordion extends Component {
                                 value={item.descText}
                                 style={{
                                     color: descColor,
-                                    fontSize: descSize + "px",
                                     letterSpacing: descLetter + "px",
                                     textTransform: descUpper ? "uppercase" : "none",
                                     textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
@@ -358,20 +362,35 @@ class PremiumAccordion extends Component {
 
                         <PremiumTypo
                             components={[
-                                "size",
+                                "responsiveSize",
                                 "weight",
                                 "style",
                                 "upper",
                                 "spacing",
                                 "line"
                             ]}
-                            size={titleSize}
+                            setAttributes={setAttributes}
+                            fontSizeType={{
+                                value: titleSizeUnit,
+                                label: __("titleSizeUnit"),
+                            }}
+                            fontSize={{
+                                value: titleSize,
+                                label: __("titleSize"),
+                            }}
+                            fontSizeMobile={{
+                                value: titleSizeMobile,
+                                label: __("titleSizeMobile"),
+                            }}
+                            fontSizeTablet={{
+                                value: titleSizeTablet,
+                                label: __("titleSizeTablet"),
+                            }}
                             weight={titleWeight}
                             style={titleStyle}
                             spacing={titleLetter}
                             line={titleLine}
                             upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
                             onChangeWeight={newWeight =>
                                 setAttributes({ titleWeight: newWeight })
                             }
@@ -671,20 +690,35 @@ class PremiumAccordion extends Component {
                             <Fragment>
                                 <PremiumTypo
                                     components={[
-                                        "size",
+                                        "responsiveSize",
                                         "weight",
                                         "style",
                                         "upper",
                                         "spacing",
                                         "line"
                                     ]}
-                                    size={descSize}
+                                    setAttributes={setAttributes}
+                                    fontSizeType={{
+                                        value: descSizeUnit,
+                                        label: __("DescSizeUnit"),
+                                    }}
+                                    fontSize={{
+                                        value: descSize,
+                                        label: __("DescSize"),
+                                    }}
+                                    fontSizeMobile={{
+                                        value: descSizeMobile,
+                                        label: __("DescSizeMobile"),
+                                    }}
+                                    fontSizeTablet={{
+                                        value: descSizeTablet,
+                                        label: __("DescSizeTablet"),
+                                    }}
                                     weight={descWeight}
                                     style={descStyle}
                                     spacing={descLetter}
                                     line={descLine}
                                     upper={descUpper}
-                                    onChangeSize={newSize => setAttributes({ descSize: newSize })}
                                     onChangeWeight={newWeight =>
                                         setAttributes({ descWeight: newWeight })
                                     }
