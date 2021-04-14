@@ -24,6 +24,7 @@ function PremiumResponsiveMargin(props) {
         marginBottomMobile,
         marginLeftMobile,
     } = props;
+    console.log(props)
     return (
         < TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
             tabs={[
@@ -53,13 +54,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRight}
                             marginBottom={marginBottom}
                             marginLeft={marginLeft}
-                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
+                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("mobile", marginTop)
                             }
-                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
+                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("mobile", marginRight)
                             }
-                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("mobile", marginBottom)
                             }
-                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("mobile", marginLeft)
                             }
                         />
                     )
@@ -71,13 +72,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightTablet}
                             marginBottom={marginBottomTablet}
                             marginLeft={marginLeftTablet}
-                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
+                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("tablet", marginTop)
                             }
-                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
+                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("tablet", marginRight)
                             }
-                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("tablet", marginBottom)
                             }
-                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("tablet", marginLeft)
                             }
                         />
                     )
@@ -89,13 +90,13 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightMobile}
                             marginBottom={marginBottomMobile}
                             marginLeft={marginLeftMobile}
-                            onChangeMarTop={(tab) => onChangeMarTop(tab.name)
+                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("desktop", marginTop)
                             }
-                            onChangeMarRight={(tab) => onChangeMarRight(tab.name)
+                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("desktop", marginRight)
                             }
-                            onChangeMarBottom={(tab) => onChangeMarBottom(tab.name)
+                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("desktop", marginBottom)
                             }
-                            onChangeMarLeft={(tab) => onChangeMarLeft(tab.name)
+                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("desktop", marginLeft)
                             }
                         />
                     )

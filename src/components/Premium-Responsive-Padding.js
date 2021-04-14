@@ -64,21 +64,21 @@ function PremiumResponsivePadding(props) {
                 if ("desktop" === tab.name) {
                     tabout = (
                         <PremiumPadding
-                            paddingTop={20}
+                            paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
-                            onChangePadTop={(paddingT) =>
-                                props.onChangePadTopDesk(paddingT)
+                            onChangePadTop={(paddingTop) =>
+                                props.onChangePaddingTop("desktop", paddingTop)
                             }
-                            onChangePadRight={(paddingR) =>
-                                props.onChangePadRightDesk(paddingR)
+                            onChangePadRight={(paddingRight) =>
+                                props.onChangePaddingRight("desktop", paddingRight)
                             }
-                            onChangePadBottom={(paddingB) =>
-                                props.onChangePadBottomDesk(paddingB)
+                            onChangePadBottom={(paddingBottom) =>
+                                props.onChangePaddingBottom("desktop", paddingBottom)
                             }
-                            onChangePadLeft={(paddingL) =>
-                                props.onChangePadLeftDesk(paddingL)
+                            onChangePadLeft={(paddingLeft) =>
+                                props.onChangePaddingLeft("desktop", paddingLeft)
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU || "px"}
@@ -92,17 +92,17 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRTablet}
                             paddingBottom={paddingBTablet}
                             paddingLeft={paddingLTablet}
-                            onChangePadTop={(paddingTTablet) =>
-                                props.onChangePadTopTablet(paddingTTablet)
+                            onChangePadTop={(paddingTop) =>
+                                props.onChangePaddingTop("tablet", paddingTop)
                             }
-                            onChangePadRight={(paddingRTablet) =>
-                                props.onChangePadRightTablet(paddingRTablet)
+                            onChangePadRight={(paddingRight) =>
+                                props.onChangePaddingRight("tablet", paddingRight)
                             }
-                            onChangePadBottom={(paddingBTablet) =>
-                                props.onChangePadBottomTablet(paddingBTablet)
+                            onChangePadBottom={(paddingBottom) =>
+                                props.onChangePaddingBottom("tablet", paddingBottom)
                             }
-                            onChangePadLeft={(paddingLTablet) =>
-                                props.onChangePadLeftTablet(paddingLTablet)
+                            onChangePadLeft={(paddingLeft) =>
+                                props.onChangePaddingLeft("tablet", paddingLeft)
                             }
                             showUnits={showUnits}
                             selectedUnit={paddingU || 'px'}
@@ -117,17 +117,17 @@ function PremiumResponsivePadding(props) {
                             paddingRight={paddingRMobile}
                             paddingBottom={paddingBMobile}
                             paddingLeft={paddingLMobile}
-                            onChangePadTop={(paddingTMobile) =>
-                                props.onChangePadTopMobile(paddingTMobile)
+                            onChangePadTop={(paddingTop) =>
+                                props.onChangePaddingTop("mobile", paddingTop)
                             }
-                            onChangePadRight={(paddingRMobile) =>
-                                props.onChangePadRightMobile(paddingRMobile)
+                            onChangePadRight={(paddingRight) =>
+                                props.onChangePaddingRight("mobile", paddingRight)
                             }
-                            onChangePadBottom={(paddingBMobile) =>
-                                props.onChangePadBottomTablet(paddingBTablet)
+                            onChangePadBottom={(paddingBottom) =>
+                                props.onChangePaddingBottom("mobile", paddingBottom)
                             }
-                            onChangePadLeft={(paddingLMobile) =>
-                                props.onChangePadLeftTablet(paddingLMobile)
+                            onChangePadLeft={(paddingLeft) =>
+                                props.onChangePaddingLeft("mobile", paddingLeft)
                             }
                             showUnits={showUnits}
                             selectedUnit={selectedUnit || 'px'}
