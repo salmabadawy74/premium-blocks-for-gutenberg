@@ -125,6 +125,13 @@ const buttonAttrs = {
     borderHoverColor: {
         type: "string"
     },
+    padding: {
+        type: "number"
+    },
+    paddingUpdate: {
+        type: "boolean",
+        default: false
+    },
     paddingT: {
         type: "number"
     },

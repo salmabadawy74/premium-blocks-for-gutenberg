@@ -232,6 +232,7 @@ export default class edit extends Component {
             element.innerHTML = styling(this.props);
         }
 
+
         return [
             isSelected && (
                 <BlockControls key="controls">

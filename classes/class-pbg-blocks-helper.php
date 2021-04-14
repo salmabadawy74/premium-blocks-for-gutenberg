@@ -915,11 +915,9 @@ class PBG_Blocks_Helper {
 
 		$selectors = array(
 			' .premium-button' => array(
-				'font-size'      => self::get_css_value( $attr['textSize'], $attr['textSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['paddingT'], $attr['paddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['paddingR'], $attr['paddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['paddingB'], $attr['paddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['paddingL'], $attr['paddingU'] ),
+				'font-size' => self::get_css_value( $attr['textSize'], $attr['textSizeUnit'] ),
+
+				'padding'   => $attr['paddingUpdate'] ? $attr['paddingT'] . $attr['paddingU'] . ' ' . $attr['paddingR'] . $attr['paddingU'] . ' ' . $attr['paddingB'] . $attr['paddingU'] . ' ' . $attr['paddingL'] . $attr['paddingU'] : $attr['padding'] . $attr['paddingU'],
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -927,11 +925,9 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-button' => array(
-				'font-size'      => self::get_css_value( $attr['textSizeTablet'], $attr['textSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['paddingTTablet'], $attr['paddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['paddingRTablet'], $attr['paddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['paddingBTablet'], $attr['paddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['paddingLTablet'], $attr['paddingU'] ),
+				'font-size' => self::get_css_value( $attr['textSizeTablet'], $attr['textSizeUnit'] ),
+				'padding'   => $attr['paddingUpdate'] ? $attr['paddingTTablet'] . $attr['paddingU'] . ' ' . $attr['paddingRTablet'] . $attr['paddingU'] . ' ' . $attr['paddingBTablet'] . $attr['paddingU'] . ' ' . $attr['paddingLTablet'] . $attr['paddingU'] : $attr['padding'] . $attr['paddingU'],
+
 			),
 		);
 		// Tablet CSS End.
@@ -939,11 +935,8 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-button' => array(
-				'font-size'      => self::get_css_value( $attr['textSizeMobile'], $attr['textSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['paddingTMobile'], $attr['paddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['paddingRMobile'], $attr['paddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['paddingBMobile'], $attr['paddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['paddingLMobile'], $attr['paddingU'] ),
+				'font-size' => self::get_css_value( $attr['textSizeMobile'], $attr['textSizeUnit'] ),
+				'padding'   => $attr['paddingUpdate'] ? $attr['paddingTMobile'] . $attr['paddingU'] . ' ' . $attr['paddingRMobile'] . $attr['paddingU'] . ' ' . $attr['paddingBMobile'] . $attr['paddingU'] . ' ' . $attr['paddingLMobile'] . $attr['paddingU'] : $attr['padding'] . $attr['paddingU'],
 			),
 
 		);

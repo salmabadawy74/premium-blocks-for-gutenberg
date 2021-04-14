@@ -182,6 +182,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'paddingBMobile' => '0',
 							'paddingLMobile' => '0',
 							'paddingU'       => 'px',
+							'paddingUpdate'  => false,
 
 						),
 					),

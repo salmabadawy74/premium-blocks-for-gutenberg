@@ -22,6 +22,8 @@ function styling(props) {
         paddingBMobile,
         paddingLMobile,
         paddingU,
+        paddingUpdate,
+        padding,
     } = props.attributes;
 
     let selectors = {}
@@ -34,25 +36,22 @@ function styling(props) {
             "padding-top": generateCSSUnit(paddingT, paddingU),
             "padding-right": generateCSSUnit(paddingR, paddingU),
             "padding-bottom": generateCSSUnit(paddingB, paddingU),
-            "padding-left": generateCSSUnit(paddingL, paddingU)
+            "padding-left": generateCSSUnit(paddingL, paddingU),
+            "padding": paddingUpdate ? `${paddingT}${paddingU} ${paddingR}${paddingU} ${paddingB}${paddingU} ${paddingL}${paddingU}` : `${padding}${paddingU}`,
         }
     }
     tablet_selectors = {
         " .premium-button": {
             "font-size": generateCSSUnit(textSizeTablet, textSizeUnit),
-            "padding-top": generateCSSUnit(paddingTTablet, paddingU),
-            "padding-right": generateCSSUnit(paddingRTablet, paddingU),
-            "padding-bottom": generateCSSUnit(paddingBTablet, paddingU),
-            "padding-left": generateCSSUnit(paddingLTablet, paddingU)
+            "padding": paddingUpdate ? `${paddingTTablet}${paddingU} ${paddingRTablet}${paddingU} ${paddingBTablet}${paddingU} ${paddingLTablet}${paddingU}` : `${padding}${paddingU}`,
+
         }
     }
     mobile_selectors = {
         " .premium-button": {
             "font-size": generateCSSUnit(textSizeMobile, textSizeUnit),
-            "padding-top": generateCSSUnit(paddingTMobile, paddingU),
-            "padding-right": generateCSSUnit(paddingRMobile, paddingU),
-            "padding-bottom": generateCSSUnit(paddingBMobile, paddingU),
-            "padding-left": generateCSSUnit(paddingLMobile, paddingU)
+            "padding": paddingUpdate ? `${paddingTMobile}${paddingU} ${paddingRMobile}${paddingU} ${paddingBMobile}${paddingU} ${paddingLMobile}${paddingU}` : `${padding}${paddingU}`,
+
         }
     }
 

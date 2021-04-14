@@ -91,6 +91,7 @@ export default class edit extends Component {
             shadowColor,
             shadowHorizontal,
             shadowVertical,
+            padding,
             paddingT,
             paddingR,
             paddingB,
@@ -104,6 +105,7 @@ export default class edit extends Component {
             paddingBMobile,
             paddingLMobile,
             paddingU,
+            paddingUpdate,
             btnShadowBlur,
             btnShadowColor,
             btnShadowHorizontal,
@@ -574,6 +576,7 @@ export default class edit extends Component {
                             }
                             selectedUnit={paddingU}
                             onChangePaddingTop={
+
                                 (device, newValue) => {
                                     if (device === "desktop") {
                                         setAttributes({ paddingT: newValue })
@@ -582,6 +585,7 @@ export default class edit extends Component {
                                     } else {
                                         setAttributes({ paddingTMobile: newValue })
                                     }
+                                    setAttributes({ paddingUpdate: true })
                                 }
                             }
                             onChangePaddingRight={
@@ -593,7 +597,9 @@ export default class edit extends Component {
                                     } else {
                                         setAttributes({ paddingRMobile: newValue })
                                     }
+                                    setAttributes({ paddingUpdate: true })
                                 }
+
                             }
                             onChangePaddingBottom={
                                 (device, newValue) => {
@@ -604,6 +610,7 @@ export default class edit extends Component {
                                     } else {
                                         setAttributes({ paddingBMobile: newValue })
                                     }
+                                    setAttributes({ paddingUpdate: true })
                                 }
                             }
                             onChangePaddingLeft={
@@ -615,7 +622,9 @@ export default class edit extends Component {
                                     } else {
                                         setAttributes({ paddingLMobile: newValue })
                                     }
+                                    setAttributes({ paddingUpdate: true })
                                 }
+
                             }
                         />
                     </PanelBody>
