@@ -206,6 +206,18 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'hideDesktop'  => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'hideTablet'   => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'hideMobile'   => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 
 					),
 					'render_callback' => array( $this, 'render_html' ),
@@ -232,18 +244,20 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 			$main_classes = array(
 				'premium-lottie-' . $block_id,
 				'premium-lottie-wrap',
+				$attributes['hideDesktop'],
+				$attributes['hideTablet'],
+				$attributes['hideMobile'],
 			);
 			$main_id      = array(
 				'premium-lottie-animation-' . $block_id,
 
 			);
-			$wrap_class = array( 'premium-lottie-animation', 'premium-lottie-' . $attributes['render'] );
 
 			ob_start();
 
 			?>
 			<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
-				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>"  class="<?php echo esc_attr( implode( ' ', $wrap_class ) ); ?>"  >
+				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>"  class="premium-lottie-animation"  >
 					<?php
 					if ( $attributes['link'] ) {
 						?>
@@ -266,7 +280,7 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 					<script id="Lottie-script" type="text/javascript">
 						jQuery(document).ready(function($) {
 
-							var lottieContainer = document.querySelector('.premium-lottie-<?php echo esc_html( $value['block_id'] ); ?>');
+							var lottieContainer = document.getElementById('premium-lottie-animation-<?php echo esc_html( $value['block_id'] ); ?>');
 							var setSpeed = <?php echo esc_html( $value['speed'] ); ?>;
 							var trigger = '<?php echo esc_html( $value['trigger'] ); ?>';
 							var loop = '<?php echo esc_html( $value['loop'] ); ?>';

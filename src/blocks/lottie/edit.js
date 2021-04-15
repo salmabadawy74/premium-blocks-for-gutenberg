@@ -3,15 +3,13 @@ import Lottie from 'react-lottie-with-segments';
 import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
-import PremiumBackground from '../../components/premium-background';
-import hexToRgba from "hex-to-rgba";
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import styling from './styling';
 import PremiumSizeUnits from "../../components/premium-size-units";
 
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
-
 
 const {
     InspectorControls,
@@ -29,13 +27,14 @@ const {
     Dashicon,
 } = wp.components
 
-let isLottieUpdated = null;
-class edit extends Component {
+const { ColorPalette } = wp.blockEditor;
 
+let isLottieUpdated = null;
+
+class edit extends Component {
     constructor() {
         super(...arguments);
         this.lottieplayer = React.createRef();
-
     }
 
     componentDidMount() {
@@ -58,7 +57,6 @@ class edit extends Component {
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
 
     }
-
 
     componentDidUpdate() {
         var elementStyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
@@ -119,10 +117,6 @@ class edit extends Component {
                 }
             }
         }
-
-
-
-
     }
 
     render() {
@@ -174,7 +168,10 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
-            paddingU
+            paddingU,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = attributes
 
         let validJsonPath = 'invalid';
@@ -456,12 +453,18 @@ class edit extends Component {
                             if ("normal" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <PremiumBackground
-                                            type="color"
-                                            colorValue={backColor}
-                                            opacity={backOpacity}
-                                            onChangeColor={(newValue) => setAttributes({ backColor: newValue })}
-                                            onChangeOpacity={(newValue) => setAttributes({ backOpacity: newValue })}
+                                        <p>{__("Background Color")}</p>
+                                        <ColorPalette
+                                            value={backColor}
+                                            onChange={(newValue) => setAttributes({ backColor: newValue })}
+                                        />
+                                        <RangeControl
+                                            label={__(`Opacity`)}
+                                            value={backOpacity}
+                                            onChange={(newvalue) => setAttributes({ backOpacity: newvalue })}
+                                            max={1}
+                                            min={.1}
+                                            step={0.01}
                                         />
                                         <PremiumFilters
                                             blur={blur}
@@ -481,12 +484,18 @@ class edit extends Component {
                             if ("hover" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <PremiumBackground
-                                            type="color"
-                                            colorValue={backHColor}
-                                            opacity={backHOpacity}
-                                            onChangeColor={(newValue) => setAttributes({ backHColor: newValue })}
-                                            onChangeOpacity={(newValue) => setAttributes({ backHOpacity: newValue })}
+                                        <p>{__("Background Color")}</p>
+                                        <ColorPalette
+                                            value={backHColor}
+                                            onChange={(newValue) => setAttributes({ backHColor: newValue })}
+                                        />
+                                        <RangeControl
+                                            label={__(`Opacity`)}
+                                            value={backHOpacity}
+                                            onChange={(newvalue) => setAttributes({ backHOpacity: newvalue })}
+                                            max={1}
+                                            min={.1}
+                                            step={0.01}
                                         />
                                         <PremiumFilters
                                             blur={blurH}
@@ -573,8 +582,16 @@ class edit extends Component {
                         }
                     />
                 </PanelBody>
+                <PremiumResponsiveTabs
+                    Desktop={hideDesktop}
+                    Tablet={hideTablet}
+                    Mobile={hideMobile}
+                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                />
             </InspectorControls>,
-            <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses}`}
+            <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-lottieURl={lottieURl} data-trigger={trigger} data-start={bottom} data-end={top}
             >
                 <div className={`premium-lottie-animation`}
@@ -597,7 +614,7 @@ class edit extends Component {
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />
-                    {link && url !== ' ' && <a href="javascript:void(0)" ></a>}
+                    {link && url !== ' ' && <a href={"javascript:void(0)"} ></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
@@ -606,7 +623,8 @@ class edit extends Component {
                             `text-align:${align};`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation  {`,
-                            `background-color:${backColor ? hexToRgba(backColor, backOpacity) : "transparent"};`,
+                            `background-color:${backColor};`,
+                            `opacity : ${backOpacity};`,
                             `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg );`,
                             `border-style : ${borderType};`,
                             `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`,
@@ -618,10 +636,10 @@ class edit extends Component {
                             `padding-left : ${paddingL}${paddingU};`,
                             `transform: rotate(${rotate}deg) !important;`,
                             "}",
-                            `#premium-lottie-${block_id}  .premium-lottie-animation:hover .premium-lottie-inner {`,
-                            `background-color:${backHColor ? hexToRgba(backHColor, backHOpacity) : backColor};`,
+                            `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`,
+                            `background-color:${backHColor};`,
+                            `opacity:${backHOpacity};`,
                             `filter: brightness( ${brightH}% ) contrast( ${contrastH}% ) saturate( ${saturationH}% ) blur( ${blurH}px ) hue-rotate( ${hueH}deg );`,
-
                             "}",
                         ].join("\n"),
                     }}
@@ -629,6 +647,5 @@ class edit extends Component {
             </div>
         ]
     }
-
 }
 export default edit;

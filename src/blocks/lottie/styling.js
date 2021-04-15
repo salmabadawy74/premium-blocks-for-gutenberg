@@ -16,7 +16,7 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
-        " .premium-lottie-animation .premium-lottie-inner  ": {
+        " .premium-lottie-animation   ": {
             "width": `${size}${sizeUnit} !important`,
             "height": `${size}${sizeUnit} !important`
         },
@@ -24,7 +24,7 @@ function styling(props) {
     }
 
     tablet_selectors = {
-        " .premium-lottie-animation  .premium-lottie-inner  ": {
+        " .premium-lottie-animation   ": {
             "width": `${sizeTablet}${sizeUnit} !important`,
             "height": `${sizeTablet}${sizeUnit} !important`
         },
@@ -32,7 +32,7 @@ function styling(props) {
     }
 
     mobile_selectors = {
-        " .premium-lottie-animation  .premium-lottie-inner  ": {
+        " .premium-lottie-animation   ": {
             "width": generateCSSUnit(sizeMobile, sizeUnit),
             "height": generateCSSUnit(sizeMobile, sizeUnit)
         },

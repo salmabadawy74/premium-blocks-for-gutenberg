@@ -1341,11 +1341,14 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 			''                                   => array(
 				'text-align' => $attr['align'],
+				'display'    => $attr['hideDesktop'] ? 'none' : '',
 			),
 			' .premium-lottie-animation '        => array(
-
+				'width'            => $attr['size'] . $attr['sizeUnit'],
+				'height'           => $attr['size'] . $attr['sizeUnit'],
 				'transform'        => 'rotate(' . $attr['rotate'] . 'deg)',
-				'background-color' => $attr['backColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backColor'] ) . ',' . $attr['backOpacity'] . ')' : $attr['backColor'],
+				'background-color' => $attr['backColor'],
+				'opacity'          => $attr['backOpacity'],
 				'filter'           => 'brightness(' . $attr['bright'] . '%)' . 'contrast(' . $attr['contrast'] . '%) ' . 'saturate(' . $attr['saturation'] . '%) ' . 'blur(' . $attr['blur'] . 'px) ' . 'hue-rotate(' . $attr['hue'] . 'deg)',
 				'border-style'     => $attr['borderType'],
 				'border-width'     => $attr['borderTop'] . 'px' . ' ' . $attr['borderRight'] . 'px' . ' ' . $attr['borderBottom'] . 'px' . ' ' . $attr['borderLeft'] . 'px',
@@ -1358,21 +1361,16 @@ class PBG_Blocks_Helper {
 			),
 
 			'  .premium-lottie-animation:hover ' => array(
-				'background-color' => $attr['backHColor'] ? 'rgba(' . self::hex_to_rgba( $attr['backHColor'] ) . ',' . $attr['backHOpacity'] . ')' : $attr['backColor'],
+				'background-color' => $attr['backHColor'],
+				'opacity'          => $attr['backHOpacity'],
 				'filter'           => 'brightness(' . $attr['brightH'] . '%)' . 'contrast(' . $attr['contrastH'] . '%) ' . 'saturate(' . $attr['saturationH'] . '%) ' . 'blur(' . $attr['blurH'] . 'px) ' . 'hue-rotate(' . $attr['hueH'] . 'deg)',
-			),
-			'  .premium-lottie-animation svg   ' => array(
-				'width'            => $attr['size'] . $attr['sizeUnit'],
-				'height'           => $attr['size'] . $attr['sizeUnit'],
-				'transform-origin' => ' unset !important',
-			),
-			'  .premium-lottie-canvas  '         => array(
-				'width'  => $attr['size'] . $attr['sizeUnit'] . ' !important',
-				'height' => $attr['size'] . $attr['sizeUnit'] . ' !important',
 			),
 		);
 
 		$t_selectors = array(
+			''                            => array(
+				'display' => $attr['hideTablet'] ? 'none' : '',
+			),
 			' .premium-lottie-animation ' => array(
 				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
 				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
@@ -1380,6 +1378,9 @@ class PBG_Blocks_Helper {
 		);
 
 		$m_selectors = array(
+			''                            => array(
+				'display' => $attr['hideMobile'] ? 'none' : '',
+			),
 			' .premium-lottie-animation ' => array(
 				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
 				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
