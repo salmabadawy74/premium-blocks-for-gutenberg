@@ -40224,6 +40224,9 @@ var iconBoxAttrs = {
     btnBorderColor: {
         type: "string"
     },
+    btnPadding: {
+        type: 'number'
+    },
     btnPaddingT: {
         type: "number"
     },
@@ -40477,6 +40480,10 @@ var iconBoxAttrs = {
     btnOpacity: {
         type: "number",
         default: "1"
+    },
+    btnPadUpdate: {
+        type: "boolean",
+        default: false
     }
 };
 
@@ -40697,6 +40704,8 @@ var edit = function (_Component) {
                 btnPaddingBMobile = attributes.btnPaddingBMobile,
                 btnPaddingLMobile = attributes.btnPaddingLMobile,
                 btnPaddingU = attributes.btnPaddingU,
+                btnPadUpdate = attributes.btnPadUpdate,
+                btnPadding = attributes.btnPadding,
                 btnMarginT = attributes.btnMarginT,
                 btnMarginB = attributes.btnMarginB,
                 btnMarginTTablet = attributes.btnMarginTTablet,
@@ -41384,6 +41393,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ btnPaddingTMobile: newValue });
                             }
+                            setAttributes({ btnPadUpdate: true });
                         },
                         onChangePaddingRight: function onChangePaddingRight(device, newValue) {
                             if (device === "desktop") {
@@ -41393,6 +41403,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ btnPaddingRMobile: newValue });
                             }
+                            setAttributes({ btnPadUpdate: true });
                         },
                         onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
                             if (device === "desktop") {
@@ -41411,6 +41422,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ btnPaddingLMobile: newValue });
                             }
+                            setAttributes({ btnPadUpdate: true });
                         }
                     }),
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Premium_Responsive_Margin__["a" /* default */], {
@@ -41429,6 +41441,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ btnMarginTMobile: newValue });
                             }
+                            setAttributes({ btnPadUpdate: true });
                         },
                         onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
                             if (device === "desktop") {
@@ -41438,6 +41451,7 @@ var edit = function (_Component) {
                             } else {
                                 setAttributes({ btnMarginBMobile: newValue });
                             }
+                            setAttributes({ btnPadUpdate: true });
                         }
                     })
                 ),
@@ -42133,6 +42147,8 @@ function styling(props) {
         btnPaddingRMobile = _props$attributes.btnPaddingRMobile,
         btnPaddingBMobile = _props$attributes.btnPaddingBMobile,
         btnPaddingLMobile = _props$attributes.btnPaddingLMobile,
+        btnPadUpdate = _props$attributes.btnPadUpdate,
+        btnPadding = _props$attributes.btnPadding,
         marginT = _props$attributes.marginT,
         marginR = _props$attributes.marginR,
         marginB = _props$attributes.marginB,
@@ -42200,10 +42216,11 @@ function styling(props) {
         },
         " .premium-icon-box__btn": {
             "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnSize, btnSizeUnit),
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingT, btnPaddingU),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingR, btnPaddingU),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingB, btnPaddingU),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__assets_js_blocks_generateCssUnit__["a" /* default */])(btnPaddingL, btnPaddingU)
+            // "padding-top": generateCSSUnit(btnPaddingT, btnPaddingU),
+            // "padding-right": generateCSSUnit(btnPaddingR, btnPaddingU),
+            // "padding-bottom": generateCSSUnit(btnPaddingB, btnPaddingU),
+            // "padding-left": generateCSSUnit(btnPaddingL, btnPaddingU)
+            "padding": btnPadUpdate ? '' + btnPaddingT + btnPaddingU + ' ' + btnPaddingR + btnPaddingU + ' ' + btnPaddingB + btnPaddingU + ' ' + btnPaddingL + btnPaddingU : '' + btnPadding + btnPaddingU
         }
     };
 
@@ -43965,7 +43982,461 @@ var newAttributes_1_7_7 = {
     }
 };
 
-var deprecated_attributes_1_7_7 = Object.assign(newAttributes_1_7_7, deprecated_attributes_1_7_3);
+var iconBoxAttributes = {
+    block_id: {
+        type: "string"
+    },
+    borderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleFont: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: '20'
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: 'number',
+        default: '20'
+    },
+    titleSizeMobile: {
+        type: 'number',
+        default: '20'
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+    descFont: {
+        type: "string"
+    },
+    descColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number",
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    descSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+    btnColor: {
+        type: "string"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnBack: {
+        type: "string"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnHoverBorder: {
+        type: "string"
+    },
+    btnSize: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    btnSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnWeight: {
+        type: "number",
+        default: 500
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    btnBorderRadius: {
+        type: "number"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    btnPadding: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    hoverShadowColor: {
+        type: "string"
+    },
+    hoverShadowBlur: {
+        type: "number"
+    },
+    hoverShadowHorizontal: {
+        type: "number"
+    },
+    hoverShadowVertical: {
+        type: "number"
+    },
+    hoverShadowPosition: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+    btnOpacity: {
+        type: "number",
+        default: "1"
+    }
+};
+
+var deprecated_attributes_1_7_7 = Object.assign(newAttributes_1_7_7, iconBoxAttributes);
 
 var deprecatedContent = [{
     attributes: deprecated_attributes_1_7_7,
@@ -43992,7 +44463,6 @@ var deprecatedContent = [{
             btnPaddingBMobile: '',
             btnPaddingLMobile: '',
             btnPaddingU: 'px',
-
             btnMarginTTablet: '',
             btnMarginBTablet: '',
             btnMarginTMobile: '',
@@ -44018,7 +44488,9 @@ var deprecatedContent = [{
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderIconBox = _props$attributes.borderIconBox,
+            btnBorderIconBox = _props$attributes.btnBorderIconBox,
             align = _props$attributes.align,
             iconImage = _props$attributes.iconImage,
             iconImgUrl = _props$attributes.iconImgUrl,
@@ -44037,7 +44509,6 @@ var deprecatedContent = [{
             titleTag = _props$attributes.titleTag,
             titleColor = _props$attributes.titleColor,
             titleFont = _props$attributes.titleFont,
-            titleSize = _props$attributes.titleSize,
             titleLine = _props$attributes.titleLine,
             titleLetter = _props$attributes.titleLetter,
             titleStyle = _props$attributes.titleStyle,
@@ -44053,7 +44524,6 @@ var deprecatedContent = [{
             descText = _props$attributes.descText,
             descColor = _props$attributes.descColor,
             descFont = _props$attributes.descFont,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descMarginT = _props$attributes.descMarginT,
@@ -44064,7 +44534,6 @@ var deprecatedContent = [{
             btnText = _props$attributes.btnText,
             btnTarget = _props$attributes.btnTarget,
             btnLink = _props$attributes.btnLink,
-            btnSize = _props$attributes.btnSize,
             btnStyle = _props$attributes.btnStyle,
             btnUpper = _props$attributes.btnUpper,
             btnWeight = _props$attributes.btnWeight,
@@ -44075,6 +44544,14 @@ var deprecatedContent = [{
             btnBack = _props$attributes.btnBack,
             btnHoverBack = _props$attributes.btnHoverBack,
             btnBorderWidth = _props$attributes.btnBorderWidth,
+            btnBorderTop = _props$attributes.btnBorderTop,
+            btnBorderRight = _props$attributes.btnBorderRight,
+            btnBorderBottom = _props$attributes.btnBorderBottom,
+            btnBorderLeft = _props$attributes.btnBorderLeft,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             btnBorderRadius = _props$attributes.btnBorderRadius,
             btnBorderColor = _props$attributes.btnBorderColor,
             btnBorderType = _props$attributes.btnBorderType,
@@ -44115,18 +44592,24 @@ var deprecatedContent = [{
             hoverShadowColor = _props$attributes.hoverShadowColor,
             hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
             hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition;
+            hoverShadowPosition = _props$attributes.hoverShadowPosition,
+            iconOpacity = _props$attributes.iconOpacity,
+            btnOpacity = _props$attributes.btnOpacity,
+            backOpacity = _props$attributes.backOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
 
 
         return wp.element.createElement(
             "div",
             {
-                id: "premium-icon-box-" + id,
-                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
+                id: "premium-icon-box-" + block_id,
+                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
+                    borderStyle: borderType,
+                    borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     marginTop: marginT,
@@ -44138,7 +44621,7 @@ var deprecatedContent = [{
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
                     boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
+                    backgroundColor: backColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(backColor, backOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -44148,7 +44631,7 @@ var deprecatedContent = [{
             },
             btnChecked && btnText && wp.element.createElement("style", {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
                 }
             }),
             iconChecked && wp.element.createElement(
@@ -44160,7 +44643,7 @@ var deprecatedContent = [{
                     className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor,
-                        backgroundColor: iconBackColor,
+                        backgroundColor: iconBackColor ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(iconBackColor, iconOpacity) : "transparent",
                         fontSize: iconSize
                     }
                 }),
@@ -44193,7 +44676,6 @@ var deprecatedContent = [{
                         value: titleText,
                         style: {
                             color: titleColor,
-                            fontSize: titleSize + "px",
                             fontFamily: titleFont,
                             letterSpacing: titleLetter + "px",
                             textTransform: titleUpper ? "uppercase" : "none",
@@ -44219,7 +44701,6 @@ var deprecatedContent = [{
                         value: descText,
                         style: {
                             color: descColor,
-                            fontSize: descSize + "px",
                             fontFamily: descFont,
                             lineHeight: descLine + "px",
                             fontWeight: descWeight
@@ -44244,14 +44725,13 @@ var deprecatedContent = [{
                         value: btnText,
                         style: {
                             color: btnColor,
-                            backgroundColor: btnBack,
-                            fontSize: btnSize + "px",
+                            backgroundColor: btnBack ? __WEBPACK_IMPORTED_MODULE_0_hex_to_rgba___default()(btnBack, btnOpacity) : "transparent",
                             letterSpacing: btnLetter + "px",
                             textTransform: btnUpper ? "uppercase" : "none",
                             fontStyle: btnStyle,
                             fontWeight: btnWeight,
-                            border: btnBorderType,
-                            borderWidth: btnBorderWidth + "px",
+                            borderStyle: btnBorderType,
+                            borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
                             borderRadius: btnBorderRadius + "px",
                             borderColor: btnBorderColor,
                             padding: btnPadding + btnPaddingU,

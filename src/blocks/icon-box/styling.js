@@ -43,6 +43,8 @@ function styling(props) {
         btnPaddingRMobile,
         btnPaddingBMobile,
         btnPaddingLMobile,
+        btnPadUpdate,
+        btnPadding,
         marginT,
         marginR,
         marginB,
@@ -110,10 +112,11 @@ function styling(props) {
         },
         " .premium-icon-box__btn": {
             "font-size": generateCSSUnit(btnSize, btnSizeUnit),
-            "padding-top": generateCSSUnit(btnPaddingT, btnPaddingU),
-            "padding-right": generateCSSUnit(btnPaddingR, btnPaddingU),
-            "padding-bottom": generateCSSUnit(btnPaddingB, btnPaddingU),
-            "padding-left": generateCSSUnit(btnPaddingL, btnPaddingU)
+            // "padding-top": generateCSSUnit(btnPaddingT, btnPaddingU),
+            // "padding-right": generateCSSUnit(btnPaddingR, btnPaddingU),
+            // "padding-bottom": generateCSSUnit(btnPaddingB, btnPaddingU),
+            // "padding-left": generateCSSUnit(btnPaddingL, btnPaddingU)
+            "padding": btnPadUpdate ? `${btnPaddingT}${btnPaddingU} ${btnPaddingR}${btnPaddingU} ${btnPaddingB}${btnPaddingU} ${btnPaddingL}${btnPaddingU}` : `${btnPadding}${btnPaddingU}`
         }
     }
 

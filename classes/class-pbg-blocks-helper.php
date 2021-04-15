@@ -1059,23 +1059,18 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-			' .premium-dheading-block__first'       => array(
-				'font-size'      => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
-				'padding-top'    => $attr['firstPaddingT'] . 'px',
-				'padding-right'  => $attr['firstPaddingR'] . 'px',
-				'padding-bottom' => $attr['firstPaddingB'] . 'px',
-				'padding-left'   => $attr['firstPaddingL'] . 'px',
-				'margin-right'   => $attr['firstMarginR'] . 'px',
-				'margin-left'    => $attr['firstMarginL'] . 'px',
+			' .premium-dheading-block__first'  => array(
+				'font-size'    => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
+
+				'padding'      => $attr['firstPadUpdate'] ? $attr['firstPaddingT'] . 'px' . ' ' . $attr['firstPaddingR'] . 'px' . ' ' . $attr['firstPaddingB'] . 'px' . ' ' . $attr['firstPaddingL'] . 'px' : $attr['firstPadding'] . 'px',
+				'margin-right' => $attr['firstMarginR'] . 'px',
+				'margin-left'  => $attr['firstMarginL'] . 'px',
 			),
-			' . premium - dheading - block__second' => array(
-				'font - size'    => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
-				'padding-top'    => $attr['secondPaddingT'] . 'px',
-				'padding-right'  => $attr['secondPaddingR'] . 'px',
-				'padding-bottom' => $attr['secondPaddingB'] . 'px',
-				'padding-left'   => $attr['secondPaddingL'] . 'px',
-				'margin-right'   => $attr['secondMarginR'] . 'px',
-				'margin-left'    => $attr['secondMarginL'] . 'px',
+			' .premium-dheading-block__second' => array(
+				'font - size'  => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
+				'padding'      => $attr['secondPadUpdate'] ? $attr['secondPaddingT'] . 'px' . ' ' . $attr['secondPaddingR'] . 'px' . ' ' . $attr['secondPaddingB'] . 'px' . ' ' . $attr['secondPaddingL'] . 'px' : $attr['secondPadding'] . 'px',
+				'margin-right' => $attr['secondMarginR'] . 'px',
+				'margin-left'  => $attr['secondMarginL'] . 'px',
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1083,22 +1078,16 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' . premium - dheading - block__first' => array(
-				'font - size'    => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
-				'padding-top'    => $attr['firstPaddingTTablet'] . 'px',
-				'padding-right'  => $attr['firstPaddingRTablet'] . 'px',
-				'padding-bottom' => $attr['firstPaddingBTablet'] . 'px',
-				'padding-left'   => $attr['firstPaddingLTablet'] . 'px',
-				'margin-right'   => $attr['firstMarginRTablet'] . 'px',
-				'margin-left'    => $attr['firstMarginLTablet'] . 'px',
+				'font - size'  => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
+				'padding'      => $attr['firstPadUpdate'] ? $attr['firstPaddingTTablet'] . 'px' . ' ' . $attr['firstPaddingRTablet'] . 'px' . ' ' . $attr['firstPaddingBTablet'] . 'px' . ' ' . $attr['firstPaddingLTablet'] . 'px' : $attr['firstPadding'] . 'px',
+				'margin-right' => $attr['firstMarginRTablet'] . 'px',
+				'margin-left'  => $attr['firstMarginLTablet'] . 'px',
 			),
 			' . premium-dheading-block__second'    => array(
-				'font-size'      => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
-				'padding-top'    => $attr['secondPaddingTTablet'] . 'px',
-				'padding-right'  => $attr['secondPaddingRTablet'] . 'px',
-				'padding-bottom' => $attr['secondPaddingBTablet'] . 'px',
-				'padding-left'   => $attr['secondPaddingLTablet'] . 'px',
-				'margin-right'   => $attr['secondMarginRTablet'] . 'px',
-				'margin-left'    => $attr['secondMarginLTablet'] . 'px',
+				'font-size'    => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
+				'padding'      => $attr['secondPadUpdate'] ? $attr['secondPaddingTTablet'] . 'px' . ' ' . $attr['secondPaddingRTablet'] . 'px' . ' ' . $attr['secondPaddingBTablet'] . 'px' . ' ' . $attr['secondPaddingLTablet'] . 'px' : $attr['secondPaddingTablet'] . 'px',
+				'margin-right' => $attr['secondMarginRTablet'] . 'px',
+				'margin-left'  => $attr['secondMarginLTablet'] . 'px',
 			),
 		);
 		// Tablet CSS End.
@@ -1106,22 +1095,16 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' . premium - dheading - block__first'  => array(
-				'font - size'      => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
-				'padding - top'    => $attr['firstPaddingTMobile'] . 'px',
-				'padding - right'  => $attr['firstPaddingRMobile'] . 'px',
-				'padding - bottom' => $attr['firstPaddingBMobile'] . 'px',
-				'padding - left'   => $attr['firstPaddingLMobile'] . 'px',
-				'margin-right'     => $attr['firstMarginRMobile'] . 'px',
-				'margin-left'      => $attr['firstMarginLMobile'] . 'px',
+				'font - size'  => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
+				'padding'      => $attr['firstPadUpdate'] ? $attr['firstPaddingTMobile'] . 'px' . ' ' . $attr['firstPaddingRMobile'] . 'px' . ' ' . $attr['firstPaddingBMobile'] . 'px' . ' ' . $attr['firstPaddingLMobile'] . 'px' : $attr['firstPadding'] . 'px',
+				'margin-right' => $attr['firstMarginRMobile'] . 'px',
+				'margin-left'  => $attr['firstMarginLMobile'] . 'px',
 			),
 			' . premium - dheading - block__second' => array(
-				'font - size'      => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
-				'padding - top'    => $attr['secondPaddingTMobile'] . 'px',
-				'padding - right'  => $attr['secondPaddingRMobile'] . 'px',
-				'padding - bottom' => $attr['secondPaddingBMobile'] . 'px',
-				'padding - left'   => $attr['secondPaddingLMobile'] . 'px',
-				'margin-right'     => $attr['secondMarginRMobile'] . 'px',
-				'margin-left'      => $attr['secondMarginLMobile'] . 'px',
+				'font - size'  => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
+				'padding'      => $attr['secondPadUpdate'] ? $attr['secondPaddingTMobile'] . 'px' . ' ' . $attr['secondPaddingRMobile'] . 'px' . ' ' . $attr['secondPaddingBMobile'] . 'px' . ' ' . $attr['secondPaddingLMobile'] . 'px' : $attr['secondPadding'] . 'px',
+				'margin-right' => $attr['secondMarginRMobile'] . 'px',
+				'margin-left'  => $attr['secondMarginLMobile'] . 'px',
 			),
 
 		);
@@ -1275,11 +1258,9 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
 			),
 			' .premium-icon-box__btn'        => array(
-				'font-size'      => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['btnPaddingT'], $attr['btnPaddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['btnPaddingR'], $attr['btnPaddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['btnPaddingB'], $attr['btnPaddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['btnPaddingL'], $attr['btnPaddingU'] ),
+				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+				'padding'   => $attr['btnPadUpdate'] ? $attr['btnPaddingT'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingR'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingB'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingL'] . $attr['btnPaddingU'] : $attr['btnPadding'] . $attr['btnPaddingU'],
+
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1315,11 +1296,9 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
 			),
 			' .premium-icon-box__btn'        => array(
-				'font-size'      => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['btnPaddingTTablet'], $attr['btnPaddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['btnPaddingRTablet'], $attr['btnPaddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['btnPaddingBTablet'], $attr['btnPaddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['btnPaddingLTablet'], $attr['btnPaddingU'] ),
+				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+				'padding'   => $attr['btnPadUpdate'] ? $attr['btnPaddingTTablet'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingRTablet'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingBTablet'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingLTablet'] . $attr['btnPaddingU'] : $attr['btnPadding'] . $attr['btnPaddingU'],
+
 			),
 		);
 		// Tablet CSS End.
@@ -1355,11 +1334,8 @@ class PBG_Blocks_Helper {
 				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
 			),
 			' .premium-icon-box__btn'        => array(
-				'font-size'      => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
-				'padding-top'    => self::get_css_value( $attr['btnPaddingTMobile'], $attr['btnPaddingU'] ),
-				'padding-right'  => self::get_css_value( $attr['btnPaddingRMobile'], $attr['btnPaddingU'] ),
-				'padding-bottom' => self::get_css_value( $attr['btnPaddingBMobile'], $attr['btnPaddingU'] ),
-				'padding-left'   => self::get_css_value( $attr['btnPaddingLMobile'], $attr['btnPaddingU'] ),
+				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+				'padding'   => $attr['btnPadUpdate'] ? $attr['btnPaddingTMobile'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingRMobile'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingBMobile'] . $attr['btnPaddingU'] . ' ' . $attr['btnPaddingLMobile'] . $attr['btnPaddingU'] : $attr['btnPadding'] . $attr['btnPaddingU'],
 			),
 		);
 		// Mobile CSS End.

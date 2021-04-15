@@ -164,6 +164,8 @@ class edit extends Component {
             btnPaddingBMobile,
             btnPaddingLMobile,
             btnPaddingU,
+            btnPadUpdate,
+            btnPadding,
             btnMarginT,
             btnMarginB,
             btnMarginTTablet,
@@ -851,7 +853,9 @@ class edit extends Component {
                                         } else {
                                             setAttributes({ btnPaddingTMobile: newValue })
                                         }
+                                        setAttributes({ btnPadUpdate: true })
                                     }
+
                                 }
                                 onChangePaddingRight={
                                     (device, newValue) => {
@@ -862,6 +866,7 @@ class edit extends Component {
                                         } else {
                                             setAttributes({ btnPaddingRMobile: newValue })
                                         }
+                                        setAttributes({ btnPadUpdate: true })
                                     }
                                 }
                                 onChangePaddingBottom={
@@ -884,6 +889,7 @@ class edit extends Component {
                                         } else {
                                             setAttributes({ btnPaddingLMobile: newValue })
                                         }
+                                        setAttributes({ btnPadUpdate: true })
                                     }
                                 }
                             />
@@ -905,6 +911,7 @@ class edit extends Component {
                                         } else {
                                             setAttributes({ btnMarginTMobile: newValue })
                                         }
+                                        setAttributes({ btnPadUpdate: true })
                                     }
                                 }
                                 onChangeMarginBottom={
@@ -916,6 +923,7 @@ class edit extends Component {
                                         } else {
                                             setAttributes({ btnMarginBMobile: newValue })
                                         }
+                                        setAttributes({ btnPadUpdate: true })
                                     }
                                 }
                             />

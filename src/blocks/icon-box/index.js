@@ -326,6 +326,9 @@ const iconBoxAttrs = {
     btnBorderColor: {
         type: "string"
     },
+    btnPadding: {
+        type: 'number'
+    },
     btnPaddingT: {
         type: "number"
     },
@@ -580,6 +583,10 @@ const iconBoxAttrs = {
         type: "number",
         default: "1"
     },
+    btnPadUpdate: {
+        type: "boolean",
+        default: false
+    }
 };
 
 registerBlockType("premium/icon-box", {
