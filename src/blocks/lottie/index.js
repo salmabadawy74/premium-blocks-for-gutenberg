@@ -127,7 +127,6 @@ const LottieAttr = {
     },
     blurH: {
         type: "number",
-        default: "0"
     },
     brightH: {
         type: "number",
@@ -143,7 +142,7 @@ const LottieAttr = {
     },
     hueH: {
         type: "number",
-        default: "0"
+
     },
     borderType: {
         type: "string",

@@ -244,24 +244,23 @@ if ( ! class_exists( 'PBG_Lottie' ) ) {
 			$main_classes = array(
 				'premium-lottie-' . $block_id,
 				'premium-lottie-wrap',
-				$attributes['hideDesktop'],
-				$attributes['hideTablet'],
-				$attributes['hideMobile'],
+
 			);
-			$main_id      = array(
+			$main_id = array(
 				'premium-lottie-animation-' . $block_id,
 
 			);
+			$wrap_class = array( 'premium-lottie-animation', 'premium-lottie-' . $attributes['render'] );
 
 			ob_start();
 
 			?>
 			<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
-				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>"  class="premium-lottie-animation"  >
+				<div id="<?php echo esc_attr( implode( ' ', $main_id ) ); ?>" class="<?php echo esc_attr( implode( ' ', $wrap_class ) ); ?>"  >
 					<?php
 					if ( $attributes['link'] ) {
 						?>
-						<a target='<?php echo esc_html( $attributes['target'] ) ? '_blank' : '_self'; ?> ' href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
+						<a rel="noopener noreferrer" target=<?php echo esc_html( $attributes['target'] ) ? '_blank' : '_self'; ?> href='<?php echo esc_html( $attributes['url'] ); ?>'></a>
 						<?php
 					}
 					?>

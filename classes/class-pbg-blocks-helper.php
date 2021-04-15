@@ -1344,8 +1344,6 @@ class PBG_Blocks_Helper {
 				'display'    => $attr['hideDesktop'] ? 'none' : '',
 			),
 			' .premium-lottie-animation '        => array(
-				'width'            => $attr['size'] . $attr['sizeUnit'],
-				'height'           => $attr['size'] . $attr['sizeUnit'],
 				'transform'        => 'rotate(' . $attr['rotate'] . 'deg)',
 				'background-color' => $attr['backColor'],
 				'opacity'          => $attr['backOpacity'],
@@ -1365,23 +1363,39 @@ class PBG_Blocks_Helper {
 				'opacity'          => $attr['backHOpacity'],
 				'filter'           => 'brightness(' . $attr['brightH'] . '%)' . 'contrast(' . $attr['contrastH'] . '%) ' . 'saturate(' . $attr['saturationH'] . '%) ' . 'blur(' . $attr['blurH'] . 'px) ' . 'hue-rotate(' . $attr['hueH'] . 'deg)',
 			),
+			' .premium-lottie-svg svg  '         => array(
+				'width'  => $attr['size'] . $attr['sizeUnit'],
+				'height' => $attr['size'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '           => array(
+				'width'  => $attr['size'] . $attr['sizeUnit'],
+				'height' => $attr['size'] . $attr['sizeUnit'],
+			),
 		);
 
 		$t_selectors = array(
-			''                            => array(
+			''                           => array(
 				'display' => $attr['hideTablet'] ? 'none' : '',
 			),
-			' .premium-lottie-animation ' => array(
+			' .premium-lottie-svg svg  ' => array(
+				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
+				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '   => array(
 				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
 				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
 			),
 		);
 
 		$m_selectors = array(
-			''                            => array(
+			''                           => array(
 				'display' => $attr['hideMobile'] ? 'none' : '',
 			),
-			' .premium-lottie-animation ' => array(
+			' .premium-lottie-svg svg  ' => array(
+				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
+				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '   => array(
 				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
 				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
 			),
