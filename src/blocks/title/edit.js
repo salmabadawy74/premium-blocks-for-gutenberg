@@ -8,6 +8,8 @@ import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumMediaUpload from '../../components/premium-media-upload';
+import Lottie from 'react-lottie-with-segments';
+import PremiumPadding from "../../components/premium-padding";
 
 const { __ } = wp.i18n
 
@@ -59,11 +61,15 @@ class edit extends Component {
             iconValue,
             iconType,
             icon,
+            lottieURl,
+            loop,
+            reversedir,
             iconPosition,
             imageURL,
             imageID,
             link,
             url,
+            target,
             iconAlign,
             stripePosition,
             stripeWidth,
@@ -194,6 +200,10 @@ class edit extends Component {
             {
                 value: "image",
                 label: __("Image")
+            },
+            {
+                value: "lottie",
+                label: __("Lottie Animation")
             }
         ]
         const POSITION = [
@@ -354,37 +364,56 @@ class edit extends Component {
                                     onChange={newSelect => setAttributes({ iconType: newSelect })}
                                     options={ICON}
                                 />
-                                {iconType == 'icon' ? <Fragment>
-                                    <p>{__("Icon")}</p>
-                                    <FontIconPicker
-                                        icons={iconsList}
-                                        value={icon}
-                                        onChange={value => setAttributes({ icon: value })}
-                                        isMulti={false}
-                                        appendTo="body"
-                                        noSelectedPlaceholder={__("Select Icon")}
-                                    />
-                                </Fragment>
-                                    : <Fragment>
-                                        <PremiumMediaUpload
-                                            type="image"
-                                            imageID={imageID}
-                                            imageURL={imageURL}
-                                            onSelectMedia={media => {
-                                                setAttributes({
-                                                    imageID: media.id,
-                                                    imageURL: media.url
-                                                });
-                                            }}
-                                            onRemoveImage={() =>
-                                                setAttributes({
-                                                    imageID: "",
-                                                    imageURL: ""
-                                                })
-                                            }
+                                {
+                                    iconType === 'icon' && <Fragment>
+                                        <p>{__("Icon")}</p>
+                                        <FontIconPicker
+                                            icons={iconsList}
+                                            value={icon}
+                                            onChange={value => setAttributes({ icon: value })}
+                                            isMulti={false}
+                                            appendTo="body"
+                                            noSelectedPlaceholder={__("Select Icon")}
                                         />
                                     </Fragment>
                                 }
+                                {iconType === 'lottie' && <Fragment>
+                                    <TextControl
+                                        value={lottieURl}
+                                        onChange={value => console.log(value)}
+                                        placeholder={__("Lottie Url")}
+                                    />
+                                    <ToggleControl
+                                        label={__('Loop')}
+                                        checked={loop}
+                                        onChange={(newValue) => setAttributes({ loop: newValue })}
+                                    />
+                                    <ToggleControl
+                                        label={__("Reverse")}
+                                        checked={reversedir}
+                                        onChange={(value) => setAttributes({ reversedir: value })}
+                                    />
+                                </Fragment>}
+                                {iconType === 'image' && <Fragment>
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={imageID}
+                                        imageURL={imageURL}
+                                        onSelectMedia={media => {
+                                            setAttributes({
+                                                imageID: media.id,
+                                                imageURL: media.url
+                                            });
+                                        }}
+                                        onRemoveImage={() =>
+                                            setAttributes({
+                                                imageID: "",
+                                                imageURL: ""
+                                            })
+                                        }
+                                    />
+
+                                </Fragment>}
                                 <SelectControl
                                     label={__("Icon Position")}
                                     value={iconPosition}
@@ -462,6 +491,11 @@ class edit extends Component {
                                     onChange={value => setAttributes({ url: value })}
                                     placeholder={__("Enter URL")}
                                 />
+                                <ToggleControl
+                                    checked={target}
+                                    label={__('Open Link in new Tab')}
+                                    onChange={(value) => setAttributes({ target: value })}
+                                />
                             </Fragment>
                         }
                         <ToggleControl
@@ -491,16 +525,16 @@ class edit extends Component {
                                     label={__('Horizontal Offset')}
                                     value={horizontalText}
                                     onChange={(newValue) => setAttributes({ horizontalText: newValue })}
-                                    min={0}
-                                    max={100}
+                                    min={-500}
+                                    max={500}
                                     step={1}
                                 />
                                 <RangeControl
                                     label={__('Vertical Offset')}
                                     value={verticalText}
                                     onChange={(newValue) => setAttributes({ verticalText: newValue })}
-                                    min={0}
-                                    max={100}
+                                    min={-500}
+                                    max={500}
                                     step={1}
                                 />
                                 <RangeControl
@@ -508,7 +542,7 @@ class edit extends Component {
                                     value={rotateText}
                                     onChange={(newValue) => setAttributes({ rotateText: newValue })}
                                     min={0}
-                                    max={100}
+                                    max={360}
                                     step={1}
                                 />
                             </Fragment>}
@@ -869,7 +903,7 @@ class edit extends Component {
                                 horizontal={textBackshadowHorizontal}
                                 vertical={textBackshadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({ textBackshadowColor: newColor2 })
+                                    setAttributes({ textBackshadowColor: newColor.hex })
                                 }
                                 onChangeBlur={newBlur => setAttributes({ textBackshadowBlur: newBlur })}
                                 onChangehHorizontal={newValue =>
@@ -936,6 +970,20 @@ class edit extends Component {
                                     {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
+                                    {
+                                        iconValue && iconType == 'lottie' && <Lottie
+                                            options={{
+                                                loop: loop,
+                                                path: `${lottieURl}`,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: " premium-lottie-animation"
+                                                }
+                                            }}
+
+                                            direction={reversedir}
+                                        />
+                                    }
                                     {iconValue && iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                         <span className={`premium-title-style7-stripe-span`}></span>
                                     </span>
@@ -949,10 +997,26 @@ class edit extends Component {
                                     {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
+                                    {
+                                        iconValue && iconType == 'lottie' && <Lottie
+                                            options={{
+                                                loop: loop,
+                                                path: "https://assets9.lottiefiles.com/packages/lf20_MUGYrv.json",
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: " premium-lottie-animation"
+
+                                                }
+                                            }}
+
+                                            direction={reversedir}
+                                        />
+                                    }
+
                                     <span className={`premium-title-text-title`}>{title}</span>
                                 </Fragment>
                             }
-                            {link && <a href={`${url}`}></a>}
+                            {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
                         </h2>
 
                     </div>

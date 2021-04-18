@@ -369,6 +369,21 @@ const titleAttrs = {
     blend: {
         type: 'string'
     },
+    lottieUrl: {
+        type: 'string'
+    },
+    loop: {
+        type: 'boolean',
+        default: false
+    },
+    reversedir: {
+        type: 'boolean',
+        default: false
+    },
+    target: {
+        type: 'boolean',
+        default: false
+    }
 
 };
 

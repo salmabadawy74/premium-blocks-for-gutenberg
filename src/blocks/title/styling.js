@@ -63,6 +63,7 @@ function styling(props) {
         strokeColor,
         strokeFull,
         BackText,
+        textWidth,
         textBackColor,
         textBackfontSizeType,
         textBackfontSize,
@@ -80,6 +81,7 @@ function styling(props) {
         verticalText,
         blend,
         z_index,
+        rotateText
     } = props.attributes
 
     var selectors = {}
@@ -91,15 +93,17 @@ function styling(props) {
         " .premium-title-bg-text:before": {
             "content": BackText,
             "position": "absolute",
-            "top": verticalText,
-            "left": horizontalText,
+            "top": `${verticalText}px`,
+            "left": `${horizontalText}px`,
             "color": textBackColor,
+            "width": textWidth,
+            "transform": `rotate(${rotateText}deg)`,
             "font-size": generateCSSUnit(textBackfontSize, textBackfontSizeType),
             "font-weight": textBackWeight,
             "font-style": textBackStyle,
             "text-transform": textBackUpper ? "uppercase" : "none",
             "letter-spacing": textBackLetter + 'px',
-            "text-shadow": textBackshadowHorizontal + textBackshadowVertical + textBackshadowBlur + textBackshadowColor,
+            "text-shadow": `${textBackshadowHorizontal}px ${textBackshadowVertical}px ${textBackshadowBlur}px ${textBackshadowColor}`,
             "mix-blend-mode": blend,
             "z-index": z_index
 
@@ -184,6 +188,10 @@ function styling(props) {
             "padding": generateCSSUnit(iconPadding, iconPaddingType),
             "margin": generateCSSUnit(iconSpacing, iconSpacingType)
         },
+        ' .premium-lottie-animation': {
+            "width": `${iconSize}${iconSizeType} !important`,
+            "height": `${iconSize}${iconSizeType} !important`
+        },
         " .premium-title-text-title": {
             "margin": generateCSSUnit(titleMargin, titleMarginType),
             "padding": generateCSSUnit(titlePadding, titlePaddingType),
@@ -213,7 +221,12 @@ function styling(props) {
         " .premium-title-header img": {
             "width": generateCSSUnit(iconSizeMobile, iconSizeType),
             "height": generateCSSUnit(iconSizeMobile, iconSizeType)
-        }
+        },
+        ' .premium-lottie-animation': {
+            "width": `${iconSizeMobile}${iconSizeType} !important`,
+            "height": `${iconSizeMobile}${iconSizeType} !important`
+        },
+
     }
 
     tablet_selectors = {
@@ -232,7 +245,11 @@ function styling(props) {
         " .premium-title-header img": {
             "width": generateCSSUnit(iconSizeTablet, iconSizeType),
             "height": generateCSSUnit(iconSizeTablet, iconSizeType)
-        }
+        },
+        ' .premium-lottie-animation': {
+            "width": `${iconSizeTablet}${iconSizeType} !important`,
+            "height": `${iconSizeTablet}${iconSizeType} !important`
+        },
     }
 
     var styling_css = ""
