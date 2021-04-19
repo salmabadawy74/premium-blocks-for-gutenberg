@@ -228,6 +228,12 @@ class PBG_Blocks_Helper {
 					array( 'jquery' ),
 					PREMIUM_BLOCKS_VERSION
 				);
+					wp_enqueue_script(
+						'title-js',
+						PREMIUM_BLOCKS_URL . 'assets/js/title.js',
+						array( 'jquery' ),
+						PREMIUM_BLOCKS_VERSION
+					);
 		}
 
 		if ( $is_dual_enabled ) {
@@ -1422,10 +1428,10 @@ class PBG_Blocks_Helper {
 				'margin'           => self::get_css_value( $attr['iconSpacing'], $attr['iconSpacingType'] ),
 			),
 			'  .premium-title-bg-text:before '    => array(
-
+				'content'        => $attr['BackText'],
 				'top'            => $attr['verticalText'] . 'px',
 				'left'           => $attr['horizontalText'] . 'px',
-				'color'          => $attr['textBackColor'],
+				'color'          => $attr['textBackColor'] . '!important',
 				'width'          => $attr['textWidth'],
 				'transform'      => 'rotate(' . $attr['rotateText'] . 'deg)',
 				'font-size'      => self::get_css_value( $attr['textBackfontSize'], $attr['textBackfontSizeType'] ),
@@ -1435,7 +1441,7 @@ class PBG_Blocks_Helper {
 				'letter-spacing' => $attr['textBackLetter'] . 'px',
 				'text-shadow'    => $attr['textBackshadowHorizontal'] . 'px' . $attr['textBackshadowVertical'] . 'px' . $attr['textBackshadowBlur'] . 'px' . $attr['textBackshadowColor'],
 				'mix-blend-mode' => $attr['blend'],
-				'z-index'        => $attr['z-index'],
+				'z-index'        => $attr['zIndex'],
 			),
 
 			' .premium-title-text-title'          => array(
@@ -1508,13 +1514,13 @@ class PBG_Blocks_Helper {
 
 		// @codingStandardsIgnoreEnd
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-title-';
+		$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-premium-title' : '.wp-block-premium-title';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css( $selectors, $base_selector );
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css( $t_selectors, $base_selector );
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css( $m_selectors, $base_selector );
 
 		$generated_css = array(
 			'desktop' => $desktop,
