@@ -26,11 +26,10 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 		 * Constructor for the class
 		 */
 		public function __construct() {
-    
+
 			// Enqueue the required files.
 			$this->premium_gutenberg_setup();
 
-    
 		}
 
 		/**
@@ -46,28 +45,26 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 		public function premium_gutenberg_setup() {
 
 			$this->load_domain();
-            $this -> load_plugin();
+			$this->load_plugin();
 			$this->init_files();
 
 		}
 
-        public static function load_domain()
-        {
-            load_plugin_textdomain('premium-blocks-for-gutenberg', false, dirname(PREMIUM_BLOCKS_BASENAME) . '/languages/');
-        }
+		public static function load_domain() {
+			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
+		}
 
 
-         /*
-         * Load necessary files
-         * @since 1.0.0
-         * @access public
-         * @return void
-         */
-        public function load_plugin()
-        {
-         
-            require_once PREMIUM_BLOCKS_PATH . 'includes/lottie.php';
-        }
+		 /*
+		 * Load necessary files
+		 * @since 1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function load_plugin() {
+
+			require_once PREMIUM_BLOCKS_PATH . 'includes/lottie.php';
+		}
 
 		/**
 		 * Load Domain
@@ -79,7 +76,7 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 		 *
 		 * @return void
 		 */
-		
+
 
 		/**
 		 * Init Files

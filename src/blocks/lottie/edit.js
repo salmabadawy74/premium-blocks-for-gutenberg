@@ -4,8 +4,8 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import styling from './styling';
 import PremiumSizeUnits from "../../components/premium-size-units";
+import styling from './styling';
 
 const { __ } = wp.i18n;
 
@@ -59,6 +59,7 @@ class edit extends Component {
     }
 
     componentDidUpdate() {
+
         var elementStyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
 
         if (null !== elementStyle && undefined !== elementStyle) {
@@ -72,6 +73,7 @@ class edit extends Component {
     onSelectLottieJSON(media) {
 
         const { setAttributes } = this.props
+
         if (!media || !media.url) {
             setAttributes({ jsonLottie: null })
             return
@@ -82,18 +84,25 @@ class edit extends Component {
     }
 
     initLottieAnimation() {
+
         const { block_id } = this.props.attributes;
+
         let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
+
         if (lottieContainer !== null) {
-            let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
-            let animate = this.lottieplayer.current;
+
+            let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
+                animate = this.lottieplayer.current;
+
             document.addEventListener("load", initScroll)
             document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', initScroll)
 
             function initScroll() {
+
                 let triggerEvent = lottieContainer.getAttribute("data-trigger"),
                     startEvent = lottieContainer.getAttribute('data-start'),
                     endEvent = lottieContainer.getAttribute('data-end');
+
                 if (triggerEvent === "scroll" || triggerEvent === "viewport") {
 
                     var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight,
@@ -261,8 +270,8 @@ class edit extends Component {
                         ]}
                         value={trigger}
                         onChange={(newValue) => setAttributes({ trigger: newValue })}
-
                     />
+
                     {('scroll' === trigger && !reverse) && <Fragment>
                         <RangeControl
                             label={__('Scroll Speed')}
