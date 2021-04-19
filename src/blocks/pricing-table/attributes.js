@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
     borderUpdated: {
         type: "boolean",
