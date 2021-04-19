@@ -330,7 +330,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textBackColor'            => '',
 							'textWidth'                => 'auto',
 							'rotateText'               => '0',
-							'textBackfontSize'         => '',
+							'textBackfontSize'         => '30',
 							'textBackfontSizeType'     => 'px',
 							'textBackWeight'           => '',
 							'textBackStyle'            => '',
@@ -343,7 +343,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'blend'                    => '',
 							'strokeColor'              => '',
 							'strokeFull'               => '0',
-							'z-index'                  => '',
+							'zIndex'                   => '',
 						),
 					),
 				);
