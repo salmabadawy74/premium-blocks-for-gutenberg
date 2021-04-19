@@ -81,6 +81,7 @@ const titleAttrs = {
     },
     BackText: {
         type: "string",
+        default: 'Awesome Title'
     },
     textWidth: {
         type: "number",
@@ -374,7 +375,11 @@ const titleAttrs = {
     },
     loop: {
         type: 'boolean',
-        default: false
+        default: true
+    },
+    jsonLottie: {
+        type: "string",
+
     },
     reversedir: {
         type: 'boolean',
@@ -383,6 +388,48 @@ const titleAttrs = {
     target: {
         type: 'boolean',
         default: false
+    },
+    textBackColor: {
+        type: "string"
+    },
+    textBackfontSize: {
+        type: "number",
+        default: "30"
+    },
+    textBackfontSizeType: {
+        type: "string",
+        default: "px"
+    },
+    textBackWeight: {
+        type: "number"
+    },
+    textBackStyle: {
+        type: "string"
+    },
+    textBackUpper: {
+        type: "boolean",
+        default: false
+    },
+    textBackLetter: {
+        type: "number"
+    },
+    textBackshadowHorizontal: {
+        type: "number"
+    },
+    textBackshadowVertical: {
+        type: "number"
+    },
+    textBackshadowBlur: {
+        type: "number"
+    },
+    textBackshadowColor: {
+        type: "number"
+    },
+    blend: {
+        type: "string"
+    },
+    zIndex: {
+        type: "number"
     }
 
 };

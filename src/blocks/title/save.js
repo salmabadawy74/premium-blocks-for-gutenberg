@@ -19,6 +19,8 @@ export default function save(props) {
         loop,
         reversedir,
         lottieURl,
+
+
         icon,
         iconPosition,
         imageURL,
@@ -29,13 +31,14 @@ export default function save(props) {
         stripePosition,
         stripeAlign,
         backgroundText,
+        textBackColor,
         BackText,
         hideDesktop,
         hideTablet,
         hideMobile
     } = attributes
 
-    console.log(BackText)
+    const lottieClass = iconType === "lottie" ? "premium-lottie-animation" : ""
     return (
         <div className={classnames(
             className,
@@ -44,7 +47,7 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            <div className={`premium-title  ${backgroundText}`} style={{
+            <div className={`premium-title   ${backgroundText}`} style={{
                 textAlign: align,
             }} data-backgroundText={BackText}>
                 <div className={`${style} ${style}-${align}`}>
@@ -66,21 +69,11 @@ export default function save(props) {
                                     iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                 }
                                 {
-                                    iconValue && iconType == 'lottie' && <Lottie
-                                        options={{
-                                            loop: loop,
-                                            path: "https://assets9.lottiefiles.com/packages/lf20_MUGYrv.json",
-                                            rendererSettings: {
-                                                preserveAspectRatio: 'xMidYMid',
-                                                className: "premium-title-icon premium-lottie-animation"
+                                    iconValue && iconType == 'lottie' && <div className="premium-title-icon premium-lottie-animation">
 
-                                            }
-                                        }}
-                                        height={iconSize}
-                                        width={iconSize}
-                                        direction={reversedir}
-                                    />
+                                    </div>
                                 }
+
                                 {iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                     <span className={`premium-title-style7-stripe-span`}></span>
                                 </span>
@@ -95,20 +88,9 @@ export default function save(props) {
                                     iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                 }
                                 {
-                                    iconValue && iconType == 'lottie' && <Lottie
-                                        options={{
-                                            loop: loop,
-                                            path: "https://assets9.lottiefiles.com/packages/lf20_MUGYrv.json",
-                                            rendererSettings: {
-                                                preserveAspectRatio: 'xMidYMid',
-                                                className: "premium-title-icon premium-lottie-animation"
+                                    iconValue && iconType == 'lottie' && <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
 
-                                            }
-                                        }}
-                                        height={iconSize}
-                                        width={iconSize}
-                                        direction={reversedir}
-                                    />
+                                    </div>
                                 }
                                 <span className={`premium-title-text-title`}>{title}</span>
                             </Fragment>

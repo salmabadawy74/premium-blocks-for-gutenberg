@@ -10,6 +10,8 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
 import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
+import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 
 const { __ } = wp.i18n
 
@@ -118,22 +120,65 @@ class edit extends Component {
             iconshadowHorizontal,
             iconshadowVertical,
             titleMargin,
+            titleMarginT,
+            titleMarginR,
+            titleMarginB,
+            titleMarginL,
+            titleMarginTTablet,
+            titleMarginRTablet,
+            titleMarginBTablet,
+            titleMarginLTablet,
+            titleMarginTMobile,
+            titleMarginRMobile,
+            titleMarginBMobile,
+            titleMarginLMobile,
             titleMarginType,
-            titleMarginMobile,
-            titleMarginTablet,
-            titlePadding,
-            titlePaddingTablet,
+            titlePaddingT,
+            titlePaddingR,
+            titlePaddingB,
+            titlePaddingL,
+            titlePaddingTTablet,
+            titlePaddingRTablet,
+            titlePaddingBTablet,
+            titlePaddingLTablet,
+            titlePaddingTMobile,
+            titlePaddingRMobile,
+            titlePaddingBMobile,
+            titlePaddingLMobile,
             titlePaddingType,
-            titlePaddingMobile,
             stroke,
             strokeColor,
             strokeFull,
             iconBGColor,
             iconPadding,
+            iconPaddingT,
+            iconPaddingR,
+            iconPaddingL,
+            iconPaddingB,
+            iconPaddingTTablet,
+            iconPaddingRTablet,
+            iconPaddingLTablet,
+            iconPaddingBTablet,
+            iconPaddingTMobile,
+            iconPaddingRMobile,
+            iconPaddingLMobile,
+            iconPaddingBMobile,
             iconPaddingType,
             iconPaddingMobile,
             iconPaddingTablet,
             iconSpacing,
+            iconSpacingT,
+            iconSpacingR,
+            iconSpacingB,
+            iconSpacingL,
+            iconSpacingTTablet,
+            iconSpacingRTablet,
+            iconSpacingBTablet,
+            iconSpacingLTablet,
+            iconSpacingTMobile,
+            iconSpacingRMobile,
+            iconSpacingBMobile,
+            iconSpacingLMobile,
             iconSpacingType,
             iconSpacingMobile,
             iconSpacingTablet,
@@ -157,7 +202,7 @@ class edit extends Component {
             textBackshadowHorizontal,
             textBackshadowVertical,
             blend,
-            z_index,
+            zIndex,
             hideDesktop,
             hideTablet,
             hideMobile
@@ -380,8 +425,8 @@ class edit extends Component {
                                 {iconType === 'lottie' && <Fragment>
                                     <TextControl
                                         value={lottieURl}
-                                        onChange={value => console.log(value)}
-                                        placeholder={__("Lottie Url")}
+                                        onChange={value => setAttributes({ lottieURl: value })}
+                                        label={__("Lottie Url")}
                                     />
                                     <ToggleControl
                                         label={__('Loop')}
@@ -707,25 +752,142 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTitleTextShadow}
                         />
-                        <PremiumRangeResponsive
-                            setAttributes={setAttributes}
-                            rangeType={{ value: titleMarginType, label: __("titleMarginType") }}
-                            range={{ value: titleMargin, label: __("titleMargin") }}
-                            rangeMobile={{ value: titleMarginMobile, label: __("titleMarginMobile") }}
-                            rangeTablet={{ value: titleMarginTablet, label: __("titleMarginTablet") }}
-                            rangeLabel={__("Margin")}
-                            min={1}
-                            max={100}
+
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            showUnits={true}
+                            selectedUnit={titleMarginType}
+                            marginTop={titleMarginT}
+                            marginRight={titleMarginR}
+                            marginBottom={titleMarginB}
+                            marginLeft={titleMarginL}
+                            marginTopTablet={titleMarginTTablet}
+                            marginRightTablet={titleMarginRTablet}
+                            marginBottomTablet={titleMarginBTablet}
+                            marginLeftTablet={titleMarginLTablet}
+                            marginTopMobile={titleMarginTMobile}
+                            marginRightMobile={titleMarginRMobile}
+                            marginBottomMobile={titleMarginBMobile}
+                            marginLeftMobile={titleMarginLMobile}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titleMarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titleMarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ titleMarginTMobile: newValue })
+                                    }
+
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titleMarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titleMarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ titleMarginRMobile: newValue })
+                                    }
+
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titleMarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titleMarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ titleMarginBMobile: newValue })
+                                    }
+
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titleMarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titleMarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ titleMarginLMobile: newValue })
+                                    }
+
+                                }
+                            }
+
+                            onChangeMarSizeUnit={(newvalue) => setAttributes({ titleMarginType: newvalue })}
+
+
                         />
-                        <PremiumRangeResponsive
-                            setAttributes={setAttributes}
-                            rangeType={{ value: titlePaddingType, label: __("titlePaddingType") }}
-                            range={{ value: titlePadding, label: __("titlePadding") }}
-                            rangeMobile={{ value: titlePaddingMobile, label: __("titlePaddingMobile") }}
-                            rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
-                            rangeLabel={__("Padding")}
-                            min={1}
-                            max={100}
+
+                        <PremiumResponsivePadding
+                            paddingTop={titlePaddingT}
+                            paddingRight={titlePaddingR}
+                            paddingBottom={titlePaddingB}
+                            paddingLeft={titlePaddingL}
+                            paddingTopTablet={titlePaddingTTablet}
+                            paddingRightTablet={titlePaddingRTablet}
+                            paddingBottomTablet={titlePaddingBTablet}
+                            paddingLeftTablet={titlePaddingLTablet}
+                            paddingTopMobile={titlePaddingTMobile}
+                            paddingRightMobile={titlePaddingRMobile}
+                            paddingBottomMobile={titlePaddingBMobile}
+                            paddingLeftMobile={titlePaddingLMobile}
+
+                            showUnits={true}
+                            selectedUnit={titlePaddingType}
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ titlePaddingType: newvalue })
+                            }
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingTMobile: newValue })
+                                    }
+
+                                }
+
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                         <ToggleControl
                             label={__('Stroke')}
@@ -834,25 +996,133 @@ class edit extends Component {
                                 onResetClick={onResetClickIconTextShadow}
                             />
                             }
-                            <PremiumRangeResponsive
-                                setAttributes={setAttributes}
-                                rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
-                                range={{ value: iconPadding, label: __("iconPadding") }}
-                                rangeMobile={{ value: iconPaddingMobile, label: __("iconPaddingMobile") }}
-                                rangeTablet={{ value: iconPaddingTablet, label: __("iconPaddingTablet") }}
-                                rangeLabel={__("Padding")}
-                                min={1}
-                                max={100}
+                            <PremiumResponsivePadding
+                                paddingTop={iconPaddingT}
+                                paddingRight={iconPaddingR}
+                                paddingBottom={iconPaddingB}
+                                paddingLeft={iconPaddingL}
+                                paddingTopTablet={iconPaddingTTablet}
+                                paddingRightTablet={iconPaddingRTablet}
+                                paddingBottomTablet={iconPaddingBTablet}
+                                paddingLeftTablet={iconPaddingLTablet}
+                                paddingTopMobile={iconPaddingTMobile}
+                                paddingRightMobile={iconPaddingRMobile}
+                                paddingBottomMobile={iconPaddingBMobile}
+                                paddingLeftMobile={iconPaddingLMobile}
+
+                                showUnits={true}
+                                selectedUnit={iconPaddingType}
+                                onChangePadSizeUnit={newvalue =>
+                                    setAttributes({ iconPaddingType: newvalue })
+                                }
+                                onChangePaddingTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconPaddingT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconPaddingTTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconPaddingTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconPaddingR: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconPaddingRTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconPaddingRMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconPaddingB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconPaddingBTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconPaddingBMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconPaddingL: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconPaddingLTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconPaddingLMobile: newValue })
+                                        }
+                                    }
+                                }
                             />
-                            <PremiumRangeResponsive
-                                setAttributes={setAttributes}
-                                rangeType={{ value: iconSpacingType, label: __("iconSpacingType") }}
-                                range={{ value: iconSpacing, label: __("iconSpacing") }}
-                                rangeMobile={{ value: iconSpacingMobile, label: __("iconSpacingMobile") }}
-                                rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
-                                rangeLabel={__("Spacing")}
-                                min={0}
-                                max={100}
+
+                            <PremiumResponsiveMargin
+                                directions={["all"]}
+                                showUnits={true}
+                                selectedUnit={iconSpacingType}
+                                marginTop={iconSpacingT}
+                                marginRight={iconSpacingR}
+                                marginBottom={iconSpacingB}
+                                marginLeft={iconSpacingL}
+                                marginTopTablet={iconSpacingTTablet}
+                                marginRightTablet={iconSpacingRTablet}
+                                marginBottomTablet={iconSpacingBTablet}
+                                marginLeftTablet={iconSpacingLTablet}
+                                marginTopMobile={iconSpacingTMobile}
+                                marginRightMobile={iconSpacingRMobile}
+                                marginBottomMobile={iconSpacingBMobile}
+                                marginLeftMobile={iconSpacingLMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconSpacingT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconSpacingTTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconSpacingTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconSpacingR: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconSpacingRTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconSpacingRMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconSpacingB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconSpacingBTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconSpacingBMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ iconSpacingL: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ iconSpacingLTablet: newValue })
+                                        } else {
+                                            setAttributes({ iconSpacingLMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarSizeUnit={(newvalue) => setAttributes({ iconSpacingType: newvalue })}
+
                             />
                         </PanelBody>
                     }
@@ -924,10 +1194,10 @@ class edit extends Component {
                             />
                             <RangeControl
                                 label={__("z-index")}
-                                value={z_index}
+                                value={zIndex}
                                 min="1"
                                 max="100"
-                                onChange={value => setAttributes({ z_index: value })}
+                                onChange={value => setAttributes({ zIndex: value })}
                             />
                         </PanelBody>
                     }
@@ -974,13 +1244,12 @@ class edit extends Component {
                                         iconValue && iconType == 'lottie' && <Lottie
                                             options={{
                                                 loop: loop,
-                                                path: `${lottieURl}`,
+                                                path: lottieURl,
                                                 rendererSettings: {
                                                     preserveAspectRatio: 'xMidYMid',
-                                                    className: " premium-lottie-animation"
+                                                    className: "premium-lottie-inner"
                                                 }
                                             }}
-
                                             direction={reversedir}
                                         />
                                     }
@@ -1001,7 +1270,8 @@ class edit extends Component {
                                         iconValue && iconType == 'lottie' && <Lottie
                                             options={{
                                                 loop: loop,
-                                                path: "https://assets9.lottiefiles.com/packages/lf20_MUGYrv.json",
+                                                path: `${lottieURl}`
+                                                ,
                                                 rendererSettings: {
                                                     preserveAspectRatio: 'xMidYMid',
                                                     className: " premium-lottie-animation"

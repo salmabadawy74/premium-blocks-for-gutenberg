@@ -4,6 +4,7 @@ import generateCSSUnit from './../icon-list/generateCssUnit'
 function styling(props) {
 
     const {
+        block_id,
         classMigrate,
         stripeWidth,
         stripeHeight,
@@ -43,23 +44,60 @@ function styling(props) {
         iconshadowColor,
         iconshadowHorizontal,
         iconshadowVertical,
-        titleMargin,
-        titleMarginType,
-        titleMarginMobile,
-        titleMarginTablet,
-        titlePadding,
-        titlePaddingTablet,
-        titlePaddingType,
-        titlePaddingMobile,
         iconBGColor,
-        iconPadding,
+        titlePaddingT,
+        titlePaddingR,
+        titlePaddingB,
+        titlePaddingL,
+        titlePaddingTTablet,
+        titlePaddingRTablet,
+        titlePaddingBTablet,
+        titlePaddingLTablet,
+        titlePaddingTMobile,
+        titlePaddingRMobile,
+        titlePaddingBMobile,
+        titlePaddingLMobile,
+        titlePaddingType,
+        titleMarginT,
+        titleMarginR,
+        titleMarginB,
+        titleMarginL,
+        titleMarginTTablet,
+        titleMarginRTablet,
+        titleMarginBTablet,
+        titleMarginLTablet,
+        titleMarginTMobile,
+        titleMarginRMobile,
+        titleMarginBMobile,
+        titleMarginLMobile,
+        titleMarginType,
+        iconPaddingT,
+        iconPaddingR,
+        iconPaddingL,
+        iconPaddingB,
+        iconPaddingTTablet,
+        iconPaddingRTablet,
+        iconPaddingLTablet,
+        iconPaddingBTablet,
+        iconPaddingTMobile,
+        iconPaddingRMobile,
+        iconPaddingLMobile,
+        iconPaddingBMobile,
         iconPaddingType,
-        iconPaddingMobile,
-        iconPaddingTablet,
-        iconSpacing,
+        iconSpacingT,
+        iconSpacingR,
+        iconSpacingB,
+        iconSpacingL,
+        iconSpacingTTablet,
+        iconSpacingRTablet,
+        iconSpacingBTablet,
+        iconSpacingLTablet,
+        iconSpacingTMobile,
+        iconSpacingRMobile,
+        iconSpacingBMobile,
+        iconSpacingLMobile,
         iconSpacingType,
-        iconSpacingMobile,
-        iconSpacingTablet,
+
         strokeColor,
         strokeFull,
         BackText,
@@ -80,7 +118,7 @@ function styling(props) {
         horizontalText,
         verticalText,
         blend,
-        z_index,
+        zIndex,
         rotateText
     } = props.attributes
 
@@ -105,7 +143,7 @@ function styling(props) {
             "letter-spacing": textBackLetter + 'px',
             "text-shadow": `${textBackshadowHorizontal}px ${textBackshadowVertical}px ${textBackshadowBlur}px ${textBackshadowColor}`,
             "mix-blend-mode": blend,
-            "z-index": z_index
+            "z-index": zIndex
 
         },
         " .premium-title-style7-stripe__wrap": {
@@ -185,16 +223,28 @@ function styling(props) {
             "border-radius": generateCSSUnit(iconborderRadius, "px"),
             "text-shadow": `${iconshadowHorizontal}px ${iconshadowVertical}px ${iconshadowBlur}px ${iconshadowColor}`,
             "background-color": iconBGColor,
-            "padding": generateCSSUnit(iconPadding, iconPaddingType),
-            "margin": generateCSSUnit(iconSpacing, iconSpacingType)
+            "padding-top": generateCSSUnit(iconPaddingT, iconPaddingType),
+            "padding-right": generateCSSUnit(iconPaddingR, iconPaddingType),
+            "padding-bottom": generateCSSUnit(iconPaddingB, iconPaddingType),
+            "padding-left": generateCSSUnit(iconPaddingL, iconPaddingType),
+            "margin-top": generateCSSUnit(iconSpacingT, iconSpacingType),
+            "margin-right": generateCSSUnit(iconSpacingR, iconSpacingType),
+            "margin-bottom": generateCSSUnit(iconSpacingB, iconSpacingType),
+            "margin-left": generateCSSUnit(iconSpacingL, iconSpacingType),
         },
         ' .premium-lottie-animation': {
             "width": `${iconSize}${iconSizeType} !important`,
             "height": `${iconSize}${iconSizeType} !important`
         },
         " .premium-title-text-title": {
-            "margin": generateCSSUnit(titleMargin, titleMarginType),
-            "padding": generateCSSUnit(titlePadding, titlePaddingType),
+            "padding-top": generateCSSUnit(titlePaddingT, titlePaddingType),
+            "padding-right": generateCSSUnit(titlePaddingR, titlePaddingType),
+            "padding-bottom": generateCSSUnit(titlePaddingB, titlePaddingType),
+            "padding-left": generateCSSUnit(titlePaddingL, titlePaddingType),
+            "margin-top": generateCSSUnit(titleMarginT, titleMarginType),
+            "margin-right": generateCSSUnit(titleMarginR, titleMarginType),
+            "margin-bottom": generateCSSUnit(titleMarginB, titleMarginType),
+            "margin-left": generateCSSUnit(titleMarginL, titleMarginType),
             "-webkit-text-stroke-color": strokeColor,
             "-webkit-text-stroke-width": `${strokeFull}px`,
 
@@ -211,12 +261,24 @@ function styling(props) {
         },
         " .premium-title-icon": {
             "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
-            "padding": generateCSSUnit(iconPaddingMobile, iconPaddingType),
-            "margin": generateCSSUnit(iconSpacingMobile, iconSpacingType)
+            "padding-top": generateCSSUnit(iconPaddingTMobile, iconPaddingType),
+            "padding-right": generateCSSUnit(iconPaddingRMobile, iconPaddingType),
+            "padding-bottom": generateCSSUnit(iconPaddingBMobile, iconPaddingType),
+            "padding-left": generateCSSUnit(iconPaddingLMobile, iconPaddingType),
+            "margin-top": generateCSSUnit(iconSpacingTMobile, iconSpacingType),
+            "margin-right": generateCSSUnit(iconSpacingRMobile, iconSpacingType),
+            "margin-bottom": generateCSSUnit(iconSpacingBMobile, iconSpacingType),
+            "margin-left": generateCSSUnit(iconSpacingLMobile, iconSpacingType),
         },
         " .premium-title-text-title": {
-            "margin": generateCSSUnit(titleMarginMobile, titleMarginType),
-            "padding": generateCSSUnit(titlePaddingMobile, titlePaddingType),
+            "padding-top": generateCSSUnit(titlePaddingTMobile, titlePaddingType),
+            "padding-right": generateCSSUnit(titlePaddingRMobile, titlePaddingType),
+            "padding-bottom": generateCSSUnit(titlePaddingBMobile, titlePaddingType),
+            "padding-left": generateCSSUnit(titlePaddingLMobile, titlePaddingType),
+            "margin-top": generateCSSUnit(titleMarginTMobile, titleMarginType),
+            "margin-right": generateCSSUnit(titleMarginRMobile, titleMarginType),
+            "margin-bottom": generateCSSUnit(titleMarginBMobile, titleMarginType),
+            "margin-left": generateCSSUnit(titleMarginLMobile, titleMarginType),
         },
         " .premium-title-header img": {
             "width": generateCSSUnit(iconSizeMobile, iconSizeType),
@@ -235,12 +297,24 @@ function styling(props) {
         },
         " .premium-title-icon": {
             "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
-            "padding": generateCSSUnit(iconPaddingTablet, iconPaddingType),
-            "margin": generateCSSUnit(iconSpacingTablet, iconSpacingType)
+            "padding-top": generateCSSUnit(iconPaddingTTablet, iconPaddingType),
+            "padding-right": generateCSSUnit(iconPaddingRTablet, iconPaddingType),
+            "padding-bottom": generateCSSUnit(iconPaddingBTablet, iconPaddingType),
+            "padding-left": generateCSSUnit(iconPaddingLTablet, iconPaddingType),
+            "margin-top": generateCSSUnit(iconSpacingTTablet, iconSpacingType),
+            "margin-right": generateCSSUnit(iconSpacingRTablet, iconSpacingType),
+            "margin-bottom": generateCSSUnit(iconSpacingBTablet, iconSpacingType),
+            "margin-left": generateCSSUnit(iconSpacingLTablet, iconSpacingType),
         },
         " .premium-title-text-title": {
-            "margin": generateCSSUnit(titleMarginTablet, titleMarginType),
-            "padding": generateCSSUnit(titlePaddingTablet, titlePaddingType),
+            "padding-top": generateCSSUnit(titlePaddingTTablet, titlePaddingType),
+            "padding-right": generateCSSUnit(titlePaddingRTablet, titlePaddingType),
+            "padding-bottom": generateCSSUnit(titlePaddingBTablet, titlePaddingType),
+            "padding-left": generateCSSUnit(titlePaddingLTablet, titlePaddingType),
+            "margin-top": generateCSSUnit(titleMarginTTablet, titleMarginType),
+            "margin-right": generateCSSUnit(titleMarginRTablet, titleMarginType),
+            "margin-bottom": generateCSSUnit(titleMarginBTablet, titleMarginType),
+            "margin-left": generateCSSUnit(titleMarginLTablet, titleMarginType),
         },
         " .premium-title-header img": {
             "width": generateCSSUnit(iconSizeTablet, iconSizeType),
@@ -253,9 +327,9 @@ function styling(props) {
     }
 
     var styling_css = ""
-    var id = `#premium-title-${props.clientId}`
+    var id = `#premium-title-${block_id}`
     if (classMigrate) {
-        id = `.premium-block-${props.clientId}`
+        id = `.premium-block-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)
