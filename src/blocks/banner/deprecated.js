@@ -1,3 +1,5 @@
+import attributes from "./attributes";
+
 const { __ } = wp.i18n;
 
 const className = "premium-banner";
@@ -228,76 +230,11 @@ const deprecated_attributes_1_6_7 = Object.assign(
     newAttributes_1_6_7
 );
 
-const newAttributes_1_7_1 = {
-    borderBanner: {
-        type: "boolean",
-        default: false,
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: "boolean",
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    titleSizeUnit: {
-        type: "string",
 
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    block_id: {
-        type: "string"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number"
-    },
-    descSizeMobile: {
-        type: "number"
-    },
-};
-
-const deprecated_attributes_1_7_1 = Object.assign(
-    deprecated_attributes_1_6_7,
-    newAttributes_1_7_1
-);
 
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes_1_7_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderBottom: "",

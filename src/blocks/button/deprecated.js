@@ -1,5 +1,7 @@
 //import { merge } from "lodash";
 
+import attributes from "./attributes";
+
 const className = "premium-button";
 
 const { __ } = wp.i18n;
@@ -148,82 +150,12 @@ const newAttributes_1_4_7 = {
 
 const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
 
-const newAttributes_1_4_9 = {
-    borderButton: {
-        type: "boolean",
-        default: false,
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    backOpacity: {
-        type: "number",
-        default: "1",
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    block_id: {
-        type: "string"
-    },
-    textSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textSizeTablet: {
-        type: "number"
-    },
-    textSizeMobile: {
-        type: "number"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
 
-const buttonAttrs_1_4_9 = Object.assign(buttonAttrs_1_4_7, newAttributes_1_4_9);
 
 const deprecatedContent = [
     {
-        attributes: buttonAttrs_1_4_9,
-        migrate: (attributes) => {
-            let newAttributes = {
-                borderTop: "",
-                borderRight: "",
-                borderBottom: "",
-                borderLeft: "",
-                borderButton: "",
-                backOpacity: "",
-                classMigrate: false,
-                block_id: "",
-                textSizeUnit: "px",
-                textSizeTablet: '',
-                textSizeMobile: '',
-                hideDesktop: false,
-                hideTablet: false,
-                hideMobile: false
-            };
-            return Object.assign(attributes, newAttributes);
-        },
+        attributes: attributes,
+
         save: (props) => {
             const {
                 id,

@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import attributes from "./attributes";
 
 const { __ } = wp.i18n;
 
@@ -212,7 +213,7 @@ const fancyAttributes_1_0_1 = Object.assign(
 
 const deprecated = [
     {
-        attributes: fancyAttributes_1_0_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 fancyTextBGOpacity: "",
@@ -287,44 +288,44 @@ const deprecated = [
                             </span>
                         </div>
                     ) : (
+                        <div
+                            className={`premium-fancy-text premium-fancy-slide`}
+                            style={{
+                                textAlign: align,
+                            }}
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map(
+                                (item, index) => {
+                                    return item.title;
+                                }
+                            )}`}
+                            data-animationspeed={`${animationSpeed}`}
+                            data-pausetime={`${pauseTime}`}
+                            data-hoverpause={`${hoverPause}`}
+                        >
+                            <span className={`premium-fancy-text-prefix-text`}>
+                                {prefix}
+                            </span>
                             <div
-                                className={`premium-fancy-text premium-fancy-slide`}
+                                className={`premium-fancy-text-title-slide`}
                                 style={{
-                                    textAlign: align,
+                                    textAlign: fancyalign,
                                 }}
-                                data-effect={`${effect}`}
-                                data-strings={`${repeaterFancyText.map(
-                                    (item, index) => {
-                                        return item.title;
-                                    }
-                                )}`}
-                                data-animationspeed={`${animationSpeed}`}
-                                data-pausetime={`${pauseTime}`}
-                                data-hoverpause={`${hoverPause}`}
                             >
-                                <span className={`premium-fancy-text-prefix-text`}>
-                                    {prefix}
-                                </span>
-                                <div
-                                    className={`premium-fancy-text-title-slide`}
-                                    style={{
-                                        textAlign: fancyalign,
-                                    }}
+                                <ul
+                                    className={`premium-fancy-text-title-slide-list`}
                                 >
-                                    <ul
-                                        className={`premium-fancy-text-title-slide-list`}
-                                    >
-                                        {repeaterFancyText.map((item, index) => {
-                                            return <li>{item.title}</li>;
-                                        })}
-                                    </ul>
-                                </div>
-                                <span className={`premium-fancy-text-suffix-text`}>
-
-                                    {suffix}
-                                </span>
+                                    {repeaterFancyText.map((item, index) => {
+                                        return <li>{item.title}</li>;
+                                    })}
+                                </ul>
                             </div>
-                        )}
+                            <span className={`premium-fancy-text-suffix-text`}>
+
+                                {suffix}
+                            </span>
+                        </div>
+                    )}
                 </div>
             );
         },
