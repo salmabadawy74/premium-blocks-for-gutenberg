@@ -1,6 +1,7 @@
 import PbgIcon from "../icons";
 import edit from "./edit";
 import { lottie } from "../../../assets/js/settings";
+import save from "./save";
 
 const { __ } = wp.i18n;
 
@@ -127,6 +128,7 @@ const LottieAttr = {
     },
     blurH: {
         type: "number",
+        default: "0"
     },
     brightH: {
         type: "number",
@@ -142,6 +144,7 @@ const LottieAttr = {
     },
     hueH: {
         type: "number",
+        default: "0"
 
     },
     borderType: {
@@ -215,5 +218,5 @@ registerBlockType("premium/lottie", {
     },
     example: {},
     edit: edit,
-    save: () => { },
+    save: save,
 });
