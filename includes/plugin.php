@@ -45,7 +45,6 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 		public function premium_gutenberg_setup() {
 
 			$this->load_domain();
-			$this->load_plugin();
 			$this->init_files();
 
 		}
@@ -54,17 +53,6 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
 
-
-		 /*
-		 * Load necessary files
-		 * @since 1.0.0
-		 * @access public
-		 * @return void
-		 */
-		public function load_plugin() {
-
-			require_once PREMIUM_BLOCKS_PATH . 'includes/lottie.php';
-		}
 
 		/**
 		 * Load Domain
