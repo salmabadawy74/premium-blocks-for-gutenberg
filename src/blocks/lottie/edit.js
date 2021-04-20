@@ -85,29 +85,30 @@ class edit extends Component {
 
     initLottieAnimation() {
 
-        const { block_id } = this.props.attributes;
+        const { block_id, trigger, bottom, top } = this.props.attributes;
 
         let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
 
         if (lottieContainer !== null) {
 
             let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
+                scrollElement = document.querySelector('.interface-interface-skeleton__content'),
                 animate = this.lottieplayer.current;
 
             document.addEventListener("load", initScroll)
-            document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', initScroll)
+            scrollElement.addEventListener('scroll', initScroll)
 
             function initScroll() {
 
-                let triggerEvent = lottieContainer.getAttribute("data-trigger"),
-                    startEvent = lottieContainer.getAttribute('data-start'),
-                    endEvent = lottieContainer.getAttribute('data-end');
+                let triggerEvent = trigger,
+                    startEvent = bottom,
+                    endEvent = top;
 
                 if (triggerEvent === "scroll" || triggerEvent === "viewport") {
 
-                    var scrollHeight = document.querySelector('.interface-interface-skeleton__content').scrollHeight,
-                        scrollTop = document.querySelector('.interface-interface-skeleton__content').scrollTop,
-                        pageRange = document.querySelector('.interface-interface-skeleton__content').clientHeight,
+                    var scrollHeight = scrollElement.scrollHeight,
+                        scrollTop = scrollElement.scrollTop,
+                        pageRange = scrollElement.clientHeight,
                         precentage = (scrollTop * 100) / scrollHeight,
                         pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
 
@@ -623,7 +624,7 @@ class edit extends Component {
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />
-                    {link && url !== ' ' && <a href={"javascript:void(0)"} ></a>}
+                    {link && url !== ' ' && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={"javascript:void(0)"} ></a>}
                 </div>
                 <style
                     dangerouslySetInnerHTML={{
@@ -648,7 +649,7 @@ class edit extends Component {
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`,
                             `background-color:${backHColor};`,
                             `opacity:${backHOpacity};`,
-                            `filter: brightness( ${brightH}% ) contrast( ${contrastH}% ) saturate( ${saturationH}% ) blur( ${blurH}px ) hue-rotate( ${hueH}deg );`,
+                            `filter: brightness( ${brightH}% ) contrast( ${contrastH}% ) saturate( ${saturationH}% ) blur( ${blurH}px ) hue-rotate( ${hueH}deg ) !important;`,
                             "}",
                         ].join("\n"),
                     }}
