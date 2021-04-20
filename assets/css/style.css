@@ -3412,6 +3412,13 @@ color: #23282d;
 .premium-title .style3 .right {
   justify-content: flex-end !important;
 }
+.premium-title .premium-lottie-animation {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex; }
 /************ Responsive **************/
 @media (min-width: 977px) {
     .premium-desktop-hidden {

@@ -1514,13 +1514,13 @@ class PBG_Blocks_Helper {
 
 		// @codingStandardsIgnoreEnd
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-premium-title' : '.wp-block-premium-title';
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-title-';
 
-		$desktop = self::generate_css( $selectors, $base_selector );
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
-		$tablet = self::generate_css( $t_selectors, $base_selector );
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
 
-		$mobile = self::generate_css( $m_selectors, $base_selector );
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
 
 		$generated_css = array(
 			'desktop' => $desktop,

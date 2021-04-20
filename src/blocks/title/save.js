@@ -38,12 +38,11 @@ export default function save(props) {
         hideMobile
     } = attributes
 
-    const lottieClass = iconType === "lottie" ? "premium-lottie-animation" : ""
+
     return (
-        <div className={classnames(
-            className,
-            `premium-block-${block_id}`
-        ) + `${hideDesktop} ${hideTablet} ${hideMobile}`}
+        <div
+            id={`premium-title-${block_id}`}
+            className={`premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
             }}>

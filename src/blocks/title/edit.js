@@ -40,6 +40,9 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
+        this.state = {
+            lottieURl: ""
+        }
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -336,28 +339,8 @@ class edit extends Component {
                 titleshadowVertical: "0",
             });
         }
-        const onResetClicktitleborder = () => {
-            setAttributes({
-                titleborderType: "none",
-                titleBorderTop: "0",
-                titleBorderRight: "0",
-                titleBorderBottom: "0",
-                titleBorderLeft: "0",
-                titleborderColor: "",
-                titleborderRadius: "0",
-            });
-        }
-        const onResetClickiconborder = () => {
-            setAttributes({
-                iconborderType: "none",
-                iconBorderTop: "1",
-                iconBorderRight: "1",
-                iconBorderBottom: '1',
-                iconBorderLeft: '1',
-                iconborderColor: "",
-                iconborderRadius: "0",
-            });
-        }
+
+
         const onResetClickIconTextShadow = () => {
             setAttributes({
                 iconshadowColor: "",
@@ -367,6 +350,10 @@ class edit extends Component {
             });
         }
 
+        const handleChangeLottie = (value) => {
+            const { lottieURl } = this.state;
+            this.setState({ lottieURl: value })
+        }
         return [
             isSelected && (
                 <BlockControls>
@@ -822,7 +809,6 @@ class edit extends Component {
 
 
                         />
-
                         <PremiumResponsivePadding
                             paddingTop={titlePaddingT}
                             paddingRight={titlePaddingR}
@@ -1211,12 +1197,11 @@ class edit extends Component {
                     />
                 </InspectorControls>
             ),
-            <div className={classnames(
-                className,
-                `premium-block-${block_id}`
-            ) + `  premium-title-bg-text  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
-                textAlign: align,
-            }} >
+            <div
+                id={`premium-title-${block_id}`}
+                className={`premium-block-${block_id}  premium-title-bg-text  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
+                    textAlign: align,
+                }} >
 
                 <div className={`premium-title  ${backgroundText}`} style={{
                     textAlign: align,
@@ -1247,7 +1232,7 @@ class edit extends Component {
                                                 path: lottieURl,
                                                 rendererSettings: {
                                                     preserveAspectRatio: 'xMidYMid',
-                                                    className: "premium-lottie-inner"
+                                                    className: "premium-lottie-animation"
                                                 }
                                             }}
                                             direction={reversedir}
@@ -1274,7 +1259,7 @@ class edit extends Component {
                                                 ,
                                                 rendererSettings: {
                                                     preserveAspectRatio: 'xMidYMid',
-                                                    className: " premium-lottie-animation"
+                                                    className: "premium-lottie-animation"
 
                                                 }
                                             }}
