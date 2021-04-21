@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
     const $title = $(".premium-title");
     var $lottieIcons = $('.premium-lottie-animation');
+    var $titleContainer = $(".premium-title-container"),
+        $titleElement = $titleContainer.find('.premium-title-text');
 
     const addFontToHead = fontFamily => {
         const head = document.head;
@@ -14,12 +16,56 @@ jQuery(document).ready(function ($) {
             "regular";
         head.appendChild(link);
     };
+    if ($titleContainer.hasClass('style9')) {
+        var $style9 = $(".premium-title-style9");
+
+        $style9.each(function () {
+            var elm = $(this);
+            var holdTime = elm.attr('data-blur-delay') * 1000;
+            elm.attr('data-animation-blur', 'process')
+            elm.find('.premium-title-style9-letter').each(function (index, letter) {
+                index += 1;
+                var animateDelay;
+                if ($('body').hasClass('rtl')) {
+                    animateDelay = 0.2 / index + 's';
+                } else {
+                    animateDelay = index / 20 + 's';
+                }
+                $(letter).css({
+                    '-webkit-animation-delay': animateDelay,
+                    'animation-delay': animateDelay
+                });
+            })
+            setInterval(function () {
+                elm.attr('data-animation-blur', 'done')
+                setTimeout(function () {
+                    elm.attr('data-animation-blur', 'process')
+                }, 150);
+            }, holdTime);
+        });
+    }
 
 
+    if ($titleContainer.hasClass('style8')) {
+
+        var holdTime = $titleElement.attr('data-shiny-delay') * 1000,
+            duration = $titleElement.attr('data-shiny-dur') * 1000;
+
+        function shinyEffect() {
+            $titleElement.get(0).setAttribute('data-animation', 'shiny');
+            setTimeout(function () {
+                $titleElement.removeAttr('data-animation')
+            }, duration);
+        }
+
+        (function repeat() {
+            shinyEffect();
+            setTimeout(repeat, holdTime);
+        })();
+    }
 
     $lottieIcons.each(function (index, item) {
         var $item = $(item);
-        console.log($item)
         instance = new premiumLottieAnimations($item);
         instance.init();
     });
@@ -37,10 +83,6 @@ jQuery(document).ready(function ($) {
         self.init = function () {
             var loop = $lottie.data("lottie-loop"),
                 reverse = $lottie.data("lottie-reverse"),
-                trigger = $lottie.data("lottie-hover"),
-                speed = $lottie.data("lottie-speed"),
-                scroll = $lottie.data("lottie-scroll"),
-                viewPort = $lottie.data("lottie-viewport"),
                 renderer = $lottie.data("lottie-render");
 
             var animItem = lottie.loadAnimation({
@@ -56,8 +98,6 @@ jQuery(document).ready(function ($) {
             }
         }
     }
-
-
     $title.map((index, title) => {
         let $title = $(title),
             titleFont = $title.find(".premium-title-text-title").css("font-family")
