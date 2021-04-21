@@ -238,6 +238,14 @@ class edit extends Component {
         {
             value: "style7",
             label: __("Style 7")
+        },
+        {
+            value: "style8",
+            label: __("Style 8")
+        },
+        {
+            value: "style9",
+            label: __("Style 9")
         }
         ];
         const ICON = [
@@ -510,6 +518,13 @@ class edit extends Component {
                             />
                         </Fragment>
                         }
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: align === align,
+                                onClick: () => setAttributes({ align: contentAlign })
+                            }))}
+                        />
                         <ToggleControl
                             label={__("Link")}
                             checked={link}
@@ -1199,7 +1214,7 @@ class edit extends Component {
             ),
             <div
                 id={`premium-title-${block_id}`}
-                className={`premium-block-${block_id}  premium-title-bg-text  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
+                className={`premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
                     textAlign: align,
                 }} >
 
@@ -1268,7 +1283,7 @@ class edit extends Component {
                                         />
                                     }
 
-                                    <span className={`premium-title-text-title`}>{title}</span>
+                                    <span className={`premium-title-text-title`}  >{title}</span>
                                 </Fragment>
                             }
                             {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
@@ -1276,7 +1291,19 @@ class edit extends Component {
 
                     </div>
                 </div>
+                {/* <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#premium-title-${block_id} .premium-title-text[data-animation="shiny"] {`,
+                            `    --shiny - color: #549324;`
+                                ` --animation-speed: 13s;`,
+                            "}",
+                        ].join("\n")
+                    }}
+                /> */}
             </div>
+
+
         ]
     }
 }

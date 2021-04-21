@@ -1,5 +1,3 @@
-import classnames from "classnames"
-import Lottie from "react-lottie-with-segments";
 
 const {
     Fragment
@@ -7,7 +5,7 @@ const {
 
 export default function save(props) {
 
-    const { attributes, className } = props
+    const { attributes } = props
 
     const {
         block_id,
@@ -19,19 +17,16 @@ export default function save(props) {
         loop,
         reversedir,
         lottieURl,
-
-
+        target,
         icon,
         iconPosition,
         imageURL,
         link,
         url,
-        iconSize,
         iconAlign,
         stripePosition,
         stripeAlign,
         backgroundText,
-        textBackColor,
         BackText,
         hideDesktop,
         hideTablet,
