@@ -1,20 +1,22 @@
 <?php
+
 /**
  * PBG_Blocks_Config.
  *
  * @package PBG
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
+if (!class_exists('PBG_Blocks_Config')) {
 
 	/**
 	 * Class PBG_Blocks_Config.
 	 */
-	class PBG_Blocks_Config {
+	class PBG_Blocks_Config
+	{
 
 		/**
 		 * Block Attributes
@@ -37,9 +39,10 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 		 *
 		 * @return array blocks attributes.
 		 */
-		public static function get_block_attributes() {
+		public static function get_block_attributes()
+		{
 
-			if ( null === self::$block_attributes ) {
+			if (null === self::$block_attributes) {
 
 				self::$block_attributes = array(
 					'premium/fancy-text'     => array(
@@ -388,10 +391,11 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'iconBorderRight'          => '1',
 							'iconBorderBottom'         => '1',
 							'iconBorderLeft'           => '1',
+							'horizontalU' => 'px',
+							'verticalU' => 'px'
 						),
 					),
 				);
-
 			}
 
 			return self::$block_attributes;

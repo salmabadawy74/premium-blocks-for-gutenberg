@@ -1,14 +1,15 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit();
 }
 
 /**
  * Define PBG_Blocks_Helper class
  */
-class PBG_Blocks_Helper {
+class PBG_Blocks_Helper
+{
 
 	private static $instance = null;
 
@@ -59,7 +60,8 @@ class PBG_Blocks_Helper {
 	/**
 	 * Constructor for the class
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
 		// Gets Active Blocks
 		self::$blocks = PBG_Admin::get_enabled_keys();
@@ -68,25 +70,24 @@ class PBG_Blocks_Helper {
 		self::$config = PBG_Settings::get_enabled_keys();
 
 		// Enqueue Editor Assets
-		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
+		add_action('enqueue_block_editor_assets', array($this, 'pbg_editor'));
 
 		// Enqueue Frontend Styles
-		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
+		add_action('enqueue_block_assets', array($this, 'pbg_frontend'));
 
 		// Register Premium Blocks category.
-		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+		add_filter('block_categories', array($this, 'register_premium_category'), 10, 1);
 
 		// Generate Blocks Stylesheet.
-		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
+		add_action('wp', array($this, 'generate_stylesheet'), 99);
 
 		// Enqueue Generated stylesheet to WP Head.
-		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+		add_action('wp_head', array($this, 'print_stylesheet'), 80);
 
 		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-config.php';
 
 		// Get Blocks Attributes.
 		self::$block_atts = PBG_Blocks_Config::get_block_attributes();
-
 	}
 
 	/**
@@ -97,9 +98,10 @@ class PBG_Blocks_Helper {
 	 *
 	 * @return void
 	 */
-	public function pbg_editor() {
+	public function pbg_editor()
+	{
 
-		$is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
+		$is_fa_enabled = isset(self::$config['premium-fa-css']) ? self::$config['premium-fa-css'] : true;
 
 		wp_enqueue_script(
 			'pbg-editor',
@@ -118,14 +120,14 @@ class PBG_Blocks_Helper {
 		wp_enqueue_style(
 			'pbg-editor-css',
 			PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css',
-			array( 'wp-edit-blocks' ),
+			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
 
 		wp_enqueue_style(
 			'pbg-editor-panel-css',
 			PREMIUM_BLOCKS_URL . 'assets/css/editorpanel.css',
-			array( 'wp-edit-blocks' ),
+			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
 
@@ -159,13 +161,14 @@ class PBG_Blocks_Helper {
 	 *
 	 * @return void
 	 */
-	public function pbg_frontend() {
+	public function pbg_frontend()
+	{
 
-		$is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
+		$is_fa_enabled = isset(self::$config['premium-fa-css']) ? self::$config['premium-fa-css'] : true;
 
-		$is_enabled = isset( self::$config['premium-map-api'] ) ? self::$config['premium-map-api'] : true;
+		$is_enabled = isset(self::$config['premium-map-api']) ? self::$config['premium-map-api'] : true;
 
-		$api_key = isset( self::$config['premium-map-key'] ) ? self::$config['premium-map-key'] : '';
+		$api_key = isset(self::$config['premium-map-key']) ? self::$config['premium-map-key'] : '';
 
 		$is_maps_enabled = self::$blocks['maps'];
 
@@ -192,96 +195,96 @@ class PBG_Blocks_Helper {
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-			array( 'dashicons' ),
+			array('dashicons'),
 			PREMIUM_BLOCKS_VERSION
 		);
 
-		if ( $is_fa_enabled ) {
+		if ($is_fa_enabled) {
 			wp_enqueue_style(
 				'pbg-fontawesome',
 				'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 			);
 		}
 
-		if ( $is_banner_enabled ) {
+		if ($is_banner_enabled) {
 			wp_enqueue_script(
 				'banner-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_button_enabled ) {
+		if ($is_button_enabled) {
 			wp_enqueue_script(
 				'button-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_title_enabled ) {
-				wp_enqueue_script(
-					'lottie-js',
-					PREMIUM_BLOCKS_URL . 'assets/js/lib/lottie.js',
-					array( 'jquery' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-					wp_enqueue_script(
-						'title-js',
-						PREMIUM_BLOCKS_URL . 'assets/js/title.js',
-						array( 'jquery' ),
-						PREMIUM_BLOCKS_VERSION
-					);
+		if ($is_title_enabled) {
+			wp_enqueue_script(
+				'lottie-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/lib/lottie.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+			);
+			wp_enqueue_script(
+				'title-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/title.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+			);
 		}
 
-		if ( $is_dual_enabled ) {
+		if ($is_dual_enabled) {
 			wp_enqueue_script(
 				'dual-heading-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_counter_enabled ) {
+		if ($is_counter_enabled) {
 			wp_enqueue_script(
 				'waypoints_lib',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 
 			wp_enqueue_script(
 				'counter_lib',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 
 			wp_enqueue_script(
 				'countup-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_accordion_enabled ) {
+		if ($is_accordion_enabled) {
 			wp_enqueue_script(
 				'accordion-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_section_enabled ) {
+		if ($is_section_enabled) {
 			wp_enqueue_script(
 				'section-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 
@@ -296,57 +299,56 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		if ( $is_video_enabled ) {
+		if ($is_video_enabled) {
 			wp_enqueue_script(
 				'video-box-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_icon_box_enabled ) {
+		if ($is_icon_box_enabled) {
 			wp_enqueue_script(
 				'icon-box-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
-		if ( $is_fancy_text_enabled ) {
+		if ($is_fancy_text_enabled) {
 			wp_enqueue_script(
 				'fancy-text-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 
 			wp_enqueue_script(
 				'pbg-vticker-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 
 			wp_enqueue_script(
 				'pbg-typed-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
-				array( 'jquery' ),
+				array('jquery'),
 				PREMIUM_BLOCKS_VERSION
 			);
 		}
 
 		// Enqueue Google Maps API Script
-		if ( $is_maps_enabled && $is_enabled ) {
-			if ( ! empty( $api_key ) && '1' != $api_key ) {
+		if ($is_maps_enabled && $is_enabled) {
+			if (!empty($api_key) && '1' != $api_key) {
 				wp_enqueue_script(
 					'premium-map-block',
 					'https://maps.googleapis.com/maps/api/js?key=' . $api_key
 				);
 			}
 		}
-
 	}
 
 	/**
@@ -357,18 +359,18 @@ class PBG_Blocks_Helper {
 	 *
 	 * @return void
 	 */
-	public function register_premium_category( $categories ) {
+	public function register_premium_category($categories)
+	{
 
 		return array_merge(
 			$categories,
 			array(
 				array(
 					'slug'  => 'premium-blocks',
-					'title' => __( 'Premium Blocks', 'premium-blocks-for-gutenberg' ),
+					'title' => __('Premium Blocks', 'premium-blocks-for-gutenberg'),
 				),
 			)
 		);
-
 	}
 
 	/**
@@ -378,64 +380,59 @@ class PBG_Blocks_Helper {
 	 *
 	 * @since 1.8.2
 	 */
-	public function generate_stylesheet() {
+	public function generate_stylesheet()
+	{
 
 		$this_post = array();
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if (class_exists('WooCommerce')) {
 
-			if ( is_cart() ) {
+			if (is_cart()) {
 
-				$id        = get_option( 'woocommerce_cart_page_id' );
-				$this_post = get_post( $id );
+				$id        = get_option('woocommerce_cart_page_id');
+				$this_post = get_post($id);
+			} elseif (is_account_page()) {
 
-			} elseif ( is_account_page() ) {
+				$id        = get_option('woocommerce_myaccount_page_id');
+				$this_post = get_post($id);
+			} elseif (is_checkout()) {
 
-				$id        = get_option( 'woocommerce_myaccount_page_id' );
-				$this_post = get_post( $id );
+				$id        = get_option('woocommerce_checkout_page_id');
+				$this_post = get_post($id);
+			} elseif (is_checkout_pay_page()) {
 
-			} elseif ( is_checkout() ) {
+				$id        = get_option('woocommerce_pay_page_id');
+				$this_post = get_post($id);
+			} elseif (is_shop()) {
 
-				$id        = get_option( 'woocommerce_checkout_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_checkout_pay_page() ) {
-
-				$id        = get_option( 'woocommerce_pay_page_id' );
-				$this_post = get_post( $id );
-
-			} elseif ( is_shop() ) {
-
-				$id        = get_option( 'woocommerce_shop_page_id' );
-				$this_post = get_post( $id );
+				$id        = get_option('woocommerce_shop_page_id');
+				$this_post = get_post($id);
 			}
 
-			if ( is_object( $this_post ) ) {
-				$this->_generate_post_stylesheet( $this_post );
+			if (is_object($this_post)) {
+				$this->_generate_post_stylesheet($this_post);
 				return;
 			}
 		}
 
-		if ( is_single() || is_page() || is_404() ) {
+		if (is_single() || is_page() || is_404()) {
 
 			global $post;
 			$this_post = $post;
 
-			if ( ! is_object( $this_post ) ) {
+			if (!is_object($this_post)) {
 				return;
 			}
 
-			$this->_generate_post_stylesheet( $this_post );
-
-		} elseif ( is_archive() || is_home() || is_search() ) {
+			$this->_generate_post_stylesheet($this_post);
+		} elseif (is_archive() || is_home() || is_search()) {
 
 			global $wp_query;
 
-			foreach ( $wp_query as $post ) {
-				$this->_generate_post_stylesheet( $post );
+			foreach ($wp_query as $post) {
+				$this->_generate_post_stylesheet($post);
 			}
 		}
-
 	}
 
 	/**
@@ -444,28 +441,29 @@ class PBG_Blocks_Helper {
 	 * @param object $this_post Current Post Object.
 	 * @since 1.8.2
 	 */
-	public function _generate_post_stylesheet( $this_post ) {
+	public function _generate_post_stylesheet($this_post)
+	{
 
-		if ( ! is_object( $this_post ) ) {
+		if (!is_object($this_post)) {
 			return;
 		}
 
-		if ( ! isset( $this_post->ID ) ) {
+		if (!isset($this_post->ID)) {
 			return;
 		}
 
-		if ( has_blocks( $this_post->ID ) ) {
+		if (has_blocks($this_post->ID)) {
 
-			if ( isset( $this_post->post_content ) ) {
+			if (isset($this_post->post_content)) {
 
-				$blocks            = $this->parse( $this_post->post_content );
+				$blocks            = $this->parse($this_post->post_content);
 				self::$page_blocks = $blocks;
 
-				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+				if (!is_array($blocks) || empty($blocks)) {
 					return;
 				}
 
-				self::$stylesheet .= $this->get_stylesheet( $blocks );
+				self::$stylesheet .= $this->get_stylesheet($blocks);
 			}
 		}
 	}
@@ -476,11 +474,12 @@ class PBG_Blocks_Helper {
 	 * @param string $content the content string.
 	 * @since 1.1.0
 	 */
-	public function parse( $content ) {
+	public function parse($content)
+	{
 
 		global $wp_version;
 
-		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+		return (version_compare($wp_version, '5', '>=')) ? parse_blocks($content) : gutenberg_parse_blocks($content);
 	}
 
 	/**
@@ -491,22 +490,25 @@ class PBG_Blocks_Helper {
 	 * @since 1.8.2
 	 * @access public
 	 */
-	public function print_stylesheet() {
+	public function print_stylesheet()
+	{
 
 		global $content_width;
-		if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
+		if (is_null(self::$stylesheet) || '' === self::$stylesheet) {
 			return;
 		}
 
-		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
+		self::$stylesheet = str_replace('#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet);
 
 		// self::file_write( self::$stylesheet, 'css' );
 
 		ob_start();
 
-		?>
-			<style type="text/css" media="all" id="premium-style-frontend"><?php echo self::$stylesheet; ?></style>
-		<?php
+?>
+		<style type="text/css" media="all" id="premium-style-frontend">
+			<?php echo self::$stylesheet; ?>
+		</style>
+<?php
 		ob_end_flush();
 	}
 
@@ -520,7 +522,8 @@ class PBG_Blocks_Helper {
 	 *
 	 * @param object $block The block object.
 	 */
-	public function get_block_css( $block ) {
+	public function get_block_css($block)
+	{
 
 		$block = (array) $block;
 
@@ -528,83 +531,83 @@ class PBG_Blocks_Helper {
 		$css      = array();
 		$block_id = '';
 
-		if ( ! isset( $name ) ) {
+		if (!isset($name)) {
 			return;
 		}
 
-		if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
+		if (isset($block['attrs']) && is_array($block['attrs'])) {
 			$blockattr = $block['attrs'];
-			if ( isset( $blockattr['block_id'] ) ) {
+			if (isset($blockattr['block_id'])) {
 				$block_id = $blockattr['block_id'];
 			}
 		}
 
 		self::$current_block_list[] = $name;
 
-		if ( strpos( $name, 'premium/' ) !== false ) {
+		if (strpos($name, 'premium/') !== false) {
 			self::$premium_flag = true;
 		}
 
-		switch ( $name ) {
+		switch ($name) {
 			case 'premium/fancy-text':
-				$css += $this->get_fancy_text_css( $blockattr, $block_id );
+				$css += $this->get_fancy_text_css($blockattr, $block_id);
 				break;
 			case 'premium/accordion':
-				$css += $this->get_accordion_css( $blockattr, $block_id );
+				$css += $this->get_accordion_css($blockattr, $block_id);
 				break;
 			case 'premium/banner':
-				$css += $this->get_banner_css( $blockattr, $block_id );
+				$css += $this->get_banner_css($blockattr, $block_id);
 				break;
 			case 'premium/button':
-				$css += $this->get_button_css( $blockattr, $block_id );
+				$css += $this->get_button_css($blockattr, $block_id);
 				break;
 			case 'premium/countup':
-				$css += $this->get_countup_css( $blockattr, $block_id );
+				$css += $this->get_countup_css($blockattr, $block_id);
 				break;
 			case 'premium/dheading-block':
-				$css += $this->get_dual_css( $blockattr, $block_id );
+				$css += $this->get_dual_css($blockattr, $block_id);
 				break;
 			case 'premium/icon-box':
-				$css += $this->get_iconBox_css( $blockattr, $block_id );
+				$css += $this->get_iconBox_css($blockattr, $block_id);
 				break;
 			case 'premium/testimonial':
-				$css += $this->get_testimonial_css( $blockattr, $block_id );
+				$css += $this->get_testimonial_css($blockattr, $block_id);
 				break;
 			case 'premium/video-box':
-				$css += $this->get_videoBox_css( $blockattr, $block_id );
+				$css += $this->get_videoBox_css($blockattr, $block_id);
 				break;
 			case 'premium/pricing-table':
-				$css += $this->get_pricing_css( $blockattr, $block_id );
+				$css += $this->get_pricing_css($blockattr, $block_id);
 				break;
 			case 'premium/title':
-				$css += $this->get_title_css( $blockattr, $block_id );
+				$css += $this->get_title_css($blockattr, $block_id);
 				break;
 			default:
 				// Nothing to do here.
 				break;
 		}
 
-		if ( isset( $block['innerBlocks'] ) ) {
-			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-				if ( 'core/block' == $inner_block['blockName'] ) {
-					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+		if (isset($block['innerBlocks'])) {
+			foreach ($block['innerBlocks'] as $j => $inner_block) {
+				if ('core/block' == $inner_block['blockName']) {
+					$id = (isset($inner_block['attrs']['ref'])) ? $inner_block['attrs']['ref'] : 0;
 
-					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
+					if ($id) {
+						$content = get_post_field('post_content', $id);
 
-						$reusable_blocks = $this->parse( $content );
+						$reusable_blocks = $this->parse($content);
 
-						self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
+						self::$stylesheet .= $this->get_stylesheet($reusable_blocks);
 					}
 				} else {
 					// Get CSS for the Block.
-					$inner_block_css = $this->get_block_css( $inner_block );
+					$inner_block_css = $this->get_block_css($inner_block);
 
-					$css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
-					$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
-					$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
+					$css_desktop = (isset($css['desktop']) ? $css['desktop'] : '');
+					$css_tablet  = (isset($css['tablet']) ? $css['tablet'] : '');
+					$css_mobile  = (isset($css['mobile']) ? $css['mobile'] : '');
 
-					if ( isset( $inner_block_css['desktop'] ) ) {
+					if (isset($inner_block_css['desktop'])) {
 						$css['desktop'] = $css_desktop . $inner_block_css['desktop'];
 						$css['tablet']  = $css_tablet . $inner_block_css['tablet'];
 						$css['mobile']  = $css_mobile . $inner_block_css['mobile'];
@@ -613,16 +616,17 @@ class PBG_Blocks_Helper {
 			}
 		}
 
-		self::$current_block_list = array_unique( self::$current_block_list );
+		self::$current_block_list = array_unique(self::$current_block_list);
 
 		return $css;
 	}
 
-	public static function get_fancy_text_css( $attr, $id ) {
+	public static function get_fancy_text_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/fancy-text']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
@@ -630,45 +634,45 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 			// Desktop Icon Size CSS starts.
 			' .premium-fancy-text-title'       => array(
-				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size'        => self::get_css_value($attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit']),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
-				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba($attr['fancyTextBGColor']) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
+				'letter-spacing'   => self::get_css_value($attr['fancyTextLetter'], 'px'),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
 				'font-weight'      => $attr['fancyTextWeight'],
-				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
+				'text-shadow'      => self::get_css_value($attr['shadowHorizontal'], 'px ') . self::get_css_value($attr['shadowVertical'], 'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
 			),
 			' .premium-fancy-text-title-slide' => array(
-				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size'        => self::get_css_value($attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit']),
 				'color'            => $attr['fancyTextColor'],
-				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyTextBGColor'] ) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
-				'letter-spacing'   => self::get_css_value( $attr['fancyTextLetter'], 'px' ),
+				'background-color' => $attr['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba($attr['fancyTextBGColor']) . ',' . $attr['fancyTextBGOpacity'] . ')' : 'transparent',
+				'letter-spacing'   => self::get_css_value($attr['fancyTextLetter'], 'px'),
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
 				'font-weight'      => $attr['fancyTextWeight'],
-				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
+				'text-shadow'      => self::get_css_value($attr['shadowHorizontal'], 'px ') . self::get_css_value($attr['shadowVertical'], 'px ') . self::get_css_value($attr['shadowBlur'], 'px ') . $attr['shadowColor'],
 			),
 			' .typed-cursor'                   => array(
 				'color' => $attr['cursorColor'],
 			),
 			' .premium-fancy-text-prefix-text' => array(
-				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
+				'font-size'        => self::get_css_value($attr['textfontSize'], $attr['textfontSizeUnit']),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
-				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba($attr['textBGColor']) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
+				'letter-spacing'   => self::get_css_value($attr['textLetter'], 'px'),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['textWeight'], ' !important' ),
+				'font-style'       => self::get_css_value($attr['textStyle'], ' !important'),
+				'font-weight'      => self::get_css_value($attr['textWeight'], ' !important'),
 			),
 			' .premium-fancy-text-suffix-text' => array(
-				'font-size'        => self::get_css_value( $attr['textfontSize'], $attr['textfontSizeUnit'] ),
+				'font-size'        => self::get_css_value($attr['textfontSize'], $attr['textfontSizeUnit']),
 				'color'            => $attr['textColor'],
-				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['textBGColor'] ) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
-				'letter-spacing'   => self::get_css_value( $attr['textLetter'], 'px' ),
+				'background-color' => $attr['textBGColor'] ? 'rgba(' . self::hex_to_rgba($attr['textBGColor']) . ',' . $attr['textBGOpacity'] . ')' : 'transparent',
+				'letter-spacing'   => self::get_css_value($attr['textLetter'], 'px'),
 				'text-transform'   => $attr['textUpper'] ? 'uppercase' : 'none',
-				'font-style'       => self::get_css_value( $attr['textStyle'], ' !important' ),
-				'font-weight'      => self::get_css_value( $attr['textWeight'], ' !important' ),
+				'font-style'       => self::get_css_value($attr['textStyle'], ' !important'),
+				'font-weight'      => self::get_css_value($attr['textWeight'], ' !important'),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -676,16 +680,16 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-fancy-text-title'       => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit']),
 			),
 			' .premium-fancy-text-title-slide' => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['fancyTextfontSizeTablet'], $attr['fancyTextfontSizeUnit']),
 			),
 			' .premium-fancy-text-prefix-text' => array(
-				'font-size' => self::get_css_value( $attr['textfontSizeTablet'], $attr['textfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textfontSizeTablet'], $attr['textfontSizeUnit']),
 			),
 			' .premium-fancy-text-suffix-text' => array(
-				'padding' => self::get_css_value( $attr['textfontSizeTablet'], $attr['textfontSizeUnit'] ),
+				'padding' => self::get_css_value($attr['textfontSizeTablet'], $attr['textfontSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -693,27 +697,27 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-fancy-text-title'       => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit']),
 			),
 			' .premium-fancy-text-title-slide' => array(
-				'font-size' => self::get_css_value( $attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['fancyTextfontSizeMobile'], $attr['fancyTextfontSizeUnit']),
 			),
 			' .premium-fancy-text-prefix-text' => array(
-				'font-size' => self::get_css_value( $attr['textfontSizeMobile'], $attr['textfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textfontSizeMobile'], $attr['textfontSizeUnit']),
 			),
 			' .premium-fancy-text-suffix-text' => array(
-				'font-size' => self::get_css_value( $attr['textfontSizeMobile'], $attr['textfontSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textfontSizeMobile'], $attr['textfontSizeUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-fancy-text-';
+		$base_selector = ($attr['classMigrate']) ? '.premium-block-' : '#premium-fancy-text-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -724,11 +728,12 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_accordion_css( $attr, $id ) {
+	public static function get_accordion_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/accordion']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
@@ -736,10 +741,10 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 
 			'  .premium-accordion__title_text ' => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSize'], $attr['titleSizeUnit']),
 			),
 			'  .premium-accordion__desc '       => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSize'], $attr['descSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -747,10 +752,10 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-accordion__title_text  ' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeTablet'], $attr['titleSizeUnit']),
 			),
 			'  .premium-accordion__desc '       => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeTablet'], $attr['descSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -758,21 +763,21 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-accordion__title_text  ' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeMobile'], $attr['titleSizeUnit']),
 			),
 			' .premium-accordion__desc'         => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeMobile'], $attr['descSizeUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-accordion-' : '#block-';
+		$base_selector = ($attr['classMigrate']) ? '.premium-accordion-' : '#block-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -783,11 +788,12 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_banner_css( $attr, $id ) {
+	public static function get_banner_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/banner']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
@@ -795,65 +801,66 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 
 			' .premium-banner__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSize'], $attr['titleSizeUnit']),
 			),
 			' .premium-banner__desc'  => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSize'], $attr['descSizeUnit']),
 			),
 		);
-			// Desktop Icon Size CSS ends.
+		// Desktop Icon Size CSS ends.
 
-			// Tablet CSS Start.
-			$t_selectors = array(
-				' .premium-banner__title' => array(
-					'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
-				),
-				' .premium-banner__desc'  => array(
-					'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
-				),
-			);
-			// Tablet CSS End.
+		// Tablet CSS Start.
+		$t_selectors = array(
+			' .premium-banner__title' => array(
+				'font-size' => self::get_css_value($attr['titleSizeTablet'], $attr['titleSizeUnit']),
+			),
+			' .premium-banner__desc'  => array(
+				'font-size' => self::get_css_value($attr['descSizeTablet'], $attr['descSizeUnit']),
+			),
+		);
+		// Tablet CSS End.
 
-			// Mobile CSS Start.
-			$m_selectors = array(
-				' .premium-banner__title' => array(
-					'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
-				),
-				' .premium-banner__desc'  => array(
-					'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
-				),
-			);
-			// Mobile CSS End.
+		// Mobile CSS Start.
+		$m_selectors = array(
+			' .premium-banner__title' => array(
+				'font-size' => self::get_css_value($attr['titleSizeMobile'], $attr['titleSizeUnit']),
+			),
+			' .premium-banner__desc'  => array(
+				'font-size' => self::get_css_value($attr['descSizeMobile'], $attr['descSizeUnit']),
+			),
+		);
+		// Mobile CSS End.
 
-			$base_selector = ( $attr['classMigrate'] ) ? '#premium-banner-' : '.premium-banner-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-banner-' : '.premium-banner-';
 
-			$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-			$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
-			$generated_css = array(
-				'desktop' => $desktop,
-				'tablet'  => $tablet,
-				'mobile'  => $mobile,
-			);
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
 
-			return $generated_css;
+		return $generated_css;
 	}
 
-	public static function get_button_css( $attr, $id ) {
+	public static function get_button_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/button']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			' .premium-button' => array(
-				'font-size' => self::get_css_value( $attr['textSize'], $attr['textSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textSize'], $attr['textSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -861,7 +868,7 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-button' => array(
-				'font-size' => self::get_css_value( $attr['textSizeTablet'], $attr['textSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textSizeTablet'], $attr['textSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -869,19 +876,19 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-button' => array(
-				'font-size' => self::get_css_value( $attr['textSizeMobile'], $attr['textSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['textSizeMobile'], $attr['textSizeUnit']),
 			),
 
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-button-wrap-' : '.premium-button-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-button-wrap-' : '.premium-button-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -892,27 +899,28 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_countup_css( $attr, $id ) {
+	public static function get_countup_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/countup']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			' .premium-countup__increment' => array(
-				'font-size' => self::get_css_value( $attr['numberSize'], $attr['numberSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['numberSize'], $attr['numberSizeUnit']),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSize'], $attr['titleSizeUnit']),
 			),
 			' .premium-countup__prefix'    => array(
-				'font-size' => self::get_css_value( $attr['prefixSize'], $attr['prefixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['prefixSize'], $attr['prefixSizeUnit']),
 			),
 			' .premium-countup__suffix'    => array(
-				'font-size' => self::get_css_value( $attr['suffixSize'], $attr['suffixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['suffixSize'], $attr['suffixSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -920,16 +928,16 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-countup__increment' => array(
-				'font-size' => self::get_css_value( $attr['numberSizeTablet'], $attr['numberSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['numberSizeTablet'], $attr['numberSizeUnit']),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeTablet'], $attr['titleSizeUnit']),
 			),
 			' .premium-countup__prefix'    => array(
-				'font-size' => self::get_css_value( $attr['prefixSizeTablet'], $attr['prefixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['prefixSizeTablet'], $attr['prefixSizeUnit']),
 			),
 			' .premium-countup__suffix'    => array(
-				'font-size' => self::get_css_value( $attr['suffixSizeTablet'], $attr['suffixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['suffixSizeTablet'], $attr['suffixSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -937,28 +945,28 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-countup__increment' => array(
-				'font-size' => self::get_css_value( $attr['numberSizeMobile'], $attr['numberSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['numberSizeMobile'], $attr['numberSizeUnit']),
 			),
 			' .premium-countup__title'     => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeMobile'], $attr['titleSizeUnit']),
 			),
 			' .premium-countup__prefix'    => array(
-				'font-size' => self::get_css_value( $attr['prefixSizeMobile'], $attr['prefixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['prefixSizeMobile'], $attr['prefixSizeUnit']),
 			),
 			' .premium-countup__suffix'    => array(
-				'font-size' => self::get_css_value( $attr['suffixSizeMobile'], $attr['suffixSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['suffixSizeMobile'], $attr['suffixSizeUnit']),
 			),
 
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-countup-' : '#premium-countup-';
+		$base_selector = ($attr['classMigrate']) ? '.premium-countup-' : '#premium-countup-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -969,21 +977,22 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_dual_css( $attr, $id ) {
+	public static function get_dual_css($attr, $id)
+	{
 
 		$defaults = self::$block_atts['premium/dheading-block']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			' .premium-dheading-block__first'  => array(
-				'font-size' => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['firstSize'], $attr['firstSizeUnit']),
 			),
 			' .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['secondSize'], $attr['secondSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -991,10 +1000,10 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-dheading-block__first'   => array(
-				'font-size' => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['firstSizeTablet'], $attr['firstSizeUnit']),
 			),
 			'  .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['secondSizeTablet'], $attr['secondSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -1002,22 +1011,22 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-dheading-block__first'   => array(
-				'font-size' => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['firstSizeMobile'], $attr['firstSizeUnit']),
 			),
 			'  .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['secondSizeMobile'], $attr['secondSizeUnit']),
 			),
 
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-dheading-block-' : '.premium-dheading-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-dheading-block-' : '.premium-dheading-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1028,23 +1037,24 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_iconBox_css( $attr, $id ) {
+	public static function get_iconBox_css($attr, $id)
+	{
 		$defaults = self::$block_atts['premium/icon-box']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSize'], $attr['titleSizeUnit']),
 			),
 			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSize'], $attr['descSizeUnit']),
 			),
 			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSize'], $attr['btnSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1052,13 +1062,13 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeTablet'], $attr['titleSizeUnit']),
 			),
 			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeTablet'], $attr['descSizeUnit']),
 			),
 			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSizeTablet'], $attr['btnSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -1066,24 +1076,24 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeMobile'], $attr['titleSizeUnit']),
 			),
 			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeMobile'], $attr['descSizeUnit']),
 			),
 			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSizeMobile'], $attr['btnSizeUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-icon-box-' : '.premium-icon-box-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-icon-box-' : '.premium-icon-box-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1094,44 +1104,45 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_pricing_css( $attr, $id ) {
+	public static function get_pricing_css($attr, $id)
+	{
 		$defaults = self::$block_atts['premium/pricing-table']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSize'], $attr['titleSizeUnit']),
 			),
 			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSize'], $attr['slashSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['slashSize'], $attr['slashSizeUnit']),
 			),
 			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSize'], $attr['currSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['currSize'], $attr['currSizeUnit']),
 			),
 			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSize'], $attr['valSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['valSize'], $attr['valSizeUnit']),
 			),
 			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSize'], $attr['divSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['divSize'], $attr['divSizeUnit']),
 			),
 			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSize'], $attr['durSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['durSize'], $attr['durSizeUnit']),
 			),
 			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSize'], $attr['listSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['listSize'], $attr['listSizeUnit']),
 			),
 			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSize'], $attr['descSizeUnit']),
 			),
 			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSize'], $attr['btnSizeUnit']),
 			),
 			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSize'], $attr['badgeTextUnit'] ),
+				'font-size' => self::get_css_value($attr['badgeTextSize'], $attr['badgeTextUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1139,34 +1150,34 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeTablet'], $attr['titleSizeUnit']),
 			),
 			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSizeTablet'], $attr['slashSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['slashSizeTablet'], $attr['slashSizeUnit']),
 			),
 			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSizeTablet'], $attr['currSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['currSizeTablet'], $attr['currSizeUnit']),
 			),
 			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSizeTablet'], $attr['valSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['valSizeTablet'], $attr['valSizeUnit']),
 			),
 			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSizeTablet'], $attr['divSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['divSizeTablet'], $attr['divSizeUnit']),
 			),
 			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSizeTablet'], $attr['durSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['durSizeTablet'], $attr['durSizeUnit']),
 			),
 			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSizeTablet'], $attr['listSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['listSizeTablet'], $attr['listSizeUnit']),
 			),
 			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeTablet'], $attr['descSizeUnit']),
 			),
 			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSizeTablet'], $attr['btnSizeUnit']),
 			),
 			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSizeTablet'], $attr['badgeTextUnit'] ),
+				'font-size' => self::get_css_value($attr['badgeTextSizeTablet'], $attr['badgeTextUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -1174,45 +1185,45 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['titleSizeMobile'], $attr['titleSizeUnit']),
 			),
 			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSizeMobile'], $attr['slashSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['slashSizeMobile'], $attr['slashSizeUnit']),
 			),
 			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSizeMobile'], $attr['currSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['currSizeMobile'], $attr['currSizeUnit']),
 			),
 			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSizeMobile'], $attr['valSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['valSizeMobile'], $attr['valSizeUnit']),
 			),
 			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSizeMobile'], $attr['divSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['divSizeMobile'], $attr['divSizeUnit']),
 			),
 			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSizeMobile'], $attr['durSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['durSizeMobile'], $attr['durSizeUnit']),
 			),
 			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSizeMobile'], $attr['listSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['listSizeMobile'], $attr['listSizeUnit']),
 			),
 			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['descSizeMobile'], $attr['descSizeUnit']),
 			),
 			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['btnSizeMobile'], $attr['btnSizeUnit']),
 			),
 			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSizeMobile'], $attr['badgeTextUnit'] ),
+				'font-size' => self::get_css_value($attr['badgeTextSizeMobile'], $attr['badgeTextUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-pricing-table-' : '.premium-pricing-table-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-pricing-table-' : '.premium-pricing-table-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1223,23 +1234,24 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_testimonial_css( $attr, $id ) {
+	public static function get_testimonial_css($attr, $id)
+	{
 		$defaults = self::$block_atts['premium/testimonial']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSize'], $attr['authorSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorSize'], $attr['authorSizeUnit']),
 			),
 			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSize'], $attr['authorComSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorComSize'], $attr['authorComSizeUnit']),
 			),
 			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySize'], $attr['bodySizeUnit'] ),
+				'font-size' => self::get_css_value($attr['bodySize'], $attr['bodySizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1247,13 +1259,13 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSizeTablet'], $attr['authorSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorSizeTablet'], $attr['authorSizeUnit']),
 			),
 			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSizeTablet'], $attr['authorComSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorComSizeTablet'], $attr['authorComSizeUnit']),
 			),
 			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySizeTablet'], $attr['bodySizeUnit'] ),
+				'font-size' => self::get_css_value($attr['bodySizeTablet'], $attr['bodySizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -1261,24 +1273,24 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSizeMobile'], $attr['authorSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorSizeMobile'], $attr['authorSizeUnit']),
 			),
 			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSizeMobile'], $attr['authorComSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['authorComSizeMobile'], $attr['authorComSizeUnit']),
 			),
 			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySizeMobile'], $attr['bodySizeUnit'] ),
+				'font-size' => self::get_css_value($attr['bodySizeMobile'], $attr['bodySizeUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-testimonial-' : '.premium-testimonial-';
+		$base_selector = ($attr['classMigrate']) ? '#premium-testimonial-' : '.premium-testimonial-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1289,17 +1301,18 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_videoBox_css( $attr, $id ) {
+	public static function get_videoBox_css($attr, $id)
+	{
 		$defaults = self::$block_atts['premium/video-box']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
 
 		$selectors = array(
 			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSize'], $attr['videoDescSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['videoDescSize'], $attr['videoDescSizeUnit']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1307,7 +1320,7 @@ class PBG_Blocks_Helper {
 		// Tablet CSS Start.
 		$t_selectors = array(
 			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSizeTablet'], $attr['videoDescSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['videoDescSizeTablet'], $attr['videoDescSizeUnit']),
 			),
 		);
 		// Tablet CSS End.
@@ -1315,18 +1328,18 @@ class PBG_Blocks_Helper {
 		// Mobile CSS Start.
 		$m_selectors = array(
 			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSizeMobile'], $attr['videoDescSizeUnit'] ),
+				'font-size' => self::get_css_value($attr['videoDescSizeMobile'], $attr['videoDescSizeUnit']),
 			),
 		);
 		// Mobile CSS End.
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-video-box-' : '#premium-video-box-';
+		$base_selector = ($attr['classMigrate']) ? '.premium-video-box-' : '#premium-video-box-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1337,10 +1350,11 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_title_css( $attr, $id ) {
+	public static function get_title_css($attr, $id)
+	{
 		$defaults = self::$block_atts['premium/title']['attributes'];
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$attr = array_merge($defaults, (array) $attr);
 
 		$m_selectors = array();
 		$t_selectors = array();
@@ -1348,29 +1362,29 @@ class PBG_Blocks_Helper {
 		$selectors = array(
 			// Desktop Icon Size CSS starts.
 			' .premium-title-style7-stripe__wrap' => array(
-				'margin-top'    => self::get_css_value( $attr['stripeTopSpacing'], 'px' ),
-				'margin-bottom' => self::get_css_value( $attr['stripeBottomSpacing'], 'px' ),
+				'margin-top'    => self::get_css_value($attr['stripeTopSpacing'], 'px'),
+				'margin-bottom' => self::get_css_value($attr['stripeBottomSpacing'], 'px'),
 			),
 			' .premium-title-style7-stripe-span'  => array(
-				'width'            => self::get_css_value( $attr['stripeWidth'], 'px' ),
-				'height'           => self::get_css_value( $attr['stripeHeight'], 'px' ),
+				'width'            => self::get_css_value($attr['stripeWidth'], 'px'),
+				'height'           => self::get_css_value($attr['stripeHeight'], 'px'),
 				'background-color' => $attr['stripeColor'],
 			),
 			' .premium-title-header'              => array(
-				'font-size'      => self::get_css_value( $attr['titlefontSize'], $attr['titlefontSizeType'] ),
-				'color'          => self::get_css_value( $attr['titleColor'], '!important' ),
-				'letter-spacing' => self::get_css_value( $attr['titleLetter'], 'px' ),
+				'font-size'      => self::get_css_value($attr['titlefontSize'], $attr['titlefontSizeType']),
+				'color'          => self::get_css_value($attr['titleColor'], '!important'),
+				'letter-spacing' => self::get_css_value($attr['titleLetter'], 'px'),
 				'text-transform' => $attr['titleUpper'] ? 'uppercase' : 'none',
-				'font-style'     => self::get_css_value( $attr['titleStyle'], ' !important' ),
-				'font-weight'    => self::get_css_value( $attr['titleWeight'], ' !important' ),
-				'text-shadow'    => self::get_css_value( $attr['titleshadowHorizontal'], 'px ' ) . self::get_css_value( $attr['titleshadowVertical'], 'px ' ) . self::get_css_value( $attr['titleshadowBlur'], 'px ' ) . $attr['titleshadowColor'],
+				'font-style'     => self::get_css_value($attr['titleStyle'], ' !important'),
+				'font-weight'    => self::get_css_value($attr['titleWeight'], ' !important'),
+				'text-shadow'    => self::get_css_value($attr['titleshadowHorizontal'], 'px ') . self::get_css_value($attr['titleshadowVertical'], 'px ') . self::get_css_value($attr['titleshadowBlur'], 'px ') . $attr['titleshadowColor'],
 			),
 			' .premium-title .style1 .premium-title-header' => array(
-				'border-left'   => $attr['titleBorderLeft'] > '0' ? self::get_css_value( $attr['titleBorderLeft'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
+				'border-left'   => $attr['titleBorderLeft'] > '0' ? self::get_css_value($attr['titleBorderLeft'], 'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
 				'border-width'  => $attr['titleBorderTop'] . 'px  ' . $attr['titleBorderRight'] . 'px  ' . $attr['titleBorderBottom'] . 'px  ' . $attr['titleBorderLeft'] . 'px  ',
 				'border-color'  => $attr['titleborderColor'],
 				'border-style'  => $attr['titleborderType'],
-				'border-radius' => self::get_css_value( $attr['titleborderRadius'], 'px' ),
+				'border-radius' => self::get_css_value($attr['titleborderRadius'], 'px'),
 			),
 			' .premium-title-style2__wrap'        => array(
 				'background-color' => $attr['BGColor'],
@@ -1379,32 +1393,32 @@ class PBG_Blocks_Helper {
 				'background-color' => $attr['BGColor'],
 			),
 			' .premium-title .style2'             => array(
-				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value( $attr['titleBorderBottom'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
+				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value($attr['titleBorderBottom'], 'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
 				'border-width'  => $attr['titleBorderTop'] . 'px  ' . $attr['titleBorderRight'] . 'px  ' . $attr['titleBorderBottom'] . 'px  ' . $attr['titleBorderLeft'] . 'px  ',
 				'border-color'  => $attr['titleborderColor'],
 				'border-style'  => $attr['titleborderType'],
-				'border-radius' => self::get_css_value( $attr['titleborderRadius'], 'px' ),
+				'border-radius' => self::get_css_value($attr['titleborderRadius'], 'px'),
 			),
 			' .premium-title .style4'             => array(
-				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value( $attr['titleBorderBottom'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
+				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value($attr['titleBorderBottom'], 'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
 				'border-width'  => $attr['titleBorderTop'] . 'px  ' . $attr['titleBorderRight'] . 'px  ' . $attr['titleBorderBottom'] . 'px  ' . $attr['titleBorderLeft'] . 'px  ',
 				'border-color'  => $attr['titleborderColor'],
 				'border-style'  => $attr['titleborderType'],
-				'border-radius' => self::get_css_value( $attr['titleborderRadius'], 'px' ),
+				'border-radius' => self::get_css_value($attr['titleborderRadius'], 'px'),
 			),
 			' .premium-title .style5'             => array(
-				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value( $attr['titleBorderBottom'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
+				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value($attr['titleBorderBottom'], 'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
 				'border-width'  => $attr['titleBorderTop'] . 'px  ' . $attr['titleBorderRight'] . 'px  ' . $attr['titleBorderBottom'] . 'px  ' . $attr['titleBorderLeft'] . 'px  ',
 				'border-color'  => $attr['titleborderColor'],
 				'border-style'  => $attr['titleborderType'],
-				'border-radius' => self::get_css_value( $attr['titleborderRadius'], 'px' ),
+				'border-radius' => self::get_css_value($attr['titleborderRadius'], 'px'),
 			),
 			' .premium-title .style6'             => array(
-				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value( $attr['titleBorderBottom'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
+				'border-bottom' => $attr['titleBorderBottom'] > '0' ? self::get_css_value($attr['titleBorderBottom'], 'px ') . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
 				'border-width'  => $attr['titleBorderTop'] . 'px ' . $attr['titleBorderRight'] . 'px ' . $attr['titleBorderBottom'] . 'px ' . $attr['titleBorderLeft'] . 'px ',
 				'border-color'  => $attr['titleborderColor'],
 				'border-style'  => $attr['titleborderType'],
-				'border-radius' => self::get_css_value( $attr['titleborderRadius'], 'px' ),
+				'border-radius' => self::get_css_value($attr['titleborderRadius'], 'px'),
 			),
 			' .premium-title-style5__wrap'        => array(
 				'border-bottom' => '2px solid ' . $attr['lineColor'],
@@ -1416,31 +1430,31 @@ class PBG_Blocks_Helper {
 				'border-bottom-color' => $attr['triangleColor'],
 			),
 			' .premium-title-icon'                => array(
-				'font-size'        => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+				'font-size'        => self::get_css_value($attr['iconSize'], $attr['iconSizeType']),
 				'color'            => $attr['iconColor'],
 				'background-color' => $attr['iconBGColor'],
 				'border-width'     => $attr['iconBorderTop'] . 'px  ',
 				'border-color'     => $attr['iconborderColor'],
 				'border-style'     => $attr['iconborderType'],
-				'border-radius'    => self::get_css_value( $attr['iconborderRadius'], 'px' ),
-				'text-shadow'      => self::get_css_value( $attr['iconshadowHorizontal'], 'px ' ) . self::get_css_value( $attr['iconshadowVertical'], 'px ' ) . self::get_css_value( $attr['iconshadowBlur'], 'px ' ) . $attr['iconshadowColor'],
-				'margin-top'       => self::get_css_value( $attr['iconSpacingT'], $attr['iconSpacingType'] ),
-				'margin-right'     => self::get_css_value( $attr['iconSpacingR'], $attr['iconSpacingType'] ),
-				'margin-bottom'    => self::get_css_value( $attr['iconSpacingB'], $attr['iconSpacingType'] ),
-				'margin-left'      => self::get_css_value( $attr['iconSpacingL'], $attr['iconSpacingType'] ),
-				'padding-top'      => self::get_css_value( $attr['iconPaddingT'], $attr['iconPaddingType'] ),
-				'padding-right'    => self::get_css_value( $attr['iconPaddingR'], $attr['iconPaddingType'] ),
-				'padding-bottom'   => self::get_css_value( $attr['iconPaddingB'], $attr['iconPaddingType'] ),
-				'padding-left'     => self::get_css_value( $attr['iconPaddingL'], $attr['iconPaddingType'] ),
+				'border-radius'    => self::get_css_value($attr['iconborderRadius'], 'px'),
+				'text-shadow'      => self::get_css_value($attr['iconshadowHorizontal'], 'px ') . self::get_css_value($attr['iconshadowVertical'], 'px ') . self::get_css_value($attr['iconshadowBlur'], 'px ') . $attr['iconshadowColor'],
+				'margin-top'       => self::get_css_value($attr['iconSpacingT'], $attr['iconSpacingType']),
+				'margin-right'     => self::get_css_value($attr['iconSpacingR'], $attr['iconSpacingType']),
+				'margin-bottom'    => self::get_css_value($attr['iconSpacingB'], $attr['iconSpacingType']),
+				'margin-left'      => self::get_css_value($attr['iconSpacingL'], $attr['iconSpacingType']),
+				'padding-top'      => self::get_css_value($attr['iconPaddingT'], $attr['iconPaddingType']),
+				'padding-right'    => self::get_css_value($attr['iconPaddingR'], $attr['iconPaddingType']),
+				'padding-bottom'   => self::get_css_value($attr['iconPaddingB'], $attr['iconPaddingType']),
+				'padding-left'     => self::get_css_value($attr['iconPaddingL'], $attr['iconPaddingType']),
 			),
 			'  .premium-title-bg-text:before '    => array(
 				'content'        => $attr['BackText'],
-				'top'            => $attr['verticalText'] . 'px',
-				'left'           => $attr['horizontalText'] . 'px',
+				'top'            => $attr['verticalText'] . $attr['verticalU'],
+				'left'           => $attr['horizontalText'] .  $attr['horizontalU'],
 				'color'          => $attr['textBackColor'] . '!important',
 				'width'          => $attr['textWidth'],
 				'transform'      => 'rotate(' . $attr['rotateText'] . 'deg)',
-				'font-size'      => self::get_css_value( $attr['textBackfontSize'], $attr['textBackfontSizeType'] ),
+				'font-size'      => self::get_css_value($attr['textBackfontSize'], $attr['textBackfontSizeType']),
 				'font-weight'    => $attr['textBackWeight'],
 				'font-style'     => $attr['textBackStyle'],
 				'text-transform' => $attr['textBackUpper '] ? 'uppercase' : 'none',
@@ -1451,24 +1465,24 @@ class PBG_Blocks_Helper {
 			),
 
 			' .premium-title-text-title'          => array(
-				'margin-top'                => self::get_css_value( $attr['titleMarginT'], $attr['titleMarginType'] ),
-				'margin-right'              => self::get_css_value( $attr['titleMarginR'], $attr['titleMarginType'] ),
-				'margin-bottom'             => self::get_css_value( $attr['titleMarginB'], $attr['titleMarginType'] ),
-				'margin-left'               => self::get_css_value( $attr['titleMarginL'], $attr['titleMarginType'] ),
-				'padding-top'               => self::get_css_value( $attr['titlePaddingT'], $attr['titlePaddingType'] ),
-				'padding-right'             => self::get_css_value( $attr['titlePaddingR'], $attr['titlePaddingType'] ),
-				'padding-bottom'            => self::get_css_value( $attr['titlePaddingB'], $attr['titlePaddingType'] ),
-				'padding-left'              => self::get_css_value( $attr['titlePaddingL'], $attr['titlePaddingType'] ),
+				'margin-top'                => self::get_css_value($attr['titleMarginT'], $attr['titleMarginType']),
+				'margin-right'              => self::get_css_value($attr['titleMarginR'], $attr['titleMarginType']),
+				'margin-bottom'             => self::get_css_value($attr['titleMarginB'], $attr['titleMarginType']),
+				'margin-left'               => self::get_css_value($attr['titleMarginL'], $attr['titleMarginType']),
+				'padding-top'               => self::get_css_value($attr['titlePaddingT'], $attr['titlePaddingType']),
+				'padding-right'             => self::get_css_value($attr['titlePaddingR'], $attr['titlePaddingType']),
+				'padding-bottom'            => self::get_css_value($attr['titlePaddingB'], $attr['titlePaddingType']),
+				'padding-left'              => self::get_css_value($attr['titlePaddingL'], $attr['titlePaddingType']),
 				'-webkit-text-stroke-color' => $attr['strokeColor'],
 				'-webkit-text-stroke-width' => $attr['strokeFull'] . 'px',
 			),
 			' .premium-title-header img'          => array(
-				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSize'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSize'], $attr['iconSizeType']),
 			),
 			' .premium-lottie-animation'          => array(
-				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSize'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSize'], $attr['iconSizeType']),
 			),
 		);
 		// Desktop Icon Size CSS ends.
@@ -1476,36 +1490,36 @@ class PBG_Blocks_Helper {
 		// Mobile Icon Size CSS starts.
 		$m_selectors = array(
 			' .premium-title-header'     => array(
-				'font-size' => self::get_css_value( $attr['titlefontSizeMobile'], $attr['titlefontSizeType'] ) . '!important',
+				'font-size' => self::get_css_value($attr['titlefontSizeMobile'], $attr['titlefontSizeType']) . '!important',
 			),
 			' .premium-title-icon'       => array(
-				'font-size'      => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ) . '!important',
-				'margin-top'     => self::get_css_value( $attr['iconSpacingTMobile'], $attr['iconSpacingType'] ),
-				'margin-right'   => self::get_css_value( $attr['iconSpacingRMobile'], $attr['iconSpacingType'] ),
-				'margin-bottom'  => self::get_css_value( $attr['iconSpacingBMobile'], $attr['iconSpacingType'] ),
-				'margin-left'    => self::get_css_value( $attr['iconSpacingLMobile'], $attr['iconSpacingType'] ),
-				'padding-top'    => self::get_css_value( $attr['iconPaddingTMobile'], $attr['iconPaddingType'] ),
-				'padding-right'  => self::get_css_value( $attr['iconPaddingRMobile'], $attr['iconPaddingType'] ),
-				'padding-bottom' => self::get_css_value( $attr['iconPaddingBMobile'], $attr['iconPaddingType'] ),
-				'padding-left'   => self::get_css_value( $attr['iconPaddingLMobile'], $attr['iconPaddingType'] ),
+				'font-size'      => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']) . '!important',
+				'margin-top'     => self::get_css_value($attr['iconSpacingTMobile'], $attr['iconSpacingType']),
+				'margin-right'   => self::get_css_value($attr['iconSpacingRMobile'], $attr['iconSpacingType']),
+				'margin-bottom'  => self::get_css_value($attr['iconSpacingBMobile'], $attr['iconSpacingType']),
+				'margin-left'    => self::get_css_value($attr['iconSpacingLMobile'], $attr['iconSpacingType']),
+				'padding-top'    => self::get_css_value($attr['iconPaddingTMobile'], $attr['iconPaddingType']),
+				'padding-right'  => self::get_css_value($attr['iconPaddingRMobile'], $attr['iconPaddingType']),
+				'padding-bottom' => self::get_css_value($attr['iconPaddingBMobile'], $attr['iconPaddingType']),
+				'padding-left'   => self::get_css_value($attr['iconPaddingLMobile'], $attr['iconPaddingType']),
 			),
 			' .premium-title-text-title' => array(
-				'margin-top'     => self::get_css_value( $attr['titleMarginTMobile'], $attr['titleMarginType'] ),
-				'margin-right'   => self::get_css_value( $attr['titleMarginRMobile'], $attr['titleMarginType'] ),
-				'margin-bottom'  => self::get_css_value( $attr['titleMarginBMobile'], $attr['titleMarginType'] ),
-				'margin-left'    => self::get_css_value( $attr['titleMarginLMobile'], $attr['titleMarginType'] ),
-				'padding-top'    => self::get_css_value( $attr['titlePaddingTMobile'], $attr['titlePaddingType'] ),
-				'padding-right'  => self::get_css_value( $attr['titlePaddingRMobile'], $attr['titlePaddingType'] ),
-				'padding-bottom' => self::get_css_value( $attr['titlePaddingBMobile'], $attr['titlePaddingType'] ),
-				'padding-left'   => self::get_css_value( $attr['titlePaddingLMobile'], $attr['titlePaddingType'] ),
+				'margin-top'     => self::get_css_value($attr['titleMarginTMobile'], $attr['titleMarginType']),
+				'margin-right'   => self::get_css_value($attr['titleMarginRMobile'], $attr['titleMarginType']),
+				'margin-bottom'  => self::get_css_value($attr['titleMarginBMobile'], $attr['titleMarginType']),
+				'margin-left'    => self::get_css_value($attr['titleMarginLMobile'], $attr['titleMarginType']),
+				'padding-top'    => self::get_css_value($attr['titlePaddingTMobile'], $attr['titlePaddingType']),
+				'padding-right'  => self::get_css_value($attr['titlePaddingRMobile'], $attr['titlePaddingType']),
+				'padding-bottom' => self::get_css_value($attr['titlePaddingBMobile'], $attr['titlePaddingType']),
+				'padding-left'   => self::get_css_value($attr['titlePaddingLMobile'], $attr['titlePaddingType']),
 			),
 			' .premium-title-header img' => array(
-				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']),
 			),
 			' .premium-lottie-animation' => array(
-				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSizeMobile'], $attr['iconSizeType']),
 			),
 		);
 		// Mobile Icon Size CSS ends.
@@ -1513,50 +1527,50 @@ class PBG_Blocks_Helper {
 		// Tablet Icon Size CSS starts.
 		$t_selectors = array(
 			' .premium-title-header'     => array(
-				'font-size' => self::get_css_value( $attr['titlefontSizeTablet'], $attr['titlefontSizeType'] ) . '!important',
+				'font-size' => self::get_css_value($attr['titlefontSizeTablet'], $attr['titlefontSizeType']) . '!important',
 			),
 			' .premium-title-icon'       => array(
-				'font-size'      => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ) . '!important',
-				'margin-top'     => self::get_css_value( $attr['iconSpacingTTablet'], $attr['iconSpacingType'] ),
-				'margin-right'   => self::get_css_value( $attr['iconSpacingRTablet'], $attr['iconSpacingType'] ),
-				'margin-bottom'  => self::get_css_value( $attr['iconSpacingBTablet'], $attr['iconSpacingType'] ),
-				'margin-left'    => self::get_css_value( $attr['iconSpacingLTablet'], $attr['iconSpacingType'] ),
-				'padding-top'    => self::get_css_value( $attr['iconPaddingTTablet'], $attr['iconPaddingType'] ),
-				'padding-right'  => self::get_css_value( $attr['iconPaddingRTablet'], $attr['iconPaddingType'] ),
-				'padding-bottom' => self::get_css_value( $attr['iconPaddingBTablet'], $attr['iconPaddingType'] ),
-				'padding-left'   => self::get_css_value( $attr['iconPaddingLTablet'], $attr['iconPaddingType'] ),
+				'font-size'      => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']) . '!important',
+				'margin-top'     => self::get_css_value($attr['iconSpacingTTablet'], $attr['iconSpacingType']),
+				'margin-right'   => self::get_css_value($attr['iconSpacingRTablet'], $attr['iconSpacingType']),
+				'margin-bottom'  => self::get_css_value($attr['iconSpacingBTablet'], $attr['iconSpacingType']),
+				'margin-left'    => self::get_css_value($attr['iconSpacingLTablet'], $attr['iconSpacingType']),
+				'padding-top'    => self::get_css_value($attr['iconPaddingTTablet'], $attr['iconPaddingType']),
+				'padding-right'  => self::get_css_value($attr['iconPaddingRTablet'], $attr['iconPaddingType']),
+				'padding-bottom' => self::get_css_value($attr['iconPaddingBTablet'], $attr['iconPaddingType']),
+				'padding-left'   => self::get_css_value($attr['iconPaddingLTablet'], $attr['iconPaddingType']),
 			),
 			' .premium-title-text-title' => array(
-				'margin-top'     => self::get_css_value( $attr['titleMarginTTablet'], $attr['titleMarginType'] ),
-				'margin-right'   => self::get_css_value( $attr['titleMarginRTablet'], $attr['titleMarginType'] ),
-				'margin-bottom'  => self::get_css_value( $attr['titleMarginBTablet'], $attr['titleMarginType'] ),
-				'margin-left'    => self::get_css_value( $attr['titleMarginLTablet'], $attr['titleMarginType'] ),
-				'padding-top'    => self::get_css_value( $attr['titlePaddingTTablet'], $attr['titlePaddingType'] ),
-				'padding-right'  => self::get_css_value( $attr['titlePaddingRTablet'], $attr['titlePaddingType'] ),
-				'padding-bottom' => self::get_css_value( $attr['titlePaddingBTablet'], $attr['titlePaddingType'] ),
-				'padding-left'   => self::get_css_value( $attr['titlePaddingLTablet'], $attr['titlePaddingType'] ),
+				'margin-top'     => self::get_css_value($attr['titleMarginTTablet'], $attr['titleMarginType']),
+				'margin-right'   => self::get_css_value($attr['titleMarginRTablet'], $attr['titleMarginType']),
+				'margin-bottom'  => self::get_css_value($attr['titleMarginBTablet'], $attr['titleMarginType']),
+				'margin-left'    => self::get_css_value($attr['titleMarginLTablet'], $attr['titleMarginType']),
+				'padding-top'    => self::get_css_value($attr['titlePaddingTTablet'], $attr['titlePaddingType']),
+				'padding-right'  => self::get_css_value($attr['titlePaddingRTablet'], $attr['titlePaddingType']),
+				'padding-bottom' => self::get_css_value($attr['titlePaddingBTablet'], $attr['titlePaddingType']),
+				'padding-left'   => self::get_css_value($attr['titlePaddingLTablet'], $attr['titlePaddingType']),
 
 			),
 			' .premium-title-header img' => array(
-				'width'  => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']),
 			),
 			' .premium-lottie-animation' => array(
-				'width'  => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
+				'width'  => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']),
+				'height' => self::get_css_value($attr['iconSizeTablet'], $attr['iconSizeType']),
 			),
 		);
 		// Tablet Icon Size CSS ends.
 
 		// @codingStandardsIgnoreEnd
 
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-block-' : '#premium-title-';
+		$base_selector = ($attr['classMigrate']) ? '.premium-block-' : '#premium-title-';
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		$desktop = self::generate_css($selectors, $base_selector . $id);
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+		$tablet = self::generate_css($t_selectors, $base_selector . $id);
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$mobile = self::generate_css($m_selectors, $base_selector . $id);
 
 		$generated_css = array(
 			'desktop' => $desktop,
@@ -1576,30 +1590,31 @@ class PBG_Blocks_Helper {
 	 * @param array  $selectors CSS selectors.
 	 * @param string $id base selectors ID.
 	 */
-	public static function generate_css( $selectors, $id ) {
+	public static function generate_css($selectors, $id)
+	{
 
 		$styling_css = '';
 
-		if ( empty( $selectors ) ) {
+		if (empty($selectors)) {
 			return;
 		}
 
-		foreach ( $selectors as $key => $value ) {
+		foreach ($selectors as $key => $value) {
 
 			$css = '';
 
-			foreach ( $value as $j => $val ) {
+			foreach ($value as $j => $val) {
 
-				if ( 'font-family' === $j && 'Default' === $val ) {
+				if ('font-family' === $j && 'Default' === $val) {
 					continue;
 				}
 
-				if ( ! empty( $val ) || 0 === $val ) {
+				if (!empty($val) || 0 === $val) {
 					$css .= $j . ': ' . $val . ';';
 				}
 			}
 
-			if ( ! empty( $css ) ) {
+			if (!empty($css)) {
 				$styling_css .= $id;
 				$styling_css .= $key . '{';
 				$styling_css .= $css . '}';
@@ -1618,17 +1633,18 @@ class PBG_Blocks_Helper {
 	 * @param string $value  CSS value.
 	 * @param string $unit  CSS unit.
 	 */
-	public static function get_css_value( $value = '', $unit = '' ) {
+	public static function get_css_value($value = '', $unit = '')
+	{
 
 		// Ignore PHPCS Comment For Strict Comparison.
-		if ( '' == $value ) {
+		if ('' == $value) {
 			return $value;
 		}
 
 		$css_val = '';
 
-		if ( ! empty( $value ) ) {
-			$css_val = esc_attr( $value ) . $unit;
+		if (!empty($value)) {
+			$css_val = esc_attr($value) . $unit;
 		}
 
 		return $css_val;
@@ -1642,22 +1658,22 @@ class PBG_Blocks_Helper {
 	 *
 	 * @param string $hexColor value of Color.
 	 */
-	public static function hex_to_rgba( $hexColor ) {
+	public static function hex_to_rgba($hexColor)
+	{
 
-		$color = str_replace( '#', '', $hexColor );
+		$color = str_replace('#', '', $hexColor);
 
-		if ( strlen( $color ) > 3 ) {
+		if (strlen($color) > 3) {
 			$rgb =
-				hexdec( substr( $color, 0, 2 ) ) . ',' . hexdec( substr( $color, 2, 2 ) ) .
+				hexdec(substr($color, 0, 2)) . ',' . hexdec(substr($color, 2, 2)) .
 
-				',' . hexdec( substr( $color, 4, 2 ) );
-
+				',' . hexdec(substr($color, 4, 2));
 		} else {
-			$color = str_replace( '#', '', $hexColor );
-			$r     = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
-			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
-			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-			$rgb   = hexdec( $r ) . ',' . hexdec( $g ) . ',' . hexdec( $b );
+			$color = str_replace('#', '', $hexColor);
+			$r     = substr($color, 0, 1) . substr($color, 0, 1);
+			$g     = substr($color, 1, 1) . substr($color, 1, 1);
+			$b     = substr($color, 2, 1) . substr($color, 2, 1);
+			$rgb   = hexdec($r) . ',' . hexdec($g) . ',' . hexdec($b);
 		}
 
 		return $rgb;
@@ -1669,7 +1685,8 @@ class PBG_Blocks_Helper {
 	 * @param array $blocks Blocks array.
 	 * @since 1.1.0
 	 */
-	public function get_stylesheet( $blocks ) {
+	public function get_stylesheet($blocks)
+	{
 
 		$desktop = '';
 		$tablet  = '';
@@ -1678,29 +1695,28 @@ class PBG_Blocks_Helper {
 		$tab_styling_css = '';
 		$mob_styling_css = '';
 
-		foreach ( $blocks as $i => $block ) {
+		foreach ($blocks as $i => $block) {
 
-			if ( is_array( $block ) ) {
+			if (is_array($block)) {
 
-				if ( '' === $block['blockName'] ) {
+				if ('' === $block['blockName']) {
 					continue;
 				}
-				if ( 'core/block' === $block['blockName'] ) {
-					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+				if ('core/block' === $block['blockName']) {
+					$id = (isset($block['attrs']['ref'])) ? $block['attrs']['ref'] : 0;
 
-					if ( $id ) {
-						$content = get_post_field( 'post_content', $id );
+					if ($id) {
+						$content = get_post_field('post_content', $id);
 
-						$reusable_blocks = $this->parse( $content );
+						$reusable_blocks = $this->parse($content);
 
-						self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
-
+						self::$stylesheet .= $this->get_stylesheet($reusable_blocks);
 					}
 				} else {
 					// Get CSS for the Block.
-					$css = $this->get_block_css( $block );
+					$css = $this->get_block_css($block);
 
-					if ( isset( $css['desktop'] ) ) {
+					if (isset($css['desktop'])) {
 						$desktop .= $css['desktop'];
 						$tablet  .= $css['tablet'];
 						$mobile  .= $css['mobile'];
@@ -1709,13 +1725,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 
-		if ( ! empty( $tablet ) ) {
+		if (!empty($tablet)) {
 			$tab_styling_css .= '@media only screen and (max-width: ' . PBG_TABLET_BREAKPOINT . 'px) {';
 			$tab_styling_css .= $tablet;
 			$tab_styling_css .= '}';
 		}
 
-		if ( ! empty( $mobile ) ) {
+		if (!empty($mobile)) {
 			$mob_styling_css .= '@media only screen and (max-width: ' . PBG_MOBILE_BREAKPOINT . 'px) {';
 			$mob_styling_css .= $mobile;
 			$mob_styling_css .= '}';
@@ -1732,19 +1748,19 @@ class PBG_Blocks_Helper {
 	 *
 	 * @return object
 	 */
-	public static function get_instance() {
+	public static function get_instance()
+	{
 
-		if ( ! isset( self::$instance ) ) {
+		if (!isset(self::$instance)) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
 	}
-
 }
 
 
-if ( ! function_exists( 'pbg_blocks_helper' ) ) {
+if (!function_exists('pbg_blocks_helper')) {
 
 	/**
 	 * Returns an instance of the plugin class.
@@ -1752,7 +1768,8 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * @since  1.0.0
 	 * @return object
 	 */
-	function pbg_blocks_helper() {
+	function pbg_blocks_helper()
+	{
 		return pbg_blocks_helper::get_instance();
 	}
 }

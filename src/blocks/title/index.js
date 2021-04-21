@@ -580,6 +580,14 @@ const titleAttrs = {
     },
     zIndex: {
         type: "number"
+    },
+    horizontalU: {
+        type: "string",
+        default: "px"
+    },
+    verticalU: {
+        type: "string",
+        default: "px"
     }
 
 };

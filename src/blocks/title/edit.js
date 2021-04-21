@@ -1,4 +1,3 @@
-import classnames from "classnames"
 import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
@@ -9,9 +8,9 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
-import PremiumPadding from "../../components/premium-padding";
 import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
+import PremiumSizeUnits from '../../components/premium-size-units';
 
 const { __ } = wp.i18n
 
@@ -60,7 +59,6 @@ class edit extends Component {
         const {
             block_id,
             align,
-            className,
             style,
             title,
             iconValue,
@@ -153,7 +151,6 @@ class edit extends Component {
             strokeColor,
             strokeFull,
             iconBGColor,
-            iconPadding,
             iconPaddingT,
             iconPaddingR,
             iconPaddingL,
@@ -167,8 +164,6 @@ class edit extends Component {
             iconPaddingLMobile,
             iconPaddingBMobile,
             iconPaddingType,
-            iconPaddingMobile,
-            iconPaddingTablet,
             iconSpacing,
             iconSpacingT,
             iconSpacingR,
@@ -183,8 +178,6 @@ class edit extends Component {
             iconSpacingBMobile,
             iconSpacingLMobile,
             iconSpacingType,
-            iconSpacingMobile,
-            iconSpacingTablet,
             backgroundText,
             BackText,
             textWidth,
@@ -203,6 +196,8 @@ class edit extends Component {
             textBackshadowColor,
             textBackshadowBlur,
             textBackshadowHorizontal,
+            horizontalU,
+            verticalU,
             textBackshadowVertical,
             blend,
             zIndex,
@@ -568,6 +563,10 @@ class edit extends Component {
                                             label: "Full Width", value: '100%'
                                         }]}
                                 />
+                                <PremiumSizeUnits
+                                    activeUnit={horizontalU}
+                                    onChangeSizeUnit={newValue => setAttributes({ horizontalU: newValue })}
+                                />
                                 <RangeControl
                                     label={__('Horizontal Offset')}
                                     value={horizontalText}
@@ -575,6 +574,10 @@ class edit extends Component {
                                     min={-500}
                                     max={500}
                                     step={1}
+                                />
+                                <PremiumSizeUnits
+                                    activeUnit={verticalU}
+                                    onChangeSizeUnit={newValue => setAttributes({ verticalU: newValue })}
                                 />
                                 <RangeControl
                                     label={__('Vertical Offset')}

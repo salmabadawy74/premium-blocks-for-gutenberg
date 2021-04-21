@@ -126,7 +126,9 @@ function styling(props) {
         verticalText,
         blend,
         zIndex,
-        rotateText
+        rotateText,
+        verticalU,
+        horizontalU
     } = props.attributes
 
     var selectors = {}
@@ -138,8 +140,8 @@ function styling(props) {
         " .premium-title-bg-text:before": {
             "content": BackText,
             "position": "absolute",
-            "top": `${verticalText}px`,
-            "left": `${horizontalText}px`,
+            "top": `${verticalText}${verticalU}`,
+            "left": `${horizontalText}${horizontalU}`,
             "color": textBackColor,
             "width": textWidth,
             "transform": `rotate(${rotateText}deg)`,
@@ -263,6 +265,9 @@ function styling(props) {
     }
 
     mobile_selectors = {
+        " .premium-title-bg-text:before": {
+            "font-size": generateCSSUnit(textBackfontSizeMobile, textBackfontSizeType)
+        },
         " .premium-title-header": {
             "font-size": generateCSSUnit(titlefontSizeMobile, titlefontSizeType)
         },
@@ -299,6 +304,9 @@ function styling(props) {
     }
 
     tablet_selectors = {
+        " .premium-title-bg-text:before": {
+            "font-size": generateCSSUnit(textBackfontSizeTablet, textBackfontSizeType)
+        },
         " .premium-title-header": {
             "font-size": generateCSSUnit(titlefontSizeTablet, titlefontSizeType)
         },
