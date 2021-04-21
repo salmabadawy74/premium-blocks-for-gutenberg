@@ -87,10 +87,12 @@ const titleAttrs = {
         type: "number",
     },
     horizontalText: {
-        type: "number"
+        type: "number",
+        default: '0'
     },
     verticalText: {
-        type: "number"
+        type: "number",
+        default: '0'
     },
     rotateText: {
         type: "number",
@@ -184,23 +186,23 @@ const titleAttrs = {
     },
     titleBorderTop: {
         type: "number",
-        default: "0"
+        default: "1"
     },
     titleBorderRight: {
         type: "number",
-        default: "0"
+        default: "1"
     },
     titleBorderBottom: {
         type: "number",
-        default: "0"
+        default: "1"
     },
     titleBorderLeft: {
         type: "number",
-        default: "0"
+        default: "1"
     },
     titleborderRadius: {
         type: "number",
-        default: 0
+        default: 1
     },
     titleborderColor: {
         type: "string",
@@ -246,19 +248,19 @@ const titleAttrs = {
         type: "string",
         default: "none"
     },
-    iconborderTop: {
+    iconBorderTop: {
         type: "number",
         default: "1"
     },
-    iconborderRight: {
+    iconBorderRight: {
         type: "number",
         default: "1"
     },
-    iconborderBottom: {
+    iconBorderBottom: {
         type: "number",
         default: "1"
     },
-    iconborderLeft: {
+    iconBorderLeft: {
         type: "number",
         default: "1"
     },
@@ -285,7 +287,51 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-    titleMargin: {
+    titleMarginT: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginR: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginB: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginL: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginTTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginBTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginTMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginBMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginLMobile: {
         type: "number",
         default: "0"
     },
@@ -293,64 +339,168 @@ const titleAttrs = {
         type: "string",
         default: "px"
     },
-    titleMarginMobile: {
+
+    titlePaddingT: {
         type: "number",
         default: "0"
     },
-    titleMarginTablet: {
+    titlePaddingR: {
         type: "number",
         default: "0"
     },
-    titlePadding: {
+    titlePaddingB: {
         type: "number",
         default: "0"
     },
-    titlePaddingTablet: {
+    titlePaddingL: {
         type: "number",
         default: "0"
     },
+    titlePaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+
     titlePaddingType: {
         type: "string",
         default: "px"
     },
-    titlePaddingMobile: {
-        type: "number",
-        default: "0"
-    },
+
     iconBGColor: {
         type: "string"
     },
-    iconPadding: {
+    iconPaddingT: {
         type: "number",
         default: "0"
     },
-    iconPaddingTablet: {
+    iconPaddingR: {
         type: "number",
         default: "0"
     },
+    iconPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+
     iconPaddingType: {
         type: "string",
         default: "px"
     },
-    iconPaddingMobile: {
-        type: "number",
-        default: "0"
-    },
-    iconSpacing: {
+    iconSpacingT: {
         type: "number",
         default: "10"
     },
-    iconSpacingTablet: {
+    iconSpacingR: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingB: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingL: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingTTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingRTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingBTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingLTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingTMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingRMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingBMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingLMobile: {
         type: "number",
         default: "10"
     },
     iconSpacingType: {
         type: "string",
         default: "px"
-    },
-    iconSpacingMobile: {
-        type: "number",
-        default: "10"
     },
     hideDesktop: {
         type: 'boolean',
@@ -394,7 +544,7 @@ const titleAttrs = {
     },
     textBackfontSize: {
         type: "number",
-        default: "30"
+        default: "20"
     },
     textBackfontSizeType: {
         type: "string",
