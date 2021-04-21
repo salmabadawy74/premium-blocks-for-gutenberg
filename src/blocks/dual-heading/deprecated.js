@@ -3,271 +3,6 @@ import attributes from "./attributes";
 
 const className = "premium-dheading-block";
 
-const deprecated_attributes_1_3_0 = {
-    contentAlign: {
-        type: "string",
-        default: "center",
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first",
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second",
-    },
-    titleTag: {
-        type: "string",
-        default: "h1",
-    },
-    display: {
-        type: "string",
-        default: "inline",
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    firstSize: {
-        type: "number",
-        default: "20",
-    },
-    firstLetter: {
-        type: "number",
-    },
-    firstStyle: {
-        type: "string",
-    },
-    firstUpper: {
-        type: "boolean",
-    },
-    firstWeight: {
-        type: "number",
-        default: 500,
-    },
-    firstBackground: {
-        type: "string",
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none",
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1",
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0",
-    },
-    firstBorderColor: {
-        type: "string",
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0",
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0",
-    },
-    firstPadding: {
-        type: "number",
-        default: "0",
-    },
-    firstClip: {
-        type: "boolean",
-        default: false,
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false,
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f",
-    },
-    firstShadowColor: {
-        type: "string",
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f",
-    },
-    secondSize: {
-        type: "number",
-        default: "20",
-    },
-    secondLetter: {
-        type: "number",
-    },
-    secondStyle: {
-        type: "string",
-    },
-    secondUpper: {
-        type: "boolean",
-    },
-    secondWeight: {
-        type: "number",
-        default: 500,
-    },
-    secondBackground: {
-        type: "string",
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none",
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1",
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0",
-    },
-    secondBorderColor: {
-        type: "string",
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0",
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0",
-    },
-    secondPadding: {
-        type: "number",
-        default: "0",
-    },
-    secondClip: {
-        type: "boolean",
-        default: false,
-    },
-    secondShadowColor: {
-        type: "string",
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false,
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    link: {
-        type: "boolean",
-        default: false,
-    },
-    target: {
-        type: "boolean",
-        default: false,
-    },
-    headingURL: {
-        type: "string",
-    },
-    containerBack: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_4_1 = {
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-};
-
-const deprecated_attributes_1_4_1 = Object.assign(
-    deprecated_attributes_1_3_0,
-    newAttributes_1_4_1
-);
-
-const newAttributes_1_4_8 = {
-    firstFamily: {
-        type: "string",
-    },
-    secondFamily: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_7_2 = {
-    containerBorderType: {
-        type: "string",
-        default: "none",
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1",
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0",
-    },
-    containerBorderColor: {
-        type: "string",
-    },
-};
-
-const deprecated_attributes_1_4_8 = Object.assign(
-    deprecated_attributes_1_4_1,
-    newAttributes_1_4_8
-);
-
-const deprecated_attributes_1_7_2 = Object.assign(
-    deprecated_attributes_1_4_8,
-    newAttributes_1_7_2
-);
-
-
 
 const deprecatedContent = [
     {
@@ -462,7 +197,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_7_2,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 firstStroke: false,
@@ -625,7 +360,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_4_8,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 containerBorderType: "none",
@@ -775,7 +510,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_4_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 firstFamily: "",
@@ -919,7 +654,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_3_0,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 imageID: "",
@@ -1057,7 +792,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_3_0,
+        attributes: attributes,
         save: (props) => {
             {
                 const {

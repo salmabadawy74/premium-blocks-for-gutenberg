@@ -8,150 +8,6 @@ const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;
 
-const buttonAttrs_1_0_0 = {
-    btnText: {
-        type: "string",
-        default: __("Premium Button"),
-    },
-    btnSize: {
-        type: "string",
-        default: "md",
-    },
-    btnAlign: {
-        type: "string",
-        default: "center",
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button",
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false,
-    },
-    effect: {
-        type: "string",
-        default: "none",
-    },
-    effectDir: {
-        type: "string",
-        default: "top",
-    },
-    textColor: {
-        type: "string",
-    },
-    textHoverColor: {
-        type: "string",
-    },
-    backColor: {
-        type: "string",
-    },
-    backHoverColor: {
-        type: "string",
-    },
-    slideColor: {
-        type: "string",
-    },
-    textSize: {
-        type: "number",
-    },
-    textLetter: {
-        type: "number",
-    },
-    textStyle: {
-        type: "string",
-    },
-    textUpper: {
-        type: "boolean",
-    },
-    textWeight: {
-        type: "number",
-        default: 500,
-    },
-    textLine: {
-        type: "number",
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-    },
-    borderColor: {
-        type: "string",
-    },
-    padding: {
-        type: "number",
-    },
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    id: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_0_1 = {
-    btnShadowColor: {
-        type: "string",
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
-
-const newAttributes_1_3_4 = {
-    borderHoverColor: {
-        type: "string",
-    },
-};
-
-const buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
-
-const newAttributes_1_4_7 = {
-    textFontFamily: {
-        type: "string",
-    },
-};
-
-const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
-
-
-
 const deprecatedContent = [
     {
         attributes: attributes,
@@ -250,7 +106,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_4_7,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { paddingU: "" });
         },
@@ -347,7 +203,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_4_7,
+        attributes: attributes,
         save: (props) => {
             const {
                 id,
@@ -440,7 +296,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_3_4,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { textFontFamily: "" });
         },
@@ -534,7 +390,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_0_1,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { borderHoverColor: "" });
         },
@@ -626,7 +482,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_0_0,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 btnShadowColor: "",

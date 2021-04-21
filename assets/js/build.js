@@ -15146,190 +15146,6 @@ var _wp$editor = wp.editor,
     InnerBlocks = _wp$editor.InnerBlocks;
 
 
-var deprecated_attributes = {
-    accordionId: {
-        type: "string"
-    },
-    repeaterItems: {
-        type: "array",
-        default: [{
-            titleText: __("Awesome Title"),
-            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }]
-    },
-    direction: {
-        type: "string",
-        default: "ltr"
-    },
-    titleTag: {
-        type: "string",
-        default: "H4"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleBorder: {
-        type: "string",
-        default: "none"
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderColor: {
-        type: "string"
-    },
-    titleBack: {
-        type: "string"
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
-    arrowColor: {
-        type: "string"
-    },
-    arrowBack: {
-        type: "string"
-    },
-    arrowPos: {
-        type: "string",
-        default: "out"
-    },
-    arrowPadding: {
-        type: "number"
-    },
-    arrowRadius: {
-        type: "number"
-    },
-    arrowSize: {
-        type: "number",
-        default: 20
-    },
-    contentType: {
-        type: "string",
-        default: "text"
-    },
-    descAlign: {
-        type: "string",
-        default: "left"
-    },
-    descColor: {
-        type: "string"
-    },
-    descBack: {
-        type: "string"
-    },
-    descBorder: {
-        type: "string",
-        default: "none"
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    descBorderColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descLetter: {
-        type: "number"
-    },
-    descStyle: {
-        type: "string"
-    },
-    descUpper: {
-        type: "boolean"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descPaddingT: {
-        type: "number"
-    },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    }
-};
-
 var deprecated = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
 
@@ -15497,7 +15313,7 @@ var deprecated = [{
         );
     }
 }, {
-    attributes: deprecated_attributes,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes2 = props.attributes,
             accordionId = _props$attributes2.accordionId,
@@ -16833,221 +16649,6 @@ var className = "premium-banner";
 var RichText = wp.editor.RichText;
 
 
-var deprecated_attributes_1_0_1 = {
-    imageID: {
-        type: "number"
-    },
-    imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H3"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-    },
-    contentAlign: {
-        type: "string",
-        default: "left"
-    },
-    effect: {
-        type: "string",
-        default: "effect1"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    height: {
-        type: "string",
-        default: "default"
-    },
-    minHeight: {
-        type: "number"
-    },
-    verAlign: {
-        type: "string",
-        default: "top"
-    },
-    hovered: {
-        type: "boolean",
-        default: false
-    },
-    responsive: {
-        type: "boolean",
-        default: false
-    },
-    background: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: 50
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: "20"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleWeight: {
-        type: "number"
-    },
-    titleBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number",
-        default: "20"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-    },
-    sepColor: {
-        type: "string"
-    },
-    id: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_4_4 = {
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    }
-};
-
-var deprecated_attributes_1_3_8 = Object.assign(deprecated_attributes_1_0_1, newAttributes_1_4_4);
-
-var newAttributes_1_5_3 = {
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    }
-};
-
-var deprecated_attributes_1_5_3 = Object.assign(deprecated_attributes_1_3_8, newAttributes_1_5_3);
-
-var newAttributes_1_6_7 = {
-    containerShadowColor: {
-        type: "string"
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var deprecated_attributes_1_6_7 = Object.assign(deprecated_attributes_1_5_3, newAttributes_1_6_7);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -17237,7 +16838,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_6_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingT: "",
@@ -17404,7 +17005,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_3,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             containerShadowColor: "",
@@ -17563,7 +17164,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_8,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             descShadowBlur: "0",
@@ -17716,7 +17317,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_8,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             blur: "0",
@@ -17862,7 +17463,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowBlur: "0",
@@ -18890,148 +18491,6 @@ var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var buttonAttrs_1_0_0 = {
-    btnText: {
-        type: "string",
-        default: __("Premium Button")
-    },
-    btnSize: {
-        type: "string",
-        default: "md"
-    },
-    btnAlign: {
-        type: "string",
-        default: "center"
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    effect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    textColor: {
-        type: "string"
-    },
-    textHoverColor: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backHoverColor: {
-        type: "string"
-    },
-    slideColor: {
-        type: "string"
-    },
-    textSize: {
-        type: "number"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean"
-    },
-    textWeight: {
-        type: "number",
-        default: 500
-    },
-    textLine: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    padding: {
-        type: "number"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    id: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_0_1 = {
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
-
-var newAttributes_1_3_4 = {
-    borderHoverColor: {
-        type: "string"
-    }
-};
-
-var buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
-
-var newAttributes_1_4_7 = {
-    textFontFamily: {
-        type: "string"
-    }
-};
-
-var buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
 
@@ -19115,7 +18574,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: buttonAttrs_1_4_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { paddingU: "" });
     },
@@ -19198,7 +18657,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: buttonAttrs_1_4_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes3 = props.attributes,
             id = _props$attributes3.id,
@@ -19277,7 +18736,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: buttonAttrs_1_3_4,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { textFontFamily: "" });
     },
@@ -19357,7 +18816,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: buttonAttrs_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { borderHoverColor: "" });
     },
@@ -19436,7 +18895,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: buttonAttrs_1_0_0,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             btnShadowColor: "",
@@ -20938,235 +20397,6 @@ var save = function save(props) {
 
 var className = "premium-countup";
 
-var counterAttrs_1_0_9 = {
-    increment: {
-        type: "string",
-        default: 500
-    },
-    time: {
-        type: "string",
-        default: 1000
-    },
-    delay: {
-        type: "string",
-        default: 10
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    flexDir: {
-        type: "string",
-        default: "column"
-    },
-    numberSize: {
-        type: "number",
-        default: 30
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    numberWeight: {
-        type: "number",
-        default: 900
-    },
-    prefix: {
-        type: "boolean",
-        default: true
-    },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix"
-    },
-    prefixSize: {
-        type: "number",
-        default: 20
-    },
-    prefixColor: {
-        type: "string"
-    },
-    prefixWeight: {
-        type: "number"
-    },
-    prefixGap: {
-        type: "number",
-        default: 2
-    },
-    suffix: {
-        type: "boolean",
-        default: true
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix"
-    },
-    suffixSize: {
-        type: "number",
-        default: 20
-    },
-    suffixColor: {
-        type: "string"
-    },
-    suffixWeight: {
-        type: "number"
-    },
-    suffixGap: {
-        type: "number",
-        default: 2
-    },
-    icon: {
-        type: "string",
-        default: "icon"
-    },
-    iconSpacing: {
-        type: "number",
-        default: 10
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    iconCheck: {
-        type: "boolean",
-        default: true
-    },
-    iconSize: {
-        type: "number",
-        default: 40
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    selfAlign: {
-        type: "string",
-        default: "center"
-    },
-    titleCheck: {
-        type: "boolean",
-        default: true
-    },
-    titleTxt: {
-        type: "string",
-        default: "Premium Count Up"
-    },
-    titleSize: {
-        type: "number",
-        default: 20
-    },
-    titleSpacing: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleT: {
-        type: "number",
-        default: 1
-    },
-    titleB: {
-        type: "number",
-        default: 1
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    faIcon: {
-        type: "string",
-        default: "dashicons-clock"
-    }
-};
-
-var newAttributes_1_2_1 = {
-    containerBack: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_3_7 = {
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var newAttributes_1_4_1 = {
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    }
-};
-
-var newAttributes_1_6_4 = {
-    titleFamily: {
-        type: "string"
-    },
-    counterFamily: {
-        type: "string"
-    },
-    prefixFamily: {
-        type: "string"
-    },
-    suffixFamily: {
-        type: "string"
-    }
-};
-
-var counterAttrs_1_2_1 = Object.assign(counterAttrs_1_0_9, newAttributes_1_2_1);
-
-var counterAttrs_1_3_7 = Object.assign(counterAttrs_1_2_1, newAttributes_1_3_7);
-
-var counterAttrs_1_4_1 = Object.assign(counterAttrs_1_3_7, newAttributes_1_4_1);
-
-var counterAttrs_1_6_4 = Object.assign(counterAttrs_1_4_1, newAttributes_1_6_4);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -21399,7 +20629,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: counterAttrs_1_6_4,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             borderType: "",
@@ -21604,7 +20834,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: counterAttrs_1_4_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             titleFamily: "",
@@ -21798,7 +21028,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: counterAttrs_1_3_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowColor: "",
@@ -21989,7 +21219,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: counterAttrs_1_2_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowColor: "",
@@ -22168,7 +21398,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: counterAttrs_1_0_9,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes6 = props.attributes,
             increment = _props$attributes6.increment,
@@ -24645,261 +23875,6 @@ var save = function save(props) {
 
 var className = "premium-dheading-block";
 
-var deprecated_attributes_1_3_0 = {
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-    },
-    titleTag: {
-        type: "string",
-        default: "h1"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    firstSize: {
-        type: "number",
-        default: "20"
-    },
-    firstLetter: {
-        type: "number"
-    },
-    firstStyle: {
-        type: "string"
-    },
-    firstUpper: {
-        type: "boolean"
-    },
-    firstWeight: {
-        type: "number",
-        default: 500
-    },
-    firstBackground: {
-        type: "string"
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none"
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    firstBorderColor: {
-        type: "string"
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0"
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0"
-    },
-    firstPadding: {
-        type: "number",
-        default: "0"
-    },
-    firstClip: {
-        type: "boolean",
-        default: false
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstShadowColor: {
-        type: "string"
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondSize: {
-        type: "number",
-        default: "20"
-    },
-    secondLetter: {
-        type: "number"
-    },
-    secondStyle: {
-        type: "string"
-    },
-    secondUpper: {
-        type: "boolean"
-    },
-    secondWeight: {
-        type: "number",
-        default: 500
-    },
-    secondBackground: {
-        type: "string"
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none"
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    secondBorderColor: {
-        type: "string"
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0"
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0"
-    },
-    secondPadding: {
-        type: "number",
-        default: "0"
-    },
-    secondClip: {
-        type: "boolean",
-        default: false
-    },
-    secondShadowColor: {
-        type: "string"
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    link: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    headingURL: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_4_1 = {
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    }
-};
-
-var deprecated_attributes_1_4_1 = Object.assign(deprecated_attributes_1_3_0, newAttributes_1_4_1);
-
-var newAttributes_1_4_8 = {
-    firstFamily: {
-        type: "string"
-    },
-    secondFamily: {
-        type: "string"
-    }
-};
-
-var newAttributes_1_7_2 = {
-    containerBorderType: {
-        type: "string",
-        default: "none"
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    containerBorderColor: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_4_8 = Object.assign(deprecated_attributes_1_4_1, newAttributes_1_4_8);
-
-var deprecated_attributes_1_7_2 = Object.assign(deprecated_attributes_1_4_8, newAttributes_1_7_2);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -25090,7 +24065,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_7_2,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             firstStroke: false,
@@ -25250,7 +24225,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_4_8,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             containerBorderType: "none",
@@ -25401,7 +24376,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_4_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             firstFamily: "",
@@ -25546,7 +24521,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_0,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             imageID: "",
@@ -25685,7 +24660,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_0,
+    attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],
     save: function save(props) {
         {
             var _props$attributes6 = props.attributes,
@@ -35068,544 +34043,6 @@ var save = function save(props) {
 
 var className = "premium-icon";
 
-var deprecated_attributes_1_5_5 = {
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    iconBack: {
-        type: "string"
-    },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    background: {
-        type: "string"
-    },
-    backgroundColor: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
-    target: {
-        type: "boolean"
-    }
-};
-
-var newAttributes_1_5_6 = {
-    iconSizeUnit: {
-        type: "px"
-    }
-};
-
-var deprecated_attributes_1_5_6 = Object.assign(deprecated_attributes_1_5_5, newAttributes_1_5_6);
-
-var deprecated_attributes_1_3_9 = {
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    iconBack: {
-        type: "string"
-    },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    background: {
-        type: "string"
-    },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
-    target: {
-        type: "boolean"
-    }
-};
-
-var deprecated_attributes_1_3_1 = {
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconSize: {
-        type: "number",
-        default: 50
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    iconBack: {
-        type: "string"
-    },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    background: {
-        type: "string"
-    },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
-    target: {
-        type: "boolean"
-    }
-};
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
@@ -35721,7 +34158,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_5,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconSizeUnit: "px"
@@ -35840,7 +34277,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_9,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             backgroundColor: attributes.background,
@@ -35954,7 +34391,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes4 = props.attributes,
             selectedIcon = _props$attributes4.selectedIcon,
@@ -37897,687 +36334,6 @@ var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var deprecated_attributes_1_3_4 = {
-    id: {
-        type: "string"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    iconImage: {
-        type: "string",
-        default: "icon"
-    },
-    iconImgId: {
-        type: "string"
-    },
-    iconImgUrl: {
-        type: "string"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconChecked: {
-        type: "boolean",
-        default: true
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconRadius: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    titleText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__desc",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    descChecked: {
-        type: "boolean",
-        default: true
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnEffect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    btnText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__btn",
-        default: __("Click Here")
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-icon-box__btn"
-    },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnHoverBorder: {
-        type: "string"
-    },
-    btnSize: {
-        type: "number"
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var deprecated_attributes_1_3_0 = {
-    id: {
-        type: "string"
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    iconImage: {
-        type: "string",
-        default: "icon"
-    },
-    iconImgId: {
-        type: "string"
-    },
-    iconImgUrl: {
-        type: "string"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconChecked: {
-        type: "boolean",
-        default: true
-    },
-    iconSize: {
-        type: "number",
-        default: 50
-    },
-    iconRadius: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string"
-    },
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    titleText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__desc",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    descChecked: {
-        type: "boolean",
-        default: true
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnEffect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    btnText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__btn",
-        default: __("Click Here")
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-icon-box__btn"
-    },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnHoverBorder: {
-        type: "string"
-    },
-    btnSize: {
-        type: "number"
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var newAttributes_1_4_9 = {
-    hoverShadowColor: {
-        type: "string"
-    },
-    hoverShadowBlur: {
-        type: "number"
-    },
-    hoverShadowHorizontal: {
-        type: "number"
-    },
-    hoverShadowVertical: {
-        type: "number"
-    },
-    hoverShadowPosition: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_4_9 = Object.assign(deprecated_attributes_1_3_4, newAttributes_1_4_9);
-
-var newAttributes_1_5_1 = {
-    iconBackColor: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_5_1 = Object.assign(deprecated_attributes_1_4_9, newAttributes_1_5_1);
-
-var newAttributes_1_5_7 = {
-    titleFont: {
-        type: "string"
-    },
-    descFont: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_5_7 = Object.assign(deprecated_attributes_1_5_1, newAttributes_1_5_7);
-
-var newAttributes_1_6_6 = {
-    btnPaddingU: {
-        type: "string"
-    },
-    paddingU: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_6_6 = Object.assign(deprecated_attributes_1_5_7, newAttributes_1_6_6);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -38859,7 +36615,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_6_6,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconPos: "block",
@@ -39106,7 +36862,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_5_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingU: "",
@@ -39350,7 +37106,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attribute: deprecated_attributes_1_5_1,
+    attribute: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             titleFont: "",
@@ -39590,7 +37346,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_4_9,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconBackColor: ""
@@ -39826,7 +37582,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_4,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             hoverShadowColor: "",
@@ -40061,7 +37817,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: deprecated_attributes_1_3_0,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return {
             iconSize: attributes.iconSize
@@ -43943,455 +41699,6 @@ var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var pricingAttrs_1_6_3 = {
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    tableBack: {
-        type: "string"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    tablePadding: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowColor: {
-        type: "string"
-    },
-    tableShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__title",
-        default: "Pricing Table"
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleBack: {
-        type: "string"
-    },
-    titleMarginB: {
-        type: "number",
-        default: 20
-    },
-    titleMarginT: {
-        type: "number",
-        default: 20
-    },
-    titlePadding: {
-        type: "number",
-        default: "0"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__desc"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number"
-    },
-    descLetter: {
-        type: "number"
-    },
-    descStyle: {
-        type: "string"
-    },
-    descLine: {
-        type: "number"
-    },
-    descBack: {
-        type: "string"
-    },
-    descMarginT: {
-        type: "number",
-        default: "0"
-    },
-    descMarginB: {
-        type: "number",
-        default: "30"
-    },
-    descPadding: {
-        type: "number",
-        default: "0"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    descChecked: {
-        type: "boolean",
-        default: false
-    },
-    priceChecked: {
-        type: "boolean",
-        default: true
-    },
-    priceBack: {
-        type: "string"
-    },
-    priceMarginT: {
-        type: "number"
-    },
-    priceMarginB: {
-        type: "number",
-        default: 10
-    },
-    pricePadding: {
-        type: "number"
-    },
-    slashPrice: {
-        type: "string"
-    },
-    slashColor: {
-        type: "string"
-    },
-    slashSize: {
-        type: "number",
-        default: 20
-    },
-    slashWeight: {
-        type: "number"
-    },
-    currPrice: {
-        type: "string",
-        default: "$"
-    },
-    currColor: {
-        type: "string"
-    },
-    currSize: {
-        type: "number",
-        default: 20
-    },
-    currWeight: {
-        type: "number"
-    },
-    valPrice: {
-        type: "string",
-        default: "25"
-    },
-    valColor: {
-        type: "string"
-    },
-    valSize: {
-        type: "number",
-        default: 50
-    },
-    valWeight: {
-        type: "number"
-    },
-    divPrice: {
-        type: "string",
-        default: "/"
-    },
-    divColor: {
-        type: "string"
-    },
-    divSize: {
-        type: "number",
-        default: 20
-    },
-    divWeight: {
-        type: "number"
-    },
-    durPrice: {
-        type: "string",
-        default: "m"
-    },
-    durColor: {
-        type: "string"
-    },
-    durSize: {
-        type: "number",
-        default: 20
-    },
-    durWeight: {
-        type: "number"
-    },
-    selectedStyle: {
-        type: "string",
-        default: "price"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnText: {
-        type: "string",
-        default: "Get Started"
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-pricing-table__button_link"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: true
-    },
-    btnColor: {
-        type: "string",
-        default: "#fff"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnWidth: {
-        type: "number"
-    },
-    btnSize: {
-        type: "number"
-    },
-    btnWeight: {
-        type: "number",
-        default: 900
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnBack: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number",
-        default: "0"
-    },
-    btnMarginB: {
-        type: "number",
-        default: "0"
-    },
-    btnPadding: {
-        type: "number",
-        default: 10
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    badgeChecked: {
-        type: "boolean"
-    },
-    badgePos: {
-        type: "string",
-        default: "right"
-    },
-    badgeBack: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    badgeColor: {
-        type: "string"
-    },
-    badgeTextSize: {
-        type: "number"
-    },
-    badgeSize: {
-        type: "number"
-    },
-    badgeTop: {
-        type: "number"
-    },
-    badgeHorizontal: {
-        type: "number"
-    },
-    badgeWidth: {
-        type: "number"
-    },
-    badgeWeight: {
-        type: "number",
-        default: 900
-    },
-    badgeLetter: {
-        type: "number"
-    },
-    badgeStyle: {
-        type: "string"
-    },
-    badgeUpper: {
-        type: "boolean"
-    },
-    badgeText: {
-        type: "string",
-        default: __("Popular")
-    },
-    listChecked: {
-        type: "boolean",
-        default: true
-    },
-    listColor: {
-        type: "string"
-    },
-    listSize: {
-        type: "number"
-    },
-    listWeight: {
-        type: "number",
-        default: 500
-    },
-    listItemsStyle: {
-        type: "string"
-    },
-    listLetter: {
-        type: "number"
-    },
-    listLine: {
-        type: "number"
-    },
-    listUpper: {
-        type: "boolean"
-    },
-    listBack: {
-        type: "string"
-    },
-    listItems: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__list"
-    },
-    listMarginB: {
-        type: "number",
-        default: 20
-    },
-    listMarginT: {
-        type: "number"
-    },
-    listPadding: {
-        type: "number"
-    },
-    listStyle: {
-        type: "string",
-        default: "disc"
-    },
-    slashV: {
-        type: "string",
-        default: "center"
-    },
-    currV: {
-        type: "string",
-        default: "center"
-    },
-    valV: {
-        type: "string",
-        default: "center"
-    },
-    divV: {
-        type: "string",
-        default: "center"
-    },
-    durV: {
-        type: "string",
-        default: "center"
-    },
-    id: {
-        type: "string"
-    }
-};
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -44795,7 +42102,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: pricingAttrs_1_6_3,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { featsAlign: "" });
     },
@@ -45189,7 +42496,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: pricingAttrs_1_6_3,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { btnPaddingU: "" });
     },
@@ -46204,221 +43511,7 @@ var InnerBlocks = wp.editor.InnerBlocks;
 
 var className = "premium-container";
 
-var containerAttrs_1_0_1 = {
-    stretchSection: {
-        type: "boolean",
-        default: false
-    },
-    innerWidthType: {
-        type: "string",
-        default: "boxed"
-    },
-    horAlign: {
-        type: "string",
-        default: "center"
-    },
-    height: {
-        type: "string",
-        default: "min"
-    },
-    innerWidth: {
-        type: "number"
-    },
-    minHeight: {
-        type: "number"
-    },
-    vPos: {
-        type: "string",
-        default: "top"
-    },
-    color: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginTop: {
-        type: "number"
-    },
-    marginBottom: {
-        type: "number"
-    },
-    marginLeft: {
-        type: "number"
-    },
-    marginRight: {
-        type: "number"
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    }
-};
-
-var newAttributes_1_6_1 = {
-    paddingUnit: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_6_1 = Object.assign(containerAttrs_1_0_1, newAttributes_1_6_1);
-
-var newAttributes_1_6_2 = {
-    marginUnit: {
-        type: "string"
-    }
-};
-
-var deprecated_attributes_1_6_2 = Object.assign(newAttributes_1_6_2, deprecated_attributes_1_6_1);
-
-var deprecatedContent = [
-// {
-//     attributes: attributes,
-
-//     save: (props) => {
-//         const {
-//             stretchSection,
-//             horAlign,
-//             innerWidthType,
-//             innerWidth,
-//             height,
-//             vPos,
-//             minHeight,
-//             minHeightUnit,
-//             color,
-//             imageURL,
-//             fixed,
-//             backgroundRepeat,
-//             backgroundPosition,
-//             backgroundSize,
-//             borderType,
-//             borderWidth,
-//             borderColor,
-//             borderRadius,
-//             marginTop,
-//             marginBottom,
-//             marginLeft,
-//             marginRight,
-//             marginUnit,
-//             paddingTop,
-//             paddingRight,
-//             paddingBottom,
-//             paddingLeft,
-//             paddingUnit,
-//             shadowBlur,
-//             shadowColor,
-//             shadowHorizontal,
-//             shadowVertical,
-//             shadowPosition,
-//         } = props.attributes;
-
-//         return (
-//             <div
-//                 className={`${className} premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`}
-//                 style={{
-//                     textAlign: horAlign,
-//                     minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-//                     backgroundColor: color,
-//                     border: borderType,
-//                     borderWidth: borderWidth + "px",
-//                     borderRadius: borderRadius + "px",
-//                     borderColor: borderColor,
-//                     backgroundImage: `url('${imageURL}')`,
-//                     backgroundRepeat: backgroundRepeat,
-//                     backgroundPosition: backgroundPosition,
-//                     backgroundSize: backgroundSize,
-//                     backgroundAttachment: fixed ? "fixed" : "unset",
-//                     marginTop: marginTop + marginUnit,
-//                     marginBottom: marginBottom + marginUnit,
-//                     marginLeft: marginLeft + marginUnit,
-//                     marginRight: marginRight + marginUnit,
-//                     paddingTop: paddingTop + paddingUnit,
-//                     paddingBottom: paddingBottom + paddingUnit,
-//                     paddingLeft: paddingLeft + paddingUnit,
-//                     paddingRight: paddingRight + paddingUnit,
-//                     boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-//                 }}
-//             >
-//                 <div
-//                     className={`premium-container__content_wrap premium-container__${vPos}`}
-//                     style={{
-//                         maxWidth:
-//                             "boxed" == innerWidthType && stretchSection
-//                                 ? innerWidth
-//                                     ? innerWidth + "px"
-//                                     : "1140px"
-//                                 : "100%",
-//                     }}
-//                 >
-//                     <div className={`premium-container__content_inner`}>
-//                         <InnerBlocks.Content />
-//                     </div>
-//                 </div>
-//             </div>
-//         );
-//     },
-// },
-{
+var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
 
     save: function save(props) {
@@ -46501,7 +43594,7 @@ var deprecatedContent = [
         );
     }
 }, {
-    attributes: deprecated_attributes_1_6_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             marginUnit: ""
@@ -46587,7 +43680,7 @@ var deprecatedContent = [
         );
     }
 }, {
-    attributes: containerAttrs_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingUnit: ""
@@ -46672,7 +43765,7 @@ var deprecatedContent = [
         );
     }
 }, {
-    attributes: containerAttrs_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes4 = props.attributes,
             horAlign = _props$attributes4.horAlign,
@@ -47956,171 +45049,6 @@ var className = "premium-testimonial";
 var RichText = wp.editor.RichText;
 
 
-var newAttributes_1_6_5 = {
-    backColor: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    }
-};
-
-var newAttributes_1_3_9 = {
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number"
-    },
-    shadowHorizontal: {
-        type: "number"
-    },
-    shadowVertical: {
-        type: "number"
-    },
-    shadowPosition: {
-        type: "string"
-    }
-};
-
-var testimonialsAttrs_1_0_1 = {
-    align: {
-        type: "string",
-        default: "center"
-    },
-    authorImgId: {
-        type: "string"
-    },
-    authorImgUrl: {
-        type: "string"
-    },
-    imgRadius: {
-        type: "string",
-        default: "50%"
-    },
-    imgSize: {
-        type: "number"
-    },
-    imgBorder: {
-        type: "number",
-        default: "1"
-    },
-    imgBorderColor: {
-        type: "string"
-    },
-    author: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author",
-        default: "John Doe"
-    },
-    authorTag: {
-        type: "string",
-        default: "H3"
-    },
-    authorColor: {
-        type: "string"
-    },
-    authorSize: {
-        type: "number"
-    },
-    authorLetter: {
-        type: "number"
-    },
-    authorStyle: {
-        type: "string"
-    },
-    authorUpper: {
-        type: "boolean"
-    },
-    authorWeight: {
-        type: "number",
-        default: 500
-    },
-    authorComTag: {
-        type: "string",
-        default: "H4"
-    },
-    text: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__text"
-    },
-    authorCom: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author_comp",
-        default: "Leap13"
-    },
-    authorComColor: {
-        type: "string"
-    },
-    authorComSize: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    urlText: {
-        type: "string"
-    },
-    urlTarget: {
-        type: "boolean",
-        default: false
-    },
-    quotSize: {
-        type: "number"
-    },
-    quotColor: {
-        type: "string"
-    },
-    quotOpacity: {
-        type: "number"
-    },
-    bodyColor: {
-        type: "string"
-    },
-    bodySize: {
-        type: "number"
-    },
-    bodyLine: {
-        type: "number"
-    },
-    bodyTop: {
-        type: "number"
-    },
-    bodyBottom: {
-        type: "number"
-    },
-    dashColor: {
-        type: "string"
-    }
-};
-
-var testimonialsAttrs_1_3_9 = Object.assign(testimonialsAttrs_1_0_1, newAttributes_1_3_9);
-
-var testimonialsAttrs_1_6_5 = Object.assign(testimonialsAttrs_1_3_9, newAttributes_1_6_5);
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_3__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
@@ -48327,7 +45255,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: testimonialsAttrs_1_6_5,
+    attributes: __WEBPACK_IMPORTED_MODULE_3__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingTop: "",
@@ -48514,7 +45442,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: testimonialsAttrs_1_3_9,
+    attributes: __WEBPACK_IMPORTED_MODULE_3__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             backColor: "",
@@ -48690,7 +45618,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: testimonialsAttrs_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_3__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowColor: "",
@@ -48854,7 +45782,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: testimonialsAttrs_1_0_1,
+    attributes: __WEBPACK_IMPORTED_MODULE_3__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes5 = props.attributes,
             align = _props$attributes5.align,
@@ -50247,189 +47175,6 @@ var save = function save(props) {
 
 var className = "premium-video-box";
 
-var videoBoxAttrs_1_2_7 = {
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
-        type: "boolean",
-        default: false
-    },
-    loop: {
-        type: "boolean",
-        default: false
-    },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: 0
-    },
-    bright: {
-        type: "number",
-        default: 100
-    },
-    contrast: {
-        type: "number",
-        default: 100
-    },
-    saturation: {
-        type: "number",
-        default: 100
-    },
-    hue: {
-        type: "number",
-        default: 0
-    },
-    playTop: {
-        type: "number"
-    },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    playSize: {
-        type: "number"
-    },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
-        type: "number"
-    },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    playBorderRadius: {
-        type: "number"
-    },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
-        type: "number"
-    },
-    descTop: {
-        type: "number"
-    },
-    videoDescSize: {
-        type: "number"
-    },
-    videoDescWeight: {
-        type: "number"
-    },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-
-    // Old props
-    playLeft: {
-        type: "number"
-    }
-};
-
 var deprecatedContent = [{
     attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
@@ -50600,7 +47345,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: videoBoxAttrs_1_2_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     migrate: function migrate(attributes) {
         var newAttributes = {
             videoDescFamily: ""
@@ -50773,7 +47518,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: videoBoxAttrs_1_2_7,
+    attributes: __WEBPACK_IMPORTED_MODULE_0__attributes__["a" /* default */],
     save: function save(props) {
         var _props$attributes3 = props.attributes,
             videoBoxId = _props$attributes3.videoBoxId,
@@ -55262,207 +52007,6 @@ function _nonIterableSpread() {
 
 var __ = wp.i18n.__;
 
-
-var fancyAttributes = {
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    prefix: {
-        type: "string",
-        default: "This is"
-    },
-    suffix: {
-        type: "string",
-        default: "Text"
-    },
-    repeaterFancyText: {
-        type: "array",
-        default: [{
-            title: __("Designer"),
-            edit: false
-        }, {
-            title: __("Developer"),
-            edit: false
-        }, {
-            title: __("Awesome"),
-            edit: false
-        }]
-    },
-    effect: {
-        type: "string",
-        default: "typing"
-    },
-    fancyTextColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    cursorColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    fancyTextLetter: {
-        type: "number"
-    },
-    fancyTextStyle: {
-        type: "string"
-    },
-    fancyTextUpper: {
-        type: "boolean",
-        default: false
-    },
-    fancyTextWeight: {
-        type: "number",
-        default: 600
-    },
-    fancyTextfontSize: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    fancyTextfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    fancyTextBGColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    textColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean",
-        default: false
-    },
-    textWeight: {
-        type: "number",
-        default: 600
-    },
-    textfontSize: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    textBGColor: {
-        type: "string"
-    },
-    loop: {
-        type: "boolean",
-        default: "true"
-    },
-    cursorShow: {
-        type: "boolean",
-        default: "true"
-    },
-    cursorMark: {
-        type: "string",
-        default: "|"
-    },
-    typeSpeed: {
-        type: "number",
-        default: 100
-    },
-    backdelay: {
-        type: "number",
-        default: 30
-    },
-    startdelay: {
-        type: "number",
-        default: 30
-    },
-    backSpeed: {
-        type: "number",
-        default: 30
-    },
-    animationSpeed: {
-        type: "number",
-        default: 200
-    },
-    pauseTime: {
-        type: "number",
-        default: 3000
-    },
-    hoverPause: {
-        type: "boolean",
-        default: false
-    },
-    fancyalign: {
-        type: "string",
-        default: "center"
-    }
-};
-
-var newAtrributes_1_0_1 = {
-    fancyTextBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    textBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, fancyAttributes);
 
 var deprecated = [{
     attributes: __WEBPACK_IMPORTED_MODULE_1__attributes__["a" /* default */],

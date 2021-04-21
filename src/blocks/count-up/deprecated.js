@@ -5,246 +5,6 @@ const className = "premium-countup";
 
 
 
-const counterAttrs_1_0_9 = {
-    increment: {
-        type: "string",
-        default: 500,
-    },
-    time: {
-        type: "string",
-        default: 1000,
-    },
-    delay: {
-        type: "string",
-        default: 10,
-    },
-    align: {
-        type: "string",
-        default: "center",
-    },
-    flexDir: {
-        type: "string",
-        default: "column",
-    },
-    numberSize: {
-        type: "number",
-        default: 30,
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    numberWeight: {
-        type: "number",
-        default: 900,
-    },
-    prefix: {
-        type: "boolean",
-        default: true,
-    },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix",
-    },
-    prefixSize: {
-        type: "number",
-        default: 20,
-    },
-    prefixColor: {
-        type: "string",
-    },
-    prefixWeight: {
-        type: "number",
-    },
-    prefixGap: {
-        type: "number",
-        default: 2,
-    },
-    suffix: {
-        type: "boolean",
-        default: true,
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix",
-    },
-    suffixSize: {
-        type: "number",
-        default: 20,
-    },
-    suffixColor: {
-        type: "string",
-    },
-    suffixWeight: {
-        type: "number",
-    },
-    suffixGap: {
-        type: "number",
-        default: 2,
-    },
-    icon: {
-        type: "string",
-        default: "icon",
-    },
-    iconSpacing: {
-        type: "number",
-        default: 10,
-    },
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    iconType: {
-        type: "string",
-        default: "dash",
-    },
-    iconCheck: {
-        type: "boolean",
-        default: true,
-    },
-    iconSize: {
-        type: "number",
-        default: 40,
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    selfAlign: {
-        type: "string",
-        default: "center",
-    },
-    titleCheck: {
-        type: "boolean",
-        default: true,
-    },
-    titleTxt: {
-        type: "string",
-        default: "Premium Count Up",
-    },
-    titleSize: {
-        type: "number",
-        default: 20,
-    },
-    titleSpacing: {
-        type: "number",
-    },
-    titleStyle: {
-        type: "string",
-    },
-    titleUpper: {
-        type: "boolean",
-    },
-    titleT: {
-        type: "number",
-        default: 1,
-    },
-    titleB: {
-        type: "number",
-        default: 1,
-    },
-    titleColor: {
-        type: "string",
-    },
-    titleWeight: {
-        type: "number",
-        default: 500,
-    },
-    faIcon: {
-        type: "string",
-        default: "dashicons-clock",
-    },
-};
-
-const newAttributes_1_2_1 = {
-    containerBack: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_3_7 = {
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    shadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const newAttributes_1_4_1 = {
-    backgroundImageID: {
-        type: "string",
-    },
-    backgroundImageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-};
-
-const newAttributes_1_6_4 = {
-    titleFamily: {
-        type: "string",
-    },
-    counterFamily: {
-        type: "string",
-    },
-    prefixFamily: {
-        type: "string",
-    },
-    suffixFamily: {
-        type: "string",
-    },
-};
-
-const counterAttrs_1_2_1 = Object.assign(
-    counterAttrs_1_0_9,
-    newAttributes_1_2_1
-);
-
-const counterAttrs_1_3_7 = Object.assign(
-    counterAttrs_1_2_1,
-    newAttributes_1_3_7
-);
-
-const counterAttrs_1_4_1 = Object.assign(
-    counterAttrs_1_3_7,
-    newAttributes_1_4_1
-);
-
-const counterAttrs_1_6_4 = Object.assign(
-    counterAttrs_1_4_1,
-    newAttributes_1_6_4
-);
 
 const deprecatedContent = [
     {
@@ -493,7 +253,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_6_4,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderType: "",
@@ -712,7 +472,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_4_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 titleFamily: "",
@@ -920,7 +680,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_3_7,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1125,7 +885,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_2_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1318,7 +1078,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_0_9,
+        attributes: attributes,
         save: (props) => {
             const {
                 increment,
