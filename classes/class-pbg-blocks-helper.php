@@ -202,6 +202,8 @@ class PBG_Blocks_Helper {
 
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
 
+		$is_lottie_enabled = self::$blocks['lottie'];
+
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -218,7 +220,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_banner_enabled ) {
 			wp_enqueue_script(
-				'banner-js',
+				'pbg-banner',
 				PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -228,7 +230,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_button_enabled ) {
 			wp_enqueue_script(
-				'button-js',
+				'pbg-button',
 				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -238,7 +240,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_dual_enabled ) {
 			wp_enqueue_script(
-				'dual-heading-js',
+				'pbg-dual-heading',
 				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -248,7 +250,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_counter_enabled ) {
 			wp_enqueue_script(
-				'waypoints_lib',
+				'pbg-waypoints',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -256,7 +258,7 @@ class PBG_Blocks_Helper {
 			);
 
 			wp_enqueue_script(
-				'counter_lib',
+				'pbg-counter',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -264,7 +266,7 @@ class PBG_Blocks_Helper {
 			);
 
 			wp_enqueue_script(
-				'countup-js',
+				'pbg-countup',
 				PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -274,7 +276,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_accordion_enabled ) {
 			wp_enqueue_script(
-				'accordion-js',
+				'pbg-accordion',
 				PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -284,7 +286,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_section_enabled ) {
 			wp_enqueue_script(
-				'section-js',
+				'pbg-section',
 				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -294,7 +296,7 @@ class PBG_Blocks_Helper {
 			$is_rtl = is_rtl() ? true : false;
 
 			wp_localize_script(
-				'section-js',
+				'pbg-section',
 				'siteDirection',
 				array(
 					'isRTL' => $is_rtl,
@@ -304,7 +306,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_video_enabled ) {
 			wp_enqueue_script(
-				'video-box-js',
+				'pbg-video-box',
 				PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -314,7 +316,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_icon_box_enabled ) {
 			wp_enqueue_script(
-				'icon-box-js',
+				'pbg-sectionicon-box',
 				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -324,7 +326,7 @@ class PBG_Blocks_Helper {
 
 		if ( $is_fancy_text_enabled ) {
 			wp_enqueue_script(
-				'fancy-text-js',
+				'pbg-sectionfancy-text',
 				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -332,7 +334,7 @@ class PBG_Blocks_Helper {
 			);
 
 			wp_enqueue_script(
-				'pbg-vticker-js',
+				'pbg-vticker',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
@@ -340,12 +342,24 @@ class PBG_Blocks_Helper {
 			);
 
 			wp_enqueue_script(
-				'pbg-typed-js',
+				'pbg-typed',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+		}
+
+		if ( $is_lottie_enabled ) {
+
+			wp_enqueue_script(
+				'pbg-lottie',
+				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
 		}
 
 		// Enqueue Google Maps API Script.
@@ -587,6 +601,9 @@ class PBG_Blocks_Helper {
 				break;
 			case 'premium/pricing-table':
 				$css += $this->get_pricing_css( $blockattr, $block_id );
+				break;
+			case 'premium/lottie':
+				$css += $this->get_lottie_css( $blockattr, $block_id );
 				break;
 			default:
 				// Nothing to do here.
@@ -1434,6 +1451,67 @@ class PBG_Blocks_Helper {
 		// Mobile CSS End.
 
 		$base_selector = ( $attr['classMigrate'] ) ? '.premium-video-box-' : '#premium-video-box-';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
+	public static function get_lottie_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/lottie']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+
+			' .premium-lottie-svg svg  ' => array(
+				'width'  => $attr['size'] . $attr['sizeUnit'],
+				'height' => $attr['size'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '   => array(
+				'width'  => $attr['size'] . $attr['sizeUnit'],
+				'height' => $attr['size'] . $attr['sizeUnit'],
+			),
+		);
+
+		$t_selectors = array(
+
+			' .premium-lottie-svg svg  ' => array(
+				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
+				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '   => array(
+				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
+				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
+			),
+		);
+
+		$m_selectors = array(
+
+			' .premium-lottie-svg svg  ' => array(
+				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
+				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
+			),
+			' .premium-lottie-canvas '   => array(
+				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
+				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
+			),
+		);
+
+		$base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
