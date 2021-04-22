@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
         head.appendChild(link);
     };
     if ($titleContainer.hasClass('style9')) {
-        var $style9 = $(".premium-title-style9");
+        var $style9 = $(".premium-title-style9__wrap");
 
         $style9.each(function () {
             var elm = $(this);

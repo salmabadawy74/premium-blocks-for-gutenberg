@@ -6,17 +6,17 @@
  * @package PBG
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if (!class_exists('PBG_Blocks_Config')) {
+if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 
 	/**
 	 * Class PBG_Blocks_Config.
 	 */
-	class PBG_Blocks_Config
-	{
+	class PBG_Blocks_Config {
+
 
 		/**
 		 * Block Attributes
@@ -39,10 +39,8 @@ if (!class_exists('PBG_Blocks_Config')) {
 		 *
 		 * @return array blocks attributes.
 		 */
-		public static function get_block_attributes()
-		{
-
-			if (null === self::$block_attributes) {
+		public static function get_block_attributes() {
+			if ( null === self::$block_attributes ) {
 
 				self::$block_attributes = array(
 					'premium/fancy-text'     => array(
@@ -291,7 +289,6 @@ if (!class_exists('PBG_Blocks_Config')) {
 							'stripeColor'              => '#6ec1e4',
 							'titleborderType'          => 'none',
 							'titleborderRadius'        => '0',
-							'titleborderWidth'         => '0',
 							'titleborderColor'         => '#d4d4d4',
 							'BGColor'                  => '#54595f',
 							'lineColor'                => '#6ec1e4',
@@ -391,8 +388,8 @@ if (!class_exists('PBG_Blocks_Config')) {
 							'iconBorderRight'          => '1',
 							'iconBorderBottom'         => '1',
 							'iconBorderLeft'           => '1',
-							'horizontalU' => 'px',
-							'verticalU' => 'px'
+							'horizontalU'              => 'px',
+							'verticalU'                => 'px',
 						),
 					),
 				);

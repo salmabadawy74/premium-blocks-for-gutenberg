@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 129);
+/******/ 	return __webpack_require__(__webpack_require__.s = 128);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -924,9 +924,9 @@ var PremiumBorder = function (_Component) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(132);
+  module.exports = __webpack_require__(131);
 } else {
-  module.exports = __webpack_require__(133);
+  module.exports = __webpack_require__(132);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -1076,13 +1076,6 @@ function PremiumResponsiveTabs(props) {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.5.7' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-/***/ }),
-/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1124,6 +1117,13 @@ function PremiumSizeUnits(props) {
         })
     );
 }
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.5.7' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ }),
 /* 12 */
@@ -1491,11 +1491,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(237)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(236)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(238)();
+  module.exports = __webpack_require__(237)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -1632,10 +1632,20 @@ function generateCSSUnit(value, unit) {
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
+// eslint-disable-next-line no-new-func
+: Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+/***/ }),
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1845,16 +1855,6 @@ var PremiumPadding = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPadding);
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
-// eslint-disable-next-line no-new-func
-: Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-/***/ }),
 /* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1943,9 +1943,9 @@ function PremiumMediaUpload(props) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(20);
-var core = __webpack_require__(10);
-var ctx = __webpack_require__(117);
+var global = __webpack_require__(19);
+var core = __webpack_require__(11);
+var ctx = __webpack_require__(116);
 var hide = __webpack_require__(29);
 var has = __webpack_require__(25);
 var PROTOTYPE = 'prototype';
@@ -2014,7 +2014,7 @@ module.exports = $export;
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(44);
-var IE8_DOM_DEFINE = __webpack_require__(118);
+var IE8_DOM_DEFINE = __webpack_require__(117);
 var toPrimitive = __webpack_require__(74);
 var dP = Object.defineProperty;
 
@@ -2054,8 +2054,8 @@ module.exports = function (it, key) {
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(148),
-    getValue = __webpack_require__(153);
+var baseIsNative = __webpack_require__(147),
+    getValue = __webpack_require__(152);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2698,7 +2698,7 @@ module.exports = function (exec) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(121);
+var IObject = __webpack_require__(120);
 var defined = __webpack_require__(75);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -2710,7 +2710,7 @@ module.exports = function (it) {
 
 var store = __webpack_require__(78)('wks');
 var uid = __webpack_require__(60);
-var _Symbol = __webpack_require__(20).Symbol;
+var _Symbol = __webpack_require__(19).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -2820,8 +2820,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(48),
-    getRawTag = __webpack_require__(149),
-    objectToString = __webpack_require__(150);
+    getRawTag = __webpack_require__(148),
+    objectToString = __webpack_require__(149);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2918,9 +2918,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(246);
+  module.exports = __webpack_require__(245);
 } else {
-  module.exports = __webpack_require__(249);
+  module.exports = __webpack_require__(248);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -2943,7 +2943,7 @@ var iconsList = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_size_units__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3375,7 +3375,7 @@ module.exports = function (it) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_map__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3525,11 +3525,11 @@ function PremiumResponsive(props) {
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(138),
-    listCacheDelete = __webpack_require__(139),
-    listCacheGet = __webpack_require__(140),
-    listCacheHas = __webpack_require__(141),
-    listCacheSet = __webpack_require__(142);
+var listCacheClear = __webpack_require__(137),
+    listCacheDelete = __webpack_require__(138),
+    listCacheGet = __webpack_require__(139),
+    listCacheHas = __webpack_require__(140),
+    listCacheSet = __webpack_require__(141);
 
 /**
  * Creates an list cache object.
@@ -3648,7 +3648,7 @@ module.exports = nativeCreate;
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(162);
+var isKeyable = __webpack_require__(161);
 
 /**
  * Gets the data for `map`.
@@ -3760,9 +3760,9 @@ module.exports = toKey;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(284);
 
 
 
@@ -4099,14 +4099,14 @@ registerBlockType("premium/video-box", {
 /* unused harmony export SortableHandle */
 /* unused harmony export sortableHandle */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arrayMove; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_slicedToArray__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_objectSpread__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__babel_runtime_helpers_esm_classCallCheck__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__babel_runtime_helpers_esm_createClass__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__babel_runtime_helpers_esm_possibleConstructorReturn__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__babel_runtime_helpers_esm_getPrototypeOf__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__babel_runtime_helpers_esm_inherits__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__babel_runtime_helpers_esm_assertThisInitialized__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(7);
@@ -4115,9 +4115,9 @@ registerBlockType("premium/video-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__babel_runtime_helpers_esm_toConsumableArray__ = __webpack_require__(302);
 
 
 
@@ -5721,7 +5721,7 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(120);
+var $keys = __webpack_require__(119);
 var enumBugKeys = __webpack_require__(79);
 
 module.exports = Object.keys || function keys(O) {
@@ -5910,11 +5910,11 @@ module.exports = g;
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(154),
-    mapCacheDelete = __webpack_require__(161),
-    mapCacheGet = __webpack_require__(163),
-    mapCacheHas = __webpack_require__(164),
-    mapCacheSet = __webpack_require__(165);
+var mapCacheClear = __webpack_require__(153),
+    mapCacheDelete = __webpack_require__(160),
+    mapCacheGet = __webpack_require__(162),
+    mapCacheHas = __webpack_require__(163),
+    mapCacheSet = __webpack_require__(164);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -5947,8 +5947,8 @@ module.exports = MapCache;
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(183),
-    baseKeys = __webpack_require__(189),
+var arrayLikeKeys = __webpack_require__(182),
+    baseKeys = __webpack_require__(188),
     isArrayLike = __webpack_require__(69);
 
 /**
@@ -6399,8 +6399,8 @@ module.exports = function (key) {
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(10);
-var global = __webpack_require__(20);
+var core = __webpack_require__(11);
+var global = __webpack_require__(19);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 
@@ -6447,7 +6447,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(44);
-var dPs = __webpack_require__(365);
+var dPs = __webpack_require__(367);
 var enumBugKeys = __webpack_require__(79);
 var IE_PROTO = __webpack_require__(77)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -6456,13 +6456,13 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(119)('iframe');
+  var iframe = __webpack_require__(118)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(366).appendChild(iframe);
+  __webpack_require__(368).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -6510,8 +6510,8 @@ exports.f = __webpack_require__(33);
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(20);
-var core = __webpack_require__(10);
+var global = __webpack_require__(19);
+var core = __webpack_require__(11);
 var LIBRARY = __webpack_require__(59);
 var wksExt = __webpack_require__(85);
 var defineProperty = __webpack_require__(23).f;
@@ -6560,11 +6560,11 @@ module.exports = arrayMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46),
-    stackClear = __webpack_require__(143),
-    stackDelete = __webpack_require__(144),
-    stackGet = __webpack_require__(145),
-    stackHas = __webpack_require__(146),
-    stackSet = __webpack_require__(147);
+    stackClear = __webpack_require__(142),
+    stackDelete = __webpack_require__(143),
+    stackGet = __webpack_require__(144),
+    stackHas = __webpack_require__(145),
+    stackSet = __webpack_require__(146);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -6718,7 +6718,7 @@ module.exports = toSource;
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(166),
+var baseIsEqualDeep = __webpack_require__(165),
     isObjectLike = __webpack_require__(36);
 
 /**
@@ -6751,9 +6751,9 @@ module.exports = baseIsEqual;
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(167),
-    arraySome = __webpack_require__(170),
-    cacheHas = __webpack_require__(171);
+var SetCache = __webpack_require__(166),
+    arraySome = __webpack_require__(169),
+    cacheHas = __webpack_require__(170);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -6859,7 +6859,7 @@ module.exports = baseTimes;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(184),
+var baseIsArguments = __webpack_require__(183),
     isObjectLike = __webpack_require__(36);
 
 /** Used for built-in method references. */
@@ -6904,7 +6904,7 @@ module.exports = isArguments;
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(15),
-    stubFalse = __webpack_require__(185);
+    stubFalse = __webpack_require__(184);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -6976,9 +6976,9 @@ module.exports = isIndex;
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(186),
-    baseUnary = __webpack_require__(187),
-    nodeUtil = __webpack_require__(188);
+var baseIsTypedArray = __webpack_require__(185),
+    baseUnary = __webpack_require__(186),
+    nodeUtil = __webpack_require__(187);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -7083,8 +7083,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(16),
     isKey = __webpack_require__(70),
-    stringToPath = __webpack_require__(201),
-    toString = __webpack_require__(204);
+    stringToPath = __webpack_require__(200),
+    toString = __webpack_require__(203);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -7137,9 +7137,9 @@ module.exports = identity;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(235);
+  module.exports = __webpack_require__(234);
 } else {
-  module.exports = __webpack_require__(236);
+  module.exports = __webpack_require__(235);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -7151,9 +7151,9 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(247);
+  module.exports = __webpack_require__(246);
 } else {
-  module.exports = __webpack_require__(248);
+  module.exports = __webpack_require__(247);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -7164,9 +7164,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(253));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(252));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(258));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(257));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(112));
 
@@ -8008,7 +8008,7 @@ var _react = _interopRequireDefault(__webpack_require__(7));
 
 var _reactLifecyclesCompat = __webpack_require__(110);
 
-var _ChildMapping = __webpack_require__(259);
+var _ChildMapping = __webpack_require__(258);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8269,8 +8269,8 @@ function _assertThisInitialized(self) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(96),
-    castFunction = __webpack_require__(307),
-    toInteger = __webpack_require__(308);
+    castFunction = __webpack_require__(306),
+    toInteger = __webpack_require__(307);
 
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
@@ -8324,362 +8324,8 @@ module.exports = times;
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _stringify = __webpack_require__(339);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _extends2 = __webpack_require__(341);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = __webpack_require__(350);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(354);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(355);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(359);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(381);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(7);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(14);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _lottieWeb = __webpack_require__(389);
-
-var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var Lottie = function (_React$Component) {
-  (0, _inherits3.default)(Lottie, _React$Component);
-
-  function Lottie() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, Lottie);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
-      // The pause() method is for handling pausing by passing a prop isPaused
-      // This method is for handling the ability to pause by clicking on the animation
-      if (_this.anim.isPaused) {
-        _this.anim.play();
-      } else {
-        _this.anim.pause();
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(Lottie, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          options = _props.options,
-          playSegments = _props.playSegments,
-          goToAndPlay = _props.goToAndPlay,
-          goToAndStop = _props.goToAndStop,
-          eventListeners = _props.eventListeners;
-      var loop = options.loop,
-          autoplay = options.autoplay,
-          animationData = options.animationData,
-          rendererSettings = options.rendererSettings;
-
-      this.options = {
-        container: this.el,
-        renderer: 'svg',
-        loop: loop !== false,
-        autoplay: autoplay !== false,
-        playSegments: playSegments.segments !== null,
-        goToAndPlay: goToAndPlay.value !== null,
-        goToAndStop: goToAndStop.value !== null,
-        animationData: animationData,
-        rendererSettings: rendererSettings
-      };
-
-      this.options = (0, _extends3.default)({}, this.options, options);
-      this.anim = _lottieWeb2.default.loadAnimation(this.options);
-
-      // Immediately handle goTo's if necessary.
-      if (this.options.goToAndPlay) {
-        this.goToAndPlay();
-      }
-      if (this.options.goToAndStop) {
-        this.goToAndStop();
-      }
-      if (this.options.playSegments) {
-        this.playSegments();
-      }
-      this.registerEvents(eventListeners);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps /* , nextState */) {
-      /* Recreate the animation handle if the data is changed */
-      if (this.options.animationData !== nextProps.options.animationData) {
-        this.deRegisterEvents(this.props.eventListeners);
-        this.destroy();
-        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
-        this.anim = _lottieWeb2.default.loadAnimation(this.options);
-        this.registerEvents(nextProps.eventListeners);
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.props.isStopped) {
-        this.stop();
-      } else if (this.options.playSegments) {
-        this.playSegments();
-      } else {
-        this.play();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
-        this.goToAndPlay();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
-        this.goToAndStop();
-      }
-
-      this.pause();
-      this.setSpeed();
-      this.setDirection();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.deRegisterEvents(this.props.eventListeners);
-      this.destroy();
-      this.options.animationData = null;
-      this.anim = null;
-    }
-  }, {
-    key: 'setSpeed',
-    value: function setSpeed() {
-      this.anim.setSpeed(this.props.speed);
-    }
-  }, {
-    key: 'setDirection',
-    value: function setDirection() {
-      this.anim.setDirection(this.props.direction);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.anim.play();
-    }
-  }, {
-    key: 'playSegments',
-    value: function playSegments() {
-      var _props$playSegments = this.props.playSegments,
-          segments = _props$playSegments.segments,
-          forceFlag = _props$playSegments.forceFlag;
-
-      this.anim.playSegments(segments, forceFlag);
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.anim.stop();
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      if (this.props.isPaused && !this.anim.isPaused) {
-        this.anim.pause();
-      } else if (!this.props.isPaused && this.anim.isPaused) {
-        this.anim.pause();
-      }
-    }
-  }, {
-    key: 'goToAndPlay',
-    value: function goToAndPlay() {
-      console.log('#goToAndPlay ', this.props.goToAndPlay);
-      var _props$goToAndPlay = this.props.goToAndPlay,
-          value = _props$goToAndPlay.value,
-          isFrame = _props$goToAndPlay.isFrame;
-
-      this.anim.goToAndPlay(value, isFrame);
-    }
-  }, {
-    key: 'goToAndStop',
-    value: function goToAndStop() {
-      var _props$goToAndStop = this.props.goToAndStop,
-          value = _props$goToAndStop.value,
-          isFrame = _props$goToAndStop.isFrame;
-
-      this.anim.goToAndStop(value, isFrame);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.anim.destroy();
-    }
-  }, {
-    key: 'registerEvents',
-    value: function registerEvents(eventListeners) {
-      var _this2 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'deRegisterEvents',
-    value: function deRegisterEvents(eventListeners) {
-      var _this3 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var _props2 = this.props,
-          width = _props2.width,
-          height = _props2.height,
-          ariaRole = _props2.ariaRole,
-          ariaLabel = _props2.ariaLabel,
-          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
-          title = _props2.title;
-
-      var getSize = function getSize(initial) {
-        var size = void 0;
-
-        if (typeof initial === 'number') {
-          size = initial + 'px';
-        } else {
-          size = initial || '100%';
-        }
-
-        return size;
-      };
-
-      var lottieStyles = (0, _extends3.default)({
-        width: getSize(width),
-        height: getSize(height),
-        overflow: 'hidden',
-        margin: '0 auto',
-        outline: 'none'
-      }, this.props.style);
-
-      var onClickHandler = isClickToPauseDisabled ? function () {
-        return null;
-      } : this.handleClickToPause;
-
-      return (
-        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        _react2.default.createElement('div', {
-          ref: function ref(c) {
-            _this4.el = c;
-          },
-          style: lottieStyles,
-          onClick: onClickHandler,
-          title: title,
-          role: ariaRole,
-          'aria-label': ariaLabel,
-          tabIndex: '0'
-        })
-      );
-    }
-  }]);
-  return Lottie;
-}(_react2.default.Component);
-
-exports.default = Lottie;
-
-Lottie.propTypes = {
-  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
-  options: _propTypes2.default.object.isRequired,
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  isStopped: _propTypes2.default.bool,
-  isPaused: _propTypes2.default.bool,
-  goToAndPlay: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  goToAndStop: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  speed: _propTypes2.default.number,
-  playSegments: _propTypes2.default.shape({
-    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
-    forceFlag: _propTypes2.default.bool
-  }),
-  direction: _propTypes2.default.number,
-  ariaRole: _propTypes2.default.string,
-  ariaLabel: _propTypes2.default.string,
-  isClickToPauseDisabled: _propTypes2.default.bool,
-  title: _propTypes2.default.string,
-  style: _propTypes2.default.string
-};
-
-Lottie.defaultProps = {
-  eventListeners: [],
-  isStopped: false,
-  isPaused: false,
-  goToAndPlay: {
-    value: null,
-    isFrame: false
-  },
-  goToAndStop: {
-    value: null,
-    isFrame: false
-  },
-  playSegments: {
-    segments: null,
-    forceFlag: false
-  },
-  speed: 1,
-  ariaRole: 'button',
-  ariaLabel: 'animation',
-  isClickToPauseDisabled: false,
-  title: ''
-};
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // optional / simple context binding
-var aFunction = __webpack_require__(345);
+var aFunction = __webpack_require__(347);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -8703,21 +8349,21 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(24) && !__webpack_require__(31)(function () {
-  return Object.defineProperty(__webpack_require__(119)('div'), 'a', { get: function get() {
+  return Object.defineProperty(__webpack_require__(118)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(30);
-var document = __webpack_require__(20).document;
+var document = __webpack_require__(19).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -8725,12 +8371,12 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(25);
 var toIObject = __webpack_require__(32);
-var arrayIndexOf = __webpack_require__(347)(false);
+var arrayIndexOf = __webpack_require__(349)(false);
 var IE_PROTO = __webpack_require__(77)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -8749,18 +8395,18 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(122);
+var cof = __webpack_require__(121);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -8770,7 +8416,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -8788,7 +8434,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8798,11 +8444,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(360);
+var _iterator = __webpack_require__(362);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(371);
+var _symbol = __webpack_require__(373);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -8823,7 +8469,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8831,12 +8477,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 var LIBRARY = __webpack_require__(59);
 var $export = __webpack_require__(22);
-var redefine = __webpack_require__(126);
+var redefine = __webpack_require__(125);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(82);
-var $iterCreate = __webpack_require__(364);
+var $iterCreate = __webpack_require__(366);
 var setToStringTag = __webpack_require__(84);
-var getPrototypeOf = __webpack_require__(123);
+var getPrototypeOf = __webpack_require__(122);
 var ITERATOR = __webpack_require__(33)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -8911,17 +8557,17 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(29);
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(120);
+var $keys = __webpack_require__(119);
 var hiddenKeys = __webpack_require__(79).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -8929,7 +8575,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(61);
@@ -8937,7 +8583,7 @@ var createDesc = __webpack_require__(57);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(74);
 var has = __webpack_require__(25);
-var IE8_DOM_DEFINE = __webpack_require__(118);
+var IE8_DOM_DEFINE = __webpack_require__(117);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(24) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -8950,30 +8596,30 @@ exports.f = __webpack_require__(24) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__blocks_accordion__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocks_banner__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blocks_button__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_count_up__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_dual_heading__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_icon__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__blocks_icon_box__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_maps__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_pricing_table__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_section__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_testimonials__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(318);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_progress_bar__ = __webpack_require__(323);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__blocks_tab__ = __webpack_require__(327);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__blocks_fancy_text__ = __webpack_require__(331);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__blocks_title__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_person__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_icon_list__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_content_switcher__ = __webpack_require__(317);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__blocks_progress_bar__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__blocks_tab__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__blocks_fancy_text__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__blocks_title__ = __webpack_require__(336);
 
 
 
@@ -8996,15 +8642,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import "./blocks/test";
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(218);
 
 
 
@@ -9250,14 +8896,14 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10102,7 +9748,7 @@ var PremiumAccordion = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumAccordion);
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10286,7 +9932,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12189,12 +11835,12 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(88),
-    baseIteratee = __webpack_require__(135),
-    baseMap = __webpack_require__(212),
+    baseIteratee = __webpack_require__(134),
+    baseMap = __webpack_require__(211),
     isArray = __webpack_require__(16);
 
 /**
@@ -12247,16 +11893,16 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(136),
-    baseMatchesProperty = __webpack_require__(199),
+var baseMatches = __webpack_require__(135),
+    baseMatchesProperty = __webpack_require__(198),
     identity = __webpack_require__(105),
     isArray = __webpack_require__(16),
-    property = __webpack_require__(209);
+    property = __webpack_require__(208);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -12283,11 +11929,11 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(137),
-    getMatchData = __webpack_require__(198),
+var baseIsMatch = __webpack_require__(136),
+    getMatchData = __webpack_require__(197),
     matchesStrictComparable = __webpack_require__(102);
 
 /**
@@ -12310,7 +11956,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(89),
@@ -12371,7 +12017,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports) {
 
 /**
@@ -12389,7 +12035,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -12429,7 +12075,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -12453,7 +12099,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -12474,7 +12120,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -12505,7 +12151,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46);
@@ -12525,7 +12171,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports) {
 
 /**
@@ -12548,7 +12194,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports) {
 
 /**
@@ -12567,7 +12213,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports) {
 
 /**
@@ -12586,7 +12232,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46),
@@ -12625,11 +12271,11 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(91),
-    isMasked = __webpack_require__(151),
+    isMasked = __webpack_require__(150),
     isObject = __webpack_require__(49),
     toSource = __webpack_require__(93);
 
@@ -12674,7 +12320,7 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(48);
@@ -12725,7 +12371,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -12752,10 +12398,10 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(152);
+var coreJsData = __webpack_require__(151);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -12777,7 +12423,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(15);
@@ -12788,7 +12434,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports) {
 
 /**
@@ -12806,10 +12452,10 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(155),
+var Hash = __webpack_require__(154),
     ListCache = __webpack_require__(46),
     Map = __webpack_require__(64);
 
@@ -12832,14 +12478,14 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(156),
-    hashDelete = __webpack_require__(157),
-    hashGet = __webpack_require__(158),
-    hashHas = __webpack_require__(159),
-    hashSet = __webpack_require__(160);
+var hashClear = __webpack_require__(155),
+    hashDelete = __webpack_require__(156),
+    hashGet = __webpack_require__(157),
+    hashHas = __webpack_require__(158),
+    hashSet = __webpack_require__(159);
 
 /**
  * Creates a hash object.
@@ -12869,7 +12515,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(50);
@@ -12889,7 +12535,7 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports) {
 
 /**
@@ -12911,7 +12557,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(50);
@@ -12946,7 +12592,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(50);
@@ -12974,7 +12620,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(50);
@@ -13002,7 +12648,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(51);
@@ -13025,7 +12671,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -13045,7 +12691,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(51);
@@ -13066,7 +12712,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 164 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(51);
@@ -13087,7 +12733,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(51);
@@ -13114,14 +12760,14 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 166 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(89),
     equalArrays = __webpack_require__(95),
-    equalByTag = __webpack_require__(172),
-    equalObjects = __webpack_require__(176),
-    getTag = __webpack_require__(193),
+    equalByTag = __webpack_require__(171),
+    equalObjects = __webpack_require__(175),
+    getTag = __webpack_require__(192),
     isArray = __webpack_require__(16),
     isBuffer = __webpack_require__(98),
     isTypedArray = __webpack_require__(100);
@@ -13200,12 +12846,12 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 167 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(66),
-    setCacheAdd = __webpack_require__(168),
-    setCacheHas = __webpack_require__(169);
+    setCacheAdd = __webpack_require__(167),
+    setCacheHas = __webpack_require__(168);
 
 /**
  *
@@ -13232,7 +12878,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -13256,7 +12902,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports) {
 
 /**
@@ -13275,7 +12921,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports) {
 
 /**
@@ -13303,7 +12949,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports) {
 
 /**
@@ -13321,15 +12967,15 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(48),
-    Uint8Array = __webpack_require__(173),
+    Uint8Array = __webpack_require__(172),
     eq = __webpack_require__(90),
     equalArrays = __webpack_require__(95),
-    mapToArray = __webpack_require__(174),
-    setToArray = __webpack_require__(175);
+    mapToArray = __webpack_require__(173),
+    setToArray = __webpack_require__(174);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -13436,7 +13082,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(15);
@@ -13447,7 +13093,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports) {
 
 /**
@@ -13470,7 +13116,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports) {
 
 /**
@@ -13493,10 +13139,10 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(177);
+var getAllKeys = __webpack_require__(176);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -13580,11 +13226,11 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(178),
-    getSymbols = __webpack_require__(180),
+var baseGetAllKeys = __webpack_require__(177),
+    getSymbols = __webpack_require__(179),
     keys = __webpack_require__(67);
 
 /**
@@ -13601,10 +13247,10 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(179),
+var arrayPush = __webpack_require__(178),
     isArray = __webpack_require__(16);
 
 /**
@@ -13626,7 +13272,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports) {
 
 /**
@@ -13651,11 +13297,11 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(181),
-    stubArray = __webpack_require__(182);
+var arrayFilter = __webpack_require__(180),
+    stubArray = __webpack_require__(181);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13686,7 +13332,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports) {
 
 /**
@@ -13716,7 +13362,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports) {
 
 /**
@@ -13744,7 +13390,7 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(96),
@@ -13796,7 +13442,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(35),
@@ -13819,7 +13465,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports) {
 
 /**
@@ -13842,7 +13488,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(35),
@@ -13895,7 +13541,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports) {
 
 /**
@@ -13914,7 +13560,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -13952,11 +13598,11 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)(module)))
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(190),
-    nativeKeys = __webpack_require__(191);
+var isPrototype = __webpack_require__(189),
+    nativeKeys = __webpack_require__(190);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13987,7 +13633,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -14010,10 +13656,10 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(192);
+var overArg = __webpack_require__(191);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -14021,7 +13667,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports) {
 
 /**
@@ -14041,14 +13687,14 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(194),
+var DataView = __webpack_require__(193),
     Map = __webpack_require__(64),
-    Promise = __webpack_require__(195),
-    Set = __webpack_require__(196),
-    WeakMap = __webpack_require__(197),
+    Promise = __webpack_require__(194),
+    Set = __webpack_require__(195),
+    WeakMap = __webpack_require__(196),
     baseGetTag = __webpack_require__(35),
     toSource = __webpack_require__(93);
 
@@ -14105,7 +13751,7 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -14117,7 +13763,7 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -14129,7 +13775,7 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -14141,7 +13787,7 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -14153,7 +13799,7 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(101),
@@ -14182,12 +13828,12 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(94),
-    get = __webpack_require__(200),
-    hasIn = __webpack_require__(206),
+    get = __webpack_require__(199),
+    hasIn = __webpack_require__(205),
     isKey = __webpack_require__(70),
     isStrictComparable = __webpack_require__(101),
     matchesStrictComparable = __webpack_require__(102),
@@ -14218,7 +13864,7 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(103);
@@ -14256,10 +13902,10 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(202);
+var memoizeCapped = __webpack_require__(201);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -14288,10 +13934,10 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(203);
+var memoize = __webpack_require__(202);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -14319,7 +13965,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(66);
@@ -14397,10 +14043,10 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(205);
+var baseToString = __webpack_require__(204);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -14430,7 +14076,7 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _Symbol = __webpack_require__(48),
@@ -14472,11 +14118,11 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(207),
-    hasPath = __webpack_require__(208);
+var baseHasIn = __webpack_require__(206),
+    hasPath = __webpack_require__(207);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -14511,7 +14157,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports) {
 
 /**
@@ -14529,7 +14175,7 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(104),
@@ -14572,11 +14218,11 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(210),
-    basePropertyDeep = __webpack_require__(211),
+var baseProperty = __webpack_require__(209),
+    basePropertyDeep = __webpack_require__(210),
     isKey = __webpack_require__(70),
     toKey = __webpack_require__(54);
 
@@ -14609,7 +14255,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports) {
 
 /**
@@ -14628,7 +14274,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(103);
@@ -14649,10 +14295,10 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(213),
+var baseEach = __webpack_require__(212),
     isArrayLike = __webpack_require__(69);
 
 /**
@@ -14676,11 +14322,11 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(214),
-    createBaseEach = __webpack_require__(217);
+var baseForOwn = __webpack_require__(213),
+    createBaseEach = __webpack_require__(216);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -14695,10 +14341,10 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(215),
+var baseFor = __webpack_require__(214),
     keys = __webpack_require__(67);
 
 /**
@@ -14716,10 +14362,10 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(216);
+var createBaseFor = __webpack_require__(215);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -14737,7 +14383,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, exports) {
 
 /**
@@ -14767,7 +14413,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(69);
@@ -14804,7 +14450,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14997,7 +14643,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 219 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15760,15 +15406,15 @@ var deprecated = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ }),
-/* 220 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(223);
 
 
 
@@ -16062,7 +15708,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 221 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16073,9 +15719,9 @@ registerBlockType("premium/banner", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_filters__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_responsive_tabs__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -16927,7 +16573,7 @@ var edit = function (_Component) {
 ;
 
 /***/ }),
-/* 222 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16995,7 +16641,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17182,7 +16828,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 224 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18427,14 +18073,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -18639,7 +18285,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18649,12 +18295,12 @@ registerBlockType("premium/button", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19308,7 +18954,7 @@ var edit = function (_Component) {
 ;
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19363,7 +19009,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19471,7 +19117,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20185,15 +19831,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(233);
 
 
 
@@ -20518,7 +20164,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20531,7 +20177,7 @@ registerBlockType("premium/countup", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -21571,7 +21217,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21665,7 +21311,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 233 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21888,7 +21534,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 234 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23603,7 +23249,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 235 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23678,7 +23324,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 236 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23912,7 +23558,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 237 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24490,7 +24136,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 238 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24556,15 +24202,15 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 239 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(242);
 
 
 
@@ -24933,7 +24579,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 240 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24944,7 +24590,7 @@ registerBlockType("premium/dheading-block", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_fonts__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styling__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -25982,7 +25628,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 241 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26051,7 +25697,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 242 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26238,7 +25884,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 243 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27745,15 +27391,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 244 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(245);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(260);
 
 
 
@@ -28040,7 +27686,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 245 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28050,10 +27696,10 @@ registerBlockType("premium/icon", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_text_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
@@ -28703,7 +28349,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 246 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31046,7 +30692,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31252,7 +30898,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(65)))
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31958,7 +31604,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(65)))
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31969,7 +31615,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(7);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(62);var scheduler=__webpack_require__(107);var tracing=__webpack_require__(250);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(7);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(62);var scheduler=__webpack_require__(107);var tracing=__webpack_require__(249);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -35847,21 +35493,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(251);
+  module.exports = __webpack_require__(250);
 } else {
-  module.exports = __webpack_require__(252);
+  module.exports = __webpack_require__(251);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35888,7 +35534,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36316,7 +35962,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36327,9 +35973,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(14));
 
-var _addClass = _interopRequireDefault(__webpack_require__(254));
+var _addClass = _interopRequireDefault(__webpack_require__(253));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(257));
+var _removeClass = _interopRequireDefault(__webpack_require__(256));
 
 var _react = _interopRequireDefault(__webpack_require__(7));
 
@@ -36716,18 +36362,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(255);
+var _interopRequireDefault = __webpack_require__(254);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(256));
+var _hasClass = _interopRequireDefault(__webpack_require__(255));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -36736,7 +36382,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -36748,7 +36394,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36764,7 +36410,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36779,7 +36425,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36944,7 +36590,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37099,7 +36745,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37245,7 +36891,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38762,15 +38408,15 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 262 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(265);
 
 
 
@@ -39250,7 +38896,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 263 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39262,15 +38908,15 @@ registerBlockType("premium/icon-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_border__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_margin__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_text_shadow__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_fonts__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styling__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styling__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -40684,7 +40330,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 264 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40767,7 +40413,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 265 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41044,7 +40690,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 266 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43910,7 +43556,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45001,15 +44647,15 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deprecated__ = __webpack_require__(271);
 
 
 
@@ -45642,7 +45288,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45652,11 +45298,11 @@ registerBlockType("premium/pricing-table", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styling__ = __webpack_require__(269);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_responsive_tabs__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -47567,7 +47213,7 @@ var PremiumPricingTable = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPricingTable);
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47742,7 +47388,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48150,7 +47796,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50406,14 +50052,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -50603,18 +50249,18 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_border__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_margin__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -51060,7 +50706,7 @@ var edit = function edit(props) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51172,7 +50818,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 276 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51899,14 +51545,14 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 277 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__save__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -52157,7 +51803,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 278 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52169,9 +51815,9 @@ registerBlockType("premium/testimonial", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_testimonials_lower_quote__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_box_shadow__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_background__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_padding__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_hex_to_rgba__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -53013,7 +52659,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 279 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53097,7 +52743,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 280 */
+/* 279 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53308,7 +52954,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 281 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54586,7 +54232,7 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 282 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54600,7 +54246,7 @@ var deprecatedContent = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_fonts__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styling__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_hex_to_rgba___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_hex_to_rgba__);
@@ -55550,7 +55196,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 283 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55610,7 +55256,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 284 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55818,7 +55464,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 285 */
+/* 284 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56982,13 +56628,13 @@ var deprecatedContent = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecatedContent);
 
 /***/ }),
-/* 286 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(287);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 var _personAttrs;
 
@@ -57269,7 +56915,7 @@ registerBlockType("premium/person", {
 });
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57532,7 +57178,7 @@ var save = function save(props) {
 /* harmony default export */ __webpack_exports__["a"] = (save);
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57546,7 +57192,7 @@ var save = function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_margin__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_sortable_hoc__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_times__);
@@ -59203,7 +58849,7 @@ var PremiumPerson = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPerson);
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59227,14 +58873,14 @@ function _extends() {
 }
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _slicedToArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(292);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithHoles__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArrayLimit__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableRest__ = __webpack_require__(292);
 
 
 
@@ -59243,7 +58889,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59253,7 +58899,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59285,7 +58931,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59295,7 +58941,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59322,7 +58968,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59334,7 +58980,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59356,12 +59002,12 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _possibleConstructorReturn;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_esm_typeof__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assertThisInitialized__ = __webpack_require__(114);
 
 
@@ -59374,7 +59020,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59408,7 +59054,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59421,12 +59067,12 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _inherits;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setPrototypeOf__ = __webpack_require__(300);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -59444,7 +59090,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59459,7 +59105,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59512,14 +59158,14 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _toConsumableArray;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(304);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayWithoutHoles__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterableToArray__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nonIterableSpread__ = __webpack_require__(305);
 
 
 
@@ -59528,7 +59174,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59544,7 +59190,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 305 */
+/* 304 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59554,7 +59200,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59564,7 +59210,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var identity = __webpack_require__(105);
@@ -59583,10 +59229,10 @@ function castFunction(value) {
 module.exports = castFunction;
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(309);
+var toFinite = __webpack_require__(308);
 
 /**
  * Converts `value` to an integer.
@@ -59624,10 +59270,10 @@ function toInteger(value) {
 module.exports = toInteger;
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(310);
+var toNumber = __webpack_require__(309);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -59671,10 +59317,10 @@ function toFinite(value) {
 module.exports = toFinite;
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTrim = __webpack_require__(311),
+var baseTrim = __webpack_require__(310),
     isObject = __webpack_require__(49),
     isSymbol = __webpack_require__(53);
 
@@ -59738,10 +59384,10 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var trimmedEndIndex = __webpack_require__(312);
+var trimmedEndIndex = __webpack_require__(311);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -59760,7 +59406,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 312 */
+/* 311 */
 /***/ (function(module, exports) {
 
 /** Used to match a single whitespace character. */
@@ -59784,13 +59430,13 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 313 */
+/* 312 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(314);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(314);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -60041,7 +59687,7 @@ registerBlockType("premium/icon-list", {
 });
 
 /***/ }),
-/* 314 */
+/* 313 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60210,7 +59856,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 315 */
+/* 314 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60220,12 +59866,12 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(315);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_fonts__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_border__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__ = __webpack_require__(317);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_margin_responsive__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_range_responsive__ = __webpack_require__(43);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -61159,7 +60805,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 316 */
+/* 315 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61393,11 +61039,11 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 317 */
+/* 316 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(45);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -61552,13 +61198,13 @@ var PremiumMarginResponsive = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumMarginResponsive);
 
 /***/ }),
-/* 318 */
+/* 317 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -62056,7 +61702,7 @@ registerBlockType("premium/content-switcher", {
 });
 
 /***/ }),
-/* 319 */
+/* 318 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62242,17 +61888,17 @@ function save(props) {
 }
 
 /***/ }),
-/* 320 */
+/* 319 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_padding_responsive__ = __webpack_require__(321);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_border__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -63292,7 +62938,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 321 */
+/* 320 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63531,11 +63177,11 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 322 */
+/* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_size_units__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__premium_responsive__ = __webpack_require__(45);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -63688,13 +63334,13 @@ var PremiumPaddingResponsive = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (PremiumPaddingResponsive);
 
 /***/ }),
-/* 323 */
+/* 322 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(324);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 
 
@@ -63939,7 +63585,7 @@ registerBlockType("premium/progress-bar", {
 });
 
 /***/ }),
-/* 324 */
+/* 323 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64052,13 +63698,13 @@ function save(props) {
 }
 
 /***/ }),
-/* 325 */
+/* 324 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_range_responsive__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_sortable_hoc__ = __webpack_require__(56);
@@ -64828,7 +64474,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 326 */
+/* 325 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65020,13 +64666,13 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 327 */
+/* 326 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 var _tabAttrs;
 
@@ -65434,7 +65080,7 @@ registerBlockType("premium/tab", {
 });
 
 /***/ }),
-/* 328 */
+/* 327 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65531,13 +65177,13 @@ function save(props) {
 }
 
 /***/ }),
-/* 329 */
+/* 328 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(38);
@@ -66851,7 +66497,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 330 */
+/* 329 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67148,14 +66794,14 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 331 */
+/* 330 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(332);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(333);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deprecated__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icons__ = __webpack_require__(3);
 
 
@@ -67379,7 +67025,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 332 */
+/* 331 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67502,16 +67148,16 @@ function save(props) {
 }
 
 /***/ }),
-/* 333 */
+/* 332 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_typed_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_typed_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_background__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_responsive_tabs__ = __webpack_require__(9);
@@ -68433,7 +68079,7 @@ var edit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (edit);
 
 /***/ }),
-/* 334 */
+/* 333 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68563,7 +68209,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 335 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -69672,7 +69318,7 @@ function styling(props) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)(module)))
 
 /***/ }),
-/* 336 */
+/* 335 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70012,13 +69658,13 @@ var deprecated = [{
 /* harmony default export */ __webpack_exports__["a"] = (deprecated);
 
 /***/ }),
-/* 337 */
+/* 336 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__save__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__icons__ = __webpack_require__(3);
 var _titleAttrs;
 
@@ -70107,10 +69753,12 @@ var titleAttrs = (_titleAttrs = {
         type: "number"
     },
     horizontalText: {
-        type: "number"
+        type: "number",
+        default: '0'
     },
     verticalText: {
-        type: "number"
+        type: "number",
+        default: '0'
     },
     rotateText: {
         type: "number"
@@ -70220,7 +69868,7 @@ var titleAttrs = (_titleAttrs = {
     },
     titleborderRadius: {
         type: "number",
-        default: 0
+        default: 1
     },
     titleborderColor: {
         type: "string",
@@ -70266,19 +69914,19 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "none"
     },
-    iconborderTop: {
+    iconBorderTop: {
         type: "number",
         default: "1"
     },
-    iconborderRight: {
+    iconBorderRight: {
         type: "number",
         default: "1"
     },
-    iconborderBottom: {
+    iconBorderBottom: {
         type: "number",
         default: "1"
     },
-    iconborderLeft: {
+    iconBorderLeft: {
         type: "number",
         default: "1"
     },
@@ -70305,7 +69953,51 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "0"
     },
-    titleMargin: {
+    titleMarginT: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginR: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginB: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginL: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginTTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginRTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginBTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginLTablet: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginTMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginRMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginBMobile: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginLMobile: {
         type: "number",
         default: "0"
     },
@@ -70313,64 +70005,168 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "px"
     },
-    titleMarginMobile: {
+
+    titlePaddingT: {
         type: "number",
         default: "0"
     },
-    titleMarginTablet: {
+    titlePaddingR: {
         type: "number",
         default: "0"
     },
-    titlePadding: {
+    titlePaddingB: {
         type: "number",
         default: "0"
     },
-    titlePaddingTablet: {
+    titlePaddingL: {
         type: "number",
         default: "0"
     },
+    titlePaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+
     titlePaddingType: {
         type: "string",
         default: "px"
     },
-    titlePaddingMobile: {
-        type: "number",
-        default: "0"
-    },
+
     iconBGColor: {
         type: "string"
     },
-    iconPadding: {
+    iconPaddingT: {
         type: "number",
         default: "0"
     },
-    iconPaddingTablet: {
+    iconPaddingR: {
         type: "number",
         default: "0"
     },
+    iconPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconPaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+
     iconPaddingType: {
         type: "string",
         default: "px"
     },
-    iconPaddingMobile: {
-        type: "number",
-        default: "0"
-    },
-    iconSpacing: {
+    iconSpacingT: {
         type: "number",
         default: "10"
     },
-    iconSpacingTablet: {
+    iconSpacingR: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingB: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingL: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingTTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingRTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingBTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingLTablet: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingTMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingRMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingBMobile: {
+        type: "number",
+        default: "10"
+    },
+    iconSpacingLMobile: {
         type: "number",
         default: "10"
     },
     iconSpacingType: {
         type: "string",
         default: "px"
-    },
-    iconSpacingMobile: {
-        type: "number",
-        default: "10"
     },
     hideDesktop: {
         type: 'boolean',
@@ -70414,7 +70210,7 @@ var titleAttrs = (_titleAttrs = {
     },
     textBackfontSize: {
         type: "number",
-        default: "30"
+        default: "20"
     },
     textBackfontSizeType: {
         type: "string",
@@ -70449,6 +70245,28 @@ var titleAttrs = (_titleAttrs = {
     type: "string"
 }), _defineProperty(_titleAttrs, "zIndex", {
     type: "number"
+}), _defineProperty(_titleAttrs, "horizontalU", {
+    type: "string",
+    default: "px"
+}), _defineProperty(_titleAttrs, "verticalU", {
+    type: "string",
+    default: "px"
+}), _defineProperty(_titleAttrs, "titleTag", {
+    type: "string",
+    default: "h2"
+}), _defineProperty(_titleAttrs, "shinyColor", {
+    type: "string"
+}), _defineProperty(_titleAttrs, "blurColor", {
+    type: "string"
+}), _defineProperty(_titleAttrs, "blurShadow", {
+    type: "number",
+    default: "0"
+}), _defineProperty(_titleAttrs, "animateDelay", {
+    type: "number",
+    default: "2"
+}), _defineProperty(_titleAttrs, "animateduration", {
+    type: "number",
+    default: "1"
 }), _titleAttrs);
 
 registerBlockType("premium/title", {
@@ -70464,26 +70282,19 @@ registerBlockType("premium/title", {
 });
 
 /***/ }),
-/* 338 */
+/* 337 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = save;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_lottie_with_segments__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_lottie_with_segments___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_lottie_with_segments__);
-
-
-
 var Fragment = wp.element.Fragment;
-
+var RichText = wp.blockEditor.RichText;
 
 function save(props) {
-    var attributes = props.attributes,
-        className = props.className;
+    var attributes = props.attributes;
     var block_id = attributes.block_id,
         align = attributes.align,
+        titleTag = attributes.titleTag,
         style = attributes.style,
         title = attributes.title,
         iconValue = attributes.iconValue,
@@ -70491,22 +70302,29 @@ function save(props) {
         loop = attributes.loop,
         reversedir = attributes.reversedir,
         lottieURl = attributes.lottieURl,
+        target = attributes.target,
         icon = attributes.icon,
         iconPosition = attributes.iconPosition,
         imageURL = attributes.imageURL,
         link = attributes.link,
         url = attributes.url,
-        iconSize = attributes.iconSize,
         iconAlign = attributes.iconAlign,
         stripePosition = attributes.stripePosition,
         stripeAlign = attributes.stripeAlign,
         backgroundText = attributes.backgroundText,
-        textBackColor = attributes.textBackColor,
         BackText = attributes.BackText,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
         hideMobile = attributes.hideMobile;
 
+
+    var styleContainer = title.split("").map(function (letter) {
+        return wp.element.createElement(RichText.Content, {
+            tagName: titleTag.toLowerCase(),
+            className: "premium-title-style9-letter",
+            value: letter
+        });
+    });
 
     return wp.element.createElement(
         "div",
@@ -70525,7 +70343,7 @@ function save(props) {
                 "div",
                 { className: style + " " + style + "-" + align },
                 wp.element.createElement(
-                    "h2",
+                    "div",
                     { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
                     style === 'style7' ? wp.element.createElement(
                         Fragment,
@@ -70551,13 +70369,13 @@ function save(props) {
                                 { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
                                 wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
                             ),
-                            wp.element.createElement(
-                                "span",
-                                { className: "premium-title-text-title" },
-                                title
-                            )
+                            wp.element.createElement(RichText.Content, {
+                                tagName: titleTag.toLowerCase(),
+                                className: "premium-title-text-title",
+                                value: title
+                            })
                         )
-                    ) : wp.element.createElement(
+                    ) : style === "style9" ? wp.element.createElement(
                         Fragment,
                         null,
                         iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
@@ -70565,9 +70383,20 @@ function save(props) {
                         iconValue && iconType == 'lottie' && wp.element.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
                         wp.element.createElement(
                             "span",
-                            { className: "premium-title-text-title" },
-                            title
+                            { className: "premium-letters-container" },
+                            styleContainer
                         )
+                    ) : wp.element.createElement(
+                        Fragment,
+                        null,
+                        iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                        iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                        iconValue && iconType == 'lottie' && wp.element.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
+                        wp.element.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-title-text-title",
+                            value: title
+                        })
                     ),
                     link && wp.element.createElement("a", { target: target ? "_blank" : "_self", href: "" + url })
                 )
@@ -70577,16 +70406,2314 @@ function save(props) {
 }
 
 /***/ }),
-/* 339 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 338 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(340), __esModule: true };
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styling__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_premium_range_responsive__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_text_shadow__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_responsive_tabs__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_lottie_with_segments__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_lottie_with_segments___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_lottie_with_segments__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Margin__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Padding__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_premium_size_units__ = __webpack_require__(10);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    RichText = _wp$editor.RichText;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    Toolbar = _wp$components.Toolbar,
+    ToggleControl = _wp$components.ToggleControl;
+
+
+var lottieflag = true;
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.initLottie = _this.initLottie.bind(_this);
+        return _this;
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            // Assigning id in the attribute.
+            this.props.setAttributes({ block_id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+            // Pushing Style tag for this block css.
+            var $style = document.createElement("style");
+            $style.setAttribute("id", "premium-style-title-" + this.props.clientId);
+            document.head.appendChild($style);
+            if (this.props.attributes.iconType === "lottie") {
+                this.initLottie();
+            }
+        }
+    }, {
+        key: "initLottie",
+        value: function initLottie() {
+            var _props$attributes = this.props.attributes,
+                lottieURl = _props$attributes.lottieURl,
+                loop = _props$attributes.loop,
+                reversedir = _props$attributes.reversedir,
+                block_id = _props$attributes.block_id;
+
+            var lottieContainer = document.querySelector(".premium-lottie-animation-" + block_id);
+            var animItem = lottie.loadAnimation({
+                container: lottieContainer,
+                renderer: 'svg',
+                loop: loop ? true : false,
+                path: lottieURl,
+                autoplay: true
+            });
+
+            if (reversedir) {
+                animItem.setDirection(-1);
+            }
+
+            lottieflag = false;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
+            var block_id = attributes.block_id,
+                align = attributes.align,
+                titleTag = attributes.titleTag,
+                style = attributes.style,
+                title = attributes.title,
+                iconValue = attributes.iconValue,
+                iconType = attributes.iconType,
+                icon = attributes.icon,
+                lottieURl = attributes.lottieURl,
+                loop = attributes.loop,
+                reversedir = attributes.reversedir,
+                iconPosition = attributes.iconPosition,
+                imageURL = attributes.imageURL,
+                imageID = attributes.imageID,
+                link = attributes.link,
+                url = attributes.url,
+                target = attributes.target,
+                iconAlign = attributes.iconAlign,
+                stripePosition = attributes.stripePosition,
+                stripeWidth = attributes.stripeWidth,
+                stripeHeight = attributes.stripeHeight,
+                stripeTopSpacing = attributes.stripeTopSpacing,
+                stripeBottomSpacing = attributes.stripeBottomSpacing,
+                titleColor = attributes.titleColor,
+                titleWeight = attributes.titleWeight,
+                titleLetter = attributes.titleLetter,
+                titleUpper = attributes.titleUpper,
+                titleStyle = attributes.titleStyle,
+                titlefontSize = attributes.titlefontSize,
+                titlefontSizeMobile = attributes.titlefontSizeMobile,
+                titlefontSizeTablet = attributes.titlefontSizeTablet,
+                titlefontSizeType = attributes.titlefontSizeType,
+                titleshadowBlur = attributes.titleshadowBlur,
+                titleshadowColor = attributes.titleshadowColor,
+                titleshadowHorizontal = attributes.titleshadowHorizontal,
+                titleshadowVertical = attributes.titleshadowVertical,
+                stripeColor = attributes.stripeColor,
+                titleborderType = attributes.titleborderType,
+                titleborderRadius = attributes.titleborderRadius,
+                titleBorderLeft = attributes.titleBorderLeft,
+                titleBorderTop = attributes.titleBorderTop,
+                titleBorderRight = attributes.titleBorderRight,
+                titleBorderBottom = attributes.titleBorderBottom,
+                titleborderColor = attributes.titleborderColor,
+                BGColor = attributes.BGColor,
+                lineColor = attributes.lineColor,
+                triangleColor = attributes.triangleColor,
+                stripeAlign = attributes.stripeAlign,
+                iconColor = attributes.iconColor,
+                iconSize = attributes.iconSize,
+                iconSizeType = attributes.iconSizeType,
+                iconSizeTablet = attributes.iconSizeTablet,
+                iconSizeMobile = attributes.iconSizeMobile,
+                iconborderType = attributes.iconborderType,
+                iconborderRadius = attributes.iconborderRadius,
+                iconBorderTop = attributes.iconBorderTop,
+                iconBorderRight = attributes.iconBorderRight,
+                iconBorderBottom = attributes.iconBorderBottom,
+                iconBorderLeft = attributes.iconBorderLeft,
+                iconborderColor = attributes.iconborderColor,
+                iconshadowBlur = attributes.iconshadowBlur,
+                iconshadowColor = attributes.iconshadowColor,
+                iconshadowHorizontal = attributes.iconshadowHorizontal,
+                iconshadowVertical = attributes.iconshadowVertical,
+                titleMargin = attributes.titleMargin,
+                titleMarginT = attributes.titleMarginT,
+                titleMarginR = attributes.titleMarginR,
+                titleMarginB = attributes.titleMarginB,
+                titleMarginL = attributes.titleMarginL,
+                titleMarginTTablet = attributes.titleMarginTTablet,
+                titleMarginRTablet = attributes.titleMarginRTablet,
+                titleMarginBTablet = attributes.titleMarginBTablet,
+                titleMarginLTablet = attributes.titleMarginLTablet,
+                titleMarginTMobile = attributes.titleMarginTMobile,
+                titleMarginRMobile = attributes.titleMarginRMobile,
+                titleMarginBMobile = attributes.titleMarginBMobile,
+                titleMarginLMobile = attributes.titleMarginLMobile,
+                titleMarginType = attributes.titleMarginType,
+                titlePaddingT = attributes.titlePaddingT,
+                titlePaddingR = attributes.titlePaddingR,
+                titlePaddingB = attributes.titlePaddingB,
+                titlePaddingL = attributes.titlePaddingL,
+                titlePaddingTTablet = attributes.titlePaddingTTablet,
+                titlePaddingRTablet = attributes.titlePaddingRTablet,
+                titlePaddingBTablet = attributes.titlePaddingBTablet,
+                titlePaddingLTablet = attributes.titlePaddingLTablet,
+                titlePaddingTMobile = attributes.titlePaddingTMobile,
+                titlePaddingRMobile = attributes.titlePaddingRMobile,
+                titlePaddingBMobile = attributes.titlePaddingBMobile,
+                titlePaddingLMobile = attributes.titlePaddingLMobile,
+                titlePaddingType = attributes.titlePaddingType,
+                stroke = attributes.stroke,
+                strokeColor = attributes.strokeColor,
+                strokeFull = attributes.strokeFull,
+                iconBGColor = attributes.iconBGColor,
+                iconPaddingT = attributes.iconPaddingT,
+                iconPaddingR = attributes.iconPaddingR,
+                iconPaddingL = attributes.iconPaddingL,
+                iconPaddingB = attributes.iconPaddingB,
+                iconPaddingTTablet = attributes.iconPaddingTTablet,
+                iconPaddingRTablet = attributes.iconPaddingRTablet,
+                iconPaddingLTablet = attributes.iconPaddingLTablet,
+                iconPaddingBTablet = attributes.iconPaddingBTablet,
+                iconPaddingTMobile = attributes.iconPaddingTMobile,
+                iconPaddingRMobile = attributes.iconPaddingRMobile,
+                iconPaddingLMobile = attributes.iconPaddingLMobile,
+                iconPaddingBMobile = attributes.iconPaddingBMobile,
+                iconPaddingType = attributes.iconPaddingType,
+                iconSpacingT = attributes.iconSpacingT,
+                iconSpacingR = attributes.iconSpacingR,
+                iconSpacingB = attributes.iconSpacingB,
+                iconSpacingL = attributes.iconSpacingL,
+                iconSpacingTTablet = attributes.iconSpacingTTablet,
+                iconSpacingRTablet = attributes.iconSpacingRTablet,
+                iconSpacingBTablet = attributes.iconSpacingBTablet,
+                iconSpacingLTablet = attributes.iconSpacingLTablet,
+                iconSpacingTMobile = attributes.iconSpacingTMobile,
+                iconSpacingRMobile = attributes.iconSpacingRMobile,
+                iconSpacingBMobile = attributes.iconSpacingBMobile,
+                iconSpacingLMobile = attributes.iconSpacingLMobile,
+                iconSpacingType = attributes.iconSpacingType,
+                backgroundText = attributes.backgroundText,
+                BackText = attributes.BackText,
+                textWidth = attributes.textWidth,
+                horizontalText = attributes.horizontalText,
+                verticalText = attributes.verticalText,
+                rotateText = attributes.rotateText,
+                textBackColor = attributes.textBackColor,
+                textBackfontSizeType = attributes.textBackfontSizeType,
+                textBackfontSize = attributes.textBackfontSize,
+                textBackfontSizeMobile = attributes.textBackfontSizeMobile,
+                textBackfontSizeTablet = attributes.textBackfontSizeTablet,
+                textBackWeight = attributes.textBackWeight,
+                textBackStyle = attributes.textBackStyle,
+                textBackLetter = attributes.textBackLetter,
+                textBackUpper = attributes.textBackUpper,
+                textBackshadowColor = attributes.textBackshadowColor,
+                textBackshadowBlur = attributes.textBackshadowBlur,
+                textBackshadowHorizontal = attributes.textBackshadowHorizontal,
+                horizontalU = attributes.horizontalU,
+                verticalU = attributes.verticalU,
+                textBackshadowVertical = attributes.textBackshadowVertical,
+                blend = attributes.blend,
+                zIndex = attributes.zIndex,
+                hideDesktop = attributes.hideDesktop,
+                hideTablet = attributes.hideTablet,
+                hideMobile = attributes.hideMobile,
+                shinyColor = attributes.shinyColor,
+                blurColor = attributes.blurColor,
+                blurShadow = attributes.blurShadow,
+                animateduration = attributes.animateduration,
+                animateDelay = attributes.animateDelay;
+
+
+            var STYLE = [{
+                value: "style1",
+                label: __("Style 1")
+            }, {
+                value: "style2",
+                label: __("Style 2")
+            }, {
+                value: "style3",
+                label: "Style 3"
+            }, {
+                value: "style4",
+                label: __("Style 4")
+            }, {
+                value: "style5",
+                label: __("Style 5")
+            }, {
+                value: "style6",
+                label: __("Style 6")
+            }, {
+                value: "style7",
+                label: __("Style 7")
+            }, {
+                value: "style8",
+                label: __("Style 8")
+            }, {
+                value: "style9",
+                label: __("Style 9")
+            }];
+
+            var ICON = [{
+                value: "icon",
+                label: __("Icon")
+            }, {
+                value: "image",
+                label: __("Image")
+            }, {
+                value: "lottie",
+                label: __("Lottie Animation")
+            }];
+
+            var POSITION = [{
+                value: "before",
+                label: __("Before")
+            }, {
+                value: "after",
+                label: __("After")
+            }, {
+                value: "top",
+                label: __("Top")
+            }];
+
+            var TAGS = [{
+                value: "H1",
+                label: "H1"
+            }, {
+                value: "H2",
+                label: "H2"
+            }, {
+                value: "H3",
+                label: "H3"
+            }, {
+                value: "H4",
+                label: "H4"
+            }, {
+                value: "H5",
+                label: "H5"
+            }, {
+                value: "H6",
+                label: "H6"
+            }, {
+                value: "DIV",
+                label: "div"
+            }, {
+                value: "span",
+                label: "span"
+            }];
+
+            var ALIGNS = ["left", "center", "right"];
+
+            var STRIPEPOSITION = [{
+                value: "top",
+                label: __("Top")
+            }, {
+                value: "bottom",
+                label: __("Bottom")
+            }];
+
+            var BLEND = [{
+                label: 'Normal', value: 'normal'
+            }, {
+                label: 'Multiply', value: 'multiply'
+            }, {
+                label: 'Screen', value: 'screen'
+            }, {
+                label: 'Overlay', value: 'overlay'
+            }, {
+                label: 'Darken', value: 'darken'
+            }, {
+                label: 'Lighten', value: 'lighten'
+            }, {
+                label: 'Color Dodge', value: 'color-dodge'
+            }, {
+                label: 'Saturation', value: 'saturation'
+            }, {
+                label: 'Color', value: 'color'
+            }, {
+                label: 'Luminosity', value: 'luminosity'
+            }];
+
+            var element = document.getElementById("premium-style-title-" + this.props.clientId);
+
+            if (null != element && "undefined" != typeof element) {
+                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_0__styling__["a" /* default */])(this.props);
+            }
+
+            var onResetClickTitle = function onResetClickTitle() {
+                setAttributes({
+                    titleWeight: 600,
+                    titlefontSizeType: "px",
+                    titlefontSize: "30",
+                    titlefontSizeMobile: "30",
+                    titlefontSizeTablet: "30",
+                    titleStyle: "normal",
+                    titleLetter: "0",
+                    titleUpper: false
+                });
+            };
+
+            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
+                setAttributes({
+                    titleshadowColor: "",
+                    titleshadowBlur: "0",
+                    titleshadowHorizontal: "0",
+                    titleshadowVertical: "0"
+                });
+            };
+
+            var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
+                setAttributes({
+                    iconshadowColor: "",
+                    iconshadowBlur: "0",
+                    iconshadowHorizontal: "0",
+                    iconshadowVertical: "0"
+                });
+            };
+
+            var styleContainer = title.split("").map(function (letter) {
+                return wp.element.createElement(RichText, {
+                    tagName: titleTag.toLowerCase(),
+                    className: "premium-title-style9-letter",
+
+                    value: letter
+
+                });
+            });
+
+            return [isSelected && wp.element.createElement(
+                BlockControls,
+                null,
+                wp.element.createElement(AlignmentToolbar, {
+                    value: align,
+                    onChange: function onChange(value) {
+                        setAttributes({ align: value });
+                    }
+                })
+            ), isSelected && wp.element.createElement(
+                InspectorControls,
+                null,
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Title"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(TextControl, {
+                        label: __("Title"),
+                        value: title,
+                        onChange: function onChange(value) {
+                            return setAttributes({ title: value });
+                        }
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Style"),
+                        value: style,
+                        onChange: function onChange(newSelect) {
+                            return setAttributes({ style: newSelect });
+                        },
+                        options: STYLE
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Icon"),
+                        checked: iconValue,
+                        onChange: function onChange(value) {
+                            return setAttributes({ iconValue: value });
+                        }
+                    }),
+                    iconValue && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(SelectControl, {
+                            label: __("Icon Type"),
+                            value: iconType,
+                            onChange: function onChange(newSelect) {
+                                return setAttributes({ iconType: newSelect });
+                            },
+                            options: ICON
+                        }),
+                        iconType === 'icon' && wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Icon")
+                            ),
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default.a, {
+                                icons: __WEBPACK_IMPORTED_MODULE_3__components_premium_icons_list__["a" /* default */],
+                                value: icon,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ icon: value });
+                                },
+                                isMulti: false,
+                                appendTo: "body",
+                                noSelectedPlaceholder: __("Select Icon")
+                            })
+                        ),
+                        iconType === 'lottie' && wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(TextControl, {
+                                value: lottieURl,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ lottieURl: value });
+                                },
+                                label: __("Lottie Url")
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __('Loop'),
+                                checked: loop,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ loop: newValue });
+                                }
+                            }),
+                            wp.element.createElement(ToggleControl, {
+                                label: __("Reverse"),
+                                checked: reversedir,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ reversedir: value });
+                                }
+                            })
+                        ),
+                        iconType === 'image' && wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_media_upload__["a" /* default */], {
+                                type: "image",
+                                imageID: imageID,
+                                imageURL: imageURL,
+                                onSelectMedia: function onSelectMedia(media) {
+                                    setAttributes({
+                                        imageID: media.id,
+                                        imageURL: media.url
+                                    });
+                                },
+                                onRemoveImage: function onRemoveImage() {
+                                    return setAttributes({
+                                        imageID: "",
+                                        imageURL: ""
+                                    });
+                                }
+                            })
+                        ),
+                        wp.element.createElement(SelectControl, {
+                            label: __("Icon Position"),
+                            value: iconPosition,
+                            onChange: function onChange(newSelect) {
+                                return setAttributes({ iconPosition: newSelect });
+                            },
+                            options: POSITION
+                        }),
+                        iconPosition === 'top' && style != 'style3' && style != 'style4' && wp.element.createElement(
+                            Fragment,
+                            null,
+                            wp.element.createElement(
+                                "p",
+                                null,
+                                __("Icon Alignment")
+                            ),
+                            wp.element.createElement(Toolbar, {
+                                controls: ALIGNS.map(function (contentAlign) {
+                                    return {
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === iconAlign,
+                                        onClick: function onClick() {
+                                            return setAttributes({ iconAlign: contentAlign });
+                                        }
+                                    };
+                                })
+                            })
+                        )
+                    ),
+                    style === 'style7' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(SelectControl, {
+                            label: __("Stripe Position"),
+                            value: stripePosition,
+                            onChange: function onChange(newSelect) {
+                                return setAttributes({ stripePosition: newSelect });
+                            },
+                            options: STRIPEPOSITION
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Width"),
+                            value: stripeWidth,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeWidth: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Height"),
+                            value: stripeHeight,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeHeight: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Top Spacing"),
+                            value: stripeTopSpacing,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeTopSpacing: value });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __("Stripe Bottom Spacing"),
+                            value: stripeBottomSpacing,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(value) {
+                                return setAttributes({ stripeBottomSpacing: value });
+                            }
+                        }),
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Stripe Alignment")
+                        ),
+                        wp.element.createElement(Toolbar, {
+                            controls: ALIGNS.map(function (contentAlign) {
+                                return {
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === stripeAlign,
+                                    onClick: function onClick() {
+                                        return setAttributes({ stripeAlign: contentAlign });
+                                    }
+                                };
+                            })
+                        })
+                    ),
+                    wp.element.createElement(SelectControl, {
+                        label: __("HTML Tag"),
+                        options: TAGS,
+                        value: titleTag,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ titleTag: newValue });
+                        }
+                    }),
+                    wp.element.createElement(Toolbar, {
+                        controls: ALIGNS.map(function (contentAlign) {
+                            return {
+                                icon: "editor-align" + contentAlign,
+                                isActive: align === align,
+                                onClick: function onClick() {
+                                    return setAttributes({ align: contentAlign });
+                                }
+                            };
+                        })
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __("Link"),
+                        checked: link,
+                        onChange: function onChange(value) {
+                            return setAttributes({ link: value });
+                        }
+                    }),
+                    link && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("URL")
+                        ),
+                        wp.element.createElement(TextControl, {
+                            value: url,
+                            onChange: function onChange(value) {
+                                return setAttributes({ url: value });
+                            },
+                            placeholder: __("Enter URL")
+                        }),
+                        wp.element.createElement(ToggleControl, {
+                            checked: target,
+                            label: __('Open Link in new Tab'),
+                            onChange: function onChange(value) {
+                                return setAttributes({ target: value });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(ToggleControl, {
+                        label: __('background Text'),
+                        checked: backgroundText,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ backgroundText: newValue ? 'premium-title-bg-text' : '' });
+                        }
+                    }),
+                    backgroundText && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(TextControl, {
+                            label: __("Text"),
+                            value: BackText,
+                            onChange: function onChange(value) {
+                                return setAttributes({ BackText: value });
+                            }
+                        }),
+                        wp.element.createElement(SelectControl, {
+                            label: __("Width"),
+                            value: textWidth,
+                            onChange: function onChange(newSelect) {
+                                return setAttributes({ textWidth: newSelect });
+                            },
+                            options: [{
+                                label: "Auto", value: 'auto'
+                            }, {
+                                label: "Full Width", value: '100%'
+                            }]
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_size_units__["a" /* default */], {
+                            activeUnit: horizontalU,
+                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                                return setAttributes({ horizontalU: newValue });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __('Horizontal Offset'),
+                            value: horizontalText,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ horizontalText: newValue });
+                            },
+                            min: -500,
+                            max: 500,
+                            step: 1
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_premium_size_units__["a" /* default */], {
+                            activeUnit: verticalU,
+                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                                return setAttributes({ verticalU: newValue });
+                            }
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __('Vertical Offset'),
+                            value: verticalText,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ verticalText: newValue });
+                            },
+                            min: -500,
+                            max: 500,
+                            step: 1
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __('Rotate (degrees)'),
+                            value: rotateText,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ rotateText: newValue });
+                            },
+                            min: 0,
+                            max: 360,
+                            step: 1
+                        })
+                    )
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Title Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: titleColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                titleColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    style === "style8" && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Shiny Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: shinyColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ shinyColor: newValue });
+                            }
+                        })
+                    ),
+                    style === "style9" && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Blur Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: blurColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ blurColor: newValue });
+                            }
+                        })
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
+                        fontSize: { value: titlefontSize, label: __("titlefontSize") },
+                        fontSizeMobile: { value: titlefontSizeMobile, label: __("titlefontSizeMobile") },
+                        fontSizeTablet: { value: titlefontSizeTablet, label: __("titlefontSizeTablet") },
+                        weight: titleWeight,
+                        style: titleStyle,
+                        spacing: titleLetter,
+                        upper: titleUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ titleWeight: newWeight || 600 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ titleStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ titleLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ titleUpper: check });
+                        },
+                        onResetClick: function onResetClick() {
+                            return onResetClickTitle([titleWeight, titlefontSizeType, titlefontSize, titlefontSizeMobile, titlefontSizeTablet, titleStyle, titleLetter, titleUpper], [600, "px", "30", "30", "30", "normal", "0", false]);
+                        }
+                    }),
+                    style === 'style2' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Background Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: BGColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    BGColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    style === 'style3' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Background Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: BGColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    BGColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    style === 'style5' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Line Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: lineColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    lineColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    style === 'style6' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Line Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: lineColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    lineColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        }),
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Triangle Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: triangleColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    triangleColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    style === 'style7' ? wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Stripe Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: stripeColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    stripeColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ) : style != 'style3' && style !== "style8" && style !== "style9" && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                        borderType: titleborderType,
+                        top: titleBorderTop,
+                        right: titleBorderRight,
+                        bottom: titleBorderBottom,
+                        left: titleBorderLeft,
+                        borderColor: titleborderColor,
+                        borderRadius: titleborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ titleborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
+                            return setAttributes({
+                                titleBorderTop: top,
+                                titleBorderRight: right,
+                                titleBorderBottom: bottom,
+                                titleBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ titleborderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ titleborderRadius: newrRadius });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_text_shadow__["a" /* default */], {
+                        color: titleshadowColor,
+                        blur: titleshadowBlur,
+                        horizontal: titleshadowHorizontal,
+                        vertical: titleshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ titleshadowColor: newColor.hex });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ titleshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ titleshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ titleshadowVertical: newValue });
+                        },
+                        onResetClick: onResetClickTitleTextShadow
+                    }),
+                    style === "style9" && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(RangeControl, {
+                            label: __("Blur Shadow Value (px)"),
+                            value: blurShadow,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ blurShadow: newValue });
+                            }
+                        })
+                    ),
+                    style === "style8" || style === "style9" && wp.element.createElement(RangeControl, {
+                        label: __("Animation Delay"),
+                        value: animateDelay,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ animateDelay: newValue });
+                        }
+                    }),
+                    style === "style8" && wp.element.createElement(RangeControl, {
+                        label: __("Animation Duration"),
+                        value: animateduration,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ animateduration: newValue });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["all"],
+                        showUnits: true,
+                        selectedUnit: titleMarginType,
+                        marginTop: titleMarginT,
+                        marginRight: titleMarginR,
+                        marginBottom: titleMarginB,
+                        marginLeft: titleMarginL,
+                        marginTopTablet: titleMarginTTablet,
+                        marginRightTablet: titleMarginRTablet,
+                        marginBottomTablet: titleMarginBTablet,
+                        marginLeftTablet: titleMarginLTablet,
+                        marginTopMobile: titleMarginTMobile,
+                        marginRightMobile: titleMarginRMobile,
+                        marginBottomMobile: titleMarginBMobile,
+                        marginLeftMobile: titleMarginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titleMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titleMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ titleMarginLMobile: newValue });
+                            }
+                        },
+
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return setAttributes({ titleMarginType: newvalue });
+                        }
+
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Padding__["a" /* default */], {
+                        paddingTop: titlePaddingT,
+                        paddingRight: titlePaddingR,
+                        paddingBottom: titlePaddingB,
+                        paddingLeft: titlePaddingL,
+                        paddingTopTablet: titlePaddingTTablet,
+                        paddingRightTablet: titlePaddingRTablet,
+                        paddingBottomTablet: titlePaddingBTablet,
+                        paddingLeftTablet: titlePaddingLTablet,
+                        paddingTopMobile: titlePaddingTMobile,
+                        paddingRightMobile: titlePaddingRMobile,
+                        paddingBottomMobile: titlePaddingBMobile,
+                        paddingLeftMobile: titlePaddingLMobile,
+
+                        showUnits: true,
+                        selectedUnit: titlePaddingType,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return setAttributes({ titlePaddingType: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingLMobile: newValue });
+                            }
+                        }
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __('Stroke'),
+                        checked: stroke,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ stroke: newValue });
+                        }
+                    }),
+                    stroke && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __('Stroke Color')
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: strokeColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ strokeColor: newValue });
+                            },
+                            allowReset: true
+                        }),
+                        wp.element.createElement(RangeControl, {
+                            label: __('Stroke Full Width'),
+                            value: strokeFull,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ strokeFull: newValue });
+                            },
+                            min: 0,
+                            max: 100,
+                            step: 1
+                        })
+                    )
+                ),
+                iconValue && wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Icon Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    iconType === 'icon' && wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            __("Color")
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: iconColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    iconColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_premium_range_responsive__["a" /* default */], {
+                        setAttributes: setAttributes,
+                        rangeType: { value: iconSizeType, label: __("iconSizeType") },
+                        range: { value: iconSize, label: __("iconSize") },
+                        rangeMobile: { value: iconSizeMobile, label: __("iconSizeMobile") },
+                        rangeTablet: { value: iconSizeTablet, label: __("iconSizeTablet") },
+                        rangeLabel: __("Size"),
+                        min: 1,
+                        max: 100
+                    }),
+                    wp.element.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    wp.element.createElement(ColorPalette, {
+                        value: iconBGColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({
+                                iconBGColor: newValue
+                            });
+                        },
+                        allowReset: true
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+                        borderType: iconborderType,
+                        top: iconBorderTop,
+                        right: iconBorderRight,
+                        bottom: iconBorderBottom,
+                        left: iconBorderLeft,
+                        borderColor: iconborderColor,
+                        borderRadius: iconborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return setAttributes({ iconborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref2) {
+                            var top = _ref2.top,
+                                right = _ref2.right,
+                                bottom = _ref2.bottom,
+                                left = _ref2.left;
+                            return setAttributes({
+                                iconBorderTop: top,
+                                iconBorderRight: right,
+                                iconBorderBottom: bottom,
+                                iconBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return setAttributes({ iconborderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return setAttributes({ iconborderRadius: newrRadius });
+                        }
+                    }),
+                    iconType === 'icon' && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_text_shadow__["a" /* default */], {
+                        color: iconshadowColor,
+                        blur: iconshadowBlur,
+                        horizontal: iconshadowHorizontal,
+                        vertical: iconshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ iconshadowColor: newColor.hex });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ iconshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ iconshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ iconshadowVertical: newValue });
+                        },
+                        onResetClick: onResetClickIconTextShadow
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Premium_Responsive_Padding__["a" /* default */], {
+                        paddingTop: iconPaddingT,
+                        paddingRight: iconPaddingR,
+                        paddingBottom: iconPaddingB,
+                        paddingLeft: iconPaddingL,
+                        paddingTopTablet: iconPaddingTTablet,
+                        paddingRightTablet: iconPaddingRTablet,
+                        paddingBottomTablet: iconPaddingBTablet,
+                        paddingLeftTablet: iconPaddingLTablet,
+                        paddingTopMobile: iconPaddingTMobile,
+                        paddingRightMobile: iconPaddingRMobile,
+                        paddingBottomMobile: iconPaddingBMobile,
+                        paddingLeftMobile: iconPaddingLMobile,
+
+                        showUnits: true,
+                        selectedUnit: iconPaddingType,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return setAttributes({ iconPaddingType: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ iconPaddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ iconPaddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ iconPaddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ iconPaddingLMobile: newValue });
+                            }
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Premium_Responsive_Margin__["a" /* default */], {
+                        directions: ["all"],
+                        showUnits: true,
+                        selectedUnit: iconSpacingType,
+                        marginTop: iconSpacingT,
+                        marginRight: iconSpacingR,
+                        marginBottom: iconSpacingB,
+                        marginLeft: iconSpacingL,
+                        marginTopTablet: iconSpacingTTablet,
+                        marginRightTablet: iconSpacingRTablet,
+                        marginBottomTablet: iconSpacingBTablet,
+                        marginLeftTablet: iconSpacingLTablet,
+                        marginTopMobile: iconSpacingTMobile,
+                        marginRightMobile: iconSpacingRMobile,
+                        marginBottomMobile: iconSpacingBMobile,
+                        marginLeftMobile: iconSpacingLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconSpacingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconSpacingTTablet: newValue });
+                            } else {
+                                setAttributes({ iconSpacingTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconSpacingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconSpacingRTablet: newValue });
+                            } else {
+                                setAttributes({ iconSpacingRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconSpacingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconSpacingBTablet: newValue });
+                            } else {
+                                setAttributes({ iconSpacingBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconSpacingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconSpacingLTablet: newValue });
+                            } else {
+                                setAttributes({ iconSpacingLMobile: newValue });
+                            }
+                        },
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return setAttributes({ iconSpacingType: newvalue });
+                        }
+
+                    })
+                ),
+                backgroundText && wp.element.createElement(
+                    PanelBody,
+                    {
+                        title: __("Background Text"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    wp.element.createElement(
+                        Fragment,
+                        null,
+                        wp.element.createElement(
+                            "p",
+                            null,
+                            " ",
+                            __('Color')
+                        ),
+                        wp.element.createElement(ColorPalette, {
+                            value: textBackColor,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({
+                                    textBackColor: newValue
+                                });
+                            },
+                            allowReset: true
+                        })
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], {
+                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+                        setAttributes: setAttributes,
+                        fontSizeType: { value: textBackfontSizeType, label: __("textBackfontSizeType") },
+                        fontSize: { value: textBackfontSize, label: __("textBackfontSize") },
+                        fontSizeMobile: { value: textBackfontSizeMobile, label: __("textBackfontSizeMobile") },
+                        fontSizeTablet: { value: textBackfontSizeTablet, label: __("textBackfontSizeTablet") },
+                        weight: textBackWeight,
+                        style: textBackStyle,
+                        spacing: textBackLetter,
+                        upper: textBackUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return setAttributes({ textBackWeight: newWeight || 600 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return setAttributes({ textBackStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return setAttributes({ textBackLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return setAttributes({ textBackUpper: check });
+                        }
+                    }),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_text_shadow__["a" /* default */], {
+                        color: textBackshadowColor,
+                        blur: textBackshadowBlur,
+                        horizontal: textBackshadowHorizontal,
+                        vertical: textBackshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return setAttributes({ textBackshadowColor: newColor.hex });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return setAttributes({ textBackshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return setAttributes({ textBackshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return setAttributes({ textBackshadowVertical: newValue });
+                        }
+
+                    }),
+                    wp.element.createElement("hr", null),
+                    wp.element.createElement(SelectControl, {
+                        label: __("Blend Mode "),
+                        value: blend,
+                        onChange: function onChange(newSelect) {
+                            return setAttributes({ blend: newSelect });
+                        },
+                        options: BLEND
+                    }),
+                    wp.element.createElement(RangeControl, {
+                        label: __("z-index"),
+                        value: zIndex,
+                        min: "1",
+                        max: "100",
+                        onChange: function onChange(value) {
+                            return setAttributes({ zIndex: value });
+                        }
+                    })
+                ),
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_responsive_tabs__["a" /* default */], {
+                    Desktop: hideDesktop,
+                    Tablet: hideTablet,
+                    Mobile: hideMobile,
+                    onChangeDesktop: function onChangeDesktop(value) {
+                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
+                    },
+                    onChangeTablet: function onChangeTablet(value) {
+                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
+                    },
+                    onChangeMobile: function onChangeMobile(value) {
+                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
+                    }
+                })
+            ), wp.element.createElement(
+                "div",
+                {
+                    id: "premium-title-" + block_id,
+                    className: "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile, style: {
+                        textAlign: align
+                    } },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-title  " + backgroundText, style: {
+                            textAlign: align
+                        }, "data-backgroundText": BackText },
+                    wp.element.createElement(
+                        "div",
+                        { className: style + " " + style + "-" + align },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
+                            style === 'style7' ? wp.element.createElement(
+                                Fragment,
+                                null,
+                                iconPosition != 'top' && iconValue && wp.element.createElement(
+                                    "span",
+                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                    wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                ),
+                                !iconValue && wp.element.createElement(
+                                    "span",
+                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                    wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                ),
+                                wp.element.createElement(
+                                    "div",
+                                    { className: "premium-title-style7-inner-title" },
+                                    iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                                    iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                    iconValue && iconType == 'lottie' && wp.element.createElement(
+                                        "div",
+                                        { className: "premium-title-icon  premium-lottie-animation premium-lottie-animation-" + block_id },
+                                        " "
+                                    ),
+                                    iconValue && iconPosition === 'top' && wp.element.createElement(
+                                        "span",
+                                        { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                        wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                    ),
+                                    wp.element.createElement(RichText, {
+                                        tagName: titleTag.toLowerCase(),
+                                        className: "premium-title-text-title",
+                                        value: title
+
+                                    })
+                                )
+                            ) : style === "style9" ? wp.element.createElement(
+                                Fragment,
+                                null,
+                                iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                                iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                iconValue && iconType == 'lottie' && wp.element.createElement(
+                                    "div",
+                                    { className: "premium-title-icon premium-lottie-animation premium-lottie-animation-" + block_id },
+                                    this.initLottie()
+                                ),
+                                wp.element.createElement(
+                                    "span",
+                                    { className: "premium-letters-container" },
+                                    styleContainer
+                                )
+                            ) : wp.element.createElement(
+                                Fragment,
+                                null,
+                                iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
+                                iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                iconValue && iconType == 'lottie' && wp.element.createElement(
+                                    "div",
+                                    { className: "premium-title-icon premium-lottie-animation premium-lottie-animation-" + block_id },
+                                    this.initLottie()
+                                ),
+                                wp.element.createElement(RichText, {
+                                    tagName: titleTag.toLowerCase(),
+                                    className: "premium-title-text-title",
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ title: newValue });
+                                    },
+                                    value: title
+
+                                })
+                            ),
+                            link && wp.element.createElement("a", { target: target ? "_blank" : "_self", href: "" + url })
+                        )
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (edit);
+
+/***/ }),
+/* 339 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(42);
+
+
+
+function styling(props) {
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        classMigrate = _props$attributes.classMigrate,
+        stripeWidth = _props$attributes.stripeWidth,
+        stripeHeight = _props$attributes.stripeHeight,
+        stripeTopSpacing = _props$attributes.stripeTopSpacing,
+        stripeBottomSpacing = _props$attributes.stripeBottomSpacing,
+        titleColor = _props$attributes.titleColor,
+        titleWeight = _props$attributes.titleWeight,
+        titleLetter = _props$attributes.titleLetter,
+        titleUpper = _props$attributes.titleUpper,
+        titleStyle = _props$attributes.titleStyle,
+        titlefontSize = _props$attributes.titlefontSize,
+        titlefontSizeMobile = _props$attributes.titlefontSizeMobile,
+        titlefontSizeTablet = _props$attributes.titlefontSizeTablet,
+        titlefontSizeType = _props$attributes.titlefontSizeType,
+        titleshadowBlur = _props$attributes.titleshadowBlur,
+        titleshadowColor = _props$attributes.titleshadowColor,
+        titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
+        titleshadowVertical = _props$attributes.titleshadowVertical,
+        stripeColor = _props$attributes.stripeColor,
+        titleborderType = _props$attributes.titleborderType,
+        titleborderRadius = _props$attributes.titleborderRadius,
+        titleborderWidth = _props$attributes.titleborderWidth,
+        titleborderColor = _props$attributes.titleborderColor,
+        BGColor = _props$attributes.BGColor,
+        lineColor = _props$attributes.lineColor,
+        triangleColor = _props$attributes.triangleColor,
+        iconColor = _props$attributes.iconColor,
+        iconSize = _props$attributes.iconSize,
+        iconSizeType = _props$attributes.iconSizeType,
+        iconSizeTablet = _props$attributes.iconSizeTablet,
+        iconSizeMobile = _props$attributes.iconSizeMobile,
+        iconborderRadius = _props$attributes.iconborderRadius,
+        iconborderColor = _props$attributes.iconborderColor,
+        iconshadowBlur = _props$attributes.iconshadowBlur,
+        iconshadowColor = _props$attributes.iconshadowColor,
+        iconshadowHorizontal = _props$attributes.iconshadowHorizontal,
+        iconshadowVertical = _props$attributes.iconshadowVertical,
+        iconBGColor = _props$attributes.iconBGColor,
+        titlePaddingT = _props$attributes.titlePaddingT,
+        titlePaddingR = _props$attributes.titlePaddingR,
+        titlePaddingB = _props$attributes.titlePaddingB,
+        titlePaddingL = _props$attributes.titlePaddingL,
+        titlePaddingTTablet = _props$attributes.titlePaddingTTablet,
+        titlePaddingRTablet = _props$attributes.titlePaddingRTablet,
+        titlePaddingBTablet = _props$attributes.titlePaddingBTablet,
+        titlePaddingLTablet = _props$attributes.titlePaddingLTablet,
+        titlePaddingTMobile = _props$attributes.titlePaddingTMobile,
+        titlePaddingRMobile = _props$attributes.titlePaddingRMobile,
+        titlePaddingBMobile = _props$attributes.titlePaddingBMobile,
+        titlePaddingLMobile = _props$attributes.titlePaddingLMobile,
+        titlePaddingType = _props$attributes.titlePaddingType,
+        titleMarginT = _props$attributes.titleMarginT,
+        titleMarginR = _props$attributes.titleMarginR,
+        titleMarginB = _props$attributes.titleMarginB,
+        titleMarginL = _props$attributes.titleMarginL,
+        titleMarginTTablet = _props$attributes.titleMarginTTablet,
+        titleMarginRTablet = _props$attributes.titleMarginRTablet,
+        titleMarginBTablet = _props$attributes.titleMarginBTablet,
+        titleMarginLTablet = _props$attributes.titleMarginLTablet,
+        titleMarginTMobile = _props$attributes.titleMarginTMobile,
+        titleMarginRMobile = _props$attributes.titleMarginRMobile,
+        titleMarginBMobile = _props$attributes.titleMarginBMobile,
+        titleMarginLMobile = _props$attributes.titleMarginLMobile,
+        titleMarginType = _props$attributes.titleMarginType,
+        iconPaddingT = _props$attributes.iconPaddingT,
+        iconPaddingR = _props$attributes.iconPaddingR,
+        iconPaddingL = _props$attributes.iconPaddingL,
+        iconPaddingB = _props$attributes.iconPaddingB,
+        iconPaddingTTablet = _props$attributes.iconPaddingTTablet,
+        iconPaddingRTablet = _props$attributes.iconPaddingRTablet,
+        iconPaddingLTablet = _props$attributes.iconPaddingLTablet,
+        iconPaddingBTablet = _props$attributes.iconPaddingBTablet,
+        iconPaddingTMobile = _props$attributes.iconPaddingTMobile,
+        iconPaddingRMobile = _props$attributes.iconPaddingRMobile,
+        iconPaddingLMobile = _props$attributes.iconPaddingLMobile,
+        iconPaddingBMobile = _props$attributes.iconPaddingBMobile,
+        iconPaddingType = _props$attributes.iconPaddingType,
+        iconSpacingT = _props$attributes.iconSpacingT,
+        iconSpacingR = _props$attributes.iconSpacingR,
+        iconSpacingB = _props$attributes.iconSpacingB,
+        iconSpacingL = _props$attributes.iconSpacingL,
+        iconSpacingTTablet = _props$attributes.iconSpacingTTablet,
+        iconSpacingRTablet = _props$attributes.iconSpacingRTablet,
+        iconSpacingBTablet = _props$attributes.iconSpacingBTablet,
+        iconSpacingLTablet = _props$attributes.iconSpacingLTablet,
+        iconSpacingTMobile = _props$attributes.iconSpacingTMobile,
+        iconSpacingRMobile = _props$attributes.iconSpacingRMobile,
+        iconSpacingBMobile = _props$attributes.iconSpacingBMobile,
+        iconSpacingLMobile = _props$attributes.iconSpacingLMobile,
+        iconSpacingType = _props$attributes.iconSpacingType,
+        strokeColor = _props$attributes.strokeColor,
+        strokeFull = _props$attributes.strokeFull,
+        BackText = _props$attributes.BackText,
+        textWidth = _props$attributes.textWidth,
+        textBackColor = _props$attributes.textBackColor,
+        textBackfontSizeType = _props$attributes.textBackfontSizeType,
+        textBackfontSize = _props$attributes.textBackfontSize,
+        textBackfontSizeMobile = _props$attributes.textBackfontSizeMobile,
+        textBackfontSizeTablet = _props$attributes.textBackfontSizeTablet,
+        titleBorderLeft = _props$attributes.titleBorderLeft,
+        titleBorderTop = _props$attributes.titleBorderTop,
+        titleBorderRight = _props$attributes.titleBorderRight,
+        titleBorderBottom = _props$attributes.titleBorderBottom,
+        iconborderType = _props$attributes.iconborderType,
+        iconBorderTop = _props$attributes.iconBorderTop,
+        iconBorderRight = _props$attributes.iconBorderRight,
+        iconBorderBottom = _props$attributes.iconBorderBottom,
+        iconBorderLeft = _props$attributes.iconBorderLeft,
+        textBackWeight = _props$attributes.textBackWeight,
+        textBackStyle = _props$attributes.textBackStyle,
+        textBackLetter = _props$attributes.textBackLetter,
+        textBackUpper = _props$attributes.textBackUpper,
+        textBackshadowColor = _props$attributes.textBackshadowColor,
+        textBackshadowBlur = _props$attributes.textBackshadowBlur,
+        textBackshadowHorizontal = _props$attributes.textBackshadowHorizontal,
+        textBackshadowVertical = _props$attributes.textBackshadowVertical,
+        horizontalText = _props$attributes.horizontalText,
+        verticalText = _props$attributes.verticalText,
+        blend = _props$attributes.blend,
+        zIndex = _props$attributes.zIndex,
+        rotateText = _props$attributes.rotateText,
+        verticalU = _props$attributes.verticalU,
+        horizontalU = _props$attributes.horizontalU;
+
+
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
+
+    selectors = {
+
+        " .premium-title-bg-text:before": {
+            "content": BackText,
+            "position": "absolute",
+            "top": '' + verticalText + verticalU,
+            "left": '' + horizontalText + horizontalU,
+            "color": textBackColor,
+            "width": textWidth,
+            "transform": 'rotate(' + rotateText + 'deg)',
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(textBackfontSize, textBackfontSizeType),
+            "font-weight": textBackWeight,
+            "font-style": textBackStyle,
+            "text-transform": textBackUpper ? "uppercase" : "none",
+            "letter-spacing": textBackLetter + 'px',
+            "text-shadow": textBackshadowHorizontal + 'px ' + textBackshadowVertical + 'px ' + textBackshadowBlur + 'px ' + textBackshadowColor,
+            "mix-blend-mode": blend,
+            "z-index": zIndex
+
+        },
+        " .premium-title-style7-stripe__wrap": {
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeTopSpacing, 'px'),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeBottomSpacing, 'px')
+        },
+        " .premium-title-style7-stripe-span": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeWidth, 'px'),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeHeight, 'px'),
+            "background-color": stripeColor
+        },
+        " .premium-title-header": {
+            "color": titleColor + "!important",
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
+            "letter-spacing": titleLetter + "px",
+            "text-transform": titleUpper ? "uppercase" : "none" + "!important",
+            "font-style": titleStyle + "!important",
+            "font-weight": titleWeight + "!important",
+            "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
+        },
+        " .premium-title .style1 .premium-title-header": {
+            "border-left": titleBorderLeft >= '1' ? titleBorderLeft + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
+            "border-style": titleborderType,
+            "border-width": titleBorderTop + 'px ' + titleBorderRight + 'px  ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px',
+            "border-color": titleborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
+        },
+        " .premium-title-style2__wrap": {
+            "background-color": BGColor
+        },
+        " .premium-title-style3__wrap": {
+            "background-color": BGColor
+        },
+        " .premium-title .style2": {
+            "border-bottom": titleBorderBottom >= '1' ? titleBorderBottom + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
+            "border-style": titleborderType,
+            "border-width": titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px',
+            "border-color": titleborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
+        },
+        " .premium-title .style4": {
+            "border-bottom": titleBorderBottom >= '1' ? titleBorderBottom + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
+            "border-style": titleborderType,
+            "border-width": titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px',
+            "border-color": titleborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
+        },
+        " .premium-title .style5": {
+            "border-bottom": titleBorderBottom >= '1' ? titleBorderBottom + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
+            "border-style": titleborderType,
+            "border-width": titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px',
+            "border-color": titleborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
+        },
+        " .premium-title .style6": {
+            "border-bottom": titleBorderBottom >= '1' ? titleBorderBottom + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
+            "border-style": titleborderType,
+            "border-width": titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px',
+            "border-color": titleborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
+        },
+        " .premium-title-style5__wrap": {
+            "border-bottom": '2px solid ' + lineColor
+        },
+        " .premium-title-style6__wrap": {
+            "border-bottom": '2px solid ' + lineColor
+        },
+        " .premium-title-style6__wrap:before": {
+            "border-bottom-color": triangleColor
+        },
+        " .premium-title-icon": {
+            "color": iconColor,
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType),
+            "border-style": iconborderType,
+            "border-width": iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px',
+            "border-color": iconborderColor,
+            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderRadius, "px"),
+            "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor,
+            "background-color": iconBGColor,
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingT, iconPaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingR, iconPaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingB, iconPaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingL, iconPaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingT, iconSpacingType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingR, iconSpacingType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingB, iconSpacingType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingL, iconSpacingType)
+        },
+        ' .premium-lottie-animation': {
+            "width": '' + iconSize + iconSizeType + ' !important',
+            "height": '' + iconSize + iconSizeType + ' !important'
+        },
+        " .premium-title-text-title": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingT, titlePaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingR, titlePaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingB, titlePaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingL, titlePaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginT, titleMarginType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginR, titleMarginType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginB, titleMarginType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginL, titleMarginType),
+            "-webkit-text-stroke-color": strokeColor,
+            "-webkit-text-stroke-width": strokeFull + 'px'
+
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType)
+        }
+    };
+
+    mobile_selectors = {
+        " .premium-title-bg-text:before": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(textBackfontSizeMobile, textBackfontSizeType)
+        },
+        " .premium-title-header": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
+        },
+        " .premium-title-icon": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTMobile, iconPaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingRMobile, iconPaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingBMobile, iconPaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingLMobile, iconPaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingTMobile, iconSpacingType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingRMobile, iconSpacingType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingBMobile, iconSpacingType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingLMobile, iconSpacingType)
+        },
+        " .premium-title-text-title": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingTMobile, titlePaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingRMobile, titlePaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingBMobile, titlePaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingLMobile, titlePaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTMobile, titleMarginType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginRMobile, titleMarginType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginBMobile, titleMarginType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginLMobile, titleMarginType)
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType)
+        },
+        ' .premium-lottie-animation': {
+            "width": '' + iconSizeMobile + iconSizeType + ' !important',
+            "height": '' + iconSizeMobile + iconSizeType + ' !important'
+        }
+
+    };
+
+    tablet_selectors = {
+        " .premium-title-bg-text:before": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(textBackfontSizeTablet, textBackfontSizeType)
+        },
+        " .premium-title-header": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
+        },
+        " .premium-title-icon": {
+            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTTablet, iconPaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingRTablet, iconPaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingBTablet, iconPaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingLTablet, iconPaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingTTablet, iconSpacingType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingRTablet, iconSpacingType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingBTablet, iconSpacingType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingLTablet, iconSpacingType)
+        },
+        " .premium-title-text-title": {
+            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingTTablet, titlePaddingType),
+            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingRTablet, titlePaddingType),
+            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingBTablet, titlePaddingType),
+            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingLTablet, titlePaddingType),
+            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTTablet, titleMarginType),
+            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginRTablet, titleMarginType),
+            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginBTablet, titleMarginType),
+            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginLTablet, titleMarginType)
+        },
+        " .premium-title-header img": {
+            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
+            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType)
+        },
+        ' .premium-lottie-animation': {
+            "width": '' + iconSizeTablet + iconSizeType + ' !important',
+            "height": '' + iconSizeTablet + iconSizeType + ' !important'
+        }
+    };
+
+    var styling_css = "";
+    var id = '#premium-title-' + block_id;
+    if (classMigrate) {
+        id = '.premium-block-' + block_id;
+    }
+
+    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(selectors, id);
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
+
+    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
+
+    return styling_css;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(10);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _stringify = __webpack_require__(341);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _extends2 = __webpack_require__(343);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(352);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(356);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(357);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(361);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(383);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(14);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _lottieWeb = __webpack_require__(391);
+
+var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var Lottie = function (_React$Component) {
+  (0, _inherits3.default)(Lottie, _React$Component);
+
+  function Lottie() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, Lottie);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
+      // The pause() method is for handling pausing by passing a prop isPaused
+      // This method is for handling the ability to pause by clicking on the animation
+      if (_this.anim.isPaused) {
+        _this.anim.play();
+      } else {
+        _this.anim.pause();
+      }
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
+  (0, _createClass3.default)(Lottie, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          options = _props.options,
+          playSegments = _props.playSegments,
+          goToAndPlay = _props.goToAndPlay,
+          goToAndStop = _props.goToAndStop,
+          eventListeners = _props.eventListeners;
+      var loop = options.loop,
+          autoplay = options.autoplay,
+          animationData = options.animationData,
+          rendererSettings = options.rendererSettings;
+
+      this.options = {
+        container: this.el,
+        renderer: 'svg',
+        loop: loop !== false,
+        autoplay: autoplay !== false,
+        playSegments: playSegments.segments !== null,
+        goToAndPlay: goToAndPlay.value !== null,
+        goToAndStop: goToAndStop.value !== null,
+        animationData: animationData,
+        rendererSettings: rendererSettings
+      };
+
+      this.options = (0, _extends3.default)({}, this.options, options);
+      this.anim = _lottieWeb2.default.loadAnimation(this.options);
+
+      // Immediately handle goTo's if necessary.
+      if (this.options.goToAndPlay) {
+        this.goToAndPlay();
+      }
+      if (this.options.goToAndStop) {
+        this.goToAndStop();
+      }
+      if (this.options.playSegments) {
+        this.playSegments();
+      }
+      this.registerEvents(eventListeners);
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate(nextProps /* , nextState */) {
+      /* Recreate the animation handle if the data is changed */
+      if (this.options.animationData !== nextProps.options.animationData) {
+        this.deRegisterEvents(this.props.eventListeners);
+        this.destroy();
+        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
+        this.anim = _lottieWeb2.default.loadAnimation(this.options);
+        this.registerEvents(nextProps.eventListeners);
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.isStopped) {
+        this.stop();
+      } else if (this.options.playSegments) {
+        this.playSegments();
+      } else {
+        this.play();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
+        this.goToAndPlay();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
+        this.goToAndStop();
+      }
+
+      this.pause();
+      this.setSpeed();
+      this.setDirection();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.deRegisterEvents(this.props.eventListeners);
+      this.destroy();
+      this.options.animationData = null;
+      this.anim = null;
+    }
+  }, {
+    key: 'setSpeed',
+    value: function setSpeed() {
+      this.anim.setSpeed(this.props.speed);
+    }
+  }, {
+    key: 'setDirection',
+    value: function setDirection() {
+      this.anim.setDirection(this.props.direction);
+    }
+  }, {
+    key: 'play',
+    value: function play() {
+      this.anim.play();
+    }
+  }, {
+    key: 'playSegments',
+    value: function playSegments() {
+      var _props$playSegments = this.props.playSegments,
+          segments = _props$playSegments.segments,
+          forceFlag = _props$playSegments.forceFlag;
+
+      this.anim.playSegments(segments, forceFlag);
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      this.anim.stop();
+    }
+  }, {
+    key: 'pause',
+    value: function pause() {
+      if (this.props.isPaused && !this.anim.isPaused) {
+        this.anim.pause();
+      } else if (!this.props.isPaused && this.anim.isPaused) {
+        this.anim.pause();
+      }
+    }
+  }, {
+    key: 'goToAndPlay',
+    value: function goToAndPlay() {
+      console.log('#goToAndPlay ', this.props.goToAndPlay);
+      var _props$goToAndPlay = this.props.goToAndPlay,
+          value = _props$goToAndPlay.value,
+          isFrame = _props$goToAndPlay.isFrame;
+
+      this.anim.goToAndPlay(value, isFrame);
+    }
+  }, {
+    key: 'goToAndStop',
+    value: function goToAndStop() {
+      var _props$goToAndStop = this.props.goToAndStop,
+          value = _props$goToAndStop.value,
+          isFrame = _props$goToAndStop.isFrame;
+
+      this.anim.goToAndStop(value, isFrame);
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      this.anim.destroy();
+    }
+  }, {
+    key: 'registerEvents',
+    value: function registerEvents(eventListeners) {
+      var _this2 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'deRegisterEvents',
+    value: function deRegisterEvents(eventListeners) {
+      var _this3 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var _props2 = this.props,
+          width = _props2.width,
+          height = _props2.height,
+          ariaRole = _props2.ariaRole,
+          ariaLabel = _props2.ariaLabel,
+          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
+          title = _props2.title;
+
+      var getSize = function getSize(initial) {
+        var size = void 0;
+
+        if (typeof initial === 'number') {
+          size = initial + 'px';
+        } else {
+          size = initial || '100%';
+        }
+
+        return size;
+      };
+
+      var lottieStyles = (0, _extends3.default)({
+        width: getSize(width),
+        height: getSize(height),
+        overflow: 'hidden',
+        margin: '0 auto',
+        outline: 'none'
+      }, this.props.style);
+
+      var onClickHandler = isClickToPauseDisabled ? function () {
+        return null;
+      } : this.handleClickToPause;
+
+      return (
+        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        _react2.default.createElement('div', {
+          ref: function ref(c) {
+            _this4.el = c;
+          },
+          style: lottieStyles,
+          onClick: onClickHandler,
+          title: title,
+          role: ariaRole,
+          'aria-label': ariaLabel,
+          tabIndex: '0'
+        })
+      );
+    }
+  }]);
+  return Lottie;
+}(_react2.default.Component);
+
+exports.default = Lottie;
+
+Lottie.propTypes = {
+  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
+  options: _propTypes2.default.object.isRequired,
+  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  isStopped: _propTypes2.default.bool,
+  isPaused: _propTypes2.default.bool,
+  goToAndPlay: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  goToAndStop: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  speed: _propTypes2.default.number,
+  playSegments: _propTypes2.default.shape({
+    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
+    forceFlag: _propTypes2.default.bool
+  }),
+  direction: _propTypes2.default.number,
+  ariaRole: _propTypes2.default.string,
+  ariaLabel: _propTypes2.default.string,
+  isClickToPauseDisabled: _propTypes2.default.bool,
+  title: _propTypes2.default.string,
+  style: _propTypes2.default.string
+};
+
+Lottie.defaultProps = {
+  eventListeners: [],
+  isStopped: false,
+  isPaused: false,
+  goToAndPlay: {
+    value: null,
+    isFrame: false
+  },
+  goToAndStop: {
+    value: null,
+    isFrame: false
+  },
+  playSegments: {
+    segments: null,
+    forceFlag: false
+  },
+  speed: 1,
+  ariaRole: 'button',
+  ariaLabel: 'animation',
+  isClickToPauseDisabled: false,
+  title: ''
+};
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(342), __esModule: true };
+
+/***/ }),
+/* 342 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(11);
 var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
 module.exports = function stringify(it) {
   // eslint-disable-line no-unused-vars
@@ -70594,7 +72721,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70602,7 +72729,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(342);
+var _assign = __webpack_require__(344);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -70625,29 +72752,29 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 342 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(343), __esModule: true };
-
-/***/ }),
-/* 343 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(344);
-module.exports = __webpack_require__(10).Object.assign;
-
-/***/ }),
 /* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(345), __esModule: true };
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(346);
+module.exports = __webpack_require__(11).Object.assign;
+
+/***/ }),
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(22);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(346) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(348) });
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -70656,7 +72783,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70667,7 +72794,7 @@ var getKeys = __webpack_require__(58);
 var gOPS = __webpack_require__(80);
 var pIE = __webpack_require__(61);
 var toObject = __webpack_require__(81);
-var IObject = __webpack_require__(121);
+var IObject = __webpack_require__(120);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -70702,14 +72829,14 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 } : $assign;
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(32);
-var toLength = __webpack_require__(348);
-var toAbsoluteIndex = __webpack_require__(349);
+var toLength = __webpack_require__(350);
+var toAbsoluteIndex = __webpack_require__(351);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -70732,7 +72859,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
@@ -70743,7 +72870,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(76);
@@ -70755,39 +72882,39 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 350 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(351), __esModule: true };
-
-/***/ }),
-/* 351 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(352);
-module.exports = __webpack_require__(10).Object.getPrototypeOf;
-
-/***/ }),
 /* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(353), __esModule: true };
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(354);
+module.exports = __webpack_require__(11).Object.getPrototypeOf;
+
+/***/ }),
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(81);
-var $getPrototypeOf = __webpack_require__(123);
+var $getPrototypeOf = __webpack_require__(122);
 
-__webpack_require__(353)('getPrototypeOf', function () {
+__webpack_require__(355)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(22);
-var core = __webpack_require__(10);
+var core = __webpack_require__(11);
 var fails = __webpack_require__(31);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
@@ -70799,7 +72926,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70814,7 +72941,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70822,7 +72949,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(356);
+var _defineProperty = __webpack_require__(358);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -70849,23 +72976,23 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(357), __esModule: true };
+module.exports = { "default": __webpack_require__(359), __esModule: true };
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(358);
-var $Object = __webpack_require__(10).Object;
+__webpack_require__(360);
+var $Object = __webpack_require__(11).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(22);
@@ -70873,7 +73000,7 @@ var $export = __webpack_require__(22);
 $export($export.S + $export.F * !__webpack_require__(24), 'Object', { defineProperty: __webpack_require__(23).f });
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70881,7 +73008,7 @@ $export($export.S + $export.F * !__webpack_require__(24), 'Object', { defineProp
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(124);
+var _typeof2 = __webpack_require__(123);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -70898,30 +73025,30 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(361), __esModule: true };
+module.exports = { "default": __webpack_require__(363), __esModule: true };
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(362);
-__webpack_require__(367);
+__webpack_require__(364);
+__webpack_require__(369);
 module.exports = __webpack_require__(85).f('iterator');
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(363)(true);
+var $at = __webpack_require__(365)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(125)(String, 'String', function (iterated) {
+__webpack_require__(124)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -70936,7 +73063,7 @@ __webpack_require__(125)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(76);
@@ -70956,7 +73083,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 364 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70978,7 +73105,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 365 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(23);
@@ -70997,18 +73124,18 @@ module.exports = __webpack_require__(24) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 366 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(20).document;
+var document = __webpack_require__(19).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 367 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(368);
-var global = __webpack_require__(20);
+__webpack_require__(370);
+var global = __webpack_require__(19);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(82);
 var TO_STRING_TAG = __webpack_require__(33)('toStringTag');
@@ -71024,14 +73151,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(369);
-var step = __webpack_require__(370);
+var addToUnscopables = __webpack_require__(371);
+var step = __webpack_require__(372);
 var Iterators = __webpack_require__(82);
 var toIObject = __webpack_require__(32);
 
@@ -71039,7 +73166,7 @@ var toIObject = __webpack_require__(32);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(125)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(124)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -71065,13 +73192,13 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports) {
 
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -71079,23 +73206,23 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 371 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(372), __esModule: true };
-
-/***/ }),
-/* 372 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(373);
-__webpack_require__(378);
-__webpack_require__(379);
-__webpack_require__(380);
-module.exports = __webpack_require__(10).Symbol;
-
-/***/ }),
 /* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(374), __esModule: true };
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(375);
+__webpack_require__(380);
+__webpack_require__(381);
+__webpack_require__(382);
+module.exports = __webpack_require__(11).Symbol;
+
+/***/ }),
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71104,12 +73231,12 @@ module.exports = __webpack_require__(10).Symbol;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(19);
 var has = __webpack_require__(25);
 var DESCRIPTORS = __webpack_require__(24);
 var $export = __webpack_require__(22);
-var redefine = __webpack_require__(126);
-var META = __webpack_require__(374).KEY;
+var redefine = __webpack_require__(125);
+var META = __webpack_require__(376).KEY;
 var $fails = __webpack_require__(31);
 var shared = __webpack_require__(78);
 var setToStringTag = __webpack_require__(84);
@@ -71117,16 +73244,16 @@ var uid = __webpack_require__(60);
 var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(85);
 var wksDefine = __webpack_require__(86);
-var enumKeys = __webpack_require__(375);
-var isArray = __webpack_require__(376);
+var enumKeys = __webpack_require__(377);
+var isArray = __webpack_require__(378);
 var anObject = __webpack_require__(44);
 var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(74);
 var createDesc = __webpack_require__(57);
 var _create = __webpack_require__(83);
-var gOPNExt = __webpack_require__(377);
-var $GOPD = __webpack_require__(128);
+var gOPNExt = __webpack_require__(379);
+var $GOPD = __webpack_require__(127);
 var $DP = __webpack_require__(23);
 var $keys = __webpack_require__(58);
 var gOPD = $GOPD.f;
@@ -71254,7 +73381,7 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(127).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(126).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(61).f = $propertyIsEnumerable;
   __webpack_require__(80).f = $getOwnPropertySymbols;
 
@@ -71345,7 +73472,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -71405,7 +73532,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -71427,24 +73554,24 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(122);
+var cof = __webpack_require__(121);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(32);
-var gOPN = __webpack_require__(127).f;
+var gOPN = __webpack_require__(126).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -71462,25 +73589,25 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(86)('asyncIterator');
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(86)('observable');
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71488,15 +73615,15 @@ __webpack_require__(86)('observable');
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(382);
+var _setPrototypeOf = __webpack_require__(384);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(386);
+var _create = __webpack_require__(388);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(124);
+var _typeof2 = __webpack_require__(123);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -71521,28 +73648,28 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 382 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(383), __esModule: true };
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(384);
-module.exports = __webpack_require__(10).Object.setPrototypeOf;
-
-/***/ }),
 /* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(385), __esModule: true };
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(386);
+module.exports = __webpack_require__(11).Object.setPrototypeOf;
+
+/***/ }),
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(22);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(385).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(387).set });
 
 /***/ }),
-/* 385 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -71557,7 +73684,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(117)(Function.call, __webpack_require__(128).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(116)(Function.call, __webpack_require__(127).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -71573,23 +73700,23 @@ module.exports = {
 };
 
 /***/ }),
-/* 386 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(387), __esModule: true };
+module.exports = { "default": __webpack_require__(389), __esModule: true };
 
 /***/ }),
-/* 387 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(388);
-var $Object = __webpack_require__(10).Object;
+__webpack_require__(390);
+var $Object = __webpack_require__(11).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 388 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(22);
@@ -71597,7 +73724,7 @@ var $export = __webpack_require__(22);
 $export($export.S, 'Object', { create: __webpack_require__(83) });
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};typeof navigator!=="undefined"&&function(root,factory){if(true){!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(){return factory(root);}).call(exports, __webpack_require__, exports, module),
@@ -72187,1778 +74314,6 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 390 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styling__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_premium_media_upload__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_lottie_with_segments__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_lottie_with_segments___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_lottie_with_segments__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_premium_padding__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Premium_Responsive_Margin__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Premium_Responsive_Padding__ = __webpack_require__(393);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-var _wp$editor = wp.editor,
-    BlockControls = _wp$editor.BlockControls,
-    AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
-    TextControl = _wp$components.TextControl,
-    Toolbar = _wp$components.Toolbar,
-    ToggleControl = _wp$components.ToggleControl;
-
-var edit = function (_Component) {
-    _inherits(edit, _Component);
-
-    function edit() {
-        _classCallCheck(this, edit);
-
-        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
-
-        _this.state = {
-            lottieURl: ""
-        };
-        return _this;
-    }
-
-    _createClass(edit, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            // Assigning id in the attribute.
-            this.props.setAttributes({ block_id: this.props.clientId });
-            this.props.setAttributes({ classMigrate: true });
-            // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-title-" + this.props.clientId);
-            document.head.appendChild($style);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var _props = this.props,
-                attributes = _props.attributes,
-                setAttributes = _props.setAttributes,
-                isSelected = _props.isSelected;
-            var block_id = attributes.block_id,
-                align = attributes.align,
-                className = attributes.className,
-                style = attributes.style,
-                title = attributes.title,
-                iconValue = attributes.iconValue,
-                iconType = attributes.iconType,
-                icon = attributes.icon,
-                lottieURl = attributes.lottieURl,
-                loop = attributes.loop,
-                reversedir = attributes.reversedir,
-                iconPosition = attributes.iconPosition,
-                imageURL = attributes.imageURL,
-                imageID = attributes.imageID,
-                link = attributes.link,
-                url = attributes.url,
-                target = attributes.target,
-                iconAlign = attributes.iconAlign,
-                stripePosition = attributes.stripePosition,
-                stripeWidth = attributes.stripeWidth,
-                stripeHeight = attributes.stripeHeight,
-                stripeTopSpacing = attributes.stripeTopSpacing,
-                stripeBottomSpacing = attributes.stripeBottomSpacing,
-                titleColor = attributes.titleColor,
-                titleWeight = attributes.titleWeight,
-                titleLetter = attributes.titleLetter,
-                titleUpper = attributes.titleUpper,
-                titleStyle = attributes.titleStyle,
-                titlefontSize = attributes.titlefontSize,
-                titlefontSizeMobile = attributes.titlefontSizeMobile,
-                titlefontSizeTablet = attributes.titlefontSizeTablet,
-                titlefontSizeType = attributes.titlefontSizeType,
-                titleshadowBlur = attributes.titleshadowBlur,
-                titleshadowColor = attributes.titleshadowColor,
-                titleshadowHorizontal = attributes.titleshadowHorizontal,
-                titleshadowVertical = attributes.titleshadowVertical,
-                stripeColor = attributes.stripeColor,
-                titleborderType = attributes.titleborderType,
-                titleborderRadius = attributes.titleborderRadius,
-                titleBorderLeft = attributes.titleBorderLeft,
-                titleBorderTop = attributes.titleBorderTop,
-                titleBorderRight = attributes.titleBorderRight,
-                titleBorderBottom = attributes.titleBorderBottom,
-                titleborderColor = attributes.titleborderColor,
-                BGColor = attributes.BGColor,
-                lineColor = attributes.lineColor,
-                triangleColor = attributes.triangleColor,
-                stripeAlign = attributes.stripeAlign,
-                iconColor = attributes.iconColor,
-                iconSize = attributes.iconSize,
-                iconSizeType = attributes.iconSizeType,
-                iconSizeTablet = attributes.iconSizeTablet,
-                iconSizeMobile = attributes.iconSizeMobile,
-                iconborderType = attributes.iconborderType,
-                iconborderRadius = attributes.iconborderRadius,
-                iconBorderTop = attributes.iconBorderTop,
-                iconBorderRight = attributes.iconBorderRight,
-                iconBorderBottom = attributes.iconBorderBottom,
-                iconBorderLeft = attributes.iconBorderLeft,
-                iconborderColor = attributes.iconborderColor,
-                iconshadowBlur = attributes.iconshadowBlur,
-                iconshadowColor = attributes.iconshadowColor,
-                iconshadowHorizontal = attributes.iconshadowHorizontal,
-                iconshadowVertical = attributes.iconshadowVertical,
-                titleMargin = attributes.titleMargin,
-                titleMarginT = attributes.titleMarginT,
-                titleMarginR = attributes.titleMarginR,
-                titleMarginB = attributes.titleMarginB,
-                titleMarginL = attributes.titleMarginL,
-                titleMarginTTablet = attributes.titleMarginTTablet,
-                titleMarginRTablet = attributes.titleMarginRTablet,
-                titleMarginBTablet = attributes.titleMarginBTablet,
-                titleMarginLTablet = attributes.titleMarginLTablet,
-                titleMarginTMobile = attributes.titleMarginTMobile,
-                titleMarginRMobile = attributes.titleMarginRMobile,
-                titleMarginBMobile = attributes.titleMarginBMobile,
-                titleMarginLMobile = attributes.titleMarginLMobile,
-                titleMarginType = attributes.titleMarginType,
-                titlePaddingT = attributes.titlePaddingT,
-                titlePaddingR = attributes.titlePaddingR,
-                titlePaddingB = attributes.titlePaddingB,
-                titlePaddingL = attributes.titlePaddingL,
-                titlePaddingTTablet = attributes.titlePaddingTTablet,
-                titlePaddingRTablet = attributes.titlePaddingRTablet,
-                titlePaddingBTablet = attributes.titlePaddingBTablet,
-                titlePaddingLTablet = attributes.titlePaddingLTablet,
-                titlePaddingTMobile = attributes.titlePaddingTMobile,
-                titlePaddingRMobile = attributes.titlePaddingRMobile,
-                titlePaddingBMobile = attributes.titlePaddingBMobile,
-                titlePaddingLMobile = attributes.titlePaddingLMobile,
-                titlePaddingType = attributes.titlePaddingType,
-                stroke = attributes.stroke,
-                strokeColor = attributes.strokeColor,
-                strokeFull = attributes.strokeFull,
-                iconBGColor = attributes.iconBGColor,
-                iconPadding = attributes.iconPadding,
-                iconPaddingT = attributes.iconPaddingT,
-                iconPaddingR = attributes.iconPaddingR,
-                iconPaddingL = attributes.iconPaddingL,
-                iconPaddingB = attributes.iconPaddingB,
-                iconPaddingTTablet = attributes.iconPaddingTTablet,
-                iconPaddingRTablet = attributes.iconPaddingRTablet,
-                iconPaddingLTablet = attributes.iconPaddingLTablet,
-                iconPaddingBTablet = attributes.iconPaddingBTablet,
-                iconPaddingTMobile = attributes.iconPaddingTMobile,
-                iconPaddingRMobile = attributes.iconPaddingRMobile,
-                iconPaddingLMobile = attributes.iconPaddingLMobile,
-                iconPaddingBMobile = attributes.iconPaddingBMobile,
-                iconPaddingType = attributes.iconPaddingType,
-                iconPaddingMobile = attributes.iconPaddingMobile,
-                iconPaddingTablet = attributes.iconPaddingTablet,
-                iconSpacing = attributes.iconSpacing,
-                iconSpacingT = attributes.iconSpacingT,
-                iconSpacingR = attributes.iconSpacingR,
-                iconSpacingB = attributes.iconSpacingB,
-                iconSpacingL = attributes.iconSpacingL,
-                iconSpacingTTablet = attributes.iconSpacingTTablet,
-                iconSpacingRTablet = attributes.iconSpacingRTablet,
-                iconSpacingBTablet = attributes.iconSpacingBTablet,
-                iconSpacingLTablet = attributes.iconSpacingLTablet,
-                iconSpacingTMobile = attributes.iconSpacingTMobile,
-                iconSpacingRMobile = attributes.iconSpacingRMobile,
-                iconSpacingBMobile = attributes.iconSpacingBMobile,
-                iconSpacingLMobile = attributes.iconSpacingLMobile,
-                iconSpacingType = attributes.iconSpacingType,
-                iconSpacingMobile = attributes.iconSpacingMobile,
-                iconSpacingTablet = attributes.iconSpacingTablet,
-                backgroundText = attributes.backgroundText,
-                BackText = attributes.BackText,
-                textWidth = attributes.textWidth,
-                horizontalText = attributes.horizontalText,
-                verticalText = attributes.verticalText,
-                rotateText = attributes.rotateText,
-                textBackColor = attributes.textBackColor,
-                textBackfontSizeType = attributes.textBackfontSizeType,
-                textBackfontSize = attributes.textBackfontSize,
-                textBackfontSizeMobile = attributes.textBackfontSizeMobile,
-                textBackfontSizeTablet = attributes.textBackfontSizeTablet,
-                textBackWeight = attributes.textBackWeight,
-                textBackStyle = attributes.textBackStyle,
-                textBackLetter = attributes.textBackLetter,
-                textBackUpper = attributes.textBackUpper,
-                textBackshadowColor = attributes.textBackshadowColor,
-                textBackshadowBlur = attributes.textBackshadowBlur,
-                textBackshadowHorizontal = attributes.textBackshadowHorizontal,
-                textBackshadowVertical = attributes.textBackshadowVertical,
-                blend = attributes.blend,
-                zIndex = attributes.zIndex,
-                hideDesktop = attributes.hideDesktop,
-                hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
-
-
-            var STYLE = [{
-                value: "style1",
-                label: __("Style 1")
-            }, {
-                value: "style2",
-                label: __("Style 2")
-            }, {
-                value: "style3",
-                label: "Style 3"
-            }, {
-                value: "style4",
-                label: __("Style 4")
-            }, {
-                value: "style5",
-                label: __("Style 5")
-            }, {
-                value: "style6",
-                label: __("Style 6")
-            }, {
-                value: "style7",
-                label: __("Style 7")
-            }];
-            var ICON = [{
-                value: "icon",
-                label: __("Icon")
-            }, {
-                value: "image",
-                label: __("Image")
-            }, {
-                value: "lottie",
-                label: __("Lottie Animation")
-            }];
-            var POSITION = [{
-                value: "before",
-                label: __("Before")
-            }, {
-                value: "after",
-                label: __("After")
-            }, {
-                value: "top",
-                label: __("Top")
-            }];
-            var ALIGNS = ["left", "center", "right"];
-            var STRIPEPOSITION = [{
-                value: "top",
-                label: __("Top")
-            }, {
-                value: "bottom",
-                label: __("Bottom")
-            }];
-
-            var BLEND = [{
-                label: 'Normal', value: 'normal'
-            }, {
-                label: 'Multiply', value: 'multiply'
-            }, {
-                label: 'Screen', value: 'screen'
-            }, {
-                label: 'Overlay', value: 'overlay'
-            }, {
-                label: 'Darken', value: 'darken'
-            }, {
-                label: 'Lighten', value: 'lighten'
-            }, {
-                label: 'Color Dodge', value: 'color-dodge'
-            }, {
-                label: 'Saturation', value: 'saturation'
-            }, {
-                label: 'Color', value: 'color'
-            }, {
-                label: 'Luminosity', value: 'luminosity'
-            }];
-
-            var element = document.getElementById("premium-style-title-" + this.props.clientId);
-
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_1__styling__["a" /* default */])(this.props);
-            }
-
-            var onResetClickTitle = function onResetClickTitle() {
-                setAttributes({
-                    titleWeight: 600,
-                    titlefontSizeType: "px",
-                    titlefontSize: "30",
-                    titlefontSizeMobile: "30",
-                    titlefontSizeTablet: "30",
-                    titleStyle: "normal",
-                    titleLetter: "0",
-                    titleUpper: false
-                });
-            };
-
-            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
-                setAttributes({
-                    titleshadowColor: "",
-                    titleshadowBlur: "0",
-                    titleshadowHorizontal: "0",
-                    titleshadowVertical: "0"
-                });
-            };
-
-            var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
-                setAttributes({
-                    iconshadowColor: "",
-                    iconshadowBlur: "0",
-                    iconshadowHorizontal: "0",
-                    iconshadowVertical: "0"
-                });
-            };
-
-            var handleChangeLottie = function handleChangeLottie(value) {
-                var lottieURl = _this2.state.lottieURl;
-
-                _this2.setState({ lottieURl: value });
-            };
-            return [isSelected && wp.element.createElement(
-                BlockControls,
-                null,
-                wp.element.createElement(AlignmentToolbar, {
-                    value: align,
-                    onChange: function onChange(value) {
-                        setAttributes({ align: value });
-                    }
-                })
-            ), isSelected && wp.element.createElement(
-                InspectorControls,
-                null,
-                wp.element.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    wp.element.createElement(TextControl, {
-                        label: __("Title"),
-                        value: title,
-                        onChange: function onChange(value) {
-                            return setAttributes({ title: value });
-                        }
-                    }),
-                    wp.element.createElement(SelectControl, {
-                        label: __("Style"),
-                        value: style,
-                        onChange: function onChange(newSelect) {
-                            return setAttributes({ style: newSelect });
-                        },
-                        options: STYLE
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Icon"),
-                        checked: iconValue,
-                        onChange: function onChange(value) {
-                            return setAttributes({ iconValue: value });
-                        }
-                    }),
-                    iconValue && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(SelectControl, {
-                            label: __("Icon Type"),
-                            value: iconType,
-                            onChange: function onChange(newSelect) {
-                                return setAttributes({ iconType: newSelect });
-                            },
-                            options: ICON
-                        }),
-                        iconType === 'icon' && wp.element.createElement(
-                            Fragment,
-                            null,
-                            wp.element.createElement(
-                                "p",
-                                null,
-                                __("Icon")
-                            ),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__fonticonpicker_react_fonticonpicker___default.a, {
-                                icons: __WEBPACK_IMPORTED_MODULE_4__components_premium_icons_list__["a" /* default */],
-                                value: icon,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ icon: value });
-                                },
-                                isMulti: false,
-                                appendTo: "body",
-                                noSelectedPlaceholder: __("Select Icon")
-                            })
-                        ),
-                        iconType === 'lottie' && wp.element.createElement(
-                            Fragment,
-                            null,
-                            wp.element.createElement(TextControl, {
-                                value: lottieURl,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ lottieURl: value });
-                                },
-                                label: __("Lottie Url")
-                            }),
-                            wp.element.createElement(ToggleControl, {
-                                label: __('Loop'),
-                                checked: loop,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ loop: newValue });
-                                }
-                            }),
-                            wp.element.createElement(ToggleControl, {
-                                label: __("Reverse"),
-                                checked: reversedir,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ reversedir: value });
-                                }
-                            })
-                        ),
-                        iconType === 'image' && wp.element.createElement(
-                            Fragment,
-                            null,
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__components_premium_media_upload__["a" /* default */], {
-                                type: "image",
-                                imageID: imageID,
-                                imageURL: imageURL,
-                                onSelectMedia: function onSelectMedia(media) {
-                                    setAttributes({
-                                        imageID: media.id,
-                                        imageURL: media.url
-                                    });
-                                },
-                                onRemoveImage: function onRemoveImage() {
-                                    return setAttributes({
-                                        imageID: "",
-                                        imageURL: ""
-                                    });
-                                }
-                            })
-                        ),
-                        wp.element.createElement(SelectControl, {
-                            label: __("Icon Position"),
-                            value: iconPosition,
-                            onChange: function onChange(newSelect) {
-                                return setAttributes({ iconPosition: newSelect });
-                            },
-                            options: POSITION
-                        }),
-                        iconPosition === 'top' && style != 'style3' && style != 'style4' && wp.element.createElement(
-                            Fragment,
-                            null,
-                            wp.element.createElement(
-                                "p",
-                                null,
-                                __("Icon Alignment")
-                            ),
-                            wp.element.createElement(Toolbar, {
-                                controls: ALIGNS.map(function (contentAlign) {
-                                    return {
-                                        icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === iconAlign,
-                                        onClick: function onClick() {
-                                            return setAttributes({ iconAlign: contentAlign });
-                                        }
-                                    };
-                                })
-                            })
-                        )
-                    ),
-                    style === 'style7' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(SelectControl, {
-                            label: __("Stripe Position"),
-                            value: stripePosition,
-                            onChange: function onChange(newSelect) {
-                                return setAttributes({ stripePosition: newSelect });
-                            },
-                            options: STRIPEPOSITION
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __("Stripe Width"),
-                            value: stripeWidth,
-                            min: "1",
-                            max: "100",
-                            onChange: function onChange(value) {
-                                return setAttributes({ stripeWidth: value });
-                            }
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __("Stripe Height"),
-                            value: stripeHeight,
-                            min: "1",
-                            max: "100",
-                            onChange: function onChange(value) {
-                                return setAttributes({ stripeHeight: value });
-                            }
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __("Stripe Top Spacing"),
-                            value: stripeTopSpacing,
-                            min: "1",
-                            max: "100",
-                            onChange: function onChange(value) {
-                                return setAttributes({ stripeTopSpacing: value });
-                            }
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __("Stripe Bottom Spacing"),
-                            value: stripeBottomSpacing,
-                            min: "1",
-                            max: "100",
-                            onChange: function onChange(value) {
-                                return setAttributes({ stripeBottomSpacing: value });
-                            }
-                        }),
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Stripe Alignment")
-                        ),
-                        wp.element.createElement(Toolbar, {
-                            controls: ALIGNS.map(function (contentAlign) {
-                                return {
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === stripeAlign,
-                                    onClick: function onClick() {
-                                        return setAttributes({ stripeAlign: contentAlign });
-                                    }
-                                };
-                            })
-                        })
-                    ),
-                    wp.element.createElement(ToggleControl, {
-                        label: __("Link"),
-                        checked: link,
-                        onChange: function onChange(value) {
-                            return setAttributes({ link: value });
-                        }
-                    }),
-                    link && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("URL")
-                        ),
-                        wp.element.createElement(TextControl, {
-                            value: url,
-                            onChange: function onChange(value) {
-                                return setAttributes({ url: value });
-                            },
-                            placeholder: __("Enter URL")
-                        }),
-                        wp.element.createElement(ToggleControl, {
-                            checked: target,
-                            label: __('Open Link in new Tab'),
-                            onChange: function onChange(value) {
-                                return setAttributes({ target: value });
-                            }
-                        })
-                    ),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('background Text'),
-                        checked: backgroundText,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ backgroundText: newValue ? 'premium-title-bg-text' : '' });
-                        }
-                    }),
-                    backgroundText && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(TextControl, {
-                            label: __("Text"),
-                            value: BackText,
-                            onChange: function onChange(value) {
-                                return setAttributes({ BackText: value });
-                            }
-                        }),
-                        wp.element.createElement(SelectControl, {
-                            label: __("Width"),
-                            value: textWidth,
-                            onChange: function onChange(newSelect) {
-                                return setAttributes({ textWidth: newSelect });
-                            },
-                            options: [{
-                                label: "Auto", value: 'auto'
-                            }, {
-                                label: "Full Width", value: '100%'
-                            }]
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __('Horizontal Offset'),
-                            value: horizontalText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ horizontalText: newValue });
-                            },
-                            min: -500,
-                            max: 500,
-                            step: 1
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __('Vertical Offset'),
-                            value: verticalText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ verticalText: newValue });
-                            },
-                            min: -500,
-                            max: 500,
-                            step: 1
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __('Rotate (degrees)'),
-                            value: rotateText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ rotateText: newValue });
-                            },
-                            min: 0,
-                            max: 360,
-                            step: 1
-                        })
-                    )
-                ),
-                wp.element.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: titleColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                titleColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
-                        fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
-                        fontSize: { value: titlefontSize, label: __("titlefontSize") },
-                        fontSizeMobile: { value: titlefontSizeMobile, label: __("titlefontSizeMobile") },
-                        fontSizeTablet: { value: titlefontSizeTablet, label: __("titlefontSizeTablet") },
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleLetter,
-                        upper: titleUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight || 600 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
-                        },
-                        onResetClick: function onResetClick() {
-                            return onResetClickTitle([titleWeight, titlefontSizeType, titlefontSize, titlefontSizeMobile, titlefontSizeTablet, titleStyle, titleLetter, titleUpper], [600, "px", "30", "30", "30", "normal", "0", false]);
-                        }
-                    }),
-                    style === 'style2' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: BGColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    BGColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style3' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: BGColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    BGColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style5' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Line Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: lineColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    lineColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style6' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Line Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: lineColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    lineColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        }),
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Triangle Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: triangleColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    triangleColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style7' ? wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Stripe Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: stripeColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    stripeColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ) : style != 'style3' && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
-                        borderType: titleborderType,
-                        top: titleBorderTop,
-                        right: titleBorderRight,
-                        bottom: titleBorderBottom,
-                        left: titleBorderLeft,
-                        borderColor: titleborderColor,
-                        borderRadius: titleborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ titleborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
-                            return setAttributes({
-                                titleBorderTop: top,
-                                titleBorderRight: right,
-                                titleBorderBottom: bottom,
-                                titleBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ titleborderColor: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ titleborderRadius: newrRadius });
-                        }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
-                        color: titleshadowColor,
-                        blur: titleshadowBlur,
-                        horizontal: titleshadowHorizontal,
-                        vertical: titleshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ titleshadowColor: newColor.hex });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ titleshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ titleshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ titleshadowVertical: newValue });
-                        },
-                        onResetClick: onResetClickTitleTextShadow
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["all"],
-                        showUnits: true,
-                        selectedUnit: titleMarginType,
-                        marginTop: titleMarginT,
-                        marginRight: titleMarginR,
-                        marginBottom: titleMarginB,
-                        marginLeft: titleMarginL,
-                        marginTopTablet: titleMarginTTablet,
-                        marginRightTablet: titleMarginRTablet,
-                        marginBottomTablet: titleMarginBTablet,
-                        marginLeftTablet: titleMarginLTablet,
-                        marginTopMobile: titleMarginTMobile,
-                        marginRightMobile: titleMarginRMobile,
-                        marginBottomMobile: titleMarginBMobile,
-                        marginLeftMobile: titleMarginLMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginRTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginLTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginLMobile: newValue });
-                            }
-                        },
-
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ titleMarginType: newvalue });
-                        }
-
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_13__components_Premium_Responsive_Padding__["a" /* default */], {
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL,
-                        paddingTopTablet: titlePaddingTTablet,
-                        paddingRightTablet: titlePaddingRTablet,
-                        paddingBottomTablet: titlePaddingBTablet,
-                        paddingLeftTablet: titlePaddingLTablet,
-                        paddingTopMobile: titlePaddingTMobile,
-                        paddingRightMobile: titlePaddingRMobile,
-                        paddingBottomMobile: titlePaddingBMobile,
-                        paddingLeftMobile: titlePaddingLMobile,
-
-                        showUnits: true,
-                        selectedUnit: titlePaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ titlePaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingLMobile: newValue });
-                            }
-                        }
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Stroke'),
-                        checked: stroke,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ stroke: newValue });
-                        }
-                    }),
-                    stroke && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __('Stroke Color')
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: strokeColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ strokeColor: newValue });
-                            },
-                            allowReset: true
-                        }),
-                        wp.element.createElement(RangeControl, {
-                            label: __('Stroke Full Width'),
-                            value: strokeFull,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ strokeFull: newValue });
-                            },
-                            min: 0,
-                            max: 100,
-                            step: 1
-                        })
-                    )
-                ),
-                iconValue && wp.element.createElement(
-                    PanelBody,
-                    {
-                        title: __("Icon Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    iconType === 'icon' && wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            __("Color")
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: iconColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    iconColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_premium_range_responsive__["a" /* default */], {
-                        setAttributes: setAttributes,
-                        rangeType: { value: iconSizeType, label: __("iconSizeType") },
-                        range: { value: iconSize, label: __("iconSize") },
-                        rangeMobile: { value: iconSizeMobile, label: __("iconSizeMobile") },
-                        rangeTablet: { value: iconSizeTablet, label: __("iconSizeTablet") },
-                        rangeLabel: __("Size"),
-                        min: 1,
-                        max: 100
-                    }),
-                    wp.element.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
-                    wp.element.createElement(ColorPalette, {
-                        value: iconBGColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                iconBGColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
-                        borderType: iconborderType,
-                        top: iconBorderTop,
-                        right: iconBorderRight,
-                        bottom: iconBorderBottom,
-                        left: iconBorderLeft,
-                        borderColor: iconborderColor,
-                        borderRadius: iconborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ iconborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
-                            return setAttributes({
-                                iconBorderTop: top,
-                                iconBorderRight: right,
-                                iconBorderBottom: bottom,
-                                iconBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ iconborderColor: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ iconborderRadius: newrRadius });
-                        }
-                    }),
-                    iconType === 'icon' && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
-                        color: iconshadowColor,
-                        blur: iconshadowBlur,
-                        horizontal: iconshadowHorizontal,
-                        vertical: iconshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ iconshadowColor: newColor.hex });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ iconshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ iconshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ iconshadowVertical: newValue });
-                        },
-                        onResetClick: onResetClickIconTextShadow
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_13__components_Premium_Responsive_Padding__["a" /* default */], {
-                        paddingTop: iconPaddingT,
-                        paddingRight: iconPaddingR,
-                        paddingBottom: iconPaddingB,
-                        paddingLeft: iconPaddingL,
-                        paddingTopTablet: iconPaddingTTablet,
-                        paddingRightTablet: iconPaddingRTablet,
-                        paddingBottomTablet: iconPaddingBTablet,
-                        paddingLeftTablet: iconPaddingLTablet,
-                        paddingTopMobile: iconPaddingTMobile,
-                        paddingRightMobile: iconPaddingRMobile,
-                        paddingBottomMobile: iconPaddingBMobile,
-                        paddingLeftMobile: iconPaddingLMobile,
-
-                        showUnits: true,
-                        selectedUnit: iconPaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ iconPaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingLMobile: newValue });
-                            }
-                        }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_12__components_Premium_Responsive_Margin__["a" /* default */], {
-                        directions: ["all"],
-                        showUnits: true,
-                        selectedUnit: iconSpacingType,
-                        marginTop: iconSpacingT,
-                        marginRight: iconSpacingR,
-                        marginBottom: iconSpacingB,
-                        marginLeft: iconSpacingL,
-                        marginTopTablet: iconSpacingTTablet,
-                        marginRightTablet: iconSpacingRTablet,
-                        marginBottomTablet: iconSpacingBTablet,
-                        marginLeftTablet: iconSpacingLTablet,
-                        marginTopMobile: iconSpacingTMobile,
-                        marginRightMobile: iconSpacingRMobile,
-                        marginBottomMobile: iconSpacingBMobile,
-                        marginLeftMobile: iconSpacingLMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingTTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingRTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingBTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingLTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingLMobile: newValue });
-                            }
-                        },
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ iconSpacingType: newvalue });
-                        }
-
-                    })
-                ),
-                backgroundText && wp.element.createElement(
-                    PanelBody,
-                    {
-                        title: __("Background Text"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    wp.element.createElement(
-                        Fragment,
-                        null,
-                        wp.element.createElement(
-                            "p",
-                            null,
-                            " ",
-                            __('Color')
-                        ),
-                        wp.element.createElement(ColorPalette, {
-                            value: textBackColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    textBackColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
-                        fontSizeType: { value: textBackfontSizeType, label: __("textBackfontSizeType") },
-                        fontSize: { value: textBackfontSize, label: __("textBackfontSize") },
-                        fontSizeMobile: { value: textBackfontSizeMobile, label: __("textBackfontSizeMobile") },
-                        fontSizeTablet: { value: textBackfontSizeTablet, label: __("textBackfontSizeTablet") },
-                        weight: textBackWeight,
-                        style: textBackStyle,
-                        spacing: textBackLetter,
-                        upper: textBackUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ textBackWeight: newWeight || 600 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ textBackStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ textBackLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ textBackUpper: check });
-                        }
-                    }),
-                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_premium_text_shadow__["a" /* default */], {
-                        color: textBackshadowColor,
-                        blur: textBackshadowBlur,
-                        horizontal: textBackshadowHorizontal,
-                        vertical: textBackshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ textBackshadowColor: newColor.hex });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ textBackshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ textBackshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ textBackshadowVertical: newValue });
-                        }
-
-                    }),
-                    wp.element.createElement("hr", null),
-                    wp.element.createElement(SelectControl, {
-                        label: __("Blend Mode "),
-                        value: blend,
-                        onChange: function onChange(newSelect) {
-                            return setAttributes({ blend: newSelect });
-                        },
-                        options: BLEND
-                    }),
-                    wp.element.createElement(RangeControl, {
-                        label: __("z-index"),
-                        value: zIndex,
-                        min: "1",
-                        max: "100",
-                        onChange: function onChange(value) {
-                            return setAttributes({ zIndex: value });
-                        }
-                    })
-                ),
-                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_premium_responsive_tabs__["a" /* default */], {
-                    Desktop: hideDesktop,
-                    Tablet: hideTablet,
-                    Mobile: hideMobile,
-                    onChangeDesktop: function onChangeDesktop(value) {
-                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
-                    },
-                    onChangeTablet: function onChangeTablet(value) {
-                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
-                    },
-                    onChangeMobile: function onChangeMobile(value) {
-                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
-                    }
-                })
-            ), wp.element.createElement(
-                "div",
-                {
-                    id: "premium-title-" + block_id,
-                    className: "premium-block-" + block_id + "  premium-title-bg-text  " + hideDesktop + " " + hideTablet + " " + hideMobile, style: {
-                        textAlign: align
-                    } },
-                wp.element.createElement(
-                    "div",
-                    { className: "premium-title  " + backgroundText, style: {
-                            textAlign: align
-                        }, "data-backgroundText": BackText },
-                    wp.element.createElement(
-                        "div",
-                        { className: style + " " + style + "-" + align },
-                        wp.element.createElement(
-                            "h2",
-                            { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : "") },
-                            style === 'style7' ? wp.element.createElement(
-                                Fragment,
-                                null,
-                                iconPosition != 'top' && iconValue && wp.element.createElement(
-                                    "span",
-                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                    wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-                                ),
-                                !iconValue && wp.element.createElement(
-                                    "span",
-                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                    wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-                                ),
-                                wp.element.createElement(
-                                    "div",
-                                    { className: "premium-title-style7-inner-title" },
-                                    iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                                    iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                                    iconValue && iconType == 'lottie' && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10_react_lottie_with_segments___default.a, {
-                                        options: {
-                                            loop: loop,
-                                            path: lottieURl,
-                                            rendererSettings: {
-                                                preserveAspectRatio: 'xMidYMid',
-                                                className: "premium-lottie-animation"
-                                            }
-                                        },
-                                        direction: reversedir
-                                    }),
-                                    iconValue && iconPosition === 'top' && wp.element.createElement(
-                                        "span",
-                                        { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                        wp.element.createElement("span", { className: "premium-title-style7-stripe-span" })
-                                    ),
-                                    wp.element.createElement(
-                                        "span",
-                                        { className: "premium-title-text-title" },
-                                        title
-                                    )
-                                )
-                            ) : wp.element.createElement(
-                                Fragment,
-                                null,
-                                iconValue && iconType == 'icon' && wp.element.createElement("i", { className: "premium-title-icon " + icon }),
-                                iconValue && iconType == 'image' && wp.element.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                                iconValue && iconType == 'lottie' && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10_react_lottie_with_segments___default.a, {
-                                    options: {
-                                        loop: loop,
-                                        path: "" + lottieURl,
-
-                                        rendererSettings: {
-                                            preserveAspectRatio: 'xMidYMid',
-                                            className: "premium-lottie-animation"
-
-                                        }
-                                    },
-
-                                    direction: reversedir
-                                }),
-                                wp.element.createElement(
-                                    "span",
-                                    { className: "premium-title-text-title" },
-                                    title
-                                )
-                            ),
-                            link && wp.element.createElement("a", { target: target ? "_blank" : "_self", href: "" + url })
-                        )
-                    )
-                )
-            )];
-        }
-    }]);
-
-    return edit;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (edit);
-
-/***/ }),
-/* 391 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__ = __webpack_require__(42);
-
-
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate,
-        stripeWidth = _props$attributes.stripeWidth,
-        stripeHeight = _props$attributes.stripeHeight,
-        stripeTopSpacing = _props$attributes.stripeTopSpacing,
-        stripeBottomSpacing = _props$attributes.stripeBottomSpacing,
-        titleColor = _props$attributes.titleColor,
-        titleWeight = _props$attributes.titleWeight,
-        titleLetter = _props$attributes.titleLetter,
-        titleUpper = _props$attributes.titleUpper,
-        titleStyle = _props$attributes.titleStyle,
-        titlefontSize = _props$attributes.titlefontSize,
-        titlefontSizeMobile = _props$attributes.titlefontSizeMobile,
-        titlefontSizeTablet = _props$attributes.titlefontSizeTablet,
-        titlefontSizeType = _props$attributes.titlefontSizeType,
-        titleshadowBlur = _props$attributes.titleshadowBlur,
-        titleshadowColor = _props$attributes.titleshadowColor,
-        titleshadowHorizontal = _props$attributes.titleshadowHorizontal,
-        titleshadowVertical = _props$attributes.titleshadowVertical,
-        stripeColor = _props$attributes.stripeColor,
-        titleborderType = _props$attributes.titleborderType,
-        titleborderRadius = _props$attributes.titleborderRadius,
-        titleborderWidth = _props$attributes.titleborderWidth,
-        titleborderColor = _props$attributes.titleborderColor,
-        BGColor = _props$attributes.BGColor,
-        lineColor = _props$attributes.lineColor,
-        triangleColor = _props$attributes.triangleColor,
-        iconColor = _props$attributes.iconColor,
-        iconSize = _props$attributes.iconSize,
-        iconSizeType = _props$attributes.iconSizeType,
-        iconSizeTablet = _props$attributes.iconSizeTablet,
-        iconSizeMobile = _props$attributes.iconSizeMobile,
-        iconborderType = _props$attributes.iconborderType,
-        iconborderRadius = _props$attributes.iconborderRadius,
-        iconborderWidth = _props$attributes.iconborderWidth,
-        iconborderColor = _props$attributes.iconborderColor,
-        iconshadowBlur = _props$attributes.iconshadowBlur,
-        iconshadowColor = _props$attributes.iconshadowColor,
-        iconshadowHorizontal = _props$attributes.iconshadowHorizontal,
-        iconshadowVertical = _props$attributes.iconshadowVertical,
-        iconBGColor = _props$attributes.iconBGColor,
-        titlePaddingT = _props$attributes.titlePaddingT,
-        titlePaddingR = _props$attributes.titlePaddingR,
-        titlePaddingB = _props$attributes.titlePaddingB,
-        titlePaddingL = _props$attributes.titlePaddingL,
-        titlePaddingTTablet = _props$attributes.titlePaddingTTablet,
-        titlePaddingRTablet = _props$attributes.titlePaddingRTablet,
-        titlePaddingBTablet = _props$attributes.titlePaddingBTablet,
-        titlePaddingLTablet = _props$attributes.titlePaddingLTablet,
-        titlePaddingTMobile = _props$attributes.titlePaddingTMobile,
-        titlePaddingRMobile = _props$attributes.titlePaddingRMobile,
-        titlePaddingBMobile = _props$attributes.titlePaddingBMobile,
-        titlePaddingLMobile = _props$attributes.titlePaddingLMobile,
-        titlePaddingType = _props$attributes.titlePaddingType,
-        titleMarginT = _props$attributes.titleMarginT,
-        titleMarginR = _props$attributes.titleMarginR,
-        titleMarginB = _props$attributes.titleMarginB,
-        titleMarginL = _props$attributes.titleMarginL,
-        titleMarginTTablet = _props$attributes.titleMarginTTablet,
-        titleMarginRTablet = _props$attributes.titleMarginRTablet,
-        titleMarginBTablet = _props$attributes.titleMarginBTablet,
-        titleMarginLTablet = _props$attributes.titleMarginLTablet,
-        titleMarginTMobile = _props$attributes.titleMarginTMobile,
-        titleMarginRMobile = _props$attributes.titleMarginRMobile,
-        titleMarginBMobile = _props$attributes.titleMarginBMobile,
-        titleMarginLMobile = _props$attributes.titleMarginLMobile,
-        titleMarginType = _props$attributes.titleMarginType,
-        iconPaddingT = _props$attributes.iconPaddingT,
-        iconPaddingR = _props$attributes.iconPaddingR,
-        iconPaddingL = _props$attributes.iconPaddingL,
-        iconPaddingB = _props$attributes.iconPaddingB,
-        iconPaddingTTablet = _props$attributes.iconPaddingTTablet,
-        iconPaddingRTablet = _props$attributes.iconPaddingRTablet,
-        iconPaddingLTablet = _props$attributes.iconPaddingLTablet,
-        iconPaddingBTablet = _props$attributes.iconPaddingBTablet,
-        iconPaddingTMobile = _props$attributes.iconPaddingTMobile,
-        iconPaddingRMobile = _props$attributes.iconPaddingRMobile,
-        iconPaddingLMobile = _props$attributes.iconPaddingLMobile,
-        iconPaddingBMobile = _props$attributes.iconPaddingBMobile,
-        iconPaddingType = _props$attributes.iconPaddingType,
-        iconSpacingT = _props$attributes.iconSpacingT,
-        iconSpacingR = _props$attributes.iconSpacingR,
-        iconSpacingB = _props$attributes.iconSpacingB,
-        iconSpacingL = _props$attributes.iconSpacingL,
-        iconSpacingTTablet = _props$attributes.iconSpacingTTablet,
-        iconSpacingRTablet = _props$attributes.iconSpacingRTablet,
-        iconSpacingBTablet = _props$attributes.iconSpacingBTablet,
-        iconSpacingLTablet = _props$attributes.iconSpacingLTablet,
-        iconSpacingTMobile = _props$attributes.iconSpacingTMobile,
-        iconSpacingRMobile = _props$attributes.iconSpacingRMobile,
-        iconSpacingBMobile = _props$attributes.iconSpacingBMobile,
-        iconSpacingLMobile = _props$attributes.iconSpacingLMobile,
-        iconSpacingType = _props$attributes.iconSpacingType,
-        strokeColor = _props$attributes.strokeColor,
-        strokeFull = _props$attributes.strokeFull,
-        BackText = _props$attributes.BackText,
-        textWidth = _props$attributes.textWidth,
-        textBackColor = _props$attributes.textBackColor,
-        textBackfontSizeType = _props$attributes.textBackfontSizeType,
-        textBackfontSize = _props$attributes.textBackfontSize,
-        textBackfontSizeMobile = _props$attributes.textBackfontSizeMobile,
-        textBackfontSizeTablet = _props$attributes.textBackfontSizeTablet,
-        textBackWeight = _props$attributes.textBackWeight,
-        textBackStyle = _props$attributes.textBackStyle,
-        textBackLetter = _props$attributes.textBackLetter,
-        textBackUpper = _props$attributes.textBackUpper,
-        textBackshadowColor = _props$attributes.textBackshadowColor,
-        textBackshadowBlur = _props$attributes.textBackshadowBlur,
-        textBackshadowHorizontal = _props$attributes.textBackshadowHorizontal,
-        textBackshadowVertical = _props$attributes.textBackshadowVertical,
-        horizontalText = _props$attributes.horizontalText,
-        verticalText = _props$attributes.verticalText,
-        blend = _props$attributes.blend,
-        zIndex = _props$attributes.zIndex,
-        rotateText = _props$attributes.rotateText;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {
-
-        " .premium-title-bg-text:before": {
-            "content": BackText,
-            "position": "absolute",
-            "top": verticalText + 'px',
-            "left": horizontalText + 'px',
-            "color": textBackColor,
-            "width": textWidth,
-            "transform": 'rotate(' + rotateText + 'deg)',
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(textBackfontSize, textBackfontSizeType),
-            "font-weight": textBackWeight,
-            "font-style": textBackStyle,
-            "text-transform": textBackUpper ? "uppercase" : "none",
-            "letter-spacing": textBackLetter + 'px',
-            "text-shadow": textBackshadowHorizontal + 'px ' + textBackshadowVertical + 'px ' + textBackshadowBlur + 'px ' + textBackshadowColor,
-            "mix-blend-mode": blend,
-            "z-index": zIndex
-
-        },
-        " .premium-title-style7-stripe__wrap": {
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeTopSpacing, 'px'),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeBottomSpacing, 'px')
-        },
-        " .premium-title-style7-stripe-span": {
-            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeWidth, 'px'),
-            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(stripeHeight, 'px'),
-            "background-color": stripeColor
-        },
-        " .premium-title-header": {
-            "color": titleColor + "!important",
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSize, titlefontSizeType),
-            "letter-spacing": titleLetter + "px",
-            "text-transform": titleUpper ? "uppercase" : "none" + "!important",
-            "font-style": titleStyle + "!important",
-            "font-weight": titleWeight + "!important",
-            "text-shadow": titleshadowHorizontal + 'px ' + titleshadowVertical + 'px ' + titleshadowBlur + 'px ' + titleshadowColor
-        },
-        " .premium-title .style1 .premium-title-header": {
-            "border-left": titleborderWidth >= '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
-            "border-style": titleborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-            "border-color": titleborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
-        },
-        " .premium-title-style2__wrap": {
-            "background-color": BGColor
-        },
-        " .premium-title-style3__wrap": {
-            "background-color": BGColor
-        },
-        " .premium-title .style2": {
-            "border-bottom": titleborderWidth >= '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
-            "border-style": titleborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-            "border-color": titleborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
-        },
-        " .premium-title .style4": {
-            "border-bottom": titleborderWidth >= '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
-            "border-style": titleborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-            "border-color": titleborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
-        },
-        " .premium-title .style5": {
-            "border-bottom": titleborderWidth >= '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
-            "border-style": titleborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-            "border-color": titleborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
-        },
-        " .premium-title .style6": {
-            "border-bottom": titleborderWidth >= '1' ? titleborderWidth + 'px ' + titleborderType + ' ' + titleborderColor + ' !important' : "",
-            "border-style": titleborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderWidth, "px"),
-            "border-color": titleborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleborderRadius, "px")
-        },
-        " .premium-title-style5__wrap": {
-            "border-bottom": '2px solid ' + lineColor
-        },
-        " .premium-title-style6__wrap": {
-            "border-bottom": '2px solid ' + lineColor
-        },
-        " .premium-title-style6__wrap:before": {
-            "border-bottom-color": triangleColor
-        },
-        " .premium-title-icon": {
-            "color": iconColor,
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType),
-            "border-style": iconborderType,
-            "border-width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderWidth, "px"),
-            "border-color": iconborderColor,
-            "border-radius": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconborderRadius, "px"),
-            "text-shadow": iconshadowHorizontal + 'px ' + iconshadowVertical + 'px ' + iconshadowBlur + 'px ' + iconshadowColor,
-            "background-color": iconBGColor,
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingT, iconPaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingR, iconPaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingB, iconPaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingL, iconPaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingT, iconSpacingType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingR, iconSpacingType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingB, iconSpacingType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingL, iconSpacingType)
-        },
-        ' .premium-lottie-animation': {
-            "width": '' + iconSize + iconSizeType + ' !important',
-            "height": '' + iconSize + iconSizeType + ' !important'
-        },
-        " .premium-title-text-title": {
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingT, titlePaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingR, titlePaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingB, titlePaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingL, titlePaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginT, titleMarginType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginR, titleMarginType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginB, titleMarginType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginL, titleMarginType),
-            "-webkit-text-stroke-color": strokeColor,
-            "-webkit-text-stroke-width": strokeFull + 'px'
-
-        },
-        " .premium-title-header img": {
-            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType),
-            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSize, iconSizeType)
-        }
-    };
-
-    mobile_selectors = {
-        " .premium-title-header": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeMobile, titlefontSizeType)
-        },
-        " .premium-title-icon": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTMobile, iconPaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingRMobile, iconPaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingBMobile, iconPaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingLMobile, iconPaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingTMobile, iconSpacingType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingRMobile, iconSpacingType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingBMobile, iconSpacingType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingLMobile, iconSpacingType)
-        },
-        " .premium-title-text-title": {
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingTMobile, titlePaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingRMobile, titlePaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingBMobile, titlePaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingLMobile, titlePaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTMobile, titleMarginType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginRMobile, titleMarginType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginBMobile, titleMarginType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginLMobile, titleMarginType)
-        },
-        " .premium-title-header img": {
-            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType),
-            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeMobile, iconSizeType)
-        },
-        ' .premium-lottie-animation': {
-            "width": '' + iconSizeMobile + iconSizeType + ' !important',
-            "height": '' + iconSizeMobile + iconSizeType + ' !important'
-        }
-
-    };
-
-    tablet_selectors = {
-        " .premium-title-header": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlefontSizeTablet, titlefontSizeType)
-        },
-        " .premium-title-icon": {
-            "font-size": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingTTablet, iconPaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingRTablet, iconPaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingBTablet, iconPaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconPaddingLTablet, iconPaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingTTablet, iconSpacingType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingRTablet, iconSpacingType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingBTablet, iconSpacingType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSpacingLTablet, iconSpacingType)
-        },
-        " .premium-title-text-title": {
-            "padding-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingTTablet, titlePaddingType),
-            "padding-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingRTablet, titlePaddingType),
-            "padding-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingBTablet, titlePaddingType),
-            "padding-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titlePaddingLTablet, titlePaddingType),
-            "margin-top": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginTTablet, titleMarginType),
-            "margin-right": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginRTablet, titleMarginType),
-            "margin-bottom": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginBTablet, titleMarginType),
-            "margin-left": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(titleMarginLTablet, titleMarginType)
-        },
-        " .premium-title-header img": {
-            "width": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType),
-            "height": Object(__WEBPACK_IMPORTED_MODULE_1__icon_list_generateCssUnit__["a" /* default */])(iconSizeTablet, iconSizeType)
-        },
-        ' .premium-lottie-animation': {
-            "width": '' + iconSizeTablet + iconSizeType + ' !important',
-            "height": '' + iconSizeTablet + iconSizeType + ' !important'
-        }
-    };
-
-    var styling_css = "";
-    var id = '#premium-title-' + block_id;
-    if (classMigrate) {
-        id = '.premium-block-' + block_id;
-    }
-
-    styling_css = Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(selectors, id);
-    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(tablet_selectors, id, true, "tablet");
-
-    styling_css += Object(__WEBPACK_IMPORTED_MODULE_0__icon_list_generateCss__["a" /* default */])(mobile_selectors, id, true, "mobile");
-
-    return styling_css;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (styling);
-
-/***/ }),
 /* 392 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74089,7 +74444,7 @@ function PremiumResponsiveMargin(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_padding__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__premium_padding__ = __webpack_require__(20);
 
 
 var _wp$components = wp.components,

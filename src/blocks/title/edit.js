@@ -12,6 +12,8 @@ import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin"
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 import PremiumSizeUnits from '../../components/premium-size-units';
 
+
+
 const { __ } = wp.i18n
 
 const {
@@ -24,6 +26,7 @@ const {
     AlignmentToolbar,
     InspectorControls,
     ColorPalette,
+    RichText
 } = wp.editor
 
 const {
@@ -35,13 +38,13 @@ const {
     ToggleControl,
 } = wp.components
 
+let lottieflag = true;
+
 class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.state = {
-            lottieURl: ""
-        }
+        this.initLottie = this.initLottie.bind(this)
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -51,14 +54,37 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
+        if (this.props.attributes.iconType === "lottie") {
+            this.initLottie()
+        }
+
+    }
+
+    initLottie() {
+        const { lottieURl, loop, reversedir, block_id } = this.props.attributes;
+        const lottieContainer = document.querySelector(`.premium-lottie-animation-${block_id}`)
+        let animItem = lottie.loadAnimation({
+            container: lottieContainer,
+            renderer: 'svg',
+            loop: loop ? true : false,
+            path: lottieURl,
+            autoplay: true,
+        });
+
+        if (reversedir) {
+            animItem.setDirection(-1);
+        }
+
+        lottieflag = false
+
     }
 
     render() {
         const { attributes, setAttributes, isSelected } = this.props
-
         const {
             block_id,
             align,
+            titleTag,
             style,
             title,
             iconValue,
@@ -164,7 +190,6 @@ class edit extends Component {
             iconPaddingLMobile,
             iconPaddingBMobile,
             iconPaddingType,
-            iconSpacing,
             iconSpacingT,
             iconSpacingR,
             iconSpacingB,
@@ -203,7 +228,12 @@ class edit extends Component {
             zIndex,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            shinyColor,
+            blurColor,
+            blurShadow,
+            animateduration,
+            animateDelay
         } = attributes
 
         const STYLE = [{
@@ -243,6 +273,7 @@ class edit extends Component {
             label: __("Style 9")
         }
         ];
+
         const ICON = [
             {
                 value: "icon",
@@ -256,7 +287,8 @@ class edit extends Component {
                 value: "lottie",
                 label: __("Lottie Animation")
             }
-        ]
+        ];
+
         const POSITION = [
             {
                 value: "before",
@@ -269,8 +301,46 @@ class edit extends Component {
                 value: "top",
                 label: __("Top")
             }
-        ]
+        ];
+
+        const TAGS = [
+            {
+                value: "H1",
+                label: "H1"
+            }, {
+                value: "H2",
+                label: "H2"
+            },
+            {
+                value: "H3",
+                label: "H3"
+            },
+            {
+                value: "H4",
+                label: "H4"
+            },
+            {
+                value: "H5",
+                label: "H5"
+            },
+            {
+                value: "H6",
+                label: "H6"
+            },
+            {
+                value: "DIV",
+                label: "div"
+            },
+            {
+                value: "span",
+                label: "span"
+            }
+
+
+        ];
+
         const ALIGNS = ["left", "center", "right"];
+
         const STRIPEPOSITION = [
             {
                 value: "top",
@@ -279,7 +349,7 @@ class edit extends Component {
                 value: "bottom",
                 label: __("Bottom")
             }
-        ]
+        ];
 
         const BLEND =
             [
@@ -313,7 +383,7 @@ class edit extends Component {
                 {
                     label: 'Luminosity', value: 'luminosity'
                 },
-            ]
+            ];
 
         var element = document.getElementById("premium-style-title-" + this.props.clientId)
 
@@ -343,7 +413,6 @@ class edit extends Component {
             });
         }
 
-
         const onResetClickIconTextShadow = () => {
             setAttributes({
                 iconshadowColor: "",
@@ -353,10 +422,19 @@ class edit extends Component {
             });
         }
 
-        const handleChangeLottie = (value) => {
-            const { lottieURl } = this.state;
-            this.setState({ lottieURl: value })
-        }
+        const styleContainer = title.split("").map(letter => {
+            return (
+                <RichText
+                    tagName={titleTag.toLowerCase()}
+                    className={`premium-title-style9-letter`}
+
+                    value={letter}
+
+                />
+            )
+        });
+
+
         return [
             isSelected && (
                 <BlockControls>
@@ -513,6 +591,12 @@ class edit extends Component {
                             />
                         </Fragment>
                         }
+                        <SelectControl
+                            label={__("HTML Tag")}
+                            options={TAGS}
+                            value={titleTag}
+                            onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                        />
                         <Toolbar
                             controls={ALIGNS.map(contentAlign => ({
                                 icon: "editor-align" + contentAlign,
@@ -612,6 +696,24 @@ class edit extends Component {
                             }
                             allowReset={true}
                         />
+                        {style === "style8" &&
+                            <Fragment>
+                                <p>{__("Shiny Color")}</p>
+                                <ColorPalette
+                                    value={shinyColor}
+                                    onChange={newValue => setAttributes({ shinyColor: newValue })}
+                                />
+                            </Fragment>
+                        }
+                        {style === "style9" &&
+                            < Fragment >
+                                <p>{__("Blur Color")}</p>
+                                <ColorPalette
+                                    value={blurColor}
+                                    onChange={newValue => setAttributes({ blurColor: newValue })}
+                                />
+                            </Fragment>
+                        }
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
@@ -712,7 +814,7 @@ class edit extends Component {
                                 allowReset={true}
                             />
                         </Fragment>
-                            : style != 'style3' &&
+                            : style != 'style3' && style !== "style8" && style !== "style9" &&
                             <PremiumBorder
                                 borderType={titleborderType}
                                 top={titleBorderTop}
@@ -757,6 +859,24 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTitleTextShadow}
                         />
+                        {style === "style9" && <Fragment>
+                            <RangeControl
+                                label={__("Blur Shadow Value (px)")}
+                                value={blurShadow}
+                                onChange={(newValue) => setAttributes({ blurShadow: newValue })}
+                            />
+                        </Fragment>}
+                        {style === "style8" || style === "style9" &&
+                            <RangeControl
+                                label={__("Animation Delay")}
+                                value={animateDelay}
+                                onChange={(newValue) => setAttributes({ animateDelay: newValue })}
+                            />}
+                        {style === "style8" && <RangeControl
+                            label={__("Animation Duration")}
+                            value={animateduration}
+                            onChange={(newValue) => setAttributes({ animateduration: newValue })}
+                        />}
 
                         <PremiumResponsiveMargin
                             directions={["all"]}
@@ -1213,7 +1333,7 @@ class edit extends Component {
                         onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
                         onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                     />
-                </InspectorControls>
+                </InspectorControls >
             ),
             <div
                 id={`premium-title-${block_id}`}
@@ -1226,7 +1346,8 @@ class edit extends Component {
                 }} data-backgroundText={BackText}>
                     <div className={`${style} ${style}-${align}`}>
 
-                        <h2 className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
+                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
+
                             {style === 'style7' ? <Fragment>
                                 {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                     <span className={`premium-title-style7-stripe-span`}></span>
@@ -1244,66 +1365,57 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <Lottie
-                                            options={{
-                                                loop: loop,
-                                                path: lottieURl,
-                                                rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid',
-                                                    className: "premium-lottie-animation"
-                                                }
-                                            }}
-                                            direction={reversedir}
-                                        />
+                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon  premium-lottie-animation premium-lottie-animation-${block_id}`}> </div>
                                     }
                                     {iconValue && iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                         <span className={`premium-title-style7-stripe-span`}></span>
                                     </span>
                                     }
-                                    <span className={`premium-title-text-title`} >{title}</span>
+                                    <RichText
+                                        tagName={titleTag.toLowerCase()}
+                                        className={`premium-title-text-title`}
+                                        value={title}
+
+                                    />
                                 </div>
                             </Fragment>
-                                : <Fragment>
+                                : style === "style9" ? <Fragment>
                                     {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
                                     }
                                     {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <Lottie
-                                            options={{
-                                                loop: loop,
-                                                path: `${lottieURl}`
-                                                ,
-                                                rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid',
-                                                    className: "premium-lottie-animation"
+                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon premium-lottie-animation premium-lottie-animation-${block_id}`}>{this.initLottie()}</div>
+                                    }
+                                    <span className={`premium-letters-container`}>
+                                        {styleContainer}
+                                    </span>
 
-                                                }
-                                            }}
-
-                                            direction={reversedir}
-                                        />
+                                </Fragment> : <Fragment>
+                                    {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                    }
+                                    {
+                                        iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                    }
+                                    {
+                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon premium-lottie-animation premium-lottie-animation-${block_id}`}>{this.initLottie()}</div>
                                     }
 
-                                    <span className={`premium-title-text-title`}  >{title}</span>
+                                    <RichText
+                                        tagName={titleTag.toLowerCase()}
+                                        className={`premium-title-text-title`}
+                                        onChange={(newValue) => setAttributes({ title: newValue })}
+                                        value={title}
+
+                                    />
                                 </Fragment>
                             }
                             {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
-                        </h2>
+                        </div>
 
                     </div>
                 </div>
-                {/* <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-title-${block_id} .premium-title-text[data-animation="shiny"] {`,
-                            `    --shiny - color: #549324;`
-                                ` --animation-speed: 13s;`,
-                            "}",
-                        ].join("\n")
-                    }}
-                /> */}
             </div>
 
 

@@ -1,8 +1,7 @@
-
 const {
     Fragment
 } = wp.element;
-
+const { RichText } = wp.blockEditor;
 export default function save(props) {
 
     const { attributes } = props
@@ -10,6 +9,7 @@ export default function save(props) {
     const {
         block_id,
         align,
+        titleTag,
         style,
         title,
         iconValue,
@@ -31,8 +31,17 @@ export default function save(props) {
         hideDesktop,
         hideTablet,
         hideMobile
-    } = attributes
+    } = attributes;
 
+    const styleContainer = title.split("").map(letter => {
+        return (
+            <RichText.Content
+                tagName={titleTag.toLowerCase()}
+                className={`premium-title-style9-letter`}
+                value={letter}
+            />
+        )
+    });
 
     return (
         <div
@@ -45,7 +54,7 @@ export default function save(props) {
                 textAlign: align,
             }} data-backgroundText={BackText}>
                 <div className={`${style} ${style}-${align}`}>
-                    <h2 className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
+                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
                         {style === 'style7' ? <Fragment>
                             {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                 <span className={`premium-title-style7-stripe-span`}></span>
@@ -72,10 +81,14 @@ export default function save(props) {
                                     <span className={`premium-title-style7-stripe-span`}></span>
                                 </span>
                                 }
-                                <span className={`premium-title-text-title`}>{title}</span>
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-title-text-title`}
+                                    value={title}
+                                />
                             </div>
                         </Fragment>
-                            : <Fragment>
+                            : style === "style9" ? <Fragment>
                                 {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
                                 }
                                 {
@@ -86,11 +99,30 @@ export default function save(props) {
 
                                     </div>
                                 }
-                                <span className={`premium-title-text-title`}>{title}</span>
+                                <span className={`premium-letters-container`}>
+                                    {styleContainer}
+                                </span>
+
+                            </Fragment> : <Fragment>
+                                {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                }
+                                {
+                                    iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                }
+                                {
+                                    iconValue && iconType == 'lottie' && <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
+
+                                    </div>
+                                }
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-title-text-title`}
+                                    value={title}
+                                />
                             </Fragment>
                         }
                         {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
-                    </h2>
+                    </div>
                 </div>
             </div>
         </div>

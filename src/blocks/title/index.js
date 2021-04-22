@@ -186,19 +186,19 @@ const titleAttrs = {
     },
     titleBorderTop: {
         type: "number",
-        default: "1"
+        default: "0"
     },
     titleBorderRight: {
         type: "number",
-        default: "1"
+        default: "0"
     },
     titleBorderBottom: {
         type: "number",
-        default: "1"
+        default: "0"
     },
     titleBorderLeft: {
         type: "number",
-        default: "1"
+        default: "0"
     },
     titleborderRadius: {
         type: "number",
@@ -588,7 +588,30 @@ const titleAttrs = {
     verticalU: {
         type: "string",
         default: "px"
-    }
+    },
+    titleTag: {
+        type: "string",
+        default: "h2"
+    },
+    shinyColor: {
+        type: "string"
+    },
+    blurColor: {
+        type: "string"
+    },
+    blurShadow: {
+        type: "number",
+        default: "0"
+    },
+    animateDelay: {
+        type: "number",
+        default: "2"
+    },
+    animateduration: {
+        type: "number",
+        default: "1"
+    },
+
 
 };
 
