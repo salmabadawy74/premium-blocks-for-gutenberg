@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     const $title = $(".premium-title");
     var $lottieIcons = $('.premium-lottie-animation');
     var $titleContainer = $(".premium-title-container"),
-        $titleElement = $titleContainer.find('.premium-title-text');
+        $titleElement = $titleContainer.find('.premium-title-text-title');
 
     const addFontToHead = fontFamily => {
         const head = document.head;
@@ -47,10 +47,9 @@ jQuery(document).ready(function ($) {
 
 
     if ($titleContainer.hasClass('style8')) {
-
-        var holdTime = $titleElement.attr('data-shiny-delay') * 1000,
-            duration = $titleElement.attr('data-shiny-dur') * 1000;
-
+        var holdTime = $titleContainer.attr('data-shiny-delay') * 1000,
+            duration = $titleContainer.attr('data-shiny-dur') * 1000;
+        console.log(holdTime, duration)
         function shinyEffect() {
             $titleElement.get(0).setAttribute('data-animation', 'shiny');
             setTimeout(function () {

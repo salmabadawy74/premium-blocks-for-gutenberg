@@ -30,7 +30,9 @@ export default function save(props) {
         BackText,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        animateDelay,
+        animateduration
     } = attributes;
 
     const styleContainer = title.split("").map(letter => {
@@ -53,8 +55,8 @@ export default function save(props) {
             <div className={`premium-title   ${backgroundText}`} style={{
                 textAlign: align,
             }} data-backgroundText={BackText}>
-                <div className={`${style} ${style}-${align}`}>
-                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
+                <div className={` premium-title-container ${style} ${style}-${align}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
+                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={animateDelay}>
                         {style === 'style7' ? <Fragment>
                             {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                 <span className={`premium-title-style7-stripe-span`}></span>

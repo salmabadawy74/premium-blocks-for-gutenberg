@@ -45,6 +45,7 @@ class edit extends Component {
     constructor() {
         super(...arguments);
         this.initLottie = this.initLottie.bind(this)
+        //  this.initStyle = this.initStyle.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -54,29 +55,49 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
-        if (this.props.attributes.iconType === "lottie") {
-            this.initLottie()
-        }
+
+
 
     }
+    // componentDidUpdate() {
+    //     this.initLottie()
+    // }
 
-    initLottie() {
-        const { lottieURl, loop, reversedir, block_id } = this.props.attributes;
-        const lottieContainer = document.querySelector(`.premium-lottie-animation-${block_id}`)
-        let animItem = lottie.loadAnimation({
-            container: lottieContainer,
-            renderer: 'svg',
-            loop: loop ? true : false,
-            path: lottieURl,
-            autoplay: true,
-        });
 
-        if (reversedir) {
-            animItem.setDirection(-1);
-        }
+    // initStyle() {
+    //     const { animateduration, animateDelay, style } = this.props.attributes;
+    //     let lottieContainer = document.querySelector(".premium-title-container");
+    //     if ("style9" === style) {
+    //         let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+    //         style9.forEach(function (style) {
+    //             let holdTime = animateDelay * 1000;
+    //             style.setAttribute("data-animation-blur", "process");
+    //             style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+    //                 let delayTime;
+    //                 if (document.querySelector(".rtl")) {
+    //                     delayTime = 0.2 / index + 's';
+    //                 } else {
+    //                     delayTime = index / 20 + 's';
+    //                 }
+    //                 // letter.css({
+    //                 //     '-webkit-animation-delay': delayTime,
+    //                 //     'animation-delay': delayTime
+    //                 // });
+    //             })
+    //             setInterval(function () {
+    //                 style.setAttribute('data-animation-blur', 'done')
+    //                 setTimeout(function () {
+    //                     style.setAttribute('data-animation-blur', 'process')
+    //                 }, 150);
+    //             }, animateDelay);
 
-        lottieflag = false
+    //         })
 
+    //     }
+    // }
+
+    initLottie(value) {
+        this.props.setAttributes({ lottieURl: value })
     }
 
     render() {
@@ -340,7 +361,58 @@ class edit extends Component {
         ];
 
         const ALIGNS = ["left", "center", "right"];
+        let titleContainer = document.querySelector(".premium-title-container");
+        const hundleStyle = (value) => {
+            setAttributes({ style: value })
 
+            let titleElement = titleContainer.querySelector('.premium-title-text-title')
+
+            if ("style9" === value) {
+                let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+                style9.forEach(function (style) {
+                    let holdTime = animateDelay * 1000;
+                    style.setAttribute("data-animation-blur", "process");
+                    style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+                        let delayTime;
+                        if (document.querySelector(".rtl")) {
+                            delayTime = 0.2 / index + 's';
+                        } else {
+                            delayTime = index / 20 + 's';
+                        }
+                        // letter.css({
+                        //     '-webkit-animation-delay': delayTime,
+                        //     'animation-delay': delayTime
+                        // });
+                    })
+                    setInterval(function () {
+                        style.setAttribute('data-animation-blur', 'done')
+                        setTimeout(function () {
+                            style.setAttribute('data-animation-blur', 'process')
+                        }, 150);
+                    }, animateDelay);
+
+                })
+            }
+            if ("style8" === value && titleElement) {
+                let holdTime = animateDelay * 1000,
+                    duration = animateduration * 1000;
+                console.log(holdTime, duration)
+                function shinyEffect() {
+
+                    titleElement.setAttribute('data-animation', 'shiny');
+                    setTimeout(function () {
+                        titleElement.removeAttribute('data-animation')
+                    }, duration);
+
+                }
+
+                (function repeat() {
+                    shinyEffect();
+                    setTimeout(repeat, holdTime + "s");
+                })();
+            }
+
+        }
         const STRIPEPOSITION = [
             {
                 value: "top",
@@ -461,7 +533,7 @@ class edit extends Component {
                         <SelectControl
                             label={__("Style")}
                             value={style}
-                            onChange={newSelect => setAttributes({ style: newSelect })}
+                            onChange={newSelect => hundleStyle(newSelect)}
                             options={STYLE}
                         />
                         <ToggleControl
@@ -493,7 +565,7 @@ class edit extends Component {
                                 {iconType === 'lottie' && <Fragment>
                                     <TextControl
                                         value={lottieURl}
-                                        onChange={value => setAttributes({ lottieURl: value })}
+                                        onChange={value => this.initLottie(value)}
                                         label={__("Lottie Url")}
                                     />
                                     <ToggleControl
@@ -1344,9 +1416,9 @@ class edit extends Component {
                 <div className={`premium-title  ${backgroundText}`} style={{
                     textAlign: align,
                 }} data-backgroundText={BackText}>
-                    <div className={`${style} ${style}-${align}`}>
+                    <div className={`premium-title-container ${style} ${style}-${align}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
 
-                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`}>
+                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={animateDelay}>
 
                             {style === 'style7' ? <Fragment>
                                 {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
@@ -1365,7 +1437,7 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon  premium-lottie-animation premium-lottie-animation-${block_id}`}> </div>
+                                        iconValue && iconType == 'lottie' && <Lottie />
                                     }
                                     {iconValue && iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                         <span className={`premium-title-style7-stripe-span`}></span>
@@ -1386,7 +1458,17 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon premium-lottie-animation premium-lottie-animation-${block_id}`}>{this.initLottie()}</div>
+                                        iconValue && iconType == 'lottie' && <Lottie
+                                            options={{
+                                                loop: loop,
+                                                path: lottieURl,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: "premium-lottie-animation"
+                                                }
+                                            }}
+                                            direction={reversedir}
+                                        />
                                     }
                                     <span className={`premium-letters-container`}>
                                         {styleContainer}
