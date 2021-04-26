@@ -123,7 +123,7 @@ export default function save(props) {
                                 />
                             </Fragment>
                         }
-                        {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
+                        {link && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={`${url}`}></a>}
                     </div>
                 </div>
             </div>

@@ -12,8 +12,6 @@ import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin"
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 import PremiumSizeUnits from '../../components/premium-size-units';
 
-
-
 const { __ } = wp.i18n
 
 const {
@@ -35,17 +33,15 @@ const {
     RangeControl,
     TextControl,
     Toolbar,
-    ToggleControl,
+    ToggleControl
 } = wp.components
 
-let lottieflag = true;
 
 class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.initLottie = this.initLottie.bind(this)
-        //  this.initStyle = this.initStyle.bind(this);
+        this.handleStyle = this.handleStyle.bind(this);
     }
     componentDidMount() {
         // Assigning id in the attribute.
@@ -55,49 +51,57 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
-
-
-
     }
-    // componentDidUpdate() {
-    //     this.initLottie()
-    // }
+    componentDidUpdate() {
+        this.handleStyle()
+    }
+    handleStyle() {
+        const { animateduration, animateDelay } = this.props.attributes;
 
+        let titleContainer = document.querySelector(".premium-title-container");
+        let titleElement = document.querySelector('.premium-title-text-title')
+        if (titleContainer.classList.contains("style8")) {
 
-    // initStyle() {
-    //     const { animateduration, animateDelay, style } = this.props.attributes;
-    //     let lottieContainer = document.querySelector(".premium-title-container");
-    //     if ("style9" === style) {
-    //         let style9 = document.querySelectorAll('.premium-title-style9__wrap');
-    //         style9.forEach(function (style) {
-    //             let holdTime = animateDelay * 1000;
-    //             style.setAttribute("data-animation-blur", "process");
-    //             style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
-    //                 let delayTime;
-    //                 if (document.querySelector(".rtl")) {
-    //                     delayTime = 0.2 / index + 's';
-    //                 } else {
-    //                     delayTime = index / 20 + 's';
-    //                 }
-    //                 // letter.css({
-    //                 //     '-webkit-animation-delay': delayTime,
-    //                 //     'animation-delay': delayTime
-    //                 // });
-    //             })
-    //             setInterval(function () {
-    //                 style.setAttribute('data-animation-blur', 'done')
-    //                 setTimeout(function () {
-    //                     style.setAttribute('data-animation-blur', 'process')
-    //                 }, 150);
-    //             }, animateDelay);
+            let holdTime = animateDelay * 1000,
+                duration = animateduration * 1000;
+            function shinyEffect() {
 
-    //         })
+                titleElement.setAttribute('data-animation', 'shiny');
+                setTimeout(function () {
+                    titleElement.removeAttribute('data-animation')
+                }, duration);
 
-    //     }
-    // }
+            }
 
-    initLottie(value) {
-        this.props.setAttributes({ lottieURl: value })
+            (function repeat() {
+                shinyEffect();
+                setTimeout(repeat, holdTime + "s");
+            })();
+        }
+        if (titleContainer.classList.contains("style9")) {
+            let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+            style9.forEach(function (style) {
+                let holdTime = animateDelay * 1000;
+                style.setAttribute("data-animation-blur", "process");
+                style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+                    let delayTime;
+                    if (document.querySelector(".rtl")) {
+                        delayTime = 0.2 / index + 's';
+                    } else {
+                        delayTime = index / 20 + 's';
+                    }
+                    letter.style.animationDelay = delayTime
+                })
+                setInterval(function () {
+                    style.setAttribute('data-animation-blur', 'done')
+                    setTimeout(function () {
+                        style.setAttribute('data-animation-blur', 'process')
+                    }, 150);
+                }, animateDelay);
+
+            })
+
+        }
     }
 
     render() {
@@ -167,7 +171,6 @@ class edit extends Component {
             iconshadowColor,
             iconshadowHorizontal,
             iconshadowVertical,
-            titleMargin,
             titleMarginT,
             titleMarginR,
             titleMarginB,
@@ -361,58 +364,58 @@ class edit extends Component {
         ];
 
         const ALIGNS = ["left", "center", "right"];
-        let titleContainer = document.querySelector(".premium-title-container");
-        const hundleStyle = (value) => {
-            setAttributes({ style: value })
+        // let titleContainer = document.querySelector(".premium-title-container");
+        // const hundleStyle = (value) => {
+        //     setAttributes({ style: value })
 
-            let titleElement = titleContainer.querySelector('.premium-title-text-title')
+        //     let titleElement = titleContainer.querySelector('.premium-title-text-title')
 
-            if ("style9" === value) {
-                let style9 = document.querySelectorAll('.premium-title-style9__wrap');
-                style9.forEach(function (style) {
-                    let holdTime = animateDelay * 1000;
-                    style.setAttribute("data-animation-blur", "process");
-                    style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
-                        let delayTime;
-                        if (document.querySelector(".rtl")) {
-                            delayTime = 0.2 / index + 's';
-                        } else {
-                            delayTime = index / 20 + 's';
-                        }
-                        // letter.css({
-                        //     '-webkit-animation-delay': delayTime,
-                        //     'animation-delay': delayTime
-                        // });
-                    })
-                    setInterval(function () {
-                        style.setAttribute('data-animation-blur', 'done')
-                        setTimeout(function () {
-                            style.setAttribute('data-animation-blur', 'process')
-                        }, 150);
-                    }, animateDelay);
+        //     if ("style9" === value) {
+        //         let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+        //         style9.forEach(function (style) {
+        //             let holdTime = animateDelay * 1000;
+        //             style.setAttribute("data-animation-blur", "process");
+        //             style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+        //                 let delayTime;
+        //                 if (document.querySelector(".rtl")) {
+        //                     delayTime = 0.2 / index + 's';
+        //                 } else {
+        //                     delayTime = index / 20 + 's';
+        //                 }
+        //                 // letter.css({
+        //                 //     '-webkit-animation-delay': delayTime,
+        //                 //     'animation-delay': delayTime
+        //                 // });
+        //             })
+        //             setInterval(function () {
+        //                 style.setAttribute('data-animation-blur', 'done')
+        //                 setTimeout(function () {
+        //                     style.setAttribute('data-animation-blur', 'process')
+        //                 }, 150);
+        //             }, animateDelay);
 
-                })
-            }
-            if ("style8" === value && titleElement) {
-                let holdTime = animateDelay * 1000,
-                    duration = animateduration * 1000;
-                console.log(holdTime, duration)
-                function shinyEffect() {
+        //         })
+        //     }
+        //     if ("style8" === value && titleElement) {
+        //         let holdTime = animateDelay * 1000,
+        //             duration = animateduration * 1000;
+        //         console.log(holdTime, duration)
+        //         function shinyEffect() {
 
-                    titleElement.setAttribute('data-animation', 'shiny');
-                    setTimeout(function () {
-                        titleElement.removeAttribute('data-animation')
-                    }, duration);
+        //             titleElement.setAttribute('data-animation', 'shiny');
+        //             setTimeout(function () {
+        //                 titleElement.removeAttribute('data-animation')
+        //             }, duration);
 
-                }
+        //         }
 
-                (function repeat() {
-                    shinyEffect();
-                    setTimeout(repeat, holdTime + "s");
-                })();
-            }
+        //         (function repeat() {
+        //             shinyEffect();
+        //             setTimeout(repeat, holdTime + "s");
+        //         })();
+        //     }
 
-        }
+        // }
         const STRIPEPOSITION = [
             {
                 value: "top",
@@ -463,6 +466,60 @@ class edit extends Component {
             element.innerHTML = styling(this.props)
         }
 
+
+        const initStyle = (value) => {
+            this.props.setAttributes({ style: value })
+            const { animateduration, animateDelay, style } = this.props.attributes;
+            let titleContainer = document.querySelector(".premium-title-container");
+            let titleElement = document.querySelector('.premium-title-text-title')
+            if ("style8" === style) {
+
+                let holdTime = animateDelay * 1000,
+                    duration = animateduration * 1000;
+                function shinyEffect() {
+
+                    titleElement.setAttribute('data-animation', 'shiny');
+                    setTimeout(function () {
+                        titleElement.removeAttribute('data-animation')
+                    }, duration);
+
+                }
+
+                (function repeat() {
+                    shinyEffect();
+                    setTimeout(repeat, holdTime + "s");
+                })();
+            }
+            else if ("style9" === style) {
+                let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+                style9.forEach(function (style) {
+                    let holdTime = animateDelay * 1000;
+                    style.setAttribute("data-animation-blur", "process");
+                    style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+                        let delayTime;
+                        if (document.querySelector(".rtl")) {
+                            delayTime = 0.2 / index + 's';
+                        } else {
+                            delayTime = index / 20 + 's';
+                        }
+                        // letter.css({
+                        //     '-webkit-animation-delay': delayTime,
+                        //     'animation-delay': delayTime
+                        // });
+                    })
+                    setInterval(function () {
+                        style.setAttribute('data-animation-blur', 'done')
+                        setTimeout(function () {
+                            style.setAttribute('data-animation-blur', 'process')
+                        }, 150);
+                    }, animateDelay);
+
+                })
+
+            }
+        }
+
+
         const onResetClickTitle = () => {
             setAttributes({
                 titleWeight: 600,
@@ -506,7 +563,6 @@ class edit extends Component {
             )
         });
 
-
         return [
             isSelected && (
                 <BlockControls>
@@ -533,7 +589,7 @@ class edit extends Component {
                         <SelectControl
                             label={__("Style")}
                             value={style}
-                            onChange={newSelect => hundleStyle(newSelect)}
+                            onChange={newSelect => initStyle(newSelect)}
                             options={STYLE}
                         />
                         <ToggleControl
@@ -565,13 +621,14 @@ class edit extends Component {
                                 {iconType === 'lottie' && <Fragment>
                                     <TextControl
                                         value={lottieURl}
-                                        onChange={value => this.initLottie(value)}
+                                        onChange={value => setAttributes({ lottieURl: value })}
                                         label={__("Lottie Url")}
                                     />
                                     <ToggleControl
                                         label={__('Loop')}
                                         checked={loop}
                                         onChange={(newValue) => setAttributes({ loop: newValue })}
+                                        help={loop ? __('This option works only on the preview page') : ''}
                                     />
                                     <ToggleControl
                                         label={__("Reverse")}
@@ -663,6 +720,7 @@ class edit extends Component {
                             />
                         </Fragment>
                         }
+                        <hr />
                         <SelectControl
                             label={__("HTML Tag")}
                             options={TAGS}
@@ -1437,7 +1495,18 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <Lottie />
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-wrap"> <Lottie
+                                            options={{
+                                                loop: loop,
+                                                path: lottieURl,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: "premium-lottie-animation"
+                                                }
+                                            }}
+                                            direction={reversedir}
+                                        />
+                                        </div>
                                     }
                                     {iconValue && iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                         <span className={`premium-title-style7-stripe-span`}></span>
@@ -1458,7 +1527,7 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <Lottie
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className="premium-title-icon premium-lottie-wrap"> <Lottie
                                             options={{
                                                 loop: loop,
                                                 path: lottieURl,
@@ -1469,6 +1538,7 @@ class edit extends Component {
                                             }}
                                             direction={reversedir}
                                         />
+                                        </div>
                                     }
                                     <span className={`premium-letters-container`}>
                                         {styleContainer}
@@ -1481,9 +1551,19 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && <div className={`premium-title-icon premium-lottie-animation premium-lottie-animation-${block_id}`}>{this.initLottie()}</div>
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-wrap"> <Lottie
+                                            options={{
+                                                loop: loop,
+                                                path: lottieURl,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: "  premium-lottie-animation"
+                                                }
+                                            }}
+                                            direction={reversedir}
+                                        />
+                                        </div>
                                     }
-
                                     <RichText
                                         tagName={titleTag.toLowerCase()}
                                         className={`premium-title-text-title`}
@@ -1493,7 +1573,7 @@ class edit extends Component {
                                     />
                                 </Fragment>
                             }
-                            {link && <a target={target ? "_blank" : "_self"} href={`${url}`}></a>}
+                            {link && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={"javascript:void(0)"} ></a>}
                         </div>
 
                     </div>

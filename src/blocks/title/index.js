@@ -520,16 +520,12 @@ const titleAttrs = {
     blend: {
         type: 'string'
     },
-    lottieUrl: {
+    lottieURl: {
         type: 'string'
     },
     loop: {
         type: 'boolean',
         default: true
-    },
-    jsonLottie: {
-        type: "string",
-
     },
     reversedir: {
         type: 'boolean',
