@@ -1408,7 +1408,7 @@ class PBG_Blocks_Helper {
 				'font-size'        => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 				'color'            => $attr['iconColor'],
 				'background-color' => $attr['iconBGColor'],
-				'border-width'     => $attr['iconBorderTop'] . 'px  ',
+				'border-width'     => $attr['iconBorderTop'] . 'px  ' . $attr['iconBorderRight'] . 'px  ' . $attr['iconBorderBottom'] . 'px  ' . $attr['iconBorderLeft'] . 'px  ',
 				'border-color'     => $attr['iconborderColor'],
 				'border-style'     => $attr['iconborderType'],
 				'border-radius'    => self::get_css_value( $attr['iconborderRadius'], 'px' ),
@@ -1457,14 +1457,15 @@ class PBG_Blocks_Helper {
 				'-webkit-text-stroke-color' => $attr['strokeColor'],
 				'-webkit-text-stroke-width' => $attr['strokeFull'] . 'px',
 			),
+			' .premium-lottie-animation svg '     => array(
+				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
+			),
 			' .premium-title-header img'          => array(
 				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 			),
-			' .premium-lottie-animation'          => array(
-				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
-			),
+
 		);
 		// Desktop Icon Size CSS ends.
 
