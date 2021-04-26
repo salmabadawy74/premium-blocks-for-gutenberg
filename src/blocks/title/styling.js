@@ -128,7 +128,9 @@ function styling(props) {
         zIndex,
         rotateText,
         verticalU,
-        horizontalU
+        horizontalU,
+        shinyColor,
+        animateduration
     } = props.attributes
 
     var selectors = {}
@@ -136,6 +138,11 @@ function styling(props) {
     var mobile_selectors = {}
 
     selectors = {
+        "  .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']": {
+            "background": `${titleColor} -webkit-gradient(linear, left top, right top, from(${titleColor}), to(${titleColor}), color-stop(0.5, ${shinyColor})) 0 0 no-repeat`,
+            "-webkit-animation-duration": `${animateduration}s !important`,
+            "animation-duration": `${animateduration}s !important`
+        },
 
         " .premium-title-bg-text:before": {
             "content": BackText,
@@ -164,7 +171,7 @@ function styling(props) {
             "height": generateCSSUnit(stripeHeight, 'px'),
             "background-color": stripeColor
         },
-        " .premium-title-header": {
+        " .premium-title-header .premium-title-text-title ": {
             "color": titleColor + "!important",
             "font-size": generateCSSUnit(titlefontSize, titlefontSizeType),
             "letter-spacing": titleLetter + "px",
