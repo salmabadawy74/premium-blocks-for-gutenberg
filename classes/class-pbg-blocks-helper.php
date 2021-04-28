@@ -493,7 +493,7 @@ class PBG_Blocks_Helper {
 
 		?>
 		<style type="text/css" media="all" id="premium-style-frontend">
-			<?php echo self::$stylesheet; ?>
+		<?php echo self::$stylesheet; ?>
 		</style>
 		<?php
 		ob_end_flush();
@@ -626,7 +626,7 @@ class PBG_Blocks_Helper {
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
 				'font-weight'      => $attr['fancyTextWeight'],
-				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
+				// 'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
 			),
 			' .premium-fancy-text-title-slide' => array(
 				'font-size'        => self::get_css_value( $attr['fancyTextfontSize'], $attr['fancyTextfontSizeUnit'] ),
@@ -636,7 +636,7 @@ class PBG_Blocks_Helper {
 				'text-transform'   => $attr['fancyTextUpper'] ? 'uppercase' : 'none',
 				'font-style'       => $attr['fancyTextStyle'],
 				'font-weight'      => $attr['fancyTextWeight'],
-				'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
+				// 'text-shadow'      => self::get_css_value( $attr['shadowHorizontal'], 'px ' ) . self::get_css_value( $attr['shadowVertical'], 'px ' ) . self::get_css_value( $attr['shadowBlur'], 'px ' ) . $attr['shadowColor'],
 			),
 			' .typed-cursor'                   => array(
 				'color' => $attr['cursorColor'],
@@ -1335,6 +1335,16 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
+			" .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']" => array(
+				'animation-duration' => $attr['animateduration'] . 's',
+				'background'         => $attr['titleColor'] . ' -webkit-gradient(linear, left top, right top, from( ' . $attr['titleColor'] . ' ), to( ' . $attr['titleColor'] . ' ), color-stop(0.5,' . $attr['shinyColor'] . ' )) 0 0 no-repeat',
+				'color'              => 'rgba(255, 255, 255, 0)' . '!important',
+				'background-clip'    => `text !important`,
+			),
+			' .premium-title-header'              => array(
+				'--shadow-color' => $attr['blurColor'],
+				'--shadow-value' => $attr['blurShadow'] . 'px',
+			),
 			// Desktop Icon Size CSS starts.
 			' .premium-title-style7-stripe__wrap' => array(
 				'margin-top'    => self::get_css_value( $attr['stripeTopSpacing'], 'px' ),
@@ -1344,15 +1354,6 @@ class PBG_Blocks_Helper {
 				'width'            => self::get_css_value( $attr['stripeWidth'], 'px' ),
 				'height'           => self::get_css_value( $attr['stripeHeight'], 'px' ),
 				'background-color' => $attr['stripeColor'],
-			),
-			' .premium-title-header'              => array(
-				'font-size'      => self::get_css_value( $attr['titlefontSize'], $attr['titlefontSizeType'] ),
-				'color'          => self::get_css_value( $attr['titleColor'], '!important' ),
-				'letter-spacing' => self::get_css_value( $attr['titleLetter'], 'px' ),
-				'text-transform' => $attr['titleUpper'] ? 'uppercase' : 'none',
-				'font-style'     => self::get_css_value( $attr['titleStyle'], ' !important' ),
-				'font-weight'    => self::get_css_value( $attr['titleWeight'], ' !important' ),
-				'text-shadow'    => self::get_css_value( $attr['titleshadowHorizontal'], 'px ' ) . self::get_css_value( $attr['titleshadowVertical'], 'px ' ) . self::get_css_value( $attr['titleshadowBlur'], 'px ' ) . $attr['titleshadowColor'],
 			),
 			' .premium-title .style1 .premium-title-header' => array(
 				'border-left'   => $attr['titleBorderLeft'] > '1' ? self::get_css_value( $attr['titleBorderLeft'], 'px ' ) . $attr['titleborderType'] . $attr['titleborderColor'] . '!important' : '',
@@ -1434,7 +1435,7 @@ class PBG_Blocks_Helper {
 				'font-style'     => $attr['textBackStyle'],
 				'text-transform' => $attr['textBackUpper '] ? 'uppercase' : 'none',
 				'letter-spacing' => $attr['textBackLetter'] . 'px',
-				'text-shadow'    => $attr['textBackshadowHorizontal'] . 'px' . $attr['textBackshadowVertical'] . 'px' . $attr['textBackshadowBlur'] . 'px' . $attr['textBackshadowColor'],
+				'text-shadow'    => $attr['textBackshadowHorizontal'] . 'px ' . $attr['textBackshadowVertical'] . 'px ' . $attr['textBackshadowBlur'] . 'px ' . $attr['textBackshadowColor'],
 				'mix-blend-mode' => $attr['blend'],
 				'z-index'        => $attr['zIndex'],
 			),
@@ -1446,6 +1447,7 @@ class PBG_Blocks_Helper {
 				'text-transform'            => $attr['titleUpper'] ? 'uppercase' : 'none',
 				'font-style'                => self::get_css_value( $attr['titleStyle'], ' !important' ),
 				'font-weight'               => self::get_css_value( $attr['titleWeight'], ' !important' ),
+				'text-shadow'               => self::get_css_value( $attr['titleshadowHorizontal'], 'px ' ) . self::get_css_value( $attr['titleshadowVertical'], 'px ' ) . self::get_css_value( $attr['titleshadowBlur'], 'px ' ) . $attr['titleshadowColor'],
 				'margin-top'                => self::get_css_value( $attr['titleMarginT'], $attr['titleMarginType'] ),
 				'margin-right'              => self::get_css_value( $attr['titleMarginR'], $attr['titleMarginType'] ),
 				'margin-bottom'             => self::get_css_value( $attr['titleMarginB'], $attr['titleMarginType'] ),
@@ -1465,16 +1467,37 @@ class PBG_Blocks_Helper {
 				'width'  => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 			),
+			' .premium-title-style9__wrap .premium-letters-container' => array(
+
+				'margin-top'     => self::get_css_value( $attr['titleMarginT'], $attr['titleMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['titleMarginR'], $attr['titleMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['titleMarginB'], $attr['titleMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['titleMarginL'], $attr['titleMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['titlePaddingT'], $attr['titlePaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['titlePaddingR'], $attr['titlePaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['titlePaddingB'], $attr['titlePaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['titlePaddingL'], $attr['titlePaddingType'] ),
+			),
+			' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' => array(
+				'font-size'      => self::get_css_value( $attr['titlefontSize'], $attr['titlefontSizeType'] ),
+				'color'          => self::get_css_value( $attr['titleColor'] ),
+				'letter-spacing' => self::get_css_value( $attr['titleLetter'], 'px' ),
+				'text-transform' => $attr['titleUpper'] ? 'uppercase' : 'none',
+				'font-style'     => self::get_css_value( $attr['titleStyle'], ' !important' ),
+				'font-weight'    => self::get_css_value( $attr['titleWeight'], ' !important' ),
+			),
 
 		);
 		// Desktop Icon Size CSS ends.
 
 		// Mobile Icon Size CSS starts.
 		$m_selectors = array(
-			' .premium-title-header'     => array(
-				'font-size' => self::get_css_value( $attr['titlefontSizeMobile'], $attr['titlefontSizeType'] ) . '!important',
+			'  .premium-title-bg-text:before ' => array(
+				'font-size' => self::get_css_value( $attr['textBackfontSizeMobile'], $attr['textBackfontSizeType'] ),
+
 			),
-			' .premium-title-icon'       => array(
+			' .premium-title-text-title'       => array(),
+			' .premium-title-icon'             => array(
 				'font-size'      => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ) . '!important',
 				'margin-top'     => self::get_css_value( $attr['iconSpacingTMobile'], $attr['iconSpacingType'] ),
 				'margin-right'   => self::get_css_value( $attr['iconSpacingRMobile'], $attr['iconSpacingType'] ),
@@ -1485,7 +1508,28 @@ class PBG_Blocks_Helper {
 				'padding-bottom' => self::get_css_value( $attr['iconPaddingBMobile'], $attr['iconPaddingType'] ),
 				'padding-left'   => self::get_css_value( $attr['iconPaddingLMobile'], $attr['iconPaddingType'] ),
 			),
-			' .premium-title-text-title' => array(
+			' .premium-title-text-title'       => array(
+				'margin-top'     => self::get_css_value( $attr['titleMarginTMobile'], $attr['titleMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['titleMarginRMobile'], $attr['titleMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['titleMarginBMobile'], $attr['titleMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['titleMarginLMobile'], $attr['titleMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['titlePaddingTMobile'], $attr['titlePaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['titlePaddingRMobile'], $attr['titlePaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['titlePaddingBMobile'], $attr['titlePaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['titlePaddingLMobile'], $attr['titlePaddingType'] ),
+				'font-size'      => self::get_css_value( $attr['titlefontSizeMobile'], $attr['titlefontSizeType'] ) . '!important',
+
+			),
+			' .premium-title-header img'       => array(
+				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+			),
+			' .premium-lottie-animation svg'   => array(
+				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+			),
+			' .premium-title-style9__wrap .premium-letters-container' => array(
+
 				'margin-top'     => self::get_css_value( $attr['titleMarginTMobile'], $attr['titleMarginType'] ),
 				'margin-right'   => self::get_css_value( $attr['titleMarginRMobile'], $attr['titleMarginType'] ),
 				'margin-bottom'  => self::get_css_value( $attr['titleMarginBMobile'], $attr['titleMarginType'] ),
@@ -1495,23 +1539,21 @@ class PBG_Blocks_Helper {
 				'padding-bottom' => self::get_css_value( $attr['titlePaddingBMobile'], $attr['titlePaddingType'] ),
 				'padding-left'   => self::get_css_value( $attr['titlePaddingLMobile'], $attr['titlePaddingType'] ),
 			),
-			' .premium-title-header img' => array(
-				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
+			' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' => array(
+				'font-size' => self::get_css_value( $attr['titlefontSizeMobile'], $attr['titlefontSizeType'] ),
 			),
-			' .premium-lottie-animation' => array(
-				'width'  => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
-				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
-			),
+
 		);
 		// Mobile Icon Size CSS ends.
 
 		// Tablet Icon Size CSS starts.
 		$t_selectors = array(
-			' .premium-title-header'     => array(
-				'font-size' => self::get_css_value( $attr['titlefontSizeTablet'], $attr['titlefontSizeType'] ) . '!important',
+			'  .premium-title-bg-text:before ' => array(
+				'font-size' => self::get_css_value( $attr['textBackfontSizeTablet'], $attr['textBackfontSizeType'] ),
+
 			),
-			' .premium-title-icon'       => array(
+
+			' .premium-title-icon'             => array(
 				'font-size'      => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ) . '!important',
 				'margin-top'     => self::get_css_value( $attr['iconSpacingTTablet'], $attr['iconSpacingType'] ),
 				'margin-right'   => self::get_css_value( $attr['iconSpacingRTablet'], $attr['iconSpacingType'] ),
@@ -1522,7 +1564,7 @@ class PBG_Blocks_Helper {
 				'padding-bottom' => self::get_css_value( $attr['iconPaddingBTablet'], $attr['iconPaddingType'] ),
 				'padding-left'   => self::get_css_value( $attr['iconPaddingLTablet'], $attr['iconPaddingType'] ),
 			),
-			' .premium-title-text-title' => array(
+			' .premium-title-text-title'       => array(
 				'margin-top'     => self::get_css_value( $attr['titleMarginTTablet'], $attr['titleMarginType'] ),
 				'margin-right'   => self::get_css_value( $attr['titleMarginRTablet'], $attr['titleMarginType'] ),
 				'margin-bottom'  => self::get_css_value( $attr['titleMarginBTablet'], $attr['titleMarginType'] ),
@@ -1531,15 +1573,30 @@ class PBG_Blocks_Helper {
 				'padding-right'  => self::get_css_value( $attr['titlePaddingRTablet'], $attr['titlePaddingType'] ),
 				'padding-bottom' => self::get_css_value( $attr['titlePaddingBTablet'], $attr['titlePaddingType'] ),
 				'padding-left'   => self::get_css_value( $attr['titlePaddingLTablet'], $attr['titlePaddingType'] ),
+				'font-size'      => self::get_css_value( $attr['titlefontSizeTablet'], $attr['titlefontSizeType'] ) . '!important',
 
 			),
-			' .premium-title-header img' => array(
+			' .premium-title-header img'       => array(
 				'width'  => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
 				'height' => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
 			),
-			' .premium-lottie-animation' => array(
+			' .premium-lottie-animation svg'   => array(
 				'width'  => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
 				'height' => self::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] ),
+			),
+			' .premium-title-style9__wrap .premium-letters-container' => array(
+
+				'margin-top'     => self::get_css_value( $attr['titleMarginTTablet'], $attr['titleMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['titleMarginRTablet'], $attr['titleMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['titleMarginBTablet'], $attr['titleMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['titleMarginLTablet'], $attr['titleMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['titlePaddingTTablet'], $attr['titlePaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['titlePaddingRTablet'], $attr['titlePaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['titlePaddingBTablet'], $attr['titlePaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['titlePaddingLTablet'], $attr['titlePaddingType'] ),
+			),
+			' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' => array(
+				'font-size' => self::get_css_value( $attr['titlefontSizeTablet'], $attr['titlefontSizeType'] ),
 			),
 		);
 		// Tablet Icon Size CSS ends.
