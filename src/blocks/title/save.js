@@ -52,11 +52,13 @@ export default function save(props) {
             style={{
                 textAlign: align,
             }}>
-            <div className={`premium-title   ${backgroundText}`} style={{
+            <div className={`premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
                 textAlign: align,
             }} data-backgroundText={BackText}>
                 <div className={` premium-title-container ${style} ${style}-${align}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
-                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={animateDelay}>
+                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={animateDelay}
+
+                    >
                         {style === 'style7' ? <Fragment>
                             {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
                                 <span className={`premium-title-style7-stripe-span`}></span>
@@ -74,7 +76,7 @@ export default function save(props) {
                                     iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                 }
                                 {
-                                    iconValue && iconType == 'lottie' && <div className="premium-title-icon premium-lottie-animation">
+                                    iconValue && iconType == 'lottie' && <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
 
                                     </div>
                                 }
@@ -127,6 +129,6 @@ export default function save(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
