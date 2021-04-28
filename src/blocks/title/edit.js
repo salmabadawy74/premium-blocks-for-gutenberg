@@ -36,13 +36,14 @@ const {
     ToggleControl
 } = wp.components
 
+let istitleUpdated = null;
 
 class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.handleStyle = this.handleStyle.bind(this);
     }
+
     componentDidMount() {
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId })
@@ -51,57 +52,68 @@ class edit extends Component {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
+        this.handleStyle = this.handleStyle.bind(this);
+
     }
+
     componentDidUpdate() {
-        this.handleStyle()
+        let element = document.getElementById("premium-style-title-" + this.props.clientId)
+
+        if (null != element && "undefined" != typeof element) {
+            element.innerHTML = styling(this.props)
+        }
+
+        clearTimeout(istitleUpdated);
+        istitleUpdated = setTimeout(this.handleStyle, 400);
     }
+
     handleStyle() {
-        const { animateduration, animateDelay } = this.props.attributes;
+        const { animateDelay, animateduration } = this.props.attributes;
 
-        let titleContainer = document.querySelector(".premium-title-container");
-        let titleElement = document.querySelector('.premium-title-text-title')
-        if (titleContainer.classList.contains("style8")) {
+        let titleContainers = document.querySelectorAll(".premium-title-container");
+        titleContainers.forEach(function (titleContainer) {
+            if (titleContainer.classList.contains("style8")) {
+                let titleElement = titleContainer.querySelector(".premium-title-text-title"),
+                    holdTime = animateDelay * 1000,
+                    duration = animateduration * 1000;
 
-            let holdTime = animateDelay * 1000,
-                duration = animateduration * 1000;
-            function shinyEffect() {
+                function shinyEffect() {
+                    titleElement.setAttribute('data-animation', 'shiny');
+                    setTimeout(function () {
+                        titleElement.removeAttribute('data-animation')
+                    }, duration);
+                }
 
-                titleElement.setAttribute('data-animation', 'shiny');
-                setTimeout(function () {
-                    titleElement.removeAttribute('data-animation')
-                }, duration);
-
+                (function repeat() {
+                    shinyEffect();
+                    setTimeout(repeat, holdTime);
+                })();
+            }
+            if (titleContainer.classList.contains("style9")) {
+                let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+                style9.forEach(function (style) {
+                    let holdTime = animateDelay * 1000;
+                    style.setAttribute("data-animation-blur", "process");
+                    style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
+                        index += 1;
+                        let delayTime;
+                        if (document.getElementsByTagName("BODY")[0].classList.contains('.rtl')) {
+                            delayTime = 0.2 / index + 's';
+                        } else {
+                            delayTime = index / 20 + 's';
+                        }
+                        letter.style.animationDelay = delayTime;
+                    })
+                    setInterval(function () {
+                        style.setAttribute('data-animation-blur', 'done')
+                        setTimeout(function () {
+                            style.setAttribute('data-animation-blur', 'process')
+                        }, 150);
+                    }, holdTime);
+                });
             }
 
-            (function repeat() {
-                shinyEffect();
-                setTimeout(repeat, holdTime + "s");
-            })();
-        }
-        if (titleContainer.classList.contains("style9")) {
-            let style9 = document.querySelectorAll('.premium-title-style9__wrap');
-            style9.forEach(function (style) {
-                let holdTime = animateDelay * 1000;
-                style.setAttribute("data-animation-blur", "process");
-                style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
-                    let delayTime;
-                    if (document.querySelector(".rtl")) {
-                        delayTime = 0.2 / index + 's';
-                    } else {
-                        delayTime = index / 20 + 's';
-                    }
-                    letter.style.animationDelay = delayTime
-                })
-                setInterval(function () {
-                    style.setAttribute('data-animation-blur', 'done')
-                    setTimeout(function () {
-                        style.setAttribute('data-animation-blur', 'process')
-                    }, 150);
-                }, animateDelay);
-
-            })
-
-        }
+        })
     }
 
     render() {
@@ -329,93 +341,40 @@ class edit extends Component {
 
         const TAGS = [
             {
-                value: "H1",
+                value: "h1",
                 label: "H1"
             }, {
-                value: "H2",
+                value: "h2",
                 label: "H2"
             },
             {
-                value: "H3",
+                value: "h3",
                 label: "H3"
             },
             {
-                value: "H4",
+                value: "h4",
                 label: "H4"
             },
             {
-                value: "H5",
+                value: "h5",
                 label: "H5"
             },
             {
-                value: "H6",
+                value: "h6",
                 label: "H6"
             },
             {
-                value: "DIV",
+                value: "div",
                 label: "div"
             },
             {
                 value: "span",
                 label: "span"
             }
-
-
         ];
 
         const ALIGNS = ["left", "center", "right"];
-        // let titleContainer = document.querySelector(".premium-title-container");
-        // const hundleStyle = (value) => {
-        //     setAttributes({ style: value })
 
-        //     let titleElement = titleContainer.querySelector('.premium-title-text-title')
-
-        //     if ("style9" === value) {
-        //         let style9 = document.querySelectorAll('.premium-title-style9__wrap');
-        //         style9.forEach(function (style) {
-        //             let holdTime = animateDelay * 1000;
-        //             style.setAttribute("data-animation-blur", "process");
-        //             style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
-        //                 let delayTime;
-        //                 if (document.querySelector(".rtl")) {
-        //                     delayTime = 0.2 / index + 's';
-        //                 } else {
-        //                     delayTime = index / 20 + 's';
-        //                 }
-        //                 // letter.css({
-        //                 //     '-webkit-animation-delay': delayTime,
-        //                 //     'animation-delay': delayTime
-        //                 // });
-        //             })
-        //             setInterval(function () {
-        //                 style.setAttribute('data-animation-blur', 'done')
-        //                 setTimeout(function () {
-        //                     style.setAttribute('data-animation-blur', 'process')
-        //                 }, 150);
-        //             }, animateDelay);
-
-        //         })
-        //     }
-        //     if ("style8" === value && titleElement) {
-        //         let holdTime = animateDelay * 1000,
-        //             duration = animateduration * 1000;
-        //         console.log(holdTime, duration)
-        //         function shinyEffect() {
-
-        //             titleElement.setAttribute('data-animation', 'shiny');
-        //             setTimeout(function () {
-        //                 titleElement.removeAttribute('data-animation')
-        //             }, duration);
-
-        //         }
-
-        //         (function repeat() {
-        //             shinyEffect();
-        //             setTimeout(repeat, holdTime + "s");
-        //         })();
-        //     }
-
-        // }
         const STRIPEPOSITION = [
             {
                 value: "top",
@@ -460,66 +419,6 @@ class edit extends Component {
                 },
             ];
 
-        var element = document.getElementById("premium-style-title-" + this.props.clientId)
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props)
-        }
-
-
-        const initStyle = (value) => {
-            this.props.setAttributes({ style: value })
-            const { animateduration, animateDelay, style } = this.props.attributes;
-            let titleContainer = document.querySelector(".premium-title-container");
-            let titleElement = document.querySelector('.premium-title-text-title')
-            if ("style8" === style) {
-
-                let holdTime = animateDelay * 1000,
-                    duration = animateduration * 1000;
-                function shinyEffect() {
-
-                    titleElement.setAttribute('data-animation', 'shiny');
-                    setTimeout(function () {
-                        titleElement.removeAttribute('data-animation')
-                    }, duration);
-
-                }
-
-                (function repeat() {
-                    shinyEffect();
-                    setTimeout(repeat, holdTime + "s");
-                })();
-            }
-            else if ("style9" === style) {
-                let style9 = document.querySelectorAll('.premium-title-style9__wrap');
-                style9.forEach(function (style) {
-                    let holdTime = animateDelay * 1000;
-                    style.setAttribute("data-animation-blur", "process");
-                    style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
-                        let delayTime;
-                        if (document.querySelector(".rtl")) {
-                            delayTime = 0.2 / index + 's';
-                        } else {
-                            delayTime = index / 20 + 's';
-                        }
-                        // letter.css({
-                        //     '-webkit-animation-delay': delayTime,
-                        //     'animation-delay': delayTime
-                        // });
-                    })
-                    setInterval(function () {
-                        style.setAttribute('data-animation-blur', 'done')
-                        setTimeout(function () {
-                            style.setAttribute('data-animation-blur', 'process')
-                        }, 150);
-                    }, animateDelay);
-
-                })
-
-            }
-        }
-
-
         const onResetClickTitle = () => {
             setAttributes({
                 titleWeight: 600,
@@ -563,17 +462,9 @@ class edit extends Component {
             )
         });
 
+        const reverse = reversedir ? -1 : 1;
+
         return [
-            isSelected && (
-                <BlockControls>
-                    <AlignmentToolbar
-                        value={align}
-                        onChange={(value) => {
-                            setAttributes({ align: value })
-                        }}
-                    />
-                </BlockControls>
-            ),
             isSelected && (
                 <InspectorControls>
                     <PanelBody
@@ -589,7 +480,7 @@ class edit extends Component {
                         <SelectControl
                             label={__("Style")}
                             value={style}
-                            onChange={newSelect => initStyle(newSelect)}
+                            onChange={newSelect => setAttributes({ style: newSelect })}
                             options={STYLE}
                         />
                         <ToggleControl
@@ -662,7 +553,7 @@ class edit extends Component {
                                     onChange={newSelect => setAttributes({ iconPosition: newSelect })}
                                     options={POSITION}
                                 />
-                                {iconPosition === 'top' && style != 'style3' && style != 'style4' && <Fragment>
+                                {(iconPosition === 'top' && style != 'style3' && style != 'style4') && <Fragment>
                                     <p>{__("Icon Alignment")}</p>
                                     <Toolbar
                                         controls={ALIGNS.map(contentAlign => ({
@@ -757,7 +648,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__('background Text')}
                             checked={backgroundText}
-                            onChange={(newValue) => setAttributes({ backgroundText: newValue ? 'premium-title-bg-text' : '' })}
+                            onChange={(value) => setAttributes({ backgroundText: value })}
                         />
                         {backgroundText &&
                             <Fragment>
@@ -992,19 +883,29 @@ class edit extends Component {
                         {style === "style9" && <Fragment>
                             <RangeControl
                                 label={__("Blur Shadow Value (px)")}
+                                min={10}
+                                max={500}
+                                step={10}
                                 value={blurShadow}
+                                initialPosition={120}
                                 onChange={(newValue) => setAttributes({ blurShadow: newValue })}
                             />
                         </Fragment>}
-                        {style === "style8" || style === "style9" &&
+                        {(style === "style8" || style === "style9") &&
                             <RangeControl
                                 label={__("Animation Delay")}
                                 value={animateDelay}
+                                min={1}
+                                max={30}
+                                step={0.5}
+                                initialPosition={2}
                                 onChange={(newValue) => setAttributes({ animateDelay: newValue })}
                             />}
                         {style === "style8" && <RangeControl
                             label={__("Animation Duration")}
                             value={animateduration}
+                            step={0.5}
+                            initialPosition={1}
                             onChange={(newValue) => setAttributes({ animateduration: newValue })}
                         />}
 
@@ -1143,11 +1044,11 @@ class edit extends Component {
                                 }
                             }
                         />
-                        <ToggleControl
+                        {style !== "style9" && <ToggleControl
                             label={__('Stroke')}
                             checked={stroke}
                             onChange={(newValue) => setAttributes({ stroke: newValue })}
-                        />
+                        />}
                         {
                             stroke && <Fragment>
                                 <p>{__('Stroke Color')}</p>
@@ -1449,8 +1350,8 @@ class edit extends Component {
                             <RangeControl
                                 label={__("z-index")}
                                 value={zIndex}
-                                min="1"
-                                max="100"
+                                min={0}
+                                max={100}
                                 onChange={value => setAttributes({ zIndex: value })}
                             />
                         </PanelBody>
@@ -1471,12 +1372,12 @@ class edit extends Component {
                     textAlign: align,
                 }} >
 
-                <div className={`premium-title  ${backgroundText}`} style={{
+                <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
                     textAlign: align,
                 }} data-backgroundText={BackText}>
                     <div className={`premium-title-container ${style} ${style}-${align}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
 
-                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={animateDelay}>
+                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
 
                             {style === 'style7' ? <Fragment>
                                 {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
@@ -1495,16 +1396,15 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-wrap"> <Lottie
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
                                             options={{
                                                 loop: loop,
                                                 path: lottieURl,
                                                 rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid',
-                                                    className: "premium-lottie-animation"
+                                                    preserveAspectRatio: 'xMidYMid'
                                                 }
                                             }}
-                                            direction={reversedir}
+                                            direction={reverse}
                                         />
                                         </div>
                                     }
@@ -1527,19 +1427,19 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className="premium-title-icon premium-lottie-wrap"> <Lottie
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
                                             options={{
                                                 loop: loop,
                                                 path: lottieURl,
                                                 rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid',
-                                                    className: "premium-lottie-animation"
+                                                    preserveAspectRatio: 'xMidYMid'
                                                 }
                                             }}
-                                            direction={reversedir}
+                                            direction={reverse}
                                         />
                                         </div>
                                     }
+
                                     <span className={`premium-letters-container`}>
                                         {styleContainer}
                                     </span>
@@ -1551,16 +1451,15 @@ class edit extends Component {
                                         iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                     }
                                     {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-wrap"> <Lottie
+                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
                                             options={{
                                                 loop: loop,
                                                 path: lottieURl,
                                                 rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid',
-                                                    className: "  premium-lottie-animation"
+                                                    preserveAspectRatio: 'xMidYMid'
                                                 }
                                             }}
-                                            direction={reversedir}
+                                            direction={reverse}
                                         />
                                         </div>
                                     }
@@ -1573,12 +1472,12 @@ class edit extends Component {
                                     />
                                 </Fragment>
                             }
-                            {link && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={"javascript:void(0)"} ></a>}
+                            {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
                         </div>
 
                     </div>
                 </div>
-            </div>
+            </div >
 
 
         ]
