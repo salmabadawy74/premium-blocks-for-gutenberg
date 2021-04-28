@@ -45,8 +45,6 @@ function styling(props) {
 
     styling_css += generateCSS(mobile_selectors, id, true, "mobile")
 
-    console.log(styling_css)
-
     return styling_css
 
 }

@@ -246,7 +246,6 @@ function styling(props) {
             "margin-bottom": generateCSSUnit(iconSpacingB, iconSpacingType),
             "margin-left": generateCSSUnit(iconSpacingL, iconSpacingType),
         },
-
         ' .premium-lottie-animation svg ': {
             "width": `${iconSize}${iconSizeType} !important`,
             "height": `${iconSize}${iconSizeType} !important`
