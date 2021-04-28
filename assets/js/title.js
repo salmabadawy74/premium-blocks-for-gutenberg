@@ -45,11 +45,9 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
     if ($titleContainer.hasClass('style8')) {
         var holdTime = $titleContainer.attr('data-shiny-delay') * 1000,
             duration = $titleContainer.attr('data-shiny-dur') * 1000;
-        console.log(holdTime, duration)
         function shinyEffect() {
             $titleElement.get(0).setAttribute('data-animation', 'shiny');
             setTimeout(function () {
