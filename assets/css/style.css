@@ -3426,16 +3426,12 @@ color: #23282d;
   .premium-title-style8__wrap .premium-title-text-title[data-animation="shiny"] {
         -webkit-background-size: 125px 125px !important;
         background-size: 125px !important;
-        color: rgba(255, 255, 255, 0);
         -webkit-background-clip: text !important;
         background-clip: text !important;
         -webkit-animation-name: shining_title !important;
         animation-name: shining_title !important;
-        -webkit-animation-duration: var(--animation-speed) !important;
-        animation-duration: var(--animation-speed)  !important;
         -webkit-animation-iteration-count: infinite !important;
         animation-iteration-count: infinite !important;
-        background: red -webkit-gradient(linear, left top, right top, from(red), to(red), color-stop(0.5, black)) 0 0 no-repeat;
         background-size: auto;
         background-clip: border-box;
     }
@@ -3454,9 +3450,9 @@ color: #23282d;
             background-position: 200%; } 
         }
 
-        .premium-title-style9[data-animation-blur="process"] .premium-title-style9-letter {
-                -webkit-animation: premium_blurshadow 2s 1 alternate;
-                animation: premium_blurshadow 2s 1 alternate;
+        .premium-title-style9__wrap[data-animation-blur="process"] .premium-title-style9-letter {
+                -webkit-animation: premium_blurshadow 5s 1 alternate;
+                animation: premium_blurshadow 5s 1 alternate;
         }
 
         @-webkit-keyframes premium_blurshadow {
