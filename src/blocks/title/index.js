@@ -147,19 +147,17 @@ const titleAttrs = {
     },
     titlefontSize: {
         type: "number",
-        default: 30
+
     },
     titlefontSizeType: {
         type: "string",
         default: "px"
     },
     titlefontSizeMobile: {
-        type: "number",
-        default: 30
+        type: "number"
     },
     titlefontSizeTablet: {
-        type: "number",
-        default: 30
+        type: "number"
     },
     titleshadowColor: {
         type: "string"
@@ -205,8 +203,7 @@ const titleAttrs = {
         default: 1
     },
     titleborderColor: {
-        type: "string",
-        default: "#d4d4d4"
+        type: "string"
     },
     BGColor: {
         type: "string",
@@ -230,7 +227,7 @@ const titleAttrs = {
     },
     iconSize: {
         type: "number",
-        default: 30
+        default: 40
     },
     iconSizeType: {
         type: "string",
@@ -269,8 +266,7 @@ const titleAttrs = {
         default: 0
     },
     iconborderColor: {
-        type: "string",
-        default: "#d4d4d4"
+        type: "string"
     },
     iconshadowColor: {
         type: "string"
@@ -536,11 +532,11 @@ const titleAttrs = {
         default: false
     },
     textBackColor: {
-        type: "string"
+        type: "string",
+        default: "#6ec1e4"
     },
     textBackfontSize: {
-        type: "number",
-        default: "20"
+        type: "number"
     },
     textBackfontSizeType: {
         type: "string",
@@ -590,18 +586,20 @@ const titleAttrs = {
         default: "h2"
     },
     shinyColor: {
-        type: "string"
+        type: "string",
+        default: '#fff'
     },
     blurColor: {
-        type: "string"
+        type: "string",
+        default: "#000"
     },
     blurShadow: {
         type: "number",
-        default: "0"
+        default: "120"
     },
     animateDelay: {
         type: "number",
-        default: "2"
+        default: "11"
     },
     animateduration: {
         type: "number",
