@@ -73,7 +73,7 @@ const titleAttrs = {
     },
     strokeFull: {
         type: "number",
-        default: 1
+        default: 0
     },
     backgroundText: {
         type: "boolean",
