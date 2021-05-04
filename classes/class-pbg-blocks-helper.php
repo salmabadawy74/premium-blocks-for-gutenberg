@@ -1336,10 +1336,10 @@ class PBG_Blocks_Helper {
 
 		$selectors = array(
 			" .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']" => array(
-				'animation-duration' => $attr['animateduration'] . 's',
-				'background'         => $attr['titleColor'] . ' -webkit-gradient(linear, left top, right top, from( ' . $attr['titleColor'] . ' ), to( ' . $attr['titleColor'] . ' ), color-stop(0.5,' . $attr['shinyColor'] . ' )) 0 0 no-repeat',
-				'color'              => 'rgba(255, 255, 255, 0)' . '!important',
-				'background-clip'    => `text !important`,
+				'--animation-speed' => $attr['animateduration'] . 's',
+				'--base-color'      => $attr['titleColor'],
+				'--shiny-color'     => $attr['shinyColor'],
+
 			),
 			' .premium-title-header'              => array(
 				'--shadow-color' => $attr['blurColor'],
@@ -1468,7 +1468,6 @@ class PBG_Blocks_Helper {
 				'height' => self::get_css_value( $attr['iconSize'], $attr['iconSizeType'] ),
 			),
 			' .premium-title-style9__wrap .premium-letters-container' => array(
-
 				'margin-top'     => self::get_css_value( $attr['titleMarginT'], $attr['titleMarginType'] ),
 				'margin-right'   => self::get_css_value( $attr['titleMarginR'], $attr['titleMarginType'] ),
 				'margin-bottom'  => self::get_css_value( $attr['titleMarginB'], $attr['titleMarginType'] ),
@@ -1485,6 +1484,7 @@ class PBG_Blocks_Helper {
 				'text-transform' => $attr['titleUpper'] ? 'uppercase' : 'none',
 				'font-style'     => self::get_css_value( $attr['titleStyle'], ' !important' ),
 				'font-weight'    => self::get_css_value( $attr['titleWeight'], ' !important' ),
+				'text-shadow'    => self::get_css_value( $attr['titleshadowHorizontal'], 'px ' ) . self::get_css_value( $attr['titleshadowVertical'], 'px ' ) . self::get_css_value( $attr['titleshadowBlur'], 'px ' ) . $attr['titleshadowColor'],
 			),
 
 		);
@@ -1529,7 +1529,6 @@ class PBG_Blocks_Helper {
 				'height' => self::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] ),
 			),
 			' .premium-title-style9__wrap .premium-letters-container' => array(
-
 				'margin-top'     => self::get_css_value( $attr['titleMarginTMobile'], $attr['titleMarginType'] ),
 				'margin-right'   => self::get_css_value( $attr['titleMarginRMobile'], $attr['titleMarginType'] ),
 				'margin-bottom'  => self::get_css_value( $attr['titleMarginBMobile'], $attr['titleMarginType'] ),
