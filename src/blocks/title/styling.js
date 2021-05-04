@@ -95,7 +95,6 @@ function styling(props) {
         iconSpacingBMobile,
         iconSpacingLMobile,
         iconSpacingType,
-
         strokeColor,
         strokeFull,
         BackText,
@@ -135,17 +134,16 @@ function styling(props) {
         blurShadow
     } = props.attributes
 
-    var selectors = {}
-    var tablet_selectors = {}
-    var mobile_selectors = {}
+    var selectors = {};
+    var tablet_selectors = {};
+    var mobile_selectors = {};
 
     selectors = {
         "  .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']": {
-            "background": `${titleColor} -webkit-gradient(linear, left top, right top, from(${titleColor}), to(${titleColor}), color-stop(0.5, ${shinyColor})) 0 0 no-repeat`,
-            "-webkit-animation-duration": `${animateduration}s !important`,
-            "animation-duration": `${animateduration}s !important`,
-            "background-clip": `text !important`,
-            "color": `rgba(255, 255, 255, 0) !important`,
+            "--animation-speed": `${animateduration}s`,
+            '--base-color': `${titleColor}`,
+            '--shiny-color': `${shinyColor}`
+
         },
         " .premium-title-header": {
             "--shadow-color": `${blurColor}`,
@@ -290,7 +288,7 @@ function styling(props) {
             "text-transform": titleUpper ? "uppercase" : "none" + "!important",
             "font-style": titleStyle + "!important",
             "font-weight": titleWeight + "!important",
-            "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`
+            "text-shadow": `${titleshadowHorizontal}px ${titleshadowVertical}px ${titleshadowBlur}px ${titleshadowColor}`,
         }
     }
 
@@ -396,12 +394,15 @@ function styling(props) {
     }
 
     var styling_css = ""
+
     var id = `#premium-title-${block_id}`
+
     if (classMigrate) {
         id = `.premium-block-${block_id}`
     }
 
     styling_css = generateCSS(selectors, id)
+
     styling_css += generateCSS(tablet_selectors, id, true, "tablet")
 
     styling_css += generateCSS(mobile_selectors, id, true, "mobile")
