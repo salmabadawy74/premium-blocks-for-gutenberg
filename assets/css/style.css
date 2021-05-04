@@ -3357,19 +3357,25 @@ color: #23282d;
 .premium-title .style1 .premium-title-center,
 .premium-title .style2 .premium-title-center,
 .premium-title .style5 .premium-title-center,
-.premium-title .style6 .premium-title-center{
+.premium-title .style6 .premium-title-center,
+.premium-title .style8 .premium-title-center,
+.premium-title .style9 .premium-title-center{
   align-items: center !important;
 }
 .premium-title .style1 .premium-title-left,
 .premium-title .style2 .premium-title-left,
 .premium-title .style5 .premium-title-left,
-.premium-title .style6 .premium-title-left {
+.premium-title .style6 .premium-title-left,
+.premium-title .style8 .premium-title-left,
+.premium-title .style9 .premium-title-left {
   align-items: flex-start !important;
 }
 .premium-title .style1 .premium-title-right,
 .premium-title .style2 .premium-title-right,
 .premium-title .style5 .premium-title-right,
-.premium-title .style6 .premium-title-right {
+.premium-title .style6 .premium-title-right,
+.premium-title .style8 .premium-title-right,
+.premium-title .style9 .premium-title-right {
   align-items: flex-end !important;
 }
 .premium-title .style7 .premium-title-center .premium-title-icon {
@@ -3423,53 +3429,56 @@ color: #23282d;
     display: -ms-flexbox;
     display: flex; }
 
-  .premium-title-style8__wrap .premium-title-text-title[data-animation="shiny"] {
-        -webkit-background-size: 125px 125px !important;
-        background-size: 125px !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-animation-name: shining_title !important;
-        animation-name: shining_title !important;
-        -webkit-animation-iteration-count: infinite !important;
-        animation-iteration-count: infinite !important;
-        background-size: auto;
-        background-clip: border-box;
+.premium-title-style8__wrap .premium-title-text-title[data-animation="shiny"] {
+    -webkit-background-size: 125px 125px !important;
+    background-size: 125px !important;
+    color: rgba(255, 255, 255, 0) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-animation-name: shining_title !important;
+    animation-name: shining_title !important;
+    -webkit-animation-duration: var(--animation-speed) !important;
+    animation-duration: var(--animation-speed) !important;
+    -webkit-animation-iteration-count: infinite !important;
+    animation-iteration-count: infinite !important;
+    background: var(--base-color) -webkit-gradient(linear, left top, right top, from(var(--base-color)), to(var(--base-color)), color-stop(0.5, var(--shiny-color))) 0 0 no-repeat;
     }
 
-        @-webkit-keyframes shining_title {
+    @-webkit-keyframes shining_title {
+    0% {
+        background-position: 0%; }
+    100% {
+        background-position: 200%; }
+    }
+
+   @keyframes shining_title {
         0% {
-            background-position: 0%; }
+          background-position: 0%; }
         100% {
-            background-position: 200%; } 
-        }
+          background-position: 200%; } 
+    }
 
-        @keyframes shining_title {
-        0% {
-            background-position: 0%; }
-        100% {
-            background-position: 200%; } 
-        }
 
-        .premium-title-style9__wrap[data-animation-blur="process"] .premium-title-style9-letter {
-                -webkit-animation: premium_blurshadow 5s 1 alternate;
-                animation: premium_blurshadow 5s 1 alternate;
-        }
+    .premium-title-style9__wrap[data-animation-blur="process"] .premium-title-style9-letter {
+            -webkit-animation: premium_blurshadow 5s 1 alternate;
+            animation: premium_blurshadow 5s 1 alternate;
+    }
 
-        @-webkit-keyframes premium_blurshadow {
-        from {
-            text-shadow: 0 0 var(--shadow-value) var(--shadow-color);
-            color: transparent; }
-        to {
-            text-shadow: 0; }
-        }
+    @-webkit-keyframes premium_blurshadow {
+    from {
+        text-shadow: 0 0 var(--shadow-value) var(--shadow-color);
+        color: transparent; }
+    to {
+        text-shadow: 0; }
+    }
 
-        @keyframes premium_blurshadow {
-        from {
-            text-shadow: 0 0 var(--shadow-value) var(--shadow-color);
-            color: transparent; }
-        to {
-            text-shadow: 0; } 
-        }
+    @keyframes premium_blurshadow {
+    from {
+        text-shadow: 0 0 var(--shadow-value) var(--shadow-color);
+        color: transparent; }
+    to {
+        text-shadow: 0; } 
+    }
 
 /************ Responsive **************/
 @media (min-width: 977px) {
