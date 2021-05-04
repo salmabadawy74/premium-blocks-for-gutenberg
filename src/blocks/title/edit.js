@@ -20,8 +20,6 @@ const {
 } = wp.element
 
 const {
-    BlockControls,
-    AlignmentToolbar,
     InspectorControls,
     ColorPalette,
     RichText
@@ -42,6 +40,7 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
+        this.handleStyle = this.handleStyle.bind(this);
     }
 
     componentDidMount() {
@@ -53,23 +52,19 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
         this.handleStyle = this.handleStyle.bind(this);
-
     }
 
     componentDidUpdate() {
         let element = document.getElementById("premium-style-title-" + this.props.clientId)
-
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props)
         }
-
         clearTimeout(istitleUpdated);
         istitleUpdated = setTimeout(this.handleStyle, 400);
     }
 
     handleStyle() {
         const { animateDelay, animateduration } = this.props.attributes;
-
         let titleContainers = document.querySelectorAll(".premium-title-container");
         titleContainers.forEach(function (titleContainer) {
             if (titleContainer.classList.contains("style8")) {
@@ -89,6 +84,7 @@ class edit extends Component {
                     setTimeout(repeat, holdTime);
                 })();
             }
+
             if (titleContainer.classList.contains("style9")) {
                 let style9 = document.querySelectorAll('.premium-title-style9__wrap');
                 style9.forEach(function (style) {
@@ -112,12 +108,12 @@ class edit extends Component {
                     }, holdTime);
                 });
             }
-
         })
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props
+        const { attributes, setAttributes, isSelected } = this.props;
+
         const {
             block_id,
             align,
@@ -618,6 +614,7 @@ class edit extends Component {
                             value={titleTag}
                             onChange={(newValue) => setAttributes({ titleTag: newValue })}
                         />
+                        <p> {__('Alignment')}</p>
                         <Toolbar
                             controls={ALIGNS.map(contentAlign => ({
                                 icon: "editor-align" + contentAlign,
