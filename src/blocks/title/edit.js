@@ -972,8 +972,6 @@ class edit extends Component {
                             }
 
                             onChangeMarSizeUnit={(newvalue) => setAttributes({ titleMarginType: newvalue })}
-
-
                         />
                         <PremiumResponsivePadding
                             paddingTop={titlePaddingT}
@@ -1161,7 +1159,6 @@ class edit extends Component {
                                 paddingRightMobile={iconPaddingRMobile}
                                 paddingBottomMobile={iconPaddingBMobile}
                                 paddingLeftMobile={iconPaddingLMobile}
-
                                 showUnits={true}
                                 selectedUnit={iconPaddingType}
                                 onChangePadSizeUnit={newvalue =>
@@ -1475,8 +1472,6 @@ class edit extends Component {
                     </div>
                 </div>
             </div >
-
-
         ]
     }
 }
