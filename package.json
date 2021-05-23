@@ -44,7 +44,6 @@
         "hex-to-rgba": "^2.0.1",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
-        "react-datetime": "^3.0.4",
         "react-dom": "^16.8.6",
         "react-lottie-with-segments": "^1.4.8",
         "react-sortable-hoc": "^1.11.0",
