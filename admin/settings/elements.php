@@ -18,7 +18,7 @@ if (!class_exists('Premium_Guten_Blocks')) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array('dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'countDown');
+		public static $pbg_blocks = array('dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'countdown');
 
 		private $pbg_default;
 
@@ -303,7 +303,7 @@ if (!class_exists('Premium_Guten_Blocks')) {
 										<th><?php echo __('Premium CountDown', 'premium-gutenberg'); ?></th>
 										<td>
 											<label class="switch">
-												<input type="checkbox" id="countDown" name="countDown" <?php checked(1, $this->pbg_get_settings['countDown'], true); ?>>
+												<input type="checkbox" id="countdown" name="countdown" <?php checked(1, $this->pbg_get_settings['countdown'], true); ?>>
 												<span class="slider round"></span>
 											</label>
 										</td>
@@ -374,7 +374,7 @@ if (!class_exists('Premium_Guten_Blocks')) {
 				'videoBox'     => intval($settings['videoBox'] ? 1 : 0),
 				'fancyText'    => intval($settings['fancyText'] ? 1 : 0),
 				'lottie'       => intval($settings['lottie'] ? 1 : 0),
-				'countDown'       => intval($settings['countDown'] ? 1 : 0),
+				'countdown'       => intval($settings['countdown'] ? 1 : 0),
 			);
 
 			update_option('pbg_settings', $this->pbg_settings);

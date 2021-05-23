@@ -207,7 +207,7 @@ class PBG_Blocks_Helper
 
 		$is_lottie_enabled = self::$blocks['lottie'];
 
-		$is_count_down_enabled = self::$blocks['countDown'];
+		$is_count_down_enabled = self::$blocks['countdown'];
 
 		wp_enqueue_style(
 			'pbg-frontend',
@@ -360,6 +360,13 @@ class PBG_Blocks_Helper
 			wp_enqueue_script(
 				'pbg-lottie',
 				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+            wp_enqueue_script(
+				'countDown',
+				PREMIUM_BLOCKS_URL . 'assets/js/count-down.js',
 				array('jquery'),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -1581,7 +1588,7 @@ class PBG_Blocks_Helper
 				'padding-left'   => self::get_css_value($attr['paddingLeft'], $attr['paddingType']),
 				'margin-top'    => self::get_css_value($attr['marginTop'], $attr['marginType']),
 				'margin-right'  => self::get_css_value($attr['marginRight'], $attr['marginType']),
-				'margin-bottom' => self::get_css_value($attr['marginBottom'], $attr['marginType']),
+				'margin-bottom' => self::get_css_value($attr['marginBottom'], $attr['marginType']) . "!important",
 				'margin-left'   => self::get_css_value($attr['marginLeft'], $attr['marginType']),
 			),
 			' .pre_countdown-amount'   => array(
@@ -1612,6 +1619,7 @@ class PBG_Blocks_Helper
 				"padding-right" => self::get_css_value($attr['textPaddingRight'], $attr['textPaddingType']),
 				"padding-bottom" => self::get_css_value($attr['textPaddingBottom'], $attr['textPaddingType']),
 				"padding-left" => self::get_css_value($attr['textPaddingLeft'], $attr['textPaddingType']),
+                'box-shadow'       => $attr['textShadowHorizontal'] . 'px' . ' ' . $attr['textShadowVertical'] . 'px' . ' ' . $attr['textShadowBlur'] . 'px' . ' ' . $attr['textShadowColor'] . ' ' . $attr['textShadowPosition'],
 			)
 
 		);
