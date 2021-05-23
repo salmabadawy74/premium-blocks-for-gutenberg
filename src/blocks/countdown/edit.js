@@ -26,8 +26,7 @@ class edit extends Component {
             countHours: "00",
             countMinutes: "00",
             countSeconds: "00",
-            vaild: true,
-            showMessage: false
+
         }
         this.countDown = this.countDown.bind(this)
         this.counter = this.counter.bind(this)
@@ -64,13 +63,11 @@ class edit extends Component {
     }
     countDown(date) {
         this.props.setAttributes({ dateTime: date })
-        console.log(date)
         const { block_id } = this.props.attributes;
 
         if (block_id) {
             setInterval(this.counter, 1000)
         }
-
     }
     counter() {
         const { timeZone, expireType, dateTime, showMonths, showWeeks, showDays, showHours, showMinutes, showSeconds } = this.props.attributes;
@@ -81,17 +78,10 @@ class edit extends Component {
         }
         let timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
         if (timeLeft < 0) {
-            this.setState({ vaild: false })
-            if (expireType === "message") {
-                this.setState({ showMessage: true })
-            }
-            else {
-                this.setState({ countMonths: "00", countWeeks: "00", countDays: "00", countHours: "00", countMinutes: "00", countSeconds: "00" })
-            }
+            this.props.setAttributes({ valid: false })
         }
         else if (timeLeft > 0) {
-            this.setState({ vaild: true })
-            this.setState({ showMessage: false })
+            this.props.setAttributes({ valid: true })
             if (showMonths) {
                 let months = Math.floor(moment.duration(timeLeft).asMonths());
 
@@ -268,9 +258,14 @@ class edit extends Component {
             textPaddingBottomMobile,
             textPaddingLeftMobile,
             textPaddingType,
+            valid
         } = attributes;
 
         const mainClasses = classnames(className, "premium-countdown");
+
+        const yesterday = moment().subtract(1, "hour");
+
+        const validTime = (dateTime) => moment(dateTime).isBefore(yesterday);
 
         return [
             isSelected && (<InspectorControls key={"inspector"}>
@@ -295,6 +290,7 @@ class edit extends Component {
                         currentDate={dateTime}
                         onChange={(value) => this.countDown(value)}
                         is12Hour={true}
+                        isInvalidDate={validTime}
                     />
                     <SelectControl
                         label={__("Time Zone")}
@@ -1102,7 +1098,7 @@ class edit extends Component {
                 data-time={dateTime}
             >
                 <div id={`countdown-${block_id}`} className={`premium-countdown-init countdown ${contentStyle} `} data-time={dateTime} data-expire={expireType} data-timezone={timeZone} data-expiretxt={expireTxt} data-expirelink={expiredUrl}>
-                    {!this.state.showMessage ? (<span className={`pre_countdown-row `}>
+                    {(valid || expireType === "default") ? (<span className={`pre_countdown-row `}>
                         {showMonths && [
                             <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace || 20}px 10px ${unitsSpace || 20}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
                                 <span className={`pre_time-mid `} >
