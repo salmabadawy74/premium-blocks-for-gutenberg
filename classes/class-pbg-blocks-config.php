@@ -1,20 +1,22 @@
 <?php
+
 /**
  * PBG_Blocks_Config.
  *
  * @package PBG
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
+if (!class_exists('PBG_Blocks_Config')) {
 
 	/**
 	 * Class PBG_Blocks_Config.
 	 */
-	class PBG_Blocks_Config {
+	class PBG_Blocks_Config
+	{
 
 		/**
 		 * Block Attributes
@@ -37,9 +39,10 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 		 *
 		 * @return array blocks attributes.
 		 */
-		public static function get_block_attributes() {
+		public static function get_block_attributes()
+		{
 
-			if ( null === self::$block_attributes ) {
+			if (null === self::$block_attributes) {
 
 				self::$block_attributes = array(
 					'premium/fancy-text'     => array(
@@ -304,8 +307,101 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'hideMobile'   => false,
 						),
 					),
+					'premium/countdown'         => array(
+						'slug'       => '',
+						'default'    => true,
+						'attributes' => array(
+							'block_id'     => '',
+							'classMigrate' => false,
+							'digitSizeUnit' => 'px',
+							'digitSize' => '70',
+							'digitSizeMobile' => '70',
+							'digitSizeTablet' => '70',
+							'backgroundSize' => '30',
+							'backgroundSizeMobile' => '30',
+							'backgroundSizeTablet' => '30',
+							'unitSizeUnit' => "px",
+							'unitSize' => '20',
+							'unitSizeMobile' => '20',
+							'unitSizeTablet' => '20',
+							'marginType' => 'px',
+							'paddingType' => 'px',
+							'marginTop' => '0',
+							'marginRight' => '0',
+							'marginBottom' => '0',
+							'marginLeft' => '0',
+							'marginTopTablet' => '0',
+							'marginRightTablet' => '0',
+							'marginBottomTablet' => '0',
+							'marginLeftTablet' => '0',
+							'marginTopMobile' => '0',
+							'marginRightMobile' => '0',
+							'marginBottomMobile' => '0',
+							'marginLeftMobile' => '0',
+							'paddingTop' => '0',
+							'paddingRight' => '0',
+							'paddingBottom' => '0',
+							'paddingLeft' => '0',
+							'paddingTopTablet' => '0',
+							'paddingRightTablet' => '0',
+							'paddingBottomTablet' => '0',
+							'paddingLeftTablet' => '0',
+							'paddingTopMobile' => '0',
+							'paddingRightMobile' => '0',
+							'paddingBottomMobile' => '0',
+							'paddingLeftMobile' => '0',
+							'expireColor' => '',
+							'expireBG' => '',
+							'textSizeUnit' => 'px',
+							'textSize' => '30',
+							'textSizeTablet' => '30',
+							'textSizeMobile' => '30',
+							'textWeight' => '',
+							'textStyle' => 'normal',
+							'textLetter' => '',
+							'textUpper' => false,
+							'textLine' => '',
+							'textBorderType' => 'none',
+							'textBorderTop' => '0',
+							'textBorderRight' => '0',
+							'textBorderBottom' => '0',
+							'textBorderLeft' => '0',
+							'textBorderColor' => '',
+							'textBorderRadius' => '0',
+							'textShadowColor' => '',
+							'textShadowBlur' => '',
+							'textShadowHorizontal' => '',
+							'textShadowVertical' => '',
+							'textShadowPosition' => '',
+							'textMarginType' => 'px',
+							'textMarginTop' => '0',
+							'textMarginRight' => '0',
+							'textMarginBottom' => '0',
+							'textMarginLeft' => '0',
+							'textMarginTopTablet' => '0',
+							'textMarginRightTablet' => '0',
+							'textMarginBottomTablet' => '0',
+							'textMarginLeftTablet' => '0',
+							'textMarginTopMobile' => '0',
+							'textMarginRightMobile' => '0',
+							'textMarginBottomMobile' => '0',
+							'textMarginLeftMobile' => '0',
+							'textPaddingType' => 'px',
+							'textPaddingTop' => '0',
+							'textPaddingRight' => '0',
+							'textPaddingBottom' => '0',
+							'textPaddingLeft' => '0',
+							'textPaddingTopTablet' => '0',
+							'textPaddingRightTablet' => '0',
+							'textPaddingBottomTablet' => '0',
+							'textPaddingLeftTablet' => '0',
+							'textPaddingTopMobile' => '0',
+							'textPaddingRightMobile' => '0',
+							'textPaddingBottomMobile' => '0',
+							'textPaddingLeftMobile' => '0'
+						)
+					),
 				);
-
 			}
 
 			return self::$block_attributes;
