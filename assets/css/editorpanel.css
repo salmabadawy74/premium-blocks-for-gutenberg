@@ -1,6 +1,14 @@
 .premium-panel-body p.premium-editor-paragraph {
     margin-bottom: 0;
 }
+
+/* 
+* component Datetime
+*/
+.components-button.components-datetime__date-reset-button{
+    display: none !important;
+}
+
 /*
   * Dropdown Toggle Control
   */
@@ -8,6 +16,7 @@
     overflow: hidden;
     padding: 10px 0;
 }
+
 
 .premium-control-toggle .premium-control-toggle-btn {
     float: right;
