@@ -513,5 +513,9 @@ export const countdownAttrs = {
     textPaddingLeftMobile: {
         type: "number",
         default: "0"
+    },
+    valid: {
+        type: "boolean",
+        default: true
     }
 }
