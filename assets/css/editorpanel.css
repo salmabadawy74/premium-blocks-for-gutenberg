@@ -103,8 +103,9 @@
 
 .premium-size-type-field-tabs .components-tab-panel__tabs {
     position: absolute;
-    margin-left: 79px;
-    margin-top: -2px;
+    right: 0;
+    z-index: 999;
+    margin-top: -4px;
 }
 
 .premium-size-type-field-tabs.premium-without-size-type .components-tab-panel__tabs {
