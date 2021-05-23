@@ -1,6 +1,7 @@
 import classnames from "classnames";
 
 const { __ } = wp.i18n;
+
 const save = props => {
     const { className, clientId: blockId, attributes } = props;
     const {
@@ -52,7 +53,8 @@ const save = props => {
         unitLine,
         unitsSpace,
         separatorTxt,
-        enableSeparator
+        enableSeparator,
+        valid
     } = attributes;
 
     const mainClasses = classnames(className, "premium-countdown");
@@ -64,7 +66,7 @@ const save = props => {
             style={{ justifyContent: align || "center" }}
         >
             <div id={`countdown-${block_id}`} className={`premium-countdown-init countdown ${contentStyle} `} data-time={dateTime} data-expire={expireType} data-timezone={timeZone} data-expiretxt={expireTxt} data-expirelink={expiredUrl}>
-                <span className={`pre_countdown-row `}>
+                {(valid || expireType === "default") ? (<span className={`pre_countdown-row `}>
                     {showMonths && [
                         <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
                             <span className={`pre_time-mid `} >
@@ -313,7 +315,7 @@ const save = props => {
                         </span>
                     ]}
 
-                </span>
+                </span>) : (<div className="premium-countdown-exp-message">{expireTxt}</div>)}
             </div>
         </ div>
 
