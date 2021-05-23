@@ -3,9 +3,7 @@ jQuery(document).ready(function ($) {
     setTimeout(function () {
         setInterval(count, 1000)
     }, 500)
-    if (!dataTime) {
-        clearInterval(count)
-    }
+
 })
 function count() {
     var countDownContainers = document.querySelectorAll(".premium-countdown-init");
@@ -29,16 +27,14 @@ function count() {
             expireLink = countDownContainer.dataset.expirelink;
 
         var startDateTime = moment();
-        var endDateTime = moment.utc(dateTime);
+        var endDateTime = moment.utc(dataTime);
         if (timeZone === "user-time") {
             endDateTime = moment(dataTime).utc().local()
         }
         var timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
 
-        if (timeLeft <= 0) {
-            if (eventExpire === "message") {
-                countDownContainer.innerHTML = `<div class="premium-countdown-exp-message">${expireTxt}</div>`
-            } else if (eventExpire === "link") {
+        if (timeLeft < 0) {
+            if (eventExpire === "link") {
                 window.location.href = `${expireLink}`
             }
 
@@ -63,14 +59,14 @@ function count() {
             seconds = Math.floor(moment.duration(timeLeft).asSeconds());
 
         }
-        console.log(months, weeks, days, hours, minutes, seconds)
 
-        monthContainer ? monthContainer.innerHTML = months : "";
-        weekContainer ? weekContainer.innerHTML = weeks : "";
-        dayContainer ? dayContainer.innerHTML = days : "";
-        hourContainer ? hourContainer.innerHTML = hours : "";
-        minuteContainer ? minuteContainer.innerHTML = minutes : "";
-        secondContainer ? secondContainer.innerHTML = seconds : "";
+
+        monthContainer ? monthContainer.innerHTML = (months > 0 ? months : "00") : "";
+        weekContainer ? weekContainer.innerHTML = (weeks > 0 ? weeks : "00") : "";
+        dayContainer ? dayContainer.innerHTML = (days > 0 ? days : "00") : "";
+        hourContainer ? hourContainer.innerHTML = (hours > 0 ? hours : "00") : "";
+        minuteContainer ? minuteContainer.innerHTML = (minutes > 0 ? minutes : "00") : "";
+        secondContainer ? secondContainer.innerHTML = (seconds > 0 ? seconds : "00") : "";
 
     })
 }
