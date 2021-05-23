@@ -1,28 +1,42 @@
 import classnames from "classnames";
-import Datetime from 'react-datetime';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from '../../components/premium-typo';
 import PremiumBorder from '../../components/premium-border';
 import PremiumBoxShadow from '../../components/premium-box-shadow'
-import styling from './styling'
+import styling from './styling';
+
 
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
 
-const { PanelBody, DateTimePicker, ToggleControl, SelectControl, TextControl, RangeControl, TabPanel,
+const { PanelBody, Button, DateTimePicker, ToggleControl, SelectControl, TextControl, RangeControl, TabPanel,
     Dashicon } = wp.components
 
-const { BlockControls, InspectorControls, AlignmentToolbar, ColorPalette } = wp.editor;
+const { InspectorControls, ColorPalette } = wp.editor;
 
 class edit extends Component {
     constructor() {
         super(...arguments)
+        this.state = {
+            countMonths: "00",
+            countWeeks: "00",
+            countDays: "00",
+            countHours: "00",
+            countMinutes: "00",
+            countSeconds: "00",
+            vaild: true,
+            showMessage: false
+        }
+        this.countDown = this.countDown.bind(this)
+        this.counter = this.counter.bind(this)
+
     }
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
+        setAttributes({ classMigrate: true });
         setAttributes({ block_id: clientId })
         const $style = document.createElement("style");
         $style.setAttribute(
@@ -30,15 +44,89 @@ class edit extends Component {
             "premium-style-countdown-" + clientId.substr(0, 6)
         );
         document.head.appendChild($style);
+        this.countDown = this.countDown.bind(this)
+
     }
 
     componentDidUpdate() {
-        var element = document.getElementById(
+        let element = document.getElementById(
             "premium-style-countdown-" + this.props.clientId.substr(0, 6)
         );
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props);
+        }
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.countDown)
+    }
+    countDown(date) {
+        this.props.setAttributes({ dateTime: date })
+        console.log(date)
+        const { block_id } = this.props.attributes;
+
+        if (block_id) {
+            setInterval(this.counter, 1000)
+        }
+
+    }
+    counter() {
+        const { timeZone, expireType, dateTime, showMonths, showWeeks, showDays, showHours, showMinutes, showSeconds } = this.props.attributes;
+        let startDateTime = moment();
+        let endDateTime = moment.utc(dateTime)
+        if ("user-time" === timeZone) {
+            endDateTime = moment(dateTime).utc().local()
+        }
+        let timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
+        if (timeLeft < 0) {
+            this.setState({ vaild: false })
+            if (expireType === "message") {
+                this.setState({ showMessage: true })
+            }
+            else {
+                this.setState({ countMonths: "00", countWeeks: "00", countDays: "00", countHours: "00", countMinutes: "00", countSeconds: "00" })
+            }
+        }
+        else if (timeLeft > 0) {
+            this.setState({ vaild: true })
+            this.setState({ showMessage: false })
+            if (showMonths) {
+                let months = Math.floor(moment.duration(timeLeft).asMonths());
+
+                endDateTime = endDateTime.subtract(months, 'months');
+                timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
+                this.setState({ countMonths: months })
+            }
+            if (showDays) {
+                var days = Math.floor(moment.duration(timeLeft).asDays());
+                endDateTime = endDateTime.subtract(days, 'days');
+                timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
+                this.setState({ countDays: days })
+            }
+            if (showWeeks) {
+                var weeks = Math.floor(days / 7);
+                days = days % 7
+                this.setState({ countWeeks: weeks })
+                this.setState({ countDays: days })
+            }
+            if (showHours) {
+                let hours = Math.floor(moment.duration(timeLeft).asHours());
+                endDateTime = endDateTime.subtract(hours, 'hours');
+                timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
+                this.setState({ countHours: hours })
+            }
+            if (showMinutes) {
+                let minutes = Math.floor(moment.duration(timeLeft).asMinutes());
+                endDateTime = endDateTime.subtract(minutes, 'minutes');
+                timeLeft = endDateTime.diff(startDateTime, 'milliseconds', true);
+                this.setState({ countMinutes: minutes })
+            }
+            if (showSeconds) {
+                let seconds = Math.floor(moment.duration(timeLeft).asSeconds());
+                this.setState({ countSeconds: seconds })
+            }
         }
     }
 
@@ -46,7 +134,6 @@ class edit extends Component {
         const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
         const {
             block_id,
-            classMigrate,
             showMonths,
             showWeeks,
             showDays,
@@ -55,6 +142,8 @@ class edit extends Component {
             showSeconds,
             dateTime,
             timeZone,
+            expireType,
+            expireTxt,
             expiredUrl,
             monthLabel,
             weekLabel,
@@ -85,7 +174,7 @@ class edit extends Component {
             borderRight,
             borderBottom,
             borderLeft,
-            borderColor,
+            digitBorderColor,
             borderRadius,
             backgroundSize,
             backgroundSizeMobile,
@@ -127,47 +216,59 @@ class edit extends Component {
             paddingLeftMobile,
             unitsSpace,
             marginType,
-            paddingType } = attributes;
-
-        const onDateTimeChange = (momentObj) => {
-            let date = momentObj._d;
-
-            // ignore invalid date
-            if (!date) return;
-
-            let time = date.getTime();
-
-            const counter = () => {
-                let now = new Date().getTime();
-                let currentUtcOffset = moment(date).utcOffset() * 60 * 1000;
-
-                let timer = new Date(time - now - currentUtcOffset);
-
-                if (time < now) {
-                    setAttributes({ days: "0", hours: "0", minutes: "0", seconds: "0" });
-                    return;
-                }
-
-                // Calculate days, hours, minutes and seconds
-                let oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * miliseconds
-                let days = Math.floor((time - now) / oneDay).toString();
-                let hours = timer.getHours().toString();
-                let minutes = timer.getMinutes().toString();
-                let seconds = timer.getSeconds().toString();
-
-                setAttributes({ date, days, hours, minutes, seconds });
-            };
-            if (window[block_id]) {
-                clearInterval(window[block_id]);
-            }
-
-            if (block_id) {
-                window[block_id] = setInterval(counter, 1000);
-            }
-        };
-        const yesterday = moment().subtract(1, "day");
-
-        const valid = (current) => current.isAfter(yesterday);
+            paddingType,
+            separatorTxt,
+            enableSeparator,
+            expireColor,
+            expireBG,
+            textSizeUnit,
+            textSize,
+            textSizeTablet,
+            textSizeMobile,
+            textWeight,
+            textStyle,
+            textLetter,
+            textUpper,
+            textLine,
+            textBorderType,
+            textBorderTop,
+            textBorderRight,
+            textBorderBottom,
+            textBorderLeft,
+            textBorderColor,
+            textBorderRadius,
+            textShadowColor,
+            textShadowBlur,
+            textShadowHorizontal,
+            textShadowVertical,
+            textShadowPosition,
+            textMarginType,
+            textMarginTop,
+            textMarginRight,
+            textMarginBottom,
+            textMarginLeft,
+            textMarginTopTablet,
+            textMarginRightTablet,
+            textMarginBottomTablet,
+            textMarginLeftTablet,
+            textMarginTopMobile,
+            textMarginRightMobile,
+            textMarginBottomMobile,
+            textMarginLeftMobile,
+            textPaddingTop,
+            textPaddingRight,
+            textPaddingBottom,
+            textPaddingLeft,
+            textPaddingTopTablet,
+            textPaddingRightTablet,
+            textPaddingBottomTablet,
+            textPaddingLeftTablet,
+            textPaddingTopMobile,
+            textPaddingRightMobile,
+            textPaddingBottomMobile,
+            textPaddingLeftMobile,
+            textPaddingType,
+        } = attributes;
 
         const mainClasses = classnames(className, "premium-countdown");
 
@@ -178,36 +279,75 @@ class edit extends Component {
                     className="premium-panel-body"
                     initialOpen={true}
                 >
+                    <SelectControl
+                        label={__("Content Display Style")}
+                        value={contentStyle}
+                        options={[{
+                            label: __("Block"),
+                            value: 'down'
+                        }, {
+                            label: __("Inline"),
+                            value: "side"
+                        }]}
+                        onChange={newValue => setAttributes({ contentStyle: newValue || "block" })}
+                    />
                     <DateTimePicker
                         currentDate={dateTime}
-                        onChange={(val) => onDateTimeChange(val)}
+                        onChange={(value) => this.countDown(value)}
                         is12Hour={true}
-
                     />
-                    {/* <Datetime
-                        value={dateTime}
-                        dateFormat="YYYY-MM-DD-A"
-                        timeFormat="h:mm A"
-                        onChange={(momentObj) => onDateTimeChange(momentObj)}
-                        isValidDate={valid}
-                    /> */}
                     <SelectControl
                         label={__("Time Zone")}
                         value={timeZone}
                         options={[{
                             label: __("Wordpress Default"),
                             value: "wp-time"
-                        }, {
+                        },
+                        {
                             label: __("User Local Time"),
-                            value: 'wp-time'
+                            value: 'user-time'
                         }]}
                         onChange={(value) => setAttributes({ timeZone: value })}
+                        description={__('This will set the current time of the option that you will choose.')}
                     />
-                    <TextControl
-                        label={__("Expired Url")}
-                        value={expiredUrl}
-                        onChange={newValue => setAttributes({ expiredUrl: newValue })}
+                </PanelBody>
+                <PanelBody
+                    title={__("Expire")}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <SelectControl
+                        label={__('Expire Type')}
+                        value={expireType}
+                        options={[
+                            {
+                                label: __('Default'),
+                                value: 'default'
+                            },
+                            {
+                                label: __('Message'),
+                                value: 'message'
+                            },
+                            {
+                                label: __('Redirection Link'),
+                                value: 'link'
+                            }]}
+                        onChange={val => setAttributes({ expireType: val })}
+                        description={__(`Choose whether if you want to set a message or a redirect link or leave it as digits  the Value of Redirection Link will be view in frontend`)}
                     />
+                    {'default' === expireType && <p>Default option will show the expiration message as Digits [00:00:00]. .</p>}
+
+                    {'message' === expireType && <TextControl
+                        label={__(`On expiry Text`)}
+                        value={expireTxt}
+                        onChange={(newVal) => setAttributes({ expireTxt: newVal })}
+                    />}
+                    {'link' === expireType &&
+                        <TextControl
+                            label={__(`Redirect To`)}
+                            value={expiredUrl}
+                            onChange={newVal => setAttributes({ expiredUrl: newVal })}
+                        />}
                 </PanelBody>
                 <PanelBody
                     title={__("Time Units")}
@@ -244,17 +384,47 @@ class edit extends Component {
                         checked={showSeconds}
                         onChange={newCheck => setAttributes({ showSeconds: newCheck })}
                     />
-                    <SelectControl
-                        label={__("Content Display Style")}
-                        value={contentStyle}
-                        options={[{
-                            label: __("Block"),
-                            value: 'block'
-                        }, {
-                            label: __("Inline"),
-                            value: "inline"
-                        }]}
-                        onChange={newValue => setAttributes({ contentStyle: newValue || "block" })}
+
+                    {contentStyle === "down" && <Fragment>
+                        <ToggleControl
+                            label={__('Digits Separator')}
+                            checked={enableSeparator}
+                            onChange={(val) => setAttributes({ enableSeparator: val })}
+                        />
+                        {enableSeparator && <TextControl
+                            label={__('Separator Text')}
+                            value={separatorTxt}
+                            onChange={(newVal) => setAttributes({ separatorTxt: newVal })}
+                        />}
+
+
+                    </Fragment>}
+                    <h2> {__("Alignment")}</h2>
+                    <Button
+                        key={"left"}
+                        icon="editor-alignleft"
+                        label="Left"
+                        onClick={() => setAttributes({ align: "left" })}
+                        aria-pressed={"left" === align}
+                        isPrimary={"left" === align}
+                    />
+                    <Button
+                        key={"center"}
+                        icon="editor-aligncenter"
+                        label="Right"
+                        onClick={() =>
+                            setAttributes({ align: "center" })
+                        }
+                        aria-pressed={"center" === align}
+                        isPrimary={"center" === align}
+                    />
+                    <Button
+                        key={"right"}
+                        icon="editor-alignright"
+                        label="Right"
+                        onClick={() => setAttributes({ align: "right" })}
+                        aria-pressed={"right" === align}
+                        isPrimary={"right" === align}
                     />
                 </PanelBody>
                 <PanelBody
@@ -453,29 +623,29 @@ class edit extends Component {
                             }
                         }
                     </TabPanel>
+
                     <PremiumBorder
                         borderType={borderType}
                         top={borderTop}
                         right={borderRight}
                         bottom={borderBottom}
                         left={borderLeft}
-                        borderColor={borderColor}
+                        borderColor={digitBorderColor}
                         borderRadius={borderRadius}
                         onChangeType={(newType) => setAttributes({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
-                                borderButton: true,
                                 borderTop: top,
                                 borderRight: right,
                                 borderBottom: bottom,
                                 borderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue.hex })
-                        }
                         onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
+                        }
+                        onChangeColor={(colorValue) =>
+                            setAttributes({ digitBorderColor: colorValue.hex })
                         }
                     />
                 </PanelBody>
@@ -536,7 +706,260 @@ class edit extends Component {
                             onChange={(newValue) => setAttributes({ unitBgColor: newValue })}
                         />
                     </Fragment>
+                    <RangeControl
+                        label={__("Spacing in Between")}
+                        value={unitsSpace}
+                        min={1}
+                        max={100}
+                        step={1}
+                        initialPosition={20}
+                        onChange={(newValue) => setAttributes({ unitsSpace: newValue })}
+                    />
                 </PanelBody>
+                {"message" === expireType && <PanelBody
+                    title={__("Expiration Message")}
+                    className="premium-panel-body"
+                    initialOpen={false}>
+                    <Fragment>
+                        <p>{__("Color")}</p>
+                        <ColorPalette
+                            value={expireColor}
+                            onChange={(newValue) => setAttributes({ expireColor: newValue })}
+                        />
+                    </Fragment>
+                    <Fragment>
+                        <p>{__("Background Color")}</p>
+                        <ColorPalette
+                            value={expireBG}
+                            onChange={(newValue) => setAttributes({ expireBG: newValue })}
+                        />
+                    </Fragment>
+                    <PremiumTypo
+                        components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                        setAttributes={setAttributes}
+                        fontSizeType={{
+                            value: textSizeUnit,
+                            label: __("textSizeUnit"),
+                        }}
+                        fontSize={{
+                            value: textSize,
+                            label: __("textSize"),
+                        }}
+                        fontSizeMobile={{
+                            value: textSizeMobile,
+                            label: __("textSizeMobile"),
+                        }}
+                        fontSizeTablet={{
+                            value: textSizeTablet,
+                            label: __("textSizeTablet"),
+                        }}
+                        weight={textWeight}
+                        style={textStyle}
+                        spacing={textLetter}
+                        upper={textUpper}
+                        line={textLine}
+                        onChangeSize={newSize => setAttributes({ textSize: newSize })}
+                        onChangeSizeTablet={newSize => setAttributes({ textSizeTablet: newSize })}
+                        onChangeSizeMobile={newSize => setAttributes({ textSizeMobile: newSize })}
+                        onChangeWeight={newWeight =>
+                            setAttributes({ textWeight: newWeight })
+                        }
+                        onChangeLine={newValue => setAttributes({ textLine: newValue })}
+                        onChangeSize={newSize => setAttributes({ textSize: newSize })}
+                        onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
+                        onChangeSpacing={newValue =>
+                            setAttributes({ textLetter: newValue })
+                        }
+                        onChangeUpper={check => setAttributes({ textUpper: check })}
+                    />
+                    <PremiumBorder
+                        borderType={textBorderType}
+                        top={textBorderTop}
+                        right={textBorderRight}
+                        bottom={textBorderBottom}
+                        left={textBorderLeft}
+                        borderColor={textBorderColor}
+                        borderRadius={textBorderRadius}
+                        onChangeType={(newType) => setAttributes({ textBorderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                textBorderTop: top,
+                                textBorderRight: right,
+                                textBorderBottom: bottom,
+                                textBorderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) =>
+                            setAttributes({ textBorderColor: colorValue.hex })
+                        }
+                        onChangeRadius={(newrRadius) =>
+                            setAttributes({ textBorderRadius: newrRadius })
+                        }
+                    />
+                    <PremiumBoxShadow
+                        label="Shadow"
+                        inner={true}
+                        color={textShadowColor}
+                        blur={textShadowBlur}
+                        horizontal={textShadowHorizontal}
+                        vertical={textShadowVertical}
+                        position={textShadowPosition}
+                        onChangeColor={newColor =>
+                            setAttributes({
+                                textShadowColor:
+                                    newColor === undefined ? "transparent" : newColor.hex
+                            })
+                        }
+                        onChangeBlur={newBlur =>
+                            setAttributes({
+                                textShadowBlur: newBlur === undefined ? 0 : newBlur
+                            })
+                        }
+                        onChangehHorizontal={newValue =>
+                            setAttributes({
+                                textShadowHorizontal: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangeVertical={newValue =>
+                            setAttributes({
+                                textShadowVertical: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                        onChangePosition={newValue =>
+                            setAttributes({
+                                textShadowPosition: newValue === undefined ? 0 : newValue
+                            })
+                        }
+                    />
+                    <PremiumResponsiveMargin
+                        directions={["all"]}
+                        showUnits={true}
+                        selectedUnit={textMarginType}
+                        marginTop={textMarginTop}
+                        marginRight={textMarginRight}
+                        marginBottom={textMarginBottom}
+                        marginLeft={textMarginLeft}
+                        marginTopTablet={textMarginTopTablet}
+                        marginRightTablet={textMarginRightTablet}
+                        marginBottomTablet={textMarginBottomTablet}
+                        marginLeftTablet={textMarginLeftTablet}
+                        marginTopMobile={textMarginTopMobile}
+                        marginRightMobile={textMarginRightMobile}
+                        marginBottomMobile={textMarginBottomMobile}
+                        marginLeftMobile={textMarginLeftMobile}
+                        onChangeMarginTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textMarginTop: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textMarginTopTablet: newValue })
+                                } else {
+                                    setAttributes({ textMarginTopMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangeMarginRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textMarginRight: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textMarginRightTablet: newValue })
+                                } else {
+                                    setAttributes({ textMarginRightMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangeMarginBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textMarginBottom: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textMarginBottomTablet: newValue })
+                                } else {
+                                    setAttributes({ textMarginBottomMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangeMarginLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textMarginLeft: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textMarginLeftTablet: newValue })
+                                } else {
+                                    setAttributes({ textMarginLeftMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangeMarSizeUnit={(newvalue) => setAttributes({ textMarginType: newvalue })}
+                    />
+                    <PremiumResponsivePadding
+                        paddingTop={textPaddingTop}
+                        paddingRight={textPaddingRight}
+                        paddingBottom={textPaddingBottom}
+                        paddingLeft={textPaddingLeft}
+                        paddingTopTablet={textPaddingTopTablet}
+                        paddingRightTablet={textPaddingRightTablet}
+                        paddingBottomTablet={textPaddingBottomTablet}
+                        paddingLeftTablet={textPaddingLeftTablet}
+                        paddingTopMobile={textPaddingTopMobile}
+                        paddingRightMobile={textPaddingRightMobile}
+                        paddingBottomMobile={textPaddingBottomMobile}
+                        paddingLeftMobile={textPaddingLeftMobile}
+                        showUnits={true}
+                        selectedUnit={textPaddingType}
+                        onChangePadSizeUnit={newvalue =>
+                            setAttributes({ textPaddingType: newvalue })
+                        }
+                        onChangePaddingTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textPaddingTop: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textPaddingTopTablet: newValue })
+                                } else {
+                                    setAttributes({ textPaddingTopMobile: newValue })
+                                }
+
+                            }
+
+                        }
+                        onChangePaddingRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textPaddingRight: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textPaddingRightTablet: newValue })
+                                } else {
+                                    setAttributes({ textPaddingRightMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangePaddingBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textPaddingBottom: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textPaddingBottomTablet: newValue })
+                                } else {
+                                    setAttributes({ textPaddingBottomMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangePaddingLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ textPaddingLeft: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ textPaddingLeftTablet: newValue })
+                                } else {
+                                    setAttributes({ textPaddingLeftMobile: newValue })
+                                }
+                            }
+                        }
+                    />
+                </PanelBody>}
+
                 <PanelBody
                     title={__("Container Style")}
                     className="premium-panel-body"
@@ -616,7 +1039,6 @@ class edit extends Component {
                         paddingRightMobile={paddingRightMobile}
                         paddingBottomMobile={paddingBottomMobile}
                         paddingLeftMobile={paddingLeftMobile}
-
                         showUnits={true}
                         selectedUnit={paddingType}
                         onChangePadSizeUnit={newvalue =>
@@ -671,253 +1093,264 @@ class edit extends Component {
                     />
                 </PanelBody>
             </InspectorControls>),
-            <div
+
+            < div
                 id={`premium-countdown-${block_id}`}
-                className={`${mainClasses}  premium-countdown-${block_id}`}
+                className={`${mainClasses}   premium-countdown-${block_id}`
+                }
                 style={{ justifyContent: align || "center" }}
+                data-time={dateTime}
             >
-
-                <div id={`container-${block_id}`} className={`premium-countdown__container countdown down `} data-date={dateTime}>
-                    <span className={`premium-countdown__items `}>
-
-                        <div className={`premium-countdown__get-date`} style={{ display: "none" }} data-date={dateTime}></div>
-
-                        {showMonths && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
-                                >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-months`} id={`months`}
+                <div id={`countdown-${block_id}`} className={`premium-countdown-init countdown ${contentStyle} `} data-time={dateTime} data-expire={expireType} data-timezone={timeZone} data-expiretxt={expireTxt} data-expirelink={expiredUrl}>
+                    {!this.state.showMessage ? (<span className={`pre_countdown-row `}>
+                        {showMonths && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace || 20}px 10px ${unitsSpace || 20}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `} >
+                                    <span className={`pre_countdown-amount  premium-countdown__digits-months`} id={`months`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
-
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countMonths}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-months`}
+                                    <span className={`pre_countdown-period premium-countdown__units-months`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
                                             fontWeight: unitWeight || "normal",
-
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {monthLabel}
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {showWeeks && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
+                            </span>,
+                            (enableSeparator && contentStyle === "down") && <span className="pre-countdown_separator">{separatorTxt}</span>
+                        ]
+                        }
+
+                        {showWeeks && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `}
+
                                 >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-weeks`} id={`weeks`}
+                                    <span className={`pre_countdown-amount  premium-countdown__digits-weeks`} id={`weeks`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countWeeks}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-weeks`}
+                                    <span className={`pre_countdown-period premium-countdown__units-weeks`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
                                             fontWeight: unitWeight || "normal",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {weekLabel}
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {showDays && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
+                            </span>,
+                            (enableSeparator && contentStyle === "down") && <span className="pre-countdown_separator">{separatorTxt}</span>
+                        ]}
+
+                        {showDays && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `}
                                 >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-days`} id={`days`}
+                                    <span className={`pre_countdown-amount  premium-countdown__digits-days`} id={`days`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countDays}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-days`}
+                                    <span className={`pre_countdown-period premium-countdown__units-days`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
+
                                             fontWeight: unitWeight || "normal",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {dayLabel}
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {showHours && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
+                            </span>,
+                            (enableSeparator && contentStyle === "down") && <span className="pre-countdown_separator">{separatorTxt}</span>
+                        ]}
+
+                        {showHours && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `}
+
                                 >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-hours`} id={`hours`}
+                                    <span className={`pre_countdown-amount  premium-countdown__digits-hours`} id={`hours`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countHours}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-hours`}
+                                    <span className={`pre_countdown-period premium-countdown__units-hours`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
                                             fontWeight: unitWeight || "normal",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {hourLabel}
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {showMinutes && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
+                            </span>,
+                            (enableSeparator && contentStyle === "down") && <span className="pre-countdown_separator">{separatorTxt}</span>
+
+                        ]}
+
+                        {showMinutes && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `}
                                 >
-                                    <span className={`premium-countdown__amount  premium-countdown__digits-minutes`} id={`minutes`}
+                                    <span className={`pre_countdown-amount  premium-countdown__digits-minutes`} id={`minutes`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countMinutes}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-minutes`}
+                                    <span className={`pre_countdown-period premium-countdown__units-minutes`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
                                             fontWeight: unitWeight || "normal",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {minuteLabel}
                                     </span>
                                 </span>
-                            </span>
-                        )}
-                        {showSeconds && (
-                            <span className={`premium-countdown__section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px` }}>
-                                <span className={`premium-countdown__time-mid `}
-                                    style={{
-                                        display: contentStyle === "inline-block" ? "flex" : "block",
-                                        alignItems: contentStyle === "inline-block" ? "center" : "normal"
-                                    }}
+                            </span>,
+                            (enableSeparator && contentStyle === "down") && <span className="pre-countdown_separator">{separatorTxt}</span>
+                        ]}
+
+                        {showSeconds && [
+                            <span className={`pre_countdown-section`} style={{ margin: `0px ${unitsSpace}px 10px ${unitsSpace}px`, boxShadow: `${digitShadowHorizontal}px ${digitShadowVertical}px ${digitShadowBlur}px ${digitShadowColor} ${digitShadowPosition}` }}>
+                                <span className={`pre_time-mid `}
+
                                 >
-                                    <span className={`premium-countdown__amount premium-countdown__digits-seconds`} id={`seconds`}
+                                    <span className={`pre_countdown-amount premium-countdown__digits-seconds`} id={`seconds`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: digitColor || "#000",
-                                            backgroundColor: digitBgColor || "transparent",
-                                            fontSize: digitSize || "0",
-                                            fontWeight: digitWeight || "normal",
-                                            borderStyle: borderType || "none",
-                                            borderColor: borderColor || "#000",
-                                            borderRadius: borderRadius || "0",
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            color: digitColor,
+                                            backgroundColor: digitBgColor,
+
+                                            fontWeight: digitWeight,
+                                            fontStyle: digitStyle,
+                                            letterSpacing: digitLetter,
+                                            textTransform: digitUpper ? "uppercase" : "",
+                                            lineHeight: digitLine,
+                                            borderStyle: borderType,
+                                            borderWidth: `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`,
+                                            borderColor: digitBorderColor,
+                                            borderRadius: borderRadius
                                         }}
                                     >
-                                        00
+                                        {this.state.countSeconds}
                                     </span>
-                                    <span className={`premium-countdown__period premium-countdown__units-seconds`}
+                                    <span className={`pre_countdown-period premium-countdown__units-seconds`}
                                         style={{
-                                            display: contentStyle || "block",
-                                            color: unitColor || "#000",
-                                            fontSize: unitSize || "0",
+                                            color: unitColor,
+                                            backgroundColor: unitBgColor,
+                                            fontStyle: unitStyle,
+                                            letterSpacing: unitLetter,
+                                            lineHeight: unitLine + "px",
+                                            textTransform: unitUpper ? "uppercase" : "none",
                                             fontWeight: unitWeight || "normal",
-                                            margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
-                                            padding: contentStyle === "inline-block" ? "25px 30px" : "5px 40px"
+                                            padding: contentStyle === "side" ? "25px 30px" : "5px 40px"
                                         }}
                                     >
                                         {secondLabel}
                                     </span>
                                 </span>
                             </span>
-                        )}
+                        ]}
 
-                    </span>
+                    </span>) : (<div className="premium-countdown-exp-message">{expireTxt}</div>)}
                 </div>
-
-
-            </div>
+            </ div>
         ]
     }
 }
