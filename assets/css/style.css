@@ -1775,6 +1775,72 @@ a.premium-dheading-block__link:hover {
     z-index: 9999;
 }
 
+/**************** Premium Unfold ******************/
+/**************************************************/
+.premium-unfold-container {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .premium-unfold-container .premium-unfold-content {
+    overflow: hidden; }
+
+.premium-unfold-wrap .premium-button i,
+.premium-unfold-wrap .premium-button span {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.premium-unfold-container {
+  padding: 10px 10px 0 10px; }
+  .premium-unfold-container .premium-unfold-heading {
+    margin-bottom: 5px;
+    border-color: #000; }
+  .premium-unfold-container .premium-unfold-before {
+    margin-right: 5px; }
+  .premium-unfold-container .premium-unfold-after {
+    margin-left: 5px; }
+
+.premium-unfold-folder {
+  position: relative;
+  overflow: hidden; }
+
+.premium-unfold-gradient {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), to(#fff));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0, #fff 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .premium-unfold-gradient.toggled {
+    visibility: visible;
+    opacity: 1; 
+}
+.premium-button-sm {
+  padding: 12px 24px;
+  font-size: 14px;
+  line-height: 1; }
+  .premium-button-md {
+  padding: 14px 26px;
+  font-size: 16px;
+  line-height: 1.2; }
+
+.premium-button-lg {
+  padding: 16px 28px;
+  font-size: 18px;
+  line-height: 1.3333; }
+
+.premium-button-block {
+  font-size: 15px;
+  line-height: 1;
+  padding: 12px 24px;
+  width: 100%;
+  text-align: center; }
+
 /************ Responsive **************/
 @media (min-width: 977px) {
     .premium-desktop-hidden {
