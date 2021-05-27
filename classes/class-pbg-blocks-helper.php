@@ -204,6 +204,8 @@ class PBG_Blocks_Helper {
 
 		$is_lottie_enabled = self::$blocks['lottie'];
 
+		$is_unfold_enabled = self::$blocks['unfold'];
+
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -355,6 +357,18 @@ class PBG_Blocks_Helper {
 			wp_enqueue_script(
 				'pbg-lottie',
 				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+		}
+
+		if ( $is_unfold_enabled ) {
+
+			wp_enqueue_script(
+				'unfold-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/unfold.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -604,6 +618,9 @@ class PBG_Blocks_Helper {
 				break;
 			case 'premium/lottie':
 				$css += $this->get_lottie_css( $blockattr, $block_id );
+				break;
+			case 'premium/unfold':
+				$css += $this->get_unfold_css( $blockattr, $block_id );
 				break;
 			default:
 				// Nothing to do here.
@@ -1467,8 +1484,8 @@ class PBG_Blocks_Helper {
 		return $generated_css;
 	}
 
-	public static function get_lottie_css( $attr, $id ) {
-		$defaults = self::$block_atts['premium/lottie']['attributes'];
+	public static function get_unfold_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/unfold']['attributes'];
 
 		$attr = array_merge( $defaults, (array) $attr );
 
@@ -1476,42 +1493,56 @@ class PBG_Blocks_Helper {
 		$t_selectors = array();
 
 		$selectors = array(
-
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['size'] . $attr['sizeUnit'],
-				'height' => $attr['size'] . $attr['sizeUnit'],
+			' .premium-unfold-container' => array(
+				'margin-top'     => self::get_css_value( $attr['boxMarginTop'], $attr['boxMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['boxMarginRight'], $attr['boxMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['boxMarginBottom'], $attr['boxMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['boxMarginLeft'], $attr['boxMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['boxPaddingTop'], $attr['boxPaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['boxPaddingRight'], $attr['boxPaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['boxPaddingBottom'], $attr['boxPaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['boxPaddingLeft'], $attr['boxPaddingType'] ),
 			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['size'] . $attr['sizeUnit'],
-				'height' => $attr['size'] . $attr['sizeUnit'],
+			' .premium-unfold-heading'   => array(
+				'font-size'      => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
+				'margin-top'     => self::get_css_value( $attr['titleMarginTop'], $attr['titleMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['titleMarginRight'], $attr['titleMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['titleMarginBottom'], $attr['titleMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['titleMarginLeft'], $attr['titleMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['titlePaddingTop'], $attr['titlePaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['titlePaddingRight'], $attr['titlePaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['titlePaddingBottom'], $attr['titlePaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['titlePaddingLeft'], $attr['titlePaddingType'] ),
+			),
+			' .premium-unfold-content '  => array(
+				'font-size'      => self::get_css_value( $attr['contentSize'], $attr['contentSizeType'] ),
+				'margin-top'     => self::get_css_value( $attr['contentMarginTop'], $attr['contentMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['contentMarginRight'], $attr['contentMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['contentMarginBottom'], $attr['contentMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['contentMarginLeft'], $attr['contentMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['contentPaddingTop'], $attr['contentPaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['contentPaddingRight'], $attr['contentPaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['contentPaddingBottom'], $attr['contentPaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['contentPaddingLeft'], $attr['contentPaddingType'] ),
+			),
+			' .premium-button'           => array(
+				'font-size'      => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
+				'margin-top'     => self::get_css_value( $attr['btnMarginTop'], $attr['btnMarginType'] ),
+				'margin-right'   => self::get_css_value( $attr['btnMarginRight'], $attr['btnMarginType'] ),
+				'margin-bottom'  => self::get_css_value( $attr['btnMarginBottom'], $attr['btnMarginType'] ),
+				'margin-left'    => self::get_css_value( $attr['btnMarginLeft'], $attr['btnMarginType'] ),
+				'padding-top'    => self::get_css_value( $attr['btnPaddingTop'], $attr['btnPaddingType'] ),
+				'padding-right'  => self::get_css_value( $attr['btnPaddingRight'], $attr['btnPaddingType'] ),
+				'padding-bottom' => self::get_css_value( $attr['btnPaddingBottom'], $attr['btnPaddingType'] ),
+				'padding-left'   => self::get_css_value( $attr['btnPaddingLeft'], $attr['btnPaddingType'] ),
 			),
 		);
 
-		$t_selectors = array(
+		$t_selectors = array();
 
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
-				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
-			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
-				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
-			),
-		);
+		$m_selectors = array();
 
-		$m_selectors = array(
-
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
-				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
-			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
-				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
-			),
-		);
-
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
+		$base_selector = ( $attr['classMigrate'] ) ? '#premium-unfold-' : '#premium-unfold-';
 
 		$desktop = self::generate_css( $selectors, $base_selector . $id );
 
@@ -1526,6 +1557,145 @@ class PBG_Blocks_Helper {
 		);
 
 		return $generated_css;
+	}
+
+	public static function get_lottie_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/unfold']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+			$selectors = array(
+				' .premium-unfold-container'       => array(
+					'margin-top'     => self::get_css_value( $attr['boxMarginTop'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRight'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottom'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeft'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTop'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRight'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottom'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeft'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-container:hover' => array(
+					'margin-top'     => self::get_css_value( $attr['boxMarginTopH'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRightH'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottomH'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeftH'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTopH'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRightH'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottomH'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeftH'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-content'         => array(
+					'font-size'      => self::get_css_value( $attr['contentSize'], $attr['contentSizeType'] ),
+					'margin-top'     => self::get_css_value( $attr['contentMarginTopH'], $attr['contentMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['contentMarginRightH'], $attr['contentMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['contentMarginBottomH'], $attr['contentMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['contentMarginLeftH'], $attr['contentMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['contentPaddingTopH'], $attr['contentPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['contentPaddingRightH'], $attr['contentPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['contentPaddingBottomH'], $attr['contentPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['contentPaddingLeftH'], $attr['contentPaddingType'] ),
+				),
+				' .premium-unfold-gradient '       => array(
+					'height' => self::get_css_value( $attr['fadeHeight'], 'px' ),
+				),
+			);
+
+			$t_selectors = array(
+				' .premium-unfold-container'       => array(
+
+					'margin-top'     => self::get_css_value( $attr['boxMarginTopTablet'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRightTablet'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottomTablet'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeftTablet'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTopTablet'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRightTablet'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottomTablet'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeftTablet'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-container:hover' => array(
+					'margin-top'     => self::get_css_value( $attr['boxMarginTopTabletH'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRightTabletH'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottomTabletH'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeftTabletH'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTopTabletH'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRightTabletH'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottomTabletH'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeftTabletH'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-content'         => array(
+					'font-size'      => self::get_css_value( $attr['contentSizeTablet'], $attr['contentSizeType'] ),
+					'margin-top'     => self::get_css_value( $attr['contentMarginTopTablet'], $attr['contentMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['contentMarginRightTablet'], $attr['contentMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['contentMarginBottomTablet'], $attr['contentMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['contentMarginLeftTablet'], $attr['contentMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['contentPaddingTopTablet'], $attr['contentPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['contentPaddingRightTablet'], $attr['contentPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['contentPaddingBottomTablet'], $attr['contentPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['contentPaddingLeftTablet'], $attr['contentPaddingType'] ),
+				),
+				' .premium-unfold-gradient '       => array(
+					'height' => self::get_css_value( $attr['fadeHeightTablet'], 'px' ),
+				),
+
+			);
+
+			$m_selectors = array(
+				' .premium-unfold-container'       => array(
+
+					'margin-top'     => self::get_css_value( $attr['boxMarginTopMobile'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRightMobile'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottomMobile'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeftMobile'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTopMobile'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRightMobile'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottomMobile'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeftMobile'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-container:hover' => array(
+					'margin-top'     => self::get_css_value( $attr['boxMarginTopMobileH'], $attr['boxMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['boxMarginRightMobileH'], $attr['boxMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['boxMarginBottomMobileH'], $attr['boxMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['boxMarginLeftMobileH'], $attr['boxMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['boxPaddingTopMobileH'], $attr['boxPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['boxPaddingRightMobileH'], $attr['boxPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['boxPaddingBottomMobileH'], $attr['boxPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['boxPaddingLeftMobileH'], $attr['boxPaddingType'] ),
+				),
+				' .premium-unfold-content'         => array(
+					'font-size'      => self::get_css_value( $attr['contentSizeMobile'], $attr['contentSizeType'] ),
+					'margin-top'     => self::get_css_value( $attr['contentMarginTopMobile'], $attr['contentMarginType'] ),
+					'margin-right'   => self::get_css_value( $attr['contentMarginRightMobile'], $attr['contentMarginType'] ),
+					'margin-bottom'  => self::get_css_value( $attr['contentMarginBottomMobile'], $attr['contentMarginType'] ),
+					'margin-left'    => self::get_css_value( $attr['contentMarginLeftMobile'], $attr['contentMarginType'] ),
+					'padding-top'    => self::get_css_value( $attr['contentPaddingTopMobile'], $attr['contentPaddingType'] ),
+					'padding-right'  => self::get_css_value( $attr['contentPaddingRightMobile'], $attr['contentPaddingType'] ),
+					'padding-bottom' => self::get_css_value( $attr['contentPaddingBottomMobile'], $attr['contentPaddingType'] ),
+					'padding-left'   => self::get_css_value( $attr['contentPaddingLeftMobile'], $attr['contentPaddingType'] ),
+				),
+				' .premium-unfold-gradient '       => array(
+					'height' => self::get_css_value( $attr['fadeHeightMobile'], 'px' ),
+				),
+			);
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
+
+			$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+			$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+			$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
 	}
 
 	/**
