@@ -19,7 +19,28 @@ jQuery(document).ready(function ($) {
             titleFont = $iconBox.find(".premium-icon-box__title").css("font-family"),
             descFont = $iconBox.find(".premium-icon-box__desc").css("font-family");
 
+
         addFontToHead(titleFont);
         addFontToHead(descFont);
+
+        if (iconBox.data("box-tilt")) {
+            var reverse = $iconBox.data("box-tilt-reverse");
+
+            UniversalTilt.init({
+                elements: iconBox,
+                settings: {
+                    reverse: reverse
+                },
+                callbacks: {
+                    onMouseLeave: function (el) {
+                        el.style.boxShadow = "0 45px 100px rgba(255, 255, 255, 0)";
+                    },
+                    onDeviceMove: function (el) {
+                        el.style.boxShadow = "0 45px 100px rgba(255, 255, 255, 0.3)";
+                    }
+                }
+            });
+        }
+
     });
 });
