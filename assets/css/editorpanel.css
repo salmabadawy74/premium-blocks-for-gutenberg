@@ -349,9 +349,6 @@ Lottie button
     align-items: center;
     border-radius: 2px;
     width: 50%;
-    height: 40px !important;
-    margin: 10px 1px;
-    padding: 5px 19px;
     border-radius: 5px;
     box-shadow: none !important;
 }
