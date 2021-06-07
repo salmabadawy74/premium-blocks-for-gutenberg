@@ -23,11 +23,11 @@ jQuery(document).ready(function ($) {
         addFontToHead(titleFont);
         addFontToHead(descFont);
 
-        if (iconBox.data("box-tilt")) {
+        if ($iconBox.data("box-tilt")) {
             var reverse = $iconBox.data("box-tilt-reverse");
 
             UniversalTilt.init({
-                elements: iconBox,
+                elements: $iconBox,
                 settings: {
                     reverse: reverse
                 },
