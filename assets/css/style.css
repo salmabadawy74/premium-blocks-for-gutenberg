@@ -931,8 +931,8 @@ a.premium-dheading-block__link:hover {
 }
 .premium-icon__container .premium-icon.dashicons,
 .premium-icon__container .premium-icon.dashicons::before,
-.premium-icon-box .premium-icon-box__icon.dashicons,
-.premium-icon-box .premium-icon-box__icon.dashicons::before,
+.premium-icon-box-in .premium-icon-box__icon.dashicons,
+.premium-icon-box-in .premium-icon-box__icon.dashicons::before,
 .premium-video-box .premium-video-box__play_icon.dashicons,
 .premium-video-box .premium-video-box__play_icon.dashicons::before {
     display: inline-block;
@@ -943,21 +943,21 @@ a.premium-dheading-block__link:hover {
 * Hover Effects
 */
 .premium-icon__pulse:hover,
-.premium-icon-box:hover .premium-icon__pulse {
+.premium-icon-box-in:hover .premium-icon__pulse {
     animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
     -webkit-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
     -moz-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
     -ms-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
 }
 .premium-icon__buzz:hover,
-.premium-icon-box:hover .premium-icon__buzz {
+.premium-icon-box-in:hover .premium-icon__buzz {
     -webkit-animation: pa-hvr-buzz 0.3s ease-out infinite;
     -moz-animation: pa-hvr-buzz 0.3s ease-out infinite;
     -ms-animation: pa-hvr-buzz 0.3s ease-out infinite;
     animation: pa-hvr-buzz 0.3s ease-out infinite;
 }
 .premium-icon__rotate,
-.premium-icon-box .premium-icon__rotate {
+.premium-icon-box-in .premium-icon__rotate {
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
     -ms-transition: all 0.5s ease-out;
@@ -970,7 +970,7 @@ a.premium-dheading-block__link:hover {
     transform: rotate(0deg);
 }
 .premium-icon__rotate:hover,
-.premium-icon-box:hover .premium-icon__rotate {
+.premium-icon-box-in:hover .premium-icon__rotate {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
@@ -978,7 +978,7 @@ a.premium-dheading-block__link:hover {
     transform: rotate(360deg);
 }
 .premium-icon__drotate,
-.premium-icon-box .premium-icon__drotate {
+.premium-icon-box-in .premium-icon__drotate {
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
     -ms-transition: all 0.5s ease-out;
@@ -991,7 +991,7 @@ a.premium-dheading-block__link:hover {
     transform: rotateY(0deg);
 }
 .premium-icon__drotate:hover,
-.premium-icon-box:hover:hover .premium-icon__drotate {
+.premium-icon-box-in:hover:hover .premium-icon__drotate {
     -webkit-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);
     -ms-transform: rotateY(360deg);
@@ -1000,7 +1000,7 @@ a.premium-dheading-block__link:hover {
 }
 /* Drop Shadow */
 .premium-icon__drop,
-.premium-icon-box .premium-icon__drop {
+.premium-icon-box-in .premium-icon__drop {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: translateZ(0);
@@ -1016,7 +1016,7 @@ a.premium-dheading-block__link:hover {
     transition-property: transform;
 }
 .premium-icon__drop::after,
-.premium-icon-box .premium-icon__drop::after {
+.premium-icon-box-in .premium-icon__drop::after {
     pointer-events: none;
     position: absolute;
     z-index: -1;
@@ -1034,18 +1034,18 @@ a.premium-dheading-block__link:hover {
     transition-property: transform, opacity;
 }
 .premium-icon__drop:hover,
-.premium-icon-box:hover .premium-icon__drop {
+.premium-icon-box-in:hover .premium-icon__drop {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
 }
 .premium-icon__drop:hover:after,
-.premium-icon-box:hover .premium-icon__drop:after {
+.premium-icon-box-in:hover .premium-icon__drop:after {
     opacity: 1;
     -webkit-transform: translateY(5px);
     transform: translateY(5px);
 }
 .premium-icon__wobble,
-.premium-icon-box .premium-icon__wobble {
+.premium-icon-box-in .premium-icon__wobble {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: translateZ(0);
@@ -1056,7 +1056,7 @@ a.premium-dheading-block__link:hover {
     -moz-osx-font-smoothing: grayscale;
 }
 .premium-icon__wobble:hover,
-.premium-icon-box:hover .premium-icon__wobble {
+.premium-icon-box-in:hover .premium-icon__wobble {
     -webkit-animation-name: pa-hvr-wobble;
     animation-name: pa-hvr-wobble;
     -webkit-animation-duration: 1s;
@@ -1540,8 +1540,10 @@ a.premium-dheading-block__link:hover {
   bottom: -8%;
   right: -3%;
   color: rgba(41, 41, 41, 0.1); }
+    .premium-icon-box-in .premium-icon-box-animation {
+    display: inline-block; }
   .premium-icon-box-container-out .premium-icon-box-big .premium-icon-box-animation,
-  .premium-icon-box-container-out .premium-icon-box-big > svg {
+  .premium-icon-box-container-out .premium-icon-box-big > img {
     width: 150px;
     height: 150px; }
   .premium-icon-box-container-out .premium-icon-box-big i {
@@ -1550,7 +1552,7 @@ height: 200px;
 width: 200px;
 font-style: normal;
 }
-.premium-icon-box .premium-icon-box__title_wrap {
+.premium-icon-box-in .premium-icon-box__title_wrap {
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1566,11 +1568,11 @@ font-style: normal;
     margin-top: 10px;
     margin-bottom: 10px; 
 }
-  .premium-icon-box .premium-icon-box__desc_wrap {
+  .premium-icon-box-in .premium-icon-box__desc_wrap {
     overflow: hidden;
     margin-bottom: 10px; }
 
-.premium-icon-box {
+.premium-icon-box-in {
    position: relative;
   padding: 20px;
   border-image-source: none;
@@ -1584,7 +1586,7 @@ font-style: normal;
   transition: all 0.3s ease-in-out; 
 }
 
-  .premium-icon-box.premium-icon-box-flex-left {
+  .premium-icon-box-in.premium-icon-box-flex-left {
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1592,7 +1594,7 @@ font-style: normal;
     display: -ms-flexbox;
     display: flex;
  }
-  .premium-icon-box.premium-icon-box-flex-right {
+  .premium-icon-box-in.premium-icon-box-flex-right {
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1607,7 +1609,7 @@ font-style: normal;
         -ms-flex-direction: row-reverse;
             flex-direction: row-reverse; 
         }
-  .premium-icon-box.premium-icon-box-flex-left {
+  .premium-icon-box-in.premium-icon-box-flex-left {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
@@ -1615,21 +1617,21 @@ font-style: normal;
        -moz-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row; }
-  .premium-icon-box.premium-icon-box-flex-ver-top {
+  .premium-icon-box-in.premium-icon-box-flex-ver-top {
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
        -moz-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
          }
-  .premium-icon-box.premium-icon-box-flex-ver-middle {
+  .premium-icon-box-in.premium-icon-box-flex-ver-middle {
     -webkit-box-align: center;
     -webkit-align-items: center;
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center;
          }
-  .premium-icon-box.premium-icon-box-flex-ver-bottom {
+  .premium-icon-box-in.premium-icon-box-flex-ver-bottom {
     -webkit-box-align: end;
     -webkit-align-items: flex-end;
        -moz-box-align: end;
@@ -1670,8 +1672,8 @@ font-style: normal;
   width: 100%; }
 .premium-icon-box-text-wrap {
   width: 100%; }
-  .premium-icon-box.premium-icon-box-flex-left .premium-icon-box-icon-container,
-  .premium-icon-box.premium-icon-box-flex-right .premium-icon-box-icon-container {
+  .premium-icon-box-in.premium-icon-box-flex-left .premium-icon-box-icon-container,
+  .premium-icon-box-in.premium-icon-box-flex-right .premium-icon-box-icon-container {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
        -moz-box-flex: 0;
@@ -1714,12 +1716,12 @@ font-style: normal;
   transition: all 0.3s ease-in-out;
   word-break: unset !important;
 }
-.premium-icon-box .premium-icon-box__btn i{
+.premium-icon-box-in .premium-icon-box__btn i{
     font-style: normal !important;
 }
-.premium-icon-box .premium-icon-box__btn,
-.premium-icon-box .premium-icon-box__btn:hover,
-.premium-icon-box .premium-icon-box__btn:focus {
+.premium-icon-box-in .premium-icon-box__btn,
+.premium-icon-box-in .premium-icon-box__btn:hover,
+.premium-icon-box-in .premium-icon-box__btn:focus {
     box-shadow: none;
     border: none;
     outline: none;
