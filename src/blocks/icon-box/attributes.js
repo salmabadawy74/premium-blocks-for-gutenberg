@@ -46,14 +46,14 @@ const iconBoxAttrs = {
         default: "center"
     },
     iconSize: {
-        type: "number"
+        type: "number",
+        default: "60"
     },
     iconRadius: {
         type: "number"
     },
     iconColor: {
-        type: "string",
-        default: '#54595f'
+        type: "string"
     },
     iconBackColor: {
         type: "string"
@@ -207,7 +207,8 @@ const iconBoxAttrs = {
         selector: ".premium-icon-box__btn"
     },
     btnColor: {
-        type: "string"
+        type: "string",
+        default: "#54595F"
     },
     btnHoverColor: {
         type: "string"

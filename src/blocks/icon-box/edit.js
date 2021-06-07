@@ -17,8 +17,7 @@ import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import Lottie from 'react-lottie-with-segments';
-import VanillaTilt from 'vanilla-tilt';
-
+import UniversalTilt from 'universal-tilt.js';
 
 const { __ } = wp.i18n;
 
@@ -43,11 +42,10 @@ const {
     AlignmentToolbar,
     URLInput,
 } = wp.blockEditor;
-
 class edit extends Component {
     constructor() {
         super(...arguments);
-        this.tilt = React.createRef();
+        this.handleTilt = this.handleTilt.bind(this)
     }
 
     componentDidMount() {
@@ -64,13 +62,19 @@ class edit extends Component {
             "premium-style-iconBox-" + clientId
         );
         document.head.appendChild($style);
-
     }
     componentDidUpdate() {
-        VanillaTilt.init(
-            this.tilt, {
+        this.handleTilt();
+    }
+
+    handleTilt() {
+        const { mouseTilt, reverse, block_id } = this.props.attributes;
+        const Container = document.getElementById(`premium-icon-box-${block_id}`);
+        UniversalTilt.init({
+            elements: Container,
             settings: {
-                reverse: this.props.attributes.reverse
+                reverse: reverse,
+                reset: true
             },
             callbacks: {
                 onMouseLeave: function (el) {
@@ -79,11 +83,14 @@ class edit extends Component {
                 onDeviceMove: function (el) {
                     el.style.boxShadow = "0 45px 100px rgba(255, 255, 255, 0.3)";
                 }
-            }
-        }
-        );
-    }
 
+            }
+        });
+        if (!mouseTilt) {
+            Container.universalTilt.destroy();
+        }
+
+    }
 
     render() {
 
@@ -795,6 +802,7 @@ class edit extends Component {
             element.innerHTML = styling(this.props);
         }
 
+
         const flexClass = btnPosition !== "bottom" ? "premium-icon-box__btn_flex" : ""
 
         const reverseAnime = reverseLottie ? -1 : 1;
@@ -847,7 +855,7 @@ class edit extends Component {
                         <ToggleControl
                             label={__("Enable Mouse Tilt")}
                             checked={mouseTilt}
-                            onChange={newValue => setAttributes({ mouseTilt: newValue })}
+                            onChange={(value) => setAttributes({ mouseTilt: value })}
                         />
                         {mouseTilt && <ToggleControl
                             label={__("Reverse")}
@@ -1062,7 +1070,11 @@ class edit extends Component {
                                 onChange={newValue => setAttributes({ btnTxt: newValue })}
                             />
                             {btnTxt && <Fragment>
-
+                                <TextControl
+                                    label={__("Text")}
+                                    value={btnText}
+                                    onChange={(newvalue) => setAttributes({ btnText: newvalue })}
+                                />
                             </Fragment>}
                             <SelectControl
                                 label={__('Position')}
@@ -3761,11 +3773,9 @@ class edit extends Component {
                     />
                 </InspectorControls >
             ),
-
             <div
-                ref={this.tilt}
                 id={`premium-icon-box-${block_id}`}
-                className={`premium-icon-box-container-out premium-icon-box-${block_id}  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
+                className={`premium-icon-box-container-out ${mainClasses} premium-icon-box-${block_id}  ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
                     borderStyle: outerBorderType,
                     borderWidth: `${outerBorderTop}px ${outerBorderRight}px ${outerBorderBottom}px ${outerBorderLeft}px`
                     ,
@@ -3780,9 +3790,12 @@ class edit extends Component {
                     backgroundPosition: outerBackgroundPosition,
                     backgroundSize: outerBackgroundSize,
                     backgroundAttachment: outerFixed ? "fixed" : "unset"
-                }}>
+                }}
+                data-box-tilt={mouseTilt}
+                data-box-tilt-reverse={reverse}
+            >
                 <div
-                    className={`${mainClasses} premium-icon-box-flex-${iconPos} premium-icon-box-flex-ver-${iconHPos} `}
+                    className={` premium-icon-box-in premium-icon-box-flex-${iconPos} premium-icon-box-flex-ver-${iconHPos} `}
                     style={{
                         textAlign: align,
                         borderStyle: borderType,
@@ -3801,9 +3814,6 @@ class edit extends Component {
                         backgroundSize: backgroundSize,
                         backgroundAttachment: fixed ? "fixed" : "unset"
                     }}
-                    data-box-tilt={mouseTilt}
-                    data-box-tilt-reverse={reverse}
-
                 >
 
                     <style
@@ -3884,7 +3894,6 @@ class edit extends Component {
                             ].join("\n")
                         }}
                     />
-
                     {iconChecked && (
                         <div
                             className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
@@ -4037,11 +4046,42 @@ class edit extends Component {
                     </div>
                 </div>
                 {showBackIcon && <div className={`premium-icon-box-big premium-icon-box-big-hover`}>
-                    <i className={` ${selectedIcon}  premium-icon-box-icon`} style={{ color: '#54595F' }}></i>
+                    {/* <i className={` ${selectedIcon}  premium-icon-box-icon`} style={{ color: '#54595F' }}></i> */}
+                    {"icon" === iconImage && (
+                        <Fragment>
+                            {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                                <p className={`premium-icon-box__alert`}>
+                                    {__("Please Enable Font Awesome Icons from Plugin settings")}
+                                </p>
+                            )}
+                            {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                                <i
+                                    className={`${selectedIcon}  premium-icon-box-icon`}
+
+                                />
+                            )}
+                        </Fragment>
+                    )}
+                    {"image" === iconImage && iconImgUrl && (
+                        <img
+                            className={` premium-icon-box-icon`}
+                            src={`${iconImgUrl}`}
+                            alt="Image Icon"
+                        />
+                    )}
+                    {"animation" == iconImage && lottieURL && <div className={`premium-icon-box-icon premium-icon-box-animation`} > <Lottie
+                        options={{
+                            loop: loopLottie,
+                            path: lottieURL,
+                            rendererSettings: {
+                                preserveAspectRatio: 'xMidYMid'
+                            }
+                        }}
+                        direction={reverseAnime}
+                    /> </div>}
                 </div>}
                 {wholeLink && <a className={`premium-icon-box-whole-link`} href={"javascript:void(0)"} target={target ? "_blank" : "_self"}></a>}
             </div>
-
         ];
     }
 };
