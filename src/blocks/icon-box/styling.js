@@ -1,3 +1,4 @@
+import hexToRgba from 'hex-to-rgba';
 import generateCSS from '../../../assets/js/blocks/generateCss';
 import generateCSSUnit from '../../../assets/js/blocks/generateCssUnit'
 
@@ -252,7 +253,22 @@ function styling(props) {
         iconBackOpacityMobile,
         iconRotate,
         iconRotateMobile,
-        iconRotateTablet
+        iconRotateTablet,
+        iconColorH,
+        iconBackColorH,
+        iconOpacityH,
+        iconborderTypeH,
+        iconborderTopH,
+        iconborderRightH,
+        iconborderBottomH,
+        iconborderLeftH,
+        iconborderColorH,
+        iconborderRadiusH,
+        iconShadowColorH,
+        iconShadowBlurH,
+        iconShadowHorizontalH,
+        iconShadowVerticalH,
+        iconShadowPositionH,
     } = props.attributes;
 
     let selectors = {}
@@ -290,7 +306,13 @@ function styling(props) {
             "padding-bottom": generateCSSUnit(iconPaddingBottom, iconPaddingType),
             "padding-left": generateCSSUnit(iconPaddingLeft, iconPaddingType)
         },
-        " .premium-icon-box:hover .premium-icon-box__icon ": {
+        " .premium-icon-box__icon_wrap:hover .premium-icon-box__icon ": {
+            "color": iconColorH + "!important",
+            "background-color": iconBackColorH ? hexToRgba(iconBackColorH, iconBackOpacity) : iconBackColorH,
+            "border-style": iconborderTypeH,
+            "border-width": `${iconborderTopH}px ${iconborderRightH}px ${iconborderBottomH}px ${iconborderLeftH}px`,
+            "border-color": `${iconborderColorH}`,
+            "box-shadow": `${iconShadowHorizontalH}px ${iconShadowVerticalH}px ${iconShadowBlurH}px ${iconShadowColorH} ${iconShadowPositionH}`,
             "margin-top": generateCSSUnit(iconMarginTopH, iconMarginTypeH),
             "margin-right": generateCSSUnit(iconMarginRightH, iconMarginTypeH),
             "margin-bottom": generateCSSUnit(iconMarginBottomH, iconMarginTypeH),
