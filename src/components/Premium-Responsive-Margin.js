@@ -2,16 +2,13 @@
 import PremiumMargin from './premium-margin';
 
 const {
-
     Dashicon,
     TabPanel,
-
 } = wp.components;
 
 function PremiumResponsiveMargin(props) {
     const {
         directions,
-        selectedUnit,
         marginTop,
         marginRight,
         marginBottom,
@@ -24,7 +21,9 @@ function PremiumResponsiveMargin(props) {
         marginRightMobile,
         marginBottomMobile,
         marginLeftMobile,
-        showUnits
+        selectedUnit,
+        showUnits,
+        onChangeMarSizeUnit,
     } = props;
     return (
         < TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
@@ -47,55 +46,14 @@ function PremiumResponsiveMargin(props) {
             ]}>
             {(tab) => {
                 let tabout;
-                if ("mobile" === tab.name) {
+                if ("desktop" === tab.name) {
                     tabout = (
                         <PremiumMargin
-                            showUnits={showUnits || false}
                             directions={directions}
                             marginTop={marginTop}
                             marginRight={marginRight}
                             marginBottom={marginBottom}
                             marginLeft={marginLeft}
-                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("mobile", marginTop)
-                            }
-                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("mobile", marginRight)
-                            }
-                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("mobile", marginBottom)
-                            }
-                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("mobile", marginLeft)
-                            }
-                            onChangeMarSizeUnit={props.onChangeMarSizeUnit}
-                        />
-                    )
-                } else if ("tablet" === tab.name) {
-                    tabout = (
-                        <PremiumMargin
-                            showUnits={showUnits || false}
-                            directions={directions}
-                            marginTop={marginTopTablet}
-                            marginRight={marginRightTablet}
-                            marginBottom={marginBottomTablet}
-                            marginLeft={marginLeftTablet}
-                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("tablet", marginTop)
-                            }
-                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("tablet", marginRight)
-                            }
-                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("tablet", marginBottom)
-                            }
-                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("tablet", marginLeft)
-                            }
-                            onChangeMarSizeUnit={props.onChangeMarSizeUnit}
-                        />
-                    )
-                } else {
-                    tabout = (
-                        <PremiumMargin
-                            showUnits={showUnits || false}
-                            directions={directions}
-                            marginTop={marginTopMobile}
-                            marginRight={marginRightMobile}
-                            marginBottom={marginBottomMobile}
-                            marginLeft={marginLeftMobile}
                             onChangeMarTop={(marginTop) => props.onChangeMarginTop("desktop", marginTop)
                             }
                             onChangeMarRight={(marginRight) => props.onChangeMarginRight("desktop", marginRight)
@@ -104,7 +62,51 @@ function PremiumResponsiveMargin(props) {
                             }
                             onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("desktop", marginLeft)
                             }
-                            onChangeMarSizeUnit={props.onChangeMarSizeUnit}
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
+                        />
+                    )
+                } else if ("tablet" === tab.name) {
+                    tabout = (
+                        <PremiumMargin
+                            directions={directions}
+                            marginTop={marginTopTablet}
+                            marginRight={marginRightTablet}
+                            marginBottom={marginBottomTablet}
+                            marginLeft={marginLeftTablet}
+                            onChangeMarTop={(marginTopTablet) => props.onChangeMarginTop("tablet", marginTopTablet)
+                            }
+                            onChangeMarRight={(marginRightTablet) => props.onChangeMarginRight("tablet", marginRightTablet)
+                            }
+                            onChangeMarBottom={(marginBottomTablet) => props.onChangeMarginBottom("tablet", marginBottomTablet)
+                            }
+                            onChangeMarLeft={(marginLeftTablet) => props.onChangeMarginLeft("tablet", marginLeftTablet)
+                            }
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
+                        />
+                    )
+                } else {
+                    tabout = (
+                        <PremiumMargin
+                            directions={directions}
+                            marginTop={marginTopMobile}
+                            marginRight={marginRightMobile}
+                            marginBottom={marginBottomMobile}
+                            marginLeft={marginLeftMobile}
+                            onChangeMarTop={(marginTopMobile) => props.onChangeMarginTop("mobile", marginTopMobile)
+                            }
+                            onChangeMarRight={(marginRightMobile) => props.onChangeMarginRight("mobile", marginRightMobile)
+                            }
+                            onChangeMarBottom={(marginBottomMobile) => props.onChangeMarginBottom("mobile", marginBottomMobile)
+                            }
+                            onChangeMarLeft={(marginLeftMobile) => props.onChangeMarginLeft("mobile", marginLeftMobile)
+                            }
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
                         />
                     )
                 }
