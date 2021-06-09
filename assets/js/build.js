@@ -66870,7 +66870,17 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-unfold-" + block_id,
-                    className: mainClass + " premium-unfold-" + block_id
+                    className: mainClass + " premium-unfold-" + block_id,
+                    "data-foldText": foldTxt,
+                    "data-unfoldText": unfoldTxt,
+                    "data-buttonIcon": foldIcon,
+                    "data-buttonUnfoldIcon": unfoldIcon,
+                    "data-foldSelect": foldUnit,
+                    "data-foldHeight": foldHeight,
+                    "data-foldDur": foldDuration === "custom" ? foldSecond * 1000 : foldDuration,
+                    "data-unfoldDur": unfoldDuration === "custom" ? unfoldSecond * 1000 : foldDuration,
+                    "data-foldEasing": foldEasing,
+                    "data-unfoldEasing": unfoldEasing
                 },
                 wp.element.createElement(
                     "div",
@@ -68074,6 +68084,11 @@ function save(props) {
         fadeBackgroundRepeat = attributes.fadeBackgroundRepeat,
         fadeBackgroundSize = attributes.fadeBackgroundSize,
         fadeFixed = attributes.fadeFixed,
+        iconColor = attributes.iconColor,
+        iconShadowHorizontal = attributes.iconShadowHorizontal,
+        iconShadowVertical = attributes.iconShadowVertical,
+        iconShadowBlur = attributes.iconShadowBlur,
+        iconShadowColor = attributes.iconShadowColor,
         fadeBorderType = attributes.fadeBorderType,
         fadeBorderTop = attributes.fadeBorderTop,
         fadeBorderRight = attributes.fadeBorderRight,
@@ -68112,13 +68127,13 @@ function save(props) {
                     boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnTxtShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
 
                 } },
-            "before" === iconPosition && showIcon && wp.element.createElement("i", { className: "premium-unfold-before " + (toggle ? unfoldIcon : foldIcon), style: { color: iconColor, textShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor } }),
+            "before" === iconPosition && showIcon && wp.element.createElement("i", { className: "premium-unfold-before ", style: { color: iconColor, textShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor } }),
             wp.element.createElement(
                 "span",
                 { id: "premium-unfold-button-text-" + block_id, className: "premium-unfold-button-text", style: { color: btnColor, textShadow: btnTxtShadowHorizontal + "px " + btnTxtShadowVertical + "px " + btnTxtShadowBlur + "px " + btnTxtShadowColor, fontWeight: btnWeight, letterSpacing: btnLetter, lineHeight: btnLine, fontStyle: btnStyle, textTransform: btnUpper ? "uppercase" : "none" } },
                 toggle ? unfoldTxt : foldTxt
             ),
-            "after" === iconPosition && showIcon && wp.element.createElement("i", { className: "premium-unfold-after " + (toggle ? unfoldIcon : foldIcon), style: { color: iconColor, textShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor } })
+            "after" === iconPosition && showIcon && wp.element.createElement("i", { className: "premium-unfold-after ", style: { color: iconColor, textShadow: iconShadowHorizontal + "px " + iconShadowVertical + "px " + iconShadowBlur + "px " + iconShadowColor } })
         )
     );
     var mainClass = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-unfold-wrap');
@@ -68127,7 +68142,17 @@ function save(props) {
         "div",
         {
             id: "premium-unfold-" + block_id,
-            className: mainClass + " premium-unfold-" + block_id
+            className: mainClass + " premium-unfold-" + block_id,
+            "data-foldText": foldTxt,
+            "data-unfoldText": unfoldTxt,
+            "data-buttonIcon": foldIcon,
+            "data-buttonUnfoldIcon": unfoldIcon,
+            "data-foldSelect": foldUnit,
+            "data-foldHeight": foldHeight,
+            "data-foldDur": foldDuration === "custom" ? foldSecond * 1000 : foldDuration,
+            "data-unfoldDur": unfoldDuration === "custom" ? unfoldSecond * 1000 : foldDuration,
+            "data-foldEasing": foldEasing,
+            "data-unfoldEasing": unfoldEasing
         },
         wp.element.createElement(
             "div",

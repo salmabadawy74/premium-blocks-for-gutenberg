@@ -2582,6 +2582,16 @@ class edit extends Component {
             <div
                 id={`premium-unfold-${block_id}`}
                 className={`${mainClass} premium-unfold-${block_id}`}
+                data-foldText={foldTxt}
+                data-unfoldText={unfoldTxt}
+                data-buttonIcon={foldIcon}
+                data-buttonUnfoldIcon={unfoldIcon}
+                data-foldSelect={foldUnit}
+                data-foldHeight={foldHeight}
+                data-foldDur={foldDuration === "custom" ? foldSecond * 1000 : foldDuration}
+                data-unfoldDur={unfoldDuration === "custom" ? unfoldSecond * 1000 : foldDuration}
+                data-foldEasing={foldEasing}
+                data-unfoldEasing={unfoldEasing}
             >
                 <div className={`premium-unfold-container`}
                     style={{

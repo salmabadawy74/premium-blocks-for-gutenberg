@@ -2,10 +2,8 @@
 import PremiumMargin from './premium-margin';
 
 const {
-
     Dashicon,
     TabPanel,
-
 } = wp.components;
 
 function PremiumResponsiveMargin(props) {
@@ -23,6 +21,9 @@ function PremiumResponsiveMargin(props) {
         marginRightMobile,
         marginBottomMobile,
         marginLeftMobile,
+        selectedUnit,
+        showUnits,
+        onChangeMarSizeUnit,
     } = props;
     return (
         < TabPanel className="premium-size-type-field-tabs" activeClass="active-tab"
@@ -45,7 +46,7 @@ function PremiumResponsiveMargin(props) {
             ]}>
             {(tab) => {
                 let tabout;
-                if ("mobile" === tab.name) {
+                if ("desktop" === tab.name) {
                     tabout = (
                         <PremiumMargin
                             directions={directions}
@@ -53,14 +54,17 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRight}
                             marginBottom={marginBottom}
                             marginLeft={marginLeft}
-                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("mobile", marginTop)
+                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("desktop", marginTop)
                             }
-                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("mobile", marginRight)
+                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("desktop", marginRight)
                             }
-                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("mobile", marginBottom)
+                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("desktop", marginBottom)
                             }
-                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("mobile", marginLeft)
+                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("desktop", marginLeft)
                             }
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
                         />
                     )
                 } else if ("tablet" === tab.name) {
@@ -71,14 +75,17 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightTablet}
                             marginBottom={marginBottomTablet}
                             marginLeft={marginLeftTablet}
-                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("tablet", marginTop)
+                            onChangeMarTop={(marginTopTablet) => props.onChangeMarginTop("tablet", marginTopTablet)
                             }
-                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("tablet", marginRight)
+                            onChangeMarRight={(marginRightTablet) => props.onChangeMarginRight("tablet", marginRightTablet)
                             }
-                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("tablet", marginBottom)
+                            onChangeMarBottom={(marginBottomTablet) => props.onChangeMarginBottom("tablet", marginBottomTablet)
                             }
-                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("tablet", marginLeft)
+                            onChangeMarLeft={(marginLeftTablet) => props.onChangeMarginLeft("tablet", marginLeftTablet)
                             }
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
                         />
                     )
                 } else {
@@ -89,14 +96,17 @@ function PremiumResponsiveMargin(props) {
                             marginRight={marginRightMobile}
                             marginBottom={marginBottomMobile}
                             marginLeft={marginLeftMobile}
-                            onChangeMarTop={(marginTop) => props.onChangeMarginTop("desktop", marginTop)
+                            onChangeMarTop={(marginTopMobile) => props.onChangeMarginTop("mobile", marginTopMobile)
                             }
-                            onChangeMarRight={(marginRight) => props.onChangeMarginRight("desktop", marginRight)
+                            onChangeMarRight={(marginRightMobile) => props.onChangeMarginRight("mobile", marginRightMobile)
                             }
-                            onChangeMarBottom={(marginBottom) => props.onChangeMarginBottom("desktop", marginBottom)
+                            onChangeMarBottom={(marginBottomMobile) => props.onChangeMarginBottom("mobile", marginBottomMobile)
                             }
-                            onChangeMarLeft={(marginLeft) => props.onChangeMarginLeft("desktop", marginLeft)
+                            onChangeMarLeft={(marginLeftMobile) => props.onChangeMarginLeft("mobile", marginLeftMobile)
                             }
+                            showUnits={showUnits}
+                            selectedUnit={selectedUnit}
+                            onChangeMarSizeUnit={onChangeMarSizeUnit}
                         />
                     )
                 }

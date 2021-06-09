@@ -352,6 +352,11 @@ export default function save(props) {
         fadeBackgroundRepeat,
         fadeBackgroundSize,
         fadeFixed,
+        iconColor,
+        iconShadowHorizontal,
+        iconShadowVertical,
+        iconShadowBlur,
+        iconShadowColor,
         fadeBorderType,
         fadeBorderTop,
         fadeBorderRight,
@@ -387,10 +392,10 @@ export default function save(props) {
                 boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnTxtShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
 
             }}>
-                {("before" === iconPosition && showIcon) && <i className={`premium-unfold-before ${toggle ? unfoldIcon : foldIcon}`} style={{ color: iconColor, textShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor}` }}></i>}
+                {("before" === iconPosition && showIcon) && <i className={`premium-unfold-before `} style={{ color: iconColor, textShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor}` }}></i>}
 
                 <span id={`premium-unfold-button-text-${block_id}`} className={"premium-unfold-button-text"} style={{ color: btnColor, textShadow: `${btnTxtShadowHorizontal}px ${btnTxtShadowVertical}px ${btnTxtShadowBlur}px ${btnTxtShadowColor}`, fontWeight: btnWeight, letterSpacing: btnLetter, lineHeight: btnLine, fontStyle: btnStyle, textTransform: btnUpper ? "uppercase" : "none" }}>{toggle ? unfoldTxt : foldTxt}</span>
-                {("after" === iconPosition && showIcon) && <i className={`premium-unfold-after ${toggle ? unfoldIcon : foldIcon}`} style={{ color: iconColor, textShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor}` }}></i>}
+                {("after" === iconPosition && showIcon) && <i className={`premium-unfold-after `} style={{ color: iconColor, textShadow: `${iconShadowHorizontal}px ${iconShadowVertical}px ${iconShadowBlur}px ${iconShadowColor}` }}></i>}
             </a>
         </div>
     )
@@ -401,6 +406,16 @@ export default function save(props) {
         <div
             id={`premium-unfold-${block_id}`}
             className={`${mainClass} premium-unfold-${block_id}`}
+            data-foldText={foldTxt}
+            data-unfoldText={unfoldTxt}
+            data-buttonIcon={foldIcon}
+            data-buttonUnfoldIcon={unfoldIcon}
+            data-foldSelect={foldUnit}
+            data-foldHeight={foldHeight}
+            data-foldDur={foldDuration === "custom" ? foldSecond * 1000 : foldDuration}
+            data-unfoldDur={unfoldDuration === "custom" ? unfoldSecond * 1000 : foldDuration}
+            data-foldEasing={foldEasing}
+            data-unfoldEasing={unfoldEasing}
         >
             <div className={`premium-unfold-container`}
                 style={{
