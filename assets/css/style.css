@@ -1775,6 +1775,527 @@ a.premium-dheading-block__link:hover {
     z-index: 9999;
 }
 
+/************ Animation **************/
+
+.animation-fast{
+    animation-duration: .75s;
+}
+.animation-normal{
+    animation-duration: 1.25s;
+}
+.animation-slow{
+animation-duration: 2s;
+}
+@keyframes animation-push {
+    50% {
+        transform: scale(0.8)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+@keyframes animation-pulse {
+    25% {
+        transform: scale(1.1)
+    }
+
+    75% {
+        transform: scale(0.9)
+    }
+}
+
+.hover-animation-pulse:hover {
+    animation-name: animation-pulse !important;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite
+}
+
+.hover-animation-push:hover {
+    animation-name: animation-push !important;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1
+}
+
+.hover-animation-bounce:hover {
+    transition-duration: .5s
+}
+
+.hover-animation-bounce:hover {
+    transform: scale(1.2);
+    transition-timing-function: cubic-bezier(0.47,2.02,.31,-.36)
+}
+
+@keyframes animation-pop {
+    50% {
+        transform: scale(1.2)
+    }
+}
+
+.hover-animation-pop:hover{
+    animation-name: animation-pop !important;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1
+}
+
+.hover-animation-grow {
+    transition-duration: 5.3s;
+    transition-property: transform
+}
+.hover-animation-grow:hover {
+    transform: scale(1.1)
+}
+
+@keyframes animation-pulse-grow {
+    to {
+        transform: scale(1.1)
+    }
+}
+
+.hover-animation-pulse-grow:hover {
+    animation-name: animation-pulse-grow !important;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate
+}
+
+@keyframes animation-pulse-shrink {
+    to {
+        transform: scale(0.9)
+    }
+}
+
+.hover-animation-pulse-shrink:hover {
+    animation-name: animation-pulse-shrink !important;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.tab-animation.animation-fadeInDown {
+    animation-name: fadeInDown
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-fadeIn {
+    animation-name: fadeIn
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%,0,0)
+    }
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.tab-animation.animation-fadeInLeft {
+    animation-name: fadeInLeft
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.tab-animation.animation-fadeInRight {
+    animation-name: fadeInRight
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0,100%,0)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.tab-animation.animation-fadeInUp {
+    animation-name: fadeInUp
+}
+
+@keyframes lightSpeedIn {
+    from {
+        transform: translate3d(100%,0,0) skewX(-30deg);
+        opacity: 0
+    }
+
+    60% {
+        transform: skewX(20deg);
+        opacity: 1
+    }
+
+    80% {
+        transform: skewX(-5deg);
+        opacity: 1
+    }
+
+    to {
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-lightSpeedIn {
+    animation-name: lightSpeedIn;
+    animation-timing-function: ease-out
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0,-100%,0);
+        visibility: visible
+    }
+
+    to {
+        transform: translate3d(0,0,0)
+    }
+}
+
+.tab-animation.animation-slideInDown {
+    animation-name: slideInDown
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translate3d(-100%,0,0);
+        visibility: visible
+    }
+
+    to {
+        transform: translate3d(0,0,0)
+    }
+}
+
+.tab-animation.animation-slideInLeft {
+    animation-name: slideInLeft
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%,0,0);
+        visibility: visible
+    }
+
+    to {
+        transform: translate3d(0,0,0)
+    }
+}
+
+.tab-animation.animation-slideInRight {
+    animation-name: slideInRight
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0,100%,0);
+        visibility: visible
+    }
+
+    to {
+        transform: translate3d(0,0,0)
+    }
+}
+
+.tab-animation.animation-slideInUp {
+    animation-name: slideInUp
+}
+
+@keyframes bounceIn {
+    20%,40%,60%,80%,from,to {
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        transform: scale3d(.3,.3,.3)
+    }
+
+    20% {
+        transform: scale3d(1.1,1.1,1.1)
+    }
+
+    40% {
+        transform: scale3d(.9,.9,.9)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03,1.03,1.03)
+    }
+
+    80% {
+        transform: scale3d(.97,.97,.97)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1,1,1)
+    }
+}
+
+.tab-animation.animation-bounceIn {
+    animation-name: bounceIn
+}
+
+@keyframes bounceInDown {
+    60%,75%,90%,from,to {
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(0,-3000px,0)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0,25px,0)
+    }
+
+    75% {
+        transform: translate3d(0,-10px,0)
+    }
+
+    90% {
+        transform: translate3d(0,5px,0)
+    }
+
+    to {
+        transform: none
+    }
+}
+
+.tab-animation.animation-bounceInDown {
+    animation-name: bounceInDown
+}
+
+@keyframes bounceInLeft {
+    60%,75%,90%,from,to {
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(-3000px,0,0)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(25px,0,0)
+    }
+
+    75% {
+        transform: translate3d(-10px,0,0)
+    }
+
+    90% {
+        transform: translate3d(5px,0,0)
+    }
+
+    to {
+        transform: none
+    }
+}
+
+.tab-animation.animation-bounceInLeft {
+    animation-name: bounceInLeft
+}
+
+@keyframes bounceInRight {
+    60%,75%,90%,from,to {
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    from {
+        opacity: 0;
+        transform: translate3d(3000px,0,0)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(-25px,0,0)
+    }
+
+    75% {
+        transform: translate3d(10px,0,0)
+    }
+
+    90% {
+        transform: translate3d(-5px,0,0)
+    }
+
+    to {
+        transform: none
+    }
+}
+
+.tab-animation.animation-bounceInRight {
+    animation-name: bounceInRight
+}
+
+@keyframes bounceInUp {
+    60%,75%,90%,from,to {
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    from {
+        opacity: 0;
+        transform: translate3d(0,3000px,0)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0,-20px,0)
+    }
+
+    75% {
+        transform: translate3d(0,10px,0)
+    }
+
+    90% {
+        transform: translate3d(0,-5px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0)
+    }
+}
+
+.tab-animation.animation-bounceInUp {
+    animation-name: bounceInUp
+}
+@keyframes rotateIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0,0,1,-200deg);
+        opacity: 0
+    }
+
+    to {
+        transform-origin: center;
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-rotateIn {
+    animation-name: rotateIn
+}
+
+@keyframes rotateInDownLeft {
+    from {
+        transform-origin: left bottom;
+        transform: rotate3d(0,0,1,-45deg);
+        opacity: 0
+    }
+
+    to {
+        transform-origin: left bottom;
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-rotateInDownLeft {
+    animation-name: rotateInDownLeft
+}
+
+@keyframes rotateInDownRight {
+    from {
+        transform-origin: right bottom;
+        transform: rotate3d(0,0,1,45deg);
+        opacity: 0
+    }
+
+    to {
+        transform-origin: right bottom;
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-rotateInDownRight {
+    animation-name: rotateInDownRight
+}
+
+@keyframes rotateInUpLeft {
+    from {
+        transform-origin: left bottom;
+        transform: rotate3d(0,0,1,45deg);
+        opacity: 0
+    }
+
+    to {
+        transform-origin: left bottom;
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-rotateInUpLeft {
+    animation-name: rotateInUpLeft
+}
+
+@keyframes rotateInUpRight {
+    from {
+        transform-origin: right bottom;
+        transform: rotate3d(0,0,1,-90deg);
+        opacity: 0
+    }
+
+    to {
+        transform-origin: right bottom;
+        transform: none;
+        opacity: 1
+    }
+}
+
+.tab-animation.animation-rotateInUpRight {
+    animation-name: rotateInUpRight
+}
 /************ Responsive **************/
 @media (min-width: 977px) {
     .premium-desktop-hidden {
