@@ -211,6 +211,14 @@ class PBG_Blocks_Helper {
 			PREMIUM_BLOCKS_VERSION
 		);
 
+		wp_enqueue_script(
+			'advanced-animation',
+			PREMIUM_BLOCKS_URL . 'assets/js/advanced-animation.js',
+			array( 'jquery' ),
+			PREMIUM_BLOCKS_VERSION,
+			true
+		);
+
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
 				'pbg-fontawesome',

@@ -1,21 +1,18 @@
-/**
- * Filters registered block settings, extending attributes with anchor using ID
- * of the first node.
- *
- * @param {Object} settings Original block settings.
- *
- * @return {Object} Filtered block settings.
- */
+
 function addAttributes(settings) {
 
     if (settings.attributes) {
         settings.attributes = Object.assign(settings.attributes, {
-            animationfield: {
+            animationType: {
                 type: 'string',
             },
-            animationhoverfield: {
+            animationhoverType: {
                 type: 'string',
             },
+            animationSpeed: {
+                type: "string",
+                default: 'normal'
+            }
         });
     }
     return settings;
@@ -23,6 +20,6 @@ function addAttributes(settings) {
 
 wp.hooks.addFilter(
     'blocks.registerBlockType',
-    'pbg/cover-advanced-control',
+    'premium-blocks-for-gutenberg/cover-advanced-control',
     addAttributes
 );
