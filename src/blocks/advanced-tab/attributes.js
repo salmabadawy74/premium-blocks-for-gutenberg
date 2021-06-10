@@ -1,3 +1,4 @@
+const { __ } = wp.i18n
 
 function addAttributes(settings) {
 
@@ -11,6 +12,30 @@ function addAttributes(settings) {
             animationSpeed: {
                 type: "string",
                 default: 'normal'
+            },
+            showAnimatiom: {
+                type: "boolean",
+                default: false
+            },
+            repeaterColor: {
+                type: "array",
+                default: [
+                ]
+            },
+            gradAngle: {
+                type: "number",
+                default: -45
+            },
+            gradSpeed: {
+                type: "number"
+            },
+            waveEffect: {
+                type: "boolean",
+                default: false
+            },
+            showAnimatiom: {
+                type: "boolean",
+                default: false
             }
         });
     }
