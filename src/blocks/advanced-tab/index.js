@@ -11,7 +11,6 @@ const AdvancedAnimationControls = wp.compose.createHigherOrderComponent((BlockEd
 
     return (props) => {
         const { Fragment } = wp.element;
-        const { InspectorAdvancedControls } = wp.blockEditor;
         const { attributes, setAttributes, isSelected } = props;
         const { animationType, animationSpeed } = attributes;
         const blocks_name = props.name;
@@ -116,6 +115,7 @@ function ApplyAnimateClass(extraProps, blockType, attributes) {
     }
     return extraProps;
 }
+
 
 
 wp.hooks.addFilter(

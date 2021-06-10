@@ -1,3 +1,4 @@
+import './blocks/advanced-tab/attributes'
 import "./blocks/accordion";
 import "./blocks/banner";
 import "./blocks/button";
@@ -12,6 +13,5 @@ import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/fancy-text"
 import "./blocks/lottie";
-import './blocks/advanced-tab/attributes'
 import './blocks/advanced-tab/index'
 //import "./blocks/test";
