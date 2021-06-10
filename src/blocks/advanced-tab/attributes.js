@@ -5,10 +5,9 @@ function addAttributes(settings) {
         settings.attributes = Object.assign(settings.attributes, {
             animationType: {
                 type: 'string',
+                default: "none"
             },
-            animationhoverType: {
-                type: 'string',
-            },
+
             animationSpeed: {
                 type: "string",
                 default: 'normal'

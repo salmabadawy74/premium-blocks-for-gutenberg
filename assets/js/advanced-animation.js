@@ -1,16 +1,24 @@
-function getAnimation() {
+jQuery(document).ready(function ($) {
+    function getAnimation() {
 
-    var animationElements = document.getElementsByClassName('advanced-animation');
+        var animationElems = $('.advanced-animation');
 
-    for (var item = 0; item < animationElements.length; item++) {
+        animationElems.map((index, animationElem) => {
+            let $animationElem = $(animationElem),
+                viewport = getViewPort($animationElem[0]);
+            if (viewport) {
+                $animationElem.addClass('tab-animation')
 
-        var viewport = getViewPort(animationElements[item]);
+            }
+        })
 
-        if (viewport) {
-            animationElements[item].classList.add('tab-animation');
-        }
     }
-}
+    $(window).on(' scroll', getAnimation);
+    $(document).ready(getAnimation);
+})
+
+
+
 /**
  * Get View Port
  */
@@ -26,8 +34,3 @@ function getViewPort(el) {
     );
 }
 
-document.addEventListener('scroll', function () {
-    getAnimation();
-});
-
-getAnimation();
