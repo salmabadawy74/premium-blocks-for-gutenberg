@@ -1,5 +1,6 @@
 import classnames from 'classnames'
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "hex-to-rgba"
+
 const save = props => {
 
     const { className } = props;
@@ -66,6 +67,11 @@ const save = props => {
         counterFamily,
         prefixFamily,
         suffixFamily,
+        paddingT,
+        paddingR,
+        paddingB,
+        paddingL,
+        paddingU,
         hideDesktop,
         hideTablet,
         hideMobile
@@ -85,7 +91,7 @@ const save = props => {
                 backgroundColor: containerBack
                     ? hexToRgba(containerBack, containerOpacity)
                     : "transparent",
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px rgba(${shadowColor.r},${shadowColor.g},${shadowColor.b}, ${shadowColor.a}) ${shadowPosition}`,
                 backgroundImage: `url('${backgroundImageURL}')`,
                 backgroundRepeat: backgroundRepeat,
                 backgroundPosition: backgroundPosition,
@@ -96,7 +102,11 @@ const save = props => {
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : borderWidth + "px",
                 borderRadius: borderRadius + "px",
-                borderColor: borderColor
+                borderColor: borderColor,
+                paddingTop: paddingT + paddingU,
+                paddingRight: paddingR + paddingU,
+                paddingBottom: paddingB + paddingU,
+                paddingLeft: paddingL + paddingU,
             }}
         >
             {iconCheck && (

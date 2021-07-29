@@ -1,558 +1,240 @@
-import { object } from "prop-types";
+import attributes from "./attributes"
+import hexToRgba from "hex-to-rgba"
+import classnames from 'classnames'
 
-const className = "premium-countup";
-
-const counterAttrs_1_7_4 = {
-    increment: {
-        type: "string",
-        default: 500,
-    },
-    time: {
-        type: "string",
-        default: 1000,
-    },
-    delay: {
-        type: "string",
-        default: 10,
-    },
-    align: {
-        type: "string",
-        default: "center",
-    },
-    flexDir: {
-        type: "string",
-        default: "column",
-    },
-    numberSize: {
-        type: "number",
-        default: 30,
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    numberWeight: {
-        type: "number",
-        default: 900,
-    },
-    prefix: {
-        type: "boolean",
-        default: true,
-    },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix",
-    },
-    prefixSize: {
-        type: "number",
-        default: 20,
-    },
-    prefixColor: {
-        type: "string",
-    },
-    prefixWeight: {
-        type: "number",
-    },
-    prefixGap: {
-        type: "number",
-        default: 2,
-    },
-    suffix: {
-        type: "boolean",
-        default: true,
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix",
-    },
-    suffixSize: {
-        type: "number",
-        default: 20,
-    },
-    suffixColor: {
-        type: "string",
-    },
-    suffixWeight: {
-        type: "number",
-    },
-    suffixGap: {
-        type: "number",
-        default: 2,
-    },
-    icon: {
-        type: "string",
-        default: "icon",
-    },
-    iconSpacing: {
-        type: "number",
-        default: 10,
-    },
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    iconType: {
-        type: "string",
-        default: "dash",
-    },
-    iconCheck: {
-        type: "boolean",
-        default: true,
-    },
-    iconSize: {
-        type: "number",
-        default: 40,
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    selfAlign: {
-        type: "string",
-        default: "center",
-    },
-    titleCheck: {
-        type: "boolean",
-        default: true,
-    },
-    titleTxt: {
-        type: "string",
-        default: "Premium Count Up",
-    },
-    titleSize: {
-        type: "number",
-        default: 20,
-    },
-    titleSpacing: {
-        type: "number",
-    },
-    titleStyle: {
-        type: "string",
-    },
-    titleUpper: {
-        type: "boolean",
-    },
-    titleT: {
-        type: "number",
-        default: 1,
-    },
-    titleB: {
-        type: "number",
-        default: 1,
-    },
-    titleColor: {
-        type: "string",
-    },
-    titleWeight: {
-        type: "number",
-        default: 500,
-    },
-    faIcon: {
-        type: "string",
-        default: "dashicons-clock",
-    },
-    containerBack: {
-        type: "string",
-    },
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    shadowPosition: {
-        type: "string",
-        default: "",
-    },
-    backgroundImageID: {
-        type: "string",
-    },
-    backgroundImageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-        default: "0",
-    },
-    borderColor: {
-        type: "string",
-    },
-    titleFamily: {
-        type: "string",
-    },
-    counterFamily: {
-        type: "string",
-    },
-    prefixFamily: {
-        type: "string",
-    },
-    suffixFamily: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_7_5 = {
-    borderCount: {
-        type: "boolean",
-        default: false,
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    containerOpacity: {
-        type: "string",
-        default: "1"
-    },
-    block_id: {
-        type: 'string'
-    },
-    numberSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    numberSizeTablet: {
-        type: "number"
-    },
-    numberSizeMobile: {
-        type: "number"
-    },
-    prefixSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    prefixSizeTablet: {
-        type: "number"
-    },
-    prefixSizeMobile: {
-        type: "number"
-    },
-    suffixSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    suffixSizeTablet: {
-        type: "number"
-    },
-    suffixSizeMobile: {
-        type: 'number'
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-const counterAttrs_1_7_5 = Object.assign(
-    counterAttrs_1_7_4,
-    newAttributes_1_7_5
-);
-
-const counterAttrs_1_0_9 = {
-    increment: {
-        type: "string",
-        default: 500,
-    },
-    time: {
-        type: "string",
-        default: 1000,
-    },
-    delay: {
-        type: "string",
-        default: 10,
-    },
-    align: {
-        type: "string",
-        default: "center",
-    },
-    flexDir: {
-        type: "string",
-        default: "column",
-    },
-    numberSize: {
-        type: "number",
-        default: 30,
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    numberWeight: {
-        type: "number",
-        default: 900,
-    },
-    prefix: {
-        type: "boolean",
-        default: true,
-    },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix",
-    },
-    prefixSize: {
-        type: "number",
-        default: 20,
-    },
-    prefixColor: {
-        type: "string",
-    },
-    prefixWeight: {
-        type: "number",
-    },
-    prefixGap: {
-        type: "number",
-        default: 2,
-    },
-    suffix: {
-        type: "boolean",
-        default: true,
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix",
-    },
-    suffixSize: {
-        type: "number",
-        default: 20,
-    },
-    suffixColor: {
-        type: "string",
-    },
-    suffixWeight: {
-        type: "number",
-    },
-    suffixGap: {
-        type: "number",
-        default: 2,
-    },
-    icon: {
-        type: "string",
-        default: "icon",
-    },
-    iconSpacing: {
-        type: "number",
-        default: 10,
-    },
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    iconType: {
-        type: "string",
-        default: "dash",
-    },
-    iconCheck: {
-        type: "boolean",
-        default: true,
-    },
-    iconSize: {
-        type: "number",
-        default: 40,
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4",
-    },
-    selfAlign: {
-        type: "string",
-        default: "center",
-    },
-    titleCheck: {
-        type: "boolean",
-        default: true,
-    },
-    titleTxt: {
-        type: "string",
-        default: "Premium Count Up",
-    },
-    titleSize: {
-        type: "number",
-        default: 20,
-    },
-    titleSpacing: {
-        type: "number",
-    },
-    titleStyle: {
-        type: "string",
-    },
-    titleUpper: {
-        type: "boolean",
-    },
-    titleT: {
-        type: "number",
-        default: 1,
-    },
-    titleB: {
-        type: "number",
-        default: 1,
-    },
-    titleColor: {
-        type: "string",
-    },
-    titleWeight: {
-        type: "number",
-        default: 500,
-    },
-    faIcon: {
-        type: "string",
-        default: "dashicons-clock",
-    },
-};
-
-const newAttributes_1_2_1 = {
-    containerBack: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_3_7 = {
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    shadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const newAttributes_1_4_1 = {
-    backgroundImageID: {
-        type: "string",
-    },
-    backgroundImageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-};
-
-const newAttributes_1_6_4 = {
-    titleFamily: {
-        type: "string",
-    },
-    counterFamily: {
-        type: "string",
-    },
-    prefixFamily: {
-        type: "string",
-    },
-    suffixFamily: {
-        type: "string",
-    },
-};
-
-const counterAttrs_1_2_1 = Object.assign(
-    counterAttrs_1_0_9,
-    newAttributes_1_2_1
-);
-
-const counterAttrs_1_3_7 = Object.assign(
-    counterAttrs_1_2_1,
-    newAttributes_1_3_7
-);
-
-const counterAttrs_1_4_1 = Object.assign(
-    counterAttrs_1_3_7,
-    newAttributes_1_4_1
-);
-
-const counterAttrs_1_6_4 = Object.assign(
-    counterAttrs_1_4_1,
-    newAttributes_1_6_4
-);
+const className = "premium-countup"
 
 const deprecatedContent = [
     {
-        attributes: counterAttrs_1_7_5,
+        attributes,
+        save: function (props) {
+
+            const {
+                block_id,
+                borderCount,
+                increment,
+                time,
+                delay,
+                align,
+                flexDir,
+                numberColor,
+                numberWeight,
+                prefix,
+                prefixTxt,
+                prefixColor,
+                prefixWeight,
+                prefixGap,
+                suffix,
+                suffixTxt,
+                suffixColor,
+                suffixWeight,
+                suffixGap,
+                iconCheck,
+                icon,
+                iconSpacing,
+                iconType,
+                imageURL,
+                iconSize,
+                iconColor,
+                selfAlign,
+                titleCheck,
+                titleTxt,
+                titleColor,
+                titleSpacing,
+                titleStyle,
+                titleUpper,
+                titleT,
+                titleB,
+                titleWeight,
+                faIcon,
+                containerBack,
+                containerOpacity,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                shadowPosition,
+                backgroundImageURL,
+                fixed,
+                backgroundRepeat,
+                backgroundPosition,
+                backgroundSize,
+                borderType,
+                borderColor,
+                borderRadius,
+                borderWidth,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+                titleFamily,
+                counterFamily,
+                prefixFamily,
+                suffixFamily,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+            let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+
+            const mainClasses = classnames(className, 'premium-countup');
+
+            return (
+                <div
+                    id={`premium-countup-${block_id}`}
+                    className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        justifyContent: align,
+                        flexDirection: flexDir,
+                        backgroundColor: containerBack
+                            ? hexToRgba(containerBack, containerOpacity)
+                            : "transparent",
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        backgroundImage: `url('${backgroundImageURL}')`,
+                        backgroundRepeat: backgroundRepeat,
+                        backgroundPosition: backgroundPosition,
+                        backgroundSize: backgroundSize,
+                        backgroundAttachment: fixed ? "fixed" : "unset",
+                        borderStyle: borderType,
+                        borderWidth: borderCount
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor
+                    }}
+                >
+                    {iconCheck && (
+                        <div
+                            className={`premium-countup__icon_wrap`}
+                            style={{
+                                marginRight:
+                                    "row" === flexDir || "row-reverse" === flexDir
+                                        ? iconSpacing + "px"
+                                        : "0",
+                                marginLeft:
+                                    "row" === flexDir || "row-reverse" === flexDir
+                                        ? iconSpacing + "px"
+                                        : "0",
+                                alignSelf:
+                                    "row-reverse" === flexDir || "row" === flexDir
+                                        ? "center"
+                                        : selfAlign
+                            }}
+                        >
+                            {"icon" === icon && (
+                                <i
+                                    className={`premium-countup__icon ${iconClass}`}
+                                    style={{
+                                        fontSize: iconSize + "px",
+                                        color: iconColor
+                                    }}
+                                />
+                            )}
+                            {"img" === icon && imageURL && (
+                                <img
+                                    src={imageURL}
+                                    style={{
+                                        width: iconSize + "px",
+                                        height: iconSize + "px"
+                                    }}
+                                />
+                            )}
+                        </div>
+                    )}
+
+                    <div
+                        className={`premium-countup__info`}
+                        style={{
+                            alignSelf:
+                                "row-reverse" === flexDir || "row" === flexDir
+                                    ? "center"
+                                    : selfAlign
+                        }}
+                    >
+                        <div className={`premium-countup__desc`}>
+                            {prefix && (
+                                <p
+                                    className={`premium-countup__prefix`}
+                                    style={{
+                                        fontFamily: prefixFamily,
+                                        color: prefixColor,
+                                        fontWeight: prefixWeight,
+                                        marginRight: prefixGap + "px"
+                                    }}
+                                >
+                                    {prefixTxt}
+                                </p>
+                            )}
+                            <p
+                                className={`premium-countup__increment`}
+                                data-interval={time}
+                                data-delay={delay}
+                                style={{
+                                    fontFamily: counterFamily,
+                                    color: numberColor,
+                                    fontWeight: numberWeight
+                                }}
+                            >
+                                {increment}
+                            </p>
+                            {suffix && (
+                                <p
+                                    className={`premium-countup__suffix`}
+                                    style={{
+                                        fontFamily: suffixFamily,
+                                        color: suffixColor,
+                                        fontWeight: suffixWeight,
+                                        marginLeft: suffixGap + "px"
+                                    }}
+                                >
+                                    {suffixTxt}
+                                </p>
+                            )}
+                        </div>
+                        {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
+                            <h3
+                                className={`premium-countup__title`}
+                                style={{
+                                    fontFamily: titleFamily,
+                                    marginTop: titleT + "px",
+                                    marginBottom: titleB + "px",
+                                    color: titleColor,
+                                    letterSpacing: titleSpacing + "px",
+                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyle,
+                                    fontWeight: titleWeight
+                                }}
+                            >
+                                {titleTxt}
+                            </h3>
+                        )}
+                    </div>
+                    {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
+                        <h3
+                            className={`premium-countup__title`}
+                            style={{
+                                fontFamily: titleFamily,
+                                marginTop: titleT + "px",
+                                marginBottom: titleB + "px",
+                                color: titleColor,
+                                letterSpacing: titleSpacing + "px",
+                                fontWeight: titleWeight,
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                alignSelf: selfAlign
+                            }}
+                        >
+                            {titleTxt}
+                        </h3>
+                    )}
+                </div>
+            );
+
+        }
+    },
+    {
+        attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderTop: "",
@@ -797,7 +479,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_6_4,
+        attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderType: "",
@@ -1016,7 +698,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_4_1,
+        attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 titleFamily: "",
@@ -1224,7 +906,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_3_7,
+        attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1429,7 +1111,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_2_1,
+        attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1622,7 +1304,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: counterAttrs_1_0_9,
+        attributes,
         save: (props) => {
             const {
                 increment,

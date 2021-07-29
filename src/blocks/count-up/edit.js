@@ -1,14 +1,15 @@
-import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackground from "../../components/premium-background";
-import PremiumBorder from "../../components/premium-border";
-import FONTS from "../../components/premium-fonts";
-import PremiumMediaUpload from "../../components/premium-media-upload";
+import classnames from "classnames"
+import { FontAwesomeEnabled } from "../../../assets/js/settings"
+import PremiumTypo from "../../components/premium-typo"
+import PremiumBoxShadow from "../../components/premium-box-shadow"
+import PremiumBackground from "../../components/premium-background"
+import PremiumBorder from "../../components/premium-border"
+import PremiumPadding from "../../components/premium-padding"
+import FONTS from "../../components/premium-fonts"
+import PremiumMediaUpload from "../../components/premium-media-upload"
 import styling from './styling'
-import hexToRgba from "hex-to-rgba";
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import hexToRgba from "hex-to-rgba"
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 
 const { __ } = wp.i18n;
 
@@ -126,6 +127,11 @@ class edit extends Component {
             counterFamily,
             prefixFamily,
             suffixFamily,
+            paddingT,
+            paddingR,
+            paddingB,
+            paddingL,
+            paddingU,
             hideDesktop,
             hideTablet,
             hideMobile
@@ -193,10 +199,8 @@ class edit extends Component {
             link.type = "text/css";
             link.rel = "stylesheet";
             link.href =
-                "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace(/\s+/g, "+") +
-                ":" +
-                "regular";
+                "https://fonts.googleapis.com/css2?family=" +
+                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
             head.appendChild(link);
         };
 
@@ -255,12 +259,12 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Increment")}
+                            label={__("Final Number")}
                             value={increment}
                             onChange={value => setAttributes({ increment: value })}
                         />
                         <TextControl
-                            label={__("Rolling Time")}
+                            label={__("Counting Time")}
                             value={time}
                             onChange={value => setAttributes({ time: value })}
                             help={__("Set counting time in milliseconds, for example: 1000")}
@@ -365,7 +369,7 @@ class edit extends Component {
                                                 target="_blank"
                                             >
                                                 &nbsp;
-                    {__("here")}
+                                                {__("here")}
                                             </a>,
                                             __(" , for example: "),
                                             "fa" === iconType ? "address-book" : "dashicons-admin-site"
@@ -755,10 +759,16 @@ class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             position={shadowPosition}
-                            onChangeColor={newColor =>
+                            withAlpha={true}
+                            onChangeColor={newColor => {
+
                                 setAttributes({
-                                    shadowColor: newColor.hex
+                                    shadowColor: newColor.rgb
                                 })
+
+                                console.log(shadowColor)
+                            }
+
                             }
                             onChangeBlur={newBlur =>
                                 setAttributes({
@@ -779,6 +789,37 @@ class edit extends Component {
                                 setAttributes({
                                     shadowPosition: newValue
                                 })
+                            }
+                        />
+                        <PremiumPadding
+                            paddingTop={paddingT}
+                            paddingRight={paddingR}
+                            paddingBottom={paddingB}
+                            paddingLeft={paddingL}
+                            showUnits={true}
+                            onChangePadTop={value =>
+                                setAttributes({
+                                    paddingT: value || 0
+                                })
+                            }
+                            onChangePadRight={value =>
+                                setAttributes({
+                                    paddingR: value || 0
+                                })
+                            }
+                            onChangePadBottom={value =>
+                                setAttributes({
+                                    paddingB: value || 0
+                                })
+                            }
+                            onChangePadLeft={value =>
+                                setAttributes({
+                                    paddingL: value || 0
+                                })
+                            }
+                            selectedUnit={paddingU}
+                            onChangePadSizeUnit={newvalue =>
+                                setAttributes({ paddingU: newvalue })
                             }
                         />
                     </PanelBody>
@@ -809,7 +850,7 @@ class edit extends Component {
                     backgroundColor: containerBack
                         ? hexToRgba(containerBack, containerOpacity)
                         : "transparent",
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px rgba(${shadowColor.r},${shadowColor.g},${shadowColor.b}, ${shadowColor.a}) ${shadowPosition}`,
                     backgroundImage: backgroundImageURL ? `url('${backgroundImageURL}')` : 'none',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -820,7 +861,11 @@ class edit extends Component {
                         ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                         : borderWidth + "px",
                     borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    borderColor: borderColor,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
                 }}
             >
                 {iconCheck && (
