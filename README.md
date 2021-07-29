@@ -59,6 +59,13 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog ##
 
+### 1.9.0 ###
+
+- Tweak: Added Padding option for container in Countup block.
+- Tweak: Added option to control transparency for Box Shadow in Countup block.
+- Fixed: All issues related to Font Family option in all blocks.
+- Fixed: Compatibility issues with WordPress 5.8.
+
 ### 1.8.9 ###
 
 - New: Added Premium Lottie Animation block.
