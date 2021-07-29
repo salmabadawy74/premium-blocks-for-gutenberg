@@ -167,10 +167,8 @@ class edit extends Component {
             link.type = "text/css";
             link.rel = "stylesheet";
             link.href =
-                "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace(/\s+/g, "+") +
-                ":" +
-                "regular";
+                "https://fonts.googleapis.com/css2?family=" +
+                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
             head.appendChild(link);
         };
 
