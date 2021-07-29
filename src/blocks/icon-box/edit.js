@@ -1,20 +1,20 @@
-import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
-import PremiumTypo from "../../components/premium-typo";
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
-import PremiumBorder from "../../components/premium-border";
-import PremiumPadding from "../../components/premium-padding";
-import PremiumMargin from "../../components/premium-margin";
-import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackground from "../../components/premium-background";
-import PremiumSizeUnits from "../../components/premium-size-units";
-import FONTS from "../../components/premium-fonts";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling';
-import hexToRgba from "hex-to-rgba";
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import classnames from "classnames"
+import { FontAwesomeEnabled } from "../../../assets/js/settings"
+import PremiumTypo from "../../components/premium-typo"
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import iconsList from "../../components/premium-icons-list"
+import PremiumBorder from "../../components/premium-border"
+import PremiumPadding from "../../components/premium-padding"
+import PremiumMargin from "../../components/premium-margin"
+import PremiumTextShadow from "../../components/premium-text-shadow"
+import PremiumBoxShadow from "../../components/premium-box-shadow"
+import PremiumBackground from "../../components/premium-background"
+import PremiumSizeUnits from "../../components/premium-size-units"
+import FONTS from "../../components/premium-fonts"
+import PremiumMediaUpload from "../../components/premium-media-upload"
+import styling from './styling'
+import hexToRgba from "hex-to-rgba"
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 
 const { __ } = wp.i18n;
 
@@ -310,10 +310,8 @@ class edit extends Component {
             link.type = "text/css";
             link.rel = "stylesheet";
             link.href =
-                "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace(/\s+/g, "+") +
-                ":" +
-                "regular";
+                "https://fonts.googleapis.com/css2?family=" +
+                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
             head.appendChild(link);
         };
 
