@@ -88,7 +88,7 @@ class PBG_Blocks_Helper {
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 
 		// Register Premium Blocks category.
-		add_filter( 'block_categories', array( $this, 'register_premium_category' ), 10, 1 );
+		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
 
 		// Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
