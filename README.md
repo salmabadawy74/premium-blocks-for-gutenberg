@@ -3,9 +3,9 @@
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks  
 **Donate link:** http://leap13.com  
 **Requires at least:** 4.5  
-**Tested up to:** 5.7.1  
+**Tested up to:** 5.8  
 **Requires PHP:** 5.4  
-**Stable tag:** 1.8.9  
+**Stable tag:** 1.9.0  
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
