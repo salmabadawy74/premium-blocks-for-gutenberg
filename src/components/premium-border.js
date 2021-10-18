@@ -157,7 +157,6 @@ export default class PremiumBorder extends Component {
                             <ColorPicker
                                 color={borderColor}
                                 onChangeComplete={onChangeColor}
-                                disableAlpha
                             />
                         </Fragment>
                     )}

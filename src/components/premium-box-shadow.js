@@ -55,7 +55,7 @@ export default function PremiumBoxShadow(props) {
                             <ColorPicker
                                 color={color}
                                 onChangeComplete={onChangeColor}
-                                disableAlpha={withAlpha ? false : true}
+                            // disableAlpha={withAlpha ? false : true}
                             />
                         </Fragment>
                         <RangeControl
