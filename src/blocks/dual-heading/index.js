@@ -6,7 +6,7 @@ import deprecatedContent from "./deprecated";
 
 const { __ } = wp.i18n;
 
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 const dualHeadingAttrs = {
     block_id: {
@@ -362,5 +362,43 @@ registerBlockType("premium/dheading-block", {
     example: {},
     edit: edit,
     save: save,
+    transforms: {
+        from: [
+            {
+                type: 'block',
+                blocks: ['core/heading'],
+                transform: (attributes) => {
+                    return createBlock("premium/dheading-block", {
+                        attributes
+                    })
+                }
+            },
+            {
+                type: 'block',
+                blocks: ['core/quote'],
+                transform: (attributes) => {
+                    return createBlock("premium/dheading-block", {
+                        attributes
+                    })
+                }
+            }
+        ],
+        to: [
+            {
+                type: 'block',
+                blocks: ['core/heading'],
+                transform: (attributes) => {
+                    return createBlock('core/heading', { attributes })
+                }
+            },
+            {
+                type: 'block',
+                blocks: ['core/quote'],
+                transform: (attributes) => {
+                    return createBlock('core/quote', { attributes })
+                }
+            }
+        ]
+    },
     deprecated: deprecatedContent
 });

@@ -7,7 +7,7 @@ import deprecated from "./deprecated";
 
 const { __ } = wp.i18n;
 
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 const accordionAttrs = {
     accordionId: {
@@ -237,10 +237,12 @@ registerBlockType("premium/accordion", {
     category: "premium-blocks",
     attributes: accordionAttrs,
     supports: {
-        inserter: accordion
+        anchor: true,
     },
     example: {},
     edit: edit,
     save: save,
+
+
     deprecated: deprecated
 });
