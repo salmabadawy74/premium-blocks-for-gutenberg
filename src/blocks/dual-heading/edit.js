@@ -147,7 +147,10 @@ class edit extends Component {
             secondBorder,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            firstStyles,
+            secondStyles,
+            containerStyles
         } = this.props.attributes;
 
         const DISPLAY = [
@@ -173,7 +176,7 @@ class edit extends Component {
         };
 
         const onChangeFirstFamily = fontFamily => {
-            setAttributes({ firstFamily: fontFamily });
+            saveStyles({ firstFamily: fontFamily }, firstStyles);
             if (!fontFamily) {
                 return;
             }
@@ -186,14 +189,8 @@ class edit extends Component {
             if (!fontFamily) {
                 return;
             }
-
             addFontToHead(fontFamily);
         };
-
-        const mainClasses = classnames(
-            className,
-            "premium-dheading-block__container"
-        );
 
         let element = document.getElementById(
             "premium-style-dual-" + blockId.substr(0, 6)
@@ -201,6 +198,17 @@ class edit extends Component {
 
         if (null != element && "undefined" != typeof element) {
             element.innerHTML = styling(this.props);
+        }
+        const saveStyles = (value, obj) => {
+            const newUpdate = obj.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                obj: newUpdate,
+            });
         }
 
         return [
@@ -258,26 +266,26 @@ class edit extends Component {
                     >
                         <ToggleControl
                             label={__("Clipped")}
-                            checked={firstClip}
-                            onChange={newValue => setAttributes({ firstClip: newValue })}
+                            checked={firstStyles[0].firstClip}
+                            onChange={newValue => saveStyles({ firstClip: newValue }, firstStyles)}
                         />
                         {firstClip && (
                             <Fragment>
                                 <ToggleControl
                                     label={__("Animated")}
-                                    checked={firstAnim}
-                                    onChange={newValue => setAttributes({ firstAnim: newValue })}
+                                    checked={firstStyles[0].firstAnim}
+                                    onChange={newValue => saveStyles({ firstAnim: newValue }, firstStyles)}
                                 />
                                 <ToggleControl
                                     label={__("Stroke")}
-                                    checked={firstStroke}
-                                    onChange={newValue => setAttributes({ firstStroke: newValue })}
+                                    checked={firstStyles[0].firstStroke}
+                                    onChange={newValue => saveStyles({ firstStroke: newValue }, firstStyles)}
                                 />
                             </Fragment>
                         )}
                         <SelectControl
                             label={__("Font Family")}
-                            value={firstFamily}
+                            value={firstStyles[0].firstFamily}
                             options={FONTS}
                             onChange={onChangeFirstFamily}
                         />
@@ -285,11 +293,11 @@ class edit extends Component {
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
                             fontSizeType={{
-                                value: firstSizeUnit,
+                                value: firstStyles[0].firstSizeUnit,
                                 label: __("firstSizeUnit"),
                             }}
                             fontSize={{
-                                value: firstSize,
+                                value: firstStyles[0].firstSize,
                                 label: __("firstSize"),
                             }}
                             fontSizeMobile={{
@@ -300,18 +308,18 @@ class edit extends Component {
                                 value: firstSizeTablet,
                                 label: __("firstSizeTablet"),
                             }}
-                            weight={firstWeight}
-                            style={firstStyle}
-                            spacing={firstLetter}
-                            upper={firstUpper}
+                            weight={firstStyles[0].firstWeight}
+                            style={firstStyles[0].firstStyle}
+                            spacing={firstStyles[0].firstLetter}
+                            upper={firstStyles[0].firstUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({ firstWeight: newWeight || 500 })
+                                saveStyles({ firstWeight: newWeight || 500 }, firstStyles)
                             }
-                            onChangeStyle={newStyle => setAttributes({ firstStyle: newStyle })}
+                            onChangeStyle={newStyle => saveStyles({ firstStyle: newStyle }, firstStyles)}
                             onChangeSpacing={newValue =>
-                                setAttributes({ firstLetter: newValue })
+                                saveStyles({ firstLetter: newValue }, firstStyles)
                             }
-                            onChangeUpper={check => setAttributes({ firstUpper: check })}
+                            onChangeUpper={check => saveStyles({ firstUpper: check }, firstStyles)}
                         />
 
                         {!firstClip && (
@@ -330,26 +338,26 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={firstColor}
+                                                value={firstStyles[0].firstColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         firstColor: newValue
-                                                    })
+                                                    }, firstStyles)
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>{__("Background Color")}</p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={firstBackground}
+                                                colorValue={firstStyles[0].firstBackground}
                                                 onChangeColor={value =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         firstBackground: value,
-                                                    })
+                                                    }, firstStyles)
                                                 }
-                                                opacityValue={firstOpacity}
+                                                opacityValue={firstStyles[0].firstOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         firstOpacity: value,
                                                     })
                                                 }
@@ -376,21 +384,21 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("First Color")}</p>
                                             <ColorPalette
-                                                value={firstColor}
+                                                value={firstStyles[0].firstColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         firstColor: newValue
-                                                    })
+                                                    }, firstStyles)
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>{__("Second Color")}</p>
                                             <ColorPalette
-                                                value={firstClipColor}
+                                                value={firstStyles[0].firstClipColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         firstClipColor: newValue
-                                                    })
+                                                    }, firstStyles)
                                                 }
                                                 allowReset={true}
                                             />
@@ -401,14 +409,14 @@ class edit extends Component {
                         )}
 
                         <PremiumBorder
-                            borderType={firstBorderType}
-                            borderWidth={firstBorderWidth}
-                            top={firstBorderTop}
-                            right={firstBorderRight}
-                            bottom={firstBorderBottom}
-                            left={firstBorderLeft}
-                            borderColor={firstBorderColor}
-                            borderRadius={firstBorderRadius}
+                            borderType={firstStyles[0].firstBorderType}
+                            borderWidth={firstStyles[0].firstBorderWidth}
+                            top={firstStyles[0].firstBorderTop}
+                            right={firstStyles[0].firstBorderRight}
+                            bottom={firstStyles[0].firstBorderBottom}
+                            left={firstStyles[0].firstBorderLeft}
+                            borderColor={firstStyles[0].firstBorderColor}
+                            borderRadius={firstStyles[0].firstBorderRadius}
                             onChangeType={(newType) =>
                                 setAttributes({ firstBorderType: newType })
                             }
@@ -432,10 +440,10 @@ class edit extends Component {
                         />
 
                         <PremiumTextShadow
-                            color={firstShadowColor}
-                            blur={firstShadowBlur}
-                            horizontal={firstShadowHorizontal}
-                            vertical={firstShadowVertical}
+                            color={firstStyles[0].firstShadowColor}
+                            blur={firstStyles[0].firstShadowBlur}
+                            horizontal={firstStyles[0].firstShadowHorizontal}
+                            vertical={firstStyles[0].firstShadowVertical}
                             onChangeColor={newColor =>
                                 setAttributes({ firstShadowColor: newColor.hex || "transparent" })
                             }
@@ -452,7 +460,7 @@ class edit extends Component {
 
                         <p>{__("Margin Left")}</p>
                         <RangeControl
-                            value={firstMarginL}
+                            value={firstStyles[0].firstMarginL}
                             min="0"
                             max="100"
                             onChange={newMargin =>
@@ -461,7 +469,7 @@ class edit extends Component {
                         />
                         <p>{__("Margin Right")}</p>
                         <RangeControl
-                            value={firstMarginR}
+                            value={firstStyles[0].firstMarginR}
                             min="0"
                             max="100"
                             onChange={newMargin =>
@@ -470,7 +478,7 @@ class edit extends Component {
                         />
                         <p>{__("Padding")}</p>
                         <RangeControl
-                            value={firstPadding}
+                            value={firstStyles[0].firstPadding}
                             min="0"
                             max="100"
                             onChange={newPadding =>
@@ -485,26 +493,26 @@ class edit extends Component {
                     >
                         <ToggleControl
                             label={__("Clipped")}
-                            checked={secondClip}
+                            checked={secondStyles[0].secondClip}
                             onChange={newValue => setAttributes({ secondClip: newValue })}
                         />
                         {secondClip && (
                             <Fragment>
                                 <ToggleControl
                                     label={__("Animated")}
-                                    checked={secondAnim}
+                                    checked={secondStyles[0].secondAnim}
                                     onChange={newValue => setAttributes({ secondAnim: newValue })}
                                 />
                                 <ToggleControl
                                     label={__('Stroke')}
-                                    checked={secondStroke}
+                                    checked={secondStyles[0].secondStroke}
                                     onChange={newValue => setAttributes({ secondStroke: newValue })}
                                 />
                             </Fragment>
                         )}
                         <SelectControl
                             label={__("Font Family")}
-                            value={secondFamily}
+                            value={secondStyles[0].secondFamily}
                             options={FONTS}
                             onChange={onChangeSecondFamily}
                         />
@@ -512,33 +520,33 @@ class edit extends Component {
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
                             fontSizeType={{
-                                value: secondSizeUnit,
+                                value: secondStyles[0].secondSizeUnit,
                                 label: __("secondSizeUnit"),
                             }}
                             fontSize={{
-                                value: secondSize,
+                                value: secondStyles[0].secondSize,
                                 label: __("secondSize"),
                             }}
                             fontSizeMobile={{
-                                value: secondSizeMobile,
+                                value: secondStyles[0].secondSizeMobile,
                                 label: __("secondSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: secondSizeTablet,
+                                value: secondStyles[0].secondSizeTablet,
                                 label: __("secondSizeTablet"),
                             }}
-                            weight={secondWeight}
-                            style={secondStyle}
-                            spacing={secondLetter}
-                            upper={secondUpper}
+                            weight={secondStyles[0].secondWeight}
+                            style={secondStyles[0].secondStyle}
+                            spacing={secondStyles[0].secondLetter}
+                            upper={secondStyles[0].secondUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({ secondWeight: newWeight || 500 })
+                                saveStyles({ secondWeight: newWeight || 500 }, secondStyles)
                             }
                             onChangeStyle={newStyle => setAttributes({ secondStyle: newStyle })}
                             onChangeSpacing={newValue =>
-                                setAttributes({ secondLetter: newValue })
+                                saveStyles({ secondLetter: newValue }, secondStyles)
                             }
-                            onChangeUpper={check => setAttributes({ secondUpper: check })}
+                            onChangeUpper={check => saveStyles({ secondUpper: check }, secondStyles)}
                         />
 
                         {!secondClip && (
@@ -557,28 +565,28 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={secondColor}
+                                                value={secondStyles[0].secondColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         secondColor: newValue || "transparent"
-                                                    })
+                                                    }, secondStyles)
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>{__("Background Color")}</p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={secondBackground}
+                                                colorValue={secondStyles[0].secondBackground}
                                                 onChangeColor={value =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         secondBackground: value,
-                                                    })
+                                                    }, secondStyles)
                                                 }
-                                                opacityValue={secondOpacity}
+                                                opacityValue={secondStyles[0].secondOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         secondOpacity: value,
-                                                    })
+                                                    }, secondStyles)
                                                 }
                                             />
                                         </Fragment>
@@ -602,21 +610,21 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("First Color")}</p>
                                             <ColorPalette
-                                                value={secondColor}
+                                                value={secondStyles[0].secondColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         secondColor: newValue || "transparent"
-                                                    })
+                                                    }, secondStyles)
                                                 }
                                                 allowReset={true}
                                             />
                                             <p>{__("Second Color")}</p>
                                             <ColorPalette
-                                                value={secondClipColor}
+                                                value={secondStyles[0].secondClipColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveStyles({
                                                         secondClipColor: newValue || "transparent"
-                                                    })
+                                                    }, secondStyles)
                                                 }
                                                 allowReset={true}
                                             />
@@ -627,81 +635,81 @@ class edit extends Component {
                         )}
 
                         <PremiumBorder
-                            borderType={secondBorderType}
-                            borderWidth={secondBorderWidth}
-                            top={secondBorderTop}
-                            right={secondBorderRight}
-                            bottom={secondBorderBottom}
-                            left={secondBorderLeft}
-                            borderColor={secondBorderColor}
-                            borderRadius={secondBorderRadius}
+                            borderType={secondStyles[0].secondBorderType}
+                            borderWidth={secondStyles[0].secondBorderWidth}
+                            top={secondStyles[0].secondBorderTop}
+                            right={secondStyles[0].secondBorderRight}
+                            bottom={secondStyles[0].secondBorderBottom}
+                            left={secondStyles[0].secondBorderLeft}
+                            borderColor={secondStyles[0].secondBorderColor}
+                            borderRadius={secondStyles[0].secondBorderRadius}
                             onChangeType={(newType) =>
-                                setAttributes({ secondBorderType: newType })
+                                saveStyles({ secondBorderType: newType }, secondStyles)
                             }
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
+                                saveStyles({
                                     secondBorder: true,
                                     secondBorderTop: top,
                                     secondBorderRight: right,
                                     secondBorderBottom: bottom,
                                     secondBorderLeft: left,
-                                })
+                                }, secondStyles)
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({
+                                saveStyles({
                                     secondBorderColor: colorValue.hex || "transparent",
-                                })
+                                }, secondStyles)
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ secondBorderRadius: newrRadius || "0" })
+                                saveStyles({ secondBorderRadius: newrRadius || "0" }, secondStyles)
                             }
                         />
 
                         <PremiumTextShadow
-                            color={secondShadowColor}
-                            blur={secondShadowBlur}
-                            horizontal={secondShadowHorizontal}
-                            vertical={secondShadowVertical}
+                            color={secondStyles[0].secondShadowColor}
+                            blur={secondStyles[0].secondShadowBlur}
+                            horizontal={secondStyles[0].secondShadowHorizontal}
+                            vertical={secondStyles[0].secondShadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveStyles({
                                     secondShadowColor: newColor.hex || "transparent"
-                                })
+                                }, secondStyles)
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({ secondShadowBlur: newBlur || "0" })
+                                saveStyles({ secondShadowBlur: newBlur || "0" }, secondStyles)
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({ secondShadowHorizontal: newValue || "0" })
+                                saveStyles({ secondShadowHorizontal: newValue || "0" }, secondStyles)
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({ secondShadowVertical: newValue || "0" })
+                                saveStyles({ secondShadowVertical: newValue || "0" }, secondStyles)
                             }
                         />
                         <p>{__("Margin Left")}</p>
                         <RangeControl
-                            value={secondMarginL}
+                            value={secondStyles[0].secondMarginL}
                             min="0"
                             max="100"
                             onChange={newMargin =>
-                                setAttributes({ secondMarginL: newMargin || "0" })
+                                saveStyles({ secondMarginL: newMargin || "0" }, secondStyles)
                             }
                         />
                         <p>{__("Margin Right")}</p>
                         <RangeControl
-                            value={secondMarginR}
+                            value={secondStyles[0].secondMarginR}
                             min="0"
                             max="100"
                             onChange={newMargin =>
-                                setAttributes({ secondMarginR: newMargin || "0" })
+                                saveStyles({ secondMarginR: newMargin || "0" }, secondStyles)
                             }
                         />
                         <p>{__("Padding")}</p>
                         <RangeControl
-                            value={secondPadding}
+                            value={secondStyles[0].secondPadding}
                             min="0"
                             max="100"
                             onChange={newPadding =>
-                                setAttributes({ secondPadding: newPadding || "0" })
+                                saveStyles({ secondPadding: newPadding || "0" }, secondStyles)
                             }
                         />
                     </PanelBody>
@@ -713,26 +721,26 @@ class edit extends Component {
                         <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
-                            colorValue={containerBack}
+                            colorValue={containerStyles[0].containerBack}
                             onChangeColor={newvalue =>
-                                setAttributes({
+                                saveStyles({
                                     containerBack: newvalue,
-                                })
+                                }, containerStyles)
                             }
-                            opacityValue={containerOpacity}
+                            opacityValue={containerStyles[0].containerOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({ containerOpacity: value })
+                                saveStyles({ containerOpacity: value }, containerStyles)
                             }
                         />
                         <PremiumBackground
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].imageID}
+                            imageURL={containerStyles[0].imageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveStyles({
                                     imageID: media.id,
                                     imageURL: media.url
                                 });
@@ -796,7 +804,8 @@ class edit extends Component {
 
             <div
                 id={`premium-dheading-block-${block_id}`}
-                className={`${mainClasses} premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={classnames(className,
+                    "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                 style={{
                     textAlign: contentAlign,
                     backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
