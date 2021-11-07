@@ -67,64 +67,13 @@ class PremiumAccordion extends Component {
             repeaterItems,
             direction,
             titleTag,
-            // titleColor,
-            // titleSize,
-            // titleLine,
-            // titleLetter,
-            // titleStyle,
-            // titleUpper,
-            // titleWeight,
-            // titleBorder,
-            // titleBorderWidth,
-            // titleBorderTop,
-            // titleBorderRight,
-            // titleBorderBottom,
-            // titleBorderLeft,
-            // titleBorderColor,
-            // titleBorderRadius,
-            // titleBack,
-            // titleShadowBlur,
-            // titleShadowColor,
-            // titleShadowHorizontal,
-            // titleShadowVertical,
-            // titlePaddingT,
-            // titlePaddingR,
-            // titlePaddingB,
-            // titlePaddingL,
-            // arrowColor,
-            // arrowBack,
             arrowPos,
-            // arrowPadding,
-            // arrowRadius,
-            // arrowSize,
             contentType,
-            // descAlign,
-            // descColor,
-            // descBack,
-            // descBorder,
-            // descBorderColor,
-            // descBorderRadius,
-            // descBorderWidth,
-            // descBorderTop,
-            // descBorderRight,
-            // descBorderBottom,
-            // descBorderLeft,
-            // descSize,
-            // descLine,
-            // descLetter,
-            // descStyle,
-            // descUpper,
-            // descWeight,
             textShadowBlur,
             textShadowColor,
             textShadowHorizontal,
             textShadowVertical,
-            // descPaddingT,
-            // descPaddingR,
-            // descPaddingB,
-            // descPaddingL,
             titleBorderUpdated,
-            // descBorderUpdated,
             titleStyles,
             arrowStyles,
             descStyles
@@ -222,19 +171,19 @@ class PremiumAccordion extends Component {
                 >
                     <div
                         className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
-                    // style={{
-                    //     backgroundColor: titleBack,
-                    //     borderStyle: titleBorder,
-                    //     borderWidth: titleBorderUpdated
-                    //         ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    //         : titleBorderWidth + "px",
-                    //     borderRadius: titleBorderRadius + "px",
-                    //     borderColor: titleBorderColor,
-                    //     paddingTop: titlePaddingT,
-                    //     paddingRight: titlePaddingR,
-                    //     paddingBottom: titlePaddingB,
-                    //     paddingLeft: titlePaddingL
-                    // }}
+                        style={{
+                            backgroundColor: titleStyles[0].titleBack,
+                            borderStyle: titleStyles[0].titleBorder,
+                            borderWidth: titleStyles[0].titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px",
+                            borderRadius: titleStyles[0].titleBorderRadius + "px",
+                            borderColor: titleStyles[0].titleBorderColor,
+                            paddingTop: titleStyles[0].titlePaddingT,
+                            paddingRight: titleStyles[0].titlePaddingR,
+                            paddingBottom: titleStyles[0].titlePaddingB,
+                            paddingLeft: titleStyles[0].titlePaddingL
+                        }}
                     >
                         <div className={`premium-accordion__title`}>
                             <RichText

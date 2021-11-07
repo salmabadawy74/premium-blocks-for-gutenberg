@@ -48,202 +48,12 @@ const videoBoxAttrs = {
         type: "boolean",
         default: false
     },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: 0
-    },
-    bright: {
-        type: "number",
-        default: 100
-    },
-    contrast: {
-        type: "number",
-        default: 100
-    },
-    saturation: {
-        type: "number",
-        default: 100
-    },
-    hue: {
-        type: "number",
-        default: 0
-    },
-    playTop: {
-        type: "number"
+    videoDesc: {
+        type: "boolean"
     },
     playIcon: {
         type: "boolean",
         default: true
-    },
-    playSize: {
-        type: "number"
-    },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playOpacity: {
-        type: "number",
-        default: "1"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
-        type: "number"
-    },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    playBorderRadius: {
-        type: "number"
-    },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
-        type: "number"
-    },
-    descTop: {
-        type: "number"
-    },
-    videoDescSize: {
-        type: "number"
-    },
-    videoDescSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    videoDescSizeMobile: {
-        type: 'number'
-    },
-    videoDescSizeTablet: {
-        type: 'number'
-    },
-    videoDescFamily: {
-        type: "string"
-    },
-    videoDescWeight: {
-        type: "number"
-    },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescOpacity: {
-        type: "number",
-        default: "1"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderTop: {
-        type: "number"
-    },
-    boxBorderRight: {
-        type: "number"
-    },
-    boxBorderBottom: {
-        type: "number"
-    },
-    boxBorderLeft: {
-        type: "number"
-    },
-    playBorderTop: {
-        type: "number"
-    },
-    playBorderRight: {
-        type: "number"
-    },
-    playBorderBottom: {
-        type: "number"
-    },
-    playBorderLeft: {
-        type: "number",
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
     },
 
     // Old props
@@ -265,6 +75,101 @@ const videoBoxAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    colorStyles: {
+        type: 'array',
+        default: [
+            {
+                playColor: '',
+                playBack: '',
+                playOpacity: 1,
+                videoDescColor: '',
+                videoDescBack: '',
+                videoDescOpacity: 1,
+                playHoverColor: '',
+                playHoverBackColor: '',
+            }
+        ]
+    },
+    boxStyles: {
+        type: 'array',
+        default: [
+            {
+                boxBorderType: 'none',
+                boxBorderWidth: 1,
+                boxBorderTop: '',
+                boxBorderRight: '',
+                boxBorderBottom: '',
+                boxBorderLeft: '',
+                boxBorderRadius: '',
+                boxBorderColor: '',
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: '',
+                shadowPosition: '',
+            }
+        ]
+    },
+    overlayStyles: {
+        type: 'array',
+        default: [
+            {
+                overlayImgID: '',
+                overlayImgURL: '',
+                blur: 0,
+                bright: 100,
+                contrast: 100,
+                saturation: 100,
+                hue: 0,
+            }
+        ]
+    },
+    playStyles: {
+        type: 'array',
+        default: [
+            {
+                playTop: '',
+                playSize: '',
+                playPadding: '',
+                playBorderType: 'none',
+                playBorderWidth: 1,
+                playBorderRadius: '',
+                playBorderColor: '',
+                playBorderTop: '',
+                playBorderRight: '',
+                playBorderBottom: '',
+                playBorderLeft: ''
+
+            }
+        ]
+
+    },
+    descStyles: {
+        type: 'array',
+        default: [
+            {
+                videoDescText: '',
+                videoDescFamily: '',
+                videoDescSize: '',
+                videoDescSizeUnit: 'px',
+                videoDescSizeMobile: '',
+                videoDescSizeTablet: '',
+                videoDescWeight: '',
+                videoDescLetter: '',
+                videoDescStyle: '',
+                videoDescUpper: false,
+                videoDescPadding: '',
+                videoDescBorderRadius: '',
+                descShadowColor: '',
+                descShadowBlur: 0,
+                descShadowHorizontal: 0,
+                descShadowVertical: 0,
+                descLeft: '',
+                descTop: '',
+            }
+        ]
     }
+
 };
 export default videoBoxAttrs;
