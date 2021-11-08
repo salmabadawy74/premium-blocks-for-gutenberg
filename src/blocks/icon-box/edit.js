@@ -92,15 +92,12 @@ class edit extends Component {
             btnTarget,
             btnText,
             btnLink,
-
             btnHoverBorder,
             classMigrate,
             hideDesktop,
             hideTablet,
             hideMobile,
-
             iconOpacity,
-
             titleStyles,
             descStyles,
             btnStyles,
