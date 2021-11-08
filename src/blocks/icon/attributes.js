@@ -58,7 +58,7 @@ const attributes = {
     },
     containerStyles: {
         backgroundColor: '',
-        backgroundOpacity: '',
+        backgroundOpacity: 1,
         imageID: '',
         imageURL: '',
         backgroundPosition: "top center",
@@ -112,18 +112,7 @@ const attributes = {
         type: "string",
         default: "up"
     },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
+
     urlCheck: {
         type: "boolean"
     },

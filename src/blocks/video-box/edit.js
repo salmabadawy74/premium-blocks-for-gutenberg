@@ -757,21 +757,21 @@ class edit extends Component {
                 className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-type={videoType}
                 style={{
-                    borderStyle: boxBorderType,
+                    borderStyle: boxStyles[0].boxBorderType,
                     borderWidth: borderBoxUpdated
-                        ? `${boxBorderTop}px ${boxBorderRight}px ${boxBorderBottom}px ${boxBorderLeft}px`
-                        : boxBorderWidth + "px",
-                    borderRadius: boxBorderRadius + "px",
-                    borderColor: boxBorderColor,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
+                        : boxStyles[0].boxBorderWidth + "px",
+                    borderRadius: boxStyles[0].boxBorderRadius + "px",
+                    borderColor: boxStyles[0].boxBorderColor,
+                    boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
                 }}
             >
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playHoverColor} !important;`,
-                            `background-color: ${playHoverBackColor} !important;`,
+                            `color: ${colorStyles[0].playHoverColor} !important;`,
+                            `background-color: ${colorStyles[0].playHoverBackColor} !important;`,
                             "}"
                         ].join("\n")
                     }}
@@ -799,12 +799,12 @@ class edit extends Component {
                         />
                     )}
                 </div>
-                {overlay && overlayImgURL && (
+                {overlay && overlayStyles[0].overlayImgURL && (
                     <div
                         className={`premium-video-box__overlay`}
                         style={{
-                            backgroundImage: `url('${overlayImgURL}')`,
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
+                            filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
                         }}
                     />
                 )}
@@ -812,25 +812,25 @@ class edit extends Component {
                     <div
                         className={`premium-video-box__play`}
                         style={{
-                            top: playTop + "%",
+                            top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
-                            color: playColor,
-                            backgroundColor: playBack
-                                ? hexToRgba(playBack, playOpacity)
+                            color: colorStyles[0].playColor,
+                            backgroundColor: colorStyles[0].playBack
+                                ? hexToRgba(colorStyles[0].playBack, colorStyles[0].playOpacity)
                                 : "transparent",
-                            borderStyle: playBorderType,
+                            borderStyle: playStyles[0].playBorderType,
                             borderWidth: borderPlayUpdated
-                                ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
-                                : playBorderWidth + "px",
-                            borderRadius: playBorderRadius + "px",
-                            borderColor: playBorderColor,
-                            padding: playPadding + "px"
+                                ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
+                                : playStyles[0].playBorderWidth + "px",
+                            borderRadius: playStyles[0].playBorderRadius + "px",
+                            borderColor: playStyles[0].playBorderColor,
+                            padding: playStyles[0].playPadding + "px"
                         }}
                     >
                         <i
                             className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                             style={{
-                                fontSize: playSize + "px"
+                                fontSize: playStyles[0].playSize + "px"
                             }}
                         />
                     </div>
@@ -840,27 +840,27 @@ class edit extends Component {
                         className={`premium-video-box__desc`}
                         style={{
                             color: videoDescColor,
-                            backgroundColor: videoDescBack
-                                ? hexToRgba(videoDescBack, videoDescOpacity)
+                            backgroundColor: colorStyles[0].videoDescBack
+                                ? hexToRgba(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity)
                                 : "transparent",
-                            padding: videoDescPadding,
-                            borderRadius: videoDescBorderRadius,
-                            top: descTop + "%",
-                            left: descLeft + "%"
+                            padding: descStyles[0].videoDescPadding,
+                            borderRadius: descStyles[0].videoDescBorderRadius,
+                            top: descStyles[0].descTop + "%",
+                            left: descStyles[0].descLeft + "%"
                         }}
                     >
                         <p
                             className={`premium-video-box__desc_text`}
                             style={{
-                                fontFamily: videoDescFamily,
-                                fontWeight: videoDescWeight,
-                                letterSpacing: videoDescLetter + "px",
-                                textTransform: videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-                                fontStyle: videoDescStyle
+                                fontFamily: descStyles[0].videoDescFamily,
+                                fontWeight: descStyles[0].videoDescWeight,
+                                letterSpacing: descStyles[0].videoDescLetter + "px",
+                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descStyles[0].descShadowColor}`,
+                                fontStyle: descStyles[0].videoDescStyle
                             }}
                         >
-                            <span>{videoDescText}</span>
+                            <span>{descStyles[0].videoDescText}</span>
                         </p>
                     </div>
                 )}

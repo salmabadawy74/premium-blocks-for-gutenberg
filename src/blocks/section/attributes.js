@@ -76,12 +76,12 @@ const attributes = {
                 marginBottom: '',
                 marginLeft: '',
                 marginRight: '',
-                marginUnit: '',
+                marginUnit: 'px',
                 paddingTop: '',
                 paddingRight: '',
                 paddingBottom: '',
                 paddingLeft: '',
-                paddingUnit: '',
+                paddingUnit: 'px',
             }
         ]
     }

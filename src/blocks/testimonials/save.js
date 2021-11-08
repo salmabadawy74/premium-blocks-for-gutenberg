@@ -48,29 +48,29 @@ const save = props => {
     return (
         <div
             id={`premium-testimonial-${block_id}`}
-            className={`${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
             style={{
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor
-                    ? hexToRgba(backColor, backOpacity)
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                backgroundColor: containerStyles[0].backColor
+                    ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
                     : "transparent",
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit
+                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                paddingTop: containerStyles[0].paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: containerStyles[0].paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: containerStyles[0].paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: containerStyles[0].paddingRight + containerStyles[0].paddingUnit
             }}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>
                     <PremiumUpperQuote
-                        size={quotSize}
-                        color={quotColor}
-                        opacity={quotOpacity}
+                        size={quoteStyles[0].quotSize}
+                        color={quoteStyles[0].quotColor}
+                        opacity={quoteStyles[0].quotOpacity}
                     />
                 </span>
                 <div
@@ -103,10 +103,10 @@ const save = props => {
                                 className={`premium-testimonial__text`}
                                 value={text}
                                 style={{
-                                    color: bodyColor,
-                                    lineHeight: bodyLine + "px",
-                                    marginTop: bodyTop + "px",
-                                    marginBottom: bodyBottom + "px"
+                                    color: contentStyle[0].bodyColor,
+                                    lineHeight: contentStyle[0].bodyLine + "px",
+                                    marginTop: contentStyle[0].bodyTop + "px",
+                                    marginBottom: contentStyle[0].bodyBottom + "px"
                                 }}
                             />
                         </div>
@@ -127,7 +127,7 @@ const save = props => {
                         <span
                             className={`premium-testimonial__sep`}
                             style={{
-                                color: dashColor
+                                color: companyStyles[0].dashColor
                             }}
                         >
                             &nbsp;-&nbsp;
@@ -138,7 +138,7 @@ const save = props => {
                                 className={`premium-testimonial__author_comp`}
                                 value={authorCom}
                                 style={{
-                                    color: authorComColor,
+                                    color: companyStyles[0].authorComColor,
                                 }}
                             />
                             {urlCheck && (
@@ -153,9 +153,9 @@ const save = props => {
                 </div>
                 <span className={`premium-testimonial__lower`}>
                     <PremiumLowerQuote
-                        color={quotColor}
-                        size={quotSize}
-                        opacity={quotOpacity}
+                        size={quoteStyles[0].quotSize}
+                        color={quoteStyles[0].quotColor}
+                        opacity={quoteStyles[0].quotOpacity}
                     />
                 </span>
             </div>
