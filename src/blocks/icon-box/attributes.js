@@ -71,8 +71,6 @@ const attributes = {
         selector: ".premium-icon-box__title",
         default: __("Awesome Title")
     },
-
-
     descText: {
         type: "array",
         source: "children",
@@ -117,15 +115,6 @@ const attributes = {
     btnHoverBorder: {
         type: "string"
     },
-
-
-
-
-
-
-
-
-
     classMigrate: {
         type: "boolean",
         default: false

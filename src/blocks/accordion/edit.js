@@ -67,16 +67,15 @@ class PremiumAccordion extends Component {
             repeaterItems,
             direction,
             titleTag,
-            arrowPos,
-            contentType,
-            textShadowBlur,
-            textShadowColor,
-            textShadowHorizontal,
-            textShadowVertical,
-            titleBorderUpdated,
             titleStyles,
             arrowStyles,
-            descStyles
+            descStyles,
+            contentType,
+            titleEditBorder,
+            textShadowColor,
+            textShadowBlur,
+            textShadowHorizontal,
+            textShadowVertical,
         } = this.props.attributes;
 
         const DIRECTION = [

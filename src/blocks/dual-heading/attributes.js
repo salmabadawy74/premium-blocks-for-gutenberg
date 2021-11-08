@@ -128,24 +128,6 @@ const attributes = {
             }
         ]
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     link: {
         type: "boolean",
         default: false
@@ -157,10 +139,6 @@ const attributes = {
     headingURL: {
         type: "string"
     },
-
-
-
-
     hideDesktop: {
         type: 'boolean',
         default: false

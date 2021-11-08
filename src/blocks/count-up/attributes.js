@@ -107,9 +107,6 @@ const attributes = {
     counterFamily: {
         type: "string"
     },
-
-
-
     hideDesktop: {
         type: 'boolean',
         default: false

@@ -132,11 +132,6 @@ const attributes = {
         type: "number",
         default: 50
     },
-
-
-
-
-
     urlCheck: {
         type: "boolean",
         default: false
@@ -187,7 +182,6 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-
     classMigrate: {
         type: "boolean",
         default: false

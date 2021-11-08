@@ -49,8 +49,8 @@ const SortableItem = SortableElement(
                         onClick={() => removeItem(newIndex, value)}
                     ></button>
                 ) : (
-                        ""
-                    )}
+                    ""
+                )}
             </div>
             <div
                 className={`premium-repeater-item-controls ${value.edit ? "editable" : ""
@@ -168,53 +168,29 @@ class edit extends Component {
 
         const {
             block_id,
+            classMigrate,
             align,
-            className,
             prefix,
             suffix,
             repeaterFancyText,
             effect,
-            fancyTextColor,
-            fancyTextfontSize,
-            fancyTextfontSizeMobile,
-            fancyTextfontSizeTablet,
-            fancyTextfontSizeUnit,
-            fancyTextWeight,
-            fancyTextUpper,
-            fancyTextStyle,
-            fancyTextLetter,
-            fancyTextBGColor,
-            shadowColor,
-            shadowBlur,
-            shadowHorizontal,
-            shadowVertical,
             cursorColor,
-            textColor,
-            textfontSize,
-            textfontSizeMobile,
-            textfontSizeTablet,
-            textfontSizeUnit,
-            textWeight,
-            textLetter,
-            textUpper,
-            textStyle,
-            textBGColor,
             loop,
             cursorShow,
             cursorMark,
             typeSpeed,
-            backSpeed,
-            startdelay,
             backdelay,
+            startdelay,
+            backSpeed,
             animationSpeed,
             pauseTime,
             hoverPause,
             fancyalign,
-            fancyTextBGOpacity,
-            textBGOpacity,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            fancyStyles,
+            PreStyles
         } = attributes;
 
         const ALIGNS = ["left", "center", "right"];
@@ -499,60 +475,60 @@ class edit extends Component {
                                 )}
                             </Fragment>
                         ) : (
-                                <Fragment>
-                                    <p className="premium-notice">
-                                        Please note that Slide effect works only on
-                                        frontend
+                            <Fragment>
+                                <p className="premium-notice">
+                                    Please note that Slide effect works only on
+                                    frontend
                                 </p>
-                                    <TextControl
-                                        label={__("Animation Speed")}
-                                        value={animationSpeed}
-                                        type="Number"
-                                        onChange={(newValue) =>
+                                <TextControl
+                                    label={__("Animation Speed")}
+                                    value={animationSpeed}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            animationSpeed: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "Set a duration value in milliseconds for slide effect."
+                                    )}
+                                />
+                                <TextControl
+                                    label={__("Pause Time")}
+                                    value={pauseTime}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            pauseTime: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "How long should the word/string stay visible? Set a value in milliseconds."
+                                    )}
+                                />
+                                <ToggleControl
+                                    label={__("Pause on Hover")}
+                                    checked={hoverPause}
+                                    onChange={(newCheck) =>
+                                        setAttributes({ hoverPause: newCheck })
+                                    }
+                                    help={__(
+                                        "If you enabled this option, the slide will be paused when mouseover."
+                                    )}
+                                />
+                                <p>{__("Fancy Strings Alignment")}</p>
+                                <Toolbar
+                                    controls={ALIGNS.map((contentAlign) => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === fancyalign,
+                                        onClick: () =>
                                             setAttributes({
-                                                animationSpeed: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "Set a duration value in milliseconds for slide effect."
-                                        )}
-                                    />
-                                    <TextControl
-                                        label={__("Pause Time")}
-                                        value={pauseTime}
-                                        type="Number"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                pauseTime: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "How long should the word/string stay visible? Set a value in milliseconds."
-                                        )}
-                                    />
-                                    <ToggleControl
-                                        label={__("Pause on Hover")}
-                                        checked={hoverPause}
-                                        onChange={(newCheck) =>
-                                            setAttributes({ hoverPause: newCheck })
-                                        }
-                                        help={__(
-                                            "If you enabled this option, the slide will be paused when mouseover."
-                                        )}
-                                    />
-                                    <p>{__("Fancy Strings Alignment")}</p>
-                                    <Toolbar
-                                        controls={ALIGNS.map((contentAlign) => ({
-                                            icon: "editor-align" + contentAlign,
-                                            isActive: contentAlign === fancyalign,
-                                            onClick: () =>
-                                                setAttributes({
-                                                    fancyalign: contentAlign,
-                                                }),
-                                        }))}
-                                    />
-                                </Fragment>
-                            )}
+                                                fancyalign: contentAlign,
+                                            }),
+                                    }))}
+                                />
+                            </Fragment>
+                        )}
                     </PanelBody>
                     <PanelBody
                         title={__("Fancy Text Style")}
@@ -785,44 +761,44 @@ class edit extends Component {
                         </span>
                     </div>
                 ) : (
+                    <div
+                        className={`premium-fancy-text premium-fancy-slide`}
+                        style={{
+                            textAlign: align,
+                        }}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map(
+                            (item, index) => {
+                                return item.title;
+                            }
+                        )}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
+                    >
+                        <span className={`premium-fancy-text-prefix-text`}>
+                            {prefix}{" "}
+                        </span>
                         <div
-                            className={`premium-fancy-text premium-fancy-slide`}
+                            className={`premium-fancy-text-title-slide`}
                             style={{
-                                textAlign: align,
+                                textAlign: fancyalign,
                             }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
                         >
-                            <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}{" "}
-                            </span>
-                            <div
-                                className={`premium-fancy-text-title-slide`}
-                                style={{
-                                    textAlign: fancyalign,
-                                }}
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
                             >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
-                                >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
-                            </div>
-                            <span className={`premium-fancy-text-suffix-text`}>
-                                {" "}
-                                {suffix}
-                            </span>
+                                {repeaterFancyText.map((item, index) => {
+                                    return <li>{item.title}</li>;
+                                })}
+                            </ul>
                         </div>
-                    )}
+                        <span className={`premium-fancy-text-suffix-text`}>
+                            {" "}
+                            {suffix}
+                        </span>
+                    </div>
+                )}
             </div>,
         ];
     }

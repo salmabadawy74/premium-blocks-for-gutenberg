@@ -6,25 +6,29 @@ export default function save(props) {
 
     const {
         block_id,
+        classMigrate,
         align,
         prefix,
         suffix,
         repeaterFancyText,
         effect,
+        cursorColor,
         loop,
         cursorShow,
         cursorMark,
         typeSpeed,
-        backSpeed,
-        startdelay,
         backdelay,
+        startdelay,
+        backSpeed,
         animationSpeed,
         pauseTime,
         hoverPause,
         fancyalign,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        fancyStyles,
+        PreStyles
     } = attributes;
     return (
         <div
