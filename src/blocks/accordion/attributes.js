@@ -1,5 +1,3 @@
-import { array } from "prop-types";
-
 const { __ } = wp.i18n;
 
 const attributes = {

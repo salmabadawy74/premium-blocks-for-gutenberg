@@ -84,130 +84,6 @@ const testimonialsAttrs = {
         selector: ".premium-testimonial__author_comp",
         default: "Leap13"
     },
-    authorComColor: {
-        type: "string"
-    },
-    authorComSize: {
-        type: "number"
-    },
-    authorComSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    authorComSizeMobile: {
-        type: 'number'
-    },
-    authorComSizeTablet: {
-        type: 'number'
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    urlText: {
-        type: "string"
-    },
-    urlTarget: {
-        type: "boolean",
-        default: false
-    },
-    quotSize: {
-        type: "number"
-    },
-    quotColor: {
-        type: "string"
-    },
-    quotOpacity: {
-        type: "number"
-    },
-    bodyColor: {
-        type: "string"
-    },
-    bodySize: {
-        type: "number"
-    },
-    bodySizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    bodySizeMobile: {
-        type: "number"
-    },
-    bodySizeTablet: {
-        type: "string"
-    },
-    bodyLine: {
-        type: "number"
-    },
-    bodyTop: {
-        type: "number"
-    },
-    bodyBottom: {
-        type: "number"
-    },
-    dashColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number"
-    },
-    shadowHorizontal: {
-        type: "number"
-    },
-    shadowVertical: {
-        type: "number"
-    },
-    shadowPosition: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string",
-        default: "px"
-    },
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -219,6 +95,77 @@ const testimonialsAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    contentStyle: {
+        type: "array",
+        default: [
+            {
+                bodySizeUnit: 'px',
+                bodySize: '',
+                bodySizeMobile: '',
+                bodySizeTablet: '',
+                bodyColor: '',
+                bodyLine: '',
+                bodyTop: '',
+                bodyBottom: '',
+            }
+        ]
+
+    },
+    companyStyles: {
+        type: "array",
+        default: [
+            {
+                authorComTag: 'H4',
+                authorComSizeUnit: 'px',
+                authorComColor: '',
+                authorComSize: '',
+                authorComSizeMobile: '',
+                authorComSizeTablet: '',
+                dashColor: '',
+                urlCheck: false,
+                urlText: '',
+                urlTarget: false,
+
+            }
+        ]
+    },
+    quoteStyles: {
+        type: "array",
+        default: [
+            {
+                quotSize: '',
+                quotColor: '',
+                quotOpacity: 1,
+
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                backOpacity: 1,
+                backColor: '',
+                imageID: '',
+                imageURL: '',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "top center",
+                backgroundSize: 'auto',
+                fixed: false,
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: '',
+                shadowPosition: '',
+                paddingTop: '',
+                paddingRight: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                paddingUnit: 'px',
+            }
+        ]
     }
+
 };
 export default testimonialsAttrs;

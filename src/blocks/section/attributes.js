@@ -32,110 +32,6 @@ const attributes = {
         type: "string",
         default: "top"
     },
-    color: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginTop: {
-        type: "number"
-    },
-    marginBottom: {
-        type: "number"
-    },
-    marginLeft: {
-        type: "number"
-    },
-    marginRight: {
-        type: "number"
-    },
-    marginUnit: {
-        type: "string"
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
     block_id: {
         type: "string"
     },
@@ -150,6 +46,44 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                color: '',
+                opacity: 1,
+                imageID: '',
+                imageURL: '',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "top center",
+                backgroundSize: "auto",
+                fixed: false,
+                borderType: "none",
+                borderWidth: 1,
+                borderTop: '',
+                borderRight: '',
+                borderBottom: '',
+                borderLeft: '',
+                borderRadius: '',
+                borderColor: '',
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                shadowPosition: '',
+                marginTop: '',
+                marginBottom: '',
+                marginLeft: '',
+                marginRight: '',
+                marginUnit: '',
+                paddingTop: '',
+                paddingRight: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                paddingUnit: '',
+            }
+        ]
     }
 }
 export default attributes

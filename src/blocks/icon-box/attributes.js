@@ -71,69 +71,8 @@ const attributes = {
         selector: ".premium-icon-box__title",
         default: __("Awesome Title")
     },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleFont: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: '20'
-    },
-    titleSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    titleSizeTablet: {
-        type: 'number',
-        default: '20'
-    },
-    titleSizeMobile: {
-        type: 'number',
-        default: '20'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
+
+
     descText: {
         type: "array",
         source: "children",
@@ -145,41 +84,7 @@ const attributes = {
         type: "boolean",
         default: true
     },
-    descFont: {
-        type: "string"
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number",
-        default: '20'
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    descSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
+
     btnChecked: {
         type: "boolean",
         default: true
@@ -208,222 +113,19 @@ const attributes = {
         attribute: "href",
         selector: ".premium-icon-box__btn"
     },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
+
     btnHoverBorder: {
         type: "string"
     },
-    btnSize: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    btnSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    hoverShadowColor: {
-        type: "string"
-    },
-    hoverShadowBlur: {
-        type: "number"
-    },
-    hoverShadowHorizontal: {
-        type: "number"
-    },
-    hoverShadowVertical: {
-        type: "number"
-    },
-    hoverShadowPosition: {
-        type: "string"
-    },
+
+
+
+
+
+
+
+
+
     classMigrate: {
         type: "boolean",
         default: false
@@ -440,17 +142,135 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    backOpacity: {
-        type: "number",
-        default: "1",
-    },
+
     iconOpacity: {
         type: "number",
         default: "1"
     },
-    btnOpacity: {
-        type: "number",
-        default: "1"
+
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+
+                titleTag: "H2",
+                titleFont: '',
+                titleColor: '',
+                titleSize: 20,
+                titleSizeUnit: 'px',
+                titleSizeTablet: 20,
+                titleSizeMobile: 20,
+                titleLine: '',
+                titleLetter: '',
+                titleStyle: '',
+                titleUpper: false,
+                titleWeight: 500,
+                titleShadowColor: '',
+                titleShadowBlur: '0',
+                titleShadowHorizontal: '0',
+                titleShadowVertical: '0',
+                titleMarginT: '',
+                titleMarginB: '',
+            }
+        ]
+    },
+    descStyles: {
+        type: "array",
+        default: [
+            {
+                descFont: '',
+                descColor: '',
+                descSize: 20,
+                descSizeUnit: 'px',
+                descSizeTablet: 20,
+                descSizeMobile: 20,
+                descLine: '',
+                descWeight: 500,
+                descMarginT: '',
+                descMarginB: '',
+            }
+        ]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [
+            {
+                btnSize: 20,
+                btnSizeUnit: 'px',
+                btnSizeTablet: 20,
+                btnSizeMobile: 20,
+                btnLine: '',
+                btnLetter: '',
+                btnStyle: '',
+                btnUpper: false,
+                btnWeight: 500,
+                btnBorderType: 'none',
+                btnBorderWidth: 1,
+                btnBorderTop: '',
+                btnBorderRight: '',
+                btnBorderBottom: '',
+                btnBorderLeft: '',
+                btnBorderRadius: '',
+                btnBorderColor: '',
+                btnPadding: '',
+                btnPaddingU: '',
+                btnMarginT: '',
+                btnMarginB: '',
+                btnShadowColor: '',
+                btnShadowBlur: '',
+                btnShadowHorizontal: '0',
+                btnShadowVertical: '0',
+                btnShadowPosition: '',
+                btnColor: '',
+                btnHoverColor: '',
+                btnBack: '',
+                btnHoverBack: '',
+                btnOpacity: 1,
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                backOpacity: 1,
+                backColor: 1,
+                imageID: '',
+                imageURL: '',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "top center",
+                backgroundSize: "auto",
+                fixed: false,
+                borderType: "none",
+                borderWidth: 1,
+                borderRadius: '',
+                borderColor: '',
+                borderTop: '',
+                borderRight: '',
+                borderBottom: '',
+                borderLeft: '',
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: '',
+                shadowPosition: '',
+                hoverShadowColor: '',
+                hoverShadowBlur: '',
+                hoverShadowHorizontal: '',
+                hoverShadowVertical: '',
+                hoverShadowPosition: '',
+                marginT: '',
+                marginR: '',
+                marginB: '',
+                marginL: '',
+                paddingT: '',
+                paddingR: '',
+                paddingB: '',
+                paddingL: '',
+                paddingU: '',
+
+            }
+        ]
     }
 }
 export default attributes;

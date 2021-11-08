@@ -311,10 +311,7 @@ class edit extends Component {
                                     bodyColor: newValue
                                 })
                             }
-                            opacityValue={backOpacity}
-                            onChangeOpacity={value =>
-                                setAttributes({ backOpacity: value })
-                            }
+
                         />
                         <RangeControl
                             label={__("Margin Top (PX)")}

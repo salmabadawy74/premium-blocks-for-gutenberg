@@ -32,14 +32,14 @@ const attributes = {
                 iconColor: '',
                 iconBack: '',
                 iconOpacity: '1',
-                borderType: '',
-                borderWidth: '',
-                iconBorderTop: '',
-                iconBorderRight: '',
-                iconBorderBottom: '',
-                iconBorderLeft: '',
+                borderType: 'none',
+                borderWidth: '1',
+                iconBorderTop: '1',
+                iconBorderRight: '1',
+                iconBorderBottom: '1',
+                iconBorderLeft: '1',
                 borderColor: '',
-                borderRadius: '',
+                borderRadius: '100',
                 shadowColor: '',
                 shadowBlur: '',
                 shadowHorizontal: '',
@@ -61,22 +61,22 @@ const attributes = {
         backgroundOpacity: '',
         imageID: '',
         imageURL: '',
-        backgroundPosition: '',
-        backgroundRepeat: '',
-        backgroundSize: '',
+        backgroundPosition: "top center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: 'auto',
         fixed: false,
-        wrapBorderType: '',
-        wrapBorderWidth: '',
-        wrapBorderTop: '',
-        wrapBorderRight: '',
-        wrapBorderBottom: '',
-        wrapBorderLeft: '',
+        wrapBorderType: 'none',
+        wrapBorderWidth: '1',
+        wrapBorderTop: '1',
+        wrapBorderRight: '1',
+        wrapBorderBottom: '1',
+        wrapBorderLeft: '1',
         wrapBorderColor: '',
         wrapBorderRadius: '',
         wrapShadowColor: '',
-        wrapShadowBlur: '',
-        wrapShadowHorizontal: '',
-        wrapShadowVertical: '',
+        wrapShadowBlur: '0',
+        wrapShadowHorizontal: '0',
+        wrapShadowVertical: '0',
         wrapShadowPosition: '',
         wrapMarginT: '',
         wrapMarginR: '',
@@ -88,203 +88,26 @@ const attributes = {
         wrapPaddingL: ''
     },
 
-    iconSize: {
-        type: "number"
-    },
-    iconSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    iconBack: {
-        type: "string"
-    },
-    iconOpacity: {
-        type: "number",
-        default: "1"
-    },
     padding: {
         type: "string",
         default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
     },
     margin: {
         type: "string",
         default: "up"
     },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderTop: {
-        type: "number",
-        default: 1
-    },
-    iconBorderRight: {
-        type: "number",
-        default: 1
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    backgroundColor: {
-        type: "string"
-    },
-    backgroundOpacity: {
-        type: "number",
-        default: "1"
-    },
     background: {
         type: "string"
     },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderTop: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRight: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
+
+
     wrapPadding: {
         type: "string",
         default: "up"
     },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
+
+
+
     wrapMargin: {
         type: "string",
         default: "up"

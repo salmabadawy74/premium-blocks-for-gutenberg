@@ -34,126 +34,8 @@ const attributes = {
         type: "string",
         default: "top"
     },
-    textColor: {
-        type: "string"
-    },
-    textHoverColor: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    backHoverColor: {
-        type: "string"
-    },
     slideColor: {
         type: "string"
-    },
-    textSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    textSize: {
-        type: "number",
-        default: '20'
-    },
-    textSizeTablet: {
-        type: "number"
-    },
-    textSizeMobile: {
-        type: "number"
-    },
-    textFontFamily: {
-        type: "string"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean"
-    },
-    textWeight: {
-        type: "number",
-        default: 500
-    },
-    textLine: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    borderHoverColor: {
-        type: "string"
-    },
-    padding: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
     },
     block_id: {
         type: "string"
@@ -173,6 +55,55 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    textStyles: {
+        type: "array",
+        default: [
+            {
+                textSizeUnit: 'px',
+                textSize: 20,
+                textSizeTablet: '',
+                textSizeMobile: '',
+                textFontFamily: '',
+                textLetter: '',
+                textStyle: '',
+                textUpper: false,
+                textWeight: 500,
+                textLine: '',
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+            }
+        ]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [
+            {
+                textColor: '',
+                textHoverColor: '',
+                backColor: '',
+                backOpacity: 1,
+                backHoverColor: '',
+                borderType: "none",
+                borderWidth: 1,
+                borderTop: '',
+                borderRight: '',
+                borderBottom: '',
+                borderLeft: '',
+                borderRadius: '',
+                borderColor: '',
+                borderHoverColor: '',
+                btnShadowColor: '',
+                btnShadowBlur: 0,
+                btnShadowHorizontal: 0,
+                btnShadowVertical: 0,
+                btnShadowPosition: '',
+                padding: '',
+                paddingU: '',
+            }
+        ]
     }
 }
 export default attributes

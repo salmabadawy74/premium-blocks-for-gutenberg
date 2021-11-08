@@ -39,106 +39,9 @@ const attributes = {
         type: "string",
         default: "typing"
     },
-    fancyTextColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
     cursorColor: {
         type: "string",
         default: "#6ec1e4"
-    },
-    fancyTextLetter: {
-        type: "number"
-    },
-    fancyTextStyle: {
-        type: "string"
-    },
-    fancyTextUpper: {
-        type: "boolean",
-        default: false
-    },
-    fancyTextWeight: {
-        type: "number",
-        default: 600
-    },
-    fancyTextfontSize: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    fancyTextfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    fancyTextBGColor: {
-        type: "string"
-    },
-    fancyTextBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    textColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean",
-        default: false
-    },
-    textWeight: {
-        type: "number",
-        default: 600
-    },
-    textfontSize: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    textBGColor: {
-        type: "string"
-    },
-    textBGOpacity: {
-        type: "number",
-        default: "1"
     },
     loop: {
         type: "boolean",
@@ -195,6 +98,47 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    fancyStyles: {
+        type: "array",
+        default: [
+            {
+                fancyTextColor: "#6ec1e4",
+                fancyTextfontSize: 20,
+                fancyTextfontSizeUnit: 'px',
+                fancyTextfontSizeMobile: 20,
+                fancyTextfontSizeTablet: 20,
+                fancyTextBGColor: '',
+                fancyTextBGOpacity: 1,
+                fancyTextLetter: '',
+                fancyTextStyle: '',
+                fancyTextUpper: false,
+                fancyTextWeight: 600,
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                cursorColor: ''
+            }
+        ]
+    },
+    PreStyles: {
+        type: "array",
+        default: [
+            {
+                textColor: "#54595f",
+                textLetter: '',
+                textStyle: '',
+                textUpper: false,
+                textWeight: 600,
+                textfontSize: 20,
+                textfontSizeUnit: 'px',
+                textfontSizeMobile: 20,
+                textfontSizeTablet: 20,
+                textBGColor: '',
+                textBGOpacity: 1,
+            }
+        ]
     }
 }
 export default attributes
