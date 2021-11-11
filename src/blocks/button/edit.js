@@ -280,62 +280,62 @@ export default class edit extends Component {
                     >
                         <SelectControl
                             label={__("Font Family")}
-                            value={textFontFamily}
+                            value={textStyles[0].textFontFamily}
                             options={FONTS}
                             onChange={onChangeTextFamily}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveTextStyles}
                             fontSizeType={{
-                                value: textSizeUnit,
+                                value: textStyles[0].textSizeUnit,
                                 label: __("textSizeUnit"),
                             }}
                             fontSize={{
-                                value: textSize,
+                                value: textStyles[0].textSize,
                                 label: __("textSize"),
                             }}
                             fontSizeMobile={{
-                                value: textSizeMobile,
+                                value: textStyles[0].textSizeMobile,
                                 label: __("textSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: textSizeTablet,
+                                value: textStyles[0].textSizeTablet,
                                 label: __("textSizeTablet"),
                             }}
-                            weight={textWeight}
-                            style={textStyle}
-                            spacing={textLetter}
-                            upper={textUpper}
-                            line={textLine}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeSizeTablet={newSize => setAttributes({ textSizeTablet: newSize })}
-                            onChangeSizeMobile={newSize => setAttributes({ textSizeMobile: newSize })}
+                            weight={textStyles[0].textWeight}
+                            style={textStyles[0].textStyle}
+                            spacing={textStyles[0].textLetter}
+                            upper={textStyles[0].textUpper}
+                            line={textStyles[0].textLine}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeSizeTablet={newSize => saveTextStyles({ textSizeTablet: newSize })}
+                            onChangeSizeMobile={newSize => saveTextStyles({ textSizeMobile: newSize })}
                             onChangeWeight={newWeight =>
-                                setAttributes({ textWeight: newWeight })
+                                saveTextStyles({ textWeight: newWeight })
                             }
-                            onChangeLine={newValue => setAttributes({ textLine: newValue })}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
+                            onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
                             onChangeSpacing={newValue =>
-                                setAttributes({ textLetter: newValue })
+                                saveTextStyles({ textLetter: newValue })
                             }
-                            onChangeUpper={check => setAttributes({ textUpper: check })}
+                            onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
                         <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
+                            color={textStyles[0].shadowColor}
+                            blur={textStyles[0].shadowBlur}
+                            horizontal={textStyles[0].shadowHorizontal}
+                            vertical={textStyles[0].shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ shadowColor: newColor.hex })
+                                saveTextStyles({ shadowColor: newColor.hex })
                             }
-                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                            onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
-                                setAttributes({ shadowHorizontal: newValue })
+                                saveTextStyles({ shadowHorizontal: newValue })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({ shadowVertical: newValue })
+                                saveTextStyles({ shadowVertical: newValue })
                             }
                         />
                     </PanelBody>
@@ -368,9 +368,9 @@ export default class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={textColor}
+                                                value={btnStyles[0].textColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         textColor: newValue,
                                                     })
                                                 }
@@ -383,15 +383,15 @@ export default class edit extends Component {
                                             </p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={backColor}
+                                                colorValue={btnStyles[0].backColor}
                                                 onChangeColor={newvalue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backColor: newvalue,
                                                     })
                                                 }
-                                                opacityValue={backOpacity}
+                                                opacityValue={btnStyles[0].backOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backOpacity: value,
                                                     })
                                                 }
@@ -404,9 +404,9 @@ export default class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Hover Color")}</p>
                                             <ColorPalette
-                                                value={textHoverColor}
+                                                value={btnStyles[0].textHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         textHoverColor: newValue,
                                                     })
                                                 }
@@ -418,9 +418,9 @@ export default class edit extends Component {
                                                     : __("Background Color")}
                                             </p>
                                             <ColorPalette
-                                                value={backHoverColor}
+                                                value={btnStyles[0].backHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
                                                     })
@@ -429,9 +429,9 @@ export default class edit extends Component {
                                             />
                                             <p>{__("Border Hover Color")}</p>
                                             <ColorPalette
-                                                value={borderHoverColor}
+                                                value={btnStyles[0].borderHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         borderHoverColor: newValue,
                                                     })
                                                 }
@@ -449,17 +449,17 @@ export default class edit extends Component {
                             }}
                         </TabPanel>
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderType={btnStyles[0].borderType}
+                            borderWidth={btnStyles[0].borderWidth}
+                            top={btnStyles[0].borderTop}
+                            right={btnStyles[0].borderRight}
+                            bottom={btnStyles[0].borderBottom}
+                            left={btnStyles[0].borderLeft}
+                            borderColor={btnStyles[0].borderColor}
+                            borderRadius={btnStyles[0].borderRadius}
+                            onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
+                                saveBtnStyles({
                                     borderButton: true,
                                     borderTop: top,
                                     borderRight: right,
@@ -468,54 +468,54 @@ export default class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveBtnStyles({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveBtnStyles({ borderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
                             label="Shadow"
                             inner={true}
-                            color={btnShadowColor}
-                            blur={btnShadowBlur}
-                            horizontal={btnShadowHorizontal}
-                            vertical={btnShadowVertical}
-                            position={btnShadowPosition}
+                            color={btnStyles[0].btnShadowColor}
+                            blur={btnStyles[0].btnShadowBlur}
+                            horizontal={btnStyles[0].btnShadowHorizontal}
+                            vertical={btnStyles[0].btnShadowVertical}
+                            position={btnStyles[0].btnShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowBlur: newBlur === undefined ? 0 : newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowHorizontal: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowVertical: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowPosition: newValue === undefined ? 0 : newValue
                                 })
                             }
                         />
                         <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
+                            onChangeSizeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
                         />
                         <RangeControl
                             label={__("Padding")}
-                            value={padding}
-                            onChange={newValue => setAttributes({ padding: newValue })}
+                            value={btnStyles[0].padding}
+                            onChange={newValue => saveBtnStyles({ padding: newValue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

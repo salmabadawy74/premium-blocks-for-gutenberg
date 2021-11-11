@@ -49,10 +49,10 @@ const save = props => {
             id={`premium-banner-${block_id}`}
             className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
             style={{
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU
+                paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU
             }}
         >
             <style
@@ -73,13 +73,13 @@ const save = props => {
             <div
                 className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                 style={{
-                    boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-                    borderStyle: borderType,
+                    boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
+                    borderStyle: containerStyles[0].borderType,
                     borderWidth: borderBanner
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                        ? `${containerStyles[0].borderTop}px ${containerStyles[0].borderRight}px ${containerStyles[0].borderBottom}px ${containerStyles[0].borderLeft}px`
+                        : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor
                 }}
             >
                 <div
@@ -116,10 +116,11 @@ const save = props => {
                             className={`premium-banner__title`}
                             value={title}
                             style={{
-                                color: titleColor,
-                                fontWeight: titleWeight,
-                                lineHeight: titleLine + "px",
-                                textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                                fontSize: titleFontSize,
+                                color: titleStyles[0].titleColor,
+                                fontWeight: titleStyles[0].titleWeight,
+                                lineHeight: titleStyles[0].titleLine + "px",
+                                textShadow: `${titleStyles[0].shadowHorizontal}px ${titleStyles[0].shadowVertical}px ${titleStyles[0].shadowBlur}px ${titleStyles[0].shadowColor}`
                             }}
                         />
                     </div>
@@ -134,10 +135,11 @@ const save = props => {
                             className={`premium-banner__desc`}
                             value={desc}
                             style={{
-                                color: descColor,
-                                fontWeight: descWeight,
-                                lineHeight: descLine + "px",
-                                textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
+                                fontSize: descFontSize,
+                                color: descStyles[0].descColor,
+                                fontWeight: descStyles[0].descWeight,
+                                lineHeight: descStyles[0].descLine + "px",
+                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`
                             }}
                         />
                     </div>

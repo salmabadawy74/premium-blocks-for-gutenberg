@@ -1016,34 +1016,6 @@ exports.default = PremiumTypo;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(97);
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(217)(ReactIs.isElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(218)();
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -1111,7 +1083,7 @@ function generateCSS(selectors, id) {
 exports.default = generateCSS;
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1134,7 +1106,7 @@ function generateCSSUnit(value, unit) {
 exports.default = generateCSSUnit;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1359,7 +1331,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1378,7 +1350,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1412,7 +1384,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1512,7 +1484,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1624,6 +1596,34 @@ function PremiumBoxShadow(props) {
         })
     );
 }
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = __webpack_require__(99);
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(243)(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(244)();
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 18 */
@@ -2447,9 +2447,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(243);
+  module.exports = __webpack_require__(245);
 } else {
-  module.exports = __webpack_require__(246);
+  module.exports = __webpack_require__(248);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2542,7 +2542,7 @@ module.exports = assocIndexOf;
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(13);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -2663,293 +2663,27 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(279);
+var _edit = __webpack_require__(286);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(281);
+var _save = __webpack_require__(288);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(282);
+var _deprecated = __webpack_require__(289);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(290);
+
+var _attributes2 = _interopRequireDefault(_attributes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
-
-var videoBoxAttrs = {
-    block_id: {
-        type: 'string'
-    },
-    borderPlayUpdated: {
-        type: "boolean",
-        default: false
-    },
-    borderBoxUpdated: {
-        type: "boolean",
-        default: false
-    },
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
-        type: "boolean",
-        default: false
-    },
-    loop: {
-        type: "boolean",
-        default: false
-    },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    overlayImgID: {
-        type: "string"
-    },
-    overlayImgURL: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: 0
-    },
-    bright: {
-        type: "number",
-        default: 100
-    },
-    contrast: {
-        type: "number",
-        default: 100
-    },
-    saturation: {
-        type: "number",
-        default: 100
-    },
-    hue: {
-        type: "number",
-        default: 0
-    },
-    playTop: {
-        type: "number"
-    },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    playSize: {
-        type: "number"
-    },
-    playColor: {
-        type: "string"
-    },
-    playBack: {
-        type: "string"
-    },
-    playOpacity: {
-        type: "number",
-        default: "1"
-    },
-    playHoverColor: {
-        type: "string"
-    },
-    playHoverBackColor: {
-        type: "string"
-    },
-    playPadding: {
-        type: "number"
-    },
-    playBorderType: {
-        type: "string",
-        default: "none"
-    },
-    playBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    playBorderRadius: {
-        type: "number"
-    },
-    playBorderColor: {
-        type: "string"
-    },
-    videoDescText: {
-        type: "string"
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    descLeft: {
-        type: "number"
-    },
-    descTop: {
-        type: "number"
-    },
-    videoDescSize: {
-        type: "number"
-    },
-    videoDescSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    videoDescSizeMobile: {
-        type: 'number'
-    },
-    videoDescSizeTablet: {
-        type: 'number'
-    },
-    videoDescFamily: {
-        type: "string"
-    },
-    videoDescWeight: {
-        type: "number"
-    },
-    videoDescLetter: {
-        type: "number"
-    },
-    videoDescStyle: {
-        type: "string"
-    },
-    videoDescUpper: {
-        type: "boolean"
-    },
-    videoDescColor: {
-        type: "string"
-    },
-    videoDescBack: {
-        type: "string"
-    },
-    videoDescOpacity: {
-        type: "number",
-        default: "1"
-    },
-    videoDescPadding: {
-        type: "number"
-    },
-    videoDescBorderRadius: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    boxBorderType: {
-        type: "string",
-        default: "none"
-    },
-    boxBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    boxBorderTop: {
-        type: "number"
-    },
-    boxBorderRight: {
-        type: "number"
-    },
-    boxBorderBottom: {
-        type: "number"
-    },
-    boxBorderLeft: {
-        type: "number"
-    },
-    playBorderTop: {
-        type: "number"
-    },
-    playBorderRight: {
-        type: "number"
-    },
-    playBorderBottom: {
-        type: "number"
-    },
-    playBorderLeft: {
-        type: "number"
-    },
-    boxBorderRadius: {
-        type: "number"
-    },
-    boxBorderColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-
-    // Old props
-    playLeft: {
-        type: "number"
-    },
-    classMigrate: {
-        type: 'boolean',
-        default: false
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
 
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
     var videoUrl = void 0;
@@ -2986,7 +2720,7 @@ registerBlockType("premium/video-box", {
     title: __("Video Box"),
     icon: React.createElement(_icons2.default, { icon: "video" }),
     category: "premium-blocks",
-    attributes: videoBoxAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.videoBox
     },
@@ -3183,7 +2917,7 @@ module.exports = ReactPropTypesSecret;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -3438,7 +3172,7 @@ module.exports = isArrayLike;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(15),
+var isArray = __webpack_require__(14),
     isSymbol = __webpack_require__(61);
 
 /** Used to match property names within property paths. */
@@ -4161,7 +3895,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(37);
-var dPs = __webpack_require__(337);
+var dPs = __webpack_require__(346);
 var enumBugKeys = __webpack_require__(72);
 var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -4176,7 +3910,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(338).appendChild(iframe);
+  __webpack_require__(347).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4631,7 +4365,7 @@ module.exports = isArguments;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(14),
+var root = __webpack_require__(13),
     stubFalse = __webpack_require__(179);
 
 /** Detect free variable `exports`. */
@@ -4827,7 +4561,7 @@ module.exports = baseGet;
 "use strict";
 
 
-var isArray = __webpack_require__(15),
+var isArray = __webpack_require__(14),
     isKey = __webpack_require__(60),
     stringToPath = __webpack_require__(195),
     toString = __webpack_require__(198);
@@ -4854,25 +4588,16 @@ module.exports = castPath;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(215);
-} else {
-  module.exports = __webpack_require__(216);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _ref;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var attributes = {
     block_id: {
         type: "string"
@@ -4927,66 +4652,12 @@ var attributes = {
         type: "boolean",
         default: true
     },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix"
-    },
-    prefixSize: {
-        type: "number",
-        default: 20
-    },
-    prefixSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    prefixSizeTablet: {
-        type: "number"
-    },
-    prefixSizeMobile: {
-        type: "number"
-    },
-    prefixColor: {
-        type: "string"
-    },
-    prefixWeight: {
-        type: "number"
-    },
-    prefixGap: {
-        type: "number",
-        default: 2
-    },
+
     suffix: {
         type: "boolean",
         default: true
     },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix"
-    },
-    suffixSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    suffixSize: {
-        type: "number",
-        default: 20
-    },
-    suffixSizeTablet: {
-        type: "number"
-    },
-    suffixSizeMobile: {
-        type: 'number'
-    },
-    suffixColor: {
-        type: "string"
-    },
-    suffixWeight: {
-        type: "number"
-    },
-    suffixGap: {
-        type: "number",
-        default: 2
-    },
+
     icon: {
         type: "string",
         default: "icon"
@@ -5029,149 +4700,11 @@ var attributes = {
         type: "string",
         default: "Premium Count Up"
     },
-    titleSize: {
-        type: "number",
-        default: 20
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSpacing: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleT: {
-        type: "number",
-        default: 1
-    },
-    titleB: {
-        type: "number",
-        default: 1
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
     faIcon: {
         type: "string",
         default: "dashicons-clock"
     },
-    containerBack: {
-        type: "string"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "object",
-        default: {}
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleFamily: {
-        type: "string"
-    },
     counterFamily: {
-        type: "string"
-    },
-    prefixFamily: {
-        type: "string"
-    },
-    suffixFamily: {
-        type: "string"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
         type: "string"
     },
     hideDesktop: {
@@ -5185,13 +4718,88 @@ var attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    titleStyles: {
+        type: "array",
+        default: [(_ref = {
+            titleFamily: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            titleSpacing: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleColor: '',
+            titleT: 1,
+            titleB: 1
+        }, _defineProperty(_ref, "titleColor", ''), _defineProperty(_ref, "titleWeight", 500), _ref)]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            containerBack: '',
+            containerOpacity: 1,
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            borderType: 'none',
+            borderWidth: 1,
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            borderRadius: 0,
+            borderColor: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            shadowPosition: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: ''
+        }]
+    },
+    suffixStyles: {
+        type: 'array',
+        default: [{
+            suffixTxt: "Suffix",
+            suffixSizeUnit: 'px',
+            suffixSize: 20,
+            suffixSizeTablet: '',
+            suffixSizeMobile: '',
+            suffixColor: '',
+            suffixWeight: '',
+            suffixGap: 2,
+            suffixFamily: ''
+        }]
+    },
+    prefixStyles: {
+        type: "array",
+        default: [{
+            prefixTxt: "Prefix",
+            prefixSize: 20,
+            prefixSizeUnit: 'px',
+            prefixSizeTablet: '',
+            prefixSizeMobile: '',
+            prefixColor: '',
+            prefixWeight: '',
+            prefixGap: 2,
+            prefixFamily: ''
+        }]
     }
 };
 
 exports.default = attributes;
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5217,7 +4825,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -5762,6 +5370,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(241);
+} else {
+  module.exports = __webpack_require__(242);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5769,9 +5391,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(244);
+  module.exports = __webpack_require__(246);
 } else {
-  module.exports = __webpack_require__(245);
+  module.exports = __webpack_require__(247);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -5782,9 +5404,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(250));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(252));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(255));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(257));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(105));
 
@@ -5811,7 +5433,7 @@ module.exports = {
 exports.__esModule = true;
 exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(10));
+var PropTypes = _interopRequireWildcard(__webpack_require__(17));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -6586,7 +6208,7 @@ exports.polyfill = polyfill;
 exports.__esModule = true;
 exports.classNamesShape = exports.timeoutsShape = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(10));
+var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -6623,13 +6245,13 @@ exports.classNamesShape = classNamesShape;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(10));
+var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactLifecyclesCompat = __webpack_require__(103);
 
-var _ChildMapping = __webpack_require__(256);
+var _ChildMapping = __webpack_require__(258);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -6920,7 +6542,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(317);
+var aFunction = __webpack_require__(326);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -6980,7 +6602,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(24);
 var toIObject = __webpack_require__(30);
-var arrayIndexOf = __webpack_require__(319)(false);
+var arrayIndexOf = __webpack_require__(328)(false);
 var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -7057,11 +6679,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(332);
+var _iterator = __webpack_require__(341);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(343);
+var _symbol = __webpack_require__(352);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -7093,7 +6715,7 @@ var $export = __webpack_require__(21);
 var redefine = __webpack_require__(118);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(75);
-var $iterCreate = __webpack_require__(336);
+var $iterCreate = __webpack_require__(345);
 var setToStringTag = __webpack_require__(77);
 var getPrototypeOf = __webpack_require__(115);
 var ITERATOR = __webpack_require__(31)('iterator');
@@ -7226,31 +6848,31 @@ exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O
 
 __webpack_require__(122);
 
-__webpack_require__(220);
+__webpack_require__(216);
 
-__webpack_require__(226);
+__webpack_require__(223);
 
-__webpack_require__(231);
+__webpack_require__(228);
 
-__webpack_require__(236);
+__webpack_require__(233);
 
-__webpack_require__(241);
+__webpack_require__(239);
 
-__webpack_require__(259);
+__webpack_require__(262);
 
-__webpack_require__(264);
+__webpack_require__(268);
 
-__webpack_require__(265);
+__webpack_require__(269);
 
-__webpack_require__(270);
+__webpack_require__(275);
 
-__webpack_require__(274);
+__webpack_require__(280);
 
 __webpack_require__(45);
 
-__webpack_require__(283);
+__webpack_require__(291);
 
-__webpack_require__(308);
+__webpack_require__(317);
 
 /***/ }),
 /* 122 */
@@ -7277,7 +6899,7 @@ var _attributes = __webpack_require__(214);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(219);
+var _deprecated = __webpack_require__(215);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -7332,7 +6954,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -7422,16 +7044,15 @@ var PremiumAccordion = function (_Component) {
                 repeaterItems = _props$attributes.repeaterItems,
                 direction = _props$attributes.direction,
                 titleTag = _props$attributes.titleTag,
-                arrowPos = _props$attributes.arrowPos,
-                contentType = _props$attributes.contentType,
-                textShadowBlur = _props$attributes.textShadowBlur,
-                textShadowColor = _props$attributes.textShadowColor,
-                textShadowHorizontal = _props$attributes.textShadowHorizontal,
-                textShadowVertical = _props$attributes.textShadowVertical,
-                titleBorderUpdated = _props$attributes.titleBorderUpdated,
                 titleStyles = _props$attributes.titleStyles,
                 arrowStyles = _props$attributes.arrowStyles,
-                descStyles = _props$attributes.descStyles;
+                descStyles = _props$attributes.descStyles,
+                contentType = _props$attributes.contentType,
+                titleEditBorder = _props$attributes.titleEditBorder,
+                textShadowColor = _props$attributes.textShadowColor,
+                textShadowBlur = _props$attributes.textShadowBlur,
+                textShadowHorizontal = _props$attributes.textShadowHorizontal,
+                textShadowVertical = _props$attributes.textShadowVertical;
 
 
             var DIRECTION = [{
@@ -7517,20 +7138,18 @@ var PremiumAccordion = function (_Component) {
                     React.createElement(
                         "div",
                         {
-                            className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos
-                            // style={{
-                            //     backgroundColor: titleBack,
-                            //     borderStyle: titleBorder,
-                            //     borderWidth: titleBorderUpdated
-                            //         ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                            //         : titleBorderWidth + "px",
-                            //     borderRadius: titleBorderRadius + "px",
-                            //     borderColor: titleBorderColor,
-                            //     paddingTop: titlePaddingT,
-                            //     paddingRight: titlePaddingR,
-                            //     paddingBottom: titlePaddingB,
-                            //     paddingLeft: titlePaddingL
-                            // }}
+                            className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                            style: {
+                                backgroundColor: titleStyles[0].titleBack,
+                                borderStyle: titleStyles[0].titleBorder,
+                                borderWidth: titleStyles[0].titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                                borderRadius: titleStyles[0].titleBorderRadius + "px",
+                                borderColor: titleStyles[0].titleBorderColor,
+                                paddingTop: titleStyles[0].titlePaddingT,
+                                paddingRight: titleStyles[0].titlePaddingR,
+                                paddingBottom: titleStyles[0].titlePaddingB,
+                                paddingLeft: titleStyles[0].titlePaddingL
+                            }
                         },
                         React.createElement(
                             "div",
@@ -10415,7 +10034,7 @@ exports.default = PremiumResponsive;
 var arrayMap = __webpack_require__(81),
     baseIteratee = __webpack_require__(128),
     baseMap = __webpack_require__(207),
-    isArray = __webpack_require__(15);
+    isArray = __webpack_require__(14);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -10478,7 +10097,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var baseMatches = __webpack_require__(129),
     baseMatchesProperty = __webpack_require__(193),
     identity = __webpack_require__(203),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(14),
     property = __webpack_require__(204);
 
 /**
@@ -11054,7 +10673,7 @@ module.exports = isMasked;
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(13);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -11438,7 +11057,7 @@ var Stack = __webpack_require__(82),
     equalByTag = __webpack_require__(165),
     equalObjects = __webpack_require__(169),
     getTag = __webpack_require__(187),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(14),
     isBuffer = __webpack_require__(90),
     isTypedArray = __webpack_require__(92);
 
@@ -11776,7 +11395,7 @@ module.exports = equalByTag;
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(13);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -11957,7 +11576,7 @@ module.exports = getAllKeys;
 
 
 var arrayPush = __webpack_require__(172),
-    isArray = __webpack_require__(15);
+    isArray = __webpack_require__(14);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -12116,7 +11735,7 @@ module.exports = stubArray;
 
 var baseTimes = __webpack_require__(177),
     isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(14),
     isBuffer = __webpack_require__(90),
     isIndex = __webpack_require__(91),
     isTypedArray = __webpack_require__(92);
@@ -12537,7 +12156,7 @@ module.exports = getTag;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -12552,7 +12171,7 @@ module.exports = DataView;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -12567,7 +12186,7 @@ module.exports = Promise;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -12582,7 +12201,7 @@ module.exports = Set;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -12896,7 +12515,7 @@ module.exports = toString;
 
 var _Symbol = __webpack_require__(40),
     arrayMap = __webpack_require__(81),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(14),
     isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
@@ -13004,7 +12623,7 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(96),
     isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(14),
     isIndex = __webpack_require__(91),
     isLength = __webpack_require__(58),
     toKey = __webpack_require__(44);
@@ -13358,64 +12977,15 @@ var save = function save(props) {
         repeaterItems = _props$attributes.repeaterItems,
         direction = _props$attributes.direction,
         titleTag = _props$attributes.titleTag,
-        titleSize = _props$attributes.titleSize,
-        titleLine = _props$attributes.titleLine,
-        titleLetter = _props$attributes.titleLetter,
-        titleStyle = _props$attributes.titleStyle,
-        titleUpper = _props$attributes.titleUpper,
-        titleWeight = _props$attributes.titleWeight,
-        titleColor = _props$attributes.titleColor,
-        titleBorder = _props$attributes.titleBorder,
-        titleBorderWidth = _props$attributes.titleBorderWidth,
-        titleBorderColor = _props$attributes.titleBorderColor,
-        titleBorderTop = _props$attributes.titleBorderTop,
-        titleBorderRight = _props$attributes.titleBorderRight,
-        titleBorderBottom = _props$attributes.titleBorderBottom,
-        titleBorderLeft = _props$attributes.titleBorderLeft,
-        titleBorderRadius = _props$attributes.titleBorderRadius,
-        titleBack = _props$attributes.titleBack,
-        titleShadowBlur = _props$attributes.titleShadowBlur,
-        titleShadowColor = _props$attributes.titleShadowColor,
-        titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-        titleShadowVertical = _props$attributes.titleShadowVertical,
-        titlePaddingT = _props$attributes.titlePaddingT,
-        titlePaddingR = _props$attributes.titlePaddingR,
-        titlePaddingB = _props$attributes.titlePaddingB,
-        titlePaddingL = _props$attributes.titlePaddingL,
-        arrowColor = _props$attributes.arrowColor,
-        arrowBack = _props$attributes.arrowBack,
-        arrowPos = _props$attributes.arrowPos,
-        arrowPadding = _props$attributes.arrowPadding,
-        arrowSize = _props$attributes.arrowSize,
-        arrowRadius = _props$attributes.arrowRadius,
+        titleStyles = _props$attributes.titleStyles,
+        arrowStyles = _props$attributes.arrowStyles,
+        descStyles = _props$attributes.descStyles,
         contentType = _props$attributes.contentType,
-        descAlign = _props$attributes.descAlign,
-        descSize = _props$attributes.descSize,
-        descLine = _props$attributes.descLine,
-        descLetter = _props$attributes.descLetter,
-        descStyle = _props$attributes.descStyle,
-        descUpper = _props$attributes.descUpper,
-        descWeight = _props$attributes.descWeight,
-        descColor = _props$attributes.descColor,
-        descBack = _props$attributes.descBack,
-        descBorder = _props$attributes.descBorder,
-        descBorderColor = _props$attributes.descBorderColor,
-        descBorderRadius = _props$attributes.descBorderRadius,
-        descBorderWidth = _props$attributes.descBorderWidth,
-        descBorderTop = _props$attributes.descBorderTop,
-        descBorderRight = _props$attributes.descBorderRight,
-        descBorderBottom = _props$attributes.descBorderBottom,
-        descBorderLeft = _props$attributes.descBorderLeft,
-        textShadowBlur = _props$attributes.textShadowBlur,
+        titleEditBorder = _props$attributes.titleEditBorder,
         textShadowColor = _props$attributes.textShadowColor,
+        textShadowBlur = _props$attributes.textShadowBlur,
         textShadowHorizontal = _props$attributes.textShadowHorizontal,
-        textShadowVertical = _props$attributes.textShadowVertical,
-        descPaddingT = _props$attributes.descPaddingT,
-        descPaddingR = _props$attributes.descPaddingR,
-        descPaddingB = _props$attributes.descPaddingB,
-        descPaddingL = _props$attributes.descPaddingL,
-        titleBorderUpdated = _props$attributes.titleBorderUpdated,
-        descBorderUpdated = _props$attributes.descBorderUpdated;
+        textShadowVertical = _props$attributes.textShadowVertical;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
@@ -13540,9 +13110,6 @@ exports.default = save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _propTypes = __webpack_require__(10);
-
 var __ = wp.i18n.__;
 
 
@@ -13626,176 +13193,16 @@ var attributes = {
             descPaddingL: ''
         }]
     },
-    // titleColor: {
-    //     type: "string"
-    // },
-    // titleSize: {
-    //     type: "number"
-    // },
-    // titleLine: {
-    //     type: "number"
-    // },
-    // titleLetter: {
-    //     type: "number"
-    // },
-    // titleStyle: {
-    //     type: "string"
-    // },
-    // titleUpper: {
-    //     type: "boolean"
-    // },
-    // titleWeight: {
-    //     type: "number",
-    //     default: 500
-    // },
-    // titleBorder: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // titleBorderWidth: {
-    //     type: "number",
-    //     default: "1"
-    // },
-    // titleBorderTop: {
-    //     type: "number"
-    // },
-    // titleBorderRight: {
-    //     type: "number"
-    // },
-    // titleBorderBottom: {
-    //     type: "number"
-    // },
-    // titleBorderLeft: {
-    //     type: "number"
-    // },
-    // titleBorderUpdated: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // titleBorderRadius: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderColor: {
-    //     type: "string"
-    // },
-    // titleBack: {
-    //     type: "string"
-    // },
-    // titleShadowColor: {
-    //     type: "string"
-    // },
-    // titleShadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleShadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleShadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titlePaddingT: {
-    //     type: "number"
-    // },
-    // titlePaddingR: {
-    //     type: "number"
-    // },
-    // titlePaddingB: {
-    //     type: "number"
-    // },
-    // titlePaddingL: {
-    //     type: "number"
-    // },
-    // arrowColor: {
-    //     type: "string"
-    // },
-    // arrowBack: {
-    //     type: "string"
-    // },
-    // arrowPos: {
-    //     type: "string",
-    //     default: "out"
-    // },
-    // arrowPadding: {
-    //     type: "number"
-    // },
-    // arrowRadius: {
-    //     type: "number"
-    // },
-    // arrowSize: {
-    //     type: "number",
-    //     default: 20
-    // },
+
     contentType: {
         type: "string",
         default: "text"
     },
-    // descAlign: {
-    //     type: "string",
-    //     default: "left"
-    // },
-    // descColor: {
-    //     type: "string"
-    // },
-    // descBack: {
-    //     type: "string"
-    // },
-    // descBorder: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // descBorderWidth: {
-    //     type: "number",
-    //     default: "1"
-    // },
-    // descBorderUpdated: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // descBorderTop: {
-    //     type: "number"
-    // },
-    // descBorderRight: {
-    //     type: "number"
-    // },
-    // descBorderBottom: {
-    //     type: "number"
-    // },
-    // descBorderLeft: {
-    //     type: "number"
-    // },
+
     titleEditBorder: {
         type: "boolean"
     },
-    // descBorderRadius: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // descBorderColor: {
-    //     type: "string"
-    // },
-    // descSize: {
-    //     type: "number"
-    // },
-    // descLine: {
-    //     type: "number"
-    // },
-    // descLetter: {
-    //     type: "number"
-    // },
-    // descStyle: {
-    //     type: "string"
-    // },
-    // descUpper: {
-    //     type: "boolean"
-    // },
-    // descWeight: {
-    //     type: "number",
-    //     default: 500
-    // },
+
     textShadowColor: {
         type: "string"
     },
@@ -13811,977 +13218,12 @@ var attributes = {
         type: "number",
         default: "0"
     }
-    // descPaddingT: {
-    //     type: "number"
-    // },
-    // descPaddingR: {
-    //     type: "number"
-    // },
-    // descPaddingB: {
-    //     type: "number"
-    // },
-    // descPaddingL: {
-    //     type: "number",
-    //     default: 10
-    // }
+
 };
 exports.default = attributes;
 
 /***/ }),
 /* 215 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/** @license React v16.8.6
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-Object.defineProperty(exports, "__esModule", { value: !0 });
-var b = "function" === typeof Symbol && Symbol.for,
-    c = b ? Symbol.for("react.element") : 60103,
-    d = b ? Symbol.for("react.portal") : 60106,
-    e = b ? Symbol.for("react.fragment") : 60107,
-    f = b ? Symbol.for("react.strict_mode") : 60108,
-    g = b ? Symbol.for("react.profiler") : 60114,
-    h = b ? Symbol.for("react.provider") : 60109,
-    k = b ? Symbol.for("react.context") : 60110,
-    l = b ? Symbol.for("react.async_mode") : 60111,
-    m = b ? Symbol.for("react.concurrent_mode") : 60111,
-    n = b ? Symbol.for("react.forward_ref") : 60112,
-    p = b ? Symbol.for("react.suspense") : 60113,
-    q = b ? Symbol.for("react.memo") : 60115,
-    r = b ? Symbol.for("react.lazy") : 60116;function t(a) {
-  if ("object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a) {
-    var u = a.$$typeof;switch (u) {case c:
-        switch (a = a.type, a) {case l:case m:case e:case g:case f:case p:
-            return a;default:
-            switch (a = a && a.$$typeof, a) {case k:case n:case h:
-                return a;default:
-                return u;}}case r:case q:case d:
-        return u;}
-  }
-}function v(a) {
-  return t(a) === m;
-}exports.typeOf = t;exports.AsyncMode = l;exports.ConcurrentMode = m;exports.ContextConsumer = k;exports.ContextProvider = h;exports.Element = c;exports.ForwardRef = n;
-exports.Fragment = e;exports.Lazy = r;exports.Memo = q;exports.Portal = d;exports.Profiler = g;exports.StrictMode = f;exports.Suspense = p;exports.isValidElementType = function (a) {
-  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && (a.$$typeof === r || a.$$typeof === q || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n);
-};exports.isAsyncMode = function (a) {
-  return v(a) || t(a) === l;
-};exports.isConcurrentMode = v;exports.isContextConsumer = function (a) {
-  return t(a) === k;
-};
-exports.isContextProvider = function (a) {
-  return t(a) === h;
-};exports.isElement = function (a) {
-  return "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && a.$$typeof === c;
-};exports.isForwardRef = function (a) {
-  return t(a) === n;
-};exports.isFragment = function (a) {
-  return t(a) === e;
-};exports.isLazy = function (a) {
-  return t(a) === r;
-};exports.isMemo = function (a) {
-  return t(a) === q;
-};exports.isPortal = function (a) {
-  return t(a) === d;
-};exports.isProfiler = function (a) {
-  return t(a) === g;
-};exports.isStrictMode = function (a) {
-  return t(a) === f;
-};
-exports.isSuspense = function (a) {
-  return t(a) === p;
-};
-
-/***/ }),
-/* 216 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-if (process.env.NODE_ENV !== "production") {
-  (function () {
-    'use strict';
-
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-    // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-    // nor polyfill, then a plain number is used for performance.
-    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-
-    var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-    var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-    var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-    var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-    var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-    var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
-    var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-    var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-    var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-    var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-    var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-    var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-
-    function isValidElementType(type) {
-      return typeof type === 'string' || typeof type === 'function' ||
-      // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-      type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
-    }
-
-    /**
-     * Forked from fbjs/warning:
-     * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
-     *
-     * Only change is we use console.warn instead of console.error,
-     * and do nothing when 'console' is not supported.
-     * This really simplifies the code.
-     * ---
-     * Similar to invariant but only logs a warning if the condition is not met.
-     * This can be used to log issues in development environments in critical
-     * paths. Removing the logging code for production environments will keep the
-     * same logic and follow the same code paths.
-     */
-
-    var lowPriorityWarning = function lowPriorityWarning() {};
-
-    {
-      var printWarning = function printWarning(format) {
-        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-          args[_key - 1] = arguments[_key];
-        }
-
-        var argIndex = 0;
-        var message = 'Warning: ' + format.replace(/%s/g, function () {
-          return args[argIndex++];
-        });
-        if (typeof console !== 'undefined') {
-          console.warn(message);
-        }
-        try {
-          // --- Welcome to debugging React ---
-          // This error was thrown as a convenience so that you can use this stack
-          // to find the callsite that caused this warning to fire.
-          throw new Error(message);
-        } catch (x) {}
-      };
-
-      lowPriorityWarning = function lowPriorityWarning(condition, format) {
-        if (format === undefined) {
-          throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
-        }
-        if (!condition) {
-          for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-            args[_key2 - 2] = arguments[_key2];
-          }
-
-          printWarning.apply(undefined, [format].concat(args));
-        }
-      };
-    }
-
-    var lowPriorityWarning$1 = lowPriorityWarning;
-
-    function typeOf(object) {
-      if ((typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null) {
-        var $$typeof = object.$$typeof;
-        switch ($$typeof) {
-          case REACT_ELEMENT_TYPE:
-            var type = object.type;
-
-            switch (type) {
-              case REACT_ASYNC_MODE_TYPE:
-              case REACT_CONCURRENT_MODE_TYPE:
-              case REACT_FRAGMENT_TYPE:
-              case REACT_PROFILER_TYPE:
-              case REACT_STRICT_MODE_TYPE:
-              case REACT_SUSPENSE_TYPE:
-                return type;
-              default:
-                var $$typeofType = type && type.$$typeof;
-
-                switch ($$typeofType) {
-                  case REACT_CONTEXT_TYPE:
-                  case REACT_FORWARD_REF_TYPE:
-                  case REACT_PROVIDER_TYPE:
-                    return $$typeofType;
-                  default:
-                    return $$typeof;
-                }
-            }
-          case REACT_LAZY_TYPE:
-          case REACT_MEMO_TYPE:
-          case REACT_PORTAL_TYPE:
-            return $$typeof;
-        }
-      }
-
-      return undefined;
-    }
-
-    // AsyncMode is deprecated along with isAsyncMode
-    var AsyncMode = REACT_ASYNC_MODE_TYPE;
-    var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-    var ContextConsumer = REACT_CONTEXT_TYPE;
-    var ContextProvider = REACT_PROVIDER_TYPE;
-    var Element = REACT_ELEMENT_TYPE;
-    var ForwardRef = REACT_FORWARD_REF_TYPE;
-    var Fragment = REACT_FRAGMENT_TYPE;
-    var Lazy = REACT_LAZY_TYPE;
-    var Memo = REACT_MEMO_TYPE;
-    var Portal = REACT_PORTAL_TYPE;
-    var Profiler = REACT_PROFILER_TYPE;
-    var StrictMode = REACT_STRICT_MODE_TYPE;
-    var Suspense = REACT_SUSPENSE_TYPE;
-
-    var hasWarnedAboutDeprecatedIsAsyncMode = false;
-
-    // AsyncMode should be deprecated
-    function isAsyncMode(object) {
-      {
-        if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-          hasWarnedAboutDeprecatedIsAsyncMode = true;
-          lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-        }
-      }
-      return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-    }
-    function isConcurrentMode(object) {
-      return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-    }
-    function isContextConsumer(object) {
-      return typeOf(object) === REACT_CONTEXT_TYPE;
-    }
-    function isContextProvider(object) {
-      return typeOf(object) === REACT_PROVIDER_TYPE;
-    }
-    function isElement(object) {
-      return (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-    }
-    function isForwardRef(object) {
-      return typeOf(object) === REACT_FORWARD_REF_TYPE;
-    }
-    function isFragment(object) {
-      return typeOf(object) === REACT_FRAGMENT_TYPE;
-    }
-    function isLazy(object) {
-      return typeOf(object) === REACT_LAZY_TYPE;
-    }
-    function isMemo(object) {
-      return typeOf(object) === REACT_MEMO_TYPE;
-    }
-    function isPortal(object) {
-      return typeOf(object) === REACT_PORTAL_TYPE;
-    }
-    function isProfiler(object) {
-      return typeOf(object) === REACT_PROFILER_TYPE;
-    }
-    function isStrictMode(object) {
-      return typeOf(object) === REACT_STRICT_MODE_TYPE;
-    }
-    function isSuspense(object) {
-      return typeOf(object) === REACT_SUSPENSE_TYPE;
-    }
-
-    exports.typeOf = typeOf;
-    exports.AsyncMode = AsyncMode;
-    exports.ConcurrentMode = ConcurrentMode;
-    exports.ContextConsumer = ContextConsumer;
-    exports.ContextProvider = ContextProvider;
-    exports.Element = Element;
-    exports.ForwardRef = ForwardRef;
-    exports.Fragment = Fragment;
-    exports.Lazy = Lazy;
-    exports.Memo = Memo;
-    exports.Portal = Portal;
-    exports.Profiler = Profiler;
-    exports.StrictMode = StrictMode;
-    exports.Suspense = Suspense;
-    exports.isValidElementType = isValidElementType;
-    exports.isAsyncMode = isAsyncMode;
-    exports.isConcurrentMode = isConcurrentMode;
-    exports.isContextConsumer = isContextConsumer;
-    exports.isContextProvider = isContextProvider;
-    exports.isElement = isElement;
-    exports.isForwardRef = isForwardRef;
-    exports.isFragment = isFragment;
-    exports.isLazy = isLazy;
-    exports.isMemo = isMemo;
-    exports.isPortal = isPortal;
-    exports.isProfiler = isProfiler;
-    exports.isStrictMode = isStrictMode;
-    exports.isSuspense = isSuspense;
-  })();
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 217 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var ReactIs = __webpack_require__(97);
-var assign = __webpack_require__(32);
-
-var ReactPropTypesSecret = __webpack_require__(52);
-var checkPropTypes = __webpack_require__(51);
-
-var has = Function.call.bind(Object.prototype.hasOwnProperty);
-var printWarning = function printWarning() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  printWarning = function printWarning(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-function emptyFunctionThatReturnsNull() {
-  return null;
-}
-
-module.exports = function (isValidElement, throwOnDirectAccess) {
-  /* global Symbol */
-  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-
-  /**
-   * Returns the iterator method function contained on the iterable object.
-   *
-   * Be sure to invoke the function with the iterable as context:
-   *
-   *     var iteratorFn = getIteratorFn(myIterable);
-   *     if (iteratorFn) {
-   *       var iterator = iteratorFn.call(myIterable);
-   *       ...
-   *     }
-   *
-   * @param {?object} maybeIterable
-   * @return {?function}
-   */
-  function getIteratorFn(maybeIterable) {
-    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
-    if (typeof iteratorFn === 'function') {
-      return iteratorFn;
-    }
-  }
-
-  /**
-   * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
-   *
-   *   var Props = require('ReactPropTypes');
-   *   var MyArticle = React.createClass({
-   *     propTypes: {
-   *       // An optional string prop named "description".
-   *       description: Props.string,
-   *
-   *       // A required enum prop named "category".
-   *       category: Props.oneOf(['News','Photos']).isRequired,
-   *
-   *       // A prop named "dialog" that requires an instance of Dialog.
-   *       dialog: Props.instanceOf(Dialog).isRequired
-   *     },
-   *     render: function() { ... }
-   *   });
-   *
-   * A more formal specification of how these methods are used:
-   *
-   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-   *   decl := ReactPropTypes.{type}(.isRequired)?
-   *
-   * Each and every declaration produces a function with the same signature. This
-   * allows the creation of custom validation functions. For example:
-   *
-   *  var MyLink = React.createClass({
-   *    propTypes: {
-   *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
-   *        var propValue = props[propName];
-   *        if (propValue != null && typeof propValue !== 'string' &&
-   *            !(propValue instanceof URI)) {
-   *          return new Error(
-   *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
-   *          );
-   *        }
-   *      }
-   *    },
-   *    render: function() {...}
-   *  });
-   *
-   * @internal
-   */
-
-  var ANONYMOUS = '<<anonymous>>';
-
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
-  var ReactPropTypes = {
-    array: createPrimitiveTypeChecker('array'),
-    bool: createPrimitiveTypeChecker('boolean'),
-    func: createPrimitiveTypeChecker('function'),
-    number: createPrimitiveTypeChecker('number'),
-    object: createPrimitiveTypeChecker('object'),
-    string: createPrimitiveTypeChecker('string'),
-    symbol: createPrimitiveTypeChecker('symbol'),
-
-    any: createAnyTypeChecker(),
-    arrayOf: createArrayOfTypeChecker,
-    element: createElementTypeChecker(),
-    elementType: createElementTypeTypeChecker(),
-    instanceOf: createInstanceTypeChecker,
-    node: createNodeChecker(),
-    objectOf: createObjectOfTypeChecker,
-    oneOf: createEnumTypeChecker,
-    oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker,
-    exact: createStrictShapeTypeChecker
-  };
-
-  /**
-   * inlined Object.is polyfill to avoid requiring consumers ship their own
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-   */
-  /*eslint-disable no-self-compare*/
-  function is(x, y) {
-    // SameValue algorithm
-    if (x === y) {
-      // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
-      return x !== 0 || 1 / x === 1 / y;
-    } else {
-      // Step 6.a: NaN == NaN
-      return x !== x && y !== y;
-    }
-  }
-  /*eslint-enable no-self-compare*/
-
-  /**
-   * We use an Error-like object for backward compatibility as people may call
-   * PropTypes directly and inspect their output. However, we don't use real
-   * Errors anymore. We don't inspect their stack anyway, and creating them
-   * is prohibitively expensive if they are created too often, such as what
-   * happens in oneOfType() for any type before the one that matched.
-   */
-  function PropTypeError(message) {
-    this.message = message;
-    this.stack = '';
-  }
-  // Make `instanceof Error` still work for returned errors.
-  PropTypeError.prototype = Error.prototype;
-
-  function createChainableTypeChecker(validate) {
-    if (process.env.NODE_ENV !== 'production') {
-      var manualPropTypeCallCache = {};
-      var manualPropTypeWarningCount = 0;
-    }
-    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-      componentName = componentName || ANONYMOUS;
-      propFullName = propFullName || propName;
-
-      if (secret !== ReactPropTypesSecret) {
-        if (throwOnDirectAccess) {
-          // New behavior only for users of `prop-types` package
-          var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-          err.name = 'Invariant Violation';
-          throw err;
-        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
-          // Old behavior for people using React.PropTypes
-          var cacheKey = componentName + ':' + propName;
-          if (!manualPropTypeCallCache[cacheKey] &&
-          // Avoid spamming the console because they are often not actionable except for lib authors
-          manualPropTypeWarningCount < 3) {
-            printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
-            manualPropTypeCallCache[cacheKey] = true;
-            manualPropTypeWarningCount++;
-          }
-        }
-      }
-      if (props[propName] == null) {
-        if (isRequired) {
-          if (props[propName] === null) {
-            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-          }
-          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-        }
-        return null;
-      } else {
-        return validate(props, propName, componentName, location, propFullName);
-      }
-    }
-
-    var chainedCheckType = checkType.bind(null, false);
-    chainedCheckType.isRequired = checkType.bind(null, true);
-
-    return chainedCheckType;
-  }
-
-  function createPrimitiveTypeChecker(expectedType) {
-    function validate(props, propName, componentName, location, propFullName, secret) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
-        // check, but we can offer a more precise error message here rather than
-        // 'of type `object`'.
-        var preciseType = getPreciseType(propValue);
-
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
-  }
-
-  function createArrayOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-      }
-      var propValue = props[propName];
-      if (!Array.isArray(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-      }
-      for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
-        if (error instanceof Error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!isValidElement(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!ReactIs.isValidElementType(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createInstanceTypeChecker(expectedClass) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!(props[propName] instanceof expectedClass)) {
-        var expectedClassName = expectedClass.name || ANONYMOUS;
-        var actualClassName = getClassName(props[propName]);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createEnumTypeChecker(expectedValues) {
-    if (!Array.isArray(expectedValues)) {
-      if (process.env.NODE_ENV !== 'production') {
-        if (arguments.length > 1) {
-          printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
-        } else {
-          printWarning('Invalid argument supplied to oneOf, expected an array.');
-        }
-      }
-      return emptyFunctionThatReturnsNull;
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      for (var i = 0; i < expectedValues.length; i++) {
-        if (is(propValue, expectedValues[i])) {
-          return null;
-        }
-      }
-
-      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
-        var type = getPreciseType(value);
-        if (type === 'symbol') {
-          return String(value);
-        }
-        return value;
-      });
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createObjectOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-      }
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-      }
-      for (var key in propValue) {
-        if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-          if (error instanceof Error) {
-            return error;
-          }
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createUnionTypeChecker(arrayOfTypeCheckers) {
-    if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunctionThatReturnsNull;
-    }
-
-    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-      var checker = arrayOfTypeCheckers[i];
-      if (typeof checker !== 'function') {
-        printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
-        return emptyFunctionThatReturnsNull;
-      }
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-        var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
-          return null;
-        }
-      }
-
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createNodeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!isNode(props[propName])) {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      for (var key in shapeTypes) {
-        var checker = shapeTypes[key];
-        if (!checker) {
-          continue;
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createStrictShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      // We need to check all keys in case some are required but missing from
-      // props.
-      var allKeys = assign({}, props[propName], shapeTypes);
-      for (var key in allKeys) {
-        var checker = shapeTypes[key];
-        if (!checker) {
-          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-
-    return createChainableTypeChecker(validate);
-  }
-
-  function isNode(propValue) {
-    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue)) {
-      case 'number':
-      case 'string':
-      case 'undefined':
-        return true;
-      case 'boolean':
-        return !propValue;
-      case 'object':
-        if (Array.isArray(propValue)) {
-          return propValue.every(isNode);
-        }
-        if (propValue === null || isValidElement(propValue)) {
-          return true;
-        }
-
-        var iteratorFn = getIteratorFn(propValue);
-        if (iteratorFn) {
-          var iterator = iteratorFn.call(propValue);
-          var step;
-          if (iteratorFn !== propValue.entries) {
-            while (!(step = iterator.next()).done) {
-              if (!isNode(step.value)) {
-                return false;
-              }
-            }
-          } else {
-            // Iterator will provide entry [k,v] tuples rather than values.
-            while (!(step = iterator.next()).done) {
-              var entry = step.value;
-              if (entry) {
-                if (!isNode(entry[1])) {
-                  return false;
-                }
-              }
-            }
-          }
-        } else {
-          return false;
-        }
-
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  function isSymbol(propType, propValue) {
-    // Native Symbol.
-    if (propType === 'symbol') {
-      return true;
-    }
-
-    // falsy value can't be a Symbol
-    if (!propValue) {
-      return false;
-    }
-
-    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-    if (propValue['@@toStringTag'] === 'Symbol') {
-      return true;
-    }
-
-    // Fallback for non-spec compliant Symbols which are polyfilled.
-    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-      return true;
-    }
-
-    return false;
-  }
-
-  // Equivalent of `typeof` but with special handling for array and regexp.
-  function getPropType(propValue) {
-    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
-    if (Array.isArray(propValue)) {
-      return 'array';
-    }
-    if (propValue instanceof RegExp) {
-      // Old webkits (at least until Android 4.0) return 'function' rather than
-      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-      // passes PropTypes.object.
-      return 'object';
-    }
-    if (isSymbol(propType, propValue)) {
-      return 'symbol';
-    }
-    return propType;
-  }
-
-  // This handles more types than `getPropType`. Only used for error messages.
-  // See `createPrimitiveTypeChecker`.
-  function getPreciseType(propValue) {
-    if (typeof propValue === 'undefined' || propValue === null) {
-      return '' + propValue;
-    }
-    var propType = getPropType(propValue);
-    if (propType === 'object') {
-      if (propValue instanceof Date) {
-        return 'date';
-      } else if (propValue instanceof RegExp) {
-        return 'regexp';
-      }
-    }
-    return propType;
-  }
-
-  // Returns a string that is postfixed to a warning about an invalid type.
-  // For example, "undefined" or "of type array"
-  function getPostfixForTypeWarning(value) {
-    var type = getPreciseType(value);
-    switch (type) {
-      case 'array':
-      case 'object':
-        return 'an ' + type;
-      case 'boolean':
-      case 'date':
-      case 'regexp':
-        return 'a ' + type;
-      default:
-        return type;
-    }
-  }
-
-  // Returns class name of the object, if any.
-  function getClassName(propValue) {
-    if (!propValue.constructor || !propValue.constructor.name) {
-      return ANONYMOUS;
-    }
-    return propValue.constructor.name;
-  }
-
-  ReactPropTypes.checkPropTypes = checkPropTypes;
-  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 218 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var ReactPropTypesSecret = __webpack_require__(52);
-
-function emptyFunction() {}
-function emptyFunctionWithReset() {}
-emptyFunctionWithReset.resetWarningCache = emptyFunction;
-
-module.exports = function () {
-  function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret) {
-      // It is still safe when called from React.
-      return;
-    }
-    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-    err.name = 'Invariant Violation';
-    throw err;
-  };
-  shim.isRequired = shim;
-  function getShim() {
-    return shim;
-  };
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
-  var ReactPropTypes = {
-    array: shim,
-    bool: shim,
-    func: shim,
-    number: shim,
-    object: shim,
-    string: shim,
-    symbol: shim,
-
-    any: shim,
-    arrayOf: getShim,
-    element: shim,
-    elementType: shim,
-    instanceOf: getShim,
-    node: shim,
-    objectOf: getShim,
-    oneOf: getShim,
-    oneOfType: getShim,
-    shape: getShim,
-    exact: getShim,
-
-    checkPropTypes: emptyFunctionWithReset,
-    resetWarningCache: emptyFunction
-  };
-
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-
-/***/ }),
-/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15550,7 +13992,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 220 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15562,19 +14004,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(221);
+var _edit = __webpack_require__(217);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(223);
+var _save = __webpack_require__(220);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(224);
+var _deprecated = __webpack_require__(221);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(225);
+var _attributes = __webpack_require__(222);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -15598,7 +14040,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 221 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15607,6 +14049,9 @@ registerBlockType("premium/banner", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.edit = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -15622,11 +14067,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -15642,10 +14087,6 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(222);
-
-var _styling2 = _interopRequireDefault(_styling);
-
 var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
@@ -15660,6 +14101,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var withSelect = wp.data.withSelect;
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
@@ -15679,25 +14121,39 @@ var _wp$blockEditor = wp.blockEditor,
     ColorPalette = _wp$blockEditor.ColorPalette,
     RichText = _wp$blockEditor.RichText;
 
-var edit = function (_Component) {
+var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
 
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "componentDidMount",
         value: function componentDidMount() {
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
-
-            // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-banner-" + this.props.clientId.substr(0, 6));
-            document.head.appendChild($style);
         }
     }, {
         key: "render",
@@ -15708,10 +14164,13 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockID = _props.clientId;
             var _props$attributes = this.props.attributes,
-                borderBanner = _props$attributes.borderBanner,
                 block_id = _props$attributes.block_id,
+                borderBanner = _props$attributes.borderBanner,
                 imageID = _props$attributes.imageID,
                 imageURL = _props$attributes.imageURL,
+                titleStyles = _props$attributes.titleStyles,
+                descStyles = _props$attributes.descStyles,
+                containerStyles = _props$attributes.containerStyles,
                 title = _props$attributes.title,
                 titleTag = _props$attributes.titleTag,
                 desc = _props$attributes.desc,
@@ -15725,59 +14184,20 @@ var edit = function (_Component) {
                 responsive = _props$attributes.responsive,
                 background = _props$attributes.background,
                 opacity = _props$attributes.opacity,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                borderRadius = _props$attributes.borderRadius,
-                borderColor = _props$attributes.borderColor,
-                titleColor = _props$attributes.titleColor,
-                titleSizeUnit = _props$attributes.titleSizeUnit,
-                titleSize = _props$attributes.titleSize,
-                titleLine = _props$attributes.titleLine,
-                titleWeight = _props$attributes.titleWeight,
-                titleBack = _props$attributes.titleBack,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                descColor = _props$attributes.descColor,
-                descSizeUnit = _props$attributes.descSizeUnit,
-                descSize = _props$attributes.descSize,
-                descSizeTablet = _props$attributes.descSizeTablet,
-                descSizeMobile = _props$attributes.descSizeMobile,
-                descLine = _props$attributes.descLine,
-                descWeight = _props$attributes.descWeight,
-                descShadowBlur = _props$attributes.descShadowBlur,
-                descShadowColor = _props$attributes.descShadowColor,
-                descShadowHorizontal = _props$attributes.descShadowHorizontal,
-                descShadowVertical = _props$attributes.descShadowVertical,
                 urlCheck = _props$attributes.urlCheck,
-                url = _props$attributes.url,
                 target = _props$attributes.target,
+                url = _props$attributes.url,
                 sepColor = _props$attributes.sepColor,
                 blur = _props$attributes.blur,
                 bright = _props$attributes.bright,
                 contrast = _props$attributes.contrast,
                 saturation = _props$attributes.saturation,
                 hue = _props$attributes.hue,
-                containerShadowBlur = _props$attributes.containerShadowBlur,
-                containerShadowColor = _props$attributes.containerShadowColor,
-                containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-                containerShadowVertical = _props$attributes.containerShadowVertical,
-                containerShadowPosition = _props$attributes.containerShadowPosition,
-                paddingB = _props$attributes.paddingB,
-                paddingT = _props$attributes.paddingT,
-                paddingR = _props$attributes.paddingR,
-                paddingL = _props$attributes.paddingL,
-                paddingU = _props$attributes.paddingU,
-                titleSizeTablet = _props$attributes.titleSizeTablet,
-                titleSizeMobile = _props$attributes.titleSizeMobile,
                 hideDesktop = _props$attributes.hideDesktop,
+                hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
-                hideTablet = _props$attributes.hideTablet;
+                classMigrate = _props$attributes.classMigrate;
+
 
             var ALIGNS = [{
                 value: "flex-start",
@@ -15792,6 +14212,7 @@ var edit = function (_Component) {
                 value: "inherit",
                 label: __("Full")
             }];
+
             var EFFECTS = [{
                 value: "effect1",
                 label: __("Style 1")
@@ -15843,15 +14264,46 @@ var edit = function (_Component) {
                 value: "custom",
                 label: __("Custom")
             }];
-
             var mainClasses = (0, _classnames2.default)(className, "premium-banner");
+            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+            var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
-            var element = document.getElementById("premium-style-banner-" + blockID.substr(0, 6));
+            var saveStyles = function saveStyles(value, itemStyle) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                console.log(newUpdate);
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
 
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
-
+            var descriptionStyles = function descriptionStyles(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                console.log(newUpdate);
+                setAttributes({
+                    descStyles: newUpdate
+                });
+            };
+            var containerStyle = function containerStyle(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
+                });
+            };
             return [isSelected && React.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -16056,34 +14508,34 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveStyles,
                         fontSizeType: {
-                            value: titleSizeUnit,
+                            value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
                         },
                         fontSize: {
-                            value: titleSize,
+                            value: titleStyles[0].titleSize,
                             label: __("titleSize")
                         },
                         fontSizeMobile: {
-                            value: titleSizeMobile,
+                            value: titleStyles[0].titleSizeMobile,
                             label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: titleSizeTablet,
+                            value: titleStyles[0].titleSizeTablet,
                             label: __("titleSizeTablet")
                         },
-                        weight: titleWeight,
-                        line: titleLine,
+                        weight: titleStyles[0].titleWeight,
+                        line: titleStyles[0].titleLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({
+                            return saveStyles({
                                 titleWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            }, titleStyles);
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 titleLine: newValue === undefined ? 10 : newValue
-                            });
+                            }, titleStyles);
                         }
                     }),
                     React.createElement(
@@ -16095,11 +14547,11 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: titleColor,
+                            value: titleStyles[0].titleColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveStyles({
                                     titleColor: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, titleStyles);
                             },
                             allowReset: true
                         })
@@ -16131,39 +14583,39 @@ var edit = function (_Component) {
                             __("Background Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: titleBack,
+                            value: titleStyles[0].titleBack,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveStyles({
                                     titleBack: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, titleStyles);
                             },
                             allowReset: true
                         })
                     ),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
+                        color: titleStyles[0].shadowColor,
+                        blur: titleStyles[0].shadowBlur,
+                        horizontal: titleStyles[0].shadowHorizontal,
+                        vertical: titleStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
+                            }, titleStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            }, titleStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            }, titleStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            }, titleStyles);
                         }
                     })
                 ),
@@ -16176,34 +14628,34 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: descriptionStyles,
                         fontSizeType: {
-                            value: descSizeUnit,
+                            value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit")
                         },
                         fontSize: {
-                            value: descSize,
+                            value: descStyles[0].descSize,
                             label: __("descSize")
                         },
                         fontSizeMobile: {
-                            value: descSizeMobile,
+                            value: descStyles[0].descSizeMobile,
                             label: __("descSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: descSizeTablet,
+                            value: descStyles[0].descSizeTablet,
                             label: __("descSizeTablet")
                         },
-                        weight: descWeight,
-                        line: descLine,
+                        weight: descStyles[0].descWeight,
+                        line: descStyles[0].descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            }, descStyles);
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descLine: newValue === undefined ? 10 : newValue
-                            });
+                            }, descStyles);
                         }
                     }),
                     React.createElement(
@@ -16215,39 +14667,39 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: descColor,
+                            value: descStyles[0].descColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return descriptionStyles({
                                     descColor: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, descStyles);
                             },
                             allowReset: true
                         })
                     ),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: descShadowColor,
-                        blur: descShadowBlur,
-                        horizontal: descShadowHorizontal,
-                        vertical: descShadowVertical,
+                        color: descStyles[0].descShadowColor,
+                        blur: descStyles[0].descShadowBlur,
+                        horizontal: descStyles[0].descShadowHorizontal,
+                        vertical: descStyles[0].descShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
+                            }, descStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            }, descStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            }, descStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            }, descStyles);
                         }
                     })
                 ),
@@ -16259,103 +14711,103 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderType: containerStyles[0].borderType,
+                        borderWidth: containerStyles[0].borderWidth,
+                        top: containerStyles[0].borderTop,
+                        right: containerStyles[0].borderRight,
+                        bottom: containerStyles[0].borderBottom,
+                        left: containerStyles[0].borderLeft,
+                        borderColor: containerStyles[0].borderColor,
+                        borderRadius: containerStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return containerStyle({ borderType: newType }, containerStyles);
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
                                 right = _ref.right,
                                 bottom = _ref.bottom,
                                 left = _ref.left;
-                            return setAttributes({
+                            return containerStyle({
                                 borderBanner: true,
                                 borderTop: top,
                                 borderRight: right,
                                 borderBottom: bottom,
                                 borderLeft: left
-                            });
+                            }, containerStyles);
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 borderColor: colorValue === undefined ? "transparent" : colorValue.hex
-                            });
+                            }, containerStyles);
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
-                            return setAttributes({
+                            return containerStyle({
                                 borderRadius: newRadius === undefined ? 0 : newRadius
-                            });
+                            }, containerStyles);
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: containerShadowColor,
-                        blur: containerShadowBlur,
-                        horizontal: containerShadowHorizontal,
-                        vertical: containerShadowVertical,
-                        position: containerShadowPosition,
+                        color: containerStyles[0].containerShadowColor,
+                        blur: containerStyles[0].containerShadowBlur,
+                        horizontal: containerStyles[0].containerShadowHorizontal,
+                        vertical: containerStyles[0].containerShadowVertical,
+                        position: containerStyles[0].containerShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowColor: newColor.hex
-                            });
+                            }, containerStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowBlur: newBlur
-                            });
+                            }, containerStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowHorizontal: newValue
-                            });
+                            }, containerStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowVertical: newValue
-                            });
+                            }, containerStyles);
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowPosition: newValue
-                            });
+                            }, containerStyles);
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
+                        paddingTop: containerStyles[0].paddingT,
+                        paddingRight: containerStyles[0].paddingR,
+                        paddingBottom: containerStyles[0].paddingB,
+                        paddingLeft: containerStyles[0].paddingL,
                         showUnits: true,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
+                            return containerStyle({
                                 paddingT: value
-                            });
+                            }, containerStyles);
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
+                            return containerStyle({
                                 paddingR: value
-                            });
+                            }, containerStyles);
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
+                            return containerStyle({
                                 paddingB: value
-                            });
+                            }, containerStyles);
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
+                            return containerStyle({
                                 paddingL: value
-                            });
+                            }, containerStyles);
                         },
-                        selectedUnit: paddingU,
+                        selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ paddingU: newvalue });
+                            return containerStyle({ paddingU: newvalue }, containerStyles);
                         }
                     })
                 ),
@@ -16379,10 +14831,10 @@ var edit = function (_Component) {
                     id: "premium-banner-" + block_id,
                     className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU
+                        paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                        paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                        paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                        paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU
                     }
                 },
                 React.createElement("style", {
@@ -16395,11 +14847,11 @@ var edit = function (_Component) {
                     {
                         className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
                         style: {
-                            boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
-                            borderStyle: borderType,
-                            borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                            borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            boxShadow: containerStyles[0].containerShadowHorizontal + "px " + containerStyles[0].containerShadowVertical + "px " + containerStyles[0].containerShadowBlur + "px " + containerStyles[0].containerShadowColor + " " + containerStyles[0].containerShadowPosition,
+                            borderStyle: containerStyles[0].borderType,
+                            borderWidth: borderBanner ? containerStyles[0].borderTop + "px " + containerStyles[0].borderRight + "px " + containerStyles[0].borderBottom + "px " + containerStyles[0].borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                            borderRadius: containerStyles[0].borderRadius + "px",
+                            borderColor: containerStyles[0].borderColor
                         }
                     },
                     React.createElement(
@@ -16445,10 +14897,11 @@ var edit = function (_Component) {
                                     return setAttributes({ title: newText });
                                 },
                                 style: {
-                                    color: titleColor,
-                                    fontWeight: titleWeight,
-                                    lineHeight: titleLine + "px",
-                                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                                    fontSize: titleFontSize,
+                                    color: titleStyles[0].titleColor,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    lineHeight: titleStyles[0].titleLine + "px",
+                                    textShadow: titleStyles[0].shadowHorizontal + "px " + titleStyles[0].shadowVertical + "px " + titleStyles[0].shadowBlur + "px " + titleStyles[0].shadowColor
                                 }
                             })
                         ),
@@ -16469,10 +14922,11 @@ var edit = function (_Component) {
                                     return setAttributes({ desc: newText });
                                 },
                                 style: {
-                                    color: descColor,
-                                    fontWeight: descWeight,
-                                    lineHeight: descLine + "px",
-                                    textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                                    fontSize: descFontSize,
+                                    color: descStyles[0].descColor,
+                                    fontWeight: descStyles[0].descWeight,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor
                                 }
                             })
                         )
@@ -16485,90 +14939,23 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
 ;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
-/* 222 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _generateCss = __webpack_require__(11);
-
-var _generateCss2 = _interopRequireDefault(_generateCss);
-
-var _generateCssUnit = __webpack_require__(12);
-
-var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        titleSizeUnit = _props$attributes.titleSizeUnit,
-        titleSize = _props$attributes.titleSize,
-        titleSizeTablet = _props$attributes.titleSizeTablet,
-        titleSizeMobile = _props$attributes.titleSizeMobile,
-        descSizeUnit = _props$attributes.descSizeUnit,
-        descSize = _props$attributes.descSize,
-        descSizeTablet = _props$attributes.descSizeTablet,
-        descSizeMobile = _props$attributes.descSizeMobile,
-        block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSize, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSize, descSizeUnit)
-        }
-    };
-    tablet_selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSizeTablet, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSizeTablet, descSizeUnit)
-        }
-    };
-    mobile_selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSizeMobile, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSizeMobile, descSizeUnit)
-        }
-    };
-
-    var styling_css = "";
-    var id = '#premium-banner-' + block_id;
-    if (classMigrate) {
-        id = '.premium-banner-' + block_id;
-    }
-
-    styling_css = (0, _generateCss2.default)(selectors, id);
-    styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
-
-    styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-
-    return styling_css;
-}
-exports.default = styling;
-
-/***/ }),
-/* 223 */
+/* 218 */,
+/* 219 */,
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16592,7 +14979,11 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
         borderBanner = _props$attributes.borderBanner,
+        imageID = _props$attributes.imageID,
         imageURL = _props$attributes.imageURL,
+        titleStyles = _props$attributes.titleStyles,
+        descStyles = _props$attributes.descStyles,
+        containerStyles = _props$attributes.containerStyles,
         title = _props$attributes.title,
         titleTag = _props$attributes.titleTag,
         desc = _props$attributes.desc,
@@ -16606,51 +14997,19 @@ var save = function save(props) {
         responsive = _props$attributes.responsive,
         background = _props$attributes.background,
         opacity = _props$attributes.opacity,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        titleColor = _props$attributes.titleColor,
-        titleBack = _props$attributes.titleBack,
-        titleWeight = _props$attributes.titleWeight,
-        titleLine = _props$attributes.titleLine,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        descColor = _props$attributes.descColor,
-        descLine = _props$attributes.descLine,
-        descWeight = _props$attributes.descWeight,
-        descShadowBlur = _props$attributes.descShadowBlur,
-        descShadowColor = _props$attributes.descShadowColor,
-        descShadowHorizontal = _props$attributes.descShadowHorizontal,
-        descShadowVertical = _props$attributes.descShadowVertical,
         urlCheck = _props$attributes.urlCheck,
-        url = _props$attributes.url,
         target = _props$attributes.target,
+        url = _props$attributes.url,
         sepColor = _props$attributes.sepColor,
         blur = _props$attributes.blur,
         bright = _props$attributes.bright,
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
         hue = _props$attributes.hue,
-        containerShadowBlur = _props$attributes.containerShadowBlur,
-        containerShadowColor = _props$attributes.containerShadowColor,
-        containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-        containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition,
-        paddingB = _props$attributes.paddingB,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        classMigrate = _props$attributes.classMigrate;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
@@ -16661,10 +15020,10 @@ var save = function save(props) {
             id: 'premium-banner-' + block_id,
             className: mainClasses + ' premium-banner__responsive_' + responsive + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile + ' premium-banner-' + block_id,
             style: {
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU
+                paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU
             }
         },
         React.createElement('style', {
@@ -16677,11 +15036,11 @@ var save = function save(props) {
             {
                 className: 'premium-banner__inner premium-banner__min premium-banner__' + effect + ' premium-banner__' + hoverEffect + ' hover_' + hovered,
                 style: {
-                    boxShadow: containerShadowHorizontal + 'px ' + containerShadowVertical + 'px ' + containerShadowBlur + 'px ' + containerShadowColor + ' ' + containerShadowPosition,
-                    borderStyle: borderType,
-                    borderWidth: borderBanner ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    boxShadow: containerStyles[0].containerShadowHorizontal + 'px ' + containerStyles[0].containerShadowVertical + 'px ' + containerStyles[0].containerShadowBlur + 'px ' + containerStyles[0].containerShadowColor + ' ' + containerStyles[0].containerShadowPosition,
+                    borderStyle: containerStyles[0].borderType,
+                    borderWidth: borderBanner ? containerStyles[0].borderTop + 'px ' + containerStyles[0].borderRight + 'px ' + containerStyles[0].borderBottom + 'px ' + containerStyles[0].borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor
                 }
             },
             React.createElement(
@@ -16723,10 +15082,11 @@ var save = function save(props) {
                         className: 'premium-banner__title',
                         value: title,
                         style: {
-                            color: titleColor,
-                            fontWeight: titleWeight,
-                            lineHeight: titleLine + "px",
-                            textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
+                            fontSize: titleFontSize,
+                            color: titleStyles[0].titleColor,
+                            fontWeight: titleStyles[0].titleWeight,
+                            lineHeight: titleStyles[0].titleLine + "px",
+                            textShadow: titleStyles[0].shadowHorizontal + 'px ' + titleStyles[0].shadowVertical + 'px ' + titleStyles[0].shadowBlur + 'px ' + titleStyles[0].shadowColor
                         }
                     })
                 ),
@@ -16743,10 +15103,11 @@ var save = function save(props) {
                         className: 'premium-banner__desc',
                         value: desc,
                         style: {
-                            color: descColor,
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px",
-                            textShadow: descShadowHorizontal + 'px ' + descShadowVertical + 'px ' + descShadowBlur + 'px ' + descShadowColor
+                            fontSize: descFontSize,
+                            color: descStyles[0].descColor,
+                            fontWeight: descStyles[0].descWeight,
+                            lineHeight: descStyles[0].descLine + "px",
+                            textShadow: descStyles[0].descShadowHorizontal + 'px ' + descStyles[0].descShadowVertical + 'px ' + descStyles[0].descShadowBlur + 'px ' + descStyles[0].descShadowColor
                         }
                     })
                 )
@@ -16763,7 +15124,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 224 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18014,7 +16375,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 225 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18047,6 +16408,8 @@ var attributes = {
         default: [{
             titleSizeUnit: 'px',
             titleSize: '20',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
             titleWeight: '',
             titleLine: '',
             titleColor: '',
@@ -18062,6 +16425,8 @@ var attributes = {
         default: [{
             descSizeUnit: 'px',
             descSize: '20',
+            descSizeTablet: '',
+            descSizeMobile: '',
             descWeight: '',
             descLine: '',
             descColor: '#000',
@@ -18148,107 +16513,6 @@ var attributes = {
         type: "number",
         default: 50
     },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: "20"
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleWeight: {
-        type: "number"
-    },
-    titleBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number",
-        default: "20"
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number"
-    },
-    descSizeMobile: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
     urlCheck: {
         type: "boolean",
         default: false
@@ -18286,40 +16550,7 @@ var attributes = {
         type: "number",
         default: "0"
     },
-    containerShadowColor: {
-        type: "string"
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
+
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -18332,12 +16563,6 @@ var attributes = {
         type: 'boolean',
         default: false
     },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
     classMigrate: {
         type: "boolean",
         default: false
@@ -18347,7 +16572,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 226 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18355,15 +16580,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(227);
+var _edit = __webpack_require__(224);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(229);
+var _save = __webpack_require__(226);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(230);
+var _deprecated = __webpack_require__(227);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -18569,7 +16794,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 227 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18593,11 +16818,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -18609,7 +16834,7 @@ var _premiumFonts = __webpack_require__(35);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -18617,7 +16842,7 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _styling = __webpack_require__(228);
+var _styling = __webpack_require__(225);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -18683,7 +16908,6 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockId = _props.clientId;
             var _props$attributes = this.props.attributes,
-                block_id = _props$attributes.block_id,
                 borderButton = _props$attributes.borderButton,
                 btnText = _props$attributes.btnText,
                 btnSize = _props$attributes.btnSize,
@@ -18692,45 +16916,14 @@ var edit = function (_Component) {
                 btnTarget = _props$attributes.btnTarget,
                 effect = _props$attributes.effect,
                 effectDir = _props$attributes.effectDir,
-                textColor = _props$attributes.textColor,
-                textHoverColor = _props$attributes.textHoverColor,
-                backColor = _props$attributes.backColor,
-                backOpacity = _props$attributes.backOpacity,
-                backHoverColor = _props$attributes.backHoverColor,
                 slideColor = _props$attributes.slideColor,
-                textSizeUnit = _props$attributes.textSizeUnit,
-                textSize = _props$attributes.textSize,
-                textSizeTablet = _props$attributes.textSizeTablet,
-                textSizeMobile = _props$attributes.textSizeMobile,
-                textFontFamily = _props$attributes.textFontFamily,
-                textWeight = _props$attributes.textWeight,
-                textLetter = _props$attributes.textLetter,
-                textUpper = _props$attributes.textUpper,
-                textLine = _props$attributes.textLine,
-                textStyle = _props$attributes.textStyle,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                borderRadius = _props$attributes.borderRadius,
-                borderColor = _props$attributes.borderColor,
-                borderHoverColor = _props$attributes.borderHoverColor,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                padding = _props$attributes.padding,
-                paddingU = _props$attributes.paddingU,
-                btnShadowBlur = _props$attributes.btnShadowBlur,
-                btnShadowColor = _props$attributes.btnShadowColor,
-                btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-                btnShadowVertical = _props$attributes.btnShadowVertical,
-                btnShadowPosition = _props$attributes.btnShadowPosition,
+                block_id = _props$attributes.block_id,
                 hideDesktop = _props$attributes.hideDesktop,
+                classMigrate = _props$attributes.classMigrate,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                textStyles = _props$attributes.textStyles,
+                btnStyles = _props$attributes.btnStyles;
 
 
             var SIZE = [{
@@ -18921,74 +17114,74 @@ var edit = function (_Component) {
                     },
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: textFontFamily,
+                        value: textStyles[0].textFontFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeTextFamily
                     }),
                     React.createElement(_premiumTypo2.default, (_React$createElement = {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveTextStyles,
                         fontSizeType: {
-                            value: textSizeUnit,
+                            value: textStyles[0].textSizeUnit,
                             label: __("textSizeUnit")
                         },
                         fontSize: {
-                            value: textSize,
+                            value: textStyles[0].textSize,
                             label: __("textSize")
                         },
                         fontSizeMobile: {
-                            value: textSizeMobile,
+                            value: textStyles[0].textSizeMobile,
                             label: __("textSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: textSizeTablet,
+                            value: textStyles[0].textSizeTablet,
                             label: __("textSizeTablet")
                         },
-                        weight: textWeight,
-                        style: textStyle,
-                        spacing: textLetter,
-                        upper: textUpper,
-                        line: textLine,
+                        weight: textStyles[0].textWeight,
+                        style: textStyles[0].textStyle,
+                        spacing: textStyles[0].textLetter,
+                        upper: textStyles[0].textUpper,
+                        line: textStyles[0].textLine,
                         onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ textSize: newSize });
+                            return saveTextStyles({ textSize: newSize });
                         },
                         onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ textSizeTablet: newSize });
+                            return saveTextStyles({ textSizeTablet: newSize });
                         },
                         onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ textSizeMobile: newSize });
+                            return saveTextStyles({ textSizeMobile: newSize });
                         },
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ textWeight: newWeight });
+                            return saveTextStyles({ textWeight: newWeight });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ textLine: newValue });
+                            return saveTextStyles({ textLine: newValue });
                         }
                     }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
-                        return setAttributes({ textSize: newSize });
+                        return saveTextStyles({ textSize: newSize });
                     }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ textStyle: newStyle });
+                        return saveTextStyles({ textStyle: newStyle });
                     }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ textLetter: newValue });
+                        return saveTextStyles({ textLetter: newValue });
                     }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
-                        return setAttributes({ textUpper: check });
+                        return saveTextStyles({ textUpper: check });
                     }), _React$createElement)),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
+                        color: textStyles[0].shadowColor,
+                        blur: textStyles[0].shadowBlur,
+                        horizontal: textStyles[0].shadowHorizontal,
+                        vertical: textStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ shadowColor: newColor.hex });
+                            return saveTextStyles({ shadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ shadowBlur: newBlur });
+                            return saveTextStyles({ shadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ shadowHorizontal: newValue });
+                            return saveTextStyles({ shadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ shadowVertical: newValue });
+                            return saveTextStyles({ shadowVertical: newValue });
                         }
                     })
                 ),
@@ -19031,9 +17224,9 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: textColor,
+                                        value: btnStyles[0].textColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 textColor: newValue
                                             });
                                         },
@@ -19046,15 +17239,15 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: backColor,
+                                        colorValue: btnStyles[0].backColor,
                                         onChangeColor: function onChangeColor(newvalue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backColor: newvalue
                                             });
                                         },
-                                        opacityValue: backOpacity,
+                                        opacityValue: btnStyles[0].backOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backOpacity: value
                                             });
                                         }
@@ -19071,9 +17264,9 @@ var edit = function (_Component) {
                                         __("Text Hover Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: textHoverColor,
+                                        value: btnStyles[0].textHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 textHoverColor: newValue
                                             });
                                         },
@@ -19085,9 +17278,9 @@ var edit = function (_Component) {
                                         "radial" !== effect ? __("Background Hover Color") : __("Background Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: backHoverColor,
+                                        value: btnStyles[0].backHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backHoverColor: newValue,
                                                 slideColor: newValue
                                             });
@@ -19100,9 +17293,9 @@ var edit = function (_Component) {
                                         __("Border Hover Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: borderHoverColor,
+                                        value: btnStyles[0].borderHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 borderHoverColor: newValue
                                             });
                                         },
@@ -19119,23 +17312,23 @@ var edit = function (_Component) {
                         }
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderType: btnStyles[0].borderType,
+                        borderWidth: btnStyles[0].borderWidth,
+                        top: btnStyles[0].borderTop,
+                        right: btnStyles[0].borderRight,
+                        bottom: btnStyles[0].borderBottom,
+                        left: btnStyles[0].borderLeft,
+                        borderColor: btnStyles[0].borderColor,
+                        borderRadius: btnStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return saveBtnStyles({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
                                 right = _ref.right,
                                 bottom = _ref.bottom,
                                 left = _ref.left;
-                            return setAttributes({
+                            return saveBtnStyles({
                                 borderButton: true,
                                 borderTop: top,
                                 borderRight: right,
@@ -19144,56 +17337,56 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveBtnStyles({ borderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadius: newrRadius });
+                            return saveBtnStyles({ borderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         label: "Shadow",
                         inner: true,
-                        color: btnShadowColor,
-                        blur: btnShadowBlur,
-                        horizontal: btnShadowHorizontal,
-                        vertical: btnShadowVertical,
-                        position: btnShadowPosition,
+                        color: btnStyles[0].btnShadowColor,
+                        blur: btnStyles[0].btnShadowBlur,
+                        horizontal: btnStyles[0].btnShadowHorizontal,
+                        vertical: btnStyles[0].btnShadowVertical,
+                        position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowColor: newColor === undefined ? "transparent" : newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowBlur: newBlur === undefined ? 0 : newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowHorizontal: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowVertical: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowPosition: newValue === undefined ? 0 : newValue
                             });
                         }
                     }),
                     React.createElement(_premiumSizeUnits2.default, {
                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                            return setAttributes({ paddingU: newValue });
+                            return saveBtnStyles({ paddingU: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Padding"),
-                        value: padding,
+                        value: btnStyles[0].padding,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ padding: newValue });
+                            return saveBtnStyles({ padding: newValue });
                         }
                     })
                 ),
@@ -19265,7 +17458,7 @@ exports.default = edit;
 ;
 
 /***/ }),
-/* 228 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19275,11 +17468,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -19331,7 +17524,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 229 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19357,7 +17550,6 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
         borderButton = _props$attributes.borderButton,
         btnText = _props$attributes.btnText,
         btnSize = _props$attributes.btnSize,
@@ -19366,41 +17558,14 @@ var save = function save(props) {
         btnTarget = _props$attributes.btnTarget,
         effect = _props$attributes.effect,
         effectDir = _props$attributes.effectDir,
-        textColor = _props$attributes.textColor,
-        textHoverColor = _props$attributes.textHoverColor,
-        backColor = _props$attributes.backColor,
-        backHoverColor = _props$attributes.backHoverColor,
         slideColor = _props$attributes.slideColor,
-        textFontFamily = _props$attributes.textFontFamily,
-        textWeight = _props$attributes.textWeight,
-        textLine = _props$attributes.textLine,
-        textLetter = _props$attributes.textLetter,
-        textStyle = _props$attributes.textStyle,
-        backOpacity = _props$attributes.backOpacity,
-        textUpper = _props$attributes.textUpper,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        borderHoverColor = _props$attributes.borderHoverColor,
-        padding = _props$attributes.padding,
-        paddingU = _props$attributes.paddingU,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        btnShadowBlur = _props$attributes.btnShadowBlur,
-        btnShadowColor = _props$attributes.btnShadowColor,
-        btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes.btnShadowVertical,
-        btnShadowPosition = _props$attributes.btnShadowPosition,
+        block_id = _props$attributes.block_id,
         hideDesktop = _props$attributes.hideDesktop,
+        classMigrate = _props$attributes.classMigrate,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        textStyles = _props$attributes.textStyles,
+        btnStyles = _props$attributes.btnStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-button');
@@ -19448,7 +17613,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 230 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20167,7 +18332,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 231 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20175,15 +18340,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _attributes = __webpack_require__(98);
+var _attributes = __webpack_require__(97);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(232);
+var _edit = __webpack_require__(229);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(234);
+var _save = __webpack_require__(231);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -20191,7 +18356,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(235);
+var _deprecated = __webpack_require__(232);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -20218,7 +18383,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 232 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20240,11 +18405,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -20264,7 +18429,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(233);
+var _styling = __webpack_require__(230);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -20335,6 +18500,7 @@ var edit = function (_Component) {
                 blockId = _props2.clientId;
             var _props$attributes = this.props.attributes,
                 block_id = _props$attributes.block_id,
+                borderCount = _props$attributes.borderCount,
                 increment = _props$attributes.increment,
                 time = _props$attributes.time,
                 delay = _props$attributes.delay,
@@ -20342,85 +18508,32 @@ var edit = function (_Component) {
                 flexDir = _props$attributes.flexDir,
                 numberSizeUnit = _props$attributes.numberSizeUnit,
                 numberSize = _props$attributes.numberSize,
-                numberSizeMobile = _props$attributes.numberSizeMobile,
                 numberSizeTablet = _props$attributes.numberSizeTablet,
+                numberSizeMobile = _props$attributes.numberSizeMobile,
                 numberColor = _props$attributes.numberColor,
                 numberWeight = _props$attributes.numberWeight,
+                prefix = _props$attributes.prefix,
+                suffix = _props$attributes.suffix,
                 icon = _props$attributes.icon,
                 iconSpacing = _props$attributes.iconSpacing,
-                iconSize = _props$attributes.iconSize,
-                iconColor = _props$attributes.iconColor,
-                titleCheck = _props$attributes.titleCheck,
-                titleTxt = _props$attributes.titleTxt,
-                titleColor = _props$attributes.titleColor,
-                titleSizeUnit = _props$attributes.titleSizeUnit,
-                titleSize = _props$attributes.titleSize,
-                titleSizeMobile = _props$attributes.titleSizeMobile,
-                titleSizeTablet = _props$attributes.titleSizeTablet,
-                titleSpacing = _props$attributes.titleSpacing,
-                titleStyle = _props$attributes.titleStyle,
-                titleUpper = _props$attributes.titleUpper,
-                titleT = _props$attributes.titleT,
-                titleB = _props$attributes.titleB,
-                titleWeight = _props$attributes.titleWeight,
                 imageID = _props$attributes.imageID,
                 imageURL = _props$attributes.imageURL,
                 iconType = _props$attributes.iconType,
                 iconCheck = _props$attributes.iconCheck,
-                prefix = _props$attributes.prefix,
-                prefixTxt = _props$attributes.prefixTxt,
-                prefixSize = _props$attributes.prefixSize,
-                prefixSizeUnit = _props$attributes.prefixSizeUnit,
-                prefixSizeTablet = _props$attributes.prefixSizeTablet,
-                prefixSizeMobile = _props$attributes.prefixSizeMobile,
-                prefixColor = _props$attributes.prefixColor,
-                prefixWeight = _props$attributes.prefixWeight,
-                prefixGap = _props$attributes.prefixGap,
-                suffix = _props$attributes.suffix,
-                suffixTxt = _props$attributes.suffixTxt,
-                suffixSizeUnit = _props$attributes.suffixSizeUnit,
-                suffixSize = _props$attributes.suffixSize,
-                suffixSizeTablet = _props$attributes.suffixSizeTablet,
-                suffixSizeMobile = _props$attributes.suffixSizeMobile,
-                suffixColor = _props$attributes.suffixColor,
-                suffixWeight = _props$attributes.suffixWeight,
-                suffixGap = _props$attributes.suffixGap,
+                iconSize = _props$attributes.iconSize,
+                iconColor = _props$attributes.iconColor,
                 selfAlign = _props$attributes.selfAlign,
+                titleCheck = _props$attributes.titleCheck,
+                titleTxt = _props$attributes.titleTxt,
                 faIcon = _props$attributes.faIcon,
-                containerBack = _props$attributes.containerBack,
-                containerOpacity = _props$attributes.containerOpacity,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                shadowPosition = _props$attributes.shadowPosition,
-                backgroundImageID = _props$attributes.backgroundImageID,
-                backgroundImageURL = _props$attributes.backgroundImageURL,
-                fixed = _props$attributes.fixed,
-                backgroundRepeat = _props$attributes.backgroundRepeat,
-                backgroundPosition = _props$attributes.backgroundPosition,
-                backgroundSize = _props$attributes.backgroundSize,
-                borderType = _props$attributes.borderType,
-                borderColor = _props$attributes.borderColor,
-                borderRadius = _props$attributes.borderRadius,
-                borderWidth = _props$attributes.borderWidth,
-                borderCount = _props$attributes.borderCount,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                titleFamily = _props$attributes.titleFamily,
                 counterFamily = _props$attributes.counterFamily,
-                prefixFamily = _props$attributes.prefixFamily,
-                suffixFamily = _props$attributes.suffixFamily,
-                paddingT = _props$attributes.paddingT,
-                paddingR = _props$attributes.paddingR,
-                paddingB = _props$attributes.paddingB,
-                paddingL = _props$attributes.paddingL,
-                paddingU = _props$attributes.paddingU,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                titleStyles = _props$attributes.titleStyles,
+                containerStyles = _props$attributes.containerStyles,
+                suffixStyles = _props$attributes.suffixStyles,
+                prefixStyles = _props$attributes.prefixStyles;
 
 
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
@@ -20782,39 +18895,39 @@ var edit = function (_Component) {
                     },
                     React.createElement(TextControl, {
                         label: __("Prefix"),
-                        value: prefixTxt,
+                        value: prefixStyles[0].prefixTxt,
                         onChange: function onChange(value) {
                             return setAttributes({ prefixTxt: value });
                         }
                     }),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: prefixFamily,
+                        value: prefixStyles[0].prefixFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangePrefixFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight"],
-                        setAttributes: setAttributes,
+                        setAttributes: savePrefixStyle,
                         fontSizeType: {
-                            value: prefixSizeUnit,
+                            value: prefixStyles[0].prefixSizeUnit,
                             label: __("prefixSizeUnit")
                         },
                         fontSize: {
-                            value: prefixSize,
+                            value: prefixStyles[0].prefixSize,
                             label: __("prefixSize")
                         },
                         fontSizeMobile: {
-                            value: prefixSizeMobile,
+                            value: prefixStyles[0].prefixSizeMobile,
                             label: __("prefixSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: prefixSizeTablet,
+                            value: prefixStyles[0].prefixSizeTablet,
                             label: __("prefixSizeTablet")
                         },
-                        weight: prefixWeight,
+                        weight: prefixStyles[0].prefixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ prefixWeight: newWeight });
+                            return savePrefixStyle({ prefixWeight: newWeight });
                         }
                     }),
                     React.createElement(
@@ -20826,9 +18939,9 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: prefixColor,
+                            value: prefixStyles[0].prefixColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return savePrefixStyle({
                                     prefixColor: newValue === undefined ? "transparent" : newValue
                                 });
                             },
@@ -20837,9 +18950,9 @@ var edit = function (_Component) {
                     ),
                     React.createElement(RangeControl, {
                         label: __("Gap After (PX)"),
-                        value: prefixGap,
+                        value: prefixStyles[0].prefixGap,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ prefixGap: newValue });
+                            return savePrefixStyle({ prefixGap: newValue });
                         }
                     })
                 ),
@@ -20852,39 +18965,39 @@ var edit = function (_Component) {
                     },
                     React.createElement(TextControl, {
                         label: __("Suffix"),
-                        value: suffixTxt,
+                        value: suffixStyles[0].suffixTxt,
                         onChange: function onChange(value) {
-                            return setAttributes({ suffixTxt: value });
+                            return savePrefixStyle({ suffixTxt: value });
                         }
                     }),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: suffixFamily,
+                        value: suffixStyles[0].suffixFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeSuffixFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveSuffixStyle,
                         fontSizeType: {
-                            value: suffixSizeUnit,
+                            value: suffixStyles[0].suffixSizeUnit,
                             label: __("suffixSizeUnit")
                         },
                         fontSize: {
-                            value: suffixSize,
+                            value: suffixStyles[0].suffixSize,
                             label: __("suffixSize")
                         },
                         fontSizeMobile: {
-                            value: suffixSizeMobile,
+                            value: suffixStyles[0].suffixSizeMobile,
                             label: __("suffixSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: suffixSizeTablet,
+                            value: suffixStyles[0].suffixSizeTablet,
                             label: __("suffixSizeTablet")
                         },
-                        weight: suffixWeight,
+                        weight: suffixStyles[0].suffixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ suffixWeight: newWeight });
+                            return saveSuffixStyle({ suffixWeight: newWeight });
                         }
                     }),
                     React.createElement(
@@ -20896,9 +19009,9 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: suffixColor,
+                            value: suffixStyles[0].suffixColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveSuffixStyle({
                                     suffixColor: newValue === undefined ? "transparent" : newValue
                                 });
                             },
@@ -20907,9 +19020,9 @@ var edit = function (_Component) {
                     ),
                     React.createElement(RangeControl, {
                         label: __("Gap Before (PX)"),
-                        value: suffixGap,
+                        value: suffixStyles[0].suffixGap,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ suffixGap: newValue });
+                            return saveSuffixStyle({ suffixGap: newValue });
                         }
                     })
                 ),
@@ -20922,51 +19035,51 @@ var edit = function (_Component) {
                     },
                     React.createElement(TextControl, {
                         label: __("Title Text"),
-                        value: titleTxt,
+                        value: titleStyles[0].titleTxt,
                         onChange: function onChange(value) {
-                            return setAttributes({ titleTxt: value });
+                            return saveTitleStyles({ titleTxt: value });
                         }
                     }),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: titleFamily,
+                        value: titleStyles[0].titleFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeTitleFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "spacing", "style", "upper"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveTitleStyles,
                         fontSizeType: {
-                            value: titleSizeUnit,
+                            value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
                         },
                         fontSize: {
-                            value: titleSize,
+                            value: titleStyles[0].titleSize,
                             label: __("titleSize")
                         },
                         fontSizeMobile: {
-                            value: titleSizeMobile,
+                            value: titleStyles[0].titleSizeMobile,
                             label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: titleSizeTablet,
+                            value: titleStyles[0].titleSizeTablet,
                             label: __("titleSizeTablet")
                         },
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleSpacing,
-                        upper: titleUpper,
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleSpacing,
+                        upper: titleStyles[0].titleUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight });
+                            return saveTitleStyles({ titleWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
+                            return saveTitleStyles({ titleStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleSpacing: newValue });
+                            return saveTitleStyles({ titleSpacing: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
+                            return saveTitleStyles({ titleUpper: check });
                         }
                     }),
                     React.createElement(
@@ -20978,9 +19091,9 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: titleColor,
+                            value: titleStyles[0].titleColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveTitleStyles({
                                     titleColor: newValue === undefined ? "transparent" : newValue
                                 });
                             },
@@ -20996,16 +19109,16 @@ var edit = function (_Component) {
                         },
                         React.createElement(RangeControl, {
                             label: __("Margin Top (PX)"),
-                            value: titleT,
+                            value: titleStyles[0].titleT,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ titleT: newValue });
+                                return saveTitleStyles({ titleT: newValue });
                             }
                         }),
                         React.createElement(RangeControl, {
                             label: __("Margin Bottom (PX)"),
-                            value: titleB,
+                            value: titleStyles[0].titleB,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ titleB: newValue });
+                                return saveTitleStyles({ titleB: newValue });
                             }
                         })
                     )
@@ -21027,68 +19140,68 @@ var edit = function (_Component) {
                         ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
-                            colorValue: containerBack,
+                            colorValue: containerStyles[0].containerBack,
                             onChangeColor: function onChangeColor(newValue) {
-                                return setAttributes({
+                                return saveContainerStyle({
                                     containerBack: newValue
                                 });
                             },
-                            opacityValue: containerOpacity,
+                            opacityValue: containerStyles[0].containerOpacity,
                             onChangeOpacity: function onChangeOpacity(value) {
-                                return setAttributes({ containerOpacity: value });
+                                return saveContainerStyle({ containerOpacity: value });
                             }
                         })
                     ),
                     React.createElement(_premiumBackground2.default, {
-                        imageID: backgroundImageID,
-                        imageURL: backgroundImageURL,
-                        backgroundPosition: backgroundPosition,
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundSize: backgroundSize,
-                        fixed: fixed,
+                        imageID: containerStyles[0].backgroundImageID,
+                        imageURL: containerStyles[0].backgroundImageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
                         onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
+                            saveContainerStyle({
                                 backgroundImageID: media.id,
                                 backgroundImageURL: media.url
                             });
                         },
                         onRemoveImage: function onRemoveImage(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 backgroundImageURL: "",
                                 backgroundImageID: ""
                             });
                         },
                         onChangeBackPos: function onChangeBackPos(newValue) {
-                            return setAttributes({ backgroundPosition: newValue });
+                            return saveContainerStyle({ backgroundPosition: newValue });
                         },
                         onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                            return setAttributes({ backgroundRepeat: newValue });
+                            return saveContainerStyle({ backgroundRepeat: newValue });
                         },
                         onChangeBackSize: function onChangeBackSize(newValue) {
-                            return setAttributes({ backgroundSize: newValue });
+                            return saveContainerStyle({ backgroundSize: newValue });
                         },
                         onChangeFixed: function onChangeFixed(check) {
-                            return setAttributes({ fixed: check });
+                            return saveContainerStyle({ fixed: check });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderType: containerStyles[0].borderType,
+                        borderWidth: containerStyles[0].borderWidth,
+                        top: containerStyles[0].borderTop,
+                        right: containerStyles[0].borderRight,
+                        bottom: containerStyles[0].borderBottom,
+                        left: containerStyles[0].borderLeft,
+                        borderColor: containerStyles[0].borderColor,
+                        borderRadius: containerStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return saveContainerStyle({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
                                 right = _ref.right,
                                 bottom = _ref.bottom,
                                 left = _ref.left;
-                            return setAttributes({
+                            return saveContainerStyle({
                                 borderCount: true,
                                 borderTop: top,
                                 borderRight: right,
@@ -21097,78 +19210,76 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveContainerStyle({ borderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
-                            return setAttributes({ borderRadius: newRadius });
+                            return saveContainerStyle({ borderRadius: newRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
-                        position: shadowPosition,
+                        color: containerStyles[0].shadowColor,
+                        blur: containerStyles[0].shadowBlur,
+                        horizontal: containerStyles[0].shadowHorizontal,
+                        vertical: containerStyles[0].shadowVertical,
+                        position: containerStyles[0].shadowPosition,
                         withAlpha: true,
                         onChangeColor: function onChangeColor(newColor) {
 
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowColor: newColor.rgb
                             });
-
-                            console.log(shadowColor);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowBlur: newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowHorizontal: newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowVertical: newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowPosition: newValue
                             });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
+                        paddingTop: containerStyles[0].paddingT,
+                        paddingRight: containerStyles[0].paddingR,
+                        paddingBottom: containerStyles[0].paddingB,
+                        paddingLeft: containerStyles[0].paddingL,
                         showUnits: true,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingT: value || 0
                             });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingR: value || 0
                             });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingB: value || 0
                             });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingL: value || 0
                             });
                         },
-                        selectedUnit: paddingU,
+                        selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ paddingU: newvalue });
+                            return saveContainerStyle({ paddingU: newvalue });
                         }
                     })
                 ),
@@ -21344,7 +19455,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 233 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21354,11 +19465,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -21449,7 +19560,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 234 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21479,68 +19590,34 @@ var save = function save(props) {
         delay = _props$attributes.delay,
         align = _props$attributes.align,
         flexDir = _props$attributes.flexDir,
+        numberSizeUnit = _props$attributes.numberSizeUnit,
+        numberSize = _props$attributes.numberSize,
+        numberSizeTablet = _props$attributes.numberSizeTablet,
+        numberSizeMobile = _props$attributes.numberSizeMobile,
         numberColor = _props$attributes.numberColor,
         numberWeight = _props$attributes.numberWeight,
         prefix = _props$attributes.prefix,
-        prefixTxt = _props$attributes.prefixTxt,
-        prefixColor = _props$attributes.prefixColor,
-        prefixWeight = _props$attributes.prefixWeight,
-        prefixGap = _props$attributes.prefixGap,
         suffix = _props$attributes.suffix,
-        suffixTxt = _props$attributes.suffixTxt,
-        suffixColor = _props$attributes.suffixColor,
-        suffixWeight = _props$attributes.suffixWeight,
-        suffixGap = _props$attributes.suffixGap,
-        iconCheck = _props$attributes.iconCheck,
         icon = _props$attributes.icon,
         iconSpacing = _props$attributes.iconSpacing,
-        iconType = _props$attributes.iconType,
+        imageID = _props$attributes.imageID,
         imageURL = _props$attributes.imageURL,
+        iconType = _props$attributes.iconType,
+        iconCheck = _props$attributes.iconCheck,
         iconSize = _props$attributes.iconSize,
         iconColor = _props$attributes.iconColor,
         selfAlign = _props$attributes.selfAlign,
         titleCheck = _props$attributes.titleCheck,
         titleTxt = _props$attributes.titleTxt,
-        titleColor = _props$attributes.titleColor,
-        titleSpacing = _props$attributes.titleSpacing,
-        titleStyle = _props$attributes.titleStyle,
-        titleUpper = _props$attributes.titleUpper,
-        titleT = _props$attributes.titleT,
-        titleB = _props$attributes.titleB,
-        titleWeight = _props$attributes.titleWeight,
         faIcon = _props$attributes.faIcon,
-        containerBack = _props$attributes.containerBack,
-        containerOpacity = _props$attributes.containerOpacity,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
-        backgroundImageURL = _props$attributes.backgroundImageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderColor = _props$attributes.borderColor,
-        borderRadius = _props$attributes.borderRadius,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        titleFamily = _props$attributes.titleFamily,
         counterFamily = _props$attributes.counterFamily,
-        prefixFamily = _props$attributes.prefixFamily,
-        suffixFamily = _props$attributes.suffixFamily,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        titleStyles = _props$attributes.titleStyles,
+        containerStyles = _props$attributes.containerStyles,
+        suffixStyles = _props$attributes.suffixStyles,
+        prefixStyles = _props$attributes.prefixStyles;
 
 
     var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
@@ -21691,7 +19768,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 235 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21701,7 +19778,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(98);
+var _attributes = __webpack_require__(97);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -23099,7 +21176,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 236 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23111,19 +21188,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(237);
+var _edit = __webpack_require__(234);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(239);
+var _save = __webpack_require__(236);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(240);
+var _deprecated = __webpack_require__(237);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(364);
+var _attributes = __webpack_require__(238);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -23148,7 +21225,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 237 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23157,6 +21234,8 @@ registerBlockType("premium/dheading-block", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23172,11 +21251,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -23184,7 +21263,7 @@ var _premiumFonts = __webpack_require__(35);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _styling = __webpack_require__(238);
+var _styling = __webpack_require__(235);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -23256,91 +21335,14 @@ var edit = function (_Component) {
                 contentAlign = _props$attributes.contentAlign,
                 firstHeading = _props$attributes.firstHeading,
                 secondHeading = _props$attributes.secondHeading,
+                titleTag = _props$attributes.titleTag,
                 display = _props$attributes.display,
-                firstColor = _props$attributes.firstColor,
-                firstBackground = _props$attributes.firstBackground,
-                firstOpacity = _props$attributes.firstOpacity,
-                firstSizeUnit = _props$attributes.firstSizeUnit,
-                firstSize = _props$attributes.firstSize,
-                firstSizeTablet = _props$attributes.firstSizeTablet,
-                firstSizeMobile = _props$attributes.firstSizeMobile,
-                firstFamily = _props$attributes.firstFamily,
-                firstStyle = _props$attributes.firstStyle,
-                firstUpper = _props$attributes.firstUpper,
-                firstLetter = _props$attributes.firstLetter,
-                firstWeight = _props$attributes.firstWeight,
-                firstBorderType = _props$attributes.firstBorderType,
-                firstBorderWidth = _props$attributes.firstBorderWidth,
-                firstBorderTop = _props$attributes.firstBorderTop,
-                firstBorderRight = _props$attributes.firstBorderRight,
-                firstBorderBottom = _props$attributes.firstBorderBottom,
-                firstBorderLeft = _props$attributes.firstBorderLeft,
-                firstBorderRadius = _props$attributes.firstBorderRadius,
-                firstBorderColor = _props$attributes.firstBorderColor,
-                firstPadding = _props$attributes.firstPadding,
-                firstMarginR = _props$attributes.firstMarginR,
-                firstMarginL = _props$attributes.firstMarginL,
-                firstClip = _props$attributes.firstClip,
-                firstAnim = _props$attributes.firstAnim,
-                firstStroke = _props$attributes.firstStroke,
-                firstClipColor = _props$attributes.firstClipColor,
-                firstShadowBlur = _props$attributes.firstShadowBlur,
-                firstShadowColor = _props$attributes.firstShadowColor,
-                firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes.firstShadowVertical,
-                secondColor = _props$attributes.secondColor,
-                secondBackground = _props$attributes.secondBackground,
-                secondOpacity = _props$attributes.secondOpacity,
-                secondSizeUnit = _props$attributes.secondSizeUnit,
-                secondSize = _props$attributes.secondSize,
-                secondSizeTablet = _props$attributes.secondSizeTablet,
-                secondSizeMobile = _props$attributes.secondSizeMobile,
-                secondFamily = _props$attributes.secondFamily,
-                secondLetter = _props$attributes.secondLetter,
-                secondUpper = _props$attributes.secondUpper,
-                secondWeight = _props$attributes.secondWeight,
-                secondStyle = _props$attributes.secondStyle,
-                secondBorderType = _props$attributes.secondBorderType,
-                secondBorderWidth = _props$attributes.secondBorderWidth,
-                secondBorderTop = _props$attributes.secondBorderTop,
-                secondBorderRight = _props$attributes.secondBorderRight,
-                secondBorderBottom = _props$attributes.secondBorderBottom,
-                secondBorderLeft = _props$attributes.secondBorderLeft,
-                secondBorderRadius = _props$attributes.secondBorderRadius,
-                secondBorderColor = _props$attributes.secondBorderColor,
-                secondPadding = _props$attributes.secondPadding,
-                secondMarginL = _props$attributes.secondMarginL,
-                secondMarginR = _props$attributes.secondMarginR,
-                secondClip = _props$attributes.secondClip,
-                secondStroke = _props$attributes.secondStroke,
-                secondAnim = _props$attributes.secondAnim,
-                secondClipColor = _props$attributes.secondClipColor,
-                secondShadowBlur = _props$attributes.secondShadowBlur,
-                secondShadowColor = _props$attributes.secondShadowColor,
-                secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes.secondShadowVertical,
+                firstStyles = _props$attributes.firstStyles,
+                secondStyles = _props$attributes.secondStyles,
+                containerStyles = _props$attributes.containerStyles,
                 link = _props$attributes.link,
                 target = _props$attributes.target,
                 headingURL = _props$attributes.headingURL,
-                containerBack = _props$attributes.containerBack,
-                containerOpacity = _props$attributes.containerOpacity,
-                imageID = _props$attributes.imageID,
-                imageURL = _props$attributes.imageURL,
-                fixed = _props$attributes.fixed,
-                backgroundRepeat = _props$attributes.backgroundRepeat,
-                backgroundPosition = _props$attributes.backgroundPosition,
-                backgroundSize = _props$attributes.backgroundSize,
-                containerBorderType = _props$attributes.containerBorderType,
-                containerBorderWidth = _props$attributes.containerBorderWidth,
-                containerBorderTop = _props$attributes.containerBorderTop,
-                containerBorderRight = _props$attributes.containerBorderRight,
-                containerBorderBottom = _props$attributes.containerBorderBottom,
-                containerBorderLeft = _props$attributes.containerBorderLeft,
-                containerBorderRadius = _props$attributes.containerBorderRadius,
-                containerBorderColor = _props$attributes.containerBorderColor,
-                containerBorder = _props$attributes.containerBorder,
-                firstBorder = _props$attributes.firstBorder,
-                secondBorder = _props$attributes.secondBorder,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
@@ -23364,7 +21366,7 @@ var edit = function (_Component) {
             };
 
             var onChangeFirstFamily = function onChangeFirstFamily(fontFamily) {
-                setAttributes({ firstFamily: fontFamily });
+                saveStyles({ firstFamily: fontFamily }, firstStyles);
                 if (!fontFamily) {
                     return;
                 }
@@ -23377,17 +21379,25 @@ var edit = function (_Component) {
                 if (!fontFamily) {
                     return;
                 }
-
                 addFontToHead(fontFamily);
             };
-
-            var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
 
             var element = document.getElementById("premium-style-dual-" + blockId.substr(0, 6));
 
             if (null != element && "undefined" != typeof element) {
                 element.innerHTML = (0, _styling2.default)(this.props);
             }
+            var saveStyles = function saveStyles(value, obj) {
+                var newUpdate = obj.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    obj: newUpdate
+                });
+            };
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -23456,9 +21466,9 @@ var edit = function (_Component) {
                     },
                     React.createElement(ToggleControl, {
                         label: __("Clipped"),
-                        checked: firstClip,
+                        checked: firstStyles[0].firstClip,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ firstClip: newValue });
+                            return saveStyles({ firstClip: newValue }, firstStyles);
                         }
                     }),
                     firstClip && React.createElement(
@@ -23466,22 +21476,22 @@ var edit = function (_Component) {
                         null,
                         React.createElement(ToggleControl, {
                             label: __("Animated"),
-                            checked: firstAnim,
+                            checked: firstStyles[0].firstAnim,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ firstAnim: newValue });
+                                return saveStyles({ firstAnim: newValue }, firstStyles);
                             }
                         }),
                         React.createElement(ToggleControl, {
                             label: __("Stroke"),
-                            checked: firstStroke,
+                            checked: firstStyles[0].firstStroke,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ firstStroke: newValue });
+                                return saveStyles({ firstStroke: newValue }, firstStyles);
                             }
                         })
                     ),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: firstFamily,
+                        value: firstStyles[0].firstFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeFirstFamily
                     }),
@@ -23489,11 +21499,11 @@ var edit = function (_Component) {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: firstSizeUnit,
+                            value: firstStyles[0].firstSizeUnit,
                             label: __("firstSizeUnit")
                         },
                         fontSize: {
-                            value: firstSize,
+                            value: firstStyles[0].firstSize,
                             label: __("firstSize")
                         },
                         fontSizeMobile: {
@@ -23504,21 +21514,21 @@ var edit = function (_Component) {
                             value: firstSizeTablet,
                             label: __("firstSizeTablet")
                         },
-                        weight: firstWeight,
-                        style: firstStyle,
-                        spacing: firstLetter,
-                        upper: firstUpper,
+                        weight: firstStyles[0].firstWeight,
+                        style: firstStyles[0].firstStyle,
+                        spacing: firstStyles[0].firstLetter,
+                        upper: firstStyles[0].firstUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ firstWeight: newWeight || 500 });
+                            return saveStyles({ firstWeight: newWeight || 500 }, firstStyles);
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ firstStyle: newStyle });
+                            return saveStyles({ firstStyle: newStyle }, firstStyles);
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ firstLetter: newValue });
+                            return saveStyles({ firstLetter: newValue }, firstStyles);
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ firstUpper: check });
+                            return saveStyles({ firstUpper: check }, firstStyles);
                         }
                     }),
                     !firstClip && React.createElement(
@@ -23552,11 +21562,11 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstColor,
+                                        value: firstStyles[0].firstColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 firstColor: newValue
-                                            });
+                                            }, firstStyles);
                                         },
                                         allowReset: true
                                     }),
@@ -23567,15 +21577,15 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: firstBackground,
+                                        colorValue: firstStyles[0].firstBackground,
                                         onChangeColor: function onChangeColor(value) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 firstBackground: value
-                                            });
+                                            }, firstStyles);
                                         },
-                                        opacityValue: firstOpacity,
+                                        opacityValue: firstStyles[0].firstOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 firstOpacity: value
                                             });
                                         }
@@ -23615,11 +21625,11 @@ var edit = function (_Component) {
                                         __("First Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstColor,
+                                        value: firstStyles[0].firstColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 firstColor: newValue
-                                            });
+                                            }, firstStyles);
                                         },
                                         allowReset: true
                                     }),
@@ -23629,11 +21639,11 @@ var edit = function (_Component) {
                                         __("Second Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstClipColor,
+                                        value: firstStyles[0].firstClipColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 firstClipColor: newValue
-                                            });
+                                            }, firstStyles);
                                         },
                                         allowReset: true
                                     })
@@ -23642,14 +21652,14 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: firstBorderType,
-                        borderWidth: firstBorderWidth,
-                        top: firstBorderTop,
-                        right: firstBorderRight,
-                        bottom: firstBorderBottom,
-                        left: firstBorderLeft,
-                        borderColor: firstBorderColor,
-                        borderRadius: firstBorderRadius,
+                        borderType: firstStyles[0].firstBorderType,
+                        borderWidth: firstStyles[0].firstBorderWidth,
+                        top: firstStyles[0].firstBorderTop,
+                        right: firstStyles[0].firstBorderRight,
+                        bottom: firstStyles[0].firstBorderBottom,
+                        left: firstStyles[0].firstBorderLeft,
+                        borderColor: firstStyles[0].firstBorderColor,
+                        borderRadius: firstStyles[0].firstBorderRadius,
                         onChangeType: function onChangeType(newType) {
                             return setAttributes({ firstBorderType: newType });
                         },
@@ -23676,10 +21686,10 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: firstShadowColor,
-                        blur: firstShadowBlur,
-                        horizontal: firstShadowHorizontal,
-                        vertical: firstShadowVertical,
+                        color: firstStyles[0].firstShadowColor,
+                        blur: firstStyles[0].firstShadowBlur,
+                        horizontal: firstStyles[0].firstShadowHorizontal,
+                        vertical: firstStyles[0].firstShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return setAttributes({ firstShadowColor: newColor.hex || "transparent" });
                         },
@@ -23699,7 +21709,7 @@ var edit = function (_Component) {
                         __("Margin Left")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstMarginL,
+                        value: firstStyles[0].firstMarginL,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
@@ -23712,7 +21722,7 @@ var edit = function (_Component) {
                         __("Margin Right")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstMarginR,
+                        value: firstStyles[0].firstMarginR,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
@@ -23725,7 +21735,7 @@ var edit = function (_Component) {
                         __("Padding")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstPadding,
+                        value: firstStyles[0].firstPadding,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newPadding) {
@@ -23742,7 +21752,7 @@ var edit = function (_Component) {
                     },
                     React.createElement(ToggleControl, {
                         label: __("Clipped"),
-                        checked: secondClip,
+                        checked: secondStyles[0].secondClip,
                         onChange: function onChange(newValue) {
                             return setAttributes({ secondClip: newValue });
                         }
@@ -23752,14 +21762,14 @@ var edit = function (_Component) {
                         null,
                         React.createElement(ToggleControl, {
                             label: __("Animated"),
-                            checked: secondAnim,
+                            checked: secondStyles[0].secondAnim,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ secondAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
                             label: __('Stroke'),
-                            checked: secondStroke,
+                            checked: secondStyles[0].secondStroke,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ secondStroke: newValue });
                             }
@@ -23767,7 +21777,7 @@ var edit = function (_Component) {
                     ),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: secondFamily,
+                        value: secondStyles[0].secondFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeSecondFamily
                     }),
@@ -23775,36 +21785,36 @@ var edit = function (_Component) {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: secondSizeUnit,
+                            value: secondStyles[0].secondSizeUnit,
                             label: __("secondSizeUnit")
                         },
                         fontSize: {
-                            value: secondSize,
+                            value: secondStyles[0].secondSize,
                             label: __("secondSize")
                         },
                         fontSizeMobile: {
-                            value: secondSizeMobile,
+                            value: secondStyles[0].secondSizeMobile,
                             label: __("secondSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: secondSizeTablet,
+                            value: secondStyles[0].secondSizeTablet,
                             label: __("secondSizeTablet")
                         },
-                        weight: secondWeight,
-                        style: secondStyle,
-                        spacing: secondLetter,
-                        upper: secondUpper,
+                        weight: secondStyles[0].secondWeight,
+                        style: secondStyles[0].secondStyle,
+                        spacing: secondStyles[0].secondLetter,
+                        upper: secondStyles[0].secondUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ secondWeight: newWeight || 500 });
+                            return saveStyles({ secondWeight: newWeight || 500 }, secondStyles);
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
                             return setAttributes({ secondStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ secondLetter: newValue });
+                            return saveStyles({ secondLetter: newValue }, secondStyles);
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ secondUpper: check });
+                            return saveStyles({ secondUpper: check }, secondStyles);
                         }
                     }),
                     !secondClip && React.createElement(
@@ -23838,11 +21848,11 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondColor,
+                                        value: secondStyles[0].secondColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 secondColor: newValue || "transparent"
-                                            });
+                                            }, secondStyles);
                                         },
                                         allowReset: true
                                     }),
@@ -23853,17 +21863,17 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: secondBackground,
+                                        colorValue: secondStyles[0].secondBackground,
                                         onChangeColor: function onChangeColor(value) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 secondBackground: value
-                                            });
+                                            }, secondStyles);
                                         },
-                                        opacityValue: secondOpacity,
+                                        opacityValue: secondStyles[0].secondOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 secondOpacity: value
-                                            });
+                                            }, secondStyles);
                                         }
                                     })
                                 );
@@ -23901,11 +21911,11 @@ var edit = function (_Component) {
                                         __("First Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondColor,
+                                        value: secondStyles[0].secondColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 secondColor: newValue || "transparent"
-                                            });
+                                            }, secondStyles);
                                         },
                                         allowReset: true
                                     }),
@@ -23915,11 +21925,11 @@ var edit = function (_Component) {
                                         __("Second Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondClipColor,
+                                        value: secondStyles[0].secondClipColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveStyles({
                                                 secondClipColor: newValue || "transparent"
-                                            });
+                                            }, secondStyles);
                                         },
                                         allowReset: true
                                     })
@@ -23928,57 +21938,57 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: secondBorderType,
-                        borderWidth: secondBorderWidth,
-                        top: secondBorderTop,
-                        right: secondBorderRight,
-                        bottom: secondBorderBottom,
-                        left: secondBorderLeft,
-                        borderColor: secondBorderColor,
-                        borderRadius: secondBorderRadius,
+                        borderType: secondStyles[0].secondBorderType,
+                        borderWidth: secondStyles[0].secondBorderWidth,
+                        top: secondStyles[0].secondBorderTop,
+                        right: secondStyles[0].secondBorderRight,
+                        bottom: secondStyles[0].secondBorderBottom,
+                        left: secondStyles[0].secondBorderLeft,
+                        borderColor: secondStyles[0].secondBorderColor,
+                        borderRadius: secondStyles[0].secondBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ secondBorderType: newType });
+                            return saveStyles({ secondBorderType: newType }, secondStyles);
                         },
                         onChangeWidth: function onChangeWidth(_ref6) {
                             var top = _ref6.top,
                                 right = _ref6.right,
                                 bottom = _ref6.bottom,
                                 left = _ref6.left;
-                            return setAttributes({
+                            return saveStyles({
                                 secondBorder: true,
                                 secondBorderTop: top,
                                 secondBorderRight: right,
                                 secondBorderBottom: bottom,
                                 secondBorderLeft: left
-                            });
+                            }, secondStyles);
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 secondBorderColor: colorValue.hex || "transparent"
-                            });
+                            }, secondStyles);
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ secondBorderRadius: newrRadius || "0" });
+                            return saveStyles({ secondBorderRadius: newrRadius || "0" }, secondStyles);
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: secondShadowColor,
-                        blur: secondShadowBlur,
-                        horizontal: secondShadowHorizontal,
-                        vertical: secondShadowVertical,
+                        color: secondStyles[0].secondShadowColor,
+                        blur: secondStyles[0].secondShadowBlur,
+                        horizontal: secondStyles[0].secondShadowHorizontal,
+                        vertical: secondStyles[0].secondShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveStyles({
                                 secondShadowColor: newColor.hex || "transparent"
-                            });
+                            }, secondStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ secondShadowBlur: newBlur || "0" });
+                            return saveStyles({ secondShadowBlur: newBlur || "0" }, secondStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ secondShadowHorizontal: newValue || "0" });
+                            return saveStyles({ secondShadowHorizontal: newValue || "0" }, secondStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ secondShadowVertical: newValue || "0" });
+                            return saveStyles({ secondShadowVertical: newValue || "0" }, secondStyles);
                         }
                     }),
                     React.createElement(
@@ -23987,11 +21997,11 @@ var edit = function (_Component) {
                         __("Margin Left")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondMarginL,
+                        value: secondStyles[0].secondMarginL,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ secondMarginL: newMargin || "0" });
+                            return saveStyles({ secondMarginL: newMargin || "0" }, secondStyles);
                         }
                     }),
                     React.createElement(
@@ -24000,11 +22010,11 @@ var edit = function (_Component) {
                         __("Margin Right")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondMarginR,
+                        value: secondStyles[0].secondMarginR,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ secondMarginR: newMargin || "0" });
+                            return saveStyles({ secondMarginR: newMargin || "0" }, secondStyles);
                         }
                     }),
                     React.createElement(
@@ -24013,11 +22023,11 @@ var edit = function (_Component) {
                         __("Padding")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondPadding,
+                        value: secondStyles[0].secondPadding,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newPadding) {
-                            return setAttributes({ secondPadding: newPadding || "0" });
+                            return saveStyles({ secondPadding: newPadding || "0" }, secondStyles);
                         }
                     })
                 ),
@@ -24035,26 +22045,26 @@ var edit = function (_Component) {
                     ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
-                        colorValue: containerBack,
+                        colorValue: containerStyles[0].containerBack,
                         onChangeColor: function onChangeColor(newvalue) {
-                            return setAttributes({
+                            return saveStyles({
                                 containerBack: newvalue
-                            });
+                            }, containerStyles);
                         },
-                        opacityValue: containerOpacity,
+                        opacityValue: containerStyles[0].containerOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
-                            return setAttributes({ containerOpacity: value });
+                            return saveStyles({ containerOpacity: value }, containerStyles);
                         }
                     }),
                     React.createElement(_premiumBackground2.default, {
-                        imageID: imageID,
-                        imageURL: imageURL,
-                        backgroundPosition: backgroundPosition,
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundSize: backgroundSize,
-                        fixed: fixed,
+                        imageID: containerStyles[0].imageID,
+                        imageURL: containerStyles[0].imageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
                         onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
+                            saveStyles({
                                 imageID: media.id,
                                 imageURL: media.url
                             });
@@ -24128,7 +22138,7 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-dheading-block-" + block_id,
-                    className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
                     style: {
                         textAlign: contentAlign,
                         backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
@@ -24220,7 +22230,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 238 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24230,11 +22240,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -24300,7 +22310,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 239 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24327,80 +22337,14 @@ var save = function save(props) {
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
         secondHeading = _props$attributes.secondHeading,
+        titleTag = _props$attributes.titleTag,
         display = _props$attributes.display,
-        firstColor = _props$attributes.firstColor,
-        firstBackground = _props$attributes.firstBackground,
-        firstFamily = _props$attributes.firstFamily,
-        firstStyle = _props$attributes.firstStyle,
-        firstUpper = _props$attributes.firstUpper,
-        firstLetter = _props$attributes.firstLetter,
-        firstWeight = _props$attributes.firstWeight,
-        firstBorderType = _props$attributes.firstBorderType,
-        firstBorderWidth = _props$attributes.firstBorderWidth,
-        firstBorderTop = _props$attributes.firstBorderTop,
-        firstBorderRight = _props$attributes.firstBorderRight,
-        firstBorderBottom = _props$attributes.firstBorderBottom,
-        firstBorderLeft = _props$attributes.firstBorderLeft,
-        firstBorderRadius = _props$attributes.firstBorderRadius,
-        firstBorderColor = _props$attributes.firstBorderColor,
-        firstPadding = _props$attributes.firstPadding,
-        firstMargin = _props$attributes.firstMargin,
-        firstClip = _props$attributes.firstClip,
-        firstAnim = _props$attributes.firstAnim,
-        firstStroke = _props$attributes.firstStroke,
-        firstClipColor = _props$attributes.firstClipColor,
-        firstShadowBlur = _props$attributes.firstShadowBlur,
-        firstShadowColor = _props$attributes.firstShadowColor,
-        firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-        firstShadowVertical = _props$attributes.firstShadowVertical,
-        secondColor = _props$attributes.secondColor,
-        secondBackground = _props$attributes.secondBackground,
-        secondFamily = _props$attributes.secondFamily,
-        secondLetter = _props$attributes.secondLetter,
-        secondUpper = _props$attributes.secondUpper,
-        secondWeight = _props$attributes.secondWeight,
-        secondStyle = _props$attributes.secondStyle,
-        secondBorderType = _props$attributes.secondBorderType,
-        secondBorderWidth = _props$attributes.secondBorderWidth,
-        secondBorderTop = _props$attributes.secondBorderTop,
-        secondBorderRight = _props$attributes.secondBorderRight,
-        secondBorderBottom = _props$attributes.secondBorderBottom,
-        secondBorderLeft = _props$attributes.secondBorderLeft,
-        secondBorderRadius = _props$attributes.secondBorderRadius,
-        secondBorderColor = _props$attributes.secondBorderColor,
-        secondPadding = _props$attributes.secondPadding,
-        secondMargin = _props$attributes.secondMargin,
-        secondClip = _props$attributes.secondClip,
-        secondStroke = _props$attributes.secondStroke,
-        secondAnim = _props$attributes.secondAnim,
-        secondClipColor = _props$attributes.secondClipColor,
-        secondShadowBlur = _props$attributes.secondShadowBlur,
-        secondShadowColor = _props$attributes.secondShadowColor,
-        secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-        secondShadowVertical = _props$attributes.secondShadowVertical,
+        firstStyles = _props$attributes.firstStyles,
+        secondStyles = _props$attributes.secondStyles,
+        containerStyles = _props$attributes.containerStyles,
         link = _props$attributes.link,
         target = _props$attributes.target,
         headingURL = _props$attributes.headingURL,
-        containerBack = _props$attributes.containerBack,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        containerBorderType = _props$attributes.containerBorderType,
-        containerBorderWidth = _props$attributes.containerBorderWidth,
-        containerBorderTop = _props$attributes.containerBorderTop,
-        containerBorderRight = _props$attributes.containerBorderRight,
-        containerBorderBottom = _props$attributes.containerBorderBottom,
-        containerBorderLeft = _props$attributes.containerBorderLeft,
-        containerBorderRadius = _props$attributes.containerBorderRadius,
-        containerBorderColor = _props$attributes.containerBorderColor,
-        firstBorder = _props$attributes.firstBorder,
-        secondBorder = _props$attributes.secondBorder,
-        containerBorder = _props$attributes.containerBorder,
-        firstOpacity = _props$attributes.firstOpacity,
-        secondOpacity = _props$attributes.secondOpacity,
-        containerOpacity = _props$attributes.containerOpacity,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
@@ -24496,7 +22440,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 240 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26011,282 +23955,149 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 241 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _edit = __webpack_require__(242);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(257);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(258);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var iconAttrs = {
-    iconBorder: {
-        type: "boolean",
-        default: false
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    block_id: {
+        type: "string"
     },
-    wrapBorder: {
-        type: "boolean",
-        default: false
-    },
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
+    contentAlign: {
         type: "string",
         default: "center"
     },
-    hoverEffect: {
+    firstHeading: {
+        type: "array",
+        source: "children",
+        default: "Premium ",
+        selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+        type: "array",
+        source: "children",
+        default: "Blocks",
+        selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
         type: "string",
-        default: "none"
+        default: "h1"
     },
-    iconSize: {
-        type: "number"
-    },
-    iconSizeUnit: {
+    display: {
         type: "string",
-        default: "px"
+        default: "inline"
     },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
+    firstStyles: {
+        type: "array",
+        default: [{
+            firstClip: false,
+            firstAnim: false,
+            firstStroke: false,
+            firstFamily: '',
+            firstSizeUnit: 'px',
+            firstSize: '',
+            firstSizeMobile: '',
+            firstWeight: '500',
+            firstStyle: '',
+            firstLetter: '',
+            firstUpper: false,
+            firstColor: '',
+            firstBackground: '',
+            firstOpacity: '1',
+            firstClipColor: "#54595f",
+            firstBorderType: 'none',
+            firstBorder: false,
+            firstBorderWidth: '',
+            firstBorderTop: '',
+            firstBorderRight: '',
+            firstBorderBottom: '',
+            firstBorderLeft: '',
+            firstBorderColor: '',
+            firstBorderRadius: '0',
+            firstShadowColor: '',
+            firstShadowBlur: '0',
+            firstShadowHorizontal: '0',
+            firstShadowVertical: '0',
+            firstMarginL: '0',
+            firstMarginR: '0',
+            firstPadding: '0'
+        }]
     },
-    iconBack: {
-        type: "string"
+    secondStyles: {
+        type: "array",
+        default: [{
+            secondClip: false,
+            secondAnim: false,
+            secondStroke: false,
+            secondFamily: '',
+            secondSizeUnit: 'px',
+            secondSize: '20',
+            secondSizeTablet: '',
+            secondSizeMobile: '',
+            secondWeight: '500',
+            secondStyle: '',
+            secondLetter: '',
+            secondUpper: false,
+            secondColor: "#54595f",
+            secondBackground: '',
+            secondOpacity: '',
+            secondClipColor: "#6ec1e4",
+            secondBorderType: "none",
+            secondBorderWidth: '1',
+            secondBorder: false,
+            secondBorderTop: '',
+            secondBorderRight: '',
+            secondBorderBottom: '',
+            secondBorderLeft: '',
+            secondBorderColor: '',
+            secondBorderRadius: '0',
+            secondShadowColor: '',
+            secondShadowBlur: '0',
+            secondShadowHorizontal: '0',
+            secondShadowVertical: '0',
+            secondMarginL: '0',
+            secondMarginR: '0',
+            secondPadding: '0'
+
+        }]
     },
-    iconOpacity: {
-        type: "number",
-        default: "1"
+    containerStyles: {
+        type: 'array',
+        default: [{
+            imageID: '',
+            imageURL: '',
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "auto",
+            fixed: false,
+            containerBorderType: "none",
+            containerBorderWidth: "1",
+            containerBorder: false,
+            containerBorderTop: '',
+            containerBorderRight: '',
+            containerBorderBottom: '',
+            containerBorderLeft: '',
+            containerBorderColor: '',
+            containerBorderRadius: '0',
+            containerBack: '',
+            containerOpacity: 1
+        }]
     },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderTop: {
-        type: "number",
-        default: 1
-    },
-    iconBorderRight: {
-        type: "number",
-        default: 1
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    backgroundColor: {
-        type: "string"
-    },
-    backgroundOpacity: {
-        type: "number",
-        default: "1"
-    },
-    background: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
+    link: {
         type: "boolean",
         default: false
     },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderTop: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRight: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
     target: {
-        type: "boolean"
+        type: "boolean",
+        default: false
+    },
+    headingURL: {
+        type: "string"
     },
     hideDesktop: {
         type: 'boolean',
@@ -26301,12 +24112,48 @@ var iconAttrs = {
         default: false
     }
 };
+exports.default = attributes;
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _edit = __webpack_require__(240);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(259);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(260);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(261);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/icon", {
     title: __("Icon"),
     icon: React.createElement(_icons2.default, { icon: "icon" }),
     category: "premium-blocks",
-    attributes: iconAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.icon
     },
@@ -26317,7 +24164,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 242 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26333,7 +24180,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(3);
 
-var _reactFonticonpicker = __webpack_require__(99);
+var _reactFonticonpicker = __webpack_require__(98);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -26357,15 +24204,15 @@ var _premiumPadding = __webpack_require__(18);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -26400,63 +24247,19 @@ var edit = function edit(props) {
         setAttributes = props.setAttributes,
         className = props.className;
     var _props$attributes = props.attributes,
+        iconBorder = _props$attributes.iconBorder,
+        wrapBorder = _props$attributes.wrapBorder,
         iconType = _props$attributes.iconType,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
-        iconSize = _props$attributes.iconSize,
-        iconSizeUnit = _props$attributes.iconSizeUnit,
-        iconColor = _props$attributes.iconColor,
-        iconBack = _props$attributes.iconBack,
-        iconOpacity = _props$attributes.iconOpacity,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        iconBorder = _props$attributes.iconBorder,
-        iconBorderTop = _props$attributes.iconBorderTop,
-        iconBorderRight = _props$attributes.iconBorderRight,
-        iconBorderBottom = _props$attributes.iconBorderBottom,
-        iconBorderLeft = _props$attributes.iconBorderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        backgroundColor = _props$attributes.backgroundColor,
-        backgroundOpacity = _props$attributes.backgroundOpacity,
-        imageID = _props$attributes.imageID,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        wrapBorderType = _props$attributes.wrapBorderType,
-        wrapBorder = _props$attributes.wrapBorder,
-        wrapBorderWidth = _props$attributes.wrapBorderWidth,
-        wrapBorderTop = _props$attributes.wrapBorderTop,
-        wrapBorderRight = _props$attributes.wrapBorderRight,
-        wrapBorderBottom = _props$attributes.wrapBorderBottom,
-        wrapBorderLeft = _props$attributes.wrapBorderLeft,
-        wrapBorderRadius = _props$attributes.wrapBorderRadius,
-        wrapBorderColor = _props$attributes.wrapBorderColor,
-        wrapShadowBlur = _props$attributes.wrapShadowBlur,
-        wrapShadowColor = _props$attributes.wrapShadowColor,
-        wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
-        wrapShadowVertical = _props$attributes.wrapShadowVertical,
-        wrapShadowPosition = _props$attributes.wrapShadowPosition,
-        wrapPaddingT = _props$attributes.wrapPaddingT,
-        wrapPaddingR = _props$attributes.wrapPaddingR,
-        wrapPaddingB = _props$attributes.wrapPaddingB,
-        wrapPaddingL = _props$attributes.wrapPaddingL,
+        iconStyles = _props$attributes.iconStyles,
+        containerStyles = _props$attributes.containerStyles,
+        padding = _props$attributes.padding,
+        margin = _props$attributes.margin,
+        background = _props$attributes.background,
+        wrapPadding = _props$attributes.wrapPadding,
+        wrapMargin = _props$attributes.wrapMargin,
         wrapMarginT = _props$attributes.wrapMarginT,
         wrapMarginR = _props$attributes.wrapMarginR,
         wrapMarginB = _props$attributes.wrapMarginB,
@@ -26949,25 +24752,25 @@ var edit = function edit(props) {
             className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
-                backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
-                borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : "none",
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
+                borderWidth: wrapBorder ? containerStyles[0].wrapBorderTop + "px " + containerStyles[0].wrapBorderRight + "px " + containerStyles[0].wrapBorderBottom + "px " + containerStyles[0].wrapBorderLeft + "px" : containerStyles[0].wrapBorderWidth + "px",
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + wrapShadowPosition,
+                paddingTop: containerStyles[0].wrapPaddingT,
+                paddingRight: containerStyles[0].wrapPaddingR,
+                paddingBottom: containerStyles[0].wrapPaddingB,
+                paddingLeft: containerStyles[0].wrapPaddingL,
+                marginTop: containerStyles[0].wrapMarginT,
+                marginRight: containerStyles[0].wrapMarginR,
+                marginBottom: containerStyles[0].wrapMarginB,
+                marginLeft: containerStyles[0].wrapMarginL
             }
         },
         iconType === "fa" && 1 != _settings.FontAwesomeEnabled && React.createElement(
@@ -26978,22 +24781,22 @@ var edit = function edit(props) {
         (iconType === "dash" || 1 == _settings.FontAwesomeEnabled) && React.createElement("i", {
             className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
             style: {
-                color: iconColor || "#6ec1e4",
-                backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
-                fontSize: (iconSize || 50) + iconSizeUnit,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
-                borderStyle: borderType,
-                borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
-                borderRadius: borderRadius || 100 + "px",
-                borderColor: borderColor,
-                textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                color: iconStyles[0].iconColor || "#6ec1e4",
+                backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                paddingTop: iconStyles[0].paddingT + iconStyles[0].paddingU,
+                paddingRight: iconStyles[0].paddingR + iconStyles[0].paddingU,
+                paddingBottom: iconStyles[0].paddingB + iconStyles[0].paddingU,
+                paddingLeft: iconStyles[0].paddingL + iconStyles[0].paddingU,
+                marginTop: iconStyles[0].marginT,
+                marginRight: iconStyles[0].marginR,
+                marginBottom: iconStyles[0].marginB,
+                marginLeft: iconStyles[0].marginL,
+                borderStyle: iconStyles[0].borderType,
+                borderWidth: iconBorder ? iconStyles[0].iconBorderTop + "px " + iconStyles[0].iconBorderRight + "px " + iconStyles[0].iconBorderBottom + "px " + iconStyles[0].iconBorderLeft + "px" : iconStyles[0].borderWidth + "px",
+                borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                borderColor: iconStyles[0].borderColor,
+                textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
             }
         }),
         urlCheck && isSelected && React.createElement(URLInput, {
@@ -27008,7 +24811,960 @@ var edit = function edit(props) {
 exports.default = edit;
 
 /***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/** @license React v16.8.6
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+Object.defineProperty(exports, "__esModule", { value: !0 });
+var b = "function" === typeof Symbol && Symbol.for,
+    c = b ? Symbol.for("react.element") : 60103,
+    d = b ? Symbol.for("react.portal") : 60106,
+    e = b ? Symbol.for("react.fragment") : 60107,
+    f = b ? Symbol.for("react.strict_mode") : 60108,
+    g = b ? Symbol.for("react.profiler") : 60114,
+    h = b ? Symbol.for("react.provider") : 60109,
+    k = b ? Symbol.for("react.context") : 60110,
+    l = b ? Symbol.for("react.async_mode") : 60111,
+    m = b ? Symbol.for("react.concurrent_mode") : 60111,
+    n = b ? Symbol.for("react.forward_ref") : 60112,
+    p = b ? Symbol.for("react.suspense") : 60113,
+    q = b ? Symbol.for("react.memo") : 60115,
+    r = b ? Symbol.for("react.lazy") : 60116;function t(a) {
+  if ("object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a) {
+    var u = a.$$typeof;switch (u) {case c:
+        switch (a = a.type, a) {case l:case m:case e:case g:case f:case p:
+            return a;default:
+            switch (a = a && a.$$typeof, a) {case k:case n:case h:
+                return a;default:
+                return u;}}case r:case q:case d:
+        return u;}
+  }
+}function v(a) {
+  return t(a) === m;
+}exports.typeOf = t;exports.AsyncMode = l;exports.ConcurrentMode = m;exports.ContextConsumer = k;exports.ContextProvider = h;exports.Element = c;exports.ForwardRef = n;
+exports.Fragment = e;exports.Lazy = r;exports.Memo = q;exports.Portal = d;exports.Profiler = g;exports.StrictMode = f;exports.Suspense = p;exports.isValidElementType = function (a) {
+  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && (a.$$typeof === r || a.$$typeof === q || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n);
+};exports.isAsyncMode = function (a) {
+  return v(a) || t(a) === l;
+};exports.isConcurrentMode = v;exports.isContextConsumer = function (a) {
+  return t(a) === k;
+};
+exports.isContextProvider = function (a) {
+  return t(a) === h;
+};exports.isElement = function (a) {
+  return "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && a.$$typeof === c;
+};exports.isForwardRef = function (a) {
+  return t(a) === n;
+};exports.isFragment = function (a) {
+  return t(a) === e;
+};exports.isLazy = function (a) {
+  return t(a) === r;
+};exports.isMemo = function (a) {
+  return t(a) === q;
+};exports.isPortal = function (a) {
+  return t(a) === d;
+};exports.isProfiler = function (a) {
+  return t(a) === g;
+};exports.isStrictMode = function (a) {
+  return t(a) === f;
+};
+exports.isSuspense = function (a) {
+  return t(a) === p;
+};
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+if (process.env.NODE_ENV !== "production") {
+  (function () {
+    'use strict';
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+    // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+    // nor polyfill, then a plain number is used for performance.
+    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+
+    var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+    var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+    var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+    var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+    var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+    var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+    var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+    var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+    var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+    var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+    var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+    var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+
+    function isValidElementType(type) {
+      return typeof type === 'string' || typeof type === 'function' ||
+      // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+      type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+    }
+
+    /**
+     * Forked from fbjs/warning:
+     * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+     *
+     * Only change is we use console.warn instead of console.error,
+     * and do nothing when 'console' is not supported.
+     * This really simplifies the code.
+     * ---
+     * Similar to invariant but only logs a warning if the condition is not met.
+     * This can be used to log issues in development environments in critical
+     * paths. Removing the logging code for production environments will keep the
+     * same logic and follow the same code paths.
+     */
+
+    var lowPriorityWarning = function lowPriorityWarning() {};
+
+    {
+      var printWarning = function printWarning(format) {
+        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        var argIndex = 0;
+        var message = 'Warning: ' + format.replace(/%s/g, function () {
+          return args[argIndex++];
+        });
+        if (typeof console !== 'undefined') {
+          console.warn(message);
+        }
+        try {
+          // --- Welcome to debugging React ---
+          // This error was thrown as a convenience so that you can use this stack
+          // to find the callsite that caused this warning to fire.
+          throw new Error(message);
+        } catch (x) {}
+      };
+
+      lowPriorityWarning = function lowPriorityWarning(condition, format) {
+        if (format === undefined) {
+          throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
+        }
+        if (!condition) {
+          for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+            args[_key2 - 2] = arguments[_key2];
+          }
+
+          printWarning.apply(undefined, [format].concat(args));
+        }
+      };
+    }
+
+    var lowPriorityWarning$1 = lowPriorityWarning;
+
+    function typeOf(object) {
+      if ((typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null) {
+        var $$typeof = object.$$typeof;
+        switch ($$typeof) {
+          case REACT_ELEMENT_TYPE:
+            var type = object.type;
+
+            switch (type) {
+              case REACT_ASYNC_MODE_TYPE:
+              case REACT_CONCURRENT_MODE_TYPE:
+              case REACT_FRAGMENT_TYPE:
+              case REACT_PROFILER_TYPE:
+              case REACT_STRICT_MODE_TYPE:
+              case REACT_SUSPENSE_TYPE:
+                return type;
+              default:
+                var $$typeofType = type && type.$$typeof;
+
+                switch ($$typeofType) {
+                  case REACT_CONTEXT_TYPE:
+                  case REACT_FORWARD_REF_TYPE:
+                  case REACT_PROVIDER_TYPE:
+                    return $$typeofType;
+                  default:
+                    return $$typeof;
+                }
+            }
+          case REACT_LAZY_TYPE:
+          case REACT_MEMO_TYPE:
+          case REACT_PORTAL_TYPE:
+            return $$typeof;
+        }
+      }
+
+      return undefined;
+    }
+
+    // AsyncMode is deprecated along with isAsyncMode
+    var AsyncMode = REACT_ASYNC_MODE_TYPE;
+    var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+    var ContextConsumer = REACT_CONTEXT_TYPE;
+    var ContextProvider = REACT_PROVIDER_TYPE;
+    var Element = REACT_ELEMENT_TYPE;
+    var ForwardRef = REACT_FORWARD_REF_TYPE;
+    var Fragment = REACT_FRAGMENT_TYPE;
+    var Lazy = REACT_LAZY_TYPE;
+    var Memo = REACT_MEMO_TYPE;
+    var Portal = REACT_PORTAL_TYPE;
+    var Profiler = REACT_PROFILER_TYPE;
+    var StrictMode = REACT_STRICT_MODE_TYPE;
+    var Suspense = REACT_SUSPENSE_TYPE;
+
+    var hasWarnedAboutDeprecatedIsAsyncMode = false;
+
+    // AsyncMode should be deprecated
+    function isAsyncMode(object) {
+      {
+        if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+          hasWarnedAboutDeprecatedIsAsyncMode = true;
+          lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+        }
+      }
+      return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+    }
+    function isConcurrentMode(object) {
+      return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+    }
+    function isContextConsumer(object) {
+      return typeOf(object) === REACT_CONTEXT_TYPE;
+    }
+    function isContextProvider(object) {
+      return typeOf(object) === REACT_PROVIDER_TYPE;
+    }
+    function isElement(object) {
+      return (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+    function isForwardRef(object) {
+      return typeOf(object) === REACT_FORWARD_REF_TYPE;
+    }
+    function isFragment(object) {
+      return typeOf(object) === REACT_FRAGMENT_TYPE;
+    }
+    function isLazy(object) {
+      return typeOf(object) === REACT_LAZY_TYPE;
+    }
+    function isMemo(object) {
+      return typeOf(object) === REACT_MEMO_TYPE;
+    }
+    function isPortal(object) {
+      return typeOf(object) === REACT_PORTAL_TYPE;
+    }
+    function isProfiler(object) {
+      return typeOf(object) === REACT_PROFILER_TYPE;
+    }
+    function isStrictMode(object) {
+      return typeOf(object) === REACT_STRICT_MODE_TYPE;
+    }
+    function isSuspense(object) {
+      return typeOf(object) === REACT_SUSPENSE_TYPE;
+    }
+
+    exports.typeOf = typeOf;
+    exports.AsyncMode = AsyncMode;
+    exports.ConcurrentMode = ConcurrentMode;
+    exports.ContextConsumer = ContextConsumer;
+    exports.ContextProvider = ContextProvider;
+    exports.Element = Element;
+    exports.ForwardRef = ForwardRef;
+    exports.Fragment = Fragment;
+    exports.Lazy = Lazy;
+    exports.Memo = Memo;
+    exports.Portal = Portal;
+    exports.Profiler = Profiler;
+    exports.StrictMode = StrictMode;
+    exports.Suspense = Suspense;
+    exports.isValidElementType = isValidElementType;
+    exports.isAsyncMode = isAsyncMode;
+    exports.isConcurrentMode = isConcurrentMode;
+    exports.isContextConsumer = isContextConsumer;
+    exports.isContextProvider = isContextProvider;
+    exports.isElement = isElement;
+    exports.isForwardRef = isForwardRef;
+    exports.isFragment = isFragment;
+    exports.isLazy = isLazy;
+    exports.isMemo = isMemo;
+    exports.isPortal = isPortal;
+    exports.isProfiler = isProfiler;
+    exports.isStrictMode = isStrictMode;
+    exports.isSuspense = isSuspense;
+  })();
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var ReactIs = __webpack_require__(99);
+var assign = __webpack_require__(32);
+
+var ReactPropTypesSecret = __webpack_require__(52);
+var checkPropTypes = __webpack_require__(51);
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function printWarning() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  printWarning = function printWarning(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function (isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (!manualPropTypeCallCache[cacheKey] &&
+          // Avoid spamming the console because they are often not actionable except for lib authors
+          manualPropTypeWarningCount < 3) {
+            printWarning('You are manually calling a React.PropTypes validation ' + 'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (arguments.length > 1) {
+          printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning('Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue)) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = __webpack_require__(52);
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+module.exports = function () {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    err.name = 'Invariant Violation';
+    throw err;
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+/***/ }),
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29351,7 +28107,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29557,7 +28313,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30263,7 +29019,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(54)))
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30274,7 +29030,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(247);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(249);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -34152,21 +32908,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(248);
+  module.exports = __webpack_require__(250);
 } else {
-  module.exports = __webpack_require__(249);
+  module.exports = __webpack_require__(251);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 248 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34193,7 +32949,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 249 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34621,7 +33377,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 250 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34630,11 +33386,11 @@ if (process.env.NODE_ENV !== "production") {
 exports.__esModule = true;
 exports.default = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(10));
+var PropTypes = _interopRequireWildcard(__webpack_require__(17));
 
-var _addClass = _interopRequireDefault(__webpack_require__(251));
+var _addClass = _interopRequireDefault(__webpack_require__(253));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(254));
+var _removeClass = _interopRequireDefault(__webpack_require__(256));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -35021,18 +33777,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 251 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(252);
+var _interopRequireDefault = __webpack_require__(254);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(253));
+var _hasClass = _interopRequireDefault(__webpack_require__(255));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -35041,7 +33797,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 252 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35056,7 +33812,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35072,7 +33828,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35087,7 +33843,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35096,7 +33852,7 @@ module.exports = function removeClass(element, className) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(10));
+var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -35252,7 +34008,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35407,7 +34163,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35430,59 +34186,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        wrapBorder = _props$attributes.wrapBorder,
         iconBorder = _props$attributes.iconBorder,
+        wrapBorder = _props$attributes.wrapBorder,
+        iconType = _props$attributes.iconType,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
-        iconSize = _props$attributes.iconSize,
-        iconSizeUnit = _props$attributes.iconSizeUnit,
-        iconColor = _props$attributes.iconColor,
-        iconBack = _props$attributes.iconBack,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        iconBorderTop = _props$attributes.iconBorderTop,
-        iconBorderRight = _props$attributes.iconBorderRight,
-        iconBorderBottom = _props$attributes.iconBorderBottom,
-        iconBorderLeft = _props$attributes.iconBorderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        backgroundColor = _props$attributes.backgroundColor,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        wrapBorderType = _props$attributes.wrapBorderType,
-        wrapBorderWidth = _props$attributes.wrapBorderWidth,
-        wrapBorderTop = _props$attributes.wrapBorderTop,
-        wrapBorderRight = _props$attributes.wrapBorderRight,
-        wrapBorderBottom = _props$attributes.wrapBorderBottom,
-        wrapBorderLeft = _props$attributes.wrapBorderLeft,
-        wrapBorderRadius = _props$attributes.wrapBorderRadius,
-        wrapBorderColor = _props$attributes.wrapBorderColor,
-        wrapShadowBlur = _props$attributes.wrapShadowBlur,
-        wrapShadowColor = _props$attributes.wrapShadowColor,
-        wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
-        wrapShadowVertical = _props$attributes.wrapShadowVertical,
-        wrapShadowPosition = _props$attributes.wrapShadowPosition,
-        wrapPaddingT = _props$attributes.wrapPaddingT,
-        wrapPaddingR = _props$attributes.wrapPaddingR,
-        wrapPaddingB = _props$attributes.wrapPaddingB,
-        wrapPaddingL = _props$attributes.wrapPaddingL,
+        iconStyles = _props$attributes.iconStyles,
+        containerStyles = _props$attributes.containerStyles,
+        padding = _props$attributes.padding,
+        margin = _props$attributes.margin,
+        background = _props$attributes.background,
+        wrapPadding = _props$attributes.wrapPadding,
+        wrapMargin = _props$attributes.wrapMargin,
         wrapMarginT = _props$attributes.wrapMarginT,
         wrapMarginR = _props$attributes.wrapMarginR,
         wrapMarginB = _props$attributes.wrapMarginB,
@@ -35490,8 +34206,6 @@ var save = function save(props) {
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
-        iconOpacity = _props$attributes.iconOpacity,
-        backgroundOpacity = _props$attributes.backgroundOpacity,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
@@ -35505,25 +34219,25 @@ var save = function save(props) {
             className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
-                backgroundImage: 'url(\'' + imageURL + '\')',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
-                borderWidth: wrapBorder ? wrapBorderTop + 'px ' + wrapBorderRight + 'px ' + wrapBorderBottom + 'px ' + wrapBorderLeft + 'px' : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : "none",
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
+                borderWidth: wrapBorder ? containerStyles[0].wrapBorderTop + 'px ' + containerStyles[0].wrapBorderRight + 'px ' + containerStyles[0].wrapBorderBottom + 'px ' + containerStyles[0].wrapBorderLeft + 'px' : containerStyles[0].wrapBorderWidth + "px",
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + 'px ' + (containerStyles[0].wrapShadowVertical || 0) + 'px ' + (containerStyles[0].wrapShadowBlur || 0) + 'px ' + containerStyles[0].wrapShadowColor + ' ' + wrapShadowPosition,
+                paddingTop: containerStyles[0].wrapPaddingT,
+                paddingRight: containerStyles[0].wrapPaddingR,
+                paddingBottom: containerStyles[0].wrapPaddingB,
+                paddingLeft: containerStyles[0].wrapPaddingL,
+                marginTop: containerStyles[0].wrapMarginT,
+                marginRight: containerStyles[0].wrapMarginR,
+                marginBottom: containerStyles[0].wrapMarginB,
+                marginLeft: containerStyles[0].wrapMarginL
             }
         },
         React.createElement(
@@ -35537,22 +34251,22 @@ var save = function save(props) {
             React.createElement('i', {
                 className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                 style: {
-                    color: iconColor || "#6ec1e4",
-                    backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
-                    fontSize: (iconSize || 50) + iconSizeUnit,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    borderStyle: borderType,
-                    borderWidth: iconBorder ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : borderWidth + "px",
-                    borderRadius: borderRadius || 100 + "px",
-                    borderColor: borderColor,
-                    textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
+                    color: iconStyles[0].iconColor || "#6ec1e4",
+                    backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                    fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                    paddingTop: iconStyles[0].paddingT + iconStyles[0].paddingU,
+                    paddingRight: iconStyles[0].paddingR + iconStyles[0].paddingU,
+                    paddingBottom: iconStyles[0].paddingB + iconStyles[0].paddingU,
+                    paddingLeft: iconStyles[0].paddingL + iconStyles[0].paddingU,
+                    marginTop: iconStyles[0].marginT,
+                    marginRight: iconStyles[0].marginR,
+                    marginBottom: iconStyles[0].marginB,
+                    marginLeft: iconStyles[0].marginL,
+                    borderStyle: iconStyles[0].borderType,
+                    borderWidth: iconBorder ? iconStyles[0].iconBorderTop + 'px ' + iconStyles[0].iconBorderRight + 'px ' + iconStyles[0].iconBorderBottom + 'px ' + iconStyles[0].iconBorderLeft + 'px' : iconStyles[0].borderWidth + "px",
+                    borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                    borderColor: iconStyles[0].borderColor,
+                    textShadow: (iconStyles[0].shadowHorizontal || 0) + 'px ' + (iconStyles[0].shadowVertical || 0) + 'px ' + (iconStyles[0].shadowBlur || 0) + 'px ' + iconStyles[0].shadowColor
                 }
             })
         )
@@ -35562,7 +34276,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37084,463 +35798,133 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 259 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _edit = __webpack_require__(260);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(262);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(263);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var iconBoxAttrs = {
-    block_id: {
-        type: "string"
-    },
-    borderIconBox: {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    iconBorder: {
         type: "boolean",
         default: false
     },
-    btnBorderIconBox: {
+    wrapBorder: {
         type: "boolean",
         default: false
     },
-    align: {
+    iconType: {
         type: "string",
-        default: "center"
-    },
-    iconImage: {
-        type: "string",
-        default: "icon"
-    },
-    iconImgId: {
-        type: "string"
-    },
-    iconImgUrl: {
-        type: "string"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconChecked: {
-        type: "boolean",
-        default: true
-    },
-    iconPos: {
-        type: "string",
-        default: "block"
-    },
-    iconHPos: {
-        type: "string",
-        default: "before"
-    },
-    iconVPos: {
-        type: "string",
-        default: "center"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconRadius: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string"
-    },
-    iconBackColor: {
-        type: "string"
+        default: "dash"
     },
     selectedIcon: {
         type: "string",
         default: "dashicons dashicons-admin-site"
     },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    titleText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
+    align: {
         type: "string",
-        default: "H2"
+        default: "center"
     },
-    titleFont: {
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconSizeUnit: 'px',
+            iconSize: '',
+            iconColor: '',
+            iconBack: '',
+            iconOpacity: '1',
+            borderType: 'none',
+            borderWidth: '1',
+            iconBorderTop: '1',
+            iconBorderRight: '1',
+            iconBorderBottom: '1',
+            iconBorderLeft: '1',
+            borderColor: '',
+            borderRadius: '100',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: "",
+            paddingU: ''
+        }]
+    },
+    containerStyles: {
+        backgroundColor: '',
+        backgroundOpacity: 1,
+        imageID: '',
+        imageURL: '',
+        backgroundPosition: "top center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: 'auto',
+        fixed: false,
+        wrapBorderType: 'none',
+        wrapBorderWidth: '1',
+        wrapBorderTop: '1',
+        wrapBorderRight: '1',
+        wrapBorderBottom: '1',
+        wrapBorderLeft: '1',
+        wrapBorderColor: '',
+        wrapBorderRadius: '',
+        wrapShadowColor: '',
+        wrapShadowBlur: '0',
+        wrapShadowHorizontal: '0',
+        wrapShadowVertical: '0',
+        wrapShadowPosition: '',
+        wrapMarginT: '',
+        wrapMarginR: '',
+        wrapMarginB: '',
+        wrapMarginL: '',
+        wrapPaddingT: '',
+        wrapPaddingR: '',
+        wrapPaddingB: '',
+        wrapPaddingL: ''
+    },
+
+    padding: {
+        type: "string",
+        default: "up"
+    },
+    margin: {
+        type: "string",
+        default: "up"
+    },
+    background: {
         type: "string"
     },
-    titleColor: {
-        type: "string"
+
+    wrapPadding: {
+        type: "string",
+        default: "up"
     },
-    titleSize: {
-        type: "number",
-        default: '20'
+
+    wrapMargin: {
+        type: "string",
+        default: "up"
     },
-    titleSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    titleSizeTablet: {
-        type: 'number',
-        default: '20'
-    },
-    titleSizeMobile: {
-        type: 'number',
-        default: '20'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
+
+    urlCheck: {
         type: "boolean"
     },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
+    link: {
         type: "string"
     },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__desc",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    descChecked: {
-        type: "boolean",
-        default: true
-    },
-    descFont: {
-        type: "string"
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number",
-        default: '20'
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    descSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnEffect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    btnText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__btn",
-        default: __("Click Here")
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-icon-box__btn"
-    },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnHoverBorder: {
-        type: "string"
-    },
-    btnSize: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    btnSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
+    target: {
         type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    hoverShadowColor: {
-        type: "string"
-    },
-    hoverShadowBlur: {
-        type: "number"
-    },
-    hoverShadowHorizontal: {
-        type: "number"
-    },
-    hoverShadowVertical: {
-        type: "number"
-    },
-    hoverShadowPosition: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
     },
     hideDesktop: {
         type: 'boolean',
@@ -37553,26 +35937,50 @@ var iconBoxAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    iconOpacity: {
-        type: "number",
-        default: "1"
-    },
-    btnOpacity: {
-        type: "number",
-        default: "1"
     }
 };
+exports.default = attributes;
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _edit = __webpack_require__(263);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(265);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(266);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(267);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: React.createElement(_icons2.default, { icon: "icon-box" }),
     category: "premium-blocks",
-    attributes: iconBoxAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.iconBox
     },
@@ -37583,7 +35991,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 260 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37605,7 +36013,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(99);
+var _reactFonticonpicker = __webpack_require__(98);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -37625,15 +36033,15 @@ var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -37649,7 +36057,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(261);
+var _styling = __webpack_require__(264);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -37727,13 +36135,11 @@ var edit = function (_Component) {
                 borderIconBox = attributes.borderIconBox,
                 btnBorderIconBox = attributes.btnBorderIconBox,
                 align = attributes.align,
-                iconChecked = attributes.iconChecked,
                 iconImage = attributes.iconImage,
                 iconImgId = attributes.iconImgId,
                 iconImgUrl = attributes.iconImgUrl,
-                iconType = attributes.iconType,
-                selectedIcon = attributes.selectedIcon,
                 hoverEffect = attributes.hoverEffect,
+                iconChecked = attributes.iconChecked,
                 iconPos = attributes.iconPos,
                 iconHPos = attributes.iconHPos,
                 iconVPos = attributes.iconVPos,
@@ -37741,114 +36147,27 @@ var edit = function (_Component) {
                 iconRadius = attributes.iconRadius,
                 iconColor = attributes.iconColor,
                 iconBackColor = attributes.iconBackColor,
-                iconOpacity = attributes.iconOpacity,
+                selectedIcon = attributes.selectedIcon,
                 titleChecked = attributes.titleChecked,
                 titleText = attributes.titleText,
-                titleTag = attributes.titleTag,
-                titleColor = attributes.titleColor,
-                titleFont = attributes.titleFont,
-                titleSizeUnit = attributes.titleSizeUnit,
-                titleSize = attributes.titleSize,
-                titleSizeTablet = attributes.titleSizeTablet,
-                titleSizeMobile = attributes.titleSizeMobile,
-                titleLine = attributes.titleLine,
-                titleLetter = attributes.titleLetter,
-                titleStyle = attributes.titleStyle,
-                titleUpper = attributes.titleUpper,
-                titleWeight = attributes.titleWeight,
-                titleShadowBlur = attributes.titleShadowBlur,
-                titleShadowColor = attributes.titleShadowColor,
-                titleShadowHorizontal = attributes.titleShadowHorizontal,
-                titleShadowVertical = attributes.titleShadowVertical,
-                titleMarginT = attributes.titleMarginT,
-                titleMarginB = attributes.titleMarginB,
-                descChecked = attributes.descChecked,
                 descText = attributes.descText,
-                descColor = attributes.descColor,
-                descFont = attributes.descFont,
-                descSizeUnit = attributes.descSizeUnit,
-                descSize = attributes.descSize,
-                descSizeTablet = attributes.descSizeTablet,
-                descSizeMobile = attributes.descSizeMobile,
-                descLine = attributes.descLine,
-                descWeight = attributes.descWeight,
-                descMarginT = attributes.descMarginT,
-                descMarginB = attributes.descMarginB,
+                descChecked = attributes.descChecked,
                 btnChecked = attributes.btnChecked,
                 btnEffect = attributes.btnEffect,
                 effectDir = attributes.effectDir,
                 btnTarget = attributes.btnTarget,
                 btnText = attributes.btnText,
                 btnLink = attributes.btnLink,
-                btnSizeUnit = attributes.btnSizeUnit,
-                btnSize = attributes.btnSize,
-                btnSizeTablet = attributes.btnSizeTablet,
-                btnSizeMobile = attributes.btnSizeMobile,
-                btnUpper = attributes.btnUpper,
-                btnWeight = attributes.btnWeight,
-                btnLetter = attributes.btnLetter,
-                btnColor = attributes.btnColor,
-                btnStyle = attributes.btnStyle,
-                btnHoverColor = attributes.btnHoverColor,
-                btnBack = attributes.btnBack,
-                btnOpacity = attributes.btnOpacity,
-                btnHoverBack = attributes.btnHoverBack,
                 btnHoverBorder = attributes.btnHoverBorder,
-                btnBorderColor = attributes.btnBorderColor,
-                btnBorderWidth = attributes.btnBorderWidth,
-                btnBorderTop = attributes.btnBorderTop,
-                btnBorderRight = attributes.btnBorderRight,
-                btnBorderBottom = attributes.btnBorderBottom,
-                btnBorderLeft = attributes.btnBorderLeft,
-                btnBorderRadius = attributes.btnBorderRadius,
-                btnBorderType = attributes.btnBorderType,
-                btnPadding = attributes.btnPadding,
-                btnPaddingU = attributes.btnPaddingU,
-                btnMarginT = attributes.btnMarginT,
-                btnMarginB = attributes.btnMarginB,
-                btnShadowBlur = attributes.btnShadowBlur,
-                btnShadowColor = attributes.btnShadowColor,
-                btnShadowHorizontal = attributes.btnShadowHorizontal,
-                btnShadowVertical = attributes.btnShadowVertical,
-                btnShadowPosition = attributes.btnShadowPosition,
-                imageID = attributes.imageID,
-                imageURL = attributes.imageURL,
-                fixed = attributes.fixed,
-                backColor = attributes.backColor,
-                backOpacity = attributes.backOpacity,
-                backgroundRepeat = attributes.backgroundRepeat,
-                backgroundPosition = attributes.backgroundPosition,
-                backgroundSize = attributes.backgroundSize,
-                borderType = attributes.borderType,
-                borderWidth = attributes.borderWidth,
-                borderTop = attributes.borderTop,
-                borderRight = attributes.borderRight,
-                borderBottom = attributes.borderBottom,
-                borderLeft = attributes.borderLeft,
-                borderRadius = attributes.borderRadius,
-                borderColor = attributes.borderColor,
-                marginT = attributes.marginT,
-                marginR = attributes.marginR,
-                marginB = attributes.marginB,
-                marginL = attributes.marginL,
-                paddingT = attributes.paddingT,
-                paddingR = attributes.paddingR,
-                paddingB = attributes.paddingB,
-                paddingL = attributes.paddingL,
-                paddingU = attributes.paddingU,
-                shadowBlur = attributes.shadowBlur,
-                shadowColor = attributes.shadowColor,
-                shadowHorizontal = attributes.shadowHorizontal,
-                shadowVertical = attributes.shadowVertical,
-                shadowPosition = attributes.shadowPosition,
-                hoverShadowBlur = attributes.hoverShadowBlur,
-                hoverShadowColor = attributes.hoverShadowColor,
-                hoverShadowHorizontal = attributes.hoverShadowHorizontal,
-                hoverShadowVertical = attributes.hoverShadowVertical,
-                hoverShadowPosition = attributes.hoverShadowPosition,
+                classMigrate = attributes.classMigrate,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                hideMobile = attributes.hideMobile,
+                iconOpacity = attributes.iconOpacity,
+                titleStyles = attributes.titleStyles,
+                descStyles = attributes.descStyles,
+                btnStyles = attributes.btnStyles,
+                containerStyles = attributes.containerStyles;
 
 
             var imgIcon = [{
@@ -38881,30 +37200,30 @@ var edit = function (_Component) {
                     className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: align,
-                        borderStyle: borderType,
-                        borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
-                        borderColor: borderColor,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
+                        borderStyle: containerStyles[0].borderType,
+                        borderWidth: borderIconBox ? containerStyles[0].borderTop + "px " + containerStyles[0].borderRight + "px " + containerStyles[0].borderBottom + "px " + containerStyles[0].borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                        borderRadius: containerStyles[0].borderRadius + "px",
+                        borderColor: containerStyles[0].borderColor,
+                        marginTop: containerStyles[0].marginT,
+                        marginRight: containerStyles[0].marginR,
+                        marginBottom: containerStyles[0].marginB,
+                        marginLeft: containerStyles[0].marginL,
+                        paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                        paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                        paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                        paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
                         boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                        backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset"
+                        backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                        backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
                     }
                 },
                 btnChecked && btnText && React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerStyles[0].hoverShadowHorizontal + "px " + containerStyles[0].hoverShadowVertical + "px " + containerStyles[0].hoverShadowBlur + "px " + containerStyles[0].hoverShadowColor + " " + containerStyles[0].hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
                     }
                 }),
                 iconChecked && React.createElement(
@@ -38948,8 +37267,8 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__title_wrap",
                             style: {
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
+                                marginTop: titleStyles[0].titleMarginT,
+                                marginBottom: titleStyles[0].titleMarginB
                             }
                         },
                         React.createElement(RichText, {
@@ -38961,14 +37280,14 @@ var edit = function (_Component) {
                             placeholder: __("Awesome Title"),
                             value: titleText,
                             style: {
-                                color: titleColor,
-                                fontFamily: titleFont,
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                lineHeight: titleLine + "px"
+                                color: titleStyles[0].titleColor,
+                                fontFamily: titleStyles[0].titleFont,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                lineHeight: titleStyles[0].titleLine + "px"
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -38978,8 +37297,8 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__desc_wrap",
                             style: {
-                                marginTop: descMarginT,
-                                marginBottom: descMarginB
+                                marginTop: descStyles[0].descMarginT,
+                                marginBottom: descStyles[0].descMarginB
                             }
                         },
                         React.createElement(RichText, {
@@ -38992,10 +37311,10 @@ var edit = function (_Component) {
                                 return setAttributes({ descText: newText });
                             },
                             style: {
-                                color: descColor,
-                                fontFamily: descFont,
-                                lineHeight: descLine + "px",
-                                fontWeight: descWeight
+                                color: descStyles[0].descColor,
+                                fontFamily: descStyles[0].descFont,
+                                lineHeight: descStyles[0].descLine + "px",
+                                fontWeight: descStyles[0].descWeight
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -39005,8 +37324,8 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
                             style: {
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB
+                                marginTop: btnStyles[0].btnMarginT,
+                                marginBottom: btnStyles[0].btnMarginB
                             }
                         },
                         React.createElement(RichText, {
@@ -39018,18 +37337,18 @@ var edit = function (_Component) {
                             placeholder: __("Click Here"),
                             value: btnText,
                             style: {
-                                color: btnColor,
-                                backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
-                                letterSpacing: btnLetter + "px",
-                                textTransform: btnUpper ? "uppercase" : "none",
-                                fontStyle: btnStyle,
-                                fontWeight: btnWeight,
-                                borderStyle: btnBorderType,
-                                borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
-                                borderRadius: btnBorderRadius + "px",
-                                borderColor: btnBorderColor,
-                                padding: btnPadding + btnPaddingU,
-                                boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                                color: btnStyles[0].btnColor,
+                                backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                                letterSpacing: btnStyles[0].btnLetter + "px",
+                                textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                fontStyle: btnStyles[0].btnStyle,
+                                fontWeight: btnStyles[0].btnWeight,
+                                borderStyle: btnStyles[0].btnBorderType,
+                                borderWidth: btnBorderIconBox ? btnStyles[0].btnBorderTop + "px " + btnStyles[0].btnBorderRight + "px " + btnStyles[0].btnBorderBottom + "px " + btnStyles[0].btnBorderLeft + "px" : btnStyles[0].btnBorderWidth + "px",
+                                borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                borderColor: btnStyles[0].btnBorderColor,
+                                padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition
                             },
                             keepPlaceholderOnFocus: true
                         }),
@@ -39053,7 +37372,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 261 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39063,11 +37382,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -39147,7 +37466,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 262 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39178,112 +37497,38 @@ var save = function save(props) {
         btnBorderIconBox = _props$attributes.btnBorderIconBox,
         align = _props$attributes.align,
         iconImage = _props$attributes.iconImage,
+        iconImgId = _props$attributes.iconImgId,
         iconImgUrl = _props$attributes.iconImgUrl,
-        iconRadius = _props$attributes.iconRadius,
-        selectedIcon = _props$attributes.selectedIcon,
-        iconChecked = _props$attributes.iconChecked,
         hoverEffect = _props$attributes.hoverEffect,
+        iconChecked = _props$attributes.iconChecked,
         iconPos = _props$attributes.iconPos,
         iconHPos = _props$attributes.iconHPos,
         iconVPos = _props$attributes.iconVPos,
         iconSize = _props$attributes.iconSize,
+        iconRadius = _props$attributes.iconRadius,
         iconColor = _props$attributes.iconColor,
         iconBackColor = _props$attributes.iconBackColor,
+        selectedIcon = _props$attributes.selectedIcon,
         titleChecked = _props$attributes.titleChecked,
         titleText = _props$attributes.titleText,
-        titleTag = _props$attributes.titleTag,
-        titleColor = _props$attributes.titleColor,
-        titleFont = _props$attributes.titleFont,
-        titleLine = _props$attributes.titleLine,
-        titleLetter = _props$attributes.titleLetter,
-        titleStyle = _props$attributes.titleStyle,
-        titleUpper = _props$attributes.titleUpper,
-        titleWeight = _props$attributes.titleWeight,
-        titleShadowBlur = _props$attributes.titleShadowBlur,
-        titleShadowColor = _props$attributes.titleShadowColor,
-        titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-        titleShadowVertical = _props$attributes.titleShadowVertical,
-        titleMarginT = _props$attributes.titleMarginT,
-        titleMarginB = _props$attributes.titleMarginB,
-        descChecked = _props$attributes.descChecked,
         descText = _props$attributes.descText,
-        descColor = _props$attributes.descColor,
-        descFont = _props$attributes.descFont,
-        descLine = _props$attributes.descLine,
-        descWeight = _props$attributes.descWeight,
-        descMarginT = _props$attributes.descMarginT,
-        descMarginB = _props$attributes.descMarginB,
+        descChecked = _props$attributes.descChecked,
         btnChecked = _props$attributes.btnChecked,
         btnEffect = _props$attributes.btnEffect,
         effectDir = _props$attributes.effectDir,
-        btnText = _props$attributes.btnText,
         btnTarget = _props$attributes.btnTarget,
+        btnText = _props$attributes.btnText,
         btnLink = _props$attributes.btnLink,
-        btnStyle = _props$attributes.btnStyle,
-        btnUpper = _props$attributes.btnUpper,
-        btnWeight = _props$attributes.btnWeight,
-        btnLetter = _props$attributes.btnLetter,
-        btnColor = _props$attributes.btnColor,
-        btnHoverColor = _props$attributes.btnHoverColor,
         btnHoverBorder = _props$attributes.btnHoverBorder,
-        btnBack = _props$attributes.btnBack,
-        btnHoverBack = _props$attributes.btnHoverBack,
-        btnBorderWidth = _props$attributes.btnBorderWidth,
-        btnBorderTop = _props$attributes.btnBorderTop,
-        btnBorderRight = _props$attributes.btnBorderRight,
-        btnBorderBottom = _props$attributes.btnBorderBottom,
-        btnBorderLeft = _props$attributes.btnBorderLeft,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        btnBorderRadius = _props$attributes.btnBorderRadius,
-        btnBorderColor = _props$attributes.btnBorderColor,
-        btnBorderType = _props$attributes.btnBorderType,
-        btnPadding = _props$attributes.btnPadding,
-        btnPaddingU = _props$attributes.btnPaddingU,
-        btnMarginT = _props$attributes.btnMarginT,
-        btnMarginB = _props$attributes.btnMarginB,
-        btnShadowBlur = _props$attributes.btnShadowBlur,
-        btnShadowColor = _props$attributes.btnShadowColor,
-        btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes.btnShadowVertical,
-        btnShadowPosition = _props$attributes.btnShadowPosition,
-        backColor = _props$attributes.backColor,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
-        hoverShadowBlur = _props$attributes.hoverShadowBlur,
-        hoverShadowColor = _props$attributes.hoverShadowColor,
-        hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
-        hoverShadowVertical = _props$attributes.hoverShadowVertical,
-        hoverShadowPosition = _props$attributes.hoverShadowPosition,
-        iconOpacity = _props$attributes.iconOpacity,
-        btnOpacity = _props$attributes.btnOpacity,
-        backOpacity = _props$attributes.backOpacity,
+        classMigrate = _props$attributes.classMigrate,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        iconOpacity = _props$attributes.iconOpacity,
+        titleStyles = _props$attributes.titleStyles,
+        descStyles = _props$attributes.descStyles,
+        btnStyles = _props$attributes.btnStyles,
+        containerStyles = _props$attributes.containerStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
@@ -39295,30 +37540,30 @@ var save = function save(props) {
             className: mainClasses + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos + ' premium-icon-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                borderStyle: borderType,
-                borderWidth: borderIconBox ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
+                borderStyle: containerStyles[0].borderType,
+                borderWidth: borderIconBox ? containerStyles[0].borderTop + 'px ' + containerStyles[0].borderRight + 'px ' + containerStyles[0].borderBottom + 'px ' + containerStyles[0].borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                marginTop: containerStyles[0].marginT,
+                marginRight: containerStyles[0].marginR,
+                marginBottom: containerStyles[0].marginB,
+                marginLeft: containerStyles[0].marginL,
+                paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
                 boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-                backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                backgroundImage: 'url(\'' + imageURL + '\')',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset"
+                backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
             }
         },
         btnChecked && btnText && React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
+                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + containerStyles[0].hoverShadowHorizontal + 'px ' + containerStyles[0].hoverShadowVertical + 'px ' + containerStyles[0].hoverShadowBlur + 'px ' + containerStyles[0].hoverShadowColor + ' ' + containerStyles[0].hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnStyles[0].btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}"].join("\n")
             }
         }),
         iconChecked && React.createElement(
@@ -39353,8 +37598,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__title_wrap',
                     style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
+                        marginTop: titleStyles[0].titleMarginT,
+                        marginBottom: titleStyles[0].titleMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39362,14 +37607,14 @@ var save = function save(props) {
                     className: 'premium-icon-box__title',
                     value: titleText,
                     style: {
-                        color: titleColor,
-                        fontFamily: titleFont,
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
-                        lineHeight: titleLine + "px"
+                        color: titleStyles[0].titleColor,
+                        fontFamily: titleStyles[0].titleFont,
+                        letterSpacing: titleStyles[0].titleLetter + "px",
+                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyles[0].titleStyle,
+                        fontWeight: titleStyles[0].titleWeight,
+                        textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                        lineHeight: titleStyles[0].titleLine + "px"
                     }
                 })
             ),
@@ -39378,8 +37623,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__desc_wrap',
                     style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
+                        marginTop: descStyles[0].descMarginT,
+                        marginBottom: descStyles[0].descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39387,10 +37632,10 @@ var save = function save(props) {
                     className: 'premium-icon-box__desc',
                     value: descText,
                     style: {
-                        color: descColor,
-                        fontFamily: descFont,
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
+                        color: descStyles[0].descColor,
+                        fontFamily: descStyles[0].descFont,
+                        lineHeight: descStyles[0].descLine + "px",
+                        fontWeight: descStyles[0].descWeight
                     }
                 })
             ),
@@ -39399,8 +37644,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
+                        marginTop: btnStyles[0].btnMarginT,
+                        marginBottom: btnStyles[0].btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39411,18 +37656,18 @@ var save = function save(props) {
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
                     style: {
-                        color: btnColor,
-                        backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        borderStyle: btnBorderType,
-                        borderWidth: btnBorderIconBox ? btnBorderTop + 'px ' + btnBorderRight + 'px ' + btnBorderBottom + 'px ' + btnBorderLeft + 'px' : btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + btnPaddingU,
-                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
+                        color: btnStyles[0].btnColor,
+                        backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                        letterSpacing: btnStyles[0].btnLetter + "px",
+                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                        fontStyle: btnStyles[0].btnStyle,
+                        fontWeight: btnStyles[0].btnWeight,
+                        borderStyle: btnStyles[0].btnBorderType,
+                        borderWidth: btnBorderIconBox ? btnStyles[0].btnBorderTop + 'px ' + btnStyles[0].btnBorderRight + 'px ' + btnStyles[0].btnBorderBottom + 'px ' + btnStyles[0].btnBorderLeft + 'px' : btnStyles[0].btnBorderWidth + "px",
+                        borderRadius: btnStyles[0].btnBorderRadius + "px",
+                        borderColor: btnStyles[0].btnBorderColor,
+                        padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                        boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition
                     }
                 })
             )
@@ -39433,7 +37678,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 263 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42304,7 +40549,275 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 264 */
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+
+    btnHoverBorder: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+
+    titleStyles: {
+        type: "array",
+        default: [{
+
+            titleTag: "H2",
+            titleFont: '',
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descFont: '',
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: 500,
+            descMarginT: '',
+            descMarginB: ''
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: 500,
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: '',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: 1,
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: ''
+
+        }]
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43404,7 +41917,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 265 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43416,17 +41929,21 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(266);
+var _edit = __webpack_require__(270);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(268);
+var _save = __webpack_require__(272);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(269);
+var _deprecated = __webpack_require__(273);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(274);
+
+var _attributes2 = _interopRequireDefault(_attributes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43434,619 +41951,11 @@ var registerBlockType = wp.blocks.registerBlockType;
 var __ = wp.i18n.__;
 
 
-var pricingAttrs = {
-    borderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    btnBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    tableBack: {
-        type: "string"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    tablePadding: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowColor: {
-        type: "string"
-    },
-    tableShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    tableShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__title",
-        default: "Pricing Table"
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    titleSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: 'number'
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleBack: {
-        type: "string"
-    },
-    titleMarginB: {
-        type: "number",
-        default: 20
-    },
-    titleMarginT: {
-        type: "number",
-        default: 20
-    },
-    titlePadding: {
-        type: "number",
-        default: "0"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__desc"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number"
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: 'number'
-    },
-    descSizeMobile: {
-        type: 'number'
-    },
-    descWeight: {
-        type: "number"
-    },
-    descLetter: {
-        type: "number"
-    },
-    descStyle: {
-        type: "string"
-    },
-    descLine: {
-        type: "number"
-    },
-    descBack: {
-        type: "string"
-    },
-    descMarginT: {
-        type: "number",
-        default: "0"
-    },
-    descMarginB: {
-        type: "number",
-        default: "30"
-    },
-    descPadding: {
-        type: "number",
-        default: "0"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    descChecked: {
-        type: "boolean",
-        default: false
-    },
-    priceChecked: {
-        type: "boolean",
-        default: true
-    },
-    priceBack: {
-        type: "string"
-    },
-    priceMarginT: {
-        type: "number"
-    },
-    priceMarginB: {
-        type: "number",
-        default: 10
-    },
-    pricePadding: {
-        type: "number"
-    },
-    slashPrice: {
-        type: "string"
-    },
-    slashColor: {
-        type: "string"
-    },
-    slashSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    slashSize: {
-        type: "number",
-        default: 20
-    },
-    slashSizeMobile: {
-        type: "number"
-    },
-    slashSizeTablet: {
-        type: "number"
-    },
-    slashWeight: {
-        type: "number"
-    },
-    currPrice: {
-        type: "string",
-        default: "$"
-    },
-    currColor: {
-        type: "string"
-    },
-    currSize: {
-        type: "number",
-        default: 20
-    },
-    currSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    currSizeMobile: {
-        type: "number"
-    },
-    currSizeTablet: {
-        type: "number"
-    },
-    currWeight: {
-        type: "number"
-    },
-    valPrice: {
-        type: "string",
-        default: "25"
-    },
-    valColor: {
-        type: "string"
-    },
-    valSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    valSize: {
-        type: "number",
-        default: 50
-    },
-    valSizeMobile: {
-        type: "number"
-    },
-    valSizeTablet: {
-        type: "number"
-    },
-    valWeight: {
-        type: "number"
-    },
-    divPrice: {
-        type: "string",
-        default: "/"
-    },
-    divColor: {
-        type: "string"
-    },
-    divSize: {
-        type: "number",
-        default: 20
-    },
-    divSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    divSizeMobile: {
-        type: "number"
-    },
-    divSizeTablet: {
-        type: "number"
-    },
-    divWeight: {
-        type: "number"
-    },
-    durPrice: {
-        type: "string",
-        default: "m"
-    },
-    durColor: {
-        type: "string"
-    },
-    durSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    durSize: {
-        type: "number",
-        default: 20
-    },
-    durSizeMobile: {
-        type: "number"
-    },
-    durSizeTablet: {
-        type: "number"
-    },
-    durWeight: {
-        type: "number"
-    },
-    selectedStyle: {
-        type: "string",
-        default: "price"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnText: {
-        type: "string",
-        default: "Get Started"
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-pricing-table__button_link"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: true
-    },
-    btnColor: {
-        type: "string",
-        default: "#fff"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnWidth: {
-        type: "number"
-    },
-    btnSize: {
-        type: "number"
-    },
-    btnSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    btnSizeTablet: {
-        type: 'number'
-    },
-    btnSizeMobile: {
-        type: 'number'
-    },
-    btnWeight: {
-        type: "number",
-        default: 900
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnBack: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number",
-        default: "0"
-    },
-    btnMarginB: {
-        type: "number",
-        default: "0"
-    },
-    btnPadding: {
-        type: "number",
-        default: 10
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    badgeChecked: {
-        type: "boolean"
-    },
-    badgePos: {
-        type: "string",
-        default: "right"
-    },
-    badgeBack: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    badgeColor: {
-        type: "string"
-    },
-    badgeTextSize: {
-        type: "number"
-    },
-    badgeSize: {
-        type: "number"
-    },
-    badgeTextUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    badgeTextSizeTablet: {
-        type: 'number'
-    },
-    badgeTextSizeMobile: {
-        type: 'number'
-    },
-    badgeTop: {
-        type: "number"
-    },
-    badgeHorizontal: {
-        type: "number"
-    },
-    badgeWidth: {
-        type: "number"
-    },
-    badgeWeight: {
-        type: "number",
-        default: 900
-    },
-    badgeLetter: {
-        type: "number"
-    },
-    badgeStyle: {
-        type: "string"
-    },
-    badgeUpper: {
-        type: "boolean"
-    },
-    badgeText: {
-        type: "string",
-        default: __("Popular")
-    },
-    listChecked: {
-        type: "boolean",
-        default: true
-    },
-    listColor: {
-        type: "string"
-    },
-    listSize: {
-        type: "number"
-    },
-    listSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    listSizeTablet: {
-        type: 'number'
-    },
-    listSizeMobile: {
-        type: 'number'
-    },
-    listWeight: {
-        type: "number",
-        default: 500
-    },
-    listItemsStyle: {
-        type: "string"
-    },
-    listLetter: {
-        type: "number"
-    },
-    listLine: {
-        type: "number"
-    },
-    listUpper: {
-        type: "boolean"
-    },
-    listBack: {
-        type: "string"
-    },
-    listItems: {
-        type: "array",
-        source: "children",
-        selector: ".premium-pricing-table__list"
-    },
-    listMarginB: {
-        type: "number",
-        default: 20
-    },
-    listMarginT: {
-        type: "number"
-    },
-    listPadding: {
-        type: "number"
-    },
-    listStyle: {
-        type: "string",
-        default: "disc"
-    },
-    featsAlign: {
-        type: "string"
-    },
-    slashV: {
-        type: "string",
-        default: "center"
-    },
-    currV: {
-        type: "string",
-        default: "center"
-    },
-    valV: {
-        type: "string",
-        default: "center"
-    },
-    divV: {
-        type: "string",
-        default: "center"
-    },
-    durV: {
-        type: "string",
-        default: "center"
-    },
-    block_id: {
-        type: "string"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    classMigrate: {
-        type: 'boolean',
-        default: false
-    },
-    tableOpacity: {
-        type: "number",
-        default: "1"
-    },
-    priceOpacity: {
-        type: "number",
-        default: "1"
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: "boolean",
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
     icon: React.createElement(_icons2.default, { icon: "pricing-table" }),
     category: "premium-blocks",
-    attributes: pricingAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.pricingTable
     },
@@ -44056,7 +41965,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 266 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44080,11 +41989,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -44092,7 +42001,7 @@ var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -44100,7 +42009,7 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _styling = __webpack_require__(267);
+var _styling = __webpack_require__(271);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -44169,178 +42078,34 @@ var PremiumPricingTable = function (_Component) {
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
             var _props$attributes = this.props.attributes,
-                block_id = _props$attributes.block_id,
                 borderUpdated = _props$attributes.borderUpdated,
                 btnBorderUpdated = _props$attributes.btnBorderUpdated,
                 contentAlign = _props$attributes.contentAlign,
-                tableBack = _props$attributes.tableBack,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderRadius = _props$attributes.borderRadius,
                 borderColor = _props$attributes.borderColor,
-                tablePadding = _props$attributes.tablePadding,
-                titleChecked = _props$attributes.titleChecked,
-                tableShadowBlur = _props$attributes.tableShadowBlur,
-                tableShadowColor = _props$attributes.tableShadowColor,
-                tableShadowHorizontal = _props$attributes.tableShadowHorizontal,
-                tableShadowVertical = _props$attributes.tableShadowVertical,
-                tableShadowPosition = _props$attributes.tableShadowPosition,
                 title = _props$attributes.title,
-                titleTag = _props$attributes.titleTag,
-                titleColor = _props$attributes.titleColor,
-                titleSize = _props$attributes.titleSize,
-                titleLine = _props$attributes.titleLine,
-                titleLetter = _props$attributes.titleLetter,
-                titleStyle = _props$attributes.titleStyle,
-                titleUpper = _props$attributes.titleUpper,
-                titleWeight = _props$attributes.titleWeight,
-                titleBack = _props$attributes.titleBack,
-                titleShadowBlur = _props$attributes.titleShadowBlur,
-                titleShadowColor = _props$attributes.titleShadowColor,
-                titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-                titleShadowVertical = _props$attributes.titleShadowVertical,
-                titleMarginT = _props$attributes.titleMarginT,
-                titleMarginB = _props$attributes.titleMarginB,
-                titlePadding = _props$attributes.titlePadding,
-                descChecked = _props$attributes.descChecked,
-                descColor = _props$attributes.descColor,
-                descSize = _props$attributes.descSize,
-                descLine = _props$attributes.descLine,
-                descWeight = _props$attributes.descWeight,
-                descStyle = _props$attributes.descStyle,
-                descLetter = _props$attributes.descLetter,
                 desc = _props$attributes.desc,
-                descBack = _props$attributes.descBack,
-                descMarginT = _props$attributes.descMarginT,
-                descMarginB = _props$attributes.descMarginB,
-                descPadding = _props$attributes.descPadding,
+                titleChecked = _props$attributes.titleChecked,
+                descChecked = _props$attributes.descChecked,
                 priceChecked = _props$attributes.priceChecked,
-                priceBack = _props$attributes.priceBack,
-                priceMarginT = _props$attributes.priceMarginT,
-                priceMarginB = _props$attributes.priceMarginB,
-                pricePadding = _props$attributes.pricePadding,
-                slashPrice = _props$attributes.slashPrice,
-                btnBorderTop = _props$attributes.btnBorderTop,
-                btnBorderRight = _props$attributes.btnBorderRight,
-                btnBorderBottom = _props$attributes.btnBorderBottom,
-                btnBorderLeft = _props$attributes.btnBorderLeft,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                slashColor = _props$attributes.slashColor,
-                slashSize = _props$attributes.slashSize,
-                slashWeight = _props$attributes.slashWeight,
-                slashV = _props$attributes.slashV,
-                currPrice = _props$attributes.currPrice,
-                currColor = _props$attributes.currColor,
-                currWeight = _props$attributes.currWeight,
-                currV = _props$attributes.currV,
-                valPrice = _props$attributes.valPrice,
-                valColor = _props$attributes.valColor,
-                valSize = _props$attributes.valSize,
-                valWeight = _props$attributes.valWeight,
-                valV = _props$attributes.valV,
-                divPrice = _props$attributes.divPrice,
-                divColor = _props$attributes.divColor,
-                divSize = _props$attributes.divSize,
-                divWeight = _props$attributes.divWeight,
-                divV = _props$attributes.divV,
-                durPrice = _props$attributes.durPrice,
-                durColor = _props$attributes.durColor,
-                durSize = _props$attributes.durSize,
-                durWeight = _props$attributes.durWeight,
-                durV = _props$attributes.durV,
                 selectedStyle = _props$attributes.selectedStyle,
                 btnChecked = _props$attributes.btnChecked,
                 btnText = _props$attributes.btnText,
-                btnTarget = _props$attributes.btnTarget,
                 btnLink = _props$attributes.btnLink,
-                btnColor = _props$attributes.btnColor,
-                btnHoverColor = _props$attributes.btnHoverColor,
-                btnSize = _props$attributes.btnSize,
-                btnWeight = _props$attributes.btnWeight,
-                btnLetter = _props$attributes.btnLetter,
-                btnLine = _props$attributes.btnLine,
-                btnUpper = _props$attributes.btnUpper,
-                btnStyle = _props$attributes.btnStyle,
-                btnBack = _props$attributes.btnBack,
-                btnHoverBack = _props$attributes.btnHoverBack,
-                btnMarginT = _props$attributes.btnMarginT,
-                btnMarginB = _props$attributes.btnMarginB,
-                btnPadding = _props$attributes.btnPadding,
-                btnPaddingU = _props$attributes.btnPaddingU,
-                btnWidth = _props$attributes.btnWidth,
-                btnBorderType = _props$attributes.btnBorderType,
-                btnBorderWidth = _props$attributes.btnBorderWidth,
-                btnBorderRadius = _props$attributes.btnBorderRadius,
-                btnBorderColor = _props$attributes.btnBorderColor,
                 badgeChecked = _props$attributes.badgeChecked,
-                badgePos = _props$attributes.badgePos,
-                badgeBack = _props$attributes.badgeBack,
-                badgeColor = _props$attributes.badgeColor,
-                badgeSize = _props$attributes.badgeSize,
-                badgeTextSize = _props$attributes.badgeTextSize,
-                badgeTop = _props$attributes.badgeTop,
-                badgeHorizontal = _props$attributes.badgeHorizontal,
-                badgeWidth = _props$attributes.badgeWidth,
-                badgeWeight = _props$attributes.badgeWeight,
-                badgeLetter = _props$attributes.badgeLetter,
-                badgeStyle = _props$attributes.badgeStyle,
-                badgeUpper = _props$attributes.badgeUpper,
-                badgeText = _props$attributes.badgeText,
                 listChecked = _props$attributes.listChecked,
-                listColor = _props$attributes.listColor,
-                listWeight = _props$attributes.listWeight,
-                listSize = _props$attributes.listSize,
-                listItemsStyle = _props$attributes.listItemsStyle,
-                listLetter = _props$attributes.listLetter,
-                listLine = _props$attributes.listLine,
-                listUpper = _props$attributes.listUpper,
-                listBack = _props$attributes.listBack,
                 listItems = _props$attributes.listItems,
-                listMarginT = _props$attributes.listMarginT,
-                listMarginB = _props$attributes.listMarginB,
-                listPadding = _props$attributes.listPadding,
-                listStyle = _props$attributes.listStyle,
-                featsAlign = _props$attributes.featsAlign,
-                id = _props$attributes.id,
-                titleSizeUnit = _props$attributes.titleSizeUnit,
-                titleSizeMobile = _props$attributes.titleSizeMobile,
-                titleSizeTablet = _props$attributes.titleSizeTablet,
-                slashSizeUnit = _props$attributes.slashSizeUnit,
-                slashSizeMobile = _props$attributes.slashSizeMobile,
-                slashSizeTablet = _props$attributes.slashSizeTablet,
-                currSizeUnit = _props$attributes.currSizeUnit,
-                currSize = _props$attributes.currSize,
-                currSizeMobile = _props$attributes.currSizeMobile,
-                currSizeTablet = _props$attributes.currSizeTablet,
-                valSizeUnit = _props$attributes.valSizeUnit,
-                valSizeMobile = _props$attributes.valSizeMobile,
-                valSizeTablet = _props$attributes.valSizeTablet,
-                divSizeUnit = _props$attributes.divSizeUnit,
-                divSizeMobile = _props$attributes.divSizeMobile,
-                divSizeTablet = _props$attributes.divSizeTablet,
-                durSizeUnit = _props$attributes.durSizeUnit,
-                durSizeMobile = _props$attributes.durSizeMobile,
-                durSizeTablet = _props$attributes.durSizeTablet,
-                listSizeUnit = _props$attributes.listSizeUnit,
-                listSizeMobile = _props$attributes.listSizeMobile,
-                listSizeTablet = _props$attributes.listSizeTablet,
-                descSizeUnit = _props$attributes.descSizeUnit,
-                descSizeMobile = _props$attributes.descSizeMobile,
-                descSizeTablet = _props$attributes.descSizeTablet,
-                btnSizeUnit = _props$attributes.btnSizeUnit,
-                btnSizeMobile = _props$attributes.btnSizeMobile,
-                btnSizeTablet = _props$attributes.btnSizeTablet,
-                badgeTextUnit = _props$attributes.badgeTextUnit,
-                badgeTextSizeMobile = _props$attributes.badgeTextSizeMobile,
-                badgeTextSizeTablet = _props$attributes.badgeTextSizeTablet,
-                priceOpacity = _props$attributes.priceOpacity,
-                tableOpacity = _props$attributes.tableOpacity,
+                block_id = _props$attributes.block_id,
+                classMigrate = _props$attributes.classMigrate,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                titleStyles = _props$attributes.titleStyles,
+                priceStyles = _props$attributes.priceStyles,
+                featureStyles = _props$attributes.featureStyles,
+                descStyles = _props$attributes.descStyles,
+                buttonStyles = _props$attributes.buttonStyles,
+                badgeStyles = _props$attributes.badgeStyles,
+                tableStyles = _props$attributes.tableStyles;
 
 
             var ALIGNS = [{
@@ -45737,13 +43502,13 @@ var PremiumPricingTable = function (_Component) {
                     className: mainClasses + " premium-pricing-table-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: contentAlign,
-                        backgroundColor: tableBack ? (0, _hexToRgba2.default)(tableBack, tableOpacity) : "transparent",
-                        borderStyle: borderType,
-                        borderWidth: borderUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
+                        backgroundColor: tableStyles[0].tableBack ? (0, _hexToRgba2.default)(tableStyles[0].tableBack, tableStyles[0].tableOpacity) : "transparent",
+                        borderStyle: tableStyles[0].borderType,
+                        borderWidth: borderUpdated ? tableStyles[0].borderTop + "px " + tableStyles[0].borderRight + "px " + tableStyles[0].borderBottom + "px " + tableStyles[0].borderLeft + "px" : tableStyles[0].borderWidth + "px",
+                        borderRadius: tableStyles[0].borderRadius + "px",
                         borderColor: borderColor,
-                        padding: tablePadding + "px",
-                        boxShadow: tableShadowHorizontal + "px " + tableShadowVertical + "px " + tableShadowBlur + "px " + tableShadowColor + " " + tableShadowPosition
+                        padding: tableStyles[0].tablePadding + "px",
+                        boxShadow: tableStyles[0].tableShadowHorizontal + "px " + tableStyles[0].tableShadowVertical + "px " + tableStyles[0].tableShadowBlur + "px " + tableStyles[0].tableShadowColor + " " + tableStyles[0].tableShadowPosition
                     }
                 },
                 badgeChecked && React.createElement(
@@ -45756,30 +43521,30 @@ var PremiumPricingTable = function (_Component) {
                         {
                             className: "premium-pricing-table__badge",
                             style: {
-                                borderRightColor: "right" === badgePos ? badgeBack : "transparent",
-                                borderTopColor: "left" === badgePos ? badgeBack : "transparent",
-                                borderBottomWidth: badgeSize + "px",
-                                borderRightWidth: badgeSize + "px",
-                                borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
-                                borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                                borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                borderBottomWidth: badgeStyles[0].badgeSize + "px",
+                                borderRightWidth: badgeStyles[0].badgeSize + "px",
+                                borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+                                borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
                             }
                         },
                         React.createElement(
                             "span",
                             {
                                 style: {
-                                    color: badgeColor,
-                                    fontWeight: badgeWeight,
-                                    textTransform: badgeUpper ? "uppercase" : "none",
-                                    letterSpacing: badgeLetter + "px",
-                                    fontStyle: badgeStyle,
-                                    width: badgeWidth + "px",
-                                    top: badgeTop + "px",
-                                    left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
-                                    right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                                    color: badgeStyles[0].badgeColor,
+                                    fontWeight: badgeStyles[0].badgeWeight,
+                                    textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
+                                    letterSpacing: badgeStyles[0].badgeLetter + "px",
+                                    fontStyle: badgeStyles[0].badgeStyle,
+                                    width: badgeStyles[0].badgeWidth + "px",
+                                    top: badgeStyles[0].badgeTop + "px",
+                                    left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+                                    right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
                                 }
                             },
-                            badgeText
+                            badgeStyles[0].badgeText
                         )
                     )
                 ),
@@ -45788,8 +43553,8 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__title_wrap",
                         style: {
-                            paddingTop: titleMarginT + "px",
-                            paddingBottom: titleMarginB + "px"
+                            paddingTop: titleStyles[0].titleMarginT + "px",
+                            paddingBottom: titleStyles[0].titleMarginB + "px"
                         }
                     },
                     React.createElement(RichText, {
@@ -45801,15 +43566,15 @@ var PremiumPricingTable = function (_Component) {
                         placeholder: __("Awesome Title"),
                         value: title,
                         style: {
-                            color: titleColor,
-                            background: titleBack,
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            lineHeight: titleLine + "px",
-                            padding: titlePadding + "px",
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+                            color: titleStyles[0].titleColor,
+                            background: titleStyles[0].titleBack,
+                            letterSpacing: titleStyles[0].titleLetter + "px",
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
+                            fontWeight: titleStyles[0].titleWeight,
+                            lineHeight: titleStyles[0].titleLine + "px",
+                            padding: titleStyles[0].titlePadding + "px",
+                            textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor
                         }
                     })
                 ),
@@ -45818,10 +43583,10 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__price_wrap",
                         style: {
-                            backgroundColor: priceBack ? (0, _hexToRgba2.default)(priceBack, priceOpacity) : "transparent",
-                            marginTop: priceMarginT + "px",
-                            marginBottom: priceMarginB + "px",
-                            padding: pricePadding + "px",
+                            backgroundColor: priceStyles[0].priceBack ? (0, _hexToRgba2.default)(priceStyles[0].priceBack, priceStyles[0].priceOpacity) : "transparent",
+                            marginTop: priceStyles[0].priceMarginT + "px",
+                            marginBottom: priceStyles[0].priceMarginB + "px",
+                            padding: priceStyles[0].pricePadding + "px",
                             justifyContent: contentAlign
                         }
                     },
@@ -45830,60 +43595,60 @@ var PremiumPricingTable = function (_Component) {
                         {
                             className: "premium-pricing-table__slash",
                             style: {
-                                color: slashColor,
-                                fontWeight: slashWeight,
-                                alignSelf: slashV
+                                color: priceStyles[0].slashColor,
+                                fontWeight: priceStyles[0].slashWeight,
+                                alignSelf: priceStyles[0].slashV
                             }
                         },
-                        slashPrice
+                        priceStyles[0].slashPrice
                     ),
                     currPrice && React.createElement(
                         "span",
                         {
                             className: "premium-pricing-table__currency",
                             style: {
-                                color: currColor,
-                                fontWeight: currWeight,
-                                alignSelf: currV
+                                color: priceStyles[0].currColor,
+                                fontWeight: priceStyles[0].currWeight,
+                                alignSelf: priceStyles[0].currV
                             }
                         },
-                        currPrice
+                        priceStyles[0].currPrice
                     ),
                     valPrice && React.createElement(
                         "span",
                         {
                             className: "premium-pricing-table__val",
                             style: {
-                                color: valColor,
-                                fontWeight: valWeight,
-                                alignSelf: valV
+                                color: priceStyles[0].valColor,
+                                fontWeight: priceStyles[0].valWeight,
+                                alignSelf: priceStyles[0].valV
                             }
                         },
-                        valPrice
+                        priceStyles[0].valPrice
                     ),
                     divPrice && React.createElement(
                         "span",
                         {
                             className: "premium-pricing-table__divider",
                             style: {
-                                color: divColor,
-                                fontWeight: divWeight,
-                                alignSelf: divV
+                                color: priceStyles[0].divColor,
+                                fontWeight: priceStyles[0].divWeight,
+                                alignSelf: priceStyles[0].divV
                             }
                         },
-                        divPrice
+                        priceStyles[0].divPrice
                     ),
                     durPrice && React.createElement(
                         "span",
                         {
                             className: "premium-pricing-table__dur",
                             style: {
-                                color: durColor,
-                                fontWeight: durWeight,
-                                alignSelf: durV
+                                color: priceStyles[0].durColor,
+                                fontWeight: priceStyles[0].durWeight,
+                                alignSelf: priceStyles[0].durV
                             }
                         },
-                        durPrice
+                        priceStyles[0].durPrice
                     )
                 ),
                 listChecked && React.createElement(
@@ -45891,8 +43656,8 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__list_wrap",
                         style: {
-                            marginTop: listMarginT + "px",
-                            marginBottom: listMarginB + "px"
+                            marginTop: featureStyles[0].listMarginT + "px",
+                            marginBottom: featureStyles[0].listMarginB + "px"
                         }
                     },
                     React.createElement(RichText, {
@@ -45905,17 +43670,17 @@ var PremiumPricingTable = function (_Component) {
                             return setAttributes({ listItems: newText });
                         },
                         style: {
-                            color: listColor,
-                            background: listBack,
-                            padding: listPadding + "px",
-                            listStyle: "check" !== listStyle ? listStyle : "none",
+                            color: featureStyles[0].listColor,
+                            background: featureStyles[0].listBack,
+                            padding: featureStyles[0].listPadding + "px",
+                            listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                             listStylePosition: "inside",
-                            fontWeight: listWeight,
-                            textTransform: listUpper ? "uppercase" : "none",
-                            letterSpacing: listLetter + "px",
-                            fontStyle: listItemsStyle,
-                            lineHeight: listLine + "px",
-                            textAlign: featsAlign ? featsAlign : contentAlign
+                            fontWeight: featureStyles[0].listWeight,
+                            textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
+                            letterSpacing: featureStyles[0].listLetter + "px",
+                            fontStyle: featureStyles[0].listItemsStyle,
+                            lineHeight: featureStyles[0].listLine + "px",
+                            textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
                         }
                     })
                 ),
@@ -45931,15 +43696,15 @@ var PremiumPricingTable = function (_Component) {
                         placeholder: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                         value: desc,
                         style: {
-                            color: descColor,
-                            background: descBack,
-                            fontWeight: descWeight,
-                            letterSpacing: descLetter + "px",
-                            fontStyle: descStyle,
-                            lineHeight: descLine + "px",
-                            marginTop: descMarginT + "px",
-                            marginBottom: descMarginB + "px",
-                            padding: descPadding + "px"
+                            color: descStyles[0].descColor,
+                            background: descStyles[0].descBack,
+                            fontWeight: descStyles[0].descWeight,
+                            letterSpacing: descStyles[0].descLetter + "px",
+                            fontStyle: descStyles[0].descStyle,
+                            lineHeight: descStyles[0].descLine + "px",
+                            marginTop: descStyles[0].descMarginT + "px",
+                            marginBottom: descStyles[0].descMarginB + "px",
+                            padding: descStyles[0].descPadding + "px"
                         }
                     })
                 ),
@@ -45948,7 +43713,7 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__button",
                         style: {
-                            width: btnWidth + "%"
+                            width: buttonStyles[0].btnWidth + "%"
                         }
                     },
                     React.createElement(
@@ -45956,21 +43721,21 @@ var PremiumPricingTable = function (_Component) {
                         {
                             "class": "premium-pricing-table__button_link",
                             href: "{ attributes.btnUrl }",
-                            target: btnTarget ? "_blank" : "_self",
+                            target: buttonStyles[0].btnTarget ? "_blank" : "_self",
                             style: {
-                                color: btnColor,
-                                background: btnBack ? btnBack : "transparent",
-                                fontWeight: btnWeight,
-                                letterSpacing: btnLetter + "px",
-                                fontStyle: btnStyle,
-                                lineHeight: btnLine + "px",
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB,
-                                padding: btnPadding + btnPaddingU,
-                                borderStyle: btnBorderType,
-                                borderWidth: btnBorderUpdated ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
-                                borderRadius: btnBorderRadius + "px",
-                                borderColor: btnBorderColor
+                                color: buttonStyles[0].btnColor,
+                                background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                                fontWeight: buttonStyles[0].btnWeight,
+                                letterSpacing: buttonStyles[0].btnLetter + "px",
+                                fontStyle: buttonStyles[0].btnStyle,
+                                lineHeight: buttonStyles[0].btnLine + "px",
+                                marginTop: buttonStyles[0].btnMarginT,
+                                marginBottom: buttonStyles[0].btnMarginB,
+                                padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
+                                borderStyle: buttonStyles[0].btnBorderType,
+                                borderWidth: btnBorderUpdated ? buttonStyles[0].btnBorderTop + "px " + buttonStyles[0].btnBorderRight + "px " + buttonStyles[0].btnBorderBottom + "px " + buttonStyles[0].btnBorderLeft + "px" : buttonStyles[0].btnBorderWidth + "px",
+                                borderRadius: buttonStyles[0].btnBorderRadius + "px",
+                                borderColor: buttonStyles[0].btnBorderColor
                             }
                         },
                         React.createElement(RichText, {
@@ -45980,7 +43745,7 @@ var PremiumPricingTable = function (_Component) {
                             },
                             value: btnText,
                             style: {
-                                textTransform: btnUpper ? "uppercase" : "none"
+                                textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
                             }
                         })
                     ),
@@ -45992,7 +43757,7 @@ var PremiumPricingTable = function (_Component) {
                     }),
                     React.createElement("style", {
                         dangerouslySetInnerHTML: {
-                            __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+                            __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + buttonStyles[0].btnHoverColor + " !important;", "background: " + buttonStyles[0].btnHoverBack + " !important", "}"].join("\n")
                         }
                     })
                 )
@@ -46006,7 +43771,7 @@ var PremiumPricingTable = function (_Component) {
 exports.default = PremiumPricingTable;
 
 /***/ }),
-/* 267 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46016,11 +43781,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -46192,7 +43957,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 268 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46220,134 +43985,32 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         borderUpdated = _props$attributes.borderUpdated,
         btnBorderUpdated = _props$attributes.btnBorderUpdated,
-        priceOpacity = _props$attributes.priceOpacity,
-        tableOpacity = _props$attributes.tableOpacity,
         contentAlign = _props$attributes.contentAlign,
-        tableBack = _props$attributes.tableBack,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderRadius = _props$attributes.borderRadius,
         borderColor = _props$attributes.borderColor,
-        tablePadding = _props$attributes.tablePadding,
-        tableShadowBlur = _props$attributes.tableShadowBlur,
-        tableShadowColor = _props$attributes.tableShadowColor,
-        tableShadowHorizontal = _props$attributes.tableShadowHorizontal,
-        tableShadowVertical = _props$attributes.tableShadowVertical,
-        tableShadowPosition = _props$attributes.tableShadowPosition,
-        titleChecked = _props$attributes.titleChecked,
         title = _props$attributes.title,
-        titleTag = _props$attributes.titleTag,
-        titleColor = _props$attributes.titleColor,
-        titleLetter = _props$attributes.titleLetter,
-        titleUpper = _props$attributes.titleUpper,
-        titleStyle = _props$attributes.titleStyle,
-        titleLine = _props$attributes.titleLine,
-        titleWeight = _props$attributes.titleWeight,
-        titleBack = _props$attributes.titleBack,
-        titleShadowBlur = _props$attributes.titleShadowBlur,
-        titleShadowColor = _props$attributes.titleShadowColor,
-        titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-        titleShadowVertical = _props$attributes.titleShadowVertical,
-        titleMarginT = _props$attributes.titleMarginT,
-        titleMarginB = _props$attributes.titleMarginB,
-        titlePadding = _props$attributes.titlePadding,
-        descChecked = _props$attributes.descChecked,
         desc = _props$attributes.desc,
-        descColor = _props$attributes.descColor,
-        descLine = _props$attributes.descLine,
-        descWeight = _props$attributes.descWeight,
-        descStyle = _props$attributes.descStyle,
-        descLetter = _props$attributes.descLetter,
-        descBack = _props$attributes.descBack,
-        descMarginT = _props$attributes.descMarginT,
-        descMarginB = _props$attributes.descMarginB,
-        descPadding = _props$attributes.descPadding,
+        titleChecked = _props$attributes.titleChecked,
+        descChecked = _props$attributes.descChecked,
         priceChecked = _props$attributes.priceChecked,
-        priceBack = _props$attributes.priceBack,
-        priceMarginT = _props$attributes.priceMarginT,
-        priceMarginB = _props$attributes.priceMarginB,
-        pricePadding = _props$attributes.pricePadding,
-        slashPrice = _props$attributes.slashPrice,
-        slashColor = _props$attributes.slashColor,
-        slashWeight = _props$attributes.slashWeight,
-        slashV = _props$attributes.slashV,
-        currPrice = _props$attributes.currPrice,
-        currColor = _props$attributes.currColor,
-        currWeight = _props$attributes.currWeight,
-        currV = _props$attributes.currV,
-        valPrice = _props$attributes.valPrice,
-        valColor = _props$attributes.valColor,
-        valWeight = _props$attributes.valWeight,
-        valV = _props$attributes.valV,
-        divPrice = _props$attributes.divPrice,
-        divColor = _props$attributes.divColor,
-        divWeight = _props$attributes.divWeight,
-        divV = _props$attributes.divV,
-        durPrice = _props$attributes.durPrice,
-        durColor = _props$attributes.durColor,
-        durWeight = _props$attributes.durWeight,
-        durV = _props$attributes.durV,
+        selectedStyle = _props$attributes.selectedStyle,
         btnChecked = _props$attributes.btnChecked,
         btnText = _props$attributes.btnText,
         btnLink = _props$attributes.btnLink,
-        btnTarget = _props$attributes.btnTarget,
-        btnColor = _props$attributes.btnColor,
-        btnHoverColor = _props$attributes.btnHoverColor,
-        btnWeight = _props$attributes.btnWeight,
-        btnLine = _props$attributes.btnLine,
-        btnLetter = _props$attributes.btnLetter,
-        btnUpper = _props$attributes.btnUpper,
-        btnStyle = _props$attributes.btnStyle,
-        btnBack = _props$attributes.btnBack,
-        btnHoverBack = _props$attributes.btnHoverBack,
-        btnMarginT = _props$attributes.btnMarginT,
-        btnMarginB = _props$attributes.btnMarginB,
-        btnPadding = _props$attributes.btnPadding,
-        btnPaddingU = _props$attributes.btnPaddingU,
-        btnWidth = _props$attributes.btnWidth,
-        btnBorderTop = _props$attributes.btnBorderTop,
-        btnBorderRight = _props$attributes.btnBorderRight,
-        btnBorderBottom = _props$attributes.btnBorderBottom,
-        btnBorderLeft = _props$attributes.btnBorderLeft,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        btnBorderType = _props$attributes.btnBorderType,
-        btnBorderWidth = _props$attributes.btnBorderWidth,
-        btnBorderRadius = _props$attributes.btnBorderRadius,
-        btnBorderColor = _props$attributes.btnBorderColor,
         badgeChecked = _props$attributes.badgeChecked,
-        badgePos = _props$attributes.badgePos,
-        badgeBack = _props$attributes.badgeBack,
-        badgeColor = _props$attributes.badgeColor,
-        badgeTop = _props$attributes.badgeTop,
-        badgeHorizontal = _props$attributes.badgeHorizontal,
-        badgeWidth = _props$attributes.badgeWidth,
-        badgeSize = _props$attributes.badgeSize,
-        badgeWeight = _props$attributes.badgeWeight,
-        badgeLetter = _props$attributes.badgeLetter,
-        badgeStyle = _props$attributes.badgeStyle,
-        badgeUpper = _props$attributes.badgeUpper,
-        badgeText = _props$attributes.badgeText,
         listChecked = _props$attributes.listChecked,
-        listColor = _props$attributes.listColor,
-        listWeight = _props$attributes.listWeight,
-        listItemsStyle = _props$attributes.listItemsStyle,
-        listLine = _props$attributes.listLine,
-        listUpper = _props$attributes.listUpper,
-        listLetter = _props$attributes.listLetter,
-        listBack = _props$attributes.listBack,
         listItems = _props$attributes.listItems,
-        listMarginB = _props$attributes.listMarginB,
-        listMarginT = _props$attributes.listMarginT,
-        listPadding = _props$attributes.listPadding,
-        listStyle = _props$attributes.listStyle,
-        featsAlign = _props$attributes.featsAlign,
         block_id = _props$attributes.block_id,
+        classMigrate = _props$attributes.classMigrate,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        titleStyles = _props$attributes.titleStyles,
+        priceStyles = _props$attributes.priceStyles,
+        featureStyles = _props$attributes.featureStyles,
+        descStyles = _props$attributes.descStyles,
+        buttonStyles = _props$attributes.buttonStyles,
+        badgeStyles = _props$attributes.badgeStyles,
+        tableStyles = _props$attributes.tableStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, "premium-pricing-table");
@@ -46359,13 +44022,13 @@ var save = function save(props) {
             className: mainClasses + " premium-pricing-table-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: contentAlign,
-                backgroundColor: tableBack ? (0, _hexToRgba2.default)(tableBack, tableOpacity) : "transparent",
-                borderStyle: borderType,
-                borderWidth: borderUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                borderRadius: borderRadius + "px",
+                backgroundColor: tableStyles[0].tableBack ? (0, _hexToRgba2.default)(tableStyles[0].tableBack, tableStyles[0].tableOpacity) : "transparent",
+                borderStyle: tableStyles[0].borderType,
+                borderWidth: borderUpdated ? tableStyles[0].borderTop + "px " + tableStyles[0].borderRight + "px " + tableStyles[0].borderBottom + "px " + tableStyles[0].borderLeft + "px" : tableStyles[0].borderWidth + "px",
+                borderRadius: tableStyles[0].borderRadius + "px",
                 borderColor: borderColor,
-                padding: tablePadding + "px",
-                boxShadow: tableShadowHorizontal + "px " + tableShadowVertical + "px " + tableShadowBlur + "px " + tableShadowColor + " " + tableShadowPosition
+                padding: tableStyles[0].tablePadding + "px",
+                boxShadow: tableStyles[0].tableShadowHorizontal + "px " + tableStyles[0].tableShadowVertical + "px " + tableStyles[0].tableShadowBlur + "px " + tableStyles[0].tableShadowColor + " " + tableStyles[0].tableShadowPosition
             }
         },
         badgeChecked && React.createElement(
@@ -46378,30 +44041,30 @@ var save = function save(props) {
                 {
                     className: "premium-pricing-table__badge",
                     style: {
-                        borderRightColor: "right" === badgePos ? badgeBack : "transparent",
-                        borderTopColor: "left" === badgePos ? badgeBack : "transparent",
-                        borderBottomWidth: badgeSize + "px",
-                        borderRightWidth: badgeSize + "px",
-                        borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
-                        borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                        borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                        borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                        borderBottomWidth: badgeStyles[0].badgeSize + "px",
+                        borderRightWidth: badgeStyles[0].badgeSize + "px",
+                        borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+                        borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
                     }
                 },
                 React.createElement(
                     "span",
                     {
                         style: {
-                            color: badgeColor,
-                            fontWeight: badgeWeight,
-                            textTransform: badgeUpper ? "uppercase" : "none",
-                            letterSpacing: badgeLetter + "px",
-                            fontStyle: badgeStyle,
-                            width: badgeWidth + "px",
-                            top: badgeTop + "px",
-                            left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
-                            right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                            color: badgeStyles[0].badgeColor,
+                            fontWeight: badgeStyles[0].badgeWeight,
+                            textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
+                            letterSpacing: badgeStyles[0].badgeLetter + "px",
+                            fontStyle: badgeStyles[0].badgeStyle,
+                            width: badgeStyles[0].badgeWidth + "px",
+                            top: badgeStyles[0].badgeTop + "px",
+                            left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+                            right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
                         }
                     },
-                    badgeText
+                    badgeStyles[0].badgeText
                 )
             )
         ),
@@ -46410,8 +44073,8 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__title_wrap",
                 style: {
-                    paddingTop: titleMarginT + "px",
-                    paddingBottom: titleMarginB + "px"
+                    paddingTop: titleStyles[0].titleMarginT + "px",
+                    paddingBottom: titleStyles[0].titleMarginB + "px"
                 }
             },
             React.createElement(RichText.Content, {
@@ -46419,16 +44082,15 @@ var save = function save(props) {
                 className: "premium-pricing-table__title",
                 value: title,
                 style: {
-                    color: titleColor,
-                    background: titleBack,
-                    letterSpacing: titleLetter + "px",
-                    textTransform: titleUpper ? "uppercase" : "none",
-                    fontStyle: titleStyle,
-                    fontWeight: titleWeight,
-                    lineHeight: titleLine + "px",
-                    marginBottom: titleMarginB + "px",
-                    padding: titlePadding + "px",
-                    textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+                    color: titleStyles[0].titleColor,
+                    background: titleStyles[0].titleBack,
+                    letterSpacing: titleStyles[0].titleLetter + "px",
+                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                    fontStyle: titleStyles[0].titleStyle,
+                    fontWeight: titleStyles[0].titleWeight,
+                    lineHeight: titleStyles[0].titleLine + "px",
+                    padding: titleStyles[0].titlePadding + "px",
+                    textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor
                 }
             })
         ),
@@ -46437,10 +44099,10 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__price_wrap",
                 style: {
-                    backgroundColor: priceBack ? (0, _hexToRgba2.default)(priceBack, priceOpacity) : "transparent",
-                    marginTop: priceMarginT + "px",
-                    marginBottom: priceMarginB + "px",
-                    padding: pricePadding + "px",
+                    backgroundColor: priceStyles[0].priceBack ? (0, _hexToRgba2.default)(priceStyles[0].priceBack, priceStyles[0].priceOpacity) : "transparent",
+                    marginTop: priceStyles[0].priceMarginT + "px",
+                    marginBottom: priceStyles[0].priceMarginB + "px",
+                    padding: priceStyles[0].pricePadding + "px",
                     justifyContent: contentAlign
                 }
             },
@@ -46449,60 +44111,60 @@ var save = function save(props) {
                 {
                     className: "premium-pricing-table__slash",
                     style: {
-                        color: slashColor,
-                        fontWeight: slashWeight,
-                        alignSelf: slashV
+                        color: priceStyles[0].slashColor,
+                        fontWeight: priceStyles[0].slashWeight,
+                        alignSelf: priceStyles[0].slashV
                     }
                 },
-                slashPrice
+                priceStyles[0].slashPrice
             ),
             currPrice && React.createElement(
                 "span",
                 {
                     className: "premium-pricing-table__currency",
                     style: {
-                        color: currColor,
-                        fontWeight: currWeight,
-                        alignSelf: currV
+                        color: priceStyles[0].currColor,
+                        fontWeight: priceStyles[0].currWeight,
+                        alignSelf: priceStyles[0].currV
                     }
                 },
-                currPrice
+                priceStyles[0].currPrice
             ),
             valPrice && React.createElement(
                 "span",
                 {
                     className: "premium-pricing-table__val",
                     style: {
-                        color: valColor,
-                        fontWeight: valWeight,
-                        alignSelf: valV
+                        color: priceStyles[0].valColor,
+                        fontWeight: priceStyles[0].valWeight,
+                        alignSelf: priceStyles[0].valV
                     }
                 },
-                valPrice
+                priceStyles[0].valPrice
             ),
             divPrice && React.createElement(
                 "span",
                 {
                     className: "premium-pricing-table__divider",
                     style: {
-                        color: divColor,
-                        fontWeight: divWeight,
-                        alignSelf: divV
+                        color: priceStyles[0].divColor,
+                        fontWeight: priceStyles[0].divWeight,
+                        alignSelf: priceStyles[0].divV
                     }
                 },
-                divPrice
+                priceStyles[0].divPrice
             ),
             durPrice && React.createElement(
                 "span",
                 {
                     className: "premium-pricing-table__dur",
                     style: {
-                        color: durColor,
-                        fontWeight: durWeight,
-                        alignSelf: durV
+                        color: priceStyles[0].durColor,
+                        fontWeight: priceStyles[0].durWeight,
+                        alignSelf: priceStyles[0].durV
                     }
                 },
-                durPrice
+                priceStyles[0].durPrice
             )
         ),
         listChecked && React.createElement(
@@ -46510,8 +44172,8 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__list_wrap",
                 style: {
-                    marginTop: listMarginT + "px",
-                    marginBottom: listMarginB + "px"
+                    marginTop: featureStyles[0].listMarginT + "px",
+                    marginBottom: featureStyles[0].listMarginB + "px"
                 }
             },
             React.createElement(
@@ -46519,17 +44181,17 @@ var save = function save(props) {
                 {
                     className: "premium-pricing-table__list list-" + listStyle,
                     style: {
-                        color: listColor,
-                        background: listBack,
-                        padding: listPadding + "px",
-                        listStyle: "check" !== listStyle ? listStyle : "none",
+                        color: featureStyles[0].listColor,
+                        background: featureStyles[0].listBack,
+                        padding: featureStyles[0].listPadding + "px",
+                        listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                         listStylePosition: "inside",
-                        fontWeight: listWeight,
-                        letterSpacing: listLetter + "px",
-                        textTransform: listUpper ? "uppercase" : "none",
-                        fontStyle: listItemsStyle,
-                        lineHeight: listLine + "px",
-                        textAlign: featsAlign ? featsAlign : contentAlign
+                        fontWeight: featureStyles[0].listWeight,
+                        textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
+                        letterSpacing: featureStyles[0].listLetter + "px",
+                        fontStyle: featureStyles[0].listItemsStyle,
+                        lineHeight: featureStyles[0].listLine + "px",
+                        textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
                     }
                 },
                 listItems
@@ -46543,15 +44205,15 @@ var save = function save(props) {
                 className: "premium-pricing-table__desc",
                 value: desc,
                 style: {
-                    color: descColor,
-                    background: descBack,
-                    fontWeight: descWeight,
-                    lineHeight: descLine + "px",
-                    letterSpacing: descLetter + "px",
-                    fontStyle: descStyle,
-                    marginTop: descMarginT + "px",
-                    marginBottom: descMarginB + "px",
-                    padding: descPadding + "px"
+                    color: descStyles[0].descColor,
+                    background: descStyles[0].descBack,
+                    fontWeight: descStyles[0].descWeight,
+                    letterSpacing: descStyles[0].descLetter + "px",
+                    fontStyle: descStyles[0].descStyle,
+                    lineHeight: descStyles[0].descLine + "px",
+                    marginTop: descStyles[0].descMarginT + "px",
+                    marginBottom: descStyles[0].descMarginB + "px",
+                    padding: descStyles[0].descPadding + "px"
                 }
             })
         ),
@@ -46560,7 +44222,7 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__button",
                 style: {
-                    width: btnWidth + "%"
+                    width: buttonStyles[0].btnWidth + "%"
                 }
             },
             React.createElement(
@@ -46571,19 +44233,19 @@ var save = function save(props) {
                     target: btnTarget ? "_blank" : "_self",
                     rel: "noopener noreferrer",
                     style: {
-                        color: btnColor,
-                        background: btnBack ? btnBack : "transparent",
-                        fontWeight: btnWeight,
-                        letterSpacing: btnLetter + "px",
-                        fontStyle: btnStyle,
-                        lineHeight: btnLine + "px",
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB,
-                        padding: btnPadding + btnPaddingU,
-                        borderStyle: btnBorderType,
-                        borderWidth: btnBorderUpdated ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor
+                        color: buttonStyles[0].btnColor,
+                        background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                        fontWeight: buttonStyles[0].btnWeight,
+                        letterSpacing: buttonStyles[0].btnLetter + "px",
+                        fontStyle: buttonStyles[0].btnStyle,
+                        lineHeight: buttonStyles[0].btnLine + "px",
+                        marginTop: buttonStyles[0].btnMarginT,
+                        marginBottom: buttonStyles[0].btnMarginB,
+                        padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
+                        borderStyle: buttonStyles[0].btnBorderType,
+                        borderWidth: btnBorderUpdated ? buttonStyles[0].btnBorderTop + "px " + buttonStyles[0].btnBorderRight + "px " + buttonStyles[0].btnBorderBottom + "px " + buttonStyles[0].btnBorderLeft + "px" : buttonStyles[0].btnBorderWidth + "px",
+                        borderRadius: buttonStyles[0].btnBorderRadius + "px",
+                        borderColor: buttonStyles[0].btnBorderColor
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -46593,13 +44255,13 @@ var save = function save(props) {
                     },
                     value: btnText,
                     style: {
-                        textTransform: btnUpper ? "uppercase" : "none"
+                        textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
                     }
                 })
             ),
             React.createElement("style", {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+                    __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + buttonStyles[0].btnHoverColor + " !important;", "background: " + buttonStyles[0].btnHoverBack + " !important", "}"].join("\n")
                 }
             })
         )
@@ -46609,7 +44271,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 269 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48871,7 +46533,301 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 270 */
+/* 274 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    borderColor: {
+        type: "string"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc"
+    },
+
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    descChecked: {
+        type: "boolean",
+        default: false
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true
+    },
+
+    selectedStyle: {
+        type: "string",
+        default: "price"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link"
+    },
+    badgeChecked: {
+        type: "boolean"
+    },
+
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleTag: 'H2',
+            titleSizeUnit: 'px',
+            titleSize: '',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleColor: "#6ec1e4",
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginB: 20,
+            titleMarginT: 20,
+            titlePadding: 0
+        }]
+    },
+    priceStyles: {
+        type: "array",
+        default: [{
+            priceBack: '',
+            priceOpacity: 1,
+            priceMarginT: '',
+            priceMarginB: 10,
+            pricePadding: '',
+            slashPrice: '',
+            slashColor: '',
+            slashSizeUnit: 'px',
+            slashSize: 20,
+            slashSizeMobile: '',
+            slashSizeTablet: '',
+            slashWeight: '',
+            currPrice: '$',
+            currColor: '',
+            currSize: 20,
+            currSizeUnit: 'px',
+            currSizeMobile: '',
+            currSizeTablet: '',
+            currWeight: '',
+            valPrice: '25',
+            valColor: '',
+            valSizeUnit: 'px',
+            valSize: 50,
+            valSizeMobile: '',
+            valSizeTablet: '',
+            valWeight: '',
+            divPrice: "/",
+
+            divColor: '',
+            divSize: 20,
+            divSizeUnit: 'px',
+            divSizeMobile: '',
+            divSizeTablet: '',
+            divWeight: '',
+            durPrice: 'm',
+            durColor: '',
+            durSizeUnit: 'px',
+            durSize: 20,
+            durSizeMobile: '',
+            durSizeTablet: '',
+            durWeight: '',
+            selectedStyle: "price",
+            slashV: 'center',
+            currV: 'center',
+            valV: "center",
+            divV: 'center',
+            durV: 'center'
+        }]
+    },
+    featureStyles: {
+        type: "array",
+        default: [{
+            featsAlign: '',
+            listStyle: "disc",
+            listColor: '',
+            listSize: '',
+            listSizeUnit: 'px',
+            listSizeTablet: '',
+            listSizeMobile: '',
+            listWeight: 500,
+            listItemsStyle: '',
+            listLetter: '',
+            listLine: '',
+            listUpper: false,
+            listBack: '',
+            listMarginB: 20,
+            listMarginT: '',
+            listPadding: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descSize: '',
+            descSizeUnit: 'px',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            descWeight: '',
+            descLetter: '',
+            descStyle: '',
+            descLine: '',
+            descColor: "#000",
+            descBack: '',
+            descMarginT: 0,
+            descMarginB: 30,
+            descPadding: '0'
+        }]
+    },
+    buttonStyles: {
+        type: "array",
+        default: [{
+            btnColor: "#fff",
+            btnHoverColor: '',
+            btnWidth: '',
+            btnSize: '',
+            btnSizeUnit: 'px',
+            btnSizeTablet: '',
+            btnSizeMobile: '',
+            btnWeight: 900,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnBack: "#6ec1e4",
+            btnHoverBack: '',
+            btnMarginT: 0,
+            btnMarginB: 0,
+            btnPadding: 10,
+            btnPaddingU: 'px',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderRadius: 0,
+            btnBorderColor: '',
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnTarget: true
+        }]
+    },
+    badgeStyles: {
+        type: "array",
+        default: [{
+            badgePos: "right",
+            badgeBack: "#6ec1e4",
+            badgeColor: '',
+            badgeTextSize: '',
+            badgeSize: '',
+            badgeTextUnit: 'px',
+            badgeTextSizeTablet: '',
+            badgeTextSizeMobile: '',
+            badgeTop: '',
+            badgeHorizontal: '',
+            badgeWidth: '',
+            badgeWeight: 900,
+            badgeLetter: '',
+            badgeStyle: '',
+            badgeUpper: false,
+            badgeText: __("Popular")
+        }]
+    },
+    tableStyles: {
+        type: "array",
+        default: [{
+            tableBack: '',
+            tableOpacity: 1,
+            borderType: 'none',
+            borderWidth: 1,
+            borderRadius: 0,
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            tableShadowColor: '',
+            tableShadowBlur: '0',
+            tableShadowHorizontal: '0',
+            tableShadowVertical: '0',
+            tableShadowPosition: '',
+            tablePadding: "0"
+        }]
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48879,21 +46835,25 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(271);
+var _edit = __webpack_require__(276);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(272);
+var _save = __webpack_require__(277);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(273);
+var _deprecated = __webpack_require__(278);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
 var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(279);
+
+var _attributes2 = _interopRequireDefault(_attributes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48903,166 +46863,11 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var containerAttrs = {
-    stretchSection: {
-        type: "boolean",
-        default: false
-    },
-    innerWidthType: {
-        type: "string",
-        default: "boxed"
-    },
-    isUpdated: {
-        type: "boolean",
-        default: false
-    },
-    horAlign: {
-        type: "string",
-        default: "center"
-    },
-    height: {
-        type: "string",
-        default: "min"
-    },
-    innerWidth: {
-        type: "number"
-    },
-    minHeight: {
-        type: "number"
-    },
-    minHeightUnit: {
-        type: "string"
-    },
-    vPos: {
-        type: "string",
-        default: "top"
-    },
-    color: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginTop: {
-        type: "number"
-    },
-    marginBottom: {
-        type: "number"
-    },
-    marginLeft: {
-        type: "number"
-    },
-    marginRight: {
-        type: "number"
-    },
-    marginUnit: {
-        type: "string"
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    block_id: {
-        type: "string"
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
 registerBlockType("premium/container", {
     title: __("Section"),
     icon: React.createElement(_icons2.default, { icon: "section" }),
     category: "premium-blocks",
-    attributes: containerAttrs,
+    attributes: _attributes2.default,
     supports: _defineProperty({
         inserter: _settings.container,
         align: true
@@ -49078,7 +46883,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 271 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49104,11 +46909,11 @@ var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -49147,49 +46952,20 @@ var edit = function edit(props) {
         className = props.className,
         setAttributes = props.setAttributes;
     var _props$attributes = props.attributes,
-        isUpdated = _props$attributes.isUpdated,
         stretchSection = _props$attributes.stretchSection,
-        horAlign = _props$attributes.horAlign,
         innerWidthType = _props$attributes.innerWidthType,
+        isUpdated = _props$attributes.isUpdated,
+        horAlign = _props$attributes.horAlign,
+        height = _props$attributes.height,
         innerWidth = _props$attributes.innerWidth,
         minHeight = _props$attributes.minHeight,
         minHeightUnit = _props$attributes.minHeightUnit,
         vPos = _props$attributes.vPos,
-        height = _props$attributes.height,
-        color = _props$attributes.color,
-        opacity = _props$attributes.opacity,
-        imageID = _props$attributes.imageID,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderColor = _props$attributes.borderColor,
-        borderRadius = _props$attributes.borderRadius,
-        marginTop = _props$attributes.marginTop,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        marginRight = _props$attributes.marginRight,
-        marginUnit = _props$attributes.marginUnit,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
+        block_id = _props$attributes.block_id,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        containerStyles = _props$attributes.containerStyles;
 
 
     var WIDTH = [{
@@ -49517,25 +47293,25 @@ var edit = function edit(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color ? (0, _hexToRgba2.default)(color, opacity) : "transparent",
-                borderStyle: borderType,
-                borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+                backgroundColor: containerStyles[0].color ? (0, _hexToRgba2.default)(containerStyles[0].color, containerStyles[0].opacity) : "transparent",
+                borderStyle: containerStyles[0].borderType,
+                borderWidth: isUpdated ? containerStyles[0].borderTop + "px " + containerStyles[0].borderRight + "px " + containerStyles[0].borderBottom + "px " + containerStyles[0].borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                marginTop: containerStyles[0].marginTop + containerStyles[0].marginUnit,
+                marginBottom: containerStyles[0].marginBottom + containerStyles[0].marginUnit,
+                marginLeft: containerStyles[0].marginLeft + containerStyles[0].marginUnit,
+                marginRight: containerStyles[0].marginRight + containerStyles[0].marginUnit,
+                paddingTop: containerStyles[0].paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: containerStyles[0].paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: containerStyles[0].paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: containerStyles[0].paddingRight + containerStyles[0].paddingUnit,
+                boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition
             }
         },
         React.createElement(
@@ -49558,7 +47334,7 @@ var edit = function edit(props) {
 exports.default = edit;
 
 /***/ }),
-/* 272 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49584,49 +47360,20 @@ var InnerBlocks = wp.blockEditor.InnerBlocks;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
-        isUpdated = _props$attributes.isUpdated,
         stretchSection = _props$attributes.stretchSection,
-        horAlign = _props$attributes.horAlign,
         innerWidthType = _props$attributes.innerWidthType,
-        innerWidth = _props$attributes.innerWidth,
+        isUpdated = _props$attributes.isUpdated,
+        horAlign = _props$attributes.horAlign,
         height = _props$attributes.height,
-        vPos = _props$attributes.vPos,
+        innerWidth = _props$attributes.innerWidth,
         minHeight = _props$attributes.minHeight,
         minHeightUnit = _props$attributes.minHeightUnit,
-        color = _props$attributes.color,
-        opacity = _props$attributes.opacity,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderColor = _props$attributes.borderColor,
-        borderRadius = _props$attributes.borderRadius,
-        marginTop = _props$attributes.marginTop,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        marginRight = _props$attributes.marginRight,
-        marginUnit = _props$attributes.marginUnit,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
+        vPos = _props$attributes.vPos,
+        block_id = _props$attributes.block_id,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        containerStyles = _props$attributes.containerStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-container');
@@ -49638,25 +47385,25 @@ var save = function save(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color ? (0, _hexToRgba2.default)(color, opacity) : "transparent",
-                borderStyle: borderType,
-                borderWidth: isUpdated ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: 'url(\'' + imageURL + '\')',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
+                backgroundColor: containerStyles[0].color ? (0, _hexToRgba2.default)(containerStyles[0].color, containerStyles[0].opacity) : "transparent",
+                borderStyle: containerStyles[0].borderType,
+                borderWidth: isUpdated ? containerStyles[0].borderTop + 'px ' + containerStyles[0].borderRight + 'px ' + containerStyles[0].borderBottom + 'px ' + containerStyles[0].borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                marginTop: containerStyles[0].marginTop + containerStyles[0].marginUnit,
+                marginBottom: containerStyles[0].marginBottom + containerStyles[0].marginUnit,
+                marginLeft: containerStyles[0].marginLeft + containerStyles[0].marginUnit,
+                marginRight: containerStyles[0].marginRight + containerStyles[0].marginUnit,
+                paddingTop: containerStyles[0].paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: containerStyles[0].paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: containerStyles[0].paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: containerStyles[0].paddingRight + containerStyles[0].paddingUnit,
+                boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px ' + containerStyles[0].shadowColor + ' ' + containerStyles[0].shadowPosition
             }
         },
         React.createElement(
@@ -49679,7 +47426,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 273 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50411,248 +48158,54 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 274 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _edit = __webpack_require__(275);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(277);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(278);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var testimonialsAttrs = {
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    stretchSection: {
         type: "boolean",
         default: false
     },
-    align: {
+    innerWidthType: {
+        type: "string",
+        default: "boxed"
+    },
+    isUpdated: {
+        type: "boolean",
+        default: false
+    },
+    horAlign: {
         type: "string",
         default: "center"
     },
-    authorImgId: {
-        type: "string"
-    },
-    authorImgUrl: {
-        type: "string"
-    },
-    imgRadius: {
+    height: {
         type: "string",
-        default: "50%"
+        default: "min"
     },
-    imgSize: {
+    innerWidth: {
         type: "number"
     },
-    imgBorder: {
-        type: "number",
-        default: "1"
+    minHeight: {
+        type: "number"
     },
-    imgBorderColor: {
+    minHeightUnit: {
         type: "string"
     },
-    author: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author",
-        default: "John Doe"
-    },
-    authorTag: {
+    vPos: {
         type: "string",
-        default: "H3"
+        default: "top"
     },
-    authorColor: {
+    block_id: {
         type: "string"
-    },
-    authorSize: {
-        type: "number"
-    },
-    authorSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    authorSizeMobile: {
-        type: "number"
-    },
-    authorSizeTablet: {
-        type: "number"
-    },
-    authorLetter: {
-        type: "number"
-    },
-    authorStyle: {
-        type: "string"
-    },
-    authorUpper: {
-        type: "boolean"
-    },
-    authorWeight: {
-        type: "number",
-        default: 500
-    },
-    authorComTag: {
-        type: "string",
-        default: "H4"
-    },
-    text: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__text"
-    },
-    authorCom: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author_comp",
-        default: "Leap13"
-    },
-    authorComColor: {
-        type: "string"
-    },
-    authorComSize: {
-        type: "number"
-    },
-    authorComSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    authorComSizeMobile: {
-        type: 'number'
-    },
-    authorComSizeTablet: {
-        type: 'number'
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    urlText: {
-        type: "string"
-    },
-    urlTarget: {
-        type: "boolean",
-        default: false
-    },
-    quotSize: {
-        type: "number"
-    },
-    quotColor: {
-        type: "string"
-    },
-    quotOpacity: {
-        type: "number"
-    },
-    bodyColor: {
-        type: "string"
-    },
-    bodySize: {
-        type: "number"
-    },
-    bodySizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    bodySizeMobile: {
-        type: "number"
-    },
-    bodySizeTablet: {
-        type: "string"
-    },
-    bodyLine: {
-        type: "number"
-    },
-    bodyTop: {
-        type: "number"
-    },
-    bodyBottom: {
-        type: "number"
-    },
-    dashColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number"
-    },
-    shadowHorizontal: {
-        type: "number"
-    },
-    shadowVertical: {
-        type: "number"
-    },
-    shadowPosition: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string",
-        default: "px"
     },
     hideDesktop: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     hideTablet: {
@@ -50662,14 +48215,86 @@ var testimonialsAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            color: '',
+            opacity: 1,
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            borderRadius: '',
+            borderColor: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            shadowPosition: '',
+            marginTop: '',
+            marginBottom: '',
+            marginLeft: '',
+            marginRight: '',
+            marginUnit: 'px',
+            paddingTop: '',
+            paddingRight: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            paddingUnit: 'px'
+        }]
     }
 };
+exports.default = attributes;
+
+/***/ }),
+/* 280 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _edit = __webpack_require__(281);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(283);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(284);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(285);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/testimonial", {
     title: __("Testimonial"),
     icon: React.createElement(_icons2.default, { icon: "testimonials" }),
     category: "premium-blocks",
-    attributes: testimonialsAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.testimonial
     },
@@ -50680,7 +48305,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 275 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50712,11 +48337,11 @@ var _lowerQuote = __webpack_require__(66);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -50728,7 +48353,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(276);
+var _styling = __webpack_require__(282);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -50788,7 +48413,6 @@ var edit = function (_Component) {
 
             this.props.setAttributes({ classMigrate: true });
 
-            // Pushing Style tag for this block css.
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-testimonial-" + clientId.substr(0, 6));
             document.head.appendChild($style);
@@ -50802,6 +48426,7 @@ var edit = function (_Component) {
                 setAttributes = _props2.setAttributes;
             var _props$attributes = this.props.attributes,
                 block_id = _props$attributes.block_id,
+                classMigrate = _props$attributes.classMigrate,
                 align = _props$attributes.align,
                 authorImgId = _props$attributes.authorImgId,
                 authorImgUrl = _props$attributes.authorImgUrl,
@@ -50809,61 +48434,27 @@ var edit = function (_Component) {
                 imgSize = _props$attributes.imgSize,
                 imgBorder = _props$attributes.imgBorder,
                 imgBorderColor = _props$attributes.imgBorderColor,
-                text = _props$attributes.text,
+                author = _props$attributes.author,
                 authorTag = _props$attributes.authorTag,
                 authorColor = _props$attributes.authorColor,
+                authorSize = _props$attributes.authorSize,
                 authorSizeUnit = _props$attributes.authorSizeUnit,
                 authorSizeMobile = _props$attributes.authorSizeMobile,
                 authorSizeTablet = _props$attributes.authorSizeTablet,
-                authorSize = _props$attributes.authorSize,
                 authorLetter = _props$attributes.authorLetter,
                 authorStyle = _props$attributes.authorStyle,
                 authorUpper = _props$attributes.authorUpper,
                 authorWeight = _props$attributes.authorWeight,
-                author = _props$attributes.author,
                 authorComTag = _props$attributes.authorComTag,
+                text = _props$attributes.text,
                 authorCom = _props$attributes.authorCom,
-                authorComColor = _props$attributes.authorComColor,
-                authorComSize = _props$attributes.authorComSize,
-                authorComSizeUnit = _props$attributes.authorComSizeUnit,
-                authorComSizeMobile = _props$attributes.authorComSizeMobile,
-                authorComSizeTablet = _props$attributes.authorComSizeTablet,
-                urlCheck = _props$attributes.urlCheck,
-                urlText = _props$attributes.urlText,
-                urlTarget = _props$attributes.urlTarget,
-                quotSize = _props$attributes.quotSize,
-                quotColor = _props$attributes.quotColor,
-                quotOpacity = _props$attributes.quotOpacity,
-                bodyColor = _props$attributes.bodyColor,
-                bodySize = _props$attributes.bodySize,
-                bodySizeUnit = _props$attributes.bodySizeUnit,
-                bodySizeMobile = _props$attributes.bodySizeMobile,
-                bodySizeTablet = _props$attributes.bodySizeTablet,
-                bodyLine = _props$attributes.bodyLine,
-                bodyTop = _props$attributes.bodyTop,
-                bodyBottom = _props$attributes.bodyBottom,
-                dashColor = _props$attributes.dashColor,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                shadowPosition = _props$attributes.shadowPosition,
-                backColor = _props$attributes.backColor,
-                backOpacity = _props$attributes.backOpacity,
-                imageID = _props$attributes.imageID,
-                imageURL = _props$attributes.imageURL,
-                fixed = _props$attributes.fixed,
-                backgroundRepeat = _props$attributes.backgroundRepeat,
-                backgroundPosition = _props$attributes.backgroundPosition,
-                backgroundSize = _props$attributes.backgroundSize,
-                paddingTop = _props$attributes.paddingTop,
-                paddingRight = _props$attributes.paddingRight,
-                paddingBottom = _props$attributes.paddingBottom,
-                paddingLeft = _props$attributes.paddingLeft,
-                paddingUnit = _props$attributes.paddingUnit,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                contentStyle = _props$attributes.contentStyle,
+                companyStyles = _props$attributes.companyStyles,
+                quoteStyles = _props$attributes.quoteStyles,
+                containerStyles = _props$attributes.containerStyles;
 
 
             var RADIUS = [{
@@ -51090,11 +48681,8 @@ var edit = function (_Component) {
                             return setAttributes({
                                 bodyColor: newValue
                             });
-                        },
-                        opacityValue: backOpacity,
-                        onChangeOpacity: function onChangeOpacity(value) {
-                            return setAttributes({ backOpacity: value });
                         }
+
                     }),
                     React.createElement(RangeControl, {
                         label: __("Margin Top (PX)"),
@@ -51422,17 +49010,17 @@ var edit = function (_Component) {
                     id: "premium-testimonial-" + block_id,
                     className: mainClasses + "__wrap premium-testimonial-" + block_id,
                     style: {
-                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                        backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset",
-                        paddingTop: paddingTop + paddingUnit,
-                        paddingBottom: paddingBottom + paddingUnit,
-                        paddingLeft: paddingLeft + paddingUnit,
-                        paddingRight: paddingRight + paddingUnit
+                        boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
+                        backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                        backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                        paddingTop: containerStyles[0].paddingTop + containerStyles[0].paddingUnit,
+                        paddingBottom: containerStyles[0].paddingBottom + containerStyles[0].paddingUnit,
+                        paddingLeft: containerStyles[0].paddingLeft + containerStyles[0].paddingUnit,
+                        paddingRight: containerStyles[0].paddingRight + containerStyles[0].paddingUnit
                     }
                 },
                 React.createElement(
@@ -51442,9 +49030,9 @@ var edit = function (_Component) {
                         "span",
                         { className: "premium-testimonial__upper" },
                         React.createElement(_upperQuote2.default, {
-                            size: quotSize,
-                            color: quotColor,
-                            opacity: quotOpacity
+                            size: quoteStyles[0].quotSize,
+                            color: quoteStyles[0].quotColor,
+                            opacity: quoteStyles[0].quotOpacity
                         })
                     ),
                     React.createElement(
@@ -51488,10 +49076,10 @@ var edit = function (_Component) {
                                         return setAttributes({ text: newText });
                                     },
                                     style: {
-                                        color: bodyColor,
-                                        lineHeight: bodyLine + "px",
-                                        marginTop: bodyTop + "px",
-                                        marginBottom: bodyBottom + "px"
+                                        color: contentStyle[0].bodyColor,
+                                        lineHeight: contentStyle[0].bodyLine + "px",
+                                        marginTop: contentStyle[0].bodyTop + "px",
+                                        marginBottom: contentStyle[0].bodyBottom + "px"
                                     },
                                     keepPlaceholderOnFocus: true
                                 })
@@ -51524,7 +49112,7 @@ var edit = function (_Component) {
                                 {
                                     className: "premium-testimonial__sep",
                                     style: {
-                                        color: dashColor
+                                        color: companyStyles[0].dashColor
                                     }
                                 },
                                 "\xA0-\xA0"
@@ -51538,7 +49126,7 @@ var edit = function (_Component) {
                                 value: authorCom,
                                 isSelected: false,
                                 style: {
-                                    color: authorComColor
+                                    color: companyStyles[0].authorComColor
                                 }
                             })
                         )
@@ -51547,9 +49135,9 @@ var edit = function (_Component) {
                         "span",
                         { className: "premium-testimonial__lower" },
                         React.createElement(_lowerQuote2.default, {
-                            size: quotSize,
-                            color: quotColor,
-                            opacity: quotOpacity
+                            size: quoteStyles[0].quotSize,
+                            color: quoteStyles[0].quotColor,
+                            opacity: quoteStyles[0].quotOpacity
                         })
                     )
                 )
@@ -51565,7 +49153,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 276 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51575,11 +49163,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -51660,7 +49248,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 277 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51699,54 +49287,35 @@ var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
+        classMigrate = _props$attributes.classMigrate,
         align = _props$attributes.align,
+        authorImgId = _props$attributes.authorImgId,
         authorImgUrl = _props$attributes.authorImgUrl,
         imgRadius = _props$attributes.imgRadius,
+        imgSize = _props$attributes.imgSize,
         imgBorder = _props$attributes.imgBorder,
         imgBorderColor = _props$attributes.imgBorderColor,
-        imgSize = _props$attributes.imgSize,
-        text = _props$attributes.text,
+        author = _props$attributes.author,
         authorTag = _props$attributes.authorTag,
         authorColor = _props$attributes.authorColor,
+        authorSize = _props$attributes.authorSize,
+        authorSizeUnit = _props$attributes.authorSizeUnit,
+        authorSizeMobile = _props$attributes.authorSizeMobile,
+        authorSizeTablet = _props$attributes.authorSizeTablet,
         authorLetter = _props$attributes.authorLetter,
         authorStyle = _props$attributes.authorStyle,
         authorUpper = _props$attributes.authorUpper,
         authorWeight = _props$attributes.authorWeight,
-        author = _props$attributes.author,
         authorComTag = _props$attributes.authorComTag,
-        authorComColor = _props$attributes.authorComColor,
+        text = _props$attributes.text,
         authorCom = _props$attributes.authorCom,
-        quotSize = _props$attributes.quotSize,
-        quotColor = _props$attributes.quotColor,
-        quotOpacity = _props$attributes.quotOpacity,
-        bodyColor = _props$attributes.bodyColor,
-        bodyLine = _props$attributes.bodyLine,
-        bodyTop = _props$attributes.bodyTop,
-        bodyBottom = _props$attributes.bodyBottom,
-        dashColor = _props$attributes.dashColor,
-        urlCheck = _props$attributes.urlCheck,
-        urlText = _props$attributes.urlText,
-        urlTarget = _props$attributes.urlTarget,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
-        backColor = _props$attributes.backColor,
-        backOpacity = _props$attributes.backOpacity,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
-        paddingUnit = _props$attributes.paddingUnit,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        contentStyle = _props$attributes.contentStyle,
+        companyStyles = _props$attributes.companyStyles,
+        quoteStyles = _props$attributes.quoteStyles,
+        containerStyles = _props$attributes.containerStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-testimonial');
@@ -51755,19 +49324,19 @@ var save = function save(props) {
         "div",
         {
             id: "premium-testimonial-" + block_id,
-            className: mainClasses + "__wrap premium-testimonial-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+            className: mainClasses + "__wrap premium-testimonial-" + block_id,
             style: {
-                boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                backgroundImage: "url('" + imageURL + "')",
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit
+                boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
+                backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                paddingTop: containerStyles[0].paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: containerStyles[0].paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: containerStyles[0].paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: containerStyles[0].paddingRight + containerStyles[0].paddingUnit
             }
         },
         React.createElement(
@@ -51777,9 +49346,9 @@ var save = function save(props) {
                 "span",
                 { className: "premium-testimonial__upper" },
                 React.createElement(_upperQuote2.default, {
-                    size: quotSize,
-                    color: quotColor,
-                    opacity: quotOpacity
+                    size: quoteStyles[0].quotSize,
+                    color: quoteStyles[0].quotColor,
+                    opacity: quoteStyles[0].quotOpacity
                 })
             ),
             React.createElement(
@@ -51818,10 +49387,10 @@ var save = function save(props) {
                             className: "premium-testimonial__text",
                             value: text,
                             style: {
-                                color: bodyColor,
-                                lineHeight: bodyLine + "px",
-                                marginTop: bodyTop + "px",
-                                marginBottom: bodyBottom + "px"
+                                color: contentStyle[0].bodyColor,
+                                lineHeight: contentStyle[0].bodyLine + "px",
+                                marginTop: contentStyle[0].bodyTop + "px",
+                                marginBottom: contentStyle[0].bodyBottom + "px"
                             }
                         })
                     )
@@ -51846,7 +49415,7 @@ var save = function save(props) {
                         {
                             className: "premium-testimonial__sep",
                             style: {
-                                color: dashColor
+                                color: companyStyles[0].dashColor
                             }
                         },
                         "\xA0-\xA0"
@@ -51859,7 +49428,7 @@ var save = function save(props) {
                             className: "premium-testimonial__author_comp",
                             value: authorCom,
                             style: {
-                                color: authorComColor
+                                color: companyStyles[0].authorComColor
                             }
                         }),
                         urlCheck && React.createElement("a", {
@@ -51874,9 +49443,9 @@ var save = function save(props) {
                 "span",
                 { className: "premium-testimonial__lower" },
                 React.createElement(_lowerQuote2.default, {
-                    color: quotColor,
-                    size: quotSize,
-                    opacity: quotOpacity
+                    size: quoteStyles[0].quotSize,
+                    color: quoteStyles[0].quotColor,
+                    opacity: quoteStyles[0].quotOpacity
                 })
             )
         )
@@ -51886,7 +49455,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 278 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53177,7 +50746,181 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 279 */
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var testimonialsAttrs = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    authorImgId: {
+        type: "string"
+    },
+    authorImgUrl: {
+        type: "string"
+    },
+    imgRadius: {
+        type: "string",
+        default: "50%"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    author: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author",
+        default: "John Doe"
+    },
+    authorTag: {
+        type: "string",
+        default: "H3"
+    },
+    authorColor: {
+        type: "string"
+    },
+    authorSize: {
+        type: "number"
+    },
+    authorSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    authorSizeMobile: {
+        type: "number"
+    },
+    authorSizeTablet: {
+        type: "number"
+    },
+    authorLetter: {
+        type: "number"
+    },
+    authorStyle: {
+        type: "string"
+    },
+    authorUpper: {
+        type: "boolean"
+    },
+    authorWeight: {
+        type: "number",
+        default: 500
+    },
+    authorComTag: {
+        type: "string",
+        default: "H4"
+    },
+    text: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__text"
+    },
+    authorCom: {
+        type: "array",
+        source: "children",
+        selector: ".premium-testimonial__author_comp",
+        default: "Leap13"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    contentStyle: {
+        type: "array",
+        default: [{
+            bodySizeUnit: 'px',
+            bodySize: '',
+            bodySizeMobile: '',
+            bodySizeTablet: '',
+            bodyColor: '',
+            bodyLine: '',
+            bodyTop: '',
+            bodyBottom: ''
+        }]
+
+    },
+    companyStyles: {
+        type: "array",
+        default: [{
+            authorComTag: 'H4',
+            authorComSizeUnit: 'px',
+            authorComColor: '',
+            authorComSize: '',
+            authorComSizeMobile: '',
+            authorComSizeTablet: '',
+            dashColor: '',
+            urlCheck: false,
+            urlText: '',
+            urlTarget: false
+
+        }]
+    },
+    quoteStyles: {
+        type: "array",
+        default: [{
+            quotSize: '',
+            quotColor: '',
+            quotOpacity: 1
+
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: '',
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: 'auto',
+            fixed: false,
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            paddingTop: '',
+            paddingRight: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            paddingUnit: 'px'
+        }]
+    }
+
+};
+exports.default = testimonialsAttrs;
+
+/***/ }),
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53201,11 +50944,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -53225,11 +50968,11 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(280);
+var _styling = __webpack_require__(287);
 
 var _styling2 = _interopRequireDefault(_styling);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -53363,69 +51106,18 @@ var edit = function (_Component) {
                 relatedVideos = _props$attributes.relatedVideos,
                 mute = _props$attributes.mute,
                 overlay = _props$attributes.overlay,
-                overlayImgID = _props$attributes.overlayImgID,
-                overlayImgURL = _props$attributes.overlayImgURL,
-                blur = _props$attributes.blur,
-                bright = _props$attributes.bright,
-                contrast = _props$attributes.contrast,
-                saturation = _props$attributes.saturation,
-                hue = _props$attributes.hue,
-                playLeft = _props$attributes.playLeft,
-                playTop = _props$attributes.playTop,
-                playIcon = _props$attributes.playIcon,
-                playColor = _props$attributes.playColor,
-                playHoverColor = _props$attributes.playHoverColor,
-                playHoverBackColor = _props$attributes.playHoverBackColor,
-                playSize = _props$attributes.playSize,
-                playPadding = _props$attributes.playPadding,
-                playBack = _props$attributes.playBack,
-                playOpacity = _props$attributes.playOpacity,
-                playBorderColor = _props$attributes.playBorderColor,
-                playBorderWidth = _props$attributes.playBorderWidth,
-                boxBorderTop = _props$attributes.boxBorderTop,
-                boxBorderRight = _props$attributes.boxBorderRight,
-                boxBorderBottom = _props$attributes.boxBorderBottom,
-                boxBorderLeft = _props$attributes.boxBorderLeft,
-                playBorderTop = _props$attributes.playBorderTop,
-                playBorderRight = _props$attributes.playBorderRight,
-                playBorderBottom = _props$attributes.playBorderBottom,
-                playBorderLeft = _props$attributes.playBorderLeft,
-                playBorderRadius = _props$attributes.playBorderRadius,
-                playBorderType = _props$attributes.playBorderType,
                 videoDesc = _props$attributes.videoDesc,
-                descTop = _props$attributes.descTop,
-                descLeft = _props$attributes.descLeft,
-                videoDescText = _props$attributes.videoDescText,
-                videoDescColor = _props$attributes.videoDescColor,
-                videoDescBack = _props$attributes.videoDescBack,
-                videoDescOpacity = _props$attributes.videoDescOpacity,
-                videoDescPadding = _props$attributes.videoDescPadding,
-                videoDescSize = _props$attributes.videoDescSize,
-                videoDescSizeUnit = _props$attributes.videoDescSizeUnit,
-                videoDescSizeTablet = _props$attributes.videoDescSizeTablet,
-                videoDescSizeMobile = _props$attributes.videoDescSizeMobile,
-                videoDescFamily = _props$attributes.videoDescFamily,
-                videoDescWeight = _props$attributes.videoDescWeight,
-                videoDescLetter = _props$attributes.videoDescLetter,
-                videoDescStyle = _props$attributes.videoDescStyle,
-                videoDescUpper = _props$attributes.videoDescUpper,
-                videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
-                descShadowBlur = _props$attributes.descShadowBlur,
-                descShadowColor = _props$attributes.descShadowColor,
-                descShadowHorizontal = _props$attributes.descShadowHorizontal,
-                descShadowVertical = _props$attributes.descShadowVertical,
-                boxBorderColor = _props$attributes.boxBorderColor,
-                boxBorderWidth = _props$attributes.boxBorderWidth,
-                boxBorderRadius = _props$attributes.boxBorderRadius,
-                boxBorderType = _props$attributes.boxBorderType,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                shadowPosition = _props$attributes.shadowPosition,
+                playIcon = _props$attributes.playIcon,
+                playLeft = _props$attributes.playLeft,
+                classMigrate = _props$attributes.classMigrate,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                hideMobile = _props$attributes.hideMobile,
+                colorStyles = _props$attributes.colorStyles,
+                boxStyles = _props$attributes.boxStyles,
+                overlayStyles = _props$attributes.overlayStyles,
+                playStyles = _props$attributes.playStyles,
+                descStyles = _props$attributes.descStyles;
 
 
             var TYPE = [{
@@ -54069,16 +51761,16 @@ var edit = function (_Component) {
                     className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     "data-type": videoType,
                     style: {
-                        borderStyle: boxBorderType,
-                        borderWidth: borderBoxUpdated ? boxBorderTop + "px " + boxBorderRight + "px " + boxBorderBottom + "px " + boxBorderLeft + "px" : boxBorderWidth + "px",
-                        borderRadius: boxBorderRadius + "px",
-                        borderColor: boxBorderColor,
-                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+                        borderStyle: boxStyles[0].boxBorderType,
+                        borderWidth: borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
+                        borderRadius: boxStyles[0].boxBorderRadius + "px",
+                        borderColor: boxStyles[0].boxBorderColor,
+                        boxShadow: boxStyles[0].shadowHorizontal + "px " + boxStyles[0].shadowVertical + "px " + boxStyles[0].shadowBlur + "px " + boxStyles[0].shadowColor + " " + boxStyles[0].shadowPosition
                     }
                 },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playHoverColor + " !important;", "background-color: " + playHoverBackColor + " !important;", "}"].join("\n")
+                        __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + colorStyles[0].playHoverColor + " !important;", "background-color: " + colorStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
                     }
                 }),
                 React.createElement(
@@ -54099,11 +51791,11 @@ var edit = function (_Component) {
                         controls: controls ? true : false
                     })
                 ),
-                overlay && overlayImgURL && React.createElement("div", {
+                overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
                     className: "premium-video-box__overlay",
                     style: {
-                        backgroundImage: "url('" + overlayImgURL + "')",
-                        filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        backgroundImage: "url('" + overlayStyles[0].overlayImgURL + "')",
+                        filter: "brightness( " + overlayStyles[0].bright + "% ) contrast( " + overlayStyles[0].contrast + "% ) saturate( " + overlayStyles[0].saturation + "% ) blur( " + overlayStyles[0].blur + "px ) hue-rotate( " + overlayStyles[0].hue + "deg )"
                     }
                 }),
                 overlay && playIcon && React.createElement(
@@ -54111,21 +51803,21 @@ var edit = function (_Component) {
                     {
                         className: "premium-video-box__play",
                         style: {
-                            top: playTop + "%",
+                            top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
-                            color: playColor,
-                            backgroundColor: playBack ? (0, _hexToRgba2.default)(playBack, playOpacity) : "transparent",
-                            borderStyle: playBorderType,
-                            borderWidth: borderPlayUpdated ? playBorderTop + "px " + playBorderRight + "px " + playBorderBottom + "px " + playBorderLeft + "px" : playBorderWidth + "px",
-                            borderRadius: playBorderRadius + "px",
-                            borderColor: playBorderColor,
-                            padding: playPadding + "px"
+                            color: colorStyles[0].playColor,
+                            backgroundColor: colorStyles[0].playBack ? (0, _hexToRgba2.default)(colorStyles[0].playBack, colorStyles[0].playOpacity) : "transparent",
+                            borderStyle: playStyles[0].playBorderType,
+                            borderWidth: borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
+                            borderRadius: playStyles[0].playBorderRadius + "px",
+                            borderColor: playStyles[0].playBorderColor,
+                            padding: playStyles[0].playPadding + "px"
                         }
                     },
                     React.createElement("i", {
                         className: "premium-video-box__play_icon dashicons dashicons-controls-play",
                         style: {
-                            fontSize: playSize + "px"
+                            fontSize: playStyles[0].playSize + "px"
                         }
                     })
                 ),
@@ -54135,11 +51827,11 @@ var edit = function (_Component) {
                         className: "premium-video-box__desc",
                         style: {
                             color: videoDescColor,
-                            backgroundColor: videoDescBack ? (0, _hexToRgba2.default)(videoDescBack, videoDescOpacity) : "transparent",
-                            padding: videoDescPadding,
-                            borderRadius: videoDescBorderRadius,
-                            top: descTop + "%",
-                            left: descLeft + "%"
+                            backgroundColor: colorStyles[0].videoDescBack ? (0, _hexToRgba2.default)(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity) : "transparent",
+                            padding: descStyles[0].videoDescPadding,
+                            borderRadius: descStyles[0].videoDescBorderRadius,
+                            top: descStyles[0].descTop + "%",
+                            left: descStyles[0].descLeft + "%"
                         }
                     },
                     React.createElement(
@@ -54147,18 +51839,18 @@ var edit = function (_Component) {
                         {
                             className: "premium-video-box__desc_text",
                             style: {
-                                fontFamily: videoDescFamily,
-                                fontWeight: videoDescWeight,
-                                letterSpacing: videoDescLetter + "px",
-                                textTransform: videoDescUpper ? "uppercase" : "none",
-                                textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor,
-                                fontStyle: videoDescStyle
+                                fontFamily: descStyles[0].videoDescFamily,
+                                fontWeight: descStyles[0].videoDescWeight,
+                                letterSpacing: descStyles[0].videoDescLetter + "px",
+                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descStyles[0].descShadowColor,
+                                fontStyle: descStyles[0].videoDescStyle
                             }
                         },
                         React.createElement(
                             "span",
                             null,
-                            videoDescText
+                            descStyles[0].videoDescText
                         )
                     )
                 )
@@ -54172,7 +51864,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 280 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54182,11 +51874,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -54243,7 +51935,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 281 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54276,71 +51968,25 @@ var save = function save(props) {
         videoBoxId = _props$attributes.videoBoxId,
         videoType = _props$attributes.videoType,
         videoURL = _props$attributes.videoURL,
+        videoID = _props$attributes.videoID,
         autoPlay = _props$attributes.autoPlay,
         loop = _props$attributes.loop,
-        mute = _props$attributes.mute,
-        relatedVideos = _props$attributes.relatedVideos,
         controls = _props$attributes.controls,
+        relatedVideos = _props$attributes.relatedVideos,
+        mute = _props$attributes.mute,
         overlay = _props$attributes.overlay,
-        overlayImgURL = _props$attributes.overlayImgURL,
-        blur = _props$attributes.blur,
-        contrast = _props$attributes.contrast,
-        saturation = _props$attributes.saturation,
-        bright = _props$attributes.bright,
-        hue = _props$attributes.hue,
-        playTop = _props$attributes.playTop,
-        playLeft = _props$attributes.playLeft,
-        playIcon = _props$attributes.playIcon,
-        playColor = _props$attributes.playColor,
-        playHoverColor = _props$attributes.playHoverColor,
-        playHoverBackColor = _props$attributes.playHoverBackColor,
-        playSize = _props$attributes.playSize,
-        playPadding = _props$attributes.playPadding,
-        playBack = _props$attributes.playBack,
-        playOpacity = _props$attributes.playOpacity,
-        playBorderColor = _props$attributes.playBorderColor,
-        playBorderWidth = _props$attributes.playBorderWidth,
-        playBorderRadius = _props$attributes.playBorderRadius,
-        playBorderType = _props$attributes.playBorderType,
         videoDesc = _props$attributes.videoDesc,
-        descTop = _props$attributes.descTop,
-        descLeft = _props$attributes.descLeft,
-        videoDescText = _props$attributes.videoDescText,
-        videoDescColor = _props$attributes.videoDescColor,
-        videoDescBack = _props$attributes.videoDescBack,
-        videoDescOpacity = _props$attributes.videoDescOpacity,
-        videoDescPadding = _props$attributes.videoDescPadding,
-        videoDescFamily = _props$attributes.videoDescFamily,
-        videoDescWeight = _props$attributes.videoDescWeight,
-        videoDescLetter = _props$attributes.videoDescLetter,
-        videoDescStyle = _props$attributes.videoDescStyle,
-        videoDescUpper = _props$attributes.videoDescUpper,
-        videoDescBorderRadius = _props$attributes.videoDescBorderRadius,
-        descShadowBlur = _props$attributes.descShadowBlur,
-        descShadowColor = _props$attributes.descShadowColor,
-        descShadowHorizontal = _props$attributes.descShadowHorizontal,
-        descShadowVertical = _props$attributes.descShadowVertical,
-        boxBorderColor = _props$attributes.boxBorderColor,
-        boxBorderWidth = _props$attributes.boxBorderWidth,
-        boxBorderTop = _props$attributes.boxBorderTop,
-        boxBorderRight = _props$attributes.boxBorderRight,
-        boxBorderBottom = _props$attributes.boxBorderBottom,
-        boxBorderLeft = _props$attributes.boxBorderLeft,
-        playBorderTop = _props$attributes.playBorderTop,
-        playBorderRight = _props$attributes.playBorderRight,
-        playBorderBottom = _props$attributes.playBorderBottom,
-        playBorderLeft = _props$attributes.playBorderLeft,
-        boxBorderRadius = _props$attributes.boxBorderRadius,
-        boxBorderType = _props$attributes.boxBorderType,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
+        playIcon = _props$attributes.playIcon,
+        playLeft = _props$attributes.playLeft,
+        classMigrate = _props$attributes.classMigrate,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
-
+        hideMobile = _props$attributes.hideMobile,
+        colorStyles = _props$attributes.colorStyles,
+        boxStyles = _props$attributes.boxStyles,
+        overlayStyles = _props$attributes.overlayStyles,
+        playStyles = _props$attributes.playStyles,
+        descStyles = _props$attributes.descStyles;
 
     var loopVideo = function loopVideo() {
         if ("youtube" === videoType) {
@@ -54360,19 +52006,19 @@ var save = function save(props) {
         'div',
         {
             id: videoBoxId,
-            className: mainClasses + ' video-overlay-' + overlay + '  premium-video-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+            className: mainClasses + ' video-overlay-' + overlay + ' premium-video-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             'data-type': videoType,
             style: {
-                borderStyle: boxBorderType,
-                borderWidth: borderBoxUpdated ? boxBorderTop + 'px ' + boxBorderRight + 'px ' + boxBorderBottom + 'px ' + boxBorderLeft + 'px' : boxBorderWidth + "px",
-                borderRadius: boxBorderRadius + "px",
-                borderColor: boxBorderColor,
-                boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
+                borderStyle: boxStyles[0].boxBorderType,
+                borderWidth: borderBoxUpdated ? boxStyles[0].boxBorderTop + 'px ' + boxStyles[0].boxBorderRight + 'px ' + boxStyles[0].boxBorderBottom + 'px ' + boxStyles[0].boxBorderLeft + 'px' : boxStyles[0].boxBorderWidth + "px",
+                borderRadius: boxStyles[0].boxBorderRadius + "px",
+                borderColor: boxStyles[0].boxBorderColor,
+                boxShadow: boxStyles[0].shadowHorizontal + 'px ' + boxStyles[0].shadowVertical + 'px ' + boxStyles[0].shadowBlur + 'px ' + boxStyles[0].shadowColor + ' ' + boxStyles[0].shadowPosition
             }
         },
         React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#' + videoBoxId + ' .premium-video-box__play:hover {', 'color: ' + playHoverColor + ' !important;', 'background-color: ' + playHoverBackColor + ' !important;', "}"].join("\n")
+                __html: ['#' + videoBoxId + ' .premium-video-box__play:hover {', 'color: ' + colorStyles[0].playHoverColor + ' !important;', 'background-color: ' + colorStyles[0].playHoverBackColor + ' !important;', "}"].join("\n")
             }
         }),
         React.createElement(
@@ -54389,15 +52035,15 @@ var save = function save(props) {
                 src: videoURL,
                 loop: loop ? true : false,
                 muted: mute ? true : false,
-                controls: controls ? true : false,
-                autoplay: overlay ? false : autoPlay
+                autoplay: overlay ? false : autoPlay,
+                controls: controls ? true : false
             })
         ),
-        overlay && overlayImgURL && React.createElement('div', {
+        overlay && overlayStyles[0].overlayImgURL && React.createElement('div', {
             className: 'premium-video-box__overlay',
             style: {
-                backgroundImage: 'url(\'' + overlayImgURL + '\')',
-                filter: 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )'
+                backgroundImage: 'url(\'' + overlayStyles[0].overlayImgURL + '\')',
+                filter: 'brightness( ' + overlayStyles[0].bright + '% ) contrast( ' + overlayStyles[0].contrast + '% ) saturate( ' + overlayStyles[0].saturation + '% ) blur( ' + overlayStyles[0].blur + 'px ) hue-rotate( ' + overlayStyles[0].hue + 'deg )'
             }
         }),
         overlay && playIcon && React.createElement(
@@ -54405,21 +52051,21 @@ var save = function save(props) {
             {
                 className: 'premium-video-box__play',
                 style: {
-                    top: playTop + "%",
+                    top: playStyles[0].playTop + "%",
                     left: playLeft + "%",
-                    color: playColor,
-                    backgroundColor: playBack ? (0, _hexToRgba2.default)(playBack, playOpacity) : 'transparent',
-                    borderStyle: playBorderType,
-                    borderWidth: borderPlayUpdated ? playBorderTop + 'px ' + playBorderRight + 'px ' + playBorderBottom + 'px ' + playBorderLeft + 'px' : playBorderWidth + "px",
-                    borderRadius: playBorderRadius + "px",
-                    borderColor: playBorderColor,
-                    padding: playPadding + "px"
+                    color: colorStyles[0].playColor,
+                    backgroundColor: colorStyles[0].playBack ? (0, _hexToRgba2.default)(colorStyles[0].playBack, colorStyles[0].playOpacity) : "transparent",
+                    borderStyle: playStyles[0].playBorderType,
+                    borderWidth: borderPlayUpdated ? playStyles[0].playBorderTop + 'px ' + playStyles[0].playBorderRight + 'px ' + playStyles[0].playBorderBottom + 'px ' + playStyles[0].playBorderLeft + 'px' : playStyles[0].playBorderWidth + "px",
+                    borderRadius: playStyles[0].playBorderRadius + "px",
+                    borderColor: playStyles[0].playBorderColor,
+                    padding: playStyles[0].playPadding + "px"
                 }
             },
             React.createElement('i', {
                 className: 'premium-video-box__play_icon dashicons dashicons-controls-play',
                 style: {
-                    fontSize: playSize + "px"
+                    fontSize: playStyles[0].playSize + "px"
                 }
             })
         ),
@@ -54429,11 +52075,11 @@ var save = function save(props) {
                 className: 'premium-video-box__desc',
                 style: {
                     color: videoDescColor,
-                    backgroundColor: videoDescBack ? (0, _hexToRgba2.default)(videoDescBack, videoDescOpacity) : "transparent",
-                    padding: videoDescPadding,
-                    borderRadius: videoDescBorderRadius,
-                    top: descTop + "%",
-                    left: descLeft + "%"
+                    backgroundColor: colorStyles[0].videoDescBack ? (0, _hexToRgba2.default)(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity) : "transparent",
+                    padding: descStyles[0].videoDescPadding,
+                    borderRadius: descStyles[0].videoDescBorderRadius,
+                    top: descStyles[0].descTop + "%",
+                    left: descStyles[0].descLeft + "%"
                 }
             },
             React.createElement(
@@ -54441,18 +52087,18 @@ var save = function save(props) {
                 {
                     className: 'premium-video-box__desc_text',
                     style: {
-                        fontFamily: videoDescFamily,
-                        fontWeight: videoDescWeight,
-                        letterSpacing: videoDescLetter + "px",
-                        textShadow: descShadowHorizontal + 'px ' + descShadowVertical + 'px ' + descShadowBlur + 'px ' + descShadowColor,
-                        textTransform: videoDescUpper ? "uppercase" : "none",
-                        fontStyle: videoDescStyle
+                        fontFamily: descStyles[0].videoDescFamily,
+                        fontWeight: descStyles[0].videoDescWeight,
+                        letterSpacing: descStyles[0].videoDescLetter + "px",
+                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                        textShadow: descStyles[0].descShadowHorizontal + 'px ' + descStyles[0].descShadowVertical + 'px ' + descStyles[0].descShadowBlur + 'px ' + descStyles[0].descStyles[0].descShadowColor,
+                        fontStyle: descStyles[0].videoDescStyle
                     }
                 },
                 React.createElement(
                     'span',
                     null,
-                    videoDescText
+                    descStyles[0].videoDescText
                 )
             )
         )
@@ -54462,7 +52108,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 282 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55635,217 +53281,80 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 283 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _save = __webpack_require__(284);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _edit = __webpack_require__(285);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _deprecated = __webpack_require__(307);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var fancyTextAttrs = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var videoBoxAttrs = {
     block_id: {
-        type: "string"
+        type: 'string'
     },
-    classMigrate: {
+    borderPlayUpdated: {
         type: "boolean",
         default: false
     },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    prefix: {
-        type: "string",
-        default: "This is"
-    },
-    suffix: {
-        type: "string",
-        default: "Text"
-    },
-    repeaterFancyText: {
-        type: "array",
-        default: [{
-            title: __("Designer"),
-            edit: false
-        }, {
-            title: __("Developer"),
-            edit: false
-        }, {
-            title: __("Awesome"),
-            edit: false
-        }]
-    },
-    effect: {
-        type: "string",
-        default: "typing"
-    },
-    fancyTextColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    cursorColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    fancyTextLetter: {
-        type: "number"
-    },
-    fancyTextStyle: {
-        type: "string"
-    },
-    fancyTextUpper: {
+    borderBoxUpdated: {
         type: "boolean",
         default: false
     },
-    fancyTextWeight: {
-        type: "number",
-        default: 600
+    videoBoxId: {
+        type: "string"
     },
-    fancyTextfontSize: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeUnit: {
+    videoType: {
         type: "string",
-        default: "px"
+        default: "youtube"
     },
-    fancyTextfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    fancyTextBGColor: {
-        type: "string"
-    },
-    fancyTextBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    textColor: {
+    videoURL: {
         type: "string",
-        default: "#54595f"
+        default: "07d2dXHYb94"
     },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
+    videoID: {
         type: "string"
     },
-    textUpper: {
+    autoPlay: {
         type: "boolean",
         default: false
-    },
-    textWeight: {
-        type: "number",
-        default: 600
-    },
-    textfontSize: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    textBGColor: {
-        type: "string"
-    },
-    textBGOpacity: {
-        type: "number",
-        default: "1"
     },
     loop: {
         type: "boolean",
-        default: "true"
+        default: false
     },
-    cursorShow: {
+    controls: {
         type: "boolean",
-        default: "true"
+        default: true
     },
-    cursorMark: {
-        type: "string",
-        default: "|"
-    },
-    typeSpeed: {
-        type: "number",
-        default: 100
-    },
-    backdelay: {
-        type: "number",
-        default: 30
-    },
-    startdelay: {
-        type: "number",
-        default: 30
-    },
-    backSpeed: {
-        type: "number",
-        default: 30
-    },
-    animationSpeed: {
-        type: "number",
-        default: 200
-    },
-    pauseTime: {
-        type: "number",
-        default: 3000
-    },
-    hoverPause: {
+    relatedVideos: {
         type: "boolean",
         default: false
     },
-    fancyalign: {
-        type: "string",
-        default: "center"
+    mute: {
+        type: "boolean",
+        default: false
+    },
+    overlay: {
+        type: "boolean",
+        default: false
+    },
+    videoDesc: {
+        type: "boolean"
+    },
+    playIcon: {
+        type: "boolean",
+        default: true
+    },
+
+    // Old props
+    playLeft: {
+        type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
     },
     hideDesktop: {
         type: 'boolean',
@@ -55858,14 +53367,135 @@ var fancyTextAttrs = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    colorStyles: {
+        type: 'array',
+        default: [{
+            playColor: '',
+            playBack: '',
+            playOpacity: 1,
+            videoDescColor: '',
+            videoDescBack: '',
+            videoDescOpacity: 1,
+            playHoverColor: '',
+            playHoverBackColor: ''
+        }]
+    },
+    boxStyles: {
+        type: 'array',
+        default: [{
+            boxBorderType: 'none',
+            boxBorderWidth: 1,
+            boxBorderTop: '',
+            boxBorderRight: '',
+            boxBorderBottom: '',
+            boxBorderLeft: '',
+            boxBorderRadius: '',
+            boxBorderColor: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: ''
+        }]
+    },
+    overlayStyles: {
+        type: 'array',
+        default: [{
+            overlayImgID: '',
+            overlayImgURL: '',
+            blur: 0,
+            bright: 100,
+            contrast: 100,
+            saturation: 100,
+            hue: 0
+        }]
+    },
+    playStyles: {
+        type: 'array',
+        default: [{
+            playTop: '',
+            playSize: '',
+            playPadding: '',
+            playBorderType: 'none',
+            playBorderWidth: 1,
+            playBorderRadius: '',
+            playBorderColor: '',
+            playBorderTop: '',
+            playBorderRight: '',
+            playBorderBottom: '',
+            playBorderLeft: ''
+
+        }]
+
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            videoDescText: '',
+            videoDescFamily: '',
+            videoDescSize: '',
+            videoDescSizeUnit: 'px',
+            videoDescSizeMobile: '',
+            videoDescSizeTablet: '',
+            videoDescWeight: '',
+            videoDescLetter: '',
+            videoDescStyle: '',
+            videoDescUpper: false,
+            videoDescPadding: '',
+            videoDescBorderRadius: '',
+            descShadowColor: '',
+            descShadowBlur: 0,
+            descShadowHorizontal: 0,
+            descShadowVertical: 0,
+            descLeft: '',
+            descTop: ''
+        }]
     }
+
 };
+exports.default = videoBoxAttrs;
+
+/***/ }),
+/* 291 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _save = __webpack_require__(292);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _edit = __webpack_require__(293);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _deprecated = __webpack_require__(315);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(316);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/fancy-text", {
     title: __("Fancy Text"),
     icon: React.createElement(_icons2.default, { icon: "fancy-text" }),
     category: "premium-blocks",
-    attributes: fancyTextAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.fancyText
     },
@@ -55876,7 +53506,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 284 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55897,25 +53527,29 @@ function save(props) {
     var attributes = props.attributes,
         className = props.className;
     var block_id = attributes.block_id,
+        classMigrate = attributes.classMigrate,
         align = attributes.align,
         prefix = attributes.prefix,
         suffix = attributes.suffix,
         repeaterFancyText = attributes.repeaterFancyText,
         effect = attributes.effect,
+        cursorColor = attributes.cursorColor,
         loop = attributes.loop,
         cursorShow = attributes.cursorShow,
         cursorMark = attributes.cursorMark,
         typeSpeed = attributes.typeSpeed,
-        backSpeed = attributes.backSpeed,
-        startdelay = attributes.startdelay,
         backdelay = attributes.backdelay,
+        startdelay = attributes.startdelay,
+        backSpeed = attributes.backSpeed,
         animationSpeed = attributes.animationSpeed,
         pauseTime = attributes.pauseTime,
         hoverPause = attributes.hoverPause,
         fancyalign = attributes.fancyalign,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
-        hideMobile = attributes.hideMobile;
+        hideMobile = attributes.hideMobile,
+        fancyStyles = attributes.fancyStyles,
+        PreStyles = attributes.PreStyles;
 
     return React.createElement(
         "div",
@@ -56007,7 +53641,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 285 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56023,7 +53657,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styling = __webpack_require__(286);
+var _styling = __webpack_require__(294);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -56031,15 +53665,15 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(287);
+var _typed = __webpack_require__(295);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -56047,7 +53681,7 @@ var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _reactSortableHoc = __webpack_require__(288);
+var _reactSortableHoc = __webpack_require__(296);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56241,53 +53875,29 @@ var edit = function (_Component) {
                 setAttributes = _props.setAttributes,
                 isSelected = _props.isSelected;
             var block_id = attributes.block_id,
+                classMigrate = attributes.classMigrate,
                 align = attributes.align,
-                className = attributes.className,
                 prefix = attributes.prefix,
                 suffix = attributes.suffix,
                 repeaterFancyText = attributes.repeaterFancyText,
                 effect = attributes.effect,
-                fancyTextColor = attributes.fancyTextColor,
-                fancyTextfontSize = attributes.fancyTextfontSize,
-                fancyTextfontSizeMobile = attributes.fancyTextfontSizeMobile,
-                fancyTextfontSizeTablet = attributes.fancyTextfontSizeTablet,
-                fancyTextfontSizeUnit = attributes.fancyTextfontSizeUnit,
-                fancyTextWeight = attributes.fancyTextWeight,
-                fancyTextUpper = attributes.fancyTextUpper,
-                fancyTextStyle = attributes.fancyTextStyle,
-                fancyTextLetter = attributes.fancyTextLetter,
-                fancyTextBGColor = attributes.fancyTextBGColor,
-                shadowColor = attributes.shadowColor,
-                shadowBlur = attributes.shadowBlur,
-                shadowHorizontal = attributes.shadowHorizontal,
-                shadowVertical = attributes.shadowVertical,
                 cursorColor = attributes.cursorColor,
-                textColor = attributes.textColor,
-                textfontSize = attributes.textfontSize,
-                textfontSizeMobile = attributes.textfontSizeMobile,
-                textfontSizeTablet = attributes.textfontSizeTablet,
-                textfontSizeUnit = attributes.textfontSizeUnit,
-                textWeight = attributes.textWeight,
-                textLetter = attributes.textLetter,
-                textUpper = attributes.textUpper,
-                textStyle = attributes.textStyle,
-                textBGColor = attributes.textBGColor,
                 loop = attributes.loop,
                 cursorShow = attributes.cursorShow,
                 cursorMark = attributes.cursorMark,
                 typeSpeed = attributes.typeSpeed,
-                backSpeed = attributes.backSpeed,
-                startdelay = attributes.startdelay,
                 backdelay = attributes.backdelay,
+                startdelay = attributes.startdelay,
+                backSpeed = attributes.backSpeed,
                 animationSpeed = attributes.animationSpeed,
                 pauseTime = attributes.pauseTime,
                 hoverPause = attributes.hoverPause,
                 fancyalign = attributes.fancyalign,
-                fancyTextBGOpacity = attributes.fancyTextBGOpacity,
-                textBGOpacity = attributes.textBGOpacity,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                hideMobile = attributes.hideMobile,
+                fancyStyles = attributes.fancyStyles,
+                PreStyles = attributes.PreStyles;
 
 
             var ALIGNS = ["left", "center", "right"];
@@ -56956,7 +54566,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 286 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56970,11 +54580,11 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -57099,7 +54709,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 287 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58211,7 +55821,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 288 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58222,35 +55832,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(289);
+var _extends2 = __webpack_require__(297);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(290);
+var _slicedToArray2 = __webpack_require__(298);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(294);
+var _objectSpread2 = __webpack_require__(302);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(295);
+var _classCallCheck2 = __webpack_require__(303);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(296);
+var _createClass2 = __webpack_require__(304);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(297);
+var _possibleConstructorReturn2 = __webpack_require__(305);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(299);
+var _getPrototypeOf2 = __webpack_require__(307);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(300);
+var _inherits2 = __webpack_require__(308);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -58264,17 +55874,17 @@ var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _react = __webpack_require__(5);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(17);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(36);
 
-var _invariant = __webpack_require__(302);
+var _invariant = __webpack_require__(310);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(303);
+var _toConsumableArray2 = __webpack_require__(311);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -59856,7 +57466,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 289 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59885,7 +57495,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 290 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59896,15 +57506,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(291);
+var _arrayWithHoles = __webpack_require__(299);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(292);
+var _iterableToArrayLimit = __webpack_require__(300);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _nonIterableRest = __webpack_require__(293);
+var _nonIterableRest = __webpack_require__(301);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -59915,7 +57525,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 291 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59930,7 +57540,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 292 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59967,7 +57577,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 293 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59982,7 +57592,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 294 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60019,7 +57629,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 295 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60036,7 +57646,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 296 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60063,7 +57673,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 297 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60074,7 +57684,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(298);
+var _typeof2 = __webpack_require__(306);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -60093,7 +57703,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 298 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60133,7 +57743,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 299 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60151,7 +57761,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 300 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60162,7 +57772,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(301);
+var _setPrototypeOf = __webpack_require__(309);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -60184,7 +57794,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 301 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60204,7 +57814,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 302 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60257,7 +57867,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 303 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60268,15 +57878,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(304);
+var _arrayWithoutHoles = __webpack_require__(312);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(305);
+var _iterableToArray = __webpack_require__(313);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _nonIterableSpread = __webpack_require__(306);
+var _nonIterableSpread = __webpack_require__(314);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -60287,7 +57897,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 304 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60308,7 +57918,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 305 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60323,7 +57933,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 306 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60338,7 +57948,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 307 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60686,36 +58296,18 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 308 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _edit = __webpack_require__(309);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _settings = __webpack_require__(3);
-
-var _save = __webpack_require__(363);
-
-var _save2 = _interopRequireDefault(_save);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
 
-
-var LottieAttr = {
-    lottieId: {
-        type: "string"
-    },
+var attributes = {
     block_id: {
         type: "string"
     },
@@ -60723,181 +58315,82 @@ var LottieAttr = {
         type: "boolean",
         default: false
     },
-    lottieURl: {
-        type: "string",
-        default: ""
-    },
-    lottieJson: {
-        type: "object"
-    },
-    loop: {
-        type: 'boolean',
-        default: true
-    },
-    reverse: {
-        type: "boolean",
-        default: false
-    },
-    speed: {
-        type: "number",
-        default: "1"
-    },
-    trigger: {
-        type: 'string',
-        default: 'none'
-    },
-    bottom: {
-        type: "number",
-        default: "0"
-    },
-    top: {
-        type: "number",
-        default: "100"
-    },
-    scrollSpeed: {
-        type: "number",
-        default: "4"
-    },
-    size: {
-        type: "number",
-        default: "200"
-    },
-    sizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    sizeMobile: {
-        type: "number",
-        default: "200"
-    },
-    sizeTablet: {
-        type: "number",
-        default: "200"
-    },
-    rotate: {
-        type: "number",
-        default: 0
-    },
     align: {
         type: "string",
         default: "center"
     },
-    link: {
+    prefix: {
+        type: "string",
+        default: "This is"
+    },
+    suffix: {
+        type: "string",
+        default: "Text"
+    },
+    repeaterFancyText: {
+        type: "array",
+        default: [{
+            title: __("Designer"),
+            edit: false
+        }, {
+            title: __("Developer"),
+            edit: false
+        }, {
+            title: __("Awesome"),
+            edit: false
+        }]
+    },
+    effect: {
+        type: "string",
+        default: "typing"
+    },
+    cursorColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    loop: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorShow: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorMark: {
+        type: "string",
+        default: "|"
+    },
+    typeSpeed: {
+        type: "number",
+        default: 100
+    },
+    backdelay: {
+        type: "number",
+        default: 30
+    },
+    startdelay: {
+        type: "number",
+        default: 30
+    },
+    backSpeed: {
+        type: "number",
+        default: 30
+    },
+    animationSpeed: {
+        type: "number",
+        default: 200
+    },
+    pauseTime: {
+        type: "number",
+        default: 3000
+    },
+    hoverPause: {
         type: "boolean",
         default: false
     },
-    url: {
-        type: "string"
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    render: {
-        type: 'string',
-        default: 'svg'
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    backHColor: {
-        type: "string"
-    },
-    backHOpacity: {
-        type: "number",
-        default: 1
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    blurH: {
-        type: "number",
-        default: "0"
-    },
-    brightH: {
-        type: "number",
-        default: "100"
-    },
-    contrastH: {
-        type: "number",
-        default: "100"
-    },
-    saturationH: {
-        type: "number",
-        default: "100"
-    },
-    hueH: {
-        type: "number",
-        default: "0"
-
-    },
-    borderType: {
+    fancyalign: {
         type: "string",
-        default: 'none'
-    },
-    borderTop: {
-        type: "number",
-        default: 0
-    },
-    borderRight: {
-        type: "number",
-        default: 0
-    },
-    borderBottom: {
-        type: "number",
-        default: 0
-    },
-    borderLeft: {
-        type: "number",
-        default: 0
-    },
-    borderColor: {
-        type: "string"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number",
-        default: "0"
-    },
-    paddingR: {
-        type: "number",
-        default: "0"
-    },
-    paddingB: {
-        type: "number",
-        default: "0"
-    },
-    paddingL: {
-        type: "number",
-        default: "0"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
+        default: "center"
     },
     hideDesktop: {
         type: 'boolean',
@@ -60910,14 +58403,83 @@ var LottieAttr = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    fancyStyles: {
+        type: "array",
+        default: [{
+            fancyTextColor: "#6ec1e4",
+            fancyTextfontSize: 20,
+            fancyTextfontSizeUnit: 'px',
+            fancyTextfontSizeMobile: 20,
+            fancyTextfontSizeTablet: 20,
+            fancyTextBGColor: '',
+            fancyTextBGOpacity: 1,
+            fancyTextLetter: '',
+            fancyTextStyle: '',
+            fancyTextUpper: false,
+            fancyTextWeight: 600,
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            cursorColor: ''
+        }]
+    },
+    PreStyles: {
+        type: "array",
+        default: [{
+            textColor: "#54595f",
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: 600,
+            textfontSize: 20,
+            textfontSizeUnit: 'px',
+            textfontSizeMobile: 20,
+            textfontSizeTablet: 20,
+            textBGColor: '',
+            textBGOpacity: 1
+        }]
     }
 };
+exports.default = attributes;
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _edit = __webpack_require__(318);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _settings = __webpack_require__(3);
+
+var _save = __webpack_require__(372);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _attributes = __webpack_require__(373);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/lottie", {
     title: __("Lottie Animation"),
     icon: React.createElement(_icons2.default, { icon: "lottie" }),
     category: "premium-blocks",
-    attributes: LottieAttr,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.lottie
     },
@@ -60927,7 +58489,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 309 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60943,7 +58505,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(310);
+var _reactLottieWithSegments = __webpack_require__(319);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -60967,7 +58529,7 @@ var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _styling = __webpack_require__(362);
+var _styling = __webpack_require__(371);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -61118,7 +58680,9 @@ var edit = function (_Component) {
                 attributes = _props2.attributes,
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
-            var block_id = attributes.block_id,
+            var lottieId = attributes.lottieId,
+                block_id = attributes.block_id,
+                classMigrate = attributes.classMigrate,
                 lottieURl = attributes.lottieURl,
                 lottieJson = attributes.lottieJson,
                 loop = attributes.loop,
@@ -61128,45 +58692,20 @@ var edit = function (_Component) {
                 bottom = attributes.bottom,
                 top = attributes.top,
                 scrollSpeed = attributes.scrollSpeed,
-                sizeUnit = attributes.sizeUnit,
                 size = attributes.size,
-                sizeTablet = attributes.sizeTablet,
+                sizeUnit = attributes.sizeUnit,
                 sizeMobile = attributes.sizeMobile,
+                sizeTablet = attributes.sizeTablet,
                 rotate = attributes.rotate,
                 align = attributes.align,
                 link = attributes.link,
                 url = attributes.url,
                 target = attributes.target,
                 render = attributes.render,
-                backColor = attributes.backColor,
-                backOpacity = attributes.backOpacity,
-                backHColor = attributes.backHColor,
-                backHOpacity = attributes.backHOpacity,
-                blur = attributes.blur,
-                hue = attributes.hue,
-                contrast = attributes.contrast,
-                saturation = attributes.saturation,
-                bright = attributes.bright,
-                blurH = attributes.blurH,
-                hueH = attributes.hueH,
-                contrastH = attributes.contrastH,
-                saturationH = attributes.saturationH,
-                brightH = attributes.brightH,
-                borderType = attributes.borderType,
-                borderTop = attributes.borderTop,
-                borderRight = attributes.borderRight,
-                borderBottom = attributes.borderBottom,
-                borderLeft = attributes.borderLeft,
-                borderColor = attributes.borderColor,
-                borderRadius = attributes.borderRadius,
-                paddingT = attributes.paddingT,
-                paddingR = attributes.paddingR,
-                paddingB = attributes.paddingB,
-                paddingL = attributes.paddingL,
-                paddingU = attributes.paddingU,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                hideMobile = attributes.hideMobile,
+                lottieStyles = attributes.lottieStyles;
 
 
             var validJsonPath = 'invalid';
@@ -61701,7 +59240,7 @@ var edit = function (_Component) {
                 ),
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + backColor + ";", "opacity : " + backOpacity + ";", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg );", "border-style : " + borderType + ";", "border-width : " + borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px ;", "border-radius : " + borderRadius + "px;", "border-color : " + borderColor + "; ", "padding-top : " + paddingT + paddingU + ";", "padding-right : " + paddingR + paddingU + ";", "padding-bottom : " + paddingB + paddingU + ";", "padding-left : " + paddingL + paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + backHColor + ";", "opacity:" + backHOpacity + ";", "filter: brightness( " + brightH + "% ) contrast( " + contrastH + "% ) saturate( " + saturationH + "% ) blur( " + blurH + "px ) hue-rotate( " + hueH + "deg ) !important;", "}"].join("\n")
+                        __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + lottieStyles[0].backColor + ";", "opacity : " + lottieStyles[0].backOpacity + ";", "filter: brightness( " + lottieStyles[0].bright + "% ) contrast( " + lottieStyles[0].contrast + "% ) saturate( " + lottieStyles[0].saturation + "% ) blur( " + lottieStyles[0].blur + "px ) hue-rotate( " + lottieStyles[0].hue + "deg );", "border-style : " + lottieStyles[0].borderType + ";", "border-width : " + lottieStyles[0].borderTop + "px " + lottieStyles[0].borderRight + "px " + lottieStyles[0].borderBottom + "px " + lottieStyles[0].borderLeft + "px ;", "border-radius : " + lottieStyles[0].borderRadius + "px;", "border-color : " + lottieStyles[0].borderColor + "; ", "padding-top : " + lottieStyles[0].paddingT + lottieStyles[0].paddingU + ";", "padding-right : " + lottieStyles[0].paddingR + lottieStyles[0].paddingU + ";", "padding-bottom : " + lottieStyles[0].paddingB + lottieStyles[0].paddingU + ";", "padding-left : " + lottieStyles[0].paddingL + lottieStyles[0].paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + lottieStyles[0].backHColor + ";", "opacity:" + lottieStyles[0].backHOpacity + ";", "filter: brightness( " + lottieStyles[0].brightH + "% ) contrast( " + lottieStyles[0].contrastH + "% ) saturate( " + lottieStyles[0].saturationH + "% ) blur( " + lottieStyles[0].blurH + "px ) hue-rotate( " + lottieStyles[0].hueH + "deg ) !important;", "}"].join("\n")
                     }
                 })
             )];
@@ -61714,7 +59253,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 310 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61724,31 +59263,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(311);
+var _stringify = __webpack_require__(320);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(313);
+var _extends2 = __webpack_require__(322);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(322);
+var _getPrototypeOf = __webpack_require__(331);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(326);
+var _classCallCheck2 = __webpack_require__(335);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(327);
+var _createClass2 = __webpack_require__(336);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(331);
+var _possibleConstructorReturn2 = __webpack_require__(340);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(353);
+var _inherits2 = __webpack_require__(362);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -61756,11 +59295,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(17);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(361);
+var _lottieWeb = __webpack_require__(370);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -62068,16 +59607,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 311 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(312), __esModule: true };
+module.exports = { "default": __webpack_require__(321), __esModule: true };
 
 /***/ }),
-/* 312 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62091,7 +59630,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 313 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62099,7 +59638,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(314);
+var _assign = __webpack_require__(323);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -62122,26 +59661,26 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 314 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(315), __esModule: true };
+module.exports = { "default": __webpack_require__(324), __esModule: true };
 
 /***/ }),
-/* 315 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(316);
+__webpack_require__(325);
 module.exports = __webpack_require__(8).Object.assign;
 
 /***/ }),
-/* 316 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62150,10 +59689,10 @@ module.exports = __webpack_require__(8).Object.assign;
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(21);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(318) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(327) });
 
 /***/ }),
-/* 317 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62165,7 +59704,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 318 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62211,7 +59750,7 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 } : $assign;
 
 /***/ }),
-/* 319 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62220,8 +59759,8 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(30);
-var toLength = __webpack_require__(320);
-var toAbsoluteIndex = __webpack_require__(321);
+var toLength = __webpack_require__(329);
+var toAbsoluteIndex = __webpack_require__(330);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -62244,7 +59783,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 320 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62258,7 +59797,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 321 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62273,26 +59812,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 322 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(323), __esModule: true };
+module.exports = { "default": __webpack_require__(332), __esModule: true };
 
 /***/ }),
-/* 323 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(324);
+__webpack_require__(333);
 module.exports = __webpack_require__(8).Object.getPrototypeOf;
 
 /***/ }),
-/* 324 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62302,14 +59841,14 @@ module.exports = __webpack_require__(8).Object.getPrototypeOf;
 var toObject = __webpack_require__(74);
 var $getPrototypeOf = __webpack_require__(115);
 
-__webpack_require__(325)('getPrototypeOf', function () {
+__webpack_require__(334)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 325 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62329,7 +59868,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 326 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62344,7 +59883,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 327 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62352,7 +59891,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(328);
+var _defineProperty = __webpack_require__(337);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -62379,29 +59918,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 328 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(329), __esModule: true };
+module.exports = { "default": __webpack_require__(338), __esModule: true };
 
 /***/ }),
-/* 329 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(330);
+__webpack_require__(339);
 var $Object = __webpack_require__(8).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 330 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62412,7 +59951,7 @@ var $export = __webpack_require__(21);
 $export($export.S + $export.F * !__webpack_require__(23), 'Object', { defineProperty: __webpack_require__(22).f });
 
 /***/ }),
-/* 331 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62437,33 +59976,33 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 332 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(333), __esModule: true };
+module.exports = { "default": __webpack_require__(342), __esModule: true };
 
 /***/ }),
-/* 333 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(334);
-__webpack_require__(339);
+__webpack_require__(343);
+__webpack_require__(348);
 module.exports = __webpack_require__(78).f('iterator');
 
 /***/ }),
-/* 334 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(335)(true);
+var $at = __webpack_require__(344)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(117)(String, 'String', function (iterated) {
@@ -62481,7 +60020,7 @@ __webpack_require__(117)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 335 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62504,7 +60043,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 336 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62526,7 +60065,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 337 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62548,7 +60087,7 @@ module.exports = __webpack_require__(23) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 338 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62558,13 +60097,13 @@ var document = __webpack_require__(20).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 339 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(340);
+__webpack_require__(349);
 var global = __webpack_require__(20);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(75);
@@ -62581,14 +60120,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 340 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(341);
-var step = __webpack_require__(342);
+var addToUnscopables = __webpack_require__(350);
+var step = __webpack_require__(351);
 var Iterators = __webpack_require__(75);
 var toIObject = __webpack_require__(30);
 
@@ -62622,7 +60161,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 341 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62631,7 +60170,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 342 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62642,29 +60181,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 343 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(344), __esModule: true };
+module.exports = { "default": __webpack_require__(353), __esModule: true };
 
 /***/ }),
-/* 344 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(345);
-__webpack_require__(350);
-__webpack_require__(351);
-__webpack_require__(352);
+__webpack_require__(354);
+__webpack_require__(359);
+__webpack_require__(360);
+__webpack_require__(361);
 module.exports = __webpack_require__(8).Symbol;
 
 /***/ }),
-/* 345 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62678,7 +60217,7 @@ var has = __webpack_require__(24);
 var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(118);
-var META = __webpack_require__(346).KEY;
+var META = __webpack_require__(355).KEY;
 var $fails = __webpack_require__(29);
 var shared = __webpack_require__(71);
 var setToStringTag = __webpack_require__(77);
@@ -62686,15 +60225,15 @@ var uid = __webpack_require__(49);
 var wks = __webpack_require__(31);
 var wksExt = __webpack_require__(78);
 var wksDefine = __webpack_require__(79);
-var enumKeys = __webpack_require__(347);
-var isArray = __webpack_require__(348);
+var enumKeys = __webpack_require__(356);
+var isArray = __webpack_require__(357);
 var anObject = __webpack_require__(37);
 var isObject = __webpack_require__(28);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(67);
 var createDesc = __webpack_require__(46);
 var _create = __webpack_require__(76);
-var gOPNExt = __webpack_require__(349);
+var gOPNExt = __webpack_require__(358);
 var $GOPD = __webpack_require__(120);
 var $DP = __webpack_require__(22);
 var $keys = __webpack_require__(47);
@@ -62914,7 +60453,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 346 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62977,7 +60516,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 347 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63002,7 +60541,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 348 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63015,7 +60554,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 349 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63043,14 +60582,14 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 350 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 351 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63059,7 +60598,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 __webpack_require__(79)('asyncIterator');
 
 /***/ }),
-/* 352 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63068,7 +60607,7 @@ __webpack_require__(79)('asyncIterator');
 __webpack_require__(79)('observable');
 
 /***/ }),
-/* 353 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63076,11 +60615,11 @@ __webpack_require__(79)('observable');
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(354);
+var _setPrototypeOf = __webpack_require__(363);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(358);
+var _create = __webpack_require__(367);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -63109,26 +60648,26 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 354 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(355), __esModule: true };
+module.exports = { "default": __webpack_require__(364), __esModule: true };
 
 /***/ }),
-/* 355 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(356);
+__webpack_require__(365);
 module.exports = __webpack_require__(8).Object.setPrototypeOf;
 
 /***/ }),
-/* 356 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63136,10 +60675,10 @@ module.exports = __webpack_require__(8).Object.setPrototypeOf;
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(21);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(357).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(366).set });
 
 /***/ }),
-/* 357 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63173,29 +60712,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 358 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(359), __esModule: true };
+module.exports = { "default": __webpack_require__(368), __esModule: true };
 
 /***/ }),
-/* 359 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(360);
+__webpack_require__(369);
 var $Object = __webpack_require__(8).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 360 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63206,7 +60745,7 @@ var $export = __webpack_require__(21);
 $export($export.S, 'Object', { create: __webpack_require__(76) });
 
 /***/ }),
-/* 361 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63797,7 +61336,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 362 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63807,11 +61346,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(10);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(11);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -63870,7 +61409,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 363 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63890,8 +61429,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function save(props) {
     var attributes = props.attributes,
         className = props.className;
-    var block_id = attributes.block_id,
+    var lottieId = attributes.lottieId,
+        block_id = attributes.block_id,
+        classMigrate = attributes.classMigrate,
         lottieURl = attributes.lottieURl,
+        lottieJson = attributes.lottieJson,
         loop = attributes.loop,
         reverse = attributes.reverse,
         speed = attributes.speed,
@@ -63899,41 +61441,20 @@ function save(props) {
         bottom = attributes.bottom,
         top = attributes.top,
         scrollSpeed = attributes.scrollSpeed,
+        size = attributes.size,
+        sizeUnit = attributes.sizeUnit,
+        sizeMobile = attributes.sizeMobile,
+        sizeTablet = attributes.sizeTablet,
         rotate = attributes.rotate,
         align = attributes.align,
         link = attributes.link,
         url = attributes.url,
-        render = attributes.render,
-        backColor = attributes.backColor,
-        backOpacity = attributes.backOpacity,
-        backHColor = attributes.backHColor,
-        backHOpacity = attributes.backHOpacity,
-        blur = attributes.blur,
-        hue = attributes.hue,
-        contrast = attributes.contrast,
-        saturation = attributes.saturation,
-        bright = attributes.bright,
-        blurH = attributes.blurH,
-        hueH = attributes.hueH,
         target = attributes.target,
-        contrastH = attributes.contrastH,
-        saturationH = attributes.saturationH,
-        brightH = attributes.brightH,
-        borderType = attributes.borderType,
-        borderTop = attributes.borderTop,
-        borderRight = attributes.borderRight,
-        borderBottom = attributes.borderBottom,
-        borderLeft = attributes.borderLeft,
-        borderColor = attributes.borderColor,
-        borderRadius = attributes.borderRadius,
-        paddingT = attributes.paddingT,
-        paddingR = attributes.paddingR,
-        paddingB = attributes.paddingB,
-        paddingL = attributes.paddingL,
-        paddingU = attributes.paddingU,
+        render = attributes.render,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
-        hideMobile = attributes.hideMobile;
+        hideMobile = attributes.hideMobile,
+        lottieStyles = attributes.lottieStyles;
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-lottie-wrap');
 
@@ -63951,14 +61472,14 @@ function save(props) {
         ),
         React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-lottie-' + block_id + '{', 'text-align:' + align + ';', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation  {', 'background-color:' + backColor + ';', 'opacity : ' + backOpacity + ';', 'filter: brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg );', 'border-style : ' + borderType + ';', 'border-width : ' + borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px ;', 'border-radius : ' + borderRadius + 'px;', 'border-color : ' + borderColor + '; ', 'padding-top : ' + paddingT + paddingU + ';', 'padding-right : ' + paddingR + paddingU + ';', 'padding-bottom : ' + paddingB + paddingU + ';', 'padding-left : ' + paddingL + paddingU + ';', 'transform: rotate(' + rotate + 'deg) !important;', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation:hover {', 'background-color:' + backHColor + ';', 'opacity:' + backHOpacity + ';', 'filter: brightness( ' + brightH + '% ) contrast( ' + contrastH + '% ) saturate( ' + saturationH + '% ) blur( ' + blurH + 'px ) hue-rotate( ' + hueH + 'deg ) !important;', "}"].join("\n")
+                __html: ['#premium-lottie-' + block_id + '{', 'text-align:' + align + ';', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation  {', 'background-color:' + lottieStyles[0].backColor + ';', 'opacity : ' + lottieStyles[0].backOpacity + ';', 'filter: brightness( ' + lottieStyles[0].bright + '% ) contrast( ' + lottieStyles[0].contrast + '% ) saturate( ' + lottieStyles[0].saturation + '% ) blur( ' + lottieStyles[0].blur + 'px ) hue-rotate( ' + lottieStyles[0].hue + 'deg );', 'border-style : ' + lottieStyles[0].borderType + ';', 'border-width : ' + lottieStyles[0].borderTop + 'px ' + lottieStyles[0].borderRight + 'px ' + lottieStyles[0].borderBottom + 'px ' + lottieStyles[0].borderLeft + 'px ;', 'border-radius : ' + lottieStyles[0].borderRadius + 'px;', 'border-color : ' + lottieStyles[0].borderColor + '; ', 'padding-top : ' + lottieStyles[0].paddingT + lottieStyles[0].paddingU + ';', 'padding-right : ' + lottieStyles[0].paddingR + lottieStyles[0].paddingU + ';', 'padding-bottom : ' + lottieStyles[0].paddingB + lottieStyles[0].paddingU + ';', 'padding-left : ' + lottieStyles[0].paddingL + lottieStyles[0].paddingU + ';', 'transform: rotate(' + rotate + 'deg) !important;', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation:hover {', 'background-color:' + lottieStyles[0].backHColor + ';', 'opacity:' + lottieStyles[0].backHOpacity + ';', 'filter: brightness( ' + lottieStyles[0].brightH + '% ) contrast( ' + lottieStyles[0].contrastH + '% ) saturate( ' + lottieStyles[0].saturationH + '% ) blur( ' + lottieStyles[0].blurH + 'px ) hue-rotate( ' + lottieStyles[0].hueH + 'deg ) !important;', "}"].join("\n")
             }
         })
     );
 }
 
 /***/ }),
-/* 364 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63967,334 +61488,90 @@ function save(props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var attributes = {
+var LottieAttr = {
+    lottieId: {
+        type: "string"
+    },
     block_id: {
         type: "string"
     },
-    contentAlign: {
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    lottieURl: {
+        type: "string",
+        default: ""
+    },
+    lottieJson: {
+        type: "object"
+    },
+    loop: {
+        type: 'boolean',
+        default: true
+    },
+    reverse: {
+        type: "boolean",
+        default: false
+    },
+    speed: {
+        type: "number",
+        default: "1"
+    },
+    trigger: {
+        type: 'string',
+        default: 'none'
+    },
+    bottom: {
+        type: "number",
+        default: "0"
+    },
+    top: {
+        type: "number",
+        default: "100"
+    },
+    scrollSpeed: {
+        type: "number",
+        default: "4"
+    },
+    size: {
+        type: "number",
+        default: "200"
+    },
+    sizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    sizeMobile: {
+        type: "number",
+        default: "200"
+    },
+    sizeTablet: {
+        type: "number",
+        default: "200"
+    },
+    rotate: {
+        type: "number",
+        default: 0
+    },
+    align: {
         type: "string",
         default: "center"
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-    },
-    titleTag: {
-        type: "string",
-        default: "h1"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    firstSize: {
-        type: "number",
-        default: "20"
-    },
-    firstSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    firstSizeTablet: {
-        type: "number"
-    },
-    firstSizeMobile: {
-        type: "number"
-    },
-    firstFamily: {
-        type: "string"
-    },
-    firstLetter: {
-        type: "number"
-    },
-    firstStyle: {
-        type: "string"
-    },
-    firstUpper: {
-        type: "boolean"
-    },
-    firstWeight: {
-        type: "number",
-        default: 500
-    },
-    firstBackground: {
-        type: "string"
-    },
-    firstOpacity: {
-        type: "number",
-        default: "1"
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none"
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstBorder: {
-        type: "boolean",
-        default: false
-    },
-    firstBorderTop: {
-        type: "number"
-    },
-    firstBorderRight: {
-        type: "number"
-    },
-    firstBorderBottom: {
-        type: "number"
-    },
-    firstBorderLeft: {
-        type: "number"
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    firstBorderColor: {
-        type: "string"
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0"
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0"
-    },
-    firstPadding: {
-        type: "number",
-        default: "0"
-    },
-    firstClip: {
-        type: "boolean",
-        default: false
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false
-    },
-    firstStroke: {
-        type: "boolean",
-        default: false
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstShadowColor: {
-        type: "string"
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondSize: {
-        type: "number",
-        default: "20"
-    },
-    secondSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    secondSizeTablet: {
-        type: "number"
-    },
-    secondSizeMobile: {
-        type: "number"
-    },
-    secondFamily: {
-        type: "string"
-    },
-    secondLetter: {
-        type: "number"
-    },
-    secondStyle: {
-        type: "string"
-    },
-    secondUpper: {
-        type: "boolean"
-    },
-    secondWeight: {
-        type: "number",
-        default: 500
-    },
-    secondBackground: {
-        type: "string"
-    },
-    secondOpacity: {
-        type: "number",
-        default: "1"
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none"
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondBorder: {
-        type: "boolean",
-        default: false
-    },
-    secondBorderTop: {
-        type: "number"
-    },
-    secondBorderRight: {
-        type: "number"
-    },
-    secondBorderBottom: {
-        type: "number"
-    },
-    secondBorderLeft: {
-        type: "number"
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    secondBorderColor: {
-        type: "string"
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0"
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0"
-    },
-    secondPadding: {
-        type: "number",
-        default: "0"
-    },
-    secondClip: {
-        type: "boolean",
-        default: false
-    },
-    secondStroke: {
-        type: "boolean",
-        default: false
-    },
-    secondShadowColor: {
-        type: "string"
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
     },
     link: {
         type: "boolean",
         default: false
     },
+    url: {
+        type: "string"
+    },
     target: {
         type: "boolean",
         default: false
     },
-    headingURL: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderType: {
-        type: "string",
-        default: "none"
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    containerBorder: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderTop: {
-        type: "number"
-    },
-    containerBorderRight: {
-        type: "number"
-    },
-    containerBorderBottom: {
-        type: "number"
-    },
-    containerBorderLeft: {
-        type: "number"
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    containerBorderColor: {
-        type: "string"
+    render: {
+        type: 'string',
+        default: 'svg'
     },
     hideDesktop: {
         type: 'boolean',
@@ -64307,9 +61584,40 @@ var attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    lottieStyles: {
+        type: "array",
+        default: [{
+            backColor: '',
+            backOpacity: 1,
+            backHColor: '',
+            backHOpacity: 1,
+            blur: '0',
+            bright: '100',
+            contrast: '100',
+            saturation: '100',
+            hue: '0',
+            blurH: '0',
+            brightH: '100',
+            contrastH: '100',
+            saturationH: '100',
+            hueH: '0',
+            borderType: 'none',
+            borderTop: '0',
+            borderRight: '0',
+            borderBottom: '0',
+            borderLeft: '0',
+            borderColor: '',
+            borderRadius: '0',
+            paddingT: '0',
+            paddingR: '0',
+            paddingB: '0',
+            paddingL: '0',
+            paddingU: 'px'
+        }]
     }
 };
-exports.default = attributes;
+exports.default = LottieAttr;
 
 /***/ })
 /******/ ]);

@@ -424,47 +424,47 @@ class edit extends Component {
                         >
                             <TextControl
                                 label={__("Prefix")}
-                                value={prefixTxt}
+                                value={prefixStyles[0].prefixTxt}
                                 onChange={value => setAttributes({ prefixTxt: value })}
                             />
 
                             <SelectControl
                                 label={__("Font Family")}
-                                value={prefixFamily}
+                                value={prefixStyles[0].prefixFamily}
                                 options={FONTS}
                                 onChange={onChangePrefixFamily}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight"]}
-                                setAttributes={setAttributes}
+                                setAttributes={savePrefixStyle}
                                 fontSizeType={{
-                                    value: prefixSizeUnit,
+                                    value: prefixStyles[0].prefixSizeUnit,
                                     label: __("prefixSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: prefixSize,
+                                    value: prefixStyles[0].prefixSize,
                                     label: __("prefixSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: prefixSizeMobile,
+                                    value: prefixStyles[0].prefixSizeMobile,
                                     label: __("prefixSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: prefixSizeTablet,
+                                    value: prefixStyles[0].prefixSizeTablet,
                                     label: __("prefixSizeTablet"),
                                 }}
-                                weight={prefixWeight}
+                                weight={prefixStyles[0].prefixWeight}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ prefixWeight: newWeight })
+                                    savePrefixStyle({ prefixWeight: newWeight })
                                 }
                             />
 
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={prefixColor}
+                                    value={prefixStyles[0].prefixColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        savePrefixStyle({
                                             prefixColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -474,8 +474,8 @@ class edit extends Component {
                             </Fragment>
                             <RangeControl
                                 label={__("Gap After (PX)")}
-                                value={prefixGap}
-                                onChange={newValue => setAttributes({ prefixGap: newValue })}
+                                value={prefixStyles[0].prefixGap}
+                                onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -487,45 +487,45 @@ class edit extends Component {
                         >
                             <TextControl
                                 label={__("Suffix")}
-                                value={suffixTxt}
-                                onChange={value => setAttributes({ suffixTxt: value })}
+                                value={suffixStyles[0].suffixTxt}
+                                onChange={value => savePrefixStyle({ suffixTxt: value })}
                             />
                             <SelectControl
                                 label={__("Font Family")}
-                                value={suffixFamily}
+                                value={suffixStyles[0].suffixFamily}
                                 options={FONTS}
                                 onChange={onChangeSuffixFamily}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight"]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveSuffixStyle}
                                 fontSizeType={{
-                                    value: suffixSizeUnit,
+                                    value: suffixStyles[0].suffixSizeUnit,
                                     label: __("suffixSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: suffixSize,
+                                    value: suffixStyles[0].suffixSize,
                                     label: __("suffixSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: suffixSizeMobile,
+                                    value: suffixStyles[0].suffixSizeMobile,
                                     label: __("suffixSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: suffixSizeTablet,
+                                    value: suffixStyles[0].suffixSizeTablet,
                                     label: __("suffixSizeTablet"),
                                 }}
-                                weight={suffixWeight}
+                                weight={suffixStyles[0].suffixWeight}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ suffixWeight: newWeight })
+                                    saveSuffixStyle({ suffixWeight: newWeight })
                                 }
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={suffixColor}
+                                    value={suffixStyles[0].suffixColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        saveSuffixStyle({
                                             suffixColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -535,8 +535,8 @@ class edit extends Component {
                             </Fragment>
                             <RangeControl
                                 label={__("Gap Before (PX)")}
-                                value={suffixGap}
-                                onChange={newValue => setAttributes({ suffixGap: newValue })}
+                                value={suffixStyles[0].suffixGap}
+                                onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -548,55 +548,55 @@ class edit extends Component {
                         >
                             <TextControl
                                 label={__("Title Text")}
-                                value={titleTxt}
-                                onChange={value => setAttributes({ titleTxt: value })}
+                                value={titleStyles[0].titleTxt}
+                                onChange={value => saveTitleStyles({ titleTxt: value })}
                             />
                             <SelectControl
                                 label={__("Font Family")}
-                                value={titleFamily}
+                                value={titleStyles[0].titleFamily}
                                 options={FONTS}
                                 onChange={onChangeTitleFamily}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "spacing", "style", "upper"]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveTitleStyles}
                                 fontSizeType={{
-                                    value: titleSizeUnit,
+                                    value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: titleSize,
+                                    value: titleStyles[0].titleSize,
                                     label: __("titleSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: titleSizeMobile,
+                                    value: titleStyles[0].titleSizeMobile,
                                     label: __("titleSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: titleSizeTablet,
+                                    value: titleStyles[0].titleSizeTablet,
                                     label: __("titleSizeTablet"),
                                 }}
-                                weight={titleWeight}
-                                style={titleStyle}
-                                spacing={titleSpacing}
-                                upper={titleUpper}
+                                weight={titleStyles[0].titleWeight}
+                                style={titleStyles[0].titleStyle}
+                                spacing={titleStyles[0].titleSpacing}
+                                upper={titleStyles[0].titleUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight })
+                                    saveTitleStyles({ titleWeight: newWeight })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
+                                    saveTitleStyles({ titleStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ titleSpacing: newValue })
+                                    saveTitleStyles({ titleSpacing: newValue })
                                 }
-                                onChangeUpper={check => setAttributes({ titleUpper: check })}
+                                onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={titleColor}
+                                    value={titleStyles[0].titleColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        saveTitleStyles({
                                             titleColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -611,13 +611,13 @@ class edit extends Component {
                             >
                                 <RangeControl
                                     label={__("Margin Top (PX)")}
-                                    value={titleT}
-                                    onChange={newValue => setAttributes({ titleT: newValue })}
+                                    value={titleStyles[0].titleT}
+                                    onChange={newValue => saveTitleStyles({ titleT: newValue })}
                                 />
                                 <RangeControl
                                     label={__("Margin Bottom (PX)")}
-                                    value={titleB}
-                                    onChange={newValue => setAttributes({ titleB: newValue })}
+                                    value={titleStyles[0].titleB}
+                                    onChange={newValue => saveTitleStyles({ titleB: newValue })}
                                 />
                             </PanelBody>
                         </PanelBody>
@@ -631,61 +631,61 @@ class edit extends Component {
                             <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
-                                colorValue={containerBack}
+                                colorValue={containerStyles[0].containerBack}
                                 onChangeColor={newValue =>
-                                    setAttributes({
+                                    saveContainerStyle({
                                         containerBack: newValue,
                                     })
                                 }
-                                opacityValue={containerOpacity}
+                                opacityValue={containerStyles[0].containerOpacity}
                                 onChangeOpacity={value =>
-                                    setAttributes({ containerOpacity: value })
+                                    saveContainerStyle({ containerOpacity: value })
                                 }
                             />
                         </Fragment>
 
                         <PremiumBackground
-                            imageID={backgroundImageID}
-                            imageURL={backgroundImageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].backgroundImageID}
+                            imageURL={containerStyles[0].backgroundImageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveContainerStyle({
                                     backgroundImageID: media.id,
                                     backgroundImageURL: media.url
                                 });
                             }}
                             onRemoveImage={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     backgroundImageURL: "",
                                     backgroundImageID: ""
                                 })
                             }
                             onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
+                                saveContainerStyle({ backgroundPosition: newValue })
                             }
                             onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
+                                saveContainerStyle({ backgroundRepeat: newValue })
                             }
                             onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
+                                saveContainerStyle({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderType={containerStyles[0].borderType}
+                            borderWidth={containerStyles[0].borderWidth}
+                            top={containerStyles[0].borderTop}
+                            right={containerStyles[0].borderRight}
+                            bottom={containerStyles[0].borderBottom}
+                            left={containerStyles[0].borderLeft}
+                            borderColor={containerStyles[0].borderColor}
+                            borderRadius={containerStyles[0].borderRadius}
+                            onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
+                                saveContainerStyle({
                                     borderCount: true,
                                     borderTop: top,
                                     borderRight: right,
@@ -694,80 +694,78 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveContainerStyle({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newRadius) =>
-                                setAttributes({ borderRadius: newRadius })
+                                saveContainerStyle({ borderRadius: newRadius })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
+                            color={containerStyles[0].shadowColor}
+                            blur={containerStyles[0].shadowBlur}
+                            horizontal={containerStyles[0].shadowHorizontal}
+                            vertical={containerStyles[0].shadowVertical}
+                            position={containerStyles[0].shadowPosition}
                             withAlpha={true}
                             onChangeColor={newColor => {
 
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowColor: newColor.rgb
                                 })
-
-                                console.log(shadowColor)
                             }
 
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowBlur: newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowHorizontal: newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowVertical: newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowPosition: newValue
                                 })
                             }
                         />
                         <PremiumPadding
-                            paddingTop={paddingT}
-                            paddingRight={paddingR}
-                            paddingBottom={paddingB}
-                            paddingLeft={paddingL}
+                            paddingTop={containerStyles[0].paddingT}
+                            paddingRight={containerStyles[0].paddingR}
+                            paddingBottom={containerStyles[0].paddingB}
+                            paddingLeft={containerStyles[0].paddingL}
                             showUnits={true}
                             onChangePadTop={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     paddingT: value || 0
                                 })
                             }
                             onChangePadRight={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     paddingR: value || 0
                                 })
                             }
                             onChangePadBottom={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     paddingB: value || 0
                                 })
                             }
                             onChangePadLeft={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     paddingL: value || 0
                                 })
                             }
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                saveContainerStyle({ paddingU: newvalue })
                             }
                         />
                     </PanelBody>
