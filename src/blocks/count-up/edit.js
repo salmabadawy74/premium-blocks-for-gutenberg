@@ -12,6 +12,7 @@ import hexToRgba from "hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
 
 const {
     PanelBody,
@@ -942,4 +943,12 @@ class edit extends Component {
     }
 };
 
-export default edit;
+
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

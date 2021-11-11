@@ -31,7 +31,10 @@ const {
     URLInput,
 } = wp.blockEditor;
 
-export default class edit extends Component {
+const { withSelect } = wp.data
+
+
+export class edit extends Component {
 
     constructor() {
         super(...arguments);
@@ -587,3 +590,11 @@ export default class edit extends Component {
     }
 };
 
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
