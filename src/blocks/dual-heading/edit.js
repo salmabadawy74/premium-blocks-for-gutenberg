@@ -9,6 +9,8 @@ import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
+
 
 const { Fragment, Component } = wp.element;
 

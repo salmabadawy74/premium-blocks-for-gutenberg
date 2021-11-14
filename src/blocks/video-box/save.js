@@ -8,8 +8,6 @@ const save = props => {
 
     const {
         block_id,
-        borderPlayUpdated,
-        borderBoxUpdated,
         videoBoxId,
         videoType,
         videoURL,
@@ -27,7 +25,6 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        colorStyles,
         boxStyles,
         overlayStyles,
         playStyles,
@@ -59,7 +56,7 @@ const save = props => {
             data-type={videoType}
             style={{
                 borderStyle: boxStyles[0].boxBorderType,
-                borderWidth: borderBoxUpdated
+                borderWidth: boxStyles[0].borderBoxUpdated
                     ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
                     : boxStyles[0].boxBorderWidth + "px",
                 borderRadius: boxStyles[0].boxBorderRadius + "px",
@@ -71,8 +68,8 @@ const save = props => {
                 dangerouslySetInnerHTML={{
                     __html: [
                         `#${videoBoxId} .premium-video-box__play:hover {`,
-                        `color: ${colorStyles[0].playHoverColor} !important;`,
-                        `background-color: ${colorStyles[0].playHoverBackColor} !important;`,
+                        `color: ${playStyles[0].playHoverColor} !important;`,
+                        `background-color: ${playStyles[0].playHoverBackColor} !important;`,
                         "}"
                     ].join("\n")
                 }}
@@ -115,12 +112,12 @@ const save = props => {
                     style={{
                         top: playStyles[0].playTop + "%",
                         left: playLeft + "%",
-                        color: colorStyles[0].playColor,
-                        backgroundColor: colorStyles[0].playBack
-                            ? hexToRgba(colorStyles[0].playBack, colorStyles[0].playOpacity)
+                        color: playStyles[0].playColor,
+                        backgroundColor: playStyles[0].playBack
+                            ? hexToRgba(playStyles[0].playBack, playStyles[0].playOpacity)
                             : "transparent",
                         borderStyle: playStyles[0].playBorderType,
-                        borderWidth: borderPlayUpdated
+                        borderWidth: playStyles[0].borderPlayUpdated
                             ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
                             : playStyles[0].playBorderWidth + "px",
                         borderRadius: playStyles[0].playBorderRadius + "px",
@@ -140,9 +137,9 @@ const save = props => {
                 <div
                     className={`premium-video-box__desc`}
                     style={{
-                        color: videoDescColor,
-                        backgroundColor: colorStyles[0].videoDescBack
-                            ? hexToRgba(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity)
+                        color: descStyles[0].videoDescColor,
+                        backgroundColor: descStyles[0].videoDescBack
+                            ? hexToRgba(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity)
                             : "transparent",
                         padding: descStyles[0].videoDescPadding,
                         borderRadius: descStyles[0].videoDescBorderRadius,
@@ -157,7 +154,7 @@ const save = props => {
                             fontWeight: descStyles[0].videoDescWeight,
                             letterSpacing: descStyles[0].videoDescLetter + "px",
                             textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                            textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descStyles[0].descShadowColor}`,
+                            textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
                             fontStyle: descStyles[0].videoDescStyle
                         }}
                     >

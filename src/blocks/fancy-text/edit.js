@@ -13,6 +13,8 @@ import {
 } from "react-sortable-hoc";
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
+
 
 const { Component, Fragment } = wp.element;
 

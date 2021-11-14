@@ -10,6 +10,8 @@ import styling from './styling';
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     InspectorControls,

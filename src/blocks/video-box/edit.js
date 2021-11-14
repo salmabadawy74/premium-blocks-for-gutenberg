@@ -7,10 +7,10 @@ import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling';
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+const { withSelect } = wp.data
 
 const {
     PanelBody,
@@ -35,6 +35,7 @@ class edit extends Component {
         super(...arguments);
 
         this.initVideoBox = this.initVideoBox.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
     componentDidMount() {
@@ -45,12 +46,8 @@ class edit extends Component {
         }
         this.props.setAttributes({ classMigrate: true });
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-videoBox-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
+
+
         this.initVideoBox();
     }
 
@@ -97,13 +94,25 @@ class edit extends Component {
         });
     }
 
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
+
     render() {
         const { isSelected, setAttributes, className, clientId } = this.props;
-
         const {
             block_id,
-            borderPlayUpdated,
-            borderBoxUpdated,
             videoBoxId,
             videoType,
             videoURL,
@@ -117,11 +126,9 @@ class edit extends Component {
             videoDesc,
             playIcon,
             playLeft,
-            classMigrate,
             hideDesktop,
             hideTablet,
             hideMobile,
-            colorStyles,
             boxStyles,
             overlayStyles,
             playStyles,
@@ -200,12 +207,6 @@ class edit extends Component {
             addFontToHead(fontFamily);
         };
 
-        let element = document.getElementById(
-            "premium-style-videoBox-" + clientId.substr(0, 6)
-        );
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
         const mainClasses = classnames(className, "premium-video-box");
 
         const changeVideoType = (newvalue) => {
@@ -214,6 +215,53 @@ class edit extends Component {
             }
             setAttributes({ videoType: newvalue })
         }
+        const textSize = this.getPreviewSize(this.props.deviceType, descStyles[0].videoDescSize, descStyles[0].videoDescSizeTablet, descStyles[0].videoDescSizeMobile);
+
+        const saveBoxStyle = (value) => {
+            const newUpdate = boxStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                boxStyles: newUpdate,
+            });
+        };
+        const saveOverlayStyles = (value) => {
+            const newUpdate = overlayStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                overlayStyles: newUpdate,
+            });
+        };
+        const savePlayStyles = (value) => {
+            const newUpdate = playStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                playStyles: newUpdate,
+            });
+        };
+        const saveDescritionStyle = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        };
+
 
         return [
             isSelected && (
@@ -308,16 +356,16 @@ class edit extends Component {
                         >
                             <PremiumMediaUpload
                                 type="image"
-                                imageID={overlayImgID}
-                                imageURL={overlayImgURL}
+                                imageID={overlayStyles[0].overlayImgID}
+                                imageURL={overlayStyles[0].overlayImgURL}
                                 onSelectMedia={media => {
-                                    setAttributes({
+                                    saveOverlayStyles({
                                         overlayImgID: media.id,
                                         overlayImgURL: media.url
                                     });
                                 }}
                                 onRemoveImage={() =>
-                                    setAttributes({
+                                    saveOverlayStyles({
                                         overlayImgID: "",
                                         overlayImgURL: ""
                                     })
@@ -326,30 +374,30 @@ class edit extends Component {
 
                             <PremiumFilters
                                 blur={blur}
-                                bright={bright}
-                                contrast={contrast}
-                                saturation={saturation}
-                                hue={hue}
+                                bright={overlayStyles[0].bright}
+                                contrast={overlayStyles[0].contrast}
+                                saturation={overlayStyles[0].saturation}
+                                hue={overlayStyles[0].hue}
                                 onChangeBlur={value =>
-                                    setAttributes({ blur: value === undefined ? 0 : value })
+                                    saveOverlayStyles({ blur: value === undefined ? 0 : value })
                                 }
                                 onChangeBright={value =>
-                                    setAttributes({
+                                    saveOverlayStyles({
                                         bright: value === undefined ? 100 : value
                                     })
                                 }
                                 onChangeContrast={value =>
-                                    setAttributes({
+                                    saveOverlayStyles({
                                         contrast: value === undefined ? 100 : value
                                     })
                                 }
                                 onChangeSat={value =>
-                                    setAttributes({
+                                    saveOverlayStyles({
                                         saturation: value === undefined ? 100 : value
                                     })
                                 }
                                 onChangeHue={value =>
-                                    setAttributes({ hue: value === undefined ? 100 : value })
+                                    saveOverlayStyles({ hue: value === undefined ? 100 : value })
                                 }
                             />
                         </PanelBody>
@@ -370,9 +418,9 @@ class edit extends Component {
                                     <Fragment>
                                         <RangeControl
                                             label={__("Size (PX)")}
-                                            value={playSize}
+                                            value={playStyles[0].playSize}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                savePlayStyles({
                                                     playSize: newValue === undefined ? 20 : newValue
                                                 })
                                             }
@@ -380,27 +428,27 @@ class edit extends Component {
 
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
-                                            value={playTop}
+                                            value={playStyles[0].playTop}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                savePlayStyles({
                                                     playTop: newValue === undefined ? 50 : newValue
                                                 })
                                             }
                                         />
                                         <PremiumBorder
-                                            borderType={playBorderType}
-                                            borderWidth={playBorderWidth}
-                                            top={playBorderTop}
-                                            right={playBorderRight}
-                                            bottom={playBorderBottom}
-                                            left={playBorderLeft}
-                                            borderColor={playBorderColor}
-                                            borderRadius={playBorderRadius}
+                                            borderType={playStyles[0].playBorderType}
+                                            borderWidth={playStyles[0].playBorderWidth}
+                                            top={playStyles[0].playBorderTop}
+                                            right={playStyles[0].playBorderRight}
+                                            bottom={playStyles[0].playBorderBottom}
+                                            left={playStyles[0].playBorderLeft}
+                                            borderColor={playStyles[0].playBorderColor}
+                                            borderRadius={playStyles[0].playBorderRadius}
                                             onChangeType={(newType) =>
-                                                setAttributes({ playBorderType: newType })
+                                                savePlayStyles({ playBorderType: newType })
                                             }
                                             onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
+                                                savePlayStyles({
                                                     borderPlayUpdated: true,
                                                     playBorderTop: top,
                                                     playBorderRight: right,
@@ -409,17 +457,17 @@ class edit extends Component {
                                                 })
                                             }
                                             onChangeColor={(colorValue) =>
-                                                setAttributes({ playBorderColor: colorValue.hex })
+                                                savePlayStyles({ playBorderColor: colorValue.hex })
                                             }
                                             onChangeRadius={(newrRadius) =>
-                                                setAttributes({ playBorderRadius: newrRadius })
+                                                savePlayStyles({ playBorderRadius: newrRadius })
                                             }
                                         />
                                         <RangeControl
                                             label={__("Padding (PX)")}
-                                            value={playPadding}
+                                            value={playStyles[0].playPadding}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                savePlayStyles({
                                                     playPadding: newValue === undefined ? 20 : newValue
                                                 })
                                             }
@@ -441,14 +489,14 @@ class edit extends Component {
                                     <Fragment>
                                         <TextareaControl
                                             label={__("Description Text")}
-                                            value={videoDescText}
+                                            value={descStyles[0].videoDescText}
                                             onChange={newText =>
-                                                setAttributes({ videoDescText: newText })
+                                                saveDescritionStyle({ videoDescText: newText })
                                             }
                                         />
                                         <SelectControl
                                             label={__("Font Family")}
-                                            value={videoDescFamily}
+                                            value={descStyles[0].videoDescFamily}
                                             options={FONTS}
                                             onChange={onChangeDescFamily}
                                         />
@@ -460,86 +508,86 @@ class edit extends Component {
                                                 "upper",
                                                 "spacing",
                                             ]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={saveDescritionStyle}
                                             fontSizeType={{
-                                                value: videoDescSizeUnit,
+                                                value: descStyles[0].videoDescSizeUnit,
                                                 label: __("videoDescSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: videoDescSize,
+                                                value: descStyles[0].videoDescSize,
                                                 label: __("videoDescSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: videoDescSizeMobile,
+                                                value: descStyles[0].videoDescSizeMobile,
                                                 label: __("videoDescSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: videoDescSizeTablet,
+                                                value: descStyles[0].videoDescSizeTablet,
                                                 label: __("videoDescSizeTablet"),
                                             }}
-                                            weight={videoDescWeight}
+                                            weight={descStyles[0].videoDescWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ videoDescWeight: newWeight })
+                                                saveDescritionStyle({ videoDescWeight: newWeight })
                                             }
-                                            style={videoDescStyle}
-                                            spacing={videoDescLetter}
-                                            upper={videoDescUpper}
+                                            style={descStyles[0].videoDescStyle}
+                                            spacing={descStyles[0].videoDescLetter}
+                                            upper={descStyles[0].videoDescUpper}
                                             onChangeStyle={newStyle =>
-                                                setAttributes({ videoDescStyle: newStyle })
+                                                saveDescritionStyle({ videoDescStyle: newStyle })
                                             }
                                             onChangeSpacing={newValue =>
-                                                setAttributes({ videoDescLetter: newValue })
+                                                saveDescritionStyle({ videoDescLetter: newValue })
                                             }
                                             onChangeUpper={check =>
-                                                setAttributes({ videoDescUpper: check })
+                                                saveDescritionStyle({ videoDescUpper: check })
                                             }
                                         />
                                         <RangeControl
                                             label={__("Vertical Offset (%)")}
-                                            value={descTop}
+                                            value={descStyles[0].descTop}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     descTop: newValue === undefined ? 50 : newValue
                                                 })
                                             }
                                         />
                                         <RangeControl
                                             label={__("Border Radius (px)")}
-                                            value={videoDescBorderRadius}
+                                            value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     videoDescBorderRadius:
                                                         newValue === undefined ? 0 : newValue
                                                 })
                                             }
                                         />
                                         <PremiumTextShadow
-                                            color={descShadowColor}
-                                            blur={descShadowBlur}
-                                            horizontal={descShadowHorizontal}
-                                            vertical={descShadowVertical}
+                                            color={descStyles[0].descShadowColor}
+                                            blur={descStyles[0].descShadowBlur}
+                                            horizontal={descStyles[0].descShadowHorizontal}
+                                            vertical={descStyles[0].descShadowVertical}
                                             onChangeColor={newColor =>
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     descShadowColor: newColor.hex || "transparent"
                                                 })
                                             }
                                             onChangeBlur={newBlur =>
-                                                setAttributes({ descShadowBlur: newBlur || "0" })
+                                                saveDescritionStyle({ descShadowBlur: newBlur || "0" })
                                             }
                                             onChangehHorizontal={newValue =>
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     descShadowHorizontal: newValue || "0"
                                                 })
                                             }
                                             onChangeVertical={newValue =>
-                                                setAttributes({ descShadowVertical: newValue || "0" })
+                                                saveDescritionStyle({ descShadowVertical: newValue || "0" })
                                             }
                                         />
                                         <RangeControl
                                             label={__("Padding (PX)")}
-                                            value={videoDescPadding}
+                                            value={descStyles[0].videoDescPadding}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     videoDescPadding:
                                                         newValue === undefined ? 20 : newValue
                                                 })
@@ -578,9 +626,9 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("Icon Color")}</p>
                                             <ColorPalette
-                                                value={playColor}
+                                                value={playStyles[0].playColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePlayStyles({
                                                         playColor: newValue,
                                                     })
                                                 }
@@ -589,24 +637,22 @@ class edit extends Component {
                                             <p>{__("Icon Background Color")}</p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={
-                                                    playBack
-                                                }
+                                                colorValue={playStyles[0].playBack}
                                                 onChangeColor={newvalue => {
-                                                    setAttributes({ playBack: newvalue })
+                                                    savePlayStyles({ playBack: newvalue })
                                                 }}
                                                 opacityValue={
-                                                    playOpacity
+                                                    playStyles[0].playOpacity
                                                 }
                                                 onChangeOpacity={value => {
-                                                    setAttributes({ playOpacity: value })
+                                                    savePlayStyles({ playOpacity: value })
                                                 }}
                                             />
                                             {videoDesc && (
                                                 <Fragment>
                                                     <p>{__("Description Color")}</p>
                                                     <ColorPalette
-                                                        value={videoDescColor}
+                                                        value={descStyles[0].videoDescColor}
                                                         onChange={newValue =>
                                                             setAttributes({
                                                                 videoDescColor: newValue,
@@ -618,18 +664,18 @@ class edit extends Component {
                                                     <PremiumBackground
                                                         type="color"
                                                         colorValue={
-                                                            videoDescBack
+                                                            descStyles[0].videoDescBack
                                                         }
                                                         onChangeColor={newvalue => {
-                                                            setAttributes({
+                                                            saveDescritionStyle({
                                                                 videoDescBack: newvalue,
                                                             })
                                                         }}
                                                         opacityValue={
-                                                            videoDescOpacity
+                                                            descStyles[0].videoDescOpacity
                                                         }
                                                         onChangeOpacity={value => {
-                                                            setAttributes({
+                                                            saveDescritionStyle({
                                                                 videoDescOpacity: value,
                                                             })
                                                         }}
@@ -644,9 +690,9 @@ class edit extends Component {
                                         <Fragment>
                                             <p>{__("Icon Hover Color")}</p>
                                             <ColorPalette
-                                                value={playHoverColor}
+                                                value={playStyles[0].playHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePlayStyles({
                                                         playHoverColor: newValue,
                                                     })
                                                 }
@@ -654,9 +700,9 @@ class edit extends Component {
                                             />
                                             <p>{__("Icon Hover Background Color")}</p>
                                             <ColorPalette
-                                                value={playHoverBackColor}
+                                                value={playStyles[0].playHoverBackColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePlayStyles({
                                                         playHoverBackColor: newValue,
                                                     })
                                                 }
@@ -680,19 +726,19 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumBorder
-                            borderType={boxBorderType}
-                            borderWidth={boxBorderWidth}
-                            top={boxBorderTop}
-                            right={boxBorderRight}
-                            bottom={boxBorderBottom}
-                            left={boxBorderLeft}
-                            borderColor={boxBorderColor}
-                            borderRadius={boxBorderRadius}
+                            borderType={boxStyles[0].boxBorderType}
+                            borderWidth={boxStyles[0].boxBorderWidth}
+                            top={boxStyles[0].boxBorderTop}
+                            right={boxStyles[0].boxBorderRight}
+                            bottom={boxStyles[0].boxBorderBottom}
+                            left={boxStyles[0].boxBorderLeft}
+                            borderColor={boxStyles[0].boxBorderColor}
+                            borderRadius={boxStyles[0].boxBorderRadius}
                             onChangeType={(newType) =>
-                                setAttributes({ boxBorderType: newType })
+                                saveBoxStyle({ boxBorderType: newType })
                             }
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
+                                saveBoxStyle({
                                     borderBoxUpdated: true,
                                     boxBorderTop: top,
                                     boxBorderRight: right,
@@ -701,42 +747,42 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ boxBorderColor: colorValue.hex })
+                                saveBoxStyle({ boxBorderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ boxBorderRadius: newrRadius })
+                                saveBoxStyle({ boxBorderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
+                            color={boxStyles[0].shadowColor}
+                            blur={boxStyles[0].shadowBlur}
+                            horizontal={boxStyles[0].shadowHorizontal}
+                            vertical={boxStyles[0].shadowVertical}
+                            position={boxStyles[0].shadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveBoxStyle({
                                     shadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveBoxStyle({
                                     shadowBlur: newBlur === undefined ? 0 : newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveBoxStyle({
                                     shadowHorizontal: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveBoxStyle({
                                     shadowVertical: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveBoxStyle({
                                     shadowPosition: newValue === undefined ? 0 : newValue
                                 })
                             }
@@ -758,7 +804,7 @@ class edit extends Component {
                 data-type={videoType}
                 style={{
                     borderStyle: boxStyles[0].boxBorderType,
-                    borderWidth: borderBoxUpdated
+                    borderWidth: boxStyles[0].borderBoxUpdated
                         ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
                         : boxStyles[0].boxBorderWidth + "px",
                     borderRadius: boxStyles[0].boxBorderRadius + "px",
@@ -770,8 +816,8 @@ class edit extends Component {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${colorStyles[0].playHoverColor} !important;`,
-                            `background-color: ${colorStyles[0].playHoverBackColor} !important;`,
+                            `color: ${playStyles[0].playHoverColor} !important;`,
+                            `background-color: ${playStyles[0].playHoverBackColor} !important;`,
                             "}"
                         ].join("\n")
                     }}
@@ -814,12 +860,12 @@ class edit extends Component {
                         style={{
                             top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
-                            color: colorStyles[0].playColor,
-                            backgroundColor: colorStyles[0].playBack
-                                ? hexToRgba(colorStyles[0].playBack, colorStyles[0].playOpacity)
+                            color: playStyles[0].playColor,
+                            backgroundColor: playStyles[0].playBack
+                                ? hexToRgba(playStyles[0].playBack, playStyles[0].playOpacity)
                                 : "transparent",
                             borderStyle: playStyles[0].playBorderType,
-                            borderWidth: borderPlayUpdated
+                            borderWidth: playStyles[0].borderPlayUpdated
                                 ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
                                 : playStyles[0].playBorderWidth + "px",
                             borderRadius: playStyles[0].playBorderRadius + "px",
@@ -839,9 +885,9 @@ class edit extends Component {
                     <div
                         className={`premium-video-box__desc`}
                         style={{
-                            color: videoDescColor,
-                            backgroundColor: colorStyles[0].videoDescBack
-                                ? hexToRgba(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity)
+                            color: descStyles[0].videoDescColor,
+                            backgroundColor: descStyles[0].videoDescBack
+                                ? hexToRgba(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity)
                                 : "transparent",
                             padding: descStyles[0].videoDescPadding,
                             borderRadius: descStyles[0].videoDescBorderRadius,
@@ -856,8 +902,9 @@ class edit extends Component {
                                 fontWeight: descStyles[0].videoDescWeight,
                                 letterSpacing: descStyles[0].videoDescLetter + "px",
                                 textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descStyles[0].descShadowColor}`,
-                                fontStyle: descStyles[0].videoDescStyle
+                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
+                                fontStyle: descStyles[0].videoDescStyle,
+                                fontSize: `${textSize}${descStyles[0].videoDescSizeUnit}`
                             }}
                         >
                             <span>{descStyles[0].videoDescText}</span>

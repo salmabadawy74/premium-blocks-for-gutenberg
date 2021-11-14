@@ -27,6 +27,8 @@ const {
 const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
 
 const { Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;

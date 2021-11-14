@@ -146,8 +146,7 @@ const attributes = {
                 valSizeMobile: '',
                 valSizeTablet: '',
                 valWeight: '',
-                divPrice: "/"
-                ,
+                divPrice: "/",
                 divColor: '',
                 divSize: 20,
                 divSizeUnit: 'px',

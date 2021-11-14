@@ -2,10 +2,6 @@ const videoBoxAttrs = {
     block_id: {
         type: 'string'
     },
-    borderPlayUpdated: {
-        type: "boolean",
-        default: false
-    },
     borderBoxUpdated: {
         type: "boolean",
         default: false
@@ -76,21 +72,7 @@ const videoBoxAttrs = {
         type: 'boolean',
         default: false
     },
-    colorStyles: {
-        type: 'array',
-        default: [
-            {
-                playColor: '',
-                playBack: '',
-                playOpacity: 1,
-                videoDescColor: '',
-                videoDescBack: '',
-                videoDescOpacity: 1,
-                playHoverColor: '',
-                playHoverBackColor: '',
-            }
-        ]
-    },
+
     boxStyles: {
         type: 'array',
         default: [
@@ -108,6 +90,7 @@ const videoBoxAttrs = {
                 shadowHorizontal: '',
                 shadowVertical: '',
                 shadowPosition: '',
+                borderBoxUpdated: false
             }
         ]
     },
@@ -139,7 +122,13 @@ const videoBoxAttrs = {
                 playBorderTop: '',
                 playBorderRight: '',
                 playBorderBottom: '',
-                playBorderLeft: ''
+                playBorderLeft: '',
+                playColor: '',
+                playBack: '',
+                playOpacity: 1,
+                playHoverColor: '',
+                playHoverBackColor: '',
+                borderPlayUpdated: false
 
             }
         ]
@@ -167,6 +156,9 @@ const videoBoxAttrs = {
                 descShadowVertical: 0,
                 descLeft: '',
                 descTop: '',
+                videoDescColor: '',
+                videoDescBack: '',
+                videoDescOpacity: 1,
             }
         ]
     }

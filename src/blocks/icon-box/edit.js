@@ -28,6 +28,8 @@ const {
 } = wp.components;
 
 const { Fragment, Component } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     BlockControls,

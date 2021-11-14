@@ -45,6 +45,7 @@ const save = props => {
 
     const mainClasses = classnames(className, 'premium-testimonial');
 
+
     return (
         <div
             id={`premium-testimonial-${block_id}`}
@@ -141,11 +142,11 @@ const save = props => {
                                     color: companyStyles[0].authorComColor,
                                 }}
                             />
-                            {urlCheck && (
+                            {companyStyles[0].urlCheck && (
                                 <a
                                     rel="noopener noreferrer"
-                                    href={urlText}
-                                    target={urlTarget ? "_blank" : ""}
+                                    href={companyStyles[0].urlText}
+                                    target={companyStyles[0].urlTarget ? "_blank" : ""}
                                 />
                             )}
                         </div>

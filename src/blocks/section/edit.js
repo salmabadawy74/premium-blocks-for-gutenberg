@@ -13,6 +13,8 @@ const { __ } = wp.i18n;
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
 
 const { Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     BlockControls,
@@ -81,6 +83,18 @@ const edit = props => {
     ];
 
     const mainClasses = classnames(className, "premium-container");
+
+    const saveContainerStyle = (value) => {
+        const newUpdate = containerStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate,
+        });
+    }
 
     return [
         isSelected && (
@@ -174,42 +188,42 @@ const edit = props => {
                     <p>{__("Background Color")}</p>
                     <PremiumBackground
                         type="color"
-                        colorValue={color}
+                        colorValue={containerStyles[0].color}
                         onChangeColor={newvalue =>
-                            setAttributes({ color: newvalue })
+                            saveContainerStyle({ color: newvalue })
                         }
-                        opacityValue={opacity}
+                        opacityValue={containerStyles[0].opacity}
                         onChangeOpacity={value =>
-                            setAttributes({ opacity: value })
+                            saveContainerStyle({ opacity: value })
                         }
                     />
                     <PremiumBackground
-                        imageID={imageID}
-                        imageURL={imageURL}
-                        backgroundPosition={backgroundPosition}
-                        backgroundRepeat={backgroundRepeat}
-                        backgroundSize={backgroundSize}
-                        fixed={fixed}
+                        imageID={containerStyles[0].imageID}
+                        imageURL={containerStyles[0].imageURL}
+                        backgroundPosition={containerStyles[0].backgroundPosition}
+                        backgroundRepeat={containerStyles[0].backgroundRepeat}
+                        backgroundSize={containerStyles[0].backgroundSize}
+                        fixed={containerStyles[0].fixed}
                         onSelectMedia={media => {
-                            setAttributes({
+                            saveContainerStyle({
                                 imageID: media.id,
                                 imageURL: media.url
                             });
                         }}
                         onRemoveImage={value =>
-                            setAttributes({ imageURL: "", imageID: "" })
+                            saveContainerStyle({ imageURL: "", imageID: "" })
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
+                            saveContainerStyle({ backgroundPosition: newValue })
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
+                            saveContainerStyle({ backgroundRepeat: newValue })
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
+                            saveContainerStyle({ backgroundSize: newValue })
                         }
                         onChangeFixed={check =>
-                            setAttributes({ fixed: check })
+                            saveContainerStyle({ fixed: check })
                         }
                     />
                 </PanelBody>
@@ -219,17 +233,17 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <PremiumBorder
-                        borderType={borderType}
-                        borderWidth={borderWidth}
-                        top={borderTop}
-                        right={borderRight}
-                        bottom={borderBottom}
-                        left={borderLeft}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        borderType={containerStyles[0].borderType}
+                        borderWidth={containerStyles[0].borderWidth}
+                        top={containerStyles[0].borderTop}
+                        right={containerStyles[0].borderRight}
+                        bottom={containerStyles[0].borderBottom}
+                        left={containerStyles[0].borderLeft}
+                        borderColor={containerStyles[0].borderColor}
+                        borderRadius={containerStyles[0].borderRadius}
+                        onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
+                            saveContainerStyle({
                                 borderTop: top,
                                 borderRight: right,
                                 borderBottom: bottom,
@@ -238,21 +252,21 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            saveContainerStyle({ borderColor: colorValue.hex })
                         }
                         onChangeRadius={(newrRadius) =>
-                            setAttributes({ borderRadius: newrRadius })
+                            saveContainerStyle({ borderRadius: newrRadius })
                         }
                     />
                     <PremiumBoxShadow
                         inner={false}
-                        color={shadowColor}
-                        blur={shadowBlur}
-                        horizontal={shadowHorizontal}
-                        vertical={shadowVertical}
-                        position={shadowPosition}
+                        color={containerStyles[0].shadowColor}
+                        blur={containerStyles[0].shadowBlur}
+                        horizontal={containerStyles[0].shadowHorizontal}
+                        vertical={containerStyles[0].shadowVertical}
+                        position={containerStyles[0].shadowPosition}
                         onChangeColor={newColor =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
@@ -260,24 +274,24 @@ const edit = props => {
                             })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
                             })
                         }
                         onChangehHorizontal={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowHorizontal:
                                     newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangeVertical={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowVertical:
                                     newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangePosition={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowPosition:
                                     newValue === undefined ? 0 : newValue
                             })
@@ -291,64 +305,64 @@ const edit = props => {
                 >
                     <PremiumMargin
                         directions={["all"]}
-                        marginTop={marginTop}
-                        marginRight={marginRight}
-                        marginBottom={marginBottom}
-                        marginLeft={marginLeft}
+                        marginTop={containerStyles[0].marginTop}
+                        marginRight={containerStyles[0].marginRight}
+                        marginBottom={containerStyles[0].marginBottom}
+                        marginLeft={containerStyles[0].marginLeft}
                         onChangeMarTop={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 marginTop: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarRight={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 marginRight: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarBottom={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 marginBottom: value === undefined ? 0 : value
                             })
                         }
                         onChangeMarLeft={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 marginLeft: value === undefined ? 0 : value
                             })
                         }
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue =>
-                            setAttributes({ marginUnit: newvalue })
+                            saveContainerStyle({ marginUnit: newvalue })
                         }
                     />
                     <PremiumPadding
-                        paddingTop={paddingTop}
-                        paddingRight={paddingRight}
-                        paddingBottom={paddingBottom}
-                        paddingLeft={paddingLeft}
+                        paddingTop={containerStyles[0].paddingTop}
+                        paddingRight={containerStyles[0].paddingRight}
+                        paddingBottom={containerStyles[0].paddingBottom}
+                        paddingLeft={containerStyles[0].paddingLeft}
                         onChangePadTop={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 paddingTop: value === undefined ? 0 : value
                             })
                         }
                         onChangePadRight={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 paddingRight: value === undefined ? 0 : value
                             })
                         }
                         onChangePadBottom={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 paddingBottom: value === undefined ? 0 : value
                             })
                         }
                         onChangePadLeft={value =>
-                            setAttributes({
+                            saveContainerStyle({
                                 paddingLeft: value === undefined ? 0 : value
                             })
                         }
                         showUnits={true}
-                        selectedUnit={paddingUnit}
+                        selectedUnit={containerStyles[0].paddingUnit}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingUnit: newvalue })
+                            saveContainerStyle({ paddingUnit: newvalue })
                         }
                     />
                 </PanelBody>

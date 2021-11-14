@@ -1021,100 +1021,6 @@ exports.default = PremiumTypo;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function generateCSS(selectors, id) {
-    var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-
-    var styling_css = "";
-    var breakpoint = "";
-    var gen_styling_css = "";
-    var res_styling_css = "";
-
-    if (responsiveType == "tablet") {
-        breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-    } else if (responsiveType == "mobile") {
-        breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-    }
-
-    for (var i in selectors) {
-
-        var sel = selectors[i];
-        var css = "";
-
-        for (var j in sel) {
-
-            var checkString = true;
-
-            if (typeof sel[j] === "string" && sel[j].length === 0) {
-                checkString = false;
-            }
-
-            if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-                continue;
-            }
-
-            if (typeof sel[j] != "undefined" && checkString) {
-                css += j + ": " + sel[j] + ";";
-            }
-        }
-
-        if (css.length !== 0) {
-            gen_styling_css += id;
-            gen_styling_css += i + "{";
-            gen_styling_css += css;
-            gen_styling_css += "}";
-        }
-    }
-
-    if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-        res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-        res_styling_css += gen_styling_css;
-        res_styling_css += "}";
-    }
-
-    if (isResponsive) {
-        return res_styling_css;
-    } else {
-        return gen_styling_css;
-    }
-}
-
-exports.default = generateCSS;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function generateCSSUnit(value, unit) {
-
-    var css = "";
-
-    if (typeof value != "undefined") {
-        css += value + unit;
-    }
-
-    return css;
-}
-
-exports.default = generateCSSUnit;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.default = PremiumBackground;
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
@@ -1331,7 +1237,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1350,7 +1256,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1384,7 +1290,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1484,7 +1390,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1598,7 +1504,7 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1617,16 +1523,16 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(243)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(241)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(244)();
+  module.exports = __webpack_require__(242)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1638,7 +1544,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -1848,7 +1754,7 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1893,6 +1799,100 @@ function PremiumSizeUnits(props) {
         })
     );
 }
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function generateCSS(selectors, id) {
+    var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+    var styling_css = "";
+    var breakpoint = "";
+    var gen_styling_css = "";
+    var res_styling_css = "";
+
+    if (responsiveType == "tablet") {
+        breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+    } else if (responsiveType == "mobile") {
+        breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+    }
+
+    for (var i in selectors) {
+
+        var sel = selectors[i];
+        var css = "";
+
+        for (var j in sel) {
+
+            var checkString = true;
+
+            if (typeof sel[j] === "string" && sel[j].length === 0) {
+                checkString = false;
+            }
+
+            if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+                continue;
+            }
+
+            if (typeof sel[j] != "undefined" && checkString) {
+                css += j + ": " + sel[j] + ";";
+            }
+        }
+
+        if (css.length !== 0) {
+            gen_styling_css += id;
+            gen_styling_css += i + "{";
+            gen_styling_css += css;
+            gen_styling_css += "}";
+        }
+    }
+
+    if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+        res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+        res_styling_css += gen_styling_css;
+        res_styling_css += "}";
+    }
+
+    if (isResponsive) {
+        return res_styling_css;
+    } else {
+        return gen_styling_css;
+    }
+}
+
+exports.default = generateCSS;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function generateCSSUnit(value, unit) {
+
+    var css = "";
+
+    if (typeof value != "undefined") {
+        css += value + unit;
+    }
+
+    return css;
+}
+
+exports.default = generateCSSUnit;
 
 /***/ }),
 /* 20 */
@@ -2447,9 +2447,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(245);
+  module.exports = __webpack_require__(243);
 } else {
-  module.exports = __webpack_require__(248);
+  module.exports = __webpack_require__(246);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2542,7 +2542,7 @@ module.exports = assocIndexOf;
 "use strict";
 
 
-var root = __webpack_require__(13);
+var root = __webpack_require__(11);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -2663,19 +2663,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(286);
+var _edit = __webpack_require__(284);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(288);
+var _save = __webpack_require__(285);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(289);
+var _deprecated = __webpack_require__(286);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(290);
+var _attributes = __webpack_require__(287);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -2917,7 +2917,7 @@ module.exports = ReactPropTypesSecret;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -3172,7 +3172,7 @@ module.exports = isArrayLike;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(14),
+var isArray = __webpack_require__(12),
     isSymbol = __webpack_require__(61);
 
 /** Used to match property names within property paths. */
@@ -3367,7 +3367,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -3895,7 +3895,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(37);
-var dPs = __webpack_require__(346);
+var dPs = __webpack_require__(343);
 var enumBugKeys = __webpack_require__(72);
 var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -3910,7 +3910,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(347).appendChild(iframe);
+  __webpack_require__(344).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4365,7 +4365,7 @@ module.exports = isArguments;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(13),
+var root = __webpack_require__(11),
     stubFalse = __webpack_require__(179);
 
 /** Detect free variable `exports`. */
@@ -4561,7 +4561,7 @@ module.exports = baseGet;
 "use strict";
 
 
-var isArray = __webpack_require__(14),
+var isArray = __webpack_require__(12),
     isKey = __webpack_require__(60),
     stringToPath = __webpack_require__(195),
     toString = __webpack_require__(198);
@@ -4825,7 +4825,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(15), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(15), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -5377,9 +5377,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(241);
+  module.exports = __webpack_require__(239);
 } else {
-  module.exports = __webpack_require__(242);
+  module.exports = __webpack_require__(240);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -5391,9 +5391,9 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(246);
+  module.exports = __webpack_require__(244);
 } else {
-  module.exports = __webpack_require__(247);
+  module.exports = __webpack_require__(245);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -5404,9 +5404,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(252));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(250));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(257));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(255));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(105));
 
@@ -5433,7 +5433,7 @@ module.exports = {
 exports.__esModule = true;
 exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(17));
+var PropTypes = _interopRequireWildcard(__webpack_require__(15));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -6208,7 +6208,7 @@ exports.polyfill = polyfill;
 exports.__esModule = true;
 exports.classNamesShape = exports.timeoutsShape = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(15));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -6245,13 +6245,13 @@ exports.classNamesShape = classNamesShape;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(15));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactLifecyclesCompat = __webpack_require__(103);
 
-var _ChildMapping = __webpack_require__(258);
+var _ChildMapping = __webpack_require__(256);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -6542,7 +6542,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(326);
+var aFunction = __webpack_require__(323);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -6602,7 +6602,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(24);
 var toIObject = __webpack_require__(30);
-var arrayIndexOf = __webpack_require__(328)(false);
+var arrayIndexOf = __webpack_require__(325)(false);
 var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -6679,11 +6679,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(341);
+var _iterator = __webpack_require__(338);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(352);
+var _symbol = __webpack_require__(349);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -6715,7 +6715,7 @@ var $export = __webpack_require__(21);
 var redefine = __webpack_require__(118);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(75);
-var $iterCreate = __webpack_require__(345);
+var $iterCreate = __webpack_require__(342);
 var setToStringTag = __webpack_require__(77);
 var getPrototypeOf = __webpack_require__(115);
 var ITERATOR = __webpack_require__(31)('iterator');
@@ -6850,29 +6850,29 @@ __webpack_require__(122);
 
 __webpack_require__(216);
 
-__webpack_require__(223);
+__webpack_require__(221);
 
-__webpack_require__(228);
+__webpack_require__(226);
 
-__webpack_require__(233);
+__webpack_require__(231);
 
-__webpack_require__(239);
+__webpack_require__(237);
 
-__webpack_require__(262);
+__webpack_require__(260);
 
-__webpack_require__(268);
+__webpack_require__(266);
 
-__webpack_require__(269);
+__webpack_require__(267);
 
-__webpack_require__(275);
+__webpack_require__(273);
 
-__webpack_require__(280);
+__webpack_require__(278);
 
 __webpack_require__(45);
 
-__webpack_require__(291);
+__webpack_require__(288);
 
-__webpack_require__(317);
+__webpack_require__(314);
 
 /***/ }),
 /* 122 */
@@ -6946,7 +6946,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -6954,7 +6954,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -10034,7 +10034,7 @@ exports.default = PremiumResponsive;
 var arrayMap = __webpack_require__(81),
     baseIteratee = __webpack_require__(128),
     baseMap = __webpack_require__(207),
-    isArray = __webpack_require__(14);
+    isArray = __webpack_require__(12);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -10097,7 +10097,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var baseMatches = __webpack_require__(129),
     baseMatchesProperty = __webpack_require__(193),
     identity = __webpack_require__(203),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(12),
     property = __webpack_require__(204);
 
 /**
@@ -10673,7 +10673,7 @@ module.exports = isMasked;
 "use strict";
 
 
-var root = __webpack_require__(13);
+var root = __webpack_require__(11);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -11057,7 +11057,7 @@ var Stack = __webpack_require__(82),
     equalByTag = __webpack_require__(165),
     equalObjects = __webpack_require__(169),
     getTag = __webpack_require__(187),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(12),
     isBuffer = __webpack_require__(90),
     isTypedArray = __webpack_require__(92);
 
@@ -11395,7 +11395,7 @@ module.exports = equalByTag;
 "use strict";
 
 
-var root = __webpack_require__(13);
+var root = __webpack_require__(11);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -11576,7 +11576,7 @@ module.exports = getAllKeys;
 
 
 var arrayPush = __webpack_require__(172),
-    isArray = __webpack_require__(14);
+    isArray = __webpack_require__(12);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -11735,7 +11735,7 @@ module.exports = stubArray;
 
 var baseTimes = __webpack_require__(177),
     isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(12),
     isBuffer = __webpack_require__(90),
     isIndex = __webpack_require__(91),
     isTypedArray = __webpack_require__(92);
@@ -12156,7 +12156,7 @@ module.exports = getTag;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -12171,7 +12171,7 @@ module.exports = DataView;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -12186,7 +12186,7 @@ module.exports = Promise;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -12201,7 +12201,7 @@ module.exports = Set;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -12515,7 +12515,7 @@ module.exports = toString;
 
 var _Symbol = __webpack_require__(40),
     arrayMap = __webpack_require__(81),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(12),
     isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
@@ -12623,7 +12623,7 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(96),
     isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(12),
     isIndex = __webpack_require__(91),
     isLength = __webpack_require__(58),
     toKey = __webpack_require__(44);
@@ -14008,15 +14008,15 @@ var _edit = __webpack_require__(217);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(220);
+var _save = __webpack_require__(218);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(221);
+var _deprecated = __webpack_require__(219);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(222);
+var _attributes = __webpack_require__(220);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -14067,11 +14067,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -14079,7 +14079,7 @@ var _premiumFilters = __webpack_require__(62);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -14953,9 +14953,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 218 */,
-/* 219 */,
-/* 220 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15124,7 +15122,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 221 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16375,7 +16373,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 222 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16572,7 +16570,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 223 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16580,15 +16578,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(224);
+var _edit = __webpack_require__(222);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(226);
+var _save = __webpack_require__(224);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(227);
+var _deprecated = __webpack_require__(225);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -16794,7 +16792,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 224 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16819,15 +16817,15 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -16835,7 +16833,7 @@ var _premiumFonts = __webpack_require__(35);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -16843,7 +16841,7 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _styling = __webpack_require__(225);
+var _styling = __webpack_require__(223);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -17471,7 +17469,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 225 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17481,11 +17479,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -17537,7 +17535,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 226 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17626,7 +17624,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 227 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18345,7 +18343,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 228 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18357,11 +18355,11 @@ var _attributes = __webpack_require__(97);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(229);
+var _edit = __webpack_require__(227);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(231);
+var _save = __webpack_require__(229);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -18369,7 +18367,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(232);
+var _deprecated = __webpack_require__(230);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -18396,7 +18394,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 229 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18418,11 +18416,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -18430,7 +18428,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -18442,7 +18440,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(230);
+var _styling = __webpack_require__(228);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -19479,7 +19477,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 230 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19489,11 +19487,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -19584,7 +19582,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 231 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19792,7 +19790,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 232 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21200,7 +21198,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 233 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21212,19 +21210,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(234);
+var _edit = __webpack_require__(232);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(236);
+var _save = __webpack_require__(234);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(237);
+var _deprecated = __webpack_require__(235);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(238);
+var _attributes = __webpack_require__(236);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -21249,7 +21247,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 234 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21275,11 +21273,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -21287,7 +21285,7 @@ var _premiumFonts = __webpack_require__(35);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _styling = __webpack_require__(235);
+var _styling = __webpack_require__(233);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -21308,6 +21306,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -22264,7 +22263,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 235 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22274,11 +22273,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -22344,7 +22343,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 236 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22474,7 +22473,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 237 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23989,7 +23988,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 238 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24149,7 +24148,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 239 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24161,19 +24160,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(240);
+var _edit = __webpack_require__(238);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(259);
+var _save = __webpack_require__(257);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(260);
+var _deprecated = __webpack_require__(258);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(261);
+var _attributes = __webpack_require__(259);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -24198,7 +24197,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 240 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24222,7 +24221,7 @@ var _premiumIconsList = __webpack_require__(106);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -24234,19 +24233,19 @@ var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -24274,6 +24273,7 @@ var _wp$blockEditor = wp.blockEditor,
     ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 var Fragment = wp.element.Fragment;
+var withSelect = wp.data.withSelect;
 
 
 var edit = function edit(props) {
@@ -24855,7 +24855,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 241 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24930,7 +24930,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 242 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25164,7 +25164,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 243 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25742,7 +25742,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 244 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25808,7 +25808,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 245 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28151,7 +28151,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 246 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28357,7 +28357,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
 
 /***/ }),
-/* 247 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29063,7 +29063,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(54)))
 
 /***/ }),
-/* 248 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29074,7 +29074,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(249);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(247);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -32952,21 +32952,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 249 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(250);
+  module.exports = __webpack_require__(248);
 } else {
-  module.exports = __webpack_require__(251);
+  module.exports = __webpack_require__(249);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 250 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32993,7 +32993,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 251 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33421,7 +33421,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 252 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33430,11 +33430,11 @@ if (process.env.NODE_ENV !== "production") {
 exports.__esModule = true;
 exports.default = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(17));
+var PropTypes = _interopRequireWildcard(__webpack_require__(15));
 
-var _addClass = _interopRequireDefault(__webpack_require__(253));
+var _addClass = _interopRequireDefault(__webpack_require__(251));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(256));
+var _removeClass = _interopRequireDefault(__webpack_require__(254));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -33821,18 +33821,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 253 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(254);
+var _interopRequireDefault = __webpack_require__(252);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(255));
+var _hasClass = _interopRequireDefault(__webpack_require__(253));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -33841,7 +33841,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33856,7 +33856,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 255 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33872,7 +33872,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 256 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33887,7 +33887,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 257 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33896,7 +33896,7 @@ module.exports = function removeClass(element, className) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(15));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -34052,7 +34052,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 258 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34207,7 +34207,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 259 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34320,7 +34320,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 260 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35842,7 +35842,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 261 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35986,7 +35986,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 262 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35998,19 +35998,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(263);
+var _edit = __webpack_require__(261);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(265);
+var _save = __webpack_require__(263);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(266);
+var _deprecated = __webpack_require__(264);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(267);
+var _attributes = __webpack_require__(265);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -36035,7 +36035,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 263 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36069,7 +36069,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -36077,19 +36077,19 @@ var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -36101,7 +36101,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(264);
+var _styling = __webpack_require__(262);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -36132,6 +36132,7 @@ var _wp$components = wp.components,
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
+var withSelect = wp.data.withSelect;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
@@ -37426,7 +37427,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 264 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37436,11 +37437,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -37520,7 +37521,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 265 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37732,7 +37733,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 266 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40603,7 +40604,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 267 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40871,7 +40872,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 268 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40919,6 +40920,7 @@ var _wp$editor = wp.editor,
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
+var withSelect = wp.data.withSelect;
 
 
 var isMapUpdated = null;
@@ -41971,7 +41973,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 269 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41983,19 +41985,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(270);
+var _edit = __webpack_require__(268);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(272);
+var _save = __webpack_require__(270);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(273);
+var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(274);
+var _attributes = __webpack_require__(272);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42019,7 +42021,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 270 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42028,6 +42030,8 @@ registerBlockType("premium/pricing-table", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -42043,19 +42047,19 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -42063,7 +42067,7 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _styling = __webpack_require__(271);
+var _styling = __webpack_require__(269);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -42079,6 +42083,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var withSelect = wp.data.withSelect;
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -42211,11 +42216,84 @@ var PremiumPricingTable = function (_Component) {
                 value: "left",
                 label: __("Left")
             }];
-            var element = document.getElementById("premium-style-pricing-" + this.props.clientId);
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
             var FEATURES_ALIGN = ["left", "center", "right"];
+
+            var saveTitleStyles = function saveTitleStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
+            var savePriceStyles = function savePriceStyles(value) {
+                var newUpdate = priceStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    priceStyles: newUpdate
+                });
+            };
+            var saveFeatureStyle = function saveFeatureStyle(value) {
+                var newUpdate = featureStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    featureStyles: newUpdate
+                });
+            };
+
+            var saveButtonStyle = function saveButtonStyle(value) {
+                var newUpdate = buttonStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    buttonStyles: newUpdate
+                });
+            };
+            var saveBadgeStyles = function saveBadgeStyles(value) {
+                var newUpdate = badgeStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    badgeStyles: newUpdate
+                });
+            };
+            var saveTableStyles = function saveTableStyles(value) {
+                var newUpdate = tableStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    tableStyles: newUpdate
+                });
+            };
+
+            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+            var slashFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].slashSize, priceStyles[0].slashSizeTablet, priceStyles[0].slashSizeMobile);
+            var currFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].currSize, priceStyles[0].currSizeTablet, priceStyles[0].currSizeMobile);
+            var valFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].valSize, priceStyles[0].valSizeTablet, priceStyles[0].valSizeMobile);
+            var divFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].divSize, priceStyles[0].divSizeTablet, priceStyles[0].divSizeMobile);
+            var cFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].durSize, priceStyles[0].durSizeTablet, priceStyles[0].durSizeMobile);
+            var listFontSize = this.getPreviewSize(this.props.deviceType, featureStyles[0].listSize, featureStyles[0].listSizeTablet, featureStyles[0].listSizeMobile);
+            var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
             var mainClasses = (0, _classnames2.default)(className, "premium-pricing-table");
 
@@ -42297,7 +42375,7 @@ var PremiumPricingTable = function (_Component) {
                         controls: "123456".split("").map(function (tag) {
                             return {
                                 icon: "heading",
-                                isActive: "H" + tag === titleTag,
+                                isActive: "H" + tag === titleStyles[0].titleTag,
                                 onClick: function onClick() {
                                     return setAttributes({ titleTag: "H" + tag });
                                 },
@@ -42307,42 +42385,42 @@ var PremiumPricingTable = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveTitleStyles,
                         fontSizeType: {
-                            value: titleSizeUnit,
+                            value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
                         },
                         fontSize: {
-                            value: titleSize,
+                            value: titleStyles[0].titleSize,
                             label: __("titleSize")
                         },
                         fontSizeMobile: {
-                            value: titleSizeMobile,
+                            value: titleStyles[0].titleSizeMobile,
                             label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: titleSizeTablet,
+                            value: titleStyles[0].titleSizeTablet,
                             label: __("titleSizeTablet")
                         },
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleLetter,
-                        line: titleLine,
-                        upper: titleUpper,
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleLetter,
+                        line: titleStyles[0].titleLine,
+                        upper: titleStyles[0].titleUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight });
+                            return saveTitleStyles({ titleWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
+                            return saveTitleStyles({ titleStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleLetter: newValue });
+                            return saveTitleStyles({ titleLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ titleLine: newValue });
+                            return saveTitleStyles({ titleLine: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
+                            return saveTitleStyles({ titleUpper: check });
                         }
                     }),
                     React.createElement(PanelColorSettings, {
@@ -42350,35 +42428,35 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body-inner",
                         initialOpen: false,
                         colorSettings: [{
-                            value: titleColor,
+                            value: titleStyles[0].titleColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ titleColor: newColor });
+                                return saveTitleStyles({ titleColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
-                            value: titleBack,
+                            value: titleStyles[0].titleBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ titleBack: newColor });
+                                return saveTitleStyles({ titleBack: newColor });
                             },
                             label: __("Background Color")
                         }]
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: titleShadowColor,
-                        blur: titleShadowBlur,
-                        horizontal: titleShadowHorizontal,
-                        vertical: titleShadowVertical,
+                        color: titleStyles[0].titleShadowColor,
+                        blur: titleStyles[0].titleShadowBlur,
+                        horizontal: titleStyles[0].titleShadowHorizontal,
+                        vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ titleShadowColor: newColor.hex });
+                            return saveTitleStyles({ titleShadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ titleShadowBlur: newBlur });
+                            return saveTitleStyles({ titleShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ titleShadowHorizontal: newValue });
+                            return saveTitleStyles({ titleShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ titleShadowVertical: newValue });
+                            return saveTitleStyles({ titleShadowVertical: newValue });
                         }
                     }),
                     React.createElement(
@@ -42408,29 +42486,29 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Margin Top (PX)"),
-                                        value: titleMarginT,
+                                        value: titleStyles[0].titleMarginT,
                                         min: "10",
                                         max: "80",
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({ titleMarginT: newSize });
+                                            return saveTitleStyles({ titleMarginT: newSize });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Margin Bottom (PX)"),
-                                        value: titleMarginB,
+                                        value: titleStyles[0].titleMarginB,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({ titleMarginB: newMargin });
+                                            return saveTitleStyles({ titleMarginB: newMargin });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Padding (PX)"),
-                                        value: titlePadding,
+                                        value: titleStyles[0].titlePadding,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ titlePadding: newPadding });
+                                            return saveTitleStyles({ titlePadding: newPadding });
                                         }
                                     })
                                 );
@@ -42447,37 +42525,37 @@ var PremiumPricingTable = function (_Component) {
                     },
                     React.createElement(TextControl, {
                         label: __("Slashed Price"),
-                        value: slashPrice,
+                        value: priceStyles[0].slashPrice,
                         onChange: function onChange(value) {
-                            return setAttributes({ slashPrice: value });
+                            return savePriceStyles({ slashPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
                         label: __("Currency"),
-                        value: currPrice,
+                        value: priceStyles[0].currPrice,
                         onChange: function onChange(value) {
-                            return setAttributes({ currPrice: value });
+                            return savePriceStyles({ currPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
                         label: __("Price"),
-                        value: valPrice,
+                        value: priceStyles[0].valPrice,
                         onChange: function onChange(value) {
-                            return setAttributes({ valPrice: value });
+                            return savePriceStyles({ valPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
                         label: __("Divider"),
-                        value: divPrice,
+                        value: priceStyles[0].divPrice,
                         onChange: function onChange(value) {
-                            return setAttributes({ divPrice: value });
+                            return savePriceStyles({ divPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
                         label: __("Duration"),
-                        value: durPrice,
+                        value: priceStyles[0].durPrice,
                         onChange: function onChange(value) {
-                            return setAttributes({ durPrice: value });
+                            return savePriceStyles({ durPrice: value });
                         }
                     }),
                     React.createElement(
@@ -42490,9 +42568,9 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(SelectControl, {
                             label: __("Element"),
                             options: PRICE,
-                            value: selectedStyle,
+                            value: priceStyles[0].selectedStyle,
                             onChange: function onChange(newElem) {
-                                return setAttributes({ selectedStyle: newElem });
+                                return savePriceStyles({ selectedStyle: newElem });
                             }
                         }),
                         "slash" === selectedStyle && React.createElement(
@@ -42500,34 +42578,34 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight"],
-                                setAttributes: setAttributes,
+                                setAttributes: savePriceStyles,
                                 fontSizeType: {
-                                    value: slashSizeUnit,
+                                    value: priceStyles[0].slashSizeUnit,
                                     label: __("slashSizeUnit")
                                 },
                                 fontSize: {
-                                    value: slashSize,
+                                    value: priceStyles[0].slashSize,
                                     label: __("slashSize")
                                 },
                                 fontSizeMobile: {
-                                    value: slashSizeMobile,
+                                    value: priceStyles[0].slashSizeMobile,
                                     label: __("slashSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: slashSizeTablet,
+                                    value: priceStyles[0].slashSizeTablet,
                                     label: __("slashSizeTablet")
                                 },
-                                weight: slashWeight,
+                                weight: priceStyles[0].slashWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({ slashWeight: newWeight });
+                                    return savePriceStyles({ slashWeight: newWeight });
                                 }
                             }),
                             React.createElement(SelectControl, {
                                 label: __("Vertical Align"),
                                 options: ALIGNS,
-                                value: slashV,
+                                value: priceStyles[0].slashV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({ slashV: newValue });
+                                    return savePriceStyles({ slashV: newValue });
                                 }
                             }),
                             React.createElement(
@@ -42539,9 +42617,9 @@ var PremiumPricingTable = function (_Component) {
                                     __("Text Color")
                                 ),
                                 React.createElement(ColorPalette, {
-                                    value: slashColor,
+                                    value: priceStyles[0].slashColor,
                                     onChange: function onChange(newValue) {
-                                        return setAttributes({
+                                        return savePriceStyles({
                                             slashColor: newValue === undefined ? "transparent" : newValue
                                         });
                                     },
@@ -42554,26 +42632,26 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight"],
-                                setAttributes: setAttributes,
+                                setAttributes: savePriceStyles,
                                 fontSizeType: {
-                                    value: currSizeUnit,
+                                    value: priceStyles[0].currSizeUnit,
                                     label: __("currSizeUnit")
                                 },
                                 fontSize: {
-                                    value: currSize,
+                                    value: priceStyles[0].currSize,
                                     label: __("currSize")
                                 },
                                 fontSizeMobile: {
-                                    value: currSizeMobile,
+                                    value: priceStyles[0].currSizeMobile,
                                     label: __("currSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: currSizeTablet,
+                                    value: priceStyles[0].currSizeTablet,
                                     label: __("currSizeTablet")
                                 },
-                                weight: currWeight,
+                                weight: priceStyles[0].currWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({
+                                    return savePriceStyles({
                                         currWeight: newWeight
                                     });
                                 }
@@ -42581,9 +42659,9 @@ var PremiumPricingTable = function (_Component) {
                             React.createElement(SelectControl, {
                                 label: __("Vertical Align"),
                                 options: ALIGNS,
-                                value: currV,
+                                value: priceStyles[0].currV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return savePriceStyles({
                                         currV: newValue
                                     });
                                 }
@@ -42597,9 +42675,9 @@ var PremiumPricingTable = function (_Component) {
                                     __("Text Color")
                                 ),
                                 React.createElement(ColorPalette, {
-                                    value: currColor,
+                                    value: priceStyles[0].currColor,
                                     onChange: function onChange(newValue) {
-                                        return setAttributes({
+                                        return savePriceStyles({
                                             currColor: newValue === undefined ? "transparent" : newValue
                                         });
                                     },
@@ -42612,35 +42690,35 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight"],
-                                setAttributes: setAttributes,
+                                setAttributes: savePriceStyles,
                                 fontSizeType: {
-                                    value: valSizeUnit,
+                                    value: priceStyles[0].valSizeUnit,
                                     label: __("valSizeUnit")
                                 },
                                 fontSize: {
-                                    value: valSize,
+                                    value: priceStyles[0].valSize,
                                     label: __("valSize")
                                 },
                                 fontSizeMobile: {
-                                    value: valSizeMobile,
+                                    value: priceStyles[0].valSizeMobile,
                                     label: __("valSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: valSizeTablet,
+                                    value: priceStyles[0].valSizeTablet,
                                     label: __("valSizeTablet")
                                 },
-                                size: valSize,
-                                weight: valWeight,
+                                size: priceStyles[0].valSize,
+                                weight: priceStyles[0].valWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({ valWeight: newWeight });
+                                    return savePriceStyles({ valWeight: newWeight });
                                 }
                             }),
                             React.createElement(SelectControl, {
                                 label: __("Vertical Align"),
                                 options: ALIGNS,
-                                value: valV,
+                                value: priceStyles[0].valV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({ valV: newValue });
+                                    return savePriceStyles({ valV: newValue });
                                 }
                             }),
                             React.createElement(
@@ -42652,9 +42730,9 @@ var PremiumPricingTable = function (_Component) {
                                     __("Text Color")
                                 ),
                                 React.createElement(ColorPalette, {
-                                    value: valColor,
+                                    value: priceStyles[0].valColor,
                                     onChange: function onChange(newValue) {
-                                        return setAttributes({
+                                        return savePriceStyles({
                                             valColor: newValue === undefined ? "transparent" : newValue
                                         });
                                     },
@@ -42667,34 +42745,34 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight"],
-                                setAttributes: setAttributes,
+                                setAttributes: savePriceStyles,
                                 fontSizeType: {
-                                    value: divSizeUnit,
+                                    value: priceStyles[0].divSizeUnit,
                                     label: __("divSizeUnit")
                                 },
                                 fontSize: {
-                                    value: divSize,
+                                    value: priceStyles[0].divSize,
                                     label: __("divSize")
                                 },
                                 fontSizeMobile: {
-                                    value: divSizeMobile,
+                                    value: priceStyles[0].divSizeMobile,
                                     label: __("divSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: divSizeTablet,
+                                    value: priceStyles[0].divSizeTablet,
                                     label: __("divSizeTablet")
                                 },
-                                weight: divWeight,
+                                weight: priceStyles[0].divWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({ divWeight: newWeight });
+                                    return savePriceStyles({ divWeight: newWeight });
                                 }
                             }),
                             React.createElement(SelectControl, {
                                 label: __("Vertical Align"),
                                 options: ALIGNS,
-                                value: divV,
+                                value: priceStyles[0].divV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({ divV: newValue });
+                                    return savePriceStyles({ divV: newValue });
                                 }
                             }),
                             React.createElement(
@@ -42706,9 +42784,9 @@ var PremiumPricingTable = function (_Component) {
                                     __("Text Color")
                                 ),
                                 React.createElement(ColorPalette, {
-                                    value: divColor,
+                                    value: priceStyles[0].divColor,
                                     onChange: function onChange(newValue) {
-                                        return setAttributes({
+                                        return savePriceStyles({
                                             divColor: newValue === undefined ? "transparent" : newValue
                                         });
                                     },
@@ -42721,34 +42799,34 @@ var PremiumPricingTable = function (_Component) {
                             null,
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight"],
-                                setAttributes: setAttributes,
+                                setAttributes: savePriceStyles,
                                 fontSizeType: {
-                                    value: durSizeUnit,
+                                    value: priceStyles[0].durSizeUnit,
                                     label: __("durSizeUnit")
                                 },
                                 fontSize: {
-                                    value: durSize,
+                                    value: priceStyles[0].durSize,
                                     label: __("durSize")
                                 },
                                 fontSizeMobile: {
-                                    value: durSizeMobile,
+                                    value: priceStyles[0].durSizeMobile,
                                     label: __("durSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: durSizeTablet,
+                                    value: priceStyles[0].durSizeTablet,
                                     label: __("durSizeTablet")
                                 },
-                                weight: durWeight,
+                                weight: priceStyles[0].durWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({ durWeight: newWeight });
+                                    return savePriceStyles({ durWeight: newWeight });
                                 }
                             }),
                             React.createElement(SelectControl, {
                                 label: __("Vertical Align"),
                                 options: ALIGNS,
-                                value: durV,
+                                value: priceStyles[0].durV,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({ durV: newValue });
+                                    return savePriceStyles({ durV: newValue });
                                 }
                             }),
                             React.createElement(
@@ -42760,9 +42838,9 @@ var PremiumPricingTable = function (_Component) {
                                     __("Text Color")
                                 ),
                                 React.createElement(ColorPalette, {
-                                    value: durColor,
+                                    value: priceStyles[0].durColor,
                                     onChange: function onChange(newValue) {
-                                        return setAttributes({
+                                        return savePriceStyles({
                                             durColor: newValue === undefined ? "transparent" : newValue
                                         });
                                     },
@@ -42798,29 +42876,29 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Container Margin Top (PX)"),
-                                        value: priceMarginT,
+                                        value: priceStyles[0].priceMarginT,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({ priceMarginT: newMargin });
+                                            return savePriceStyles({ priceMarginT: newMargin });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Container Margin Bottom (PX)"),
-                                        value: priceMarginB,
+                                        value: priceStyles[0].priceMarginB,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ priceMarginB: newPadding });
+                                            return savePriceStyles({ priceMarginB: newPadding });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Container Padding (PX)"),
-                                        value: pricePadding,
+                                        value: priceStyles[0].pricePadding,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ pricePadding: newPadding });
+                                            return savePriceStyles({ pricePadding: newPadding });
                                         }
                                     })
                                 );
@@ -42837,15 +42915,15 @@ var PremiumPricingTable = function (_Component) {
                         ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
-                            colorValue: priceBack,
+                            colorValue: priceStyles[0].priceBack,
                             onChangeColor: function onChangeColor(newvalue) {
-                                return setAttributes({
+                                return savePriceStyles({
                                     priceBack: newvalue
                                 });
                             },
-                            opacityValue: priceOpacity,
+                            opacityValue: priceStyles[0].priceOpacity,
                             onChangeOpacity: function onChangeOpacity(value) {
-                                return setAttributes({ priceOpacity: value });
+                                return savePriceStyles({ priceOpacity: value });
                             }
                         })
                     )
@@ -42866,7 +42944,7 @@ var PremiumPricingTable = function (_Component) {
                         controls: FEATURES_ALIGN.map(function (contentAlign) {
                             return {
                                 icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === featsAlign,
+                                isActive: contentAlign === featureStyles[0].featsAlign,
                                 onClick: function onClick() {
                                     return setAttributes({ featsAlign: contentAlign });
                                 }
@@ -42876,49 +42954,49 @@ var PremiumPricingTable = function (_Component) {
                     React.createElement(SelectControl, {
                         label: __("List Style"),
                         options: TYPE,
-                        value: listStyle,
+                        value: featureStyles[0].listStyle,
                         onChange: function onChange(newType) {
-                            return setAttributes({ listStyle: newType });
+                            return saveFeatureStyle({ listStyle: newType });
                         }
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveFeatureStyle,
                         fontSizeType: {
-                            value: listSizeUnit,
+                            value: featureStyles[0].listSizeUnit,
                             label: __("listSizeUnit")
                         },
                         fontSize: {
-                            value: listSize,
+                            value: featureStyles[0].listSize,
                             label: __("listSize")
                         },
                         fontSizeMobile: {
-                            value: listSizeMobile,
+                            value: featureStyles[0].listSizeMobile,
                             label: __("listSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: listSizeTablet,
+                            value: featureStyles[0].listSizeTablet,
                             label: __("listSizeTablet")
                         },
-                        weight: listWeight,
-                        style: listItemsStyle,
-                        spacing: listLetter,
-                        line: listLine,
-                        upper: listUpper,
+                        weight: featureStyles[0].listWeight,
+                        style: featureStyles[0].listItemsStyle,
+                        spacing: featureStyles[0].listLetter,
+                        line: featureStyles[0].listLine,
+                        upper: featureStyles[0].listUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ listWeight: newWeight });
+                            return saveFeatureStyle({ listWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ listItemsStyle: newStyle });
+                            return saveFeatureStyle({ listItemsStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ listLetter: newValue });
+                            return saveFeatureStyle({ listLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ listLine: newValue });
+                            return saveFeatureStyle({ listLine: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ listUpper: check });
+                            return saveFeatureStyle({ listUpper: check });
                         }
                     }),
                     React.createElement(PanelColorSettings, {
@@ -42926,15 +43004,15 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body-inner",
                         initialOpen: false,
                         colorSettings: [{
-                            value: listColor,
+                            value: featureStyles[0].listColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ listColor: newColor });
+                                return saveFeatureStyle({ listColor: newColor });
                             },
                             label: __("List Items Color")
                         }, {
-                            value: listBack,
+                            value: featureStyles[0].listBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ listBack: newColor });
+                                return saveFeatureStyle({ listBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -42966,23 +43044,23 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Margin Top (PX)"),
-                                        value: listMarginT,
+                                        value: featureStyles[0].listMarginT,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({ listMarginT: newSize });
+                                            return saveFeatureStyle({ listMarginT: newSize });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Margin Bottom (PX)"),
-                                        value: listMarginB,
+                                        value: featureStyles[0].listMarginB,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({ listMarginB: newSize });
+                                            return saveFeatureStyle({ listMarginB: newSize });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Padding (PX)"),
-                                        value: listPadding,
+                                        value: featureStyles[0].listPadding,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({ listPadding: newSize });
+                                            return saveFeatureStyle({ listPadding: newSize });
                                         }
                                     })
                                 );
@@ -42999,39 +43077,39 @@ var PremiumPricingTable = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "spacing", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveDescriptionStyle,
                         fontSizeType: {
-                            value: descSizeUnit,
+                            value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit")
                         },
                         fontSize: {
-                            value: descSize,
+                            value: descStyles[0].descSize,
                             label: __("descSize")
                         },
                         fontSizeMobile: {
-                            value: descSizeMobile,
+                            value: descStyles[0].descSizeMobile,
                             label: __("descSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: descSizeTablet,
+                            value: descStyles[0].descSizeTablet,
                             label: __("descSizeTablet")
                         },
-                        size: descSize,
-                        weight: descWeight,
-                        style: descStyle,
-                        spacing: descLetter,
-                        line: descLine,
+                        size: descStyles[0].descSize,
+                        weight: descStyles[0].descWeight,
+                        style: descStyles[0].descStyle,
+                        spacing: descStyles[0].descLetter,
+                        line: descStyles[0].descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ descWeight: newWeight });
+                            return saveDescriptionStyle({ descWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ descStyle: newStyle });
+                            return saveDescriptionStyle({ descStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ descLetter: newValue });
+                            return saveDescriptionStyle({ descLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ descLine: newValue });
+                            return saveDescriptionStyle({ descLine: newValue });
                         }
                     }),
                     React.createElement(PanelColorSettings, {
@@ -43039,15 +43117,15 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body-inner",
                         initialOpen: false,
                         colorSettings: [{
-                            value: descColor,
+                            value: descStyles[0].descColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ descColor: newColor });
+                                return saveDescriptionStyle({ descColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
-                            value: descBack,
+                            value: descStyles[0].descBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ descBack: newColor });
+                                return saveDescriptionStyle({ descBack: newColor });
                             },
                             label: __("Background Color")
                         }]
@@ -43079,29 +43157,29 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Margin Top (PX)"),
-                                        value: descMarginT,
+                                        value: descStyles[0].descMarginT,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({ descMarginT: newMargin });
+                                            return saveDescriptionStyle({ descMarginT: newMargin });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Margin Bottom (PX)"),
-                                        value: descMarginB,
+                                        value: descStyles[0].descMarginB,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newMargin) {
-                                            return setAttributes({ descMarginB: newMargin });
+                                            return saveDescriptionStyle({ descMarginB: newMargin });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Padding (PX)"),
-                                        value: descPadding,
+                                        value: descStyles[0].descPadding,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ descPadding: newPadding });
+                                            return saveDescriptionStyle({ descPadding: newPadding });
                                         }
                                     })
                                 );
@@ -43118,42 +43196,42 @@ var PremiumPricingTable = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveButtonStyle,
                         fontSizeType: {
-                            value: btnSizeUnit,
+                            value: buttonStyles[0].btnSizeUnit,
                             label: __("btnSizeUnit")
                         },
                         fontSize: {
-                            value: btnSize,
+                            value: buttonStyles[0].btnSize,
                             label: __("btnSize")
                         },
                         fontSizeMobile: {
-                            value: btnSizeMobile,
+                            value: buttonStyles[0].btnSizeMobile,
                             label: __("btnSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: btnSizeTablet,
+                            value: buttonStyles[0].btnSizeTablet,
                             label: __("btnSizeTablet")
                         },
-                        weight: btnWeight,
-                        style: btnStyle,
-                        spacing: btnLetter,
-                        line: btnLine,
-                        upper: btnUpper,
+                        weight: buttonStyles[0].btnWeight,
+                        style: buttonStyles[0].btnStyle,
+                        spacing: buttonStyles[0].btnLetter,
+                        line: buttonStyles[0].btnLine,
+                        upper: buttonStyles[0].btnUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ btnWeight: newWeight });
+                            return saveButtonStyle({ btnWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ btnStyle: newStyle });
+                            return saveButtonStyle({ btnStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ btnLetter: newValue });
+                            return saveButtonStyle({ btnLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ btnLine: newValue });
+                            return saveButtonStyle({ btnLine: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ btnUpper: check });
+                            return saveButtonStyle({ btnUpper: check });
                         }
                     }),
                     React.createElement(PanelColorSettings, {
@@ -43161,49 +43239,49 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body-inner",
                         initialOpen: false,
                         colorSettings: [{
-                            value: btnColor,
+                            value: buttonStyles[0].btnColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ btnColor: newColor });
+                                return saveButtonStyle({ btnColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
-                            value: btnHoverColor,
+                            value: buttonStyles[0].btnHoverColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ btnHoverColor: newColor });
+                                return saveButtonStyle({ btnHoverColor: newColor });
                             },
                             label: __("Text Hover Color")
                         }, {
-                            value: btnBack,
+                            value: buttonStyles[0].btnBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ btnBack: newColor });
+                                return saveButtonStyle({ btnBack: newColor });
                             },
                             label: __("Background Color")
                         }, {
-                            value: btnHoverBack,
+                            value: buttonStyles[0].btnHoverBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ btnHoverBack: newColor });
+                                return saveButtonStyle({ btnHoverBack: newColor });
                             },
                             label: __("Background Hover Color")
                         }]
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: btnBorderType,
-                        borderWidth: btnBorderWidth,
-                        top: btnBorderTop,
-                        right: btnBorderRight,
-                        bottom: btnBorderBottom,
-                        left: btnBorderLeft,
-                        borderColor: btnBorderColor,
-                        borderRadius: btnBorderRadius,
+                        borderType: buttonStyles[0].btnBorderType,
+                        borderWidth: buttonStyles[0].btnBorderWidth,
+                        top: buttonStyles[0].btnBorderTop,
+                        right: buttonStyles[0].btnBorderRight,
+                        bottom: buttonStyles[0].btnBorderBottom,
+                        left: buttonStyles[0].btnBorderLeft,
+                        borderColor: buttonStyles[0].btnBorderColor,
+                        borderRadius: buttonStyles[0].btnBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ btnBorderType: newType });
+                            return saveButtonStyle({ btnBorderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref5) {
                             var top = _ref5.top,
                                 right = _ref5.right,
                                 bottom = _ref5.bottom,
                                 left = _ref5.left;
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnBorderUpdated: true,
                                 btnBorderTop: top,
                                 btnBorderRight: right,
@@ -43212,10 +43290,10 @@ var PremiumPricingTable = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ btnBorderColor: colorValue.hex });
+                            return saveButtonStyle({ btnBorderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ btnBorderRadius: newrRadius });
+                            return saveButtonStyle({ btnBorderRadius: newrRadius });
                         }
                     }),
                     React.createElement(
@@ -43245,41 +43323,41 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Width (%)"),
-                                        value: btnWidth,
+                                        value: buttonStyles[0].btnWidth,
                                         onChange: function onChange(newSize) {
-                                            return setAttributes({ btnWidth: newSize });
+                                            return saveButtonStyle({ btnWidth: newSize });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Margin Top (PX)"),
-                                        value: btnMarginT,
+                                        value: buttonStyles[0].btnMarginT,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ btnMarginT: newPadding });
+                                            return saveButtonStyle({ btnMarginT: newPadding });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Margin Bottom (PX)"),
-                                        value: btnMarginB,
+                                        value: buttonStyles[0].btnMarginB,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ btnMarginB: newPadding });
+                                            return saveButtonStyle({ btnMarginB: newPadding });
                                         }
                                     }),
                                     React.createElement(_premiumSizeUnits2.default, {
                                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                            return setAttributes({ btnPaddingU: newValue });
+                                            return saveButtonStyle({ btnPaddingU: newValue });
                                         }
                                     }),
                                     React.createElement(RangeControl, {
                                         label: __("Padding"),
-                                        value: btnPadding,
+                                        value: buttonStyles[0].btnPadding,
                                         min: "0",
                                         max: "100",
                                         onChange: function onChange(newPadding) {
-                                            return setAttributes({ btnPadding: newPadding });
+                                            return saveButtonStyle({ btnPadding: newPadding });
                                         }
                                     })
                                 );
@@ -43288,9 +43366,9 @@ var PremiumPricingTable = function (_Component) {
                     ),
                     React.createElement(ToggleControl, {
                         label: __("Open Link in a new tab"),
-                        checked: btnTarget,
+                        checked: buttonStyles[0].btnTarget,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ btnTarget: newValue });
+                            return saveButtonStyle({ btnTarget: newValue });
                         }
                     })
                 ),
@@ -43303,53 +43381,53 @@ var PremiumPricingTable = function (_Component) {
                     },
                     React.createElement(TextControl, {
                         label: __("Text"),
-                        value: badgeText,
+                        value: badgeStyles[0].badgeText,
                         onChange: function onChange(value) {
-                            return setAttributes({ badgeText: value });
+                            return saveBadgeStyles({ badgeText: value });
                         }
                     }),
                     React.createElement(SelectControl, {
                         label: __("Position"),
                         options: POSITION,
-                        value: badgePos,
+                        value: badgeStyles[0].badgePos,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ badgePos: newValue });
+                            return saveBadgeStyles({ badgePos: newValue });
                         }
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveBadgeStyles,
                         fontSizeType: {
-                            value: badgeTextUnit,
+                            value: badgeStyles[0].badgeTextUnit,
                             label: __("badgeTextUnit")
                         },
                         fontSize: {
-                            value: badgeTextSize,
+                            value: badgeStyles[0].badgeTextSize,
                             label: __("badgeText")
                         },
                         fontSizeMobile: {
-                            value: badgeTextSizeMobile,
+                            value: badgeStyles[0].badgeTextSizeMobile,
                             label: __("badgeTextMobile")
                         },
                         fontSizeTablet: {
-                            value: badgeTextSizeTablet,
+                            value: badgeStyles[0].badgeTextSizeTablet,
                             label: __("badgeTextTablet")
                         },
-                        weight: badgeWeight,
-                        style: badgeStyle,
-                        spacing: badgeLetter,
-                        upper: badgeUpper,
+                        weight: badgeStyles[0].badgeWeight,
+                        style: badgeStyles[0].badgeStyle,
+                        spacing: badgeStyles[0].badgeLetter,
+                        upper: badgeStyles[0].badgeUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ badgeWeight: newWeight });
+                            return saveBadgeStyles({ badgeWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ badgeStyle: newStyle });
+                            return saveBadgeStyles({ badgeStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ badgeLetter: newValue });
+                            return saveBadgeStyles({ badgeLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ badgeUpper: check });
+                            return saveBadgeStyles({ badgeUpper: check });
                         }
                     }),
                     React.createElement(PanelColorSettings, {
@@ -43357,50 +43435,50 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-panel-body-inner",
                         initialOpen: false,
                         colorSettings: [{
-                            value: badgeColor,
+                            value: badgeStyles[0].badgeColor,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ badgeColor: newColor });
+                                return saveBadgeStyles({ badgeColor: newColor });
                             },
                             label: __("Text Color")
                         }, {
-                            value: badgeBack,
+                            value: badgeStyles[0].badgeBack,
                             onChange: function onChange(newColor) {
-                                return setAttributes({ badgeBack: newColor });
+                                return saveBadgeStyles({ badgeBack: newColor });
                             },
                             label: __("Background Color")
                         }]
                     }),
                     React.createElement(RangeControl, {
                         label: __("Vertical Offset"),
-                        value: badgeTop,
+                        value: badgeStyles[0].badgeTop,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ badgeTop: newValue });
+                            return saveBadgeStyles({ badgeTop: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Horizontal Offset"),
-                        value: badgeHorizontal,
+                        value: badgeStyles[0].badgeHorizontal,
                         min: "1",
                         max: "150",
                         onChange: function onChange(newValue) {
-                            return setAttributes({ badgeHorizontal: newValue });
+                            return saveBadgeStyles({ badgeHorizontal: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Badge Size"),
-                        value: badgeSize,
+                        value: badgeStyles[0].badgeSize,
                         max: "250",
                         onChange: function onChange(newValue) {
-                            return setAttributes({ badgeSize: newValue });
+                            return saveBadgeStyles({ badgeSize: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Text Width"),
                         min: "1",
                         max: "200",
-                        value: badgeWidth,
+                        value: badgeStyles[0].badgeWidth,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ badgeWidth: newValue });
+                            return saveBadgeStyles({ badgeWidth: newValue });
                         }
                     })
                 ),
@@ -43421,34 +43499,34 @@ var PremiumPricingTable = function (_Component) {
                         ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
-                            colorValue: tableBack,
+                            colorValue: tableStyles[0].tableBack,
                             onChangeColor: function onChangeColor(newvalue) {
-                                return setAttributes({ tableBack: newvalue });
+                                return saveTableStyles({ tableBack: newvalue });
                             },
-                            opacityValue: tableOpacity,
+                            opacityValue: tableStyles[0].tableOpacity,
                             onChangeOpacity: function onChangeOpacity(value) {
-                                return setAttributes({ tableOpacity: value });
+                                return saveTableStyles({ tableOpacity: value });
                             }
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
+                        borderType: tableStyles[0].borderType,
+                        borderWidth: tableStyles[0].borderWidth,
+                        top: tableStyles[0].borderTop,
+                        right: tableStyles[0].borderRight,
+                        bottom: tableStyles[0].borderBottom,
+                        left: tableStyles[0].borderLeft,
                         borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderRadius: tableStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return saveTableStyles({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref7) {
                             var top = _ref7.top,
                                 right = _ref7.right,
                                 bottom = _ref7.bottom,
                                 left = _ref7.left;
-                            return setAttributes({
+                            return saveTableStyles({
                                 borderUpdated: true,
                                 borderTop: top,
                                 borderRight: right,
@@ -43457,41 +43535,41 @@ var PremiumPricingTable = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveTableStyles({ borderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadius: newrRadius });
+                            return saveTableStyles({ borderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: tableShadowColor,
-                        blur: tableShadowBlur,
-                        horizontal: tableShadowHorizontal,
-                        vertical: tableShadowVertical,
-                        position: tableShadowPosition,
+                        color: tableStyles[0].tableShadowColor,
+                        blur: tableStyles[0].tableShadowBlur,
+                        horizontal: tableStyles[0].tableShadowHorizontal,
+                        vertical: tableStyles[0].tableShadowVertical,
+                        position: tableStyles[0].tableShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveTableStyles({
                                 tableShadowColor: newColor === undefined ? "transparent" : newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveTableStyles({
                                 tableShadowBlur: newBlur === undefined ? 0 : newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveTableStyles({
                                 tableShadowHorizontal: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveTableStyles({
                                 tableShadowVertical: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveTableStyles({
                                 tableShadowPosition: newValue === undefined ? 0 : newValue
                             });
                         }
@@ -43523,11 +43601,11 @@ var PremiumPricingTable = function (_Component) {
                                     null,
                                     React.createElement(RangeControl, {
                                         label: __("Padding"),
-                                        value: tablePadding,
+                                        value: tableStyles[0].tablePadding,
                                         min: "0",
                                         max: "50",
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({ tablePadding: newValue });
+                                            return saveTableStyles({ tablePadding: newValue });
                                         }
                                     })
                                 );
@@ -43832,10 +43910,10 @@ exports.default = withSelect(function (select, props) {
     return {
         deviceType: deviceType
     };
-})(edit);
+})(PremiumPricingTable);
 
 /***/ }),
-/* 271 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43845,11 +43923,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -44021,7 +44099,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 272 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44335,7 +44413,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 273 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46597,7 +46675,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 274 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46753,7 +46831,6 @@ var attributes = {
             valSizeTablet: '',
             valWeight: '',
             divPrice: "/",
-
             divColor: '',
             divSize: 20,
             divSizeUnit: 'px',
@@ -46891,7 +46968,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 275 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46899,15 +46976,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(276);
+var _edit = __webpack_require__(274);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(277);
+var _save = __webpack_require__(275);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(278);
+var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -46915,7 +46992,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(279);
+var _attributes = __webpack_require__(277);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -46947,7 +47024,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 276 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46957,6 +47034,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -46965,7 +47044,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -46973,15 +47052,15 @@ var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -47002,6 +47081,7 @@ var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl;
 var Fragment = wp.element.Fragment;
+var withSelect = wp.data.withSelect;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
@@ -47058,6 +47138,18 @@ var edit = function edit(props) {
     }];
 
     var mainClasses = (0, _classnames2.default)(className, "premium-container");
+
+    var saveContainerStyle = function saveContainerStyle(value) {
+        var newUpdate = containerStyles.map(function (item, index) {
+            if (0 === index) {
+                item = _extends({}, item, value);
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate
+        });
+    };
 
     return [isSelected && React.createElement(
         BlockControls,
@@ -47154,42 +47246,42 @@ var edit = function edit(props) {
             ),
             React.createElement(_premiumBackground2.default, {
                 type: "color",
-                colorValue: color,
+                colorValue: containerStyles[0].color,
                 onChangeColor: function onChangeColor(newvalue) {
-                    return setAttributes({ color: newvalue });
+                    return saveContainerStyle({ color: newvalue });
                 },
-                opacityValue: opacity,
+                opacityValue: containerStyles[0].opacity,
                 onChangeOpacity: function onChangeOpacity(value) {
-                    return setAttributes({ opacity: value });
+                    return saveContainerStyle({ opacity: value });
                 }
             }),
             React.createElement(_premiumBackground2.default, {
-                imageID: imageID,
-                imageURL: imageURL,
-                backgroundPosition: backgroundPosition,
-                backgroundRepeat: backgroundRepeat,
-                backgroundSize: backgroundSize,
-                fixed: fixed,
+                imageID: containerStyles[0].imageID,
+                imageURL: containerStyles[0].imageURL,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundSize: containerStyles[0].backgroundSize,
+                fixed: containerStyles[0].fixed,
                 onSelectMedia: function onSelectMedia(media) {
-                    setAttributes({
+                    saveContainerStyle({
                         imageID: media.id,
                         imageURL: media.url
                     });
                 },
                 onRemoveImage: function onRemoveImage(value) {
-                    return setAttributes({ imageURL: "", imageID: "" });
+                    return saveContainerStyle({ imageURL: "", imageID: "" });
                 },
                 onChangeBackPos: function onChangeBackPos(newValue) {
-                    return setAttributes({ backgroundPosition: newValue });
+                    return saveContainerStyle({ backgroundPosition: newValue });
                 },
                 onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                    return setAttributes({ backgroundRepeat: newValue });
+                    return saveContainerStyle({ backgroundRepeat: newValue });
                 },
                 onChangeBackSize: function onChangeBackSize(newValue) {
-                    return setAttributes({ backgroundSize: newValue });
+                    return saveContainerStyle({ backgroundSize: newValue });
                 },
                 onChangeFixed: function onChangeFixed(check) {
-                    return setAttributes({ fixed: check });
+                    return saveContainerStyle({ fixed: check });
                 }
             })
         ),
@@ -47201,23 +47293,23 @@ var edit = function edit(props) {
                 initialOpen: false
             },
             React.createElement(_premiumBorder2.default, {
-                borderType: borderType,
-                borderWidth: borderWidth,
-                top: borderTop,
-                right: borderRight,
-                bottom: borderBottom,
-                left: borderLeft,
-                borderColor: borderColor,
-                borderRadius: borderRadius,
+                borderType: containerStyles[0].borderType,
+                borderWidth: containerStyles[0].borderWidth,
+                top: containerStyles[0].borderTop,
+                right: containerStyles[0].borderRight,
+                bottom: containerStyles[0].borderBottom,
+                left: containerStyles[0].borderLeft,
+                borderColor: containerStyles[0].borderColor,
+                borderRadius: containerStyles[0].borderRadius,
                 onChangeType: function onChangeType(newType) {
-                    return setAttributes({ borderType: newType });
+                    return saveContainerStyle({ borderType: newType });
                 },
                 onChangeWidth: function onChangeWidth(_ref) {
                     var top = _ref.top,
                         right = _ref.right,
                         bottom = _ref.bottom,
                         left = _ref.left;
-                    return setAttributes({
+                    return saveContainerStyle({
                         borderTop: top,
                         borderRight: right,
                         borderBottom: bottom,
@@ -47226,41 +47318,41 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return setAttributes({ borderColor: colorValue.hex });
+                    return saveContainerStyle({ borderColor: colorValue.hex });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
-                    return setAttributes({ borderRadius: newrRadius });
+                    return saveContainerStyle({ borderRadius: newrRadius });
                 }
             }),
             React.createElement(_premiumBoxShadow2.default, {
                 inner: false,
-                color: shadowColor,
-                blur: shadowBlur,
-                horizontal: shadowHorizontal,
-                vertical: shadowVertical,
-                position: shadowPosition,
+                color: containerStyles[0].shadowColor,
+                blur: containerStyles[0].shadowBlur,
+                horizontal: containerStyles[0].shadowHorizontal,
+                vertical: containerStyles[0].shadowVertical,
+                position: containerStyles[0].shadowPosition,
                 onChangeColor: function onChangeColor(newColor) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         shadowColor: newColor === undefined ? "transparent" : newColor.hex
                     });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         shadowBlur: newBlur === undefined ? 0 : newBlur
                     });
                 },
                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         shadowHorizontal: newValue === undefined ? 0 : newValue
                     });
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         shadowVertical: newValue === undefined ? 0 : newValue
                     });
                 },
                 onChangePosition: function onChangePosition(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         shadowPosition: newValue === undefined ? 0 : newValue
                     });
                 }
@@ -47275,64 +47367,64 @@ var edit = function edit(props) {
             },
             React.createElement(_premiumMargin2.default, {
                 directions: ["all"],
-                marginTop: marginTop,
-                marginRight: marginRight,
-                marginBottom: marginBottom,
-                marginLeft: marginLeft,
+                marginTop: containerStyles[0].marginTop,
+                marginRight: containerStyles[0].marginRight,
+                marginBottom: containerStyles[0].marginBottom,
+                marginLeft: containerStyles[0].marginLeft,
                 onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         marginTop: value === undefined ? 0 : value
                     });
                 },
                 onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         marginRight: value === undefined ? 0 : value
                     });
                 },
                 onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         marginBottom: value === undefined ? 0 : value
                     });
                 },
                 onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         marginLeft: value === undefined ? 0 : value
                     });
                 },
                 showUnits: true,
                 onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                    return setAttributes({ marginUnit: newvalue });
+                    return saveContainerStyle({ marginUnit: newvalue });
                 }
             }),
             React.createElement(_premiumPadding2.default, {
-                paddingTop: paddingTop,
-                paddingRight: paddingRight,
-                paddingBottom: paddingBottom,
-                paddingLeft: paddingLeft,
+                paddingTop: containerStyles[0].paddingTop,
+                paddingRight: containerStyles[0].paddingRight,
+                paddingBottom: containerStyles[0].paddingBottom,
+                paddingLeft: containerStyles[0].paddingLeft,
                 onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         paddingTop: value === undefined ? 0 : value
                     });
                 },
                 onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         paddingRight: value === undefined ? 0 : value
                     });
                 },
                 onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         paddingBottom: value === undefined ? 0 : value
                     });
                 },
                 onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         paddingLeft: value === undefined ? 0 : value
                     });
                 },
                 showUnits: true,
-                selectedUnit: paddingUnit,
+                selectedUnit: containerStyles[0].paddingUnit,
                 onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                    return setAttributes({ paddingUnit: newvalue });
+                    return saveContainerStyle({ paddingUnit: newvalue });
                 }
             })
         ),
@@ -47408,7 +47500,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 277 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47500,7 +47592,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 278 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48232,7 +48324,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 279 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48330,7 +48422,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 280 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48338,15 +48430,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(281);
+var _edit = __webpack_require__(279);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(283);
+var _save = __webpack_require__(281);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(284);
+var _deprecated = __webpack_require__(282);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -48354,7 +48446,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(285);
+var _attributes = __webpack_require__(283);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -48379,7 +48471,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 281 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48388,6 +48480,8 @@ registerBlockType("premium/testimonial", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -48411,15 +48505,15 @@ var _lowerQuote = __webpack_require__(66);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -48427,7 +48521,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(282);
+var _styling = __webpack_require__(280);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -48466,6 +48560,7 @@ var _wp$blockEditor = wp.blockEditor,
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
+var withSelect = wp.data.withSelect;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -48473,7 +48568,10 @@ var edit = function (_Component) {
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
@@ -48486,10 +48584,22 @@ var edit = function (_Component) {
             setAttributes({ block_id: clientId.substr(0, 6) });
 
             this.props.setAttributes({ classMigrate: true });
-
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-testimonial-" + clientId.substr(0, 6));
-            document.head.appendChild($style);
+        }
+    }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
         }
     }, {
         key: "render",
@@ -48541,14 +48651,57 @@ var edit = function (_Component) {
                 value: "15px",
                 label: __("Rounded")
             }];
+            var saveContentStyle = function saveContentStyle(value) {
+                var newUpdate = contentStyle.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    contentStyle: newUpdate
+                });
+            };
 
-            var element = document.getElementById("premium-style-testimonial-" + this.props.clientId.substr(0, 6));
-
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
+            var saveContainerStyle = function saveContainerStyle(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
+                });
+            };
+            var saveCompanyStyle = function saveCompanyStyle(value) {
+                var newUpdate = companyStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    companyStyles: newUpdate
+                });
+            };
+            var saveQuoteStyles = function saveQuoteStyles(value) {
+                var newUpdate = quoteStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    quoteStyles: newUpdate
+                });
+            };
 
             var mainClasses = (0, _classnames2.default)(className, "premium-testimonial");
+
+            var authorFontSize = this.getPreviewSize(this.props.deviceType, authorSize, authorSizeTablet, authorSizeMobile);
+            var authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
+            var testimonalFontSize = this.getPreviewSize(this.props.deviceType, contentStyle[0].bodySize, contentStyle[0].bodySizeTablet, contentStyle[0].bodySizeMobile);
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -48722,26 +48875,26 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveContentStyle,
                         fontSizeType: {
-                            value: bodySizeUnit,
+                            value: contentStyle[0].bodySizeUnit,
                             label: __("bodySizeUnit")
                         },
                         fontSize: {
-                            value: bodySize,
+                            value: contentStyle[0].bodySize,
                             label: __("bodySize")
                         },
                         fontSizeMobile: {
-                            value: bodySizeMobile,
+                            value: contentStyle[0].bodySizeMobile,
                             label: __("bodySizeMobile")
                         },
                         fontSizeTablet: {
-                            value: bodySizeTablet,
+                            value: contentStyle[0].bodySizeTablet,
                             label: __("bodySizeTablet")
                         },
-                        line: bodyLine,
+                        line: contentStyle[0].bodyLine,
                         onChangeLine: function onChangeLine(newWeight) {
-                            return setAttributes({ bodyLine: newWeight });
+                            return saveContentStyle({ bodyLine: newWeight });
                         }
                     }),
                     React.createElement(
@@ -48750,9 +48903,9 @@ var edit = function (_Component) {
                         __("Color")
                     ),
                     React.createElement(ColorPalette, {
-                        value: bodyColor,
+                        value: contentStyle[0].bodyColor,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
+                            return saveContentStyle({
                                 bodyColor: newValue
                             });
                         }
@@ -48760,16 +48913,16 @@ var edit = function (_Component) {
                     }),
                     React.createElement(RangeControl, {
                         label: __("Margin Top (PX)"),
-                        value: bodyTop,
+                        value: contentStyle[0].bodyTop,
                         onChange: function onChange(newSize) {
-                            return setAttributes({ bodyTop: newSize });
+                            return saveContentStyle({ bodyTop: newSize });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Margin Bottom (PX)"),
-                        value: bodyBottom,
+                        value: contentStyle[0].bodyBottom,
                         onChange: function onChange(newSize) {
-                            return setAttributes({ bodyBottom: newSize });
+                            return saveContentStyle({ bodyBottom: newSize });
                         }
                     })
                 ),
@@ -48799,21 +48952,21 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveCompanyStyle,
                         fontSizeType: {
-                            value: authorComSizeUnit,
+                            value: companyStyles[0].authorComSizeUnit,
                             label: __("authorComSizeUnit")
                         },
                         fontSize: {
-                            value: authorComSize,
+                            value: companyStyles[0].authorComSize,
                             label: __("authorComSize")
                         },
                         fontSizeMobile: {
-                            value: authorComSizeMobile,
+                            value: companyStyles[0].authorComSizeMobile,
                             label: __("authorComSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: authorComSizeTablet,
+                            value: companyStyles[0].authorComSizeTablet,
                             label: __("authorComSizeTablet")
                         }
                     }),
@@ -48848,9 +49001,9 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: authorComColor,
+                                        value: companyStyles[0].authorComColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveCompanyStyle({
                                                 authorComColor: newValue
                                             });
                                         },
@@ -48862,9 +49015,9 @@ var edit = function (_Component) {
                                         __("Dash Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: dashColor,
+                                        value: companyStyles[0].dashColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveCompanyStyle({
                                                 dashColor: newValue
                                             });
                                         },
@@ -48876,23 +49029,23 @@ var edit = function (_Component) {
                     ),
                     React.createElement(ToggleControl, {
                         label: __("URL"),
-                        checked: urlCheck,
+                        checked: companyStyles[0].urlCheck,
                         onChange: function onChange(newCheck) {
-                            return setAttributes({ urlCheck: newCheck });
+                            return saveCompanyStyle({ urlCheck: newCheck });
                         }
                     }),
-                    urlCheck && React.createElement(TextControl, {
+                    companyStyles[0].urlCheck && React.createElement(TextControl, {
                         label: __("URL"),
-                        value: urlText,
+                        value: companyStyles[0].urlText,
                         onChange: function onChange(newURL) {
-                            return setAttributes({ urlText: newURL });
+                            return saveCompanyStyle({ urlText: newURL });
                         }
                     }),
-                    urlCheck && React.createElement(ToggleControl, {
+                    companyStyles[0].urlCheck && React.createElement(ToggleControl, {
                         label: __("Open Link in a New Tab"),
-                        checked: urlTarget,
+                        checked: companyStyles[0].urlTarget,
                         onChange: function onChange(newCheck) {
-                            return setAttributes({ urlTarget: newCheck });
+                            return saveCompanyStyle({ urlTarget: newCheck });
                         }
                     })
                 ),
@@ -48905,11 +49058,11 @@ var edit = function (_Component) {
                     },
                     React.createElement(RangeControl, {
                         label: __("Size (EM)"),
-                        value: quotSize,
+                        value: quoteStyles[0].quotSize,
                         min: "1",
                         max: "12",
                         onChange: function onChange(newSize) {
-                            return setAttributes({ quotSize: newSize });
+                            return saveQuoteStyles({ quotSize: newSize });
                         }
                     }),
                     React.createElement(
@@ -48921,9 +49074,9 @@ var edit = function (_Component) {
                             __("Quotations Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: quotColor,
+                            value: quoteStyles[0].quotColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveQuoteStyles({
                                     quotColor: newValue
                                 });
                             },
@@ -48934,9 +49087,9 @@ var edit = function (_Component) {
                         label: __("Opacity"),
                         min: "0",
                         max: "100",
-                        value: quotOpacity,
+                        value: quoteStyles[0].quotOpacity,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ quotOpacity: newValue });
+                            return saveQuoteStyles({ quotOpacity: newValue });
                         }
                     })
                 ),
@@ -48957,110 +49110,110 @@ var edit = function (_Component) {
                         ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
-                            colorValue: backColor,
+                            colorValue: containerStyles[0].backColor,
                             onChangeColor: function onChangeColor(newvalue) {
-                                return setAttributes({
+                                return saveContainerStyle({
                                     backColor: newvalue,
                                     backColorUpdated: true
                                 });
                             },
-                            opacityValue: backOpacity,
+                            opacityValue: containerStyles[0].backOpacity,
                             onChangeOpacity: function onChangeOpacity(value) {
-                                return setAttributes({ backOpacity: value });
+                                return saveContentStyle({ backOpacity: value });
                             }
                         }),
                         React.createElement(_premiumBackground2.default, {
-                            imageID: imageID,
-                            imageURL: imageURL,
-                            backgroundPosition: backgroundPosition,
-                            backgroundRepeat: backgroundRepeat,
-                            backgroundSize: backgroundSize,
-                            fixed: fixed,
+                            imageID: containerStyles[0].imageID,
+                            imageURL: containerStyles[0].imageURL,
+                            backgroundPosition: containerStyles[0].backgroundPosition,
+                            backgroundRepeat: containerStyles[0].backgroundRepeat,
+                            backgroundSize: containerStyles[0].backgroundSize,
+                            fixed: containerStyles[0].fixed,
                             onSelectMedia: function onSelectMedia(media) {
-                                setAttributes({
+                                saveContainerStyle({
                                     imageID: media.id,
                                     imageURL: media.url
                                 });
                             },
                             onRemoveImage: function onRemoveImage(value) {
-                                return setAttributes({ imageURL: "", imageID: "" });
+                                return saveContainerStyle({ imageURL: "", imageID: "" });
                             },
                             onChangeBackPos: function onChangeBackPos(newValue) {
-                                return setAttributes({ backgroundPosition: newValue });
+                                return saveContainerStyle({ backgroundPosition: newValue });
                             },
                             onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                                return setAttributes({ backgroundRepeat: newValue });
+                                return saveContainerStyle({ backgroundRepeat: newValue });
                             },
                             onChangeBackSize: function onChangeBackSize(newValue) {
-                                return setAttributes({ backgroundSize: newValue });
+                                return saveContainerStyle({ backgroundSize: newValue });
                             },
                             onChangeFixed: function onChangeFixed(check) {
-                                return setAttributes({ fixed: check });
+                                return saveContainerStyle({ fixed: check });
                             }
                         })
                     ),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
-                        position: shadowPosition,
+                        color: containerStyles[0].shadowColor,
+                        blur: containerStyles[0].shadowBlur,
+                        horizontal: containerStyles[0].shadowHorizontal,
+                        vertical: containerStyles[0].shadowVertical,
+                        position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowColor: newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowBlur: newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowHorizontal: newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowVertical: newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowPosition: newValue
                             });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingTop,
-                        paddingRight: paddingRight,
-                        paddingBottom: paddingBottom,
-                        paddingLeft: paddingLeft,
+                        paddingTop: containerStyles[0].paddingTop,
+                        paddingRight: containerStyles[0].paddingRight,
+                        paddingBottom: containerStyles[0].paddingBottom,
+                        paddingLeft: containerStyles[0].paddingLeft,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingTop: value
                             });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingRight: value
                             });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingBottom: value
                             });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 paddingLeft: value
                             });
                         },
                         showUnits: true,
-                        selectedUnit: paddingUnit,
+                        selectedUnit: containerStyles[0].paddingUnit,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ paddingUnit: newvalue });
+                            return saveContainerStyle({ paddingUnit: newvalue });
                         }
                     })
                 ),
@@ -49150,6 +49303,7 @@ var edit = function (_Component) {
                                         return setAttributes({ text: newText });
                                     },
                                     style: {
+                                        fontSize: "" + testimonalFontSize + contentStyle[0].bodySizeUnit,
                                         color: contentStyle[0].bodyColor,
                                         lineHeight: contentStyle[0].bodyLine + "px",
                                         marginTop: contentStyle[0].bodyTop + "px",
@@ -49174,6 +49328,7 @@ var edit = function (_Component) {
                                     return setAttributes({ author: newText });
                                 },
                                 style: {
+                                    fontSize: "" + authorFontSize + authorSizeUnit + " ",
                                     color: authorColor,
                                     letterSpacing: authorLetter + "px",
                                     textTransform: authorUpper ? "uppercase" : "none",
@@ -49200,7 +49355,8 @@ var edit = function (_Component) {
                                 value: authorCom,
                                 isSelected: false,
                                 style: {
-                                    color: companyStyles[0].authorComColor
+                                    color: companyStyles[0].authorComColor,
+                                    fontSize: "" + authorComFontSize + companyStyles[0].authorComSizeUnit
                                 }
                             })
                         )
@@ -49237,7 +49393,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 282 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49247,11 +49403,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -49332,7 +49488,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 283 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49515,10 +49671,10 @@ var save = function save(props) {
                                 color: companyStyles[0].authorComColor
                             }
                         }),
-                        urlCheck && React.createElement("a", {
+                        companyStyles[0].urlCheck && React.createElement("a", {
                             rel: "noopener noreferrer",
-                            href: urlText,
-                            target: urlTarget ? "_blank" : ""
+                            href: companyStyles[0].urlText,
+                            target: companyStyles[0].urlTarget ? "_blank" : ""
                         })
                     )
                 )
@@ -49539,7 +49695,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 284 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50830,7 +50986,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 285 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51004,7 +51160,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 286 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51013,6 +51169,8 @@ exports.default = testimonialsAttrs;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -51028,11 +51186,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(16);
+var _premiumBoxShadow = __webpack_require__(14);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -51052,11 +51210,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(287);
-
-var _styling2 = _interopRequireDefault(_styling);
-
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -51076,6 +51230,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var withSelect = wp.data.withSelect;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
@@ -51104,6 +51259,7 @@ var edit = function (_Component) {
         var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
         _this.initVideoBox = _this.initVideoBox.bind(_this);
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
         return _this;
     }
 
@@ -51121,9 +51277,8 @@ var edit = function (_Component) {
             }
             this.props.setAttributes({ classMigrate: true });
             // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-videoBox-" + this.props.clientId.substr(0, 6));
-            document.head.appendChild($style);
+
+
             this.initVideoBox();
         }
     }, {
@@ -51169,6 +51324,22 @@ var edit = function (_Component) {
             });
         }
     }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "render",
         value: function render() {
             var _props2 = this.props,
@@ -51178,8 +51349,6 @@ var edit = function (_Component) {
                 clientId = _props2.clientId;
             var _props$attributes = this.props.attributes,
                 block_id = _props$attributes.block_id,
-                borderPlayUpdated = _props$attributes.borderPlayUpdated,
-                borderBoxUpdated = _props$attributes.borderBoxUpdated,
                 videoBoxId = _props$attributes.videoBoxId,
                 videoType = _props$attributes.videoType,
                 videoURL = _props$attributes.videoURL,
@@ -51193,11 +51362,9 @@ var edit = function (_Component) {
                 videoDesc = _props$attributes.videoDesc,
                 playIcon = _props$attributes.playIcon,
                 playLeft = _props$attributes.playLeft,
-                classMigrate = _props$attributes.classMigrate,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
-                colorStyles = _props$attributes.colorStyles,
                 boxStyles = _props$attributes.boxStyles,
                 overlayStyles = _props$attributes.overlayStyles,
                 playStyles = _props$attributes.playStyles,
@@ -51258,10 +51425,6 @@ var edit = function (_Component) {
                 addFontToHead(fontFamily);
             };
 
-            var element = document.getElementById("premium-style-videoBox-" + clientId.substr(0, 6));
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
             var mainClasses = (0, _classnames2.default)(className, "premium-video-box");
 
             var changeVideoType = function changeVideoType(newvalue) {
@@ -51269,6 +51432,52 @@ var edit = function (_Component) {
                     setAttributes({ videoURL: "" });
                 }
                 setAttributes({ videoType: newvalue });
+            };
+            var textSize = this.getPreviewSize(this.props.deviceType, descStyles[0].videoDescSize, descStyles[0].videoDescSizeTablet, descStyles[0].videoDescSizeMobile);
+
+            var saveBoxStyle = function saveBoxStyle(value) {
+                var newUpdate = boxStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    boxStyles: newUpdate
+                });
+            };
+            var saveOverlayStyles = function saveOverlayStyles(value) {
+                var newUpdate = overlayStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    overlayStyles: newUpdate
+                });
+            };
+            var savePlayStyles = function savePlayStyles(value) {
+                var newUpdate = playStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    playStyles: newUpdate
+                });
+            };
+            var saveDescritionStyle = function saveDescritionStyle(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    descStyles: newUpdate
+                });
             };
 
             return [isSelected && React.createElement(
@@ -51367,16 +51576,16 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumMediaUpload2.default, {
                         type: "image",
-                        imageID: overlayImgID,
-                        imageURL: overlayImgURL,
+                        imageID: overlayStyles[0].overlayImgID,
+                        imageURL: overlayStyles[0].overlayImgURL,
                         onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
+                            saveOverlayStyles({
                                 overlayImgID: media.id,
                                 overlayImgURL: media.url
                             });
                         },
                         onRemoveImage: function onRemoveImage() {
-                            return setAttributes({
+                            return saveOverlayStyles({
                                 overlayImgID: "",
                                 overlayImgURL: ""
                             });
@@ -51384,30 +51593,30 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumFilters2.default, {
                         blur: blur,
-                        bright: bright,
-                        contrast: contrast,
-                        saturation: saturation,
-                        hue: hue,
+                        bright: overlayStyles[0].bright,
+                        contrast: overlayStyles[0].contrast,
+                        saturation: overlayStyles[0].saturation,
+                        hue: overlayStyles[0].hue,
                         onChangeBlur: function onChangeBlur(value) {
-                            return setAttributes({ blur: value === undefined ? 0 : value });
+                            return saveOverlayStyles({ blur: value === undefined ? 0 : value });
                         },
                         onChangeBright: function onChangeBright(value) {
-                            return setAttributes({
+                            return saveOverlayStyles({
                                 bright: value === undefined ? 100 : value
                             });
                         },
                         onChangeContrast: function onChangeContrast(value) {
-                            return setAttributes({
+                            return saveOverlayStyles({
                                 contrast: value === undefined ? 100 : value
                             });
                         },
                         onChangeSat: function onChangeSat(value) {
-                            return setAttributes({
+                            return saveOverlayStyles({
                                 saturation: value === undefined ? 100 : value
                             });
                         },
                         onChangeHue: function onChangeHue(value) {
-                            return setAttributes({ hue: value === undefined ? 100 : value });
+                            return saveOverlayStyles({ hue: value === undefined ? 100 : value });
                         }
                     })
                 ),
@@ -51433,40 +51642,40 @@ var edit = function (_Component) {
                             null,
                             React.createElement(RangeControl, {
                                 label: __("Size (PX)"),
-                                value: playSize,
+                                value: playStyles[0].playSize,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return savePlayStyles({
                                         playSize: newValue === undefined ? 20 : newValue
                                     });
                                 }
                             }),
                             React.createElement(RangeControl, {
                                 label: __("Vertical Offset (%)"),
-                                value: playTop,
+                                value: playStyles[0].playTop,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return savePlayStyles({
                                         playTop: newValue === undefined ? 50 : newValue
                                     });
                                 }
                             }),
                             React.createElement(_premiumBorder2.default, {
-                                borderType: playBorderType,
-                                borderWidth: playBorderWidth,
-                                top: playBorderTop,
-                                right: playBorderRight,
-                                bottom: playBorderBottom,
-                                left: playBorderLeft,
-                                borderColor: playBorderColor,
-                                borderRadius: playBorderRadius,
+                                borderType: playStyles[0].playBorderType,
+                                borderWidth: playStyles[0].playBorderWidth,
+                                top: playStyles[0].playBorderTop,
+                                right: playStyles[0].playBorderRight,
+                                bottom: playStyles[0].playBorderBottom,
+                                left: playStyles[0].playBorderLeft,
+                                borderColor: playStyles[0].playBorderColor,
+                                borderRadius: playStyles[0].playBorderRadius,
                                 onChangeType: function onChangeType(newType) {
-                                    return setAttributes({ playBorderType: newType });
+                                    return savePlayStyles({ playBorderType: newType });
                                 },
                                 onChangeWidth: function onChangeWidth(_ref) {
                                     var top = _ref.top,
                                         right = _ref.right,
                                         bottom = _ref.bottom,
                                         left = _ref.left;
-                                    return setAttributes({
+                                    return savePlayStyles({
                                         borderPlayUpdated: true,
                                         playBorderTop: top,
                                         playBorderRight: right,
@@ -51475,17 +51684,17 @@ var edit = function (_Component) {
                                     });
                                 },
                                 onChangeColor: function onChangeColor(colorValue) {
-                                    return setAttributes({ playBorderColor: colorValue.hex });
+                                    return savePlayStyles({ playBorderColor: colorValue.hex });
                                 },
                                 onChangeRadius: function onChangeRadius(newrRadius) {
-                                    return setAttributes({ playBorderRadius: newrRadius });
+                                    return savePlayStyles({ playBorderRadius: newrRadius });
                                 }
                             }),
                             React.createElement(RangeControl, {
                                 label: __("Padding (PX)"),
-                                value: playPadding,
+                                value: playStyles[0].playPadding,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return savePlayStyles({
                                         playPadding: newValue === undefined ? 20 : newValue
                                     });
                                 }
@@ -51511,98 +51720,98 @@ var edit = function (_Component) {
                             null,
                             React.createElement(TextareaControl, {
                                 label: __("Description Text"),
-                                value: videoDescText,
+                                value: descStyles[0].videoDescText,
                                 onChange: function onChange(newText) {
-                                    return setAttributes({ videoDescText: newText });
+                                    return saveDescritionStyle({ videoDescText: newText });
                                 }
                             }),
                             React.createElement(SelectControl, {
                                 label: __("Font Family"),
-                                value: videoDescFamily,
+                                value: descStyles[0].videoDescFamily,
                                 options: _premiumFonts2.default,
                                 onChange: onChangeDescFamily
                             }),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                                setAttributes: setAttributes,
+                                setAttributes: saveDescritionStyle,
                                 fontSizeType: {
-                                    value: videoDescSizeUnit,
+                                    value: descStyles[0].videoDescSizeUnit,
                                     label: __("videoDescSizeUnit")
                                 },
                                 fontSize: {
-                                    value: videoDescSize,
+                                    value: descStyles[0].videoDescSize,
                                     label: __("videoDescSize")
                                 },
                                 fontSizeMobile: {
-                                    value: videoDescSizeMobile,
+                                    value: descStyles[0].videoDescSizeMobile,
                                     label: __("videoDescSizeMobile")
                                 },
                                 fontSizeTablet: {
-                                    value: videoDescSizeTablet,
+                                    value: descStyles[0].videoDescSizeTablet,
                                     label: __("videoDescSizeTablet")
                                 },
-                                weight: videoDescWeight,
+                                weight: descStyles[0].videoDescWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return setAttributes({ videoDescWeight: newWeight });
+                                    return saveDescritionStyle({ videoDescWeight: newWeight });
                                 },
-                                style: videoDescStyle,
-                                spacing: videoDescLetter,
-                                upper: videoDescUpper,
+                                style: descStyles[0].videoDescStyle,
+                                spacing: descStyles[0].videoDescLetter,
+                                upper: descStyles[0].videoDescUpper,
                                 onChangeStyle: function onChangeStyle(newStyle) {
-                                    return setAttributes({ videoDescStyle: newStyle });
+                                    return saveDescritionStyle({ videoDescStyle: newStyle });
                                 },
                                 onChangeSpacing: function onChangeSpacing(newValue) {
-                                    return setAttributes({ videoDescLetter: newValue });
+                                    return saveDescritionStyle({ videoDescLetter: newValue });
                                 },
                                 onChangeUpper: function onChangeUpper(check) {
-                                    return setAttributes({ videoDescUpper: check });
+                                    return saveDescritionStyle({ videoDescUpper: check });
                                 }
                             }),
                             React.createElement(RangeControl, {
                                 label: __("Vertical Offset (%)"),
-                                value: descTop,
+                                value: descStyles[0].descTop,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return saveDescritionStyle({
                                         descTop: newValue === undefined ? 50 : newValue
                                     });
                                 }
                             }),
                             React.createElement(RangeControl, {
                                 label: __("Border Radius (px)"),
-                                value: videoDescBorderRadius,
+                                value: descStyles[0].videoDescBorderRadius,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return saveDescritionStyle({
                                         videoDescBorderRadius: newValue === undefined ? 0 : newValue
                                     });
                                 }
                             }),
                             React.createElement(_premiumTextShadow2.default, {
-                                color: descShadowColor,
-                                blur: descShadowBlur,
-                                horizontal: descShadowHorizontal,
-                                vertical: descShadowVertical,
+                                color: descStyles[0].descShadowColor,
+                                blur: descStyles[0].descShadowBlur,
+                                horizontal: descStyles[0].descShadowHorizontal,
+                                vertical: descStyles[0].descShadowVertical,
                                 onChangeColor: function onChangeColor(newColor) {
-                                    return setAttributes({
+                                    return saveDescritionStyle({
                                         descShadowColor: newColor.hex || "transparent"
                                     });
                                 },
                                 onChangeBlur: function onChangeBlur(newBlur) {
-                                    return setAttributes({ descShadowBlur: newBlur || "0" });
+                                    return saveDescritionStyle({ descShadowBlur: newBlur || "0" });
                                 },
                                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return setAttributes({
+                                    return saveDescritionStyle({
                                         descShadowHorizontal: newValue || "0"
                                     });
                                 },
                                 onChangeVertical: function onChangeVertical(newValue) {
-                                    return setAttributes({ descShadowVertical: newValue || "0" });
+                                    return saveDescritionStyle({ descShadowVertical: newValue || "0" });
                                 }
                             }),
                             React.createElement(RangeControl, {
                                 label: __("Padding (PX)"),
-                                value: videoDescPadding,
+                                value: descStyles[0].videoDescPadding,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return saveDescritionStyle({
                                         videoDescPadding: newValue === undefined ? 20 : newValue
                                     });
                                 }
@@ -51644,9 +51853,9 @@ var edit = function (_Component) {
                                         __("Icon Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: playColor,
+                                        value: playStyles[0].playColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return savePlayStyles({
                                                 playColor: newValue
                                             });
                                         },
@@ -51659,13 +51868,13 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: playBack,
+                                        colorValue: playStyles[0].playBack,
                                         onChangeColor: function onChangeColor(newvalue) {
-                                            setAttributes({ playBack: newvalue });
+                                            savePlayStyles({ playBack: newvalue });
                                         },
-                                        opacityValue: playOpacity,
+                                        opacityValue: playStyles[0].playOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            setAttributes({ playOpacity: value });
+                                            savePlayStyles({ playOpacity: value });
                                         }
                                     }),
                                     videoDesc && React.createElement(
@@ -51677,7 +51886,7 @@ var edit = function (_Component) {
                                             __("Description Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: videoDescColor,
+                                            value: descStyles[0].videoDescColor,
                                             onChange: function onChange(newValue) {
                                                 return setAttributes({
                                                     videoDescColor: newValue
@@ -51692,15 +51901,15 @@ var edit = function (_Component) {
                                         ),
                                         React.createElement(_premiumBackground2.default, {
                                             type: "color",
-                                            colorValue: videoDescBack,
+                                            colorValue: descStyles[0].videoDescBack,
                                             onChangeColor: function onChangeColor(newvalue) {
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     videoDescBack: newvalue
                                                 });
                                             },
-                                            opacityValue: videoDescOpacity,
+                                            opacityValue: descStyles[0].videoDescOpacity,
                                             onChangeOpacity: function onChangeOpacity(value) {
-                                                setAttributes({
+                                                saveDescritionStyle({
                                                     videoDescOpacity: value
                                                 });
                                             }
@@ -51718,9 +51927,9 @@ var edit = function (_Component) {
                                         __("Icon Hover Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: playHoverColor,
+                                        value: playStyles[0].playHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return savePlayStyles({
                                                 playHoverColor: newValue
                                             });
                                         },
@@ -51732,9 +51941,9 @@ var edit = function (_Component) {
                                         __("Icon Hover Background Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: playHoverBackColor,
+                                        value: playStyles[0].playHoverBackColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return savePlayStyles({
                                                 playHoverBackColor: newValue
                                             });
                                         },
@@ -51759,23 +51968,23 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     React.createElement(_premiumBorder2.default, {
-                        borderType: boxBorderType,
-                        borderWidth: boxBorderWidth,
-                        top: boxBorderTop,
-                        right: boxBorderRight,
-                        bottom: boxBorderBottom,
-                        left: boxBorderLeft,
-                        borderColor: boxBorderColor,
-                        borderRadius: boxBorderRadius,
+                        borderType: boxStyles[0].boxBorderType,
+                        borderWidth: boxStyles[0].boxBorderWidth,
+                        top: boxStyles[0].boxBorderTop,
+                        right: boxStyles[0].boxBorderRight,
+                        bottom: boxStyles[0].boxBorderBottom,
+                        left: boxStyles[0].boxBorderLeft,
+                        borderColor: boxStyles[0].boxBorderColor,
+                        borderRadius: boxStyles[0].boxBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ boxBorderType: newType });
+                            return saveBoxStyle({ boxBorderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref2) {
                             var top = _ref2.top,
                                 right = _ref2.right,
                                 bottom = _ref2.bottom,
                                 left = _ref2.left;
-                            return setAttributes({
+                            return saveBoxStyle({
                                 borderBoxUpdated: true,
                                 boxBorderTop: top,
                                 boxBorderRight: right,
@@ -51784,41 +51993,41 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ boxBorderColor: colorValue.hex });
+                            return saveBoxStyle({ boxBorderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ boxBorderRadius: newrRadius });
+                            return saveBoxStyle({ boxBorderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
-                        position: shadowPosition,
+                        color: boxStyles[0].shadowColor,
+                        blur: boxStyles[0].shadowBlur,
+                        horizontal: boxStyles[0].shadowHorizontal,
+                        vertical: boxStyles[0].shadowVertical,
+                        position: boxStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveBoxStyle({
                                 shadowColor: newColor === undefined ? "transparent" : newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveBoxStyle({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveBoxStyle({
                                 shadowHorizontal: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveBoxStyle({
                                 shadowVertical: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveBoxStyle({
                                 shadowPosition: newValue === undefined ? 0 : newValue
                             });
                         }
@@ -51846,7 +52055,7 @@ var edit = function (_Component) {
                     "data-type": videoType,
                     style: {
                         borderStyle: boxStyles[0].boxBorderType,
-                        borderWidth: borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
+                        borderWidth: boxStyles[0].borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
                         borderRadius: boxStyles[0].boxBorderRadius + "px",
                         borderColor: boxStyles[0].boxBorderColor,
                         boxShadow: boxStyles[0].shadowHorizontal + "px " + boxStyles[0].shadowVertical + "px " + boxStyles[0].shadowBlur + "px " + boxStyles[0].shadowColor + " " + boxStyles[0].shadowPosition
@@ -51854,7 +52063,7 @@ var edit = function (_Component) {
                 },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + colorStyles[0].playHoverColor + " !important;", "background-color: " + colorStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
+                        __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playStyles[0].playHoverColor + " !important;", "background-color: " + playStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
                     }
                 }),
                 React.createElement(
@@ -51889,10 +52098,10 @@ var edit = function (_Component) {
                         style: {
                             top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
-                            color: colorStyles[0].playColor,
-                            backgroundColor: colorStyles[0].playBack ? (0, _hexToRgba2.default)(colorStyles[0].playBack, colorStyles[0].playOpacity) : "transparent",
+                            color: playStyles[0].playColor,
+                            backgroundColor: playStyles[0].playBack ? (0, _hexToRgba2.default)(playStyles[0].playBack, playStyles[0].playOpacity) : "transparent",
                             borderStyle: playStyles[0].playBorderType,
-                            borderWidth: borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
+                            borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
                             borderRadius: playStyles[0].playBorderRadius + "px",
                             borderColor: playStyles[0].playBorderColor,
                             padding: playStyles[0].playPadding + "px"
@@ -51910,8 +52119,8 @@ var edit = function (_Component) {
                     {
                         className: "premium-video-box__desc",
                         style: {
-                            color: videoDescColor,
-                            backgroundColor: colorStyles[0].videoDescBack ? (0, _hexToRgba2.default)(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity) : "transparent",
+                            color: descStyles[0].videoDescColor,
+                            backgroundColor: descStyles[0].videoDescBack ? (0, _hexToRgba2.default)(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity) : "transparent",
                             padding: descStyles[0].videoDescPadding,
                             borderRadius: descStyles[0].videoDescBorderRadius,
                             top: descStyles[0].descTop + "%",
@@ -51927,8 +52136,9 @@ var edit = function (_Component) {
                                 fontWeight: descStyles[0].videoDescWeight,
                                 letterSpacing: descStyles[0].videoDescLetter + "px",
                                 textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descStyles[0].descShadowColor,
-                                fontStyle: descStyles[0].videoDescStyle
+                                textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor,
+                                fontStyle: descStyles[0].videoDescStyle,
+                                fontSize: "" + textSize + descStyles[0].videoDescSizeUnit
                             }
                         },
                         React.createElement(
@@ -51958,78 +52168,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 287 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _generateCss = __webpack_require__(10);
-
-var _generateCss2 = _interopRequireDefault(_generateCss);
-
-var _generateCssUnit = __webpack_require__(11);
-
-var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
-        videoBoxId = _props$attributes.videoBoxId,
-        classMigrate = _props$attributes.classMigrate,
-        videoDescSizeUnit = _props$attributes.videoDescSizeUnit,
-        videoDescSize = _props$attributes.videoDescSize,
-        videoDescSizeMobile = _props$attributes.videoDescSizeMobile,
-        videoDescSizeTablet = _props$attributes.videoDescSizeTablet;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {
-        " .premium-video-box__desc_text": {
-            "font-size": (0, _generateCssUnit2.default)(videoDescSize, videoDescSizeUnit)
-        }
-    };
-
-    tablet_selectors = {
-        " .premium-video-box__desc_text": {
-            "font-size": (0, _generateCssUnit2.default)(videoDescSizeTablet, videoDescSizeUnit)
-        }
-    };
-
-    mobile_selectors = {
-        " .premium-video-box__desc_text": {
-            "font-size": (0, _generateCssUnit2.default)(videoDescSizeMobile, videoDescSizeUnit)
-        }
-    };
-
-    var styling_css = "";
-    var id = '.premium-video-box-' + block_id;
-    if (classMigrate) {
-        id = '#' + videoBoxId;
-    }
-
-    styling_css = (0, _generateCss2.default)(selectors, id);
-    styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
-
-    styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-
-    console.log(styling_css);
-
-    return styling_css;
-}
-exports.default = styling;
-
-/***/ }),
-/* 288 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52057,8 +52196,6 @@ var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
-        borderPlayUpdated = _props$attributes.borderPlayUpdated,
-        borderBoxUpdated = _props$attributes.borderBoxUpdated,
         videoBoxId = _props$attributes.videoBoxId,
         videoType = _props$attributes.videoType,
         videoURL = _props$attributes.videoURL,
@@ -52076,7 +52213,6 @@ var save = function save(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        colorStyles = _props$attributes.colorStyles,
         boxStyles = _props$attributes.boxStyles,
         overlayStyles = _props$attributes.overlayStyles,
         playStyles = _props$attributes.playStyles,
@@ -52104,7 +52240,7 @@ var save = function save(props) {
             'data-type': videoType,
             style: {
                 borderStyle: boxStyles[0].boxBorderType,
-                borderWidth: borderBoxUpdated ? boxStyles[0].boxBorderTop + 'px ' + boxStyles[0].boxBorderRight + 'px ' + boxStyles[0].boxBorderBottom + 'px ' + boxStyles[0].boxBorderLeft + 'px' : boxStyles[0].boxBorderWidth + "px",
+                borderWidth: boxStyles[0].borderBoxUpdated ? boxStyles[0].boxBorderTop + 'px ' + boxStyles[0].boxBorderRight + 'px ' + boxStyles[0].boxBorderBottom + 'px ' + boxStyles[0].boxBorderLeft + 'px' : boxStyles[0].boxBorderWidth + "px",
                 borderRadius: boxStyles[0].boxBorderRadius + "px",
                 borderColor: boxStyles[0].boxBorderColor,
                 boxShadow: boxStyles[0].shadowHorizontal + 'px ' + boxStyles[0].shadowVertical + 'px ' + boxStyles[0].shadowBlur + 'px ' + boxStyles[0].shadowColor + ' ' + boxStyles[0].shadowPosition
@@ -52112,7 +52248,7 @@ var save = function save(props) {
         },
         React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#' + videoBoxId + ' .premium-video-box__play:hover {', 'color: ' + colorStyles[0].playHoverColor + ' !important;', 'background-color: ' + colorStyles[0].playHoverBackColor + ' !important;', "}"].join("\n")
+                __html: ['#' + videoBoxId + ' .premium-video-box__play:hover {', 'color: ' + playStyles[0].playHoverColor + ' !important;', 'background-color: ' + playStyles[0].playHoverBackColor + ' !important;', "}"].join("\n")
             }
         }),
         React.createElement(
@@ -52147,10 +52283,10 @@ var save = function save(props) {
                 style: {
                     top: playStyles[0].playTop + "%",
                     left: playLeft + "%",
-                    color: colorStyles[0].playColor,
-                    backgroundColor: colorStyles[0].playBack ? (0, _hexToRgba2.default)(colorStyles[0].playBack, colorStyles[0].playOpacity) : "transparent",
+                    color: playStyles[0].playColor,
+                    backgroundColor: playStyles[0].playBack ? (0, _hexToRgba2.default)(playStyles[0].playBack, playStyles[0].playOpacity) : "transparent",
                     borderStyle: playStyles[0].playBorderType,
-                    borderWidth: borderPlayUpdated ? playStyles[0].playBorderTop + 'px ' + playStyles[0].playBorderRight + 'px ' + playStyles[0].playBorderBottom + 'px ' + playStyles[0].playBorderLeft + 'px' : playStyles[0].playBorderWidth + "px",
+                    borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + 'px ' + playStyles[0].playBorderRight + 'px ' + playStyles[0].playBorderBottom + 'px ' + playStyles[0].playBorderLeft + 'px' : playStyles[0].playBorderWidth + "px",
                     borderRadius: playStyles[0].playBorderRadius + "px",
                     borderColor: playStyles[0].playBorderColor,
                     padding: playStyles[0].playPadding + "px"
@@ -52168,8 +52304,8 @@ var save = function save(props) {
             {
                 className: 'premium-video-box__desc',
                 style: {
-                    color: videoDescColor,
-                    backgroundColor: colorStyles[0].videoDescBack ? (0, _hexToRgba2.default)(colorStyles[0].videoDescBack, colorStyles[0].videoDescOpacity) : "transparent",
+                    color: descStyles[0].videoDescColor,
+                    backgroundColor: descStyles[0].videoDescBack ? (0, _hexToRgba2.default)(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity) : "transparent",
                     padding: descStyles[0].videoDescPadding,
                     borderRadius: descStyles[0].videoDescBorderRadius,
                     top: descStyles[0].descTop + "%",
@@ -52185,7 +52321,7 @@ var save = function save(props) {
                         fontWeight: descStyles[0].videoDescWeight,
                         letterSpacing: descStyles[0].videoDescLetter + "px",
                         textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                        textShadow: descStyles[0].descShadowHorizontal + 'px ' + descStyles[0].descShadowVertical + 'px ' + descStyles[0].descShadowBlur + 'px ' + descStyles[0].descStyles[0].descShadowColor,
+                        textShadow: descStyles[0].descShadowHorizontal + 'px ' + descStyles[0].descShadowVertical + 'px ' + descStyles[0].descShadowBlur + 'px ' + descStyles[0].descShadowColor,
                         fontStyle: descStyles[0].videoDescStyle
                     }
                 },
@@ -52202,7 +52338,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 289 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53375,7 +53511,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 290 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53387,10 +53523,6 @@ Object.defineProperty(exports, "__esModule", {
 var videoBoxAttrs = {
     block_id: {
         type: 'string'
-    },
-    borderPlayUpdated: {
-        type: "boolean",
-        default: false
     },
     borderBoxUpdated: {
         type: "boolean",
@@ -53462,19 +53594,7 @@ var videoBoxAttrs = {
         type: 'boolean',
         default: false
     },
-    colorStyles: {
-        type: 'array',
-        default: [{
-            playColor: '',
-            playBack: '',
-            playOpacity: 1,
-            videoDescColor: '',
-            videoDescBack: '',
-            videoDescOpacity: 1,
-            playHoverColor: '',
-            playHoverBackColor: ''
-        }]
-    },
+
     boxStyles: {
         type: 'array',
         default: [{
@@ -53490,7 +53610,8 @@ var videoBoxAttrs = {
             shadowBlur: '',
             shadowHorizontal: '',
             shadowVertical: '',
-            shadowPosition: ''
+            shadowPosition: '',
+            borderBoxUpdated: false
         }]
     },
     overlayStyles: {
@@ -53518,7 +53639,13 @@ var videoBoxAttrs = {
             playBorderTop: '',
             playBorderRight: '',
             playBorderBottom: '',
-            playBorderLeft: ''
+            playBorderLeft: '',
+            playColor: '',
+            playBack: '',
+            playOpacity: 1,
+            playHoverColor: '',
+            playHoverBackColor: '',
+            borderPlayUpdated: false
 
         }]
 
@@ -53543,7 +53670,10 @@ var videoBoxAttrs = {
             descShadowHorizontal: 0,
             descShadowVertical: 0,
             descLeft: '',
-            descTop: ''
+            descTop: '',
+            videoDescColor: '',
+            videoDescBack: '',
+            videoDescOpacity: 1
         }]
     }
 
@@ -53551,7 +53681,7 @@ var videoBoxAttrs = {
 exports.default = videoBoxAttrs;
 
 /***/ }),
-/* 291 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53559,15 +53689,15 @@ exports.default = videoBoxAttrs;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(292);
+var _save = __webpack_require__(289);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(293);
+var _edit = __webpack_require__(290);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(315);
+var _deprecated = __webpack_require__(312);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -53575,7 +53705,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(316);
+var _attributes = __webpack_require__(313);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -53600,7 +53730,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 292 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53735,7 +53865,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 293 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53751,7 +53881,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styling = __webpack_require__(294);
+var _styling = __webpack_require__(291);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -53759,15 +53889,15 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(13);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(295);
+var _typed = __webpack_require__(292);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumBackground = __webpack_require__(12);
+var _premiumBackground = __webpack_require__(10);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -53775,7 +53905,7 @@ var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _reactSortableHoc = __webpack_require__(296);
+var _reactSortableHoc = __webpack_require__(293);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53786,6 +53916,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -54670,7 +54801,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 294 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54684,11 +54815,11 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -54813,7 +54944,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 295 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55925,7 +56056,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 296 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55936,35 +56067,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(297);
+var _extends2 = __webpack_require__(294);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(298);
+var _slicedToArray2 = __webpack_require__(295);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(302);
+var _objectSpread2 = __webpack_require__(299);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(303);
+var _classCallCheck2 = __webpack_require__(300);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(304);
+var _createClass2 = __webpack_require__(301);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(305);
+var _possibleConstructorReturn2 = __webpack_require__(302);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(307);
+var _getPrototypeOf2 = __webpack_require__(304);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(308);
+var _inherits2 = __webpack_require__(305);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -55978,17 +56109,17 @@ var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _react = __webpack_require__(5);
 
-var _propTypes = __webpack_require__(17);
+var _propTypes = __webpack_require__(15);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(36);
 
-var _invariant = __webpack_require__(310);
+var _invariant = __webpack_require__(307);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(311);
+var _toConsumableArray2 = __webpack_require__(308);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -57570,7 +57701,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 297 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57599,7 +57730,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 298 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57610,15 +57741,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(299);
+var _arrayWithHoles = __webpack_require__(296);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(300);
+var _iterableToArrayLimit = __webpack_require__(297);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _nonIterableRest = __webpack_require__(301);
+var _nonIterableRest = __webpack_require__(298);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -57629,7 +57760,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 299 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57644,7 +57775,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 300 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57681,7 +57812,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 301 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57696,7 +57827,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 302 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57733,7 +57864,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 303 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57750,7 +57881,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 304 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57777,7 +57908,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 305 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57788,7 +57919,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(306);
+var _typeof2 = __webpack_require__(303);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -57807,7 +57938,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 306 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57847,7 +57978,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 307 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57865,7 +57996,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 308 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57876,7 +58007,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(309);
+var _setPrototypeOf = __webpack_require__(306);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -57898,7 +58029,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 309 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57918,7 +58049,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 310 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57971,7 +58102,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 311 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57982,15 +58113,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(312);
+var _arrayWithoutHoles = __webpack_require__(309);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(313);
+var _iterableToArray = __webpack_require__(310);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _nonIterableSpread = __webpack_require__(314);
+var _nonIterableSpread = __webpack_require__(311);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -58001,7 +58132,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 312 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58022,7 +58153,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 313 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58037,7 +58168,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 314 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58052,7 +58183,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 315 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58400,7 +58531,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 316 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58549,7 +58680,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 317 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58559,17 +58690,17 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(318);
+var _edit = __webpack_require__(315);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(372);
+var _save = __webpack_require__(369);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(373);
+var _attributes = __webpack_require__(370);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -58593,7 +58724,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 318 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58609,7 +58740,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(319);
+var _reactLottieWithSegments = __webpack_require__(316);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -58621,7 +58752,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -58629,11 +58760,11 @@ var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _styling = __webpack_require__(371);
+var _styling = __webpack_require__(368);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -58649,6 +58780,7 @@ var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
+var withSelect = wp.data.withSelect;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
@@ -59367,7 +59499,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 319 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59377,31 +59509,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(320);
+var _stringify = __webpack_require__(317);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(322);
+var _extends2 = __webpack_require__(319);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(331);
+var _getPrototypeOf = __webpack_require__(328);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(335);
+var _classCallCheck2 = __webpack_require__(332);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(336);
+var _createClass2 = __webpack_require__(333);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(340);
+var _possibleConstructorReturn2 = __webpack_require__(337);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(362);
+var _inherits2 = __webpack_require__(359);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -59409,11 +59541,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(17);
+var _propTypes = __webpack_require__(15);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(370);
+var _lottieWeb = __webpack_require__(367);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -59721,16 +59853,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 320 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(321), __esModule: true };
+module.exports = { "default": __webpack_require__(318), __esModule: true };
 
 /***/ }),
-/* 321 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59744,7 +59876,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 322 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59752,7 +59884,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(323);
+var _assign = __webpack_require__(320);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -59775,26 +59907,26 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 323 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(324), __esModule: true };
+module.exports = { "default": __webpack_require__(321), __esModule: true };
 
 /***/ }),
-/* 324 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(325);
+__webpack_require__(322);
 module.exports = __webpack_require__(8).Object.assign;
 
 /***/ }),
-/* 325 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59803,10 +59935,10 @@ module.exports = __webpack_require__(8).Object.assign;
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(21);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(327) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(324) });
 
 /***/ }),
-/* 326 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59818,7 +59950,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 327 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59864,7 +59996,7 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 } : $assign;
 
 /***/ }),
-/* 328 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59873,8 +60005,8 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(30);
-var toLength = __webpack_require__(329);
-var toAbsoluteIndex = __webpack_require__(330);
+var toLength = __webpack_require__(326);
+var toAbsoluteIndex = __webpack_require__(327);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -59897,7 +60029,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 329 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59911,7 +60043,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 330 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59926,26 +60058,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 331 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(332), __esModule: true };
+module.exports = { "default": __webpack_require__(329), __esModule: true };
 
 /***/ }),
-/* 332 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(333);
+__webpack_require__(330);
 module.exports = __webpack_require__(8).Object.getPrototypeOf;
 
 /***/ }),
-/* 333 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59955,14 +60087,14 @@ module.exports = __webpack_require__(8).Object.getPrototypeOf;
 var toObject = __webpack_require__(74);
 var $getPrototypeOf = __webpack_require__(115);
 
-__webpack_require__(334)('getPrototypeOf', function () {
+__webpack_require__(331)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 334 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59982,7 +60114,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 335 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59997,7 +60129,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 336 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60005,7 +60137,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(337);
+var _defineProperty = __webpack_require__(334);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -60032,29 +60164,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 337 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(338), __esModule: true };
+module.exports = { "default": __webpack_require__(335), __esModule: true };
 
 /***/ }),
-/* 338 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(339);
+__webpack_require__(336);
 var $Object = __webpack_require__(8).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 339 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60065,7 +60197,7 @@ var $export = __webpack_require__(21);
 $export($export.S + $export.F * !__webpack_require__(23), 'Object', { defineProperty: __webpack_require__(22).f });
 
 /***/ }),
-/* 340 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60090,33 +60222,33 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 341 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(342), __esModule: true };
+module.exports = { "default": __webpack_require__(339), __esModule: true };
 
 /***/ }),
-/* 342 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(343);
-__webpack_require__(348);
+__webpack_require__(340);
+__webpack_require__(345);
 module.exports = __webpack_require__(78).f('iterator');
 
 /***/ }),
-/* 343 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(344)(true);
+var $at = __webpack_require__(341)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(117)(String, 'String', function (iterated) {
@@ -60134,7 +60266,7 @@ __webpack_require__(117)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 344 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60157,7 +60289,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 345 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60179,7 +60311,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 346 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60201,7 +60333,7 @@ module.exports = __webpack_require__(23) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 347 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60211,13 +60343,13 @@ var document = __webpack_require__(20).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 348 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(349);
+__webpack_require__(346);
 var global = __webpack_require__(20);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(75);
@@ -60234,14 +60366,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 349 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(350);
-var step = __webpack_require__(351);
+var addToUnscopables = __webpack_require__(347);
+var step = __webpack_require__(348);
 var Iterators = __webpack_require__(75);
 var toIObject = __webpack_require__(30);
 
@@ -60275,7 +60407,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 350 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60284,7 +60416,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 351 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60295,29 +60427,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 352 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(353), __esModule: true };
+module.exports = { "default": __webpack_require__(350), __esModule: true };
 
 /***/ }),
-/* 353 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(354);
-__webpack_require__(359);
-__webpack_require__(360);
-__webpack_require__(361);
+__webpack_require__(351);
+__webpack_require__(356);
+__webpack_require__(357);
+__webpack_require__(358);
 module.exports = __webpack_require__(8).Symbol;
 
 /***/ }),
-/* 354 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60331,7 +60463,7 @@ var has = __webpack_require__(24);
 var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(118);
-var META = __webpack_require__(355).KEY;
+var META = __webpack_require__(352).KEY;
 var $fails = __webpack_require__(29);
 var shared = __webpack_require__(71);
 var setToStringTag = __webpack_require__(77);
@@ -60339,15 +60471,15 @@ var uid = __webpack_require__(49);
 var wks = __webpack_require__(31);
 var wksExt = __webpack_require__(78);
 var wksDefine = __webpack_require__(79);
-var enumKeys = __webpack_require__(356);
-var isArray = __webpack_require__(357);
+var enumKeys = __webpack_require__(353);
+var isArray = __webpack_require__(354);
 var anObject = __webpack_require__(37);
 var isObject = __webpack_require__(28);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(67);
 var createDesc = __webpack_require__(46);
 var _create = __webpack_require__(76);
-var gOPNExt = __webpack_require__(358);
+var gOPNExt = __webpack_require__(355);
 var $GOPD = __webpack_require__(120);
 var $DP = __webpack_require__(22);
 var $keys = __webpack_require__(47);
@@ -60567,7 +60699,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 355 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60630,7 +60762,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 356 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60655,7 +60787,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 357 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60668,7 +60800,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 358 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60696,14 +60828,14 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 359 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 360 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60712,7 +60844,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 __webpack_require__(79)('asyncIterator');
 
 /***/ }),
-/* 361 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60721,7 +60853,7 @@ __webpack_require__(79)('asyncIterator');
 __webpack_require__(79)('observable');
 
 /***/ }),
-/* 362 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60729,11 +60861,11 @@ __webpack_require__(79)('observable');
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(363);
+var _setPrototypeOf = __webpack_require__(360);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(367);
+var _create = __webpack_require__(364);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -60762,26 +60894,26 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 363 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(364), __esModule: true };
+module.exports = { "default": __webpack_require__(361), __esModule: true };
 
 /***/ }),
-/* 364 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(365);
+__webpack_require__(362);
 module.exports = __webpack_require__(8).Object.setPrototypeOf;
 
 /***/ }),
-/* 365 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60789,10 +60921,10 @@ module.exports = __webpack_require__(8).Object.setPrototypeOf;
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(21);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(366).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(363).set });
 
 /***/ }),
-/* 366 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60826,29 +60958,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 367 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(368), __esModule: true };
+module.exports = { "default": __webpack_require__(365), __esModule: true };
 
 /***/ }),
-/* 368 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(369);
+__webpack_require__(366);
 var $Object = __webpack_require__(8).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 369 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60859,7 +60991,7 @@ var $export = __webpack_require__(21);
 $export($export.S, 'Object', { create: __webpack_require__(76) });
 
 /***/ }),
-/* 370 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61450,7 +61582,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 371 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61460,11 +61592,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(10);
+var _generateCss = __webpack_require__(18);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(11);
+var _generateCssUnit = __webpack_require__(19);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -61523,7 +61655,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 372 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61593,7 +61725,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 373 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

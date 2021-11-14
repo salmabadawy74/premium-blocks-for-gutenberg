@@ -10,6 +10,7 @@ import hexToRgba from "hex-to-rgba";
 import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
+
 const { __ } = wp.i18n;
 
 const {

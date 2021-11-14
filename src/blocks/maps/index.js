@@ -22,6 +22,8 @@ const {
 const { InspectorControls, ColorPalette } = wp.editor;
 
 const { Component, Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 let isMapUpdated = null;
 
