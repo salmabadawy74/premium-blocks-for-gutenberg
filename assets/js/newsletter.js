@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
                         if (response.data) {
                             var status = response.data.status;
                             if (status)
-                                swal.fire({
+                                swal({
                                     title: 'Thanks for subscribing!',
                                     text: 'Click OK to continue',
                                     type: 'success'
@@ -40,13 +40,9 @@ jQuery(document).ready(function ($) {
         }
 
     })
-
-
-
     function checkEmail(emailAddress) {
         var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
         return pattern.test(emailAddress);
     }
-
 });
 

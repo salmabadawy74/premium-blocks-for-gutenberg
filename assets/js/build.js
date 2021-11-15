@@ -62475,7 +62475,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 registerBlockType("premium/newsletter", {
-    title: __("Newsletter"),
+    title: __(" MailChimp Newsletter"),
     icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "section" }),
     category: "premium-blocks",
     attributes: {
