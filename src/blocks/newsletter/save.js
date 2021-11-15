@@ -2,17 +2,13 @@ import React from 'react'
 
 export function save() {
     return (
-        <div class="elementor-form-fields-wrapper elementor-labels-">
-            <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-66 elementor-sm-66 elementor-field-required">
-                <label for="form-field-email" class="elementor-field-label elementor-screen-only">Email</label>
-                <input size="1" type="email" name="form_fields[email]" id="pa_news_email" class="elementor-field elementor-size-md  elementor-field-textual" placeholder="Email" required="required" aria-required="true" />				</div>
-            <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-25 e-form__buttons elementor-sm-25">
-                <button type="submit" class="elementor-button elementor-size-md pa-news-form">
-                    <span>
-                        <span class=" elementor-button-icon">
-                        </span>
-                        <span class="elementor-button-text">Submit</span>
-                    </span>
+        <div className="premium-newsletter__wrapper">
+            <div className="premium-newsletter-input__wrapper">
+                <label for="form-field-email" className=" premium-newsletter__label">Email</label>
+                <input className={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" className="" placeholder="Email" required="required" aria-required="true" />				</div>
+            <div className="premium-newsletter-button__wrapper">
+                <button type="submit" className="premium-newsletter-button-submit" id="submit-newsletter">
+                    <span className="">Submit</span>
                 </button>
             </div>
         </div>

@@ -1837,111 +1837,62 @@ a.premium-dheading-block__link:hover {
 /***************  NewsLetter Block ******************
 *****************************************************/
 
-.elementor-form-fields-wrapper {
+.premium-newsletter__wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-left: calc(0px / 2);
-    margin-right: calc(0px / 2);
-    margin-bottom: -10px;
 }
-.elementor-field-group {
-    padding-right: calc(0px / 2);
-    padding-left: calc(0px / 2);
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.premium-newsletter__wrapper .premium-newsletter-input__wrapper {
+    width: 66.6666%;
 }
-.elementor-column,
-.elementor-column-wrap {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-.elementor-field-label {
-    cursor: pointer;
-}
-.elementor-screen-only,
-.screen-reader-text,
-.screen-reader-text span,
-.ui-helper-hidden-accessible {
+.premium-newsletter__wrapper .premium-newsletter-input__wrapper label {
     position: absolute;
-    top: -10000 em;
-    width: 1 px;
-    height: 1 px;
-    margin: -1 px;
+    top: -10000em;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
-.elementor-24433
-    .elementor-element.elementor-element-5118d1f
-    .elementor-field-group:not(.elementor-field-type-upload)
-    .elementor-field:not(.elementor-select-wrapper) {
-    background-color: #f5f5f5;
-    border-width: 0px 0px 0px 0px;
-    border-radius: 10px 0px 0px 15px;
-}
-.elementor-24433
-    .elementor-element.elementor-element-5118d1f
-    .elementor-field-group
-    .elementor-field,
-.elementor-24433
-    .elementor-element.elementor-element-5118d1f
-    .elementor-field-subgroup
-    label {
-    font-family: "Lorin", Sans-serif;
-    font-size: 15px;
-}
-.elementor-field-textual.elementor-size-md {
-    font-size: 16px;
-    min-height: 47 px;
-    padding: 6px 16px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-}
-.elementor-field-group .elementor-field-textual {
+.premium-newsletter__wrapper .premium-newsletter-input__wrapper input {
     width: 100%;
     max-width: 100%;
-    border: 1 px solid #818a91;
+    border: 1px solid #818a91;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
     background-color: transparent;
     color: #373a3c;
     vertical-align: middle;
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+    min-height: 47px;
+    padding: 6px 16px;
+    border-radius: 0;
 }
-.elementor-field-group.elementor-field-type-submit {
+.premium-newsletter__wrapper .premium-newsletter-button__wrapper {
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
 }
-@media (min-width: 768px) {
-    .elementor-column.elementor-col-25,
-    .elementor-column[data-col="25"] {
-        width: 25%;
-    }
-}
-.elementor-button[type="submit"] {
-    background-color: #e77f00;
-    color: #ffffff;
-}
-.elementor-24433
-    .elementor-element.elementor-element-5118d1f
-    .elementor-button {
+.premium-newsletter__wrapper .premium-newsletter-button__wrapper button {
     font-family: "Red Hat Display", Sans-serif;
     font-size: 17px;
     font-weight: 800;
     text-transform: capitalize;
     letter-spacing: 0px;
     border-radius: 0px 10px 10px 0px;
-}
-.elementor-button.elementor-size-md {
+    background-color: #e77f00;
+    color: #ffffff;
+    padding: 8px 30px;
     min-height: 47px;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }

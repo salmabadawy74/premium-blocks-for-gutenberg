@@ -62500,38 +62500,37 @@ registerBlockType("premium/newsletter", {
 /* harmony export (immutable) */ __webpack_exports__["a"] = edit;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function edit() {
+    var _wp$element$createEle;
+
     return wp.element.createElement(
         "div",
-        { "class": "elementor-form-fields-wrapper elementor-labels-" },
+        { className: "premium-newsletter__wrapper" },
         wp.element.createElement(
             "div",
-            { "class": "elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-66 elementor-sm-66 elementor-field-required" },
+            { className: "premium-newsletter-input__wrapper" },
             wp.element.createElement(
                 "label",
-                { "for": "form-field-email", "class": "elementor-field-label elementor-screen-only" },
+                { "for": "form-field-email", className: " premium-newsletter__label" },
                 "Email"
             ),
-            wp.element.createElement("input", { size: "1", type: "email", name: "form_fields[email]", id: "pa_news_email", "class": "elementor-field elementor-size-md  elementor-field-textual", placeholder: "Email", required: "required", "aria-required": "true" }),
+            wp.element.createElement("input", (_wp$element$createEle = { className: "premium-newsletter-input", type: "email", name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_wp$element$createEle, "className", ""), _defineProperty(_wp$element$createEle, "placeholder", "Email"), _defineProperty(_wp$element$createEle, "required", "required"), _defineProperty(_wp$element$createEle, "aria-required", "true"), _wp$element$createEle)),
             "    "
         ),
         wp.element.createElement(
             "div",
-            { "class": "elementor-field-group elementor-column elementor-field-type-submit elementor-col-25 e-form__buttons elementor-sm-25" },
+            { className: "premium-newsletter-button__wrapper" },
             wp.element.createElement(
                 "button",
-                { type: "submit", "class": "elementor-button elementor-size-md pa-news-form" },
+                { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter" },
                 wp.element.createElement(
                     "span",
-                    null,
-                    wp.element.createElement("span", { "class": " elementor-button-icon" }),
-                    wp.element.createElement(
-                        "span",
-                        { "class": "elementor-button-text" },
-                        "Submit"
-                    )
+                    { className: "" },
+                    "Submit"
                 )
             )
         )
@@ -62546,38 +62545,37 @@ function edit() {
 /* harmony export (immutable) */ __webpack_exports__["a"] = save;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function save() {
+    var _wp$element$createEle;
+
     return wp.element.createElement(
         "div",
-        { "class": "elementor-form-fields-wrapper elementor-labels-" },
+        { className: "premium-newsletter__wrapper" },
         wp.element.createElement(
             "div",
-            { "class": "elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-66 elementor-sm-66 elementor-field-required" },
+            { className: "premium-newsletter-input__wrapper" },
             wp.element.createElement(
                 "label",
-                { "for": "form-field-email", "class": "elementor-field-label elementor-screen-only" },
+                { "for": "form-field-email", className: " premium-newsletter__label" },
                 "Email"
             ),
-            wp.element.createElement("input", { size: "1", type: "email", name: "form_fields[email]", id: "pa_news_email", "class": "elementor-field elementor-size-md  elementor-field-textual", placeholder: "Email", required: "required", "aria-required": "true" }),
+            wp.element.createElement("input", (_wp$element$createEle = { className: "premium-newsletter-input", type: "email", name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_wp$element$createEle, "className", ""), _defineProperty(_wp$element$createEle, "placeholder", "Email"), _defineProperty(_wp$element$createEle, "required", "required"), _defineProperty(_wp$element$createEle, "aria-required", "true"), _wp$element$createEle)),
             "    "
         ),
         wp.element.createElement(
             "div",
-            { "class": "elementor-field-group elementor-column elementor-field-type-submit elementor-col-25 e-form__buttons elementor-sm-25" },
+            { className: "premium-newsletter-button__wrapper" },
             wp.element.createElement(
                 "button",
-                { type: "submit", "class": "elementor-button elementor-size-md pa-news-form" },
+                { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter" },
                 wp.element.createElement(
                     "span",
-                    null,
-                    wp.element.createElement("span", { "class": " elementor-button-icon" }),
-                    wp.element.createElement(
-                        "span",
-                        { "class": "elementor-button-text" },
-                        "Submit"
-                    )
+                    { className: "" },
+                    "Submit"
                 )
             )
         )

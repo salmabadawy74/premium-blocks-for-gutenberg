@@ -1,16 +1,13 @@
 jQuery(document).ready(function ($) {
 
-    console.log('newsletter', $('.pa-news-form'))
-    $('.pa-news-form').on('click', function (e) {
+    $('.premium-newsletter-button-submit').on('click', function (e) {
         e.preventDefault();
-
         var email = $("#pa_news_email").val();
-
         console.log(email)
         if (checkEmail(email)) {
             $.ajax(
                 {
-                    url: 'http://localhost:8080/plugin/wp-admin/admin-ajax.php',
+                    url: settings.ajaxurl,
                     type: 'POST',
                     data: {
                         action: 'subscribe_newsletter',
@@ -18,7 +15,6 @@ jQuery(document).ready(function ($) {
                         email: email
                     },
                     success: function (response) {
-                        console.log(response.data, "response")
                         if (response.data) {
                             var status = response.data.status;
                             if (status)
@@ -32,7 +28,6 @@ jQuery(document).ready(function ($) {
                     },
                     error: function (err) {
                         console.log("err", err);
-                        console.log(settings, email)
                     }
                 }
             );
