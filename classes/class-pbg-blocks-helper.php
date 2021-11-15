@@ -86,11 +86,13 @@ class PBG_Blocks_Helper {
 
 		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
-
+    
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
-
-		// Generate Blocks Stylesheet.
+         // Add Ajax for NewsLetter
+          add_action( 'wp_ajax_subscribe_newsletter', array( $this, 'subscribe_newsletter' ) );
+           add_action( 'wp_ajax_nopriv_subscribe_newsletter',array( $this, 'subscribe_newsletter' ) );
+        // Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 
 		// Enqueue Generated stylesheet to WP Head.
@@ -203,7 +205,9 @@ class PBG_Blocks_Helper {
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
 
 		$is_lottie_enabled = self::$blocks['lottie'];
+        $is_newsletter_enabled = self::$blocks['newsletter'];
 
+	   
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -359,7 +363,39 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
+		}
+    	if ( $is_newsletter_enabled ) {
+         
+			wp_enqueue_script(
+				'pbg-newsletter-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+             	wp_enqueue_script(
+					'swal-core',
+					PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/core.js',
+					array( 'jquery' ),
+					PREMIUM_BLOCKS_VERSION,
+					true
+				);
+            	wp_enqueue_script(
+					'swal',
+					PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/sweetalert2.min.js',
+					array( 'jquery', 'swal-core' ),
+					PREMIUM_BLOCKS_VERSION,
+					true
+				);
+         
+               wp_localize_script(
+				'pbg-newsletter-js',
+				'settings',
+				array(
+			    'ajaxurl' => admin_url( 'admin-ajax.php' ) ,
+				'nonce'   => wp_create_nonce( 'pa-newsletter-block-nonce' )
+			)
+        );
 		}
 
 		// Enqueue Google Maps API Script.
@@ -374,9 +410,13 @@ class PBG_Blocks_Helper {
 				);
 			}
 		}
+        
+    
+    
+      
 
 	}
-
+		
 	/**
 	 * Add Premium Blocks category to Blocks Categories
 	 *
@@ -509,6 +549,40 @@ class PBG_Blocks_Helper {
 		global $wp_version;
 
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+	}
+
+    public function subscribe_newsletter() {
+
+		check_ajax_referer( 'pa-newsletter-block-nonce', 'security' );
+
+		if (  self::check_user_can( 'manage_options' ) ) {
+           wp_send_json_error( ' No attributes recieved' );
+		}
+
+		$email = isset( $_POST['email'] ) ? $_POST['email'] : '';
+
+		$api_url = 'https://premiumaddons.com/wp-json/mailchimp/v2/add';
+		$request = add_query_arg(
+			array(
+				'email' => $email,
+			),
+			$api_url
+		);
+
+		$response = wp_remote_get(
+			$request,
+			array(
+				'timeout'   => 60,
+				'sslverify' => true,
+			)
+		);
+
+		$body = wp_remote_retrieve_body( $response );
+		$body = json_decode( $body, true );
+
+	           wp_send_json_error( ' No attributes recieved' );
+
+
 	}
 
 	/**

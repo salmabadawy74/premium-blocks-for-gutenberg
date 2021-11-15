@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie' ,'newsletter');
 
 		private $pbg_default;
 
@@ -295,6 +295,19 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 									</td>
 
 								</tr>
+                                <tr>
+
+									<th><?php echo __( 'Premium Newsletter', 'premium-gutenberg' ); ?></th>
+									<td>
+										<label class="switch">
+											<input type="checkbox" id="newsletter" name="newsletter" <?php checked( 1, $this->pbg_get_settings['newsletter'], true ); ?>>
+											<span class="slider round"></span>
+										</label>
+									</td>
+
+									
+
+								</tr>
 							</tbody>
 						</table>
 						<input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -358,6 +371,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'videoBox'     => intval( $settings['videoBox'] ? 1 : 0 ),
 				'fancyText'    => intval( $settings['fancyText'] ? 1 : 0 ),
 				'lottie'       => intval( $settings['lottie'] ? 1 : 0 ),
+                'newsletter'   => intval( $settings['newsletter'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );

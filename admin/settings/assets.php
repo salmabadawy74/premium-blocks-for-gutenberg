@@ -30,6 +30,7 @@ if( ! class_exists('PBG_Settings') ) {
 
             add_action( 'wp_ajax_pb_maps', array( $this, 'pb_save_maps_settings' ) );
 
+
         }
 
         //Create Google Maps API submenu
@@ -133,6 +134,10 @@ if( ! class_exists('PBG_Settings') ) {
 
             return $enabled_keys;
         }
+
+        // subscribe_newsletter
+
+
 
         /**
         * Save map block configuration settings
