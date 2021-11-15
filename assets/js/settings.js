@@ -16,7 +16,8 @@ export const {
     iconBox,
     videoBox,
     fancyText,
-    lottie
+    lottie,
+    newsletter
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
