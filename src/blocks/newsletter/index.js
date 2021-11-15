@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 
 
 registerBlockType("premium/newsletter", {
-    title: __("Newsletter"),
+    title: __(" MailChimp Newsletter"),
     icon: <PbgIcon icon="section" />,
     category: "premium-blocks",
     attributes: {
