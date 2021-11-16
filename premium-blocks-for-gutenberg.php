@@ -29,7 +29,8 @@ define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.8.9' );
 define( 'PBG_TABLET_BREAKPOINT', '976' );
 define( 'PBG_MOBILE_BREAKPOINT', '767' );
 
-require_once PREMIUM_BLOCKS_PATH . 'includes/plugin.php';
+
+require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
 
 /*
  * Initialize Plugin Main Class

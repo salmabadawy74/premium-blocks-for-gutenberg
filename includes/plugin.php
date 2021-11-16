@@ -26,10 +26,23 @@ if ( ! class_exists( 'Premium_Blocks_Gutenberg' ) ) {
 		 * Constructor for the class
 		 */
 		public function __construct() {
-
 			// Enqueue the required files.
 			$this->premium_gutenberg_setup();
+
+            add_action('plugins_loaded', array($this, 'load_plugin'));
 		}
+
+        /*
+         * Load necessary files
+         * @since 1.0.0
+         * @access public
+         * @return void
+         */
+
+        public function load_plugin()
+        {
+            require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter.php';
+        }
 
 		/**
 		 * Premium Gutenberg Setup

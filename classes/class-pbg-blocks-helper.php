@@ -551,39 +551,7 @@ class PBG_Blocks_Helper {
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 	}
 
-    public function subscribe_newsletter() {
 
-		check_ajax_referer( 'pa-newsletter-block-nonce', 'security' );
-
-		if (  self::check_user_can( 'manage_options' ) ) {
-           wp_send_json_error( ' No attributes recieved' );
-		}
-
-		$email = isset( $_POST['email'] ) ? $_POST['email'] : '';
-
-		$api_url = 'https://premiumaddons.com/wp-json/mailchimp/v2/add';
-		$request = add_query_arg(
-			array(
-				'email' => $email,
-			),
-			$api_url
-		);
-
-		$response = wp_remote_get(
-			$request,
-			array(
-				'timeout'   => 60,
-				'sslverify' => true,
-			)
-		);
-
-		$body = wp_remote_retrieve_body( $response );
-		$body = json_decode( $body, true );
-
-	           wp_send_json_error( ' No attributes recieved' );
-
-
-	}
 
 	/**
 	 * Print Stylsheet
