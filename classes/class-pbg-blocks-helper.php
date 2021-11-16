@@ -89,9 +89,7 @@ class PBG_Blocks_Helper {
     
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
-         // Add Ajax for NewsLetter
-          add_action( 'wp_ajax_subscribe_newsletter', array( $this, 'subscribe_newsletter' ) );
-           add_action( 'wp_ajax_nopriv_subscribe_newsletter',array( $this, 'subscribe_newsletter' ) );
+       
         // Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 

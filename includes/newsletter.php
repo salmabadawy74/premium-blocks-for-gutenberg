@@ -29,13 +29,13 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
         /**
          * Constructor
          */
-        public function __construct() {
+ 	public function __construct() {
 
             add_action( 'init', array( $this, 'register_blocks' ) );
 
             add_action( 'wp_ajax_subscribe_newsletter', array( $this, 'subscribe_newsletter' ) );
             add_action( 'wp_ajax_nopriv_subscribe_newsletter', array( $this, 'subscribe_newsletter' ) );
-            // add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
+             add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
         }
 
         // Check if the register function exists.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
             }
             $common_attributes = $this->get_post_attributes();
             register_block_type(
-                'premium/newsletter',
+                "premium/newsletter",
                 array(
                     'attributes'      => $common_attributes,
                     'render_callback' => array( $this, 'post_callback' ),
@@ -103,7 +103,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
             // Cache the settings.
             
             ob_start();
-            $this->get_post_html( $attributes, $query );
+            $this->get_post_html( $attributes);
             // Output the post markup.
             return ob_get_clean();
         }
@@ -116,13 +116,14 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          * @since 0.0.1
          */
         public function get_post_html( $attributes) {
-             ?><div className="premium-newsletter__wrapper">
-            <div className="premium-newsletter-input__wrapper">
-                <label for="form-field-email" className=" premium-newsletter__label">Email</label>
-                <input className={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" className="" placeholder="Email" required="required" aria-required="true" />				</div>
-            <div className="premium-newsletter-button__wrapper">
-                <button type="submit" className="premium-newsletter-button-submit" id="submit-newsletter">
-                    <span className="">Submit</span>
+             ?>
+             <div class="premium-newsletter__wrapper">
+            <div class="premium-newsletter-input__wrapper">
+                <label for="form-field-email" class=" premium-newsletter__label">Email</label>
+                <input class={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" class="" placeholder="Email" required="required" aria-required="true" />				</div>
+            <div class="premium-newsletter-button__wrapper">
+                <button type="submit" class="premium-newsletter-button-submit" id="submit-newsletter">
+                    <span class="">Submit</span>
                 </button>
             </div>
         </div>
@@ -142,19 +143,20 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 
     public function subscribe_newsletter() {
 
-		$email =$attributes['email'];
+		$email ="Samar.nasr@google.com";
         if ( empty( $email ) ) {
-            return false;
+            return 4;
         }
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return false;
         }
         
-        $apikey  = $attributes['api'];
-        $list_id = $attributes['list_id'];
+        $apikey  = '2512c0b14881e64f3de0ba6f97b94159-us20';
+        $list_id = 8286186162;
         $status  = false;
         if ( $email && $apikey && $list_id ) {
+            echo"ok";
             $root = 'https://api.mailchimp.com/3.0';
             if ( strstr( $apikey, '-' ) ) {
                 list( $key, $dc ) = explode( '-', $apikey, 2 );
@@ -227,18 +229,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          *
          * @since 1.14.0
          */
-        public function render_meta_author( $attributes ) {
-            if ( ! $attributes['displayPostAuthor'] ) {
-                return;
-            }
-            ?>
-            <span class="premium-blog-post-author premium-blog-meta-data">
-                <span class="dashicons-admin-users dashicons"></span>
-                <?php the_author_posts_link(); ?>
-            </span>
-            <span class="premium-blog-meta-separtor">.</span>
-            <?php
-        }
+      
         /**
          * Render Post Meta - Date HTML.
          *
@@ -246,22 +237,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          *
          * @since 1.14.0
          */
-        public function render_meta_date( $attributes ) {
-            if ( ! $attributes['displayPostDate'] ) {
-                return;
-            }
-            global $post;
-            ?>
-            <div class="premium-blog-post-time premium-blog-meta-data">
-            <time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>"
-                class="premium-blog-post-time premium-blog-meta-data">
-                <span class="dashicons-calendar dashicons"></span>
-                <?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
-            </time>
-            <span class="premium-blog-meta-separtor">.</span>
-            </div>
-            <?php
-        }
+       
         /**
          * Render Post Meta - Comment HTML.
          *
@@ -306,88 +282,60 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          * @since 0.0.1
          */
         public function add_post_dynamic_script() {
-            if ( isset( self::$grid_settings['masonry'] ) && ! isset( self::$grid_settings['carousel'] ) ) {
-                foreach ( self::$grid_settings['masonry'] as $key => $value ) {
+        
                     ?>
-                    <script type="text/javascript" id="Post_Masnory">
+                    <script type="text/javascript" id="NewsLetter">
                     jQuery( document ).ready( function( $ ) {
-                $( '.premium-blog-wrap' ).each( function() {    
-                    var selector    = $(this);
-                var masonryArgs = {
-                    itemSelector    : '.premium-blog-post-outer-container',
-                    percentPosition : true,
-                    layoutMode      : 'masonry',
-                };
-                var $isotopeObj = {};
-                selector.imagesLoaded( function() {
-                    $isotopeObj = selector.isotope( masonryArgs );
-                    $isotopeObj.imagesLoaded().progress(function() {
-                        $isotopeObj.isotope("layout");
-                    });
-                    selector.find('.premium-blog-post-outer-container').resize( function() {
-                        $isotopeObj.isotope( 'layout' );
-                                    });
-                                });
-                });
-                });
+                 $('.premium-newsletter-button-submit').on('click', function (e) {
+                    e.preventDefault();
+                    var email = $("#pa_news_email").val();
+                    console.log(email)
+                    if (checkEmail(email)) {
+                        $.ajax(
+                            {
+                                url: settings.ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'subscribe_newsletter',
+                                    security: settings.nonce,
+                                    email: email
+                                },
+                                success: function (response) {
+                                    if (response.data) {
+                                        var status = response.data.status;
+                                        if (status)
+                                            swal({
+                                                title: 'Thanks for subscribing!',
+                                                text: 'Click OK to continue',
+                                                type: 'success'
+                                            });
+                                    }
+                                    console.log(response)
+
+                                },
+                                error: function (err) {
+                                    console.log("err", err);
+                                }
+                            }
+                        );
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Invalid Email Address...',
+                                text: 'Please enter a valid email address!'
+                            });
+                        }
+
+                    })
+                function checkEmail(emailAddress) {
+                    var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
+                    return pattern.test(emailAddress);
+                }
+            })
                     </script>
                     <?php
-                }
-            }
-            if ( isset( self::$grid_settings['carousel'] ) ) {
+             
 
-                foreach ( self::$grid_settings['carousel'] as $key => $value ) {
-                    $dots          = ( 'dots' === $value['navigationDots'] || 'arrows_dots' === $value['navigationDots'] ) ? true : false;
-                    $arrows        = ( 'arrows' === $value['navigationArrow'] || 'arrows_dots' === $value['navigationArrow'] ) ? true : false;
-                    $tcolumns      = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
-                    $mcolumns      = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
-                    $slideToScroll = ( isset( $value['slideToScroll'] ) );
-                    $is_rtl        = is_rtl();
-                    ?>
-                                <script type="text/javascript" id="Post_Carousel ">
-                                
-                                jQuery( document ).ready( function( $ ) {
-                                    var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
-                                    var $scope = $( '.premium-blog' ).find( '.premium-blog-wrap' );
-                                    if ( cols >= $scope.children().length ) {
-                                        return;
-                                    }
-                                    var setting = {
-                                    'slidesToShow' :cols,
-                                    'slidesToScroll' :<?php echo esc_html( $value['slideToScroll'] ); ?> ,
-                                    'autoplaySpeed' : <?php echo esc_html( $value['autoplaySpeed'] ); ?>,
-                                    'autoplay' : Boolean( '<?php echo esc_html( $value['Autoplay'] ); ?>' ),
-                                    'arrows' : Boolean( '<?php echo esc_html( $value['navigationArrow'] ); ?>' ),
-                                    'dots' : Boolean( '<?php echo esc_html( $value['navigationDots'] ); ?>' ),
-                                    'centerMode' :  Boolean( '<?php echo esc_html( $value['centerMode'] ); ?>' ),       
-                                    'responsive' : [
-                                        {
-                                            'breakpoint' : 1024,
-                                            'settings' : {
-                                                'slidesToShow' : <?php echo esc_html( $tcolumns ); ?> ,
-                                                'slidesToScroll' : 1,
-                                            }
-                                        },
-                                        {
-                                            'breakpoint' : 767,
-                                            'settings' : {
-                                                'slidesToShow' :<?php echo esc_html( $mcolumns ); ?>,
-                                                'slidesToScroll' : 1,
-                                            }
-                                        }
-                                    ]
-                                                    };
-                                    $scope.imagesLoaded( function() {
-                                    $scope.slick(
-                                        setting
-                                    );
-                                    });
-                                })
-                                </script>
-                
-                    <?php
-                }
-            }
         }
         /**
          * Render Complete Box Link HTML.

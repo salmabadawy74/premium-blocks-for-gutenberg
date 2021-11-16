@@ -15,20 +15,17 @@
 /**
  * Exit if accessed directly
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if( ! defined( 'ABSPATH' ) ) exit;
 
-// Define plugin constants
-define( 'PREMIUM_BLOCKS_VERSION', '1.9.0' );
-define( 'PREMIUM_BLOCKS_URL', plugins_url( '/', __FILE__ ) );
-define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path( __FILE__ ) );
-define( 'PREMIUM_BLOCKS_FILE', __FILE__ );
-define( 'PREMIUM_BLOCKS_BASENAME', plugin_basename( __FILE__ ) );
-define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.8.9' );
+//Define plugin constants
+define( 'PREMIUM_BLOCKS_VERSION', '1.8.4');
+define( 'PREMIUM_BLOCKS_URL', plugins_url('/', __FILE__) );
+define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path(__FILE__) );
+define( 'PREMIUM_BLOCKS_FILE', __FILE__);
+define( 'PREMIUM_BLOCKS_BASENAME', plugin_basename(__FILE__) );
+define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.8.3');
 define( 'PBG_TABLET_BREAKPOINT', '976' );
 define( 'PBG_MOBILE_BREAKPOINT', '767' );
-
 
 require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
 
@@ -36,4 +33,4 @@ require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
  * Initialize Plugin Main Class
  * @return void
  */
-add_action( 'init', array( 'Premium_Blocks_Gutenberg', 'get_instance' ) );
+add_action('init', array('Premium_Blocks_Gutenberg','get_instance') );
