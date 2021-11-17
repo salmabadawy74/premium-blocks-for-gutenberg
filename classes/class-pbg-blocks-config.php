@@ -78,6 +78,13 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textBGOpacity'           => '1',
 						),
 					),
+					'premium/test'      => array(
+						'slug'       => '',
+						'default'    => true,
+						'attributes' => array(
+							'classMigrate'    => false,
+						),
+					),
 					'premium/accordion'      => array(
 						'slug'       => '',
 						'default'    => true,

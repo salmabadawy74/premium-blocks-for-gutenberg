@@ -204,6 +204,8 @@ class PBG_Blocks_Helper {
 
 		$is_lottie_enabled = self::$blocks['lottie'];
 
+		$is_test_enabled = self::$blocks['test'];
+
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -318,6 +320,16 @@ class PBG_Blocks_Helper {
 			wp_enqueue_script(
 				'pbg-sectionicon-box',
 				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+
+		if($is_test_enabled) {
+			wp_enqueue_script(
+				'pbg-sectiontest',
+				PREMIUM_BLOCKS_URL . 'assets/js/test.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -575,6 +587,9 @@ class PBG_Blocks_Helper {
 			case 'premium/fancy-text':
 				$css += $this->get_fancy_text_css( $blockattr, $block_id );
 				break;
+				case 'premium/test':
+					$css += $this->get_test_css( $blockattr, $block_id );
+					break;
 			case 'premium/accordion':
 				$css += $this->get_accordion_css( $blockattr, $block_id );
 				break;
@@ -643,6 +658,8 @@ class PBG_Blocks_Helper {
 
 		return $css;
 	}
+
+	public static function get_test1_css( $attr, $id ) {}
 
 	/**
 	 * Get Fancy Text Block CSS
