@@ -1,11 +1,13 @@
 import React from 'react'
+import classnames from "classnames";
+
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
-const { withSelect } = wp.data
+// const { withSelect } = wp.data
 
 export function edit({ isSelected, setAttributes, clientId, className, attributes }) {
     const {
@@ -23,52 +25,52 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
     const COLUMNS = [
 
         {
-            value: "20%",
+            value: "20",
             label: "20%"
         },
         {
-            value: "25%",
+            value: "25",
             label: "25%"
         },
         {
-            value: "30%",
+            value: "30",
             label: "30%"
         },
         {
-            value: "33%",
+            value: "33",
             label: "33%"
         },
         {
-            value: "40%",
+            value: "40",
             label: "40%"
         },
         {
-            value: "50%",
+            value: "50",
             label: "50%"
         },
         {
-            value: "60%",
+            value: "60",
             label: "60%"
         },
         {
-            value: "66%",
+            value: "66",
             label: "66%"
         },
         {
-            value: "70%",
+            value: "70",
             label: "70%"
         },
         {
-            value: "75%",
+            value: "75",
             label: '75%'
         },
         {
-            value: "80%",
+            value: "80",
             label: "80%"
         },
 
         {
-            value: "100%",
+            value: "100",
             label: "100%"
         }
     ];
@@ -378,16 +380,58 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
                 />
             </PanelBody>
         </InspectorControls>,
-        <div className="premium-newsletter__wrapper">
-            <div className="premium-newsletter-input__wrapper">
-                <label for="form-field-email" className=" premium-newsletter__label">Email</label>
-                <input className={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" className="" placeholder="Email" required="required" aria-required="true" />				</div>
-            <div className="premium-newsletter-button__wrapper">
-                <button type="submit" className="premium-newsletter-button-submit" id="submit-newsletter">
+        <div
+            id={`premium-newsLetter-${block_id}`}
+            className={classnames(className, "premium-newsletter__wrapper")}>
+            <div className={classnames("premium-newsletter-input__wrapper", `col-${inputStyles[0].inputColumnWidth}`)}
+                style={{
+                    paddingRight: `calc(${columnGap}px / 2)`,
+                    paddingLeft: `calc(${columnGap}px / 2)`,
+                    marginBottom: `${rowGap}px`,
+
+                }}
+            >
+                {inputStyles[0].showLabel ? <label for="form-field-email" className=" premium-newsletter__label">{inputStyles[0].label}</label>
+                    : null}
+                <input className={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" className="" placeholder={inputStyles[0].placeholder} required={inputStyles[0].required ? "required" : false} aria-required="true" style={{
+                    color: inputStyles[0].textColor,
+                    fontFamily: inputStyles[0].textFontFamily,
+                    fontSize: inputStyles[0].textSize,
+                    fontWeight: inputStyles[0].textWeight,
+                    fontStyle: inputStyles[0].textStyle,
+                    letterSpacing: inputStyles[0].textLetter,
+                    textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
+                    lineHeight: inputStyles[0].textLine,
+                    backgroundColor: inputStyles[0].textBackColor,
+                    borderStyle: inputStyles[0].textBorderType,
+                    borderColor: inputStyles[0].textBorderColor,
+                    borderRadius: inputStyles[0].textBorderRadius,
+                }} />				</div>
+            <div className="premium-newsletter-button__wrapper" style={{
+                paddingRight: `calc(${columnGap}px / 2)`,
+                paddingLeft: `calc(${columnGap}px / 2)`,
+                marginBottom: `${rowGap}px`,
+
+            }}>
+                <button type="submit" className="premium-newsletter-button-submit" id="submit-newsletter"
+                    style={{
+                        color: btnStyles[0].btnColor,
+                        backgroundColor: btnStyles[0].btnBackColor,
+                        fontFamily: btnStyles[0].btnFontFamily,
+                        fontWeight: btnStyles[0].btnWeight,
+                        fontStyle: btnStyles[0].btnStyle,
+                        letterSpacing: btnStyles[0].btnLetter,
+                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                        lineHeight: btnStyles[0].btnLine,
+                        borderStyle: btnStyles[0].btnBorderType,
+                        borderColor: btnStyles[0].btnBorderColor,
+                        borderRadius: btnStyles[0].btnBorderRadius,
+                    }}
+                >
                     <span className="">Submit</span>
                 </button>
             </div>
-        </div>
+        </div >
 
     ]
 }
