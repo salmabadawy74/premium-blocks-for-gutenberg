@@ -7,9 +7,10 @@ const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
-// const { withSelect } = wp.data
+const { withSelect } = wp.data
 
-export function edit({ isSelected, setAttributes, clientId, className, attributes }) {
+function edit(props) {
+    const { isSelected, setAttributes, clientId, className, attributes, } = props
     const {
         block_id,
         api,
@@ -76,13 +77,37 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
     ];
 
     const saveInputStyle = (value) => {
-        console.log(value)
+        const newUpdate = inputStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            inputStyles: newUpdate,
+        });
     }
     const saveButtonStyle = value => {
-        console.log(value)
+        const newUpdate = btnStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            btnStyles: newUpdate,
+        });
     }
     const saveMessageStyle = value => {
-        console.log(value)
+        const newUpdate = messageStyle.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            messageStyle: newUpdate,
+        });
     }
     return [
         isSelected && <InspectorControls key="inspector">
@@ -163,7 +188,7 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
                     label={__("Font Family")}
                     value={inputStyles[0].textFontFamily}
                     options={FONTS}
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => saveInputStyle({ textFontFamily: value })}
                 />
                 <PremiumTypo
                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
@@ -253,7 +278,7 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
                     label={__("Font Family")}
                     value={btnStyles[0].btnFontFamily}
                     options={FONTS}
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => saveButtonStyle({ btnFontFamily: value })}
                 />
                 <PremiumTypo
                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
@@ -328,7 +353,7 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
                     label={__("Font Family")}
                     value={messageStyle[0].msgFontFamily}
                     options={FONTS}
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => saveMessageStyle({ msgFontFamily: value })}
                 />
                 <PremiumTypo
                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
@@ -427,11 +452,16 @@ export function edit({ isSelected, setAttributes, clientId, className, attribute
                         borderColor: btnStyles[0].btnBorderColor,
                         borderRadius: btnStyles[0].btnBorderRadius,
                     }}
+                    onClick={() => {
+                        props.handleClick()
+                    }}
                 >
                     <span className="">Submit</span>
                 </button>
             </div>
-        </div >
+        </div >, <div>{successMessage}</div>
+
+
 
     ]
 }
@@ -441,24 +471,30 @@ export default withSelect((select, props) => {
         errorMessage,
         inputStyles
     } = props.attributes;
+    let data;
     const { setAttributes } = props;
+    function handleClick() {
+        jQuery.ajax({
+            url: PremiumSettings.ajaxurl,
+            data: {
+                action: 'subscribe_newsletter',
+                attributes: props.attributes,
+                nonce: PremiumSettings.nonce,
+            },
 
-    jQuery.ajax({
-        url: PremiumSettings.ajaxurl,
-        data: {
-            action: 'subscribe_newsletter',
-            attributes: props.attributes,
-            nonce: PremiumSettings.nonce,
-        },
-
-        type: "POST",
-        success: function (data) {
-            console.log(data)
-        },
-        error: function (err) {
-            console.log(err);
-        },
-    });
-
+            type: "POST",
+            success: function (data) {
+                data = __('Thank you for adding Your Email')
+                setAttributes({ successMessage: data })
+            },
+            error: function (err) {
+                let error_data = __('you are Wrong')
+                setAttributes({ successMessage: error_data })
+            },
+        });
+    }
+    return {
+        handleClick: handleClick,
+    };
 
 })(edit);

@@ -87,6 +87,17 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
                 'rowGap'             => array(
                     'type'    => 'number',
                     'default' => 10,
+                ),
+                'inputStyles'         =>array(
+                    'type'=>'array',
+                    'default'=>array(
+                       array(
+                           'rowGap'=>'10',
+                           'columns'=>'1',
+                           'error_message'=>''
+
+                       )
+                    )
                 )
             );
         }
@@ -101,7 +112,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
             // Render query.
          
             // Cache the settings.
-            
+            var_dump($attributes['inputStyles'][0]["rowGap"]);
             ob_start();
             $this->get_post_html( $attributes);
             // Output the post markup.
@@ -116,8 +127,12 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          * @since 0.0.1
          */
         public function get_post_html( $attributes) {
+            $id="premium-newsLetter-" . $attributes["block_id"];
+           
              ?>
-             <div class="premium-newsletter__wrapper">
+             <div
+             id="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>"
+              class="premium-newsletter__wrapper ">
             <div class="premium-newsletter-input__wrapper">
                 <label for="form-field-email" class=" premium-newsletter__label">Email</label>
                 <input class={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" class="" placeholder="Email" required="required" aria-required="true" />				</div>
@@ -139,7 +154,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          */
     public function subscribe_newsletter() {
 
-		$email ="salma.ehab@google.com";
+		$email ="salma.ehacccb@google.com";
         if ( empty( $email ) ) {
             return 4;
         }
@@ -152,7 +167,6 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
         $list_id = '8286186162';
         $status  = false;
         if ( $email && $apikey && $list_id ) {
-            echo"ok";
             $root = 'https://api.mailchimp.com/3.0';
             if ( strstr( $apikey, '-' ) ) {
                 list( $key, $dc ) = explode( '-', $apikey, 2 );
@@ -178,53 +192,25 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
             curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PUT' );
             curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
             curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
-            $response_body = curl_exec( $ch );
-            $httpCode      = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-            curl_close( $ch );
-            if ( $httpCode == 200 ) {
-                $status = true;
+           
+            $results = curl_exec($ch); // store response
+            $response = curl_getinfo($ch, CURLINFO_HTTP_CODE); // get HTTP CODE
+            $errors = curl_error($ch); // store errors
+           
             }
-        }
 	
-        $response = array(
-            'status'  => $status,
-        );
-	    return $response;
+                $results = array(
+                'results' => $result_info,
+                'response' => $response,
+                'errors' => $errors
+            );
+
+             // Sends data back to the page OR the ajax() in your JS
+            echo json_encode($results);
 	
     }
-        // public function post_pagination() {
-        //     if ( isset( $_POST['attributes'] ) ) {
-        //         $query             = PBG_Blocks_Helper::get_query_posts( $_POST['attributes'] );
-        //         $pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
-        //         wp_send_json_success( $pagination_markup );
-        //     }
-        //     wp_send_json_error( ' No attributes recieved' );
-        // }
-        // public function render_pagination( $query, $attributes ) {
-        //     $paged      = PBG_Blocks_Helper::get_paged( $query );
-        //     $page_limit = min( $attributes['pageLimit'], $query->max_num_pages );
-        //     $page_limit = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
-        //     $attributes['numOfPosts'];
-        //     $links = paginate_links(
-        //         array(
-        //             'current' => ( ! $paged ) ? 1 : $paged,
-        //             'total'   => $page_limit,
-        //             'type'    => 'array',
-        //         )
-        //     );
-        //     if ( isset( $links ) ) {
-        //         return wp_kses_post( implode( PHP_EOL, $links ) );
-        //     }
-        //     return '';
-        // }
-
-        /**
-         * Render Post Meta - Author HTML.
-         *
-         * @param array $attributes Array of block attributes.
-         *
-         * @since 1.14.0
-         */
+      
+        
       
         /**
          * Render Post Meta - Date HTML.
@@ -297,16 +283,13 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
                                     email: email
                                 },
                                 success: function (response) {
-                                    if (response.data) {
-                                        var status = response.data.status;
-                                        if (status)
                                             swal({
                                                 title: 'Thanks for subscribing!',
                                                 text: 'Click OK to continue',
                                                 type: 'success'
                                             });
-                                    }
-                                    console.log(response)
+                                    
+                                  
 
                                 },
                                 error: function (err) {
@@ -341,10 +324,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          * @since 1.7.0
          */
     }
-    /**
-     *  Prepare if class 'PBG_Post' exist.
-     *  Kicking this off by calling 'get_instance()' method
-     */
+   
     PBG_NewsLetter::get_instance();
 }
 
