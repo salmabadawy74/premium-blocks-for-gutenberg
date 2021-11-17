@@ -408,12 +408,21 @@ class PBG_Blocks_Helper {
 				);
 			}
 		}
+        wp_localize_script(
+			'pbg-editor',
+			'PremiumSettings',
+			array(
+				'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'nonce'   => wp_create_nonce( 'pa-blog-block-nonce' ),
+			)
+		);
+	}
         
     
     
       
 
-	}
+	
 		
 	/**
 	 * Add Premium Blocks category to Blocks Categories
