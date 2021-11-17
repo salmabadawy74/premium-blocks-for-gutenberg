@@ -62499,10 +62499,14 @@ registerBlockType("premium/newsletter", {
 /* harmony export (immutable) */ __webpack_exports__["a"] = edit;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_premium_typo__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_border__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_fonts__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_premium_typo__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_premium_border__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_premium_fonts__ = __webpack_require__(27);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 var _wp$blockEditor = wp.blockEditor,
@@ -62519,8 +62523,7 @@ var __ = wp.i18n.__;
 
 
 
-var withSelect = wp.data.withSelect;
-
+// const { withSelect } = wp.data
 
 function edit(_ref) {
     var _wp$element$createEle, _wp$element$createEle2, _wp$element$createEle3, _wp$element$createEle4;
@@ -62542,40 +62545,40 @@ function edit(_ref) {
         messageStyle = attributes.messageStyle;
 
     var COLUMNS = [{
-        value: "20%",
+        value: "20",
         label: "20%"
     }, {
-        value: "25%",
+        value: "25",
         label: "25%"
     }, {
-        value: "30%",
+        value: "30",
         label: "30%"
     }, {
-        value: "33%",
+        value: "33",
         label: "33%"
     }, {
-        value: "40%",
+        value: "40",
         label: "40%"
     }, {
-        value: "50%",
+        value: "50",
         label: "50%"
     }, {
-        value: "60%",
+        value: "60",
         label: "60%"
     }, {
-        value: "66%",
+        value: "66",
         label: "66%"
     }, {
-        value: "70%",
+        value: "70",
         label: "70%"
     }, {
-        value: "75%",
+        value: "75",
         label: '75%'
     }, {
-        value: "80%",
+        value: "80",
         label: "80%"
     }, {
-        value: "100%",
+        value: "100",
         label: "100%"
     }];
 
@@ -62699,12 +62702,12 @@ function edit(_ref) {
             wp.element.createElement(SelectControl, {
                 label: __("Font Family"),
                 value: inputStyles[0].textFontFamily,
-                options: __WEBPACK_IMPORTED_MODULE_3__components_premium_fonts__["a" /* default */],
+                options: __WEBPACK_IMPORTED_MODULE_4__components_premium_fonts__["a" /* default */],
                 onChange: function onChange(value) {
                     return console.log(value);
                 }
             }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle = {
                 components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
                 setAttributes: saveInputStyle,
                 fontSizeType: {
@@ -62763,7 +62766,7 @@ function edit(_ref) {
                     return saveInputStyle({ textBackColor: newValue });
                 }
             }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                 borderType: inputStyles[0].textBorderType,
                 top: inputStyles[0].textBorderTop,
                 right: inputStyles[0].textBorderRight,
@@ -62826,12 +62829,12 @@ function edit(_ref) {
             wp.element.createElement(SelectControl, {
                 label: __("Font Family"),
                 value: btnStyles[0].btnFontFamily,
-                options: __WEBPACK_IMPORTED_MODULE_3__components_premium_fonts__["a" /* default */],
+                options: __WEBPACK_IMPORTED_MODULE_4__components_premium_fonts__["a" /* default */],
                 onChange: function onChange(value) {
                     return console.log(value);
                 }
             }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle2 = {
                 components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
                 setAttributes: saveButtonStyle,
                 fontSizeType: {
@@ -62879,7 +62882,7 @@ function edit(_ref) {
             }), _defineProperty(_wp$element$createEle2, "onChangeUpper", function onChangeUpper(check) {
                 return saveButtonStyle({ btnUpper: check });
             }), _wp$element$createEle2)),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_border__["a" /* default */], {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_premium_border__["a" /* default */], {
                 borderType: btnStyles[0].btnBorderType,
                 top: btnStyles[0].btnBorderTop,
                 right: btnStyles[0].btnBorderRight,
@@ -62920,12 +62923,12 @@ function edit(_ref) {
             wp.element.createElement(SelectControl, {
                 label: __("Font Family"),
                 value: messageStyle[0].msgFontFamily,
-                options: __WEBPACK_IMPORTED_MODULE_3__components_premium_fonts__["a" /* default */],
+                options: __WEBPACK_IMPORTED_MODULE_4__components_premium_fonts__["a" /* default */],
                 onChange: function onChange(value) {
                     return console.log(value);
                 }
             }),
-            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components_premium_typo__["a" /* default */], (_wp$element$createEle3 = {
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_premium_typo__["a" /* default */], (_wp$element$createEle3 = {
                 components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
                 setAttributes: saveMessageStyle,
                 fontSizeType: {
@@ -62998,24 +63001,65 @@ function edit(_ref) {
         )
     ), wp.element.createElement(
         "div",
-        { className: "premium-newsletter__wrapper" },
+        {
+            id: "premium-newsLetter-" + block_id,
+            className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, "premium-newsletter__wrapper") },
         wp.element.createElement(
             "div",
-            { className: "premium-newsletter-input__wrapper" },
-            wp.element.createElement(
+            { className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
+                style: {
+                    paddingRight: "calc(" + columnGap + "px / 2)",
+                    paddingLeft: "calc(" + columnGap + "px / 2)",
+                    marginBottom: rowGap + "px"
+
+                }
+            },
+            inputStyles[0].showLabel ? wp.element.createElement(
                 "label",
                 { "for": "form-field-email", className: " premium-newsletter__label" },
-                "Email"
-            ),
-            wp.element.createElement("input", (_wp$element$createEle4 = { className: "premium-newsletter-input", type: "email", name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_wp$element$createEle4, "className", ""), _defineProperty(_wp$element$createEle4, "placeholder", "Email"), _defineProperty(_wp$element$createEle4, "required", "required"), _defineProperty(_wp$element$createEle4, "aria-required", "true"), _wp$element$createEle4)),
+                inputStyles[0].label
+            ) : null,
+            wp.element.createElement("input", (_wp$element$createEle4 = { className: "premium-newsletter-input", type: "email", name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_wp$element$createEle4, "className", ""), _defineProperty(_wp$element$createEle4, "placeholder", inputStyles[0].placeholder), _defineProperty(_wp$element$createEle4, "required", inputStyles[0].required ? "required" : false), _defineProperty(_wp$element$createEle4, "aria-required", "true"), _defineProperty(_wp$element$createEle4, "style", {
+                color: inputStyles[0].textColor,
+                fontFamily: inputStyles[0].textFontFamily,
+                fontSize: inputStyles[0].textSize,
+                fontWeight: inputStyles[0].textWeight,
+                fontStyle: inputStyles[0].textStyle,
+                letterSpacing: inputStyles[0].textLetter,
+                textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
+                lineHeight: inputStyles[0].textLine,
+                backgroundColor: inputStyles[0].textBackColor,
+                borderStyle: inputStyles[0].textBorderType,
+                borderColor: inputStyles[0].textBorderColor,
+                borderRadius: inputStyles[0].textBorderRadius
+            }), _wp$element$createEle4)),
             "    "
         ),
         wp.element.createElement(
             "div",
-            { className: "premium-newsletter-button__wrapper" },
+            { className: "premium-newsletter-button__wrapper", style: {
+                    paddingRight: "calc(" + columnGap + "px / 2)",
+                    paddingLeft: "calc(" + columnGap + "px / 2)",
+                    marginBottom: rowGap + "px"
+
+                } },
             wp.element.createElement(
                 "button",
-                { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter" },
+                { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter",
+                    style: {
+                        color: btnStyles[0].btnColor,
+                        backgroundColor: btnStyles[0].btnBackColor,
+                        fontFamily: btnStyles[0].btnFontFamily,
+                        fontWeight: btnStyles[0].btnWeight,
+                        fontStyle: btnStyles[0].btnStyle,
+                        letterSpacing: btnStyles[0].btnLetter,
+                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                        lineHeight: btnStyles[0].btnLine,
+                        borderStyle: btnStyles[0].btnBorderType,
+                        borderColor: btnStyles[0].btnBorderColor,
+                        borderRadius: btnStyles[0].btnBorderRadius
+                    }
+                },
                 wp.element.createElement(
                     "span",
                     { className: "" },

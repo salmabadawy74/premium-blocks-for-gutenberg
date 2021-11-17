@@ -137,13 +137,9 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
          * @param array  $attributes Array of block attributes.
          * @since 1.18.1
          */
-       
-
-      
-
     public function subscribe_newsletter() {
 
-		$email ="Samar.nasr@google.com";
+		$email ="salma.ehab@google.com";
         if ( empty( $email ) ) {
             return 4;
         }
@@ -152,8 +148,8 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
         return false;
         }
         
-        $apikey  = '2512c0b14881e64f3de0ba6f97b94159-us20';
-        $list_id = 8286186162;
+        $apikey  = 'a53946fe4bfb630bac6432d2fc0ea00e-us20';
+        $list_id = '8286186162';
         $status  = false;
         if ( $email && $apikey && $list_id ) {
             echo"ok";
