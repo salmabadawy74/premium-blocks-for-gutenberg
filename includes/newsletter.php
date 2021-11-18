@@ -174,7 +174,6 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 			if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
 				return false;
 			}
-
 			$apikey  = $attributes['api'];
 			$list_id = $attributes['list_id'];
 			$status  = false;
@@ -221,55 +220,6 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 				echo json_encode( $results );
 
 		}
-
-
-
-		/**
-		 * Render Post Meta - Date HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 1.14.0
-		 */
-
-		/**
-		 * Render Post Meta - Comment HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 1.14.0
-		 */
-
-		/**
-		 * Render Post Meta - Comment HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 1.14.0
-		 */
-
-		/**
-		 * Render Post Meta HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 */
-
-			/****
-			 *
-			 *
-			 * Render The Post Title
-			 *
-			 * @param array $attributes Array of block attributes.
-			 */
-
-		/**
-		 * Render Post Excerpt HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 0.0.1
-		 */
-
 		/**
 		 * Render Script of the block.
 		 *
@@ -278,8 +228,6 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 		public function add_post_dynamic_script() {
 
 			foreach ( self::$newsletter_settings as $key => $value ) {
-				var_dump( $key )
-
 				?>
 				<script type="text/javascript" id="NewsLetter">
 					jQuery( document ).ready( function( $ ) {
@@ -298,14 +246,10 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 									attributes:<?php array( $value['api'], $value['list_id'], $value['eMail'] ); ?>
 								},
 								success: function (response) {
-											swal({
-												title: 'Thanks for subscribing!',
-												text: 'Click OK to continue',
-												type: 'success'
-											});
+										
 									
 								  
-
+					$value['success_message']="Thank you for submitting Form"
 								},
 								error: function (err) {
 									console.log("err", err);
@@ -313,11 +257,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 							}
 						);
 						} else {
-							swal({
-								type: 'error',
-								title: 'Invalid Email Address...',
-								text: 'Please enter a valid email address!'
-							});
+						
 						}
 
 					})
