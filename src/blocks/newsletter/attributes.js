@@ -29,6 +29,10 @@ const attributes = {
         type: "number",
         default: 10
     },
+    eMail: {
+        type: "string",
+
+    },
     inputStyles: {
         type: 'array',
         default: [
@@ -37,7 +41,7 @@ const attributes = {
                 label: __('Email'),
                 placeholder: '',
                 required: true,
-                inputColumnWidth: '100%',
+                inputColumnWidth: '100',
                 textColor: '',
                 textFontFamily: '',
                 textSizeUnit: "",
@@ -53,7 +57,7 @@ const attributes = {
                 textBorderType: 'none',
                 textBorderTop: 1,
                 textBorderRight: 1,
-                textBorderBotto: 1,
+                textBorderBottom: 1,
                 textBorderLeft: 1,
                 textBorderColor: '',
                 textBorderRadius: 0,

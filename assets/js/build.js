@@ -64268,6 +64268,7 @@ function edit(props) {
         errorMessage = attributes.errorMessage,
         columnGap = attributes.columnGap,
         rowGap = attributes.rowGap,
+        eMail = attributes.eMail,
         inputStyles = attributes.inputStyles,
         btnStyles = attributes.btnStyles,
         messageStyle = attributes.messageStyle;
@@ -64406,7 +64407,7 @@ function edit(props) {
             },
             _react2.default.createElement(ToggleControl, {
                 label: __("Label"),
-                value: inputStyles[0].showLabel,
+                checked: inputStyles[0].showLabel,
                 onChange: function onChange(value) {
                     return saveInputStyle({ showLabel: value });
                 }
@@ -64768,10 +64769,13 @@ function edit(props) {
             },
             inputStyles[0].showLabel ? _react2.default.createElement(
                 "label",
-                { "for": "form-field-email", className: " premium-newsletter__label" },
+                { "for": "form-field-email", className: "premium-newsletter__label" },
                 inputStyles[0].label
             ) : null,
-            _react2.default.createElement("input", (_React$createElement4 = { className: "premium-newsletter-input", type: "email", name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "required", inputStyles[0].required ? "required" : false), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "style", {
+            _react2.default.createElement("input", (_React$createElement4 = { className: "premium-newsletter-input", type: "email", value: eMail, name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "onChange", function onChange(_ref3) {
+                var value = _ref3.target.value;
+                return setAttributes({ eMail: value });
+            }), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "required", inputStyles[0].required ? "required" : false), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "style", {
                 color: inputStyles[0].textColor,
                 fontFamily: inputStyles[0].textFontFamily,
                 fontSize: inputStyles[0].textSize,
@@ -64784,8 +64788,7 @@ function edit(props) {
                 borderStyle: inputStyles[0].textBorderType,
                 borderColor: inputStyles[0].textBorderColor,
                 borderRadius: inputStyles[0].textBorderRadius
-            }), _React$createElement4)),
-            "    "
+            }), _React$createElement4))
         ),
         _react2.default.createElement(
             "div",
@@ -64834,6 +64837,7 @@ exports.default = withSelect(function (select, props) {
         errorMessage = _props$attributes.errorMessage,
         inputStyles = _props$attributes.inputStyles;
 
+    console.log(props.attributes);
     var data = void 0;
     var setAttributes = props.setAttributes;
 
@@ -64850,6 +64854,7 @@ exports.default = withSelect(function (select, props) {
             success: function success(data) {
                 data = __('Thank you for adding Your Email');
                 setAttributes({ successMessage: data });
+                console.log(data);
             },
             error: function error(err) {
                 var error_data = __('you are Wrong');
@@ -64957,6 +64962,10 @@ var attributes = {
         type: "number",
         default: 10
     },
+    eMail: {
+        type: "string"
+
+    },
     inputStyles: {
         type: 'array',
         default: [{
@@ -64964,7 +64973,7 @@ var attributes = {
             label: __('Email'),
             placeholder: '',
             required: true,
-            inputColumnWidth: '100%',
+            inputColumnWidth: '100',
             textColor: '',
             textFontFamily: '',
             textSizeUnit: "",
@@ -64980,7 +64989,7 @@ var attributes = {
             textBorderType: 'none',
             textBorderTop: 1,
             textBorderRight: 1,
-            textBorderBotto: 1,
+            textBorderBottom: 1,
             textBorderLeft: 1,
             textBorderColor: '',
             textBorderRadius: 0

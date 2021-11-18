@@ -86,11 +86,11 @@ class PBG_Blocks_Helper {
 
 		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
-    
+
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
-       
-        // Generate Blocks Stylesheet.
+
+		// Generate Blocks Stylesheet.
 		add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 
 		// Enqueue Generated stylesheet to WP Head.
@@ -202,10 +202,9 @@ class PBG_Blocks_Helper {
 
 		$is_fancy_text_enabled = self::$blocks['fancyText'];
 
-		$is_lottie_enabled = self::$blocks['lottie'];
-        $is_newsletter_enabled = self::$blocks['newsletter'];
+		$is_lottie_enabled     = self::$blocks['lottie'];
+		$is_newsletter_enabled = self::$blocks['newsletter'];
 
-	   
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -362,8 +361,8 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-    	if ( $is_newsletter_enabled ) {
-         
+		if ( $is_newsletter_enabled ) {
+
 			wp_enqueue_script(
 				'pbg-newsletter-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
@@ -371,29 +370,29 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-             	wp_enqueue_script(
+				wp_enqueue_script(
 					'swal-core',
 					PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/core.js',
 					array( 'jquery' ),
 					PREMIUM_BLOCKS_VERSION,
 					true
 				);
-            	wp_enqueue_script(
+				wp_enqueue_script(
 					'swal',
 					PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/sweetalert2.min.js',
 					array( 'jquery', 'swal-core' ),
 					PREMIUM_BLOCKS_VERSION,
 					true
 				);
-         
-               wp_localize_script(
+
+			wp_localize_script(
 				'pbg-newsletter-js',
 				'settings',
 				array(
-			    'ajaxurl' => admin_url( 'admin-ajax.php' ) ,
-				'nonce'   => wp_create_nonce( 'pa-newsletter-block-nonce' )
-			)
-        );
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'nonce'   => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+				)
+			);
 		}
 
 		// Enqueue Google Maps API Script.
@@ -408,7 +407,7 @@ class PBG_Blocks_Helper {
 				);
 			}
 		}
-        wp_localize_script(
+		wp_localize_script(
 			'pbg-editor',
 			'PremiumSettings',
 			array(
@@ -417,13 +416,13 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
-        
-    
-    
-      
 
-	
-		
+
+
+
+
+
+
 	/**
 	 * Add Premium Blocks category to Blocks Categories
 	 *
@@ -653,6 +652,9 @@ class PBG_Blocks_Helper {
 				break;
 			case 'premium/lottie':
 				$css += $this->get_lottie_css( $blockattr, $block_id );
+				break;
+			case 'premium/newsletter':
+				$css += $this->get_newsLetter_css( $blockattr, $block_id );
 				break;
 			default:
 				// Nothing to do here.
@@ -1576,6 +1578,93 @@ class PBG_Blocks_Helper {
 
 		return $generated_css;
 	}
+
+
+	public static function get_newsLetter_css( $attr, $id ) {
+		$defaults = self::$block_atts['premium/newsletter']['attributes'];
+
+		$attr = array_merge( $defaults, (array) $attr );
+
+		$m_selectors = array();
+		$t_selectors = array();
+
+		$selectors = array(
+
+			' .premium-newsletter-input__wrapper '        => array(
+				'padding-right' => 'calc(' . $attr['columnGap'] . 'px / 2 )',
+				'padding-left'  => 'calc(' . $attr['columnGap'] . 'px / 2 )',
+				'margin-bottom' => $attr['rowGap'] . 'px',
+			),
+			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
+				'color'            => $attr['inputStyles'][0]['textColor'],
+				'font-family'      => $attr['inputStyles'][0]['textFontFamily'],
+				'font-size'        => $attr['inputStyles'][0]['textSize'] . 'px',
+				'font-weight'      => $attr['inputStyles'][0]['textWeight'],
+				'font-style'       => $attr['inputStyles'][0]['textStyle'],
+				'letter-spacing'   => $attr['inputStyles'][0]['textLetter'] . 'px',
+				'text-transform'   => $attr['inputStyles'][0]['textUpper'] ? 'uppercase' : 'none',
+				'line-height'      => $attr['inputStyles'][0]['textLine'],
+				'background-color' => $attr['inputStyles'][0]['textBackColor'],
+				'border-style'     => $attr['inputStyles'][0]['textBorderType'],
+				'border-color'     => $attr['inputStyles'][0]['textBorderColor'],
+				'border-radius'    => $attr['inputStyles'][0]['textBorderRadius'],
+
+			),
+			' .premium-newsletter-button__wrapper button' => array(
+				'color'            => $attr['btnStyles'][0]['btnColor'],
+				'background-color' => $attr['btnStyles'][0]['btnBackColor'],
+				'font-family'      => $attr['btnStyles'][0]['btnFontFamily'],
+				'font-weight'      => $attr['btnStyles'][0]['btnWeight'],
+				'font-size'        => $attr['btnStyles'][0]['btnSize'] . 'px',
+				'font-style'       => $attr['btnStyles'][0]['btnStyle'],
+				'letter-spacing'   => $attr['btnStyles'][0]['btnLetter'],
+				'text-transform'   => $attr['btnStyles'][0]['btnUpper'] ? 'uppercase' : 'none',
+				'line-height'      => $attr['btnStyles'][0]['btnLine'],
+				'border-style'     => $attr['btnStyles'][0]['btnBorderType'],
+				'border-color'     => $attr['btnStyles'][0]['btnBorderColor'],
+				'border-radius'    => $attr['btnStyles'][0]['btnBorderRadius'],
+			),
+
+		);
+
+		$t_selectors = array(
+			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
+				'font-size' => $attr['inputStyles'][0]['textSizeTablet'] . 'px',
+
+			),
+			' .premium-newsletter-button__wrapper button' => array(
+				'font-size' => $attr['btnStyles'][0]['btnSizeTablet'] . 'px',
+			),
+
+		);
+
+		$m_selectors = array(
+			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
+				'font-size' => $attr['inputStyles'][0]['textSizeMobile'] . 'px',
+
+			),
+			' .premium-newsletter-button__wrapper button' => array(
+				'font-size' => $attr['btnStyles'][0]['btnSizeMobile'] . 'px',
+			),
+		);
+
+		$base_selector = '#premium-newsLetter-not-set';
+
+		$desktop = self::generate_css( $selectors, $base_selector . $id );
+
+		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+
+		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+
+		$generated_css = array(
+			'desktop' => $desktop,
+			'tablet'  => $tablet,
+			'mobile'  => $mobile,
+		);
+
+		return $generated_css;
+	}
+
 
 	/**
 	 * Generate CSS

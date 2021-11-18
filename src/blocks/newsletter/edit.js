@@ -19,6 +19,7 @@ function edit(props) {
         errorMessage,
         columnGap,
         rowGap,
+        eMail,
         inputStyles,
         btnStyles,
         messageStyle,
@@ -155,7 +156,7 @@ function edit(props) {
             >
                 <ToggleControl
                     label={__(`Label`)}
-                    value={inputStyles[0].showLabel}
+                    checked={inputStyles[0].showLabel}
                     onChange={value => saveInputStyle({ showLabel: value })}
                 />
                 <TextControl
@@ -416,9 +417,9 @@ function edit(props) {
 
                 }}
             >
-                {inputStyles[0].showLabel ? <label for="form-field-email" className=" premium-newsletter__label">{inputStyles[0].label}</label>
+                {inputStyles[0].showLabel ? <label for="form-field-email" className="premium-newsletter__label" >{inputStyles[0].label}</label>
                     : null}
-                <input className={`premium-newsletter-input`} type="email" name="form_fields[email]" id="pa_news_email" className="" placeholder={inputStyles[0].placeholder} required={inputStyles[0].required ? "required" : false} aria-required="true" style={{
+                <input className={`premium-newsletter-input`} type="email" value={eMail} name="form_fields[email]" id="pa_news_email" className="" onChange={({ target: { value } }) => setAttributes({ eMail: value })} placeholder={inputStyles[0].placeholder} required={inputStyles[0].required ? "required" : false} aria-required="true" style={{
                     color: inputStyles[0].textColor,
                     fontFamily: inputStyles[0].textFontFamily,
                     fontSize: inputStyles[0].textSize,
@@ -431,7 +432,8 @@ function edit(props) {
                     borderStyle: inputStyles[0].textBorderType,
                     borderColor: inputStyles[0].textBorderColor,
                     borderRadius: inputStyles[0].textBorderRadius,
-                }} />				</div>
+                }} />
+            </div>
             <div className="premium-newsletter-button__wrapper" style={{
                 paddingRight: `calc(${columnGap}px / 2)`,
                 paddingLeft: `calc(${columnGap}px / 2)`,
@@ -471,6 +473,7 @@ export default withSelect((select, props) => {
         errorMessage,
         inputStyles
     } = props.attributes;
+    console.log(props.attributes)
     let data;
     const { setAttributes } = props;
     function handleClick() {
@@ -486,6 +489,7 @@ export default withSelect((select, props) => {
             success: function (data) {
                 data = __('Thank you for adding Your Email')
                 setAttributes({ successMessage: data })
+                console.log(data)
             },
             error: function (err) {
                 let error_data = __('you are Wrong')
