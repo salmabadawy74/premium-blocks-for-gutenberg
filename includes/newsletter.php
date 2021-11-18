@@ -99,7 +99,6 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 							'showLabel'        => true,
 							'label'            => __( 'Email' ),
 							'placeholder'      => __( 'Email' ),
-							'required'         => true,
 							'inputColumnWidth' => '100',
 						),
 					),
@@ -147,7 +146,7 @@ if ( ! class_exists( 'PBG_NewsLetter' ) ) {
 			  <?php if ( $attributes['inputStyles'][0]['showLabel'] ) : ?>
 				<label for="form-field-email" class="premium-newsletter__label"><?php $attributes['inputStyles'][0]['label']; ?></label>
 				<?php endif; ?>
-				<input class="premium-newsletter-input" type="email" value="<?php echo esc_html( $attributes['eMail'] ); ?>" name="form_fields[email]" id="pa_news_email" class="" placeholder="Email" required="required" aria-required="true" />				</div>
+				<input class="premium-newsletter-input" type="email" value="<?php echo esc_html( $attributes['eMail'] ); ?>" name="form_fields[email]" id="pa_news_email" class="" placeholder="Email"  aria-required="true" />				</div>
 			<div class="premium-newsletter-button__wrapper">
 				<button type="submit" class="premium-newsletter-button-submit" id="submit-newsletter">
 					<span class="">Submit</span>
