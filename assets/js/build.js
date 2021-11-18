@@ -64753,75 +64753,81 @@ function edit(props) {
             })
         )
     ), _react2.default.createElement(
-        "div",
-        {
-            id: "premium-newsLetter-" + block_id,
-            className: (0, _classnames2.default)(className, "premium-newsletter__wrapper") },
+        "form",
+        { onSubmit: function onSubmit() {
+                props.handleClick();
+            } },
         _react2.default.createElement(
             "div",
-            { className: (0, _classnames2.default)("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
-                style: {
-                    paddingRight: "calc(" + columnGap + "px / 2)",
-                    paddingLeft: "calc(" + columnGap + "px / 2)",
-                    marginBottom: rowGap + "px"
-
-                }
-            },
-            inputStyles[0].showLabel ? _react2.default.createElement(
-                "label",
-                { "for": "form-field-email", className: "premium-newsletter__label" },
-                inputStyles[0].label
-            ) : null,
-            _react2.default.createElement("input", (_React$createElement4 = { className: "premium-newsletter-input", type: "email", value: eMail, name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "onChange", function onChange(_ref3) {
-                var value = _ref3.target.value;
-                return setAttributes({ eMail: value });
-            }), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "required", inputStyles[0].required ? "required" : false), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "style", {
-                color: inputStyles[0].textColor,
-                fontFamily: inputStyles[0].textFontFamily,
-                fontSize: inputStyles[0].textSize,
-                fontWeight: inputStyles[0].textWeight,
-                fontStyle: inputStyles[0].textStyle,
-                letterSpacing: inputStyles[0].textLetter,
-                textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
-                lineHeight: inputStyles[0].textLine,
-                backgroundColor: inputStyles[0].textBackColor,
-                borderStyle: inputStyles[0].textBorderType,
-                borderColor: inputStyles[0].textBorderColor,
-                borderRadius: inputStyles[0].textBorderRadius
-            }), _React$createElement4))
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "premium-newsletter-button__wrapper", style: {
-                    paddingRight: "calc(" + columnGap + "px / 2)",
-                    paddingLeft: "calc(" + columnGap + "px / 2)",
-                    marginBottom: rowGap + "px"
-
-                } },
+            {
+                id: "premium-newsLetter-" + block_id,
+                className: (0, _classnames2.default)(className, "premium-newsletter__wrapper") },
             _react2.default.createElement(
-                "button",
-                { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter",
+                "div",
+                { className: (0, _classnames2.default)("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
                     style: {
-                        color: btnStyles[0].btnColor,
-                        backgroundColor: btnStyles[0].btnBackColor,
-                        fontFamily: btnStyles[0].btnFontFamily,
-                        fontWeight: btnStyles[0].btnWeight,
-                        fontStyle: btnStyles[0].btnStyle,
-                        letterSpacing: btnStyles[0].btnLetter,
-                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                        lineHeight: btnStyles[0].btnLine,
-                        borderStyle: btnStyles[0].btnBorderType,
-                        borderColor: btnStyles[0].btnBorderColor,
-                        borderRadius: btnStyles[0].btnBorderRadius
-                    },
-                    onClick: function onClick() {
-                        props.handleClick();
+                        paddingRight: "calc(" + columnGap + "px / 2)",
+                        paddingLeft: "calc(" + columnGap + "px / 2)",
+                        marginBottom: rowGap + "px"
+
                     }
                 },
+                inputStyles[0].showLabel ? _react2.default.createElement(
+                    "label",
+                    { "for": "form-field-email", className: "premium-newsletter__label" },
+                    inputStyles[0].label
+                ) : null,
+                _react2.default.createElement("input", (_React$createElement4 = { className: "premium-newsletter-input", type: "email", value: eMail, name: "form_fields[email]", id: "pa_news_email" }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "onChange", function onChange(_ref3) {
+                    var value = _ref3.target.value;
+                    return setAttributes({ eMail: value });
+                }), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "style", {
+                    color: inputStyles[0].textColor,
+                    fontFamily: inputStyles[0].textFontFamily,
+                    fontSize: inputStyles[0].textSize,
+                    fontWeight: inputStyles[0].textWeight,
+                    fontStyle: inputStyles[0].textStyle,
+                    letterSpacing: inputStyles[0].textLetter,
+                    textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
+                    lineHeight: inputStyles[0].textLine,
+                    backgroundColor: inputStyles[0].textBackColor,
+                    borderStyle: inputStyles[0].textBorderType,
+                    borderColor: inputStyles[0].textBorderColor,
+                    borderRadius: inputStyles[0].textBorderRadius
+                }), _React$createElement4))
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "premium-newsletter-button__wrapper", style: {
+                        paddingRight: "calc(" + columnGap + "px / 2)",
+                        paddingLeft: "calc(" + columnGap + "px / 2)",
+                        marginBottom: rowGap + "px"
+
+                    } },
                 _react2.default.createElement(
-                    "span",
-                    { className: "" },
-                    "Submit"
+                    "button",
+                    { type: "submit", className: "premium-newsletter-button-submit", id: "submit-newsletter",
+                        style: {
+                            color: btnStyles[0].btnColor,
+                            backgroundColor: btnStyles[0].btnBackColor,
+                            fontFamily: btnStyles[0].btnFontFamily,
+                            fontWeight: btnStyles[0].btnWeight,
+                            fontStyle: btnStyles[0].btnStyle,
+                            letterSpacing: btnStyles[0].btnLetter,
+                            textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                            lineHeight: btnStyles[0].btnLine,
+                            borderStyle: btnStyles[0].btnBorderType,
+                            borderColor: btnStyles[0].btnBorderColor,
+                            borderRadius: btnStyles[0].btnBorderRadius
+                        },
+                        onClick: function onClick() {
+                            props.handleClick();
+                        }
+                    },
+                    _react2.default.createElement(
+                        "span",
+                        { className: "" },
+                        "Submit"
+                    )
                 )
             )
         )
@@ -64854,7 +64860,6 @@ exports.default = withSelect(function (select, props) {
             success: function success(data) {
                 data = __('Thank you for adding Your Email');
                 setAttributes({ successMessage: data });
-                console.log(data);
             },
             error: function error(err) {
                 var error_data = __('you are Wrong');
