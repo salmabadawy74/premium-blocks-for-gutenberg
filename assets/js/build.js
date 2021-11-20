@@ -407,7 +407,7 @@ module.exports = hexToRgba;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return videoBox; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return fancyText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return lottie; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return test; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return template; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FontAwesomeEnabled; });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
@@ -428,7 +428,7 @@ var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks,
     videoBox = _PremiumBlocksSetting.videoBox,
     fancyText = _PremiumBlocksSetting.fancyText,
     lottie = _PremiumBlocksSetting.lottie,
-    test = _PremiumBlocksSetting.test;
+    template = _PremiumBlocksSetting.template;
 
 //Plugin Config Keys
 
@@ -6861,7 +6861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_video_box__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_fancy_text__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_lottie__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_test__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__blocks_template__ = __webpack_require__(362);
 
 
 
@@ -62474,167 +62474,27 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 var test1Attrs = {
-    stretchSection: {
-        type: "boolean",
-        default: false
-    },
-    innerWidthType: {
-        type: "string",
-        default: "boxed"
-    },
-    isUpdated: {
-        type: "boolean",
-        default: false
-    },
-    horAlign: {
-        type: "string",
-        default: "center"
-    },
-    height: {
-        type: "string",
-        default: "min"
-    },
-    innerWidth: {
-        type: "number"
-    },
-    minHeight: {
-        type: "number"
-    },
-    minHeightUnit: {
-        type: "string"
-    },
-    vPos: {
-        type: "string",
-        default: "top"
-    },
-    color: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginTop: {
-        type: "number"
-    },
-    marginBottom: {
-        type: "number"
-    },
-    marginLeft: {
-        type: "number"
-    },
-    marginRight: {
-        type: "number"
-    },
-    marginUnit: {
-        type: "string"
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    block_id: {
-        type: "string"
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
+    isLibraryOpen: {
         type: 'boolean',
         default: false
     },
-    hideMobile: {
+    isOpenModal: {
         type: 'boolean',
         default: false
+    },
+    template: {
+        type: 'object',
+        default: []
     }
 };
 
-registerBlockType("premium/test", {
-    title: __("Test1"),
-    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "test" }),
+registerBlockType("premium/template", {
+    title: __("template"),
+    icon: wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */], { icon: "template" }),
     category: "premium-blocks",
     attributes: test1Attrs,
     supports: {
-        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* test */]
+        inserter: __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__["n" /* template */]
     },
     edit: __WEBPACK_IMPORTED_MODULE_2__edit__["a" /* default */],
     save: __WEBPACK_IMPORTED_MODULE_3__save__["a" /* default */]
@@ -62647,6 +62507,7 @@ registerBlockType("premium/test", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(365);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62654,6 +62515,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 // import { dispatch } from '@wordpress/data'
@@ -62666,7 +62528,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
-    useCallback = _wp$element.useCallback;
+    useCallback = _wp$element.useCallback,
+    useState = _wp$element.useState;
 var applyFilters = wp.hooks.applyFilters;
 var dispatch = wp.data.dispatch;
 var _wp$blocks = wp.blocks,
@@ -62697,21 +62560,21 @@ var edit = function (_Component) {
     }
 
     _createClass(edit, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
-            var _this2 = this;
 
             // Assigning id in the attribute.
             this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
             this.props.setAttributes({ classMigrate: true });
 
-            setTimeout(function () {
-                _this2.renderText("premium/button", _this2.props.attributes, []);
-            }, 2000);
+            // setTimeout(() => {
+            //     this.renderText("premium/button", this.props.attributes, []);
+            // }, 2000);
+
         }
     }, {
-        key: "renderText",
+        key: 'renderText',
         value: function renderText(blockName, attributes, innerBlocks) {
             // useCallback((blockName, attributes, innerBlocks) => {
             var _dispatch = dispatch('core/block-editor'),
@@ -62727,7 +62590,7 @@ var edit = function (_Component) {
             // }, [this.props.clientId])
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             var _props = this.props,
                 attributes = _props.attributes,
@@ -62736,61 +62599,31 @@ var edit = function (_Component) {
             var block_id = attributes.block_id,
                 align = attributes.align,
                 className = attributes.className,
-                prefix = attributes.prefix,
-                suffix = attributes.suffix,
-                repeaterFancyText = attributes.repeaterFancyText,
-                effect = attributes.effect,
-                fancyTextColor = attributes.fancyTextColor,
-                fancyTextfontSize = attributes.fancyTextfontSize,
-                fancyTextfontSizeMobile = attributes.fancyTextfontSizeMobile,
-                fancyTextfontSizeTablet = attributes.fancyTextfontSizeTablet,
-                fancyTextfontSizeUnit = attributes.fancyTextfontSizeUnit,
-                fancyTextWeight = attributes.fancyTextWeight,
-                fancyTextUpper = attributes.fancyTextUpper,
-                fancyTextStyle = attributes.fancyTextStyle,
-                fancyTextLetter = attributes.fancyTextLetter,
-                fancyTextBGColor = attributes.fancyTextBGColor,
-                shadowColor = attributes.shadowColor,
-                shadowBlur = attributes.shadowBlur,
-                shadowHorizontal = attributes.shadowHorizontal,
-                shadowVertical = attributes.shadowVertical,
-                cursorColor = attributes.cursorColor,
-                textColor = attributes.textColor,
-                textfontSize = attributes.textfontSize,
-                textfontSizeMobile = attributes.textfontSizeMobile,
-                textfontSizeTablet = attributes.textfontSizeTablet,
-                textfontSizeUnit = attributes.textfontSizeUnit,
-                textWeight = attributes.textWeight,
-                textLetter = attributes.textLetter,
-                textUpper = attributes.textUpper,
-                textStyle = attributes.textStyle,
-                textBGColor = attributes.textBGColor,
-                loop = attributes.loop,
-                cursorShow = attributes.cursorShow,
-                cursorMark = attributes.cursorMark,
-                typeSpeed = attributes.typeSpeed,
-                backSpeed = attributes.backSpeed,
-                startdelay = attributes.startdelay,
-                backdelay = attributes.backdelay,
-                animationSpeed = attributes.animationSpeed,
-                pauseTime = attributes.pauseTime,
-                hoverPause = attributes.hoverPause,
-                fancyalign = attributes.fancyalign,
-                fancyTextBGOpacity = attributes.fancyTextBGOpacity,
-                textBGOpacity = attributes.textBGOpacity,
-                hideDesktop = attributes.hideDesktop,
-                hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                isLibraryOpen = attributes.isLibraryOpen,
+                isOpenModal = attributes.isOpenModal;
 
+            // const [isLibraryOpen, setIsLibraryOpen] = useState(false) 
 
-            var ALIGNS = ["left", "center", "right"];
-            var EFFECT = [{
-                label: __("Typing"),
-                value: "typing"
-            }, {
-                label: __("Slide"),
-                value: "slide"
-            }];
+            var setIsLibraryOpen = function setIsLibraryOpen(value) {
+                setAttributes({
+                    isLibraryOpen: value
+                });
+                fetch('https://websitedemos.net/wp-json/astra-sites/v1/sites-and-pages', {
+                    method: 'GET' // or 'PUT'
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log('Success:', Object.values(data));
+                    var designList = Object.values(data).map(function (design, name) {
+                        setAttributes({
+                            template: Object.values(data)
+                        });
+                        console.log(design);
+                    });
+                }).catch(function (error) {
+                    console.error('Error:', error);
+                });
+            };
 
             return [isSelected && wp.element.createElement(
                 BlockControls,
@@ -62806,22 +62639,46 @@ var edit = function (_Component) {
                 null,
                 wp.element.createElement(PanelBody, {
                     title: __("General Settings"),
-                    className: "premium-panel-body",
+                    className: 'premium-panel-body',
                     initialOpen: false
                 })
             ), wp.element.createElement(
-                "div",
+                'div',
                 {
-                    className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, "premium-block-" + block_id),
+                    className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-block-' + block_id),
                     style: {
                         textAlign: align
                     }
                 },
                 wp.element.createElement(
-                    "p",
-                    { className: "premium-test" },
-                    "Test1"
-                )
+                    'button',
+                    {
+                        className: 'premium-template',
+                        onClick: function onClick() {
+                            setIsLibraryOpen(true);
+                        } },
+                    __("Add New Template")
+                ),
+                isLibraryOpen && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__modal__["a" /* default */], {
+                    onClose: function onClose() {
+                        setIsLibraryOpen(false);
+                    },
+                    attributes: attributes,
+                    setAttributes: this.props.setAttributes
+                    // onSelect={ designData => {
+                    // 	const {
+                    // 		name, attributes, innerBlocks, serialized,
+                    // 	} = designData
+
+                    // 	if ( name && attributes ) {
+                    // 		replaceBlockWithAttributes( name, applyFilters( 'stackable.design-library.attributes', attributes ), innerBlocks || [] )
+                    // 	} else if ( serialized ) {
+                    // 		replaceBlocWithContent( serialized )
+                    // 	} else {
+                    // 		console.error( 'Design library selection failed: No block data found' ) // eslint-disable-line no-console
+                    // 	}
+                    // } }
+                })
             )];
         }
     }]);
@@ -62891,20 +62748,92 @@ var save = function save(props) {
         hideMobile = _props$attributes.hideMobile;
 
 
-    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-test');
+    var mainClasses = __WEBPACK_IMPORTED_MODULE_0_classnames___default()(className, 'premium-template');
 
     return wp.element.createElement(
         'div',
         null,
         wp.element.createElement(
             'p',
-            { className: 'premium-test' },
+            { className: 'premium-template' },
             'Test1'
         )
     );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (save);
+
+/***/ }),
+/* 365 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    useCallback = _wp$element.useCallback,
+    useState = _wp$element.useState;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    Modal = _wp$components.Modal;
+
+var modal = function (_Component) {
+    _inherits(modal, _Component);
+
+    function modal() {
+        _classCallCheck(this, modal);
+
+        return _possibleConstructorReturn(this, (modal.__proto__ || Object.getPrototypeOf(modal)).apply(this, arguments));
+    }
+
+    _createClass(modal, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
+            var block_id = attributes.block_id,
+                align = attributes.align,
+                className = attributes.className,
+                isLibraryOpen = attributes.isLibraryOpen,
+                template = attributes.template;
+
+            console.log('template', template, isLibraryOpen);
+
+            var templates = template.map(function (item, i) {
+                return wp.element.createElement(
+                    Button,
+                    { variant: "secondary", onClick: _this2.props.onClose },
+                    item.title
+                );
+            });
+
+            return wp.element.createElement(
+                Modal,
+                { title: "This is my modal", onRequestClose: this.props.onClose },
+                templates
+            );
+        }
+    }]);
+
+    return modal;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (modal);
 
 /***/ })
 /******/ ]);

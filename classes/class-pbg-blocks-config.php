@@ -78,7 +78,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 							'textBGOpacity'           => '1',
 						),
 					),
-					'premium/test'      => array(
+					'premium/template'      => array(
 						'slug'       => '',
 						'default'    => true,
 						'attributes' => array(

@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'test' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'template' );
 
 		private $pbg_default;
 
@@ -294,10 +294,10 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 										</label>
 									</td>
 
-									<th><?php echo __( 'Premium Test1', 'premium-gutenberg' ); ?></th>
+									<th><?php echo __( 'Premium Template', 'premium-gutenberg' ); ?></th>
 									<td>
 										<label class="switch">
-											<input type="checkbox" id="test" name="test" <?php checked( 1, $this->pbg_get_settings['test'], true ); ?>>
+											<input type="checkbox" id="template" name="template" <?php checked( 1, $this->pbg_get_settings['template'], true ); ?>>
 											<span class="slider round"></span>
 										</label>
 									</td>
@@ -366,7 +366,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'videoBox'     => intval( $settings['videoBox'] ? 1 : 0 ),
 				'fancyText'    => intval( $settings['fancyText'] ? 1 : 0 ),
 				'lottie'       => intval( $settings['lottie'] ? 1 : 0 ),
-				'test'    => intval( $settings['test'] ? 1 : 0 ),
+				'template'    => intval( $settings['template'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );

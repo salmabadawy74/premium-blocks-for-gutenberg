@@ -53,12 +53,12 @@ const save = props => {
     } = props.attributes;
 
 
-    const mainClasses = classnames(className, 'premium-test');
+    const mainClasses = classnames(className, 'premium-template');
 
     return (
         <div
         >
-            <p className="premium-test">Test1</p>
+            <p className="premium-template">Test1</p>
         </div>
     );
 };

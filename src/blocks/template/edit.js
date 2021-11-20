@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import ModalTemplate from './modal'
 // import { dispatch } from '@wordpress/data'
 // import {
 //     createBlock, parse, createBlocksFromInnerBlocksTemplate,
@@ -8,7 +9,7 @@ import classnames from "classnames";
 
 const { __ } = wp.i18n;
 
-const { Component, useCallback } = wp.element;
+const { Component, useCallback, useState } = wp.element;
 const { applyFilters } = wp.hooks;
 const { dispatch } = wp.data;
 const { createBlock, createBlocksFromInnerBlocksTemplate } = wp.blocks;
@@ -43,9 +44,9 @@ class edit extends Component {
 
         this.props.setAttributes({ classMigrate: true });
 
-        setTimeout(() => {
-            this.renderText("premium/button", this.props.attributes, []);
-        }, 2000);
+        // setTimeout(() => {
+        //     this.renderText("premium/button", this.props.attributes, []);
+        // }, 2000);
 
 
     }
@@ -71,64 +72,35 @@ class edit extends Component {
             block_id,
             align,
             className,
-            prefix,
-            suffix,
-            repeaterFancyText,
-            effect,
-            fancyTextColor,
-            fancyTextfontSize,
-            fancyTextfontSizeMobile,
-            fancyTextfontSizeTablet,
-            fancyTextfontSizeUnit,
-            fancyTextWeight,
-            fancyTextUpper,
-            fancyTextStyle,
-            fancyTextLetter,
-            fancyTextBGColor,
-            shadowColor,
-            shadowBlur,
-            shadowHorizontal,
-            shadowVertical,
-            cursorColor,
-            textColor,
-            textfontSize,
-            textfontSizeMobile,
-            textfontSizeTablet,
-            textfontSizeUnit,
-            textWeight,
-            textLetter,
-            textUpper,
-            textStyle,
-            textBGColor,
-            loop,
-            cursorShow,
-            cursorMark,
-            typeSpeed,
-            backSpeed,
-            startdelay,
-            backdelay,
-            animationSpeed,
-            pauseTime,
-            hoverPause,
-            fancyalign,
-            fancyTextBGOpacity,
-            textBGOpacity,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            isLibraryOpen,
+            isOpenModal
         } = attributes;
 
-        const ALIGNS = ["left", "center", "right"];
-        const EFFECT = [
-            {
-                label: __("Typing"),
-                value: "typing",
-            },
-            {
-                label: __("Slide"),
-                value: "slide",
-            },
-        ];
+        // const [isLibraryOpen, setIsLibraryOpen] = useState(false) 
+
+        const setIsLibraryOpen = (value) => {
+            setAttributes({
+                isLibraryOpen: value
+            });
+            fetch('https://websitedemos.net/wp-json/astra-sites/v1/sites-and-pages', {
+                method: 'GET', // or 'PUT'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', Object.values(data));
+                    const designList = Object.values(data).map((design, name) => {
+                        setAttributes({
+                            template: Object.values(data)
+                        });
+                        console.log(design)
+                    })
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+        }
+
 
         return [
             isSelected && (
@@ -157,7 +129,35 @@ class edit extends Component {
                     textAlign: align,
                 }}
             >
-                <p className="premium-test">Test1</p>
+                <button
+                    className="premium-template"
+                    onClick={() => {
+                        setIsLibraryOpen(true)
+                    }}>{__("Add New Template")}
+                </button>
+
+                {isLibraryOpen &&
+                    <ModalTemplate
+                        onClose={() => {
+                            setIsLibraryOpen(false)
+                        }}
+                        attributes={attributes}
+                        setAttributes={this.props.setAttributes}
+                    // onSelect={ designData => {
+                    // 	const {
+                    // 		name, attributes, innerBlocks, serialized,
+                    // 	} = designData
+
+                    // 	if ( name && attributes ) {
+                    // 		replaceBlockWithAttributes( name, applyFilters( 'stackable.design-library.attributes', attributes ), innerBlocks || [] )
+                    // 	} else if ( serialized ) {
+                    // 		replaceBlocWithContent( serialized )
+                    // 	} else {
+                    // 		console.error( 'Design library selection failed: No block data found' ) // eslint-disable-line no-console
+                    // 	}
+                    // } }
+                    />
+                }
             </div>,
         ];
     }

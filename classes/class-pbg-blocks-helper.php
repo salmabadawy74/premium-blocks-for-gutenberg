@@ -204,7 +204,7 @@ class PBG_Blocks_Helper {
 
 		$is_lottie_enabled = self::$blocks['lottie'];
 
-		$is_test_enabled = self::$blocks['test'];
+		$is_template_enabled = self::$blocks['template'];
 
 		wp_enqueue_style(
 			'pbg-frontend',
@@ -328,8 +328,8 @@ class PBG_Blocks_Helper {
 
 		if($is_test_enabled) {
 			wp_enqueue_script(
-				'pbg-sectiontest',
-				PREMIUM_BLOCKS_URL . 'assets/js/test.js',
+				'pbg-sectiontemplate',
+				PREMIUM_BLOCKS_URL . 'assets/js/template.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -587,7 +587,7 @@ class PBG_Blocks_Helper {
 			case 'premium/fancy-text':
 				$css += $this->get_fancy_text_css( $blockattr, $block_id );
 				break;
-				case 'premium/test':
+				case 'premium/template':
 					$css += $this->get_test_css( $blockattr, $block_id );
 					break;
 			case 'premium/accordion':

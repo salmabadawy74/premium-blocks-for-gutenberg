@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
     setTimeout(() => {
-        const $counters = $(".premium-test");
+        const $counters = $(".premium-template");
     }, 2000);
 });

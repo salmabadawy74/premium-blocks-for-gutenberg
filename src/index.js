@@ -12,4 +12,4 @@ import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/fancy-text"
 import "./blocks/lottie";
-import "./blocks/test";
+import "./blocks/template";
