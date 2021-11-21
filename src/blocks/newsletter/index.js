@@ -21,7 +21,5 @@ registerBlockType("premium/newsletter", {
     },
     example: {},
     edit: edit,
-    save() {
-        return null;
-    },
+    save: save,
 });
