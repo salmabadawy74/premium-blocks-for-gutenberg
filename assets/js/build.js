@@ -451,20 +451,6 @@ exports.FontAwesomeEnabled = FontAwesomeEnabled;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(124);
-} else {
-  module.exports = __webpack_require__(125);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -507,6 +493,20 @@ var PbgIcon = function (_wp$element$Component) {
 }(wp.element.Component);
 
 exports.default = PbgIcon;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(124);
+} else {
+  module.exports = __webpack_require__(125);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 6 */
@@ -574,7 +574,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -1644,7 +1644,7 @@ var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2661,7 +2661,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -3631,7 +3631,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -5205,7 +5205,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(4), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(4), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -5815,7 +5815,7 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(36));
 
@@ -6627,7 +6627,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactLifecyclesCompat = __webpack_require__(103);
 
@@ -6860,11 +6860,11 @@ module.exports = exports["default"];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
 };
 
 exports.default = iconsList;
@@ -7265,7 +7265,7 @@ __webpack_require__(362);
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -14537,7 +14537,7 @@ exports.default = deprecated;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -17277,7 +17277,7 @@ var _deprecated = __webpack_require__(224);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -19097,7 +19097,7 @@ var _save = __webpack_require__(228);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -22017,7 +22017,7 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -25268,7 +25268,7 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -27230,7 +27230,7 @@ module.exports = function () {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(4),
+var aa = __webpack_require__(5),
     n = __webpack_require__(33),
     r = __webpack_require__(100);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
@@ -30476,7 +30476,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(33);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(245);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(33);var checkPropTypes=__webpack_require__(51);var scheduler=__webpack_require__(100);var tracing=__webpack_require__(245);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -34838,7 +34838,7 @@ var _addClass = _interopRequireDefault(__webpack_require__(249));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(252));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _Transition = _interopRequireDefault(__webpack_require__(102));
 
@@ -35300,7 +35300,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = __webpack_require__(36);
 
@@ -35466,7 +35466,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -37294,7 +37294,7 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -42520,7 +42520,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -43614,7 +43614,7 @@ registerBlockType("premium/maps", {
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -49093,7 +49093,7 @@ var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -50633,7 +50633,7 @@ var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -55857,7 +55857,7 @@ var _deprecated = __webpack_require__(305);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -58464,7 +58464,7 @@ var _defineProperty2 = __webpack_require__(107);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _propTypes = __webpack_require__(17);
 
@@ -60894,7 +60894,7 @@ exports.default = deprecated;
 "use strict";
 
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -61954,7 +61954,7 @@ var _inherits2 = __webpack_require__(351);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -64168,7 +64168,7 @@ function save(props) {
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(5);
+var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -64198,9 +64198,7 @@ registerBlockType("premium/newsletter", {
     },
     example: {},
     edit: _edit2.default,
-    save: function save() {
-        return null;
-    }
+    save: _save.save
 });
 
 /***/ }),
@@ -64210,11 +64208,13 @@ registerBlockType("premium/newsletter", {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _classnames = __webpack_require__(0);
 
@@ -64236,6 +64236,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     ColorPalette = _wp$blockEditor.ColorPalette;
@@ -64246,11 +64252,812 @@ var _wp$components = wp.components,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl;
 var __ = wp.i18n.__;
-var withSelect = wp.data.withSelect;
+var addQueryArgs = wp.url.addQueryArgs;
+var _wp = wp,
+    apiFetch = _wp.apiFetch;
+var Component = wp.element.Component;
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getMailChimpAudience = _this.getMailChimpAudience.bind(_this);
+        _this.getMailChimpGroups = _this.getMailChimpGroups.bind(_this);
+        _this.getMailChimpAttributes = _this.getMailChimpAttributes.bind(_this);
+        _this.getMailChimpTags = _this.getMailChimpTags.bind(_this);
+        _this.saveAPI = _this.saveAPI.bind(_this);
+        _this.removeAPI = _this.removeAPI.bind(_this);
+        _this.state = {
+            api: "",
+            isSavedAPI: !1,
+            isSaving: !1,
+            list: !1,
+            isFetching: !1,
+            listsLoaded: !1,
+            isFetchingAttributes: !1,
+            listAttr: !1,
+            listAttrLoaded: !1,
+            isFetchingGroups: !1,
+            listGroups: !1,
+            listGroupLoaded: !1,
+            isFetchingTags: !1,
+            listTags: !1,
+            listTagsLoaded: !1
+        };
+        return _this;
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            var e = void 0;
+            wp.api.loadPromise.then(function () {
+                e = new wp.api.models.Settings(), e.fetch().then(function (e) {
+                    _this2.setState({ api: e.mail_chimp_api }), "" !== _this2.state.api && _this2.setState({ isSavedAPI: !0 });
+                });
+            });
+        }
+    }, {
+        key: "removeAPI",
+        value: function removeAPI() {
+            var _this3 = this;
+
+            this.setState({ api: "" });
+            this.state.isSavedAPI && (this.setState({ isSaving: !0 }), new wp.api.models.Settings({ mail_chimp_api: "" }).save().then(function () {
+                _this3.setState({ isSavedAPI: !1, isSaving: !1 });
+            }));
+        }
+    }, {
+        key: "saveAPI",
+        value: function saveAPI() {
+            var _this4 = this;
+
+            this.setState({ isSaving: !0 });
+            new wp.api.models.Settings({ mail_chimp_api: this.state.api }).save().then(function (e) {
+                _this4.setState({ isSaving: !1, isSavedAPI: !0 });
+            });
+        }
+    }, {
+        key: "getMailChimpAudience",
+        value: function getMailChimpAudience() {
+            var _this5 = this;
+
+            this.state.api && this.state.api.split("-")[1] ? (this.setState({ isFetching: !0 }), apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }) }).then(function (e) {
+                var t = [];e.lists.map(function (e) {
+                    t.push({ value: e.id, label: e.name });
+                }), _this5.setState({ list: t, listsLoaded: !0, isFetching: !1 });
+            }).catch(function () {
+                _this5.setState({ list: [], listsLoaded: !0, isFetching: !1 });
+            })) : this.setState({ list: [], listsLoaded: !0 });
+        }
+    }, {
+        key: "getMailChimpGroups",
+        value: function getMailChimpGroups() {
+            var _this6 = this;
+
+            this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingGroups: !0 }), apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/interest-categories/" }) }).then(function (e) {
+                var t = [];e.map(function (e) {
+                    t.push({ value: e.id, label: e.title });
+                }), _this6.setState({ listGroups: t, listGroupLoaded: !0, isFetchingGroups: !1 });
+            }).catch(function () {
+                _this6.setState({ listGroups: [], listGroupLoaded: !0, isFetchingGroups: !1 });
+            })) : this.setState({ listGroups: [], listGroupLoaded: !0 });
+        }
+    }, {
+        key: "getMailChimpTags",
+        value: function getMailChimpTags() {
+            var _this7 = this;
+
+            this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingTags: !0 }), apiFetch({
+                path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/tag-search/" })
+            }).then(function (e) {
+                var t = [];e.tags && e.tags.map(function (e) {
+                    t.push({ value: e.id, label: e.name });
+                });
+                _this7.setState({ listTags: t, listTagsLoaded: !0, isFetchingTags: !1 });
+            }).catch(function () {
+                _this7.setState({ listTags: [], listTagsLoaded: !0, isFetchingTags: !1 });
+            })) : this.setState({ listTags: [], listTagsLoaded: !0 });
+        }
+    }, {
+        key: "getMailChimpAttributes",
+        value: function getMailChimpAttributes() {
+            var _this8 = this;
+
+            if (!this.state.api || !this.props.settings[0].list.value) {
+                var e = [];
+                return e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" }), void this.setState({ listAttr: e, listAttrLoaded: !0 });
+            }
+            this.setState({ isFetchingAttributes: !0 });
+            apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/merge-fields/" }) }).then(function (e) {
+                var t = [];
+                t.push({ value: null, label: "None" }), t.push({ value: "email", label: "Email *" });
+                e.merge_fields.map(function (e, n) {
+                    t.push({ value: e.tag, label: e.name });
+                });
+                _this8.setState({ listAttr: t, listAttrLoaded: !0, isFetchingAttributes: !1 });
+            }).catch(function () {
+                var e = [];e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" });_this8.setState({ listAttr: e, listAttrLoaded: !0, isFetchingAttributes: !1 });
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4;
+
+            var _props = this.props,
+                isSelected = _props.isSelected,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId,
+                className = _props.className,
+                attributes = _props.attributes;
+            var block_id = attributes.block_id,
+                api = attributes.api,
+                list_id = attributes.list_id,
+                successMessage = attributes.successMessage,
+                errorMessage = attributes.errorMessage,
+                columnGap = attributes.columnGap,
+                rowGap = attributes.rowGap,
+                eMail = attributes.eMail,
+                inputStyles = attributes.inputStyles,
+                btnStyles = attributes.btnStyles,
+                messageStyle = attributes.messageStyle;
+
+            console.log(api, "apo");
+            var COLUMNS = [{
+                value: "20",
+                label: "20%"
+            }, {
+                value: "25",
+                label: "25%"
+            }, {
+                value: "30",
+                label: "30%"
+            }, {
+                value: "33",
+                label: "33%"
+            }, {
+                value: "40",
+                label: "40%"
+            }, {
+                value: "50",
+                label: "50%"
+            }, {
+                value: "60",
+                label: "60%"
+            }, {
+                value: "66",
+                label: "66%"
+            }, {
+                value: "70",
+                label: "70%"
+            }, {
+                value: "75",
+                label: "75%"
+            }, {
+                value: "80",
+                label: "80%"
+            }, {
+                value: "100",
+                label: "100%"
+            }];
+
+            var saveInputStyle = function saveInputStyle(value) {
+                var newUpdate = inputStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    inputStyles: newUpdate
+                });
+            };
+            var saveButtonStyle = function saveButtonStyle(value) {
+                var newUpdate = btnStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    btnStyles: newUpdate
+                });
+            };
+            var saveMessageStyle = function saveMessageStyle(value) {
+                var newUpdate = messageStyle.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    messageStyle: newUpdate
+                });
+            };
+            return [isSelected && React.createElement(
+                InspectorControls,
+                { key: "inspector" },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("General"),
+                        className: "premium-panel-body",
+                        initialOpen: true
+                    },
+                    React.createElement(TextControl, {
+                        label: __("E-mail"),
+                        value: eMail,
+                        onChange: function onChange(value) {
+                            return setAttributes({ eMail: value });
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Mailchimp Api Key"),
+                        value: api,
+                        onChange: function onChange(newURL) {
+                            return setAttributes({ api: newURL });
+                        }
+                    }),
+                    React.createElement(
+                        "button",
+                        { onClick: this.saveAPI },
+                        "save"
+                    ),
+                    React.createElement(TextControl, {
+                        label: __("List Id"),
+                        value: list_id,
+                        onChange: function onChange(newURL) {
+                            return setAttributes({ list_id: newURL });
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Message Success"),
+                        value: successMessage,
+                        onChange: function onChange(newURL) {
+                            return setAttributes({ successMessage: newURL });
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Message Error"),
+                        value: errorMessage,
+                        onChange: function onChange(newURL) {
+                            return setAttributes({ errorMessage: newURL });
+                        }
+                    }),
+                    React.createElement(RangeControl, {
+                        label: __("Column Gap"),
+                        value: columnGap,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ columnGap: newValue });
+                        }
+                    }),
+                    React.createElement(RangeControl, {
+                        label: __("Row Gap"),
+                        value: rowGap,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ rowGap: newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Input Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(ToggleControl, {
+                        label: __("Label"),
+                        checked: inputStyles[0].showLabel,
+                        onChange: function onChange(value) {
+                            return saveInputStyle({ showLabel: value });
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Label"),
+                        value: inputStyles[0].label,
+                        onChange: function onChange(newURL) {
+                            return saveInputStyle({ url: newURL });
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Placeholder"),
+                        value: inputStyles[0].placeholder,
+                        onChange: function onChange(newURL) {
+                            return saveInputStyle({ placeholder: newURL });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Required"),
+                        checked: inputStyles[0].required,
+                        onChange: function onChange(value) {
+                            return saveInputStyle({ required: value });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Column Width"),
+                        options: COLUMNS,
+                        value: inputStyles[0].inputColumnWidth,
+                        onChange: function onChange(value) {
+                            return saveInputStyle({ inputColumnWidth: value });
+                        }
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Text Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: inputStyles[0].textColor,
+                        onChange: function onChange(newValue) {
+                            return saveInputStyle({ textColor: newValue });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Font Family"),
+                        value: inputStyles[0].textFontFamily,
+                        options: _premiumFonts2.default,
+                        onChange: function onChange(value) {
+                            return saveInputStyle({ textFontFamily: value });
+                        }
+                    }),
+                    React.createElement(_premiumTypo2.default, (_React$createElement = {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveInputStyle,
+                        fontSizeType: {
+                            value: inputStyles[0].textSizeUnit,
+                            label: __("textSizeUnit")
+                        },
+                        fontSize: {
+                            value: inputStyles[0].textSize,
+                            label: __("textSize")
+                        },
+                        fontSizeMobile: {
+                            value: inputStyles[0].textSizeMobile,
+                            label: __("textSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: inputStyles[0].textSizeTablet,
+                            label: __("textSizeTablet")
+                        },
+                        weight: inputStyles[0].textWeight,
+                        style: inputStyles[0].textStyle,
+                        spacing: inputStyles[0].textLetter,
+                        upper: inputStyles[0].textUpper,
+                        line: inputStyles[0].textLine,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveInputStyle({ textSize: newSize });
+                        },
+                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
+                            return saveInputStyle({ textSizeTablet: newSize });
+                        },
+                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
+                            return saveInputStyle({ textSizeMobile: newSize });
+                        },
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveInputStyle({ textWeight: newWeight });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveInputStyle({ textLine: newValue });
+                        }
+                    }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
+                        return saveInputStyle({ textSize: newSize });
+                    }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
+                        return saveInputStyle({ textStyle: newStyle });
+                    }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
+                        return saveInputStyle({ textLetter: newValue });
+                    }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
+                        return saveInputStyle({ textUpper: check });
+                    }), _React$createElement)),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: inputStyles[0].textBackColor,
+                        onChange: function onChange(newValue) {
+                            return saveInputStyle({ textBackColor: newValue });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: inputStyles[0].textBorderType,
+                        top: inputStyles[0].textBorderTop,
+                        right: inputStyles[0].textBorderRight,
+                        bottom: inputStyles[0].textBorderBottom,
+                        left: inputStyles[0].textBorderLeft,
+                        borderColor: inputStyles[0].textBorderColor,
+                        borderRadius: inputStyles[0].textBorderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return saveInputStyle({ textBorderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
+                            return saveInputStyle({
+                                textBorderTop: top,
+                                textBorderRight: right,
+                                textBorderBottom: bottom,
+                                textBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return saveInputStyle({ textBorderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newRadius) {
+                            return saveInputStyle({ textBorderRadius: newRadius });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Button"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(SelectControl, {
+                        label: __("Column Width"),
+                        options: COLUMNS,
+                        value: btnStyles[0].btnColumn,
+                        onChange: function onChange(value) {
+                            return saveButtonStyle({ btnColumn: value });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Button Size"),
+                        value: btnStyles[0].buttonSize,
+                        onChange: function onChange(value) {
+                            return saveButtonStyle({ buttonSize: value });
+                        },
+                        options: [{ value: "small", label: __("Small") }, { value: "medium", label: __("Medium") }, { value: "large", label: __("Large") }, { value: "extralarge", label: __("Extra Large") }, { value: "full", label: __("Full") }]
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Text Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: btnStyles[0].btnColor,
+                        onChange: function onChange(newValue) {
+                            return saveButtonStyle({ btnColor: newValue });
+                        }
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Background Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: btnStyles[0].btnBackColor,
+                        onChange: function onChange(newValue) {
+                            return saveButtonStyle({ btnBackColor: newValue });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Font Family"),
+                        value: btnStyles[0].btnFontFamily,
+                        options: _premiumFonts2.default,
+                        onChange: function onChange(value) {
+                            return saveButtonStyle({ btnFontFamily: value });
+                        }
+                    }),
+                    React.createElement(_premiumTypo2.default, (_React$createElement2 = {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveButtonStyle,
+                        fontSizeType: {
+                            value: btnStyles[0].btnSizeUnit,
+                            label: __("textSizeUnit")
+                        },
+                        fontSize: {
+                            value: btnStyles[0].btnSize,
+                            label: __("textSize")
+                        },
+                        fontSizeMobile: {
+                            value: btnStyles[0].btnSizeMobile,
+                            label: __("textSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: btnStyles[0].btnSizeTablet,
+                            label: __("textSizeTablet")
+                        },
+                        weight: btnStyles[0].btnWeight,
+                        style: btnStyles[0].btnStyle,
+                        spacing: btnStyles[0].btnLetter,
+                        upper: btnStyles[0].btnUpper,
+                        line: btnStyles[0].btnLine,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveButtonStyle({ btnSize: newSize });
+                        },
+                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
+                            return saveButtonStyle({ btnSizeTablet: newSize });
+                        },
+                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
+                            return saveButtonStyle({ btnSizeMobile: newSize });
+                        },
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveButtonStyle({ btnWeight: newWeight });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveButtonStyle({ btnLine: newValue });
+                        }
+                    }, _defineProperty(_React$createElement2, "onChangeSize", function onChangeSize(newSize) {
+                        return saveButtonStyle({ btnSize: newSize });
+                    }), _defineProperty(_React$createElement2, "onChangeStyle", function onChangeStyle(newStyle) {
+                        return saveButtonStyle({ btnStyle: newStyle });
+                    }), _defineProperty(_React$createElement2, "onChangeSpacing", function onChangeSpacing(newValue) {
+                        return saveButtonStyle({ btnLetter: newValue });
+                    }), _defineProperty(_React$createElement2, "onChangeUpper", function onChangeUpper(check) {
+                        return saveButtonStyle({ btnUpper: check });
+                    }), _React$createElement2)),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: btnStyles[0].btnBorderType,
+                        top: btnStyles[0].btnBorderTop,
+                        right: btnStyles[0].btnBorderRight,
+                        bottom: btnStyles[0].btnBorderBottom,
+                        left: btnStyles[0].btnBorderLeft,
+                        borderColor: btnStyles[0].btnBorderColor,
+                        borderRadius: btnStyles[0].btnBorderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return saveButtonStyle({ borderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref2) {
+                            var top = _ref2.top,
+                                right = _ref2.right,
+                                bottom = _ref2.bottom,
+                                left = _ref2.left;
+                            return saveButtonStyle({
+                                btnBorderTop: top,
+                                btnBorderRight: right,
+                                btnBorderBottom: bottom,
+                                btnBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return saveButtonStyle({ btnBorderColor: colorValue.hex });
+                        },
+                        onChangeRadius: function onChangeRadius(newRadius) {
+                            return saveButtonStyle({ btnBorderRadius: newRadius });
+                        }
+                    }),
+                    React.createElement(RangeControl, {
+                        label: __("Vertical Spacing"),
+                        value: btnStyles[0].vPaddingSubmit,
+                        onChange: function onChange(value) {
+                            return saveButtonStyle({ vPaddingSubmit: value });
+                        },
+                        min: 0,
+                        max: 100
+                    }),
+                    React.createElement(RangeControl, {
+                        label: __("Horizontal Spacing"),
+                        value: btnStyles[0].hPaddingSubmit,
+                        onChange: function onChange(value) {
+                            return saveButtonStyle({ hPaddingSubmit: value });
+                        },
+                        min: 0,
+                        max: 100
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Message Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(SelectControl, {
+                        label: __("Font Family"),
+                        value: messageStyle[0].msgFontFamily,
+                        options: _premiumFonts2.default,
+                        onChange: function onChange(value) {
+                            return saveMessageStyle({ msgFontFamily: value });
+                        }
+                    }),
+                    React.createElement(_premiumTypo2.default, (_React$createElement3 = {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveMessageStyle,
+                        fontSizeType: {
+                            value: messageStyle[0].msgSizeUnit,
+                            label: __("textSizeUnit")
+                        },
+                        fontSize: {
+                            value: messageStyle[0].msgSize,
+                            label: __("textSize")
+                        },
+                        fontSizeMobile: {
+                            value: messageStyle[0].msgSizeMobile,
+                            label: __("textSizeMobile")
+                        },
+                        fontSizeTablet: {
+                            value: messageStyle[0].msgSizeTablet,
+                            label: __("textSizeTablet")
+                        },
+                        weight: messageStyle[0].msgWeight,
+                        style: messageStyle[0].msgStyle,
+                        spacing: messageStyle[0].msgLetter,
+                        upper: messageStyle[0].msgUpper,
+                        line: messageStyle[0].msgLine,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveMessageStyle({ msgSize: newSize });
+                        },
+                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
+                            return saveMessageStyle({ msgSizeTablet: newSize });
+                        },
+                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
+                            return saveMessageStyle({ msgSizeMobile: newSize });
+                        },
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveMessageStyle({ msgWeight: newWeight });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveMessageStyle({ msgLine: newValue });
+                        }
+                    }, _defineProperty(_React$createElement3, "onChangeSize", function onChangeSize(newSize) {
+                        return saveMessageStyle({ msgSize: newSize });
+                    }), _defineProperty(_React$createElement3, "onChangeStyle", function onChangeStyle(newStyle) {
+                        return saveMessageStyle({ msgStyle: newStyle });
+                    }), _defineProperty(_React$createElement3, "onChangeSpacing", function onChangeSpacing(newValue) {
+                        return saveMessageStyle({ msgLetter: newValue });
+                    }), _defineProperty(_React$createElement3, "onChangeUpper", function onChangeUpper(check) {
+                        return saveMessageStyle({ msgUpper: check });
+                    }), _React$createElement3)),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Message Success Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: messageStyle[0].msgSuccessColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ msgSuccessColor: newValue });
+                        }
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Message Error Color")
+                    ),
+                    React.createElement(ColorPalette, {
+                        value: messageStyle[0].msgErrorColor,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ msgErrorColor: newValue });
+                        }
+                    })
+                )
+            ), React.createElement(
+                "div",
+                {
+                    id: "premium-newsLetter-" + block_id,
+                    className: (0, _classnames2.default)(className, "premium-newsletter__wrapper", "premium-newsletter-has-" + btnStyles[0].buttonSize)
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: (0, _classnames2.default)("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
+                        style: {
+                            paddingRight: "calc(" + columnGap + "px / 2)",
+                            paddingLeft: "calc(" + columnGap + "px / 2)",
+                            marginBottom: rowGap + "px"
+                        }
+                    },
+                    inputStyles[0].showLabel ? React.createElement(
+                        "label",
+                        {
+                            "for": "form-field-email",
+                            className: "premium-newsletter__label"
+                        },
+                        inputStyles[0].label
+                    ) : null,
+                    React.createElement("input", (_React$createElement4 = {
+                        className: "premium-newsletter-input",
+                        type: "email",
+                        value: eMail,
+                        name: "form_fields[email]",
+                        id: "pa_news_email"
+                    }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "autoComplete", "off"), _defineProperty(_React$createElement4, "readOnly", true), _defineProperty(_React$createElement4, "style", {
+                        color: inputStyles[0].textColor,
+                        fontFamily: inputStyles[0].textFontFamily,
+                        fontSize: inputStyles[0].textSize,
+                        fontWeight: inputStyles[0].textWeight,
+                        fontStyle: inputStyles[0].textStyle,
+                        letterSpacing: inputStyles[0].textLetter,
+                        textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
+                        lineHeight: inputStyles[0].textLine,
+                        backgroundColor: inputStyles[0].textBackColor,
+                        borderStyle: inputStyles[0].textBorderType,
+                        borderColor: inputStyles[0].textBorderColor,
+                        borderRadius: inputStyles[0].textBorderRadius
+                    }), _React$createElement4))
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-newsletter-button__wrapper col-" + btnStyles[0].btnColumn,
+                        style: {
+                            paddingRight: "calc(" + columnGap + "px / 2)",
+                            paddingLeft: "calc(" + columnGap + "px / 2)",
+                            marginBottom: rowGap + "px"
+                        }
+                    },
+                    React.createElement(
+                        "button",
+                        {
+                            type: "submit",
+                            className: "premium-newsletter-button-submit",
+                            id: "submit-newsletter",
+                            style: {
+                                paddingRight: "calc(" + columnGap + "px / 2)",
+                                paddingLeft: "calc(" + columnGap + "px / 2)",
+                                marginBottom: rowGap + "px",
+                                color: btnStyles[0].btnColor,
+                                backgroundColor: btnStyles[0].btnBackColor,
+                                fontFamily: btnStyles[0].btnFontFamily,
+                                fontWeight: btnStyles[0].btnWeight,
+                                fontStyle: btnStyles[0].btnStyle,
+                                letterSpacing: btnStyles[0].btnLetter,
+                                textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                lineHeight: btnStyles[0].btnLine,
+                                borderStyle: btnStyles[0].btnBorderType,
+                                borderColor: btnStyles[0].btnBorderColor,
+                                borderRadius: btnStyles[0].btnBorderRadius
+                            },
+                            onClick: function onClick(e) {
+                                e.preventDefault();
+                            }
+                        },
+                        React.createElement(
+                            "span",
+                            { className: "" },
+                            "Submit"
+                        )
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+exports.default = edit;
+
+/***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
-function edit(props) {
-    var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.save = save;
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+function save(props) {
+    var _React$createElement;
 
     var isSelected = props.isSelected,
         setAttributes = props.setAttributes,
@@ -64269,503 +65076,14 @@ function edit(props) {
         btnStyles = attributes.btnStyles,
         messageStyle = attributes.messageStyle;
 
-    var COLUMNS = [{
-        value: "20",
-        label: "20%"
-    }, {
-        value: "25",
-        label: "25%"
-    }, {
-        value: "30",
-        label: "30%"
-    }, {
-        value: "33",
-        label: "33%"
-    }, {
-        value: "40",
-        label: "40%"
-    }, {
-        value: "50",
-        label: "50%"
-    }, {
-        value: "60",
-        label: "60%"
-    }, {
-        value: "66",
-        label: "66%"
-    }, {
-        value: "70",
-        label: "70%"
-    }, {
-        value: "75",
-        label: "75%"
-    }, {
-        value: "80",
-        label: "80%"
-    }, {
-        value: "100",
-        label: "100%"
-    }];
-
-    var saveInputStyle = function saveInputStyle(value) {
-        var newUpdate = inputStyles.map(function (item, index) {
-            if (0 === index) {
-                item = _extends({}, item, value);
-            }
-            return item;
-        });
-        setAttributes({
-            inputStyles: newUpdate
-        });
-    };
-    var saveButtonStyle = function saveButtonStyle(value) {
-        var newUpdate = btnStyles.map(function (item, index) {
-            if (0 === index) {
-                item = _extends({}, item, value);
-            }
-            return item;
-        });
-        setAttributes({
-            btnStyles: newUpdate
-        });
-    };
-    var saveMessageStyle = function saveMessageStyle(value) {
-        var newUpdate = messageStyle.map(function (item, index) {
-            if (0 === index) {
-                item = _extends({}, item, value);
-            }
-            return item;
-        });
-        setAttributes({
-            messageStyle: newUpdate
-        });
-    };
-    return [isSelected && _react2.default.createElement(
-        InspectorControls,
-        { key: "inspector" },
-        _react2.default.createElement(
-            PanelBody,
-            {
-                title: __("General"),
-                className: "premium-panel-body",
-                initialOpen: true
-            },
-            _react2.default.createElement(TextControl, {
-                label: __("E-mail"),
-                value: eMail,
-                onChange: function onChange(value) {
-                    return setAttributes({ eMail: value });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("Mailchimp Api Key"),
-                value: api,
-                onChange: function onChange(newURL) {
-                    return setAttributes({ api: newURL });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("List Id"),
-                value: list_id,
-                onChange: function onChange(newURL) {
-                    return setAttributes({ list_id: newURL });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("Message Success"),
-                value: successMessage,
-                onChange: function onChange(newURL) {
-                    return setAttributes({ successMessage: newURL });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("Message Error"),
-                value: errorMessage,
-                onChange: function onChange(newURL) {
-                    return setAttributes({ errorMessage: newURL });
-                }
-            }),
-            _react2.default.createElement(RangeControl, {
-                label: __("Column Gap"),
-                value: columnGap,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ columnGap: newValue });
-                }
-            }),
-            _react2.default.createElement(RangeControl, {
-                label: __("Row Gap"),
-                value: rowGap,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ rowGap: newValue });
-                }
-            })
-        ),
-        _react2.default.createElement(
-            PanelBody,
-            {
-                title: __("Input Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            _react2.default.createElement(ToggleControl, {
-                label: __("Label"),
-                checked: inputStyles[0].showLabel,
-                onChange: function onChange(value) {
-                    return saveInputStyle({ showLabel: value });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("Label"),
-                value: inputStyles[0].label,
-                onChange: function onChange(newURL) {
-                    return saveInputStyle({ url: newURL });
-                }
-            }),
-            _react2.default.createElement(TextControl, {
-                label: __("Placeholder"),
-                value: inputStyles[0].placeholder,
-                onChange: function onChange(newURL) {
-                    return saveInputStyle({ placeholder: newURL });
-                }
-            }),
-            _react2.default.createElement(ToggleControl, {
-                label: __("Required"),
-                checked: inputStyles[0].required,
-                onChange: function onChange(value) {
-                    return saveInputStyle({ required: value });
-                }
-            }),
-            _react2.default.createElement(SelectControl, {
-                label: __("Column Width"),
-                options: COLUMNS,
-                value: inputStyles[0].inputColumnWidth,
-                onChange: function onChange(value) {
-                    return saveInputStyle({ inputColumnWidth: value });
-                }
-            }),
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Text Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: inputStyles[0].textColor,
-                onChange: function onChange(newValue) {
-                    return saveInputStyle({ textColor: newValue });
-                }
-            }),
-            _react2.default.createElement(SelectControl, {
-                label: __("Font Family"),
-                value: inputStyles[0].textFontFamily,
-                options: _premiumFonts2.default,
-                onChange: function onChange(value) {
-                    return saveInputStyle({ textFontFamily: value });
-                }
-            }),
-            _react2.default.createElement(_premiumTypo2.default, (_React$createElement = {
-                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                setAttributes: saveInputStyle,
-                fontSizeType: {
-                    value: inputStyles[0].textSizeUnit,
-                    label: __("textSizeUnit")
-                },
-                fontSize: {
-                    value: inputStyles[0].textSize,
-                    label: __("textSize")
-                },
-                fontSizeMobile: {
-                    value: inputStyles[0].textSizeMobile,
-                    label: __("textSizeMobile")
-                },
-                fontSizeTablet: {
-                    value: inputStyles[0].textSizeTablet,
-                    label: __("textSizeTablet")
-                },
-                weight: inputStyles[0].textWeight,
-                style: inputStyles[0].textStyle,
-                spacing: inputStyles[0].textLetter,
-                upper: inputStyles[0].textUpper,
-                line: inputStyles[0].textLine,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveInputStyle({ textSize: newSize });
-                },
-                onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                    return saveInputStyle({ textSizeTablet: newSize });
-                },
-                onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                    return saveInputStyle({ textSizeMobile: newSize });
-                },
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveInputStyle({ textWeight: newWeight });
-                },
-                onChangeLine: function onChangeLine(newValue) {
-                    return saveInputStyle({ textLine: newValue });
-                }
-            }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
-                return saveInputStyle({ textSize: newSize });
-            }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
-                return saveInputStyle({ textStyle: newStyle });
-            }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
-                return saveInputStyle({ textLetter: newValue });
-            }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
-                return saveInputStyle({ textUpper: check });
-            }), _React$createElement)),
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Background Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: inputStyles[0].textBackColor,
-                onChange: function onChange(newValue) {
-                    return saveInputStyle({ textBackColor: newValue });
-                }
-            }),
-            _react2.default.createElement(_premiumBorder2.default, {
-                borderType: inputStyles[0].textBorderType,
-                top: inputStyles[0].textBorderTop,
-                right: inputStyles[0].textBorderRight,
-                bottom: inputStyles[0].textBorderBottom,
-                left: inputStyles[0].textBorderLeft,
-                borderColor: inputStyles[0].textBorderColor,
-                borderRadius: inputStyles[0].textBorderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveInputStyle({ textBorderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref) {
-                    var top = _ref.top,
-                        right = _ref.right,
-                        bottom = _ref.bottom,
-                        left = _ref.left;
-                    return saveInputStyle({
-                        textBorderTop: top,
-                        textBorderRight: right,
-                        textBorderBottom: bottom,
-                        textBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveInputStyle({ textBorderColor: colorValue.hex });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveInputStyle({ textBorderRadius: newRadius });
-                }
-            })
-        ),
-        _react2.default.createElement(
-            PanelBody,
-            {
-                title: __("Button"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Text Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: btnStyles[0].btnColor,
-                onChange: function onChange(newValue) {
-                    return saveButtonStyle({ btnColor: newValue });
-                }
-            }),
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Background Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: btnStyles[0].btnBackColor,
-                onChange: function onChange(newValue) {
-                    return saveButtonStyle({ btnBackColor: newValue });
-                }
-            }),
-            _react2.default.createElement(SelectControl, {
-                label: __("Font Family"),
-                value: btnStyles[0].btnFontFamily,
-                options: _premiumFonts2.default,
-                onChange: function onChange(value) {
-                    return saveButtonStyle({ btnFontFamily: value });
-                }
-            }),
-            _react2.default.createElement(_premiumTypo2.default, (_React$createElement2 = {
-                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                setAttributes: saveButtonStyle,
-                fontSizeType: {
-                    value: btnStyles[0].btnSizeUnit,
-                    label: __("textSizeUnit")
-                },
-                fontSize: {
-                    value: btnStyles[0].btnSize,
-                    label: __("textSize")
-                },
-                fontSizeMobile: {
-                    value: btnStyles[0].btnSizeMobile,
-                    label: __("textSizeMobile")
-                },
-                fontSizeTablet: {
-                    value: btnStyles[0].btnSizeTablet,
-                    label: __("textSizeTablet")
-                },
-                weight: btnStyles[0].btnWeight,
-                style: btnStyles[0].btnStyle,
-                spacing: btnStyles[0].btnLetter,
-                upper: btnStyles[0].btnUpper,
-                line: btnStyles[0].btnLine,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveButtonStyle({ btnSize: newSize });
-                },
-                onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                    return saveButtonStyle({ btnSizeTablet: newSize });
-                },
-                onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                    return saveButtonStyle({ btnSizeMobile: newSize });
-                },
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveButtonStyle({ btnWeight: newWeight });
-                },
-                onChangeLine: function onChangeLine(newValue) {
-                    return saveButtonStyle({ btnLine: newValue });
-                }
-            }, _defineProperty(_React$createElement2, "onChangeSize", function onChangeSize(newSize) {
-                return saveButtonStyle({ btnSize: newSize });
-            }), _defineProperty(_React$createElement2, "onChangeStyle", function onChangeStyle(newStyle) {
-                return saveButtonStyle({ btnStyle: newStyle });
-            }), _defineProperty(_React$createElement2, "onChangeSpacing", function onChangeSpacing(newValue) {
-                return saveButtonStyle({ btnLetter: newValue });
-            }), _defineProperty(_React$createElement2, "onChangeUpper", function onChangeUpper(check) {
-                return saveButtonStyle({ btnUpper: check });
-            }), _React$createElement2)),
-            _react2.default.createElement(_premiumBorder2.default, {
-                borderType: btnStyles[0].btnBorderType,
-                top: btnStyles[0].btnBorderTop,
-                right: btnStyles[0].btnBorderRight,
-                bottom: btnStyles[0].btnBorderBottom,
-                left: btnStyles[0].btnBorderLeft,
-                borderColor: btnStyles[0].btnBorderColor,
-                borderRadius: btnStyles[0].btnBorderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveButtonStyle({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref2) {
-                    var top = _ref2.top,
-                        right = _ref2.right,
-                        bottom = _ref2.bottom,
-                        left = _ref2.left;
-                    return saveButtonStyle({
-                        btnBorderTop: top,
-                        btnBorderRight: right,
-                        btnBorderBottom: bottom,
-                        btnBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveButtonStyle({ btnBorderColor: colorValue.hex });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveButtonStyle({ btnBorderRadius: newRadius });
-                }
-            })
-        ),
-        _react2.default.createElement(
-            PanelBody,
-            {
-                title: __("Message Style"),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            _react2.default.createElement(SelectControl, {
-                label: __("Font Family"),
-                value: messageStyle[0].msgFontFamily,
-                options: _premiumFonts2.default,
-                onChange: function onChange(value) {
-                    return saveMessageStyle({ msgFontFamily: value });
-                }
-            }),
-            _react2.default.createElement(_premiumTypo2.default, (_React$createElement3 = {
-                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                setAttributes: saveMessageStyle,
-                fontSizeType: {
-                    value: messageStyle[0].msgSizeUnit,
-                    label: __("textSizeUnit")
-                },
-                fontSize: {
-                    value: messageStyle[0].msgSize,
-                    label: __("textSize")
-                },
-                fontSizeMobile: {
-                    value: messageStyle[0].msgSizeMobile,
-                    label: __("textSizeMobile")
-                },
-                fontSizeTablet: {
-                    value: messageStyle[0].msgSizeTablet,
-                    label: __("textSizeTablet")
-                },
-                weight: messageStyle[0].msgWeight,
-                style: messageStyle[0].msgStyle,
-                spacing: messageStyle[0].msgLetter,
-                upper: messageStyle[0].msgUpper,
-                line: messageStyle[0].msgLine,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveMessageStyle({ msgSize: newSize });
-                },
-                onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                    return saveMessageStyle({ msgSizeTablet: newSize });
-                },
-                onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                    return saveMessageStyle({ msgSizeMobile: newSize });
-                },
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveMessageStyle({ msgWeight: newWeight });
-                },
-                onChangeLine: function onChangeLine(newValue) {
-                    return saveMessageStyle({ msgLine: newValue });
-                }
-            }, _defineProperty(_React$createElement3, "onChangeSize", function onChangeSize(newSize) {
-                return saveMessageStyle({ msgSize: newSize });
-            }), _defineProperty(_React$createElement3, "onChangeStyle", function onChangeStyle(newStyle) {
-                return saveMessageStyle({ msgStyle: newStyle });
-            }), _defineProperty(_React$createElement3, "onChangeSpacing", function onChangeSpacing(newValue) {
-                return saveMessageStyle({ msgLetter: newValue });
-            }), _defineProperty(_React$createElement3, "onChangeUpper", function onChangeUpper(check) {
-                return saveMessageStyle({ msgUpper: check });
-            }), _React$createElement3)),
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Message Success Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: messageStyle[0].msgSuccessColor,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ msgSuccessColor: newValue });
-                }
-            }),
-            _react2.default.createElement(
-                "p",
-                null,
-                __("Message Error Color")
-            ),
-            _react2.default.createElement(ColorPalette, {
-                value: messageStyle[0].msgErrorColor,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ msgErrorColor: newValue });
-                }
-            })
-        )
-    ), _react2.default.createElement(
+    return _react2.default.createElement(
         "form",
-        {
-            onSubmit: function onSubmit() {
-                props.handleClick();
-            }
-        },
+        null,
         _react2.default.createElement(
             "div",
             {
                 id: "premium-newsLetter-" + block_id,
-                className: (0, _classnames2.default)(className, "premium-newsletter__wrapper")
+                className: (0, _classnames2.default)(className, "premium-newsletter__wrapper", "premium-newsletter-has-" + btnStyles[0].buttonSize)
             },
             _react2.default.createElement(
                 "div",
@@ -64785,13 +65103,13 @@ function edit(props) {
                     },
                     inputStyles[0].label
                 ) : null,
-                _react2.default.createElement("input", (_React$createElement4 = {
+                _react2.default.createElement("input", (_React$createElement = {
                     className: "premium-newsletter-input",
                     type: "email",
                     value: eMail,
                     name: "form_fields[email]",
                     id: "pa_news_email"
-                }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "autoComplete", "off"), _defineProperty(_React$createElement4, "readOnly", true), _defineProperty(_React$createElement4, "style", {
+                }, _defineProperty(_React$createElement, "className", ""), _defineProperty(_React$createElement, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement, "aria-required", "true"), _defineProperty(_React$createElement, "autoComplete", "off"), _defineProperty(_React$createElement, "readOnly", true), _defineProperty(_React$createElement, "style", {
                     color: inputStyles[0].textColor,
                     fontFamily: inputStyles[0].textFontFamily,
                     fontSize: inputStyles[0].textSize,
@@ -64804,12 +65122,12 @@ function edit(props) {
                     borderStyle: inputStyles[0].textBorderType,
                     borderColor: inputStyles[0].textBorderColor,
                     borderRadius: inputStyles[0].textBorderRadius
-                }), _React$createElement4))
+                }), _React$createElement))
             ),
             _react2.default.createElement(
                 "div",
                 {
-                    className: "premium-newsletter-button__wrapper",
+                    className: "premium-newsletter-button__wrapper col-" + btnStyles[0].btnColumn,
                     style: {
                         paddingRight: "calc(" + columnGap + "px / 2)",
                         paddingLeft: "calc(" + columnGap + "px / 2)",
@@ -64823,6 +65141,9 @@ function edit(props) {
                         className: "premium-newsletter-button-submit",
                         id: "submit-newsletter",
                         style: {
+                            paddingRight: "calc(" + columnGap + "px / 2)",
+                            paddingLeft: "calc(" + columnGap + "px / 2)",
+                            marginBottom: rowGap + "px",
                             color: btnStyles[0].btnColor,
                             backgroundColor: btnStyles[0].btnBackColor,
                             fontFamily: btnStyles[0].btnFontFamily,
@@ -64838,102 +65159,6 @@ function edit(props) {
                         onClick: function onClick(e) {
                             e.preventDefault();
                         }
-                    },
-                    _react2.default.createElement(
-                        "span",
-                        { className: "" },
-                        "Submit"
-                    )
-                )
-            )
-        )
-    )];
-}
-// export default withSelect((select, props) => {
-//     const { successMessage, errorMessage, inputStyles } = props.attributes;
-//     const { setAttributes } = props;
-//     function handleClick() {
-//         jQuery.ajax({
-//             url: PremiumSettings.ajaxurl,
-//             data: {
-//                 action: "subscribe_newsletter",
-//                 attributes: props.attributes,
-//                 nonce: PremiumSettings.nonce,
-//             },
-
-//             type: "POST",
-//             success: function (data) {
-//                 data = __("Thank you for adding Your Email");
-//                 setAttributes({ successMessage: data });
-//             },
-//             error: function (err) {
-//                 let error_data = __("you are Wrong");
-//                 setAttributes({ successMessage: error_data });
-//             },
-//         });
-//     }
-//     return {
-//         handleClick: handleClick,
-//     };
-// })(edit);
-
-/***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.save = save;
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function save() {
-    var _React$createElement;
-
-    return _react2.default.createElement(
-        "form",
-        { className: "premium-newsletter-form", action: "", method: "post" },
-        _react2.default.createElement(
-            "div",
-            { className: "premium-newsletter__wrapper" },
-            _react2.default.createElement(
-                "div",
-                { className: "premium-newsletter-input__wrapper" },
-                _react2.default.createElement(
-                    "label",
-                    {
-                        "for": "form-field-email",
-                        className: " premium-newsletter__label"
-                    },
-                    "Email"
-                ),
-                _react2.default.createElement("input", (_React$createElement = {
-                    className: "premium-newsletter-input",
-                    type: "email",
-                    name: "form_fields[email]",
-                    id: "pa_news_email"
-                }, _defineProperty(_React$createElement, "className", ""), _defineProperty(_React$createElement, "placeholder", "Email"), _defineProperty(_React$createElement, "required", "required"), _defineProperty(_React$createElement, "aria-required", "true"), _React$createElement)),
-                " "
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "premium-newsletter-button__wrapper" },
-                _react2.default.createElement(
-                    "button",
-                    {
-                        type: "submit",
-                        className: "premium-newsletter-button-submit",
-                        id: "submit-newsletter"
                     },
                     _react2.default.createElement(
                         "span",
