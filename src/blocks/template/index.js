@@ -18,7 +18,11 @@ const test1Attrs = {
         default: false
     },
     template: {
-        type: 'object',
+        type: 'array',
+        default: []
+    },
+    category: {
+        type: 'array',
         default: []
     }
 };

@@ -42,7 +42,24 @@ class edit extends Component {
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
-        this.props.setAttributes({ classMigrate: true });
+        this.props.setAttributes({
+            classMigrate: true,
+            isLibraryOpen: false
+        });
+
+        fetch('https://websitedemos.net/wp-json/wp/v2/blocks-category', {
+            method: 'GET', // or 'PUT'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', Object.values(data));
+                this.props.setAttributes({
+                    category: Object.values(data)
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
         // setTimeout(() => {
         //     this.renderText("premium/button", this.props.attributes, []);
@@ -76,7 +93,6 @@ class edit extends Component {
             isOpenModal
         } = attributes;
 
-        // const [isLibraryOpen, setIsLibraryOpen] = useState(false) 
 
         const setIsLibraryOpen = (value) => {
             setAttributes({
@@ -87,13 +103,10 @@ class edit extends Component {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Success:', Object.values(data));
-                    const designList = Object.values(data).map((design, name) => {
-                        setAttributes({
-                            template: Object.values(data)
-                        });
-                        console.log(design)
-                    })
+                    // console.log('Success:', Object.values(data));
+                    setAttributes({
+                        template: Object.values(data)
+                    });
                 })
                 .catch((error) => {
                     console.error('Error:', error);

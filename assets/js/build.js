@@ -62462,7 +62462,7 @@ function save(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_js_settings__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__save__ = __webpack_require__(365);
 
 
 
@@ -62483,7 +62483,11 @@ var test1Attrs = {
         default: false
     },
     template: {
-        type: 'object',
+        type: 'array',
+        default: []
+    },
+    category: {
+        type: 'array',
         default: []
     }
 };
@@ -62507,7 +62511,7 @@ registerBlockType("premium/template", {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(364);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62562,11 +62566,28 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
 
             // Assigning id in the attribute.
             this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
-            this.props.setAttributes({ classMigrate: true });
+            this.props.setAttributes({
+                classMigrate: true,
+                isLibraryOpen: false
+            });
+
+            fetch('https://websitedemos.net/wp-json/wp/v2/blocks-category', {
+                method: 'GET' // or 'PUT'
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log('Success:', Object.values(data));
+                _this2.props.setAttributes({
+                    category: Object.values(data)
+                });
+            }).catch(function (error) {
+                console.error('Error:', error);
+            });
 
             // setTimeout(() => {
             //     this.renderText("premium/button", this.props.attributes, []);
@@ -62602,7 +62623,6 @@ var edit = function (_Component) {
                 isLibraryOpen = attributes.isLibraryOpen,
                 isOpenModal = attributes.isOpenModal;
 
-            // const [isLibraryOpen, setIsLibraryOpen] = useState(false) 
 
             var setIsLibraryOpen = function setIsLibraryOpen(value) {
                 setAttributes({
@@ -62613,12 +62633,9 @@ var edit = function (_Component) {
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
-                    console.log('Success:', Object.values(data));
-                    var designList = Object.values(data).map(function (design, name) {
-                        setAttributes({
-                            template: Object.values(data)
-                        });
-                        console.log(design);
+                    // console.log('Success:', Object.values(data));
+                    setAttributes({
+                        template: Object.values(data)
                     });
                 }).catch(function (error) {
                     console.error('Error:', error);
@@ -62695,6 +62712,122 @@ var edit = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    useCallback = _wp$element.useCallback,
+    useState = _wp$element.useState;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    Modal = _wp$components.Modal;
+
+var modal = function (_Component) {
+    _inherits(modal, _Component);
+
+    function modal() {
+        _classCallCheck(this, modal);
+
+        return _possibleConstructorReturn(this, (modal.__proto__ || Object.getPrototypeOf(modal)).apply(this, arguments));
+    }
+
+    _createClass(modal, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
+            var block_id = attributes.block_id,
+                align = attributes.align,
+                className = attributes.className,
+                isLibraryOpen = attributes.isLibraryOpen,
+                template = attributes.template,
+                category = attributes.category;
+
+
+            var templates = template.map(function (item, i) {
+                return wp.element.createElement(
+                    "div",
+                    { className: "premium-template-item" },
+                    wp.element.createElement(
+                        Button,
+                        { className: "premium-template-item__image", variant: "secondary", onClick: _this2.props.onClose },
+                        wp.element.createElement("img", { src: item["featured-image-url"], alt: "alt", loading: "lazy" })
+                    ),
+                    wp.element.createElement(
+                        "span",
+                        { className: "premium-template-item__title" },
+                        item.title
+                    )
+                );
+            });
+
+            var categories = category.map(function (item, i) {
+                return wp.element.createElement(
+                    "li",
+                    null,
+                    item.name
+                );
+            });
+
+            return wp.element.createElement(
+                Modal,
+                { title: "This is my modal", onRequestClose: this.props.onClose, className: "premium-template-modal" },
+                wp.element.createElement(
+                    "div",
+                    { className: "premium-template-modal__wrapper" },
+                    wp.element.createElement(
+                        "aside",
+                        { className: "premium-template-modal__sidebar" },
+                        wp.element.createElement("div", null),
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-template-modal__filters" },
+                            wp.element.createElement(
+                                "ul",
+                                { className: "premium-template-block-list" },
+                                categories
+                            )
+                        )
+                    ),
+                    wp.element.createElement("aside", { className: "premium-template-modal__topbar" }),
+                    wp.element.createElement(
+                        "div",
+                        { className: "premium-template-modal__designs" },
+                        wp.element.createElement(
+                            "div",
+                            { className: "premium-template-items premium-template-items--columns-3" },
+                            templates
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return modal;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (modal);
+
+/***/ }),
+/* 365 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 
 
 var InnerBlocks = wp.blockEditor.InnerBlocks;
@@ -62762,78 +62895,6 @@ var save = function save(props) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (save);
-
-/***/ }),
-/* 365 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    useCallback = _wp$element.useCallback,
-    useState = _wp$element.useState;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    Modal = _wp$components.Modal;
-
-var modal = function (_Component) {
-    _inherits(modal, _Component);
-
-    function modal() {
-        _classCallCheck(this, modal);
-
-        return _possibleConstructorReturn(this, (modal.__proto__ || Object.getPrototypeOf(modal)).apply(this, arguments));
-    }
-
-    _createClass(modal, [{
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var _props = this.props,
-                attributes = _props.attributes,
-                setAttributes = _props.setAttributes,
-                isSelected = _props.isSelected;
-            var block_id = attributes.block_id,
-                align = attributes.align,
-                className = attributes.className,
-                isLibraryOpen = attributes.isLibraryOpen,
-                template = attributes.template;
-
-            console.log('template', template, isLibraryOpen);
-
-            var templates = template.map(function (item, i) {
-                return wp.element.createElement(
-                    Button,
-                    { variant: "secondary", onClick: _this2.props.onClose },
-                    item.title
-                );
-            });
-
-            return wp.element.createElement(
-                Modal,
-                { title: "This is my modal", onRequestClose: this.props.onClose },
-                templates
-            );
-        }
-    }]);
-
-    return modal;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (modal);
 
 /***/ })
 /******/ ]);

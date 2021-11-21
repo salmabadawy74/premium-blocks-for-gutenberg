@@ -1791,3 +1791,95 @@ a.premium-dheading-block__link:hover {
         display: none !important;
     }
 }
+
+/************ Premium template **************/
+.premium-template-modal {
+    width: 100%;
+    max-width: 90%;
+    height: 90%;
+    min-height: 500px;
+    --wp-admin-theme-color: #f00069;
+    --wp-admin-theme-color-darker-10: #bd0053;
+    --wp-admin-theme-color-darker-20: #8a003c;
+}
+.premium-template-modal__wrapper{
+    /* display: grid; */
+    grid-template-columns: 300px auto;
+    grid-template-rows: 50px auto;
+    flex: 1;
+    overflow: hidden;
+}
+.premium-template-modal__designs{
+    padding: 24px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    overflow: auto;
+}
+.premium-template-modal__sidebar{
+    box-shadow: 0 0 30px rgb(0 0 0 / 10%);
+    background: #fff;
+    grid-column: 1/2;
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.premium-template-modal__filters{
+    overflow-y: auto;
+    padding: 24px;
+}
+.premium-template-block-list{
+    margin-top: 0!important;
+    list-style: none !important;
+}
+.premium-template-items{
+    page-break-inside: avoid;
+    break-inside: avoid;
+    column-count: 1;
+    column-gap: 38px;
+}
+.premium-template-item{
+    border-radius: 0;
+    box-shadow: 0 2px 15px hsl(0deg 0% 60% / 30%);
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    position: relative;
+    margin-bottom: 38px;
+    display: block;
+    transform: translateZ(0);
+    break-inside: avoid;
+    width: 100%;
+    will-change: transform;
+}
+.premium-template-items.premium-template-items--columns-3{
+    column-count: 3 !important;
+}
+.premium-template-item__image{
+    padding: 0!important;
+    border: 0!important;
+    text-align: start!important;
+    width: 100%!important;
+    margin: 0!important;
+    outline: none!important;
+    cursor: pointer;
+    display: block;
+}
+.premium-template-item .premium-template-item__image img{
+    transition: all .3s ease-in-out;
+}
+.premium-template-item img{
+    display: block;
+    pointer-events: none;
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    background: #f1f1f1;
+}
+.premium-template-item__title{
+    padding: 8px 12px;
+    font-size: 11px;
+    line-height: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
