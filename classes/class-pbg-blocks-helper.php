@@ -376,29 +376,43 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+
 			wp_enqueue_script(
-				'swal-core',
-				PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/core.js',
+				'pbg-form-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-			wp_enqueue_script(
-				'swal',
-				PREMIUM_BLOCKS_URL . 'admin/assets/js/sweetalert2/js/sweetalert2.min.js',
-				array( 'jquery', 'swal-core' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-
 			wp_localize_script(
 				'pbg-newsletter-js',
 				'settings',
 				array(
-					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'nonce'   => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+					'required'      => __( 'is required', 'premium-blocks' ),
+					'mismatch'      => __( 'does not match', 'premium-blocks' ),
+					'validation'    => __( 'is not valid', 'premium-blocks' ),
+					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+					'item'          => __( 'Item', 'premium-blocks' ),
 				)
 			);
+				wp_localize_script(
+					'pbg-form-js',
+					'settings',
+					array(
+						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+						'required'      => __( 'is required', 'premium-blocks' ),
+						'mismatch'      => __( 'does not match', 'premium-blocks' ),
+						'validation'    => __( 'is not valid', 'premium-blocks' ),
+						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+						'item'          => __( 'Item', 'premium-blocks' ),
+					)
+				);
+
 		}
 
 		// Enqueue Google Maps API Script.

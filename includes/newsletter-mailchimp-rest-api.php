@@ -1,6 +1,6 @@
 <?php
 /**
- * REST API Mailchimp controller customized for Kadence Form
+ * REST API Mailchimp controller customized for premium Form
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @package WooCommerce/API
  */
-class Kadence_MailChimp_REST_Controller extends WP_REST_Controller {
+class Premium_MailChimp_REST_Controller extends WP_REST_Controller {
 
 	/**
 	 * api key property name.
@@ -33,7 +33,7 @@ class Kadence_MailChimp_REST_Controller extends WP_REST_Controller {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->namespace = 'kb-mailchimp/v1';
+		$this->namespace = 'pbg-mailchimp/v1';
 		$this->rest_base = 'get';
 	}
 
@@ -146,17 +146,17 @@ class Kadence_MailChimp_REST_Controller extends WP_REST_Controller {
 		$query_params = parent::get_collection_params();
 
 		$query_params[ self::PROP_API_KEY ] = array(
-			'description' => __( 'The API Key for mailchimp account.', 'kadence-blocks-pro' ),
+			'description' => __( 'The API Key for mailchimp account.', 'premium-blocks-pro' ),
 			'type'        => 'string',
 		);
 
 		$query_params[ self::PROP_END_POINT ] = array(
-			'description' => __( 'Actionable endpoint for api call.', 'kadence-blocks-pro' ),
+			'description' => __( 'Actionable endpoint for api call.', 'premium-blocks-pro' ),
 			'type'        => 'string',
 		);
 
 		$query_params[ self::PROP_QUERY_ARGS ] = array(
-			'description' => __( 'Query Args for url.', 'kadence-blocks-pro' ),
+			'description' => __( 'Query Args for url.', 'premium-blocks-pro' ),
 			'type'        => 'array',
 		);
 
