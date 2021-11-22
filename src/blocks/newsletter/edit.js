@@ -1,5 +1,5 @@
 import classnames from "classnames";
-
+import Select from 'react-select';
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl } =
     wp.components;
@@ -60,27 +60,31 @@ export default class edit extends Component {
             .then(e => { this.setState({ isSaving: !1, isSavedAPI: !0 }) })
     }
     getMailChimpAudience() {
-        this.state.api && this.state.api.split("-")[1] ? (this.setState({ isFetching: !0 }),
-            apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }) })
-                .then(e => {
-                    const t = []; e.lists.map(e => { t.push({ value: e.id, label: e.name }) }),
-                        this.setState({ list: t, listsLoaded: !0, isFetching: !1 })
-                })
-                .catch(() => { this.setState({ list: [], listsLoaded: !0, isFetching: !1 }) })) : this.setState({ list: [], listsLoaded: !0 })
+
+        apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }) })
+            .then(e => {
+                const t = []; e.lists.map(e => { t.push({ value: e.id, label: e.name }) }),
+                    this.setState({ list: t, listsLoaded: !0, isFetching: !1 })
+            })
+            .catch(() => { this.setState({ list: [], listsLoaded: !0, isFetching: !1 }) })
+
+
+
     }
 
     getMailChimpGroups() {
-        this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingGroups: !0 }),
-            apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/interest-categories/" }) })
-                .then(e => {
-                    const t = []; e.map(e => { t.push({ value: e.id, label: e.title }) }),
-                        this.setState({ listGroups: t, listGroupLoaded: !0, isFetchingGroups: !1 })
-                })
-                .catch(() => { this.setState({ listGroups: [], listGroupLoaded: !0, isFetchingGroups: !1 }) })) : this.setState({ listGroups: [], listGroupLoaded: !0 })
+        console.log(this.props.attributes.list_id)
+
+        apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/" }) })
+            .then(e => {
+                const t = [];
+                e.map(e => { t.push({ value: e.id, label: e.title }) });
+                this.setState({ listGroups: t, listGroupLoaded: !0, isFetchingGroups: !1 })
+            }).catch(() => { this.setState({ listGroups: [], listGroupLoaded: !0, isFetchingGroups: !1 }) })
     }
     getMailChimpTags() {
         this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingTags: !0 }), apiFetch({
-            path: addQueryArgs("/kb-mailchimp/v1/get",
+            path: addQueryArgs("/pbg-mailchimp/v1/get",
                 { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/tag-search/" })
         }).then(e => {
             const t = []; e.tags && e.tags.map(e => { t.push({ value: e.id, label: e.name }) });
@@ -101,9 +105,11 @@ export default class edit extends Component {
                 this.setState({ listAttr: t, listAttrLoaded: !0, isFetchingAttributes: !1 })
             }).catch(() => { const e = []; e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" }); this.setState({ listAttr: e, listAttrLoaded: !0, isFetchingAttributes: !1 }) })
     }
+
     render() {
         const { isSelected, setAttributes, clientId, className, attributes } =
             this.props;
+        const { list: e, listsLoaded: t, isFetching: n, isSavedAPI: i, listAttr: o, isFetchingAttributes: l, listAttrLoaded: r, isFetchingGroups: s, listGroups: c, listGroupLoaded: d, isFetchingTags: h, listTags: u, listTagsLoaded: p } = this.state
         const {
             block_id,
             api,
@@ -117,7 +123,6 @@ export default class edit extends Component {
             btnStyles,
             messageStyle,
         } = attributes;
-        console.log(api, "apo")
         const COLUMNS = [
             {
                 value: "20",
@@ -169,6 +174,7 @@ export default class edit extends Component {
                 label: "100%",
             },
         ];
+        console.log(this.state)
 
         const saveInputStyle = (value) => {
             const newUpdate = inputStyles.map((item, index) => {
@@ -218,19 +224,29 @@ export default class edit extends Component {
                         />
                         <TextControl
                             label={__(`Mailchimp Api Key`)}
-                            value={api}
-                            onChange={(newURL) => setAttributes({ api: newURL })}
+                            value={this.state.api}
+                            onChange={(newURL) => this.setState({ api: newURL })}
                         />
                         <button onClick={this.saveAPI}>
                             save
                         </button>
-                        <TextControl
-                            label={__(`List Id`)}
+                        {this.state.isSavedAPI && this.state.api !== "" && <button onClick={this.removeAPI}>
+                            remove
+                        </button>}
+                        {t ? "" : this.getMailChimpAudience()}
+
+                        {Array.isArray(this.state.list) ? <Select
                             value={list_id}
-                            onChange={(newURL) =>
-                                setAttributes({ list_id: newURL })
-                            }
-                        />
+                            onChange={({ value }) => setAttributes({ list_id: value })}
+                            options={this.state.list}
+                        /> : <div>hello</div>}
+                        {d ? "" : this.getMailChimpGroups()}
+                        {Array.isArray(this.state.listGroups) ? <Select
+                            value={list_id}
+                            onChange={({ value }) => console.log(value)}
+                            options={this.state.listGroups}
+                        /> : <div>hello</div>}
+                        {r ? "" : this.getMailChimpAttributes()}
                         <TextControl
                             label={__(`Message Success`)}
                             value={successMessage}
@@ -644,7 +660,7 @@ export default class edit extends Component {
                             }
                         />
                     </PanelBody>
-                </InspectorControls>
+                </InspectorControls >
             ),
             <div
                 id={`premium-newsLetter-${block_id}`}

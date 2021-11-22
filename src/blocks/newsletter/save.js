@@ -18,9 +18,7 @@ export function save(props) {
         messageStyle,
     } = attributes;
     return (
-        <form
-
-        >
+        <form className="kb-form" action="" method="post" >
             <div
                 id={`premium-newsLetter-${block_id}`}
                 className={classnames(className,
