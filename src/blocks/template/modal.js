@@ -1,7 +1,6 @@
-import classnames from "classnames";
 const { __ } = wp.i18n;
 
-const { Component, useCallback, useState } = wp.element;
+const { Component } = wp.element;
 
 const {
     Button,
@@ -26,18 +25,25 @@ class modal extends Component {
             category
         } = attributes;
 
+
+
         const templates = template.map((item, i) => {
             return <div className="premium-template-item">
                 <Button className="premium-template-item__image" variant="secondary" onClick={this.props.onClose}>
-                    <img src={item["featured-image-url"]} alt="alt" loading="lazy" />
+                    <img src={item.image} alt="alt" loading="lazy" />
                 </Button>
-                <span className="premium-template-item__title">{item.title}</span>
+                <footer className="premium-template-item__title">
+                    <span>{item.label}</span>
+                </footer>
             </div>
         });
 
         const categories = category.map((item, i) => {
             return <li>
-                {item.name}
+                <div className="premium-template__sidebar-item" onClick={() => { console.log(item.id) }}>
+                    {item.label}
+                    <span className="premium-template-block-list__count">{item.count}</span>
+                </div>
             </li>
         });
 

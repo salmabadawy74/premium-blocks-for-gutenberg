@@ -1,18 +1,13 @@
 import classnames from "classnames";
 import ModalTemplate from './modal'
-// import { dispatch } from '@wordpress/data'
-// import {
-//     createBlock, parse, createBlocksFromInnerBlocksTemplate,
-// } from '@wordpress/blocks'
-// import { useState, useCallback } from '@wordpress/element'
-// import { applyFilters } from '@wordpress/hooks'
+import { sortBy } from 'lodash';
 
 const { __ } = wp.i18n;
 
-const { Component, useCallback, useState } = wp.element;
-const { applyFilters } = wp.hooks;
+const { Component } = wp.element;
 const { dispatch } = wp.data;
 const { createBlock, createBlocksFromInnerBlocksTemplate } = wp.blocks;
+const apiFetch = wp.apiFetch;
 
 
 const {
@@ -39,27 +34,12 @@ class edit extends Component {
 
     componentDidMount() {
 
-        // Assigning id in the attribute.
-        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
-
         this.props.setAttributes({
             classMigrate: true,
             isLibraryOpen: false
         });
-
-        fetch('https://websitedemos.net/wp-json/wp/v2/blocks-category', {
-            method: 'GET', // or 'PUT'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', Object.values(data));
-                this.props.setAttributes({
-                    category: Object.values(data)
-                });
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        // Assigning id in the attribute.
+        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
 
         // setTimeout(() => {
         //     this.renderText("premium/button", this.props.attributes, []);
@@ -90,27 +70,68 @@ class edit extends Component {
             align,
             className,
             isLibraryOpen,
-            isOpenModal
+            isOpenModal,
+            template,
+            uikits,
+            category
         } = attributes;
 
 
-        const setIsLibraryOpen = (value) => {
+        const setIsLibraryOpen = async (value) => {
             setAttributes({
                 isLibraryOpen: value
             });
-            fetch('https://websitedemos.net/wp-json/astra-sites/v1/sites-and-pages', {
-                method: 'GET', // or 'PUT'
+            const results = await apiFetch({
+                path: `/stackable/v2/design_library`,
+                method: 'GET',
             })
-                .then(response => response.json())
-                .then(data => {
-                    // console.log('Success:', Object.values(data));
-                    setAttributes({
-                        template: Object.values(data)
-                    });
+            let designLibrary = await results
+
+            this.props.setAttributes({
+                template: Object.values(designLibrary.v3)
+            });
+            const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
+                const design = designLibrary.v3[name]
+                const { categories, uikit } = design
+
+                if (typeof output.uikits[uikit] === 'undefined') {
+                    output.uikits[uikit] = {
+                        id: uikit,
+                        label: design.uikit,
+                        plan: design.plan,
+                        count: 0,
+                    }
+                }
+
+                categories.forEach(category => {
+                    if (typeof output.categories[category] === 'undefined') {
+                        output.categories[category] = {
+                            id: category,
+                            label: category,
+                            count: 0,
+                        }
+                    }
                 })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+                return output
+            }, { uikits: {}, categories: {} })
+
+            let uikitSort = ['label']
+
+            const uikits = sortBy(Object.values(designList.uikits), uikitSort)
+            const categories = sortBy(Object.values(designList.categories), 'label')
+            categories.unshift({
+                id: 'all',
+                label: __('All'),
+                count: 0,
+            })
+
+
+            this.props.setAttributes({
+                uikits: uikits,
+                category: categories
+            });
+            console.log(uikits,
+                category)
 
         }
 
@@ -142,12 +163,12 @@ class edit extends Component {
                     textAlign: align,
                 }}
             >
-                <button
+                {!isLibraryOpen && <button
                     className="premium-template"
                     onClick={() => {
                         setIsLibraryOpen(true)
                     }}>{__("Add New Template")}
-                </button>
+                </button>}
 
                 {isLibraryOpen &&
                     <ModalTemplate

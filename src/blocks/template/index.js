@@ -24,6 +24,10 @@ const test1Attrs = {
     category: {
         type: 'array',
         default: []
+    },
+    uikits: {
+        type: 'array',
+        default: []
     }
 };
 
