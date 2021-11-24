@@ -43,6 +43,7 @@ class Premium_Form_Actions {
 	 * @param int    $post_id the post ID.
 	 */
 	public function process_actions( $form_args, $fields, $form_id, $post_id ) {
+			var_dump( 'No List' );
 		if ( isset( $form_args ) && is_array( $form_args ) && isset( $form_args['actions'] ) ) {
 
 			$api_key = get_option( 'mail_chimp_api' );
@@ -56,21 +57,18 @@ class Premium_Form_Actions {
 							'doubleOptin' => false,
 						);
 						$mailchimp_args    = ( isset( $form_args['mailchimp'] ) && is_array( $form_args['mailchimp'] ) && isset( $form_args['mailchimp'][0] ) && is_array( $form_args['mailchimp'][0] ) ? $form_args['mailchimp'][0] : $mailchimp_default );
-						$list              = ( isset( $mailchimp_args['list'] ) ? $mailchimp_args['list'] : '' );
+						$list              = ( isset( $mailchimp_args['list'] ) ? '8286186162' : '8286186162' );
 						$groups            = ( isset( $mailchimp_args['groups'] ) && is_array( $mailchimp_args['groups'] ) ? $mailchimp_args['groups'] : array() );
 						$map               = ( isset( $mailchimp_args['map'] ) && is_array( $mailchimp_args['map'] ) ? $mailchimp_args['map'] : array() );
-						$doubleOptin       = ( isset( $mailchimp_args['doubleOptin'] ) ? $mailchimp_args['doubleOptin'] : false );
 						$body              = array(
 							'email_address' => '',
 							'status_if_new' => 'subscribed',
 							'status'        => 'subscribed',
 						);
-						if ( $doubleOptin ) {
-							$body['status_if_new'] = 'pending';
-							$body['double_optin']  = true;
-						}
+
 						if ( empty( $list ) || ! is_array( $list ) ) {
 							return;
+							var_dump( 'No List' );
 						}
 						$key_parts = explode( '-', $api_key );
 						if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
@@ -149,4 +147,4 @@ class Premium_Form_Actions {
 
 
 }
-KBP_Form_Actions::get_instance();
+Premium_Form_Actions::get_instance();

@@ -20074,8 +20074,6 @@ var edit = function (_Component) {
                             setAttributes({
                                 shadowColor: newColor.rgb
                             });
-
-                            console.log(shadowColor);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return setAttributes({
@@ -51904,7 +51902,6 @@ function styling(props) {
     styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
 
     styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-    console.log(styling_css);
 
     return styling_css;
 }
@@ -54486,8 +54483,6 @@ function styling(props) {
     styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
 
     styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-
-    console.log(styling_css);
 
     return styling_css;
 }
@@ -64267,6 +64262,7 @@ registerBlockType("premium/newsletter", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.edit = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -64292,6 +64288,8 @@ var _premiumFonts = __webpack_require__(27);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
+var _react = __webpack_require__(4);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -64310,14 +64308,16 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl;
+    TextControl = _wp$components.TextControl,
+    Spinner = _wp$components.Spinner;
 var __ = wp.i18n.__;
 var addQueryArgs = wp.url.addQueryArgs;
 var _wp = wp,
     apiFetch = _wp.apiFetch;
+var withSelect = wp.data.withSelect;
 var Component = wp.element.Component;
 
-var edit = function (_Component) {
+var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
 
     function edit() {
@@ -64325,29 +64325,30 @@ var edit = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
+        _this.state = {
+            api: "",
+            isSavedAPI: false,
+            isSaving: false,
+            list: false,
+            isFetching: false,
+            listsLoaded: false,
+            isFetchingAttributes: false,
+            listAttr: false,
+            listAttrLoaded: false,
+            isFetchingGroups: false,
+            listGroups: false,
+            listGroupLoaded: false,
+            isFetchingTags: false,
+            listTags: false,
+            listTagsLoaded: false
+        };
         _this.getMailChimpAudience = _this.getMailChimpAudience.bind(_this);
         _this.getMailChimpGroups = _this.getMailChimpGroups.bind(_this);
         _this.getMailChimpAttributes = _this.getMailChimpAttributes.bind(_this);
         _this.getMailChimpTags = _this.getMailChimpTags.bind(_this);
         _this.saveAPI = _this.saveAPI.bind(_this);
         _this.removeAPI = _this.removeAPI.bind(_this);
-        _this.state = {
-            api: "",
-            isSavedAPI: !1,
-            isSaving: !1,
-            list: !1,
-            isFetching: !1,
-            listsLoaded: !1,
-            isFetchingAttributes: !1,
-            listAttr: !1,
-            listAttrLoaded: !1,
-            isFetchingGroups: !1,
-            listGroups: !1,
-            listGroupLoaded: !1,
-            isFetchingTags: !1,
-            listTags: !1,
-            listTagsLoaded: !1
-        };
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
         return _this;
     }
 
@@ -64356,10 +64357,18 @@ var edit = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId;
+
+            setAttributes({ block_id: clientId });
             var e = void 0;
             wp.api.loadPromise.then(function () {
-                e = new wp.api.models.Settings(), e.fetch().then(function (e) {
-                    _this2.setState({ api: e.mail_chimp_api }), "" !== _this2.state.api && _this2.setState({ isSavedAPI: !0 });
+                e = new wp.api.models.Settings();
+                e.fetch().then(function (e) {
+                    _this2.setState({ api: e.mail_chimp_api });
+                    "" !== _this2.state.api && _this2.setState({ isSavedAPI: true });
                 });
             });
         }
@@ -64369,18 +64378,28 @@ var edit = function (_Component) {
             var _this3 = this;
 
             this.setState({ api: "" });
-            this.state.isSavedAPI && (this.setState({ isSaving: !0 }), new wp.api.models.Settings({ mail_chimp_api: "" }).save().then(function () {
-                _this3.setState({ isSavedAPI: !1, isSaving: !1 });
-            }));
+            this.state.isSavedAPI && [this.setState({ isSaving: true }), new wp.api.models.Settings({
+                mail_chimp_api: ""
+            }).save().then(function () {
+                _this3.setState({
+                    isSavedAPI: false,
+                    isSaving: false
+                });
+            })];
         }
     }, {
         key: "saveAPI",
         value: function saveAPI() {
             var _this4 = this;
 
-            this.setState({ isSaving: !0 });
-            new wp.api.models.Settings({ mail_chimp_api: this.state.api }).save().then(function (e) {
-                _this4.setState({ isSaving: !1, isSavedAPI: !0 });
+            this.setState({ isSaving: true });
+            new wp.api.models.Settings({
+                mail_chimp_api: this.state.api
+            }).save().then(function (e) {
+                _this4.setState({
+                    isSaving: false,
+                    isSavedAPI: true
+                });
             });
         }
     }, {
@@ -64388,12 +64407,33 @@ var edit = function (_Component) {
         value: function getMailChimpAudience() {
             var _this5 = this;
 
-            apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }) }).then(function (e) {
-                var t = [];e.lists.map(function (e) {
-                    t.push({ value: e.id, label: e.name });
-                }), _this5.setState({ list: t, listsLoaded: !0, isFetching: !1 });
+            this.state.api && this.state.api.split("-")[1] ? (this.setState({ isFetching: !0 }), apiFetch({
+                path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                    apikey: this.state.api,
+                    endpoint: "lists/",
+                    queryargs: ["limit=30", "offset=0"]
+                })
+            }).then(function (e) {
+                var t = [];
+                e.lists.map(function (e) {
+                    t.push({
+                        value: e.id,
+                        label: e.name
+                    });
+                }), _this5.setState({
+                    list: t,
+                    listsLoaded: true,
+                    isFetching: false
+                });
             }).catch(function () {
-                _this5.setState({ list: [], listsLoaded: !0, isFetching: !1 });
+                _this5.setState({
+                    list: [],
+                    listsLoaded: true,
+                    isFetching: false
+                });
+            })) : this.setState({
+                list: [],
+                listsLoaded: true
             });
         }
     }, {
@@ -64401,16 +64441,34 @@ var edit = function (_Component) {
         value: function getMailChimpGroups() {
             var _this6 = this;
 
-            console.log(this.props.attributes.list_id);
-
-            apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/" }) }).then(function (e) {
+            this.state.api && this.props.attributes.list_id ? (this.setState({
+                isFetchingGroups: true
+            }), apiFetch({
+                path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                    apikey: this.state.api,
+                    endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/"
+                })
+            }).then(function (e) {
                 var t = [];
                 e.map(function (e) {
-                    t.push({ value: e.id, label: e.title });
+                    t.push({
+                        value: e.id,
+                        label: e.title
+                    });
+                }), _this6.setState({
+                    listGroups: t,
+                    listGroupLoaded: true,
+                    isFetchingGroups: false
                 });
-                _this6.setState({ listGroups: t, listGroupLoaded: !0, isFetchingGroups: !1 });
             }).catch(function () {
-                _this6.setState({ listGroups: [], listGroupLoaded: !0, isFetchingGroups: !1 });
+                _this6.setState({
+                    listGroups: [],
+                    listGroupLoaded: true,
+                    isFetchingGroups: false
+                });
+            })) : this.setState({
+                listGroups: [],
+                listGroupLoaded: true
             });
         }
     }, {
@@ -64418,37 +64476,109 @@ var edit = function (_Component) {
         value: function getMailChimpTags() {
             var _this7 = this;
 
-            this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingTags: !0 }), apiFetch({
-                path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/tag-search/" })
+            this.state.api && this.props.attributes.list_id ? (this.setState({
+                isFetchingTags: true
+            }), apiFetch({
+                path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                    apikey: this.state.api,
+                    endpoint: "lists/" + this.props.attributes.list_id + "/tag-search/"
+                })
             }).then(function (e) {
-                var t = [];e.tags && e.tags.map(function (e) {
-                    t.push({ value: e.id, label: e.name });
+                var t = [];
+                e.tags && e.tags.map(function (e) {
+                    t.push({
+                        value: e.id,
+                        label: e.name
+                    });
+                }), _this7.setState({
+                    listTags: t,
+                    listTagsLoaded: true,
+                    isFetchingTags: false
                 });
-                _this7.setState({ listTags: t, listTagsLoaded: !0, isFetchingTags: !1 });
             }).catch(function () {
-                _this7.setState({ listTags: [], listTagsLoaded: !0, isFetchingTags: !1 });
-            })) : this.setState({ listTags: [], listTagsLoaded: !0 });
+                _this7.setState({
+                    listTags: [],
+                    listTagsLoaded: true,
+                    isFetchingTags: false
+                });
+            })) : this.setState({
+                listTags: [],
+                listTagsLoaded: true
+            });
         }
     }, {
         key: "getMailChimpAttributes",
         value: function getMailChimpAttributes() {
             var _this8 = this;
 
-            if (!this.state.api || !this.props.settings[0].list.value) {
+            if (!this.state.api || !this.props.attributes.list_id) {
                 var e = [];
-                return e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" }), void this.setState({ listAttr: e, listAttrLoaded: !0 });
-            }
-            this.setState({ isFetchingAttributes: !0 });
-            apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/merge-fields/" }) }).then(function (e) {
-                var t = [];
-                t.push({ value: null, label: "None" }), t.push({ value: "email", label: "Email *" });
-                e.merge_fields.map(function (e, n) {
-                    t.push({ value: e.tag, label: e.name });
+                return e.push({
+                    value: null,
+                    label: "None"
+                }), e.push({
+                    value: "email",
+                    label: "Email *"
+                }), void this.setState({
+                    listAttr: e,
+                    listAttrLoaded: true
                 });
-                _this8.setState({ listAttr: t, listAttrLoaded: !0, isFetchingAttributes: !1 });
+            }
+            this.setState({
+                isFetchingAttributes: true
+            }), apiFetch({
+                path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                    apikey: this.state.api,
+                    endpoint: "lists/" + this.props.attributes.list_id + "/merge-fields/"
+                })
+            }).then(function (e) {
+                var t = [];
+                t.push({
+                    value: null,
+                    label: "None"
+                }), t.push({
+                    value: "email",
+                    label: "Email *"
+                }), e.merge_fields.map(function (e, n) {
+                    t.push({
+                        value: e.tag,
+                        label: e.name
+                    });
+                }), _this8.setState({
+                    listAttr: t,
+                    listAttrLoaded: true,
+                    isFetchingAttributes: false
+                });
             }).catch(function () {
-                var e = [];e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" });_this8.setState({ listAttr: e, listAttrLoaded: !0, isFetchingAttributes: !1 });
+                var e = [];
+                e.push({
+                    value: null,
+                    label: "None"
+                }), e.push({
+                    value: "email",
+                    label: "Email *"
+                }), _this8.setState({
+                    listAttr: e,
+                    listAttrLoaded: true,
+                    isFetchingAttributes: false
+                });
             });
+        }
+    }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
         }
     }, {
         key: "render",
@@ -64459,26 +64589,32 @@ var edit = function (_Component) {
                 _React$createElement3,
                 _React$createElement4;
 
-            var _props = this.props,
-                isSelected = _props.isSelected,
-                setAttributes = _props.setAttributes,
-                clientId = _props.clientId,
-                className = _props.className,
-                attributes = _props.attributes;
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                clientId = _props2.clientId,
+                className = _props2.className,
+                attributes = _props2.attributes;
             var _state = this.state,
-                e = _state.list,
-                t = _state.listsLoaded,
-                n = _state.isFetching,
-                i = _state.isSavedAPI,
-                o = _state.listAttr,
-                l = _state.isFetchingAttributes,
-                r = _state.listAttrLoaded,
-                s = _state.isFetchingGroups,
-                c = _state.listGroups,
-                d = _state.listGroupLoaded,
-                h = _state.isFetchingTags,
-                u = _state.listTags,
-                p = _state.listTagsLoaded;
+                list = _state.list,
+                listsLoaded = _state.listsLoaded,
+                isFetching = _state.isFetching,
+                isSavedAPI = _state.isSavedAPI,
+                listAttr = _state.listAttr,
+                isFetchingAttributes = _state.isFetchingAttributes,
+                listAttrLoaded = _state.listAttrLoaded,
+                isFetchingGroups = _state.isFetchingGroups,
+                listGroups = _state.listGroups,
+                listGroupLoaded = _state.listGroupLoaded,
+                isFetchingTags = _state.isFetchingTags,
+                listTags = _state.listTags,
+                listTagsLoaded = _state.listTagsLoaded;
+
+            var m = Array.isArray(list) && list.length,
+                f = Array.isArray(listAttr) && listAttr.length,
+                g = Array.isArray(listGroups) && listGroups.length,
+                v = Array.isArray(listTags) && listTags.length;
+
             var block_id = attributes.block_id,
                 api = attributes.api,
                 list_id = attributes.list_id,
@@ -64528,7 +64664,9 @@ var edit = function (_Component) {
                 value: "100",
                 label: "100%"
             }];
-            console.log(this.state);
+
+            var textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
+            var textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
             var saveInputStyle = function saveInputStyle(value) {
                 var newUpdate = inputStyles.map(function (item, index) {
@@ -64583,47 +64721,102 @@ var edit = function (_Component) {
                     React.createElement(TextControl, {
                         label: __("Mailchimp Api Key"),
                         value: this.state.api,
-                        onChange: function onChange(newURL) {
-                            return _this9.setState({ api: newURL });
-                        }
-                    }),
+                        onChange: function onChange(e) {
+                            return _this9.setState({ api: e });
+                        } }),
                     React.createElement(
                         "button",
-                        { onClick: this.saveAPI },
-                        "save"
+                        { className: "button button-primary", disabled: "" === this.state.api, onClick: this.saveAPI },
+                        this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")
                     ),
-                    this.state.isSavedAPI && this.state.api !== "" && React.createElement(
+                    isSavedAPI && api !== "" && React.createElement(
                         "button",
                         { onClick: this.removeAPI },
                         "remove"
                     ),
-                    t ? "" : this.getMailChimpAudience(),
-                    Array.isArray(this.state.list) ? React.createElement(_reactSelect2.default, {
-                        value: list_id,
-                        onChange: function onChange(_ref) {
-                            var value = _ref.value;
-                            return setAttributes({ list_id: value });
-                        },
-                        options: this.state.list
-                    }) : React.createElement(
-                        "div",
+                    React.createElement(
+                        _react.Fragment,
                         null,
-                        "hello"
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select  Audience', '')
+                        ),
+                        listsLoaded ? '' : this.getMailChimpAudience(),
+                        !Array.isArray(list) ? React.createElement(Spinner, null) : __("No Audience found.", "kadence-blocks-pro")
                     ),
-                    d ? "" : this.getMailChimpGroups(),
-                    Array.isArray(this.state.listGroups) ? React.createElement(_reactSelect2.default, {
-                        value: list_id,
-                        onChange: function onChange(_ref2) {
-                            var value = _ref2.value;
-                            return console.log(value);
-                        },
-                        options: this.state.listGroups
-                    }) : React.createElement(
-                        "div",
+                    !isFetching && m && React.createElement(
+                        _react.Fragment,
                         null,
-                        "hello"
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select Audience', '')
+                        ),
+                        React.createElement(_reactSelect2.default, {
+                            value: list_id,
+                            onChange: function onChange(e) {
+                                return console.log(e);
+                            },
+                            options: list
+                        })
                     ),
-                    r ? "" : this.getMailChimpAttributes(),
+                    list_id && React.createElement(
+                        _react.Fragment,
+                        null,
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select Group', 'kadence-blocks')
+                        ),
+                        listGroupLoaded ? "" : this.getMailChimpGroups(),
+                        !Array.isArray(listGroups) ? React.createElement(Spinner, null) : __("No Group found.", "kadence-blocks-pro")
+                    ),
+                    !isFetchingGroups && g && React.createElement(
+                        _react.Fragment,
+                        null,
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select Group', 'kadence-blocks')
+                        ),
+                        React.createElement(_reactSelect2.default, {
+                            value: list_id,
+                            onChange: function onChange(_ref) {
+                                var value = _ref.value;
+                                return setAttributes({ list_id: value });
+                            },
+                            options: listGroups
+                        })
+                    ),
+                    !isFetchingTags && !v && React.createElement(
+                        _react.Fragment,
+                        null,
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select Tags', '')
+                        ),
+                        listTagsLoaded ? "" : this.getMailChimpTags(),
+                        !Array.isArray(listTags ? React.createElement(Spinner, null) : __("No Tags Found.", ""))
+                    ),
+                    !isFetchingGroups && g && React.createElement(
+                        _react.Fragment,
+                        null,
+                        React.createElement(
+                            "h2",
+                            { className: "kt-heading-size-title" },
+                            __('Select Tags', '')
+                        ),
+                        React.createElement(_reactSelect2.default, {
+                            value: list_id,
+                            onChange: function onChange(_ref2) {
+                                var value = _ref2.value;
+                                return setAttributes({ list_id: value });
+                            },
+                            options: listGroups
+                        })
+                    ),
                     React.createElement(TextControl, {
                         label: __("Message Success"),
                         value: successMessage,
@@ -65071,7 +65264,7 @@ var edit = function (_Component) {
                         value: eMail,
                         name: "form_fields[email]",
                         id: "pa_news_email"
-                    }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "autoComplete", "off"), _defineProperty(_React$createElement4, "readOnly", true), _defineProperty(_React$createElement4, "style", {
+                    }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "autoComplete", "off"), _defineProperty(_React$createElement4, "readOnly", true), _defineProperty(_React$createElement4, "style", _defineProperty({
                         color: inputStyles[0].textColor,
                         fontFamily: inputStyles[0].textFontFamily,
                         fontSize: inputStyles[0].textSize,
@@ -65084,7 +65277,7 @@ var edit = function (_Component) {
                         borderStyle: inputStyles[0].textBorderType,
                         borderColor: inputStyles[0].textBorderColor,
                         borderRadius: inputStyles[0].textBorderRadius
-                    }), _React$createElement4))
+                    }, "fontSize", textSizeInput + "px")), _React$createElement4))
                 ),
                 React.createElement(
                     "div",
@@ -65116,17 +65309,14 @@ var edit = function (_Component) {
                                 lineHeight: btnStyles[0].btnLine,
                                 borderStyle: btnStyles[0].btnBorderType,
                                 borderColor: btnStyles[0].btnBorderColor,
-                                borderRadius: btnStyles[0].btnBorderRadius
+                                borderRadius: btnStyles[0].btnBorderRadius,
+                                fontSize: textSizeBtn + "px"
                             },
                             onClick: function onClick(e) {
                                 e.preventDefault();
                             }
                         },
-                        React.createElement(
-                            "span",
-                            { className: "" },
-                            "Submit"
-                        )
+                        __('Submit')
                     )
                 )
             )];
@@ -65136,7 +65326,17 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
 /* 366 */
@@ -72405,12 +72605,8 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var __ = wp.i18n.__;
 function save(props) {
-    var _React$createElement;
-
     var isSelected = props.isSelected,
         setAttributes = props.setAttributes,
         clientId = props.clientId,
@@ -72429,94 +72625,62 @@ function save(props) {
         messageStyle = attributes.messageStyle;
 
     return _react2.default.createElement(
-        "form",
-        { className: "kb-form", action: "", method: "post" },
+        "div",
+        { className: "wp-block-kadence-form kadence-form-" + block_id + " kb-form-wrap" },
         _react2.default.createElement(
-            "div",
-            {
-                id: "premium-newsLetter-" + block_id,
-                className: (0, _classnames2.default)(className, "premium-newsletter__wrapper", "premium-newsletter-has-" + btnStyles[0].buttonSize)
-            },
+            "form",
+            { className: "kb-form", action: "", method: "post" },
             _react2.default.createElement(
                 "div",
-                {
-                    className: (0, _classnames2.default)("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
-                    style: {
-                        paddingRight: "calc(" + columnGap + "px / 2)",
-                        paddingLeft: "calc(" + columnGap + "px / 2)",
-                        marginBottom: rowGap + "px"
-                    }
-                },
-                inputStyles[0].showLabel ? _react2.default.createElement(
+                { className: "kadence-blocks-form-field kb-field-desk-width-100 kb-input-size-standard" },
+                _react2.default.createElement(
                     "label",
-                    {
-                        "for": "form-field-email",
-                        className: "premium-newsletter__label"
-                    },
-                    inputStyles[0].label
-                ) : null,
-                _react2.default.createElement("input", (_React$createElement = {
-                    className: "premium-newsletter-input",
-                    type: "email",
-                    value: eMail,
-                    name: "form_fields[email]",
-                    id: "pa_news_email"
-                }, _defineProperty(_React$createElement, "className", ""), _defineProperty(_React$createElement, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement, "aria-required", "true"), _defineProperty(_React$createElement, "autoComplete", "off"), _defineProperty(_React$createElement, "readOnly", true), _defineProperty(_React$createElement, "style", {
-                    color: inputStyles[0].textColor,
-                    fontFamily: inputStyles[0].textFontFamily,
-                    fontSize: inputStyles[0].textSize,
-                    fontWeight: inputStyles[0].textWeight,
-                    fontStyle: inputStyles[0].textStyle,
-                    letterSpacing: inputStyles[0].textLetter,
-                    textTransform: inputStyles[0].textUpper ? "uppercase" : "none",
-                    lineHeight: inputStyles[0].textLine,
-                    backgroundColor: inputStyles[0].textBackColor,
-                    borderStyle: inputStyles[0].textBorderType,
-                    borderColor: inputStyles[0].textBorderColor,
-                    borderRadius: inputStyles[0].textBorderRadius
-                }), _React$createElement))
+                    { "for": "kb_field__e0cc2d-b0_0" },
+                    "Name"
+                ),
+                _react2.default.createElement("input", { name: "kb_field_0", id: "kb_field__e0cc2d-b0_0", "data-label": "Name", type: "text", placeholder: "", value: "", "data-type": "text", className: "kb-field kb-text-style-field kb-text-field kb-field-0" })
             ),
             _react2.default.createElement(
                 "div",
-                {
-                    className: "premium-newsletter-button__wrapper col-" + btnStyles[0].btnColumn,
-                    style: {
-                        paddingRight: "calc(" + columnGap + "px / 2)",
-                        paddingLeft: "calc(" + columnGap + "px / 2)",
-                        marginBottom: rowGap + "px"
-                    }
-                },
+                { className: "kadence-blocks-form-field kb-form-field-1 kb-field-desk-width-100 kb-input-size-standard" },
                 _react2.default.createElement(
-                    "button",
-                    {
-                        type: "submit",
-                        className: "premium-newsletter-button-submit",
-                        id: "submit-newsletter",
-                        style: {
-                            paddingRight: "calc(" + columnGap + "px / 2)",
-                            paddingLeft: "calc(" + columnGap + "px / 2)",
-                            marginBottom: rowGap + "px",
-                            color: btnStyles[0].btnColor,
-                            backgroundColor: btnStyles[0].btnBackColor,
-                            fontFamily: btnStyles[0].btnFontFamily,
-                            fontWeight: btnStyles[0].btnWeight,
-                            fontStyle: btnStyles[0].btnStyle,
-                            letterSpacing: btnStyles[0].btnLetter,
-                            textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                            lineHeight: btnStyles[0].btnLine,
-                            borderStyle: btnStyles[0].btnBorderType,
-                            borderColor: btnStyles[0].btnBorderColor,
-                            borderRadius: btnStyles[0].btnBorderRadius
-                        },
-                        onClick: function onClick(e) {
-                            e.preventDefault();
-                        }
-                    },
+                    "label",
+                    { "for": "kb_field__e0cc2d-b0_1" },
+                    "Email",
                     _react2.default.createElement(
                         "span",
-                        { className: "" },
-                        "Submit"
+                        { className: "required" },
+                        "*"
                     )
+                ),
+                _react2.default.createElement("input", { name: "kb_field_1", id: "kb_field__e0cc2d-b0_1", "data-label": "Email", type: "email", placeholder: "", value: "", "data-type": "email", className: "kb-field kb-text-style-field kb-email-field kb-field-1", "data-required": "yes" })
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "kadence-blocks-form-field kb-form-field-2 kb-field-desk-width-100 kb-input-size-standard" },
+                _react2.default.createElement(
+                    "label",
+                    { "for": "kb_field__e0cc2d-b0_2" },
+                    "Message",
+                    _react2.default.createElement(
+                        "span",
+                        { className: "required" },
+                        "*"
+                    )
+                ),
+                _react2.default.createElement("textarea", { name: "kb_field_2", id: "kb_field__e0cc2d-b0_2", "data-label": "Message", type: "textarea", placeholder: "", "data-type": "textarea", className: "kb-field kb-text-style-field kb-textarea-field kb-field-2", rows: "4", "data-required": "yes" })
+            ),
+            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_id", value: block_id }),
+            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: block_id }),
+            _react2.default.createElement("input", { type: "hidden", name: "action", value: "kb_process_ajax_submit" }),
+            _react2.default.createElement("input", { className: "kadence-blocks-field verify", type: "text", name: "_kb_verify_email", autocomplete: "off", "aria-hidden": "true", placeholder: "Email", tabindex: "-1" }),
+            _react2.default.createElement(
+                "div",
+                { className: "kadence-blocks-form-field kb-submit-field kb-field-desk-width-100" },
+                _react2.default.createElement(
+                    "button",
+                    { className: "kb-forms-submit button kb-button-size-standard kb-button-width-auto" },
+                    "Submit"
                 )
             )
         )

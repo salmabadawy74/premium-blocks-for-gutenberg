@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin class
  */
-class KB_Ajax_Form {
+class PBG_Ajax_Form {
 
 	/**
 	 * Instance Control
@@ -40,8 +40,10 @@ class KB_Ajax_Form {
 	 * Process the form submit.
 	 */
 	public function process_ajax() {
+
 		if ( isset( $_POST['_kb_form_id'] ) && ! empty( $_POST['_kb_form_id'] ) && isset( $_POST['_kb_form_post_id'] ) && ! empty( $_POST['_kb_form_post_id'] ) ) {
-			ob_start();
+
+			$this->start_buffer();
 			$valid = true;
 			// if ( apply_filters( 'premium_blocks_form_verify_nonce', false ) ) {
 			// $valid = check_ajax_referer( 'kb_form_nonce', '_kb_form_verify', false );
@@ -272,10 +274,19 @@ class KB_Ajax_Form {
 
 		return $html;
 	}
-	/**
-	 * Starts a flushable buffer
-	 */
+	public function start_buffer() {
 
+		if ( ! did_action( 'premium_blocks_forms_buffer_started' ) ) {
+
+			ob_start();
+			/**
+			 * Runs when buffer is started
+			 *
+			 * Used to prevent starting buffer twice
+			 */
+			do_action( 'premium_blocks_forms_buffer_started' );
+		}
+	}
 
 	/**
 	 * Wrapper for wp_send_json() with output buffering
@@ -288,7 +299,6 @@ class KB_Ajax_Form {
 	public function send_json( $data = array(), $is_error = false ) {
 		$buffer = ob_get_clean();
 		/**
-		 * Runs before premium Blocks Forms returns json via wp_send_json() exposes output buffer
 		 *
 		 * @param string|null $buffer Buffer contents
 		 * @param bool $is_error If we think this is an error response or not.
@@ -387,4 +397,4 @@ class KB_Ajax_Form {
 		return $form_args;
 	}
 }
-KB_Ajax_Form::get_instance();
+PBG_Ajax_Form::get_instance();

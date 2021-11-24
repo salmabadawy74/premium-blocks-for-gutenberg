@@ -9,20 +9,21 @@ jQuery(function ($) {
             e.preventDefault();
             $('body').trigger('kb-form-start-submit', $(this));
             var form = $(this),
-                submitButton = form.find('input[type=submit]'),
+                submitButton = form.find('.kb-forms-submit'),
 
                 form_data = premium_blocks_form.validateForm(form);
-            console.log(form_data);
+
             if (form_data) {
+
                 // send the request.
-                form.parent('.wp-block-premium-form').find('.premium-blocks-form-message').slideUp('fast', function () {
+                form.parent('.wp-block-kadence-form').find('.kadence-blocks-form-message').slideUp('fast', function () {
                     $(this).remove();
                 });
                 form.append('<div class="kb-form-loading"><div class="kb-form-loading-spin"><div></div><div></div><div></div><div></div></div></div>');
                 submitButton.attr('disabled', 'disabled').addClass('button-primary-disabled');
-                console.log(settings, "newsletter")
+
                 $.post(settings.ajaxurl, form_data, function (res) {
-                    console.log(settings, "newsLetter2")
+                    console.log(res, "res", form_data)
                     if (res.success) {
                         $('body').trigger('kb-form-success', res);
                         if (res.redirect) {
@@ -40,17 +41,14 @@ jQuery(function ($) {
                         }
                     } else {
 
-                        if (form.find('.g-recaptcha').length > 0) {
-                            grecaptcha.reset();
-                        }
+
                         form.after(res.data.html);
                         if (res.data.required) {
                             if (form.find('#' + res.data.required).length > 0) {
                                 premium_blocks_form.markError(form.find('#' + res.data.required), 'required');
                             }
                         }
-                        console.log(res.data.console);
-                        //console.log( res.data );
+
 
                         submitButton.removeAttr('disabled');
                     }
@@ -144,9 +142,7 @@ jQuery(function ($) {
             var required = self.find('[data-required="yes"]:visible');
 
             required.each(function (i, item) {
-                // temp_val = $.trim($(item).val());
 
-                // console.log( $(item).data('type') );
                 var data_type = $(item).data('type')
                 val = '';
 
@@ -165,7 +161,6 @@ jQuery(function ($) {
                         }
                         break;
                     case 'tel':
-
                         val = $.trim($(item).val());
                         if (val === '') {
                             error = true;
@@ -187,7 +182,7 @@ jQuery(function ($) {
 
                     case 'select':
                         val = $(item).val();
-                        //console.log(val );
+
                         if ($(item).prop('multiple')) {
                             if (val === null || val.length === 0) {
                                 error = true;
@@ -197,8 +192,6 @@ jQuery(function ($) {
                                 premium_blocks_form.markError(item, error_type);
                             }
                         } else {
-
-                            // console.log(val);
                             if (!val || val === '-1') {
                                 error = true;
                                 error_type = 'required';
