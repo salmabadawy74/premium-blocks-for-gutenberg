@@ -178,7 +178,7 @@
                             if (required[n].checked == false) {
                                 error = true;
                                 error_type = 'required';
-                                console.log('here');
+
                                 // mark the error in the field.
                                 window.PremiumForm.markError(required[n], error_type, self);
                             }
@@ -186,7 +186,7 @@
 
                         case 'select':
                             val = required[n].value;
-                            //console.log(val );
+
                             if (required[n].multiple) {
                                 if (val === null || val.length === 0) {
                                     error = true;
@@ -197,7 +197,7 @@
                                 }
                             } else {
 
-                                // console.log(val);
+
                                 if (!val || val === '-1') {
                                     error = true;
                                     error_type = 'required';
@@ -287,9 +287,11 @@
             }
             //var form_data = self.serialize();
             var form_data = new FormData(self);
+            console.log("He is trying to  setting form_data", form_data)
             form_data.set('_kb_form_verify', settings.nonce);
             //form_data = window.PremiumForm.serialize( form_data );
             form_data = new URLSearchParams(form_data);
+            console.log("He is   setting form_data", form_data)
             //form_data = form_data + '&_kb_form_verify=' + settings.nonce;
             return form_data;
         },
@@ -305,24 +307,24 @@
             var event = new Event('kb-form-start-submit');
             // Dispatch the event.
             window.document.body.dispatchEvent(event);
-            var submitButton = form.querySelector('.premium-newsletter-button-submit');
+            var submitButton = form.querySelector('.kb-forms-submit ');
             var form_data = window.PremiumForm.validateForm(form);
+            console.log("form data is submitting ", form_data)
             if (form_data) {
-                console.log("Form Data")
+
+                console.log("form data if condtion  ", form_data)
                 var el = document.createElement('div');
                 el.classList.add('kb-form-loading');
                 el.innerHTML = '<div class="kb-form-loading-spin"><div></div><div></div><div></div><div></div></div>';
                 form.append(el);
                 submitButton.setAttribute('disabled', 'disabled')
                 submitButton.classList.add('button-primary-disabled');
-                console.log(settings, "mailchimp")
+
                 var request = new XMLHttpRequest();
                 request.open('POST', settings.ajaxurl, true);
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.onload = function () {
                     if (this.status >= 200 && this.status < 400) {
-                        // If successful
-                        //console.log( JSON.parse( this.response ) );
                         var response = JSON.parse(this.response);
                         if (response.success) {
                             var event = new Event('kb-form-success', {
@@ -330,16 +332,7 @@
                             });
                             // Dispatch the event.
                             window.document.body.dispatchEvent(event);
-                            if (response.redirect) {
-                                window.location = response.redirect;
-                            } else {
-                                window.PremiumForm.insertAfter(window.PremiumForm.createElementFromHTML(response.html), form);
-                                if (form.querySelector('.g-recaptcha')) {
-                                    grecaptcha.reset();
-                                }
-                                window.PremiumForm.clearForm(form);
-                            }
-                        } else {
+
                             if (response.data) {
                                 window.PremiumForm.insertAfter(window.PremiumForm.createElementFromHTML(response.data.html), form);
                                 if (response.data.required) {
@@ -348,16 +341,15 @@
                                     }
                                 }
                             }
+
                         }
                     }
-
                     submitButton.removeAttribute('disabled');
                     submitButton.classList.remove('button-primary-disabled');
-                    form.querySelector('.kb-form-loading').remove();
+
                 };
                 request.onerror = function () {
                     // Connection error
-                    console.log('Connection error');
                 };
                 request.send(form_data.toString());
             }
@@ -372,12 +364,7 @@
             if (!input) {
                 return;
             }
-            if (!input.value || 'block-unknown' === input.value) {
-                var theID = window.PremiumForm.checkParentClass(form.parentNode, 'widget_block');
-                if (theID) {
-                    input.value = theID;
-                }
-            }
+
         },
         initForms() {
             var forms = document.querySelectorAll('form.kb-form');

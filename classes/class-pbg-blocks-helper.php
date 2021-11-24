@@ -386,7 +386,7 @@ class PBG_Blocks_Helper {
 			);
 			wp_localize_script(
 				'pbg-newsletter-js',
-				'settings',
+				'premium_blocks_form_params',
 				array(
 					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
 					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),

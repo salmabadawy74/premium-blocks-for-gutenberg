@@ -766,7 +766,7 @@ class edit extends Component {
                                     shadowColor: newColor.rgb
                                 })
 
-                                console.log(shadowColor)
+
                             }
 
                             }

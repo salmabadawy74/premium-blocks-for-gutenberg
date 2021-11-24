@@ -1,115 +1,259 @@
 import classnames from "classnames";
 import Select from 'react-select';
 const { InspectorControls, ColorPalette } = wp.blockEditor;
-const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl } =
-    wp.components;
+const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spinner } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import FONTS from "../../components/premium-fonts";
+import { Fragment } from "react";
 const { addQueryArgs } = wp.url;
 const { apiFetch } = wp;
+const { withSelect } = wp.data
+
 
 const { Component } = wp.element;
 
 
-export default class edit extends Component {
+export class edit extends Component {
 
     constructor() {
         super(...arguments);
+
+        this.state = {
+            api: "",
+            isSavedAPI: false,
+            isSaving: false,
+            list: false,
+            isFetching: false,
+            listsLoaded: false,
+            isFetchingAttributes: false,
+            listAttr: false,
+            listAttrLoaded: false,
+            isFetchingGroups: false,
+            listGroups: false,
+            listGroupLoaded: false,
+            isFetchingTags: false,
+            listTags: false,
+            listTagsLoaded: false
+        }
         this.getMailChimpAudience = this.getMailChimpAudience.bind(this);
         this.getMailChimpGroups = this.getMailChimpGroups.bind(this);
         this.getMailChimpAttributes = this.getMailChimpAttributes.bind(this);
         this.getMailChimpTags = this.getMailChimpTags.bind(this)
         this.saveAPI = this.saveAPI.bind(this)
         this.removeAPI = this.removeAPI.bind(this);
-        this.state = {
-            api: "",
-            isSavedAPI: !1,
-            isSaving: !1,
-            list: !1,
-            isFetching: !1,
-            listsLoaded: !1,
-            isFetchingAttributes: !1,
-            listAttr: !1,
-            listAttrLoaded: !1,
-            isFetchingGroups: !1,
-            listGroups: !1,
-            listGroupLoaded: !1,
-            isFetchingTags: !1,
-            listTags: !1,
-            listTagsLoaded: !1
-        }
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
     componentDidMount() {
+        const { attributes, setAttributes, clientId } = this.props;
+        setAttributes({ block_id: clientId })
         let e;
         wp.api.loadPromise.then(() => {
-            e = new wp.api.models.Settings, e.fetch().then(e => { this.setState({ api: e.mail_chimp_api }), "" !== this.state.api && this.setState({ isSavedAPI: !0 }) })
+            e = new wp.api.models.Settings;
+            e.fetch().then(e => {
+                this.setState({ api: e.mail_chimp_api });
+                "" !== this.state.api && this.setState({ isSavedAPI: true })
+            })
         })
-
     }
     removeAPI() {
         this.setState({ api: "" });
-        this.state.isSavedAPI && (this.setState({ isSaving: !0 }), new wp.api.models.Settings({ mail_chimp_api: "" }).save()
-            .then(() => { this.setState({ isSavedAPI: !1, isSaving: !1 }) }))
+        this.state.isSavedAPI && [this.setState({ isSaving: true }),
+        new wp.api.models.Settings({
+            mail_chimp_api: ""
+        }).save().then(() => {
+            this.setState({
+                isSavedAPI: false,
+                isSaving: false
+            })
+        })]
     }
     saveAPI() {
-        this.setState({ isSaving: !0 });
-        new wp.api.models.Settings({ mail_chimp_api: this.state.api }).save()
-            .then(e => { this.setState({ isSaving: !1, isSavedAPI: !0 }) })
+        this.setState({ isSaving: true });
+        new wp.api.models.Settings({
+            mail_chimp_api: this.state.api
+        }).save().then(e => {
+            this.setState({
+                isSaving: false,
+                isSavedAPI: true
+            })
+        })
     }
     getMailChimpAudience() {
 
-        apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }) })
-            .then(e => {
-                const t = []; e.lists.map(e => { t.push({ value: e.id, label: e.name }) }),
-                    this.setState({ list: t, listsLoaded: !0, isFetching: !1 })
+        (this.state.api && this.state.api.split("-")[1]) ? (this.setState({ isFetching: !0 }),
+            apiFetch({
+                path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                    apikey: this.state.api,
+                    endpoint: "lists/",
+                    queryargs: ["limit=30", "offset=0"]
+                })
+            }).then(e => {
+                const t = [];
+                e.lists.map(e => {
+                    t.push({
+                        value: e.id,
+                        label: e.name
+                    })
+                }), this.setState({
+                    list: t,
+                    listsLoaded: true,
+                    isFetching: false
+                })
+            }).catch(() => {
+                this.setState({
+                    list: [],
+                    listsLoaded: true,
+                    isFetching: false
+                })
+            })) : this.setState({
+                list: [],
+                listsLoaded: true
             })
-            .catch(() => { this.setState({ list: [], listsLoaded: !0, isFetching: !1 }) })
-
-
-
     }
 
     getMailChimpGroups() {
-        console.log(this.props.attributes.list_id)
-
-        apiFetch({ path: addQueryArgs("/pbg-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/" }) })
-            .then(e => {
-                const t = [];
-                e.map(e => { t.push({ value: e.id, label: e.title }) });
-                this.setState({ listGroups: t, listGroupLoaded: !0, isFetchingGroups: !1 })
-            }).catch(() => { this.setState({ listGroups: [], listGroupLoaded: !0, isFetchingGroups: !1 }) })
+        this.state.api && this.props.attributes.list_id ? (this.setState({
+            isFetchingGroups: true
+        }), apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                apikey: this.state.api,
+                endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/"
+            })
+        }).then(e => {
+            const t = [];
+            e.map(e => {
+                t.push({
+                    value: e.id,
+                    label: e.title
+                })
+            }), this.setState({
+                listGroups: t,
+                listGroupLoaded: true,
+                isFetchingGroups: false
+            })
+        }).catch(() => {
+            this.setState({
+                listGroups: [],
+                listGroupLoaded: true,
+                isFetchingGroups: false
+            })
+        })) : this.setState({
+            listGroups: [],
+            listGroupLoaded: true
+        })
     }
     getMailChimpTags() {
-        this.state.api && this.props.settings[0].list.value ? (this.setState({ isFetchingTags: !0 }), apiFetch({
-            path: addQueryArgs("/pbg-mailchimp/v1/get",
-                { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/tag-search/" })
+        this.state.api && this.props.attributes.list_id ? (this.setState({
+            isFetchingTags: true
+        }), apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                apikey: this.state.api,
+                endpoint: "lists/" + this.props.attributes.list_id + "/tag-search/"
+            })
         }).then(e => {
-            const t = []; e.tags && e.tags.map(e => { t.push({ value: e.id, label: e.name }) });
-            this.setState({ listTags: t, listTagsLoaded: !0, isFetchingTags: !1 })
-        }).catch(() => { this.setState({ listTags: [], listTagsLoaded: !0, isFetchingTags: !1 }) })) : this.setState({ listTags: [], listTagsLoaded: !0 })
+            const t = [];
+            e.tags && e.tags.map(e => {
+                t.push({
+                    value: e.id,
+                    label: e.name
+                })
+            }), this.setState({
+                listTags: t,
+                listTagsLoaded: true,
+                isFetchingTags: false
+            })
+        }).catch(() => {
+            this.setState({
+                listTags: [],
+                listTagsLoaded: true,
+                isFetchingTags: false
+            })
+        })) : this.setState({
+            listTags: [],
+            listTagsLoaded: true
+        })
     }
     getMailChimpAttributes() {
-        if (!this.state.api || !this.props.settings[0].list.value) {
+        if (!this.state.api || !this.props.attributes.list_id) {
             const e = [];
-            return e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" }), void this.setState({ listAttr: e, listAttrLoaded: !0 })
+            return e.push({
+                value: null,
+                label: "None"
+            }), e.push({
+                value: "email",
+                label: "Email *"
+            }), void this.setState({
+                listAttr: e,
+                listAttrLoaded: true
+            })
         }
-        this.setState({ isFetchingAttributes: !0 });
-        apiFetch({ path: addQueryArgs("/kb-mailchimp/v1/get", { apikey: this.state.api, endpoint: "lists/" + this.props.settings[0].list.value + "/merge-fields/" }) })
-            .then(e => {
-                const t = [];
-                t.push({ value: null, label: "None" }), t.push({ value: "email", label: "Email *" });
-                e.merge_fields.map((e, n) => { t.push({ value: e.tag, label: e.name }) });
-                this.setState({ listAttr: t, listAttrLoaded: !0, isFetchingAttributes: !1 })
-            }).catch(() => { const e = []; e.push({ value: null, label: "None" }), e.push({ value: "email", label: "Email *" }); this.setState({ listAttr: e, listAttrLoaded: !0, isFetchingAttributes: !1 }) })
+        this.setState({
+            isFetchingAttributes: true
+        }), apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get", {
+                apikey: this.state.api,
+                endpoint: "lists/" + this.props.attributes.list_id + "/merge-fields/"
+            })
+        }).then(e => {
+            const t = [];
+            t.push({
+                value: null,
+                label: "None"
+            }), t.push({
+                value: "email",
+                label: "Email *"
+            }), e.merge_fields.map((e, n) => {
+                t.push({
+                    value: e.tag,
+                    label: e.name
+                })
+            }), this.setState({
+                listAttr: t,
+                listAttrLoaded: true,
+                isFetchingAttributes: false
+            })
+        }).catch(() => {
+            const e = [];
+            e.push({
+                value: null,
+                label: "None"
+            }), e.push({
+                value: "email",
+                label: "Email *"
+            }), this.setState({
+                listAttr: e,
+                listAttrLoaded: true,
+                isFetchingAttributes: false
+            })
+        })
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     render() {
         const { isSelected, setAttributes, clientId, className, attributes } =
             this.props;
-        const { list: e, listsLoaded: t, isFetching: n, isSavedAPI: i, listAttr: o, isFetchingAttributes: l, listAttrLoaded: r, isFetchingGroups: s, listGroups: c, listGroupLoaded: d, isFetchingTags: h, listTags: u, listTagsLoaded: p } = this.state
+        const { list, listsLoaded, isFetching, isSavedAPI, listAttr, isFetchingAttributes, listAttrLoaded, isFetchingGroups, listGroups, listGroupLoaded, isFetchingTags, listTags, listTagsLoaded } = this.state
+        const m = Array.isArray(list) && list.length,
+            f = Array.isArray(listAttr) && listAttr.length,
+            g = Array.isArray(listGroups) && listGroups.length,
+            v = Array.isArray(listTags) && listTags.length;
+
         const {
             block_id,
             api,
@@ -174,7 +318,11 @@ export default class edit extends Component {
                 label: "100%",
             },
         ];
-        console.log(this.state)
+
+
+        const textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
+        const textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
+
 
         const saveInputStyle = (value) => {
             const newUpdate = inputStyles.map((item, index) => {
@@ -225,28 +373,64 @@ export default class edit extends Component {
                         <TextControl
                             label={__(`Mailchimp Api Key`)}
                             value={this.state.api}
-                            onChange={(newURL) => this.setState({ api: newURL })}
-                        />
-                        <button onClick={this.saveAPI}>
-                            save
+                            onChange={e => this.setState({ api: e })} />
+                        <button className={`button button-primary`} disabled={"" === this.state.api} onClick={this.saveAPI}>
+                            {this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")}
                         </button>
-                        {this.state.isSavedAPI && this.state.api !== "" && <button onClick={this.removeAPI}>
+                        {isSavedAPI && api !== "" && <button onClick={this.removeAPI}>
                             remove
                         </button>}
-                        {t ? "" : this.getMailChimpAudience()}
+                        {<Fragment>
+                            <h2 className="kt-heading-size-title">{__('Select  Audience', '')}</h2>
+                            {(listsLoaded ? '' : this.getMailChimpAudience())}
+                            {!Array.isArray(list) ?
+                                <Spinner /> :
+                                __("No Audience found.", "kadence-blocks-pro")}
+                        </Fragment>}
+                        {!isFetching && m && <Fragment>
 
-                        {Array.isArray(this.state.list) ? <Select
-                            value={list_id}
-                            onChange={({ value }) => setAttributes({ list_id: value })}
-                            options={this.state.list}
-                        /> : <div>hello</div>}
-                        {d ? "" : this.getMailChimpGroups()}
-                        {Array.isArray(this.state.listGroups) ? <Select
-                            value={list_id}
-                            onChange={({ value }) => console.log(value)}
-                            options={this.state.listGroups}
-                        /> : <div>hello</div>}
-                        {r ? "" : this.getMailChimpAttributes()}
+                            <h2 className="kt-heading-size-title">{__('Select Audience', '')}</h2>
+                            <Select
+                                value={list_id}
+                                onChange={e => console.log(e
+                                )}
+                                options={list}
+                            />
+                        </Fragment>
+                        }
+                        {list_id && <Fragment>
+                            <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                            {listGroupLoaded ? "" : this.getMailChimpGroups()}
+                            {!Array.isArray(listGroups) ?
+                                <Spinner /> : __("No Group found.", "kadence-blocks-pro")}
+                        </Fragment>}
+
+                        {!isFetchingGroups && g && <Fragment>
+
+                            <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                            <Select
+                                value={list_id}
+                                onChange={({ value }) => setAttributes({ list_id: value })}
+                                options={listGroups}
+                            />
+                        </Fragment>}
+                        {/* ///////////////////////////////////// TAGS //////////////////////////////////////// */}
+                        {!isFetchingTags && !v && <Fragment>
+                            <h2 className="kt-heading-size-title">{__('Select Tags', '')}</h2>
+                            {listTagsLoaded ? "" : this.getMailChimpTags()}
+                            {!Array.isArray((listTags) ? <Spinner /> : __("No Tags Found.", ""))}
+                        </Fragment>}
+
+                        {!isFetchingGroups && g && <Fragment>
+
+                            <h2 className="kt-heading-size-title">{__('Select Tags', '')}</h2>
+                            <Select
+                                value={list_id}
+                                onChange={({ value }) => setAttributes({ list_id: value })}
+                                options={listGroups}
+                            />
+                        </Fragment>}
+
                         <TextControl
                             label={__(`Message Success`)}
                             value={successMessage}
@@ -662,6 +846,7 @@ export default class edit extends Component {
                     </PanelBody>
                 </InspectorControls >
             ),
+
             <div
                 id={`premium-newsLetter-${block_id}`}
                 className={classnames(className,
@@ -714,6 +899,7 @@ export default class edit extends Component {
                             borderStyle: inputStyles[0].textBorderType,
                             borderColor: inputStyles[0].textBorderColor,
                             borderRadius: inputStyles[0].textBorderRadius,
+                            fontSize: `${textSizeInput}px`
                         }}
                     />
                 </div>
@@ -746,12 +932,13 @@ export default class edit extends Component {
                             borderStyle: btnStyles[0].btnBorderType,
                             borderColor: btnStyles[0].btnBorderColor,
                             borderRadius: btnStyles[0].btnBorderRadius,
+                            fontSize: `${textSizeBtn}px`
                         }}
                         onClick={(e) => {
                             e.preventDefault();
                         }}
                     >
-                        <span className="">Submit</span>
+                        {__('Submit')}
                     </button>
                 </div>
             </div>
@@ -759,3 +946,11 @@ export default class edit extends Component {
         ];
     }
 }
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
