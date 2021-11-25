@@ -287,11 +287,9 @@
             }
             //var form_data = self.serialize();
             var form_data = new FormData(self);
-            console.log("He is trying to  setting form_data", form_data)
             form_data.set('_kb_form_verify', settings.nonce);
             //form_data = window.PremiumForm.serialize( form_data );
             form_data = new URLSearchParams(form_data);
-            console.log("He is   setting form_data", form_data)
             //form_data = form_data + '&_kb_form_verify=' + settings.nonce;
             return form_data;
         },
@@ -305,27 +303,24 @@
         submit(e, form) {
             e.preventDefault();
             var event = new Event('kb-form-start-submit');
-            // Dispatch the event.
             window.document.body.dispatchEvent(event);
             var submitButton = form.querySelector('.kb-forms-submit ');
             var form_data = window.PremiumForm.validateForm(form);
-            console.log("form data is submitting ", form_data)
             if (form_data) {
-
-                console.log("form data if condtion  ", form_data)
                 var el = document.createElement('div');
                 el.classList.add('kb-form-loading');
                 el.innerHTML = '<div class="kb-form-loading-spin"><div></div><div></div><div></div><div></div></div>';
                 form.append(el);
                 submitButton.setAttribute('disabled', 'disabled')
                 submitButton.classList.add('button-primary-disabled');
-
                 var request = new XMLHttpRequest();
                 request.open('POST', settings.ajaxurl, true);
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.onload = function () {
                     if (this.status >= 200 && this.status < 400) {
+                        console.log(this.response)
                         var response = JSON.parse(this.response);
+
                         if (response.success) {
                             var event = new Event('kb-form-success', {
                                 formID: form.id,
@@ -344,6 +339,7 @@
 
                         }
                     }
+
                     submitButton.removeAttribute('disabled');
                     submitButton.classList.remove('button-primary-disabled');
 

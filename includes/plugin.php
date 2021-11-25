@@ -63,10 +63,10 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		 * @return void
 		 */
 		public function load_plugin() {
-
+			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-form.php';
 			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter.php';
 			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter-mailchimp-rest-api.php';
-			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-form.php';
+
 		}
 		/**
 		 * Setup the post select API endpoint.

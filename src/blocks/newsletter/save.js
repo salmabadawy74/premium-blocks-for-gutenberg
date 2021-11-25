@@ -30,7 +30,7 @@ export function save(props) {
                     <label for="kb_field__e0cc2d-b0_2">Message<span className="required">*</span></label>
                     <textarea name="kb_field_2" id="kb_field__e0cc2d-b0_2" data-label="Message" type="textarea" placeholder="" data-type="textarea" className="kb-field kb-text-style-field kb-textarea-field kb-field-2" rows="4" data-required="yes"></textarea>
                 </div><input type="hidden" name="_kb_form_id" value={block_id} />
-                <input type="hidden" name="_kb_form_post_id" value={block_id} /><input type="hidden" name="action" value="kb_process_ajax_submit" /><input className="kadence-blocks-field verify" type="text" name="_kb_verify_email" autocomplete="off" aria-hidden="true" placeholder="Email" tabindex="-1" />
+                <input type="hidden" name="_kb_form_post_id" value={block_id} /><input type="hidden" name="action" value="pb_process_ajax_submit" /><input className="kadence-blocks-field verify" type="text" name="_kb_verify_email" autocomplete="off" aria-hidden="true" placeholder="Email" tabindex="-1" />
                 <div className="kadence-blocks-form-field kb-submit-field kb-field-desk-width-100">
                     <button className="kb-forms-submit button kb-button-size-standard kb-button-width-auto">Submit</button>
                 </div>

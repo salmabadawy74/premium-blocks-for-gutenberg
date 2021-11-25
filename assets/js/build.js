@@ -72672,7 +72672,7 @@ function save(props) {
             ),
             _react2.default.createElement("input", { type: "hidden", name: "_kb_form_id", value: block_id }),
             _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: block_id }),
-            _react2.default.createElement("input", { type: "hidden", name: "action", value: "kb_process_ajax_submit" }),
+            _react2.default.createElement("input", { type: "hidden", name: "action", value: "pb_process_ajax_submit" }),
             _react2.default.createElement("input", { className: "kadence-blocks-field verify", type: "text", name: "_kb_verify_email", autocomplete: "off", "aria-hidden": "true", placeholder: "Email", tabindex: "-1" }),
             _react2.default.createElement(
                 "div",
