@@ -23,20 +23,18 @@ jQuery(function ($) {
                 submitButton.attr('disabled', 'disabled').addClass('button-primary-disabled');
 
                 $.post(settings.ajaxurl, form_data, function (res) {
-                    console.log(res, "res", form_data)
+
                     if (res.success) {
                         $('body').trigger('kb-form-success', res);
                         if (res.redirect) {
                             window.location = res.redirect;
                         } else {
                             form.after(res.html);
-                            //focus
-                            // $( 'html, body' ).animate( {
-                            // 	scrollTop: $('.premium-blocks-form-message').offset().top - 100
-                            // }, 'fast' );
-                            if (form.find('.g-recaptcha').length > 0) {
-                                grecaptcha.reset();
-                            }
+                            focus
+                            $('html, body').animate({
+                                scrollTop: $('.premium-blocks-form-message').offset().top - 100
+                            }, 'fast');
+
                             premium_blocks_form.clearForm(form);
                         }
                     } else {

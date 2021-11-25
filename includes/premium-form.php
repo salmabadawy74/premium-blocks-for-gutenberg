@@ -2,7 +2,7 @@
 /**
  * Form Action Handling.
  *
- * @package premium Blocks Pro
+ * @package premium Blocks
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,6 +32,7 @@ class Premium_Form_Actions {
 	 * Class Constructor.
 	 */
 	public function __construct() {
+
 		add_action( 'premium_blocks_form_submission', array( $this, 'process_actions' ), 10, 4 );
 	}
 	/**
@@ -43,8 +44,8 @@ class Premium_Form_Actions {
 	 * @param int    $post_id the post ID.
 	 */
 	public function process_actions( $form_args, $fields, $form_id, $post_id ) {
-			var_dump( 'No List' );
-		if ( isset( $form_args ) && is_array( $form_args ) && isset( $form_args['actions'] ) ) {
+		
+              if ( isset( $form_args ) && is_array( $form_args ) && isset( $form_args['actions'] ) ) {
 
 			$api_key = get_option( 'mail_chimp_api' );
 			if ( empty( $api_key ) ) {
@@ -68,8 +69,9 @@ class Premium_Form_Actions {
 
 						if ( empty( $list ) || ! is_array( $list ) ) {
 							return;
-							var_dump( 'No List' );
+
 						}
+
 						$key_parts = explode( '-', $api_key );
 						if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
 							return;
