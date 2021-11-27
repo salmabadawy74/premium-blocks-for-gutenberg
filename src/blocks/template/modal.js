@@ -6,6 +6,7 @@ const {
     Button,
     Modal
 } = wp.components;
+const apiFetch = wp.apiFetch;
 
 class modal extends Component {
 
@@ -25,10 +26,19 @@ class modal extends Component {
             category
         } = attributes;
 
+        const selectTemplate = async (designId) => {
+            const results = await apiFetch({
+                path: `/stackable/v2/design//${designId}`,
+                method: 'GET',
+            })
+            let designLibrary = await results
+            console.log(designLibrary)
+            this.props.onSelect(designLibrary)
+        }
 
 
         const templates = template.map((item, i) => {
-            return <div className="premium-template-item">
+            return <div className="premium-template-item" onClick={() => selectTemplate(item.id)}>
                 <Button className="premium-template-item__image" variant="secondary" onClick={this.props.onClose}>
                     <img src={item.image} alt="alt" loading="lazy" />
                 </Button>

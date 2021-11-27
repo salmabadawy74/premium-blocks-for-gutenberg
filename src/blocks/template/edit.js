@@ -8,6 +8,7 @@ const { Component } = wp.element;
 const { dispatch } = wp.data;
 const { createBlock, createBlocksFromInnerBlocksTemplate } = wp.blocks;
 const apiFetch = wp.apiFetch;
+const { applyFilters } = wp.hooks;
 
 
 const {
@@ -131,8 +132,19 @@ class edit extends Component {
                 category: categories
             });
             console.log(uikits,
-                category)
+                category, template)
 
+        }
+
+        const replaceBlockWithAttributes = (blockName, attributes, innerBlocks) => {
+            const { replaceBlock } = dispatch('core/block-editor')
+
+            const shortBlockName = blockName.replace(/^\w+\//g, '')
+            const blockAttributes = applyFilters(`stackable.${shortBlockName}.design.filtered-block-attributes`, attributes)
+
+            const block = createBlock(blockName, blockAttributes, createBlocksFromInnerBlocksTemplate(innerBlocks))
+            replaceBlock(this.props.clientId, block)
+            console.log(block)
         }
 
 
@@ -177,19 +189,19 @@ class edit extends Component {
                         }}
                         attributes={attributes}
                         setAttributes={this.props.setAttributes}
-                    // onSelect={ designData => {
-                    // 	const {
-                    // 		name, attributes, innerBlocks, serialized,
-                    // 	} = designData
-
-                    // 	if ( name && attributes ) {
-                    // 		replaceBlockWithAttributes( name, applyFilters( 'stackable.design-library.attributes', attributes ), innerBlocks || [] )
-                    // 	} else if ( serialized ) {
-                    // 		replaceBlocWithContent( serialized )
-                    // 	} else {
-                    // 		console.error( 'Design library selection failed: No block data found' ) // eslint-disable-line no-console
-                    // 	}
-                    // } }
+                        onSelect={designData => {
+                            const {
+                                name, attributes, innerBlocks, serialized,
+                            } = designData
+                            console.log(designData, name, attributes)
+                            if (name && attributes) {
+                                replaceBlockWithAttributes(name, applyFilters('stackable.design-library.attributes', attributes), innerBlocks || [])
+                            } else if (serialized) {
+                                replaceBlocWithContent(serialized)
+                            } else {
+                                console.error('Design library selection failed: No block data found') // eslint-disable-line no-console
+                            }
+                        }}
                     />
                 }
             </div>,
