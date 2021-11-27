@@ -1,17 +1,19 @@
 <?php
+
 /**
  * Form Ajax Handing.
  *
  * @package Premium Blocks
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 /**
  * Main plugin class
  */
-class PBG_Ajax_Form {
+class PBG_Ajax_Form
+{
 
 	/**
 	 * Instance Control
@@ -22,8 +24,9 @@ class PBG_Ajax_Form {
 	/**
 	 * Instance Control
 	 */
-	public static function get_instance() {
-		if ( is_null( self::$instance ) ) {
+	public static function get_instance()
+	{
+		if (is_null(self::$instance)) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -31,34 +34,38 @@ class PBG_Ajax_Form {
 	/**
 	 * Class Constructor.
 	 */
-	public function __construct() {
-		add_action( 'wp_ajax_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
-		add_action( 'wp_ajax_nopriv_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
+	public function __construct()
+	{
+		add_action('wp_ajax_pb_process_ajax_submit', array($this, 'process_ajax'));
+		add_action('wp_ajax_nopriv_pb_process_ajax_submit', array($this, 'process_ajax'));
 	}
 
 	/**
 	 * Process the form submit.
 	 */
-	public function process_ajax() {
-			$email = 'dina.ss@yahoo.com';
-		if ( empty( $email ) ) {
+	public function process_ajax()
+	{
+		$form_id   = sanitize_text_field(wp_unslash($_POST['_kb_form_id']));
+
+		$email = 'dina.ss@yahoo.com';
+		if (empty($email)) {
 			return false;
 		}
 
-		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			return false;
 		}
 
-		$apikey  = get_option( 'mail_chimp_api' );
+		$apikey  = get_option('mail_chimp_api');
 		$list_id = '8286186162';
 		$status  = false;
-		if ( $email && $apikey && $list_id ) {
+		if ($email && $apikey && $list_id) {
 			$root = 'https://api.mailchimp.com/3.0';
-			if ( strstr( $apikey, '-' ) ) {
-				list( $key, $dc ) = explode( '-', $apikey, 2 );
+			if (strstr($apikey, '-')) {
+				list($key, $dc) = explode('-', $apikey, 2);
 			}
-			$root   = str_replace( 'https://api', 'https://' . $dc . '.api', $root );
-			$root   = rtrim( $root, '/' ) . '/';
+			$root   = str_replace('https://api', 'https://' . $dc . '.api', $root);
+			$root   = rtrim($root, '/') . '/';
 			$params = array(
 				'apikey'            => $apikey,
 				'id'                => $list_id,
@@ -70,18 +77,18 @@ class PBG_Ajax_Form {
 				'update_existing'   => true,
 			);
 			$ch     = curl_init();
-			$params = json_encode( $params );
-			curl_setopt( $ch, CURLOPT_URL, $root . '/lists/' . $list_id . '/members/' . $email );
-			curl_setopt( $ch, CURLOPT_USERPWD, 'user:' . $apikey );
-			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' ) );
-			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-			curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PUT' );
-			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-			curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
-			$response_body = curl_exec( $ch );
-			$httpCode      = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-			curl_close( $ch );
-			if ( $httpCode == 200 ) {
+			$params = json_encode($params);
+			curl_setopt($ch, CURLOPT_URL, $root . '/lists/' . $list_id . '/members/' . $email);
+			curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apikey);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+			$response_body = curl_exec($ch);
+			$httpCode      = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			curl_close($ch);
+			if ($httpCode == 200) {
 				$status = true;
 			}
 		}
@@ -482,33 +489,34 @@ class PBG_Ajax_Form {
 	 * @param string $field_type the field type.
 	 * @param mixed  $value the field value.
 	 */
-	private function sanitize_field( $field_type, $value, $multi_select = false ) {
-		switch ( $field_type ) {
+	private function sanitize_field($field_type, $value, $multi_select = false)
+	{
+		switch ($field_type) {
 			case 'text':
 			case 'tel':
 			case 'password':
 			case 'hidden':
 			case 'search':
 			case 'select':
-				$value = ( $multi_select && is_array( $value ) ? sanitize_text_field( implode( ', ', $value ) ) : sanitize_text_field( $value ) );
+				$value = ($multi_select && is_array($value) ? sanitize_text_field(implode(', ', $value)) : sanitize_text_field($value));
 				break;
 			case 'checkbox':
-				$value = ( is_array( $value ) ? sanitize_text_field( implode( ', ', $value ) ) : sanitize_text_field( $value ) );
+				$value = (is_array($value) ? sanitize_text_field(implode(', ', $value)) : sanitize_text_field($value));
 				break;
 			case 'radio':
-				$value = ( is_array( $value ) ? sanitize_text_field( implode( ', ', $value ) ) : sanitize_text_field( $value ) );
+				$value = (is_array($value) ? sanitize_text_field(implode(', ', $value)) : sanitize_text_field($value));
 				break;
 			case 'url':
-				$value = esc_url_raw( trim( $value ) );
+				$value = esc_url_raw(trim($value));
 				break;
 			case 'textarea':
-				$value = sanitize_textarea_field( $value );
+				$value = sanitize_textarea_field($value);
 				break;
 			case 'email':
-				$value = sanitize_email( trim( $value ) );
+				$value = sanitize_email(trim($value));
 				break;
 			case 'accept':
-				$value = esc_html__( 'Accept', 'premium-blocks' );
+				$value = esc_html__('Accept', 'premium-blocks');
 				break;
 			default:
 				/**
@@ -518,7 +526,7 @@ class PBG_Ajax_Form {
 				 *
 				 * @param string $value The field value.
 				 */
-				$value = apply_filters( "premium_blocks_form_sanitize_{$field_type}", $value );
+				$value = apply_filters("premium_blocks_form_sanitize_{$field_type}", $value);
 		}
 
 		return $value;
@@ -530,15 +538,16 @@ class PBG_Ajax_Form {
 	 * @param string $note Note to show in console.
 	 * @param string $action action to take if any.
 	 */
-	public function process_bail( $error, $note, $required = null ) {
+	public function process_bail($error, $note, $required = null)
+	{
 		$notices                  = array();
 		$notices['error']['note'] = $error;
 		$out                      = array(
-			'html'     => $this->html_from_notices( $notices ),
+			'html'     => $this->html_from_notices($notices),
 			'console'  => $note,
 			'required' => $required,
 		);
-		$this->send_json( $out, true );
+		$this->send_json($out, true);
 	}
 
 	/**
@@ -548,10 +557,11 @@ class PBG_Ajax_Form {
 	 *
 	 * @return string
 	 */
-	public function html_from_notices( $notices = array() ) {
+	public function html_from_notices($notices = array())
+	{
 		$html = '';
-		foreach ( $notices as $note_type => $notice ) {
-			if ( ! empty( $notice['note'] ) ) {
+		foreach ($notices as $note_type => $notice) {
+			if (!empty($notice['note'])) {
 				$html .= '<div class="premium-blocks-form-message premium-blocks-form-warning">' . $notice['note'] . '</div>';
 			}
 		}
@@ -561,8 +571,9 @@ class PBG_Ajax_Form {
 	/**
 	 * Starts a flushable buffer
 	 */
-	public function start_buffer() {
-		if ( ! did_action( 'premium_blocks_forms_buffer_started' ) ) {
+	public function start_buffer()
+	{
+		if (!did_action('premium_blocks_forms_buffer_started')) {
 
 			ob_start();
 
@@ -571,7 +582,7 @@ class PBG_Ajax_Form {
 			 *
 			 * Used to prevent starting buffer twice
 			 */
-			do_action( 'premium_blocks_forms_buffer_started' );
+			do_action('premium_blocks_forms_buffer_started');
 		}
 	}
 
@@ -583,7 +594,8 @@ class PBG_Ajax_Form {
 	 * @param array $data Data to return
 	 * @param bool  $is_error Optional. Is this an error. Default false.
 	 */
-	public function send_json( $data = array(), $is_error = false ) {
+	public function send_json($data = array(), $is_error = false)
+	{
 
 		$buffer = ob_get_clean();
 		/**
@@ -592,15 +604,15 @@ class PBG_Ajax_Form {
 		 * @param string|null $buffer Buffer contents
 		 * @param bool $is_error If we think this is an error response or not.
 		 */
-		do_action( 'premium_blocks_forms_buffer_flushed', $buffer, $is_error );
+		do_action('premium_blocks_forms_buffer_flushed', $buffer, $is_error);
 		$data['headers_sent'] = headers_sent();
-		if ( ! $is_error ) {
+		if (!$is_error) {
 			// status_header( 200 );
 			$data['success']      = true;
 			$data['show_message'] = true;
-			wp_send_json( $data );
+			wp_send_json($data);
 		} else {
-			wp_send_json_error( $data );
+			wp_send_json_error($data);
 		}
 		return $buffer;
 	}
@@ -609,13 +621,14 @@ class PBG_Ajax_Form {
 	 *
 	 * @param string $content the post content.
 	 */
-	public function parse_blocks( $content ) {
-		$parser_class = apply_filters( 'block_parser_class', 'WP_Block_Parser' );
-		if ( class_exists( $parser_class ) ) {
+	public function parse_blocks($content)
+	{
+		$parser_class = apply_filters('block_parser_class', 'WP_Block_Parser');
+		if (class_exists($parser_class)) {
 			$parser = new $parser_class();
-			return $parser->parse( $content );
-		} elseif ( function_exists( 'gutenberg_parse_blocks' ) ) {
-			return gutenberg_parse_blocks( $content );
+			return $parser->parse($content);
+		} elseif (function_exists('gutenberg_parse_blocks')) {
+			return gutenberg_parse_blocks($content);
 		} else {
 			return false;
 		}
@@ -627,68 +640,11 @@ class PBG_Ajax_Form {
 	 * @param integer $post_id the form post id.
 	 * @param string  $form_id the form id.
 	 */
-	private function get_form_args( $post_id, $form_id ) {
-		$form_args = false;
-		$blocks    = '';
-		if ( strpos( $post_id, 'block-unknown' ) !== false ) {
-			$widget_data = get_option( 'widget_block' );
-			if ( is_array( $widget_data ) ) {
-				foreach ( $widget_data as $key => $data_array ) {
-					if ( ! empty( $data_array['content'] ) && strpos( $data_array['content'], '<!-- wp:premium/form {"uniqueID":"' . $form_id . '"' ) !== false ) {
-						$blocks = $this->parse_blocks( $data_array['content'] );
-						break;
-					}
-				}
-			}
-		} elseif ( strpos( $post_id, 'block' ) !== false ) {
-			$widget_data = get_option( 'widget_block' );
-			$post_id_int = preg_replace( '/[^0-9]/', '', $post_id );
-			if ( ! empty( $widget_data[ absint( $post_id_int ) ] ) ) {
-				$form_content = $widget_data[ absint( $post_id_int ) ];
-				$blocks       = $this->parse_blocks( $form_content['content'] );
-			}
-		} else {
-			$post_data = get_post( absint( $post_id ) );
-			if ( is_object( $post_data ) ) {
-				$blocks = $this->parse_blocks( $post_data->post_content );
-			}
-		}
-		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-			// var_dump( $blocks );
-			$this->process_bail( __( 'Submission Failed', 'premium-blocks' ), __( 'Data not found', 'premium-blocks' ) );
-		}
-		foreach ( $blocks as $indexkey => $block ) {
-			if ( ! is_object( $block ) && is_array( $block ) && isset( $block['blockName'] ) ) {
-				if ( 'premium/newsletter' === $block['blockName'] ) {
-					if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $form_id === $block['attrs']['block_id'] ) {
-						$form_args = $block['attrs'];
-						break;
-					}
-					var_dump( 'form_args', $form_args );
-				}
-				if ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
-					$form_args = $this->parse_inner_blocks( $block['innerBlocks'], $form_id );
-					if ( $form_args ) {
-						break;
-					}
-				}
-				if ( 'core/block' === $block['blockName'] ) {
-					if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-						$blockattr = $block['attrs'];
-						if ( isset( $blockattr['ref'] ) ) {
-							$reusable_block = get_post( $blockattr['ref'] );
-							if ( $reusable_block && 'wp_block' == $reusable_block->post_type ) {
-								$reuse_data_block = $this->parse_blocks( $reusable_block->post_content );
-								$form_args        = $this->parse_inner_blocks( $reuse_data_block, $form_id );
-								if ( $form_args ) {
-									break;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+	private function get_form_args()
+	{
+		$form_args=array(
+			
+		)
 		return $form_args;
 	}
 	/**
@@ -697,34 +653,14 @@ class PBG_Ajax_Form {
 	 * @param array  $blocks the post inner blocks.
 	 * @param string $form_id the form Id.
 	 */
-	private function parse_inner_blocks( $blocks, $form_id ) {
+	private function parse_inner_blocks($blocks, $form_id)
+	{
 		$form_args = false;
-		foreach ( $blocks as $indexkey => $block ) {
-			if ( 'premium/form' === $block['blockName'] ) {
-				if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) && isset( $block['attrs']['uniqueID'] ) && $form_id === $block['attrs']['uniqueID'] ) {
+		foreach ($blocks as $indexkey => $block) {
+			if ('premium/newsletter' === $block['blockName']) {
+				if (isset($block['attrs']) && is_array($block['attrs']) && isset($block['attrs']['uniqueID']) && $form_id === $block['attrs']['uniqueID']) {
 					$form_args = $block['attrs'];
 					break;
-				}
-			}
-			if ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
-				$form_args = $this->parse_inner_blocks( $block['innerBlocks'], $form_id );
-				if ( $form_args ) {
-					break;
-				}
-			}
-			if ( 'core/block' === $block['blockName'] ) {
-				if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-					$blockattr = $block['attrs'];
-					if ( isset( $blockattr['ref'] ) ) {
-						$reusable_block = get_post( $blockattr['ref'] );
-						if ( $reusable_block && 'wp_block' == $reusable_block->post_type ) {
-							$reuse_data_block = $this->parse_blocks( $reusable_block->post_content );
-							$form_args        = $this->parse_inner_blocks( $reuse_data_block, $form_id );
-							if ( $form_args ) {
-								break;
-							}
-						}
-					}
 				}
 			}
 		}
