@@ -16,6 +16,7 @@ export function save(props) {
         inputStyles,
         btnStyles,
         messageStyle,
+        postID
     } = attributes;
     return (
         <div
@@ -40,7 +41,7 @@ export function save(props) {
                 </div>
 
                 <input type="hidden" name="_kb_form_id" value={block_id} />
-                <input type="hidden" name="_kb_form_post_id" value={block_id} />
+                <input type="hidden" name="_kb_form_post_id" value={postID} />
                 <input
                     type="hidden"
                     name="action"
