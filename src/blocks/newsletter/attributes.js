@@ -33,6 +33,20 @@ const attributes = {
         type: "string",
 
     },
+    postID: {
+        type: "string"
+    },
+    mailchimp: {
+        type: "array",
+        default: [
+            {
+                list: [],
+                groups: [],
+                map: [],
+                doubleOptin: !1,
+                tags: []
+            }]
+    },
     inputStyles: {
         type: 'array',
         default: [

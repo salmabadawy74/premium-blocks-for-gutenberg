@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import Select from 'react-select';
+import debounce from 'lodash/debounce';
 const { InspectorControls, ColorPalette } = wp.blockEditor;
 const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spinner } = wp.components;
 const { __ } = wp.i18n;
@@ -13,7 +14,7 @@ const { withSelect } = wp.data
 
 
 const { Component } = wp.element;
-
+const { getWidgetIdFromBlock } = wp.widgets;
 
 export class edit extends Component {
 
@@ -44,6 +45,9 @@ export class edit extends Component {
         this.saveAPI = this.saveAPI.bind(this)
         this.removeAPI = this.removeAPI.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
+        this.getID = this.getID.bind(this);
+        this.debouncedGetID = debounce(this.getID.bind(this), 200);
+
     }
 
     componentDidMount() {
@@ -57,6 +61,8 @@ export class edit extends Component {
                 "" !== this.state.api && this.setState({ isSavedAPI: true })
             })
         })
+
+        this.debouncedGetID();
     }
     removeAPI() {
         this.setState({ api: "" });
@@ -69,6 +75,36 @@ export class edit extends Component {
                 isSaving: false
             })
         })]
+    }
+    getID() {
+        if (getWidgetIdFromBlock(this.props)) {
+            if (!this.props.attributes.postID) {
+                this.props.setAttributes({
+                    postID: getWidgetIdFromBlock(this.props),
+                });
+            } else if (getWidgetIdFromBlock(this.props) !== this.props.attributes.postID) {
+                this.props.setAttributes({
+                    postID: getWidgetIdFromBlock(this.props),
+                });
+            }
+        } else if (wp.data.select('core/editor')) {
+            const { getCurrentPostId } = wp.data.select('core/editor');
+            if (!this.props.attributes.postID && getCurrentPostId()) {
+                this.props.setAttributes({
+                    postID: getCurrentPostId().toString(),
+                });
+            } else if (getCurrentPostId() && getCurrentPostId().toString() !== this.props.attributes.postID) {
+                this.props.setAttributes({
+                    postID: getCurrentPostId().toString(),
+                });
+            }
+        } else {
+            if (!this.props.attributes.postID) {
+                this.props.setAttributes({
+                    postID: 'block-unknown',
+                });
+            }
+        }
     }
     saveAPI() {
         this.setState({ isSaving: true });
@@ -266,6 +302,7 @@ export class edit extends Component {
             inputStyles,
             btnStyles,
             messageStyle,
+            postID
         } = attributes;
         const COLUMNS = [
             {

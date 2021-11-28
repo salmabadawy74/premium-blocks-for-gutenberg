@@ -1048,6 +1048,25 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var freeGlobal = __webpack_require__(86);
+
+/** Detect free variable `self`. */
+var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1113,7 +1132,7 @@ function generateCSS(selectors, id) {
 exports.default = generateCSS;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1136,7 +1155,7 @@ function generateCSSUnit(value, unit) {
 exports.default = generateCSSUnit;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1359,25 +1378,6 @@ function PremiumBackground(props) {
         )
     );
 }
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var freeGlobal = __webpack_require__(86);
-
-/** Detect free variable `self`. */
-var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
 
 /***/ }),
 /* 15 */
@@ -1989,7 +1989,7 @@ module.exports = $export;
 "use strict";
 
 
-var anObject = __webpack_require__(38);
+var anObject = __webpack_require__(39);
 var IE8_DOM_DEFINE = __webpack_require__(112);
 var toPrimitive = __webpack_require__(68);
 var dP = Object.defineProperty;
@@ -2218,7 +2218,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 var dP = __webpack_require__(22);
-var createDesc = __webpack_require__(47);
+var createDesc = __webpack_require__(49);
 module.exports = __webpack_require__(23) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -2276,7 +2276,7 @@ module.exports = function (it) {
 
 
 var store = __webpack_require__(72)('wks');
-var uid = __webpack_require__(50);
+var uid = __webpack_require__(52);
 var _Symbol = __webpack_require__(20).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
 
@@ -2389,7 +2389,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 "use strict";
 
 
-var _Symbol = __webpack_require__(41),
+var _Symbol = __webpack_require__(42),
     getRawTag = __webpack_require__(144),
     objectToString = __webpack_require__(145);
 
@@ -2456,6 +2456,47 @@ module.exports = g;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
  *
@@ -2486,7 +2527,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2499,7 +2540,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2539,7 +2580,7 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2568,13 +2609,13 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(11);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -2582,7 +2623,7 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2596,7 +2637,7 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2620,7 +2661,7 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2650,13 +2691,51 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isSymbol = __webpack_require__(61);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var baseGetTag = __webpack_require__(35),
+    isObjectLike = __webpack_require__(38);
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+
+module.exports = isSymbol;
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isSymbol = __webpack_require__(46);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -2679,7 +2758,7 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3029,7 +3108,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3045,7 +3124,7 @@ module.exports = function (bitmap, value) {
 };
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3060,7 +3139,7 @@ module.exports = Object.keys || function keys(O) {
 };
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3069,7 +3148,7 @@ module.exports = Object.keys || function keys(O) {
 module.exports = true;
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3082,7 +3161,7 @@ module.exports = function (key) {
 };
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3091,7 +3170,7 @@ module.exports = function (key) {
 exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3109,7 +3188,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(53);
+  var ReactPropTypesSecret = __webpack_require__(55);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -3190,7 +3269,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3208,14 +3287,14 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -3223,48 +3302,7 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-/***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3304,7 +3342,7 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3312,7 +3350,7 @@ module.exports = MapCache;
 
 var arrayLikeKeys = __webpack_require__(178),
     baseKeys = __webpack_require__(185),
-    isArrayLike = __webpack_require__(59);
+    isArrayLike = __webpack_require__(60);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -3349,7 +3387,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3391,14 +3429,14 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isFunction = __webpack_require__(85),
-    isLength = __webpack_require__(58);
+    isLength = __webpack_require__(59);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -3432,7 +3470,7 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3441,7 +3479,7 @@ module.exports = isArrayLike;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(61);
+    isSymbol = __webpack_require__(46);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -3467,44 +3505,6 @@ function isKey(value, object) {
 }
 
 module.exports = isKey;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var baseGetTag = __webpack_require__(35),
-    isObjectLike = __webpack_require__(37);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
-}
-
-module.exports = isSymbol;
 
 /***/ }),
 /* 62 */
@@ -4114,7 +4114,7 @@ module.exports = function (it) {
 
 
 var shared = __webpack_require__(72)('keys');
-var uid = __webpack_require__(50);
+var uid = __webpack_require__(52);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
@@ -4135,7 +4135,7 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(49) ? 'pure' : 'global',
+  mode: __webpack_require__(51) ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
@@ -4188,7 +4188,7 @@ module.exports = {};
 
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(38);
+var anObject = __webpack_require__(39);
 var dPs = __webpack_require__(337);
 var enumBugKeys = __webpack_require__(73);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
@@ -4263,7 +4263,7 @@ exports.f = __webpack_require__(33);
 
 var global = __webpack_require__(20);
 var core = __webpack_require__(10);
-var LIBRARY = __webpack_require__(49);
+var LIBRARY = __webpack_require__(51);
 var wksExt = __webpack_require__(79);
 var defineProperty = __webpack_require__(22).f;
 module.exports = function (name) {
@@ -4316,7 +4316,7 @@ module.exports = arrayMap;
 "use strict";
 
 
-var ListCache = __webpack_require__(39),
+var ListCache = __webpack_require__(40),
     stackClear = __webpack_require__(138),
     stackDelete = __webpack_require__(139),
     stackGet = __webpack_require__(140),
@@ -4397,7 +4397,7 @@ module.exports = eq;
 
 
 var baseGetTag = __webpack_require__(35),
-    isObject = __webpack_require__(55);
+    isObject = __webpack_require__(37);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -4491,7 +4491,7 @@ module.exports = toSource;
 
 
 var baseIsEqualDeep = __webpack_require__(161),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -4613,7 +4613,7 @@ module.exports = equalArrays;
 
 
 var baseIsArguments = __webpack_require__(180),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -4659,7 +4659,7 @@ module.exports = isArguments;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(14),
+var root = __webpack_require__(11),
     stubFalse = __webpack_require__(181);
 
 /** Detect free variable `exports`. */
@@ -4697,7 +4697,7 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
 /* 92 */
@@ -4773,7 +4773,7 @@ module.exports = isTypedArray;
 "use strict";
 
 
-var isObject = __webpack_require__(55);
+var isObject = __webpack_require__(37);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -4824,7 +4824,7 @@ module.exports = matchesStrictComparable;
 
 
 var castPath = __webpack_require__(97),
-    toKey = __webpack_require__(45);
+    toKey = __webpack_require__(47);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -4856,7 +4856,7 @@ module.exports = baseGet;
 
 
 var isArray = __webpack_require__(15),
-    isKey = __webpack_require__(60),
+    isKey = __webpack_require__(61),
     stringToPath = __webpack_require__(197),
     toString = __webpack_require__(200);
 
@@ -5773,7 +5773,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
 /* 100 */
@@ -6860,11 +6860,11 @@ module.exports = exports["default"];
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
 };
 
 exports.default = iconsList;
@@ -7138,7 +7138,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 "use strict";
 
 
-var LIBRARY = __webpack_require__(49);
+var LIBRARY = __webpack_require__(51);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(120);
 var hide = __webpack_require__(29);
@@ -7250,8 +7250,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 "use strict";
 
 
-var pIE = __webpack_require__(51);
-var createDesc = __webpack_require__(47);
+var pIE = __webpack_require__(53);
+var createDesc = __webpack_require__(49);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(68);
 var has = __webpack_require__(24);
@@ -7296,7 +7296,7 @@ __webpack_require__(270);
 
 __webpack_require__(274);
 
-__webpack_require__(46);
+__webpack_require__(48);
 
 __webpack_require__(283);
 
@@ -8643,7 +8643,7 @@ if (process.env.NODE_ENV !== "production") {
     'use strict';
 
     var _assign = __webpack_require__(34);
-    var checkPropTypes = __webpack_require__(52);
+    var checkPropTypes = __webpack_require__(54);
 
     // TODO: this is special because it gets imported during build.
 
@@ -10904,7 +10904,7 @@ module.exports = listCacheClear;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(40);
+var assocIndexOf = __webpack_require__(41);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -10947,7 +10947,7 @@ module.exports = listCacheDelete;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(40);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Gets the list cache value for `key`.
@@ -10974,7 +10974,7 @@ module.exports = listCacheGet;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(40);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -10998,7 +10998,7 @@ module.exports = listCacheHas;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(40);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -11032,7 +11032,7 @@ module.exports = listCacheSet;
 "use strict";
 
 
-var ListCache = __webpack_require__(39);
+var ListCache = __webpack_require__(40);
 
 /**
  * Removes all key-value entries from the stack.
@@ -11125,9 +11125,9 @@ module.exports = stackHas;
 "use strict";
 
 
-var ListCache = __webpack_require__(39),
-    Map = __webpack_require__(54),
-    MapCache = __webpack_require__(56);
+var ListCache = __webpack_require__(40),
+    Map = __webpack_require__(56),
+    MapCache = __webpack_require__(57);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -11169,7 +11169,7 @@ module.exports = stackSet;
 
 var isFunction = __webpack_require__(85),
     isMasked = __webpack_require__(146),
-    isObject = __webpack_require__(55),
+    isObject = __webpack_require__(37),
     toSource = __webpack_require__(87);
 
 /**
@@ -11219,7 +11219,7 @@ module.exports = baseIsNative;
 "use strict";
 
 
-var _Symbol = __webpack_require__(41);
+var _Symbol = __webpack_require__(42);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11331,7 +11331,7 @@ module.exports = isMasked;
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(11);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -11367,8 +11367,8 @@ module.exports = getValue;
 
 
 var Hash = __webpack_require__(150),
-    ListCache = __webpack_require__(39),
-    Map = __webpack_require__(54);
+    ListCache = __webpack_require__(40),
+    Map = __webpack_require__(56);
 
 /**
  * Removes all key-value entries from the map.
@@ -11435,7 +11435,7 @@ module.exports = Hash;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(42);
+var nativeCreate = __webpack_require__(43);
 
 /**
  * Removes all key-value entries from the hash.
@@ -11483,7 +11483,7 @@ module.exports = hashDelete;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(42);
+var nativeCreate = __webpack_require__(43);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -11521,7 +11521,7 @@ module.exports = hashGet;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(42);
+var nativeCreate = __webpack_require__(43);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11552,7 +11552,7 @@ module.exports = hashHas;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(42);
+var nativeCreate = __webpack_require__(43);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -11583,7 +11583,7 @@ module.exports = hashSet;
 "use strict";
 
 
-var getMapData = __webpack_require__(43);
+var getMapData = __webpack_require__(44);
 
 /**
  * Removes `key` and its value from the map.
@@ -11632,7 +11632,7 @@ module.exports = isKeyable;
 "use strict";
 
 
-var getMapData = __webpack_require__(43);
+var getMapData = __webpack_require__(44);
 
 /**
  * Gets the map value for `key`.
@@ -11656,7 +11656,7 @@ module.exports = mapCacheGet;
 "use strict";
 
 
-var getMapData = __webpack_require__(43);
+var getMapData = __webpack_require__(44);
 
 /**
  * Checks if a map value for `key` exists.
@@ -11680,7 +11680,7 @@ module.exports = mapCacheHas;
 "use strict";
 
 
-var getMapData = __webpack_require__(43);
+var getMapData = __webpack_require__(44);
 
 /**
  * Sets the map `key` to `value`.
@@ -11799,7 +11799,7 @@ module.exports = baseIsEqualDeep;
 "use strict";
 
 
-var MapCache = __webpack_require__(56),
+var MapCache = __webpack_require__(57),
     setCacheAdd = __webpack_require__(163),
     setCacheHas = __webpack_require__(164);
 
@@ -11935,7 +11935,7 @@ module.exports = cacheHas;
 "use strict";
 
 
-var _Symbol = __webpack_require__(41),
+var _Symbol = __webpack_require__(42),
     Uint8Array = __webpack_require__(168),
     eq = __webpack_require__(84),
     equalArrays = __webpack_require__(89),
@@ -12053,7 +12053,7 @@ module.exports = equalByTag;
 "use strict";
 
 
-var root = __webpack_require__(14);
+var root = __webpack_require__(11);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -12211,7 +12211,7 @@ module.exports = equalObjects;
 
 var baseGetAllKeys = __webpack_require__(173),
     getSymbols = __webpack_require__(175),
-    keys = __webpack_require__(57);
+    keys = __webpack_require__(58);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -12475,7 +12475,7 @@ module.exports = baseTimes;
 
 
 var baseGetTag = __webpack_require__(35),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -12527,8 +12527,8 @@ module.exports = stubFalse;
 
 
 var baseGetTag = __webpack_require__(35),
-    isLength = __webpack_require__(58),
-    isObjectLike = __webpack_require__(37);
+    isLength = __webpack_require__(59),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -12636,7 +12636,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
 /* 185 */
@@ -12747,7 +12747,7 @@ module.exports = overArg;
 
 
 var DataView = __webpack_require__(190),
-    Map = __webpack_require__(54),
+    Map = __webpack_require__(56),
     Promise = __webpack_require__(191),
     Set = __webpack_require__(192),
     WeakMap = __webpack_require__(193),
@@ -12814,7 +12814,7 @@ module.exports = getTag;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -12829,7 +12829,7 @@ module.exports = DataView;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -12844,7 +12844,7 @@ module.exports = Promise;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -12859,7 +12859,7 @@ module.exports = Set;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(14);
+    root = __webpack_require__(11);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -12874,7 +12874,7 @@ module.exports = WeakMap;
 
 
 var isStrictComparable = __webpack_require__(94),
-    keys = __webpack_require__(57);
+    keys = __webpack_require__(58);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -12908,10 +12908,10 @@ module.exports = getMatchData;
 var baseIsEqual = __webpack_require__(88),
     get = __webpack_require__(196),
     hasIn = __webpack_require__(202),
-    isKey = __webpack_require__(60),
+    isKey = __webpack_require__(61),
     isStrictComparable = __webpack_require__(94),
     matchesStrictComparable = __webpack_require__(95),
-    toKey = __webpack_require__(45);
+    toKey = __webpack_require__(47);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -13054,7 +13054,7 @@ module.exports = memoizeCapped;
 "use strict";
 
 
-var MapCache = __webpack_require__(56);
+var MapCache = __webpack_require__(57);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -13171,10 +13171,10 @@ module.exports = toString;
 "use strict";
 
 
-var _Symbol = __webpack_require__(41),
+var _Symbol = __webpack_require__(42),
     arrayMap = __webpack_require__(82),
     isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(61);
+    isSymbol = __webpack_require__(46);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -13283,8 +13283,8 @@ var castPath = __webpack_require__(97),
     isArguments = __webpack_require__(90),
     isArray = __webpack_require__(15),
     isIndex = __webpack_require__(92),
-    isLength = __webpack_require__(58),
-    toKey = __webpack_require__(45);
+    isLength = __webpack_require__(59),
+    toKey = __webpack_require__(47);
 
 /**
  * Checks if `path` exists on `object`.
@@ -13356,8 +13356,8 @@ module.exports = identity;
 
 var baseProperty = __webpack_require__(207),
     basePropertyDeep = __webpack_require__(208),
-    isKey = __webpack_require__(60),
-    toKey = __webpack_require__(45);
+    isKey = __webpack_require__(61),
+    toKey = __webpack_require__(47);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -13441,7 +13441,7 @@ module.exports = basePropertyDeep;
 
 
 var baseEach = __webpack_require__(210),
-    isArrayLike = __webpack_require__(59);
+    isArrayLike = __webpack_require__(60);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -13493,7 +13493,7 @@ module.exports = baseEach;
 
 
 var baseFor = __webpack_require__(212),
-    keys = __webpack_require__(57);
+    keys = __webpack_require__(58);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -13573,7 +13573,7 @@ module.exports = createBaseFor;
 "use strict";
 
 
-var isArrayLike = __webpack_require__(59);
+var isArrayLike = __webpack_require__(60);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -15790,11 +15790,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -17567,7 +17567,7 @@ var _premiumFonts = __webpack_require__(27);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -18233,11 +18233,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -19202,7 +19202,7 @@ var _premiumBoxShadow = __webpack_require__(17);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -20310,11 +20310,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -22471,7 +22471,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -23525,11 +23525,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -25660,7 +25660,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -26630,8 +26630,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var ReactIs = __webpack_require__(100);
 var assign = __webpack_require__(34);
 
-var ReactPropTypesSecret = __webpack_require__(53);
-var checkPropTypes = __webpack_require__(52);
+var ReactPropTypesSecret = __webpack_require__(55);
+var checkPropTypes = __webpack_require__(54);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -27203,7 +27203,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(53);
+var ReactPropTypesSecret = __webpack_require__(55);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -30522,7 +30522,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(52);var scheduler=__webpack_require__(101);var tracing=__webpack_require__(247);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(54);var scheduler=__webpack_require__(101);var tracing=__webpack_require__(247);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -37882,7 +37882,7 @@ var _premiumBoxShadow = __webpack_require__(17);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -39312,11 +39312,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -44341,7 +44341,7 @@ var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -46265,11 +46265,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -49357,7 +49357,7 @@ var _premiumBoxShadow = __webpack_require__(17);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -50965,7 +50965,7 @@ var _premiumBoxShadow = __webpack_require__(17);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -51824,11 +51824,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -53461,7 +53461,7 @@ var _premiumFilters = __webpack_require__(62);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _index = __webpack_require__(46);
+var _index = __webpack_require__(48);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -53477,7 +53477,7 @@ var _styling = __webpack_require__(280);
 
 var _styling2 = _interopRequireDefault(_styling);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -54430,11 +54430,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -54503,7 +54503,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _index = __webpack_require__(46);
+var _index = __webpack_require__(48);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -54718,7 +54718,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _index = __webpack_require__(46);
+var _index = __webpack_require__(48);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -56285,7 +56285,7 @@ var _typed = __webpack_require__(287);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumBackground = __webpack_require__(13);
+var _premiumBackground = __webpack_require__(14);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -57216,11 +57216,11 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -58454,7 +58454,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
 /* 288 */
@@ -62425,9 +62425,9 @@ module.exports = function (it) {
 
 // 19.1.2.1 Object.assign(target, source, ...)
 
-var getKeys = __webpack_require__(48);
+var getKeys = __webpack_require__(50);
 var gOPS = __webpack_require__(74);
-var pIE = __webpack_require__(51);
+var pIE = __webpack_require__(53);
 var toObject = __webpack_require__(75);
 var IObject = __webpack_require__(115);
 var $assign = Object.assign;
@@ -62764,7 +62764,7 @@ module.exports = function (TO_STRING) {
 
 
 var create = __webpack_require__(77);
-var descriptor = __webpack_require__(47);
+var descriptor = __webpack_require__(49);
 var setToStringTag = __webpack_require__(78);
 var IteratorPrototype = {};
 
@@ -62786,8 +62786,8 @@ module.exports = function (Constructor, NAME, next) {
 
 
 var dP = __webpack_require__(22);
-var anObject = __webpack_require__(38);
-var getKeys = __webpack_require__(48);
+var anObject = __webpack_require__(39);
+var getKeys = __webpack_require__(50);
 
 module.exports = __webpack_require__(23) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -62935,22 +62935,22 @@ var META = __webpack_require__(346).KEY;
 var $fails = __webpack_require__(31);
 var shared = __webpack_require__(72);
 var setToStringTag = __webpack_require__(78);
-var uid = __webpack_require__(50);
+var uid = __webpack_require__(52);
 var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(79);
 var wksDefine = __webpack_require__(80);
 var enumKeys = __webpack_require__(347);
 var isArray = __webpack_require__(348);
-var anObject = __webpack_require__(38);
+var anObject = __webpack_require__(39);
 var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(68);
-var createDesc = __webpack_require__(47);
+var createDesc = __webpack_require__(49);
 var _create = __webpack_require__(77);
 var gOPNExt = __webpack_require__(349);
 var $GOPD = __webpack_require__(122);
 var $DP = __webpack_require__(22);
-var $keys = __webpack_require__(48);
+var $keys = __webpack_require__(50);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -63077,10 +63077,10 @@ if (!USE_NATIVE) {
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
   __webpack_require__(121).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(51).f = $propertyIsEnumerable;
+  __webpack_require__(53).f = $propertyIsEnumerable;
   __webpack_require__(74).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(49)) {
+  if (DESCRIPTORS && !__webpack_require__(51)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -63175,7 +63175,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var META = __webpack_require__(50)('meta');
+var META = __webpack_require__(52)('meta');
 var isObject = __webpack_require__(30);
 var has = __webpack_require__(24);
 var setDesc = __webpack_require__(22).f;
@@ -63237,9 +63237,9 @@ var meta = module.exports = {
 
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(48);
+var getKeys = __webpack_require__(50);
 var gOPS = __webpack_require__(74);
-var pIE = __webpack_require__(51);
+var pIE = __webpack_require__(53);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -63401,7 +63401,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(357).set });
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(30);
-var anObject = __webpack_require__(38);
+var anObject = __webpack_require__(39);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -64060,11 +64060,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(11);
+var _generateCss = __webpack_require__(12);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(12);
+var _generateCssUnit = __webpack_require__(13);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -64227,9 +64227,9 @@ var _edit = __webpack_require__(365);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(378);
+var _save = __webpack_require__(383);
 
-var _attributes = __webpack_require__(379);
+var _attributes = __webpack_require__(384);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -64276,6 +64276,10 @@ var _reactSelect = __webpack_require__(366);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
+var _debounce = __webpack_require__(378);
+
+var _debounce2 = _interopRequireDefault(_debounce);
+
 var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
@@ -64316,6 +64320,7 @@ var _wp = wp,
     apiFetch = _wp.apiFetch;
 var withSelect = wp.data.withSelect;
 var Component = wp.element.Component;
+var getWidgetIdFromBlock = wp.widgets.getWidgetIdFromBlock;
 
 var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
@@ -64349,11 +64354,14 @@ var edit = exports.edit = function (_Component) {
         _this.saveAPI = _this.saveAPI.bind(_this);
         _this.removeAPI = _this.removeAPI.bind(_this);
         _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        _this.getID = _this.getID.bind(_this);
+        _this.debouncedGetID = (0, _debounce2.default)(_this.getID.bind(_this), 200);
+
         return _this;
     }
 
     _createClass(edit, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
@@ -64371,9 +64379,11 @@ var edit = exports.edit = function (_Component) {
                     "" !== _this2.state.api && _this2.setState({ isSavedAPI: true });
                 });
             });
+
+            this.debouncedGetID();
         }
     }, {
-        key: "removeAPI",
+        key: 'removeAPI',
         value: function removeAPI() {
             var _this3 = this;
 
@@ -64388,7 +64398,41 @@ var edit = exports.edit = function (_Component) {
             })];
         }
     }, {
-        key: "saveAPI",
+        key: 'getID',
+        value: function getID() {
+            if (getWidgetIdFromBlock(this.props)) {
+                if (!this.props.attributes.postID) {
+                    this.props.setAttributes({
+                        postID: getWidgetIdFromBlock(this.props)
+                    });
+                } else if (getWidgetIdFromBlock(this.props) !== this.props.attributes.postID) {
+                    this.props.setAttributes({
+                        postID: getWidgetIdFromBlock(this.props)
+                    });
+                }
+            } else if (wp.data.select('core/editor')) {
+                var _wp$data$select = wp.data.select('core/editor'),
+                    getCurrentPostId = _wp$data$select.getCurrentPostId;
+
+                if (!this.props.attributes.postID && getCurrentPostId()) {
+                    this.props.setAttributes({
+                        postID: getCurrentPostId().toString()
+                    });
+                } else if (getCurrentPostId() && getCurrentPostId().toString() !== this.props.attributes.postID) {
+                    this.props.setAttributes({
+                        postID: getCurrentPostId().toString()
+                    });
+                }
+            } else {
+                if (!this.props.attributes.postID) {
+                    this.props.setAttributes({
+                        postID: 'block-unknown'
+                    });
+                }
+            }
+        }
+    }, {
+        key: 'saveAPI',
         value: function saveAPI() {
             var _this4 = this;
 
@@ -64403,7 +64447,7 @@ var edit = exports.edit = function (_Component) {
             });
         }
     }, {
-        key: "getMailChimpAudience",
+        key: 'getMailChimpAudience',
         value: function getMailChimpAudience() {
             var _this5 = this;
 
@@ -64437,7 +64481,7 @@ var edit = exports.edit = function (_Component) {
             });
         }
     }, {
-        key: "getMailChimpGroups",
+        key: 'getMailChimpGroups',
         value: function getMailChimpGroups() {
             var _this6 = this;
 
@@ -64472,7 +64516,7 @@ var edit = exports.edit = function (_Component) {
             });
         }
     }, {
-        key: "getMailChimpTags",
+        key: 'getMailChimpTags',
         value: function getMailChimpTags() {
             var _this7 = this;
 
@@ -64507,7 +64551,7 @@ var edit = exports.edit = function (_Component) {
             });
         }
     }, {
-        key: "getMailChimpAttributes",
+        key: 'getMailChimpAttributes',
         value: function getMailChimpAttributes() {
             var _this8 = this;
 
@@ -64565,7 +64609,7 @@ var edit = exports.edit = function (_Component) {
             });
         }
     }, {
-        key: "getPreviewSize",
+        key: 'getPreviewSize',
         value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
             if (device === 'Mobile') {
                 if (undefined !== mobileSize && '' !== mobileSize) {
@@ -64581,7 +64625,7 @@ var edit = exports.edit = function (_Component) {
             return desktopSize;
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             var _this9 = this,
                 _React$createElement,
@@ -64625,7 +64669,8 @@ var edit = exports.edit = function (_Component) {
                 eMail = attributes.eMail,
                 inputStyles = attributes.inputStyles,
                 btnStyles = attributes.btnStyles,
-                messageStyle = attributes.messageStyle;
+                messageStyle = attributes.messageStyle,
+                postID = attributes.postID;
 
             var COLUMNS = [{
                 value: "20",
@@ -64703,43 +64748,43 @@ var edit = exports.edit = function (_Component) {
             };
             return [isSelected && React.createElement(
                 InspectorControls,
-                { key: "inspector" },
+                { key: 'inspector' },
                 React.createElement(
                     PanelBody,
                     {
                         title: __("General"),
-                        className: "premium-panel-body",
+                        className: 'premium-panel-body',
                         initialOpen: true
                     },
                     React.createElement(TextControl, {
-                        label: __("E-mail"),
+                        label: __('E-mail'),
                         value: eMail,
                         onChange: function onChange(value) {
                             return setAttributes({ eMail: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Mailchimp Api Key"),
+                        label: __('Mailchimp Api Key'),
                         value: this.state.api,
                         onChange: function onChange(e) {
                             return _this9.setState({ api: e });
                         } }),
                     React.createElement(
-                        "button",
-                        { className: "button button-primary", disabled: "" === this.state.api, onClick: this.saveAPI },
+                        'button',
+                        { className: 'button button-primary', disabled: "" === this.state.api, onClick: this.saveAPI },
                         this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")
                     ),
                     isSavedAPI && api !== "" && React.createElement(
-                        "button",
+                        'button',
                         { onClick: this.removeAPI },
-                        "remove"
+                        'remove'
                     ),
                     React.createElement(
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select  Audience', '')
                         ),
                         listsLoaded ? '' : this.getMailChimpAudience(),
@@ -64749,8 +64794,8 @@ var edit = exports.edit = function (_Component) {
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select Audience', '')
                         ),
                         React.createElement(_reactSelect2.default, {
@@ -64765,8 +64810,8 @@ var edit = exports.edit = function (_Component) {
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select Group', 'kadence-blocks')
                         ),
                         listGroupLoaded ? "" : this.getMailChimpGroups(),
@@ -64776,8 +64821,8 @@ var edit = exports.edit = function (_Component) {
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select Group', 'kadence-blocks')
                         ),
                         React.createElement(_reactSelect2.default, {
@@ -64793,8 +64838,8 @@ var edit = exports.edit = function (_Component) {
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select Tags', '')
                         ),
                         listTagsLoaded ? "" : this.getMailChimpTags(),
@@ -64804,8 +64849,8 @@ var edit = exports.edit = function (_Component) {
                         _react.Fragment,
                         null,
                         React.createElement(
-                            "h2",
-                            { className: "kt-heading-size-title" },
+                            'h2',
+                            { className: 'kt-heading-size-title' },
                             __('Select Tags', '')
                         ),
                         React.createElement(_reactSelect2.default, {
@@ -64818,14 +64863,14 @@ var edit = exports.edit = function (_Component) {
                         })
                     ),
                     React.createElement(TextControl, {
-                        label: __("Message Success"),
+                        label: __('Message Success'),
                         value: successMessage,
                         onChange: function onChange(newURL) {
                             return setAttributes({ successMessage: newURL });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Message Error"),
+                        label: __('Message Error'),
                         value: errorMessage,
                         onChange: function onChange(newURL) {
                             return setAttributes({ errorMessage: newURL });
@@ -64850,39 +64895,39 @@ var edit = exports.edit = function (_Component) {
                     PanelBody,
                     {
                         title: __("Input Style"),
-                        className: "premium-panel-body",
+                        className: 'premium-panel-body',
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Label"),
+                        label: __('Label'),
                         checked: inputStyles[0].showLabel,
                         onChange: function onChange(value) {
                             return saveInputStyle({ showLabel: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Label"),
+                        label: __('Label'),
                         value: inputStyles[0].label,
                         onChange: function onChange(newURL) {
                             return saveInputStyle({ url: newURL });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Placeholder"),
+                        label: __('Placeholder'),
                         value: inputStyles[0].placeholder,
                         onChange: function onChange(newURL) {
                             return saveInputStyle({ placeholder: newURL });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Required"),
+                        label: __('Required'),
                         checked: inputStyles[0].required,
                         onChange: function onChange(value) {
                             return saveInputStyle({ required: value });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Column Width"),
+                        label: __('Column Width'),
                         options: COLUMNS,
                         value: inputStyles[0].inputColumnWidth,
                         onChange: function onChange(value) {
@@ -64890,7 +64935,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
                         __("Text Color")
                     ),
@@ -64947,19 +64992,19 @@ var edit = exports.edit = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return saveInputStyle({ textLine: newValue });
                         }
-                    }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
+                    }, _defineProperty(_React$createElement, 'onChangeSize', function onChangeSize(newSize) {
                         return saveInputStyle({ textSize: newSize });
-                    }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
+                    }), _defineProperty(_React$createElement, 'onChangeStyle', function onChangeStyle(newStyle) {
                         return saveInputStyle({ textStyle: newStyle });
-                    }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
+                    }), _defineProperty(_React$createElement, 'onChangeSpacing', function onChangeSpacing(newValue) {
                         return saveInputStyle({ textLetter: newValue });
-                    }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
+                    }), _defineProperty(_React$createElement, 'onChangeUpper', function onChangeUpper(check) {
                         return saveInputStyle({ textUpper: check });
                     }), _React$createElement)),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
-                        __("Background Color")
+                        __('Background Color')
                     ),
                     React.createElement(ColorPalette, {
                         value: inputStyles[0].textBackColor,
@@ -65002,11 +65047,11 @@ var edit = exports.edit = function (_Component) {
                     PanelBody,
                     {
                         title: __("Button"),
-                        className: "premium-panel-body",
+                        className: 'premium-panel-body',
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Column Width"),
+                        label: __('Column Width'),
                         options: COLUMNS,
                         value: btnStyles[0].btnColumn,
                         onChange: function onChange(value) {
@@ -65022,7 +65067,7 @@ var edit = exports.edit = function (_Component) {
                         options: [{ value: "small", label: __("Small") }, { value: "medium", label: __("Medium") }, { value: "large", label: __("Large") }, { value: "extralarge", label: __("Extra Large") }, { value: "full", label: __("Full") }]
                     }),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
                         __("Text Color")
                     ),
@@ -65033,9 +65078,9 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
-                        __("Background Color")
+                        __('Background Color')
                     ),
                     React.createElement(ColorPalette, {
                         value: btnStyles[0].btnBackColor,
@@ -65090,13 +65135,13 @@ var edit = exports.edit = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return saveButtonStyle({ btnLine: newValue });
                         }
-                    }, _defineProperty(_React$createElement2, "onChangeSize", function onChangeSize(newSize) {
+                    }, _defineProperty(_React$createElement2, 'onChangeSize', function onChangeSize(newSize) {
                         return saveButtonStyle({ btnSize: newSize });
-                    }), _defineProperty(_React$createElement2, "onChangeStyle", function onChangeStyle(newStyle) {
+                    }), _defineProperty(_React$createElement2, 'onChangeStyle', function onChangeStyle(newStyle) {
                         return saveButtonStyle({ btnStyle: newStyle });
-                    }), _defineProperty(_React$createElement2, "onChangeSpacing", function onChangeSpacing(newValue) {
+                    }), _defineProperty(_React$createElement2, 'onChangeSpacing', function onChangeSpacing(newValue) {
                         return saveButtonStyle({ btnLetter: newValue });
-                    }), _defineProperty(_React$createElement2, "onChangeUpper", function onChangeUpper(check) {
+                    }), _defineProperty(_React$createElement2, 'onChangeUpper', function onChangeUpper(check) {
                         return saveButtonStyle({ btnUpper: check });
                     }), _React$createElement2)),
                     React.createElement(_premiumBorder2.default, {
@@ -65152,7 +65197,7 @@ var edit = exports.edit = function (_Component) {
                     PanelBody,
                     {
                         title: __("Message Style"),
-                        className: "premium-panel-body",
+                        className: 'premium-panel-body',
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
@@ -65202,17 +65247,17 @@ var edit = exports.edit = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return saveMessageStyle({ msgLine: newValue });
                         }
-                    }, _defineProperty(_React$createElement3, "onChangeSize", function onChangeSize(newSize) {
+                    }, _defineProperty(_React$createElement3, 'onChangeSize', function onChangeSize(newSize) {
                         return saveMessageStyle({ msgSize: newSize });
-                    }), _defineProperty(_React$createElement3, "onChangeStyle", function onChangeStyle(newStyle) {
+                    }), _defineProperty(_React$createElement3, 'onChangeStyle', function onChangeStyle(newStyle) {
                         return saveMessageStyle({ msgStyle: newStyle });
-                    }), _defineProperty(_React$createElement3, "onChangeSpacing", function onChangeSpacing(newValue) {
+                    }), _defineProperty(_React$createElement3, 'onChangeSpacing', function onChangeSpacing(newValue) {
                         return saveMessageStyle({ msgLetter: newValue });
-                    }), _defineProperty(_React$createElement3, "onChangeUpper", function onChangeUpper(check) {
+                    }), _defineProperty(_React$createElement3, 'onChangeUpper', function onChangeUpper(check) {
                         return saveMessageStyle({ msgUpper: check });
                     }), _React$createElement3)),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
                         __("Message Success Color")
                     ),
@@ -65223,9 +65268,9 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
-                        __("Message Error Color")
+                        __('Message Error Color')
                     ),
                     React.createElement(ColorPalette, {
                         value: messageStyle[0].msgErrorColor,
@@ -65235,36 +65280,36 @@ var edit = exports.edit = function (_Component) {
                     })
                 )
             ), React.createElement(
-                "div",
+                'div',
                 {
-                    id: "premium-newsLetter-" + block_id,
-                    className: (0, _classnames2.default)(className, "premium-newsletter__wrapper", "premium-newsletter-has-" + btnStyles[0].buttonSize)
+                    id: 'premium-newsLetter-' + block_id,
+                    className: (0, _classnames2.default)(className, "premium-newsletter__wrapper", 'premium-newsletter-has-' + btnStyles[0].buttonSize)
                 },
                 React.createElement(
-                    "div",
+                    'div',
                     {
-                        className: (0, _classnames2.default)("premium-newsletter-input__wrapper", "col-" + inputStyles[0].inputColumnWidth),
+                        className: (0, _classnames2.default)("premium-newsletter-input__wrapper", 'col-' + inputStyles[0].inputColumnWidth),
                         style: {
-                            paddingRight: "calc(" + columnGap + "px / 2)",
-                            paddingLeft: "calc(" + columnGap + "px / 2)",
-                            marginBottom: rowGap + "px"
+                            paddingRight: 'calc(' + columnGap + 'px / 2)',
+                            paddingLeft: 'calc(' + columnGap + 'px / 2)',
+                            marginBottom: rowGap + 'px'
                         }
                     },
                     inputStyles[0].showLabel ? React.createElement(
-                        "label",
+                        'label',
                         {
-                            "for": "form-field-email",
-                            className: "premium-newsletter__label"
+                            'for': 'form-field-email',
+                            className: 'premium-newsletter__label'
                         },
                         inputStyles[0].label
                     ) : null,
-                    React.createElement("input", (_React$createElement4 = {
-                        className: "premium-newsletter-input",
-                        type: "email",
+                    React.createElement('input', (_React$createElement4 = {
+                        className: 'premium-newsletter-input',
+                        type: 'email',
                         value: eMail,
-                        name: "form_fields[email]",
-                        id: "pa_news_email"
-                    }, _defineProperty(_React$createElement4, "className", ""), _defineProperty(_React$createElement4, "placeholder", inputStyles[0].placeholder), _defineProperty(_React$createElement4, "aria-required", "true"), _defineProperty(_React$createElement4, "autoComplete", "off"), _defineProperty(_React$createElement4, "readOnly", true), _defineProperty(_React$createElement4, "style", _defineProperty({
+                        name: 'form_fields[email]',
+                        id: 'pa_news_email'
+                    }, _defineProperty(_React$createElement4, 'className', ''), _defineProperty(_React$createElement4, 'placeholder', inputStyles[0].placeholder), _defineProperty(_React$createElement4, 'aria-required', 'true'), _defineProperty(_React$createElement4, 'autoComplete', 'off'), _defineProperty(_React$createElement4, 'readOnly', true), _defineProperty(_React$createElement4, 'style', _defineProperty({
                         color: inputStyles[0].textColor,
                         fontFamily: inputStyles[0].textFontFamily,
                         fontSize: inputStyles[0].textSize,
@@ -65277,28 +65322,28 @@ var edit = exports.edit = function (_Component) {
                         borderStyle: inputStyles[0].textBorderType,
                         borderColor: inputStyles[0].textBorderColor,
                         borderRadius: inputStyles[0].textBorderRadius
-                    }, "fontSize", textSizeInput + "px")), _React$createElement4))
+                    }, 'fontSize', textSizeInput + 'px')), _React$createElement4))
                 ),
                 React.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-newsletter-button__wrapper col-" + btnStyles[0].btnColumn,
+                        className: 'premium-newsletter-button__wrapper col-' + btnStyles[0].btnColumn,
                         style: {
-                            paddingRight: "calc(" + columnGap + "px / 2)",
-                            paddingLeft: "calc(" + columnGap + "px / 2)",
-                            marginBottom: rowGap + "px"
+                            paddingRight: 'calc(' + columnGap + 'px / 2)',
+                            paddingLeft: 'calc(' + columnGap + 'px / 2)',
+                            marginBottom: rowGap + 'px'
                         }
                     },
                     React.createElement(
-                        "button",
+                        'button',
                         {
-                            type: "submit",
-                            className: "premium-newsletter-button-submit",
-                            id: "submit-newsletter",
+                            type: 'submit',
+                            className: 'premium-newsletter-button-submit',
+                            id: 'submit-newsletter',
                             style: {
-                                paddingRight: "calc(" + columnGap + "px / 2)",
-                                paddingLeft: "calc(" + columnGap + "px / 2)",
-                                marginBottom: rowGap + "px",
+                                paddingRight: 'calc(' + columnGap + 'px / 2)',
+                                paddingLeft: 'calc(' + columnGap + 'px / 2)',
+                                marginBottom: rowGap + 'px',
                                 color: btnStyles[0].btnColor,
                                 backgroundColor: btnStyles[0].btnBackColor,
                                 fontFamily: btnStyles[0].btnFontFamily,
@@ -65310,7 +65355,7 @@ var edit = exports.edit = function (_Component) {
                                 borderStyle: btnStyles[0].btnBorderType,
                                 borderColor: btnStyles[0].btnBorderColor,
                                 borderRadius: btnStyles[0].btnBorderRadius,
-                                fontSize: textSizeBtn + "px"
+                                fontSize: textSizeBtn + 'px'
                             },
                             onClick: function onClick(e) {
                                 e.preventDefault();
@@ -72590,6 +72635,355 @@ exports.default = AutosizeInput;
 "use strict";
 
 
+var isObject = __webpack_require__(37),
+    now = __webpack_require__(379),
+    toNumber = __webpack_require__(380);
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+module.exports = debounce;
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var root = __webpack_require__(11);
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function now() {
+  return root.Date.now();
+};
+
+module.exports = now;
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseTrim = __webpack_require__(381),
+    isObject = __webpack_require__(37),
+    isSymbol = __webpack_require__(46);
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? other + '' : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = baseTrim(value);
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+
+module.exports = toNumber;
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var trimmedEndIndex = __webpack_require__(382);
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '') : string;
+}
+
+module.exports = baseTrim;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+module.exports = trimmedEndIndex;
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -72622,7 +73016,8 @@ function save(props) {
         eMail = attributes.eMail,
         inputStyles = attributes.inputStyles,
         btnStyles = attributes.btnStyles,
-        messageStyle = attributes.messageStyle;
+        messageStyle = attributes.messageStyle,
+        postID = attributes.postID;
 
     return _react2.default.createElement(
         "div",
@@ -72658,7 +73053,7 @@ function save(props) {
                 })
             ),
             _react2.default.createElement("input", { type: "hidden", name: "_kb_form_id", value: block_id }),
-            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: block_id }),
+            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: postID }),
             _react2.default.createElement("input", {
                 type: "hidden",
                 name: "action",
@@ -72678,7 +73073,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 379 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72722,6 +73117,19 @@ var attributes = {
     eMail: {
         type: "string"
 
+    },
+    postID: {
+        type: "string"
+    },
+    mailchimp: {
+        type: "array",
+        default: [{
+            list: [],
+            groups: [],
+            map: [],
+            doubleOptin: !1,
+            tags: []
+        }]
     },
     inputStyles: {
         type: 'array',
