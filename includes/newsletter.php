@@ -38,10 +38,6 @@ class PBG_Ajax_Form {
 		add_action( 'wp_ajax_nopriv_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
 	}
 
-	/**
-	 * Process the form submit.
-	 */
-
 	public function process_ajax() {
 		if ( isset( $_POST['_kb_form_id'] ) && ! empty( $_POST['_kb_form_id'] ) && isset( $_POST['_kb_form_post_id'] ) && ! empty( $_POST['_kb_form_post_id'] ) ) {
 			$valid = true;
@@ -54,520 +50,74 @@ class PBG_Ajax_Form {
 				$post_id   = sanitize_text_field( wp_unslash( $_POST['_kb_form_post_id'] ) );
 				$form_args = $this->get_form_args( $post_id, $form_id );
 				if ( ! $form_args ) {
-					var_dump( $form_args );
-					// $this->process_bail( __( 'Submission Failed', 'premium-blocks' ), __( 'Data not Found', 'premium-blocks' ) );
+					$this->process_bail( __( 'Submission Failed', 'premium-blocks' ), __( 'Data not Found', 'premium-blocks' ) );
 				}
-				var_dump( $form_args );
 				$api_key = get_option( 'mail_chimp_api' );
 				if ( empty( $api_key ) ) {
-
+					return;
+				}
+				$list = ( isset( $form_args['list_id'] ) ? '8286186162' : '8286186162' );
+				$body = array(
+					'email_address' => $_POST['kb_field_1'],
+					'status_if_new' => 'subscribed',
+					'status'        => 'subscribed',
+				);
+				if ( empty( $list ) ) {
+					return;
+				}
+				$key_parts = explode( '-', $api_key );
+				if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
+					return;
+				}
+				$base_url = 'https://' . $key_parts[1] . '.api.mailchimp.com/3.0/';
+				$email    = false;
+				if ( ! empty( $groups ) ) {
+					foreach ( $groups as $id => $label ) {
+						if ( ! isset( $body['interests'] ) ) {
+							$body['interests'] = array();
+						}
+						$body['interests'][ $label['value'] ] = true;
+					}
+				}
+				$list_id = '';
+				if ( empty( $list_id ) ) {
 					return;
 				}
 
-						$list = ( isset( $form_args['list_id'] ) ? '8286186162' : '8286186162' );
-						$body = array(
-							'email_address' => $_POST['kb_field_1'],
-							'status_if_new' => 'subscribed',
-							'status'        => 'subscribed',
+				if ( isset( $body['email_address'] ) ) {
+					$subscriber_hash = md5( strtolower( $body['email_address'] ) );
+					$api_url         = $base_url . 'lists/' . $list_id . '/members/' . $subscriber_hash;
+					$response        = wp_remote_post(
+						$api_url,
+						array(
+							'method'  => 'PUT',
+							'timeout' => 10,
+							'headers' => array(
+								'accept'        => 'application/json',
+								'content-type'  => 'application/json',
+								'Authorization' => 'Basic ' . base64_encode( 'user:' . $api_key ),
+							),
+							'body'    => json_encode( $body ),
+						)
+					);
 
-						);
-						if ( empty( $list ) ) {
-							return;
+					if ( is_wp_error( $response ) ) {
+
+						// $error_message = $response->get_error_message();
+						// error_log( "Something went wrong: $error_message" );
+					} else {
+						if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
+							// error_log( __('Failed to Connect to MailChimp', 'premium-blocks-pro' ) );
 
 						}
-						$key_parts = explode( '-', $api_key );
-						if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
-							return;
+						if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
+							// error_log( $response['response']['message'] );
+
 						}
-						$base_url = 'https://' . $key_parts[1] . '.api.mailchimp.com/3.0/';
-
-						$email = false;
-						if ( ! empty( $groups ) ) {
-							foreach ( $groups as $id => $label ) {
-								if ( ! isset( $body['interests'] ) ) {
-									$body['interests'] = array();
-								}
-								$body['interests'][ $label['value'] ] = true;
-							}
-						}
-						$list_id = '';
-						if ( empty( $list_id ) ) {
-							return;
-						}
-
-						if ( isset( $body['email_address'] ) ) {
-
-							$subscriber_hash = md5( strtolower( $body['email_address'] ) );
-							$api_url         = $base_url . 'lists/' . $list_id . '/members/' . $subscriber_hash;
-							// error_log( $api_url );
-							$response = wp_remote_post(
-								$api_url,
-								array(
-									'method'  => 'PUT',
-									'timeout' => 10,
-									'headers' => array(
-										'accept'        => 'application/json',
-										'content-type'  => 'application/json',
-										'Authorization' => 'Basic ' . base64_encode( 'user:' . $api_key ),
-									),
-									'body'    => json_encode( $body ),
-								)
-							);
-								var_dump( $response, 'Body' );
-
-							if ( is_wp_error( $response ) ) {
-								 var_dump( 'HHHHHHHsssH' );
-
-								// $error_message = $response->get_error_message();
-								// error_log( "Something went wrong: $error_message" );
-							} else {
-								if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-									// error_log( __('Failed to Connect to MailChimp', 'premium-blocks-pro' ) );
-									var_dump( 'HELLO:::' );
-								}
-								if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
-									// error_log( $response['response']['message'] );
-									 var_dump( 'HHHHHHHH' );
-								}
-							}
-						}
-
-						// $email = 'dina.goda@yahoo.com';
-						// if ( empty( $email ) ) {
-						// return false;
-						// }
-
-						// if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-						// return false;
-						// }
-
-						// $apikey  = get_option( 'mail_chimp_api' );
-						// $list_id = '8286186162';
-						// $status  = false;
-						// if ( $email && $apikey && $list_id ) {
-						// $root = 'https://api.mailchimp.com/3.0';
-						// if ( strstr( $apikey, '-' ) ) {
-						// list($key, $dc) = explode( '-', $apikey, 2 );
-						// }
-						// $root   = str_replace( 'https://api', 'https://' . $dc . '.api', $root );
-						// $root   = rtrim( $root, '/' ) . '/';
-						// $params = array(
-						// 'apikey'            => $apikey,
-						// 'id'                => $list_id,
-						// 'email_address'     => $email,
-						// 'status'            => 'subscribed',
-						// 'double_optin'      => false,
-						// 'send_welcome'      => false,
-						// 'replace_interests' => false,
-						// 'update_existing'   => true,
-						// );
-						// $ch     = curl_init();
-						// $params = json_encode( $params );
-						// curl_setopt( $ch, CURLOPT_URL, $root . '/lists/' . $list_id . '/members/' . $email );
-						// curl_setopt( $ch, CURLOPT_USERPWD, 'user:' . $apikey );
-						// curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' ) );
-						// curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-						// curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PUT' );
-						// curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-						// curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
-						// $response_body = curl_exec( $ch );
-						// $httpCode      = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-						// curl_close( $ch );
-						// if ( $httpCode == 200 ) {
-						// $status = true;
-						// }
-						// }
-
-						// $response = array(
-						// 'status' => $status,
-						// );
-						// return $response;
+					}
+				}
 			}
 		}
-		// if ( isset( $_POST['_kb_form_id'] ) && ! empty( $_POST['_kb_form_id'] ) && isset( $_POST['_kb_form_post_id'] ) && ! empty( $_POST['_kb_form_post_id'] ) ) {
-
-		// $valid = true;
-
-		// if ( apply_filters( 'premium_blocks_form_verify_nonce', false ) ) {
-		// $valid = check_ajax_referer( 'kb_form_nonce', '_kb_form_verify', false );
-		// }
-		// if ( $valid ) {
-		// Lets get form data.
-		// $form_id   = sanitize_text_field( wp_unslash( $_POST['_kb_form_id'] ) );
-		// $post_id   = sanitize_text_field( wp_unslash( $_POST['_kb_form_post_id'] ) );
-		// $form_args = $this->get_form_args( $post_id, $form_id );
-		// if ( ! $form_args ) {
-		// $this->process_bail( __( 'Submission Failed', 'premium-blocks' ), __( 'Data not Found', 'premium-blocks' ) );
-		// }
-		// Check for default form actions.
-
-		// if ( ! isset( $form_args['email'] ) ) {
-		// $form_args['email'] = array(
-		// 0 => array(
-		// 'emailTo' => get_bloginfo( 'admin_email' ),
-		// 'subject' => '[' . get_bloginfo( 'name' ) . ' ' . __( 'Submission', 'premium-blocks' ) . ']',
-		// 'replyTo' => 'email_field',
-		// 'html'    => true,
-		// ),
-		// );
-		// }
-		// Check for Message strings.
-		// $messages = array(
-		// 0 => array(
-		// 'success'        => esc_html__( 'Submission Success, Thanks for getting in touch!', 'premium-blocks' ),
-		// 'error'          => esc_html__( 'Submission Failed', 'premium-blocks' ),
-		// 'recaptchaerror' => esc_html__( 'Submission Failed, reCaptcha spam prevention. Please reload your page and try again.', 'premium-blocks' ),
-		// ),
-		// );
-		// if ( isset( $form_args['messages'] ) && isset( $form_args['messages'][0] ) ) {
-		// if ( isset( $form_args['messages'][0]['recaptchaerror'] ) && ! empty( $form_args['messages'][0]['recaptchaerror'] ) ) {
-		// $messages[0]['recaptchaerror'] = $form_args['messages'][0]['recaptchaerror'];
-		// }
-		// if ( isset( $form_args['messages'][0]['success'] ) && ! empty( $form_args['messages'][0]['success'] ) ) {
-		// $messages[0]['success'] = $form_args['messages'][0]['success'];
-		// }
-		// if ( isset( $form_args['messages'][0]['error'] ) && ! empty( $form_args['messages'][0]['error'] ) ) {
-		// $messages[0]['error'] = $form_args['messages'][0]['error'];
-		// }
-		// if ( isset( $form_args['messages'][0]['required'] ) && ! empty( $form_args['messages'][0]['required'] ) ) {
-		// $messages[0]['required'] = $form_args['messages'][0]['required'];
-		// }
-		// if ( isset( $form_args['messages'][0]['invalid'] ) && ! empty( $form_args['messages'][0]['invalid'] ) ) {
-		// $messages[0]['invalid'] = $form_args['messages'][0]['invalid'];
-		// }
-		// }
-		// Check Honey Pot.
-		// if ( isset( $form_args['honeyPot'] ) && true === $form_args['honeyPot'] ) {
-		// $honeypot_check = filter_input( INPUT_POST, '_kb_verify_email', FILTER_SANITIZE_STRING );
-		// if ( ! empty( $honeypot_check ) ) {
-		// $this->process_bail( __( 'Submission Rejected', 'premium-blocks' ), __( 'Spam Detected', 'premium-blocks' ) );
-		// }
-		// }
-		// Check Recaptcha.
-
-		// unset( $_POST['_kb_form_sub_id'], $_POST['_kb_verify_email'] );
-		// Get fields.
-		// $fields = array();
-		// if ( ! isset( $form_args['fields'] ) || ! is_array( $form_args['fields'] ) ) {
-		// $form_args['fields'] = array(
-		// 0 => array(
-		// 'label'       => 'Name',
-		// 'showLabel'   => true,
-		// 'placeholder' => '',
-		// 'default'     => '',
-		// 'rows'        => 4,
-		// 'options'     => array(),
-		// 'multiSelect' => false,
-		// 'inline'      => false,
-		// 'showLink'    => false,
-		// 'min'         => '',
-		// 'max'         => '',
-		// 'type'        => 'text',
-		// 'required'    => false,
-		// 'width'       => array( '100', '', '' ),
-		// 'auto'        => '',
-		// ),
-		// 1 => array(
-		// 'label'       => 'Email',
-		// 'showLabel'   => true,
-		// 'placeholder' => '',
-		// 'default'     => '',
-		// 'rows'        => 4,
-		// 'options'     => array(),
-		// 'multiSelect' => false,
-		// 'inline'      => false,
-		// 'showLink'    => false,
-		// 'min'         => '',
-		// 'max'         => '',
-		// 'type'        => 'email',
-		// 'required'    => true,
-		// 'width'       => array( '100', '', '' ),
-		// 'auto'        => '',
-		// ),
-		// 2 => array(
-		// 'label'       => 'Message',
-		// 'showLabel'   => true,
-		// 'placeholder' => '',
-		// 'default'     => '',
-		// 'rows'        => 4,
-		// 'options'     => array(),
-		// 'multiSelect' => false,
-		// 'inline'      => false,
-		// 'showLink'    => false,
-		// 'min'         => '',
-		// 'max'         => '',
-		// 'type'        => 'textarea',
-		// 'required'    => true,
-		// 'width'       => array( '100', '', '' ),
-		// 'auto'        => '',
-		// ),
-		// );
-		// }
-		// $privacy_title = ( get_option( 'wp_page_for_privacy_policy' ) ? get_the_title( get_option( 'wp_page_for_privacy_policy' ) ) : '' );
-		// foreach ( $form_args['fields'] as $key => $data ) {
-		// check for required.
-		// if ( $data['required'] && ( ! isset( $_POST[ 'kb_field_' . $key ] ) || empty( $_POST[ 'kb_field_' . $key ] ) ) ) {
-		// $this->process_bail( $messages[0]['error'], __( 'Required Field Empty', 'premium-blocks' ), 'kb_field_' . $key );
-		// }
-		// if ( isset( $_POST[ 'kb_field_' . $key ] ) ) {
-		// $fields[ $key ] = array(
-		// 'type'  => $data['type'],
-		// 'label' => str_replace( '{privacy_policy}', $privacy_title, $data['label'] ),
-		// 'value' => $this->sanitize_field( $data['type'], wp_unslash( $_POST[ 'kb_field_' . $key ] ), $data['multiSelect'] ),
-		// );
-		// if ( 'hidden' === $data['type'] ) {
-		// global $post;
-		// $refer_id                = is_object( $post ) ? $post->ID : url_to_postid( wp_get_referer() );
-		// $fields[ $key ]['value'] = str_replace( '{page_title}', get_the_title( $refer_id ), $fields[ $key ]['value'] );
-		// $fields[ $key ]['value'] = str_replace( '{page_url}', wp_get_referer(), $fields[ $key ]['value'] );
-		// }
-		// unset( $_POST[ 'kb_field_' . $key ] );
-		// }
-		// }
-		// $final_data = array(
-		// 'redirect' => false,
-		// );
-		// foreach ( $form_args['actions'] as $data ) {
-		// switch ( $data ) {
-		// case 'email':
-		// $to      = isset( $form_args['email'][0]['emailTo'] ) && ! empty( trim( $form_args['email'][0]['emailTo'] ) ) ? trim( $form_args['email'][0]['emailTo'] ) : get_option( 'admin_email' );
-		// $subject = isset( $form_args['email'][0]['subject'] ) && ! empty( trim( $form_args['email'][0]['subject'] ) ) ? $form_args['email'][0]['subject'] : '[' . get_bloginfo( 'name' ) . ' ' . __( 'Submission', 'premium-blocks' ) . ']';
-		// if ( strpos( $subject, '{field_' ) !== false ) {
-		// preg_match_all( '/{field_(.*?)}/', $subject, $match );
-		// if ( is_array( $match ) && isset( $match[1] ) && is_array( $match[1] ) ) {
-		// foreach ( $match[1] as $field_id ) {
-		// if ( isset( $field_id ) ) {
-		// $real_id = absint( $field_id ) - 1;
-		// if ( isset( $fields[ $real_id ] ) && is_array( $fields[ $real_id ] ) && isset( $fields[ $real_id ]['value'] ) ) {
-		// $subject = str_replace( '{field_' . $field_id . '}', $fields[ $real_id ]['value'], $subject );
-		// }
-		// }
-		// }
-		// }
-		// }
-		// if ( strpos( $subject, '{page_title}' ) !== false ) {
-		// global $post;
-		// $refer_id = is_object( $post ) ? $post->ID : url_to_postid( wp_get_referer() );
-		// $subject  = str_replace( '{page_title}', get_the_title( $refer_id ), $subject );
-		// }
-		// $email_content = '';
-		// $reply_email   = false;
-		// foreach ( $fields as $key => $data ) {
-		// if ( 'email' === $data['type'] ) {
-		// $reply_email = $data['value'];
-		// }
-		// }
-		// if ( isset( $form_args['email'][0]['replyTo'] ) && 'from_email' === $form_args['email'][0]['replyTo'] ) {
-		// $reply_email = isset( $form_args['email'][0]['fromEmail'] ) && ! empty( trim( $form_args['email'][0]['fromEmail'] ) ) ? sanitize_email( trim( $form_args['email'][0]['fromEmail'] ) ) : false;
-		// }
-		// if ( $form_args['email'][0]['html'] ) {
-		// $args          = array( 'fields' => $fields );
-		// $email_content = premium_blocks_get_template_html( 'form-email.php', $args );
-		// } else {
-		// foreach ( $fields as $key => $data ) {
-		// if ( is_array( $data['value'] ) ) {
-		// $data['value'] = explode( ', ', $data['value'] );
-		// }
-		// $email_content .= $data['label'] . ': ' . $data['value'] . "\n\n";
-		// }
-		// }
-		// $body = $email_content;
-		// if ( $form_args['email'][0]['html'] ) {
-		// $headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-		// } else {
-		// $headers = 'Content-Type: text/plain; charset=UTF-8' . "\r\n";
-		// }
-		// if ( $reply_email ) {
-		// $headers .= 'Reply-To: <' . $reply_email . '>' . "\r\n";
-		// }
-		// if ( isset( $form_args['email'][0]['fromEmail'] ) && ! empty( trim( $form_args['email'][0]['fromEmail'] ) ) ) {
-		// $from_name = ( isset( $form_args['email'][0]['fromName'] ) && ! empty( trim( $form_args['email'][0]['fromName'] ) ) ? trim( $form_args['email'][0]['fromName'] ) . ' ' : '' );
-		// if ( strpos( $from_name, '{field_' ) !== false ) {
-		// preg_match_all( '/{field_(.*?)}/', $from_name, $match );
-		// if ( is_array( $match ) && isset( $match[1] ) && is_array( $match[1] ) ) {
-		// foreach ( $match[1] as $field_id ) {
-		// if ( isset( $field_id ) ) {
-		// $real_id = absint( $field_id ) - 1;
-		// if ( isset( $fields[ $real_id ] ) && is_array( $fields[ $real_id ] ) && isset( $fields[ $real_id ]['value'] ) ) {
-		// $from_name = str_replace( '{field_' . $field_id . '}', $fields[ $real_id ]['value'], $from_name );
-		// }
-		// }
-		// }
-		// }
-		// }
-		// $headers .= 'From: ' . $from_name . '<' . sanitize_email( trim( $form_args['email'][0]['fromEmail'] ) ) . '>' . "\r\n";
-		// }
-		// $cc_headers = '';
-		// if ( isset( $form_args['email'][0]['cc'] ) && ! empty( trim( $form_args['email'][0]['cc'] ) ) ) {
-		// $cc_headers = 'Cc: ' . sanitize_email( trim( $form_args['email'][0]['cc'] ) ) . "\r\n";
-		// }
-
-		// wp_mail( $to, $subject, $body, $headers . $cc_headers );
-		// if ( isset( $form_args['email'][0]['bcc'] ) && ! empty( trim( $form_args['email'][0]['bcc'] ) ) ) {
-		// $bcc_emails = explode( ',', $form_args['email'][0]['bcc'] );
-		// foreach ( $bcc_emails as $bcc_email ) {
-		// wp_mail( sanitize_email( trim( $bcc_email ) ), $subject, $body, $headers );
-		// }
-		// }
-		// break;
-		// case 'redirect':
-		// if ( isset( $form_args['redirect'] ) && ! empty( trim( $form_args['redirect'] ) ) ) {
-		// $final_data['redirect'] = apply_filters( 'premium_blocks_form_redirect', trim( $form_args['redirect'] ), $form_args, $fields, $form_id, $post_id );
-		// }
-		// break;
-		// case 'mailerlite':
-		// $api_key = get_option( 'premium_blocks_mailerlite_api' );
-		// if ( empty( $api_key ) ) {
-		// return;
-		// }
-		// $mailerlite_default = array(
-		// 'map'    => array(),
-		// 'groupe' => '',
-		// );
-		// $mailerlite_args    = ( isset( $form_args['mailerlite'] ) && is_array( $form_args['mailerlite'] ) && isset( $form_args['mailerlite'][0] ) && is_array( $form_args['mailerlite'][0] ) ? $form_args['mailerlite'][0] : $mailerlite_default );
-		// $groups             = ( isset( $mailerlite_args['group'] ) ? $mailerlite_args['group'] : array() );
-		// $map                = ( isset( $mailerlite_args['map'] ) && is_array( $mailerlite_args['map'] ) ? $mailerlite_args['map'] : array() );
-		// $body               = array(
-		// 'fields' => array(),
-		// );
-		// $email              = false;
-		// if ( ! empty( $map ) ) {
-		// foreach ( $fields as $key => $data ) {
-		// if ( isset( $map[ $key ] ) && ! empty( $map[ $key ] ) ) {
-		// if ( 'email' === $map[ $key ] && ! $email ) {
-		// $email         = $data['value'];
-		// $body['email'] = $data['value'];
-		// } else {
-		// $body['fields'][ $map[ $key ] ] = $data['value'];
-		// }
-		// }
-		// }
-		// } else {
-		// foreach ( $fields as $key => $data ) {
-		// if ( 'email' === $data['type'] ) {
-		// $email         = $data['value'];
-		// $body['email'] = $data['value'];
-		// break;
-		// }
-		// }
-		// }
-		// if ( empty( $body['fields'] ) ) {
-		// unset( $body['fields'] );
-		// }
-		// if ( ! empty( $groups ) && is_array( $groups ) && isset( $groups[0] ) && ! empty( $groups[0] ) ) {
-		// $group_id = $groups[0];
-		// }
-		// $body['resubscribe'] = true;
-		// if ( isset( $body['email'] ) ) {
-		// if ( ! empty( $group_id ) ) {
-		// $api_url = 'https://api.mailerlite.com/api/v2/groups/' . $group_id . '/subscribers';
-		// } else {
-		// $api_url = 'https://api.mailerlite.com/api/v2/subscribers';
-		// }
-		// $response = wp_remote_post(
-		// $api_url,
-		// array(
-		// 'method'  => 'POST',
-		// 'timeout' => 10,
-		// 'headers' => array(
-		// 'accept'       => 'application/json',
-		// 'content-type' => 'application/json',
-		// 'X-MailerLite-ApiKey' => $api_key,
-		// ),
-		// 'body'    => json_encode( $body ),
-		// )
-		// );
-
-		// if ( is_wp_error( $response ) ) {
-		// $error_message = $response->get_error_message();
-		// error_log( "Something went wrong: $error_message" );
-		// } else {
-		// if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-		// error_log( __( 'No Response from MailerLite', 'premium-blocks' ) );
-		// }
-		// if ( 400 === $response['response']['code'] ) {
-		// error_log( print_r( $response['response'], true ) );
-		// $this->process_bail( $response['response']['message'] . ' ' . __( 'MailerLite Misconfiguration', 'premium-blocks' ), __( 'MailerLite Failed', 'premium-blocks' ) );
-		// }
-		// }
-		// }
-		// break;
-		// case 'fluentCRM':
-		// $fluentcrm_default = array(
-		// 'map'         => array(),
-		// 'lists'       => array(),
-		// 'tags'        => array(),
-		// 'doubleOptin' => false,
-		// );
-		// $fluentcrm_args    = ( isset( $form_args['fluentcrm'] ) && is_array( $form_args['fluentcrm'] ) && isset( $form_args['fluentcrm'][0] ) && is_array( $form_args['fluentcrm'][0] ) ? $form_args['fluentcrm'][0] : $fluentcrm_default );
-		// $map               = ( isset( $fluentcrm_args['map'] ) && is_array( $fluentcrm_args['map'] ) ? $fluentcrm_args['map'] : array() );
-		// $double_optin      = ( isset( $fluentcrm_args['doubleOptin'] ) ? $fluentcrm_args['doubleOptin'] : false );
-		// $fluent_data       = array();
-		// $lists             = ( isset( $fluentcrm_args['lists'] ) ? $fluentcrm_args['lists'] : array() );
-		// $tags              = ( isset( $fluentcrm_args['tags'] ) ? $fluentcrm_args['tags'] : array() );
-		// if ( $double_optin ) {
-		// $fluent_data['status'] = 'pending';
-		// } else {
-		// $fluent_data['status'] = 'subscribed';
-		// }
-		// if ( ! empty( $lists ) ) {
-		// $fluent_data['lists'] = array();
-		// foreach ( $lists as $key => $data ) {
-		// $fluent_data['lists'][] = $data['value'];
-		// }
-		// }
-		// if ( ! empty( $tags ) ) {
-		// $fluent_data['tags'] = array();
-		// foreach ( $tags as $key => $data ) {
-		// $fluent_data['tags'][] = $data['value'];
-		// }
-		// }
-		// $email = false;
-		// if ( ! empty( $map ) ) {
-		// foreach ( $fields as $key => $data ) {
-		// if ( isset( $map[ $key ] ) && ! empty( $map[ $key ] ) ) {
-		// if ( 'email' === $map[ $key ] && ! $email ) {
-		// $email                = $data['value'];
-		// $fluent_data['email'] = $data['value'];
-		// } else {
-		// $fluent_data[ $map[ $key ] ] = $data['value'];
-		// }
-		// }
-		// }
-		// } else {
-		// foreach ( $fields as $key => $data ) {
-		// if ( 'email' === $data['type'] ) {
-		// $fluent_data['email'] = $data['value'];
-		// break;
-		// }
-		// }
-		// }
-		// if ( isset( $fluent_data['email'] ) && ! empty( $fluent_data['email'] ) && function_exists( 'FluentCrmApi' ) ) {
-		// $contact_api = FluentCrmApi( 'contacts' );
-		// $contact     = $contact_api->createOrUpdate( $fluent_data );
-		// if ( $double_optin && 'pending' === $contact->status ) {
-		// $contact->sendDoubleOptinEmail();
-		// }
-		// }
-		// break;
-		// }
-		// }
-		// do_action( 'premium_blocks_form_submission', $form_args, $fields, $form_id, $post_id );
-
-		// $success  = apply_filters( 'premium_blocks_form_submission_success', true, $form_args, $fields, $form_id, $post_id );
-		// $messages = apply_filters( 'premium_blocks_form_submission_messages', $messages );
-		// if ( ! $success ) {
-		// $this->process_bail( $messages[0]['error'], __( 'Third Party Failed', 'premium-blocks' ) );
-		// } else {
-		// $final_data['html'] = '<div class="premium-blocks-form-message premium-blocks-form-success">' . $messages[0]['success'] . '</div>';
-		// $this->send_json( $final_data );
-		// }
-		// } else {
-		// $this->process_bail( __( 'Submission rejected, invalid security token. Reload the page and try again.', 'premium-blocks' ), __( 'Token invalid', 'premium-blocks' ) );
-		// }
-		// } else {
-		// $this->process_bail( __( 'Submission failed', 'premium-blocks' ), __( 'No Data Found', 'premium-blocks' ) );
-		// }
 	}
 	/**
 	 * Sanitize the field
@@ -738,9 +288,9 @@ class PBG_Ajax_Form {
 			}
 		}
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-			var_dump( $blocks );           // $this->process_bail( __( 'Submission Failed', 'kadence-blocks' ), __( 'Data not found', 'kadence-blocks' ) );
+				$this->process_bail( __( 'Submission Failed', 'kadence-blocks' ), __( 'Data not found', 'kadence-blocks' ) );
 		}
-		var_dump( $blocks );
+
 		foreach ( $blocks as $indexkey => $block ) {
 			if ( ! is_object( $block ) && is_array( $block ) && isset( $block['blockName'] ) ) {
 				if ( 'premium/newsletter' === $block['blockName'] ) {

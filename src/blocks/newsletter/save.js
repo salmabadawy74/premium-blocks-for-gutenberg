@@ -16,7 +16,8 @@ export function save(props) {
         inputStyles,
         btnStyles,
         messageStyle,
-        postID
+        postID,
+        mailchimp
     } = attributes;
     return (
         <div
@@ -33,7 +34,7 @@ export function save(props) {
                         data-label="Email"
                         type="email"
                         placeholder=""
-                        value=""
+                        value={eMail}
                         data-type="email"
                         className="kb-field kb-text-style-field kb-email-field kb-field-1"
                         data-required="yes"
@@ -42,6 +43,7 @@ export function save(props) {
 
                 <input type="hidden" name="_kb_form_id" value={block_id} />
                 <input type="hidden" name="_kb_form_post_id" value={postID} />
+                <input type="hidden" name="_kb_form" value={mailchimp} />
                 <input
                     type="hidden"
                     name="action"
