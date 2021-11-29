@@ -30,7 +30,6 @@ class edit extends Component {
 
     constructor() {
         super(...arguments);
-        this.renderText = this.renderText.bind(this);
     }
 
     componentDidMount() {
@@ -41,26 +40,6 @@ class edit extends Component {
         });
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
-
-        // setTimeout(() => {
-        //     this.renderText("premium/button", this.props.attributes, []);
-        // }, 2000);
-
-
-    }
-
-    renderText(blockName, attributes, innerBlocks) {
-        // useCallback((blockName, attributes, innerBlocks) => {
-        const { replaceBlock } = dispatch('core/block-editor')
-
-        //     const shortBlockName = blockName.replace(/^\w+\//g, '')
-        // const blockAttributes = applyFilters(`premium.${shortBlockName}.design.filtered-block-attributes`, attributes)
-
-        const block = createBlock(blockName, this.props.attributes, createBlocksFromInnerBlocksTemplate(innerBlocks))
-        console.log(block)
-        // return block;
-        replaceBlock(this.props.clientId, block)
-        // }, [this.props.clientId])
     }
 
     render() {
@@ -89,7 +68,8 @@ class edit extends Component {
             let designLibrary = await results
 
             this.props.setAttributes({
-                template: Object.values(designLibrary.v3)
+                template: Object.values(designLibrary.v3),
+                newTemplate: Object.values(designLibrary.v3)
             });
             const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
                 const design = designLibrary.v3[name]

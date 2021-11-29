@@ -1836,6 +1836,18 @@ a.premium-dheading-block__link:hover {
     padding: 6px 10px;
     cursor: pointer;
 }
+.premium-template-block-list li .is-active{
+    font-weight: 700;
+    color: #f00069;
+}
+.premium-template-block-list .active-tab-category {
+    white-space: nowrap;
+    background: var(--wp-admin-theme-color);
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    outline: 1px solid transparent;
+}
 .premium-template-block-list .premium-template-block-list__count {
     float: right;
 }

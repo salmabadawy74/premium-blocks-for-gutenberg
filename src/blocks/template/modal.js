@@ -1,10 +1,11 @@
 const { __ } = wp.i18n;
 
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
     Button,
-    Modal
+    Modal,
+    TabPanel
 } = wp.components;
 const apiFetch = wp.apiFetch;
 
@@ -12,6 +13,34 @@ class modal extends Component {
 
     constructor() {
         super(...arguments);
+        this.selectUikit.bind(this)
+    }
+
+    componentDidMount() {
+
+        this.selectUikit()
+    }
+
+    selectUikit(item) {
+        console.log(item)
+        this.props.attributes.uikits.map((uikit, i) => {
+            if (uikit.id === item ? item : 'Angled') {
+                this.props.setAttributes({
+                    activeCategory: item ? item : 'Angled'
+                });
+                console.log(activeCategory)
+            }
+        })
+
+        let newTemp = this.props.attributes.newTemplate.map((temp, i) => {
+            return temp
+        }).filter(t => {
+            return t.uikit === item ? item : 'Angled'
+        })
+
+        this.props.setAttributes({
+            template: newTemp
+        });
     }
 
     render() {
@@ -21,10 +50,22 @@ class modal extends Component {
             block_id,
             align,
             className,
-            isLibraryOpen,
+            newTemplate,
             template,
-            category
+            category,
+            activeCategory,
+            uikits
         } = attributes;
+
+        const TABSTYLE = [{
+            name: "uikit",
+            title: __("UI Kits")
+        },
+        {
+            name: "category",
+            title: __("Categories")
+        }
+        ];
 
         const selectTemplate = async (designId) => {
             const results = await apiFetch({
@@ -33,8 +74,50 @@ class modal extends Component {
             })
             let designLibrary = await results
             console.log(designLibrary)
-            this.props.onSelect(designLibrary)
+            this.props.onSelect(designLibrary);
         }
+
+        const selectCategory = (item) => {
+            category.map((cat, i) => {
+                if (cat.id === item) {
+                    this.props.setAttributes({
+                        activeCategory: item
+                    });
+                }
+            })
+
+            let newTemp = newTemplate.map((temp, i) => {
+                return temp
+            }).filter(t => {
+                return t.categories[0] === item
+            })
+
+            this.props.setAttributes({
+                template: item === 'all' ? newTemplate : newTemp
+            });
+        }
+
+        // const selectUikit = (item) => {
+        //     console.log(item)
+        //     uikits.map((uikit, i) => {
+        //         if (uikit.id === item) {
+        //             this.props.setAttributes({
+        //                 activeCategory: item
+        //             });
+        //             console.log(activeCategory)
+        //         }
+        //     })
+
+        //     let newTemp = newTemplate.map((temp, i) => {
+        //         return temp
+        //     }).filter(t => {
+        //         return t.uikit === item
+        //     })
+
+        //     this.props.setAttributes({
+        //         template: item === 'all' ? newTemplate : newTemp
+        //     });
+        // }
 
 
         const templates = template.map((item, i) => {
@@ -50,12 +133,30 @@ class modal extends Component {
 
         const categories = category.map((item, i) => {
             return <li>
-                <div className="premium-template__sidebar-item" onClick={() => { console.log(item.id) }}>
+                <div className={`premium-template__sidebar-item ${activeCategory == item.id ? 'is-active' : ''}`} onClick={() => selectCategory(item.id)}>
                     {item.label}
                     <span className="premium-template-block-list__count">{item.count}</span>
                 </div>
             </li>
         });
+
+        const uikit = uikits.map((item, i) => {
+            return <li>
+                <div className={`premium-template__sidebar-item ${activeCategory == item.id ? 'is-active' : ''}`} onClick={() => this.selectUikit(item.id)}>
+                    {item.label}
+                    <span className="premium-template-block-list__count">{item.count}</span>
+                </div>
+            </li>
+        });
+
+        const tabSelect = (tabName) => {
+            if (tabName === 'uikit') {
+                this.selectUikit('Angled')
+            }
+            else {
+                selectCategory('all')
+            }
+        };
 
 
         return (
@@ -65,7 +166,25 @@ class modal extends Component {
                         <div></div>
                         <div className="premium-template-modal__filters">
                             <ul className="premium-template-block-list">
-                                {categories}
+                                <TabPanel
+                                    className="premium-tab-panel-res"
+                                    activeClass="active-tab-category"
+                                    onSelect={tabSelect}
+                                    tabs={TABSTYLE}>
+                                    {
+                                        (tabName) => {
+                                            if ("uikit" === tabName.name) {
+                                                return <Fragment>
+                                                    {uikit}
+                                                </Fragment>
+                                            } else {
+                                                return <Fragment>
+                                                    {categories}
+                                                </Fragment>
+                                            }
+                                        }
+                                    }
+                                </TabPanel>
                             </ul>
                         </div>
                     </aside>

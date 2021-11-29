@@ -21,6 +21,10 @@ const test1Attrs = {
         type: 'array',
         default: []
     },
+    newTemplate: {
+        type: 'array',
+        default: []
+    },
     category: {
         type: 'array',
         default: []
@@ -28,6 +32,10 @@ const test1Attrs = {
     uikits: {
         type: 'array',
         default: []
+    },
+    activeCategory: {
+        type: 'boolean',
+        default: false
     }
 };
 
