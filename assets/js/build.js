@@ -64670,7 +64670,8 @@ var edit = exports.edit = function (_Component) {
                 inputStyles = attributes.inputStyles,
                 btnStyles = attributes.btnStyles,
                 messageStyle = attributes.messageStyle,
-                postID = attributes.postID;
+                postID = attributes.postID,
+                mailchimp = attributes.mailchimp;
 
             var COLUMNS = [{
                 value: "20",
@@ -73017,7 +73018,8 @@ function save(props) {
         inputStyles = attributes.inputStyles,
         btnStyles = attributes.btnStyles,
         messageStyle = attributes.messageStyle,
-        postID = attributes.postID;
+        postID = attributes.postID,
+        mailchimp = attributes.mailchimp;
 
     return _react2.default.createElement(
         "div",
@@ -73046,7 +73048,7 @@ function save(props) {
                     "data-label": "Email",
                     type: "email",
                     placeholder: "",
-                    value: "",
+                    value: eMail,
                     "data-type": "email",
                     className: "kb-field kb-text-style-field kb-email-field kb-field-1",
                     "data-required": "yes"
@@ -73054,6 +73056,7 @@ function save(props) {
             ),
             _react2.default.createElement("input", { type: "hidden", name: "_kb_form_id", value: block_id }),
             _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: postID }),
+            _react2.default.createElement("input", { type: "hidden", name: "_kb_form", value: mailchimp }),
             _react2.default.createElement("input", {
                 type: "hidden",
                 name: "action",

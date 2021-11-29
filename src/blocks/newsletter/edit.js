@@ -302,7 +302,7 @@ export class edit extends Component {
             inputStyles,
             btnStyles,
             messageStyle,
-            postID
+            postID, mailchimp
         } = attributes;
         const COLUMNS = [
             {
