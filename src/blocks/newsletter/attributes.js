@@ -42,8 +42,7 @@ const attributes = {
             {
                 list: [],
                 groups: [],
-                map: [],
-                doubleOptin: !1,
+                doubleOptin: false,
                 tags: []
             }]
     },
@@ -101,6 +100,7 @@ const attributes = {
                 btnBorderLeft: 1,
                 btnBorderColor: '',
                 btnBorderRadius: 0,
+                btnColumn: '25'
             }
         ]
 

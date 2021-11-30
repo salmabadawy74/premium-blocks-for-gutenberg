@@ -1846,15 +1846,7 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-newsletter__wrapper .premium-newsletter-input__wrapper label {
-    position: absolute;
-    top: -10000em;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    display: block;
 }
 .premium-newsletter__wrapper .premium-newsletter-input__wrapper input {
     vertical-align: middle;

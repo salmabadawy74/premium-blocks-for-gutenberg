@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Select from 'react-select';
 import debounce from 'lodash/debounce';
 const { InspectorControls, ColorPalette } = wp.blockEditor;
-const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spinner } = wp.components;
+const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spinner, ServerSideRender } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
@@ -20,7 +20,14 @@ export class edit extends Component {
 
     constructor() {
         super(...arguments);
-
+        this.getMailChimpAudience = this.getMailChimpAudience.bind(this);
+        this.getMailChimpGroups = this.getMailChimpGroups.bind(this);
+        this.getMailChimpTags = this.getMailChimpTags.bind(this)
+        this.saveAPI = this.saveAPI.bind(this)
+        this.removeAPI = this.removeAPI.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+        this.getID = this.getID.bind(this);
+        this.debouncedGetID = debounce(this.getID.bind(this), 200);
         this.state = {
             api: "",
             isSavedAPI: false,
@@ -38,29 +45,25 @@ export class edit extends Component {
             listTags: false,
             listTagsLoaded: false
         }
-        this.getMailChimpAudience = this.getMailChimpAudience.bind(this);
-        this.getMailChimpGroups = this.getMailChimpGroups.bind(this);
-        this.getMailChimpAttributes = this.getMailChimpAttributes.bind(this);
-        this.getMailChimpTags = this.getMailChimpTags.bind(this)
-        this.saveAPI = this.saveAPI.bind(this)
-        this.removeAPI = this.removeAPI.bind(this);
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-        this.getID = this.getID.bind(this);
-        this.debouncedGetID = debounce(this.getID.bind(this), 200);
-
     }
 
     componentDidMount() {
-        const { attributes, setAttributes, clientId } = this.props;
+        const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId })
-        let e;
-        wp.api.loadPromise.then(() => {
-            e = new wp.api.models.Settings;
-            e.fetch().then(e => {
-                this.setState({ api: e.mail_chimp_api });
-                "" !== this.state.api && this.setState({ isSavedAPI: true })
+        if (this.state.api === "") {
+            let e;
+            wp.api.loadPromise.then(() => {
+                e = new wp.api.models.Settings;
+                e.fetch()
+                    .then(e => {
+                        this.setState({ api: e.mail_chimp_api })
+                        if ('' !== this.state.api) {
+                            this.setState({ isSavedAPI: true });
+                        }
+                    })
             })
-        })
+
+        }
 
         this.debouncedGetID();
     }
@@ -76,6 +79,7 @@ export class edit extends Component {
             })
         })]
     }
+
     getID() {
         if (getWidgetIdFromBlock(this.props)) {
             if (!this.props.attributes.postID) {
@@ -106,6 +110,7 @@ export class edit extends Component {
             }
         }
     }
+
     saveAPI() {
         this.setState({ isSaving: true });
         new wp.api.models.Settings({
@@ -117,155 +122,94 @@ export class edit extends Component {
             })
         })
     }
-    getMailChimpAudience() {
 
-        (this.state.api && this.state.api.split("-")[1]) ? (this.setState({ isFetching: !0 }),
-            apiFetch({
-                path: addQueryArgs("/pbg-mailchimp/v1/get", {
-                    apikey: this.state.api,
-                    endpoint: "lists/",
-                    queryargs: ["limit=30", "offset=0"]
-                })
-            }).then(e => {
-                const t = [];
-                e.lists.map(e => {
-                    t.push({
-                        value: e.id,
-                        label: e.name
-                    })
-                }), this.setState({
-                    list: t,
-                    listsLoaded: true,
-                    isFetching: false
-                })
-            }).catch(() => {
-                this.setState({
-                    list: [],
-                    listsLoaded: true,
-                    isFetching: false
-                })
-            })) : this.setState({
-                list: [],
-                listsLoaded: true
+    getMailChimpAudience() {
+        if (!this.state.api) {
+            this.setState({ list: [], listsLoaded: true });
+            return;
+        }
+        this.setState({ isFetching: true });
+        apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get",
+                { apikey: this.state.api, endpoint: "lists/", queryargs: ["limit=30", "offset=0"] }
+            ),
+        })
+            .then((response) => {
+                const thelists = [];
+                response.lists.map((item) => {
+                    thelists.push({ value: item.id, label: item.name });
+                });
+                this.setState({ list: thelists, listsLoaded: true, isFetching: false })
             })
+            .catch(() => {
+                this.setState({ list: [], listsLoaded: true, isFetching: false });
+            });
+
     }
 
     getMailChimpGroups() {
-        this.state.api && this.props.attributes.list_id ? (this.setState({
-            isFetchingGroups: true
-        }), apiFetch({
-            path: addQueryArgs("/pbg-mailchimp/v1/get", {
-                apikey: this.state.api,
-                endpoint: "lists/" + this.props.attributes.list_id + "/interest-categories/"
-            })
-        }).then(e => {
-            const t = [];
-            e.map(e => {
-                t.push({
-                    value: e.id,
-                    label: e.title
-                })
-            }), this.setState({
-                listGroups: t,
-                listGroupLoaded: true,
-                isFetchingGroups: false
-            })
-        }).catch(() => {
-            this.setState({
-                listGroups: [],
-                listGroupLoaded: true,
-                isFetchingGroups: false
-            })
-        })) : this.setState({
-            listGroups: [],
-            listGroupLoaded: true
+        if (!this.state.api) {
+            this.setState({ listGroups: [], listGroupLoaded: true });
+            return;
+        }
+        this.setState({ isFetchingGroups: true });
+        apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get",
+                {
+                    apikey: this.state.api,
+                    endpoint: "lists/" + this.props.attributes.mailchimp[0].list.value + "/interest-categories/"
+                }
+            ),
         })
+            .then((response) => {
+                const theGroups = [];
+                response.map(group => {
+                    theGroups.push({
+                        value: group.id,
+                        label: group.title
+                    })
+                    this.setState({ listGroups: theGroups, listGroupLoaded: true, isFetchingGroups: false })
+                })
+            })
+            .catch(() => {
+                this.setState({ listGroups: [], listGroupLoaded: true, isFetchingGroups: false })
+            });
+
+
     }
     getMailChimpTags() {
-        this.state.api && this.props.attributes.list_id ? (this.setState({
-            isFetchingTags: true
-        }), apiFetch({
-            path: addQueryArgs("/pbg-mailchimp/v1/get", {
-                apikey: this.state.api,
-                endpoint: "lists/" + this.props.attributes.list_id + "/tag-search/"
-            })
-        }).then(e => {
-            const t = [];
-            e.tags && e.tags.map(e => {
-                t.push({
-                    value: e.id,
-                    label: e.name
-                })
-            }), this.setState({
-                listTags: t,
-                listTagsLoaded: true,
-                isFetchingTags: false
-            })
-        }).catch(() => {
-            this.setState({
-                listTags: [],
-                listTagsLoaded: true,
-                isFetchingTags: false
-            })
-        })) : this.setState({
-            listTags: [],
-            listTagsLoaded: true
-        })
-    }
-    getMailChimpAttributes() {
-        if (!this.state.api || !this.props.attributes.list_id) {
-            const e = [];
-            return e.push({
-                value: null,
-                label: "None"
-            }), e.push({
-                value: "email",
-                label: "Email *"
-            }), void this.setState({
-                listAttr: e,
-                listAttrLoaded: true
-            })
+
+        if (!this.state.api) {
+            this.setState({ listTags: [], listTagsLoaded: true });
+            return;
         }
-        this.setState({
-            isFetchingAttributes: true
-        }), apiFetch({
-            path: addQueryArgs("/pbg-mailchimp/v1/get", {
-                apikey: this.state.api,
-                endpoint: "lists/" + this.props.attributes.list_id + "/merge-fields/"
-            })
-        }).then(e => {
-            const t = [];
-            t.push({
-                value: null,
-                label: "None"
-            }), t.push({
-                value: "email",
-                label: "Email *"
-            }), e.merge_fields.map((e, n) => {
-                t.push({
-                    value: e.tag,
-                    label: e.name
-                })
-            }), this.setState({
-                listAttr: t,
-                listAttrLoaded: true,
-                isFetchingAttributes: false
-            })
-        }).catch(() => {
-            const e = [];
-            e.push({
-                value: null,
-                label: "None"
-            }), e.push({
-                value: "email",
-                label: "Email *"
-            }), this.setState({
-                listAttr: e,
-                listAttrLoaded: true,
-                isFetchingAttributes: false
-            })
+        this.setState({ isFetchingTags: true });
+        apiFetch({
+            path: addQueryArgs("/pbg-mailchimp/v1/get",
+                {
+                    apikey: this.state.api,
+                    endpoint: "lists/" + this.props.attributes.mailchimp[0].list.value + "/tag-search/"
+                }
+            ),
         })
+            .then((response) => {
+                const theTags = [];
+
+                response.map(tag => {
+                    theTags.push({
+                        value: tag.id,
+                        label: tag.title
+                    })
+                    this.setState({ listTags: theTags, listTagsLoaded: true, isFetchingTags: false })
+                })
+            })
+            .catch(() => {
+                this.setState({ listTags: [], listTagsLoaded: true, isFetchingTags: false })
+            });
+
+
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -281,29 +225,29 @@ export class edit extends Component {
         return desktopSize;
     }
 
+
     render() {
-        const { isSelected, setAttributes, clientId, className, attributes } =
+        const { attributes:
+            { block_id,
+                api,
+                list_id,
+                successMessage,
+                errorMessage,
+                columnGap,
+                rowGap,
+                eMail,
+                inputStyles,
+                btnStyles,
+                messageStyle,
+                mailchimp },
+            isSelected,
+            setAttributes, className } =
             this.props;
         const { list, listsLoaded, isFetching, isSavedAPI, listAttr, isFetchingAttributes, listAttrLoaded, isFetchingGroups, listGroups, listGroupLoaded, isFetchingTags, listTags, listTagsLoaded } = this.state
         const m = Array.isArray(list) && list.length,
             f = Array.isArray(listAttr) && listAttr.length,
             g = Array.isArray(listGroups) && listGroups.length,
-            v = Array.isArray(listTags) && listTags.length;
-
-        const {
-            block_id,
-            api,
-            list_id,
-            successMessage,
-            errorMessage,
-            columnGap,
-            rowGap,
-            eMail,
-            inputStyles,
-            btnStyles,
-            messageStyle,
-            postID, mailchimp
-        } = attributes;
+            v = Array.isArray(listTags) && listTags.length
         const COLUMNS = [
             {
                 value: "20",
@@ -356,10 +300,9 @@ export class edit extends Component {
             },
         ];
 
-
+        console.log(this.state)
         const textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
         const textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
-
 
         const saveInputStyle = (value) => {
             const newUpdate = inputStyles.map((item, index) => {
@@ -394,6 +337,17 @@ export class edit extends Component {
                 messageStyle: newUpdate,
             });
         };
+        const saveMailChimp = (value) => {
+            const newUpdate = mailchimp.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                mailchimp: newUpdate,
+            });
+        }
         return [
             isSelected && (
                 <InspectorControls key="inspector">
@@ -415,73 +369,92 @@ export class edit extends Component {
                             {this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")}
                         </button>
                         {isSavedAPI && api !== "" && <button onClick={this.removeAPI}>
-                            remove
+                            {__("Remove")}
                         </button>}
-                        {<Fragment>
-                            <h2 className="kt-heading-size-title">{__('Select  Audience', '')}</h2>
-                            {(listsLoaded ? '' : this.getMailChimpAudience())}
-                            {!Array.isArray(list) ?
-                                <Spinner /> :
-                                __("No Audience found.", "kadence-blocks-pro")}
-                        </Fragment>}
-                        {!isFetching && m && <Fragment>
+                        {/* ///////////////////////////////////// Audience //////////////////////////////////////// */}
+                        {isSavedAPI && <Fragment>
+                            {!isFetching && !m && <Fragment>
+                                <h2 className="kt-heading-size-title">{__('Select  Audience', '')}</h2>
+                                {(!listsLoaded ? this.getMailChimpAudience() : '')}
+                                {!Array.isArray(list) ?
+                                    <Spinner /> :
+                                    __("No Audience found.", "kadence-blocks-pro")}
+                            </Fragment>}
+                            {!isFetching && m && <Fragment>
 
-                            <h2 className="kt-heading-size-title">{__('Select Audience', '')}</h2>
-                            <Select
-                                value={list_id}
-                                onChange={e => console.log(e
+                                <h2 className="kt-heading-size-title">{__('Select Audience', '')}</h2>
+                                <Select
+                                    value={list_id}
+                                    onChange={value => saveMailChimp({ list: value })}
+                                    options={list}
+                                />
+                            </Fragment>
+                            }
+                            {/* /////////////////////////////////////Group//////////////////////////////////////// */}
+
+                            {mailchimp[0].list.value && <Fragment>
+                                {isFetchingGroups && (
+                                    <Spinner />
                                 )}
-                                options={list}
-                            />
-                        </Fragment>
-                        }
-                        {list_id && <Fragment>
-                            <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
-                            {listGroupLoaded ? "" : this.getMailChimpGroups()}
-                            {!Array.isArray(listGroups) ?
-                                <Spinner /> : __("No Group found.", "kadence-blocks-pro")}
-                        </Fragment>}
+                                {!isFetchingGroups && !g && (
+                                    <Fragment>
+                                        <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                                        { (!listGroupLoaded ? this.getMailChimpGroups() : '')}
+                                        { !Array.isArray(listGroups) ?
+                                            <Spinner /> :
+                                            __('No group found.', '')}
+                                    </Fragment>
 
-                        {!isFetchingGroups && g && <Fragment>
+                                )}
+                                {!isFetchingGroups && g && <Fragment>
 
-                            <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
-                            <Select
-                                value={list_id}
-                                onChange={({ value }) => setAttributes({ list_id: value })}
-                                options={listGroups}
-                            />
-                        </Fragment>}
-                        {/* ///////////////////////////////////// TAGS //////////////////////////////////////// */}
-                        {!isFetchingTags && !v && <Fragment>
-                            <h2 className="kt-heading-size-title">{__('Select Tags', '')}</h2>
-                            {listTagsLoaded ? "" : this.getMailChimpTags()}
-                            {!Array.isArray((listTags) ? <Spinner /> : __("No Tags Found.", ""))}
-                        </Fragment>}
+                                    <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                                    <Select
+                                        value={list_id}
+                                        onChange={(value) => saveMailChimp({ groups: value })}
+                                        options={listGroups}
+                                    />
+                                </Fragment>}
+                                {/* ******************** Tags ********************** */}
+                                {isFetchingTags && (
+                                    <Spinner />
+                                )}
+                                {!isFetchingTags && !v && (
+                                    <Fragment>
+                                        <h2 className="kt-heading-size-title">{__('Select Tags', 'kadence-blocks')}</h2>
+                                        { (!listTagsLoaded ? this.getMailChimpTags() : '')}
+                                        { !Array.isArray(listTags) ?
+                                            <Spinner /> :
+                                            __('No Tags found.', '')}
+                                    </Fragment>
 
-                        {!isFetchingGroups && g && <Fragment>
+                                )}
+                                {!isFetchingTags && v && <Fragment>
 
-                            <h2 className="kt-heading-size-title">{__('Select Tags', '')}</h2>
-                            <Select
-                                value={list_id}
-                                onChange={({ value }) => setAttributes({ list_id: value })}
-                                options={listGroups}
-                            />
-                        </Fragment>}
-
-                        <TextControl
-                            label={__(`Message Success`)}
-                            value={successMessage}
-                            onChange={(newURL) =>
-                                setAttributes({ successMessage: newURL })
+                                    <h2 className="kt-heading-size-title">{__('Select Tags', 'kadence-blocks')}</h2>
+                                    <Select
+                                        value={list_id}
+                                        onChange={(value) => saveMailChimp({ tags: value })}
+                                        options={listTags}
+                                    />
+                                </Fragment>
+                                }
+                            </Fragment>
                             }
+
+
+
+                            {/* ///////////////////////////////////// TAGS //////////////////////////////////////// */}
+
+                        </Fragment>}
+
+                        <ToggleControl
+                            label={__('Double in Option')}
+                            checked={mailchimp[0]['doubleOption']}
+                            onChange={(value) => saveMailChimp({ doubleOption: value })}
                         />
-                        <TextControl
-                            label={__(`Message Error`)}
-                            value={errorMessage}
-                            onChange={(newURL) =>
-                                setAttributes({ errorMessage: newURL })
-                            }
-                        />
+
+
                         <RangeControl
                             label={__("Column Gap")}
                             value={columnGap}
@@ -908,6 +881,7 @@ export class edit extends Component {
                             className="premium-newsletter__label"
                         >
                             {inputStyles[0].label}
+                            <span className="required">*</span>
                         </label>
                     ) : null}
                     <input
@@ -978,6 +952,7 @@ export class edit extends Component {
                         {__('Submit')}
                     </button>
                 </div>
+
             </div>
 
         ];
