@@ -308,7 +308,7 @@ if ( ! class_exists( 'PBG_Blocks_Config' ) ) {
 						'slug'       => '',
 						'default'    => true,
 						'attributes' => array(
-							'block_id'        => 'not-set',
+							'block_id'        => '',
 							'api'             => '',
 							'list_id'         => '',
 							'success_message' => '',

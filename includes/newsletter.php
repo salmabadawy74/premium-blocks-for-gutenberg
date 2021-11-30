@@ -56,21 +56,32 @@ class PBG_Ajax_Form {
 				if ( empty( $api_key ) ) {
 					return;
 				}
-				$list = ( isset( $form_args['list_id'] ) ? '8286186162' : '8286186162' );
-				$body = array(
-					'email_address' => $_POST['kb_field_1'],
+				$mailchimp_default   = array(
+					'list'        => array(),
+					'groups'      => array(),
+					'tags'        => array(),
+					'map'         => array(),
+					'doubleOptin' => false,
+				);
+				$mailchimp_args      = ( isset( $form_args['mailchimp'] ) && is_array( $form_args['mailchimp'] ) && isset( $form_args['mailchimp'][0] ) && is_array( $form_args['mailchimp'][0] ) ? $form_args['mailchimp'][0] : $mailchimp_default );
+						$list        = ( isset( $mailchimp_args['list'] ) ? $mailchimp_args['list'] : '' );
+						$groups      = ( isset( $mailchimp_args['groups'] ) && is_array( $mailchimp_args['groups'] ) ? $mailchimp_args['groups'] : array() );
+						$tags        = ( isset( $mailchimp_args['tags'] ) && is_array( $mailchimp_args['tags'] ) ? $mailchimp_args['tags'] : array() );
+						$doubleOptin = ( isset( $mailchimp_args['doubleOptin'] ) ? $mailchimp_args['doubleOptin'] : false );
+				$body                = array(
+					'email_address' => '',
 					'status_if_new' => 'subscribed',
 					'status'        => 'subscribed',
 				);
-				if ( empty( $list ) ) {
-					return;
+				if ( empty( $list ) || ! is_array( $list ) ) {
+							return;
 				}
 				$key_parts = explode( '-', $api_key );
 				if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
 					return;
 				}
-				$base_url = 'https://' . $key_parts[1] . '.api.mailchimp.com/3.0/';
-				$email    = false;
+					$base_url  = 'https://' . $key_parts[1] . '.api.mailchimp.com/3.0/';
+						$email = false;
 				if ( ! empty( $groups ) ) {
 					foreach ( $groups as $id => $label ) {
 						if ( ! isset( $body['interests'] ) ) {
@@ -258,7 +269,8 @@ class PBG_Ajax_Form {
 			$parser = new $parser_class();
 			return $parser->parse( $content );
 		} elseif ( function_exists( 'gutenberg_parse_blocks' ) ) {
-			return gutenberg_parse_blocks( $content );
+			// return gutenberg_parse_blocks( $content );
+
 		} else {
 			return false;
 		}
@@ -295,11 +307,13 @@ class PBG_Ajax_Form {
 			if ( ! is_object( $block ) && is_array( $block ) && isset( $block['blockName'] ) ) {
 				if ( 'premium/newsletter' === $block['blockName'] ) {
 					if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $form_id === $block['attrs']['block_id'] ) {
+						var_dump( $block );
 						$form_args = $block['attrs'];
 						break;
 					}
 				}
 			}
+			var_dump( $block, 'Block' );
 		}
 		return $form_args;
 	}
