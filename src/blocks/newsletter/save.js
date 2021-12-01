@@ -70,7 +70,7 @@ export function save(props) {
                     name="action"
                     value="pb_process_ajax_submit"
                 />
-                {/* <input
+                <input
                     className="kadence-blocks-field verify"
                     type="text"
                     name="_kb_verify_email"
@@ -78,7 +78,7 @@ export function save(props) {
                     aria-hidden="true"
                     placeholder="Email"
                     tabindex="-1"
-                /> */}
+                />
                 <div className={`kadence-blocks-form-field kb-submit-field kb-field-desk-width-100 col-${btnStyles[0].btnColumn}`} style={{
                     paddingRight: `calc(${columnGap}px / 2)`,
                     paddingLeft: `calc(${columnGap}px / 2)`,

@@ -2,7 +2,7 @@
 /**
  * Form Action Handling.
  *
- * @package premium Blocks
+ * @package Kadence Blocks Pro
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin class
  */
-class Premium_Form_Actions {
+class PBG_Form_Actions {
 
 	/**
 	 * Instance Control
@@ -32,7 +32,6 @@ class Premium_Form_Actions {
 	 * Class Constructor.
 	 */
 	public function __construct() {
-
 		add_action( 'premium_blocks_form_submission', array( $this, 'process_actions' ), 10, 4 );
 	}
 	/**
@@ -44,34 +43,37 @@ class Premium_Form_Actions {
 	 * @param int    $post_id the post ID.
 	 */
 	public function process_actions( $form_args, $fields, $form_id, $post_id ) {
-		
-              if ( isset( $form_args ) && is_array( $form_args ) && isset( $form_args['actions'] ) ) {
+		if ( isset( $form_args ) && is_array( $form_args ) ) {
 
-			$api_key = get_option( 'mail_chimp_api' );
+						$api_key = get_option( 'kadence_blocks_mail_chimp_api' );
 			if ( empty( $api_key ) ) {
 				return;
 			}
 						$mailchimp_default = array(
 							'list'        => array(),
 							'groups'      => array(),
+							'tags'        => array(),
 							'map'         => array(),
 							'doubleOptin' => false,
 						);
 						$mailchimp_args    = ( isset( $form_args['mailchimp'] ) && is_array( $form_args['mailchimp'] ) && isset( $form_args['mailchimp'][0] ) && is_array( $form_args['mailchimp'][0] ) ? $form_args['mailchimp'][0] : $mailchimp_default );
-						$list              = ( isset( $mailchimp_args['list'] ) ? '8286186162' : '8286186162' );
+						$list              = ( isset( $mailchimp_args['list'] ) ? $mailchimp_args['list'] : '' );
 						$groups            = ( isset( $mailchimp_args['groups'] ) && is_array( $mailchimp_args['groups'] ) ? $mailchimp_args['groups'] : array() );
+						$tags              = ( isset( $mailchimp_args['tags'] ) && is_array( $mailchimp_args['tags'] ) ? $mailchimp_args['tags'] : array() );
 						$map               = ( isset( $mailchimp_args['map'] ) && is_array( $mailchimp_args['map'] ) ? $mailchimp_args['map'] : array() );
+						$doubleOptin       = ( isset( $mailchimp_args['doubleOptin'] ) ? $mailchimp_args['doubleOptin'] : false );
 						$body              = array(
 							'email_address' => '',
 							'status_if_new' => 'subscribed',
 							'status'        => 'subscribed',
 						);
-
+						if ( $doubleOptin ) {
+							$body['status_if_new'] = 'pending';
+							$body['double_optin']  = true;
+						}
 						if ( empty( $list ) || ! is_array( $list ) ) {
 							return;
-
 						}
-
 						$key_parts = explode( '-', $api_key );
 						if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
 							return;
@@ -84,6 +86,19 @@ class Premium_Form_Actions {
 									$body['interests'] = array();
 								}
 								$body['interests'][ $label['value'] ] = true;
+							}
+						}
+						$tags_array = array();
+						if ( ! empty( $tags ) ) {
+							foreach ( $tags as $id => $tag_item ) {
+								if ( ! isset( $body['tags'] ) ) {
+									$body['tags'] = array();
+								}
+								$body['tags'][] = $tag_item['label'];
+								$tags_array[]   = array(
+									'name'   => $tag_item['label'],
+									'status' => 'active',
+								);
 							}
 						}
 						if ( ! empty( $map ) ) {
@@ -130,23 +145,98 @@ class Premium_Form_Actions {
 									'body'    => json_encode( $body ),
 								)
 							);
+
 							if ( is_wp_error( $response ) ) {
 								$error_message = $response->get_error_message();
 								// error_log( "Something went wrong: $error_message" );
 							} else {
 								if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-									// error_log( __('Failed to Connect to MailChimp', 'premium-blocks-pro' ) );
+									// error_log( __('Failed to Connect to MailChimp', 'kadence-blocks-pro' ) );
 									return;
 								}
 								if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
 									// error_log( $response['response']['message'] );
 									return;
+								} elseif ( 200 === $response['response']['code'] ) {
+									// need to check if tags were added.
+									$needs_update = false;
+									$body         = json_decode( wp_remote_retrieve_body( $response ), true );
+									if ( ! empty( $tags_array ) && empty( $body['tags'] ) ) {
+										$needs_update = true;
+									} elseif ( ! empty( $tags_array ) && ! empty( $body['tags'] ) && is_array( $body['tags'] ) ) {
+										$current_tags = array();
+										foreach ( $body['tags'] as $key => $data ) {
+											$current_tags[] = $data['name'];
+										}
+										foreach ( $tags_array as $key => $data ) {
+											if ( ! in_array( $data['name'], $current_tags ) ) {
+												$needs_update = true;
+												break;
+											}
+										}
+									}
+									if ( $needs_update ) {
+										$tag_url      = $base_url . 'lists/' . $list_id . '/members/' . $subscriber_hash . '/tags';
+										$tag_response = wp_remote_post(
+											$tag_url,
+											array(
+												'method'  => 'POST',
+												'timeout' => 10,
+												'headers' => array(
+													'accept'       => 'application/json',
+													'content-type' => 'application/json',
+													'Authorization' => 'Basic ' . base64_encode( 'user:' . $api_key ),
+												),
+												'body'    => json_encode( array( 'tags' => $tags_array ) ),
+											)
+										);
+										if ( is_wp_error( $tag_response ) ) {
+											$error_message = $tag_response->get_error_message();
+											// error_log( "Something went wrong: $error_message" );
+										} else {
+											if ( ! isset( $tag_response['response'] ) || ! isset( $tag_response['response']['code'] ) ) {
+												// error_log( __('Failed to Connect to MailChimp', 'kadence-blocks-pro' ) );
+												return;
+											}
+											if ( 204 === $tag_response['response']['code'] ) {
+												// error_log( 'success' );
+												return;
+											}
+										}
+									}
 								}
 							}
+															var_dump( $response );
+
 						}
 		}
 	}
 
+	/**
+	 * Add meta data field to a entry
+	 *
+	 * @param int    $entry_id      entry ID.
+	 * @param string $meta_key      Meta data name.
+	 * @param mixed  $meta_value    Meta data value. Must be serializable if non-scalar.
+	 * @param bool   $unique        Optional. Whether the same key should not be added. Default false.
+	 *
+	 * @since 3.0
+	 * @return false|int
+	 */
+
+	/**
+	 * Get User Agent browser and OS type
+	 *
+	 * @return array
+	 */
+
+	/**
+	 * Get the client IP address
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return string
+	 */
 
 }
-Premium_Form_Actions::get_instance();
+PBG_Form_Actions::get_instance();
