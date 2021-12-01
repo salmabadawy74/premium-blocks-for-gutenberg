@@ -64626,7 +64626,7 @@ var edit = exports.edit = function (_Component) {
                 label: "100%"
             }];
 
-            console.log(this.state);
+            console.log(mailchimp);
             var textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
             var textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
@@ -64730,10 +64730,11 @@ var edit = exports.edit = function (_Component) {
                                 __('Select Audience', '')
                             ),
                             React.createElement(_reactSelect2.default, {
-                                value: list_id,
+                                value: mailchimp[0].list ? mailchimp[0].list : "",
                                 onChange: function onChange(value) {
-                                    return saveMailChimp({ list: value });
+                                    saveMailChimp({ list: value || [] });
                                 },
+
                                 options: list
                             })
                         ),
@@ -64761,11 +64762,15 @@ var edit = exports.edit = function (_Component) {
                                     __('Select Group', 'kadence-blocks')
                                 ),
                                 React.createElement(_reactSelect2.default, {
-                                    value: list_id,
+                                    value: undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].groups ? mailchimp[0].groups : '',
                                     onChange: function onChange(value) {
-                                        return saveMailChimp({ groups: value });
+                                        saveMailChimp({ groups: value ? value : [] });
                                     },
-                                    options: listGroups
+                                    options: listGroups,
+                                    isClearable: true,
+
+                                    isMulti: true,
+                                    maxMenuHeight: 200
                                 })
                             ),
                             isFetchingTags && React.createElement(Spinner, null),
@@ -64793,7 +64798,10 @@ var edit = exports.edit = function (_Component) {
                                     onChange: function onChange(value) {
                                         return saveMailChimp({ tags: value });
                                     },
-                                    options: listTags
+                                    options: listTags,
+                                    isClearable: true,
+                                    isMulti: true,
+                                    maxMenuHeight: 200
                                 })
                             )
                         )
@@ -73011,6 +73019,15 @@ function save(props) {
                 type: "hidden",
                 name: "action",
                 value: "pb_process_ajax_submit"
+            }),
+            _react2.default.createElement("input", {
+                className: "kadence-blocks-field verify",
+                type: "text",
+                name: "_kb_verify_email",
+                autocomplete: "off",
+                "aria-hidden": "true",
+                placeholder: "Email",
+                tabindex: "-1"
             }),
             _react2.default.createElement(
                 "div",

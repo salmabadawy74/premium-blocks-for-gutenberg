@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Form Ajax Handing.
  *
- * @package Premium Blocks
+ * @package Kadence Blocks
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin class
  */
 class PBG_Ajax_Form {
-
 
 	/**
 	 * Instance Control
@@ -34,100 +32,123 @@ class PBG_Ajax_Form {
 	 * Class Constructor.
 	 */
 	public function __construct() {
-		 add_action( 'wp_ajax_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
+		add_action( 'wp_ajax_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
 		add_action( 'wp_ajax_nopriv_pb_process_ajax_submit', array( $this, 'process_ajax' ) );
 	}
 
+	/**
+	 * Process the form submit.
+	 */
 	public function process_ajax() {
 		if ( isset( $_POST['_kb_form_id'] ) && ! empty( $_POST['_kb_form_id'] ) && isset( $_POST['_kb_form_post_id'] ) && ! empty( $_POST['_kb_form_post_id'] ) ) {
+			 $this->start_buffer();
 			$valid = true;
-			if ( apply_filters( 'premium_blocks_form_verify_nonce', false ) ) {
+			if ( apply_filters( 'kadence_blocks_form_verify_nonce', false ) ) {
 				$valid = check_ajax_referer( 'kb_form_nonce', '_kb_form_verify', false );
 			}
-			$form_id = sanitize_text_field( wp_unslash( $_POST['_kb_form_id'] ) );
 			if ( $valid ) {
+				// Lets get form data.
 				$form_id   = sanitize_text_field( wp_unslash( $_POST['_kb_form_id'] ) );
 				$post_id   = sanitize_text_field( wp_unslash( $_POST['_kb_form_post_id'] ) );
 				$form_args = $this->get_form_args( $post_id, $form_id );
 				if ( ! $form_args ) {
-					$this->process_bail( __( 'Submission Failed', 'premium-blocks' ), __( 'Data not Found', 'premium-blocks' ) );
+
+					$this->process_bail( __( 'Submission Failed', 'kadence-blocks' ), __( 'Data notsss Found', 'kadence-blocks' ) );
 				}
-				$api_key = get_option( 'mail_chimp_api' );
-				if ( empty( $api_key ) ) {
-					return;
-				}
-				$mailchimp_default   = array(
-					'list'        => array(),
-					'groups'      => array(),
-					'tags'        => array(),
-					'map'         => array(),
-					'doubleOptin' => false,
+				// Check for default form actions.
+
+				// Check for Message strings.
+				$messages = array(
+					0 => array(
+						'success'        => esc_html__( 'Submission Success, Thanks for getting in touch!', 'kadence-blocks' ),
+						'error'          => esc_html__( 'Submission Failed', 'kadence-blocks' ),
+						'recaptchaerror' => esc_html__( 'Submission Failed, reCaptcha spam prevention. Please reload your page and try again.', 'kadence-blocks' ),
+					),
 				);
-				$mailchimp_args      = ( isset( $form_args['mailchimp'] ) && is_array( $form_args['mailchimp'] ) && isset( $form_args['mailchimp'][0] ) && is_array( $form_args['mailchimp'][0] ) ? $form_args['mailchimp'][0] : $mailchimp_default );
-						$list        = ( isset( $mailchimp_args['list'] ) ? $mailchimp_args['list'] : '' );
-						$groups      = ( isset( $mailchimp_args['groups'] ) && is_array( $mailchimp_args['groups'] ) ? $mailchimp_args['groups'] : array() );
-						$tags        = ( isset( $mailchimp_args['tags'] ) && is_array( $mailchimp_args['tags'] ) ? $mailchimp_args['tags'] : array() );
-						$doubleOptin = ( isset( $mailchimp_args['doubleOptin'] ) ? $mailchimp_args['doubleOptin'] : false );
-				$body                = array(
-					'email_address' => '',
-					'status_if_new' => 'subscribed',
-					'status'        => 'subscribed',
-				);
-				if ( empty( $list ) || ! is_array( $list ) ) {
-							return;
-				}
-				$key_parts = explode( '-', $api_key );
-				if ( empty( $key_parts[1] ) || 0 !== strpos( $key_parts[1], 'us' ) ) {
-					return;
-				}
-					$base_url  = 'https://' . $key_parts[1] . '.api.mailchimp.com/3.0/';
-						$email = false;
-				if ( ! empty( $groups ) ) {
-					foreach ( $groups as $id => $label ) {
-						if ( ! isset( $body['interests'] ) ) {
-							$body['interests'] = array();
-						}
-						$body['interests'][ $label['value'] ] = true;
+				if ( isset( $form_args['messages'] ) && isset( $form_args['messages'][0] ) ) {
+					if ( isset( $form_args['messages'][0]['recaptchaerror'] ) && ! empty( $form_args['messages'][0]['recaptchaerror'] ) ) {
+						$messages[0]['recaptchaerror'] = $form_args['messages'][0]['recaptchaerror'];
+					}
+					if ( isset( $form_args['messages'][0]['success'] ) && ! empty( $form_args['messages'][0]['success'] ) ) {
+						$messages[0]['success'] = $form_args['messages'][0]['success'];
+					}
+					if ( isset( $form_args['messages'][0]['error'] ) && ! empty( $form_args['messages'][0]['error'] ) ) {
+						$messages[0]['error'] = $form_args['messages'][0]['error'];
+					}
+					if ( isset( $form_args['messages'][0]['required'] ) && ! empty( $form_args['messages'][0]['required'] ) ) {
+						$messages[0]['required'] = $form_args['messages'][0]['required'];
+					}
+					if ( isset( $form_args['messages'][0]['invalid'] ) && ! empty( $form_args['messages'][0]['invalid'] ) ) {
+						$messages[0]['invalid'] = $form_args['messages'][0]['invalid'];
 					}
 				}
-				$list_id = '';
-				if ( empty( $list_id ) ) {
-					return;
-				}
 
-				if ( isset( $body['email_address'] ) ) {
-					$subscriber_hash = md5( strtolower( $body['email_address'] ) );
-					$api_url         = $base_url . 'lists/' . $list_id . '/members/' . $subscriber_hash;
-					$response        = wp_remote_post(
-						$api_url,
-						array(
-							'method'  => 'PUT',
-							'timeout' => 10,
-							'headers' => array(
-								'accept'        => 'application/json',
-								'content-type'  => 'application/json',
-								'Authorization' => 'Basic ' . base64_encode( 'user:' . $api_key ),
-							),
-							'body'    => json_encode( $body ),
-						)
+				// Check Recaptcha.
+
+				// unset( $_POST['_kb_form_sub_id'], $_POST['_kb_verify_email'] );
+				// Get fields.
+				$fields = array();
+				if ( ! isset( $form_args['fields'] ) || ! is_array( $form_args['fields'] ) ) {
+					$form_args['fields'] = array(
+
+						1 => array(
+							'label'       => 'Email',
+							'showLabel'   => true,
+							'placeholder' => '',
+							'default'     => '',
+							'rows'        => 4,
+							'options'     => array(),
+							'multiSelect' => false,
+							'inline'      => false,
+							'showLink'    => false,
+							'min'         => '',
+							'max'         => '',
+							'type'        => 'email',
+							'required'    => true,
+							'width'       => array( '100', '', '' ),
+							'auto'        => '',
+						),
+
 					);
-
-					if ( is_wp_error( $response ) ) {
-
-						// $error_message = $response->get_error_message();
-						// error_log( "Something went wrong: $error_message" );
-					} else {
-						if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-							// error_log( __('Failed to Connect to MailChimp', 'premium-blocks-pro' ) );
-
+				}
+				// $privacy_title = ( get_option( 'wp_page_for_privacy_policy' ) ? get_the_title( get_option( 'wp_page_for_privacy_policy' ) ) : '' );
+				foreach ( $form_args['fields'] as $key => $data ) {
+					// check for required.
+					if ( $data['required'] && ( ! isset( $_POST[ 'kb_field_' . $key ] ) || empty( $_POST[ 'kb_field_' . $key ] ) ) ) {
+						$this->process_bail( $messages[0]['error'], __( 'Required Field Empty', 'kadence-blocks' ), 'kb_field_' . $key );
+					}
+					if ( isset( $_POST[ 'kb_field_' . $key ] ) ) {
+						$fields[ $key ] = array(
+							'type'  => $data['type'],
+							'label' => str_replace( '{privacy_policy}', $privacy_title, $data['label'] ),
+							'value' => $this->sanitize_field( $data['type'], wp_unslash( $_POST[ 'kb_field_' . $key ] ), $data['multiSelect'] ),
+						);
+						if ( 'hidden' === $data['type'] ) {
+							global $post;
+							$refer_id                = is_object( $post ) ? $post->ID : url_to_postid( wp_get_referer() );
+							$fields[ $key ]['value'] = str_replace( '{page_title}', get_the_title( $refer_id ), $fields[ $key ]['value'] );
+							$fields[ $key ]['value'] = str_replace( '{page_url}', wp_get_referer(), $fields[ $key ]['value'] );
 						}
-						if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
-							// error_log( $response['response']['message'] );
-
-						}
+						unset( $_POST[ 'kb_field_' . $key ] );
 					}
 				}
+				$final_data = array(
+					'redirect' => false,
+				);
+				do_action( 'premium_blocks_form_submission', $form_args, $fields, $form_id, $post_id );
+				$success  = apply_filters( 'kadence_blocks_form_submission_success', true, $form_args, $fields, $form_id, $post_id );
+				$messages = apply_filters( 'kadence_blocks_form_submission_messages', $messages );
+				if ( ! $success ) {
+					$this->process_bail( $messages[0]['error'], __( 'Third Party Failed', 'kadence-blocks' ) );
+				} else {
+					$final_data['html'] = '<div class="kadence-blocks-form-message kadence-blocks-form-success">' . $messages[0]['success'] . '</div>';
+					$this->send_json( $final_data );
+				}
+			} else {
+				$this->process_bail( __( 'Submission rejected, invalid security token. Reload the page and try again.', 'kadence-blocks' ), __( 'Token invalid', 'kadence-blocks' ) );
 			}
+		} else {
+			$this->process_bail( __( 'Submission failed', 'kadence-blocks' ), __( 'No Data', 'kadence-blocks' ) );
 		}
 	}
 	/**
@@ -162,7 +183,7 @@ class PBG_Ajax_Form {
 				$value = sanitize_email( trim( $value ) );
 				break;
 			case 'accept':
-				$value = esc_html__( 'Accept', 'premium-blocks' );
+				$value = esc_html__( 'Accept', 'kadence-blocks' );
 				break;
 			default:
 				/**
@@ -172,7 +193,7 @@ class PBG_Ajax_Form {
 				 *
 				 * @param string $value The field value.
 				 */
-				$value = apply_filters( "premium_blocks_form_sanitize_{$field_type}", $value );
+				$value = apply_filters( "kadence_blocks_form_sanitize_{$field_type}", $value );
 		}
 
 		return $value;
@@ -194,6 +215,22 @@ class PBG_Ajax_Form {
 		);
 		$this->send_json( $out, true );
 	}
+	/**
+	 * Check Recaptcha
+	 *
+	 * @param string $token Recaptcha token.
+	 *
+	 * @return bool
+	 */
+
+
+	/**
+	 * Check Recaptcha V2
+	 *
+	 * @param string $token Recaptcha token.
+	 *
+	 * @return bool
+	 */
 
 	/**
 	 * Create HTML string from notices
@@ -206,7 +243,7 @@ class PBG_Ajax_Form {
 		$html = '';
 		foreach ( $notices as $note_type => $notice ) {
 			if ( ! empty( $notice['note'] ) ) {
-				$html .= '<div class="premium-blocks-form-message premium-blocks-form-warning">' . $notice['note'] . '</div>';
+				$html .= '<div class="kadence-blocks-form-message kadence-blocks-form-warning">' . $notice['note'] . '</div>';
 			}
 		}
 
@@ -216,7 +253,7 @@ class PBG_Ajax_Form {
 	 * Starts a flushable buffer
 	 */
 	public function start_buffer() {
-		if ( ! did_action( 'premium_blocks_forms_buffer_started' ) ) {
+		if ( ! did_action( 'kadence_blocks_forms_buffer_started' ) ) {
 
 			ob_start();
 
@@ -225,7 +262,7 @@ class PBG_Ajax_Form {
 			 *
 			 * Used to prevent starting buffer twice
 			 */
-			do_action( 'premium_blocks_forms_buffer_started' );
+			do_action( 'kadence_blocks_forms_buffer_started' );
 		}
 	}
 
@@ -238,15 +275,14 @@ class PBG_Ajax_Form {
 	 * @param bool  $is_error Optional. Is this an error. Default false.
 	 */
 	public function send_json( $data = array(), $is_error = false ) {
-
 		$buffer = ob_get_clean();
 		/**
-		 * Runs before Premium Blocks Forms returns json via wp_send_json() exposes output buffer
+		 * Runs before Kadence Blocks Forms returns json via wp_send_json() exposes output buffer
 		 *
 		 * @param string|null $buffer Buffer contents
 		 * @param bool $is_error If we think this is an error response or not.
 		 */
-		do_action( 'premium_blocks_forms_buffer_flushed', $buffer, $is_error );
+		do_action( 'kadence_blocks_forms_buffer_flushed', $buffer, $is_error );
 		$data['headers_sent'] = headers_sent();
 		if ( ! $is_error ) {
 			// status_header( 200 );
@@ -256,7 +292,6 @@ class PBG_Ajax_Form {
 		} else {
 			wp_send_json_error( $data );
 		}
-		return $buffer;
 	}
 	/**
 	 * Get form args
@@ -269,8 +304,7 @@ class PBG_Ajax_Form {
 			$parser = new $parser_class();
 			return $parser->parse( $content );
 		} elseif ( function_exists( 'gutenberg_parse_blocks' ) ) {
-			// return gutenberg_parse_blocks( $content );
-
+			return gutenberg_parse_blocks( $content );
 		} else {
 			return false;
 		}
@@ -282,11 +316,21 @@ class PBG_Ajax_Form {
 	 * @param integer $post_id the form post id.
 	 * @param string  $form_id the form id.
 	 */
-
 	private function get_form_args( $post_id, $form_id ) {
+
 		$form_args = false;
 		$blocks    = '';
-		if ( strpos( $post_id, 'block' ) !== false ) {
+		if ( strpos( $post_id, 'block-unknown' ) !== false ) {
+			$widget_data = get_option( 'widget_block' );
+			if ( is_array( $widget_data ) ) {
+				foreach ( $widget_data as $key => $data_array ) {
+					if ( ! empty( $data_array['content'] ) && strpos( $data_array['content'], '<!-- wp:kadence/form {"uniqueID":"' . $form_id . '"' ) !== false ) {
+						$blocks = $this->parse_blocks( $data_array['content'] );
+						break;
+					}
+				}
+			}
+		} elseif ( strpos( $post_id, 'block' ) !== false ) {
 			$widget_data = get_option( 'widget_block' );
 			$post_id_int = preg_replace( '/[^0-9]/', '', $post_id );
 			if ( ! empty( $widget_data[ absint( $post_id_int ) ] ) ) {
@@ -300,20 +344,17 @@ class PBG_Ajax_Form {
 			}
 		}
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-				$this->process_bail( __( 'Submission Failed', 'kadence-blocks' ), __( 'Data not found', 'kadence-blocks' ) );
+			$this->process_bail( __( 'Submission Failed', 'kadence-blocks' ), __( 'Data not found', 'kadence-blocks' ) );
 		}
-
 		foreach ( $blocks as $indexkey => $block ) {
 			if ( ! is_object( $block ) && is_array( $block ) && isset( $block['blockName'] ) ) {
 				if ( 'premium/newsletter' === $block['blockName'] ) {
 					if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) && isset( $block['attrs']['block_id'] ) && $form_id === $block['attrs']['block_id'] ) {
-						var_dump( $block );
 						$form_args = $block['attrs'];
 						break;
 					}
 				}
 			}
-			var_dump( $block, 'Block' );
 		}
 		return $form_args;
 	}
@@ -323,6 +364,17 @@ class PBG_Ajax_Form {
 	 * @param array  $blocks the post inner blocks.
 	 * @param string $form_id the form Id.
 	 */
-
+	private function parse_inner_blocks( $blocks, $form_id ) {
+		$form_args = false;
+		foreach ( $blocks as $indexkey => $block ) {
+			if ( 'premium/newsletter' === $block['blockName'] ) {
+				if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) && isset( $block['attrs']['uniqueID'] ) && $form_id === $block['attrs']['uniqueID'] ) {
+					$form_args = $block['attrs'];
+					break;
+				}
+			}
+		}
+		return $form_args;
+	}
 }
 PBG_Ajax_Form::get_instance();

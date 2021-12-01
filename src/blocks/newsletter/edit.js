@@ -300,7 +300,7 @@ export class edit extends Component {
             },
         ];
 
-        console.log(this.state)
+        console.log(mailchimp)
         const textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
         const textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
@@ -384,8 +384,11 @@ export class edit extends Component {
 
                                 <h2 className="kt-heading-size-title">{__('Select Audience', '')}</h2>
                                 <Select
-                                    value={list_id}
-                                    onChange={value => saveMailChimp({ list: value })}
+                                    value={mailchimp[0].list ? mailchimp[0].list : ""}
+                                    onChange={(value) => {
+                                        saveMailChimp({ list: value || [] })
+                                    }}
+
                                     options={list}
                                 />
                             </Fragment>
@@ -410,9 +413,15 @@ export class edit extends Component {
 
                                     <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
                                     <Select
-                                        value={list_id}
-                                        onChange={(value) => saveMailChimp({ groups: value })}
+                                        value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].groups ? mailchimp[0].groups : '')}
+                                        onChange={(value) => {
+                                            saveMailChimp({ groups: (value ? value : []) });
+                                        }}
                                         options={listGroups}
+                                        isClearable={true}
+
+                                        isMulti={true}
+                                        maxMenuHeight={200}
                                     />
                                 </Fragment>}
                                 {/* ******************** Tags ********************** */}
@@ -436,6 +445,9 @@ export class edit extends Component {
                                         value={list_id}
                                         onChange={(value) => saveMailChimp({ tags: value })}
                                         options={listTags}
+                                        isClearable={true}
+                                        isMulti={true}
+                                        maxMenuHeight={200}
                                     />
                                 </Fragment>
                                 }

@@ -25,6 +25,7 @@ jQuery(function ($) {
                 $.post(settings.ajaxurl, form_data, function (res) {
 
                     if (res.success) {
+                        console.log(res)
                         $('body').trigger('kb-form-success', res);
                         if (res.redirect) {
                             window.location = res.redirect;
@@ -32,7 +33,7 @@ jQuery(function ($) {
                             form.after(res.html);
                             focus
                             $('html, body').animate({
-                                scrollTop: $('.premium-blocks-form-message').offset().top - 100
+                                scrollTop: $('.kadence-blocks-form-message').offset().top - 100
                             }, 'fast');
 
                             premium_blocks_form.clearForm(form);
@@ -105,6 +106,7 @@ jQuery(function ($) {
          * @param position (value = bottom or end) end if form is onepare, bottom, if form is multistep
          */
         clearForm: function (form) {
+            console.log(form)
             $(form)[0].reset();
         },
         /**
