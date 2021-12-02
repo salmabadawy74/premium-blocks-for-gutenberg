@@ -13,29 +13,37 @@ class modal extends Component {
 
     constructor() {
         super(...arguments);
-        this.selectUikit.bind(this)
+        this.selectUikit = this.selectUikit.bind(this)
+        this.timeOut = null;
     }
 
     componentDidMount() {
-
-        this.selectUikit()
+        this.timeOut = setTimeout(() => {
+            this.selectUikit('Angled')
+        }, 400)
     }
 
+    componentWillUnmount() {
+        if (this.timeOut !== null) {
+            clearTimeout(this.timeOut)
+        }
+    }
+
+
     selectUikit(item) {
-        console.log(item)
-        this.props.attributes.uikits.map((uikit, i) => {
-            if (uikit.id === item ? item : 'Angled') {
+        this.props.attributes.uikits.forEach((uikit, i) => {
+            if (uikit.id === item) {
                 this.props.setAttributes({
-                    activeCategory: item ? item : 'Angled'
+                    activeCategory: item
                 });
-                console.log(activeCategory)
+                return;
             }
         })
 
         let newTemp = this.props.attributes.newTemplate.map((temp, i) => {
             return temp
         }).filter(t => {
-            return t.uikit === item ? item : 'Angled'
+            return t.uikit === item
         })
 
         this.props.setAttributes({
@@ -54,7 +62,8 @@ class modal extends Component {
             template,
             category,
             activeCategory,
-            uikits
+            uikits,
+            column
         } = attributes;
 
         const TABSTYLE = [{
@@ -97,29 +106,6 @@ class modal extends Component {
             });
         }
 
-        // const selectUikit = (item) => {
-        //     console.log(item)
-        //     uikits.map((uikit, i) => {
-        //         if (uikit.id === item) {
-        //             this.props.setAttributes({
-        //                 activeCategory: item
-        //             });
-        //             console.log(activeCategory)
-        //         }
-        //     })
-
-        //     let newTemp = newTemplate.map((temp, i) => {
-        //         return temp
-        //     }).filter(t => {
-        //         return t.uikit === item
-        //     })
-
-        //     this.props.setAttributes({
-        //         template: item === 'all' ? newTemplate : newTemp
-        //     });
-        // }
-
-
         const templates = template.map((item, i) => {
             return <div className="premium-template-item" onClick={() => selectTemplate(item.id)}>
                 <Button className="premium-template-item__image" variant="secondary" onClick={this.props.onClose}>
@@ -158,6 +144,12 @@ class modal extends Component {
             }
         };
 
+        const setColumns = (item) => {
+            this.props.setAttributes({
+                column: item
+            });
+        }
+
 
         return (
             <Modal title="This is my modal" onRequestClose={this.props.onClose} className="premium-template-modal">
@@ -188,9 +180,35 @@ class modal extends Component {
                             </ul>
                         </div>
                     </aside>
-                    <aside className="premium-template-modal__topbar"></aside>
+                    <aside className="premium-template-modal__topbar">
+                        <Button
+                            icon="image-rotate"
+                            label={__('Refresh Library')}
+                            className="ugb-modal-design-library__refresh"
+                        // onClick={ () => setDoReset( true ) }
+                        />
+
+                        <Button
+                            icon="fa fa-dot-circle-o"
+                            className={columns === 2 ? 'is-active' : ''}
+                            label={__('Large preview')}
+                            onClick={() => setColumns(2)}
+                        />
+                        <Button
+                            icon="image-rotate"
+                            className={columns === 3 ? 'is-active' : ''}
+                            label={__('Medium preview')}
+                            onClick={() => setColumns(3)}
+                        />
+                        <Button
+                            icon="fa fa-dot-circle-o"
+                            className={columns === 4 ? 'is-active' : ''}
+                            label={__('Small preview')}
+                            onClick={() => setColumns(4)}
+                        />
+                    </aside>
                     <div className="premium-template-modal__designs">
-                        <div className="premium-template-items premium-template-items--columns-3">
+                        <div className={`premium-template-items premium-template-items--columns-${column}`}>
                             {templates}
                         </div>
                     </div>

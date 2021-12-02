@@ -1870,8 +1870,14 @@ a.premium-dheading-block__link:hover {
     width: 100%;
     will-change: transform;
 }
+.premium-template-items.premium-template-items--columns-2{
+    column-count: 2 !important;
+}
 .premium-template-items.premium-template-items--columns-3{
     column-count: 3 !important;
+}
+.premium-template-items.premium-template-items--columns-4{
+    column-count: 4 !important;
 }
 .premium-template-item__image{
     padding: 0!important;

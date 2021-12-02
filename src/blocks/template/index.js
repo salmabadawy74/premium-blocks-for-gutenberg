@@ -36,6 +36,10 @@ const test1Attrs = {
     activeCategory: {
         type: 'boolean',
         default: false
+    },
+    column: {
+        type: 'number',
+        default: 3
     }
 };
 
