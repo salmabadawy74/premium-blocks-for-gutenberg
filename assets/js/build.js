@@ -64504,7 +64504,7 @@ var edit = exports.edit = function (_Component) {
             var _this7 = this;
 
             if (!this.state.api) {
-                this.setState({ listTags: [], listTagsLoaded: true });
+                this.setState({ listTags: ["salma"], listTagsLoaded: true });
                 return;
             }
             this.setState({ isFetchingTags: true });
@@ -64513,17 +64513,18 @@ var edit = exports.edit = function (_Component) {
                     apikey: this.state.api,
                     endpoint: "lists/" + this.props.attributes.mailchimp[0].list.value + "/tag-search/"
                 })
-            }).then(function (response) {
-                var theTags = [];
+            }).then(function (_ref) {
+                var tags = _ref.tags;
 
-                response.map(function (tag) {
+                var theTags = [];
+                tags.map(function (tag) {
                     theTags.push({
                         value: tag.id,
-                        label: tag.title
+                        label: tag.name
                     });
                     _this7.setState({ listTags: theTags, listTagsLoaded: true, isFetchingTags: false });
                 });
-            }).catch(function () {
+            }).catch(function (response) {
                 _this7.setState({ listTags: [], listTagsLoaded: true, isFetchingTags: false });
             });
         }
@@ -64549,16 +64550,13 @@ var edit = exports.edit = function (_Component) {
             var _this8 = this,
                 _React$createElement,
                 _React$createElement2,
-                _React$createElement3,
-                _React$createElement4;
+                _React$createElement3;
 
             var _props2 = this.props,
                 _props2$attributes = _props2.attributes,
                 block_id = _props2$attributes.block_id,
                 api = _props2$attributes.api,
                 list_id = _props2$attributes.list_id,
-                successMessage = _props2$attributes.successMessage,
-                errorMessage = _props2$attributes.errorMessage,
                 columnGap = _props2$attributes.columnGap,
                 rowGap = _props2$attributes.rowGap,
                 eMail = _props2$attributes.eMail,
@@ -64585,7 +64583,6 @@ var edit = exports.edit = function (_Component) {
                 listTagsLoaded = _state.listTagsLoaded;
 
             var m = Array.isArray(list) && list.length,
-                f = Array.isArray(listAttr) && listAttr.length,
                 g = Array.isArray(listGroups) && listGroups.length,
                 v = Array.isArray(listTags) && listTags.length;
             var COLUMNS = [{
@@ -64626,7 +64623,6 @@ var edit = exports.edit = function (_Component) {
                 label: "100%"
             }];
 
-            console.log(mailchimp);
             var textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
             var textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
@@ -64652,17 +64648,7 @@ var edit = exports.edit = function (_Component) {
                     btnStyles: newUpdate
                 });
             };
-            var saveMessageStyle = function saveMessageStyle(value) {
-                var newUpdate = messageStyle.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({
-                    messageStyle: newUpdate
-                });
-            };
+
             var saveMailChimp = function saveMailChimp(value) {
                 var newUpdate = mailchimp.map(function (item, index) {
                     if (0 === index) {
@@ -64674,6 +64660,8 @@ var edit = exports.edit = function (_Component) {
                     mailchimp: newUpdate
                 });
             };
+
+            console.log(this.state);
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: 'inspector' },
@@ -64696,11 +64684,12 @@ var edit = exports.edit = function (_Component) {
                         value: this.state.api,
                         onChange: function onChange(e) {
                             return _this8.setState({ api: e });
-                        } }),
+                        }
+                    }),
                     React.createElement(
                         'button',
                         { className: 'button button-primary', disabled: "" === this.state.api, onClick: this.saveAPI },
-                        this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")
+                        this.state.isSaving ? __("Saving", 'premium-block-for-gutenberg') : __("Save", 'premium-block-for-gutenberg')
                     ),
                     isSavedAPI && api !== "" && React.createElement(
                         'button',
@@ -64719,7 +64708,7 @@ var edit = exports.edit = function (_Component) {
                                 __('Select  Audience', '')
                             ),
                             !listsLoaded ? this.getMailChimpAudience() : '',
-                            !Array.isArray(list) ? React.createElement(Spinner, null) : __("No Audience found.", "kadence-blocks-pro")
+                            !Array.isArray(list) ? React.createElement(Spinner, null) : __("No Audience found.", 'premium-block-for-gutenberg')
                         ),
                         !isFetching && m && React.createElement(
                             _react.Fragment,
@@ -64748,7 +64737,7 @@ var edit = exports.edit = function (_Component) {
                                 React.createElement(
                                     'h2',
                                     { className: 'kt-heading-size-title' },
-                                    __('Select Group', 'kadence-blocks')
+                                    __('Select Group', 'premium-block-for-gutenberg')
                                 ),
                                 !listGroupLoaded ? this.getMailChimpGroups() : '',
                                 !Array.isArray(listGroups) ? React.createElement(Spinner, null) : __('No group found.', '')
@@ -64759,7 +64748,7 @@ var edit = exports.edit = function (_Component) {
                                 React.createElement(
                                     'h2',
                                     { className: 'kt-heading-size-title' },
-                                    __('Select Group', 'kadence-blocks')
+                                    __('Select Group', 'premium-block-for-gutenberg')
                                 ),
                                 React.createElement(_reactSelect2.default, {
                                     value: undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].groups ? mailchimp[0].groups : '',
@@ -64780,7 +64769,7 @@ var edit = exports.edit = function (_Component) {
                                 React.createElement(
                                     'h2',
                                     { className: 'kt-heading-size-title' },
-                                    __('Select Tags', 'kadence-blocks')
+                                    __('Select Tags', 'premium-block-for-gutenberg')
                                 ),
                                 !listTagsLoaded ? this.getMailChimpTags() : '',
                                 !Array.isArray(listTags) ? React.createElement(Spinner, null) : __('No Tags found.', '')
@@ -64791,12 +64780,12 @@ var edit = exports.edit = function (_Component) {
                                 React.createElement(
                                     'h2',
                                     { className: 'kt-heading-size-title' },
-                                    __('Select Tags', 'kadence-blocks')
+                                    __('Select Tags', 'premium-block-for-gutenberg')
                                 ),
                                 React.createElement(_reactSelect2.default, {
-                                    value: list_id,
+                                    value: undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].tags ? mailchimp[0].tags : '',
                                     onChange: function onChange(value) {
-                                        return saveMailChimp({ tags: value });
+                                        saveMailChimp({ tagss: value ? value : [] });
                                     },
                                     options: listTags,
                                     isClearable: true,
@@ -64960,11 +64949,11 @@ var edit = exports.edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveInputStyle({ textBorderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
+                        onChangeWidth: function onChangeWidth(_ref2) {
+                            var top = _ref2.top,
+                                right = _ref2.right,
+                                bottom = _ref2.bottom,
+                                left = _ref2.left;
                             return saveInputStyle({
                                 textBorderTop: top,
                                 textBorderRight: right,
@@ -65092,11 +65081,11 @@ var edit = exports.edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveButtonStyle({ borderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
+                        onChangeWidth: function onChangeWidth(_ref3) {
+                            var top = _ref3.top,
+                                right = _ref3.right,
+                                bottom = _ref3.bottom,
+                                left = _ref3.left;
                             return saveButtonStyle({
                                 btnBorderTop: top,
                                 btnBorderRight: right,
@@ -65129,92 +65118,6 @@ var edit = exports.edit = function (_Component) {
                         min: 0,
                         max: 100
                     })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Message Style"),
-                        className: 'premium-panel-body',
-                        initialOpen: false
-                    },
-                    React.createElement(SelectControl, {
-                        label: __("Font Family"),
-                        value: messageStyle[0].msgFontFamily,
-                        options: _premiumFonts2.default,
-                        onChange: function onChange(value) {
-                            return saveMessageStyle({ msgFontFamily: value });
-                        }
-                    }),
-                    React.createElement(_premiumTypo2.default, (_React$createElement3 = {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveMessageStyle,
-                        fontSizeType: {
-                            value: messageStyle[0].msgSizeUnit,
-                            label: __("textSizeUnit")
-                        },
-                        fontSize: {
-                            value: messageStyle[0].msgSize,
-                            label: __("textSize")
-                        },
-                        fontSizeMobile: {
-                            value: messageStyle[0].msgSizeMobile,
-                            label: __("textSizeMobile")
-                        },
-                        fontSizeTablet: {
-                            value: messageStyle[0].msgSizeTablet,
-                            label: __("textSizeTablet")
-                        },
-                        weight: messageStyle[0].msgWeight,
-                        style: messageStyle[0].msgStyle,
-                        spacing: messageStyle[0].msgLetter,
-                        upper: messageStyle[0].msgUpper,
-                        line: messageStyle[0].msgLine,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveMessageStyle({ msgSize: newSize });
-                        },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return saveMessageStyle({ msgSizeTablet: newSize });
-                        },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return saveMessageStyle({ msgSizeMobile: newSize });
-                        },
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveMessageStyle({ msgWeight: newWeight });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveMessageStyle({ msgLine: newValue });
-                        }
-                    }, _defineProperty(_React$createElement3, 'onChangeSize', function onChangeSize(newSize) {
-                        return saveMessageStyle({ msgSize: newSize });
-                    }), _defineProperty(_React$createElement3, 'onChangeStyle', function onChangeStyle(newStyle) {
-                        return saveMessageStyle({ msgStyle: newStyle });
-                    }), _defineProperty(_React$createElement3, 'onChangeSpacing', function onChangeSpacing(newValue) {
-                        return saveMessageStyle({ msgLetter: newValue });
-                    }), _defineProperty(_React$createElement3, 'onChangeUpper', function onChangeUpper(check) {
-                        return saveMessageStyle({ msgUpper: check });
-                    }), _React$createElement3)),
-                    React.createElement(
-                        'p',
-                        null,
-                        __("Message Success Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: messageStyle[0].msgSuccessColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ msgSuccessColor: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        'p',
-                        null,
-                        __('Message Error Color')
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: messageStyle[0].msgErrorColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ msgErrorColor: newValue });
-                        }
-                    })
                 )
             ), React.createElement(
                 'div',
@@ -65245,13 +65148,13 @@ var edit = exports.edit = function (_Component) {
                             '*'
                         )
                     ) : null,
-                    React.createElement('input', (_React$createElement4 = {
+                    React.createElement('input', (_React$createElement3 = {
                         className: 'premium-newsletter-input',
                         type: 'email',
                         value: eMail,
                         name: 'form_fields[email]',
                         id: 'pa_news_email'
-                    }, _defineProperty(_React$createElement4, 'className', ''), _defineProperty(_React$createElement4, 'placeholder', inputStyles[0].placeholder), _defineProperty(_React$createElement4, 'aria-required', 'true'), _defineProperty(_React$createElement4, 'autoComplete', 'off'), _defineProperty(_React$createElement4, 'readOnly', true), _defineProperty(_React$createElement4, 'style', _defineProperty({
+                    }, _defineProperty(_React$createElement3, 'className', ''), _defineProperty(_React$createElement3, 'placeholder', inputStyles[0].placeholder), _defineProperty(_React$createElement3, 'aria-required', 'true'), _defineProperty(_React$createElement3, 'autoComplete', 'off'), _defineProperty(_React$createElement3, 'readOnly', true), _defineProperty(_React$createElement3, 'style', _defineProperty({
                         color: inputStyles[0].textColor,
                         fontFamily: inputStyles[0].textFontFamily,
                         fontSize: inputStyles[0].textSize,
@@ -65264,7 +65167,7 @@ var edit = exports.edit = function (_Component) {
                         borderStyle: inputStyles[0].textBorderType,
                         borderColor: inputStyles[0].textBorderColor,
                         borderRadius: inputStyles[0].textBorderRadius
-                    }, 'fontSize', textSizeInput + 'px')), _React$createElement4))
+                    }, 'fontSize', textSizeInput + 'px')), _React$createElement3))
                 ),
                 React.createElement(
                     'div',
@@ -65303,7 +65206,7 @@ var edit = exports.edit = function (_Component) {
                                 e.preventDefault();
                             }
                         },
-                        __('Submit')
+                        __('Submit', 'premium-block-for-gutenberg')
                     )
                 )
             )];
@@ -72935,51 +72838,37 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 function save(props) {
-    var isSelected = props.isSelected,
-        setAttributes = props.setAttributes,
-        clientId = props.clientId,
-        className = props.className,
-        attributes = props.attributes;
-    var block_id = attributes.block_id,
-        api = attributes.api,
-        list_id = attributes.list_id,
-        successMessage = attributes.successMessage,
-        errorMessage = attributes.errorMessage,
-        columnGap = attributes.columnGap,
-        rowGap = attributes.rowGap,
-        eMail = attributes.eMail,
-        inputStyles = attributes.inputStyles,
-        btnStyles = attributes.btnStyles,
-        messageStyle = attributes.messageStyle,
-        postID = attributes.postID,
-        mailchimp = attributes.mailchimp;
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        columnGap = _props$attributes.columnGap,
+        rowGap = _props$attributes.rowGap,
+        eMail = _props$attributes.eMail,
+        inputStyles = _props$attributes.inputStyles,
+        btnStyles = _props$attributes.btnStyles,
+        postID = _props$attributes.postID;
 
     return _react2.default.createElement(
         "div",
         {
-            className: "wp-block-kadence-form kadence-form-" + block_id + " kb-form-wrap"
+            className: "wp-block-premium-form premium-newsLetter-" + block_id + " pbg-form-wrap"
         },
         _react2.default.createElement(
             "form",
-            { className: "kb-form", action: "", method: "post" },
+            { className: "pbg-form premium-newsletter__wrapper ", action: "", method: "post" },
             _react2.default.createElement(
                 "div",
-                { className: "kadence-blocks-form-field kb-form-field-1 kb-field-desk-width-100 kb-input-size-standard col-" + inputStyles[0].inputColumnWidth, style: {
+                { className: "premium-blocks-form-field premium-newsletter-input__wrapper pbg-form-field-1 pbg-field-desk-width-100 kb-input-size-standard col-" + inputStyles[0].inputColumnWidth, style: {
                         paddingRight: "calc(" + columnGap + "px / 2)",
                         paddingLeft: "calc(" + columnGap + "px / 2)",
                         marginBottom: rowGap + "px"
                     } },
                 inputStyles[0].showLabel ? _react2.default.createElement(
                     "label",
-                    { "for": "kb_field__e0cc2d-b0_1" },
+                    { "for": "pbg_field__" + block_id, className: "premium-newsletter__label" },
                     inputStyles[0].label,
                     _react2.default.createElement(
                         "span",
@@ -72988,14 +72877,14 @@ function save(props) {
                     )
                 ) : null,
                 _react2.default.createElement("input", {
-                    name: "kb_field_1",
-                    id: "kb_field__e0cc2d-b0_1",
+                    name: "pbg_field_1",
+                    id: "pbg_field__" + block_id,
                     "data-label": "Email",
                     type: "email",
                     placeholder: inputStyles[0].placeholder,
                     value: eMail,
                     "data-type": "email",
-                    className: "kb-field kb-text-style-field kb-email-field kb-field-1",
+                    className: "pbg-field pbg-text-style-field pbg-email-field pbg-field-1 premium-newsletter-input  ",
                     "data-required": "yes",
                     style: {
                         color: inputStyles[0].textColor,
@@ -73013,32 +72902,23 @@ function save(props) {
                     }
                 })
             ),
-            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_id", value: block_id }),
-            _react2.default.createElement("input", { type: "hidden", name: "_kb_form_post_id", value: postID }),
+            _react2.default.createElement("input", { type: "hidden", name: "_pbg_form_id", value: block_id }),
+            _react2.default.createElement("input", { type: "hidden", name: "_pbg_form_post_id", value: postID }),
             _react2.default.createElement("input", {
                 type: "hidden",
                 name: "action",
                 value: "pb_process_ajax_submit"
             }),
-            _react2.default.createElement("input", {
-                className: "kadence-blocks-field verify",
-                type: "text",
-                name: "_kb_verify_email",
-                autocomplete: "off",
-                "aria-hidden": "true",
-                placeholder: "Email",
-                tabindex: "-1"
-            }),
             _react2.default.createElement(
                 "div",
-                { className: "kadence-blocks-form-field kb-submit-field kb-field-desk-width-100 col-" + btnStyles[0].btnColumn, style: {
+                { className: "premium-blocks-form-field pbg-submit-field pbg-field-desk-width-100 premium-newsletter-button__wrapper  col-" + btnStyles[0].btnColumn, style: {
                         paddingRight: "calc(" + columnGap + "px / 2)",
                         paddingLeft: "calc(" + columnGap + "px / 2)",
                         marginBottom: rowGap + "px"
                     } },
                 _react2.default.createElement(
                     "button",
-                    { className: "kb-forms-submit button kb-button-size-standard kb-button-width-auto",
+                    { className: "pbg-forms-submit button pbg-button-size-standard pbg-button-width-auto premium-newsletter-button-submit",
                         style: {
                             paddingRight: "calc(" + columnGap + "px / 2)",
                             paddingLeft: "calc(" + columnGap + "px / 2)",
@@ -73056,7 +72936,7 @@ function save(props) {
                             borderRadius: btnStyles[0].btnBorderRadius
                         }
                     },
-                    __('Submit')
+                    __('Submit', 'premium-block-for-gutenberg')
                 )
             )
         )
@@ -73175,25 +73055,7 @@ var attributes = {
             btnColumn: '25'
         }]
 
-    },
-    messageStyle: {
-        type: "array",
-        default: [{
-            msgFontFamily: '',
-            msgSizeUnit: 'px',
-            msgSize: '',
-            msgSizeMobile: '',
-            msgSizeTablet: '',
-            msgWeight: '',
-            msgStyle: '',
-            msgLetter: '',
-            msgUpper: '',
-            msgLine: '',
-            msgSuccessColor: '',
-            msgErrorColor: ''
-        }]
     }
-
 };
 exports.default = attributes;
 

@@ -1,48 +1,37 @@
 import React from "react";
-import classnames from "classnames";
 const { __ } = wp.i18n;
 export function save(props) {
-    const { isSelected, setAttributes, clientId, className, attributes } =
-        props;
-    const {
-        block_id,
-        api,
-        list_id,
-        successMessage,
-        errorMessage,
+    const { attributes: { block_id,
         columnGap,
         rowGap,
         eMail,
         inputStyles,
         btnStyles,
-        messageStyle,
-        postID,
-        mailchimp
-    } = attributes;
+        postID } } = props;
     return (
         <div
-            className={`wp-block-kadence-form kadence-form-${block_id} kb-form-wrap`}
+            className={`wp-block-premium-form premium-newsLetter-${block_id} pbg-form-wrap`}
         >
-            <form className="kb-form" action="" method="post">
-                <div className={`kadence-blocks-form-field kb-form-field-1 kb-field-desk-width-100 kb-input-size-standard col-${inputStyles[0].inputColumnWidth}`} style={{
+            <form className="pbg-form premium-newsletter__wrapper " action="" method="post">
+                <div className={`premium-blocks-form-field premium-newsletter-input__wrapper pbg-form-field-1 pbg-field-desk-width-100 kb-input-size-standard col-${inputStyles[0].inputColumnWidth}`} style={{
                     paddingRight: `calc(${columnGap}px / 2)`,
                     paddingLeft: `calc(${columnGap}px / 2)`,
                     marginBottom: `${rowGap}px`,
                 }}>
                     {inputStyles[0].showLabel ? (
-                        <label for="kb_field__e0cc2d-b0_1">
+                        <label for={`pbg_field__${block_id}`} className={`premium-newsletter__label`}>
                             {inputStyles[0].label}<span className="required">*</span>
                         </label>
                     ) : null}
                     < input
-                        name="kb_field_1"
-                        id="kb_field__e0cc2d-b0_1"
+                        name="pbg_field_1"
+                        id={`pbg_field__${block_id}`}
                         data-label="Email"
                         type="email"
                         placeholder={inputStyles[0].placeholder}
                         value={eMail}
                         data-type="email"
-                        className="kb-field kb-text-style-field kb-email-field kb-field-1"
+                        className="pbg-field pbg-text-style-field pbg-email-field pbg-field-1 premium-newsletter-input  "
                         data-required="yes"
                         style={{
                             color: inputStyles[0].textColor,
@@ -63,28 +52,28 @@ export function save(props) {
                     />
                 </div>
 
-                <input type="hidden" name="_kb_form_id" value={block_id} />
-                <input type="hidden" name="_kb_form_post_id" value={postID} />
+                <input type="hidden" name="_pbg_form_id" value={block_id} />
+                <input type="hidden" name="_pbg_form_post_id" value={postID} />
                 <input
                     type="hidden"
                     name="action"
                     value="pb_process_ajax_submit"
                 />
-                <input
-                    className="kadence-blocks-field verify"
+                {/* <input
+                    className="premium-blocks-field verify"
                     type="text"
-                    name="_kb_verify_email"
+                    name="_pbg_verify_email"
                     autocomplete="off"
                     aria-hidden="true"
                     placeholder="Email"
                     tabindex="-1"
-                />
-                <div className={`kadence-blocks-form-field kb-submit-field kb-field-desk-width-100 col-${btnStyles[0].btnColumn}`} style={{
+                /> */}
+                <div className={`premium-blocks-form-field pbg-submit-field pbg-field-desk-width-100 premium-newsletter-button__wrapper  col-${btnStyles[0].btnColumn}`} style={{
                     paddingRight: `calc(${columnGap}px / 2)`,
                     paddingLeft: `calc(${columnGap}px / 2)`,
                     marginBottom: `${rowGap}px`,
                 }}>
-                    <button className="kb-forms-submit button kb-button-size-standard kb-button-width-auto"
+                    <button className="pbg-forms-submit button pbg-button-size-standard pbg-button-width-auto premium-newsletter-button-submit"
                         style={{
                             paddingRight: `calc(${columnGap}px / 2)`,
                             paddingLeft: `calc(${columnGap}px / 2)`,
@@ -104,7 +93,7 @@ export function save(props) {
                             borderRadius: btnStyles[0].btnBorderRadius,
                         }}
                     >
-                        {__('Submit')}
+                        {__('Submit', 'premium-block-for-gutenberg')}
                     </button>
                 </div>
             </form>

@@ -180,7 +180,7 @@ export class edit extends Component {
     getMailChimpTags() {
 
         if (!this.state.api) {
-            this.setState({ listTags: [], listTagsLoaded: true });
+            this.setState({ listTags: ["salma"], listTagsLoaded: true });
             return;
         }
         this.setState({ isFetchingTags: true });
@@ -192,18 +192,17 @@ export class edit extends Component {
                 }
             ),
         })
-            .then((response) => {
+            .then(({ tags }) => {
                 const theTags = [];
-
-                response.map(tag => {
+                tags.map(tag => {
                     theTags.push({
                         value: tag.id,
-                        label: tag.title
+                        label: tag.name
                     })
                     this.setState({ listTags: theTags, listTagsLoaded: true, isFetchingTags: false })
                 })
             })
-            .catch(() => {
+            .catch((response) => {
                 this.setState({ listTags: [], listTagsLoaded: true, isFetchingTags: false })
             });
 
@@ -231,8 +230,6 @@ export class edit extends Component {
             { block_id,
                 api,
                 list_id,
-                successMessage,
-                errorMessage,
                 columnGap,
                 rowGap,
                 eMail,
@@ -245,7 +242,6 @@ export class edit extends Component {
             this.props;
         const { list, listsLoaded, isFetching, isSavedAPI, listAttr, isFetchingAttributes, listAttrLoaded, isFetchingGroups, listGroups, listGroupLoaded, isFetchingTags, listTags, listTagsLoaded } = this.state
         const m = Array.isArray(list) && list.length,
-            f = Array.isArray(listAttr) && listAttr.length,
             g = Array.isArray(listGroups) && listGroups.length,
             v = Array.isArray(listTags) && listTags.length
         const COLUMNS = [
@@ -300,7 +296,6 @@ export class edit extends Component {
             },
         ];
 
-        console.log(mailchimp)
         const textSizeInput = this.getPreviewSize(this.props.deviceType, inputStyles[0].textSize, inputStyles[0].textSizeTablet, inputStyles[0].textSizeMobile);
         const textSizeBtn = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
@@ -326,17 +321,7 @@ export class edit extends Component {
                 btnStyles: newUpdate,
             });
         };
-        const saveMessageStyle = (value) => {
-            const newUpdate = messageStyle.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                messageStyle: newUpdate,
-            });
-        };
+
         const saveMailChimp = (value) => {
             const newUpdate = mailchimp.map((item, index) => {
                 if (0 === index) {
@@ -348,6 +333,8 @@ export class edit extends Component {
                 mailchimp: newUpdate,
             });
         }
+
+        console.log(this.state)
         return [
             isSelected && (
                 <InspectorControls key="inspector">
@@ -364,9 +351,10 @@ export class edit extends Component {
                         <TextControl
                             label={__(`Mailchimp Api Key`)}
                             value={this.state.api}
-                            onChange={e => this.setState({ api: e })} />
+                            onChange={e => this.setState({ api: e })}
+                        />
                         <button className={`button button-primary`} disabled={"" === this.state.api} onClick={this.saveAPI}>
-                            {this.state.isSaving ? __("Saving", "kadence-blocks-pro") : __("Save", "kadence-blocks-pro")}
+                            {this.state.isSaving ? __("Saving", 'premium-block-for-gutenberg') : __("Save", 'premium-block-for-gutenberg')}
                         </button>
                         {isSavedAPI && api !== "" && <button onClick={this.removeAPI}>
                             {__("Remove")}
@@ -378,7 +366,7 @@ export class edit extends Component {
                                 {(!listsLoaded ? this.getMailChimpAudience() : '')}
                                 {!Array.isArray(list) ?
                                     <Spinner /> :
-                                    __("No Audience found.", "kadence-blocks-pro")}
+                                    __("No Audience found.", 'premium-block-for-gutenberg')}
                             </Fragment>}
                             {!isFetching && m && <Fragment>
 
@@ -401,7 +389,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingGroups && !g && (
                                     <Fragment>
-                                        <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                                        <h2 className="kt-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
                                         { (!listGroupLoaded ? this.getMailChimpGroups() : '')}
                                         { !Array.isArray(listGroups) ?
                                             <Spinner /> :
@@ -411,7 +399,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingGroups && g && <Fragment>
 
-                                    <h2 className="kt-heading-size-title">{__('Select Group', 'kadence-blocks')}</h2>
+                                    <h2 className="kt-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
                                     <Select
                                         value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].groups ? mailchimp[0].groups : '')}
                                         onChange={(value) => {
@@ -430,7 +418,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingTags && !v && (
                                     <Fragment>
-                                        <h2 className="kt-heading-size-title">{__('Select Tags', 'kadence-blocks')}</h2>
+                                        <h2 className="kt-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
                                         { (!listTagsLoaded ? this.getMailChimpTags() : '')}
                                         { !Array.isArray(listTags) ?
                                             <Spinner /> :
@@ -440,10 +428,12 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingTags && v && <Fragment>
 
-                                    <h2 className="kt-heading-size-title">{__('Select Tags', 'kadence-blocks')}</h2>
+                                    <h2 className="kt-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
                                     <Select
-                                        value={list_id}
-                                        onChange={(value) => saveMailChimp({ tags: value })}
+                                        value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].tags ? mailchimp[0].tags : '')}
+                                        onChange={(value) => {
+                                            saveMailChimp({ tagss: (value ? value : []) });
+                                        }}
                                         options={listTags}
                                         isClearable={true}
                                         isMulti={true}
@@ -465,8 +455,6 @@ export class edit extends Component {
                             checked={mailchimp[0]['doubleOption']}
                             onChange={(value) => saveMailChimp({ doubleOption: value })}
                         />
-
-
                         <RangeControl
                             label={__("Column Gap")}
                             value={columnGap}
@@ -779,93 +767,6 @@ export class edit extends Component {
                             max={100}
                         />
                     </PanelBody>
-                    <PanelBody
-                        title={__("Message Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={messageStyle[0].msgFontFamily}
-                            options={FONTS}
-                            onChange={(value) =>
-                                saveMessageStyle({ msgFontFamily: value })
-                            }
-                        />
-                        <PremiumTypo
-                            components={[
-                                "responsiveSize",
-                                "weight",
-                                "line",
-                                "style",
-                                "upper",
-                                "spacing",
-                            ]}
-                            setAttributes={saveMessageStyle}
-                            fontSizeType={{
-                                value: messageStyle[0].msgSizeUnit,
-                                label: __("textSizeUnit"),
-                            }}
-                            fontSize={{
-                                value: messageStyle[0].msgSize,
-                                label: __("textSize"),
-                            }}
-                            fontSizeMobile={{
-                                value: messageStyle[0].msgSizeMobile,
-                                label: __("textSizeMobile"),
-                            }}
-                            fontSizeTablet={{
-                                value: messageStyle[0].msgSizeTablet,
-                                label: __("textSizeTablet"),
-                            }}
-                            weight={messageStyle[0].msgWeight}
-                            style={messageStyle[0].msgStyle}
-                            spacing={messageStyle[0].msgLetter}
-                            upper={messageStyle[0].msgUpper}
-                            line={messageStyle[0].msgLine}
-                            onChangeSize={(newSize) =>
-                                saveMessageStyle({ msgSize: newSize })
-                            }
-                            onChangeSizeTablet={(newSize) =>
-                                saveMessageStyle({ msgSizeTablet: newSize })
-                            }
-                            onChangeSizeMobile={(newSize) =>
-                                saveMessageStyle({ msgSizeMobile: newSize })
-                            }
-                            onChangeWeight={(newWeight) =>
-                                saveMessageStyle({ msgWeight: newWeight })
-                            }
-                            onChangeLine={(newValue) =>
-                                saveMessageStyle({ msgLine: newValue })
-                            }
-                            onChangeSize={(newSize) =>
-                                saveMessageStyle({ msgSize: newSize })
-                            }
-                            onChangeStyle={(newStyle) =>
-                                saveMessageStyle({ msgStyle: newStyle })
-                            }
-                            onChangeSpacing={(newValue) =>
-                                saveMessageStyle({ msgLetter: newValue })
-                            }
-                            onChangeUpper={(check) =>
-                                saveMessageStyle({ msgUpper: check })
-                            }
-                        />
-                        <p>{__("Message Success Color")}</p>
-                        <ColorPalette
-                            value={messageStyle[0].msgSuccessColor}
-                            onChange={(newValue) =>
-                                setAttributes({ msgSuccessColor: newValue })
-                            }
-                        />
-                        <p>{__(`Message Error Color`)}</p>
-                        <ColorPalette
-                            value={messageStyle[0].msgErrorColor}
-                            onChange={(newValue) =>
-                                setAttributes({ msgErrorColor: newValue })
-                            }
-                        />
-                    </PanelBody>
                 </InspectorControls >
             ),
 
@@ -961,7 +862,7 @@ export class edit extends Component {
                             e.preventDefault();
                         }}
                     >
-                        {__('Submit')}
+                        {__('Submit', 'premium-block-for-gutenberg')}
                     </button>
                 </div>
 

@@ -65,7 +65,6 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		public function load_plugin() {
 			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter.php';
 			 require_once PREMIUM_BLOCKS_PATH . 'includes/premium-form.php';
-
 			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter-mailchimp-rest-api.php';
 
 		}
