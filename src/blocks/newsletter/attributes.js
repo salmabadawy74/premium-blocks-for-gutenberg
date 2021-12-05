@@ -105,27 +105,5 @@ const attributes = {
         ]
 
     },
-    messageStyle: {
-        type: "array",
-        default: [
-            {
-                msgFontFamily: '',
-                msgSizeUnit: 'px',
-                msgSize: '',
-                msgSizeMobile: '',
-                msgSizeTablet: '',
-                msgWeight: '',
-                msgStyle: '',
-                msgLetter: '',
-                msgUpper: '',
-                msgLine: '',
-                msgSuccessColor: '',
-                msgErrorColor: ''
-            }
-        ]
-    }
-
-
-
 }
 export default attributes;

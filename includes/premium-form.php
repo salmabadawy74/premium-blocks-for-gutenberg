@@ -2,7 +2,7 @@
 /**
  * Form Action Handling.
  *
- * @package Kadence Blocks Pro
+ * @package Premium Blocks for Gutenberg
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -45,7 +45,7 @@ class PBG_Form_Actions {
 	public function process_actions( $form_args, $fields, $form_id, $post_id ) {
 		if ( isset( $form_args ) && is_array( $form_args ) ) {
 
-						$api_key = get_option( 'kadence_blocks_mail_chimp_api' );
+			$api_key = get_option( 'mail_chimp_api' );
 			if ( empty( $api_key ) ) {
 				return;
 			}
@@ -148,17 +148,13 @@ class PBG_Form_Actions {
 
 							if ( is_wp_error( $response ) ) {
 								$error_message = $response->get_error_message();
-								// error_log( "Something went wrong: $error_message" );
 							} else {
 								if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-									// error_log( __('Failed to Connect to MailChimp', 'kadence-blocks-pro' ) );
 									return;
 								}
 								if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
-									// error_log( $response['response']['message'] );
 									return;
 								} elseif ( 200 === $response['response']['code'] ) {
-									// need to check if tags were added.
 									$needs_update = false;
 									$body         = json_decode( wp_remote_retrieve_body( $response ), true );
 									if ( ! empty( $tags_array ) && empty( $body['tags'] ) ) {
@@ -192,51 +188,20 @@ class PBG_Form_Actions {
 										);
 										if ( is_wp_error( $tag_response ) ) {
 											$error_message = $tag_response->get_error_message();
-											// error_log( "Something went wrong: $error_message" );
 										} else {
 											if ( ! isset( $tag_response['response'] ) || ! isset( $tag_response['response']['code'] ) ) {
-												// error_log( __('Failed to Connect to MailChimp', 'kadence-blocks-pro' ) );
 												return;
 											}
 											if ( 204 === $tag_response['response']['code'] ) {
-												// error_log( 'success' );
 												return;
 											}
 										}
 									}
 								}
 							}
-															var_dump( $response );
-
 						}
 		}
 	}
-
-	/**
-	 * Add meta data field to a entry
-	 *
-	 * @param int    $entry_id      entry ID.
-	 * @param string $meta_key      Meta data name.
-	 * @param mixed  $meta_value    Meta data value. Must be serializable if non-scalar.
-	 * @param bool   $unique        Optional. Whether the same key should not be added. Default false.
-	 *
-	 * @since 3.0
-	 * @return false|int
-	 */
-
-	/**
-	 * Get User Agent browser and OS type
-	 *
-	 * @return array
-	 */
-
-	/**
-	 * Get the client IP address
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return string
-	 */
 
 }
 PBG_Form_Actions::get_instance();

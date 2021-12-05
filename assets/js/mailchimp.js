@@ -11,8 +11,8 @@
         },
         markError(item, error_type, form) {
             var error_string = '';
-            if (!form.classList.contains('kb-form-has-error')) {
-                form.classList.add('kb-form-has-error');
+            if (!form.classList.contains('pbg-form-has-error')) {
+                form.classList.add('pbg-form-has-error');
             }
             item.classList.add('has-error');
             if (error_type) {
@@ -48,7 +48,7 @@
                         }
                         break
                 }
-                var next = item.parentNode.querySelector('.kb-form-error-msg');
+                var next = item.parentNode.querySelector('.pbg-form-error-msg');
                 if (next) {
                     next.remove();
                 }
@@ -57,11 +57,11 @@
                 item.setAttribute('aria-invalid', 'true');
                 var el = document.createElement('div');
                 el.id = error_id;
-                el.classList.add('kb-form-error-msg');
+                el.classList.add('pbg-form-error-msg');
                 el.classList.add('premium-blocks-form-warning');
                 el.setAttribute('role', 'alert');
                 el.innerHTML = error_string;
-                if (item.classList.contains('kb-checkbox-style')) {
+                if (item.classList.contains('pbg-checkbox-style')) {
                     item.parentNode.append(el);
                 } else {
                     window.PremiumForm.insertAfter(el, item);
@@ -96,8 +96,8 @@
             return telregex.test(tel);
         },
         removeErrors(item) {
-            if (item.classList.contains('kb-form-has-error')) {
-                item.classList.remove('kb-form-has-error');
+            if (item.classList.contains('pbg-form-has-error')) {
+                item.classList.remove('pbg-form-has-error');
             }
             var errors = item.querySelectorAll('.has-error');
             if (errors.length) {
@@ -105,7 +105,7 @@
                     errors[n].classList.remove('has-error');
                     errors[n].removeAttribute('aria-describedby');
                     errors[n].removeAttribute('aria-invalid');
-                    var next = errors[n].parentNode.querySelector('.kb-form-error-msg');
+                    var next = errors[n].parentNode.querySelector('.pbg-form-error-msg');
                     if (next) {
                         next.remove();
                     }
@@ -117,7 +117,7 @@
                     message[n].remove();
                 }
             }
-            var notices = item.querySelectorAll('.kb-form-errors');
+            var notices = item.querySelectorAll('.pbg-form-errors');
             if (notices.length) {
                 for (var n = 0; n < notices.length; n++) {
                     notices[n].remove();
@@ -285,12 +285,9 @@
 
                 return false;
             }
-            //var form_data = self.serialize();
             var form_data = new FormData(self);
-            form_data.set('_kb_form_verify', settings.nonce);
-            //form_data = window.PremiumForm.serialize( form_data );
+            form_data.set('_pbg_form_verify', settings.nonce);
             form_data = new URLSearchParams(form_data);
-            //form_data = form_data + '&_kb_form_verify=' + settings.nonce;
             return form_data;
         },
         createElementFromHTML(htmlString) {
@@ -302,14 +299,14 @@
         },
         submit(e, form) {
             e.preventDefault();
-            var event = new Event('kb-form-start-submit');
+            var event = new Event('pbg-form-start-submit');
             window.document.body.dispatchEvent(event);
-            var submitButton = form.querySelector('.kb-forms-submit ');
+            var submitButton = form.querySelector('.pbg-forms-submit ');
             var form_data = window.PremiumForm.validateForm(form);
             if (form_data) {
                 var el = document.createElement('div');
-                el.classList.add('kb-form-loading');
-                el.innerHTML = '<div class="kb-form-loading-spin"><div></div><div></div><div></div><div></div></div>';
+                el.classList.add('pbg-form-loading');
+                el.innerHTML = '<div class="pbg-form-loading-spin"><div></div><div></div><div></div><div></div></div>';
                 form.append(el);
                 submitButton.setAttribute('disabled', 'disabled')
                 submitButton.classList.add('button-primary-disabled');
@@ -318,11 +315,10 @@
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.onload = function () {
                     if (this.status >= 200 && this.status < 400) {
-                        console.log(this.response)
                         var response = JSON.parse(this.response);
 
                         if (response.success) {
-                            var event = new Event('kb-form-success', {
+                            var event = new Event('pbg-form-success', {
                                 formID: form.id,
                             });
                             // Dispatch the event.
@@ -363,7 +359,7 @@
 
         },
         initForms() {
-            var forms = document.querySelectorAll('form.kb-form');
+            var forms = document.querySelectorAll('form.pbg-form');
             if (!forms.length) {
                 return;
             }

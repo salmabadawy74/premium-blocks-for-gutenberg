@@ -1,39 +1,36 @@
 jQuery(function ($) {
-    // wc_single_product_params is required to continue.
-
     var premium_blocks_form = {
         init: function () {
-            $('form.kb-form').on('submit', this.submit);
+            $('form.pbg-form').on('submit', this.submit);
         },
         submit: function (e) {
             e.preventDefault();
-            $('body').trigger('kb-form-start-submit', $(this));
+            $('body').trigger('pbg-form-start-submit', $(this));
             var form = $(this),
-                submitButton = form.find('.kb-forms-submit'),
+                submitButton = form.find('.pbg-forms-submit'),
 
                 form_data = premium_blocks_form.validateForm(form);
 
             if (form_data) {
 
                 // send the request.
-                form.parent('.wp-block-kadence-form').find('.kadence-blocks-form-message').slideUp('fast', function () {
+                form.parent('.wp-block-premium-form').find('.premium-blocks-form-message').slideUp('fast', function () {
                     $(this).remove();
                 });
-                form.append('<div class="kb-form-loading"><div class="kb-form-loading-spin"><div></div><div></div><div></div><div></div></div></div>');
+                form.append('<div class="pbg-form-loading"><div class="pbg-form-loading-spin"><div></div><div></div><div></div><div></div></div></div>');
                 submitButton.attr('disabled', 'disabled').addClass('button-primary-disabled');
 
                 $.post(settings.ajaxurl, form_data, function (res) {
 
                     if (res.success) {
-                        console.log(res)
-                        $('body').trigger('kb-form-success', res);
+                        $('body').trigger('pbg-form-success', res);
                         if (res.redirect) {
                             window.location = res.redirect;
                         } else {
                             form.after(res.html);
                             focus
                             $('html, body').animate({
-                                scrollTop: $('.kadence-blocks-form-message').offset().top - 100
+                                scrollTop: $('.premium-blocks-form-message').offset().top - 100
                             }, 'fast');
 
                             premium_blocks_form.clearForm(form);
@@ -52,25 +49,25 @@ jQuery(function ($) {
                         submitButton.removeAttr('disabled');
                     }
                     submitButton.removeClass('button-primary-disabled');
-                    form.find('.kb-form-loading').remove();
+                    form.find('.pbg-form-loading').remove();
                 });
             }
         },
         removeErrors: function (item) {
-            $(item).parents('.kb-form').removeClass('kb-form-has-error');
+            $(item).parents('.pbg-form').removeClass('pbg-form-has-error');
             $(item).find('.has-error').removeClass('has-error');
-            $('.kb-form-error-msg').remove();
+            $('.pbg-form-error-msg').remove();
         },
         isValidEmail: function (email) {
             var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
             return pattern.test(email);
         },
         removeErrorNotice: function (form) {
-            $(form).find('.kb-form-errors').remove();
+            $(form).find('.pbg-form-errors').remove();
         },
         markError: function (item, error_type) {
             var error_string = '';
-            $(item).parents('.kb-form').addClass('kb-form-has-error');
+            $(item).parents('.pbg-form').addClass('pbg-form-has-error');
             $(item).addClass('has-error');
 
             if (error_type) {
@@ -90,11 +87,11 @@ jQuery(function ($) {
                         error_string = error_string + ' ' + settings[error_type];
                         break
                 }
-                $(item).siblings('.kb-form-error-msg').remove();
-                if ($(item).hasClass('kb-checkbox-style')) {
-                    $(item).parent('.premium-blocks-form-field').append('<div class="kb-form-error-msg premium-blocks-form-warning" role="alert">' + error_string + '</div>');
+                $(item).siblings('.pbg-form-error-msg').remove();
+                if ($(item).hasClass('pbg-checkbox-style')) {
+                    $(item).parent('.premium-blocks-form-field').append('<div class="pbg-form-error-msg premium-blocks-form-warning" role="alert">' + error_string + '</div>');
                 } else {
-                    $(item).after('<div class="kb-form-error-msg premium-blocks-form-warning">' + error_string + '</div>');
+                    $(item).after('<div class="pbg-form-error-msg premium-blocks-form-warning">' + error_string + '</div>');
                 }
             }
 
@@ -106,7 +103,6 @@ jQuery(function ($) {
          * @param position (value = bottom or end) end if form is onepare, bottom, if form is multistep
          */
         clearForm: function (form) {
-            console.log(form)
             $(form)[0].reset();
         },
         /**
@@ -270,7 +266,7 @@ jQuery(function ($) {
                 return false;
             }
             var form_data = self.serialize();
-            form_data = form_data + '&_kb_form_verify=' + settings.nonce;
+            form_data = form_data + '&_pbg_form_verify=' + settings.nonce;
             return form_data;
         },
     };
