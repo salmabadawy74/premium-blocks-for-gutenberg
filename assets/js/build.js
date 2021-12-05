@@ -64661,7 +64661,7 @@ var edit = exports.edit = function (_Component) {
                 });
             };
 
-            console.log(this.state);
+            console.log(mailchimp);
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: 'inspector' },
@@ -64785,7 +64785,7 @@ var edit = exports.edit = function (_Component) {
                                 React.createElement(_reactSelect2.default, {
                                     value: undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].tags ? mailchimp[0].tags : '',
                                     onChange: function onChange(value) {
-                                        saveMailChimp({ tagss: value ? value : [] });
+                                        saveMailChimp({ tags: value ? value : [] });
                                     },
                                     options: listTags,
                                     isClearable: true,

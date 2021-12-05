@@ -334,7 +334,7 @@ export class edit extends Component {
             });
         }
 
-        console.log(this.state)
+        console.log(mailchimp)
         return [
             isSelected && (
                 <InspectorControls key="inspector">
@@ -432,7 +432,7 @@ export class edit extends Component {
                                     <Select
                                         value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].tags ? mailchimp[0].tags : '')}
                                         onChange={(value) => {
-                                            saveMailChimp({ tagss: (value ? value : []) });
+                                            saveMailChimp({ tags: (value ? value : []) });
                                         }}
                                         options={listTags}
                                         isClearable={true}
