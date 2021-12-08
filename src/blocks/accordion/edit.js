@@ -67,64 +67,35 @@ class PremiumAccordion extends Component {
             repeaterItems,
             direction,
             titleTag,
-            titleColor,
-            titleSize,
-            titleLine,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleBorder,
+            titleStyles,
+            arrowStyles,
+            descStyles,
+            contentType,
+            titleEditBorder,
+            textShadowColor,
+            textShadowBlur,
+            textShadowHorizontal,
+            textShadowVertical,
             titleBorderWidth,
             titleBorderTop,
             titleBorderRight,
             titleBorderBottom,
             titleBorderLeft,
-            titleBorderColor,
-            titleBorderRadius,
-            titleBack,
-            titleShadowBlur,
-            titleShadowColor,
-            titleShadowHorizontal,
-            titleShadowVertical,
+            titleBorderUpdated,
             titlePaddingT,
             titlePaddingR,
             titlePaddingB,
             titlePaddingL,
-            arrowColor,
-            arrowBack,
-            arrowPos,
-            arrowPadding,
-            arrowRadius,
-            arrowSize,
-            contentType,
-            descAlign,
-            descColor,
-            descBack,
-            descBorder,
-            descBorderColor,
-            descBorderRadius,
             descBorderWidth,
+            descBorderUpdated,
             descBorderTop,
             descBorderRight,
             descBorderBottom,
             descBorderLeft,
-            descSize,
-            descLine,
-            descLetter,
-            descStyle,
-            descUpper,
-            descWeight,
-            textShadowBlur,
-            textShadowColor,
-            textShadowHorizontal,
-            textShadowVertical,
             descPaddingT,
             descPaddingR,
             descPaddingB,
             descPaddingL,
-            titleBorderUpdated,
-            descBorderUpdated
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -160,6 +131,40 @@ class PremiumAccordion extends Component {
             }
         ];
 
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+
+        };
+        const saveArrowStyles = (value) => {
+            const newUpdate = arrowStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                arrowStyles: newUpdate,
+            });
+        }
+        const SaveDescStyles = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        }
         const ALIGNS = ["left", "center", "right"];
 
         const onAccordionChange = (attr, value, index) => {
@@ -176,6 +181,7 @@ class PremiumAccordion extends Component {
 
         const mainClasses = classnames(className, "premium-accordion");
 
+
         const accordionItems = repeaterItems.map((item, index) => {
             return (
                 <div
@@ -183,15 +189,15 @@ class PremiumAccordion extends Component {
                     className={`premium-accordion__content_wrap`}
                 >
                     <div
-                        className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                        className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                         style={{
-                            backgroundColor: titleBack,
-                            borderStyle: titleBorder,
+                            backgroundColor: titleStyles[0].titleBack,
+                            borderStyle: titleStyles[0].titleBorder,
                             borderWidth: titleBorderUpdated
                                 ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
                                 : titleBorderWidth + "px",
-                            borderRadius: titleBorderRadius + "px",
-                            borderColor: titleBorderColor,
+                            borderRadius: titleStyles[0].titleBorderRadius + "px",
+                            borderColor: titleStyles[0].titleBorderColor,
                             paddingTop: titlePaddingT,
                             paddingRight: titlePaddingR,
                             paddingBottom: titlePaddingB,
@@ -214,14 +220,14 @@ class PremiumAccordion extends Component {
                                 placeholder={__("Awesome Title")}
                                 value={item.titleText}
                                 style={{
-                                    color: titleColor,
-                                    fontSize: titleSize + "px",
-                                    letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyle,
-                                    fontWeight: titleWeight,
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                    lineHeight: titleLine + "px"
+                                    color: titleStyles[0].titleColor,
+                                    fontSize: titleStyles[0].titleSize + "px",
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    lineHeight: titleStyles[0].titleLine + "px"
                                 }}
                             />
                         </div>
@@ -231,14 +237,14 @@ class PremiumAccordion extends Component {
                                 role="img"
                                 focusable="false"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width={arrowSize}
-                                height={arrowSize}
+                                width={arrowStyles[0].arrowSize}
+                                height={arrowStyles[0].arrowSize}
                                 viewBox="0 0 20 20"
                                 style={{
-                                    fill: arrowColor,
-                                    backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
-                                    borderRadius: arrowRadius + "px"
+                                    fill: arrowStyles[0].arrowColor,
+                                    backgroundColor: arrowStyles[0].arrowBack,
+                                    padding: arrowStyles[0].arrowPadding + "px",
+                                    borderRadius: arrowStyles[0].arrowRadius + "px"
                                 }}
                             >
                                 <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -248,14 +254,14 @@ class PremiumAccordion extends Component {
                     <div
                         className={`premium-accordion__desc_wrap`}
                         style={{
-                            textAlign: descAlign,
-                            backgroundColor: descBack,
-                            borderStyle: descBorder,
+                            textAlign: descStyles[0].descAlign,
+                            backgroundColor: descStyles[0].descBack,
+                            borderStyle: descStyles[0].descBorder,
                             borderWidth: descBorderUpdated
                                 ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
                                 : descBorderWidth + "px",
-                            borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
+                            borderRadius: descStyles[0].descBorderRadius + "px",
+                            borderColor: descStyles[0].descBorderColor,
                             paddingTop: descPaddingT,
                             paddingRight: descPaddingR,
                             paddingBottom: descPaddingB,
@@ -273,14 +279,14 @@ class PremiumAccordion extends Component {
                                 }
                                 value={item.descText}
                                 style={{
-                                    color: descColor,
-                                    fontSize: descSize + "px",
-                                    letterSpacing: descLetter + "px",
-                                    textTransform: descUpper ? "uppercase" : "none",
+                                    color: descStyles[0].descColor,
+                                    fontSize: descStyles[0].descSize + "px",
+                                    letterSpacing: descStyles[0].descLetter + "px",
+                                    textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                     textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                    fontStyle: descStyle,
-                                    fontWeight: descWeight,
-                                    lineHeight: descLine + "px"
+                                    fontStyle: descStyles[0].descStyle,
+                                    fontWeight: descStyles[0].descWeight,
+                                    lineHeight: descStyles[0].descLine + "px"
                                 }}
                             />
                         )}
@@ -289,6 +295,7 @@ class PremiumAccordion extends Component {
                 </div>
             );
         });
+
         return [
             isSelected && (
                 <InspectorControls key="inspector">
@@ -322,24 +329,24 @@ class PremiumAccordion extends Component {
                                 "spacing",
                                 "line"
                             ]}
-                            size={titleSize}
-                            weight={titleWeight}
-                            style={titleStyle}
-                            spacing={titleLetter}
-                            line={titleLine}
-                            upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
+                            size={titleStyles[0].titleSize}
+                            weight={titleStyles[0].titleWeight}
+                            style={titleStyles[0].titleStyle}
+                            spacing={titleStyles[0].titleLetter}
+                            line={titleStyles[0].titleLine}
+                            upper={titleStyles[0].titleUpper}
+                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
                             onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight })
+                                saveTitleStyles({ titleWeight: newWeight })
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
+                                saveTitleStyles({ titleStyle: newStyle })
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
+                                saveTitleStyles({ titleLetter: newValue })
                             }
-                            onChangeLine={newValue => setAttributes({ titleLine: newValue })}
-                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
                         <div className="premium-control-toggle">
                             <strong>{__("Colors")}</strong>
@@ -356,9 +363,9 @@ class PremiumAccordion extends Component {
                                     <Fragment>
                                         <p>{__("Text Color")}</p>
                                         <ColorPalette
-                                            value={titleColor}
+                                            value={titleStyles[0].titleColor}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveTitleStyles({
                                                     titleColor: newValue
                                                 })
                                             }
@@ -366,9 +373,9 @@ class PremiumAccordion extends Component {
                                         />
                                         <p>{__("Background Color")}</p>
                                         <ColorPalette
-                                            value={titleBack}
+                                            value={titleStyles[0].titleBack}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveTitleStyles({
                                                     titleBack: newValue
                                                 })
                                             }
@@ -379,16 +386,16 @@ class PremiumAccordion extends Component {
                             />
                         </div>
                         <PremiumBorder
-                            borderType={titleBorder}
+                            borderType={titleStyles[0].titleBorder}
                             borderWidth={titleBorderWidth}
                             top={titleBorderTop}
                             right={titleBorderRight}
                             bottom={titleBorderBottom}
                             left={titleBorderLeft}
-                            borderColor={titleBorderColor}
-                            borderRadius={titleBorderRadius}
+                            borderColor={titleStyles[0].titleBorderColor}
+                            borderRadius={titleStyles[0].titleBorderRadius}
                             onChangeType={(newType) =>
-                                setAttributes({ titleBorder: newType })
+                                saveTitleStyles({ titleBorder: newType })
                             }
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
@@ -400,28 +407,28 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ titleBorderColor: colorValue.hex })
+                                saveTitleStyles({ titleBorderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ titleBorderRadius: newrRadius })
+                                saveTitleStyles({ titleBorderRadius: newrRadius })
                             }
                         />
                         <PremiumTextShadow
-                            color={titleShadowColor}
-                            blur={titleShadowBlur}
-                            horizontal={titleShadowHorizontal}
-                            vertical={titleShadowVertical}
+                            color={titleStyles[0].titleShadowColor}
+                            blur={titleStyles[0].titleShadowBlur}
+                            horizontal={titleStyles[0].titleShadowHorizontal}
+                            vertical={titleStyles[0].titleShadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ titleShadowColor: newColor.hex })
+                                saveTitleStyles({ titleShadowColor: newColor.hex })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({ titleShadowBlur: newBlur })
+                                saveTitleStyles({ titleShadowBlur: newBlur })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({ titleShadowHorizontal: newValue })
+                                saveTitleStyles({ titleShadowHorizontal: newValue })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({ titleShadowVertical: newValue })
+                                saveTitleStyles({ titleShadowVertical: newValue })
                             }
                         />
 
@@ -460,13 +467,13 @@ class PremiumAccordion extends Component {
                         <SelectControl
                             label={__("Position")}
                             options={ARROW}
-                            value={arrowPos}
-                            onChange={newEffect => setAttributes({ arrowPos: newEffect })}
+                            value={arrowStyles[0].arrowPos}
+                            onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
                         <RangeControl
                             label={__("Size ")}
-                            value={arrowSize}
-                            onChange={newValue => setAttributes({ arrowSize: newValue })}
+                            value={arrowStyles[0].arrowSize}
+                            onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
                         />
                         <div className="premium-control-toggle">
                             <strong>{__("Colors")}</strong>
@@ -483,9 +490,9 @@ class PremiumAccordion extends Component {
                                     <Fragment>
                                         <p>{__("Arrow Color")}</p>
                                         <ColorPalette
-                                            value={arrowColor}
+                                            value={arrowStyles[0].arrowColor}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveArrowStyles({
                                                     arrowColor: newValue
                                                 })
                                             }
@@ -493,9 +500,9 @@ class PremiumAccordion extends Component {
                                         />
                                         <p>{__("Background Color")}</p>
                                         <ColorPalette
-                                            value={arrowBack}
+                                            value={arrowStyles[0].arrowBack}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveArrowStyles({
                                                     arrowBack: newValue
                                                 })
                                             }
@@ -507,18 +514,18 @@ class PremiumAccordion extends Component {
                         </div>
                         <RangeControl
                             label={__("Border Radius (PX)")}
-                            value={arrowRadius}
+                            value={arrowStyles[0].arrowRadius}
                             onChange={newValue =>
-                                setAttributes({
+                                saveArrowStyles({
                                     arrowRadius: newValue === undefined ? 0 : newValue
                                 })
                             }
                         />
                         <RangeControl
                             label={__("Padding (PX)")}
-                            value={arrowPadding}
+                            value={arrowStyles[0].arrowPadding}
                             onChange={newValue =>
-                                setAttributes({
+                                saveArrowStyles({
                                     arrowPadding: newValue === undefined ? 0 : newValue
                                 })
                             }
@@ -539,8 +546,8 @@ class PremiumAccordion extends Component {
                         <Toolbar
                             controls={ALIGNS.map(align => ({
                                 icon: "editor-align" + align,
-                                isActive: align === descAlign,
-                                onClick: () => setAttributes({ descAlign: align })
+                                isActive: align === descStyles[0].descAlign,
+                                onClick: () => SaveDescStyles({ descAlign: align })
                             }))}
                         />
                         {"text" === contentType && (
@@ -554,26 +561,26 @@ class PremiumAccordion extends Component {
                                         "spacing",
                                         "line"
                                     ]}
-                                    size={descSize}
-                                    weight={descWeight}
-                                    style={descStyle}
-                                    spacing={descLetter}
-                                    line={descLine}
-                                    upper={descUpper}
-                                    onChangeSize={newSize => setAttributes({ descSize: newSize })}
+                                    size={descStyles[0].descSize}
+                                    weight={descStyles[0].descWeight}
+                                    style={descStyles[0].descStyle}
+                                    spacing={descStyles[0].descLetter}
+                                    line={descStyles[0].descLine}
+                                    upper={descStyles[0].descUpper}
+                                    onChangeSize={newSize => SaveDescStyles({ descSize: newSize })}
                                     onChangeWeight={newWeight =>
-                                        setAttributes({ descWeight: newWeight })
+                                        SaveDescStyles({ descWeight: newWeight })
                                     }
                                     onChangeStyle={newStyle =>
-                                        setAttributes({ descStyle: newStyle })
+                                        SaveDescStyles({ descStyle: newStyle })
                                     }
                                     onChangeSpacing={newValue =>
-                                        setAttributes({ descLetter: newValue })
+                                        SaveDescStyles({ descLetter: newValue })
                                     }
                                     onChangeLine={newValue =>
-                                        setAttributes({ descLine: newValue })
+                                        SaveDescStyles({ descLine: newValue })
                                     }
-                                    onChangeUpper={check => setAttributes({ descUpper: check })}
+                                    onChangeUpper={check => SaveDescStyles({ descUpper: check })}
                                 />
                                 <div className="premium-control-toggle">
                                     <strong>{__("Colors")}</strong>
@@ -590,9 +597,9 @@ class PremiumAccordion extends Component {
                                             <Fragment>
                                                 <p>{__("Text Color")}</p>
                                                 <ColorPalette
-                                                    value={descColor}
+                                                    value={descStyles[0].descColor}
                                                     onChange={newValue =>
-                                                        setAttributes({
+                                                        SaveDescStyles({
                                                             descColor: newValue
                                                         })
                                                     }
@@ -600,9 +607,9 @@ class PremiumAccordion extends Component {
                                                 />
                                                 <p>{__("Background Color")}</p>
                                                 <ColorPalette
-                                                    value={descBack}
+                                                    value={descStyles[0].descBack}
                                                     onChange={newValue =>
-                                                        setAttributes({
+                                                        SaveDescStyles({
                                                             descBack: newValue
                                                         })
                                                     }
@@ -616,15 +623,15 @@ class PremiumAccordion extends Component {
                         )}
 
                         <PremiumBorder
-                            borderType={descBorder}
+                            borderType={descStyles[0].descBorder}
                             borderWidth={descBorderWidth}
                             top={descBorderTop}
                             right={descBorderRight}
                             bottom={descBorderBottom}
                             left={descBorderLeft}
-                            borderColor={descBorderColor}
-                            borderRadius={descBorderRadius}
-                            onChangeType={(newType) => setAttributes({ descBorder: newType })}
+                            borderColor={descStyles[0].descBorderColor}
+                            borderRadius={descStyles[0].descBorderRadius}
+                            onChangeType={(newType) => SaveDescStyles({ descBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     descBorderUpdated: true,
@@ -635,10 +642,10 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ descBorderColor: colorValue.hex })
+                                SaveDescStyles({ descBorderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ descBorderRadius: newrRadius })
+                                SaveDescStyles({ descBorderRadius: newrRadius })
                             }
                         />
 

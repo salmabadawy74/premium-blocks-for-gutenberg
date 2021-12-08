@@ -27,24 +27,21 @@ const {
 const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
 
 const { Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
 
     const {
+        iconBorder,
+        wrapBorder,
         iconType,
         selectedIcon,
         align,
         hoverEffect,
-        iconSize,
-        iconSizeUnit,
-        iconColor,
-        iconBack,
-        iconOpacity,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
+        iconStyles,
+        containerStyles,
         paddingT,
         paddingR,
         paddingB,
@@ -54,37 +51,16 @@ const edit = props => {
         marginR,
         marginB,
         marginL,
-        borderType,
         borderWidth,
-        iconBorder,
         iconBorderTop,
         iconBorderRight,
         iconBorderBottom,
         iconBorderLeft,
-        borderRadius,
-        borderColor,
-        backgroundColor,
-        backgroundOpacity,
-        imageID,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        wrapBorderType,
-        wrapBorder,
         wrapBorderWidth,
         wrapBorderTop,
         wrapBorderRight,
         wrapBorderBottom,
         wrapBorderLeft,
-        wrapBorderRadius,
-        wrapBorderColor,
-        wrapShadowBlur,
-        wrapShadowColor,
-        wrapShadowHorizontal,
-        wrapShadowVertical,
-        wrapShadowPosition,
         wrapPaddingT,
         wrapPaddingR,
         wrapPaddingB,
@@ -131,6 +107,29 @@ const edit = props => {
             label: __("Wobble")
         }
     ];
+
+    const saveContainerStyle = (value) => {
+        const newUpdate = containerStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate,
+        });
+    }
+    const saveIconStyle = (value) => {
+        const newUpdate = iconStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            iconStyles: newUpdate,
+        });
+    }
 
     const ALIGNS = ["left", "center", "right"];
 
@@ -187,13 +186,13 @@ const edit = props => {
                 >
                     <PremiumSizeUnits
                         onChangeSizeUnit={newValue =>
-                            setAttributes({ iconSizeUnit: newValue })
+                            saveIconStyle({ iconSizeUnit: newValue })
                         }
                     />
                     <RangeControl
                         label={__("Size")}
-                        value={iconSize}
-                        onChange={newValue => setAttributes({ iconSize: newValue })}
+                        value={iconStyles[0].iconSize}
+                        onChange={newValue => saveIconStyle({ iconSize: newValue })}
                         initialPosition={50}
                         allowReset={true}
                     />
@@ -212,9 +211,9 @@ const edit = props => {
                                 <Fragment>
                                     <p>{__("Icon Color")}</p>
                                     <ColorPalette
-                                        value={iconColor}
+                                        value={iconStyles[0].iconColor}
                                         onChange={newValue =>
-                                            setAttributes({
+                                            saveIconStyle({
                                                 iconColor: newValue
                                             })
                                         }
@@ -223,13 +222,13 @@ const edit = props => {
                                     <p>{__("Background Color")}</p>
                                     <PremiumBackground
                                         type="color"
-                                        colorValue={iconBack}
+                                        colorValue={iconStyles[0].iconBack}
                                         onChangeColor={value =>
-                                            setAttributes({ iconBack: value })
+                                            saveIconStyle({ iconBack: value })
                                         }
-                                        opacityValue={iconOpacity}
+                                        opacityValue={iconStyles[0].iconOpacity}
                                         onChangeOpacity={newvalue =>
-                                            setAttributes({
+                                            saveIconStyle({
                                                 iconOpacity: newvalue,
                                             })
                                         }
@@ -239,15 +238,15 @@ const edit = props => {
                         />
                     </div>
                     <PremiumBorder
-                        borderType={borderType}
+                        borderType={iconStyles[0].borderType}
                         borderWidth={borderWidth}
                         top={iconBorderTop}
                         right={iconBorderRight}
                         bottom={iconBorderBottom}
                         left={iconBorderLeft}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        borderColor={iconStyles[0].borderColor}
+                        borderRadius={iconStyles[0].borderRadius}
+                        onChangeType={(newType) => saveIconStyle({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 iconBorder: true,
@@ -258,28 +257,28 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            saveIconStyle({ borderColor: colorValue.hex })
                         }
                         onChangeRadius={(newrRadius) =>
-                            setAttributes({ borderRadius: newrRadius })
+                            saveIconStyle({ borderRadius: newrRadius })
                         }
                     />
 
                     <PremiumTextShadow
                         label="Shadow"
-                        color={shadowColor}
-                        blur={shadowBlur}
-                        horizontal={shadowHorizontal}
-                        vertical={shadowVertical}
+                        color={iconStyles[0].shadowColor}
+                        blur={iconStyles[0].shadowBlur}
+                        horizontal={iconStyles[0].shadowHorizontal}
+                        vertical={iconStyles[0].shadowVertical}
                         onChangeColor={newColor =>
-                            setAttributes({ shadowColor: newColor.hex })
+                            saveIconStyle({ shadowColor: newColor.hex })
                         }
-                        onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                        onChangeBlur={newBlur => saveIconStyle({ shadowBlur: newBlur })}
                         onChangehHorizontal={newValue =>
-                            setAttributes({ shadowHorizontal: newValue })
+                            saveIconStyle({ shadowHorizontal: newValue })
                         }
                         onChangeVertical={newValue =>
-                            setAttributes({ shadowVertical: newValue })
+                            saveIconStyle({ shadowVertical: newValue })
                         }
                     />
 
@@ -338,7 +337,7 @@ const edit = props => {
                         showUnits={true}
                         selectedUnit={paddingU}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingU: newvalue })
+                            saveContainerStyle({ paddingU: newvalue })
                         }
                     />
                 </PanelBody>
@@ -351,57 +350,57 @@ const edit = props => {
                         <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
-                            colorValue={backgroundColor}
+                            colorValue={containerStyles[0].backgroundColor}
                             onChangeColor={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     backgroundColor: value,
                                 })
                             }
-                            opacityValue={backgroundOpacity}
+                            opacityValue={containerStyles[0].backgroundOpacity}
                             onChangeOpacity={newvalue =>
-                                setAttributes({ backgroundOpacity: newvalue })
+                                saveContainerStyle({ backgroundOpacity: newvalue })
                             }
                         />
                         <PremiumBackground
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].imageID}
+                            imageURL={containerStyles[0].imageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveContainerStyle({
                                     imageID: media.id,
                                     imageURL: media.url
                                 });
                             }}
-                            onRemoveImage={value =>
-                                setAttributes({ imageURL: "", imageID: "" })
+                            onRemoveImage={() =>
+                                saveContainerStyle({ imageURL: "", imageID: "" })
                             }
                             onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
+                                saveContainerStyle({ backgroundPosition: newValue })
                             }
                             onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
+                                saveContainerStyle({ backgroundRepeat: newValue })
                             }
                             onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
+                                saveContainerStyle({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                     </Fragment>
 
                     <PremiumBorder
-                        borderType={wrapBorderType}
-                        borderWidth={wrapBorderWidth}
+                        borderType={containerStyles[0].wrapBorderType}
+                        borderWidth={containerStyles[0].wrapBorderWidth}
                         top={wrapBorderTop}
                         right={wrapBorderRight}
                         bottom={wrapBorderBottom}
                         left={wrapBorderLeft}
-                        borderColor={wrapBorderColor}
-                        borderRadius={wrapBorderRadius}
+                        borderColor={containerStyles[0].wrapBorderColor}
+                        borderRadius={containerStyles[0].wrapBorderRadius}
                         onChangeType={(newType) =>
-                            setAttributes({ wrapBorderType: newType })
+                            saveContainerStyle({ wrapBorderType: newType })
                         }
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
@@ -413,42 +412,42 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ wrapBorderColor: colorValue.hex })
+                            saveContainerStyle({ wrapBorderColor: colorValue.hex })
                         }
                         onChangeRadius={(newrRadius) =>
-                            setAttributes({ wrapBorderRadius: newrRadius })
+                            saveContainerStyle({ wrapBorderRadius: newrRadius })
                         }
                     />
 
                     <PremiumBoxShadow
                         inner={true}
-                        color={wrapShadowColor}
-                        blur={wrapShadowBlur}
-                        horizontal={wrapShadowHorizontal}
-                        vertical={wrapShadowVertical}
-                        position={wrapShadowPosition}
+                        color={containerStyles[0].wrapShadowColor}
+                        blur={containerStyles[0].wrapShadowBlur}
+                        horizontal={containerStyles[0].wrapShadowHorizontal}
+                        vertical={containerStyles[0].wrapShadowVertical}
+                        position={containerStyles[0].wrapShadowPosition}
                         onChangeColor={newColor =>
-                            setAttributes({
+                            saveContainerStyle({
                                 wrapShadowColor: newColor.hex
                             })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({
+                            saveContainerStyle({
                                 wrapShadowBlur: newBlur
                             })
                         }
                         onChangehHorizontal={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 wrapShadowHorizontal: newValue
                             })
                         }
                         onChangeVertical={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 wrapShadowVertical: newValue
                             })
                         }
                         onChangePosition={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 wrapShadowPosition: newValue
                             })
                         }
@@ -523,23 +522,23 @@ const edit = props => {
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: backgroundColor
-                    ? hexToRgba(backgroundColor, backgroundOpacity)
+                backgroundColor: containerStyles[0].backgroundColor
+                    ? hexToRgba(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity)
                     : "transparent",
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
+                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : "none",
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
                 borderWidth: wrapBorder
                     ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
                     : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-                    0}px ${wrapShadowBlur ||
-                    0}px ${wrapShadowColor} ${wrapShadowPosition}`,
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                    0}px ${containerStyles[0].wrapShadowBlur ||
+                    0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -559,27 +558,27 @@ const edit = props => {
                 <i
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
-                        color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack
-                            ? hexToRgba(iconBack, iconOpacity)
+                        color: iconStyles[0].iconColor || "#6ec1e4",
+                        backgroundColor: iconStyles[0].iconBack
+                            ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
                             : "transparent",
-                        fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
+                        fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                        paddingTop: paddingT + iconStyles[0].paddingU,
+                        paddingRight: paddingR + iconStyles[0].paddingU,
+                        paddingBottom: paddingB + iconStyles[0].paddingU,
+                        paddingLeft: paddingL + iconStyles[0].paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        borderStyle: borderType,
+                        borderStyle: iconStyles[0].borderType,
                         borderWidth: iconBorder
                             ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
                             : borderWidth + "px",
-                        borderRadius: borderRadius || 100 + "px",
-                        borderColor: borderColor,
-                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                            0}px ${shadowBlur || 0}px ${shadowColor}`
+                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                        borderColor: iconStyles[0].borderColor,
+                        textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                            0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
                     }}
                 />
             )}
@@ -593,4 +592,11 @@ const edit = props => {
     ];
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

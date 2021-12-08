@@ -315,7 +315,6 @@
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.onload = function () {
                     if (this.status >= 200 && this.status < 400) {
-                        console.log(this.response)
                         var response = JSON.parse(this.response);
 
                         if (response.success) {

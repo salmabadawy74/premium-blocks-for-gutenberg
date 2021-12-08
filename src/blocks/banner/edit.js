@@ -6,11 +6,9 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-
+const { withSelect } = wp.data
 const { __ } = wp.i18n;
-
 const { Fragment, Component } = wp.element;
 
 const {
@@ -31,33 +29,41 @@ const {
     RichText,
 } = wp.blockEditor;
 
-export default class edit extends Component {
+export class edit extends Component {
 
     constructor() {
         super(...arguments);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     componentDidMount() {
         this.props.setAttributes({ block_id: this.props.clientId });
         this.props.setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-banner-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
-    }
+    };
     render() {
-
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
-
         const {
-            borderBanner,
             block_id,
+            borderBanner,
             imageID,
             imageURL,
+            titleStyles,
+            descStyles,
+            containerStyles,
             title,
             titleTag,
             desc,
@@ -71,60 +77,30 @@ export default class edit extends Component {
             responsive,
             background,
             opacity,
-            borderType,
-            borderWidth,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
-            borderRadius,
-            borderColor,
-            titleColor,
-            titleSizeUnit,
-            titleSize,
-            titleLine,
-            titleWeight,
-            titleBack,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            descColor,
-            descSizeUnit,
-            descSize,
-            descSizeTablet,
-            descSizeMobile,
-            descLine,
-            descWeight,
-            descShadowBlur,
-            descShadowColor,
-            descShadowHorizontal,
-            descShadowVertical,
             urlCheck,
-            url,
             target,
+            url,
             sepColor,
             blur,
             bright,
             contrast,
             saturation,
             hue,
-            containerShadowBlur,
-            containerShadowColor,
-            containerShadowHorizontal,
-            containerShadowVertical,
-            containerShadowPosition,
-            paddingB,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            classMigrate,
+            borderWidth,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
             paddingT,
             paddingR,
-            paddingL,
-            paddingU,
-            titleSizeTablet,
-            titleSizeMobile,
-            hideDesktop,
-            hideMobile,
-            hideTablet
+            paddingB,
+            paddingL
         } = this.props.attributes;
+
         const ALIGNS = [
             {
                 value: "flex-start",
@@ -143,6 +119,7 @@ export default class edit extends Component {
                 label: __("Full")
             }
         ];
+
         const EFFECTS = [
             {
                 value: "effect1",
@@ -213,17 +190,45 @@ export default class edit extends Component {
                 label: __("Custom")
             }
         ];
-
         const mainClasses = classnames(className, "premium-banner");
+        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+        const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
-        var element = document.getElementById(
-            "premium-style-banner-" + blockID.substr(0, 6)
-        );
+        const saveStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+            setAttributes({
+                titleStyles: newUpdate,
+            });
         }
 
+        const descriptionStyles = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        }
+        const containerStyle = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                containerStyles: newUpdate,
+            });
+        }
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -382,45 +387,45 @@ export default class edit extends Component {
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveStyles}
                             fontSizeType={{
-                                value: titleSizeUnit,
+                                value: titleStyles[0].titleSizeUnit,
                                 label: __("titleSizeUnit"),
                             }}
                             fontSize={{
-                                value: titleSize,
+                                value: titleStyles[0].titleSize,
                                 label: __("titleSize"),
                             }}
                             fontSizeMobile={{
-                                value: titleSizeMobile,
+                                value: titleStyles[0].titleSizeMobile,
                                 label: __("titleSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: titleSizeTablet,
+                                value: titleStyles[0].titleSizeTablet,
                                 label: __("titleSizeTablet"),
                             }}
-                            weight={titleWeight}
-                            line={titleLine}
+                            weight={titleStyles[0].titleWeight}
+                            line={titleStyles[0].titleLine}
                             onChangeWeight={newWeight =>
-                                setAttributes({
+                                saveStyles({
                                     titleWeight: newWeight === undefined ? 500 : newWeight
-                                })
+                                }, titleStyles)
                             }
                             onChangeLine={newValue =>
-                                setAttributes({
+                                saveStyles({
                                     titleLine: newValue === undefined ? 10 : newValue
-                                })
+                                }, titleStyles)
                             }
                         />
 
                         <Fragment>
                             <p>{__("Text Color")}</p>
                             <ColorPalette
-                                value={titleColor}
+                                value={titleStyles[0].titleColor}
                                 onChange={newValue =>
-                                    setAttributes({
+                                    saveStyles({
                                         titleColor: newValue === undefined ? "transparent" : newValue
-                                    })
+                                    }, titleStyles)
                                 }
                                 allowReset={true}
                             />
@@ -443,41 +448,41 @@ export default class edit extends Component {
                             <Fragment>
                                 <p>{__("Background Color")}</p>
                                 <ColorPalette
-                                    value={titleBack}
+                                    value={titleStyles[0].titleBack}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        saveStyles({
                                             titleBack: newValue === undefined ? "transparent" : newValue
-                                        })
+                                        }, titleStyles)
                                     }
                                     allowReset={true}
                                 />
                             </Fragment>
                         )}
                         <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
+                            color={titleStyles[0].shadowColor}
+                            blur={titleStyles[0].shadowBlur}
+                            horizontal={titleStyles[0].shadowHorizontal}
+                            vertical={titleStyles[0].shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveStyles({
                                     shadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
-                                })
+                                }, titleStyles)
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveStyles({
                                     shadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
+                                }, titleStyles)
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveStyles({
                                     shadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
+                                }, titleStyles)
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveStyles({
                                     shadowVertical: newValue === undefined ? 0 : newValue
-                                })
+                                }, titleStyles)
                             }
                         />
                     </PanelBody>
@@ -488,73 +493,73 @@ export default class edit extends Component {
                     >
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line"]}
-                            setAttributes={setAttributes}
+                            setAttributes={descriptionStyles}
                             fontSizeType={{
-                                value: descSizeUnit,
+                                value: descStyles[0].descSizeUnit,
                                 label: __("descSizeUnit"),
                             }}
                             fontSize={{
-                                value: descSize,
+                                value: descStyles[0].descSize,
                                 label: __("descSize"),
                             }}
                             fontSizeMobile={{
-                                value: descSizeMobile,
+                                value: descStyles[0].descSizeMobile,
                                 label: __("descSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: descSizeTablet,
+                                value: descStyles[0].descSizeTablet,
                                 label: __("descSizeTablet"),
                             }}
-                            weight={descWeight}
-                            line={descLine}
+                            weight={descStyles[0].descWeight}
+                            line={descStyles[0].descLine}
                             onChangeWeight={newWeight =>
-                                setAttributes({
+                                descriptionStyles({
                                     descWeight: newWeight === undefined ? 500 : newWeight
-                                })
+                                }, descStyles)
                             }
                             onChangeLine={newValue =>
-                                setAttributes({
+                                descriptionStyles({
                                     descLine: newValue === undefined ? 10 : newValue
-                                })
+                                }, descStyles)
                             }
                         />
                         <Fragment>
                             <p>{__("Text Color")}</p>
                             <ColorPalette
-                                value={descColor}
+                                value={descStyles[0].descColor}
                                 onChange={newValue =>
-                                    setAttributes({
+                                    descriptionStyles({
                                         descColor: newValue === undefined ? "transparent" : newValue
-                                    })
+                                    }, descStyles)
                                 }
                                 allowReset={true}
                             />
                         </Fragment>
                         <PremiumTextShadow
-                            color={descShadowColor}
-                            blur={descShadowBlur}
-                            horizontal={descShadowHorizontal}
-                            vertical={descShadowVertical}
+                            color={descStyles[0].descShadowColor}
+                            blur={descStyles[0].descShadowBlur}
+                            horizontal={descStyles[0].descShadowHorizontal}
+                            vertical={descStyles[0].descShadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                descriptionStyles({
                                     descShadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
-                                })
+                                }, descStyles)
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                descriptionStyles({
                                     descShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
+                                }, descStyles)
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                descriptionStyles({
                                     descShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
+                                }, descStyles)
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                descriptionStyles({
                                     descShadowVertical: newValue === undefined ? 0 : newValue
-                                })
+                                }, descStyles)
                             }
                         />
                     </PanelBody>
@@ -564,15 +569,15 @@ export default class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumBorder
-                            borderType={borderType}
+                            borderType={containerStyles[0].borderType}
                             borderWidth={borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={containerStyles[0].borderColor}
+                            borderRadius={containerStyles[0].borderRadius}
+                            onChangeType={(newType) => containerStyle({ borderType: newType }, containerStyles)}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderBanner: true,
@@ -583,46 +588,46 @@ export default class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({
+                                containerStyle({
                                     borderColor:
                                         colorValue === undefined ? "transparent" : colorValue.hex,
                                 })
                             }
                             onChangeRadius={(newRadius) =>
-                                setAttributes({
+                                containerStyle({
                                     borderRadius: newRadius === undefined ? 0 : newRadius,
                                 })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={containerShadowColor}
-                            blur={containerShadowBlur}
-                            horizontal={containerShadowHorizontal}
-                            vertical={containerShadowVertical}
-                            position={containerShadowPosition}
+                            color={containerStyles[0].containerShadowColor}
+                            blur={containerStyles[0].containerShadowBlur}
+                            horizontal={containerStyles[0].containerShadowHorizontal}
+                            vertical={containerStyles[0].containerShadowVertical}
+                            position={containerStyles[0].containerShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                containerStyle({
                                     containerShadowColor: newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                containerStyle({
                                     containerShadowBlur: newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                containerStyle({
                                     containerShadowHorizontal: newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                containerStyle({
                                     containerShadowVertical: newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                containerStyle({
                                     containerShadowPosition: newValue
                                 })
                             }
@@ -653,9 +658,9 @@ export default class edit extends Component {
                                     paddingL: value
                                 })
                             }
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                containerStyle({ paddingU: newvalue })
                             }
                         />
                     </PanelBody>
@@ -673,10 +678,10 @@ export default class edit extends Component {
                 id={`premium-banner-${block_id}`}
                 className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU
+                    paddingTop: paddingT + containerStyles[0].paddingU,
+                    paddingRight: paddingR + containerStyles[0].paddingU,
+                    paddingBottom: paddingB + containerStyles[0].paddingU,
+                    paddingLeft: paddingL + containerStyles[0].paddingU
                 }}
             >
                 <style
@@ -698,13 +703,13 @@ export default class edit extends Component {
                     <div
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
-                            boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
-                            borderStyle: borderType,
+                            boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
+                            borderStyle: containerStyles[0].borderType,
                             borderWidth: borderBanner
                                 ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                                 : borderWidth + "px",
-                            borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderRadius: containerStyles[0].borderRadius + "px",
+                            borderColor: containerStyles[0].borderColor
                         }}
                     >
                         <div
@@ -727,7 +732,7 @@ export default class edit extends Component {
                         <div
                             className={`premium-banner__content`}
                             style={{
-                                background: "effect2" === effect ? titleBack : "transparent"
+                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
                             }}
                         >
                             <div
@@ -743,10 +748,11 @@ export default class edit extends Component {
                                     isSelected={false}
                                     onChange={newText => setAttributes({ title: newText })}
                                     style={{
-                                        color: titleColor,
-                                        fontWeight: titleWeight,
-                                        lineHeight: titleLine + "px",
-                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                                        fontSize: titleFontSize,
+                                        color: titleStyles[0].titleColor,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        textShadow: `${titleStyles[0].shadowHorizontal}px ${titleStyles[0].shadowVertical}px ${titleStyles[0].shadowBlur}px ${titleStyles[0].shadowColor}`
                                     }}
                                 />
                             </div>
@@ -763,10 +769,11 @@ export default class edit extends Component {
                                     isSelected={false}
                                     onChange={newText => setAttributes({ desc: newText })}
                                     style={{
-                                        color: descColor,
-                                        fontWeight: descWeight,
-                                        lineHeight: descLine + "px",
-                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
+                                        fontSize: descFontSize,
+                                        color: descStyles[0].descColor,
+                                        fontWeight: descStyles[0].descWeight,
+                                        lineHeight: descStyles[0].descLine + "px",
+                                        textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`
                                     }}
                                 />
                             </div>
@@ -777,3 +784,11 @@ export default class edit extends Component {
         ];
     }
 };
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

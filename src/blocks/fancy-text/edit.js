@@ -1,10 +1,10 @@
 import classnames from "classnames";
-import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
 import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import hexToRgba from "hex-to-rgba";
 
 import {
     SortableContainer,
@@ -13,6 +13,8 @@ import {
 } from "react-sortable-hoc";
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
+
 
 const { Component, Fragment } = wp.element;
 
@@ -49,8 +51,8 @@ const SortableItem = SortableElement(
                         onClick={() => removeItem(newIndex, value)}
                     ></button>
                 ) : (
-                        ""
-                    )}
+                    ""
+                )}
             </div>
             <div
                 className={`premium-repeater-item-controls ${value.edit ? "editable" : ""
@@ -93,6 +95,21 @@ class edit extends Component {
     constructor() {
         super(...arguments);
         this.renderFancyText = this.renderFancyText.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     componentDidMount() {
@@ -103,12 +120,7 @@ class edit extends Component {
         this.props.setAttributes({ classMigrate: true });
 
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-fancy-text-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
+
 
         this.renderFancyText();
     }
@@ -164,57 +176,33 @@ class edit extends Component {
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props;
+        const { attributes, setAttributes, isSelected, className } = this.props;
 
         const {
             block_id,
+            classMigrate,
             align,
-            className,
             prefix,
             suffix,
             repeaterFancyText,
             effect,
-            fancyTextColor,
-            fancyTextfontSize,
-            fancyTextfontSizeMobile,
-            fancyTextfontSizeTablet,
-            fancyTextfontSizeUnit,
-            fancyTextWeight,
-            fancyTextUpper,
-            fancyTextStyle,
-            fancyTextLetter,
-            fancyTextBGColor,
-            shadowColor,
-            shadowBlur,
-            shadowHorizontal,
-            shadowVertical,
             cursorColor,
-            textColor,
-            textfontSize,
-            textfontSizeMobile,
-            textfontSizeTablet,
-            textfontSizeUnit,
-            textWeight,
-            textLetter,
-            textUpper,
-            textStyle,
-            textBGColor,
             loop,
             cursorShow,
             cursorMark,
             typeSpeed,
-            backSpeed,
-            startdelay,
             backdelay,
+            startdelay,
+            backSpeed,
             animationSpeed,
             pauseTime,
             hoverPause,
             fancyalign,
-            fancyTextBGOpacity,
-            textBGOpacity,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            fancyStyles,
+            PreStyles
         } = attributes;
 
         const ALIGNS = ["left", "center", "right"];
@@ -229,13 +217,7 @@ class edit extends Component {
             },
         ];
 
-        var element = document.getElementById(
-            "premium-style-fancy-text-" + block_id
-        );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
 
         const onResetClickfancyTextTypo = () => {
             setAttributes({
@@ -348,18 +330,99 @@ class edit extends Component {
                 ]),
             });
         };
+        const saveFancyStyle = (value) => {
+            const newUpdate = fancyStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                fancyStyles: newUpdate,
+            });
+        }
+        const savePrefixStyle = (value) => {
+            const newUpdate = PreStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                PreStyles: newUpdate,
+            });
+        }
+
+        const fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
+        const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
+
+        const renderCss = (<style>
+            { `
+            .premium-fancy-text-title {
+            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+            color: ${fancyStyles[0].fancyTextColor};
+            font-weight: ${fancyStyles[0].fancyTextWeight};
+            letter-spacing: ${fancyStyles[0].fancyTextLetter}px;
+            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
+            font-style: ${fancyStyles[0].fancyTextStyle};
+            background-color: ${fancyStyles[0].fancyTextBGColor
+                    ? hexToRgba(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity)
+                    : "transparent"};
+            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+        }
+        .premium-fancy-text-title-slide {
+            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+            color: ${fancyStyles[0].fancyTextColor},
+            font-weight: ${fancyStyles[0].fancyTextWeight};
+            letter-spacing: ${fancyStyles[0].fancyTextLetter} + "px";
+            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
+            font-style: ${fancyStyles[0].fancyTextStyle};
+            background-color: ${fancyStyles[0].fancyTextBGColor
+                    ? hexToRgba(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity)
+                    : "transparent"};
+            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+        }
+         .typed-cursor {
+            color: ${cursorColor};
+        }
+         .premium-fancy-text-prefix-text {
+            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
+            color: ${PreStyles[0].textColor};
+            font-weight: ${PreStyles[0].textWeight};
+            letter-spacing: ${PreStyles[0].textLetter}px;
+            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
+            font-style: ${PreStyles[0].textStyle};
+            background-color: ${PreStyles[0].textBGColor
+                    ? hexToRgba(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity)
+                    : "transparent"};
+        }
+         .premium-fancy-text-suffix-text{
+            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
+            color: ${PreStyles[0].textColor};
+            font-weight: ${PreStyles[0].textWeight};
+            letter-spacing: ${PreStyles[0].textLetter}px;
+            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
+            font-style: ${PreStyles[0].textStyle};
+            background-color: ${PreStyles[0].textBGColor
+                    ? hexToRgba(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity)
+                    : "transparent"};
+        }
+            `}
+        </style>)
 
         return [
-            isSelected && (
-                <BlockControls>
+            renderCss,
+            isSelected && [
+                < BlockControls >
                     <AlignmentToolbar
                         value={align}
                         onChange={value =>
                             setAttributes({ align: value })
                         }
                     />
-                </BlockControls>
-            ),
+                </BlockControls >
+            ],
+
             isSelected && (
                 <InspectorControls>
                     <PanelBody
@@ -499,60 +562,60 @@ class edit extends Component {
                                 )}
                             </Fragment>
                         ) : (
-                                <Fragment>
-                                    <p className="premium-notice">
-                                        Please note that Slide effect works only on
-                                        frontend
+                            <Fragment>
+                                <p className="premium-notice">
+                                    Please note that Slide effect works only on
+                                    frontend
                                 </p>
-                                    <TextControl
-                                        label={__("Animation Speed")}
-                                        value={animationSpeed}
-                                        type="Number"
-                                        onChange={(newValue) =>
+                                <TextControl
+                                    label={__("Animation Speed")}
+                                    value={animationSpeed}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            animationSpeed: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "Set a duration value in milliseconds for slide effect."
+                                    )}
+                                />
+                                <TextControl
+                                    label={__("Pause Time")}
+                                    value={pauseTime}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            pauseTime: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "How long should the word/string stay visible? Set a value in milliseconds."
+                                    )}
+                                />
+                                <ToggleControl
+                                    label={__("Pause on Hover")}
+                                    checked={hoverPause}
+                                    onChange={(newCheck) =>
+                                        setAttributes({ hoverPause: newCheck })
+                                    }
+                                    help={__(
+                                        "If you enabled this option, the slide will be paused when mouseover."
+                                    )}
+                                />
+                                <p>{__("Fancy Strings Alignment")}</p>
+                                <Toolbar
+                                    controls={ALIGNS.map((contentAlign) => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === fancyalign,
+                                        onClick: () =>
                                             setAttributes({
-                                                animationSpeed: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "Set a duration value in milliseconds for slide effect."
-                                        )}
-                                    />
-                                    <TextControl
-                                        label={__("Pause Time")}
-                                        value={pauseTime}
-                                        type="Number"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                pauseTime: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "How long should the word/string stay visible? Set a value in milliseconds."
-                                        )}
-                                    />
-                                    <ToggleControl
-                                        label={__("Pause on Hover")}
-                                        checked={hoverPause}
-                                        onChange={(newCheck) =>
-                                            setAttributes({ hoverPause: newCheck })
-                                        }
-                                        help={__(
-                                            "If you enabled this option, the slide will be paused when mouseover."
-                                        )}
-                                    />
-                                    <p>{__("Fancy Strings Alignment")}</p>
-                                    <Toolbar
-                                        controls={ALIGNS.map((contentAlign) => ({
-                                            icon: "editor-align" + contentAlign,
-                                            isActive: contentAlign === fancyalign,
-                                            onClick: () =>
-                                                setAttributes({
-                                                    fancyalign: contentAlign,
-                                                }),
-                                        }))}
-                                    />
-                                </Fragment>
-                            )}
+                                                fancyalign: contentAlign,
+                                            }),
+                                    }))}
+                                />
+                            </Fragment>
+                        )}
                     </PanelBody>
                     <PanelBody
                         title={__("Fancy Text Style")}
@@ -561,9 +624,9 @@ class edit extends Component {
                     >
                         <p>{__("Color")}</p>
                         <ColorPalette
-                            value={fancyTextColor}
+                            value={fancyStyles[0].fancyTextColor}
                             onChange={(newValue) =>
-                                setAttributes({
+                                saveFancyStyle({
                                     fancyTextColor: newValue,
                                 })
                             }
@@ -577,71 +640,71 @@ class edit extends Component {
                                 "upper",
                                 "spacing",
                             ]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveFancyStyle}
                             fontSizeType={{
-                                value: fancyTextfontSizeUnit,
+                                value: fancyStyles[0].fancyTextfontSizeUnit,
                                 label: __("fancyTextfontSizeUnit"),
                             }}
                             fontSize={{
-                                value: fancyTextfontSize,
+                                value: fancyStyles[0].fancyTextfontSize,
                                 label: __("fancyTextfontSize"),
                             }}
                             fontSizeMobile={{
-                                value: fancyTextfontSizeMobile,
+                                value: fancyStyles[0].fancyTextfontSizeMobile,
                                 label: __("fancyTextfontSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: fancyTextfontSizeTablet,
+                                value: fancyStyles[0].fancyTextfontSizeTablet,
                                 label: __("fancyTextfontSizeTablet"),
                             }}
-                            weight={fancyTextWeight}
-                            style={fancyTextStyle}
-                            spacing={fancyTextLetter}
-                            upper={fancyTextUpper}
+                            weight={fancyStyles[0].fancyTextWeight}
+                            style={fancyStyles[0].fancyTextStyle}
+                            spacing={fancyStyles[0].fancyTextLetter}
+                            upper={fancyStyles[0].fancyTextUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({
+                                saveFancyStyle({
                                     fancyTextWeight: newWeight || 500,
                                 })
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({ fancyTextStyle: newStyle })
+                                saveFancyStyle({ fancyTextStyle: newStyle })
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({ fancyTextLetter: newValue })
+                                saveFancyStyle({ fancyTextLetter: newValue })
                             }
                             onChangeUpper={check =>
-                                setAttributes({ fancyTextUpper: check })
+                                saveFancyStyle({ fancyTextUpper: check })
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
                         <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
-                            colorValue={fancyTextBGColor}
+                            colorValue={fancyStyles[0].fancyTextBGColor}
                             onChangeColor={newvalue =>
-                                setAttributes({ fancyTextBGColor: newvalue })
+                                saveFancyStyle({ fancyTextBGColor: newvalue })
                             }
-                            opacityValue={fancyTextBGOpacity}
+                            opacityValue={fancyStyles[0].fancyTextBGOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({ fancyTextBGOpacity: value })
+                                saveFancyStyle({ fancyTextBGOpacity: value })
                             }
                         />
                         <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
+                            color={fancyStyles[0].shadowColor}
+                            blur={fancyStyles[0].shadowBlur}
+                            horizontal={fancyStyles[0].shadowHorizontal}
+                            vertical={fancyStyles[0].shadowVertical}
                             onChangeColor={(newColor) =>
-                                setAttributes({ shadowColor: newColor.hex })
+                                saveFancyStyle({ shadowColor: newColor.hex })
                             }
                             onChangeBlur={(newBlur) =>
-                                setAttributes({ shadowBlur: newBlur })
+                                saveFancyStyle({ shadowBlur: newBlur })
                             }
                             onChangehHorizontal={(newValue) =>
-                                setAttributes({ shadowHorizontal: newValue })
+                                saveFancyStyle({ shadowHorizontal: newValue })
                             }
                             onChangeVertical={(newValue) =>
-                                setAttributes({ shadowVertical: newValue })
+                                saveFancyStyle({ shadowVertical: newValue })
                             }
                             onResetClick={onResetClickLabelTextShadow}
                         />
@@ -649,9 +712,9 @@ class edit extends Component {
                             <Fragment>
                                 <p>{__("Cursor Color")}</p>
                                 <ColorPalette
-                                    value={cursorColor}
+                                    value={fancyStyles[0].cursorColor}
                                     onChange={(newValue) =>
-                                        setAttributes({
+                                        saveFancyStyle({
                                             cursorColor: newValue,
                                         })
                                     }
@@ -667,9 +730,9 @@ class edit extends Component {
                     >
                         <p>{__("Color")}</p>
                         <ColorPalette
-                            value={textColor}
+                            value={PreStyles[0].textColor}
                             onChange={(newValue) =>
-                                setAttributes({
+                                savePrefixStyle({
                                     textColor: newValue,
                                 })
                             }
@@ -683,51 +746,52 @@ class edit extends Component {
                                 "upper",
                                 "spacing",
                             ]}
-                            setAttributes={setAttributes}
+                            setAttributes={savePrefixStyle}
                             fontSizeType={{
-                                value: textfontSizeUnit,
+                                value: PreStyles[0].textfontSizeUnit,
                                 label: __("textfontSizeUnit"),
                             }}
                             fontSize={{
-                                value: textfontSize,
+                                value: PreStyles[0].textfontSize,
                                 label: __("textfontSize"),
                             }}
                             fontSizeMobile={{
-                                value: textfontSizeMobile,
+                                value: PreStyles[0].textfontSizeMobile,
                                 label: __("textfontSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: textfontSizeTablet,
+                                value: PreStyles[0].textfontSizeTablet,
                                 label: __("textfontSizeTablet"),
                             }}
-                            weight={textWeight}
-                            style={textStyle}
-                            spacing={textLetter}
-                            upper={textUpper}
+                            weight={PreStyles[0].textWeight}
+                            style={PreStyles[0].textStyle}
+                            spacing={PreStyles[0].textLetter}
+                            upper={PreStyles[0].textUpper}
                             onChangeWeight={(newWeight) =>
-                                setAttributes({ textWeight: newWeight || 500 })
+                                savePrefixStyle({ textWeight: newWeight || 500 })
                             }
                             onChangeStyle={(newStyle) =>
-                                setAttributes({ textStyle: newStyle })
+                                savePrefixStyle({ textStyle: newStyle })
                             }
                             onChangeSpacing={(newValue) =>
-                                setAttributes({ textLetter: newValue })
+                                savePrefixStyle({ textLetter: newValue })
                             }
                             onChangeUpper={(check) =>
-                                setAttributes({ textUpper: check })
+                                savePrefixStyle({ textUpper: check })
                             }
                             onResetClick={onResetClickTextTypo}
                         />
                         <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
-                            colorValue={textBGColor}
+                            colorValue={PreStyles[0].textBGColor}
                             onChangeColor={newvalue =>
-                                setAttributes({ textBGColor: newvalue })
+                                savePrefixStyle({ textBGColor: newvalue })
                             }
-                            opacityValue={textBGOpacity}
+                            opacityValue={PreStyles[0].textBGOpacity}
                             onChangeOpacity={value =>
-                                setAttributes({ textBGOpacity: value })
+                                savePrefixStyle
+                                    ({ textBGOpacity: value })
                             }
                         />
                     </PanelBody>
@@ -785,47 +849,54 @@ class edit extends Component {
                         </span>
                     </div>
                 ) : (
+                    <div
+                        className={`premium-fancy-text premium-fancy-slide`}
+                        style={{
+                            textAlign: align,
+                        }}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map(
+                            (item, index) => {
+                                return item.title;
+                            }
+                        )}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
+                    >
+                        <span className={`premium-fancy-text-prefix-text`}>
+                            {prefix}{" "}
+                        </span>
                         <div
-                            className={`premium-fancy-text premium-fancy-slide`}
+                            className={`premium-fancy-text-title-slide`}
                             style={{
-                                textAlign: align,
+                                textAlign: fancyalign,
                             }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
                         >
-                            <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}{" "}
-                            </span>
-                            <div
-                                className={`premium-fancy-text-title-slide`}
-                                style={{
-                                    textAlign: fancyalign,
-                                }}
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
                             >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
-                                >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
-                            </div>
-                            <span className={`premium-fancy-text-suffix-text`}>
-                                {" "}
-                                {suffix}
-                            </span>
+                                {repeaterFancyText.map((item, index) => {
+                                    return <li>{item.title}</li>;
+                                })}
+                            </ul>
                         </div>
-                    )}
+                        <span className={`premium-fancy-text-suffix-text`}>
+                            {" "}
+                            {suffix}
+                        </span>
+                    </div>
+                )}
             </div>,
         ];
     }
 }
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

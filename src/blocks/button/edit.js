@@ -7,8 +7,8 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
-import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+
 
 const { __ } = wp.i18n;
 
@@ -31,28 +31,35 @@ const {
     URLInput,
 } = wp.blockEditor;
 
-export default class edit extends Component {
+const { withSelect } = wp.data
+
+
+export class edit extends Component {
 
     constructor() {
         super(...arguments);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
-    componentDidMount() {
-        this.props.setAttributes({ classMigrate: true });
 
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-button-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
-    }
     render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
 
         const {
-            block_id,
             borderButton,
             btnText,
             btnSize,
@@ -61,45 +68,18 @@ export default class edit extends Component {
             btnTarget,
             effect,
             effectDir,
-            textColor,
-            textHoverColor,
-            backColor,
-            backOpacity,
-            backHoverColor,
             slideColor,
-            textSizeUnit,
-            textSize,
-            textSizeTablet,
-            textSizeMobile,
-            textFontFamily,
-            textWeight,
-            textLetter,
-            textUpper,
-            textLine,
-            textStyle,
-            borderType,
+            block_id,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
             borderWidth,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            borderRadius,
-            borderColor,
-            borderHoverColor,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            padding,
-            paddingU,
-            btnShadowBlur,
-            btnShadowColor,
-            btnShadowHorizontal,
-            btnShadowVertical,
-            btnShadowPosition,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            textStyles,
+            btnStyles
         } = this.props.attributes;
 
         const SIZE = [
@@ -202,16 +182,16 @@ export default class edit extends Component {
         ];
 
         const onChangeHover = newValue => {
-            props.setAttributes({ effect: newValue });
+            this.props.setAttributes({ effect: newValue });
             switch (newValue) {
                 case "slide":
-                    props.setAttributes({ effectDir: "top" });
+                    this.props.setAttributes({ effectDir: "top" });
                     break;
                 case "shutter":
-                    props.setAttributes({ effectDir: "shutouthor" });
+                    this.props.setAttributes({ effectDir: "shutouthor" });
                     break;
                 case "radial":
-                    props.setAttributes({ effectDir: "radialin" });
+                    this.props.setAttributes({ effectDir: "radialin" });
                     break;
             }
         };
@@ -229,23 +209,39 @@ export default class edit extends Component {
         };
 
         const onChangeTextFamily = fontFamily => {
-            setAttributes({ textFontFamily: fontFamily });
+            saveTextStyles({ textFontFamily: fontFamily });
             if (!fontFamily) {
                 return;
             }
 
             addFontToHead(fontFamily);
         };
+        const saveTextStyles = (value) => {
+            const newUpdate = textStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                textStyles: newUpdate,
+            });
+        }
+        const saveBtnStyles = (value) => {
+            const newUpdate = btnStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                btnStyles: newUpdate,
+            });
+        }
 
         const mainClasses = classnames(className, "premium-button");
 
-        var element = document.getElementById(
-            "premium-style-button-" + blockId.substr(0, 6)
-        );
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
+        const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
 
         return [
             isSelected && "block" != btnSize && (
@@ -312,62 +308,62 @@ export default class edit extends Component {
                     >
                         <SelectControl
                             label={__("Font Family")}
-                            value={textFontFamily}
+                            value={textStyles[0].textFontFamily}
                             options={FONTS}
                             onChange={onChangeTextFamily}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveTextStyles}
                             fontSizeType={{
-                                value: textSizeUnit,
+                                value: textStyles[0].textSizeUnit,
                                 label: __("textSizeUnit"),
                             }}
                             fontSize={{
-                                value: textSize,
+                                value: textStyles[0].textSize,
                                 label: __("textSize"),
                             }}
                             fontSizeMobile={{
-                                value: textSizeMobile,
+                                value: textStyles[0].textSizeMobile,
                                 label: __("textSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: textSizeTablet,
+                                value: textStyles[0].textSizeTablet,
                                 label: __("textSizeTablet"),
                             }}
-                            weight={textWeight}
-                            style={textStyle}
-                            spacing={textLetter}
-                            upper={textUpper}
-                            line={textLine}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeSizeTablet={newSize => setAttributes({ textSizeTablet: newSize })}
-                            onChangeSizeMobile={newSize => setAttributes({ textSizeMobile: newSize })}
+                            weight={textStyles[0].textWeight}
+                            style={textStyles[0].textStyle}
+                            spacing={textStyles[0].textLetter}
+                            upper={textStyles[0].textUpper}
+                            line={textStyles[0].textLine}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeSizeTablet={newSize => saveTextStyles({ textSizeTablet: newSize })}
+                            onChangeSizeMobile={newSize => saveTextStyles({ textSizeMobile: newSize })}
                             onChangeWeight={newWeight =>
-                                setAttributes({ textWeight: newWeight })
+                                saveTextStyles({ textWeight: newWeight })
                             }
-                            onChangeLine={newValue => setAttributes({ textLine: newValue })}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
+                            onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
                             onChangeSpacing={newValue =>
-                                setAttributes({ textLetter: newValue })
+                                saveTextStyles({ textLetter: newValue })
                             }
-                            onChangeUpper={check => setAttributes({ textUpper: check })}
+                            onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
                         <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
+                            color={textStyles[0].shadowColor}
+                            blur={textStyles[0].shadowBlur}
+                            horizontal={textStyles[0].shadowHorizontal}
+                            vertical={textStyles[0].shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ shadowColor: newColor.hex })
+                                saveTextStyles({ shadowColor: newColor.hex })
                             }
-                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
+                            onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
-                                setAttributes({ shadowHorizontal: newValue })
+                                saveTextStyles({ shadowHorizontal: newValue })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({ shadowVertical: newValue })
+                                saveTextStyles({ shadowVertical: newValue })
                             }
                         />
                     </PanelBody>
@@ -400,9 +396,9 @@ export default class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={textColor}
+                                                value={btnStyles[0].textColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         textColor: newValue,
                                                     })
                                                 }
@@ -415,15 +411,15 @@ export default class edit extends Component {
                                             </p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={backColor}
+                                                colorValue={btnStyles[0].backColor}
                                                 onChangeColor={newvalue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backColor: newvalue,
                                                     })
                                                 }
-                                                opacityValue={backOpacity}
+                                                opacityValue={btnStyles[0].backOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backOpacity: value,
                                                     })
                                                 }
@@ -436,9 +432,9 @@ export default class edit extends Component {
                                         <Fragment>
                                             <p>{__("Text Hover Color")}</p>
                                             <ColorPalette
-                                                value={textHoverColor}
+                                                value={btnStyles[0].textHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         textHoverColor: newValue,
                                                     })
                                                 }
@@ -450,9 +446,9 @@ export default class edit extends Component {
                                                     : __("Background Color")}
                                             </p>
                                             <ColorPalette
-                                                value={backHoverColor}
+                                                value={btnStyles[0].backHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
                                                     })
@@ -461,9 +457,9 @@ export default class edit extends Component {
                                             />
                                             <p>{__("Border Hover Color")}</p>
                                             <ColorPalette
-                                                value={borderHoverColor}
+                                                value={btnStyles[0].borderHoverColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         borderHoverColor: newValue,
                                                     })
                                                 }
@@ -481,15 +477,15 @@ export default class edit extends Component {
                             }}
                         </TabPanel>
                         <PremiumBorder
-                            borderType={borderType}
+                            borderType={btnStyles[0].borderType}
                             borderWidth={borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={btnStyles[0].borderColor}
+                            borderRadius={btnStyles[0].borderRadius}
+                            onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderButton: true,
@@ -500,54 +496,54 @@ export default class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveBtnStyles({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveBtnStyles({ borderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
                             label="Shadow"
                             inner={true}
-                            color={btnShadowColor}
-                            blur={btnShadowBlur}
-                            horizontal={btnShadowHorizontal}
-                            vertical={btnShadowVertical}
-                            position={btnShadowPosition}
+                            color={btnStyles[0].btnShadowColor}
+                            blur={btnStyles[0].btnShadowBlur}
+                            horizontal={btnStyles[0].btnShadowHorizontal}
+                            vertical={btnStyles[0].btnShadowVertical}
+                            position={btnStyles[0].btnShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowBlur: newBlur === undefined ? 0 : newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowHorizontal: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowVertical: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveBtnStyles({
                                     btnShadowPosition: newValue === undefined ? 0 : newValue
                                 })
                             }
                         />
                         <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
+                            onChangeSizeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
                         />
                         <RangeControl
                             label={__("Padding")}
-                            value={padding}
-                            onChange={newValue => setAttributes({ padding: newValue })}
+                            value={btnStyles[0].padding}
+                            onChange={newValue => saveBtnStyles({ padding: newValue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -569,11 +565,11 @@ export default class edit extends Component {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#premium-button-wrap-${block_id} .premium-button:hover {`,
-                            `color: ${textHoverColor} !important;`,
-                            `border-color: ${borderHoverColor} !important;`,
+                            `color: ${btnStyles[0].textHoverColor} !important;`,
+                            `border-color: ${btnStyles[0].borderHoverColor} !important;`,
                             "}",
                             `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
-                            `background-color: ${backHoverColor} !important;`,
+                            `background-color: ${btnStyles[0].backHoverColor} !important;`,
                             "}",
                             `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
                             `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
@@ -588,25 +584,26 @@ export default class edit extends Component {
                     value={btnText}
                     onChange={value => setAttributes({ btnText: value })}
                     style={{
-                        color: textColor,
-                        backgroundColor: backColor
-                            ? hexToRgba(backColor, backOpacity)
+                        color: btnStyles[0].textColor,
+                        backgroundColor: btnStyles[0].backColor
+                            ? hexToRgba(btnStyles[0].backColor, btnStyles[0].backOpacity)
                             : "transparent",
-                        fontFamily: textFontFamily,
-                        letterSpacing: textLetter + "px",
-                        textTransform: textUpper ? "uppercase" : "none",
-                        fontStyle: textStyle,
-                        lineHeight: textLine + "px",
-                        fontWeight: textWeight,
-                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-                        padding: padding + paddingU,
-                        borderStyle: borderType,
+                        fontFamily: textStyles[0].textFontFamily,
+                        letterSpacing: textStyles[0].textLetter + "px",
+                        fontSize: btnFontSize + textStyles[0].textSizeUnit,
+                        textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                        fontStyle: textStyles[0].textStyle,
+                        lineHeight: textStyles[0].textLine + "px",
+                        fontWeight: textStyles[0].textWeight,
+                        textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
+                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
+                        padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                        borderStyle: btnStyles[0].borderType,
                         borderWidth: borderButton
                             ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                             : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
-                        borderColor: borderColor
+                        borderRadius: btnStyles[0].borderRadius + "px",
+                        borderColor: btnStyles[0].borderColor
                     }}
                     keepPlaceholderOnFocus
                 />
@@ -619,3 +616,11 @@ export default class edit extends Component {
     }
 };
 
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
