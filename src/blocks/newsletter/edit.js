@@ -334,7 +334,6 @@ export class edit extends Component {
             });
         }
 
-        console.log(mailchimp)
         return [
             isSelected && (
                 <InspectorControls key="inspector">

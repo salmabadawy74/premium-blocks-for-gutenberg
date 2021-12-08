@@ -234,11 +234,11 @@ class PBG_Ajax_Form {
 						$error_message = $response->get_error_message();
 					} else {
 						if ( ! isset( $response['response'] ) || ! isset( $response['response']['code'] ) ) {
-							$success = false;
+
 							return;
 						}
 						if ( 400 === $response['response']['code'] || 404 === $response['response']['code'] ) {
-							$success = false;
+
 							return;
 						} elseif ( 200 === $response['response']['code'] ) {
 							$success = true;

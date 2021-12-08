@@ -28,6 +28,8 @@ const {
 } = wp.components;
 
 const { Fragment, Component } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     BlockControls,
@@ -45,37 +47,68 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-
         setAttributes({ block_id: clientId })
-
-        setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-iconBox-" + clientId
-        );
-        document.head.appendChild($style);
-
     }
 
     render() {
 
         const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
 
+        const saveContainerStyle = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                containerStyles: newUpdate,
+            });
+        }
+        const saveTitleStyle = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+
+        const saveButtonStyle = (value) => {
+            const newUpdate = btnStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                btnStyles: newUpdate,
+            });
+        }
+        const saveDescriptionStyle = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        }
         const {
             block_id,
             borderIconBox,
             btnBorderIconBox,
             align,
-            iconChecked,
             iconImage,
             iconImgId,
             iconImgUrl,
-            iconType,
-            selectedIcon,
             hoverEffect,
+            iconChecked,
             iconPos,
             iconHPos,
             iconVPos,
@@ -83,92 +116,42 @@ class edit extends Component {
             iconRadius,
             iconColor,
             iconBackColor,
-            iconOpacity,
+            selectedIcon,
             titleChecked,
             titleText,
-            titleTag,
-            titleColor,
-            titleFont,
-            titleSizeUnit,
-            titleSize,
-            titleSizeTablet,
-            titleSizeMobile,
-            titleLine,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleShadowBlur,
-            titleShadowColor,
-            titleShadowHorizontal,
-            titleShadowVertical,
-            titleMarginT,
-            titleMarginB,
-            descChecked,
             descText,
-            descColor,
-            descFont,
-            descSizeUnit,
-            descSize,
-            descSizeTablet,
-            descSizeMobile,
-            descLine,
-            descWeight,
-            descMarginT,
-            descMarginB,
+            descChecked,
             btnChecked,
             btnEffect,
             effectDir,
             btnTarget,
             btnText,
             btnLink,
-            btnSizeUnit,
-            btnSize,
-            btnSizeTablet,
-            btnSizeMobile,
-            btnUpper,
-            btnWeight,
-            btnLetter,
-            btnColor,
-            btnStyle,
-            btnHoverColor,
-            btnBack,
-            btnOpacity,
-            btnHoverBack,
             btnHoverBorder,
-            btnBorderColor,
+            classMigrate,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            iconOpacity,
+            titleStyles,
+            descStyles,
+            btnStyles,
+            containerStyles,
+            titleMarginT,
+            titleMarginB,
+            descMarginT,
+            descMarginB,
             btnBorderWidth,
             btnBorderTop,
             btnBorderRight,
             btnBorderBottom,
             btnBorderLeft,
-            btnBorderRadius,
-            btnBorderType,
-            btnPadding,
-            btnPaddingU,
-            btnMarginT,
-            btnMarginB,
-            btnShadowBlur,
-            btnShadowColor,
-            btnShadowHorizontal,
-            btnShadowVertical,
-            btnShadowPosition,
-            imageID,
-            imageURL,
-            fixed,
-            backColor,
-            backOpacity,
-            backgroundRepeat,
-            backgroundPosition,
-            backgroundSize,
-            borderType,
-            borderWidth,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            borderRadius,
-            borderColor,
+            btnMarginT,
+            btnMarginB,
             marginT,
             marginR,
             marginB,
@@ -177,20 +160,7 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
-            paddingU,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            shadowPosition,
-            hoverShadowBlur,
-            hoverShadowColor,
-            hoverShadowHorizontal,
-            hoverShadowVertical,
-            hoverShadowPosition,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            iconType
         } = attributes;
 
         const imgIcon = [
@@ -332,15 +302,6 @@ class edit extends Component {
 
             addFontToHead(fontFamily);
         };
-
-        let element = document.getElementById(
-            "premium-style-iconBox-" + blockId
-        );
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
-
         const mainClasses = classnames(className, "premium-icon-box");
 
         return [
@@ -480,14 +441,14 @@ class edit extends Component {
                             <Toolbar
                                 controls={"123456".split("").map(tag => ({
                                     icon: "heading",
-                                    isActive: "H" + tag === titleTag,
-                                    onClick: () => setAttributes({ titleTag: "H" + tag }),
+                                    isActive: "H" + tag === titleStyles[0].titleTag,
+                                    onClick: () => saveTitleStyle({ titleTag: "H" + tag }),
                                     subscript: tag
                                 }))}
                             />
                             <SelectControl
                                 label={__("Font Family")}
-                                value={titleFont}
+                                value={titleStyles[0].titleFont}
                                 options={FONTS}
                                 onChange={onChangeTitleFamily}
                             />
@@ -500,58 +461,58 @@ class edit extends Component {
                                     "spacing",
                                     "line"
                                 ]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveTitleStyle}
                                 fontSizeType={{
-                                    value: titleSizeUnit,
+                                    value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: titleSize,
+                                    value: titleStyles[0].titleSize,
                                     label: __("titleSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: titleSizeMobile,
+                                    value: titleStyles[0].titleSizeMobile,
                                     label: __("titleSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: titleSizeTablet,
+                                    value: titleStyles[0].titleSizeTablet,
                                     label: __("titleSizeTablet"),
                                 }}
-                                weight={titleWeight}
-                                style={titleStyle}
-                                spacing={titleLetter}
-                                line={titleLine}
-                                upper={titleUpper}
+                                weight={titleStyles[0].titleWeight}
+                                style={titleStyles[0].titleStyle}
+                                spacing={titleStyles[0].titleLetter}
+                                line={titleStyles[0].titleLine}
+                                upper={titleStyles[0].titleUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight || 500 })
+                                    saveTitleStyle({ titleWeight: newWeight || 500 })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
+                                    saveTitleStyle({ titleStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ titleLetter: newValue })
+                                    saveTitleStyle({ titleLetter: newValue })
                                 }
-                                onChangeLine={newValue => setAttributes({ titleLine: newValue })}
-                                onChangeUpper={check => setAttributes({ titleUpper: check })}
+                                onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
+                                onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                             />
                             <PremiumTextShadow
-                                color={titleShadowColor}
-                                blur={titleShadowBlur}
-                                horizontal={titleShadowHorizontal}
-                                vertical={titleShadowVertical}
+                                color={titleStyles[0].titleShadowColor}
+                                blur={titleStyles[0].titleShadowBlur}
+                                horizontal={titleStyles[0].titleShadowHorizontal}
+                                vertical={titleStyles[0].titleShadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({
+                                    saveTitleStyle({
                                         titleShadowColor: newColor.hex || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
-                                    setAttributes({ titleShadowBlur: newBlur || 0 })
+                                    saveTitleStyle({ titleShadowBlur: newBlur || 0 })
                                 }
                                 onChangehHorizontal={newValue =>
-                                    setAttributes({ titleShadowHorizontal: newValue || 0 })
+                                    saveTitleStyle({ titleShadowHorizontal: newValue || 0 })
                                 }
                                 onChangeVertical={newValue =>
-                                    setAttributes({ titleShadowVertical: newValue || 0 })
+                                    saveTitleStyle({ titleShadowVertical: newValue || 0 })
                                 }
                             />
                             <PremiumMargin
@@ -579,35 +540,35 @@ class edit extends Component {
                         >
                             <SelectControl
                                 label={__("Font Family")}
-                                value={descFont}
+                                value={descStyles[0].descFont}
                                 options={FONTS}
                                 onChange={onChangeDescFamily}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "line"]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
-                                    value: descSizeUnit,
+                                    value: descStyles[0].descSizeUnit,
                                     label: __("descSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: descSize,
+                                    value: descStyles[0].descSize,
                                     label: __("descSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: descSizeMobile,
+                                    value: descStyles[0].descSizeMobile,
                                     label: __("descSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: descSizeTablet,
+                                    value: descStyles[0].descSizeTablet,
                                     label: __("descSizeTablet"),
                                 }}
-                                weight={descWeight}
-                                line={descLine}
+                                weight={descStyles[0].descWeight}
+                                line={descStyles[0].descLine}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ descWeight: newWeight || 500 })
+                                    saveDescriptionStyle({ descWeight: newWeight || 500 })
                                 }
-                                onChangeLine={newValue => setAttributes({ descLine: newValue })}
+                                onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
@@ -655,46 +616,46 @@ class edit extends Component {
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "style", "upper", "spacing"]}
 
-                                setAttributes={setAttributes}
+                                setAttributes={saveButtonStyle}
                                 fontSizeType={{
-                                    value: btnSizeUnit,
+                                    value: btnStyles[0].btnSizeUnit,
                                     label: __("btnSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: btnSize,
+                                    value: btnStyles[0].btnSize,
                                     label: __("btnSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: btnSizeMobile,
+                                    value: btnStyles[0].btnSizeMobile,
                                     label: __("btnSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: btnSizeTablet,
+                                    value: btnStyles[0].btnSizeTablet,
                                     label: __("btnSizeTablet"),
                                 }}
-                                weight={btnWeight}
-                                style={btnStyle}
-                                spacing={btnLetter}
-                                upper={btnUpper}
+                                weight={btnStyles[0].btnWeight}
+                                style={btnStyles[0].btnStyle}
+                                spacing={btnStyles[0].btnLetter}
+                                upper={btnStyles[0].btnUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ btnWeight: newWeight || 500 })
+                                    saveButtonStyle({ btnWeight: newWeight || 500 })
                                 }
-                                onChangeStyle={newStyle => setAttributes({ btnStyle: newStyle })}
+                                onChangeStyle={newStyle => saveButtonStyle({ btnStyle: newStyle })}
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ btnLetter: newValue })
+                                    saveButtonStyle({ btnLetter: newValue })
                                 }
-                                onChangeUpper={check => setAttributes({ btnUpper: check })}
+                                onChangeUpper={check => saveButtonStyle({ btnUpper: check })}
                             />
 
                             <PremiumBorder
-                                borderType={btnBorderType}
+                                borderType={btnStyles[0].btnBorderType}
                                 borderWidth={btnBorderWidth}
                                 top={btnBorderTop}
                                 right={btnBorderRight}
                                 bottom={btnBorderBottom}
                                 left={btnBorderLeft}
-                                borderColor={btnBorderColor}
-                                borderRadius={btnBorderRadius}
+                                borderColor={btnStyles[0].btnBorderColor}
+                                borderRadius={btnStyles[0].btnBorderRadius}
                                 onChangeType={(newType) =>
                                     setAttributes({ btnBorderType: newType })
                                 }
@@ -716,46 +677,46 @@ class edit extends Component {
                             />
                             <PremiumBoxShadow
                                 inner={true}
-                                color={btnShadowColor}
-                                blur={btnShadowBlur}
-                                horizontal={btnShadowHorizontal}
-                                vertical={btnShadowVertical}
-                                position={btnShadowPosition}
+                                color={btnStyles[0].btnShadowColor}
+                                blur={btnStyles[0].btnShadowBlur}
+                                horizontal={btnStyles[0].btnShadowHorizontal}
+                                vertical={btnStyles[0].btnShadowVertical}
+                                position={btnStyles[0].btnShadowPosition}
                                 onChangeColor={newColor =>
-                                    setAttributes({
+                                    saveButtonStyle({
                                         btnShadowColor: newColor.hex || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
-                                    setAttributes({
+                                    saveButtonStyle({
                                         btnShadowBlur: newBlur || 0
                                     })
                                 }
                                 onChangehHorizontal={newValue =>
-                                    setAttributes({
+                                    saveButtonStyle({
                                         btnShadowHorizontal: newValue || 0
                                     })
                                 }
                                 onChangeVertical={newValue =>
-                                    setAttributes({
+                                    saveButtonStyle({
                                         btnShadowVertical: newValue || 0
                                     })
                                 }
                                 onChangePosition={newValue =>
-                                    setAttributes({
+                                    saveButtonStyle({
                                         btnShadowPosition: newValue || 0
                                     })
                                 }
                             />
                             <PremiumSizeUnits
                                 onChangeSizeUnit={newValue =>
-                                    setAttributes({ btnPaddingU: newValue })
+                                    saveButtonStyle({ btnPaddingU: newValue })
                                 }
                             />
                             <RangeControl
                                 label={__("Padding")}
-                                value={btnPadding}
-                                onChange={newValue => setAttributes({ btnPadding: newValue })}
+                                value={btnStyles[0].btnPadding}
+                                onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
@@ -781,42 +742,42 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumBackground
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].imageID}
+                            imageURL={containerStyles[0].imageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveContainerStyle({
                                     imageID: media.id,
                                     imageURL: media.url
                                 });
                             }}
                             onRemoveImage={value =>
-                                setAttributes({ imageURL: "", imageID: "" })
+                                saveContainerStyle({ imageURL: "", imageID: "" })
                             }
                             onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
+                                saveContainerStyle({ backgroundPosition: newValue })
                             }
                             onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
+                                saveContainerStyle({ backgroundRepeat: newValue })
                             }
                             onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
+                                saveContainerStyle({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
+                            borderType={containerStyles[0].borderType}
+                            borderWidth={containerStyles[0].borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={containerStyles[0].borderColor}
+                            borderRadius={containerStyles[0].borderRadius}
+                            onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderIconBox: true,
@@ -827,41 +788,41 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveContainerStyle({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveContainerStyle({ borderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
+                            color={containerStyles[0].shadowColor}
+                            blur={containerStyles[0].shadowBlur}
+                            horizontal={containerStyles[0].shadowHorizontal}
+                            vertical={containerStyles[0].shadowVertical}
+                            position={containerStyles[0].shadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowColor: newColor.hex || "transparent"
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowBlur: newBlur || 0
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowHorizontal: newValue || 0
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowVertical: newValue || 0
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowPosition: newValue
                                 })
                             }
@@ -869,33 +830,33 @@ class edit extends Component {
                         <PremiumBoxShadow
                             inner={true}
                             label={__("Hover Box Shadow")}
-                            color={hoverShadowColor}
-                            blur={hoverShadowBlur}
-                            horizontal={hoverShadowHorizontal}
-                            vertical={hoverShadowVertical}
-                            position={hoverShadowPosition}
+                            color={containerStyles[0].hoverShadowColor}
+                            blur={containerStyles[0].hoverShadowBlur}
+                            horizontal={containerStyles[0].hoverShadowHorizontal}
+                            vertical={containerStyles[0].hoverShadowVertical}
+                            position={containerStyles[0].hoverShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveContainerStyle({
                                     hoverShadowColor: newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveContainerStyle({
                                     hoverShadowBlur: newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     hoverShadowHorizontal: newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     hoverShadowVertical: newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     hoverShadowPosition: newValue
                                 })
                             }
@@ -953,9 +914,9 @@ class edit extends Component {
                                     paddingL: value || 0
                                 })
                             }
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                saveContainerStyle({ paddingU: newvalue })
                             }
                         />
                     </PanelBody>
@@ -1019,9 +980,9 @@ class edit extends Component {
                                                 <Fragment>
                                                     <p>{__("Tile Color")}</p>
                                                     <ColorPalette
-                                                        value={titleColor}
+                                                        value={titleStyles[0].titleColor}
                                                         onChange={newValue =>
-                                                            setAttributes({
+                                                            saveTitleStyle({
                                                                 titleColor: newValue || "transparent",
                                                             })
                                                         }
@@ -1033,9 +994,9 @@ class edit extends Component {
                                                 <Fragment>
                                                     <p>{__("Descreption Color")}</p>
                                                     <ColorPalette
-                                                        value={descColor}
+                                                        value={descStyles[0].descColor}
                                                         onChange={newValue =>
-                                                            setAttributes({
+                                                            saveDescriptionStyle({
                                                                 descColor: newValue || "transparent",
                                                             })
                                                         }
@@ -1047,9 +1008,9 @@ class edit extends Component {
                                                 <Fragment>
                                                     <p>{__("Button Color")}</p>
                                                     <ColorPalette
-                                                        value={btnColor}
+                                                        value={btnStyles[0].btnColor}
                                                         onChange={newValue =>
-                                                            setAttributes({
+                                                            saveButtonStyle({
                                                                 btnColor: newValue || "#000",
                                                             })
                                                         }
@@ -1058,15 +1019,15 @@ class edit extends Component {
                                                     <p>{__("Button Background Color")}</p>
                                                     <PremiumBackground
                                                         type="color"
-                                                        colorValue={btnBack}
+                                                        colorValue={btnStyles[0].btnBack}
                                                         onChangeColor={newvalue =>
-                                                            setAttributes({
+                                                            saveButtonStyle({
                                                                 btnBack: newvalue,
                                                             })
                                                         }
-                                                        opacityValue={btnOpacity}
+                                                        opacityValue={btnStyles[0].btnOpacity}
                                                         onChangeOpacity={value =>
-                                                            setAttributes({
+                                                            saveButtonStyle({
                                                                 btnOpacity: value,
                                                             })
                                                         }
@@ -1077,13 +1038,13 @@ class edit extends Component {
                                             <p>{__(" Container Background Color")}</p>
                                             <PremiumBackground
                                                 type="color"
-                                                colorValue={backColor}
+                                                colorValue={containerStyles[0].backColor}
                                                 onChangeColor={newvalue =>
-                                                    setAttributes({ backColor: newvalue })
+                                                    saveContainerStyle({ backColor: newvalue })
                                                 }
-                                                opacityValue={backOpacity}
+                                                opacityValue={containerStyles[0].backOpacity}
                                                 onChangeOpacity={value =>
-                                                    setAttributes({ backOpacity: value })
+                                                    saveContainerStyle({ backOpacity: value })
                                                 }
                                             />
                                         </Fragment>
@@ -1096,9 +1057,9 @@ class edit extends Component {
                                                 <Fragment>
                                                     <p>{__("Button Hover Color")}</p>
                                                     <ColorPalette
-                                                        value={btnHoverColor}
+                                                        value={btnStyles[0].btnHoverColor}
                                                         onChange={newValue =>
-                                                            setAttributes({
+                                                            saveButtonStyle({
                                                                 btnHoverColor: newValue || "#000",
                                                             })
                                                         }
@@ -1107,9 +1068,9 @@ class edit extends Component {
 
                                                     <p>{__("Background Button Hover Color")}</p>
                                                     <ColorPalette
-                                                        value={btnHoverBack}
+                                                        value={btnStyles[0].btnHoverBack}
                                                         onChange={newValue =>
-                                                            setAttributes({
+                                                            saveButtonStyle({
                                                                 btnHoverBack: newValue,
                                                             })
                                                         }
@@ -1155,29 +1116,29 @@ class edit extends Component {
                 className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
-                    borderStyle: borderType,
+                    borderStyle: containerStyles[0].borderType,
                     borderWidth: borderIconBox
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                    backgroundColor: backColor
-                        ? hexToRgba(backColor, backOpacity)
-                        : "transparent",
-                    backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
+                        ? `${containerStyles[0].borderTop}px ${containerStyles[0].borderRight}px ${containerStyles[0].borderBottom}px ${containerStyles[0].borderLeft}px`
+                        : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor,
+                    marginTop: containerStyles[0].marginT,
+                    marginRight: containerStyles[0].marginR,
+                    marginBottom: containerStyles[0].marginB,
+                    marginLeft: containerStyles[0].marginL,
+                    paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                    paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                    paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                    paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
+                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                    // backgroundColor: containerStyles[0].backColor
+                    //     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
+                    //     : "transparent",
+                    backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
                 }}
             >
                 {btnChecked && btnText && (
@@ -1185,17 +1146,17 @@ class edit extends Component {
                         dangerouslySetInnerHTML={{
                             __html: [
                                 `#premium-icon-box-${block_id}:hover {`,
-                                `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
+                                `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                                `color: ${btnHoverColor} !important;`,
+                                `color: ${btnStyles[0].btnHoverColor} !important;`,
                                 `border-color: ${btnHoverBorder} !important;`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                                `background-color: ${btnHoverBack} !important;`,
+                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                                `background-color: ${btnHoverBack} !important;`,
+                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                                 "}"
                             ].join("\n")
                         }}
@@ -1248,25 +1209,25 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
+                                marginTop: titleStyles[0].titleMarginT,
+                                marginBottom: titleStyles[0].titleMarginB
                             }}
                         >
                             <RichText
-                                tagName={titleTag.toLowerCase()}
+                                tagName={titleStyles[0].titleTag.toLowerCase()}
                                 className={`premium-icon-box__title`}
                                 onChange={newText => setAttributes({ titleText: newText })}
                                 placeholder={__("Awesome Title")}
                                 value={titleText}
                                 style={{
-                                    color: titleColor,
-                                    fontFamily: titleFont,
-                                    letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyle,
-                                    fontWeight: titleWeight,
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                    lineHeight: titleLine + "px"
+                                    color: titleStyles[0].titleColor,
+                                    fontFamily: titleStyles[0].titleFont,
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    lineHeight: titleStyles[0].titleLine + "px"
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1276,8 +1237,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__desc_wrap`}
                             style={{
-                                marginTop: descMarginT,
-                                marginBottom: descMarginB
+                                marginTop: descStyles[0].descMarginT,
+                                marginBottom: descStyles[0].descMarginB
                             }}
                         >
                             <RichText
@@ -1288,10 +1249,10 @@ class edit extends Component {
                                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                 onChange={newText => setAttributes({ descText: newText })}
                                 style={{
-                                    color: descColor,
-                                    fontFamily: descFont,
-                                    lineHeight: descLine + "px",
-                                    fontWeight: descWeight
+                                    color: descStyles[0].descColor,
+                                    fontFamily: descStyles[0].descFont,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    fontWeight: descStyles[0].descWeight
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1301,8 +1262,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB
+                                marginTop: btnStyles[0].btnMarginT,
+                                marginBottom: btnStyles[0].btnMarginB
                             }}
                         >
                             <RichText
@@ -1312,22 +1273,22 @@ class edit extends Component {
                                 placeholder={__("Click Here")}
                                 value={btnText}
                                 style={{
-                                    color: btnColor,
-                                    backgroundColor: btnBack
-                                        ? hexToRgba(btnBack, btnOpacity)
+                                    color: btnStyles[0].btnColor,
+                                    backgroundColor: btnStyles[0].btnBack
+                                        ? hexToRgba(btnStyles[0].btnBack, btnStyles[0].btnOpacity)
                                         : "transparent",
-                                    letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper ? "uppercase" : "none",
-                                    fontStyle: btnStyle,
-                                    fontWeight: btnWeight,
-                                    borderStyle: btnBorderType,
+                                    letterSpacing: btnStyles[0].btnLetter + "px",
+                                    textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                    fontStyle: btnStyles[0].btnStyle,
+                                    fontWeight: btnStyles[0].btnWeight,
+                                    borderStyle: btnStyles[0].btnBorderType,
                                     borderWidth: btnBorderIconBox
-                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                        : btnBorderWidth + "px",
-                                    borderRadius: btnBorderRadius + "px",
-                                    borderColor: btnBorderColor,
-                                    padding: btnPadding + btnPaddingU,
-                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                                        ? `${btnStyles[0].btnBorderTop}px ${btnStyles[0].btnBorderRight}px ${btnStyles[0].btnBorderBottom}px ${btnStyles[0].btnBorderLeft}px`
+                                        : btnStyles[0].btnBorderWidth + "px",
+                                    borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                    borderColor: btnStyles[0].btnBorderColor,
+                                    padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                    boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1345,4 +1306,11 @@ class edit extends Component {
     }
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

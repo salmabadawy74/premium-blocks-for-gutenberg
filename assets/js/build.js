@@ -1023,11 +1023,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(241)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(243)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(242)();
+  module.exports = __webpack_require__(244)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -1062,100 +1062,6 @@ module.exports = root;
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function generateCSS(selectors, id) {
-    var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-
-    var styling_css = "";
-    var breakpoint = "";
-    var gen_styling_css = "";
-    var res_styling_css = "";
-
-    if (responsiveType == "tablet") {
-        breakpoint = PremiumBlocksSettings.tablet_breakpoint;
-    } else if (responsiveType == "mobile") {
-        breakpoint = PremiumBlocksSettings.mobile_breakpoint;
-    }
-
-    for (var i in selectors) {
-
-        var sel = selectors[i];
-        var css = "";
-
-        for (var j in sel) {
-
-            var checkString = true;
-
-            if (typeof sel[j] === "string" && sel[j].length === 0) {
-                checkString = false;
-            }
-
-            if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
-                continue;
-            }
-
-            if (typeof sel[j] != "undefined" && checkString) {
-                css += j + ": " + sel[j] + ";";
-            }
-        }
-
-        if (css.length !== 0) {
-            gen_styling_css += id;
-            gen_styling_css += i + "{";
-            gen_styling_css += css;
-            gen_styling_css += "}";
-        }
-    }
-
-    if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
-        res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
-        res_styling_css += gen_styling_css;
-        res_styling_css += "}";
-    }
-
-    if (isResponsive) {
-        return res_styling_css;
-    } else {
-        return gen_styling_css;
-    }
-}
-
-exports.default = generateCSS;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function generateCSSUnit(value, unit) {
-
-    var css = "";
-
-    if (typeof value != "undefined") {
-        css += value + unit;
-    }
-
-    return css;
-}
-
-exports.default = generateCSSUnit;
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1380,7 +1286,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1414,7 +1320,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1514,7 +1420,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1628,7 +1534,7 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1640,7 +1546,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -1850,7 +1756,7 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1897,7 +1803,7 @@ function PremiumSizeUnits(props) {
 }
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1910,13 +1816,107 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 /***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function generateCSS(selectors, id) {
+    var isResponsive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var responsiveType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+    var styling_css = "";
+    var breakpoint = "";
+    var gen_styling_css = "";
+    var res_styling_css = "";
+
+    if (responsiveType == "tablet") {
+        breakpoint = PremiumBlocksSettings.tablet_breakpoint;
+    } else if (responsiveType == "mobile") {
+        breakpoint = PremiumBlocksSettings.mobile_breakpoint;
+    }
+
+    for (var i in selectors) {
+
+        var sel = selectors[i];
+        var css = "";
+
+        for (var j in sel) {
+
+            var checkString = true;
+
+            if (typeof sel[j] === "string" && sel[j].length === 0) {
+                checkString = false;
+            }
+
+            if ('font-family' === j && typeof sel[j] != "undefined" && 'Default' === sel[j]) {
+                continue;
+            }
+
+            if (typeof sel[j] != "undefined" && checkString) {
+                css += j + ": " + sel[j] + ";";
+            }
+        }
+
+        if (css.length !== 0) {
+            gen_styling_css += id;
+            gen_styling_css += i + "{";
+            gen_styling_css += css;
+            gen_styling_css += "}";
+        }
+    }
+
+    if (isResponsive && typeof gen_styling_css !== "undefined" && gen_styling_css.length !== 0) {
+        res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {";
+        res_styling_css += gen_styling_css;
+        res_styling_css += "}";
+    }
+
+    if (isResponsive) {
+        return res_styling_css;
+    } else {
+        return gen_styling_css;
+    }
+}
+
+exports.default = generateCSS;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function generateCSSUnit(value, unit) {
+
+    var css = "";
+
+    if (typeof value != "undefined") {
+        css += value + unit;
+    }
+
+    return css;
+}
+
+exports.default = generateCSSUnit;
+
+/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(18);
 var core = __webpack_require__(10);
 var ctx = __webpack_require__(111);
 var hide = __webpack_require__(29);
@@ -2204,9 +2204,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(243);
+  module.exports = __webpack_require__(245);
 } else {
-  module.exports = __webpack_require__(246);
+  module.exports = __webpack_require__(248);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2277,7 +2277,7 @@ module.exports = function (it) {
 
 var store = __webpack_require__(72)('wks');
 var uid = __webpack_require__(52);
-var _Symbol = __webpack_require__(20).Symbol;
+var _Symbol = __webpack_require__(18).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -2774,15 +2774,15 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(279);
+var _edit = __webpack_require__(281);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(281);
+var _save = __webpack_require__(283);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(282);
+var _deprecated = __webpack_require__(284);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -3478,7 +3478,7 @@ module.exports = isArrayLike;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(15),
+var isArray = __webpack_require__(13),
     isSymbol = __webpack_require__(46);
 
 /** Used to match property names within property paths. */
@@ -3625,9 +3625,9 @@ function PremiumFilters(props) {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(250));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(252));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(255));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(257));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(105));
 
@@ -3661,7 +3661,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -4127,7 +4127,7 @@ module.exports = function (key) {
 
 
 var core = __webpack_require__(10);
-var global = __webpack_require__(20);
+var global = __webpack_require__(18);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 
@@ -4189,7 +4189,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(39);
-var dPs = __webpack_require__(337);
+var dPs = __webpack_require__(339);
 var enumBugKeys = __webpack_require__(73);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -4204,7 +4204,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(338).appendChild(iframe);
+  __webpack_require__(340).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4261,7 +4261,7 @@ exports.f = __webpack_require__(33);
 "use strict";
 
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(18);
 var core = __webpack_require__(10);
 var LIBRARY = __webpack_require__(51);
 var wksExt = __webpack_require__(79);
@@ -4855,7 +4855,7 @@ module.exports = baseGet;
 "use strict";
 
 
-var isArray = __webpack_require__(15),
+var isArray = __webpack_require__(13),
     isKey = __webpack_require__(61),
     stringToPath = __webpack_require__(197),
     toString = __webpack_require__(200);
@@ -5783,9 +5783,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(239);
+  module.exports = __webpack_require__(241);
 } else {
-  module.exports = __webpack_require__(240);
+  module.exports = __webpack_require__(242);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -5797,9 +5797,9 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(244);
+  module.exports = __webpack_require__(246);
 } else {
-  module.exports = __webpack_require__(245);
+  module.exports = __webpack_require__(247);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -6631,7 +6631,7 @@ var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactLifecyclesCompat = __webpack_require__(103);
 
-var _ChildMapping = __webpack_require__(256);
+var _ChildMapping = __webpack_require__(258);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -6970,7 +6970,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(317);
+var aFunction = __webpack_require__(319);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -7014,7 +7014,7 @@ module.exports = !__webpack_require__(23) && !__webpack_require__(31)(function (
 
 
 var isObject = __webpack_require__(30);
-var document = __webpack_require__(20).document;
+var document = __webpack_require__(18).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -7030,7 +7030,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(24);
 var toIObject = __webpack_require__(32);
-var arrayIndexOf = __webpack_require__(319)(false);
+var arrayIndexOf = __webpack_require__(321)(false);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -7107,11 +7107,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(332);
+var _iterator = __webpack_require__(334);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(343);
+var _symbol = __webpack_require__(345);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -7143,7 +7143,7 @@ var $export = __webpack_require__(21);
 var redefine = __webpack_require__(120);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(76);
-var $iterCreate = __webpack_require__(336);
+var $iterCreate = __webpack_require__(338);
 var setToStringTag = __webpack_require__(78);
 var getPrototypeOf = __webpack_require__(117);
 var ITERATOR = __webpack_require__(33)('iterator');
@@ -7276,33 +7276,33 @@ exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O
 
 __webpack_require__(124);
 
-__webpack_require__(217);
+__webpack_require__(218);
 
-__webpack_require__(222);
+__webpack_require__(223);
 
-__webpack_require__(227);
+__webpack_require__(228);
 
-__webpack_require__(232);
+__webpack_require__(233);
 
-__webpack_require__(237);
+__webpack_require__(239);
 
-__webpack_require__(259);
+__webpack_require__(261);
 
-__webpack_require__(264);
+__webpack_require__(266);
 
-__webpack_require__(265);
+__webpack_require__(267);
 
-__webpack_require__(270);
+__webpack_require__(272);
 
-__webpack_require__(274);
+__webpack_require__(276);
 
 __webpack_require__(48);
 
-__webpack_require__(283);
+__webpack_require__(285);
 
-__webpack_require__(308);
+__webpack_require__(310);
 
-__webpack_require__(364);
+__webpack_require__(366);
 
 /***/ }),
 /* 124 */
@@ -7325,7 +7325,11 @@ var _save = __webpack_require__(215);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(216);
+var _attributes = __webpack_require__(216);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+var _deprecated = __webpack_require__(217);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -7335,230 +7339,11 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var accordionAttrs = {
-    accordionId: {
-        type: "string"
-    },
-    repeaterItems: {
-        type: "array",
-        default: [{
-            titleText: __("Awesome Title"),
-            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }]
-    },
-    direction: {
-        type: "string",
-        default: "ltr"
-    },
-    titleTag: {
-        type: "string",
-        default: "H4"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleBorder: {
-        type: "string",
-        default: "none"
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleBorderTop: {
-        type: "number"
-    },
-    titleBorderRight: {
-        type: "number"
-    },
-    titleBorderBottom: {
-        type: "number"
-    },
-    titleBorderLeft: {
-        type: "number"
-    },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    titleBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderColor: {
-        type: "string"
-    },
-    titleBack: {
-        type: "string"
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
-    arrowColor: {
-        type: "string"
-    },
-    arrowBack: {
-        type: "string"
-    },
-    arrowPos: {
-        type: "string",
-        default: "out"
-    },
-    arrowPadding: {
-        type: "number"
-    },
-    arrowRadius: {
-        type: "number"
-    },
-    arrowSize: {
-        type: "number",
-        default: 20
-    },
-    contentType: {
-        type: "string",
-        default: "text"
-    },
-    descAlign: {
-        type: "string",
-        default: "left"
-    },
-    descColor: {
-        type: "string"
-    },
-    descBack: {
-        type: "string"
-    },
-    descBorder: {
-        type: "string",
-        default: "none"
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderTop: {
-        type: "number"
-    },
-    descBorderRight: {
-        type: "number"
-    },
-    descBorderBottom: {
-        type: "number"
-    },
-    descBorderLeft: {
-        type: "number"
-    },
-    titleEditBorder: {
-        type: "boolean"
-    },
-    descBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    descBorderColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descLetter: {
-        type: "number"
-    },
-    descStyle: {
-        type: "string"
-    },
-    descUpper: {
-        type: "boolean"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descPaddingT: {
-        type: "number"
-    },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    }
-};
-
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
     icon: React.createElement(_icons2.default, { icon: "accordion" }),
     category: "premium-blocks",
-    attributes: accordionAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.accordion
     },
@@ -7579,6 +7364,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _classnames = __webpack_require__(0);
@@ -7589,7 +7376,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -7597,7 +7384,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -7687,64 +7474,35 @@ var PremiumAccordion = function (_Component) {
                 repeaterItems = _props$attributes.repeaterItems,
                 direction = _props$attributes.direction,
                 titleTag = _props$attributes.titleTag,
-                titleColor = _props$attributes.titleColor,
-                titleSize = _props$attributes.titleSize,
-                titleLine = _props$attributes.titleLine,
-                titleLetter = _props$attributes.titleLetter,
-                titleStyle = _props$attributes.titleStyle,
-                titleUpper = _props$attributes.titleUpper,
-                titleWeight = _props$attributes.titleWeight,
-                titleBorder = _props$attributes.titleBorder,
+                titleStyles = _props$attributes.titleStyles,
+                arrowStyles = _props$attributes.arrowStyles,
+                descStyles = _props$attributes.descStyles,
+                contentType = _props$attributes.contentType,
+                titleEditBorder = _props$attributes.titleEditBorder,
+                textShadowColor = _props$attributes.textShadowColor,
+                textShadowBlur = _props$attributes.textShadowBlur,
+                textShadowHorizontal = _props$attributes.textShadowHorizontal,
+                textShadowVertical = _props$attributes.textShadowVertical,
                 titleBorderWidth = _props$attributes.titleBorderWidth,
                 titleBorderTop = _props$attributes.titleBorderTop,
                 titleBorderRight = _props$attributes.titleBorderRight,
                 titleBorderBottom = _props$attributes.titleBorderBottom,
                 titleBorderLeft = _props$attributes.titleBorderLeft,
-                titleBorderColor = _props$attributes.titleBorderColor,
-                titleBorderRadius = _props$attributes.titleBorderRadius,
-                titleBack = _props$attributes.titleBack,
-                titleShadowBlur = _props$attributes.titleShadowBlur,
-                titleShadowColor = _props$attributes.titleShadowColor,
-                titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-                titleShadowVertical = _props$attributes.titleShadowVertical,
+                titleBorderUpdated = _props$attributes.titleBorderUpdated,
                 titlePaddingT = _props$attributes.titlePaddingT,
                 titlePaddingR = _props$attributes.titlePaddingR,
                 titlePaddingB = _props$attributes.titlePaddingB,
                 titlePaddingL = _props$attributes.titlePaddingL,
-                arrowColor = _props$attributes.arrowColor,
-                arrowBack = _props$attributes.arrowBack,
-                arrowPos = _props$attributes.arrowPos,
-                arrowPadding = _props$attributes.arrowPadding,
-                arrowRadius = _props$attributes.arrowRadius,
-                arrowSize = _props$attributes.arrowSize,
-                contentType = _props$attributes.contentType,
-                descAlign = _props$attributes.descAlign,
-                descColor = _props$attributes.descColor,
-                descBack = _props$attributes.descBack,
-                descBorder = _props$attributes.descBorder,
-                descBorderColor = _props$attributes.descBorderColor,
-                descBorderRadius = _props$attributes.descBorderRadius,
                 descBorderWidth = _props$attributes.descBorderWidth,
+                descBorderUpdated = _props$attributes.descBorderUpdated,
                 descBorderTop = _props$attributes.descBorderTop,
                 descBorderRight = _props$attributes.descBorderRight,
                 descBorderBottom = _props$attributes.descBorderBottom,
                 descBorderLeft = _props$attributes.descBorderLeft,
-                descSize = _props$attributes.descSize,
-                descLine = _props$attributes.descLine,
-                descLetter = _props$attributes.descLetter,
-                descStyle = _props$attributes.descStyle,
-                descUpper = _props$attributes.descUpper,
-                descWeight = _props$attributes.descWeight,
-                textShadowBlur = _props$attributes.textShadowBlur,
-                textShadowColor = _props$attributes.textShadowColor,
-                textShadowHorizontal = _props$attributes.textShadowHorizontal,
-                textShadowVertical = _props$attributes.textShadowVertical,
                 descPaddingT = _props$attributes.descPaddingT,
                 descPaddingR = _props$attributes.descPaddingR,
                 descPaddingB = _props$attributes.descPaddingB,
-                descPaddingL = _props$attributes.descPaddingL,
-                titleBorderUpdated = _props$attributes.titleBorderUpdated,
-                descBorderUpdated = _props$attributes.descBorderUpdated;
+                descPaddingL = _props$attributes.descPaddingL;
 
 
             var DIRECTION = [{
@@ -7771,6 +7529,39 @@ var PremiumAccordion = function (_Component) {
                 label: __("Gutenberg Block")
             }];
 
+            var saveTitleStyles = function saveTitleStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
+            var saveArrowStyles = function saveArrowStyles(value) {
+                var newUpdate = arrowStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    arrowStyles: newUpdate
+                });
+            };
+            var SaveDescStyles = function SaveDescStyles(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    descStyles: newUpdate
+                });
+            };
             var ALIGNS = ["left", "center", "right"];
 
             var onAccordionChange = function onAccordionChange(attr, value, index) {
@@ -7797,13 +7588,13 @@ var PremiumAccordion = function (_Component) {
                     React.createElement(
                         "div",
                         {
-                            className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                            className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
                             style: {
-                                backgroundColor: titleBack,
-                                borderStyle: titleBorder,
+                                backgroundColor: titleStyles[0].titleBack,
+                                borderStyle: titleStyles[0].titleBorder,
                                 borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
-                                borderRadius: titleBorderRadius + "px",
-                                borderColor: titleBorderColor,
+                                borderRadius: titleStyles[0].titleBorderRadius + "px",
+                                borderColor: titleStyles[0].titleBorderColor,
                                 paddingTop: titlePaddingT,
                                 paddingRight: titlePaddingR,
                                 paddingBottom: titlePaddingB,
@@ -7824,14 +7615,14 @@ var PremiumAccordion = function (_Component) {
                                 placeholder: __("Awesome Title"),
                                 value: item.titleText,
                                 style: {
-                                    color: titleColor,
-                                    fontSize: titleSize + "px",
-                                    letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyle,
-                                    fontWeight: titleWeight,
-                                    textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                    lineHeight: titleLine + "px"
+                                    color: titleStyles[0].titleColor,
+                                    fontSize: titleStyles[0].titleSize + "px",
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                    lineHeight: titleStyles[0].titleLine + "px"
                                 }
                             })
                         ),
@@ -7845,14 +7636,14 @@ var PremiumAccordion = function (_Component) {
                                     role: "img",
                                     focusable: "false",
                                     xmlns: "http://www.w3.org/2000/svg",
-                                    width: arrowSize,
-                                    height: arrowSize,
+                                    width: arrowStyles[0].arrowSize,
+                                    height: arrowStyles[0].arrowSize,
                                     viewBox: "0 0 20 20",
                                     style: {
-                                        fill: arrowColor,
-                                        backgroundColor: arrowBack,
-                                        padding: arrowPadding + "px",
-                                        borderRadius: arrowRadius + "px"
+                                        fill: arrowStyles[0].arrowColor,
+                                        backgroundColor: arrowStyles[0].arrowBack,
+                                        padding: arrowStyles[0].arrowPadding + "px",
+                                        borderRadius: arrowStyles[0].arrowRadius + "px"
                                     }
                                 },
                                 React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
@@ -7864,12 +7655,12 @@ var PremiumAccordion = function (_Component) {
                         {
                             className: "premium-accordion__desc_wrap",
                             style: {
-                                textAlign: descAlign,
-                                backgroundColor: descBack,
-                                borderStyle: descBorder,
+                                textAlign: descStyles[0].descAlign,
+                                backgroundColor: descStyles[0].descBack,
+                                borderStyle: descStyles[0].descBorder,
                                 borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
-                                borderRadius: descBorderRadius + "px",
-                                borderColor: descBorderColor,
+                                borderRadius: descStyles[0].descBorderRadius + "px",
+                                borderColor: descStyles[0].descBorderColor,
                                 paddingTop: descPaddingT,
                                 paddingRight: descPaddingR,
                                 paddingBottom: descPaddingB,
@@ -7886,20 +7677,21 @@ var PremiumAccordion = function (_Component) {
                             },
                             value: item.descText,
                             style: {
-                                color: descColor,
-                                fontSize: descSize + "px",
-                                letterSpacing: descLetter + "px",
-                                textTransform: descUpper ? "uppercase" : "none",
+                                color: descStyles[0].descColor,
+                                fontSize: descStyles[0].descSize + "px",
+                                letterSpacing: descStyles[0].descLetter + "px",
+                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                 textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
-                                fontStyle: descStyle,
-                                fontWeight: descWeight,
-                                lineHeight: descLine + "px"
+                                fontStyle: descStyles[0].descStyle,
+                                fontWeight: descStyles[0].descWeight,
+                                lineHeight: descStyles[0].descLine + "px"
                             }
                         }),
                         "block" === contentType && React.createElement(InnerBlocks, { template: CONTENT })
                     )
                 );
             });
+
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: "inspector" },
@@ -7937,29 +7729,29 @@ var PremiumAccordion = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["size", "weight", "style", "upper", "spacing", "line"],
-                        size: titleSize,
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleLetter,
-                        line: titleLine,
-                        upper: titleUpper,
+                        size: titleStyles[0].titleSize,
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleLetter,
+                        line: titleStyles[0].titleLine,
+                        upper: titleStyles[0].titleUpper,
                         onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ titleSize: newSize });
+                            return saveTitleStyles({ titleSize: newSize });
                         },
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight });
+                            return saveTitleStyles({ titleWeight: newWeight });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
+                            return saveTitleStyles({ titleStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleLetter: newValue });
+                            return saveTitleStyles({ titleLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ titleLine: newValue });
+                            return saveTitleStyles({ titleLine: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
+                            return saveTitleStyles({ titleUpper: check });
                         }
                     }),
                     React.createElement(
@@ -7993,9 +7785,9 @@ var PremiumAccordion = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: titleColor,
+                                        value: titleStyles[0].titleColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveTitleStyles({
                                                 titleColor: newValue
                                             });
                                         },
@@ -8007,9 +7799,9 @@ var PremiumAccordion = function (_Component) {
                                         __("Background Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: titleBack,
+                                        value: titleStyles[0].titleBack,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveTitleStyles({
                                                 titleBack: newValue
                                             });
                                         },
@@ -8020,16 +7812,16 @@ var PremiumAccordion = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: titleBorder,
+                        borderType: titleStyles[0].titleBorder,
                         borderWidth: titleBorderWidth,
                         top: titleBorderTop,
                         right: titleBorderRight,
                         bottom: titleBorderBottom,
                         left: titleBorderLeft,
-                        borderColor: titleBorderColor,
-                        borderRadius: titleBorderRadius,
+                        borderColor: titleStyles[0].titleBorderColor,
+                        borderRadius: titleStyles[0].titleBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ titleBorder: newType });
+                            return saveTitleStyles({ titleBorder: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref2) {
                             var top = _ref2.top,
@@ -8045,28 +7837,28 @@ var PremiumAccordion = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ titleBorderColor: colorValue.hex });
+                            return saveTitleStyles({ titleBorderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ titleBorderRadius: newrRadius });
+                            return saveTitleStyles({ titleBorderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: titleShadowColor,
-                        blur: titleShadowBlur,
-                        horizontal: titleShadowHorizontal,
-                        vertical: titleShadowVertical,
+                        color: titleStyles[0].titleShadowColor,
+                        blur: titleStyles[0].titleShadowBlur,
+                        horizontal: titleStyles[0].titleShadowHorizontal,
+                        vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ titleShadowColor: newColor.hex });
+                            return saveTitleStyles({ titleShadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ titleShadowBlur: newBlur });
+                            return saveTitleStyles({ titleShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ titleShadowHorizontal: newValue });
+                            return saveTitleStyles({ titleShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ titleShadowVertical: newValue });
+                            return saveTitleStyles({ titleShadowVertical: newValue });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -8106,16 +7898,16 @@ var PremiumAccordion = function (_Component) {
                     React.createElement(SelectControl, {
                         label: __("Position"),
                         options: ARROW,
-                        value: arrowPos,
+                        value: arrowStyles[0].arrowPos,
                         onChange: function onChange(newEffect) {
-                            return setAttributes({ arrowPos: newEffect });
+                            return saveArrowStyles({ arrowPos: newEffect });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Size "),
-                        value: arrowSize,
+                        value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ arrowSize: newValue });
+                            return saveArrowStyles({ arrowSize: newValue });
                         }
                     }),
                     React.createElement(
@@ -8149,9 +7941,9 @@ var PremiumAccordion = function (_Component) {
                                         __("Arrow Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: arrowColor,
+                                        value: arrowStyles[0].arrowColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveArrowStyles({
                                                 arrowColor: newValue
                                             });
                                         },
@@ -8163,9 +7955,9 @@ var PremiumAccordion = function (_Component) {
                                         __("Background Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: arrowBack,
+                                        value: arrowStyles[0].arrowBack,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveArrowStyles({
                                                 arrowBack: newValue
                                             });
                                         },
@@ -8177,18 +7969,18 @@ var PremiumAccordion = function (_Component) {
                     ),
                     React.createElement(RangeControl, {
                         label: __("Border Radius (PX)"),
-                        value: arrowRadius,
+                        value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
+                            return saveArrowStyles({
                                 arrowRadius: newValue === undefined ? 0 : newValue
                             });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Padding (PX)"),
-                        value: arrowPadding,
+                        value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
+                            return saveArrowStyles({
                                 arrowPadding: newValue === undefined ? 0 : newValue
                             });
                         }
@@ -8214,9 +8006,9 @@ var PremiumAccordion = function (_Component) {
                         controls: ALIGNS.map(function (align) {
                             return {
                                 icon: "editor-align" + align,
-                                isActive: align === descAlign,
+                                isActive: align === descStyles[0].descAlign,
                                 onClick: function onClick() {
-                                    return setAttributes({ descAlign: align });
+                                    return SaveDescStyles({ descAlign: align });
                                 }
                             };
                         })
@@ -8226,29 +8018,29 @@ var PremiumAccordion = function (_Component) {
                         null,
                         React.createElement(_premiumTypo2.default, {
                             components: ["size", "weight", "style", "upper", "spacing", "line"],
-                            size: descSize,
-                            weight: descWeight,
-                            style: descStyle,
-                            spacing: descLetter,
-                            line: descLine,
-                            upper: descUpper,
+                            size: descStyles[0].descSize,
+                            weight: descStyles[0].descWeight,
+                            style: descStyles[0].descStyle,
+                            spacing: descStyles[0].descLetter,
+                            line: descStyles[0].descLine,
+                            upper: descStyles[0].descUpper,
                             onChangeSize: function onChangeSize(newSize) {
-                                return setAttributes({ descSize: newSize });
+                                return SaveDescStyles({ descSize: newSize });
                             },
                             onChangeWeight: function onChangeWeight(newWeight) {
-                                return setAttributes({ descWeight: newWeight });
+                                return SaveDescStyles({ descWeight: newWeight });
                             },
                             onChangeStyle: function onChangeStyle(newStyle) {
-                                return setAttributes({ descStyle: newStyle });
+                                return SaveDescStyles({ descStyle: newStyle });
                             },
                             onChangeSpacing: function onChangeSpacing(newValue) {
-                                return setAttributes({ descLetter: newValue });
+                                return SaveDescStyles({ descLetter: newValue });
                             },
                             onChangeLine: function onChangeLine(newValue) {
-                                return setAttributes({ descLine: newValue });
+                                return SaveDescStyles({ descLine: newValue });
                             },
                             onChangeUpper: function onChangeUpper(check) {
-                                return setAttributes({ descUpper: check });
+                                return SaveDescStyles({ descUpper: check });
                             }
                         }),
                         React.createElement(
@@ -8282,9 +8074,9 @@ var PremiumAccordion = function (_Component) {
                                             __("Text Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: descColor,
+                                            value: descStyles[0].descColor,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return SaveDescStyles({
                                                     descColor: newValue
                                                 });
                                             },
@@ -8296,9 +8088,9 @@ var PremiumAccordion = function (_Component) {
                                             __("Background Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: descBack,
+                                            value: descStyles[0].descBack,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return SaveDescStyles({
                                                     descBack: newValue
                                                 });
                                             },
@@ -8310,16 +8102,16 @@ var PremiumAccordion = function (_Component) {
                         )
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: descBorder,
+                        borderType: descStyles[0].descBorder,
                         borderWidth: descBorderWidth,
                         top: descBorderTop,
                         right: descBorderRight,
                         bottom: descBorderBottom,
                         left: descBorderLeft,
-                        borderColor: descBorderColor,
-                        borderRadius: descBorderRadius,
+                        borderColor: descStyles[0].descBorderColor,
+                        borderRadius: descStyles[0].descBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ descBorder: newType });
+                            return SaveDescStyles({ descBorder: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref5) {
                             var top = _ref5.top,
@@ -8335,10 +8127,10 @@ var PremiumAccordion = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ descBorderColor: colorValue.hex });
+                            return SaveDescStyles({ descBorderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ descBorderRadius: newrRadius });
+                            return SaveDescStyles({ descBorderRadius: newrRadius });
                         }
                     }),
                     "text" === contentType && React.createElement(_premiumTextShadow2.default, {
@@ -10692,7 +10484,7 @@ exports.default = PremiumResponsive;
 var arrayMap = __webpack_require__(82),
     baseIteratee = __webpack_require__(130),
     baseMap = __webpack_require__(209),
-    isArray = __webpack_require__(15);
+    isArray = __webpack_require__(13);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -10755,7 +10547,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var baseMatches = __webpack_require__(131),
     baseMatchesProperty = __webpack_require__(195),
     identity = __webpack_require__(205),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(13),
     property = __webpack_require__(206);
 
 /**
@@ -11715,7 +11507,7 @@ var Stack = __webpack_require__(83),
     equalByTag = __webpack_require__(167),
     equalObjects = __webpack_require__(171),
     getTag = __webpack_require__(189),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(13),
     isBuffer = __webpack_require__(91),
     isTypedArray = __webpack_require__(93);
 
@@ -12234,7 +12026,7 @@ module.exports = getAllKeys;
 
 
 var arrayPush = __webpack_require__(174),
-    isArray = __webpack_require__(15);
+    isArray = __webpack_require__(13);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -12393,7 +12185,7 @@ module.exports = stubArray;
 
 var baseTimes = __webpack_require__(179),
     isArguments = __webpack_require__(90),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(13),
     isBuffer = __webpack_require__(91),
     isIndex = __webpack_require__(92),
     isTypedArray = __webpack_require__(93);
@@ -13173,7 +12965,7 @@ module.exports = toString;
 
 var _Symbol = __webpack_require__(42),
     arrayMap = __webpack_require__(82),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(13),
     isSymbol = __webpack_require__(46);
 
 /** Used as references for various `Number` constants. */
@@ -13281,7 +13073,7 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(97),
     isArguments = __webpack_require__(90),
-    isArray = __webpack_require__(15),
+    isArray = __webpack_require__(13),
     isIndex = __webpack_require__(92),
     isLength = __webpack_require__(59),
     toKey = __webpack_require__(47);
@@ -13635,64 +13427,35 @@ var save = function save(props) {
         repeaterItems = _props$attributes.repeaterItems,
         direction = _props$attributes.direction,
         titleTag = _props$attributes.titleTag,
-        titleSize = _props$attributes.titleSize,
-        titleLine = _props$attributes.titleLine,
-        titleLetter = _props$attributes.titleLetter,
-        titleStyle = _props$attributes.titleStyle,
-        titleUpper = _props$attributes.titleUpper,
-        titleWeight = _props$attributes.titleWeight,
-        titleColor = _props$attributes.titleColor,
-        titleBorder = _props$attributes.titleBorder,
+        titleStyles = _props$attributes.titleStyles,
+        arrowStyles = _props$attributes.arrowStyles,
+        descStyles = _props$attributes.descStyles,
+        contentType = _props$attributes.contentType,
+        titleEditBorder = _props$attributes.titleEditBorder,
+        textShadowColor = _props$attributes.textShadowColor,
+        textShadowBlur = _props$attributes.textShadowBlur,
+        textShadowHorizontal = _props$attributes.textShadowHorizontal,
+        textShadowVertical = _props$attributes.textShadowVertical,
         titleBorderWidth = _props$attributes.titleBorderWidth,
-        titleBorderColor = _props$attributes.titleBorderColor,
         titleBorderTop = _props$attributes.titleBorderTop,
         titleBorderRight = _props$attributes.titleBorderRight,
         titleBorderBottom = _props$attributes.titleBorderBottom,
         titleBorderLeft = _props$attributes.titleBorderLeft,
-        titleBorderRadius = _props$attributes.titleBorderRadius,
-        titleBack = _props$attributes.titleBack,
-        titleShadowBlur = _props$attributes.titleShadowBlur,
-        titleShadowColor = _props$attributes.titleShadowColor,
-        titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-        titleShadowVertical = _props$attributes.titleShadowVertical,
+        titleBorderUpdated = _props$attributes.titleBorderUpdated,
         titlePaddingT = _props$attributes.titlePaddingT,
         titlePaddingR = _props$attributes.titlePaddingR,
         titlePaddingB = _props$attributes.titlePaddingB,
         titlePaddingL = _props$attributes.titlePaddingL,
-        arrowColor = _props$attributes.arrowColor,
-        arrowBack = _props$attributes.arrowBack,
-        arrowPos = _props$attributes.arrowPos,
-        arrowPadding = _props$attributes.arrowPadding,
-        arrowSize = _props$attributes.arrowSize,
-        arrowRadius = _props$attributes.arrowRadius,
-        contentType = _props$attributes.contentType,
-        descAlign = _props$attributes.descAlign,
-        descSize = _props$attributes.descSize,
-        descLine = _props$attributes.descLine,
-        descLetter = _props$attributes.descLetter,
-        descStyle = _props$attributes.descStyle,
-        descUpper = _props$attributes.descUpper,
-        descWeight = _props$attributes.descWeight,
-        descColor = _props$attributes.descColor,
-        descBack = _props$attributes.descBack,
-        descBorder = _props$attributes.descBorder,
-        descBorderColor = _props$attributes.descBorderColor,
-        descBorderRadius = _props$attributes.descBorderRadius,
         descBorderWidth = _props$attributes.descBorderWidth,
+        descBorderUpdated = _props$attributes.descBorderUpdated,
         descBorderTop = _props$attributes.descBorderTop,
         descBorderRight = _props$attributes.descBorderRight,
         descBorderBottom = _props$attributes.descBorderBottom,
         descBorderLeft = _props$attributes.descBorderLeft,
-        textShadowBlur = _props$attributes.textShadowBlur,
-        textShadowColor = _props$attributes.textShadowColor,
-        textShadowHorizontal = _props$attributes.textShadowHorizontal,
-        textShadowVertical = _props$attributes.textShadowVertical,
         descPaddingT = _props$attributes.descPaddingT,
         descPaddingR = _props$attributes.descPaddingR,
         descPaddingB = _props$attributes.descPaddingB,
-        descPaddingL = _props$attributes.descPaddingL,
-        titleBorderUpdated = _props$attributes.titleBorderUpdated,
-        descBorderUpdated = _props$attributes.descBorderUpdated;
+        descPaddingL = _props$attributes.descPaddingL;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
@@ -13707,13 +13470,13 @@ var save = function save(props) {
             React.createElement(
                 'div',
                 {
-                    className: 'premium-accordion__title_wrap premium-accordion__' + direction + ' premium-accordion__' + arrowPos,
+                    className: 'premium-accordion__title_wrap premium-accordion__' + direction + ' premium-accordion__' + arrowStyles[0].arrowPos,
                     style: {
-                        backgroundColor: titleBack,
-                        borderStyle: titleBorder,
+                        backgroundColor: titleStyles[0].titleBack,
+                        borderStyle: titleStyles[0].titleBorder,
                         borderWidth: titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px",
-                        borderRadius: titleBorderRadius + "px",
-                        borderColor: titleBorderColor,
+                        borderRadius: titleStyles[0].titleBorderRadius + "px",
+                        borderColor: titleStyles[0].titleBorderColor,
                         paddingTop: titlePaddingT,
                         paddingRight: titlePaddingR,
                         paddingBottom: titlePaddingB,
@@ -13728,14 +13491,14 @@ var save = function save(props) {
                         className: 'premium-accordion__title_text',
                         value: item.titleText,
                         style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
-                            lineHeight: titleLine + "px"
+                            color: titleStyles[0].titleColor,
+                            fontSize: titleStyles[0].titleSize + "px",
+                            letterSpacing: titleStyles[0].titleLetter + "px",
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
+                            fontWeight: titleStyles[0].titleWeight,
+                            textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                            lineHeight: titleStyles[0].titleLine + "px"
                         }
                     })
                 ),
@@ -13749,14 +13512,14 @@ var save = function save(props) {
                             role: 'img',
                             focusable: 'false',
                             xmlns: 'http://www.w3.org/2000/svg',
-                            width: arrowSize,
-                            height: arrowSize,
+                            width: arrowStyles[0].arrowSize,
+                            height: arrowStyles[0].arrowSize,
                             viewBox: '0 0 20 20',
                             style: {
-                                fill: arrowColor,
-                                backgroundColor: arrowBack,
-                                padding: arrowPadding + "px",
-                                borderRadius: arrowRadius + "px"
+                                fill: arrowStyles[0].arrowColor,
+                                backgroundColor: arrowStyles[0].arrowBack,
+                                padding: arrowStyles[0].arrowPadding + "px",
+                                borderRadius: arrowStyles[0].arrowRadius + "px"
                             }
                         },
                         React.createElement('polygon', { points: '16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 ' })
@@ -13768,12 +13531,12 @@ var save = function save(props) {
                 {
                     className: 'premium-accordion__desc_wrap premium-accordion__desc_close',
                     style: {
-                        textAlign: descAlign,
-                        backgroundColor: descBack,
-                        borderStyle: descBorder,
+                        textAlign: descStyles[0].descAlign,
+                        backgroundColor: descStyles[0].descBack,
+                        borderStyle: descStyles[0].descBorder,
                         borderWidth: descBorderUpdated ? descBorderTop + 'px ' + descBorderRight + 'px ' + descBorderBottom + 'px ' + descBorderLeft + 'px' : descBorderWidth + "px",
-                        borderRadius: descBorderRadius + "px",
-                        borderColor: descBorderColor,
+                        borderRadius: descStyles[0].descBorderRadius + "px",
+                        borderColor: descStyles[0].descBorderColor,
                         paddingTop: descPaddingT,
                         paddingRight: descPaddingR,
                         paddingBottom: descPaddingB,
@@ -13785,14 +13548,14 @@ var save = function save(props) {
                     className: 'premium-accordion__desc',
                     value: item.descText,
                     style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        letterSpacing: descLetter + "px",
-                        textTransform: descUpper ? "uppercase" : "none",
+                        color: descStyles[0].descColor,
+                        fontSize: descStyles[0].descSize + "px",
+                        letterSpacing: descStyles[0].descLetter + "px",
+                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                         textShadow: textShadowHorizontal + 'px ' + textShadowVertical + 'px ' + textShadowBlur + 'px ' + textShadowColor,
-                        fontStyle: descStyle,
-                        fontWeight: descWeight,
-                        lineHeight: descLine + "px"
+                        fontStyle: descStyles[0].descStyle,
+                        fontWeight: descStyles[0].descWeight,
+                        lineHeight: descStyles[0].descLine + "px"
                     }
                 }),
                 "block" === contentType && React.createElement(InnerBlocks.Content, null)
@@ -13809,6 +13572,190 @@ exports.default = save;
 
 /***/ }),
 /* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+
+var attributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title"),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleSize: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: '',
+            titleWeight: '500',
+            titleBorder: 'none',
+            titleBorderRadius: '',
+            titleBorderColor: '',
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: 0,
+            titleShadowHorizontal: 0,
+            titleShadowVertical: 0,
+            titlePadding: ['', '', '', '']
+        }]
+    },
+    arrowStyles: {
+        type: "array",
+        default: [{
+            arrowColor: '',
+            arrowBack: '',
+            arrowPos: 'out',
+            arrowPadding: '',
+            arrowRadius: '',
+            arrowSize: 20
+        }]
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            descAlign: 'left',
+            descColor: '',
+            descBack: '',
+            descBorder: 'none',
+            descBorderWidth: 1,
+            descBorderUpdated: false,
+            descBorderTop: '',
+            descBorderRight: '',
+            descBorderBottom: '',
+            descBorderLeft: '',
+            descBorderRadius: 0,
+            descBorderColor: '',
+            descSize: '',
+            descLine: '',
+            descLetter: '',
+            descStyle: '',
+            descUpper: false,
+            descWeight: 500,
+            descPaddingT: '',
+            descPaddingR: '',
+            descPaddingB: '',
+            descPaddingL: ''
+        }]
+    },
+
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+
+    titleEditBorder: {
+        type: "boolean"
+    },
+
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14577,7 +14524,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14589,7 +14536,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(218);
+var _edit = __webpack_require__(219);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -14601,284 +14548,20 @@ var _deprecated = __webpack_require__(221);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
+var _attributes = __webpack_require__(222);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
-
-var bannerAttrs = {
-    block_id: {
-        type: "string"
-    },
-    borderBanner: {
-        type: "boolean",
-        default: false
-    },
-    imageID: {
-        type: "number"
-    },
-    imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img"
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H3"
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
-    },
-    contentAlign: {
-        type: "string",
-        default: "left"
-    },
-    effect: {
-        type: "string",
-        default: "effect1"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    height: {
-        type: "string",
-        default: "default"
-    },
-    minHeight: {
-        type: "number"
-    },
-    verAlign: {
-        type: "string",
-        default: "top"
-    },
-    hovered: {
-        type: "boolean",
-        default: false
-    },
-    responsive: {
-        type: "boolean",
-        default: false
-    },
-    background: {
-        type: "string"
-    },
-    opacity: {
-        type: "number",
-        default: 50
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: "20"
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleWeight: {
-        type: "number"
-    },
-    titleBack: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    descSize: {
-        type: "number",
-        default: "20"
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number"
-    },
-    descSizeMobile: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number"
-    },
-    descShadowColor: {
-        type: "string"
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link"
-    },
-    sepColor: {
-        type: "string"
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowColor: {
-        type: "string"
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    }
-};
-
 registerBlockType("premium/banner", {
     title: __("Banner"),
     icon: React.createElement(_icons2.default, { icon: "banner" }),
     category: "premium-blocks",
-    attributes: bannerAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.banner
     },
@@ -14889,7 +14572,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14898,6 +14581,9 @@ registerBlockType("premium/banner", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.edit = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14913,11 +14599,11 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -14925,17 +14611,13 @@ var _premiumFilters = __webpack_require__(62);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
 var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _styling = __webpack_require__(219);
-
-var _styling2 = _interopRequireDefault(_styling);
 
 var _premiumResponsiveTabs = __webpack_require__(6);
 
@@ -14951,6 +14633,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var withSelect = wp.data.withSelect;
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
@@ -14970,25 +14653,39 @@ var _wp$blockEditor = wp.blockEditor,
     ColorPalette = _wp$blockEditor.ColorPalette,
     RichText = _wp$blockEditor.RichText;
 
-var edit = function (_Component) {
+var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
 
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "componentDidMount",
         value: function componentDidMount() {
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
-
-            // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-banner-" + this.props.clientId.substr(0, 6));
-            document.head.appendChild($style);
         }
     }, {
         key: "render",
@@ -14999,10 +14696,13 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockID = _props.clientId;
             var _props$attributes = this.props.attributes,
-                borderBanner = _props$attributes.borderBanner,
                 block_id = _props$attributes.block_id,
+                borderBanner = _props$attributes.borderBanner,
                 imageID = _props$attributes.imageID,
                 imageURL = _props$attributes.imageURL,
+                titleStyles = _props$attributes.titleStyles,
+                descStyles = _props$attributes.descStyles,
+                containerStyles = _props$attributes.containerStyles,
                 title = _props$attributes.title,
                 titleTag = _props$attributes.titleTag,
                 desc = _props$attributes.desc,
@@ -15016,59 +14716,29 @@ var edit = function (_Component) {
                 responsive = _props$attributes.responsive,
                 background = _props$attributes.background,
                 opacity = _props$attributes.opacity,
-                borderType = _props$attributes.borderType,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                borderRadius = _props$attributes.borderRadius,
-                borderColor = _props$attributes.borderColor,
-                titleColor = _props$attributes.titleColor,
-                titleSizeUnit = _props$attributes.titleSizeUnit,
-                titleSize = _props$attributes.titleSize,
-                titleLine = _props$attributes.titleLine,
-                titleWeight = _props$attributes.titleWeight,
-                titleBack = _props$attributes.titleBack,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                descColor = _props$attributes.descColor,
-                descSizeUnit = _props$attributes.descSizeUnit,
-                descSize = _props$attributes.descSize,
-                descSizeTablet = _props$attributes.descSizeTablet,
-                descSizeMobile = _props$attributes.descSizeMobile,
-                descLine = _props$attributes.descLine,
-                descWeight = _props$attributes.descWeight,
-                descShadowBlur = _props$attributes.descShadowBlur,
-                descShadowColor = _props$attributes.descShadowColor,
-                descShadowHorizontal = _props$attributes.descShadowHorizontal,
-                descShadowVertical = _props$attributes.descShadowVertical,
                 urlCheck = _props$attributes.urlCheck,
-                url = _props$attributes.url,
                 target = _props$attributes.target,
+                url = _props$attributes.url,
                 sepColor = _props$attributes.sepColor,
                 blur = _props$attributes.blur,
                 bright = _props$attributes.bright,
                 contrast = _props$attributes.contrast,
                 saturation = _props$attributes.saturation,
                 hue = _props$attributes.hue,
-                containerShadowBlur = _props$attributes.containerShadowBlur,
-                containerShadowColor = _props$attributes.containerShadowColor,
-                containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-                containerShadowVertical = _props$attributes.containerShadowVertical,
-                containerShadowPosition = _props$attributes.containerShadowPosition,
-                paddingB = _props$attributes.paddingB,
+                hideDesktop = _props$attributes.hideDesktop,
+                hideTablet = _props$attributes.hideTablet,
+                hideMobile = _props$attributes.hideMobile,
+                classMigrate = _props$attributes.classMigrate,
+                borderWidth = _props$attributes.borderWidth,
+                borderTop = _props$attributes.borderTop,
+                borderRight = _props$attributes.borderRight,
+                borderBottom = _props$attributes.borderBottom,
+                borderLeft = _props$attributes.borderLeft,
                 paddingT = _props$attributes.paddingT,
                 paddingR = _props$attributes.paddingR,
-                paddingL = _props$attributes.paddingL,
-                paddingU = _props$attributes.paddingU,
-                titleSizeTablet = _props$attributes.titleSizeTablet,
-                titleSizeMobile = _props$attributes.titleSizeMobile,
-                hideDesktop = _props$attributes.hideDesktop,
-                hideMobile = _props$attributes.hideMobile,
-                hideTablet = _props$attributes.hideTablet;
+                paddingB = _props$attributes.paddingB,
+                paddingL = _props$attributes.paddingL;
+
 
             var ALIGNS = [{
                 value: "flex-start",
@@ -15083,6 +14753,7 @@ var edit = function (_Component) {
                 value: "inherit",
                 label: __("Full")
             }];
+
             var EFFECTS = [{
                 value: "effect1",
                 label: __("Style 1")
@@ -15134,15 +14805,45 @@ var edit = function (_Component) {
                 value: "custom",
                 label: __("Custom")
             }];
-
             var mainClasses = (0, _classnames2.default)(className, "premium-banner");
+            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+            var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
-            var element = document.getElementById("premium-style-banner-" + blockID.substr(0, 6));
+            var saveStyles = function saveStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
 
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
 
+            var descriptionStyles = function descriptionStyles(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    descStyles: newUpdate
+                });
+            };
+            var containerStyle = function containerStyle(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
+                });
+            };
             return [isSelected && React.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -15347,34 +15048,34 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveStyles,
                         fontSizeType: {
-                            value: titleSizeUnit,
+                            value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
                         },
                         fontSize: {
-                            value: titleSize,
+                            value: titleStyles[0].titleSize,
                             label: __("titleSize")
                         },
                         fontSizeMobile: {
-                            value: titleSizeMobile,
+                            value: titleStyles[0].titleSizeMobile,
                             label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: titleSizeTablet,
+                            value: titleStyles[0].titleSizeTablet,
                             label: __("titleSizeTablet")
                         },
-                        weight: titleWeight,
-                        line: titleLine,
+                        weight: titleStyles[0].titleWeight,
+                        line: titleStyles[0].titleLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({
+                            return saveStyles({
                                 titleWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            }, titleStyles);
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 titleLine: newValue === undefined ? 10 : newValue
-                            });
+                            }, titleStyles);
                         }
                     }),
                     React.createElement(
@@ -15386,11 +15087,11 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: titleColor,
+                            value: titleStyles[0].titleColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveStyles({
                                     titleColor: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, titleStyles);
                             },
                             allowReset: true
                         })
@@ -15422,39 +15123,39 @@ var edit = function (_Component) {
                             __("Background Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: titleBack,
+                            value: titleStyles[0].titleBack,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveStyles({
                                     titleBack: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, titleStyles);
                             },
                             allowReset: true
                         })
                     ),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
+                        color: titleStyles[0].shadowColor,
+                        blur: titleStyles[0].shadowBlur,
+                        horizontal: titleStyles[0].shadowHorizontal,
+                        vertical: titleStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
+                            }, titleStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            }, titleStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            }, titleStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveStyles({
                                 shadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            }, titleStyles);
                         }
                     })
                 ),
@@ -15467,34 +15168,34 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: descriptionStyles,
                         fontSizeType: {
-                            value: descSizeUnit,
+                            value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit")
                         },
                         fontSize: {
-                            value: descSize,
+                            value: descStyles[0].descSize,
                             label: __("descSize")
                         },
                         fontSizeMobile: {
-                            value: descSizeMobile,
+                            value: descStyles[0].descSizeMobile,
                             label: __("descSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: descSizeTablet,
+                            value: descStyles[0].descSizeTablet,
                             label: __("descSizeTablet")
                         },
-                        weight: descWeight,
-                        line: descLine,
+                        weight: descStyles[0].descWeight,
+                        line: descStyles[0].descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            }, descStyles);
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descLine: newValue === undefined ? 10 : newValue
-                            });
+                            }, descStyles);
                         }
                     }),
                     React.createElement(
@@ -15506,39 +15207,39 @@ var edit = function (_Component) {
                             __("Text Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: descColor,
+                            value: descStyles[0].descColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return descriptionStyles({
                                     descColor: newValue === undefined ? "transparent" : newValue
-                                });
+                                }, descStyles);
                             },
                             allowReset: true
                         })
                     ),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: descShadowColor,
-                        blur: descShadowBlur,
-                        horizontal: descShadowHorizontal,
-                        vertical: descShadowVertical,
+                        color: descStyles[0].descShadowColor,
+                        blur: descStyles[0].descShadowBlur,
+                        horizontal: descStyles[0].descShadowHorizontal,
+                        vertical: descStyles[0].descShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowColor: newColor === undefined ? "transparent" : newColor.hex
-                            });
+                            }, descStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            }, descStyles);
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            }, descStyles);
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return descriptionStyles({
                                 descShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            }, descStyles);
                         }
                     })
                 ),
@@ -15550,16 +15251,16 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
+                        borderType: containerStyles[0].borderType,
                         borderWidth: borderWidth,
                         top: borderTop,
                         right: borderRight,
                         bottom: borderBottom,
                         left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderColor: containerStyles[0].borderColor,
+                        borderRadius: containerStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return containerStyle({ borderType: newType }, containerStyles);
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
@@ -15575,45 +15276,45 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 borderColor: colorValue === undefined ? "transparent" : colorValue.hex
                             });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
-                            return setAttributes({
+                            return containerStyle({
                                 borderRadius: newRadius === undefined ? 0 : newRadius
                             });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: containerShadowColor,
-                        blur: containerShadowBlur,
-                        horizontal: containerShadowHorizontal,
-                        vertical: containerShadowVertical,
-                        position: containerShadowPosition,
+                        color: containerStyles[0].containerShadowColor,
+                        blur: containerStyles[0].containerShadowBlur,
+                        horizontal: containerStyles[0].containerShadowHorizontal,
+                        vertical: containerStyles[0].containerShadowVertical,
+                        position: containerStyles[0].containerShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowColor: newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowBlur: newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowHorizontal: newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowVertical: newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return containerStyle({
                                 containerShadowPosition: newValue
                             });
                         }
@@ -15644,9 +15345,9 @@ var edit = function (_Component) {
                                 paddingL: value
                             });
                         },
-                        selectedUnit: paddingU,
+                        selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ paddingU: newvalue });
+                            return containerStyle({ paddingU: newvalue });
                         }
                     })
                 ),
@@ -15670,10 +15371,10 @@ var edit = function (_Component) {
                     id: "premium-banner-" + block_id,
                     className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU
+                        paddingTop: paddingT + containerStyles[0].paddingU,
+                        paddingRight: paddingR + containerStyles[0].paddingU,
+                        paddingBottom: paddingB + containerStyles[0].paddingU,
+                        paddingLeft: paddingL + containerStyles[0].paddingU
                     }
                 },
                 React.createElement("style", {
@@ -15686,11 +15387,11 @@ var edit = function (_Component) {
                     {
                         className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
                         style: {
-                            boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
-                            borderStyle: borderType,
+                            boxShadow: containerStyles[0].containerShadowHorizontal + "px " + containerStyles[0].containerShadowVertical + "px " + containerStyles[0].containerShadowBlur + "px " + containerStyles[0].containerShadowColor + " " + containerStyles[0].containerShadowPosition,
+                            borderStyle: containerStyles[0].borderType,
                             borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                            borderRadius: borderRadius + "px",
-                            borderColor: borderColor
+                            borderRadius: containerStyles[0].borderRadius + "px",
+                            borderColor: containerStyles[0].borderColor
                         }
                     },
                     React.createElement(
@@ -15716,7 +15417,7 @@ var edit = function (_Component) {
                         {
                             className: "premium-banner__content",
                             style: {
-                                background: "effect2" === effect ? titleBack : "transparent"
+                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
                             }
                         },
                         React.createElement(
@@ -15736,10 +15437,11 @@ var edit = function (_Component) {
                                     return setAttributes({ title: newText });
                                 },
                                 style: {
-                                    color: titleColor,
-                                    fontWeight: titleWeight,
-                                    lineHeight: titleLine + "px",
-                                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                                    fontSize: titleFontSize,
+                                    color: titleStyles[0].titleColor,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    lineHeight: titleStyles[0].titleLine + "px",
+                                    textShadow: titleStyles[0].shadowHorizontal + "px " + titleStyles[0].shadowVertical + "px " + titleStyles[0].shadowBlur + "px " + titleStyles[0].shadowColor
                                 }
                             })
                         ),
@@ -15760,10 +15462,11 @@ var edit = function (_Component) {
                                     return setAttributes({ desc: newText });
                                 },
                                 style: {
-                                    color: descColor,
-                                    fontWeight: descWeight,
-                                    lineHeight: descLine + "px",
-                                    textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                                    fontSize: descFontSize,
+                                    color: descStyles[0].descColor,
+                                    fontWeight: descStyles[0].descWeight,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor
                                 }
                             })
                         )
@@ -15776,87 +15479,18 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
 ;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
 
-/***/ }),
-/* 219 */
-/***/ (function(module, exports, __webpack_require__) {
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _generateCss = __webpack_require__(12);
-
-var _generateCss2 = _interopRequireDefault(_generateCss);
-
-var _generateCssUnit = __webpack_require__(13);
-
-var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        titleSizeUnit = _props$attributes.titleSizeUnit,
-        titleSize = _props$attributes.titleSize,
-        titleSizeTablet = _props$attributes.titleSizeTablet,
-        titleSizeMobile = _props$attributes.titleSizeMobile,
-        descSizeUnit = _props$attributes.descSizeUnit,
-        descSize = _props$attributes.descSize,
-        descSizeTablet = _props$attributes.descSizeTablet,
-        descSizeMobile = _props$attributes.descSizeMobile,
-        block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSize, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSize, descSizeUnit)
-        }
+    return {
+        deviceType: deviceType
     };
-    tablet_selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSizeTablet, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSizeTablet, descSizeUnit)
-        }
-    };
-    mobile_selectors = {
-        " .premium-banner__title_wrap .premium-banner__title": {
-            "font-size": (0, _generateCssUnit2.default)(titleSizeMobile, titleSizeUnit)
-        },
-        " .premium-banner__desc": {
-            "font-size": (0, _generateCssUnit2.default)(descSizeMobile, descSizeUnit)
-        }
-    };
-
-    var styling_css = "";
-    var id = '#premium-banner-' + block_id;
-    if (classMigrate) {
-        id = '.premium-banner-' + block_id;
-    }
-
-    styling_css = (0, _generateCss2.default)(selectors, id);
-    styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
-
-    styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-
-    return styling_css;
-}
-exports.default = styling;
+})(edit);
 
 /***/ }),
 /* 220 */
@@ -15883,7 +15517,11 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
         borderBanner = _props$attributes.borderBanner,
+        imageID = _props$attributes.imageID,
         imageURL = _props$attributes.imageURL,
+        titleStyles = _props$attributes.titleStyles,
+        descStyles = _props$attributes.descStyles,
+        containerStyles = _props$attributes.containerStyles,
         title = _props$attributes.title,
         titleTag = _props$attributes.titleTag,
         desc = _props$attributes.desc,
@@ -15897,51 +15535,28 @@ var save = function save(props) {
         responsive = _props$attributes.responsive,
         background = _props$attributes.background,
         opacity = _props$attributes.opacity,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        titleColor = _props$attributes.titleColor,
-        titleBack = _props$attributes.titleBack,
-        titleWeight = _props$attributes.titleWeight,
-        titleLine = _props$attributes.titleLine,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        descColor = _props$attributes.descColor,
-        descLine = _props$attributes.descLine,
-        descWeight = _props$attributes.descWeight,
-        descShadowBlur = _props$attributes.descShadowBlur,
-        descShadowColor = _props$attributes.descShadowColor,
-        descShadowHorizontal = _props$attributes.descShadowHorizontal,
-        descShadowVertical = _props$attributes.descShadowVertical,
         urlCheck = _props$attributes.urlCheck,
-        url = _props$attributes.url,
         target = _props$attributes.target,
+        url = _props$attributes.url,
         sepColor = _props$attributes.sepColor,
         blur = _props$attributes.blur,
         bright = _props$attributes.bright,
         contrast = _props$attributes.contrast,
         saturation = _props$attributes.saturation,
         hue = _props$attributes.hue,
-        containerShadowBlur = _props$attributes.containerShadowBlur,
-        containerShadowColor = _props$attributes.containerShadowColor,
-        containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-        containerShadowVertical = _props$attributes.containerShadowVertical,
-        containerShadowPosition = _props$attributes.containerShadowPosition,
-        paddingB = _props$attributes.paddingB,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        classMigrate = _props$attributes.classMigrate,
+        borderWidth = _props$attributes.borderWidth,
+        borderTop = _props$attributes.borderTop,
+        borderRight = _props$attributes.borderRight,
+        borderBottom = _props$attributes.borderBottom,
+        borderLeft = _props$attributes.borderLeft,
+        paddingT = _props$attributes.paddingT,
+        paddingR = _props$attributes.paddingR,
+        paddingB = _props$attributes.paddingB,
+        paddingL = _props$attributes.paddingL;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
@@ -15952,10 +15567,10 @@ var save = function save(props) {
             id: 'premium-banner-' + block_id,
             className: mainClasses + ' premium-banner__responsive_' + responsive + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile + ' premium-banner-' + block_id,
             style: {
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU
+                paddingTop: paddingT + containerStyles[0].paddingU,
+                paddingRight: paddingR + containerStyles[0].paddingU,
+                paddingBottom: paddingB + containerStyles[0].paddingU,
+                paddingLeft: paddingL + containerStyles[0].paddingU
             }
         },
         React.createElement('style', {
@@ -15968,11 +15583,11 @@ var save = function save(props) {
             {
                 className: 'premium-banner__inner premium-banner__min premium-banner__' + effect + ' premium-banner__' + hoverEffect + ' hover_' + hovered,
                 style: {
-                    boxShadow: containerShadowHorizontal + 'px ' + containerShadowVertical + 'px ' + containerShadowBlur + 'px ' + containerShadowColor + ' ' + containerShadowPosition,
-                    borderStyle: borderType,
+                    boxShadow: containerStyles[0].containerShadowHorizontal + 'px ' + containerStyles[0].containerShadowVertical + 'px ' + containerStyles[0].containerShadowBlur + 'px ' + containerStyles[0].containerShadowColor + ' ' + containerStyles[0].containerShadowPosition,
+                    borderStyle: containerStyles[0].borderType,
                     borderWidth: borderBanner ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor
                 }
             },
             React.createElement(
@@ -15998,7 +15613,7 @@ var save = function save(props) {
                 {
                     className: 'premium-banner__content',
                     style: {
-                        background: "effect2" === effect ? titleBack : "transparent"
+                        background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
                     }
                 },
                 React.createElement(
@@ -16014,10 +15629,10 @@ var save = function save(props) {
                         className: 'premium-banner__title',
                         value: title,
                         style: {
-                            color: titleColor,
-                            fontWeight: titleWeight,
-                            lineHeight: titleLine + "px",
-                            textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
+                            color: titleStyles[0].titleColor,
+                            fontWeight: titleStyles[0].titleWeight,
+                            lineHeight: titleStyles[0].titleLine + "px",
+                            textShadow: titleStyles[0].shadowHorizontal + 'px ' + titleStyles[0].shadowVertical + 'px ' + titleStyles[0].shadowBlur + 'px ' + titleStyles[0].shadowColor
                         }
                     })
                 ),
@@ -16034,10 +15649,10 @@ var save = function save(props) {
                         className: 'premium-banner__desc',
                         value: desc,
                         style: {
-                            color: descColor,
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px",
-                            textShadow: descShadowHorizontal + 'px ' + descShadowVertical + 'px ' + descShadowBlur + 'px ' + descShadowColor
+                            color: descStyles[0].descColor,
+                            fontWeight: descStyles[0].descWeight,
+                            lineHeight: descStyles[0].descLine + "px",
+                            textShadow: descStyles[0].descShadowHorizontal + 'px ' + descStyles[0].descShadowVertical + 'px ' + descStyles[0].descShadowBlur + 'px ' + descStyles[0].descShadowColor
                         }
                     })
                 )
@@ -17311,120 +16926,191 @@ exports.default = deprecatedContent;
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _edit = __webpack_require__(223);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(225);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(226);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-var _icons = __webpack_require__(5);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
 
-
-var buttonAttrs = {
-    borderButton: {
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderBanner: {
         type: "boolean",
         default: false
     },
-    btnText: {
-        type: "string",
-        default: __("Premium Button")
+    imageID: {
+        type: "number"
     },
-    btnSize: {
-        type: "string",
-        default: "md"
-    },
-    btnAlign: {
-        type: "string",
-        default: "center"
-    },
-    btnLink: {
+    imageURL: {
         type: "string",
         source: "attribute",
-        attribute: "href",
-        selector: ".premium-button"
+        attribute: "src",
+        selector: ".premium-banner__img"
     },
-    btnTarget: {
-        type: "boolean",
-        default: false
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleSizeUnit: 'px',
+            titleSize: '20',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            titleWeight: '',
+            titleLine: '',
+            titleColor: '',
+            titleBack: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descSizeUnit: 'px',
+            descSize: '20',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            descWeight: '',
+            descLine: '',
+            descColor: '#000',
+            descShadowColor: '',
+            descShadowBlur: '',
+            descShadowHorizontal: '',
+            descShadowVertical: ''
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            borderType: "none",
+            borderWidth: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            borderRadius: '',
+            borderColor: '',
+            containerShadowColor: '',
+            containerShadowBlur: '',
+            containerShadowHorizontal: '',
+            containerShadowVertical: '',
+            containerShadowPosition: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: ''
+        }]
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
     },
     effect: {
         type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
         default: "none"
     },
-    effectDir: {
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
         type: "string",
         default: "top"
     },
-    textColor: {
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
         type: "string"
     },
-    textHoverColor: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
+    opacity: {
         type: "number",
-        default: "1"
+        default: 50
     },
-    backHoverColor: {
-        type: "string"
+    urlCheck: {
+        type: "boolean",
+        default: false
     },
-    slideColor: {
-        type: "string"
+    target: {
+        type: "boolean",
+        default: false
     },
-    textSizeUnit: {
+    url: {
         type: "string",
-        default: 'px'
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
     },
-    textSize: {
-        type: "number",
-        default: '20'
-    },
-    textSizeTablet: {
-        type: "number"
-    },
-    textSizeMobile: {
-        type: "number"
-    },
-    textFontFamily: {
+    sepColor: {
         type: "string"
     },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean"
-    },
-    textWeight: {
+    blur: {
         type: "number",
-        default: 500
+        default: "0"
     },
-    textLine: {
-        type: "number"
+    bright: {
+        type: "number",
+        default: "100"
     },
-    borderType: {
-        type: "string",
-        default: "none"
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
     },
     borderWidth: {
         type: "number",
@@ -17442,81 +17128,62 @@ var buttonAttrs = {
     borderLeft: {
         type: "number"
     },
-    borderRadius: {
+    paddingT: {
         type: "number"
     },
-    borderColor: {
-        type: "string"
-    },
-    borderHoverColor: {
-        type: "string"
-    },
-    padding: {
+    paddingR: {
         type: "number"
     },
-    paddingU: {
-        type: "string"
+    paddingB: {
+        type: "number"
     },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    block_id: {
-        type: "string"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    classMigrate: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
+    paddingL: {
+        type: "number"
     }
 };
+
+exports.default = attributes;
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _edit = __webpack_require__(224);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(225);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(226);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _icons = __webpack_require__(5);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(227);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/button", {
     title: __("Button"),
     icon: React.createElement(_icons2.default, { icon: "button" }),
     category: "premium-blocks",
-    attributes: buttonAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.button
     },
@@ -17527,7 +17194,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17536,6 +17203,9 @@ registerBlockType("premium/button", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.edit = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -17551,15 +17221,15 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -17567,17 +17237,13 @@ var _premiumFonts = __webpack_require__(27);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
 var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
-var _styling = __webpack_require__(224);
-
-var _styling2 = _interopRequireDefault(_styling);
 
 var _premiumResponsiveTabs = __webpack_require__(6);
 
@@ -17610,30 +17276,41 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     RichText = _wp$blockEditor.RichText,
     URLInput = _wp$blockEditor.URLInput;
+var withSelect = wp.data.withSelect;
 
-var edit = function (_Component) {
+var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
 
     function edit() {
         _classCallCheck(this, edit);
 
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        return _this;
     }
 
     _createClass(edit, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.props.setAttributes({ classMigrate: true });
-
-            // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-button-" + this.props.clientId.substr(0, 6));
-            document.head.appendChild($style);
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
         }
     }, {
         key: "render",
         value: function render() {
-            var _React$createElement;
+            var _this2 = this,
+                _React$createElement;
 
             var _props = this.props,
                 isSelected = _props.isSelected,
@@ -17641,7 +17318,6 @@ var edit = function (_Component) {
                 className = _props.className,
                 blockId = _props.clientId;
             var _props$attributes = this.props.attributes,
-                block_id = _props$attributes.block_id,
                 borderButton = _props$attributes.borderButton,
                 btnText = _props$attributes.btnText,
                 btnSize = _props$attributes.btnSize,
@@ -17650,45 +17326,18 @@ var edit = function (_Component) {
                 btnTarget = _props$attributes.btnTarget,
                 effect = _props$attributes.effect,
                 effectDir = _props$attributes.effectDir,
-                textColor = _props$attributes.textColor,
-                textHoverColor = _props$attributes.textHoverColor,
-                backColor = _props$attributes.backColor,
-                backOpacity = _props$attributes.backOpacity,
-                backHoverColor = _props$attributes.backHoverColor,
                 slideColor = _props$attributes.slideColor,
-                textSizeUnit = _props$attributes.textSizeUnit,
-                textSize = _props$attributes.textSize,
-                textSizeTablet = _props$attributes.textSizeTablet,
-                textSizeMobile = _props$attributes.textSizeMobile,
-                textFontFamily = _props$attributes.textFontFamily,
-                textWeight = _props$attributes.textWeight,
-                textLetter = _props$attributes.textLetter,
-                textUpper = _props$attributes.textUpper,
-                textLine = _props$attributes.textLine,
-                textStyle = _props$attributes.textStyle,
-                borderType = _props$attributes.borderType,
+                block_id = _props$attributes.block_id,
+                hideDesktop = _props$attributes.hideDesktop,
+                hideTablet = _props$attributes.hideTablet,
+                hideMobile = _props$attributes.hideMobile,
                 borderWidth = _props$attributes.borderWidth,
                 borderTop = _props$attributes.borderTop,
                 borderRight = _props$attributes.borderRight,
                 borderBottom = _props$attributes.borderBottom,
                 borderLeft = _props$attributes.borderLeft,
-                borderRadius = _props$attributes.borderRadius,
-                borderColor = _props$attributes.borderColor,
-                borderHoverColor = _props$attributes.borderHoverColor,
-                shadowBlur = _props$attributes.shadowBlur,
-                shadowColor = _props$attributes.shadowColor,
-                shadowHorizontal = _props$attributes.shadowHorizontal,
-                shadowVertical = _props$attributes.shadowVertical,
-                padding = _props$attributes.padding,
-                paddingU = _props$attributes.paddingU,
-                btnShadowBlur = _props$attributes.btnShadowBlur,
-                btnShadowColor = _props$attributes.btnShadowColor,
-                btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-                btnShadowVertical = _props$attributes.btnShadowVertical,
-                btnShadowPosition = _props$attributes.btnShadowPosition,
-                hideDesktop = _props$attributes.hideDesktop,
-                hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile;
+                textStyles = _props$attributes.textStyles,
+                btnStyles = _props$attributes.btnStyles;
 
 
             var SIZE = [{
@@ -17764,16 +17413,16 @@ var edit = function (_Component) {
             }];
 
             var onChangeHover = function onChangeHover(newValue) {
-                props.setAttributes({ effect: newValue });
+                _this2.props.setAttributes({ effect: newValue });
                 switch (newValue) {
                     case "slide":
-                        props.setAttributes({ effectDir: "top" });
+                        _this2.props.setAttributes({ effectDir: "top" });
                         break;
                     case "shutter":
-                        props.setAttributes({ effectDir: "shutouthor" });
+                        _this2.props.setAttributes({ effectDir: "shutouthor" });
                         break;
                     case "radial":
-                        props.setAttributes({ effectDir: "radialin" });
+                        _this2.props.setAttributes({ effectDir: "radialin" });
                         break;
                 }
             };
@@ -17789,21 +17438,39 @@ var edit = function (_Component) {
             };
 
             var onChangeTextFamily = function onChangeTextFamily(fontFamily) {
-                setAttributes({ textFontFamily: fontFamily });
+                saveTextStyles({ textFontFamily: fontFamily });
                 if (!fontFamily) {
                     return;
                 }
 
                 addFontToHead(fontFamily);
             };
+            var saveTextStyles = function saveTextStyles(value) {
+                var newUpdate = textStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    textStyles: newUpdate
+                });
+            };
+            var saveBtnStyles = function saveBtnStyles(value) {
+                var newUpdate = btnStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    btnStyles: newUpdate
+                });
+            };
 
             var mainClasses = (0, _classnames2.default)(className, "premium-button");
 
-            var element = document.getElementById("premium-style-button-" + blockId.substr(0, 6));
-
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
+            var btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
 
             return [isSelected && "block" != btnSize && React.createElement(
                 BlockControls,
@@ -17879,74 +17546,74 @@ var edit = function (_Component) {
                     },
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: textFontFamily,
+                        value: textStyles[0].textFontFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeTextFamily
                     }),
                     React.createElement(_premiumTypo2.default, (_React$createElement = {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveTextStyles,
                         fontSizeType: {
-                            value: textSizeUnit,
+                            value: textStyles[0].textSizeUnit,
                             label: __("textSizeUnit")
                         },
                         fontSize: {
-                            value: textSize,
+                            value: textStyles[0].textSize,
                             label: __("textSize")
                         },
                         fontSizeMobile: {
-                            value: textSizeMobile,
+                            value: textStyles[0].textSizeMobile,
                             label: __("textSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: textSizeTablet,
+                            value: textStyles[0].textSizeTablet,
                             label: __("textSizeTablet")
                         },
-                        weight: textWeight,
-                        style: textStyle,
-                        spacing: textLetter,
-                        upper: textUpper,
-                        line: textLine,
+                        weight: textStyles[0].textWeight,
+                        style: textStyles[0].textStyle,
+                        spacing: textStyles[0].textLetter,
+                        upper: textStyles[0].textUpper,
+                        line: textStyles[0].textLine,
                         onChangeSize: function onChangeSize(newSize) {
-                            return setAttributes({ textSize: newSize });
+                            return saveTextStyles({ textSize: newSize });
                         },
                         onChangeSizeTablet: function onChangeSizeTablet(newSize) {
-                            return setAttributes({ textSizeTablet: newSize });
+                            return saveTextStyles({ textSizeTablet: newSize });
                         },
                         onChangeSizeMobile: function onChangeSizeMobile(newSize) {
-                            return setAttributes({ textSizeMobile: newSize });
+                            return saveTextStyles({ textSizeMobile: newSize });
                         },
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ textWeight: newWeight });
+                            return saveTextStyles({ textWeight: newWeight });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ textLine: newValue });
+                            return saveTextStyles({ textLine: newValue });
                         }
                     }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
-                        return setAttributes({ textSize: newSize });
+                        return saveTextStyles({ textSize: newSize });
                     }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return setAttributes({ textStyle: newStyle });
+                        return saveTextStyles({ textStyle: newStyle });
                     }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return setAttributes({ textLetter: newValue });
+                        return saveTextStyles({ textLetter: newValue });
                     }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
-                        return setAttributes({ textUpper: check });
+                        return saveTextStyles({ textUpper: check });
                     }), _React$createElement)),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
+                        color: textStyles[0].shadowColor,
+                        blur: textStyles[0].shadowBlur,
+                        horizontal: textStyles[0].shadowHorizontal,
+                        vertical: textStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ shadowColor: newColor.hex });
+                            return saveTextStyles({ shadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ shadowBlur: newBlur });
+                            return saveTextStyles({ shadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ shadowHorizontal: newValue });
+                            return saveTextStyles({ shadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ shadowVertical: newValue });
+                            return saveTextStyles({ shadowVertical: newValue });
                         }
                     })
                 ),
@@ -17989,9 +17656,9 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: textColor,
+                                        value: btnStyles[0].textColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 textColor: newValue
                                             });
                                         },
@@ -18004,15 +17671,15 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: backColor,
+                                        colorValue: btnStyles[0].backColor,
                                         onChangeColor: function onChangeColor(newvalue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backColor: newvalue
                                             });
                                         },
-                                        opacityValue: backOpacity,
+                                        opacityValue: btnStyles[0].backOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backOpacity: value
                                             });
                                         }
@@ -18029,9 +17696,9 @@ var edit = function (_Component) {
                                         __("Text Hover Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: textHoverColor,
+                                        value: btnStyles[0].textHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 textHoverColor: newValue
                                             });
                                         },
@@ -18043,9 +17710,9 @@ var edit = function (_Component) {
                                         "radial" !== effect ? __("Background Hover Color") : __("Background Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: backHoverColor,
+                                        value: btnStyles[0].backHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 backHoverColor: newValue,
                                                 slideColor: newValue
                                             });
@@ -18058,9 +17725,9 @@ var edit = function (_Component) {
                                         __("Border Hover Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: borderHoverColor,
+                                        value: btnStyles[0].borderHoverColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveBtnStyles({
                                                 borderHoverColor: newValue
                                             });
                                         },
@@ -18077,16 +17744,16 @@ var edit = function (_Component) {
                         }
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
+                        borderType: btnStyles[0].borderType,
                         borderWidth: borderWidth,
                         top: borderTop,
                         right: borderRight,
                         bottom: borderBottom,
                         left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderColor: btnStyles[0].borderColor,
+                        borderRadius: btnStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return saveBtnStyles({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
@@ -18102,56 +17769,56 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveBtnStyles({ borderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadius: newrRadius });
+                            return saveBtnStyles({ borderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         label: "Shadow",
                         inner: true,
-                        color: btnShadowColor,
-                        blur: btnShadowBlur,
-                        horizontal: btnShadowHorizontal,
-                        vertical: btnShadowVertical,
-                        position: btnShadowPosition,
+                        color: btnStyles[0].btnShadowColor,
+                        blur: btnStyles[0].btnShadowBlur,
+                        horizontal: btnStyles[0].btnShadowHorizontal,
+                        vertical: btnStyles[0].btnShadowVertical,
+                        position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowColor: newColor === undefined ? "transparent" : newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowBlur: newBlur === undefined ? 0 : newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowHorizontal: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowVertical: newValue === undefined ? 0 : newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveBtnStyles({
                                 btnShadowPosition: newValue === undefined ? 0 : newValue
                             });
                         }
                     }),
                     React.createElement(_premiumSizeUnits2.default, {
                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                            return setAttributes({ paddingU: newValue });
+                            return saveBtnStyles({ paddingU: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Padding"),
-                        value: padding,
+                        value: btnStyles[0].padding,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ padding: newValue });
+                            return saveBtnStyles({ padding: newValue });
                         }
                     })
                 ),
@@ -18178,7 +17845,7 @@ var edit = function (_Component) {
                 },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-button-wrap-" + block_id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                        __html: ["#premium-button-wrap-" + block_id + " .premium-button:hover {", "color: " + btnStyles[0].textHoverColor + " !important;", "border-color: " + btnStyles[0].borderHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__none .premium-button:hover {", "background-color: " + btnStyles[0].backHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
                     }
                 }),
                 React.createElement(RichText, {
@@ -18188,21 +17855,22 @@ var edit = function (_Component) {
                         return setAttributes({ btnText: value });
                     },
                     style: {
-                        color: textColor,
-                        backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                        fontFamily: textFontFamily,
-                        letterSpacing: textLetter + "px",
-                        textTransform: textUpper ? "uppercase" : "none",
-                        fontStyle: textStyle,
-                        lineHeight: textLine + "px",
-                        fontWeight: textWeight,
-                        textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-                        padding: padding + paddingU,
-                        borderStyle: borderType,
+                        color: btnStyles[0].textColor,
+                        backgroundColor: btnStyles[0].backColor ? (0, _hexToRgba2.default)(btnStyles[0].backColor, btnStyles[0].backOpacity) : "transparent",
+                        fontFamily: textStyles[0].textFontFamily,
+                        letterSpacing: textStyles[0].textLetter + "px",
+                        fontSize: btnFontSize + textStyles[0].textSizeUnit,
+                        textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                        fontStyle: textStyles[0].textStyle,
+                        lineHeight: textStyles[0].textLine + "px",
+                        fontWeight: textStyles[0].textWeight,
+                        textShadow: textStyles[0].shadowHorizontal + "px " + textStyles[0].shadowVertical + "px " + textStyles[0].shadowBlur + "px " + textStyles[0].shadowColor,
+                        boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition,
+                        padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                        borderStyle: btnStyles[0].borderType,
                         borderWidth: borderButton ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
-                        borderColor: borderColor
+                        borderRadius: btnStyles[0].borderRadius + "px",
+                        borderColor: btnStyles[0].borderColor
                     },
                     keepPlaceholderOnFocus: true
                 }),
@@ -18219,74 +17887,19 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
 ;
 
-/***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
 
-"use strict";
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _generateCss = __webpack_require__(12);
-
-var _generateCss2 = _interopRequireDefault(_generateCss);
-
-var _generateCssUnit = __webpack_require__(13);
-
-var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        textSizeUnit = _props$attributes.textSizeUnit,
-        textSize = _props$attributes.textSize,
-        textSizeTablet = _props$attributes.textSizeTablet,
-        textSizeMobile = _props$attributes.textSizeMobile,
-        block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate;
-
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-
-    selectors = {
-        " .premium-button": {
-            "font-size": (0, _generateCssUnit2.default)(textSize, textSizeUnit)
-        }
+    return {
+        deviceType: deviceType
     };
-    tablet_selectors = {
-        " .premium-button": {
-            "font-size": (0, _generateCssUnit2.default)(textSizeTablet, textSizeUnit)
-        }
-    };
-    mobile_selectors = {
-        " .premium-button": {
-            "font-size": (0, _generateCssUnit2.default)(textSizeMobile, textSizeUnit)
-        }
-    };
-
-    var styling_css = "";
-    var id = '#premium-button-wrap-' + block_id;
-    if (classMigrate) {
-        id = '.premium-button-' + block_id;
-    }
-
-    styling_css = (0, _generateCss2.default)(selectors, id);
-    styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
-
-    styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-
-    return styling_css;
-}
-exports.default = styling;
+})(edit);
 
 /***/ }),
 /* 225 */
@@ -18315,7 +17928,6 @@ var RichText = wp.blockEditor.RichText;
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
         borderButton = _props$attributes.borderButton,
         btnText = _props$attributes.btnText,
         btnSize = _props$attributes.btnSize,
@@ -18324,41 +17936,19 @@ var save = function save(props) {
         btnTarget = _props$attributes.btnTarget,
         effect = _props$attributes.effect,
         effectDir = _props$attributes.effectDir,
-        textColor = _props$attributes.textColor,
-        textHoverColor = _props$attributes.textHoverColor,
-        backColor = _props$attributes.backColor,
-        backHoverColor = _props$attributes.backHoverColor,
         slideColor = _props$attributes.slideColor,
-        textFontFamily = _props$attributes.textFontFamily,
-        textWeight = _props$attributes.textWeight,
-        textLine = _props$attributes.textLine,
-        textLetter = _props$attributes.textLetter,
-        textStyle = _props$attributes.textStyle,
-        backOpacity = _props$attributes.backOpacity,
-        textUpper = _props$attributes.textUpper,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
+        block_id = _props$attributes.block_id,
+        hideDesktop = _props$attributes.hideDesktop,
+        classMigrate = _props$attributes.classMigrate,
+        hideTablet = _props$attributes.hideTablet,
+        hideMobile = _props$attributes.hideMobile,
+        textStyles = _props$attributes.textStyles,
+        btnStyles = _props$attributes.btnStyles,
         borderTop = _props$attributes.borderTop,
         borderRight = _props$attributes.borderRight,
         borderBottom = _props$attributes.borderBottom,
         borderLeft = _props$attributes.borderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        borderHoverColor = _props$attributes.borderHoverColor,
-        padding = _props$attributes.padding,
-        paddingU = _props$attributes.paddingU,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        btnShadowBlur = _props$attributes.btnShadowBlur,
-        btnShadowColor = _props$attributes.btnShadowColor,
-        btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes.btnShadowVertical,
-        btnShadowPosition = _props$attributes.btnShadowPosition,
-        hideDesktop = _props$attributes.hideDesktop,
-        hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        borderWidth = _props$attributes.borderWidth;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-button');
@@ -18372,7 +17962,7 @@ var save = function save(props) {
         },
         React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + btnStyles[0].textHoverColor + ' !important;', 'border-color: ' + btnStyles[0].borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + btnStyles[0].backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
             }
         }),
         React.createElement(RichText.Content, {
@@ -18383,21 +17973,21 @@ var save = function save(props) {
             rel: 'noopener noreferrer',
             target: btnTarget ? "_blank" : "_self",
             style: {
-                color: textColor,
-                backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                fontFamily: textFontFamily,
-                letterSpacing: textLetter + "px",
-                textTransform: textUpper ? "uppercase" : "none",
-                fontStyle: textStyle,
-                lineHeight: textLine + "px",
-                fontWeight: textWeight,
-                textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                padding: padding + paddingU,
-                borderStyle: borderType,
+                color: btnStyles[0].textColor,
+                backgroundColor: btnStyles[0].backColor ? (0, _hexToRgba2.default)(btnStyles[0].backColor, btnStyles[0].backOpacity) : "transparent",
+                fontFamily: textStyles[0].textFontFamily,
+                letterSpacing: textStyles[0].textLetter + "px",
+                textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                fontStyle: textStyles[0].textStyle,
+                lineHeight: textStyles[0].textLine + "px",
+                fontWeight: textStyles[0].textWeight,
+                textShadow: textStyles[0].shadowHorizontal + 'px ' + textStyles[0].shadowVertical + 'px ' + textStyles[0].shadowBlur + 'px ' + textStyles[0].shadowColor,
+                boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition,
+                padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                borderStyle: btnStyles[0].borderType,
                 borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor
+                borderRadius: btnStyles[0].borderRadius + "px",
+                borderColor: btnStyles[0].borderColor
             }
         })
     );
@@ -19131,17 +18721,145 @@ exports.default = deprecatedContent;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    borderButton: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    slideColor: {
+        type: "string"
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    textStyles: {
+        type: "array",
+        default: [{
+            textSizeUnit: 'px',
+            textSize: 20,
+            textSizeTablet: '',
+            textSizeMobile: '',
+            textFontFamily: '',
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: 500,
+            textLine: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0'
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            textColor: '',
+            textHoverColor: '',
+            backColor: '',
+            backOpacity: 1,
+            backHoverColor: '',
+            borderType: "none",
+            borderRadius: '',
+            borderColor: '',
+            borderHoverColor: '',
+            btnShadowColor: '',
+            btnShadowBlur: 0,
+            btnShadowHorizontal: 0,
+            btnShadowVertical: 0,
+            btnShadowPosition: '',
+            padding: '',
+            paddingU: ''
+        }]
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _settings = __webpack_require__(3);
 
 var _attributes = __webpack_require__(98);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(228);
+var _edit = __webpack_require__(229);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(230);
+var _save = __webpack_require__(231);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -19149,7 +18867,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(231);
+var _deprecated = __webpack_require__(232);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -19176,7 +18894,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19198,11 +18916,11 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -19210,7 +18928,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -19222,7 +18940,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(229);
+var _styling = __webpack_require__(230);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -20300,7 +20018,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20310,11 +20028,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -20405,7 +20123,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20647,7 +20365,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22055,7 +21773,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22067,17 +21785,21 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(233);
+var _edit = __webpack_require__(234);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(235);
+var _save = __webpack_require__(236);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(236);
+var _deprecated = __webpack_require__(237);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(238);
+
+var _attributes2 = _interopRequireDefault(_attributes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22085,354 +21807,11 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var dualHeadingAttrs = {
-    block_id: {
-        type: "string"
-    },
-    contentAlign: {
-        type: "string",
-        default: "center"
-    },
-    firstHeading: {
-        type: "array",
-        source: "children",
-        default: "Premium ",
-        selector: ".premium-dheading-block__first"
-    },
-    secondHeading: {
-        type: "array",
-        source: "children",
-        default: "Blocks",
-        selector: ".premium-dheading-block__second"
-    },
-    titleTag: {
-        type: "string",
-        default: "h1"
-    },
-    display: {
-        type: "string",
-        default: "inline"
-    },
-    firstColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    firstSize: {
-        type: "number",
-        default: "20"
-    },
-    firstSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    firstSizeTablet: {
-        type: "number"
-    },
-    firstSizeMobile: {
-        type: "number"
-    },
-    firstFamily: {
-        type: "string"
-    },
-    firstLetter: {
-        type: "number"
-    },
-    firstStyle: {
-        type: "string"
-    },
-    firstUpper: {
-        type: "boolean"
-    },
-    firstWeight: {
-        type: "number",
-        default: 500
-    },
-    firstBackground: {
-        type: "string"
-    },
-    firstOpacity: {
-        type: "number",
-        default: "1"
-    },
-    firstBorderType: {
-        type: "string",
-        default: "none"
-    },
-    firstBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstBorder: {
-        type: "boolean",
-        default: false
-    },
-    firstBorderTop: {
-        type: "number"
-    },
-    firstBorderRight: {
-        type: "number"
-    },
-    firstBorderBottom: {
-        type: "number"
-    },
-    firstBorderLeft: {
-        type: "number"
-    },
-    firstBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    firstBorderColor: {
-        type: "string"
-    },
-    firstMarginR: {
-        type: "number",
-        default: "0"
-    },
-    firstMarginL: {
-        type: "number",
-        default: "0"
-    },
-    firstPadding: {
-        type: "number",
-        default: "0"
-    },
-    firstClip: {
-        type: "boolean",
-        default: false
-    },
-    firstAnim: {
-        type: "boolean",
-        default: false
-    },
-    firstStroke: {
-        type: "boolean",
-        default: false
-    },
-    firstClipColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstShadowColor: {
-        type: "string"
-    },
-    firstShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    firstShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondSize: {
-        type: "number",
-        default: "20"
-    },
-    secondSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    secondSizeTablet: {
-        type: "number"
-    },
-    secondSizeMobile: {
-        type: "number"
-    },
-    secondFamily: {
-        type: "string"
-    },
-    secondLetter: {
-        type: "number"
-    },
-    secondStyle: {
-        type: "string"
-    },
-    secondUpper: {
-        type: "boolean"
-    },
-    secondWeight: {
-        type: "number",
-        default: 500
-    },
-    secondBackground: {
-        type: "string"
-    },
-    secondOpacity: {
-        type: "number",
-        default: "1"
-    },
-    secondBorderType: {
-        type: "string",
-        default: "none"
-    },
-    secondBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondBorder: {
-        type: "boolean",
-        default: false
-    },
-    secondBorderTop: {
-        type: "number"
-    },
-    secondBorderRight: {
-        type: "number"
-    },
-    secondBorderBottom: {
-        type: "number"
-    },
-    secondBorderLeft: {
-        type: "number"
-    },
-    secondBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    secondBorderColor: {
-        type: "string"
-    },
-    secondMarginR: {
-        type: "number",
-        default: "0"
-    },
-    secondMarginL: {
-        type: "number",
-        default: "0"
-    },
-    secondPadding: {
-        type: "number",
-        default: "0"
-    },
-    secondClip: {
-        type: "boolean",
-        default: false
-    },
-    secondStroke: {
-        type: "boolean",
-        default: false
-    },
-    secondShadowColor: {
-        type: "string"
-    },
-    secondShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    secondShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    secondAnim: {
-        type: "boolean",
-        default: false
-    },
-    secondClipColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    link: {
-        type: "boolean",
-        default: false
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    headingURL: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderType: {
-        type: "string",
-        default: "none"
-    },
-    containerBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    containerBorder: {
-        type: "boolean",
-        default: false
-    },
-    containerBorderTop: {
-        type: "number"
-    },
-    containerBorderRight: {
-        type: "number"
-    },
-    containerBorderBottom: {
-        type: "number"
-    },
-    containerBorderLeft: {
-        type: "number"
-    },
-    containerBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    containerBorderColor: {
-        type: "string"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
 registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
     icon: React.createElement(_icons2.default, { icon: "dual-heading" }),
     category: "premium-blocks",
-    attributes: dualHeadingAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.dualHeading
     },
@@ -22443,7 +21822,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22452,6 +21831,8 @@ registerBlockType("premium/dheading-block", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -22467,11 +21848,11 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -22479,7 +21860,7 @@ var _premiumFonts = __webpack_require__(27);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _styling = __webpack_require__(234);
+var _styling = __webpack_require__(235);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -22500,6 +21881,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -22551,91 +21933,14 @@ var edit = function (_Component) {
                 contentAlign = _props$attributes.contentAlign,
                 firstHeading = _props$attributes.firstHeading,
                 secondHeading = _props$attributes.secondHeading,
+                titleTag = _props$attributes.titleTag,
                 display = _props$attributes.display,
-                firstColor = _props$attributes.firstColor,
-                firstBackground = _props$attributes.firstBackground,
-                firstOpacity = _props$attributes.firstOpacity,
-                firstSizeUnit = _props$attributes.firstSizeUnit,
-                firstSize = _props$attributes.firstSize,
-                firstSizeTablet = _props$attributes.firstSizeTablet,
-                firstSizeMobile = _props$attributes.firstSizeMobile,
-                firstFamily = _props$attributes.firstFamily,
-                firstStyle = _props$attributes.firstStyle,
-                firstUpper = _props$attributes.firstUpper,
-                firstLetter = _props$attributes.firstLetter,
-                firstWeight = _props$attributes.firstWeight,
-                firstBorderType = _props$attributes.firstBorderType,
-                firstBorderWidth = _props$attributes.firstBorderWidth,
-                firstBorderTop = _props$attributes.firstBorderTop,
-                firstBorderRight = _props$attributes.firstBorderRight,
-                firstBorderBottom = _props$attributes.firstBorderBottom,
-                firstBorderLeft = _props$attributes.firstBorderLeft,
-                firstBorderRadius = _props$attributes.firstBorderRadius,
-                firstBorderColor = _props$attributes.firstBorderColor,
-                firstPadding = _props$attributes.firstPadding,
-                firstMarginR = _props$attributes.firstMarginR,
-                firstMarginL = _props$attributes.firstMarginL,
-                firstClip = _props$attributes.firstClip,
-                firstAnim = _props$attributes.firstAnim,
-                firstStroke = _props$attributes.firstStroke,
-                firstClipColor = _props$attributes.firstClipColor,
-                firstShadowBlur = _props$attributes.firstShadowBlur,
-                firstShadowColor = _props$attributes.firstShadowColor,
-                firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes.firstShadowVertical,
-                secondColor = _props$attributes.secondColor,
-                secondBackground = _props$attributes.secondBackground,
-                secondOpacity = _props$attributes.secondOpacity,
-                secondSizeUnit = _props$attributes.secondSizeUnit,
-                secondSize = _props$attributes.secondSize,
-                secondSizeTablet = _props$attributes.secondSizeTablet,
-                secondSizeMobile = _props$attributes.secondSizeMobile,
-                secondFamily = _props$attributes.secondFamily,
-                secondLetter = _props$attributes.secondLetter,
-                secondUpper = _props$attributes.secondUpper,
-                secondWeight = _props$attributes.secondWeight,
-                secondStyle = _props$attributes.secondStyle,
-                secondBorderType = _props$attributes.secondBorderType,
-                secondBorderWidth = _props$attributes.secondBorderWidth,
-                secondBorderTop = _props$attributes.secondBorderTop,
-                secondBorderRight = _props$attributes.secondBorderRight,
-                secondBorderBottom = _props$attributes.secondBorderBottom,
-                secondBorderLeft = _props$attributes.secondBorderLeft,
-                secondBorderRadius = _props$attributes.secondBorderRadius,
-                secondBorderColor = _props$attributes.secondBorderColor,
-                secondPadding = _props$attributes.secondPadding,
-                secondMarginL = _props$attributes.secondMarginL,
-                secondMarginR = _props$attributes.secondMarginR,
-                secondClip = _props$attributes.secondClip,
-                secondStroke = _props$attributes.secondStroke,
-                secondAnim = _props$attributes.secondAnim,
-                secondClipColor = _props$attributes.secondClipColor,
-                secondShadowBlur = _props$attributes.secondShadowBlur,
-                secondShadowColor = _props$attributes.secondShadowColor,
-                secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes.secondShadowVertical,
+                firstStyles = _props$attributes.firstStyles,
+                secondStyles = _props$attributes.secondStyles,
+                containerStyles = _props$attributes.containerStyles,
                 link = _props$attributes.link,
                 target = _props$attributes.target,
                 headingURL = _props$attributes.headingURL,
-                containerBack = _props$attributes.containerBack,
-                containerOpacity = _props$attributes.containerOpacity,
-                imageID = _props$attributes.imageID,
-                imageURL = _props$attributes.imageURL,
-                fixed = _props$attributes.fixed,
-                backgroundRepeat = _props$attributes.backgroundRepeat,
-                backgroundPosition = _props$attributes.backgroundPosition,
-                backgroundSize = _props$attributes.backgroundSize,
-                containerBorderType = _props$attributes.containerBorderType,
-                containerBorderWidth = _props$attributes.containerBorderWidth,
-                containerBorderTop = _props$attributes.containerBorderTop,
-                containerBorderRight = _props$attributes.containerBorderRight,
-                containerBorderBottom = _props$attributes.containerBorderBottom,
-                containerBorderLeft = _props$attributes.containerBorderLeft,
-                containerBorderRadius = _props$attributes.containerBorderRadius,
-                containerBorderColor = _props$attributes.containerBorderColor,
-                containerBorder = _props$attributes.containerBorder,
-                firstBorder = _props$attributes.firstBorder,
-                secondBorder = _props$attributes.secondBorder,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile;
@@ -22659,7 +21964,7 @@ var edit = function (_Component) {
             };
 
             var onChangeFirstFamily = function onChangeFirstFamily(fontFamily) {
-                setAttributes({ firstFamily: fontFamily });
+                saveFirstStyles({ firstFamily: fontFamily });
                 if (!fontFamily) {
                     return;
                 }
@@ -22668,22 +21973,48 @@ var edit = function (_Component) {
             };
 
             var onChangeSecondFamily = function onChangeSecondFamily(fontFamily) {
-                setAttributes({ secondFamily: fontFamily });
+                saveSecondStyles({ secondFamily: fontFamily });
                 if (!fontFamily) {
                     return;
                 }
-
                 addFontToHead(fontFamily);
             };
 
-            var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
-
             var element = document.getElementById("premium-style-dual-" + blockId.substr(0, 6));
 
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
-
+            var saveFirstStyles = function saveFirstStyles(value) {
+                var newUpdate = firstStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    firstStyles: newUpdate
+                });
+            };
+            var saveSecondStyles = function saveSecondStyles(value) {
+                var newUpdate = secondStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    secondStyles: newUpdate
+                });
+            };
+            var saveContainerStyles = function saveContainerStyles(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
+                });
+            };
             return [isSelected && React.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -22751,32 +22082,32 @@ var edit = function (_Component) {
                     },
                     React.createElement(ToggleControl, {
                         label: __("Clipped"),
-                        checked: firstClip,
+                        checked: firstStyles[0].firstClip,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ firstClip: newValue });
+                            return saveFirstStyles({ firstClip: newValue }, firstStyles);
                         }
                     }),
-                    firstClip && React.createElement(
+                    firstStyles[0].firstClip && React.createElement(
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
                             label: __("Animated"),
-                            checked: firstAnim,
+                            checked: firstStyles[0].firstAnim,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ firstAnim: newValue });
+                                return saveFirstStyles({ firstAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
                             label: __("Stroke"),
-                            checked: firstStroke,
+                            checked: firstStyles[0].firstStroke,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ firstStroke: newValue });
+                                return saveFirstStyles({ firstStroke: newValue });
                             }
                         })
                     ),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: firstFamily,
+                        value: firstStyles[0].firstFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeFirstFamily
                     }),
@@ -22784,39 +22115,39 @@ var edit = function (_Component) {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: setAttributes,
                         fontSizeType: {
-                            value: firstSizeUnit,
+                            value: firstStyles[0].firstSizeUnit,
                             label: __("firstSizeUnit")
                         },
                         fontSize: {
-                            value: firstSize,
+                            value: firstStyles[0].firstSize,
                             label: __("firstSize")
                         },
                         fontSizeMobile: {
-                            value: firstSizeMobile,
+                            value: firstStyles[0].firstSizeMobile,
                             label: __("firstSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: firstSizeTablet,
+                            value: firstStyles[0].firstSizeTablet,
                             label: __("firstSizeTablet")
                         },
-                        weight: firstWeight,
-                        style: firstStyle,
-                        spacing: firstLetter,
-                        upper: firstUpper,
+                        weight: firstStyles[0].firstWeight,
+                        style: firstStyles[0].firstStyle,
+                        spacing: firstStyles[0].firstLetter,
+                        upper: firstStyles[0].firstUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ firstWeight: newWeight || 500 });
+                            return saveFirstStyles({ firstWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ firstStyle: newStyle });
+                            return saveFirstStyles({ firstStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ firstLetter: newValue });
+                            return saveFirstStyles({ firstLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ firstUpper: check });
+                            return saveFirstStyles({ firstUpper: check });
                         }
                     }),
-                    !firstClip && React.createElement(
+                    !firstStyles[0].firstClip && React.createElement(
                         "div",
                         { className: "premium-control-toggle" },
                         React.createElement(
@@ -22847,9 +22178,9 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstColor,
+                                        value: firstStyles[0].firstColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveFirstStyles({
                                                 firstColor: newValue
                                             });
                                         },
@@ -22862,15 +22193,15 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: firstBackground,
+                                        colorValue: firstStyles[0].firstBackground,
                                         onChangeColor: function onChangeColor(value) {
-                                            return setAttributes({
+                                            return saveFirstStyles({
                                                 firstBackground: value
                                             });
                                         },
-                                        opacityValue: firstOpacity,
+                                        opacityValue: firstStyles[0].firstOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveFirstStyles({
                                                 firstOpacity: value
                                             });
                                         }
@@ -22879,7 +22210,7 @@ var edit = function (_Component) {
                             }
                         })
                     ),
-                    firstClip && React.createElement(
+                    firstStyles[0].firstClip && React.createElement(
                         "div",
                         { className: "premium-control-toggle" },
                         React.createElement(
@@ -22910,9 +22241,9 @@ var edit = function (_Component) {
                                         __("First Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstColor,
+                                        value: firstStyles[0].firstColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveFirstStyles({
                                                 firstColor: newValue
                                             });
                                         },
@@ -22924,9 +22255,9 @@ var edit = function (_Component) {
                                         __("Second Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: firstClipColor,
+                                        value: firstStyles[0].firstClipColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveFirstStyles({
                                                 firstClipColor: newValue
                                             });
                                         },
@@ -22937,16 +22268,16 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: firstBorderType,
-                        borderWidth: firstBorderWidth,
-                        top: firstBorderTop,
-                        right: firstBorderRight,
-                        bottom: firstBorderBottom,
-                        left: firstBorderLeft,
-                        borderColor: firstBorderColor,
-                        borderRadius: firstBorderRadius,
+                        borderType: firstStyles[0].firstBorderType,
+                        borderWidth: firstStyles[0].firstBorderWidth,
+                        top: firstStyles[0].firstBorderTop,
+                        right: firstStyles[0].firstBorderRight,
+                        bottom: firstStyles[0].firstBorderBottom,
+                        left: firstStyles[0].firstBorderLeft,
+                        borderColor: firstStyles[0].firstBorderColor,
+                        borderRadius: firstStyles[0].firstBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ firstBorderType: newType });
+                            return saveFirstStyles({ firstBorderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref3) {
                             var top = _ref3.top,
@@ -22962,30 +22293,30 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return saveFirstStyles({
                                 firstBorderColor: colorValue.hex || "transparent"
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ firstBorderRadius: newrRadius || "0" });
+                            return saveFirstStyles({ firstBorderRadius: newrRadius || "0" });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: firstShadowColor,
-                        blur: firstShadowBlur,
-                        horizontal: firstShadowHorizontal,
-                        vertical: firstShadowVertical,
+                        color: firstStyles[0].firstShadowColor,
+                        blur: firstStyles[0].firstShadowBlur,
+                        horizontal: firstStyles[0].firstShadowHorizontal,
+                        vertical: firstStyles[0].firstShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ firstShadowColor: newColor.hex || "transparent" });
+                            return saveFirstStyles({ firstShadowColor: newColor.hex || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ firstShadowBlur: newBlur || "0" });
+                            return saveFirstStyles({ firstShadowBlur: newBlur || "0" });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ firstShadowHorizontal: newValue || "0" });
+                            return saveFirstStyles({ firstShadowHorizontal: newValue || "0" });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ firstShadowVertical: newValue || "0" });
+                            return saveFirstStyles({ firstShadowVertical: newValue || "0" });
                         }
                     }),
                     React.createElement(
@@ -22994,11 +22325,11 @@ var edit = function (_Component) {
                         __("Margin Left")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstMarginL,
+                        value: firstStyles[0].firstMarginL,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ firstMarginL: newMargin || "0" });
+                            return saveFirstStyles({ firstMarginL: newMargin || "0" });
                         }
                     }),
                     React.createElement(
@@ -23007,11 +22338,11 @@ var edit = function (_Component) {
                         __("Margin Right")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstMarginR,
+                        value: firstStyles[0].firstMarginR,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ firstMarginR: newMargin || "0" });
+                            return saveFirstStyles({ firstMarginR: newMargin || "0" });
                         }
                     }),
                     React.createElement(
@@ -23020,11 +22351,11 @@ var edit = function (_Component) {
                         __("Padding")
                     ),
                     React.createElement(RangeControl, {
-                        value: firstPadding,
+                        value: firstStyles[0].firstPadding,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newPadding) {
-                            return setAttributes({ firstPadding: newPadding || "0" });
+                            return saveFirstStyles({ firstPadding: newPadding || "0" });
                         }
                     })
                 ),
@@ -23037,72 +22368,72 @@ var edit = function (_Component) {
                     },
                     React.createElement(ToggleControl, {
                         label: __("Clipped"),
-                        checked: secondClip,
+                        checked: secondStyles[0].secondClip,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ secondClip: newValue });
+                            return saveSecondStyles({ secondClip: newValue });
                         }
                     }),
-                    secondClip && React.createElement(
+                    secondStyles[0].secondClip && React.createElement(
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
                             label: __("Animated"),
-                            checked: secondAnim,
+                            checked: secondStyles[0].secondAnim,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ secondAnim: newValue });
+                                return saveSecondStyles({ secondAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
                             label: __('Stroke'),
-                            checked: secondStroke,
+                            checked: secondStyles[0].secondStroke,
                             onChange: function onChange(newValue) {
-                                return setAttributes({ secondStroke: newValue });
+                                return saveSecondStyles({ secondStroke: newValue });
                             }
                         })
                     ),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: secondFamily,
+                        value: secondStyles[0].secondFamily,
                         options: _premiumFonts2.default,
                         onChange: onChangeSecondFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveSecondStyles,
                         fontSizeType: {
-                            value: secondSizeUnit,
+                            value: secondStyles[0].secondSizeUnit,
                             label: __("secondSizeUnit")
                         },
                         fontSize: {
-                            value: secondSize,
+                            value: secondStyles[0].secondSize,
                             label: __("secondSize")
                         },
                         fontSizeMobile: {
-                            value: secondSizeMobile,
+                            value: secondStyles[0].secondSizeMobile,
                             label: __("secondSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: secondSizeTablet,
+                            value: secondStyles[0].secondSizeTablet,
                             label: __("secondSizeTablet")
                         },
-                        weight: secondWeight,
-                        style: secondStyle,
-                        spacing: secondLetter,
-                        upper: secondUpper,
+                        weight: secondStyles[0].secondWeight,
+                        style: secondStyles[0].secondStyle,
+                        spacing: secondStyles[0].secondLetter,
+                        upper: secondStyles[0].secondUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ secondWeight: newWeight || 500 });
+                            return saveSecondStyles({ secondWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ secondStyle: newStyle });
+                            return saveSecondStyles({ secondStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ secondLetter: newValue });
+                            return saveSecondStyles({ secondLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ secondUpper: check });
+                            return saveSecondStyles({ secondUpper: check });
                         }
                     }),
-                    !secondClip && React.createElement(
+                    !secondStyles[0].secondClip && React.createElement(
                         "div",
                         { className: "premium-control-toggle" },
                         React.createElement(
@@ -23133,9 +22464,9 @@ var edit = function (_Component) {
                                         __("Text Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondColor,
+                                        value: secondStyles[0].secondColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveSecondStyles({
                                                 secondColor: newValue || "transparent"
                                             });
                                         },
@@ -23148,15 +22479,15 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: secondBackground,
+                                        colorValue: secondStyles[0].secondBackground,
                                         onChangeColor: function onChangeColor(value) {
-                                            return setAttributes({
+                                            return saveSecondStyles({
                                                 secondBackground: value
                                             });
                                         },
-                                        opacityValue: secondOpacity,
+                                        opacityValue: secondStyles[0].secondOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({
+                                            return saveSecondStyles({
                                                 secondOpacity: value
                                             });
                                         }
@@ -23165,7 +22496,7 @@ var edit = function (_Component) {
                             }
                         })
                     ),
-                    secondClip && React.createElement(
+                    secondStyles[0].secondClip && React.createElement(
                         "div",
                         { className: "premium-control-toggle" },
                         React.createElement(
@@ -23196,9 +22527,9 @@ var edit = function (_Component) {
                                         __("First Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondColor,
+                                        value: secondStyles[0].secondColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveSecondStyles({
                                                 secondColor: newValue || "transparent"
                                             });
                                         },
@@ -23210,9 +22541,9 @@ var edit = function (_Component) {
                                         __("Second Color")
                                     ),
                                     React.createElement(ColorPalette, {
-                                        value: secondClipColor,
+                                        value: secondStyles[0].secondClipColor,
                                         onChange: function onChange(newValue) {
-                                            return setAttributes({
+                                            return saveSecondStyles({
                                                 secondClipColor: newValue || "transparent"
                                             });
                                         },
@@ -23223,23 +22554,23 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: secondBorderType,
-                        borderWidth: secondBorderWidth,
-                        top: secondBorderTop,
-                        right: secondBorderRight,
-                        bottom: secondBorderBottom,
-                        left: secondBorderLeft,
-                        borderColor: secondBorderColor,
-                        borderRadius: secondBorderRadius,
+                        borderType: secondStyles[0].secondBorderType,
+                        borderWidth: secondStyles[0].secondBorderWidth,
+                        top: secondStyles[0].secondBorderTop,
+                        right: secondStyles[0].secondBorderRight,
+                        bottom: secondStyles[0].secondBorderBottom,
+                        left: secondStyles[0].secondBorderLeft,
+                        borderColor: secondStyles[0].secondBorderColor,
+                        borderRadius: secondStyles[0].secondBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ secondBorderType: newType });
+                            return saveSecondStyles({ secondBorderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref6) {
                             var top = _ref6.top,
                                 right = _ref6.right,
                                 bottom = _ref6.bottom,
                                 left = _ref6.left;
-                            return setAttributes({
+                            return saveSecondStyles({
                                 secondBorder: true,
                                 secondBorderTop: top,
                                 secondBorderRight: right,
@@ -23248,32 +22579,32 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return saveSecondStyles({
                                 secondBorderColor: colorValue.hex || "transparent"
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ secondBorderRadius: newrRadius || "0" });
+                            return saveSecondStyles({ secondBorderRadius: newrRadius || "0" });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: secondShadowColor,
-                        blur: secondShadowBlur,
-                        horizontal: secondShadowHorizontal,
-                        vertical: secondShadowVertical,
+                        color: secondStyles[0].secondShadowColor,
+                        blur: secondStyles[0].secondShadowBlur,
+                        horizontal: secondStyles[0].secondShadowHorizontal,
+                        vertical: secondStyles[0].secondShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveSecondStyles({
                                 secondShadowColor: newColor.hex || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ secondShadowBlur: newBlur || "0" });
+                            return saveSecondStyles({ secondShadowBlur: newBlur || "0" });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ secondShadowHorizontal: newValue || "0" });
+                            return saveSecondStyles({ secondShadowHorizontal: newValue || "0" });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ secondShadowVertical: newValue || "0" });
+                            return saveSecondStyles({ secondShadowVertical: newValue || "0" });
                         }
                     }),
                     React.createElement(
@@ -23282,11 +22613,11 @@ var edit = function (_Component) {
                         __("Margin Left")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondMarginL,
+                        value: secondStyles[0].secondMarginL,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ secondMarginL: newMargin || "0" });
+                            return saveSecondStyles({ secondMarginL: newMargin || "0" });
                         }
                     }),
                     React.createElement(
@@ -23295,11 +22626,11 @@ var edit = function (_Component) {
                         __("Margin Right")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondMarginR,
+                        value: secondStyles[0].secondMarginR,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newMargin) {
-                            return setAttributes({ secondMarginR: newMargin || "0" });
+                            return saveSecondStyles({ secondMarginR: newMargin || "0" });
                         }
                     }),
                     React.createElement(
@@ -23308,11 +22639,11 @@ var edit = function (_Component) {
                         __("Padding")
                     ),
                     React.createElement(RangeControl, {
-                        value: secondPadding,
+                        value: secondStyles[0].secondPadding,
                         min: "0",
                         max: "100",
                         onChange: function onChange(newPadding) {
-                            return setAttributes({ secondPadding: newPadding || "0" });
+                            return saveSecondStyles({ secondPadding: newPadding || "0" });
                         }
                     })
                 ),
@@ -23330,57 +22661,57 @@ var edit = function (_Component) {
                     ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
-                        colorValue: containerBack,
+                        colorValue: containerStyles[0].containerBack,
                         onChangeColor: function onChangeColor(newvalue) {
-                            return setAttributes({
+                            return saveContainerStyles({
                                 containerBack: newvalue
                             });
                         },
-                        opacityValue: containerOpacity,
+                        opacityValue: containerStyles[0].containerOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
-                            return setAttributes({ containerOpacity: value });
+                            return saveContainerStyles({ containerOpacity: value });
                         }
                     }),
                     React.createElement(_premiumBackground2.default, {
-                        imageID: imageID,
-                        imageURL: imageURL,
-                        backgroundPosition: backgroundPosition,
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundSize: backgroundSize,
-                        fixed: fixed,
+                        imageID: containerStyles[0].imageID,
+                        imageURL: containerStyles[0].imageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
                         onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
+                            saveContainerStyles({
                                 imageID: media.id,
                                 imageURL: media.url
                             });
                         },
                         onRemoveImage: function onRemoveImage(value) {
-                            return setAttributes({ imageURL: "", imageID: "" });
+                            return saveContainerStyles({ imageURL: "", imageID: "" });
                         },
                         onChangeBackPos: function onChangeBackPos(newValue) {
-                            return setAttributes({ backgroundPosition: newValue });
+                            return saveContainerStyles({ backgroundPosition: newValue });
                         },
                         onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                            return setAttributes({ backgroundRepeat: newValue });
+                            return saveContainerStyles({ backgroundRepeat: newValue });
                         },
                         onChangeBackSize: function onChangeBackSize(newValue) {
-                            return setAttributes({ backgroundSize: newValue });
+                            return saveContainerStyles({ backgroundSize: newValue });
                         },
                         onChangeFixed: function onChangeFixed(check) {
-                            return setAttributes({ fixed: check });
+                            return saveContainerStyles({ fixed: check });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: containerBorderType,
-                        borderWidth: containerBorderWidth,
-                        top: containerBorderTop,
-                        right: containerBorderRight,
-                        bottom: containerBorderBottom,
-                        left: containerBorderLeft,
-                        borderColor: containerBorderColor,
-                        borderRadius: containerBorderRadius,
+                        borderType: containerStyles[0].containerBorderType,
+                        borderWidth: containerStyles[0].containerBorderWidth,
+                        top: containerStyles[0].containerBorderTop,
+                        right: containerStyles[0].containerBorderRight,
+                        bottom: containerStyles[0].containerBorderBottom,
+                        left: containerStyles[0].containerBorderLeft,
+                        borderColor: containerStyles[0].containerBorderColor,
+                        borderRadius: containerStyles[0].containerBorderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ containerBorderType: newType });
+                            return saveContainerStyles({ containerBorderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref7) {
                             var top = _ref7.top,
@@ -23396,12 +22727,12 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({
+                            return saveContainerStyles({
                                 containerBorderColor: colorValue.hex
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ containerBorderRadius: newrRadius });
+                            return saveContainerStyles({ containerBorderRadius: newrRadius });
                         }
                     })
                 ),
@@ -23423,19 +22754,19 @@ var edit = function (_Component) {
                 "div",
                 {
                     id: "premium-dheading-block-" + block_id,
-                    className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
                     style: {
                         textAlign: contentAlign,
-                        backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
-                        backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset",
-                        borderStyle: containerBorderType,
-                        borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
-                        borderRadius: containerBorderRadius + "px",
-                        borderColor: containerBorderColor
+                        backgroundColor: containerStyles[0].containerBack ? (0, _hexToRgba2.default)(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
+                        backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                        borderStyle: containerStyles[0].containerBorderType,
+                        borderWidth: containerStyles[0].containerBorder ? containerStyles[0].containerBorderTop + "px " + containerStyles[0].containerBorderRight + "px " + containerStyles[0].containerBorderBottom + "px " + containerStyles[0].containerBorderLeft + "px" : containerStyles[0].containerBorderWidth + "px",
+                        borderRadius: containerStyles[0].containerBorderRadius + "px",
+                        borderColor: containerStyles[0].containerBorderColor
                     }
                 },
                 React.createElement(
@@ -23447,25 +22778,25 @@ var edit = function (_Component) {
                         React.createElement(
                             "span",
                             {
-                                className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+                                className: "premium-dheading-block__first premium-headingc-" + firstStyles[0].firstClip + " premium-headinga-" + firstStyles[0].firstAnim + " premium-headings-" + firstStyles[0].firstStroke,
                                 style: {
                                     display: display,
-                                    color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground ? (0, _hexToRgba2.default)(firstBackground, firstOpacity) : "transparent",
-                                    backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                    fontFamily: firstFamily,
-                                    letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
-                                    fontStyle: firstStyle,
-                                    fontWeight: firstWeight,
-                                    borderStyle: firstBorderType,
-                                    borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
-                                    borderRadius: firstBorderRadius + "px",
-                                    borderColor: firstBorderColor,
-                                    padding: firstPadding + "px",
-                                    marginLeft: firstMarginL + "px",
-                                    marginRight: firstMarginR + "px",
-                                    textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                                    color: firstStyles[0].firstColor,
+                                    backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground ? (0, _hexToRgba2.default)(firstStyles[0].firstBackground, firstStyles[0].firstOpacity) : "transparent",
+                                    backgroundImage: firstStyles[0].firstClip ? "linear-gradient(to left, " + firstStyles[0].firstColor + ", " + firstStyles[0].firstClipColor + ")" : "none",
+                                    fontFamily: firstStyles[0].firstFamily,
+                                    letterSpacing: firstStyles[0].firstLetter + "px",
+                                    textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
+                                    fontStyle: firstStyles[0].firstStyle,
+                                    fontWeight: firstStyles[0].firstWeight,
+                                    borderStyle: firstStyles[0].firstBorderType,
+                                    borderWidth: firstStyles[0].firstBorder ? firstStyles[0].firstBorderTop + "px " + firstStyles[0].firstBorderRight + "px " + firstStyles[0].firstBorderBottom + "px " + firstStyles[0].firstBorderLeft + "px" : firstStyles[0].firstBorderWidth + "px",
+                                    borderRadius: firstStyles[0].firstBorderRadius + "px",
+                                    borderColor: firstStyles[0].firstBorderColor,
+                                    padding: firstStyles[0].firstPadding + "px",
+                                    marginLeft: firstStyles[0].firstMarginL + "px",
+                                    marginRight: firstStyles[0].firstMarginR + "px",
+                                    textShadow: firstStyles[0].firstShadowHorizontal + "px " + firstStyles[0].firstShadowVertical + "px " + firstStyles[0].firstShadowBlur + "px " + firstStyles[0].firstShadowColor
                                 }
                             },
                             firstHeading
@@ -23473,25 +22804,25 @@ var edit = function (_Component) {
                         React.createElement(
                             "span",
                             {
-                                className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+                                className: "premium-dheading-block__second premium-headingc-" + secondStyles[0].secondClip + " premium-headinga-" + secondStyles[0].secondAnim + " premium-headings-" + secondStyles[0].secondStroke,
                                 style: {
                                     display: display,
-                                    color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground ? (0, _hexToRgba2.default)(secondBackground, secondOpacity) : "transparent",
-                                    backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                    fontFamily: secondFamily,
-                                    letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
-                                    fontStyle: secondStyle,
-                                    fontWeight: secondWeight,
-                                    borderStyle: secondBorderType,
-                                    borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
-                                    borderRadius: secondBorderRadius + "px",
-                                    borderColor: secondBorderColor,
-                                    padding: secondPadding + "px",
-                                    marginLeft: secondMarginL + "px",
-                                    marginRight: secondMarginR + "px",
-                                    textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                                    color: secondStyles[0].secondColor,
+                                    backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground ? (0, _hexToRgba2.default)(secondStyles[0].secondBackground, secondStyles[0].secondOpacity) : "transparent",
+                                    backgroundImage: secondStyles[0].secondClip ? "linear-gradient(to left, " + secondStyles[0].secondColor + ", " + secondStyles[0].secondClipColor + ")" : "none",
+                                    fontFamily: secondStyles[0].secondFamily,
+                                    letterSpacing: secondStyles[0].secondLetter + "px",
+                                    textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
+                                    fontStyle: secondStyles[0].secondStyle,
+                                    fontWeight: secondStyles[0].secondWeight,
+                                    borderStyle: secondStyles[0].secondBorderType,
+                                    borderWidth: secondStyles[0].secondBorder ? secondStyles[0].secondBorderTop + "px " + secondStyles[0].secondBorderRight + "px " + secondStyles[0].secondBorderBottom + "px " + secondStyles[0].secondBorderLeft + "px" : secondStyles[0].secondBorderWidth + "px",
+                                    borderRadius: secondStyles[0].secondBorderRadius + "px",
+                                    borderColor: secondStyles[0].secondBorderColor,
+                                    padding: secondStyles[0].secondPadding + "px",
+                                    marginLeft: secondStyles[0].secondMarginL + "px",
+                                    marginRight: secondStyles[0].secondMarginR + "px",
+                                    textShadow: secondStyles[0].secondShadowHorizontal + "px " + secondStyles[0].secondShadowVertical + "px " + secondStyles[0].secondShadowBlur + "px " + secondStyles[0].secondShadowColor
                                 }
                             },
                             secondHeading
@@ -23512,10 +22843,20 @@ var edit = function (_Component) {
 }(Component);
 
 ;
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23525,11 +22866,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -23595,7 +22936,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23791,7 +23132,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25306,282 +24647,149 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(3);
-
-var _icons = __webpack_require__(5);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _edit = __webpack_require__(238);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(257);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(258);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-var iconAttrs = {
-    iconBorder: {
-        type: "boolean",
-        default: false
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    block_id: {
+        type: "string"
     },
-    wrapBorder: {
-        type: "boolean",
-        default: false
-    },
-    iconType: {
-        type: "string",
-        default: "dash"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    align: {
+    contentAlign: {
         type: "string",
         default: "center"
     },
-    hoverEffect: {
+    firstHeading: {
+        type: "array",
+        source: "children",
+        default: "Premium ",
+        selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+        type: "array",
+        source: "children",
+        default: "Blocks",
+        selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
         type: "string",
-        default: "none"
+        default: "h1"
     },
-    iconSize: {
-        type: "number"
-    },
-    iconSizeUnit: {
+    display: {
         type: "string",
-        default: "px"
+        default: "inline"
     },
-    iconColor: {
-        type: "string",
-        default: "#6ec1e4"
+    firstStyles: {
+        type: "array",
+        default: [{
+            firstClip: false,
+            firstAnim: false,
+            firstStroke: false,
+            firstFamily: '',
+            firstSizeUnit: 'px',
+            firstSize: '',
+            firstSizeMobile: '',
+            firstWeight: '500',
+            firstStyle: '',
+            firstLetter: '',
+            firstUpper: false,
+            firstColor: '',
+            firstBackground: '',
+            firstOpacity: '1',
+            firstClipColor: "#54595f",
+            firstBorderType: 'none',
+            firstBorder: false,
+            firstBorderWidth: '',
+            firstBorderTop: '',
+            firstBorderRight: '',
+            firstBorderBottom: '',
+            firstBorderLeft: '',
+            firstBorderColor: '',
+            firstBorderRadius: '0',
+            firstShadowColor: '',
+            firstShadowBlur: '0',
+            firstShadowHorizontal: '0',
+            firstShadowVertical: '0',
+            firstMarginL: '0',
+            firstMarginR: '0',
+            firstPadding: '0'
+        }]
     },
-    iconBack: {
-        type: "string"
+    secondStyles: {
+        type: "array",
+        default: [{
+            secondClip: false,
+            secondAnim: false,
+            secondStroke: false,
+            secondFamily: '',
+            secondSizeUnit: 'px',
+            secondSize: '20',
+            secondSizeTablet: '',
+            secondSizeMobile: '',
+            secondWeight: '500',
+            secondStyle: '',
+            secondLetter: '',
+            secondUpper: false,
+            secondColor: "#54595f",
+            secondBackground: '',
+            secondOpacity: '',
+            secondClipColor: "#6ec1e4",
+            secondBorderType: "none",
+            secondBorderWidth: '1',
+            secondBorder: false,
+            secondBorderTop: '',
+            secondBorderRight: '',
+            secondBorderBottom: '',
+            secondBorderLeft: '',
+            secondBorderColor: '',
+            secondBorderRadius: '0',
+            secondShadowColor: '',
+            secondShadowBlur: '0',
+            secondShadowHorizontal: '0',
+            secondShadowVertical: '0',
+            secondMarginL: '0',
+            secondMarginR: '0',
+            secondPadding: '0'
+
+        }]
     },
-    iconOpacity: {
-        type: "number",
-        default: "1"
+    containerStyles: {
+        type: 'array',
+        default: [{
+            imageID: '',
+            imageURL: '',
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "auto",
+            fixed: false,
+            containerBorderType: "none",
+            containerBorderWidth: "1",
+            containerBorder: false,
+            containerBorderTop: '',
+            containerBorderRight: '',
+            containerBorderBottom: '',
+            containerBorderLeft: '',
+            containerBorderColor: '',
+            containerBorderRadius: '0',
+            containerBack: '',
+            containerOpacity: 1
+        }]
     },
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderTop: {
-        type: "number",
-        default: 1
-    },
-    iconBorderRight: {
-        type: "number",
-        default: 1
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    borderRadius: {
-        type: "number",
-        default: 100
-    },
-    borderColor: {
-        type: "string"
-    },
-    backgroundColor: {
-        type: "string"
-    },
-    backgroundOpacity: {
-        type: "number",
-        default: "1"
-    },
-    background: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
+    link: {
         type: "boolean",
         default: false
     },
-    wrapBorderType: {
-        type: "string",
-        default: "none"
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderTop: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRight: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRadius: {
-        type: "number"
-    },
-    wrapBorderColor: {
-        type: "string"
-    },
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapShadowColor: {
-        type: "string"
-    },
-    wrapShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    wrapShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
-    },
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean"
-    },
-    link: {
-        type: "string"
-    },
     target: {
-        type: "boolean"
+        type: "boolean",
+        default: false
+    },
+    headingURL: {
+        type: "string"
     },
     hideDesktop: {
         type: 'boolean',
@@ -25596,12 +24804,48 @@ var iconAttrs = {
         default: false
     }
 };
+exports.default = attributes;
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(3);
+
+var _icons = __webpack_require__(5);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _edit = __webpack_require__(240);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(259);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(260);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(387);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
 
 registerBlockType("premium/icon", {
     title: __("Icon"),
     icon: React.createElement(_icons2.default, { icon: "icon" }),
     category: "premium-blocks",
-    attributes: iconAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.icon
     },
@@ -25612,7 +24856,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25621,6 +24865,8 @@ registerBlockType("premium/icon", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _classnames = __webpack_require__(0);
 
@@ -25636,7 +24882,7 @@ var _premiumIconsList = __webpack_require__(106);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -25648,19 +24894,19 @@ var _premiumMargin = __webpack_require__(64);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -25688,6 +24934,7 @@ var _wp$blockEditor = wp.blockEditor,
     ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 var Fragment = wp.element.Fragment;
+var withSelect = wp.data.withSelect;
 
 
 var edit = function edit(props) {
@@ -25695,19 +24942,14 @@ var edit = function edit(props) {
         setAttributes = props.setAttributes,
         className = props.className;
     var _props$attributes = props.attributes,
+        iconBorder = _props$attributes.iconBorder,
+        wrapBorder = _props$attributes.wrapBorder,
         iconType = _props$attributes.iconType,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
-        iconSize = _props$attributes.iconSize,
-        iconSizeUnit = _props$attributes.iconSizeUnit,
-        iconColor = _props$attributes.iconColor,
-        iconBack = _props$attributes.iconBack,
-        iconOpacity = _props$attributes.iconOpacity,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
+        iconStyles = _props$attributes.iconStyles,
+        containerStyles = _props$attributes.containerStyles,
         paddingT = _props$attributes.paddingT,
         paddingR = _props$attributes.paddingR,
         paddingB = _props$attributes.paddingB,
@@ -25717,37 +24959,16 @@ var edit = function edit(props) {
         marginR = _props$attributes.marginR,
         marginB = _props$attributes.marginB,
         marginL = _props$attributes.marginL,
-        borderType = _props$attributes.borderType,
         borderWidth = _props$attributes.borderWidth,
-        iconBorder = _props$attributes.iconBorder,
         iconBorderTop = _props$attributes.iconBorderTop,
         iconBorderRight = _props$attributes.iconBorderRight,
         iconBorderBottom = _props$attributes.iconBorderBottom,
         iconBorderLeft = _props$attributes.iconBorderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        backgroundColor = _props$attributes.backgroundColor,
-        backgroundOpacity = _props$attributes.backgroundOpacity,
-        imageID = _props$attributes.imageID,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        wrapBorderType = _props$attributes.wrapBorderType,
-        wrapBorder = _props$attributes.wrapBorder,
         wrapBorderWidth = _props$attributes.wrapBorderWidth,
         wrapBorderTop = _props$attributes.wrapBorderTop,
         wrapBorderRight = _props$attributes.wrapBorderRight,
         wrapBorderBottom = _props$attributes.wrapBorderBottom,
         wrapBorderLeft = _props$attributes.wrapBorderLeft,
-        wrapBorderRadius = _props$attributes.wrapBorderRadius,
-        wrapBorderColor = _props$attributes.wrapBorderColor,
-        wrapShadowBlur = _props$attributes.wrapShadowBlur,
-        wrapShadowColor = _props$attributes.wrapShadowColor,
-        wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
-        wrapShadowVertical = _props$attributes.wrapShadowVertical,
-        wrapShadowPosition = _props$attributes.wrapShadowPosition,
         wrapPaddingT = _props$attributes.wrapPaddingT,
         wrapPaddingR = _props$attributes.wrapPaddingR,
         wrapPaddingB = _props$attributes.wrapPaddingB,
@@ -25786,6 +25007,29 @@ var edit = function edit(props) {
         value: "wobble",
         label: __("Wobble")
     }];
+
+    var saveContainerStyle = function saveContainerStyle(value) {
+        var newUpdate = containerStyles.map(function (item, index) {
+            if (0 === index) {
+                item = _extends({}, item, value);
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate
+        });
+    };
+    var saveIconStyle = function saveIconStyle(value) {
+        var newUpdate = iconStyles.map(function (item, index) {
+            if (0 === index) {
+                item = _extends({}, item, value);
+            }
+            return item;
+        });
+        setAttributes({
+            iconStyles: newUpdate
+        });
+    };
 
     var ALIGNS = ["left", "center", "right"];
 
@@ -25864,14 +25108,14 @@ var edit = function edit(props) {
             },
             React.createElement(_premiumSizeUnits2.default, {
                 onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return setAttributes({ iconSizeUnit: newValue });
+                    return saveIconStyle({ iconSizeUnit: newValue });
                 }
             }),
             React.createElement(RangeControl, {
                 label: __("Size"),
-                value: iconSize,
+                value: iconStyles[0].iconSize,
                 onChange: function onChange(newValue) {
-                    return setAttributes({ iconSize: newValue });
+                    return saveIconStyle({ iconSize: newValue });
                 },
                 initialPosition: 50,
                 allowReset: true
@@ -25907,9 +25151,9 @@ var edit = function edit(props) {
                                 __("Icon Color")
                             ),
                             React.createElement(ColorPalette, {
-                                value: iconColor,
+                                value: iconStyles[0].iconColor,
                                 onChange: function onChange(newValue) {
-                                    return setAttributes({
+                                    return saveIconStyle({
                                         iconColor: newValue
                                     });
                                 },
@@ -25922,13 +25166,13 @@ var edit = function edit(props) {
                             ),
                             React.createElement(_premiumBackground2.default, {
                                 type: "color",
-                                colorValue: iconBack,
+                                colorValue: iconStyles[0].iconBack,
                                 onChangeColor: function onChangeColor(value) {
-                                    return setAttributes({ iconBack: value });
+                                    return saveIconStyle({ iconBack: value });
                                 },
-                                opacityValue: iconOpacity,
+                                opacityValue: iconStyles[0].iconOpacity,
                                 onChangeOpacity: function onChangeOpacity(newvalue) {
-                                    return setAttributes({
+                                    return saveIconStyle({
                                         iconOpacity: newvalue
                                     });
                                 }
@@ -25938,16 +25182,16 @@ var edit = function edit(props) {
                 })
             ),
             React.createElement(_premiumBorder2.default, {
-                borderType: borderType,
+                borderType: iconStyles[0].borderType,
                 borderWidth: borderWidth,
                 top: iconBorderTop,
                 right: iconBorderRight,
                 bottom: iconBorderBottom,
                 left: iconBorderLeft,
-                borderColor: borderColor,
-                borderRadius: borderRadius,
+                borderColor: iconStyles[0].borderColor,
+                borderRadius: iconStyles[0].borderRadius,
                 onChangeType: function onChangeType(newType) {
-                    return setAttributes({ borderType: newType });
+                    return saveIconStyle({ borderType: newType });
                 },
                 onChangeWidth: function onChangeWidth(_ref2) {
                     var top = _ref2.top,
@@ -25963,29 +25207,29 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return setAttributes({ borderColor: colorValue.hex });
+                    return saveIconStyle({ borderColor: colorValue.hex });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
-                    return setAttributes({ borderRadius: newrRadius });
+                    return saveIconStyle({ borderRadius: newrRadius });
                 }
             }),
             React.createElement(_premiumTextShadow2.default, {
                 label: "Shadow",
-                color: shadowColor,
-                blur: shadowBlur,
-                horizontal: shadowHorizontal,
-                vertical: shadowVertical,
+                color: iconStyles[0].shadowColor,
+                blur: iconStyles[0].shadowBlur,
+                horizontal: iconStyles[0].shadowHorizontal,
+                vertical: iconStyles[0].shadowVertical,
                 onChangeColor: function onChangeColor(newColor) {
-                    return setAttributes({ shadowColor: newColor.hex });
+                    return saveIconStyle({ shadowColor: newColor.hex });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
-                    return setAttributes({ shadowBlur: newBlur });
+                    return saveIconStyle({ shadowBlur: newBlur });
                 },
                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return setAttributes({ shadowHorizontal: newValue });
+                    return saveIconStyle({ shadowHorizontal: newValue });
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
-                    return setAttributes({ shadowVertical: newValue });
+                    return saveIconStyle({ shadowVertical: newValue });
                 }
             }),
             React.createElement(_premiumMargin2.default, {
@@ -26043,7 +25287,7 @@ var edit = function edit(props) {
                 showUnits: true,
                 selectedUnit: paddingU,
                 onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                    return setAttributes({ paddingU: newvalue });
+                    return saveContainerStyle({ paddingU: newvalue });
                 }
             })
         ),
@@ -26064,58 +25308,58 @@ var edit = function edit(props) {
                 ),
                 React.createElement(_premiumBackground2.default, {
                     type: "color",
-                    colorValue: backgroundColor,
+                    colorValue: containerStyles[0].backgroundColor,
                     onChangeColor: function onChangeColor(value) {
-                        return setAttributes({
+                        return saveContainerStyle({
                             backgroundColor: value
                         });
                     },
-                    opacityValue: backgroundOpacity,
+                    opacityValue: containerStyles[0].backgroundOpacity,
                     onChangeOpacity: function onChangeOpacity(newvalue) {
-                        return setAttributes({ backgroundOpacity: newvalue });
+                        return saveContainerStyle({ backgroundOpacity: newvalue });
                     }
                 }),
                 React.createElement(_premiumBackground2.default, {
-                    imageID: imageID,
-                    imageURL: imageURL,
-                    backgroundPosition: backgroundPosition,
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundSize: backgroundSize,
-                    fixed: fixed,
+                    imageID: containerStyles[0].imageID,
+                    imageURL: containerStyles[0].imageURL,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    fixed: containerStyles[0].fixed,
                     onSelectMedia: function onSelectMedia(media) {
-                        setAttributes({
+                        saveContainerStyle({
                             imageID: media.id,
                             imageURL: media.url
                         });
                     },
-                    onRemoveImage: function onRemoveImage(value) {
-                        return setAttributes({ imageURL: "", imageID: "" });
+                    onRemoveImage: function onRemoveImage() {
+                        return saveContainerStyle({ imageURL: "", imageID: "" });
                     },
                     onChangeBackPos: function onChangeBackPos(newValue) {
-                        return setAttributes({ backgroundPosition: newValue });
+                        return saveContainerStyle({ backgroundPosition: newValue });
                     },
                     onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                        return setAttributes({ backgroundRepeat: newValue });
+                        return saveContainerStyle({ backgroundRepeat: newValue });
                     },
                     onChangeBackSize: function onChangeBackSize(newValue) {
-                        return setAttributes({ backgroundSize: newValue });
+                        return saveContainerStyle({ backgroundSize: newValue });
                     },
                     onChangeFixed: function onChangeFixed(check) {
-                        return setAttributes({ fixed: check });
+                        return saveContainerStyle({ fixed: check });
                     }
                 })
             ),
             React.createElement(_premiumBorder2.default, {
-                borderType: wrapBorderType,
-                borderWidth: wrapBorderWidth,
+                borderType: containerStyles[0].wrapBorderType,
+                borderWidth: containerStyles[0].wrapBorderWidth,
                 top: wrapBorderTop,
                 right: wrapBorderRight,
                 bottom: wrapBorderBottom,
                 left: wrapBorderLeft,
-                borderColor: wrapBorderColor,
-                borderRadius: wrapBorderRadius,
+                borderColor: containerStyles[0].wrapBorderColor,
+                borderRadius: containerStyles[0].wrapBorderRadius,
                 onChangeType: function onChangeType(newType) {
-                    return setAttributes({ wrapBorderType: newType });
+                    return saveContainerStyle({ wrapBorderType: newType });
                 },
                 onChangeWidth: function onChangeWidth(_ref3) {
                     var top = _ref3.top,
@@ -26131,41 +25375,41 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return setAttributes({ wrapBorderColor: colorValue.hex });
+                    return saveContainerStyle({ wrapBorderColor: colorValue.hex });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
-                    return setAttributes({ wrapBorderRadius: newrRadius });
+                    return saveContainerStyle({ wrapBorderRadius: newrRadius });
                 }
             }),
             React.createElement(_premiumBoxShadow2.default, {
                 inner: true,
-                color: wrapShadowColor,
-                blur: wrapShadowBlur,
-                horizontal: wrapShadowHorizontal,
-                vertical: wrapShadowVertical,
-                position: wrapShadowPosition,
+                color: containerStyles[0].wrapShadowColor,
+                blur: containerStyles[0].wrapShadowBlur,
+                horizontal: containerStyles[0].wrapShadowHorizontal,
+                vertical: containerStyles[0].wrapShadowVertical,
+                position: containerStyles[0].wrapShadowPosition,
                 onChangeColor: function onChangeColor(newColor) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         wrapShadowColor: newColor.hex
                     });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         wrapShadowBlur: newBlur
                     });
                 },
                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         wrapShadowHorizontal: newValue
                     });
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         wrapShadowVertical: newValue
                     });
                 },
                 onChangePosition: function onChangePosition(newValue) {
-                    return setAttributes({
+                    return saveContainerStyle({
                         wrapShadowPosition: newValue
                     });
                 }
@@ -26244,17 +25488,17 @@ var edit = function edit(props) {
             className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
-                backgroundImage: imageURL ? "url('" + imageURL + "')" : "none",
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
+                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : "none",
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
                 borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + containerStyles[0].wrapShadowPosition,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -26273,22 +25517,22 @@ var edit = function edit(props) {
         (iconType === "dash" || 1 == _settings.FontAwesomeEnabled) && React.createElement("i", {
             className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
             style: {
-                color: iconColor || "#6ec1e4",
-                backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
-                fontSize: (iconSize || 50) + iconSizeUnit,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
+                color: iconStyles[0].iconColor || "#6ec1e4",
+                backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                paddingTop: paddingT + iconStyles[0].paddingU,
+                paddingRight: paddingR + iconStyles[0].paddingU,
+                paddingBottom: paddingB + iconStyles[0].paddingU,
+                paddingLeft: paddingL + iconStyles[0].paddingU,
                 marginTop: marginT,
                 marginRight: marginR,
                 marginBottom: marginB,
                 marginLeft: marginL,
-                borderStyle: borderType,
+                borderStyle: iconStyles[0].borderType,
                 borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
-                borderRadius: borderRadius || 100 + "px",
-                borderColor: borderColor,
-                textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                borderColor: iconStyles[0].borderColor,
+                textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
             }
         }),
         urlCheck && isSelected && React.createElement(URLInput, {
@@ -26300,10 +25544,20 @@ var edit = function edit(props) {
     )];
 };
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26378,7 +25632,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26612,7 +25866,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27190,7 +26444,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27256,7 +26510,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29599,7 +28853,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29805,7 +29059,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30511,7 +29765,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(36)))
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30522,7 +29776,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(54);var scheduler=__webpack_require__(101);var tracing=__webpack_require__(247);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(34);var checkPropTypes=__webpack_require__(54);var scheduler=__webpack_require__(101);var tracing=__webpack_require__(249);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -34400,21 +33654,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(248);
+  module.exports = __webpack_require__(250);
 } else {
-  module.exports = __webpack_require__(249);
+  module.exports = __webpack_require__(251);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 248 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34441,7 +33695,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 249 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34869,7 +34123,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 250 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34880,9 +34134,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(9));
 
-var _addClass = _interopRequireDefault(__webpack_require__(251));
+var _addClass = _interopRequireDefault(__webpack_require__(253));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(254));
+var _removeClass = _interopRequireDefault(__webpack_require__(256));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
@@ -35269,18 +34523,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 251 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(252);
+var _interopRequireDefault = __webpack_require__(254);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(253));
+var _hasClass = _interopRequireDefault(__webpack_require__(255));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -35289,7 +34543,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 252 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35305,7 +34559,7 @@ module.exports = _interopRequireDefault;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35321,7 +34575,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35336,7 +34590,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35501,7 +34755,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35656,7 +34910,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35679,19 +34933,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
-        wrapBorder = _props$attributes.wrapBorder,
         iconBorder = _props$attributes.iconBorder,
+        wrapBorder = _props$attributes.wrapBorder,
+        iconType = _props$attributes.iconType,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
-        iconSize = _props$attributes.iconSize,
-        iconSizeUnit = _props$attributes.iconSizeUnit,
-        iconColor = _props$attributes.iconColor,
-        iconBack = _props$attributes.iconBack,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
+        iconStyles = _props$attributes.iconStyles,
+        containerStyles = _props$attributes.containerStyles,
         paddingT = _props$attributes.paddingT,
         paddingR = _props$attributes.paddingR,
         paddingB = _props$attributes.paddingB,
@@ -35701,33 +34950,16 @@ var save = function save(props) {
         marginR = _props$attributes.marginR,
         marginB = _props$attributes.marginB,
         marginL = _props$attributes.marginL,
-        borderType = _props$attributes.borderType,
         borderWidth = _props$attributes.borderWidth,
         iconBorderTop = _props$attributes.iconBorderTop,
         iconBorderRight = _props$attributes.iconBorderRight,
         iconBorderBottom = _props$attributes.iconBorderBottom,
         iconBorderLeft = _props$attributes.iconBorderLeft,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        backgroundColor = _props$attributes.backgroundColor,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        wrapBorderType = _props$attributes.wrapBorderType,
         wrapBorderWidth = _props$attributes.wrapBorderWidth,
         wrapBorderTop = _props$attributes.wrapBorderTop,
         wrapBorderRight = _props$attributes.wrapBorderRight,
         wrapBorderBottom = _props$attributes.wrapBorderBottom,
         wrapBorderLeft = _props$attributes.wrapBorderLeft,
-        wrapBorderRadius = _props$attributes.wrapBorderRadius,
-        wrapBorderColor = _props$attributes.wrapBorderColor,
-        wrapShadowBlur = _props$attributes.wrapShadowBlur,
-        wrapShadowColor = _props$attributes.wrapShadowColor,
-        wrapShadowHorizontal = _props$attributes.wrapShadowHorizontal,
-        wrapShadowVertical = _props$attributes.wrapShadowVertical,
-        wrapShadowPosition = _props$attributes.wrapShadowPosition,
         wrapPaddingT = _props$attributes.wrapPaddingT,
         wrapPaddingR = _props$attributes.wrapPaddingR,
         wrapPaddingB = _props$attributes.wrapPaddingB,
@@ -35739,8 +34971,6 @@ var save = function save(props) {
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
-        iconOpacity = _props$attributes.iconOpacity,
-        backgroundOpacity = _props$attributes.backgroundOpacity,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile;
@@ -35754,17 +34984,17 @@ var save = function save(props) {
             className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
-                backgroundImage: 'url(\'' + imageURL + '\')',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
+                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : "none",
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
                 borderWidth: wrapBorder ? wrapBorderTop + 'px ' + wrapBorderRight + 'px ' + wrapBorderBottom + 'px ' + wrapBorderLeft + 'px' : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + 'px ' + (containerStyles[0].wrapShadowVertical || 0) + 'px ' + (containerStyles[0].wrapShadowBlur || 0) + 'px ' + containerStyles[0].wrapShadowColor + ' ' + containerStyles[0].wrapShadowPosition,
                 paddingTop: wrapPaddingT,
                 paddingRight: wrapPaddingR,
                 paddingBottom: wrapPaddingB,
@@ -35786,22 +35016,22 @@ var save = function save(props) {
             React.createElement('i', {
                 className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                 style: {
-                    color: iconColor || "#6ec1e4",
-                    backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
-                    fontSize: (iconSize || 50) + iconSizeUnit,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
+                    color: iconStyles[0].iconColor || "#6ec1e4",
+                    backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                    fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                    paddingTop: paddingT + iconStyles[0].paddingU,
+                    paddingRight: paddingR + iconStyles[0].paddingU,
+                    paddingBottom: paddingB + iconStyles[0].paddingU,
+                    paddingLeft: paddingL + iconStyles[0].paddingU,
                     marginTop: marginT,
                     marginRight: marginR,
                     marginBottom: marginB,
                     marginLeft: marginL,
-                    borderStyle: borderType,
+                    borderStyle: iconStyles[0].borderType,
                     borderWidth: iconBorder ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : borderWidth + "px",
-                    borderRadius: borderRadius || 100 + "px",
-                    borderColor: borderColor,
-                    textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
+                    borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                    borderColor: iconStyles[0].borderColor,
+                    textShadow: (iconStyles[0].shadowHorizontal || 0) + 'px ' + (iconStyles[0].shadowVertical || 0) + 'px ' + (iconStyles[0].shadowBlur || 0) + 'px ' + iconStyles[0].shadowColor
                 }
             })
         )
@@ -35811,7 +35041,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37333,7 +36563,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 259 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37345,17 +36575,21 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(260);
+var _edit = __webpack_require__(262);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(262);
+var _save = __webpack_require__(264);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(263);
+var _deprecated = __webpack_require__(265);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(388);
+
+var _attributes2 = _interopRequireDefault(_attributes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37363,465 +36597,11 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var iconBoxAttrs = {
-    block_id: {
-        type: "string"
-    },
-    borderIconBox: {
-        type: "boolean",
-        default: false
-    },
-    btnBorderIconBox: {
-        type: "boolean",
-        default: false
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    iconImage: {
-        type: "string",
-        default: "icon"
-    },
-    iconImgId: {
-        type: "string"
-    },
-    iconImgUrl: {
-        type: "string"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconChecked: {
-        type: "boolean",
-        default: true
-    },
-    iconPos: {
-        type: "string",
-        default: "block"
-    },
-    iconHPos: {
-        type: "string",
-        default: "before"
-    },
-    iconVPos: {
-        type: "string",
-        default: "center"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconRadius: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string"
-    },
-    iconBackColor: {
-        type: "string"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    titleText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleFont: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: '20'
-    },
-    titleSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    titleSizeTablet: {
-        type: 'number',
-        default: '20'
-    },
-    titleSizeMobile: {
-        type: 'number',
-        default: '20'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__desc",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    descChecked: {
-        type: "boolean",
-        default: true
-    },
-    descFont: {
-        type: "string"
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number",
-        default: '20'
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    descSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnEffect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    btnText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__btn",
-        default: __("Click Here")
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-icon-box__btn"
-    },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnHoverBorder: {
-        type: "string"
-    },
-    btnSize: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    btnSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    hoverShadowColor: {
-        type: "string"
-    },
-    hoverShadowBlur: {
-        type: "number"
-    },
-    hoverShadowHorizontal: {
-        type: "number"
-    },
-    hoverShadowVertical: {
-        type: "number"
-    },
-    hoverShadowPosition: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    iconOpacity: {
-        type: "number",
-        default: "1"
-    },
-    btnOpacity: {
-        type: "number",
-        default: "1"
-    }
-};
-
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
     icon: React.createElement(_icons2.default, { icon: "icon-box" }),
     category: "premium-blocks",
-    attributes: iconBoxAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.iconBox
     },
@@ -37832,7 +36612,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 260 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37841,6 +36621,8 @@ registerBlockType("premium/icon-box", {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37866,7 +36648,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -37874,19 +36656,19 @@ var _premiumMargin = __webpack_require__(64);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -37898,7 +36680,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(261);
+var _styling = __webpack_require__(263);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -37929,6 +36711,7 @@ var _wp$components = wp.components,
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
+var withSelect = wp.data.withSelect;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
@@ -37953,15 +36736,7 @@ var edit = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
-
             setAttributes({ block_id: clientId });
-
-            setAttributes({ classMigrate: true });
-
-            // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-iconBox-" + clientId);
-            document.head.appendChild($style);
         }
     }, {
         key: "render",
@@ -37972,17 +36747,62 @@ var edit = function (_Component) {
                 className = _props2.className,
                 blockId = _props2.clientId,
                 attributes = _props2.attributes;
+
+
+            var saveContainerStyle = function saveContainerStyle(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
+                });
+            };
+            var saveTitleStyle = function saveTitleStyle(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
+
+            var saveButtonStyle = function saveButtonStyle(value) {
+                var newUpdate = btnStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    btnStyles: newUpdate
+                });
+            };
+            var saveDescriptionStyle = function saveDescriptionStyle(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    descStyles: newUpdate
+                });
+            };
             var block_id = attributes.block_id,
                 borderIconBox = attributes.borderIconBox,
                 btnBorderIconBox = attributes.btnBorderIconBox,
                 align = attributes.align,
-                iconChecked = attributes.iconChecked,
                 iconImage = attributes.iconImage,
                 iconImgId = attributes.iconImgId,
                 iconImgUrl = attributes.iconImgUrl,
-                iconType = attributes.iconType,
-                selectedIcon = attributes.selectedIcon,
                 hoverEffect = attributes.hoverEffect,
+                iconChecked = attributes.iconChecked,
                 iconPos = attributes.iconPos,
                 iconHPos = attributes.iconHPos,
                 iconVPos = attributes.iconVPos,
@@ -37990,92 +36810,42 @@ var edit = function (_Component) {
                 iconRadius = attributes.iconRadius,
                 iconColor = attributes.iconColor,
                 iconBackColor = attributes.iconBackColor,
-                iconOpacity = attributes.iconOpacity,
+                selectedIcon = attributes.selectedIcon,
                 titleChecked = attributes.titleChecked,
                 titleText = attributes.titleText,
-                titleTag = attributes.titleTag,
-                titleColor = attributes.titleColor,
-                titleFont = attributes.titleFont,
-                titleSizeUnit = attributes.titleSizeUnit,
-                titleSize = attributes.titleSize,
-                titleSizeTablet = attributes.titleSizeTablet,
-                titleSizeMobile = attributes.titleSizeMobile,
-                titleLine = attributes.titleLine,
-                titleLetter = attributes.titleLetter,
-                titleStyle = attributes.titleStyle,
-                titleUpper = attributes.titleUpper,
-                titleWeight = attributes.titleWeight,
-                titleShadowBlur = attributes.titleShadowBlur,
-                titleShadowColor = attributes.titleShadowColor,
-                titleShadowHorizontal = attributes.titleShadowHorizontal,
-                titleShadowVertical = attributes.titleShadowVertical,
-                titleMarginT = attributes.titleMarginT,
-                titleMarginB = attributes.titleMarginB,
-                descChecked = attributes.descChecked,
                 descText = attributes.descText,
-                descColor = attributes.descColor,
-                descFont = attributes.descFont,
-                descSizeUnit = attributes.descSizeUnit,
-                descSize = attributes.descSize,
-                descSizeTablet = attributes.descSizeTablet,
-                descSizeMobile = attributes.descSizeMobile,
-                descLine = attributes.descLine,
-                descWeight = attributes.descWeight,
-                descMarginT = attributes.descMarginT,
-                descMarginB = attributes.descMarginB,
+                descChecked = attributes.descChecked,
                 btnChecked = attributes.btnChecked,
                 btnEffect = attributes.btnEffect,
                 effectDir = attributes.effectDir,
                 btnTarget = attributes.btnTarget,
                 btnText = attributes.btnText,
                 btnLink = attributes.btnLink,
-                btnSizeUnit = attributes.btnSizeUnit,
-                btnSize = attributes.btnSize,
-                btnSizeTablet = attributes.btnSizeTablet,
-                btnSizeMobile = attributes.btnSizeMobile,
-                btnUpper = attributes.btnUpper,
-                btnWeight = attributes.btnWeight,
-                btnLetter = attributes.btnLetter,
-                btnColor = attributes.btnColor,
-                btnStyle = attributes.btnStyle,
-                btnHoverColor = attributes.btnHoverColor,
-                btnBack = attributes.btnBack,
-                btnOpacity = attributes.btnOpacity,
-                btnHoverBack = attributes.btnHoverBack,
                 btnHoverBorder = attributes.btnHoverBorder,
-                btnBorderColor = attributes.btnBorderColor,
+                classMigrate = attributes.classMigrate,
+                hideDesktop = attributes.hideDesktop,
+                hideTablet = attributes.hideTablet,
+                hideMobile = attributes.hideMobile,
+                iconOpacity = attributes.iconOpacity,
+                titleStyles = attributes.titleStyles,
+                descStyles = attributes.descStyles,
+                btnStyles = attributes.btnStyles,
+                containerStyles = attributes.containerStyles,
+                titleMarginT = attributes.titleMarginT,
+                titleMarginB = attributes.titleMarginB,
+                descMarginT = attributes.descMarginT,
+                descMarginB = attributes.descMarginB,
                 btnBorderWidth = attributes.btnBorderWidth,
                 btnBorderTop = attributes.btnBorderTop,
                 btnBorderRight = attributes.btnBorderRight,
                 btnBorderBottom = attributes.btnBorderBottom,
                 btnBorderLeft = attributes.btnBorderLeft,
-                btnBorderRadius = attributes.btnBorderRadius,
-                btnBorderType = attributes.btnBorderType,
-                btnPadding = attributes.btnPadding,
-                btnPaddingU = attributes.btnPaddingU,
-                btnMarginT = attributes.btnMarginT,
-                btnMarginB = attributes.btnMarginB,
-                btnShadowBlur = attributes.btnShadowBlur,
-                btnShadowColor = attributes.btnShadowColor,
-                btnShadowHorizontal = attributes.btnShadowHorizontal,
-                btnShadowVertical = attributes.btnShadowVertical,
-                btnShadowPosition = attributes.btnShadowPosition,
-                imageID = attributes.imageID,
-                imageURL = attributes.imageURL,
-                fixed = attributes.fixed,
-                backColor = attributes.backColor,
-                backOpacity = attributes.backOpacity,
-                backgroundRepeat = attributes.backgroundRepeat,
-                backgroundPosition = attributes.backgroundPosition,
-                backgroundSize = attributes.backgroundSize,
-                borderType = attributes.borderType,
-                borderWidth = attributes.borderWidth,
                 borderTop = attributes.borderTop,
                 borderRight = attributes.borderRight,
                 borderBottom = attributes.borderBottom,
                 borderLeft = attributes.borderLeft,
-                borderRadius = attributes.borderRadius,
-                borderColor = attributes.borderColor,
+                btnMarginT = attributes.btnMarginT,
+                btnMarginB = attributes.btnMarginB,
                 marginT = attributes.marginT,
                 marginR = attributes.marginR,
                 marginB = attributes.marginB,
@@ -38084,20 +36854,7 @@ var edit = function (_Component) {
                 paddingR = attributes.paddingR,
                 paddingB = attributes.paddingB,
                 paddingL = attributes.paddingL,
-                paddingU = attributes.paddingU,
-                shadowBlur = attributes.shadowBlur,
-                shadowColor = attributes.shadowColor,
-                shadowHorizontal = attributes.shadowHorizontal,
-                shadowVertical = attributes.shadowVertical,
-                shadowPosition = attributes.shadowPosition,
-                hoverShadowBlur = attributes.hoverShadowBlur,
-                hoverShadowColor = attributes.hoverShadowColor,
-                hoverShadowHorizontal = attributes.hoverShadowHorizontal,
-                hoverShadowVertical = attributes.hoverShadowVertical,
-                hoverShadowPosition = attributes.hoverShadowPosition,
-                hideDesktop = attributes.hideDesktop,
-                hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                iconType = attributes.iconType;
 
 
             var imgIcon = [{
@@ -38208,13 +36965,6 @@ var edit = function (_Component) {
 
                 addFontToHead(fontFamily);
             };
-
-            var element = document.getElementById("premium-style-iconBox-" + blockId);
-
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
-
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
 
             return [isSelected && React.createElement(
@@ -38389,9 +37139,9 @@ var edit = function (_Component) {
                         controls: "123456".split("").map(function (tag) {
                             return {
                                 icon: "heading",
-                                isActive: "H" + tag === titleTag,
+                                isActive: "H" + tag === titleStyles[0].titleTag,
                                 onClick: function onClick() {
-                                    return setAttributes({ titleTag: "H" + tag });
+                                    return saveTitleStyle({ titleTag: "H" + tag });
                                 },
                                 subscript: tag
                             };
@@ -38399,68 +37149,68 @@ var edit = function (_Component) {
                     }),
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: titleFont,
+                        value: titleStyles[0].titleFont,
                         options: _premiumFonts2.default,
                         onChange: onChangeTitleFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveTitleStyle,
                         fontSizeType: {
-                            value: titleSizeUnit,
+                            value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
                         },
                         fontSize: {
-                            value: titleSize,
+                            value: titleStyles[0].titleSize,
                             label: __("titleSize")
                         },
                         fontSizeMobile: {
-                            value: titleSizeMobile,
+                            value: titleStyles[0].titleSizeMobile,
                             label: __("titleSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: titleSizeTablet,
+                            value: titleStyles[0].titleSizeTablet,
                             label: __("titleSizeTablet")
                         },
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleLetter,
-                        line: titleLine,
-                        upper: titleUpper,
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleLetter,
+                        line: titleStyles[0].titleLine,
+                        upper: titleStyles[0].titleUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight || 500 });
+                            return saveTitleStyle({ titleWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
+                            return saveTitleStyle({ titleStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleLetter: newValue });
+                            return saveTitleStyle({ titleLetter: newValue });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ titleLine: newValue });
+                            return saveTitleStyle({ titleLine: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
+                            return saveTitleStyle({ titleUpper: check });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: titleShadowColor,
-                        blur: titleShadowBlur,
-                        horizontal: titleShadowHorizontal,
-                        vertical: titleShadowVertical,
+                        color: titleStyles[0].titleShadowColor,
+                        blur: titleStyles[0].titleShadowBlur,
+                        horizontal: titleStyles[0].titleShadowHorizontal,
+                        vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveTitleStyle({
                                 titleShadowColor: newColor.hex || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ titleShadowBlur: newBlur || 0 });
+                            return saveTitleStyle({ titleShadowBlur: newBlur || 0 });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ titleShadowHorizontal: newValue || 0 });
+                            return saveTitleStyle({ titleShadowHorizontal: newValue || 0 });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ titleShadowVertical: newValue || 0 });
+                            return saveTitleStyle({ titleShadowVertical: newValue || 0 });
                         }
                     }),
                     React.createElement(_premiumMargin2.default, {
@@ -38488,36 +37238,36 @@ var edit = function (_Component) {
                     },
                     React.createElement(SelectControl, {
                         label: __("Font Family"),
-                        value: descFont,
+                        value: descStyles[0].descFont,
                         options: _premiumFonts2.default,
                         onChange: onChangeDescFamily
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveDescriptionStyle,
                         fontSizeType: {
-                            value: descSizeUnit,
+                            value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit")
                         },
                         fontSize: {
-                            value: descSize,
+                            value: descStyles[0].descSize,
                             label: __("descSize")
                         },
                         fontSizeMobile: {
-                            value: descSizeMobile,
+                            value: descStyles[0].descSizeMobile,
                             label: __("descSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: descSizeTablet,
+                            value: descStyles[0].descSizeTablet,
                             label: __("descSizeTablet")
                         },
-                        weight: descWeight,
-                        line: descLine,
+                        weight: descStyles[0].descWeight,
+                        line: descStyles[0].descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ descWeight: newWeight || 500 });
+                            return saveDescriptionStyle({ descWeight: newWeight || 500 });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return setAttributes({ descLine: newValue });
+                            return saveDescriptionStyle({ descLine: newValue });
                         }
                     }),
                     React.createElement(_premiumMargin2.default, {
@@ -38569,49 +37319,49 @@ var edit = function (_Component) {
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
 
-                        setAttributes: setAttributes,
+                        setAttributes: saveButtonStyle,
                         fontSizeType: {
-                            value: btnSizeUnit,
+                            value: btnStyles[0].btnSizeUnit,
                             label: __("btnSizeUnit")
                         },
                         fontSize: {
-                            value: btnSize,
+                            value: btnStyles[0].btnSize,
                             label: __("btnSize")
                         },
                         fontSizeMobile: {
-                            value: btnSizeMobile,
+                            value: btnStyles[0].btnSizeMobile,
                             label: __("btnSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: btnSizeTablet,
+                            value: btnStyles[0].btnSizeTablet,
                             label: __("btnSizeTablet")
                         },
-                        weight: btnWeight,
-                        style: btnStyle,
-                        spacing: btnLetter,
-                        upper: btnUpper,
+                        weight: btnStyles[0].btnWeight,
+                        style: btnStyles[0].btnStyle,
+                        spacing: btnStyles[0].btnLetter,
+                        upper: btnStyles[0].btnUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ btnWeight: newWeight || 500 });
+                            return saveButtonStyle({ btnWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ btnStyle: newStyle });
+                            return saveButtonStyle({ btnStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ btnLetter: newValue });
+                            return saveButtonStyle({ btnLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ btnUpper: check });
+                            return saveButtonStyle({ btnUpper: check });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: btnBorderType,
+                        borderType: btnStyles[0].btnBorderType,
                         borderWidth: btnBorderWidth,
                         top: btnBorderTop,
                         right: btnBorderRight,
                         bottom: btnBorderBottom,
                         left: btnBorderLeft,
-                        borderColor: btnBorderColor,
-                        borderRadius: btnBorderRadius,
+                        borderColor: btnStyles[0].btnBorderColor,
+                        borderRadius: btnStyles[0].btnBorderRadius,
                         onChangeType: function onChangeType(newType) {
                             return setAttributes({ btnBorderType: newType });
                         },
@@ -38637,47 +37387,47 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: btnShadowColor,
-                        blur: btnShadowBlur,
-                        horizontal: btnShadowHorizontal,
-                        vertical: btnShadowVertical,
-                        position: btnShadowPosition,
+                        color: btnStyles[0].btnShadowColor,
+                        blur: btnStyles[0].btnShadowBlur,
+                        horizontal: btnStyles[0].btnShadowHorizontal,
+                        vertical: btnStyles[0].btnShadowVertical,
+                        position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnShadowColor: newColor.hex || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnShadowBlur: newBlur || 0
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnShadowHorizontal: newValue || 0
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnShadowVertical: newValue || 0
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveButtonStyle({
                                 btnShadowPosition: newValue || 0
                             });
                         }
                     }),
                     React.createElement(_premiumSizeUnits2.default, {
                         onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                            return setAttributes({ btnPaddingU: newValue });
+                            return saveButtonStyle({ btnPaddingU: newValue });
                         }
                     }),
                     React.createElement(RangeControl, {
                         label: __("Padding"),
-                        value: btnPadding,
+                        value: btnStyles[0].btnPadding,
                         onChange: function onChange(newValue) {
-                            return setAttributes({ btnPadding: newValue });
+                            return saveButtonStyle({ btnPadding: newValue });
                         }
                     }),
                     React.createElement(_premiumMargin2.default, {
@@ -38704,45 +37454,45 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     React.createElement(_premiumBackground2.default, {
-                        imageID: imageID,
-                        imageURL: imageURL,
-                        backgroundPosition: backgroundPosition,
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundSize: backgroundSize,
-                        fixed: fixed,
+                        imageID: containerStyles[0].imageID,
+                        imageURL: containerStyles[0].imageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
                         onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
+                            saveContainerStyle({
                                 imageID: media.id,
                                 imageURL: media.url
                             });
                         },
                         onRemoveImage: function onRemoveImage(value) {
-                            return setAttributes({ imageURL: "", imageID: "" });
+                            return saveContainerStyle({ imageURL: "", imageID: "" });
                         },
                         onChangeBackPos: function onChangeBackPos(newValue) {
-                            return setAttributes({ backgroundPosition: newValue });
+                            return saveContainerStyle({ backgroundPosition: newValue });
                         },
                         onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                            return setAttributes({ backgroundRepeat: newValue });
+                            return saveContainerStyle({ backgroundRepeat: newValue });
                         },
                         onChangeBackSize: function onChangeBackSize(newValue) {
-                            return setAttributes({ backgroundSize: newValue });
+                            return saveContainerStyle({ backgroundSize: newValue });
                         },
                         onChangeFixed: function onChangeFixed(check) {
-                            return setAttributes({ fixed: check });
+                            return saveContainerStyle({ fixed: check });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
+                        borderType: containerStyles[0].borderType,
+                        borderWidth: containerStyles[0].borderWidth,
                         top: borderTop,
                         right: borderRight,
                         bottom: borderBottom,
                         left: borderLeft,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
+                        borderColor: containerStyles[0].borderColor,
+                        borderRadius: containerStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                            return saveContainerStyle({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref2) {
                             var top = _ref2.top,
@@ -38758,41 +37508,41 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveContainerStyle({ borderColor: colorValue.hex });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadius: newrRadius });
+                            return saveContainerStyle({ borderRadius: newrRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
-                        position: shadowPosition,
+                        color: containerStyles[0].shadowColor,
+                        blur: containerStyles[0].shadowBlur,
+                        horizontal: containerStyles[0].shadowHorizontal,
+                        vertical: containerStyles[0].shadowVertical,
+                        position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowColor: newColor.hex || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowBlur: newBlur || 0
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowHorizontal: newValue || 0
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowVertical: newValue || 0
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 shadowPosition: newValue
                             });
                         }
@@ -38800,33 +37550,33 @@ var edit = function (_Component) {
                     React.createElement(_premiumBoxShadow2.default, {
                         inner: true,
                         label: __("Hover Box Shadow"),
-                        color: hoverShadowColor,
-                        blur: hoverShadowBlur,
-                        horizontal: hoverShadowHorizontal,
-                        vertical: hoverShadowVertical,
-                        position: hoverShadowPosition,
+                        color: containerStyles[0].hoverShadowColor,
+                        blur: containerStyles[0].hoverShadowBlur,
+                        horizontal: containerStyles[0].hoverShadowHorizontal,
+                        vertical: containerStyles[0].hoverShadowVertical,
+                        position: containerStyles[0].hoverShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 hoverShadowColor: newColor.hex
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 hoverShadowBlur: newBlur
                             });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 hoverShadowHorizontal: newValue
                             });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 hoverShadowVertical: newValue
                             });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return setAttributes({
+                            return saveContainerStyle({
                                 hoverShadowPosition: newValue
                             });
                         }
@@ -38884,9 +37634,9 @@ var edit = function (_Component) {
                                 paddingL: value || 0
                             });
                         },
-                        selectedUnit: paddingU,
+                        selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ paddingU: newvalue });
+                            return saveContainerStyle({ paddingU: newvalue });
                         }
                     })
                 ),
@@ -38965,9 +37715,9 @@ var edit = function (_Component) {
                                             __("Tile Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: titleColor,
+                                            value: titleStyles[0].titleColor,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return saveTitleStyle({
                                                     titleColor: newValue || "transparent"
                                                 });
                                             },
@@ -38983,9 +37733,9 @@ var edit = function (_Component) {
                                             __("Descreption Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: descColor,
+                                            value: descStyles[0].descColor,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return saveDescriptionStyle({
                                                     descColor: newValue || "transparent"
                                                 });
                                             },
@@ -39001,9 +37751,9 @@ var edit = function (_Component) {
                                             __("Button Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: btnColor,
+                                            value: btnStyles[0].btnColor,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return saveButtonStyle({
                                                     btnColor: newValue || "#000"
                                                 });
                                             },
@@ -39016,15 +37766,15 @@ var edit = function (_Component) {
                                         ),
                                         React.createElement(_premiumBackground2.default, {
                                             type: "color",
-                                            colorValue: btnBack,
+                                            colorValue: btnStyles[0].btnBack,
                                             onChangeColor: function onChangeColor(newvalue) {
-                                                return setAttributes({
+                                                return saveButtonStyle({
                                                     btnBack: newvalue
                                                 });
                                             },
-                                            opacityValue: btnOpacity,
+                                            opacityValue: btnStyles[0].btnOpacity,
                                             onChangeOpacity: function onChangeOpacity(value) {
-                                                return setAttributes({
+                                                return saveButtonStyle({
                                                     btnOpacity: value
                                                 });
                                             }
@@ -39037,13 +37787,13 @@ var edit = function (_Component) {
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
-                                        colorValue: backColor,
+                                        colorValue: containerStyles[0].backColor,
                                         onChangeColor: function onChangeColor(newvalue) {
-                                            return setAttributes({ backColor: newvalue });
+                                            return saveContainerStyle({ backColor: newvalue });
                                         },
-                                        opacityValue: backOpacity,
+                                        opacityValue: containerStyles[0].backOpacity,
                                         onChangeOpacity: function onChangeOpacity(value) {
-                                            return setAttributes({ backOpacity: value });
+                                            return saveContainerStyle({ backOpacity: value });
                                         }
                                     })
                                 );
@@ -39061,9 +37811,9 @@ var edit = function (_Component) {
                                             __("Button Hover Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: btnHoverColor,
+                                            value: btnStyles[0].btnHoverColor,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return saveButtonStyle({
                                                     btnHoverColor: newValue || "#000"
                                                 });
                                             },
@@ -39075,9 +37825,9 @@ var edit = function (_Component) {
                                             __("Background Button Hover Color")
                                         ),
                                         React.createElement(ColorPalette, {
-                                            value: btnHoverBack,
+                                            value: btnStyles[0].btnHoverBack,
                                             onChange: function onChange(newValue) {
-                                                return setAttributes({
+                                                return saveButtonStyle({
                                                     btnHoverBack: newValue
                                                 });
                                             },
@@ -39130,30 +37880,32 @@ var edit = function (_Component) {
                     className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: align,
-                        borderStyle: borderType,
-                        borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
-                        borderColor: borderColor,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
-                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                        backgroundImage: imageURL ? "url('" + imageURL + "')" : 'none',
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset"
+                        borderStyle: containerStyles[0].borderType,
+                        borderWidth: borderIconBox ? containerStyles[0].borderTop + "px " + containerStyles[0].borderRight + "px " + containerStyles[0].borderBottom + "px " + containerStyles[0].borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                        borderRadius: containerStyles[0].borderRadius + "px",
+                        borderColor: containerStyles[0].borderColor,
+                        marginTop: containerStyles[0].marginT,
+                        marginRight: containerStyles[0].marginR,
+                        marginBottom: containerStyles[0].marginB,
+                        marginLeft: containerStyles[0].marginL,
+                        paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                        paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                        paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                        paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
+                        boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
+                        // backgroundColor: containerStyles[0].backColor
+                        //     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
+                        //     : "transparent",
+                        backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
                     }
                 },
                 btnChecked && btnText && React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerStyles[0].hoverShadowHorizontal + "px " + containerStyles[0].hoverShadowVertical + "px " + containerStyles[0].hoverShadowBlur + "px " + containerStyles[0].hoverShadowColor + " " + containerStyles[0].hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
                     }
                 }),
                 iconChecked && React.createElement(
@@ -39197,12 +37949,12 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__title_wrap",
                             style: {
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
+                                marginTop: titleStyles[0].titleMarginT,
+                                marginBottom: titleStyles[0].titleMarginB
                             }
                         },
                         React.createElement(RichText, {
-                            tagName: titleTag.toLowerCase(),
+                            tagName: titleStyles[0].titleTag.toLowerCase(),
                             className: "premium-icon-box__title",
                             onChange: function onChange(newText) {
                                 return setAttributes({ titleText: newText });
@@ -39210,14 +37962,14 @@ var edit = function (_Component) {
                             placeholder: __("Awesome Title"),
                             value: titleText,
                             style: {
-                                color: titleColor,
-                                fontFamily: titleFont,
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                lineHeight: titleLine + "px"
+                                color: titleStyles[0].titleColor,
+                                fontFamily: titleStyles[0].titleFont,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                lineHeight: titleStyles[0].titleLine + "px"
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -39227,8 +37979,8 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__desc_wrap",
                             style: {
-                                marginTop: descMarginT,
-                                marginBottom: descMarginB
+                                marginTop: descStyles[0].descMarginT,
+                                marginBottom: descStyles[0].descMarginB
                             }
                         },
                         React.createElement(RichText, {
@@ -39241,10 +37993,10 @@ var edit = function (_Component) {
                                 return setAttributes({ descText: newText });
                             },
                             style: {
-                                color: descColor,
-                                fontFamily: descFont,
-                                lineHeight: descLine + "px",
-                                fontWeight: descWeight
+                                color: descStyles[0].descColor,
+                                fontFamily: descStyles[0].descFont,
+                                lineHeight: descStyles[0].descLine + "px",
+                                fontWeight: descStyles[0].descWeight
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -39254,8 +38006,8 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
                             style: {
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB
+                                marginTop: btnStyles[0].btnMarginT,
+                                marginBottom: btnStyles[0].btnMarginB
                             }
                         },
                         React.createElement(RichText, {
@@ -39267,18 +38019,18 @@ var edit = function (_Component) {
                             placeholder: __("Click Here"),
                             value: btnText,
                             style: {
-                                color: btnColor,
-                                backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
-                                letterSpacing: btnLetter + "px",
-                                textTransform: btnUpper ? "uppercase" : "none",
-                                fontStyle: btnStyle,
-                                fontWeight: btnWeight,
-                                borderStyle: btnBorderType,
-                                borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
-                                borderRadius: btnBorderRadius + "px",
-                                borderColor: btnBorderColor,
-                                padding: btnPadding + btnPaddingU,
-                                boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                                color: btnStyles[0].btnColor,
+                                backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                                letterSpacing: btnStyles[0].btnLetter + "px",
+                                textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                fontStyle: btnStyles[0].btnStyle,
+                                fontWeight: btnStyles[0].btnWeight,
+                                borderStyle: btnStyles[0].btnBorderType,
+                                borderWidth: btnBorderIconBox ? btnStyles[0].btnBorderTop + "px " + btnStyles[0].btnBorderRight + "px " + btnStyles[0].btnBorderBottom + "px " + btnStyles[0].btnBorderLeft + "px" : btnStyles[0].btnBorderWidth + "px",
+                                borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                borderColor: btnStyles[0].btnBorderColor,
+                                padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition
                             },
                             keepPlaceholderOnFocus: true
                         }),
@@ -39299,10 +38051,20 @@ var edit = function (_Component) {
 
 ;
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
-/* 261 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39312,11 +38074,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -39396,7 +38158,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 262 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39427,112 +38189,38 @@ var save = function save(props) {
         btnBorderIconBox = _props$attributes.btnBorderIconBox,
         align = _props$attributes.align,
         iconImage = _props$attributes.iconImage,
+        iconImgId = _props$attributes.iconImgId,
         iconImgUrl = _props$attributes.iconImgUrl,
-        iconRadius = _props$attributes.iconRadius,
-        selectedIcon = _props$attributes.selectedIcon,
-        iconChecked = _props$attributes.iconChecked,
         hoverEffect = _props$attributes.hoverEffect,
+        iconChecked = _props$attributes.iconChecked,
         iconPos = _props$attributes.iconPos,
         iconHPos = _props$attributes.iconHPos,
         iconVPos = _props$attributes.iconVPos,
         iconSize = _props$attributes.iconSize,
+        iconRadius = _props$attributes.iconRadius,
         iconColor = _props$attributes.iconColor,
         iconBackColor = _props$attributes.iconBackColor,
+        selectedIcon = _props$attributes.selectedIcon,
         titleChecked = _props$attributes.titleChecked,
         titleText = _props$attributes.titleText,
-        titleTag = _props$attributes.titleTag,
-        titleColor = _props$attributes.titleColor,
-        titleFont = _props$attributes.titleFont,
-        titleLine = _props$attributes.titleLine,
-        titleLetter = _props$attributes.titleLetter,
-        titleStyle = _props$attributes.titleStyle,
-        titleUpper = _props$attributes.titleUpper,
-        titleWeight = _props$attributes.titleWeight,
-        titleShadowBlur = _props$attributes.titleShadowBlur,
-        titleShadowColor = _props$attributes.titleShadowColor,
-        titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-        titleShadowVertical = _props$attributes.titleShadowVertical,
-        titleMarginT = _props$attributes.titleMarginT,
-        titleMarginB = _props$attributes.titleMarginB,
-        descChecked = _props$attributes.descChecked,
         descText = _props$attributes.descText,
-        descColor = _props$attributes.descColor,
-        descFont = _props$attributes.descFont,
-        descLine = _props$attributes.descLine,
-        descWeight = _props$attributes.descWeight,
-        descMarginT = _props$attributes.descMarginT,
-        descMarginB = _props$attributes.descMarginB,
+        descChecked = _props$attributes.descChecked,
         btnChecked = _props$attributes.btnChecked,
         btnEffect = _props$attributes.btnEffect,
         effectDir = _props$attributes.effectDir,
-        btnText = _props$attributes.btnText,
         btnTarget = _props$attributes.btnTarget,
+        btnText = _props$attributes.btnText,
         btnLink = _props$attributes.btnLink,
-        btnStyle = _props$attributes.btnStyle,
-        btnUpper = _props$attributes.btnUpper,
-        btnWeight = _props$attributes.btnWeight,
-        btnLetter = _props$attributes.btnLetter,
-        btnColor = _props$attributes.btnColor,
-        btnHoverColor = _props$attributes.btnHoverColor,
         btnHoverBorder = _props$attributes.btnHoverBorder,
-        btnBack = _props$attributes.btnBack,
-        btnHoverBack = _props$attributes.btnHoverBack,
-        btnBorderWidth = _props$attributes.btnBorderWidth,
-        btnBorderTop = _props$attributes.btnBorderTop,
-        btnBorderRight = _props$attributes.btnBorderRight,
-        btnBorderBottom = _props$attributes.btnBorderBottom,
-        btnBorderLeft = _props$attributes.btnBorderLeft,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        btnBorderRadius = _props$attributes.btnBorderRadius,
-        btnBorderColor = _props$attributes.btnBorderColor,
-        btnBorderType = _props$attributes.btnBorderType,
-        btnPadding = _props$attributes.btnPadding,
-        btnPaddingU = _props$attributes.btnPaddingU,
-        btnMarginT = _props$attributes.btnMarginT,
-        btnMarginB = _props$attributes.btnMarginB,
-        btnShadowBlur = _props$attributes.btnShadowBlur,
-        btnShadowColor = _props$attributes.btnShadowColor,
-        btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-        btnShadowVertical = _props$attributes.btnShadowVertical,
-        btnShadowPosition = _props$attributes.btnShadowPosition,
-        backColor = _props$attributes.backColor,
-        imageURL = _props$attributes.imageURL,
-        fixed = _props$attributes.fixed,
-        backgroundRepeat = _props$attributes.backgroundRepeat,
-        backgroundPosition = _props$attributes.backgroundPosition,
-        backgroundSize = _props$attributes.backgroundSize,
-        borderType = _props$attributes.borderType,
-        borderWidth = _props$attributes.borderWidth,
-        borderRadius = _props$attributes.borderRadius,
-        borderColor = _props$attributes.borderColor,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowColor = _props$attributes.shadowColor,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        shadowPosition = _props$attributes.shadowPosition,
-        hoverShadowBlur = _props$attributes.hoverShadowBlur,
-        hoverShadowColor = _props$attributes.hoverShadowColor,
-        hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
-        hoverShadowVertical = _props$attributes.hoverShadowVertical,
-        hoverShadowPosition = _props$attributes.hoverShadowPosition,
-        iconOpacity = _props$attributes.iconOpacity,
-        btnOpacity = _props$attributes.btnOpacity,
-        backOpacity = _props$attributes.backOpacity,
+        classMigrate = _props$attributes.classMigrate,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        iconOpacity = _props$attributes.iconOpacity,
+        titleStyles = _props$attributes.titleStyles,
+        descStyles = _props$attributes.descStyles,
+        btnStyles = _props$attributes.btnStyles,
+        containerStyles = _props$attributes.containerStyles;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
@@ -39544,30 +38232,30 @@ var save = function save(props) {
             className: mainClasses + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos + ' premium-icon-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                borderStyle: borderType,
-                borderWidth: borderIconBox ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
+                borderStyle: containerStyles[0].borderType,
+                borderWidth: borderIconBox ? containerStyles[0].borderTop + 'px ' + containerStyles[0].borderRight + 'px ' + containerStyles[0].borderBottom + 'px ' + containerStyles[0].borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                marginTop: containerStyles[0].marginT,
+                marginRight: containerStyles[0].marginR,
+                marginBottom: containerStyles[0].marginB,
+                marginLeft: containerStyles[0].marginL,
+                paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
+                paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
+                paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
+                paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
                 boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-                backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                backgroundImage: 'url(\'' + imageURL + '\')',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset"
+                backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
             }
         },
         btnChecked && btnText && React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
+                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + containerStyles[0].hoverShadowHorizontal + 'px ' + containerStyles[0].hoverShadowVertical + 'px ' + containerStyles[0].hoverShadowBlur + 'px ' + containerStyles[0].hoverShadowColor + ' ' + containerStyles[0].hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnStyles[0].btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}"].join("\n")
             }
         }),
         iconChecked && React.createElement(
@@ -39602,8 +38290,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__title_wrap',
                     style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
+                        marginTop: titleStyles[0].titleMarginT,
+                        marginBottom: titleStyles[0].titleMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39611,14 +38299,14 @@ var save = function save(props) {
                     className: 'premium-icon-box__title',
                     value: titleText,
                     style: {
-                        color: titleColor,
-                        fontFamily: titleFont,
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
-                        lineHeight: titleLine + "px"
+                        color: titleStyles[0].titleColor,
+                        fontFamily: titleStyles[0].titleFont,
+                        letterSpacing: titleStyles[0].titleLetter + "px",
+                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyles[0].titleStyle,
+                        fontWeight: titleStyles[0].titleWeight,
+                        textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                        lineHeight: titleStyles[0].titleLine + "px"
                     }
                 })
             ),
@@ -39627,8 +38315,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__desc_wrap',
                     style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
+                        marginTop: descStyles[0].descMarginT,
+                        marginBottom: descStyles[0].descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39636,10 +38324,10 @@ var save = function save(props) {
                     className: 'premium-icon-box__desc',
                     value: descText,
                     style: {
-                        color: descColor,
-                        fontFamily: descFont,
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
+                        color: descStyles[0].descColor,
+                        fontFamily: descStyles[0].descFont,
+                        lineHeight: descStyles[0].descLine + "px",
+                        fontWeight: descStyles[0].descWeight
                     }
                 })
             ),
@@ -39648,8 +38336,8 @@ var save = function save(props) {
                 {
                     className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
+                        marginTop: btnStyles[0].btnMarginT,
+                        marginBottom: btnStyles[0].btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
@@ -39660,18 +38348,18 @@ var save = function save(props) {
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
                     style: {
-                        color: btnColor,
-                        backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        borderStyle: btnBorderType,
-                        borderWidth: btnBorderIconBox ? btnBorderTop + 'px ' + btnBorderRight + 'px ' + btnBorderBottom + 'px ' + btnBorderLeft + 'px' : btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + btnPaddingU,
-                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
+                        color: btnStyles[0].btnColor,
+                        backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                        letterSpacing: btnStyles[0].btnLetter + "px",
+                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                        fontStyle: btnStyles[0].btnStyle,
+                        fontWeight: btnStyles[0].btnWeight,
+                        borderStyle: btnStyles[0].btnBorderType,
+                        borderWidth: btnBorderIconBox ? btnStyles[0].btnBorderTop + 'px ' + btnStyles[0].btnBorderRight + 'px ' + btnStyles[0].btnBorderBottom + 'px ' + btnStyles[0].btnBorderLeft + 'px' : btnStyles[0].btnBorderWidth + "px",
+                        borderRadius: btnStyles[0].btnBorderRadius + "px",
+                        borderColor: btnStyles[0].btnBorderColor,
+                        padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                        boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition
                     }
                 })
             )
@@ -39682,7 +38370,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 263 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42553,7 +41241,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 264 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43653,7 +42341,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 265 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43665,15 +42353,15 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(266);
+var _edit = __webpack_require__(268);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(268);
+var _save = __webpack_require__(270);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(269);
+var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -44305,7 +42993,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 266 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44329,19 +43017,19 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -44349,7 +43037,7 @@ var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _styling = __webpack_require__(267);
+var _styling = __webpack_require__(269);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -46255,7 +44943,7 @@ var PremiumPricingTable = function (_Component) {
 exports.default = PremiumPricingTable;
 
 /***/ }),
-/* 267 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46265,11 +44953,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -46441,7 +45129,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 268 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46858,7 +45546,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 269 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49120,7 +47808,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 270 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49128,15 +47816,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(271);
+var _edit = __webpack_require__(273);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(272);
+var _save = __webpack_require__(274);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(273);
+var _deprecated = __webpack_require__(275);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -49327,7 +48015,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49345,7 +48033,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -49353,15 +48041,15 @@ var _premiumMargin = __webpack_require__(64);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -49807,7 +48495,7 @@ var edit = function edit(props) {
 exports.default = edit;
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49928,7 +48616,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50660,7 +49348,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50668,15 +49356,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(275);
+var _edit = __webpack_require__(277);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(277);
+var _save = __webpack_require__(279);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(278);
+var _deprecated = __webpack_require__(280);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -50929,7 +49617,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50961,15 +49649,15 @@ var _lowerQuote = __webpack_require__(67);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -50977,7 +49665,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(276);
+var _styling = __webpack_require__(278);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -51814,7 +50502,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51824,11 +50512,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -51908,7 +50596,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52134,7 +50822,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53425,7 +52113,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53449,11 +52137,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(17);
+var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -53473,11 +52161,11 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _styling = __webpack_require__(280);
+var _styling = __webpack_require__(282);
 
 var _styling2 = _interopRequireDefault(_styling);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -54420,7 +53108,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54430,11 +53118,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -54489,7 +53177,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54708,7 +53396,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55881,7 +54569,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55889,15 +54577,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(284);
+var _save = __webpack_require__(286);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(285);
+var _edit = __webpack_require__(287);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(307);
+var _deprecated = __webpack_require__(308);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -55905,213 +54593,21 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
+var _attributes = __webpack_require__(309);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var fancyTextAttrs = {
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    prefix: {
-        type: "string",
-        default: "This is"
-    },
-    suffix: {
-        type: "string",
-        default: "Text"
-    },
-    repeaterFancyText: {
-        type: "array",
-        default: [{
-            title: __("Designer"),
-            edit: false
-        }, {
-            title: __("Developer"),
-            edit: false
-        }, {
-            title: __("Awesome"),
-            edit: false
-        }]
-    },
-    effect: {
-        type: "string",
-        default: "typing"
-    },
-    fancyTextColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    cursorColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    fancyTextLetter: {
-        type: "number"
-    },
-    fancyTextStyle: {
-        type: "string"
-    },
-    fancyTextUpper: {
-        type: "boolean",
-        default: false
-    },
-    fancyTextWeight: {
-        type: "number",
-        default: 600
-    },
-    fancyTextfontSize: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    fancyTextfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    fancyTextfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    fancyTextBGColor: {
-        type: "string"
-    },
-    fancyTextBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    textColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    textLetter: {
-        type: "number"
-    },
-    textStyle: {
-        type: "string"
-    },
-    textUpper: {
-        type: "boolean",
-        default: false
-    },
-    textWeight: {
-        type: "number",
-        default: 600
-    },
-    textfontSize: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    textfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    textBGColor: {
-        type: "string"
-    },
-    textBGOpacity: {
-        type: "number",
-        default: "1"
-    },
-    loop: {
-        type: "boolean",
-        default: "true"
-    },
-    cursorShow: {
-        type: "boolean",
-        default: "true"
-    },
-    cursorMark: {
-        type: "string",
-        default: "|"
-    },
-    typeSpeed: {
-        type: "number",
-        default: 100
-    },
-    backdelay: {
-        type: "number",
-        default: 30
-    },
-    startdelay: {
-        type: "number",
-        default: 30
-    },
-    backSpeed: {
-        type: "number",
-        default: 30
-    },
-    animationSpeed: {
-        type: "number",
-        default: 200
-    },
-    pauseTime: {
-        type: "number",
-        default: 3000
-    },
-    hoverPause: {
-        type: "boolean",
-        default: false
-    },
-    fancyalign: {
-        type: "string",
-        default: "center"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
 registerBlockType("premium/fancy-text", {
     title: __("Fancy Text"),
     icon: React.createElement(_icons2.default, { icon: "fancy-text" }),
     category: "premium-blocks",
-    attributes: fancyTextAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.fancyText
     },
@@ -56122,7 +54618,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56140,9 +54636,12 @@ var _classnames2 = _interopRequireDefault(_classnames);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function save(props) {
+    var _this = this;
+
     var attributes = props.attributes,
         className = props.className;
     var block_id = attributes.block_id,
+        classMigrate = attributes.classMigrate,
         align = attributes.align,
         prefix = attributes.prefix,
         suffix = attributes.suffix,
@@ -56152,9 +54651,9 @@ function save(props) {
         cursorShow = attributes.cursorShow,
         cursorMark = attributes.cursorMark,
         typeSpeed = attributes.typeSpeed,
-        backSpeed = attributes.backSpeed,
-        startdelay = attributes.startdelay,
         backdelay = attributes.backdelay,
+        startdelay = attributes.startdelay,
+        backSpeed = attributes.backSpeed,
         animationSpeed = attributes.animationSpeed,
         pauseTime = attributes.pauseTime,
         hoverPause = attributes.hoverPause,
@@ -56169,12 +54668,14 @@ function save(props) {
             className: (0, _classnames2.default)(className, "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
             style: {
                 textAlign: align
-            } },
-        effect == 'typing' ? React.createElement(
+            }
+        },
+        effect === "typing" ? React.createElement(
             "div",
             {
                 id: "premium-fancy-text-" + block_id,
-                className: "premium-fancy-text", style: {
+                className: "premium-fancy-text",
+                style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -56197,7 +54698,12 @@ function save(props) {
             ),
             React.createElement(
                 "span",
-                { className: "premium-fancy-text-title" },
+                {
+                    className: "premium-fancy-text-title",
+                    ref: function ref(el) {
+                        _this.el = el;
+                    }
+                },
                 " "
             ),
             React.createElement(
@@ -56208,7 +54714,9 @@ function save(props) {
             )
         ) : React.createElement(
             "div",
-            { className: "premium-fancy-text premium-fancy-slide", style: {
+            {
+                className: "premium-fancy-text premium-fancy-slide",
+                style: {
                     textAlign: align
                 },
                 "data-effect": "" + effect,
@@ -56227,12 +54735,17 @@ function save(props) {
             ),
             React.createElement(
                 "div",
-                { className: "premium-fancy-text-title-slide", style: {
+                {
+                    className: "premium-fancy-text-title-slide",
+                    style: {
                         textAlign: fancyalign
-                    } },
+                    }
+                },
                 React.createElement(
                     "ul",
-                    { className: "premium-fancy-text-title-slide-list" },
+                    {
+                        className: "premium-fancy-text-title-slide-list"
+                    },
                     repeaterFancyText.map(function (item, index) {
                         return React.createElement(
                             "li",
@@ -56253,7 +54766,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56263,29 +54776,27 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styling = __webpack_require__(286);
-
-var _styling2 = _interopRequireDefault(_styling);
-
 var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(16);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(287);
+var _typed = __webpack_require__(288);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumBackground = __webpack_require__(14);
+var _premiumBackground = __webpack_require__(12);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -56293,7 +54804,11 @@ var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _reactSortableHoc = __webpack_require__(288);
+var _hexToRgba = __webpack_require__(2);
+
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+var _reactSortableHoc = __webpack_require__(289);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56304,6 +54819,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -56403,10 +54919,27 @@ var edit = function (_Component) {
         var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
         _this.renderFancyText = _this.renderFancyText.bind(_this);
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
         return _this;
     }
 
     _createClass(edit, [{
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "componentDidMount",
         value: function componentDidMount() {
 
@@ -56416,9 +54949,7 @@ var edit = function (_Component) {
             this.props.setAttributes({ classMigrate: true });
 
             // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-fancy-text-" + this.props.clientId.substr(0, 6));
-            document.head.appendChild($style);
+
 
             this.renderFancyText();
         }
@@ -56485,55 +55016,32 @@ var edit = function (_Component) {
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
-                isSelected = _props.isSelected;
+                isSelected = _props.isSelected,
+                className = _props.className;
             var block_id = attributes.block_id,
+                classMigrate = attributes.classMigrate,
                 align = attributes.align,
-                className = attributes.className,
                 prefix = attributes.prefix,
                 suffix = attributes.suffix,
                 repeaterFancyText = attributes.repeaterFancyText,
                 effect = attributes.effect,
-                fancyTextColor = attributes.fancyTextColor,
-                fancyTextfontSize = attributes.fancyTextfontSize,
-                fancyTextfontSizeMobile = attributes.fancyTextfontSizeMobile,
-                fancyTextfontSizeTablet = attributes.fancyTextfontSizeTablet,
-                fancyTextfontSizeUnit = attributes.fancyTextfontSizeUnit,
-                fancyTextWeight = attributes.fancyTextWeight,
-                fancyTextUpper = attributes.fancyTextUpper,
-                fancyTextStyle = attributes.fancyTextStyle,
-                fancyTextLetter = attributes.fancyTextLetter,
-                fancyTextBGColor = attributes.fancyTextBGColor,
-                shadowColor = attributes.shadowColor,
-                shadowBlur = attributes.shadowBlur,
-                shadowHorizontal = attributes.shadowHorizontal,
-                shadowVertical = attributes.shadowVertical,
                 cursorColor = attributes.cursorColor,
-                textColor = attributes.textColor,
-                textfontSize = attributes.textfontSize,
-                textfontSizeMobile = attributes.textfontSizeMobile,
-                textfontSizeTablet = attributes.textfontSizeTablet,
-                textfontSizeUnit = attributes.textfontSizeUnit,
-                textWeight = attributes.textWeight,
-                textLetter = attributes.textLetter,
-                textUpper = attributes.textUpper,
-                textStyle = attributes.textStyle,
-                textBGColor = attributes.textBGColor,
                 loop = attributes.loop,
                 cursorShow = attributes.cursorShow,
                 cursorMark = attributes.cursorMark,
                 typeSpeed = attributes.typeSpeed,
-                backSpeed = attributes.backSpeed,
-                startdelay = attributes.startdelay,
                 backdelay = attributes.backdelay,
+                startdelay = attributes.startdelay,
+                backSpeed = attributes.backSpeed,
                 animationSpeed = attributes.animationSpeed,
                 pauseTime = attributes.pauseTime,
                 hoverPause = attributes.hoverPause,
                 fancyalign = attributes.fancyalign,
-                fancyTextBGOpacity = attributes.fancyTextBGOpacity,
-                textBGOpacity = attributes.textBGOpacity,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile;
+                hideMobile = attributes.hideMobile,
+                fancyStyles = attributes.fancyStyles,
+                PreStyles = attributes.PreStyles;
 
 
             var ALIGNS = ["left", "center", "right"];
@@ -56544,12 +55052,6 @@ var edit = function (_Component) {
                 label: __("Slide"),
                 value: "slide"
             }];
-
-            var element = document.getElementById("premium-style-fancy-text-" + block_id);
-
-            if (null != element && "undefined" != typeof element) {
-                element.innerHTML = (0, _styling2.default)(this.props);
-            }
 
             var onResetClickfancyTextTypo = function onResetClickfancyTextTypo() {
                 setAttributes({
@@ -56657,8 +55159,39 @@ var edit = function (_Component) {
                     }])
                 });
             };
+            var saveFancyStyle = function saveFancyStyle(value) {
+                var newUpdate = fancyStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    fancyStyles: newUpdate
+                });
+            };
+            var savePrefixStyle = function savePrefixStyle(value) {
+                var newUpdate = PreStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    PreStyles: newUpdate
+                });
+            };
 
-            return [isSelected && React.createElement(
+            var fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
+            var PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
+
+            var renderCss = React.createElement(
+                "style",
+                null,
+                "\n            .premium-fancy-text-title {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + "px;\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + (fancyStyles[0].fancyTextBGColor ? (0, _hexToRgba2.default)(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity) : "transparent") + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n        .premium-fancy-text-title-slide {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ",\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + " + \"px\";\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + (fancyStyles[0].fancyTextBGColor ? (0, _hexToRgba2.default)(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity) : "transparent") + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n         .typed-cursor {\n            color: " + cursorColor + ";\n        }\n         .premium-fancy-text-prefix-text {\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + (PreStyles[0].textBGColor ? (0, _hexToRgba2.default)(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity) : "transparent") + ";\n        }\n         .premium-fancy-text-suffix-text{\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + (PreStyles[0].textBGColor ? (0, _hexToRgba2.default)(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity) : "transparent") + ";\n        }\n            "
+            );
+
+            return [renderCss, isSelected && [React.createElement(
                 BlockControls,
                 null,
                 React.createElement(AlignmentToolbar, {
@@ -56667,7 +55200,7 @@ var edit = function (_Component) {
                         return setAttributes({ align: value });
                     }
                 })
-            ), isSelected && React.createElement(
+            )], isSelected && React.createElement(
                 InspectorControls,
                 null,
                 React.createElement(
@@ -56902,9 +55435,9 @@ var edit = function (_Component) {
                         __("Color")
                     ),
                     React.createElement(ColorPalette, {
-                        value: fancyTextColor,
+                        value: fancyStyles[0].fancyTextColor,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
+                            return saveFancyStyle({
                                 fancyTextColor: newValue
                             });
                         },
@@ -56912,40 +55445,40 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: saveFancyStyle,
                         fontSizeType: {
-                            value: fancyTextfontSizeUnit,
+                            value: fancyStyles[0].fancyTextfontSizeUnit,
                             label: __("fancyTextfontSizeUnit")
                         },
                         fontSize: {
-                            value: fancyTextfontSize,
+                            value: fancyStyles[0].fancyTextfontSize,
                             label: __("fancyTextfontSize")
                         },
                         fontSizeMobile: {
-                            value: fancyTextfontSizeMobile,
+                            value: fancyStyles[0].fancyTextfontSizeMobile,
                             label: __("fancyTextfontSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: fancyTextfontSizeTablet,
+                            value: fancyStyles[0].fancyTextfontSizeTablet,
                             label: __("fancyTextfontSizeTablet")
                         },
-                        weight: fancyTextWeight,
-                        style: fancyTextStyle,
-                        spacing: fancyTextLetter,
-                        upper: fancyTextUpper,
+                        weight: fancyStyles[0].fancyTextWeight,
+                        style: fancyStyles[0].fancyTextStyle,
+                        spacing: fancyStyles[0].fancyTextLetter,
+                        upper: fancyStyles[0].fancyTextUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({
+                            return saveFancyStyle({
                                 fancyTextWeight: newWeight || 500
                             });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ fancyTextStyle: newStyle });
+                            return saveFancyStyle({ fancyTextStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ fancyTextLetter: newValue });
+                            return saveFancyStyle({ fancyTextLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ fancyTextUpper: check });
+                            return saveFancyStyle({ fancyTextUpper: check });
                         },
                         onResetClick: onResetClickfancyTextTypo
                     }),
@@ -56956,31 +55489,31 @@ var edit = function (_Component) {
                     ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
-                        colorValue: fancyTextBGColor,
+                        colorValue: fancyStyles[0].fancyTextBGColor,
                         onChangeColor: function onChangeColor(newvalue) {
-                            return setAttributes({ fancyTextBGColor: newvalue });
+                            return saveFancyStyle({ fancyTextBGColor: newvalue });
                         },
-                        opacityValue: fancyTextBGOpacity,
+                        opacityValue: fancyStyles[0].fancyTextBGOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
-                            return setAttributes({ fancyTextBGOpacity: value });
+                            return saveFancyStyle({ fancyTextBGOpacity: value });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
-                        color: shadowColor,
-                        blur: shadowBlur,
-                        horizontal: shadowHorizontal,
-                        vertical: shadowVertical,
+                        color: fancyStyles[0].shadowColor,
+                        blur: fancyStyles[0].shadowBlur,
+                        horizontal: fancyStyles[0].shadowHorizontal,
+                        vertical: fancyStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ shadowColor: newColor.hex });
+                            return saveFancyStyle({ shadowColor: newColor.hex });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ shadowBlur: newBlur });
+                            return saveFancyStyle({ shadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ shadowHorizontal: newValue });
+                            return saveFancyStyle({ shadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ shadowVertical: newValue });
+                            return saveFancyStyle({ shadowVertical: newValue });
                         },
                         onResetClick: onResetClickLabelTextShadow
                     }),
@@ -56993,9 +55526,9 @@ var edit = function (_Component) {
                             __("Cursor Color")
                         ),
                         React.createElement(ColorPalette, {
-                            value: cursorColor,
+                            value: fancyStyles[0].cursorColor,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
+                                return saveFancyStyle({
                                     cursorColor: newValue
                                 });
                             },
@@ -57016,9 +55549,9 @@ var edit = function (_Component) {
                         __("Color")
                     ),
                     React.createElement(ColorPalette, {
-                        value: textColor,
+                        value: PreStyles[0].textColor,
                         onChange: function onChange(newValue) {
-                            return setAttributes({
+                            return savePrefixStyle({
                                 textColor: newValue
                             });
                         },
@@ -57026,38 +55559,38 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
+                        setAttributes: savePrefixStyle,
                         fontSizeType: {
-                            value: textfontSizeUnit,
+                            value: PreStyles[0].textfontSizeUnit,
                             label: __("textfontSizeUnit")
                         },
                         fontSize: {
-                            value: textfontSize,
+                            value: PreStyles[0].textfontSize,
                             label: __("textfontSize")
                         },
                         fontSizeMobile: {
-                            value: textfontSizeMobile,
+                            value: PreStyles[0].textfontSizeMobile,
                             label: __("textfontSizeMobile")
                         },
                         fontSizeTablet: {
-                            value: textfontSizeTablet,
+                            value: PreStyles[0].textfontSizeTablet,
                             label: __("textfontSizeTablet")
                         },
-                        weight: textWeight,
-                        style: textStyle,
-                        spacing: textLetter,
-                        upper: textUpper,
+                        weight: PreStyles[0].textWeight,
+                        style: PreStyles[0].textStyle,
+                        spacing: PreStyles[0].textLetter,
+                        upper: PreStyles[0].textUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ textWeight: newWeight || 500 });
+                            return savePrefixStyle({ textWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ textStyle: newStyle });
+                            return savePrefixStyle({ textStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ textLetter: newValue });
+                            return savePrefixStyle({ textLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ textUpper: check });
+                            return savePrefixStyle({ textUpper: check });
                         },
                         onResetClick: onResetClickTextTypo
                     }),
@@ -57068,13 +55601,13 @@ var edit = function (_Component) {
                     ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
-                        colorValue: textBGColor,
+                        colorValue: PreStyles[0].textBGColor,
                         onChangeColor: function onChangeColor(newvalue) {
-                            return setAttributes({ textBGColor: newvalue });
+                            return savePrefixStyle({ textBGColor: newvalue });
                         },
-                        opacityValue: textBGOpacity,
+                        opacityValue: PreStyles[0].textBGOpacity,
                         onChangeOpacity: function onChangeOpacity(value) {
-                            return setAttributes({ textBGOpacity: value });
+                            return savePrefixStyle({ textBGOpacity: value });
                         }
                     })
                 ),
@@ -57199,153 +55732,20 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
-/* 286 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
-var _generateCss = __webpack_require__(12);
-
-var _generateCss2 = _interopRequireDefault(_generateCss);
-
-var _generateCssUnit = __webpack_require__(13);
-
-var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function styling(props) {
-    var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
-        classMigrate = _props$attributes.classMigrate,
-        fancyTextColor = _props$attributes.fancyTextColor,
-        fancyTextfontSize = _props$attributes.fancyTextfontSize,
-        fancyTextfontSizeMobile = _props$attributes.fancyTextfontSizeMobile,
-        fancyTextfontSizeTablet = _props$attributes.fancyTextfontSizeTablet,
-        fancyTextfontSizeUnit = _props$attributes.fancyTextfontSizeUnit,
-        fancyTextWeight = _props$attributes.fancyTextWeight,
-        fancyTextUpper = _props$attributes.fancyTextUpper,
-        fancyTextStyle = _props$attributes.fancyTextStyle,
-        fancyTextLetter = _props$attributes.fancyTextLetter,
-        fancyTextBGColor = _props$attributes.fancyTextBGColor,
-        shadowColor = _props$attributes.shadowColor,
-        shadowBlur = _props$attributes.shadowBlur,
-        shadowHorizontal = _props$attributes.shadowHorizontal,
-        shadowVertical = _props$attributes.shadowVertical,
-        cursorColor = _props$attributes.cursorColor,
-        textColor = _props$attributes.textColor,
-        textfontSize = _props$attributes.textfontSize,
-        textfontSizeMobile = _props$attributes.textfontSizeMobile,
-        textfontSizeTablet = _props$attributes.textfontSizeTablet,
-        textfontSizeUnit = _props$attributes.textfontSizeUnit,
-        textWeight = _props$attributes.textWeight,
-        textLetter = _props$attributes.textLetter,
-        textUpper = _props$attributes.textUpper,
-        textStyle = _props$attributes.textStyle,
-        textBGColor = _props$attributes.textBGColor,
-        fancyTextBGOpacity = _props$attributes.fancyTextBGOpacity,
-        textBGOpacity = _props$attributes.textBGOpacity;
-
-    var selectors = {};
-    var tablet_selectors = {};
-    var mobile_selectors = {};
-    selectors = {
-        " .premium-fancy-text-title": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSize, fancyTextfontSizeUnit),
-            "color": fancyTextColor,
-            "font-weight": fancyTextWeight,
-            "letter-spacing": fancyTextLetter + "px",
-            "text-transform": fancyTextUpper ? "uppercase" : "none",
-            "font-style": fancyTextStyle,
-            "background-color": fancyTextBGColor ? (0, _hexToRgba2.default)(fancyTextBGColor, fancyTextBGOpacity) : "transparent",
-            "text-shadow": shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
-        },
-        " .premium-fancy-text-title-slide": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSize, fancyTextfontSizeUnit),
-            "color": fancyTextColor,
-            "font-weight": fancyTextWeight,
-            "letter-spacing": fancyTextLetter + "px",
-            "text-transform": fancyTextUpper ? "uppercase" : "none",
-            "font-style": fancyTextStyle,
-            "background-color": fancyTextBGColor ? (0, _hexToRgba2.default)(fancyTextBGColor, fancyTextBGOpacity) : "transparent",
-            "text-shadow": shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
-        },
-        " .typed-cursor": {
-            "color": cursorColor
-        },
-        " .premium-fancy-text-prefix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSize, textfontSizeUnit),
-            "color": textColor,
-            "font-weight": textWeight,
-            "letter-spacing": textLetter + "px",
-            "text-transform": textUpper ? "uppercase" : "none",
-            "font-style": textStyle,
-            "background-color": textBGColor ? (0, _hexToRgba2.default)(textBGColor, textBGOpacity) : "transparent"
-        },
-        " .premium-fancy-text-suffix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSize, textfontSizeUnit),
-            "color": textColor,
-            "font-weight": textWeight,
-            "letter-spacing": textLetter + "px",
-            "text-transform": textUpper ? "uppercase" : "none",
-            "font-style": textStyle,
-            "background-color": textBGColor ? (0, _hexToRgba2.default)(textBGColor, textBGOpacity) : "transparent"
-        }
-    };
-    mobile_selectors = {
-        " .premium-fancy-text-title": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSizeMobile, fancyTextfontSizeUnit)
-        },
-        " .premium-fancy-text-title-slide": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSizeMobile, fancyTextfontSizeUnit)
-        },
-        " .premium-fancy-text-prefix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSizeMobile, textfontSizeUnit)
-        },
-        " .premium-fancy-text-suffix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSizeMobile, textfontSizeUnit)
-        }
-    };
-    tablet_selectors = {
-        " .premium-fancy-text-title": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSizeTablet, fancyTextfontSizeUnit)
-        },
-        " .premium-fancy-text-title-slide": {
-            "font-size": (0, _generateCssUnit2.default)(fancyTextfontSizeTablet, fancyTextfontSizeUnit)
-        },
-        " .premium-fancy-text-prefix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSizeTablet, textfontSizeUnit)
-        },
-        " .premium-fancy-text-suffix-text": {
-            "font-size": (0, _generateCssUnit2.default)(textfontSizeTablet, textfontSizeUnit)
-        }
-    };
-    var styling_css = "";
-    var id = "#premium-fancy-text-" + block_id;
-    if (classMigrate) {
-        id = ".premium-block-" + block_id;
-    }
-    styling_css = (0, _generateCss2.default)(selectors, id);
-    styling_css += (0, _generateCss2.default)(tablet_selectors, id, true, "tablet");
-    styling_css += (0, _generateCss2.default)(mobile_selectors, id, true, "mobile");
-    return styling_css;
-}
-exports.default = styling;
-
-/***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58457,7 +56857,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58468,35 +56868,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(289);
+var _extends2 = __webpack_require__(290);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(290);
+var _slicedToArray2 = __webpack_require__(291);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(294);
+var _objectSpread2 = __webpack_require__(295);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(295);
+var _classCallCheck2 = __webpack_require__(296);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(296);
+var _createClass2 = __webpack_require__(297);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(297);
+var _possibleConstructorReturn2 = __webpack_require__(298);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(299);
+var _getPrototypeOf2 = __webpack_require__(300);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(300);
+var _inherits2 = __webpack_require__(301);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -58516,11 +56916,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(28);
 
-var _invariant = __webpack_require__(302);
+var _invariant = __webpack_require__(303);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(303);
+var _toConsumableArray2 = __webpack_require__(304);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -60102,7 +58502,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60131,7 +58531,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60142,11 +58542,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(291);
+var _arrayWithHoles = __webpack_require__(292);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(292);
+var _iterableToArrayLimit = __webpack_require__(293);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
@@ -60154,7 +58554,7 @@ var _unsupportedIterableToArray = __webpack_require__(107);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(293);
+var _nonIterableRest = __webpack_require__(294);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -60165,7 +58565,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60180,7 +58580,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60221,7 +58621,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60236,7 +58636,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60273,7 +58673,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60290,7 +58690,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60317,7 +58717,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60328,7 +58728,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(298);
+var _typeof2 = __webpack_require__(299);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -60349,7 +58749,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60381,7 +58781,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60399,7 +58799,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60410,7 +58810,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(301);
+var _setPrototypeOf = __webpack_require__(302);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -60432,7 +58832,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60452,7 +58852,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60505,7 +58905,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60516,11 +58916,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(304);
+var _arrayWithoutHoles = __webpack_require__(305);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(305);
+var _iterableToArray = __webpack_require__(306);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
@@ -60528,7 +58928,7 @@ var _unsupportedIterableToArray = __webpack_require__(107);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(306);
+var _nonIterableSpread = __webpack_require__(307);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -60539,7 +58939,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60561,7 +58961,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60576,7 +58976,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60591,7 +58991,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60939,7 +59339,156 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 308 */
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    prefix: {
+        type: "string",
+        default: "This is"
+    },
+    suffix: {
+        type: "string",
+        default: "Text"
+    },
+    repeaterFancyText: {
+        type: "array",
+        default: [{
+            title: __("Designer"),
+            edit: false
+        }, {
+            title: __("Developer"),
+            edit: false
+        }, {
+            title: __("Awesome"),
+            edit: false
+        }]
+    },
+    effect: {
+        type: "string",
+        default: "typing"
+    },
+    cursorColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    loop: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorShow: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorMark: {
+        type: "string",
+        default: "|"
+    },
+    typeSpeed: {
+        type: "number",
+        default: 100
+    },
+    backdelay: {
+        type: "number",
+        default: 30
+    },
+    startdelay: {
+        type: "number",
+        default: 30
+    },
+    backSpeed: {
+        type: "number",
+        default: 30
+    },
+    animationSpeed: {
+        type: "number",
+        default: 200
+    },
+    pauseTime: {
+        type: "number",
+        default: 3000
+    },
+    hoverPause: {
+        type: "boolean",
+        default: false
+    },
+    fancyalign: {
+        type: "string",
+        default: "center"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    fancyStyles: {
+        type: "array",
+        default: [{
+            fancyTextColor: "#6ec1e4",
+            fancyTextfontSize: 20,
+            fancyTextfontSizeUnit: 'px',
+            fancyTextfontSizeMobile: 20,
+            fancyTextfontSizeTablet: 20,
+            fancyTextBGColor: '',
+            fancyTextBGOpacity: 1,
+            fancyTextLetter: '',
+            fancyTextStyle: '',
+            fancyTextUpper: false,
+            fancyTextWeight: 600,
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            cursorColor: ''
+        }]
+    },
+    PreStyles: {
+        type: "array",
+        default: [{
+            textColor: "#54595f",
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: 600,
+            textfontSize: 20,
+            textfontSizeUnit: 'px',
+            textfontSizeMobile: 20,
+            textfontSizeTablet: 20,
+            textBGColor: '',
+            textBGOpacity: 1
+        }]
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60949,13 +59498,13 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(309);
+var _edit = __webpack_require__(311);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(363);
+var _save = __webpack_require__(365);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -61180,7 +59729,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61196,7 +59745,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(310);
+var _reactLottieWithSegments = __webpack_require__(312);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -61208,7 +59757,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -61216,11 +59765,11 @@ var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(17);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _styling = __webpack_require__(362);
+var _styling = __webpack_require__(364);
 
 var _styling2 = _interopRequireDefault(_styling);
 
@@ -61967,7 +60516,7 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61977,31 +60526,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(311);
+var _stringify = __webpack_require__(313);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(313);
+var _extends2 = __webpack_require__(315);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(322);
+var _getPrototypeOf = __webpack_require__(324);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(326);
+var _classCallCheck2 = __webpack_require__(328);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(327);
+var _createClass2 = __webpack_require__(329);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(331);
+var _possibleConstructorReturn2 = __webpack_require__(333);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(353);
+var _inherits2 = __webpack_require__(355);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -62013,7 +60562,7 @@ var _propTypes = __webpack_require__(9);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(361);
+var _lottieWeb = __webpack_require__(363);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -62321,16 +60870,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(312), __esModule: true };
+module.exports = { "default": __webpack_require__(314), __esModule: true };
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62344,7 +60893,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62352,7 +60901,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(314);
+var _assign = __webpack_require__(316);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -62375,26 +60924,26 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(315), __esModule: true };
+module.exports = { "default": __webpack_require__(317), __esModule: true };
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(316);
+__webpack_require__(318);
 module.exports = __webpack_require__(10).Object.assign;
 
 /***/ }),
-/* 316 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62403,10 +60952,10 @@ module.exports = __webpack_require__(10).Object.assign;
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(21);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(318) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(320) });
 
 /***/ }),
-/* 317 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62418,7 +60967,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 318 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62464,7 +61013,7 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 } : $assign;
 
 /***/ }),
-/* 319 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62473,8 +61022,8 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(32);
-var toLength = __webpack_require__(320);
-var toAbsoluteIndex = __webpack_require__(321);
+var toLength = __webpack_require__(322);
+var toAbsoluteIndex = __webpack_require__(323);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -62497,7 +61046,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 320 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62511,7 +61060,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 321 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62526,26 +61075,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 322 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(323), __esModule: true };
+module.exports = { "default": __webpack_require__(325), __esModule: true };
 
 /***/ }),
-/* 323 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(324);
+__webpack_require__(326);
 module.exports = __webpack_require__(10).Object.getPrototypeOf;
 
 /***/ }),
-/* 324 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62555,14 +61104,14 @@ module.exports = __webpack_require__(10).Object.getPrototypeOf;
 var toObject = __webpack_require__(75);
 var $getPrototypeOf = __webpack_require__(117);
 
-__webpack_require__(325)('getPrototypeOf', function () {
+__webpack_require__(327)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 325 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62582,7 +61131,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 326 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62597,7 +61146,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 327 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62605,7 +61154,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(328);
+var _defineProperty = __webpack_require__(330);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -62632,29 +61181,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 328 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(329), __esModule: true };
+module.exports = { "default": __webpack_require__(331), __esModule: true };
 
 /***/ }),
-/* 329 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(330);
+__webpack_require__(332);
 var $Object = __webpack_require__(10).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 330 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62665,7 +61214,7 @@ var $export = __webpack_require__(21);
 $export($export.S + $export.F * !__webpack_require__(23), 'Object', { defineProperty: __webpack_require__(22).f });
 
 /***/ }),
-/* 331 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62690,33 +61239,33 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 332 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(333), __esModule: true };
-
-/***/ }),
-/* 333 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(334);
-__webpack_require__(339);
-module.exports = __webpack_require__(79).f('iterator');
-
-/***/ }),
 /* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(335)(true);
+module.exports = { "default": __webpack_require__(335), __esModule: true };
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(336);
+__webpack_require__(341);
+module.exports = __webpack_require__(79).f('iterator');
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $at = __webpack_require__(337)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(119)(String, 'String', function (iterated) {
@@ -62734,7 +61283,7 @@ __webpack_require__(119)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 335 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62757,7 +61306,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 336 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62779,7 +61328,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 337 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62801,24 +61350,24 @@ module.exports = __webpack_require__(23) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 338 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var document = __webpack_require__(20).document;
+var document = __webpack_require__(18).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 339 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(340);
-var global = __webpack_require__(20);
+__webpack_require__(342);
+var global = __webpack_require__(18);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(76);
 var TO_STRING_TAG = __webpack_require__(33)('toStringTag');
@@ -62834,14 +61383,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(341);
-var step = __webpack_require__(342);
+var addToUnscopables = __webpack_require__(343);
+var step = __webpack_require__(344);
 var Iterators = __webpack_require__(76);
 var toIObject = __webpack_require__(32);
 
@@ -62875,7 +61424,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62884,7 +61433,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62895,29 +61444,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(344), __esModule: true };
+module.exports = { "default": __webpack_require__(346), __esModule: true };
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(345);
-__webpack_require__(350);
-__webpack_require__(351);
+__webpack_require__(347);
 __webpack_require__(352);
+__webpack_require__(353);
+__webpack_require__(354);
 module.exports = __webpack_require__(10).Symbol;
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62926,12 +61475,12 @@ module.exports = __webpack_require__(10).Symbol;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(18);
 var has = __webpack_require__(24);
 var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(120);
-var META = __webpack_require__(346).KEY;
+var META = __webpack_require__(348).KEY;
 var $fails = __webpack_require__(31);
 var shared = __webpack_require__(72);
 var setToStringTag = __webpack_require__(78);
@@ -62939,15 +61488,15 @@ var uid = __webpack_require__(52);
 var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(79);
 var wksDefine = __webpack_require__(80);
-var enumKeys = __webpack_require__(347);
-var isArray = __webpack_require__(348);
+var enumKeys = __webpack_require__(349);
+var isArray = __webpack_require__(350);
 var anObject = __webpack_require__(39);
 var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(68);
 var createDesc = __webpack_require__(49);
 var _create = __webpack_require__(77);
-var gOPNExt = __webpack_require__(349);
+var gOPNExt = __webpack_require__(351);
 var $GOPD = __webpack_require__(122);
 var $DP = __webpack_require__(22);
 var $keys = __webpack_require__(50);
@@ -63167,7 +61716,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63230,7 +61779,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63255,7 +61804,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63268,7 +61817,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63296,29 +61845,11 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 350 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 351 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(80)('asyncIterator');
-
-/***/ }),
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-__webpack_require__(80)('observable');
 
 /***/ }),
 /* 353 */
@@ -63327,13 +61858,31 @@ __webpack_require__(80)('observable');
 "use strict";
 
 
+__webpack_require__(80)('asyncIterator');
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(80)('observable');
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(354);
+var _setPrototypeOf = __webpack_require__(356);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(358);
+var _create = __webpack_require__(360);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -63362,26 +61911,26 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(355), __esModule: true };
+module.exports = { "default": __webpack_require__(357), __esModule: true };
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(356);
+__webpack_require__(358);
 module.exports = __webpack_require__(10).Object.setPrototypeOf;
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63389,10 +61938,10 @@ module.exports = __webpack_require__(10).Object.setPrototypeOf;
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(21);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(357).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(359).set });
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63426,29 +61975,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(359), __esModule: true };
+module.exports = { "default": __webpack_require__(361), __esModule: true };
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(360);
+__webpack_require__(362);
 var $Object = __webpack_require__(10).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63459,7 +62008,7 @@ var $export = __webpack_require__(21);
 $export($export.S, 'Object', { create: __webpack_require__(77) });
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64050,7 +62599,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64060,11 +62609,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _generateCss = __webpack_require__(12);
+var _generateCss = __webpack_require__(19);
 
 var _generateCss2 = _interopRequireDefault(_generateCss);
 
-var _generateCssUnit = __webpack_require__(13);
+var _generateCssUnit = __webpack_require__(20);
 
 var _generateCssUnit2 = _interopRequireDefault(_generateCssUnit);
 
@@ -64123,7 +62672,7 @@ function styling(props) {
 exports.default = styling;
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64211,7 +62760,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 364 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64223,13 +62772,13 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(365);
+var _edit = __webpack_require__(367);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(383);
+var _save = __webpack_require__(385);
 
-var _attributes = __webpack_require__(384);
+var _attributes = __webpack_require__(386);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -64253,7 +62802,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 365 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64272,11 +62821,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactSelect = __webpack_require__(366);
+var _reactSelect = __webpack_require__(368);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(378);
+var _debounce = __webpack_require__(380);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -64661,7 +63210,6 @@ var edit = exports.edit = function (_Component) {
                 });
             };
 
-            console.log(mailchimp);
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: 'inspector' },
@@ -65229,7 +63777,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 366 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65246,11 +63794,11 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _memoizeOne = __webpack_require__(367);
+var _memoizeOne = __webpack_require__(369);
 
 var _memoizeOne2 = _interopRequireDefault(_memoizeOne);
 
-var _emotion = __webpack_require__(368);
+var _emotion = __webpack_require__(370);
 
 var _reactDom = __webpack_require__(28);
 
@@ -65258,11 +63806,11 @@ var _propTypes = __webpack_require__(9);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _raf = __webpack_require__(375);
+var _raf = __webpack_require__(377);
 
 var _raf2 = _interopRequireDefault(_raf);
 
-var _reactInputAutosize = __webpack_require__(377);
+var _reactInputAutosize = __webpack_require__(379);
 
 var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
@@ -70575,7 +69123,7 @@ exports.mergeStyles = mergeStyles;
 exports.defaultTheme = defaultTheme;
 
 /***/ }),
-/* 367 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70636,7 +69184,7 @@ function memoizeOne(resultFn, isEqual) {
 exports.default = memoizeOne;
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70647,7 +69195,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.caches = exports.sheet = exports.css = exports.keyframes = exports.injectGlobal = exports.getRegisteredStyles = exports.merge = exports.cx = exports.hydrate = exports.flush = undefined;
 
-var _createEmotion2 = __webpack_require__(369);
+var _createEmotion2 = __webpack_require__(371);
 
 var _createEmotion3 = _interopRequireDefault(_createEmotion2);
 
@@ -70680,7 +69228,7 @@ exports.caches = caches;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70692,23 +69240,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _memoize = __webpack_require__(370);
+var _memoize = __webpack_require__(372);
 
 var _memoize2 = _interopRequireDefault(_memoize);
 
-var _unitless = __webpack_require__(371);
+var _unitless = __webpack_require__(373);
 
 var _unitless2 = _interopRequireDefault(_unitless);
 
-var _hash = __webpack_require__(372);
+var _hash = __webpack_require__(374);
 
 var _hash2 = _interopRequireDefault(_hash);
 
-var _stylis = __webpack_require__(373);
+var _stylis = __webpack_require__(375);
 
 var _stylis2 = _interopRequireDefault(_stylis);
 
-var _stylisRuleSheet = __webpack_require__(374);
+var _stylisRuleSheet = __webpack_require__(376);
 
 var _stylisRuleSheet2 = _interopRequireDefault(_stylisRuleSheet);
 
@@ -71230,7 +69778,7 @@ exports.default = createEmotion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71250,7 +69798,7 @@ function memoize(fn) {
 exports.default = memoize;
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71307,7 +69855,7 @@ var unitlessKeys = {
 exports.default = unitlessKeys;
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71355,7 +69903,7 @@ function murmurhash2_32_gc(str) {
 exports.default = murmurhash2_32_gc;
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71993,7 +70541,7 @@ function stylis_min(W) {
 exports.default = stylis_min;
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72050,13 +70598,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var now = __webpack_require__(376),
+var now = __webpack_require__(378),
     root = typeof window === 'undefined' ? global : window,
     vendors = ['moz', 'webkit'],
     suffix = 'AnimationFrame',
@@ -72135,7 +70683,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72179,7 +70727,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72474,15 +71022,15 @@ AutosizeInput.defaultProps = {
 exports.default = AutosizeInput;
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(37),
-    now = __webpack_require__(379),
-    toNumber = __webpack_require__(380);
+    now = __webpack_require__(381),
+    toNumber = __webpack_require__(382);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -72670,7 +71218,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72701,13 +71249,13 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(381),
+var baseTrim = __webpack_require__(383),
     isObject = __webpack_require__(37),
     isSymbol = __webpack_require__(46);
 
@@ -72771,13 +71319,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(382);
+var trimmedEndIndex = __webpack_require__(384);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -72796,7 +71344,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 382 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72823,7 +71371,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 383 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72944,7 +71492,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 384 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73055,6 +71603,586 @@ var attributes = {
             btnColumn: '25'
         }]
 
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    iconBorder: {
+        type: "boolean",
+        default: false
+    },
+    wrapBorder: {
+        type: "boolean",
+        default: false
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
+
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderTop: {
+        type: "number",
+        default: 1
+    },
+    iconBorderRight: {
+        type: "number",
+        default: 1
+    },
+    iconBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    iconBorderLeft: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    wrapBorderTop: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderRight: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderLeft: {
+        type: "number",
+        default: 1
+    },
+    wrapPaddingT: {
+        type: "number"
+    },
+    wrapPaddingR: {
+        type: "number"
+    },
+    wrapPaddingB: {
+        type: "number"
+    },
+    wrapPaddingL: {
+        type: "number"
+    },
+
+    wrapMarginT: {
+        type: "number"
+    },
+    wrapMarginR: {
+        type: "number"
+    },
+    wrapMarginB: {
+        type: "number"
+    },
+    wrapMarginL: {
+        type: "number"
+    },
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconSizeUnit: 'px',
+            iconSize: '',
+            iconColor: '',
+            iconBack: '',
+            iconOpacity: '1',
+            borderType: 'none',
+            borderWidth: '1',
+            iconBorderTop: '1',
+            iconBorderRight: '1',
+            iconBorderBottom: '1',
+            iconBorderLeft: '1',
+            borderColor: '',
+            borderRadius: '100',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: "",
+            paddingU: ''
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backgroundColor: '',
+            backgroundOpacity: 1,
+            imageID: '',
+            imageURL: '',
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: 'auto',
+            fixed: false,
+            wrapBorderType: 'none',
+            wrapBorderWidth: '1',
+            wrapBorderTop: '1',
+            wrapBorderRight: '1',
+            wrapBorderBottom: '1',
+            wrapBorderLeft: '1',
+            wrapBorderColor: '',
+            wrapBorderRadius: '',
+            wrapShadowColor: '',
+            wrapShadowBlur: '0',
+            wrapShadowHorizontal: '0',
+            wrapShadowVertical: '0',
+            wrapShadowPosition: '',
+            wrapMarginT: '',
+            wrapMarginR: '',
+            wrapMarginB: '',
+            wrapMarginL: '',
+            wrapPaddingT: '',
+            wrapPaddingR: '',
+            wrapPaddingB: '',
+            wrapPaddingL: ''
+        }]
+    },
+
+    padding: {
+        type: "string",
+        default: "up"
+    },
+    margin: {
+        type: "string",
+        default: "up"
+    },
+    background: {
+        type: "string"
+    },
+
+    wrapPadding: {
+        type: "string",
+        default: "up"
+    },
+
+    wrapMargin: {
+        type: "string",
+        default: "up"
+    },
+
+    urlCheck: {
+        type: "boolean"
+    },
+    link: {
+        type: "string"
+    },
+    target: {
+        type: "boolean"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+
+    btnHoverBorder: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+
+    titleStyles: {
+        type: "array",
+        default: [{
+
+            titleTag: "H2",
+            titleFont: '',
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descFont: '',
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: 500,
+            descMarginT: '',
+            descMarginB: ''
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: 500,
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: '',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: 1,
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: ''
+
+        }]
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
     }
 };
 exports.default = attributes;
