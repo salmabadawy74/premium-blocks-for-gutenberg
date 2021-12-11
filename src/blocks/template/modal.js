@@ -1,26 +1,30 @@
 const { __ } = wp.i18n;
+import { sortBy } from 'lodash'
 
 const { Component, Fragment } = wp.element;
 
 const {
     Button,
     Modal,
-    TabPanel
+    TabPanel,
+    TextControl
 } = wp.components;
 const apiFetch = wp.apiFetch;
+const { applyFilters } = wp.hooks;
 
 class modal extends Component {
 
     constructor() {
         super(...arguments);
         this.selectUikit = this.selectUikit.bind(this)
+        this.selectCategory = this.selectCategory.bind(this)
         this.timeOut = null;
     }
 
     componentDidMount() {
         this.timeOut = setTimeout(() => {
-            this.selectUikit('Angled')
-        }, 400)
+            this.selectCategory('all')
+        }, 1000)
     }
 
     componentWillUnmount() {
@@ -29,25 +33,62 @@ class modal extends Component {
         }
     }
 
+    componentDidUpdate(nextProps) {
+        console.log(this.props.attributes.template, nextProps.attributes.template)
+        if (this.props.attributes.search !== nextProps.attributes.search) {
+            this.props.setAttributes({
+                template: nextProps.attributes.template
+            });
+            this.selectCategory(this.props.attributes.selectcategory, nextProps.attributes.template)
+        }
+    }
 
-    selectUikit(item) {
+    selectCategory(item, library) {
+        console.log(item, library, this.props.attributes.template)
+        this.props.attributes.category.map((cat, i) => {
+            if (cat.category.id === item) {
+                this.props.setAttributes({
+                    activeCategory: item
+                });
+            }
+        })
+
+        let newTemp = (library != undefined ? library : this.props.attributes.template).map((temp, i) => {
+            return temp
+        }).filter(t => {
+            return t.categories[0] === item
+        })
+
+        this.props.setAttributes({
+            template: newTemp,
+            selectcategory: item
+        });
+        // setSearch(search, template)
+    }
+
+
+    selectUikit(item, library) {
+        console.log('uikits', item)
+
         this.props.attributes.uikits.forEach((uikit, i) => {
-            if (uikit.id === item) {
+            // console.log(uikit)
+            if (uikit.uiKit.id === item) {
                 this.props.setAttributes({
                     activeCategory: item
                 });
                 return;
             }
         })
-
-        let newTemp = this.props.attributes.newTemplate.map((temp, i) => {
+        // console.log('this.props.attributes.newTemplate', this.props.attributes.newTemplate)
+        let newTemp = (library != undefined ? library : this.props.attributes.template).map((temp, i) => {
             return temp
         }).filter(t => {
             return t.uikit === item
         })
-
+        console.log(newTemp)
         this.props.setAttributes({
-            template: newTemp
+            template: newTemp,
+            selectuikit: item
         });
     }
 
@@ -63,17 +104,22 @@ class modal extends Component {
             category,
             activeCategory,
             uikits,
-            column
+            column,
+            search,
+            selectcategory,
+            selectuikit,
+            tabName
         } = attributes;
 
-        const TABSTYLE = [{
-            name: "uikit",
-            title: __("UI Kits")
-        },
-        {
-            name: "category",
-            title: __("Categories")
-        }
+        const TABSTYLE = [
+            {
+                name: "category",
+                title: __("Categories")
+            },
+            {
+                name: "uikit",
+                title: __("UI Kits")
+            }
         ];
 
         const selectTemplate = async (designId) => {
@@ -82,29 +128,30 @@ class modal extends Component {
                 method: 'GET',
             })
             let designLibrary = await results
-            console.log(designLibrary)
+            // console.log(designLibrary)
             this.props.onSelect(designLibrary);
         }
 
-        const selectCategory = (item) => {
-            category.map((cat, i) => {
-                if (cat.id === item) {
-                    this.props.setAttributes({
-                        activeCategory: item
-                    });
-                }
-            })
+        // const selectCategory = (item) => {
+        //     category.map((cat, i) => {
+        //         if (cat.category.id === item) {
+        //             this.props.setAttributes({
+        //                 activeCategory: item
+        //             });
+        //         }
+        //     })
 
-            let newTemp = newTemplate.map((temp, i) => {
-                return temp
-            }).filter(t => {
-                return t.categories[0] === item
-            })
+        //     let newTemp = newTemplate.map((temp, i) => {
+        //         return temp
+        //     }).filter(t => {
+        //         return t.categories[0] === item
+        //     })
 
-            this.props.setAttributes({
-                template: item === 'all' ? newTemplate : newTemp
-            });
-        }
+        //     this.props.setAttributes({
+        //         template: item === 'all' ? newTemplate : newTemp
+        //     });
+        //     // setSearch(search, template)
+        // }
 
         const templates = template.map((item, i) => {
             return <div className="premium-template-item" onClick={() => selectTemplate(item.id)}>
@@ -118,30 +165,34 @@ class modal extends Component {
         });
 
         const categories = category.map((item, i) => {
-            return <li>
-                <div className={`premium-template__sidebar-item ${activeCategory == item.id ? 'is-active' : ''}`} onClick={() => selectCategory(item.id)}>
-                    {item.label}
+            return <li key={i}>
+                <div className={`premium-template__sidebar-item ${activeCategory == item.category.id ? 'is-active' : ''}`} onClick={() => this.selectCategory(item.category.id)}>
+                    {item.category.label}
                     <span className="premium-template-block-list__count">{item.count}</span>
                 </div>
             </li>
         });
 
-        const uikit = uikits.map((item, i) => {
-            return <li>
-                <div className={`premium-template__sidebar-item ${activeCategory == item.id ? 'is-active' : ''}`} onClick={() => this.selectUikit(item.id)}>
-                    {item.label}
+        const uikit = (uikits || []).map((item, i) => {
+            return <li key={i}>
+                <div className={`premium-template__sidebar-item ${activeCategory == item.uiKit.id ? 'is-active' : ''}`} onClick={() => this.selectUikit(item.uiKit.id)}>
+                    {item.uiKit.label}
                     <span className="premium-template-block-list__count">{item.count}</span>
                 </div>
             </li>
         });
 
         const tabSelect = (tabName) => {
+            console.log('tabName', tabName)
             if (tabName === 'uikit') {
                 this.selectUikit('Angled')
             }
             else {
-                selectCategory('all')
+                this.selectCategory('all')
             }
+            this.props.setAttributes({
+                tabName: tabName
+            });
         };
 
         const setColumns = (item) => {
@@ -150,12 +201,49 @@ class modal extends Component {
             });
         }
 
+        const setSearch = (search) => {
+            console.log(search, template)
+            const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
+            console.log(terms)
+            // Every search term should match a property of a design.
+            terms.forEach(searchTerm => {
+                let library = newTemplate.filter(design => {
+                    // Our search term needs to match at least one of these properties.
+                    const propertiesToSearch = applyFilters('stackable.design-library.search-properties',
+                        ['label', 'plan', 'tags', 'categories', 'colors'])
+
+                    return propertiesToSearch.some(designProp => {
+                        // Search whether the term matched.
+                        return design[designProp].toString().toLowerCase().indexOf(searchTerm) !== -1
+                    })
+                })
+                console.log(library)
+
+                this.props.setAttributes({
+                    template: library,
+                    search: search
+                });
+                console.log('selectuikit', tabName)
+                tabName == 'category' ? this.selectCategory(selectcategory, library) :
+                    this.selectUikit(selectuikit, library)
+            })
+        }
+
 
         return (
             <Modal title="This is my modal" onRequestClose={this.props.onClose} className="premium-template-modal">
                 <div className="premium-template-modal__wrapper">
                     <aside className="premium-template-modal__sidebar">
-                        <div></div>
+                        <div>
+                            <TextControl
+                                className="premium-template__search"
+                                placeholder={__('E.g. light, dark, red, minimalist…')}
+                                value={search}
+                                onChange={(search) => this.props.setSearch(search)}
+                                data-testid="input-search"
+                                type="search"
+                            />
+                        </div>
                         <div className="premium-template-modal__filters">
                             <ul className="premium-template-block-list">
                                 <TabPanel

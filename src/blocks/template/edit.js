@@ -50,7 +50,7 @@ class edit extends Component {
             align,
             className,
             isLibraryOpen,
-            isOpenModal,
+            newTemplate,
             template,
             uikits,
             category
@@ -106,14 +106,42 @@ class edit extends Component {
                 count: 0,
             })
 
+            const newUiKits = uikits.reduce((uiKits, uiKit) => {
+                uiKits[uiKit.id] = {
+                    uiKit,
+                    count: 0,
+                }
+                return uiKits
+            }, {})
+            const newCategories = categories.reduce((categories, category) => {
+                categories[category.id] = {
+                    category,
+                    count: 0,
+                }
+                return categories
+            }, {})
+            console.log(newCategories['all'])
+            if (newCategories['all']) {
+                newCategories['all'].count = Object.values(designLibrary.v3).length
+                // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
+            }
+            Object.values(designLibrary.v3).forEach(design => {
+                if (design.uikit && newUiKits[design.uikit]) {
+                    newUiKits[design.uikit].count++
+                }
+                design.categories.forEach(category => {
+                    if (category && newCategories[category]) {
+                        newCategories[category].count++
+                    }
+                })
+            })
 
             this.props.setAttributes({
-                uikits: uikits,
-                category: categories
+                uikits: Object.values(newUiKits),
+                category: Object.values(newCategories)
             });
-            console.log(uikits,
-                category, template)
-
+            // console.log(uikits,
+            //     category, template)
         }
 
         const replaceBlockWithAttributes = (blockName, attributes, innerBlocks) => {
@@ -124,7 +152,32 @@ class edit extends Component {
 
             const block = createBlock(blockName, blockAttributes, createBlocksFromInnerBlocksTemplate(innerBlocks))
             replaceBlock(this.props.clientId, block)
-            console.log(block)
+            // console.log(block)
+        }
+
+        const setSearch = (search) => {
+            console.log(search, template)
+            const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
+            console.log(terms)
+            // Every search term should match a property of a design.
+            terms.forEach(searchTerm => {
+                let library = newTemplate.filter(design => {
+                    // Our search term needs to match at least one of these properties.
+                    const propertiesToSearch = applyFilters('stackable.design-library.search-properties',
+                        ['label', 'plan', 'tags', 'categories', 'colors'])
+
+                    return propertiesToSearch.some(designProp => {
+                        // Search whether the term matched.
+                        return design[designProp].toString().toLowerCase().indexOf(searchTerm) !== -1
+                    })
+                })
+                console.log(library)
+
+                this.props.setAttributes({
+                    template: library,
+                    search: search
+                });
+            })
         }
 
 
@@ -167,13 +220,14 @@ class edit extends Component {
                         onClose={() => {
                             setIsLibraryOpen(false)
                         }}
+                        setSearch={setSearch}
                         attributes={attributes}
                         setAttributes={this.props.setAttributes}
                         onSelect={designData => {
                             const {
                                 name, attributes, innerBlocks, serialized,
                             } = designData
-                            console.log(designData, name, attributes)
+
                             if (name && attributes) {
                                 replaceBlockWithAttributes(name, applyFilters('stackable.design-library.attributes', attributes), innerBlocks || [])
                             } else if (serialized) {

@@ -1889,6 +1889,10 @@ a.premium-dheading-block__link:hover {
     cursor: pointer;
     /* display: block; */
 }
+.premium-template-item:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 6px 25px hsl(0deg 0% 60% / 30%);
+}
 .premium-template-item .premium-template-item__image img{
     transition: all .3s ease-in-out;
 }
@@ -1907,4 +1911,6 @@ a.premium-dheading-block__link:hover {
     display: flex;
     justify-content: space-between;
 }
-
+.premium-template__search {
+    padding: 0px 12px 0;
+}

@@ -40,6 +40,22 @@ const test1Attrs = {
     column: {
         type: 'number',
         default: 3
+    },
+    search: {
+        type: 'string',
+        default: ''
+    },
+    selectcategory: {
+        type: 'string',
+        default: 'all'
+    },
+    selectuikit: {
+        type: 'string',
+        default: ''
+    },
+    tabName: {
+        type: 'string',
+        default: 'category'
     }
 };
 
