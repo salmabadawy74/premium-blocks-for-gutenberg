@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const test1Attrs = {
-    isLibraryOpen: {
+    isModalOpen: {
         type: 'boolean',
         default: false
     },

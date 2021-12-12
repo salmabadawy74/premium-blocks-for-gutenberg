@@ -36,7 +36,8 @@ class edit extends Component {
 
         this.props.setAttributes({
             classMigrate: true,
-            isLibraryOpen: false
+            isModalOpen: false,
+            search: ''
         });
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
@@ -49,7 +50,7 @@ class edit extends Component {
             block_id,
             align,
             className,
-            isLibraryOpen,
+            isModalOpen,
             newTemplate,
             template,
             uikits,
@@ -57,9 +58,9 @@ class edit extends Component {
         } = attributes;
 
 
-        const setIsLibraryOpen = async (value) => {
+        const setIsModalOpen = async (value) => {
             setAttributes({
-                isLibraryOpen: value
+                isModalOpen: value
             });
             const results = await apiFetch({
                 path: `/stackable/v2/design_library`,
@@ -71,75 +72,75 @@ class edit extends Component {
                 template: Object.values(designLibrary.v3),
                 newTemplate: Object.values(designLibrary.v3)
             });
-            const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
-                const design = designLibrary.v3[name]
-                const { categories, uikit } = design
+            // const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
+            //     const design = designLibrary.v3[name]
+            //     const { categories, uikit } = design
 
-                if (typeof output.uikits[uikit] === 'undefined') {
-                    output.uikits[uikit] = {
-                        id: uikit,
-                        label: design.uikit,
-                        plan: design.plan,
-                        count: 0,
-                    }
-                }
+            //     if (typeof output.uikits[uikit] === 'undefined') {
+            //         output.uikits[uikit] = {
+            //             id: uikit,
+            //             label: design.uikit,
+            //             plan: design.plan,
+            //             count: 0,
+            //         }
+            //     }
 
-                categories.forEach(category => {
-                    if (typeof output.categories[category] === 'undefined') {
-                        output.categories[category] = {
-                            id: category,
-                            label: category,
-                            count: 0,
-                        }
-                    }
-                })
-                return output
-            }, { uikits: {}, categories: {} })
+            //     categories.forEach(category => {
+            //         if (typeof output.categories[category] === 'undefined') {
+            //             output.categories[category] = {
+            //                 id: category,
+            //                 label: category,
+            //                 count: 0,
+            //             }
+            //         }
+            //     })
+            //     return output
+            // }, { uikits: {}, categories: {} })
 
-            let uikitSort = ['label']
+            // let uikitSort = ['label']
 
-            const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-            const categories = sortBy(Object.values(designList.categories), 'label')
-            categories.unshift({
-                id: 'all',
-                label: __('All'),
-                count: 0,
-            })
+            // const uikits = sortBy(Object.values(designList.uikits), uikitSort)
+            // const categories = sortBy(Object.values(designList.categories), 'label')
+            // categories.unshift({
+            //     id: 'all',
+            //     label: __('All'),
+            //     count: 0,
+            // })
 
-            const newUiKits = uikits.reduce((uiKits, uiKit) => {
-                uiKits[uiKit.id] = {
-                    uiKit,
-                    count: 0,
-                }
-                return uiKits
-            }, {})
-            const newCategories = categories.reduce((categories, category) => {
-                categories[category.id] = {
-                    category,
-                    count: 0,
-                }
-                return categories
-            }, {})
-            console.log(newCategories['all'])
-            if (newCategories['all']) {
-                newCategories['all'].count = Object.values(designLibrary.v3).length
-                // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-            }
-            Object.values(designLibrary.v3).forEach(design => {
-                if (design.uikit && newUiKits[design.uikit]) {
-                    newUiKits[design.uikit].count++
-                }
-                design.categories.forEach(category => {
-                    if (category && newCategories[category]) {
-                        newCategories[category].count++
-                    }
-                })
-            })
+            // const newUiKits = uikits.reduce((uiKits, uiKit) => {
+            //     uiKits[uiKit.id] = {
+            //         uiKit,
+            //         count: 0,
+            //     }
+            //     return uiKits
+            // }, {})
+            // const newCategories = categories.reduce((categories, category) => {
+            //     categories[category.id] = {
+            //         category,
+            //         count: 0,
+            //     }
+            //     return categories
+            // }, {})
+            // console.log(newCategories['all'])
+            // if (newCategories['all']) {
+            //     newCategories['all'].count = Object.values(designLibrary.v3).length
+            //     // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
+            // }
+            // Object.values(designLibrary.v3).forEach(design => {
+            //     if (design.uikit && newUiKits[design.uikit]) {
+            //         newUiKits[design.uikit].count++
+            //     }
+            //     design.categories.forEach(category => {
+            //         if (category && newCategories[category]) {
+            //             newCategories[category].count++
+            //         }
+            //     })
+            // })
 
-            this.props.setAttributes({
-                uikits: Object.values(newUiKits),
-                category: Object.values(newCategories)
-            });
+            // this.props.setAttributes({
+            //     uikits: Object.values(newUiKits),
+            //     category: Object.values(newCategories)
+            // });
             // console.log(uikits,
             //     category, template)
         }
@@ -155,13 +156,29 @@ class edit extends Component {
             // console.log(block)
         }
 
-        const setSearch = (search) => {
-            console.log(search, template)
+        const setCount = (uikits, category, library) => {
+            console.log('uikits, category, library', uikits, category, library)
+
+        }
+
+
+        const setSearch = (search, temp, type, selectItem) => {
+            console.log(search, temp)
+            let library = (temp != undefined ? temp : template);
+            if (type === "category" && selectItem !== 'all') {
+                library = library.filter(({ categories }) => categories.some(cat => selectItem.includes(cat)))
+                // console.log('library', library)
+            }
+            if (type === "uikit") {
+                // console.log('libraryuikit', library, selectuikit)
+                library = library.filter(({ uikit }) => uikit === selectItem)
+
+            }
             const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
-            console.log(terms)
+            // console.log('library', terms, library)
             // Every search term should match a property of a design.
             terms.forEach(searchTerm => {
-                let library = newTemplate.filter(design => {
+                library = (library || []).filter(design => {
                     // Our search term needs to match at least one of these properties.
                     const propertiesToSearch = applyFilters('stackable.design-library.search-properties',
                         ['label', 'plan', 'tags', 'categories', 'colors'])
@@ -177,8 +194,10 @@ class edit extends Component {
                     template: library,
                     search: search
                 });
+                setCount(uikits, category, library)
             })
         }
+
 
 
         return [
@@ -208,17 +227,17 @@ class edit extends Component {
                     textAlign: align,
                 }}
             >
-                {!isLibraryOpen && <button
+                {!isModalOpen && <button
                     className="premium-template"
                     onClick={() => {
-                        setIsLibraryOpen(true)
+                        setIsModalOpen(true)
                     }}>{__("Add New Template")}
                 </button>}
 
-                {isLibraryOpen &&
+                {isModalOpen &&
                     <ModalTemplate
                         onClose={() => {
-                            setIsLibraryOpen(false)
+                            setIsModalOpen(false)
                         }}
                         setSearch={setSearch}
                         attributes={attributes}

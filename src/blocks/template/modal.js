@@ -34,17 +34,20 @@ class modal extends Component {
     }
 
     componentDidUpdate(nextProps) {
-        console.log(this.props.attributes.template, nextProps.attributes.template)
+        // console.log(this.props.attributes.template, nextProps.attributes.template)
         if (this.props.attributes.search !== nextProps.attributes.search) {
-            this.props.setAttributes({
-                template: nextProps.attributes.template
-            });
-            this.selectCategory(this.props.attributes.selectcategory, nextProps.attributes.template)
+            //     this.props.setAttributes({
+            //         template: nextProps.attributes.template
+            //     }, () => {
+            // this.selectCategory(this.props.attributes.selectcategory, nextProps.attributes.template)
+            //     });
+            // }
+            // this.props.setSearch(this.props.attributes.search)
         }
     }
 
-    selectCategory(item, library) {
-        console.log(item, library, this.props.attributes.template)
+    selectCategory(item) {
+        console.log(item, this.props.attributes.template, this.props.attributes.category)
         this.props.attributes.category.map((cat, i) => {
             if (cat.category.id === item) {
                 this.props.setAttributes({
@@ -53,22 +56,22 @@ class modal extends Component {
             }
         })
 
-        let newTemp = (library != undefined ? library : this.props.attributes.template).map((temp, i) => {
+        let newTemp = this.props.attributes.newTemplate.map((temp, i) => {
             return temp
         }).filter(t => {
             return t.categories[0] === item
         })
-
+        console.log('newTemp', newTemp)
         this.props.setAttributes({
-            template: newTemp,
+            template: item === 'all' ? this.props.attributes.newTemplate : newTemp,
             selectcategory: item
         });
-        // setSearch(search, template)
+        this.props.setSearch(this.props.attributes.search, (item === 'all' ? this.props.attributes.newTemplate : newTemp), 'category', item)
     }
 
 
     selectUikit(item, library) {
-        console.log('uikits', item)
+        // console.log('uikits', item)
 
         this.props.attributes.uikits.forEach((uikit, i) => {
             // console.log(uikit)
@@ -80,7 +83,7 @@ class modal extends Component {
             }
         })
         // console.log('this.props.attributes.newTemplate', this.props.attributes.newTemplate)
-        let newTemp = (library != undefined ? library : this.props.attributes.template).map((temp, i) => {
+        let newTemp = (library != undefined ? library : this.props.attributes.newTemplate).map((temp, i) => {
             return temp
         }).filter(t => {
             return t.uikit === item
@@ -90,6 +93,7 @@ class modal extends Component {
             template: newTemp,
             selectuikit: item
         });
+        this.props.setSearch(this.props.attributes.search, newTemp, 'uikit', item)
     }
 
     render() {
@@ -239,7 +243,7 @@ class modal extends Component {
                                 className="premium-template__search"
                                 placeholder={__('E.g. light, dark, red, minimalist…')}
                                 value={search}
-                                onChange={(search) => this.props.setSearch(search)}
+                                onChange={(search) => this.props.setSearch(search, template)}
                                 data-testid="input-search"
                                 type="search"
                             />
