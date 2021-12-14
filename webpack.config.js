@@ -15,6 +15,10 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+    }
 };
 
 if (process.env.NODE_ENV === 'production') {

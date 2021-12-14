@@ -1,5 +1,6 @@
+import React from 'react';
+import Select from 'react-select';
 const { __ } = wp.i18n;
-import { sortBy } from 'lodash'
 
 const { Component, Fragment } = wp.element;
 
@@ -7,7 +8,8 @@ const {
     Button,
     Modal,
     TabPanel,
-    TextControl
+    TextControl,
+    SelectControl
 } = wp.components;
 const apiFetch = wp.apiFetch;
 const { applyFilters } = wp.hooks;
@@ -136,27 +138,6 @@ class modal extends Component {
             this.props.onSelect(designLibrary);
         }
 
-        // const selectCategory = (item) => {
-        //     category.map((cat, i) => {
-        //         if (cat.category.id === item) {
-        //             this.props.setAttributes({
-        //                 activeCategory: item
-        //             });
-        //         }
-        //     })
-
-        //     let newTemp = newTemplate.map((temp, i) => {
-        //         return temp
-        //     }).filter(t => {
-        //         return t.categories[0] === item
-        //     })
-
-        //     this.props.setAttributes({
-        //         template: item === 'all' ? newTemplate : newTemp
-        //     });
-        //     // setSearch(search, template)
-        // }
-
         const templates = template.map((item, i) => {
             return <div className="premium-template-item" onClick={() => selectTemplate(item.id)}>
                 <Button className="premium-template-item__image" variant="secondary" onClick={this.props.onClose}>
@@ -186,6 +167,10 @@ class modal extends Component {
             </li>
         });
 
+        const options = category.map((item, i) => {
+            return { value: item.category.id, label: item.category.label }
+        });
+
         const tabSelect = (tabName) => {
             console.log('tabName', tabName)
             if (tabName === 'uikit') {
@@ -205,32 +190,12 @@ class modal extends Component {
             });
         }
 
-        const setSearch = (search) => {
-            console.log(search, template)
-            const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
-            console.log(terms)
-            // Every search term should match a property of a design.
-            terms.forEach(searchTerm => {
-                let library = newTemplate.filter(design => {
-                    // Our search term needs to match at least one of these properties.
-                    const propertiesToSearch = applyFilters('stackable.design-library.search-properties',
-                        ['label', 'plan', 'tags', 'categories', 'colors'])
-
-                    return propertiesToSearch.some(designProp => {
-                        // Search whether the term matched.
-                        return design[designProp].toString().toLowerCase().indexOf(searchTerm) !== -1
-                    })
-                })
-                console.log(library)
-
-                this.props.setAttributes({
-                    template: library,
-                    search: search
-                });
-                console.log('selectuikit', tabName)
-                tabName == 'category' ? this.selectCategory(selectcategory, library) :
-                    this.selectUikit(selectuikit, library)
-            })
+        const handleChange = (value) => {
+            this.props.setAttributes({
+                activeCategory: value != null ? value.value : 'all',
+                selectcategory: value != null ? value.value : 'all'
+            });
+            this.selectCategory(value != null ? value.value : 'all')
         }
 
 
@@ -273,31 +238,41 @@ class modal extends Component {
                         </div>
                     </aside>
                     <aside className="premium-template-modal__topbar">
+                        <Select
+                            defaultValue={selectcategory}
+                            onChange={value => handleChange(value)}
+                            options={options}
+                            isSearchable={true}
+                            isClearable={true}
+                        />
                         <Button
                             icon="image-rotate"
                             label={__('Refresh Library')}
-                            className="ugb-modal-design-library__refresh"
+                        // className="ugb-modal-design-library__refresh"
                         // onClick={ () => setDoReset( true ) }
                         />
 
                         <Button
-                            icon="fa fa-dot-circle-o"
                             className={columns === 2 ? 'is-active' : ''}
                             label={__('Large preview')}
                             onClick={() => setColumns(2)}
-                        />
+                        >
+                            <span class="fa fa-square" />
+                        </Button>
                         <Button
-                            icon="image-rotate"
                             className={columns === 3 ? 'is-active' : ''}
                             label={__('Medium preview')}
                             onClick={() => setColumns(3)}
-                        />
+                        >
+                            <span class="fa fa-th-large" />
+                        </Button>
                         <Button
-                            icon="fa fa-dot-circle-o"
                             className={columns === 4 ? 'is-active' : ''}
                             label={__('Small preview')}
                             onClick={() => setColumns(4)}
-                        />
+                        >
+                            <span class="fa fa-th" />
+                        </Button>
                     </aside>
                     <div className="premium-template-modal__designs">
                         <div className={`premium-template-items premium-template-items--columns-${column}`}>

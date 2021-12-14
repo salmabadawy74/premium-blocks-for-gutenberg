@@ -35,7 +35,7 @@ class edit extends Component {
     componentDidMount() {
 
         this.props.setAttributes({
-            classMigrate: true,
+            // classMigrate: true,
             isModalOpen: false,
             search: ''
         });
@@ -72,75 +72,78 @@ class edit extends Component {
                 template: Object.values(designLibrary.v3),
                 newTemplate: Object.values(designLibrary.v3)
             });
-            // const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
-            //     const design = designLibrary.v3[name]
-            //     const { categories, uikit } = design
 
-            //     if (typeof output.uikits[uikit] === 'undefined') {
-            //         output.uikits[uikit] = {
-            //             id: uikit,
-            //             label: design.uikit,
-            //             plan: design.plan,
-            //             count: 0,
-            //         }
-            //     }
+            const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
+                const design = designLibrary.v3[name]
+                const { categories, uikit } = design
 
-            //     categories.forEach(category => {
-            //         if (typeof output.categories[category] === 'undefined') {
-            //             output.categories[category] = {
-            //                 id: category,
-            //                 label: category,
-            //                 count: 0,
-            //             }
-            //         }
-            //     })
-            //     return output
-            // }, { uikits: {}, categories: {} })
+                if (typeof output.uikits[uikit] === 'undefined') {
+                    output.uikits[uikit] = {
+                        id: uikit,
+                        label: design.uikit,
+                        plan: design.plan,
+                        count: 0,
+                    }
+                }
 
-            // let uikitSort = ['label']
+                categories.forEach(category => {
+                    if (typeof output.categories[category] === 'undefined') {
+                        output.categories[category] = {
+                            id: category,
+                            label: category,
+                            count: 0,
+                        }
+                    }
+                })
+                return output
+            }, { uikits: {}, categories: {} })
 
-            // const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-            // const categories = sortBy(Object.values(designList.categories), 'label')
-            // categories.unshift({
-            //     id: 'all',
-            //     label: __('All'),
-            //     count: 0,
-            // })
+            let uikitSort = ['label']
 
-            // const newUiKits = uikits.reduce((uiKits, uiKit) => {
-            //     uiKits[uiKit.id] = {
-            //         uiKit,
-            //         count: 0,
-            //     }
-            //     return uiKits
-            // }, {})
-            // const newCategories = categories.reduce((categories, category) => {
-            //     categories[category.id] = {
-            //         category,
-            //         count: 0,
-            //     }
-            //     return categories
-            // }, {})
-            // console.log(newCategories['all'])
-            // if (newCategories['all']) {
-            //     newCategories['all'].count = Object.values(designLibrary.v3).length
-            //     // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-            // }
-            // Object.values(designLibrary.v3).forEach(design => {
-            //     if (design.uikit && newUiKits[design.uikit]) {
-            //         newUiKits[design.uikit].count++
-            //     }
-            //     design.categories.forEach(category => {
-            //         if (category && newCategories[category]) {
-            //             newCategories[category].count++
-            //         }
-            //     })
-            // })
+            const uikits = sortBy(Object.values(designList.uikits), uikitSort)
+            const categories = sortBy(Object.values(designList.categories), 'label')
+            categories.unshift({
+                id: 'all',
+                label: __('All'),
+                count: 0,
+            })
 
-            // this.props.setAttributes({
-            //     uikits: Object.values(newUiKits),
-            //     category: Object.values(newCategories)
-            // });
+            const newUiKits = uikits.reduce((uiKits, uiKit) => {
+                uiKits[uiKit.id] = {
+                    uiKit,
+                    count: 0,
+                }
+                return uiKits
+            }, {})
+
+            const newCategories = categories.reduce((categories, category) => {
+                categories[category.id] = {
+                    category,
+                    count: 0,
+                }
+                return categories
+            }, {})
+
+            if (newCategories['all']) {
+                newCategories['all'].count = Object.values(designLibrary.v3).length
+                // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
+            }
+
+            Object.values(designLibrary.v3).forEach(design => {
+                if (design.uikit && newUiKits[design.uikit]) {
+                    newUiKits[design.uikit].count++
+                }
+                design.categories.forEach(category => {
+                    if (category && newCategories[category]) {
+                        newCategories[category].count++
+                    }
+                })
+            })
+
+            this.props.setAttributes({
+                uikits: Object.values(newUiKits),
+                category: Object.values(newCategories)
+            });
             // console.log(uikits,
             //     category, template)
         }
@@ -153,12 +156,6 @@ class edit extends Component {
 
             const block = createBlock(blockName, blockAttributes, createBlocksFromInnerBlocksTemplate(innerBlocks))
             replaceBlock(this.props.clientId, block)
-            // console.log(block)
-        }
-
-        const setCount = (uikits, category, library) => {
-            console.log('uikits, category, library', uikits, category, library)
-
         }
 
 
@@ -167,15 +164,12 @@ class edit extends Component {
             let library = (temp != undefined ? temp : template);
             if (type === "category" && selectItem !== 'all') {
                 library = library.filter(({ categories }) => categories.some(cat => selectItem.includes(cat)))
-                // console.log('library', library)
             }
             if (type === "uikit") {
-                // console.log('libraryuikit', library, selectuikit)
                 library = library.filter(({ uikit }) => uikit === selectItem)
 
             }
             const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
-            // console.log('library', terms, library)
             // Every search term should match a property of a design.
             terms.forEach(searchTerm => {
                 library = (library || []).filter(design => {
@@ -188,13 +182,11 @@ class edit extends Component {
                         return design[designProp].toString().toLowerCase().indexOf(searchTerm) !== -1
                     })
                 })
-                console.log(library)
 
                 this.props.setAttributes({
                     template: library,
                     search: search
                 });
-                setCount(uikits, category, library)
             })
         }
 

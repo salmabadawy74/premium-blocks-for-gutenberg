@@ -13,10 +13,6 @@ const test1Attrs = {
         type: 'boolean',
         default: false
     },
-    isOpenModal: {
-        type: 'boolean',
-        default: false
-    },
     template: {
         type: 'array',
         default: []

@@ -1914,3 +1914,15 @@ a.premium-dheading-block__link:hover {
 .premium-template__search {
     padding: 0px 12px 0;
 }
+.premium-template-modal__topbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 24px;
+    height: 50px;
+    align-items: center;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.components-tab-panel__tabs-item:focus:not(:disabled) {
+    box-shadow: none !important;
+}
