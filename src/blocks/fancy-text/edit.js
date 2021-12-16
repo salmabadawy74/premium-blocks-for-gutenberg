@@ -4,7 +4,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
 import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "../../components/hex-to-rgba";
 
 import {
     SortableContainer,

@@ -748,7 +748,7 @@ export class edit extends Component {
                                     isSelected={false}
                                     onChange={newText => setAttributes({ title: newText })}
                                     style={{
-                                        fontSize: titleFontSize,
+                                        fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
                                         color: titleStyles[0].titleColor,
                                         fontWeight: titleStyles[0].titleWeight,
                                         lineHeight: titleStyles[0].titleLine + "px",
@@ -769,7 +769,7 @@ export class edit extends Component {
                                     isSelected={false}
                                     onChange={newText => setAttributes({ desc: newText })}
                                     style={{
-                                        fontSize: descFontSize,
+                                        fontSize: `${descFontSize}${descStyles[0].descSizeUnit}`,
                                         color: descStyles[0].descColor,
                                         fontWeight: descStyles[0].descWeight,
                                         lineHeight: descStyles[0].descLine + "px",

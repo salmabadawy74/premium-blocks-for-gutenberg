@@ -5,9 +5,9 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "hex-to-rgba";
-import styling from './styling'
+import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+const { withSelect } = wp.data
 
 const { __ } = wp.i18n;
 
@@ -45,70 +45,55 @@ class PremiumPricingTable extends Component {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-pricing-" + clientId
-        );
-        document.head.appendChild($style);
+
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     render() {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
-            block_id,
             borderUpdated,
             btnBorderUpdated,
             contentAlign,
-            tableBack,
-            borderType,
-            borderWidth,
-            borderRadius,
             borderColor,
-            tablePadding,
-            titleChecked,
-            tableShadowBlur,
-            tableShadowColor,
-            tableShadowHorizontal,
-            tableShadowVertical,
-            tableShadowPosition,
             title,
-            titleTag,
-            titleColor,
-            titleSize,
-            titleLine,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleBack,
-            titleShadowBlur,
-            titleShadowColor,
-            titleShadowHorizontal,
-            titleShadowVertical,
-            titleMarginT,
-            titleMarginB,
-            titlePadding,
-            descChecked,
-            descColor,
-            descSize,
-            descLine,
-            descWeight,
-            descStyle,
-            descLetter,
             desc,
-            descBack,
-            descMarginT,
-            descMarginB,
-            descPadding,
+            titleChecked,
+            descChecked,
             priceChecked,
-            priceBack,
-            priceMarginT,
-            priceMarginB,
-            pricePadding,
-            slashPrice,
+            btnChecked,
+            btnText,
+            btnLink,
+            badgeChecked,
+            listChecked,
+            listItems,
+            block_id,
+            classMigrate,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            titleStyles,
+            priceStyles,
+            featureStyles,
+            descStyles,
+            buttonStyles,
+            badgeStyles,
+            tableStyles,
             btnBorderTop,
             btnBorderRight,
             btnBorderBottom,
@@ -117,119 +102,6 @@ class PremiumPricingTable extends Component {
             borderRight,
             borderBottom,
             borderLeft,
-            slashColor,
-            slashSize,
-            slashWeight,
-            slashV,
-            currPrice,
-            currColor,
-            currWeight,
-            currV,
-            valPrice,
-            valColor,
-            valSize,
-            valWeight,
-            valV,
-            divPrice,
-            divColor,
-            divSize,
-            divWeight,
-            divV,
-            durPrice,
-            durColor,
-            durSize,
-            durWeight,
-            durV,
-            selectedStyle,
-            btnChecked,
-            btnText,
-            btnTarget,
-            btnLink,
-            btnColor,
-            btnHoverColor,
-            btnSize,
-            btnWeight,
-            btnLetter,
-            btnLine,
-            btnUpper,
-            btnStyle,
-            btnBack,
-            btnHoverBack,
-            btnMarginT,
-            btnMarginB,
-            btnPadding,
-            btnPaddingU,
-            btnWidth,
-            btnBorderType,
-            btnBorderWidth,
-            btnBorderRadius,
-            btnBorderColor,
-            badgeChecked,
-            badgePos,
-            badgeBack,
-            badgeColor,
-            badgeSize,
-            badgeTextSize,
-            badgeTop,
-            badgeHorizontal,
-            badgeWidth,
-            badgeWeight,
-            badgeLetter,
-            badgeStyle,
-            badgeUpper,
-            badgeText,
-            listChecked,
-            listColor,
-            listWeight,
-            listSize,
-            listItemsStyle,
-            listLetter,
-            listLine,
-            listUpper,
-            listBack,
-            listItems,
-            listMarginT,
-            listMarginB,
-            listPadding,
-            listStyle,
-            featsAlign,
-            id,
-            titleSizeUnit,
-            titleSizeMobile,
-            titleSizeTablet,
-            slashSizeUnit,
-            slashSizeMobile,
-            slashSizeTablet,
-            currSizeUnit,
-            currSize,
-            currSizeMobile,
-            currSizeTablet,
-            valSizeUnit,
-            valSizeMobile,
-            valSizeTablet,
-            divSizeUnit,
-            divSizeMobile,
-            divSizeTablet,
-            durSizeUnit,
-            durSizeMobile,
-            durSizeTablet,
-            listSizeUnit,
-            listSizeMobile,
-            listSizeTablet,
-            descSizeUnit,
-            descSizeMobile,
-            descSizeTablet,
-            btnSizeUnit,
-            btnSizeMobile,
-            btnSizeTablet,
-            badgeTextUnit,
-            badgeTextSizeMobile,
-            badgeTextSizeTablet,
-            priceOpacity,
-            tableOpacity,
-            hideDesktop,
-            hideTablet,
-            hideMobile
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -300,11 +172,97 @@ class PremiumPricingTable extends Component {
                 label: __("Left")
             }
         ];
-        let element = document.getElementById(`premium-style-pricing-${this.props.clientId}`);
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
         const FEATURES_ALIGN = ["left", "center", "right"];
+
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+        const savePriceStyles = (value) => {
+            const newUpdate = priceStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                priceStyles: newUpdate,
+            });
+        }
+        const saveFeatureStyle = (value) => {
+            const newUpdate = featureStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                featureStyles: newUpdate,
+            });
+        }
+
+        const saveButtonStyle = (value) => {
+            const newUpdate = buttonStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                buttonStyles: newUpdate,
+            });
+        }
+        const saveBadgeStyles = (value) => {
+            const newUpdate = badgeStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                badgeStyles: newUpdate,
+            });
+        }
+        const saveTableStyles = (value) => {
+            const newUpdate = tableStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                tableStyles: newUpdate,
+            });
+        }
+        const saveDescriptionStyle = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        }
+
+        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+        const slashFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].slashSize, priceStyles[0].slashSizeTablet, priceStyles[0].slashSizeMobile);
+        const currFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].currSize, priceStyles[0].currSizeTablet, priceStyles[0].currSizeMobile);
+        const valFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].valSize, priceStyles[0].valSizeTablet, priceStyles[0].valSizeMobile);
+        const divFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].divSize, priceStyles[0].divSizeTablet, priceStyles[0].divSizeMobile);
+        const cFontSize = this.getPreviewSize(this.props.deviceType, priceStyles[0].durSize, priceStyles[0].durSizeTablet, priceStyles[0].durSizeMobile);
+        const listFontSize = this.getPreviewSize(this.props.deviceType, featureStyles[0].listSize, featureStyles[0].listSizeTablet, featureStyles[0].listSizeMobile);
+        const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+        const btnFontSize = this.getPreviewSize(this.props.deviceType, buttonStyles[0].btnSize, buttonStyles[0].btnSizeTablet, buttonStyles[0].btnSizeMobile);
+
 
         const mainClasses = classnames(className, "premium-pricing-table");
 
@@ -365,8 +323,8 @@ class PremiumPricingTable extends Component {
                             <Toolbar
                                 controls={"123456".split("").map(tag => ({
                                     icon: "heading",
-                                    isActive: "H" + tag === titleTag,
-                                    onClick: () => setAttributes({ titleTag: "H" + tag }),
+                                    isActive: "H" + tag === titleStyles[0].titleTag,
+                                    onClick: () => saveTitleStyles({ titleTag: "H" + tag }),
                                     subscript: tag
                                 }))}
                             />
@@ -379,39 +337,39 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line",
                                 ]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveTitleStyles}
                                 fontSizeType={{
-                                    value: titleSizeUnit,
+                                    value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: titleSize,
+                                    value: titleStyles[0].titleSize,
                                     label: __("titleSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: titleSizeMobile,
+                                    value: titleStyles[0].titleSizeMobile,
                                     label: __("titleSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: titleSizeTablet,
+                                    value: titleStyles[0].titleSizeTablet,
                                     label: __("titleSizeTablet"),
                                 }}
-                                weight={titleWeight}
-                                style={titleStyle}
-                                spacing={titleLetter}
-                                line={titleLine}
-                                upper={titleUpper}
+                                weight={titleStyles[0].titleWeight}
+                                style={titleStyles[0].titleStyle}
+                                spacing={titleStyles[0].titleLetter}
+                                line={titleStyles[0].titleLine}
+                                upper={titleStyles[0].titleUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight })
+                                    saveTitleStyles({ titleWeight: newWeight })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
+                                    saveTitleStyles({ titleStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ titleLetter: newValue })
+                                    saveTitleStyles({ titleLetter: newValue })
                                 }
-                                onChangeLine={newValue => setAttributes({ titleLine: newValue })}
-                                onChangeUpper={check => setAttributes({ titleUpper: check })}
+                                onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                                onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
                             <PanelColorSettings
                                 title={__("Colors")}
@@ -419,33 +377,33 @@ class PremiumPricingTable extends Component {
                                 initialOpen={false}
                                 colorSettings={[
                                     {
-                                        value: titleColor,
-                                        onChange: newColor => setAttributes({ titleColor: newColor }),
+                                        value: titleStyles[0].titleColor,
+                                        onChange: newColor => saveTitleStyles({ titleColor: newColor }),
                                         label: __("Text Color")
                                     },
                                     {
-                                        value: titleBack,
-                                        onChange: newColor => setAttributes({ titleBack: newColor }),
+                                        value: titleStyles[0].titleBack,
+                                        onChange: newColor => saveTitleStyles({ titleBack: newColor }),
                                         label: __("Background Color")
                                     }
                                 ]}
                             />
                             <PremiumTextShadow
-                                color={titleShadowColor}
-                                blur={titleShadowBlur}
-                                horizontal={titleShadowHorizontal}
-                                vertical={titleShadowVertical}
+                                color={titleStyles[0].titleShadowColor}
+                                blur={titleStyles[0].titleShadowBlur}
+                                horizontal={titleStyles[0].titleShadowHorizontal}
+                                vertical={titleStyles[0].titleShadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({ titleShadowColor: newColor.hex })
+                                    saveTitleStyles({ titleShadowColor: newColor.hex })
                                 }
                                 onChangeBlur={newBlur =>
-                                    setAttributes({ titleShadowBlur: newBlur })
+                                    saveTitleStyles({ titleShadowBlur: newBlur })
                                 }
                                 onChangehHorizontal={newValue =>
-                                    setAttributes({ titleShadowHorizontal: newValue })
+                                    saveTitleStyles({ titleShadowHorizontal: newValue })
                                 }
                                 onChangeVertical={newValue =>
-                                    setAttributes({ titleShadowVertical: newValue })
+                                    saveTitleStyles({ titleShadowVertical: newValue })
                                 }
                             />
                             <div className="premium-control-toggle">
@@ -463,29 +421,29 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <RangeControl
                                                 label={__("Margin Top (PX)")}
-                                                value={titleMarginT}
+                                                value={titleStyles[0].titleMarginT}
                                                 min="10"
                                                 max="80"
                                                 onChange={newSize =>
-                                                    setAttributes({ titleMarginT: newSize })
+                                                    saveTitleStyles({ titleMarginT: newSize })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Margin Bottom (PX)")}
-                                                value={titleMarginB}
+                                                value={titleStyles[0].titleMarginB}
                                                 min="0"
                                                 max="100"
                                                 onChange={newMargin =>
-                                                    setAttributes({ titleMarginB: newMargin })
+                                                    saveTitleStyles({ titleMarginB: newMargin })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Padding (PX)")}
-                                                value={titlePadding}
+                                                value={titleStyles[0].titlePadding}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ titlePadding: newPadding })
+                                                    saveTitleStyles({ titlePadding: newPadding })
                                                 }
                                             />
                                         </Fragment>
@@ -502,28 +460,28 @@ class PremiumPricingTable extends Component {
                         >
                             <TextControl
                                 label={__("Slashed Price")}
-                                value={slashPrice}
-                                onChange={value => setAttributes({ slashPrice: value })}
+                                value={priceStyles[0].slashPrice}
+                                onChange={value => savePriceStyles({ slashPrice: value })}
                             />
                             <TextControl
                                 label={__("Currency")}
-                                value={currPrice}
-                                onChange={value => setAttributes({ currPrice: value })}
+                                value={priceStyles[0].currPrice}
+                                onChange={value => savePriceStyles({ currPrice: value })}
                             />
                             <TextControl
                                 label={__("Price")}
-                                value={valPrice}
-                                onChange={value => setAttributes({ valPrice: value })}
+                                value={priceStyles[0].valPrice}
+                                onChange={value => savePriceStyles({ valPrice: value })}
                             />
                             <TextControl
                                 label={__("Divider")}
-                                value={divPrice}
-                                onChange={value => setAttributes({ divPrice: value })}
+                                value={priceStyles[0].divPrice}
+                                onChange={value => savePriceStyles({ divPrice: value })}
                             />
                             <TextControl
                                 label={__("Duration")}
-                                value={durPrice}
-                                onChange={value => setAttributes({ durPrice: value })}
+                                value={priceStyles[0].durPrice}
+                                onChange={value => savePriceStyles({ durPrice: value })}
                             />
                             <PanelBody
                                 title={__("Element to Style")}
@@ -533,47 +491,47 @@ class PremiumPricingTable extends Component {
                                 <SelectControl
                                     label={__("Element")}
                                     options={PRICE}
-                                    value={selectedStyle}
-                                    onChange={newElem => setAttributes({ selectedStyle: newElem })}
+                                    value={priceStyles[0].selectedStyle}
+                                    onChange={newElem => savePriceStyles({ selectedStyle: newElem })}
                                 />
-                                {"slash" === selectedStyle && (
+                                {"slash" === priceStyles[0].selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
                                             components={["responsiveSize", "weight"]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={savePriceStyles}
                                             fontSizeType={{
-                                                value: slashSizeUnit,
+                                                value: priceStyles[0].slashSizeUnit,
                                                 label: __("slashSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: slashSize,
+                                                value: priceStyles[0].slashSize,
                                                 label: __("slashSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: slashSizeMobile,
+                                                value: priceStyles[0].slashSizeMobile,
                                                 label: __("slashSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: slashSizeTablet,
+                                                value: priceStyles[0].slashSizeTablet,
                                                 label: __("slashSizeTablet"),
                                             }}
-                                            weight={slashWeight}
+                                            weight={priceStyles[0].slashWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ slashWeight: newWeight })
+                                                savePriceStyles({ slashWeight: newWeight })
                                             }
                                         />
                                         <SelectControl
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
-                                            value={slashV}
-                                            onChange={newValue => setAttributes({ slashV: newValue })}
+                                            value={priceStyles[0].slashV}
+                                            onChange={newValue => savePriceStyles({ slashV: newValue })}
                                         />
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={slashColor}
+                                                value={priceStyles[0].slashColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePriceStyles({
                                                         slashColor:
                                                             newValue === undefined ? "transparent" : newValue
                                                     })
@@ -583,30 +541,30 @@ class PremiumPricingTable extends Component {
                                         </Fragment>
                                     </Fragment>
                                 )}
-                                {"curr" === selectedStyle && (
+                                {"curr" === priceStyles[0].selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
                                             components={["responsiveSize", "weight"]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={savePriceStyles}
                                             fontSizeType={{
-                                                value: currSizeUnit,
+                                                value: priceStyles[0].currSizeUnit,
                                                 label: __("currSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: currSize,
+                                                value: priceStyles[0].currSize,
                                                 label: __("currSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: currSizeMobile,
+                                                value: priceStyles[0].currSizeMobile,
                                                 label: __("currSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: currSizeTablet,
+                                                value: priceStyles[0].currSizeTablet,
                                                 label: __("currSizeTablet"),
                                             }}
-                                            weight={currWeight}
+                                            weight={priceStyles[0].currWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({
+                                                savePriceStyles({
                                                     currWeight: newWeight,
                                                 })
                                             }
@@ -614,9 +572,9 @@ class PremiumPricingTable extends Component {
                                         <SelectControl
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
-                                            value={currV}
+                                            value={priceStyles[0].currV}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                savePriceStyles({
                                                     currV: newValue,
                                                 })
                                             }
@@ -624,9 +582,9 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={currColor}
+                                                value={priceStyles[0].currColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePriceStyles({
                                                         currColor:
                                                             newValue ===
                                                                 undefined
@@ -639,45 +597,45 @@ class PremiumPricingTable extends Component {
                                         </Fragment>
                                     </Fragment>
                                 )}
-                                {"price" === selectedStyle && (
+                                {"price" === priceStyles[0].selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
                                             components={["responsiveSize", "weight"]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={savePriceStyles}
                                             fontSizeType={{
-                                                value: valSizeUnit,
+                                                value: priceStyles[0].valSizeUnit,
                                                 label: __("valSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: valSize,
+                                                value: priceStyles[0].valSize,
                                                 label: __("valSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: valSizeMobile,
+                                                value: priceStyles[0].valSizeMobile,
                                                 label: __("valSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: valSizeTablet,
+                                                value: priceStyles[0].valSizeTablet,
                                                 label: __("valSizeTablet"),
                                             }}
-                                            size={valSize}
-                                            weight={valWeight}
+                                            size={priceStyles[0].valSize}
+                                            weight={priceStyles[0].valWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ valWeight: newWeight })
+                                                savePriceStyles({ valWeight: newWeight })
                                             }
                                         />
                                         <SelectControl
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
-                                            value={valV}
-                                            onChange={newValue => setAttributes({ valV: newValue })}
+                                            value={priceStyles[0].valV}
+                                            onChange={newValue => savePriceStyles({ valV: newValue })}
                                         />
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={valColor}
+                                                value={priceStyles[0].valColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePriceStyles({
                                                         valColor:
                                                             newValue === undefined ? "transparent" : newValue
                                                     })
@@ -687,44 +645,44 @@ class PremiumPricingTable extends Component {
                                         </Fragment>
                                     </Fragment>
                                 )}
-                                {"divider" === selectedStyle && (
+                                {"divider" === priceStyles[0].selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
                                             components={["responsiveSize", "weight"]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={savePriceStyles}
                                             fontSizeType={{
-                                                value: divSizeUnit,
+                                                value: priceStyles[0].divSizeUnit,
                                                 label: __("divSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: divSize,
+                                                value: priceStyles[0].divSize,
                                                 label: __("divSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: divSizeMobile,
+                                                value: priceStyles[0].divSizeMobile,
                                                 label: __("divSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: divSizeTablet,
+                                                value: priceStyles[0].divSizeTablet,
                                                 label: __("divSizeTablet"),
                                             }}
-                                            weight={divWeight}
+                                            weight={priceStyles[0].divWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ divWeight: newWeight })
+                                                savePriceStyles({ divWeight: newWeight })
                                             }
                                         />
                                         <SelectControl
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
-                                            value={divV}
-                                            onChange={newValue => setAttributes({ divV: newValue })}
+                                            value={priceStyles[0].divV}
+                                            onChange={newValue => savePriceStyles({ divV: newValue })}
                                         />
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={divColor}
+                                                value={priceStyles[0].divColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePriceStyles({
                                                         divColor:
                                                             newValue === undefined ? "transparent" : newValue
                                                     })
@@ -734,44 +692,44 @@ class PremiumPricingTable extends Component {
                                         </Fragment>
                                     </Fragment>
                                 )}
-                                {"duration" === selectedStyle && (
+                                {"duration" === priceStyles[0].selectedStyle && (
                                     <Fragment>
                                         <PremiumTypo
                                             components={["responsiveSize", "weight"]}
-                                            setAttributes={setAttributes}
+                                            setAttributes={savePriceStyles}
                                             fontSizeType={{
-                                                value: durSizeUnit,
+                                                value: priceStyles[0].durSizeUnit,
                                                 label: __("durSizeUnit"),
                                             }}
                                             fontSize={{
-                                                value: durSize,
+                                                value: priceStyles[0].durSize,
                                                 label: __("durSize"),
                                             }}
                                             fontSizeMobile={{
-                                                value: durSizeMobile,
+                                                value: priceStyles[0].durSizeMobile,
                                                 label: __("durSizeMobile"),
                                             }}
                                             fontSizeTablet={{
-                                                value: durSizeTablet,
+                                                value: priceStyles[0].durSizeTablet,
                                                 label: __("durSizeTablet"),
                                             }}
-                                            weight={durWeight}
+                                            weight={priceStyles[0].durWeight}
                                             onChangeWeight={newWeight =>
-                                                setAttributes({ durWeight: newWeight })
+                                                savePriceStyles({ durWeight: newWeight })
                                             }
                                         />
                                         <SelectControl
                                             label={__("Vertical Align")}
                                             options={ALIGNS}
-                                            value={durV}
-                                            onChange={newValue => setAttributes({ durV: newValue })}
+                                            value={priceStyles[0].durV}
+                                            onChange={newValue => savePriceStyles({ durV: newValue })}
                                         />
                                         <Fragment>
                                             <p>{__("Text Color")}</p>
                                             <ColorPalette
-                                                value={durColor}
+                                                value={priceStyles[0].durColor}
                                                 onChange={newValue =>
-                                                    setAttributes({
+                                                    savePriceStyles({
                                                         durColor:
                                                             newValue === undefined ? "transparent" : newValue
                                                     })
@@ -797,29 +755,29 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <RangeControl
                                                 label={__("Container Margin Top (PX)")}
-                                                value={priceMarginT}
+                                                value={priceStyles[0].priceMarginT}
                                                 min="0"
                                                 max="100"
                                                 onChange={newMargin =>
-                                                    setAttributes({ priceMarginT: newMargin })
+                                                    savePriceStyles({ priceMarginT: newMargin })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Container Margin Bottom (PX)")}
-                                                value={priceMarginB}
+                                                value={priceStyles[0].priceMarginB}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ priceMarginB: newPadding })
+                                                    savePriceStyles({ priceMarginB: newPadding })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Container Padding (PX)")}
-                                                value={pricePadding}
+                                                value={priceStyles[0].pricePadding}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ pricePadding: newPadding })
+                                                    savePriceStyles({ pricePadding: newPadding })
                                                 }
                                             />
                                         </Fragment>
@@ -830,15 +788,15 @@ class PremiumPricingTable extends Component {
                                 <p>{__("Container Background Color")}</p>
                                 <PremiumBackground
                                     type="color"
-                                    colorValue={priceBack}
+                                    colorValue={priceStyles[0].priceBack}
                                     onChangeColor={(newvalue) =>
-                                        setAttributes({
+                                        savePriceStyles({
                                             priceBack: newvalue,
                                         })
                                     }
-                                    opacityValue={priceOpacity}
+                                    opacityValue={priceStyles[0].priceOpacity}
                                     onChangeOpacity={(value) =>
-                                        setAttributes({ priceOpacity: value })
+                                        savePriceStyles({ priceOpacity: value })
                                     }
                                 />
                             </Fragment>
@@ -854,15 +812,15 @@ class PremiumPricingTable extends Component {
                             <Toolbar
                                 controls={FEATURES_ALIGN.map(contentAlign => ({
                                     icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === featsAlign,
-                                    onClick: () => setAttributes({ featsAlign: contentAlign })
+                                    isActive: contentAlign === featureStyles[0].featsAlign,
+                                    onClick: () => saveFeatureStyle({ featsAlign: contentAlign })
                                 }))}
                             />
                             <SelectControl
                                 label={__("List Style")}
                                 options={TYPE}
-                                value={listStyle}
-                                onChange={newType => setAttributes({ listStyle: newType })}
+                                value={featureStyles[0].listStyle}
+                                onChange={newType => saveFeatureStyle({ listStyle: newType })}
                             />
                             <PremiumTypo
                                 components={[
@@ -873,39 +831,39 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line",
                                 ]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveFeatureStyle}
                                 fontSizeType={{
-                                    value: listSizeUnit,
+                                    value: featureStyles[0].listSizeUnit,
                                     label: __("listSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: listSize,
+                                    value: featureStyles[0].listSize,
                                     label: __("listSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: listSizeMobile,
+                                    value: featureStyles[0].listSizeMobile,
                                     label: __("listSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: listSizeTablet,
+                                    value: featureStyles[0].listSizeTablet,
                                     label: __("listSizeTablet"),
                                 }}
-                                weight={listWeight}
-                                style={listItemsStyle}
-                                spacing={listLetter}
-                                line={listLine}
-                                upper={listUpper}
+                                weight={featureStyles[0].listWeight}
+                                style={featureStyles[0].listItemsStyle}
+                                spacing={featureStyles[0].listLetter}
+                                line={featureStyles[0].listLine}
+                                upper={featureStyles[0].listUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ listWeight: newWeight })
+                                    saveFeatureStyle({ listWeight: newWeight })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ listItemsStyle: newStyle })
+                                    saveFeatureStyle({ listItemsStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ listLetter: newValue })
+                                    saveFeatureStyle({ listLetter: newValue })
                                 }
-                                onChangeLine={newValue => setAttributes({ listLine: newValue })}
-                                onChangeUpper={check => setAttributes({ listUpper: check })}
+                                onChangeLine={newValue => saveFeatureStyle({ listLine: newValue })}
+                                onChangeUpper={check => saveFeatureStyle({ listUpper: check })}
                             />
                             <PanelColorSettings
                                 title={__("Colors")}
@@ -913,13 +871,13 @@ class PremiumPricingTable extends Component {
                                 initialOpen={false}
                                 colorSettings={[
                                     {
-                                        value: listColor,
-                                        onChange: newColor => setAttributes({ listColor: newColor }),
+                                        value: featureStyles[0].listColor,
+                                        onChange: newColor => saveFeatureStyle({ listColor: newColor }),
                                         label: __("List Items Color")
                                     },
                                     {
-                                        value: listBack,
-                                        onChange: newColor => setAttributes({ listBack: newColor }),
+                                        value: featureStyles[0].listBack,
+                                        onChange: newColor => saveFeatureStyle({ listBack: newColor }),
                                         label: __("Background Color")
                                     }
                                 ]}
@@ -939,23 +897,23 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <RangeControl
                                                 label={__("Margin Top (PX)")}
-                                                value={listMarginT}
+                                                value={featureStyles[0].listMarginT}
                                                 onChange={newSize =>
-                                                    setAttributes({ listMarginT: newSize })
+                                                    saveFeatureStyle({ listMarginT: newSize })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Margin Bottom (PX)")}
-                                                value={listMarginB}
+                                                value={featureStyles[0].listMarginB}
                                                 onChange={newSize =>
-                                                    setAttributes({ listMarginB: newSize })
+                                                    saveFeatureStyle({ listMarginB: newSize })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Padding (PX)")}
-                                                value={listPadding}
+                                                value={featureStyles[0].listPadding}
                                                 onChange={newSize =>
-                                                    setAttributes({ listPadding: newSize })
+                                                    saveFeatureStyle({ listPadding: newSize })
                                                 }
                                             />
                                         </Fragment>
@@ -972,36 +930,36 @@ class PremiumPricingTable extends Component {
                         >
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "style", "spacing", "line"]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
-                                    value: descSizeUnit,
+                                    value: descStyles[0].descSizeUnit,
                                     label: __("descSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: descSize,
+                                    value: descStyles[0].descSize,
                                     label: __("descSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: descSizeMobile,
+                                    value: descStyles[0].descSizeMobile,
                                     label: __("descSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: descSizeTablet,
+                                    value: descStyles[0].descSizeTablet,
                                     label: __("descSizeTablet"),
                                 }}
-                                size={descSize}
-                                weight={descWeight}
-                                style={descStyle}
-                                spacing={descLetter}
-                                line={descLine}
+                                size={descStyles[0].descSize}
+                                weight={descStyles[0].descWeight}
+                                style={descStyles[0].descStyle}
+                                spacing={descStyles[0].descLetter}
+                                line={descStyles[0].descLine}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ descWeight: newWeight })
+                                    saveDescriptionStyle({ descWeight: newWeight })
                                 }
-                                onChangeStyle={newStyle => setAttributes({ descStyle: newStyle })}
+                                onChangeStyle={newStyle => saveDescriptionStyle({ descStyle: newStyle })}
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ descLetter: newValue })
+                                    saveDescriptionStyle({ descLetter: newValue })
                                 }
-                                onChangeLine={newValue => setAttributes({ descLine: newValue })}
+                                onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
                             />
                             <PanelColorSettings
                                 title={__("Colors")}
@@ -1009,13 +967,13 @@ class PremiumPricingTable extends Component {
                                 initialOpen={false}
                                 colorSettings={[
                                     {
-                                        value: descColor,
-                                        onChange: newColor => setAttributes({ descColor: newColor }),
+                                        value: descStyles[0].descColor,
+                                        onChange: newColor => saveDescriptionStyle({ descColor: newColor }),
                                         label: __("Text Color")
                                     },
                                     {
-                                        value: descBack,
-                                        onChange: newColor => setAttributes({ descBack: newColor }),
+                                        value: descStyles[0].descBack,
+                                        onChange: newColor => saveDescriptionStyle({ descBack: newColor }),
                                         label: __("Background Color")
                                     }
                                 ]}
@@ -1035,29 +993,29 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <RangeControl
                                                 label={__("Margin Top (PX)")}
-                                                value={descMarginT}
+                                                value={descStyles[0].descMarginT}
                                                 min="0"
                                                 max="100"
                                                 onChange={newMargin =>
-                                                    setAttributes({ descMarginT: newMargin })
+                                                    saveDescriptionStyle({ descMarginT: newMargin })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Margin Bottom (PX)")}
-                                                value={descMarginB}
+                                                value={descStyles[0].descMarginB}
                                                 min="0"
                                                 max="100"
                                                 onChange={newMargin =>
-                                                    setAttributes({ descMarginB: newMargin })
+                                                    saveDescriptionStyle({ descMarginB: newMargin })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Padding (PX)")}
-                                                value={descPadding}
+                                                value={descStyles[0].descPadding}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ descPadding: newPadding })
+                                                    saveDescriptionStyle({ descPadding: newPadding })
                                                 }
                                             />
                                         </Fragment>
@@ -1081,37 +1039,37 @@ class PremiumPricingTable extends Component {
                                     "spacing",
                                     "line",
                                 ]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveButtonStyle}
                                 fontSizeType={{
-                                    value: btnSizeUnit,
+                                    value: buttonStyles[0].btnSizeUnit,
                                     label: __("btnSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: btnSize,
+                                    value: buttonStyles[0].btnSize,
                                     label: __("btnSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: btnSizeMobile,
+                                    value: buttonStyles[0].btnSizeMobile,
                                     label: __("btnSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: btnSizeTablet,
+                                    value: buttonStyles[0].btnSizeTablet,
                                     label: __("btnSizeTablet"),
                                 }}
-                                weight={btnWeight}
-                                style={btnStyle}
-                                spacing={btnLetter}
-                                line={btnLine}
-                                upper={btnUpper}
+                                weight={buttonStyles[0].btnWeight}
+                                style={buttonStyles[0].btnStyle}
+                                spacing={buttonStyles[0].btnLetter}
+                                line={buttonStyles[0].btnLine}
+                                upper={buttonStyles[0].btnUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ btnWeight: newWeight })
+                                    saveButtonStyle({ btnWeight: newWeight })
                                 }
-                                onChangeStyle={newStyle => setAttributes({ btnStyle: newStyle })}
+                                onChangeStyle={newStyle => saveButtonStyle({ btnStyle: newStyle })}
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ btnLetter: newValue })
+                                    saveButtonStyle({ btnLetter: newValue })
                                 }
-                                onChangeLine={newValue => setAttributes({ btnLine: newValue })}
-                                onChangeUpper={check => setAttributes({ btnUpper: check })}
+                                onChangeLine={newValue => saveButtonStyle({ btnLine: newValue })}
+                                onChangeUpper={check => saveButtonStyle({ btnUpper: check })}
                             />
                             <PanelColorSettings
                                 title={__("Colors")}
@@ -1119,40 +1077,40 @@ class PremiumPricingTable extends Component {
                                 initialOpen={false}
                                 colorSettings={[
                                     {
-                                        value: btnColor,
-                                        onChange: newColor => setAttributes({ btnColor: newColor }),
+                                        value: buttonStyles[0].btnColor,
+                                        onChange: newColor => saveButtonStyle({ btnColor: newColor }),
                                         label: __("Text Color")
                                     },
                                     {
-                                        value: btnHoverColor,
+                                        value: buttonStyles[0].btnHoverColor,
                                         onChange: newColor =>
-                                            setAttributes({ btnHoverColor: newColor }),
+                                            saveButtonStyle({ btnHoverColor: newColor }),
                                         label: __("Text Hover Color")
                                     },
                                     {
-                                        value: btnBack,
-                                        onChange: newColor => setAttributes({ btnBack: newColor }),
+                                        value: buttonStyles[0].btnBack,
+                                        onChange: newColor => saveButtonStyle({ btnBack: newColor }),
                                         label: __("Background Color")
                                     },
                                     {
-                                        value: btnHoverBack,
+                                        value: buttonStyles[0].btnHoverBack,
                                         onChange: newColor =>
-                                            setAttributes({ btnHoverBack: newColor }),
+                                            saveButtonStyle({ btnHoverBack: newColor }),
                                         label: __("Background Hover Color")
                                     }
                                 ]}
                             />
                             <PremiumBorder
-                                borderType={btnBorderType}
-                                borderWidth={btnBorderWidth}
+                                borderType={buttonStyles[0].btnBorderType}
+                                borderWidth={buttonStyles[0].btnBorderWidth}
                                 top={btnBorderTop}
                                 right={btnBorderRight}
                                 bottom={btnBorderBottom}
                                 left={btnBorderLeft}
-                                borderColor={btnBorderColor}
-                                borderRadius={btnBorderRadius}
+                                borderColor={buttonStyles[0].btnBorderColor}
+                                borderRadius={buttonStyles[0].btnBorderRadius}
                                 onChangeType={(newType) =>
-                                    setAttributes({ btnBorderType: newType })
+                                    saveButtonStyle({ btnBorderType: newType })
                                 }
                                 onChangeWidth={({ top, right, bottom, left }) =>
                                     setAttributes({
@@ -1164,10 +1122,10 @@ class PremiumPricingTable extends Component {
                                     })
                                 }
                                 onChangeColor={(colorValue) =>
-                                    setAttributes({ btnBorderColor: colorValue.hex })
+                                    saveButtonStyle({ btnBorderColor: colorValue.hex })
                                 }
                                 onChangeRadius={(newrRadius) =>
-                                    setAttributes({ btnBorderRadius: newrRadius })
+                                    saveButtonStyle({ btnBorderRadius: newrRadius })
                                 }
                             />
                             <div className="premium-control-toggle">
@@ -1185,39 +1143,39 @@ class PremiumPricingTable extends Component {
                                         <Fragment>
                                             <RangeControl
                                                 label={__("Width (%)")}
-                                                value={btnWidth}
-                                                onChange={newSize => setAttributes({ btnWidth: newSize })}
+                                                value={buttonStyles[0].btnWidth}
+                                                onChange={newSize => saveButtonStyle({ btnWidth: newSize })}
                                             />
                                             <RangeControl
                                                 label={__("Margin Top (PX)")}
-                                                value={btnMarginT}
+                                                value={buttonStyles[0].btnMarginT}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ btnMarginT: newPadding })
+                                                    saveButtonStyle({ btnMarginT: newPadding })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Margin Bottom (PX)")}
-                                                value={btnMarginB}
+                                                value={buttonStyles[0].btnMarginB}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ btnMarginB: newPadding })
+                                                    saveButtonStyle({ btnMarginB: newPadding })
                                                 }
                                             />
                                             <PremiumSizeUnits
                                                 onChangeSizeUnit={newValue =>
-                                                    setAttributes({ btnPaddingU: newValue })
+                                                    saveButtonStyle({ btnPaddingU: newValue })
                                                 }
                                             />
                                             <RangeControl
                                                 label={__("Padding")}
-                                                value={btnPadding}
+                                                value={buttonStyles[0].btnPadding}
                                                 min="0"
                                                 max="100"
                                                 onChange={newPadding =>
-                                                    setAttributes({ btnPadding: newPadding })
+                                                    saveButtonStyle({ btnPadding: newPadding })
                                                 }
                                             />
                                         </Fragment>
@@ -1226,8 +1184,8 @@ class PremiumPricingTable extends Component {
                             </div>
                             <ToggleControl
                                 label={__("Open Link in a new tab")}
-                                checked={btnTarget}
-                                onChange={newValue => setAttributes({ btnTarget: newValue })}
+                                checked={buttonStyles[0].btnTarget}
+                                onChange={newValue => saveButtonStyle({ btnTarget: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -1239,48 +1197,48 @@ class PremiumPricingTable extends Component {
                         >
                             <TextControl
                                 label={__("Text")}
-                                value={badgeText}
-                                onChange={value => setAttributes({ badgeText: value })}
+                                value={badgeStyles[0].badgeText}
+                                onChange={value => saveBadgeStyles({ badgeText: value })}
                             />
                             <SelectControl
                                 label={__("Position")}
                                 options={POSITION}
-                                value={badgePos}
-                                onChange={newValue => setAttributes({ badgePos: newValue })}
+                                value={badgeStyles[0].badgePos}
+                                onChange={newValue => saveBadgeStyles({ badgePos: newValue })}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveBadgeStyles}
                                 fontSizeType={{
-                                    value: badgeTextUnit,
+                                    value: badgeStyles[0].badgeTextUnit,
                                     label: __("badgeTextUnit"),
                                 }}
                                 fontSize={{
-                                    value: badgeTextSize,
+                                    value: badgeStyles[0].badgeSize,
                                     label: __("badgeText"),
                                 }}
                                 fontSizeMobile={{
-                                    value: badgeTextSizeMobile,
+                                    value: badgeStyles[0].badgeSizeMobile,
                                     label: __("badgeTextMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: badgeTextSizeTablet,
+                                    value: badgeStyles[0].badgeSizeTablet,
                                     label: __("badgeTextTablet"),
                                 }}
-                                weight={badgeWeight}
-                                style={badgeStyle}
-                                spacing={badgeLetter}
-                                upper={badgeUpper}
+                                weight={badgeStyles[0].badgeWeight}
+                                style={badgeStyles[0].badgeStyle}
+                                spacing={badgeStyles[0].badgeLetter}
+                                upper={badgeStyles[0].badgeUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ badgeWeight: newWeight })
+                                    saveBadgeStyles({ badgeWeight: newWeight })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ badgeStyle: newStyle })
+                                    saveBadgeStyles({ badgeStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ badgeLetter: newValue })
+                                    saveBadgeStyles({ badgeLetter: newValue })
                                 }
-                                onChangeUpper={check => setAttributes({ badgeUpper: check })}
+                                onChangeUpper={check => saveBadgeStyles({ badgeUpper: check })}
                             />
                             <PanelColorSettings
                                 title={__("Colors")}
@@ -1288,43 +1246,43 @@ class PremiumPricingTable extends Component {
                                 initialOpen={false}
                                 colorSettings={[
                                     {
-                                        value: badgeColor,
-                                        onChange: newColor => setAttributes({ badgeColor: newColor }),
+                                        value: badgeStyles[0].badgeColor,
+                                        onChange: newColor => saveBadgeStyles({ badgeColor: newColor }),
                                         label: __("Text Color")
                                     },
                                     {
-                                        value: badgeBack,
-                                        onChange: newColor => setAttributes({ badgeBack: newColor }),
+                                        value: badgeStyles[0].badgeBack,
+                                        onChange: newColor => saveBadgeStyles({ badgeBack: newColor }),
                                         label: __("Background Color")
                                     }
                                 ]}
                             />
                             <RangeControl
                                 label={__("Vertical Offset")}
-                                value={badgeTop}
-                                onChange={newValue => setAttributes({ badgeTop: newValue })}
+                                value={badgeStyles[0].badgeTop}
+                                onChange={newValue => saveBadgeStyles({ badgeTop: newValue })}
                             />
                             <RangeControl
                                 label={__("Horizontal Offset")}
-                                value={badgeHorizontal}
+                                value={badgeStyles[0].badgeHorizontal}
                                 min="1"
                                 max="150"
                                 onChange={newValue =>
-                                    setAttributes({ badgeHorizontal: newValue })
+                                    saveBadgeStyles({ badgeHorizontal: newValue })
                                 }
                             />
                             <RangeControl
                                 label={__("Badge Size")}
-                                value={badgeSize}
+                                value={badgeStyles[0].badgeSize}
                                 max="250"
-                                onChange={newValue => setAttributes({ badgeSize: newValue })}
+                                onChange={newValue => saveBadgeStyles({ badgeSize: newValue })}
                             />
                             <RangeControl
                                 label={__("Text Width")}
                                 min="1"
                                 max="200"
-                                value={badgeWidth}
-                                onChange={newValue => setAttributes({ badgeWidth: newValue })}
+                                value={badgeStyles[0].badgeWidth}
+                                onChange={newValue => saveBadgeStyles({ badgeWidth: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -1337,26 +1295,26 @@ class PremiumPricingTable extends Component {
                             <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
-                                colorValue={tableBack}
+                                colorValue={tableStyles[0].tableBack}
                                 onChangeColor={(newvalue) =>
-                                    setAttributes({ tableBack: newvalue })
+                                    saveTableStyles({ tableBack: newvalue })
                                 }
-                                opacityValue={tableOpacity}
+                                opacityValue={tableStyles[0].tableOpacity}
                                 onChangeOpacity={(value) =>
-                                    setAttributes({ tableOpacity: value })
+                                    saveTableStyles({ tableOpacity: value })
                                 }
                             />
                         </Fragment>
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
+                            borderType={tableStyles[0].borderType}
+                            borderWidth={tableStyles[0].borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
                             borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderRadius={tableStyles[0].borderRadius}
+                            onChangeType={(newType) => saveTableStyles({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderUpdated: true,
@@ -1367,42 +1325,42 @@ class PremiumPricingTable extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveTableStyles({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveTableStyles({ borderRadius: newrRadius })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={tableShadowColor}
-                            blur={tableShadowBlur}
-                            horizontal={tableShadowHorizontal}
-                            vertical={tableShadowVertical}
-                            position={tableShadowPosition}
+                            color={tableStyles[0].tableShadowColor}
+                            blur={tableStyles[0].tableShadowBlur}
+                            horizontal={tableStyles[0].tableShadowHorizontal}
+                            vertical={tableStyles[0].tableShadowVertical}
+                            position={tableStyles[0].tableShadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveTableStyles({
                                     tableShadowColor:
                                         newColor === undefined ? "transparent" : newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveTableStyles({
                                     tableShadowBlur: newBlur === undefined ? 0 : newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveTableStyles({
                                     tableShadowHorizontal: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveTableStyles({
                                     tableShadowVertical: newValue === undefined ? 0 : newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveTableStyles({
                                     tableShadowPosition: newValue === undefined ? 0 : newValue
                                 })
                             }
@@ -1422,11 +1380,11 @@ class PremiumPricingTable extends Component {
                                     <Fragment>
                                         <RangeControl
                                             label={__("Padding")}
-                                            value={tablePadding}
+                                            value={tableStyles[0].tablePadding}
                                             min="0"
                                             max="50"
                                             onChange={newValue =>
-                                                setAttributes({ tablePadding: newValue })
+                                                saveTableStyles({ tablePadding: newValue })
                                             }
                                         />
                                     </Fragment>
@@ -1449,49 +1407,49 @@ class PremiumPricingTable extends Component {
                 className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: contentAlign,
-                    backgroundColor: tableBack
-                        ? hexToRgba(tableBack, tableOpacity)
+                    backgroundColor: tableStyles[0].tableBack
+                        ? hexToRgba(tableStyles[0].tableBack, tableStyles[0].tableOpacity)
                         : "transparent",
-                    borderStyle: borderType,
+                    borderStyle: tableStyles[0].borderType,
                     borderWidth: borderUpdated
                         ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
+                        : tableStyles[0].borderWidth + "px",
+                    borderRadius: tableStyles[0].borderRadius + "px",
                     borderColor: borderColor,
-                    padding: tablePadding + "px",
-                    boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
+                    padding: tableStyles[0].tablePadding + "px",
+                    boxShadow: `${tableStyles[0].tableShadowHorizontal}px ${tableStyles[0].tableShadowVertical}px ${tableStyles[0].tableShadowBlur}px ${tableStyles[0].tableShadowColor} ${tableStyles[0].tableShadowPosition}`
                 }}
             >
                 {badgeChecked && (
                     <div
-                        className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
+                        className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`}
                     >
                         <div
                             className={`premium-pricing-table__badge`}
                             style={{
                                 borderRightColor:
-                                    "right" === badgePos ? badgeBack : "transparent",
-                                borderTopColor: "left" === badgePos ? badgeBack : "transparent",
-                                borderBottomWidth: badgeSize + "px",
-                                borderRightWidth: badgeSize + "px",
-                                borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
-                                borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                                    "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                borderBottomWidth: badgeStyles[0].badgeSize + "px",
+                                borderRightWidth: badgeStyles[0].badgeSize + "px",
+                                borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+                                borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
                             }}
                         >
                             <span
                                 style={{
-                                    color: badgeColor,
-                                    fontWeight: badgeWeight,
-                                    textTransform: badgeUpper ? "uppercase" : "none",
-                                    letterSpacing: badgeLetter + "px",
-                                    fontStyle: badgeStyle,
-                                    width: badgeWidth + "px",
-                                    top: badgeTop + "px",
-                                    left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
-                                    right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                                    color: badgeStyles[0].badgeColor,
+                                    fontWeight: badgeStyles[0].badgeWeight,
+                                    textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
+                                    letterSpacing: badgeStyles[0].badgeLetter + "px",
+                                    fontStyle: badgeStyles[0].badgeStyle,
+                                    width: badgeStyles[0].badgeWidth + "px",
+                                    top: badgeStyles[0].badgeTop + "px",
+                                    left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+                                    right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
                                 }}
                             >
-                                {badgeText}
+                                {badgeStyles[0].badgeText}
                             </span>
                         </div>
                     </div>
@@ -1500,26 +1458,27 @@ class PremiumPricingTable extends Component {
                     <div
                         className={`premium-pricing-table__title_wrap`}
                         style={{
-                            paddingTop: titleMarginT + "px",
-                            paddingBottom: titleMarginB + "px"
+                            paddingTop: titleStyles[0].titleMarginT + "px",
+                            paddingBottom: titleStyles[0].titleMarginB + "px"
                         }}
                     >
                         <RichText
-                            tagName={titleTag.toLowerCase()}
+                            tagName={titleStyles[0].titleTag.toLowerCase()}
                             className={`premium-pricing-table__title`}
                             onChange={newText => setAttributes({ title: newText })}
                             placeholder={__("Awesome Title")}
                             value={title}
                             style={{
-                                color: titleColor,
-                                background: titleBack,
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                lineHeight: titleLine + "px",
-                                padding: titlePadding + "px",
-                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                                fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
+                                color: titleStyles[0].titleColor,
+                                background: titleStyles[0].titleBack,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                lineHeight: titleStyles[0].titleLine + "px",
+                                padding: titleStyles[0].titlePadding + "px",
+                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`
                             }}
                         />
                     </div>
@@ -1528,73 +1487,78 @@ class PremiumPricingTable extends Component {
                     <div
                         className={`premium-pricing-table__price_wrap`}
                         style={{
-                            backgroundColor: priceBack
-                                ? hexToRgba(priceBack, priceOpacity)
+                            backgroundColor: priceStyles[0].priceBack
+                                ? hexToRgba(priceStyles[0].priceBack, priceStyles[0].priceOpacity)
                                 : "transparent",
-                            marginTop: priceMarginT + "px",
-                            marginBottom: priceMarginB + "px",
-                            padding: pricePadding + "px",
+                            marginTop: priceStyles[0].priceMarginT + "px",
+                            marginBottom: priceStyles[0].priceMarginB + "px",
+                            padding: priceStyles[0].pricePadding + "px",
                             justifyContent: contentAlign
                         }}
                     >
-                        {slashPrice && (
+                        {priceStyles[0].slashPrice && (
                             <strike
                                 className={`premium-pricing-table__slash`}
                                 style={{
-                                    color: slashColor,
-                                    fontWeight: slashWeight,
-                                    alignSelf: slashV
+                                    fontSize: `${slashFontSize}${priceStyles[0].slashSizeUnit}`,
+                                    color: priceStyles[0].slashColor,
+                                    fontWeight: priceStyles[0].slashWeight,
+                                    alignSelf: priceStyles[0].slashV
                                 }}
                             >
-                                {slashPrice}
+                                { priceStyles[0].slashPrice}
                             </strike>
                         )}
-                        {currPrice && (
+                        {priceStyles[0].currPrice && (
                             <span
                                 className={`premium-pricing-table__currency`}
                                 style={{
-                                    color: currColor,
-                                    fontWeight: currWeight,
-                                    alignSelf: currV
+                                    fontSize: `${currFontSize}${priceStyles[0].currSizeUnit}`,
+                                    color: priceStyles[0].currColor,
+                                    fontWeight: priceStyles[0].currWeight,
+                                    alignSelf: priceStyles[0].currV
                                 }}
                             >
-                                {currPrice}
+                                { priceStyles[0].currPrice}
                             </span>
                         )}
-                        {valPrice && (
+                        {priceStyles[0].valPrice && (
                             <span
                                 className={`premium-pricing-table__val`}
                                 style={{
-                                    color: valColor,
-                                    fontWeight: valWeight,
-                                    alignSelf: valV
+                                    fontSize: `${valFontSize}${priceStyles[0].valSizeUnit}`,
+                                    color: priceStyles[0].valColor,
+                                    fontWeight: priceStyles[0].valWeight,
+                                    alignSelf: priceStyles[0].valV
                                 }}
                             >
-                                {valPrice}
+                                { priceStyles[0].valPrice}
                             </span>
                         )}
-                        {divPrice && (
+                        {priceStyles[0].divPrice && (
                             <span
                                 className={`premium-pricing-table__divider`}
                                 style={{
-                                    color: divColor,
-                                    fontWeight: divWeight,
-                                    alignSelf: divV
+                                    fontSize: `${divFontSize}${priceStyles[0].divSizeUnit}`,
+                                    color: priceStyles[0].divColor,
+                                    fontWeight: priceStyles[0].divWeight,
+                                    alignSelf: priceStyles[0].divV
                                 }}
                             >
-                                {divPrice}
+                                { priceStyles[0].divPrice}
                             </span>
                         )}
-                        {durPrice && (
+                        {priceStyles[0].durPrice && (
                             <span
                                 className={`premium-pricing-table__dur`}
                                 style={{
-                                    color: durColor,
-                                    fontWeight: durWeight,
-                                    alignSelf: durV
+                                    fontSize: `${cFontSize}${priceStyles[0].durSizeUnit}`,
+                                    color: priceStyles[0].durColor,
+                                    fontWeight: priceStyles[0].durWeight,
+                                    alignSelf: priceStyles[0].durV
                                 }}
                             >
-                                {durPrice}
+                                { priceStyles[0].durPrice}
                             </span>
                         )}
                     </div>
@@ -1603,29 +1567,30 @@ class PremiumPricingTable extends Component {
                     <div
                         className={`premium-pricing-table__list_wrap`}
                         style={{
-                            marginTop: listMarginT + "px",
-                            marginBottom: listMarginB + "px"
+                            marginTop: featureStyles[0].listMarginT + "px",
+                            marginBottom: featureStyles[0].listMarginB + "px"
                         }}
                     >
                         <RichText
                             tagName="ul"
-                            className={`premium-pricing-table__list list-${listStyle}`}
+                            className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
                             multiline="li"
                             placeholder={__("List Item #1")}
                             value={listItems}
                             onChange={newText => setAttributes({ listItems: newText })}
                             style={{
-                                color: listColor,
-                                background: listBack,
-                                padding: listPadding + "px",
-                                listStyle: "check" !== listStyle ? listStyle : "none",
+                                fontSize: `${listFontSize}${featureStyles[0].listSizeUnit}`,
+                                color: featureStyles[0].listColor,
+                                background: featureStyles[0].listBack,
+                                padding: featureStyles[0].listPadding + "px",
+                                listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                                 listStylePosition: "inside",
-                                fontWeight: listWeight,
-                                textTransform: listUpper ? "uppercase" : "none",
-                                letterSpacing: listLetter + "px",
-                                fontStyle: listItemsStyle,
-                                lineHeight: listLine + "px",
-                                textAlign: featsAlign ? featsAlign : contentAlign
+                                fontWeight: featureStyles[0].listWeight,
+                                textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
+                                letterSpacing: featureStyles[0].listLetter + "px",
+                                fontStyle: featureStyles[0].listItemsStyle,
+                                lineHeight: featureStyles[0].listLine + "px",
+                                textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
                             }}
                         />
                     </div>
@@ -1639,15 +1604,16 @@ class PremiumPricingTable extends Component {
                             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
                             value={desc}
                             style={{
-                                color: descColor,
-                                background: descBack,
-                                fontWeight: descWeight,
-                                letterSpacing: descLetter + "px",
-                                fontStyle: descStyle,
-                                lineHeight: descLine + "px",
-                                marginTop: descMarginT + "px",
-                                marginBottom: descMarginB + "px",
-                                padding: descPadding + "px"
+                                fontSize: `${descFontSize}${descStyles[0].descSizeUnit}`,
+                                color: descStyles[0].descColor,
+                                background: descStyles[0].descBack,
+                                fontWeight: descStyles[0].descWeight,
+                                letterSpacing: descStyles[0].descLetter + "px",
+                                fontStyle: descStyles[0].descStyle,
+                                lineHeight: descStyles[0].descLine + "px",
+                                marginTop: descStyles[0].descMarginT + "px",
+                                marginBottom: descStyles[0].descMarginB + "px",
+                                padding: descStyles[0].descPadding + "px"
                             }}
                         />
                     </div>
@@ -1656,29 +1622,30 @@ class PremiumPricingTable extends Component {
                     <div
                         className={`premium-pricing-table__button`}
                         style={{
-                            width: btnWidth + "%"
+                            width: buttonStyles[0].btnWidth + "%"
                         }}
                     >
                         <a
                             class={`premium-pricing-table__button_link`}
                             href="{ attributes.btnUrl }"
-                            target={btnTarget ? "_blank" : "_self"}
+                            target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                             style={{
-                                color: btnColor,
-                                background: btnBack ? btnBack : "transparent",
-                                fontWeight: btnWeight,
-                                letterSpacing: btnLetter + "px",
-                                fontStyle: btnStyle,
-                                lineHeight: btnLine + "px",
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB,
-                                padding: btnPadding + btnPaddingU,
-                                borderStyle: btnBorderType,
+                                fontSize: `${btnFontSize}${buttonStyles[0].btnSizeUnit}`,
+                                color: buttonStyles[0].btnColor,
+                                background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                                fontWeight: buttonStyles[0].btnWeight,
+                                letterSpacing: buttonStyles[0].btnLetter + "px",
+                                fontStyle: buttonStyles[0].btnStyle,
+                                lineHeight: buttonStyles[0].btnLine + "px",
+                                marginTop: buttonStyles[0].btnMarginT,
+                                marginBottom: buttonStyles[0].btnMarginB,
+                                padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
+                                borderStyle: buttonStyles[0].btnBorderType,
                                 borderWidth: btnBorderUpdated
                                     ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                    : btnBorderWidth + "px",
-                                borderRadius: btnBorderRadius + "px",
-                                borderColor: btnBorderColor
+                                    : buttonStyles[0].btnBorderWidth + "px",
+                                borderRadius: buttonStyles[0].btnBorderRadius + "px",
+                                borderColor: buttonStyles[0].btnBorderColor
                             }}
                         >
                             <RichText
@@ -1686,7 +1653,7 @@ class PremiumPricingTable extends Component {
                                 onChange={newText => setAttributes({ btnText: newText })}
                                 value={btnText}
                                 style={{
-                                    textTransform: btnUpper ? "uppercase" : "none"
+                                    textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
                                 }}
                             />
                         </a>
@@ -1698,8 +1665,8 @@ class PremiumPricingTable extends Component {
                             dangerouslySetInnerHTML={{
                                 __html: [
                                     `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
-                                    `color: ${btnHoverColor} !important;`,
-                                    `background: ${btnHoverBack} !important`,
+                                    `color: ${buttonStyles[0].btnHoverColor} !important;`,
+                                    `background: ${buttonStyles[0].btnHoverBack} !important`,
                                     "}"
                                 ].join("\n")
                             }}
@@ -1712,4 +1679,11 @@ class PremiumPricingTable extends Component {
 
 }
 
-export default PremiumPricingTable;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(PremiumPricingTable)

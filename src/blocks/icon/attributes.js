@@ -139,15 +139,6 @@ const attributes = {
                 shadowBlur: '',
                 shadowHorizontal: '',
                 shadowVertical: '',
-                marginT: '',
-                marginR: '',
-                marginB: '',
-                marginL: '',
-                paddingT: '',
-                paddingR: '',
-                paddingB: '',
-                paddingL: "",
-                paddingU: '',
             }
         ]
     },
@@ -176,14 +167,6 @@ const attributes = {
                 wrapShadowHorizontal: '0',
                 wrapShadowVertical: '0',
                 wrapShadowPosition: '',
-                wrapMarginT: '',
-                wrapMarginR: '',
-                wrapMarginB: '',
-                wrapMarginL: '',
-                wrapPaddingT: '',
-                wrapPaddingR: '',
-                wrapPaddingB: '',
-                wrapPaddingL: ''
             }]
     },
 

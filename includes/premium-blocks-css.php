@@ -1,11 +1,5 @@
 <?php
-/**
- * Creates minified css via PHP.
- *
- * @author  Carlos Rios - Edited by Ben Ritner for use in Kadence Blocks
- * @package  Kadence Blocks
- * @version  1.9
- */
+
 
 /**
  * Class to create a minified css output.
@@ -404,6 +398,45 @@ class Premium_Blocks_css {
 		return $this;
 	}
 
+	public function render_color( $color, $opacity = null ) {
+		if ( empty( $color ) ) {
+			return false;
+		}
+		if ( ! is_array( $color ) && strpos( $color, 'palette' ) === 0 ) {
+			switch ( $color ) {
+				case 'palette2':
+					$fallback = '#2B6CB0';
+					break;
+				case 'palette3':
+					$fallback = '#1A202C';
+					break;
+				case 'palette4':
+					$fallback = '#2D3748';
+					break;
+				case 'palette5':
+					$fallback = '#4A5568';
+					break;
+				case 'palette6':
+					$fallback = '#718096';
+					break;
+				case 'palette7':
+					$fallback = '#EDF2F7';
+					break;
+				case 'palette8':
+					$fallback = '#F7FAFC';
+					break;
+				case 'palette9':
+					$fallback = '#ffffff';
+					break;
+				default:
+					$fallback = '#3182CE';
+					break;
+			}
+			$color = 'var(--global-' . $color . ', ' . $fallback . ')';
+		}
+		return $color;
+	}
+
 	/**
 	 * Prepares the $_selector_output variable for rendering
 	 *
@@ -434,23 +467,7 @@ class Premium_Blocks_css {
 	 * @param array $font an array of font settings.
 	 * @return string
 	 */
-	public function render_font_family( $font_name, $google = false, $variant = null, $subset = null ) {
-		if ( empty( $font_name ) ) {
-			return false;
-		}
-		if ( 'inherit' === $font_name ) {
-			$font_string = 'inherit';
-		} else {
-			$font_string = $font_name;
-		}
-		if ( isset( $google ) && true === $google ) {
-			$this->maybe_add_google_font( $font_name, $variant, $subset );
-		}
-		if ( strpos( $font_string, '"' ) === false && strpos( $font_string, ',' ) === false && strpos( $font_string, ' ' ) !== false ) {
-			$font_string = "'" . $font_string . "'";
-		}
-		return apply_filters( 'kadence_blocks_font_family_string', $font_string, $font_name );
-	}
+
 
 	/**
 	 * Generates the font family output.
@@ -477,54 +494,7 @@ class Premium_Blocks_css {
 	 * @param object $css an object of css output.
 	 * @param string $inherit an string to determine if the font should inherit.
 	 * @return string
-	 */
-	public function render_font( $font, $css, $inherit = null ) {
-		if ( empty( $font ) ) {
-			return false;
-		}
-		if ( ! is_array( $font ) ) {
-			return false;
-		}
-		if ( isset( $font['style'] ) && ! empty( $font['style'] ) ) {
-			$css->add_property( 'font-style', $font['style'] );
-		}
-		if ( isset( $font['weight'] ) && ! empty( $font['weight'] ) ) {
-			$css->add_property( 'font-weight', $font['weight'] );
-		}
-		$size_type = ( isset( $font['sizeType'] ) && ! empty( $font['sizeType'] ) ? $font['sizeType'] : 'px' );
-		if ( isset( $font['size'] ) && isset( $font['size']['desktop'] ) && ! empty( $font['size']['desktop'] ) ) {
-			$css->add_property( 'font-size', $font['size']['desktop'] . $size_type );
-		}
-		$line_type = ( isset( $font['lineType'] ) && ! empty( $font['lineType'] ) ? $font['lineType'] : '' );
-		$line_type = ( '-' !== $line_type ? $line_type : '' );
-		if ( isset( $font['lineHeight'] ) && isset( $font['lineHeight']['desktop'] ) && ! empty( $font['lineHeight']['desktop'] ) ) {
-			$css->add_property( 'line-height', $font['lineHeight']['desktop'] . $line_type );
-		}
-		$letter_type = ( isset( $font['spacingType'] ) && ! empty( $font['spacingType'] ) ? $font['spacingType'] : 'em' );
-		if ( isset( $font['letterSpacing'] ) && isset( $font['letterSpacing']['desktop'] ) && ! empty( $font['letterSpacing']['desktop'] ) ) {
-			$css->add_property( 'letter-spacing', $font['letterSpacing']['desktop'] . $letter_type );
-		}
-		$family = ( isset( $font['family'] ) && ! empty( $font['family'] ) && 'inherit' !== $font['family'] ? $font['family'] : '' );
-		if ( ! empty( $family ) ) {
-			if ( strpos( $family, '"' ) === false && strpos( $family, ',' ) === false && strpos( $family, ' ' ) !== false ) {
-				$family = "'" . $family . "'";
-			}
-			$css->add_property( 'font-family', apply_filters( 'kadence_theme_font_family_string', $family ) );
-			if ( isset( $font['google'] ) && true === $font['google'] ) {
-				if ( ! empty( $inherit ) && 'body' === $inherit ) {
-					$this->maybe_add_google_font( $font, $inherit );
-				} else {
-					$this->maybe_add_google_font( $font );
-				}
-			}
-		}
-		if ( isset( $font['transform'] ) && ! empty( $font['transform'] ) ) {
-			$css->add_property( 'text-transform', $font['transform'] );
-		}
-		if ( isset( $font['color'] ) && ! empty( $font['color'] ) ) {
-			$css->add_property( 'color', $this->render_color( $font['color'] ) );
-		}
-	}
+
 	/**
 	 * Generates the font height output.
 	 *
@@ -585,52 +555,8 @@ class Premium_Blocks_css {
 
 		return $number;
 	}
-	/**
-	 * Generates the color output.
-	 *
-	 * @param string $color any color attribute.
-	 * @return string
-	 */
-	public function render_color( $color, $opacity = null ) {
-		if ( empty( $color ) ) {
-			return false;
-		}
-		if ( ! is_array( $color ) && strpos( $color, 'palette' ) === 0 ) {
-			switch ( $color ) {
-				case 'palette2':
-					$fallback = '#2B6CB0';
-					break;
-				case 'palette3':
-					$fallback = '#1A202C';
-					break;
-				case 'palette4':
-					$fallback = '#2D3748';
-					break;
-				case 'palette5':
-					$fallback = '#4A5568';
-					break;
-				case 'palette6':
-					$fallback = '#718096';
-					break;
-				case 'palette7':
-					$fallback = '#EDF2F7';
-					break;
-				case 'palette8':
-					$fallback = '#F7FAFC';
-					break;
-				case 'palette9':
-					$fallback = '#ffffff';
-					break;
-				default:
-					$fallback = '#3182CE';
-					break;
-			}
-			$color = 'var(--global-' . $color . ', ' . $fallback . ')';
-		} elseif ( isset( $opacity ) && is_numeric( $opacity ) && 1 !== (int) $opacity ) {
-			$color = kadence_blocks_hex2rgba( $color, $opacity );
-		}
-		return $color;
-	}
+
+
 	/**
 	 * Generates the size output.
 	 *

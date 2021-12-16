@@ -9,7 +9,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
@@ -337,7 +337,7 @@ const edit = props => {
                         showUnits={true}
                         selectedUnit={paddingU}
                         onChangePadSizeUnit={newvalue =>
-                            saveContainerStyle({ paddingU: newvalue })
+                            setAttributes({ paddingU: newvalue })
                         }
                     />
                 </PanelBody>
@@ -563,10 +563,10 @@ const edit = props => {
                             ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
                             : "transparent",
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        paddingTop: paddingT + iconStyles[0].paddingU,
-                        paddingRight: paddingR + iconStyles[0].paddingU,
-                        paddingBottom: paddingB + iconStyles[0].paddingU,
-                        paddingLeft: paddingL + iconStyles[0].paddingU,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,

@@ -18,6 +18,19 @@ class PBG_Blocks_Helper {
 	private static $instance = null;
 
 	/**
+	 * Google fonts to enqueue
+	 *
+	 * @var array
+	 */
+	public static $gfonts = array();
+
+	/**
+	 * Google fonts to enqueue
+	 *
+	 * @var array
+	 */
+	public static $footer_gfonts = array();
+	/**
 	 * Blocks
 	 *
 	 * @var blocks
@@ -99,11 +112,8 @@ class PBG_Blocks_Helper {
 
 		// Enqueue Generated stylesheet to WP Head.
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
 
-		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-config.php';
-
-		// Get Blocks Attributes.
-		self::$block_atts = PBG_Blocks_Config::get_block_attributes();
 	}
 
 	/**
@@ -190,29 +200,8 @@ class PBG_Blocks_Helper {
 
 		$api_key = isset( self::$config['premium-map-key'] ) ? self::$config['premium-map-key'] : '';
 
-		$is_maps_enabled = self::$blocks['maps'];
-
-		$is_counter_enabled = self::$blocks['countUp'];
-
-		$is_banner_enabled = self::$blocks['banner'];
-
-		$is_button_enabled = self::$blocks['button'];
-
-		$is_accordion_enabled = self::$blocks['accordion'];
-
+		$is_maps_enabled    = self::$blocks['maps'];
 		$is_section_enabled = self::$blocks['container'];
-
-		$is_video_enabled = self::$blocks['videoBox'];
-
-		$is_dual_enabled = self::$blocks['dualHeading'];
-
-		$is_icon_box_enabled = self::$blocks['iconBox'];
-
-		$is_fancy_text_enabled = self::$blocks['fancyText'];
-
-		$is_lottie_enabled     = self::$blocks['lottie'];
-		$is_newsletter_enabled = self::$blocks['newsletter'];
-
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -225,30 +214,6 @@ class PBG_Blocks_Helper {
 				'pbg-fontawesome',
 				'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 			);
-		}
-
-		if ( $is_button_enabled ) {
-			wp_enqueue_script(
-				'pbg-button',
-				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-
-		if ( $is_dual_enabled ) {
-			wp_enqueue_script(
-				'pbg-dual-heading',
-				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-
-		if ( $is_counter_enabled ) {
-
 		}
 
 		if ( $is_section_enabled ) {
@@ -269,88 +234,6 @@ class PBG_Blocks_Helper {
 					'isRTL' => $is_rtl,
 				)
 			);
-		}
-
-		if ( $is_video_enabled ) {
-			wp_enqueue_script(
-				'pbg-video-box',
-				PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-
-		if ( $is_icon_box_enabled ) {
-			wp_enqueue_script(
-				'pbg-sectionicon-box',
-				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-
-		if ( $is_fancy_text_enabled ) {
-
-		}
-
-		if ( $is_lottie_enabled ) {
-
-			wp_enqueue_script(
-				'pbg-lottie',
-				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-		if ( $is_newsletter_enabled ) {
-
-			wp_enqueue_script(
-				'pbg-newsletter-js',
-				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-
-			wp_enqueue_script(
-				'pbg-form-js',
-				PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-			wp_localize_script(
-				'pbg-newsletter-js',
-				'premium_blocks_form_params',
-				array(
-					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-					'required'      => __( 'is required', 'premium-blocks' ),
-					'mismatch'      => __( 'does not match', 'premium-blocks' ),
-					'validation'    => __( 'is not valid', 'premium-blocks' ),
-					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-					'item'          => __( 'Item', 'premium-blocks' ),
-				)
-			);
-				wp_localize_script(
-					'pbg-form-js',
-					'settings',
-					array(
-						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-						'required'      => __( 'is required', 'premium-blocks' ),
-						'mismatch'      => __( 'does not match', 'premium-blocks' ),
-						'validation'    => __( 'is not valid', 'premium-blocks' ),
-						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-						'item'          => __( 'Item', 'premium-blocks' ),
-					)
-				);
-
 		}
 
 		// Enqueue Google Maps API Script.
@@ -375,111 +258,93 @@ class PBG_Blocks_Helper {
 		);
 	}
 
-
-
-
-
 	public function on_init() {
-		if ( defined( 'TOOLSET_VERSION' ) ) {
-			add_filter( 'kadence_blocks_render_head_css', array( $this, 'add_toolset_depreciated_filter_compatibility' ), 10, 3 );
-		}
-		// Only load if Gutenberg is available.
+
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
 		}
 		register_block_type(
-			'premium/fancy-text',
-			array(
-				'render_callback' => array( $this, 'get_fancy_text_css' ),
-			)
-		);
-		register_block_type(
 			'premium/accordion',
 			array(
 				'render_callback' => array( $this, 'get_accordion_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 		register_block_type(
 			'premium/banner',
 			array(
 				'render_callback' => array( $this, 'get_banner_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 		register_block_type(
 			'premium/button',
 			array(
 				'render_callback' => array( $this, 'get_button_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 		register_block_type(
 			'premium/countup',
 			array(
 				'render_callback' => array( $this, 'get_countup_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 		register_block_type(
 			'premium/dheading-block',
 			array(
 				'render_callback' => array( $this, 'get_dual_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 		register_block_type(
-			'premium/icon-box',
+			'premium/fancy-text',
 			array(
-				'render_callback' => array( $this, 'get_iconbox_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
-			)
-		);
-		register_block_type(
-			'premium/testimonial',
-			array(
-				'render_callback' => array( $this, 'get_testimonial_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
-			)
-		);
-		register_block_type(
-			'premium/video-box',
-			array(
-				'render_callback' => array( $this, 'get_videobox_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+				'render_callback' => array( $this, 'get_fancy_text_css' ),
 			)
 		);
 
 		register_block_type(
-			'premium/pricing-table',
+			'premium/icon-box',
 			array(
-				'render_callback' => array( $this, 'get_pricing_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+				'render_callback' => array( $this, 'get_iconbox_css' ),
+
 			)
 		);
 		register_block_type(
 			'premium/lottie',
 			array(
 				'render_callback' => array( $this, 'get_lottie_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
+			)
+		);
+		register_block_type(
+			'premium/testimonial',
+			array(
+				'render_callback' => array( $this, 'get_testimonial_css' ),
+
+			)
+		);
+		register_block_type(
+			'premium/video-box',
+			array(
+				'render_callback' => array( $this, 'get_videobox_css' ),
+
+			)
+		);
+		register_block_type(
+			'premium/pricing-table',
+			array(
+				'render_callback' => array( $this, 'get_pricing_css' ),
+
 			)
 		);
 		register_block_type(
 			'premium/newsletter',
 			array(
 				'render_callback' => array( $this, 'get_newsLetter_css' ),
-				// 'editor_script'   => 'kadence-blocks-js',
-				// 'editor_style'    => 'kadence-blocks-editor-css',
+
 			)
 		);
 	}
@@ -640,7 +505,7 @@ class PBG_Blocks_Helper {
 
 		?>
 		<style type="text/css" media="all" id="premium-style-frontend">
-			<?php echo self::$stylesheet; ?>
+		<?php echo self::$stylesheet; ?>
 		</style>
 		<?php
 		ob_end_flush();
@@ -681,33 +546,6 @@ class PBG_Blocks_Helper {
 			self::$premium_flag = true;
 		}
 
-		switch ( $name ) {
-			case 'premium/dheading-block':
-				$css += $this->get_dual_css( $blockattr, $block_id );
-				break;
-			case 'premium/icon-box':
-				$css += $this->get_iconbox_css( $blockattr, $block_id );
-				break;
-			case 'premium/testimonial':
-				$css += $this->get_testimonial_css( $blockattr, $block_id );
-				break;
-			case 'premium/video-box':
-				$css += $this->get_videobox_css( $blockattr, $block_id );
-				break;
-			case 'premium/pricing-table':
-				$css += $this->get_pricing_css( $blockattr, $block_id );
-				break;
-			case 'premium/lottie':
-				$css += $this->get_lottie_css( $blockattr, $block_id );
-				break;
-			case 'premium/newsletter':
-				$css += $this->get_newsLetter_css( $blockattr, $block_id );
-				break;
-			default:
-				// Nothing to do here.
-				break;
-		}
-
 		if ( isset( $block['innerBlocks'] ) ) {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 				if ( 'core/block' === $inner_block['blockName'] ) {
@@ -742,6 +580,56 @@ class PBG_Blocks_Helper {
 		return $css;
 	}
 
+	public function render_inline_css( $css, $style_id, $in_content = false ) {
+
+		if ( ! is_admin() ) {
+			wp_register_style( $style_id, false );
+			wp_enqueue_style( $style_id );
+			wp_add_inline_style( $style_id, $css );
+			if ( 1 === did_action( 'wp_head' ) && $in_content ) {
+				wp_print_styles( $style_id );
+
+			}
+		}
+	}
+
+	public function should_render_inline( $name, $unique_id ) {
+		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
+			return true;
+		}
+		return false;
+	}
+
+	public function frontend_gfonts() {
+		if ( empty( self::$gfonts ) ) {
+			return;
+		}
+		$print_google_fonts = apply_filters( 'pbg_blocks_print_google_fonts', true );
+		if ( ! $print_google_fonts ) {
+			return;
+		}
+		$this->load_google_font( self::$gfonts );
+	}
+
+	/**
+	 * Print gFonts
+	 */
+	public function load_google_font( $gfonts ) {
+		$link    = '';
+		$subsets = array();
+		foreach ( $gfonts as $key => $gfont_values ) {
+			if ( ! empty( $link ) ) {
+				$link .= '%7C'; // Append a new font to the string.
+			}
+			$link .= $gfont_values['fontfamily'];
+		}
+		if ( apply_filters( 'pbg_display_swap_google_fonts', true ) ) {
+			$link .= '&amp;display=swap';
+		}
+		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+	}
+
+
 	/**
 	 * Get Fancy Text Block CSS
 	 *
@@ -759,17 +647,17 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 			$pos       = strpos( $content, 'inner-column-' );
 			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'kadence-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
 		if ( $this->it_is_not_amp() ) {
-				wp_enqueue_script(
-					'pbg-sectionfancy-text',
-					PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
-					array( 'jquery' ),
-					PREMIUM_BLOCKS_VERSION,
-					true
-				);
+			wp_enqueue_script(
+				'pbg-sectionfancy-text',
+				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
 
 			wp_enqueue_script(
 				'pbg-vticker',
@@ -788,7 +676,7 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'kadence_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_fancy_text_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -804,10 +692,11 @@ class PBG_Blocks_Helper {
 	public function get_fancy_text_css_style( $attr, $unique_id ) {
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// FancyText Style
+
 		if ( isset( $attr['fancyStyles'] ) ) {
 			if ( isset( $attr['fancyStyles'][0]['fancyTextfontSize'] ) ) {
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
@@ -847,9 +736,9 @@ class PBG_Blocks_Helper {
 			}
 			if ( isset( $attr['fancyStyles'][0]['fancyTextStyle'] ) ) {
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'background-color', $css->render_color( $attr['fancyStyles'][0]['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'] ) . ',' . $attr['fancyStyles'][0]['fancyTextBGOpacity'] . ')' : 'transparent' ) );
+				$css->add_property( 'background-color', ( $attr['fancyStyles'][0]['fancyTextBGColor'] ? self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'], $attr['fancyStyles'][0]['fancyTextBGOpacity'] ) : 'transparent' ) );
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'background-color', $css->render_color( $attr['fancyStyles'][0]['fancyTextBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'] ) . ',' . $attr['fancyStyles'][0]['fancyTextBGOpacity'] . ')' : 'transparent' ) );
+				$css->add_property( 'background-color', $css->render_color( $attr['fancyStyles'][0]['fancyTextBGColor'] ? self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'], $attr['fancyStyles'][0]['fancyTextBGOpacity'] ) : 'transparent' ) );
 			}
 			if ( isset( $attr['fancyStyles'][0]['shadowHorizontal'] ) || $attr['fancyStyles'][0]['shadowVertical'] || $attr['fancyStyles'][0]['shadowBlur'] || $attr['fancyStyles'][0]['shadowColor'] ) {
 
@@ -893,49 +782,58 @@ class PBG_Blocks_Helper {
 			}
 			if ( isset( $attr['PreStyles'][0]['textBGColor'] ) ) {
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'] ) . ',' . $attr['PreStyles'][0]['textBGOpacity'] . ')' : 'transparent' ) );
+				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'], $attr['PreStyles'][0]['textBGOpacity'] ) : 'transparent' ) );
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? 'rgba(' . self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'] ) . ',' . $attr['PreStyles'][0]['textBGOpacity'] . ')' : 'transparent' ) );
+				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'], $attr['PreStyles'][0]['textBGOpacity'] ) : 'transparent' ) );
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['PreStyles'][0]['textfontSizeTablet'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
+			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
+			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 
 		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['PreStyles'][0]['textfontSizeMobile'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
+			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
+			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
 		}
 		$css->stop_media_query();
-		if ( isset( $attr['kadenceBlockCSS'] ) && ! empty( $attr['kadenceBlockCSS'] ) ) {
-			$css->add_css_string( str_replace( 'selector', '.kadence-column' . $unique_id, $attr['kadenceBlockCSS'] ) );
-		}
+
 		return $css->css_output();
 	}
 
+
+	/**
+	 * Get Accordion Block CSS
+	 *
+	 * Return Frontend CSS for Accordion.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
 	public function get_accordion_css( $attributes, $content ) {
 
 		if ( isset( $attributes['accordionId'] ) && ! empty( $attributes['accordionId'] ) ) {
@@ -944,7 +842,7 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 			$pos       = strpos( $content, 'inner-column-' );
 			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'kadence-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
 		if ( $this->it_is_not_amp() ) {
@@ -957,9 +855,9 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'kadence_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'kadence_blocks_column_render_block_attributes', $attributes );
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_accordion_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -973,43 +871,13 @@ class PBG_Blocks_Helper {
 		return $content;
 
 	}
-
-	public function render_inline_css( $css, $style_id, $in_content = false ) {
-
-		if ( ! is_admin() ) {
-			wp_register_style( $style_id, false );
-			wp_enqueue_style( $style_id );
-			wp_add_inline_style( $style_id, $css );
-			if ( 1 === did_action( 'wp_head' ) && $in_content ) {
-				wp_print_styles( $style_id );
-
-			}
-		}
-	}
-
-	public function should_render_inline( $name, $unique_id ) {
-		if ( doing_filter( 'the_content' ) || apply_filters( 'kadence_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
-			return true;
-		}
-		return false;
-	}
-	/**
-	 * Get Accordion Block CSS
-	 *
-	 * Return Frontend CSS for Accordion.
-	 *
-	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
-	 */
 	public function get_accordion_css_style( $attr, $unique_id ) {
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Style.
 		if ( isset( $attr['titleSize'] ) || isset( $attr['titleSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
@@ -1046,8 +914,8 @@ class PBG_Blocks_Helper {
 
 		}
 		$css->stop_media_query();
-		if ( isset( $attr['kadenceBlockCSS'] ) && ! empty( $attr['kadenceBlockCSS'] ) ) {
-			$css->add_css_string( str_replace( 'selector', '.kadence-column' . $unique_id, $attr['kadenceBlockCSS'] ) );
+		if ( isset( $attr['Premium_BLocksBlockCSS'] ) && ! empty( $attr['Premium_BLocksBlockCSS'] ) ) {
+			$css->add_css_string( str_replace( 'selector', '.Premium_BLocks-column' . $unique_id, $attr['Premium_BLocksBlockCSS'] ) );
 		}
 		return $css->css_output();
 	}
@@ -1070,7 +938,7 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 			$pos       = strpos( $content, 'inner-column-' );
 			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'kadence-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
 		if ( $this->it_is_not_amp() ) {
@@ -1083,9 +951,9 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'kadence_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'kadence_blocks_column_render_block_attributes', $attributes );
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_banner_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -1102,9 +970,9 @@ class PBG_Blocks_Helper {
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Style.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
@@ -1166,22 +1034,25 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 			$pos       = strpos( $content, 'inner-column-' );
 			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'kadence-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
+		}
+		if ( isset( $attributes['textStyles'][0]['textFontFamily'] ) ) {
+			self::$gfonts = $attributes['textStyles'][0]['textFontFamily'];
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
-				'pbg-banner',
-				PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
+				'pbg-button',
+				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
 		}
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'kadence_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'kadence_blocks_column_render_block_attributes', $attributes );
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_button_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -1194,13 +1065,12 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_button_css_style( $attr, $unique_id ) {
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		// Title Style
 		if ( isset( $attr['textStyles'] ) ) {
@@ -1213,13 +1083,13 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
-				$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
-				$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
@@ -1240,23 +1110,26 @@ class PBG_Blocks_Helper {
 	 * @param string $id block ID.
 	 */
 	public function get_countup_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 			$pos       = strpos( $content, 'inner-column-' );
 			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'kadence-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
+
 		if ( $this->it_is_not_amp() ) {
-				wp_enqueue_script(
-					'pbg-waypoints',
-					PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
-					array( 'jquery' ),
-					PREMIUM_BLOCKS_VERSION,
-					true
-				);
+
+			wp_enqueue_script(
+				'pbg-waypoints',
+				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
 
 			wp_enqueue_script(
 				'pbg-counter',
@@ -1274,10 +1147,23 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
+
+		if ( isset( $attributes['titleStyles'][0]['titleFamily'] ) ) {
+			self::$gfonts = $attributes['titleStyles'][0]['titleFamily'];
+		}
+		if ( isset( $attributes['suffixStyles'][0]['suffixFamily'] ) ) {
+			self::$gfonts = $attributes['suffixStyles'][0]['suffixFamily'];
+		}
+		if ( isset( $attributes['prefixStyles'][0]['prefixFamily'] ) ) {
+			self::$gfonts = $attributes['prefixStyles'][0]['prefixFamily'];
+		}
+		if ( isset( $attributes['counterFamily'] ) ) {
+			self::$gfonts = $attributes['counterFamily'];
+		}
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'kadence_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'kadence_blocks_column_render_block_attributes', $attributes );
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_countup_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -1295,76 +1181,99 @@ class PBG_Blocks_Helper {
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'kadence_tablet_media_query', '(min-width: 1025px)' );
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Number Style
-		if ( isset( $attr['numberSize'] ) || isset( $attr['numberSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
-			$css->add_property( 'font-size', $css->render_color( $attr['numberSize'] . $attr['numberSizeUnit'] . '!important' ) );
+		if ( isset( $attr['numberStyles'] ) ) {
+			if ( isset( $attr['numberStyles'][0]['numberSize'] ) || isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSize'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
+			}
 		}
 		// Title Style
-		if ( isset( $attr['titleSize'] ) || isset( $attr['titleSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
-			$css->add_property( 'font-size', $css->render_color( $attr['titleSize'] . $attr['titleSizeUnit'] . '!important' ) );
+		if ( isset( $attr['titleStyles'] ) ) {
+
+			if ( isset( $attr['titleStyles'][0]['titleSize'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__info' . '> .premium-countup__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titleSizeUnit'] . '!important' ) );
+			}
 		}
 		// Prefix Style
-		if ( isset( $attr['prefixSize'] ) || isset( $attr['prefixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['prefixSize'] . $attr['prefixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['prefixStyles'] ) ) {
+			if ( isset( $attr['prefixStyles'][0]['prefixSize'] ) || isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSize'] . $attr['prefixStyles'][0]['prefixSizeUnit'] . '!important' ) );
+			}
 		}
 		// Suffix Style
-		if ( isset( $attr['suffixSize'] ) || isset( $attr['suffixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['suffixSize'] . $attr['suffixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['suffixStyles'] ) ) {
+			if ( isset( $attr['suffixStyles'][0]['suffixSize'] ) || isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSize'] . $attr['suffixStyles'][0]['suffixSizeUnit'] . '!important' ) );
+			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
 		// Number Style Tablet
-		if ( isset( $attr['numberSize'] ) || isset( $attr['numberSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
-			$css->add_property( 'font-size', $css->render_color( $attr['numberSizeTablet'] . $attr['numberSizeUnit'] . '!important' ) );
+		if ( isset( $attr['numberStyles'] ) ) {
+			if ( isset( $attr['numberStyles'][0]['numberSizeTablet'] ) || isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSizeTablet'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
+			}
 		}
 		// Title Style Tablet
-		if ( isset( $attr['titleSize'] ) || isset( $attr['titleSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
-			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeTablet'] . $attr['titleSizeUnit'] . '!important' ) );
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeTablet'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
 		}
 		// Prefix Style Tablet
-		if ( isset( $attr['prefixSize'] ) || isset( $attr['prefixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['prefixSizeTablet'] . $attr['prefixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['prefixStyles'] ) ) {
+			if ( isset( $attr['prefixStyles'][0]['prefixSizeTablet'] ) || isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSizeTablet'] . $attr['prefixStyles'][0]['prefixSizeUnit'] ) );
+			}
 		}
 		// Suffix Style Tablet
-		if ( isset( $attr['suffixSize'] ) || isset( $attr['suffixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['suffixSizeTablet'] . $attr['suffixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['suffixStyles'] ) ) {
+			if ( isset( $attr['suffixStyles'][0]['suffixSizeTablet'] ) || isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSizeTablet'] . $attr['suffixStyles'][0]['suffixSizeUnit'] ) );
+			}
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// Number Style Mobile
-		if ( isset( $attr['numberSize'] ) || isset( $attr['numberSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
-			$css->add_property( 'font-size', $css->render_color( $attr['numberSizeMobile'] . $attr['numberSizeUnit'] . '!important' ) );
+		if ( isset( $attr['numberStyles'] ) ) {
+			if ( isset( $attr['numberStyles'][0]['numberSizeMobile'] ) || isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSizeMobile'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
+			}
 		}
 		// Title Style Mobile
-		if ( isset( $attr['titleSize'] ) || isset( $attr['titleSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
-			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeMobile'] . $attr['titleSizeUnit'] . '!important' ) );
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeMobile'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
 		}
 		// Prefix Style Mobile
-		if ( isset( $attr['prefixSize'] ) || isset( $attr['prefixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['prefixSizeMobile'] . $attr['prefixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['prefixStyles'] ) ) {
+			if ( isset( $attr['prefixStyles'][0]['prefixSizeMobile'] ) || isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSizeMobile'] . $attr['prefixStyles'][0]['prefixSizeUnit'] ) );
+			}
 		}
 		// Suffix Style Mobile
-		if ( isset( $attr['suffixSize'] ) || isset( $attr['suffixSizeUnit'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
-			$css->add_property( 'font-size', $css->render_color( $attr['suffixSizeMobile'] . $attr['suffixSizeUnit'] . '!important' ) );
+		if ( isset( $attr['suffixStyles'] ) ) {
+			if ( isset( $attr['suffixStyles'][0]['suffixSizeMobile'] ) || isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
+				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSizeMobile'] . $attr['suffixStyles'][0]['suffixSizeUnit'] ) );
+			}
 		}
 		$css->stop_media_query();
-		if ( isset( $attr['kadenceBlockCSS'] ) && ! empty( $attr['kadenceBlockCSS'] ) ) {
-			$css->add_css_string( str_replace( 'selector', '.kadence-column' . $unique_id, $attr['kadenceBlockCSS'] ) );
-		}
+
 		return $css->css_output();
 
 	}
@@ -1379,65 +1288,106 @@ class PBG_Blocks_Helper {
 	 * @param string $attr option attribute.
 	 * @param string $id block ID.
 	 */
-	public static function get_dual_css( $attr, $id ) {
+	public function get_dual_css( $attributes, $content ) {
 
-		$defaults = self::$block_atts['premium/dheading-block']['attributes'];
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+			$pos       = strpos( $content, 'inner-column-' );
+			if ( false !== $pos ) {
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+			}
+		}
+		if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-dual-heading',
+				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+		if ( isset( $attributes['firstStyles'][0]['firstFamily'] ) ) {
+			self::$gfonts = $attributes['firstStyles'][0]['firstFamily'];
+		}
+		if ( isset( $attributes['secondStyles'][0]['secondFamily'] ) ) {
+			self::$gfonts = $attributes['secondStyles'][0]['secondFamily'];
+		}
+		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_dual_css_style( $attributes, $unique_id );
 
-		$attr = array_merge( $defaults, (array) $attr );
-
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-			' .premium-dheading-block__first'  => array(
-				'font-size' => self::get_css_value( $attr['firstSize'], $attr['firstSizeUnit'] ),
-			),
-			' .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSize'], $attr['secondSizeUnit'] ),
-			),
-		);
-		// Desktop Icon Size CSS ends.
-
-		// Tablet CSS Start.
-		$t_selectors = array(
-			' .premium-dheading-block__first'   => array(
-				'font-size' => self::get_css_value( $attr['firstSizeTablet'], $attr['firstSizeUnit'] ),
-			),
-			'  .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSizeTablet'], $attr['secondSizeUnit'] ),
-			),
-		);
-		// Tablet CSS End.
-
-		// Mobile CSS Start.
-		$m_selectors = array(
-			' .premium-dheading-block__first'   => array(
-				'font-size' => self::get_css_value( $attr['firstSizeMobile'], $attr['firstSizeUnit'] ),
-			),
-			'  .premium-dheading-block__second' => array(
-				'font-size' => self::get_css_value( $attr['secondSizeMobile'], $attr['secondSizeUnit'] ),
-			),
-
-		);
-		// Mobile CSS End.
-
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-dheading-block-' : '.premium-dheading-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
 	}
 
+	public function get_dual_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		// First Style FontSize.
+		if ( isset( $attr['firstStyles'] ) ) {
+			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
+			}
+		}
+		// Second Style FontSize.
+		if ( isset( $attr['secondStyles'] ) ) {
+			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
+			}
+		}
+
+		$css->start_media_query( $media_query['tablet'] );
+
+		// First Style FontSizeTablet.
+		if ( isset( $attr['firstStyles'] ) ) {
+			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
+			}
+		}
+		// Second Style FontSizeTablet.
+		if ( isset( $attr['secondStyles'] ) ) {
+			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		// First Style FontSizeMobile.
+		if ( isset( $attr['firstStyles'] ) ) {
+			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
+			}
+		}
+		// Second Style FontSizeMobile.
+		if ( isset( $attr['secondStyles'] ) ) {
+			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+
+		return $css->css_output();
+	}
 	/**
 	 * Get Icon Box Block CSS
 	 *
@@ -1448,72 +1398,117 @@ class PBG_Blocks_Helper {
 	 * @param string $attr option attribute.
 	 * @param string $id block ID.
 	 */
-	public static function get_iconbox_css( $attr, $id ) {
+	public function get_iconbox_css( $attributes, $content ) {
 
-		$defaults = self::$block_atts['premium/icon-box']['attributes'];
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
 
-		$attr = array_merge( $defaults, (array) $attr );
+		}
+		if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-sectionicon-box',
+				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+		if ( isset( $attributes['titleStyles'][0]['titleFont'] ) ) {
+			self::$gfonts = $attributes['titleStyles'][0]['titleFont'];
+		}
+		if ( isset( $attributes['descStyles'][0]['descFont'] ) ) {
+			self::$gfonts = $attributes['descStyles'][0]['descFont'];
+		}
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_iconbox_css_style( $attributes, $unique_id );
 
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
-			),
-		);
-		// Desktop Icon Size CSS ends.
-
-		// Tablet CSS Start.
-		$t_selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
-			),
-		);
-		// Tablet CSS End.
-
-		// Mobile CSS Start.
-		$m_selectors = array(
-			'  .premium-icon-box__title' => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-icon-box__desc'   => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
-			),
-			' .premium-icon-box__btn'    => array(
-				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
-			),
-		);
-		// Mobile CSS End.
-
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-icon-box-' : '.premium-icon-box-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
 	}
+	public function get_iconbox_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSize'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSize'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' . '> .premium-icon-box__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSize'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['btnStyles'] ) ) {
+			if ( isset( $attr['btnStyles'][0]['btnSize'] ) || isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' . '> .premium-icon-box__btn' );
+				$css->add_property( 'font-size', ( $attr['btnStyles'][0]['btnSize'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->start_media_query( $media_query['tablet'] );
+		// title Style for Tablet Device
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeTablet'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		  // description Style for Tablet Device
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' . '> .premium-icon-box__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSizeTablet'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['btnStyles'] ) ) {
+			if ( isset( $attr['btnStyles'][0]['btnSizeTablet'] ) || isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' . '> .premium-icon-box__btn' );
+				$css->add_property( 'font-size', ( $attr['btnStyles'][0]['btnSizeTablet'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		  // title Style for Mobile Device
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeMobile'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		  // description  Style for Mobile Device
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' . '> .premium-icon-box__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSizeMobile'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['btnStyles'] ) ) {
+			if ( isset( $attr['btnStyles'][0]['btnSizeMobile'] ) || isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-icon-box-' . $unique_id . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' . '> .premium-icon-box__btn' );
+				$css->add_property( 'font-size', ( $attr['btnStyles'][0]['btnSizeMobile'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+
+		return $css->css_output();
+	}
+
 
 	/**
 	 * Get Pricing Table Block CSS
@@ -1525,136 +1520,283 @@ class PBG_Blocks_Helper {
 	 * @param string $attr option attribute.
 	 * @param string $id block ID.
 	 */
-	public static function get_pricing_css( $attr, $id ) {
+	public function get_pricing_css( $attributes, $content ) {
 
-		$defaults = self::$block_atts['premium/pricing-table']['attributes'];
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
 
-		$attr = array_merge( $defaults, (array) $attr );
+		}
 
-		$m_selectors = array();
-		$t_selectors = array();
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'price', $unique_id ) ) {
 
-		$selectors = array(
-			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSize'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSize'], $attr['slashSizeUnit'] ),
-			),
-			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSize'], $attr['currSizeUnit'] ),
-			),
-			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSize'], $attr['valSizeUnit'] ),
-			),
-			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSize'], $attr['divSizeUnit'] ),
-			),
-			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSize'], $attr['durSizeUnit'] ),
-			),
-			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSize'], $attr['listSizeUnit'] ),
-			),
-			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSize'], $attr['descSizeUnit'] ),
-			),
-			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSize'], $attr['btnSizeUnit'] ),
-			),
-			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSize'], $attr['badgeTextUnit'] ),
-			),
-		);
-		// Desktop Icon Size CSS ends.
+			$css = $this->get_pricing_css_style( $attributes, $unique_id );
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'pricing', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+	}
+	public function get_pricing_css_style( $attr, $unique_id ) {
 
-		// Tablet CSS Start.
-		$t_selectors = array(
-			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSizeTablet'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSizeTablet'], $attr['slashSizeUnit'] ),
-			),
-			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSizeTablet'], $attr['currSizeUnit'] ),
-			),
-			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSizeTablet'], $attr['valSizeUnit'] ),
-			),
-			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSizeTablet'], $attr['divSizeUnit'] ),
-			),
-			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSizeTablet'], $attr['durSizeUnit'] ),
-			),
-			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSizeTablet'], $attr['listSizeUnit'] ),
-			),
-			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSizeTablet'], $attr['descSizeUnit'] ),
-			),
-			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSizeTablet'], $attr['btnSizeUnit'] ),
-			),
-			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSizeTablet'], $attr['badgeTextUnit'] ),
-			),
-		);
-		// Tablet CSS End.
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
-		// Mobile CSS Start.
-		$m_selectors = array(
-			' .premium-pricing-table__title'            => array(
-				'font-size' => self::get_css_value( $attr['titleSizeMobile'], $attr['titleSizeUnit'] ),
-			),
-			' .premium-pricing-table__slash'            => array(
-				'font-size' => self::get_css_value( $attr['slashSizeMobile'], $attr['slashSizeUnit'] ),
-			),
-			' .premium-pricing-table__currency'         => array(
-				'font-size' => self::get_css_value( $attr['currSizeMobile'], $attr['currSizeUnit'] ),
-			),
-			' .premium-pricing-table__val'              => array(
-				'font-size' => self::get_css_value( $attr['valSizeMobile'], $attr['valSizeUnit'] ),
-			),
-			' .premium-pricing-table__divider'          => array(
-				'font-size' => self::get_css_value( $attr['divSizeMobile'], $attr['divSizeUnit'] ),
-			),
-			' .premium-pricing-table__dur'              => array(
-				'font-size' => self::get_css_value( $attr['durSizeMobile'], $attr['durSizeUnit'] ),
-			),
-			' .premium-pricing-table__list'             => array(
-				'font-size' => self::get_css_value( $attr['listSizeMobile'], $attr['listSizeUnit'] ),
-			),
-			' .premium-pricing-table__desc'             => array(
-				'font-size' => self::get_css_value( $attr['descSizeMobile'], $attr['descSizeUnit'] ),
-			),
-			' .premium-pricing-table__button_link'      => array(
-				'font-size' => self::get_css_value( $attr['btnSizeMobile'], $attr['btnSizeUnit'] ),
-			),
-			' .premium-pricing-table__badge_wrap  span' => array(
-				'font-size' => self::get_css_value( $attr['badgeTextSizeMobile'], $attr['badgeTextUnit'] ),
-			),
-		);
-		// Mobile CSS End.
+		if ( isset( $attr['titleStyles'] ) ) {
 
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-pricing-table-' : '.premium-pricing-table-';
+			if ( isset( $attr['titleStyles'][0]['titleSize'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__title_wrap' . '> .premium-pricing-table__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['priceStyles'] ) ) {
+			if ( isset( $attr['priceStyles'][0]['slashSize'] ) || isset( $attr['priceStyles'][0]['slashSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__slash' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['slashSize'] . $attr['priceStyles'][0]['slashSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['currSize'] ) || isset( $attr['priceStyles'][0]['currSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__currency' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['currSize'] . $attr['priceStyles'][0]['currSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['valSize'] ) || isset( $attr['priceStyles'][0]['valSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__val' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['valSize'] . $attr['priceStyles'][0]['valSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['divSize'] ) || isset( $attr['priceStyles'][0]['divSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__divider' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['divSize'] . $attr['priceStyles'][0]['divSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['durSize'] ) || isset( $attr['priceStyles'][0]['durSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__dur' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['durSize'] . $attr['priceStyles'][0]['durSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['featureStyles'] ) ) {
+			if ( isset( $attr['featureStyles'][0]['listSize'] ) || isset( $attr['featureStyles'][0]['listSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__list_wrap' . '> .premium-pricing-table__list ' );
+				$css->add_property( 'font-size', ( $attr['featureStyles'][0]['listSize'] . $attr['featureStyles'][0]['listSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSize'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__desc_wrap' . ' > .premium-pricing-table__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSize'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['buttonStyles'] ) ) {
+			if ( isset( $attr['buttonStyles'][0]['btnSize'] ) || isset( $attr['buttonStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__button' . ' > .premium-pricing-table__button_link' );
+				$css->add_property( 'font-size', ( $attr['buttonStyles'][0]['btnSize'] . $attr['buttonStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->start_media_query( $media_query['tablet'] );
 
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
+		if ( isset( $attr['titleStyles'] ) ) {
 
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
+			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__title_wrap' . '> .premium-pricing-table__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeTablet'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['priceStyles'] ) ) {
+			if ( isset( $attr['priceStyles'][0]['slashSizeTablet'] ) || isset( $attr['priceStyles'][0]['slashSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__slash' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['slashSizeTablet'] . $attr['priceStyles'][0]['slashSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['currSizeTablet'] ) || isset( $attr['priceStyles'][0]['currSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__currency' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['currSizeTablet'] . $attr['priceStyles'][0]['currSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['valSizeTablet'] ) || isset( $attr['priceStyles'][0]['valSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__val' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['valSizeTablet'] . $attr['priceStyles'][0]['valSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['divSizeTablet'] ) || isset( $attr['priceStyles'][0]['divSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__divider' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['divSizeTablet'] . $attr['priceStyles'][0]['divSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['durSizeTablet'] ) || isset( $attr['priceStyles'][0]['durSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__dur' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['durSizeTablet'] . $attr['priceStyles'][0]['durSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['featureStyles'] ) ) {
+			if ( isset( $attr['featureStyles'][0]['listSizeTablet'] ) || isset( $attr['featureStyles'][0]['listSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__list_wrap' . '> .premium-pricing-table__list ' );
+				$css->add_property( 'font-size', ( $attr['featureStyles'][0]['listSizeTablet'] . $attr['featureStyles'][0]['listSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__desc_wrap' . ' > .premium-pricing-table__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSizeTablet'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['buttonStyles'] ) ) {
+			if ( isset( $attr['buttonStyles'][0]['btnSizeTablet'] ) || isset( $attr['buttonStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__button' . ' > .premium-pricing-table__button_link' );
+				$css->add_property( 'font-size', ( $attr['buttonStyles'][0]['btnSizeTablet'] . $attr['buttonStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
 
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
+		$css->start_media_query( $media_query['mobile'] );
+		if ( isset( $attr['titleStyles'] ) ) {
 
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
+			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__title_wrap' . '> .premium-pricing-table__title' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeMobile'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['priceStyles'] ) ) {
+			if ( isset( $attr['priceStyles'][0]['slashSizeMobile'] ) || isset( $attr['priceStyles'][0]['slashSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__slash' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['slashSizeMobile'] . $attr['priceStyles'][0]['slashSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['currSizeMobile'] ) || isset( $attr['priceStyles'][0]['currSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__currency' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['currSizeMobile'] . $attr['priceStyles'][0]['currSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['valSizeMobile'] ) || isset( $attr['priceStyles'][0]['valSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__val' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['valSizeMobile'] . $attr['priceStyles'][0]['valSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['divSizeMobile'] ) || isset( $attr['priceStyles'][0]['divSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__divider' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['divSizeMobile'] . $attr['priceStyles'][0]['divSizeUnit'] ) );
+			}
+			if ( isset( $attr['priceStyles'][0]['durSizeMobile'] ) || isset( $attr['priceStyles'][0]['durSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__price_wrap' . '> .premium-pricing-table__dur' );
+				$css->add_property( 'font-size', ( $attr['priceStyles'][0]['durSizeMobile'] . $attr['priceStyles'][0]['durSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['featureStyles'] ) ) {
+			if ( isset( $attr['featureStyles'][0]['listSizeMobile'] ) || isset( $attr['featureStyles'][0]['listSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__list_wrap' . '> .premium-pricing-table__list ' );
+				$css->add_property( 'font-size', ( $attr['featureStyles'][0]['listSizeMobile'] . $attr['featureStyles'][0]['listSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) || isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__desc_wrap' . ' > .premium-pricing-table__desc' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descSizeMobile'] . $attr['descStyles'][0]['descSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['buttonStyles'] ) ) {
+			if ( isset( $attr['buttonStyles'][0]['btnSizeMobile'] ) || isset( $attr['buttonStyles'][0]['btnSizeUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__button' . ' > .premium-pricing-table__button_link' );
+				$css->add_property( 'font-size', ( $attr['buttonStyles'][0]['btnSizeMobile'] . $attr['buttonStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+		return $css->css_output();
+	}
+	/**
+	 * Get Lottie Animations Block CSS
+	 *
+	 * Return Frontend CSS for Lottie Animations.
+	 *
+	 * @access public
+	 *
+	 * @param string $attributes option attributes.
+	 * @param string $content option for Content of block.
+	 */
+	public function get_lottie_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+			$pos       = strpos( $content, 'inner-column-' );
+			if ( false !== $pos ) {
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+			}
+		}
+		if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-lottie',
+				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
 
-		return $generated_css;
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_lottie_css_style( $attributes, $unique_id );
+
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
 	}
 
+	public function get_lottie_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		if ( isset( $attr['lottieStyles'] ) ) {
+			if ( isset( $attr['lottieStyles'][0]['size'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+			}
+		}
+		$css->start_media_query( $media_query['tablet'] );
+		if ( isset( $attr['lottieStyles'] ) ) {
+			if ( isset( $attr['lottieStyles'][0]['sizeTablet'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+			}
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		if ( isset( $attr['lottieStyles'] ) ) {
+			if ( isset( $attr['lottieStyles'][0]['sizeMobile'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+
+			}
+		}
+		$css->stop_media_query();
+
+		return $css->css_output();
+
+	}
 	/**
 	 * Get Testimonial Block CSS
 	 *
@@ -1665,73 +1807,112 @@ class PBG_Blocks_Helper {
 	 * @param string $attr option attribute.
 	 * @param string $id block ID.
 	 */
-	public static function get_testimonial_css( $attr, $id ) {
+	public function get_testimonial_css( $attributes, $content ) {
 
-		$defaults = self::$block_atts['premium/testimonial']['attributes'];
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+			$pos       = strpos( $content, 'inner-column-' );
+			if ( false !== $pos ) {
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+			}
+		}
 
-		$attr = array_merge( $defaults, (array) $attr );
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_testimonial_css_style( $attributes, $unique_id );
 
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSize'], $attr['authorSizeUnit'] ),
-			),
-			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSize'], $attr['authorComSizeUnit'] ),
-			),
-			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySize'], $attr['bodySizeUnit'] ),
-			),
-		);
-		// Desktop Icon Size CSS ends.
-
-		// Tablet CSS Start.
-		$t_selectors = array(
-			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSizeTablet'], $attr['authorSizeUnit'] ),
-			),
-			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSizeTablet'], $attr['authorComSizeUnit'] ),
-			),
-			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySizeTablet'], $attr['bodySizeUnit'] ),
-			),
-		);
-		// Tablet CSS End.
-
-		// Mobile CSS Start.
-		$m_selectors = array(
-			' .premium-testimonial__author'      => array(
-				'font-size' => self::get_css_value( $attr['authorSizeMobile'], $attr['authorSizeUnit'] ),
-			),
-			' .premium-testimonial__author_comp' => array(
-				'font-size' => self::get_css_value( $attr['authorComSizeMobile'], $attr['authorComSizeUnit'] ),
-			),
-			' .premium-testimonial__text'        => array(
-				'font-size' => self::get_css_value( $attr['bodySizeMobile'], $attr['bodySizeUnit'] ),
-			),
-		);
-		// Mobile CSS End.
-
-		$base_selector = ( $attr['classMigrate'] ) ? '#premium-testimonial-' : '.premium-testimonial-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
 	}
+	public function get_testimonial_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		// Author Style FontSize.
+		if ( isset( $attr['authorStyles'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSize'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSize'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
+			}
+		}
+		// Company Style FontSize.
+		if ( isset( $attr['companyStyles'] ) ) {
+			if ( isset( $attr['companyStyles'][0]['authorComSize'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSize'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
+			}
+		}
+		// Body Style FontSize.
+		if ( isset( $attr['contentStyle'] ) ) {
+			if ( isset( $attr['contentStyle'][0]['bodySize'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySize'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
+			}
+		}
+		$css->start_media_query( $media_query['tablet'] );
+		// Author Style FontSize Tablet.
 
+		if ( isset( $attr['authorStyles'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSizeTablet'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeTablet'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
+			}
+		}
+		// Company Style FontSize Tablet.
+		if ( isset( $attr['companyStyles'] ) ) {
+			if ( isset( $attr['companyStyles'][0]['authorComSizeTablet'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSizeTablet'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
+			}
+		}
+		// Body Style FontSize Tablet.
+		if ( isset( $attr['contentStyle'] ) ) {
+			if ( isset( $attr['contentStyle'][0]['bodySizeTablet'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeTablet'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		// Author Style FontSize Mobile.
+
+		if ( isset( $attr['authorStyles'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSizeMobile'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeMobile'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
+			}
+		}
+		// Company Style FontSize Mobile.
+		if ( isset( $attr['companyStyles'] ) ) {
+			if ( isset( $attr['companyStyles'][0]['authorComSizeMobile'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSizeMobile'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
+			}
+		}
+		// Body Style FontSize Mobile.
+		if ( isset( $attr['contentStyle'] ) ) {
+			if ( isset( $attr['contentStyle'][0]['bodySizeMobile'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
+				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeMobile'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
+			}
+		}
+		$css->stop_media_query();
+
+		return $css->css_output();
+	}
 	/**
 	 * Get Video Box Block CSS
 	 *
@@ -1742,268 +1923,149 @@ class PBG_Blocks_Helper {
 	 * @param string $attr option attribute.
 	 * @param string $id block ID.
 	 */
-	public static function get_videobox_css( $attr, $id ) {
+	public function get_videobox_css( $attributes, $content ) {
 
-		$defaults = self::$block_atts['premium/video-box']['attributes'];
-
-		$attr = array_merge( $defaults, (array) $attr );
-
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSize'], $attr['videoDescSizeUnit'] ),
-			),
-		);
-		// Desktop Icon Size CSS ends.
-
-		// Tablet CSS Start.
-		$t_selectors = array(
-			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSizeTablet'], $attr['videoDescSizeUnit'] ),
-			),
-		);
-		// Tablet CSS End.
-
-		// Mobile CSS Start.
-		$m_selectors = array(
-			'  .premium-video-box__desc_text' => array(
-				'font-size' => self::get_css_value( $attr['videoDescSizeMobile'], $attr['videoDescSizeUnit'] ),
-			),
-		);
-		// Mobile CSS End.
-
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-video-box-' : '#premium-video-box-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
-	}
-
-	public static function get_lottie_css( $attr, $id ) {
-		$defaults = self::$block_atts['premium/lottie']['attributes'];
-
-		$attr = array_merge( $defaults, (array) $attr );
-
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['size'] . $attr['sizeUnit'],
-				'height' => $attr['size'] . $attr['sizeUnit'],
-			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['size'] . $attr['sizeUnit'],
-				'height' => $attr['size'] . $attr['sizeUnit'],
-			),
-		);
-
-		$t_selectors = array(
-
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
-				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
-			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['sizeTablet'] . $attr['sizeUnit'],
-				'height' => $attr['sizeTablet'] . $attr['sizeUnit'],
-			),
-		);
-
-		$m_selectors = array(
-
-			' .premium-lottie-svg svg  ' => array(
-				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
-				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
-			),
-			' .premium-lottie-canvas '   => array(
-				'width'  => $attr['sizeMobile'] . $attr['sizeUnit'],
-				'height' => $attr['sizeMobile'] . $attr['sizeUnit'],
-			),
-		);
-
-		$base_selector = ( $attr['classMigrate'] ) ? '.premium-lottie-' : '.premium-lottie-';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
-	}
-
-
-	public static function get_newsLetter_css( $attr, $id ) {
-		$defaults = self::$block_atts['premium/newsletter']['attributes'];
-
-		$attr = array_merge( $defaults, (array) $attr );
-
-		$m_selectors = array();
-		$t_selectors = array();
-
-		$selectors = array(
-
-			' .premium-newsletter-input__wrapper '        => array(
-				'padding-right' => 'calc(' . $attr['columnGap'] . 'px / 2 )',
-				'padding-left'  => 'calc(' . $attr['columnGap'] . 'px / 2 )',
-				'margin-bottom' => $attr['rowGap'] . 'px',
-			),
-			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
-				'color'            => $attr['inputStyles'][0]['textColor'],
-				'font-family'      => $attr['inputStyles'][0]['textFontFamily'],
-				'font-size'        => $attr['inputStyles'][0]['textSize'] . 'px',
-				'font-weight'      => $attr['inputStyles'][0]['textWeight'],
-				'font-style'       => $attr['inputStyles'][0]['textStyle'],
-				'letter-spacing'   => $attr['inputStyles'][0]['textLetter'] . 'px',
-				'text-transform'   => $attr['inputStyles'][0]['textUpper'] ? 'uppercase' : 'none',
-				'line-height'      => $attr['inputStyles'][0]['textLine'],
-				'background-color' => $attr['inputStyles'][0]['textBackColor'],
-				'border-style'     => $attr['inputStyles'][0]['textBorderType'],
-				'border-color'     => $attr['inputStyles'][0]['textBorderColor'],
-				'border-radius'    => $attr['inputStyles'][0]['textBorderRadius'],
-
-			),
-			' .premium-newsletter-button__wrapper button' => array(
-				'color'            => $attr['btnStyles'][0]['btnColor'],
-				'background-color' => $attr['btnStyles'][0]['btnBackColor'],
-				'font-family'      => $attr['btnStyles'][0]['btnFontFamily'],
-				'font-weight'      => $attr['btnStyles'][0]['btnWeight'],
-				'font-size'        => $attr['btnStyles'][0]['btnSize'] . 'px',
-				'font-style'       => $attr['btnStyles'][0]['btnStyle'],
-				'letter-spacing'   => $attr['btnStyles'][0]['btnLetter'],
-				'text-transform'   => $attr['btnStyles'][0]['btnUpper'] ? 'uppercase' : 'none',
-				'line-height'      => $attr['btnStyles'][0]['btnLine'],
-				'border-style'     => $attr['btnStyles'][0]['btnBorderType'],
-				'border-color'     => $attr['btnStyles'][0]['btnBorderColor'],
-				'border-radius'    => $attr['btnStyles'][0]['btnBorderRadius'],
-			),
-
-		);
-
-		$t_selectors = array(
-			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
-				'font-size' => $attr['inputStyles'][0]['textSizeTablet'] . 'px',
-
-			),
-			' .premium-newsletter-button__wrapper button' => array(
-				'font-size' => $attr['btnStyles'][0]['btnSizeTablet'] . 'px',
-			),
-
-		);
-
-		$m_selectors = array(
-			' .premium-newsletter-input__wrapper .premium-newsletter-input' => array(
-				'font-size' => $attr['inputStyles'][0]['textSizeMobile'] . 'px',
-
-			),
-			' .premium-newsletter-button__wrapper button' => array(
-				'font-size' => $attr['btnStyles'][0]['btnSizeMobile'] . 'px',
-			),
-		);
-
-		$base_selector = '#premium-newsLetter-not-set';
-
-		$desktop = self::generate_css( $selectors, $base_selector . $id );
-
-		$tablet = self::generate_css( $t_selectors, $base_selector . $id );
-
-		$mobile = self::generate_css( $m_selectors, $base_selector . $id );
-
-		$generated_css = array(
-			'desktop' => $desktop,
-			'tablet'  => $tablet,
-			'mobile'  => $mobile,
-		);
-
-		return $generated_css;
-	}
-
-
-	/**
-	 * Generate CSS
-	 *
-	 * @since 1.8.2
-	 * @access public
-	 *
-	 * @param array  $selectors CSS selectors.
-	 * @param string $id base selectors ID.
-	 */
-	public static function generate_css( $selectors, $id ) {
-
-		$styling_css = '';
-
-		if ( empty( $selectors ) ) {
-			return;
-		}
-
-		foreach ( $selectors as $key => $value ) {
-
-			$css = '';
-
-			foreach ( $value as $j => $val ) {
-
-				if ( 'font-family' === $j && 'Default' === $val ) {
-					continue;
-				}
-
-				if ( ! empty( $val ) || 0 === $val ) {
-					$css .= $j . ': ' . $val . ';';
-				}
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+			$pos       = strpos( $content, 'inner-column-' );
+			if ( false !== $pos ) {
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
+		}
+		if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-video-box',
+				PREMIUM_BLOCKS_URL . 'assets/js/video-box.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+		if ( isset( $attributes['descStyles'][0]['videoDescFamily'] ) ) {
+			self::$gfonts = $attributes['descStyles'][0]['videoDescFamily'];
+		}
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_videobox_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
-				$styling_css .= $id;
-				$styling_css .= $key . '{';
-				$styling_css .= $css . '}';
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+
+	}
+	public function get_videobox_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		// Style Description.
+
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['videoDescSize'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+				$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSize'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
 			}
 		}
+		$css->start_media_query( $media_query['tablet'] );
 
-		return $styling_css;
+		if ( isset( $attr['descStyles'][0]['videoDescSizeTablet'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+			$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
+			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeTablet'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+
+		if ( isset( $attr['descStyles'][0]['videoDescSize'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+			$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
+			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeMobile'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
+		}
+		$css->stop_media_query();
+
+		return $css->css_output();
 	}
-
-	/**
-	 * Get CSS value
-	 *
-	 * @since 1.8.2
-	 * @access public
-	 *
-	 * @param string $value  CSS value.
-	 * @param string $unit  CSS unit.
-	 */
-	public static function get_css_value( $value = '', $unit = '' ) {
-
-		// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
-		if ( '' == $value ) {
-			return $value;
+	public function get_newsLetter_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+			$pos       = strpos( $content, 'inner-column-' );
+			if ( false !== $pos ) {
+				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
+			}
 		}
+		if ( $this->it_is_not_amp() ) {
 
-		$css_val = '';
+			wp_enqueue_script(
+				'pbg-newsletter-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
 
-		if ( ! empty( $value ) ) {
-			$css_val = esc_attr( $value ) . $unit;
+				wp_enqueue_script(
+					'pbg-form-js',
+					PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
+					array( 'jquery' ),
+					PREMIUM_BLOCKS_VERSION,
+					true
+				);
+				wp_localize_script(
+					'pbg-newsletter-js',
+					'premium_blocks_form_params',
+					array(
+						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+						'required'      => __( 'is required', 'premium-blocks' ),
+						'mismatch'      => __( 'does not match', 'premium-blocks' ),
+						'validation'    => __( 'is not valid', 'premium-blocks' ),
+						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+						'item'          => __( 'Item', 'premium-blocks' ),
+					)
+				);
+				wp_localize_script(
+					'pbg-form-js',
+					'settings',
+					array(
+						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+						'required'      => __( 'is required', 'premium-blocks' ),
+						'mismatch'      => __( 'does not match', 'premium-blocks' ),
+						'validation'    => __( 'is not valid', 'premium-blocks' ),
+						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+						'item'          => __( 'Item', 'premium-blocks' ),
+					)
+				);
+
 		}
+		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_videobox_css_style( $attributes, $unique_id );
 
-		return $css_val;
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
 	}
 
 	/**
@@ -2014,24 +2076,47 @@ class PBG_Blocks_Helper {
 	 *
 	 * @param string $hex_color value of Color.
 	 */
-	public function hex_to_rgba( $hex_color ) {
+	public function hex_to_rgba( $color, $opacity = false, $is_array = false ) {
+		$default = $color;
 
-		$color = str_replace( '#', '', $hex_color );
-
-		if ( strlen( $color ) > 3 ) {
-			$rgb =
-				hexdec( substr( $color, 0, 2 ) ) . ',' . hexdec( substr( $color, 2, 2 ) ) .
-
-				',' . hexdec( substr( $color, 4, 2 ) );
-		} else {
-			$color = str_replace( '#', '', $hex_color );
-			$r     = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
-			$g     = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
-			$b     = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-			$rgb   = hexdec( $r ) . ',' . hexdec( $g ) . ',' . hexdec( $b );
+			// Return default if no color provided.
+		if ( empty( $color ) ) {
+			return $default;
 		}
 
-		return $rgb;
+			// Sanitize $color if "#" is provided.
+		if ( '#' === $color[0] ) {
+			$color = substr( $color, 1 );
+		}
+
+			// Check if color has 6 or 3 characters and get values.
+		if ( strlen( $color ) === 6 ) {
+				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+		} elseif ( strlen( $color ) === 3 ) {
+				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+		} else {
+				return $default;
+		}
+
+			// Convert hexadec to rgb.
+			$rgb = array_map( 'hexdec', $hex );
+
+			// Check if opacity is set(rgba or rgb).
+		if ( false !== $opacity && '' !== $opacity ) {
+			if ( abs( $opacity ) >= 1 ) {
+				$opacity = $opacity / 100;
+			}
+			$output = 'rgba(' . implode( ',', $rgb ) . ',' . $opacity . ')';
+		} else {
+			$output = 'rgb(' . implode( ',', $rgb ) . ')';
+		}
+
+		if ( $is_array ) {
+			return $rgb;
+		} else {
+			// Return rgb(a) color string.
+			return $output;
+		}
 	}
 
 	/**

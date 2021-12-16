@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
+import hexToRgba from "../../components/hex-to-rgba"
 
 const { RichText } = wp.blockEditor;
 

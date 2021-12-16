@@ -8,12 +8,11 @@ jQuery(function ($) {
             $('body').trigger('pbg-form-start-submit', $(this));
             var form = $(this),
                 submitButton = form.find('.pbg-forms-submit'),
-
                 form_data = premium_blocks_form.validateForm(form);
 
             if (form_data) {
 
-                // send the request.
+
                 form.parent('.wp-block-premium-form').find('.premium-blocks-form-message').slideUp('fast', function () {
                     $(this).remove();
                 });
@@ -97,19 +96,11 @@ jQuery(function ($) {
 
             $(item).focus();
         },
-        /**
-         *
-         * @param form
-         * @param position (value = bottom or end) end if form is onepare, bottom, if form is multistep
-         */
+
         clearForm: function (form) {
             $(form)[0].reset();
         },
-        /**
-         *
-         * @param form
-         * @param position (value = bottom or end) end if form is onepare, bottom, if form is multistep
-         */
+
         addErrorNotice: function (form) {
             $(form).after('<div class="premium-blocks-form-message premium-blocks-form-warning">' + settings.error_message + '</div>');
         },
@@ -118,10 +109,7 @@ jQuery(function ($) {
             var urlregex = new RegExp("^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.|http:\/\/|https:\/\/){1}([0-9A-Za-z]+\.)");
             return urlregex.test(url);
         },
-        isValidTel: function (tel) {
-            var telregex = new RegExp("/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im");
-            return telregex.test(tel);
-        },
+
         validateForm: function (self) {
 
             var temp,
@@ -143,7 +131,7 @@ jQuery(function ($) {
                 val = '';
 
                 switch (data_type) {
-                    case 'textarea':
+
                     case 'text':
 
                         val = $.trim($(item).val());
@@ -156,71 +144,8 @@ jQuery(function ($) {
                             premium_blocks_form.markError(item, error_type);
                         }
                         break;
-                    case 'tel':
-                        val = $.trim($(item).val());
-                        if (val === '') {
-                            error = true;
-                            error_type = 'required';
 
-                            // make it warn collor
-                            premium_blocks_form.markError(item, error_type);
-                        }
-                        break;
-                    case 'accept':
-                        if ($(item).prop("checked") == false) {
-                            error = true;
-                            error_type = 'required';
 
-                            // make it warn collor
-                            premium_blocks_form.markError(item, error_type);
-                        }
-                        break;
-
-                    case 'select':
-                        val = $(item).val();
-
-                        if ($(item).prop('multiple')) {
-                            if (val === null || val.length === 0) {
-                                error = true;
-                                error_type = 'required';
-
-                                // make it warn collor
-                                premium_blocks_form.markError(item, error_type);
-                            }
-                        } else {
-                            if (!val || val === '-1') {
-                                error = true;
-                                error_type = 'required';
-
-                                // make it warn collor
-                                premium_blocks_form.markError(item, error_type);
-                            }
-                        }
-                        break;
-
-                    case 'radio':
-                        var length = $(item).find('input:checked').length;
-
-                        if (!length) {
-                            error = true;
-                            error_type = 'required';
-
-                            // make it warn collor
-                            premium_blocks_form.markError(item, error_type);
-                        }
-                        break;
-
-                    case 'checkbox':
-                        var length = $(item).find('input:checked').length;
-
-                        if (!length) {
-                            error = true;
-                            error_type = 'required';
-
-                            // make it warn collor
-                            premium_blocks_form.markError(item, error_type);
-                        }
-                        break;
 
                     case 'email':
                         var val = $(item).val();
@@ -240,20 +165,6 @@ jQuery(function ($) {
                             premium_blocks_form.markError(item, error_type);
                         }
                         break;
-                    case 'url':
-                        var val = $(item).val();
-
-                        if (val !== '') {
-                            //run the validation
-                            if (!premium_blocks_form.isValidURL(val)) {
-                                error = true;
-                                error_type = 'validation';
-
-                                premium_blocks_form.markError(item, error_type);
-                            }
-                        }
-                        break;
-
                 };
 
             });

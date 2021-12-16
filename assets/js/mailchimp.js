@@ -91,10 +91,7 @@
             var urlregex = new RegExp("^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.|http:\/\/|https:\/\/){1}([0-9A-Za-z]+\.)");
             return urlregex.test(url);
         },
-        isValidTel(tel) {
-            var telregex = new RegExp("/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im");
-            return telregex.test(tel);
-        },
+
         removeErrors(item) {
             if (item.classList.contains('pbg-form-has-error')) {
                 item.classList.remove('pbg-form-has-error');
@@ -150,7 +147,6 @@
                     var data_type = required[n].getAttribute('data-type'),
                         val = '';
                     switch (data_type) {
-                        case 'textarea':
                         case 'text':
 
                             val = required[n].value.trim();
@@ -163,75 +159,6 @@
                                 window.PremiumForm.markError(required[n], error_type, self);
                             }
                             break;
-                        case 'tel':
-
-                            val = required[n].value.trim();
-                            if (val === '') {
-                                error = true;
-                                error_type = 'required';
-
-                                // mark the error in the field.
-                                window.PremiumForm.markError(required[n], error_type, self);
-                            }
-                            break;
-                        case 'accept':
-                            if (required[n].checked == false) {
-                                error = true;
-                                error_type = 'required';
-
-                                // mark the error in the field.
-                                window.PremiumForm.markError(required[n], error_type, self);
-                            }
-                            break;
-
-                        case 'select':
-                            val = required[n].value;
-
-                            if (required[n].multiple) {
-                                if (val === null || val.length === 0) {
-                                    error = true;
-                                    error_type = 'required';
-
-                                    // mark the error in the field.
-                                    window.PremiumForm.markError(required[n], error_type, self);
-                                }
-                            } else {
-
-
-                                if (!val || val === '-1') {
-                                    error = true;
-                                    error_type = 'required';
-
-                                    // mark the error in the field.
-                                    window.PremiumForm.markError(required[n], error_type, self);
-                                }
-                            }
-                            break;
-
-                        case 'radio':
-                            var length = required[n].querySelector('input:checked');
-
-                            if (!length) {
-                                error = true;
-                                error_type = 'required';
-
-                                // mark the error in the field.
-                                window.PremiumForm.markError(required[n], error_type, self);
-                            }
-                            break;
-
-                        case 'checkbox':
-                            var length = required[n].querySelector('input:checked');
-
-                            if (!length) {
-                                error = true;
-                                error_type = 'required';
-
-                                // mark the error in the field.
-                                window.PremiumForm.markError(required[n], error_type, self);
-                            }
-                            break;
-
                         case 'email':
                             var val = required[n].value.trim();
 
@@ -252,27 +179,6 @@
                                 window.PremiumForm.markError(required[n], error_type, self);
                             }
                             break;
-                        case 'url':
-                            var val = required[n].value.trim();
-
-                            if (val !== '') {
-                                //run the validation
-                                if (!window.PremiumForm.isValidURL(val)) {
-                                    error = true;
-                                    error_type = 'validation';
-
-                                    // mark the error in the field.
-                                    window.PremiumForm.markError(required[n], error_type, self);
-                                }
-                            } else if (val === '') {
-                                error = true;
-                                error_type = 'required';
-
-                                // mark the error in the field.
-                                window.PremiumForm.markError(required[n], error_type, self);
-                            }
-                            break;
-
                     };
                 }
 

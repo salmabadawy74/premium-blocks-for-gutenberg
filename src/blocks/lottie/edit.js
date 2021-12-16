@@ -5,11 +5,11 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumSizeUnits from "../../components/premium-size-units";
-import styling from './styling';
-
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     InspectorControls,
@@ -48,23 +48,29 @@ class edit extends Component {
             setAttributes({ lottieId: "premium-lottie-" + block_id });
         }
 
-        const $style = document.createElement("style")
-        $style.setAttribute("id", "lottie-style-" + clientId.substr(0, 6))
-        document.head.appendChild($style);
+
 
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
 
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
-
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
-
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
     componentDidUpdate() {
 
-        var elementStyle = document.getElementById("lottie-style-" + this.props.clientId.substr(0, 6))
-
-        if (null !== elementStyle && undefined !== elementStyle) {
-            elementStyle.innerHTML = styling(this.props)
-        }
 
         clearTimeout(isLottieUpdated);
         isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
@@ -133,7 +139,9 @@ class edit extends Component {
         const { attributes, setAttributes, className } = this.props;
 
         const {
+            lottieId,
             block_id,
+            classMigrate,
             lottieURl,
             lottieJson,
             loop,
@@ -143,45 +151,25 @@ class edit extends Component {
             bottom,
             top,
             scrollSpeed,
-            sizeUnit,
-            size,
-            sizeTablet,
-            sizeMobile,
+
             rotate,
             align,
             link,
             url,
             target,
             render,
-            backColor,
-            backOpacity,
-            backHColor,
-            backHOpacity,
-            blur,
-            hue,
-            contrast,
-            saturation,
-            bright,
-            blurH,
-            hueH,
-            contrastH,
-            saturationH,
-            brightH,
-            borderType,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
-            borderColor,
-            borderRadius,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            lottieStyles,
             paddingT,
             paddingR,
             paddingB,
             paddingL,
-            paddingU,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
         } = attributes
 
         let validJsonPath = 'invalid';
@@ -223,6 +211,18 @@ class edit extends Component {
             })
         }
 
+        const saveLottieStyles = (value) => {
+            const newUpdate = lottieStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                lottieStyles: newUpdate,
+            });
+        }
+
         let stopAnimation = true;
 
         if ('none' === trigger || 'undefined' === typeof trigger) {
@@ -230,9 +230,22 @@ class edit extends Component {
         }
         const reversedir = (reverse) ? -1 : 1;
 
+
         const mainClasses = classnames(className, 'premium-lottie-wrap')
 
+        const lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
+
+        const renderCss = (<style>
+            { `
+            #premium-lottie-${block_id} .premium-lottie-animation svg{
+                width:${lottieSize}${lottieStyles[0].sizeUnit} !important;
+                height:${lottieSize}${lottieStyles[0].sizeUnit} !important;
+            }
+            `}
+        </style>
+        )
         return [
+            renderCss,
             <InspectorControls>
                 <PanelBody
                     title={__("General Settings")}
@@ -304,7 +317,7 @@ class edit extends Component {
                     </Fragment>}
                     <PremiumSizeUnits
 
-                        onChangeSizeUnit={newValue => setAttributes({ sizeUnit: newValue })}
+                        onChangeSizeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
                     />
                     <TabPanel
                         className="premium-size-type-field-tabs"
@@ -335,9 +348,9 @@ class edit extends Component {
                                 tabout = (
                                     <RangeControl
                                         label={__("Size")}
-                                        value={size}
-                                        max={sizeUnit === '%' ? 100 : 400}
-                                        onChange={(value) => setAttributes({ size: (value !== "") ? value : 200 })}
+                                        value={lottieStyles[0].size}
+                                        max={lottieStyles[0].sizeUnit === '%' ? 100 : 400}
+                                        onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
                                         initialPosition={200}
                                     />
                                 );
@@ -345,9 +358,9 @@ class edit extends Component {
                                 tabout = (
                                     <RangeControl
                                         label={__("Size Tablet")}
-                                        value={sizeTablet}
-                                        max={sizeUnit === '%' ? 100 : 800}
-                                        onChange={(value) => setAttributes({ sizeTablet: (value !== "") ? value : 200 })}
+                                        value={lottieStyles[0].sizeTablet}
+                                        max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
+                                        onChange={(value) => saveLottieStyles({ sizeTablet: (value !== "") ? value : 200 })}
                                         initialPosition={200}
                                     />
                                 );
@@ -355,9 +368,9 @@ class edit extends Component {
                                 tabout = (
                                     <RangeControl
                                         label={__("Size Mobile")}
-                                        value={sizeMobile}
-                                        max={sizeUnit === '%' ? 100 : 800}
-                                        onChange={(value) => setAttributes({ sizeMobile: (value !== "") ? value : 200 })}
+                                        value={lottieStyles[0].sizeMobile}
+                                        max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
+                                        onChange={(value) => saveLottieStyles({ sizeMobile: (value !== "") ? value : 200 })}
                                         initialPosition={200}
                                     />
                                 );
@@ -465,28 +478,28 @@ class edit extends Component {
                                     <Fragment>
                                         <p>{__("Background Color")}</p>
                                         <ColorPalette
-                                            value={backColor}
-                                            onChange={(newValue) => setAttributes({ backColor: newValue })}
+                                            value={lottieStyles[0].backColor}
+                                            onChange={(newValue) => saveLottieStyles({ backColor: newValue })}
                                         />
                                         <RangeControl
                                             label={__(`Opacity`)}
-                                            value={backOpacity}
-                                            onChange={(newvalue) => setAttributes({ backOpacity: newvalue })}
+                                            value={lottieStyles[0].backOpacity}
+                                            onChange={(newvalue) => saveLottieStyles({ backOpacity: newvalue })}
                                             max={1}
                                             min={.1}
                                             step={0.01}
                                         />
                                         <PremiumFilters
                                             blur={blur}
-                                            bright={bright}
-                                            contrast={contrast}
-                                            saturation={saturation}
-                                            hue={hue}
-                                            onChangeBlur={(value) => setAttributes({ blur: value })}
-                                            onChangeBright={(value) => setAttributes({ bright: value })}
-                                            onChangeContrast={(value) => setAttributes({ contrast: value })}
-                                            onChangeSat={(value) => setAttributes({ saturation: value })}
-                                            onChangeHue={(value) => setAttributes({ hue: value })}
+                                            bright={lottieStyles[0].bright}
+                                            contrast={lottieStyles[0].contrast}
+                                            saturation={lottieStyles[0].saturation}
+                                            hue={lottieStyles[0].hue}
+                                            onChangeBlur={(value) => saveLottieStyles({ blur: value })}
+                                            onChangeBright={(value) => saveLottieStyles({ bright: value })}
+                                            onChangeContrast={(value) => saveLottieStyles({ contrast: value })}
+                                            onChangeSat={(value) => saveLottieStyles({ saturation: value })}
+                                            onChangeHue={(value) => saveLottieStyles({ hue: value })}
                                         />
                                     </Fragment>
                                 )
@@ -496,28 +509,28 @@ class edit extends Component {
                                     <Fragment>
                                         <p>{__("Background Color")}</p>
                                         <ColorPalette
-                                            value={backHColor}
-                                            onChange={(newValue) => setAttributes({ backHColor: newValue })}
+                                            value={lottieStyles[0].backHColor}
+                                            onChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
                                         />
                                         <RangeControl
                                             label={__(`Opacity`)}
-                                            value={backHOpacity}
-                                            onChange={(newvalue) => setAttributes({ backHOpacity: newvalue })}
+                                            value={lottieStyles[0].backHOpacity}
+                                            onChange={(newvalue) => saveLottieStyles({ backHOpacity: newvalue })}
                                             max={1}
                                             min={.1}
                                             step={0.01}
                                         />
                                         <PremiumFilters
-                                            blur={blurH}
-                                            bright={brightH}
-                                            contrast={contrastH}
-                                            saturation={saturationH}
-                                            hue={hueH}
-                                            onChangeBlur={(value) => setAttributes({ blurH: value })}
-                                            onChangeBright={(value) => setAttributes({ brightH: value })}
-                                            onChangeContrast={(value) => setAttributes({ contrastH: value })}
-                                            onChangeSat={(value) => setAttributes({ saturationH: value })}
-                                            onChangeHue={(value) => setAttributes({ hueH: value })}
+                                            blur={lottieStyles[0].blurH}
+                                            bright={lottieStyles[0].brightH}
+                                            contrast={lottieStyles[0].contrastH}
+                                            saturation={lottieStyles[0].saturationH}
+                                            hue={lottieStyles[0].hueH}
+                                            onChangeBlur={(value) => saveLottieStyles({ blurH: value })}
+                                            onChangeBright={(value) => saveLottieStyles({ brightH: value })}
+                                            onChangeContrast={(value) => saveLottieStyles({ contrastH: value })}
+                                            onChangeSat={(value) => saveLottieStyles({ saturationH: value })}
+                                            onChangeHue={(value) => saveLottieStyles({ hueH: value })}
                                         />
                                     </Fragment>
                                 )
@@ -532,14 +545,14 @@ class edit extends Component {
                     </TabPanel>
 
                     <PremiumBorder
-                        borderType={borderType}
+                        borderType={lottieStyles[0].borderType}
                         top={borderTop}
                         right={borderRight}
                         bottom={borderBottom}
                         left={borderLeft}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        borderColor={lottieStyles[0].borderColor}
+                        borderRadius={lottieStyles[0].borderRadius}
+                        onChangeType={(newType) => saveLottieStyles({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 borderTop: top,
@@ -549,13 +562,13 @@ class edit extends Component {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({
+                            saveLottieStyles({
                                 borderColor:
                                     colorValue === undefined ? "transparent" : colorValue.hex,
                             })
                         }
                         onChangeRadius={(newRadius) =>
-                            setAttributes({
+                            saveLottieStyles({
                                 borderRadius: newRadius === undefined ? 0 : newRadius,
                             })
                         }
@@ -586,9 +599,9 @@ class edit extends Component {
                             })
                         }
                         showUnits={true}
-                        selectedUnit={paddingU}
+                        selectedUnit={lottieStyles[0].paddingU}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingU: newvalue })
+                            saveLottieStyles({ paddingU: newvalue })
                         }
                     />
                 </PanelBody>
@@ -633,23 +646,23 @@ class edit extends Component {
                             `text-align:${align};`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation  {`,
-                            `background-color:${backColor};`,
-                            `opacity : ${backOpacity};`,
-                            `filter: brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg );`,
-                            `border-style : ${borderType};`,
+                            `background-color:${lottieStyles[0].backColor};`,
+                            `opacity : ${lottieStyles[0].backOpacity};`,
+                            `filter: brightness( ${lottieStyles[0].bright}% ) contrast( ${lottieStyles[0].contrast}% ) saturate( ${lottieStyles[0].saturation}% ) blur( ${lottieStyles[0].blur}px ) hue-rotate( ${lottieStyles[0].hue}deg );`,
+                            `border-style : ${lottieStyles[0].borderType};`,
                             `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`,
-                            `border-radius : ${borderRadius}px;`,
-                            `border-color : ${borderColor}; `,
-                            `padding-top : ${paddingT}${paddingU};`,
-                            `padding-right : ${paddingR}${paddingU};`,
-                            `padding-bottom : ${paddingB}${paddingU};`,
-                            `padding-left : ${paddingL}${paddingU};`,
+                            `border-radius : ${lottieStyles[0].borderRadius}px;`,
+                            `border-color : ${lottieStyles[0].borderColor}; `,
+                            `padding-top : ${paddingT}${lottieStyles[0].paddingU};`,
+                            `padding-right : ${paddingR}${lottieStyles[0].paddingU};`,
+                            `padding-bottom : ${paddingB}${lottieStyles[0].paddingU};`,
+                            `padding-left : ${paddingL}${lottieStyles[0].paddingU};`,
                             `transform: rotate(${rotate}deg) !important;`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`,
-                            `background-color:${backHColor};`,
-                            `opacity:${backHOpacity};`,
-                            `filter: brightness( ${brightH}% ) contrast( ${contrastH}% ) saturate( ${saturationH}% ) blur( ${blurH}px ) hue-rotate( ${hueH}deg ) !important;`,
+                            `background-color:${lottieStyles[0].backHColor};`,
+                            `opacity:${lottieStyles[0].backHOpacity};`,
+                            `filter: brightness( ${lottieStyles[0].brightH}% ) contrast( ${lottieStyles[0].contrastH}% ) saturate( ${lottieStyles[0].saturationH}% ) blur( ${lottieStyles[0].blurH}px ) hue-rotate( ${lottieStyles[0].hueH}deg ) !important;`,
                             "}",
                         ].join("\n"),
                     }}
@@ -658,4 +671,11 @@ class edit extends Component {
         ]
     }
 }
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

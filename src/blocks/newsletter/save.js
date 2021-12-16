@@ -13,7 +13,7 @@ export function save(props) {
             className={`wp-block-premium-form premium-newsLetter-${block_id} pbg-form-wrap`}
         >
             <form className="pbg-form premium-newsletter__wrapper " action="" method="post">
-                <div className={`premium-blocks-form-field premium-newsletter-input__wrapper pbg-form-field-1 pbg-field-desk-width-100 kb-input-size-standard col-${inputStyles[0].inputColumnWidth}`} style={{
+                <div className={`premium-blocks-form-field premium-newsletter-input__wrapper pbg-form-field-1 col-${inputStyles[0].inputColumnWidth}`} style={{
                     paddingRight: `calc(${columnGap}px / 2)`,
                     paddingLeft: `calc(${columnGap}px / 2)`,
                     marginBottom: `${rowGap}px`,
@@ -31,7 +31,7 @@ export function save(props) {
                         placeholder={inputStyles[0].placeholder}
                         value={eMail}
                         data-type="email"
-                        className="pbg-field pbg-text-style-field pbg-email-field pbg-field-1 premium-newsletter-input  "
+                        className=" pbg-field-1 premium-newsletter-input  "
                         data-required="yes"
                         style={{
                             color: inputStyles[0].textColor,
@@ -59,21 +59,12 @@ export function save(props) {
                     name="action"
                     value="pb_process_ajax_submit"
                 />
-                {/* <input
-                    className="premium-blocks-field verify"
-                    type="text"
-                    name="_pbg_verify_email"
-                    autocomplete="off"
-                    aria-hidden="true"
-                    placeholder="Email"
-                    tabindex="-1"
-                /> */}
-                <div className={`premium-blocks-form-field pbg-submit-field pbg-field-desk-width-100 premium-newsletter-button__wrapper  col-${btnStyles[0].btnColumn}`} style={{
+                <div className={`premium-blocks-form-field pbg-submit-field  premium-newsletter-button__wrapper  col-${btnStyles[0].btnColumn}`} style={{
                     paddingRight: `calc(${columnGap}px / 2)`,
                     paddingLeft: `calc(${columnGap}px / 2)`,
                     marginBottom: `${rowGap}px`,
                 }}>
-                    <button className="pbg-forms-submit button pbg-button-size-standard pbg-button-width-auto premium-newsletter-button-submit"
+                    <button className="pbg-forms-submit button  premium-newsletter-button-submit"
                         style={{
                             paddingRight: `calc(${columnGap}px / 2)`,
                             paddingLeft: `calc(${columnGap}px / 2)`,

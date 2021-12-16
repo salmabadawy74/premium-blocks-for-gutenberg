@@ -223,7 +223,7 @@ const attributes = {
         default: [
             {
                 backOpacity: 1,
-                backColor: 1,
+                backColor: '',
                 imageID: '',
                 imageURL: '',
                 backgroundRepeat: "no-repeat",

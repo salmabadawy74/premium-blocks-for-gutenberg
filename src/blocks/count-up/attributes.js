@@ -26,92 +26,17 @@ const attributes = {
         type: "string",
         default: "column"
     },
-    numberSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    numberSize: {
-        type: "number",
-        default: 30
-    },
-    numberSizeTablet: {
-        type: "number"
-    },
-    numberSizeMobile: {
-        type: "number"
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    numberWeight: {
-        type: "number",
-        default: 900
-    },
+
     prefix: {
         type: "boolean",
         default: true
     },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix"
-    },
-    prefixSize: {
-        type: "number",
-        default: 20
-    },
-    prefixSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    prefixSizeTablet: {
-        type: "number"
-    },
-    prefixSizeMobile: {
-        type: "number"
-    },
-    prefixColor: {
-        type: "string"
-    },
-    prefixWeight: {
-        type: "number"
-    },
-    prefixGap: {
-        type: "number",
-        default: 2
-    },
+
     suffix: {
         type: "boolean",
         default: true
     },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix"
-    },
-    suffixSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    suffixSize: {
-        type: "number",
-        default: 20
-    },
-    suffixSizeTablet: {
-        type: "number"
-    },
-    suffixSizeMobile: {
-        type: 'number'
-    },
-    suffixColor: {
-        type: "string"
-    },
-    suffixWeight: {
-        type: "number"
-    },
-    suffixGap: {
-        type: "number",
-        default: 2
-    },
+
     icon: {
         type: "string",
         default: "icon"
@@ -154,149 +79,11 @@ const attributes = {
         type: "string",
         default: "Premium Count Up"
     },
-    titleSize: {
-        type: "number",
-        default: 20
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSpacing: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleT: {
-        type: "number",
-        default: 1
-    },
-    titleB: {
-        type: "number",
-        default: 1
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
     faIcon: {
         type: "string",
         default: "dashicons-clock"
     },
-    containerBack: {
-        type: "string"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "object",
-        default: {}
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleFamily: {
-        type: "string"
-    },
     counterFamily: {
-        type: "string"
-    },
-    prefixFamily: {
-        type: "string"
-    },
-    suffixFamily: {
-        type: "string"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
         type: "string"
     },
     hideDesktop: {
@@ -310,6 +97,128 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
+    },
+    numberStyles: {
+        type: "array",
+        default: [
+            {
+                numberSizeUnit: "px",
+                numberSize: 30,
+                numberSizeTablet: '',
+                numberSizeMobile: '',
+                numberColor: "#6ec1e4",
+                numberWeight: '900',
+            }
+        ]
+    },
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleFamily: '',
+                titleSize: 20,
+                titleSizeUnit: 'px',
+                titleSizeTablet: '',
+                titleSizeMobile: '',
+                titleSpacing: '',
+                titleStyle: '',
+                titleUpper: false,
+                titleColor: '',
+                titleT: 1,
+                titleB: 1,
+                titleColor: '',
+                titleWeight: 500,
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                containerBack: '',
+                containerOpacity: 1,
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
+                fixed: false,
+                borderType: 'none',
+                borderWidth: 1,
+                borderRadius: 0,
+                borderColor: '',
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                shadowPosition: '',
+                paddingU: '',
+            }
+        ]
+    },
+    borderTop: {
+        type: 'number',
+        default: '0'
+    },
+    borderRight: {
+        type: 'number',
+        default: '0'
+    },
+    borderBottom: {
+        type: 'number',
+        default: '0'
+    },
+    borderLeft: {
+        type: 'number',
+        default: '0'
+    },
+    paddingT: {
+        type: 'number',
+        default: '0'
+    },
+    paddingR: {
+        type: 'number',
+        default: '0'
+    },
+    paddingB: {
+        type: 'number',
+        default: '0'
+    },
+    paddingL: {
+        type: 'number',
+        default: '0'
+    },
+    suffixStyles: {
+        type: 'array',
+        default: [
+            {
+                suffixTxt: "Suffix",
+                suffixSizeUnit: 'px',
+                suffixSize: 20,
+                suffixSizeTablet: '',
+                suffixSizeMobile: '',
+                suffixColor: '',
+                suffixWeight: '',
+                suffixGap: 2,
+                suffixFamily: '',
+            }
+        ]
+    },
+    prefixStyles: {
+        type: "array",
+        default: [
+            {
+                prefixTxt: "Prefix",
+                prefixSize: 20,
+                prefixSizeUnit: 'px',
+                prefixSizeTablet: '',
+                prefixSizeMobile: '',
+                prefixColor: '',
+                prefixWeight: '',
+                prefixGap: 2,
+                prefixFamily: '',
+            }
+        ]
     }
 }
 

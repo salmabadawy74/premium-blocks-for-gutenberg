@@ -6,13 +6,10 @@ const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spin
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import FONTS from "../../components/premium-fonts";
 import { Fragment } from "react";
 const { addQueryArgs } = wp.url;
 const { apiFetch } = wp;
 const { withSelect } = wp.data
-
-
 const { Component } = wp.element;
 const { getWidgetIdFromBlock } = wp.widgets;
 
@@ -380,6 +377,7 @@ export class edit extends Component {
                                 />
                             </Fragment>
                             }
+
                             {/* /////////////////////////////////////Group//////////////////////////////////////// */}
 
                             {mailchimp[0].list.value && <Fragment>
@@ -515,14 +513,6 @@ export class edit extends Component {
                                 saveInputStyle({ textColor: newValue })
                             }
                         />
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={inputStyles[0].textFontFamily}
-                            options={FONTS}
-                            onChange={(value) =>
-                                saveInputStyle({ textFontFamily: value })
-                            }
-                        />
                         <PremiumTypo
                             components={[
                                 "responsiveSize",
@@ -531,6 +521,7 @@ export class edit extends Component {
                                 "style",
                                 "upper",
                                 "spacing",
+                                "family"
                             ]}
                             setAttributes={saveInputStyle}
                             fontSizeType={{
@@ -549,6 +540,7 @@ export class edit extends Component {
                                 value: inputStyles[0].textSizeTablet,
                                 label: __("textSizeTablet"),
                             }}
+                            fontFamily={inputStyles[0].textFontFamily}
                             weight={inputStyles[0].textWeight}
                             style={inputStyles[0].textStyle}
                             spacing={inputStyles[0].textLetter}
@@ -581,6 +573,8 @@ export class edit extends Component {
                             onChangeUpper={(check) =>
                                 saveInputStyle({ textUpper: check })
                             }
+                            onChangeFamily={(value) =>
+                                saveInputStyle({ textFontFamily: value })}
                         />
                         <p>{__(`Background Color`)}</p>
                         <ColorPalette
@@ -658,14 +652,6 @@ export class edit extends Component {
                                 saveButtonStyle({ btnBackColor: newValue })
                             }
                         />
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={btnStyles[0].btnFontFamily}
-                            options={FONTS}
-                            onChange={(value) =>
-                                saveButtonStyle({ btnFontFamily: value })
-                            }
-                        />
                         <PremiumTypo
                             components={[
                                 "responsiveSize",
@@ -674,6 +660,7 @@ export class edit extends Component {
                                 "style",
                                 "upper",
                                 "spacing",
+                                "family"
                             ]}
                             setAttributes={saveButtonStyle}
                             fontSizeType={{
@@ -692,6 +679,7 @@ export class edit extends Component {
                                 value: btnStyles[0].btnSizeTablet,
                                 label: __("textSizeTablet"),
                             }}
+                            fontFamily={btnStyles[0].btnFontFamily}
                             weight={btnStyles[0].btnWeight}
                             style={btnStyles[0].btnStyle}
                             spacing={btnStyles[0].btnLetter}
@@ -724,6 +712,8 @@ export class edit extends Component {
                             onChangeUpper={(check) =>
                                 saveButtonStyle({ btnUpper: check })
                             }
+                            onChangeFamily={(value) =>
+                                saveButtonStyle({ btnFontFamily: value })}
                         />
                         <PremiumBorder
                             borderType={btnStyles[0].btnBorderType}

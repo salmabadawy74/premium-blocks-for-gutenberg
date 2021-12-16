@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
+import hexToRgba from "../../components/hex-to-rgba"
 
 const save = props => {
 
@@ -97,10 +97,10 @@ const save = props => {
                             ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
                             : "transparent",
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        paddingTop: paddingT + iconStyles[0].paddingU,
-                        paddingRight: paddingR + iconStyles[0].paddingU,
-                        paddingBottom: paddingB + iconStyles[0].paddingU,
-                        paddingLeft: paddingL + iconStyles[0].paddingU,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,

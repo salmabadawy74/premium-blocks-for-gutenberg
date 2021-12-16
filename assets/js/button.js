@@ -1,21 +1,22 @@
-jQuery(document).ready(function ($) {
-    const $button = $(".premium-button");
 
-    const addFontToHead = fontFamily => {
-        const head = document.head;
-        const link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href =
-            "https://fonts.googleapis.com/css2?family=" +
-            fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-        head.appendChild(link);
-    };
+// jQuery(document).ready(function ($) {
+//     const $button = $(".premium-button");
 
-    $button.map((index, button) => {
-        let $button = $(button),
-            textFont = $button.css("font-family");
+//     const addFontToHead = fontFamily => {
+//         const head = document.head;
+//         const link = document.createElement("link");
+//         link.type = "text/css";
+//         link.rel = "stylesheet";
+//         link.href =
+//             "https://fonts.googleapis.com/css2?family=" +
+//             fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
+//         head.appendChild(link);
+//     };
 
-        addFontToHead(textFont);
-    });
-});
+//     $button.map((index, button) => {
+//         let $button = $(button),
+//             textFont = $button.css("font-family");
+
+//         addFontToHead(textFont);
+//     });
+// });
