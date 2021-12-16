@@ -12,8 +12,7 @@ import PremiumBackground from "../../components/premium-background"
 import PremiumSizeUnits from "../../components/premium-size-units"
 import FONTS from "../../components/premium-fonts"
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import styling from './styling'
-import hexToRgba from "hex-to-rgba"
+import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 
 const { __ } = wp.i18n;
@@ -48,6 +47,21 @@ class edit extends Component {
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId })
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     render() {
@@ -65,6 +79,7 @@ class edit extends Component {
                 containerStyles: newUpdate,
             });
         }
+
         const saveTitleStyle = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -274,36 +289,11 @@ class edit extends Component {
             }
         ];
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css2?family=" +
-                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-            head.appendChild(link);
-        };
-
-        const onChangeTitleFamily = fontFamily => {
-            setAttributes({ titleFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const onChangeDescFamily = fontFamily => {
-            setAttributes({ descFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
         const mainClasses = classnames(className, "premium-icon-box");
 
+        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+        const descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+        const buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -446,12 +436,6 @@ class edit extends Component {
                                     subscript: tag
                                 }))}
                             />
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={titleStyles[0].titleFont}
-                                options={FONTS}
-                                onChange={onChangeTitleFamily}
-                            />
                             <PremiumTypo
                                 components={[
                                     "responsiveSize",
@@ -459,7 +443,8 @@ class edit extends Component {
                                     "style",
                                     "upper",
                                     "spacing",
-                                    "line"
+                                    "line",
+                                    "family"
                                 ]}
                                 setAttributes={saveTitleStyle}
                                 fontSizeType={{
@@ -483,6 +468,7 @@ class edit extends Component {
                                 spacing={titleStyles[0].titleLetter}
                                 line={titleStyles[0].titleLine}
                                 upper={titleStyles[0].titleUpper}
+                                fontFamily={titleStyles[0].titleFont}
                                 onChangeWeight={newWeight =>
                                     saveTitleStyle({ titleWeight: newWeight || 500 })
                                 }
@@ -494,6 +480,7 @@ class edit extends Component {
                                 }
                                 onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
+                                onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
                             />
                             <PremiumTextShadow
                                 color={titleStyles[0].titleShadowColor}
@@ -538,14 +525,9 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={descStyles[0].descFont}
-                                options={FONTS}
-                                onChange={onChangeDescFamily}
-                            />
+
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "line"]}
+                                components={["responsiveSize", "weight", "line", "family"]}
                                 setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
                                     value: descStyles[0].descSizeUnit,
@@ -563,12 +545,14 @@ class edit extends Component {
                                     value: descStyles[0].descSizeTablet,
                                     label: __("descSizeTablet"),
                                 }}
+                                fontFamily={descStyles[0].descFont}
                                 weight={descStyles[0].descWeight}
                                 line={descStyles[0].descLine}
                                 onChangeWeight={newWeight =>
                                     saveDescriptionStyle({ descWeight: newWeight || 500 })
                                 }
                                 onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
+                                onChangeFamily={(fontFamily) => saveDescriptionStyle({ descFont: fontFamily })}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
@@ -657,7 +641,7 @@ class edit extends Component {
                                 borderColor={btnStyles[0].btnBorderColor}
                                 borderRadius={btnStyles[0].btnBorderRadius}
                                 onChangeType={(newType) =>
-                                    setAttributes({ btnBorderType: newType })
+                                    saveButtonStyle({ btnBorderType: newType })
                                 }
                                 onChangeWidth={({ top, right, bottom, left }) =>
                                     setAttributes({
@@ -669,10 +653,10 @@ class edit extends Component {
                                     })
                                 }
                                 onChangeColor={(colorValue) =>
-                                    setAttributes({ btnBorderColor: colorValue.hex })
+                                    saveButtonStyle({ btnBorderColor: colorValue.hex })
                                 }
                                 onChangeRadius={(newrRadius) =>
-                                    setAttributes({ btnBorderRadius: newrRadius })
+                                    saveButtonStyle({ btnBorderRadius: newrRadius })
                                 }
                             />
                             <PremiumBoxShadow
@@ -1118,18 +1102,18 @@ class edit extends Component {
                     textAlign: align,
                     borderStyle: containerStyles[0].borderType,
                     borderWidth: borderIconBox
-                        ? `${containerStyles[0].borderTop}px ${containerStyles[0].borderRight}px ${containerStyles[0].borderBottom}px ${containerStyles[0].borderLeft}px`
+                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                         : containerStyles[0].borderWidth + "px",
                     borderRadius: containerStyles[0].borderRadius + "px",
                     borderColor: containerStyles[0].borderColor,
-                    marginTop: containerStyles[0].marginT,
-                    marginRight: containerStyles[0].marginR,
-                    marginBottom: containerStyles[0].marginB,
-                    marginLeft: containerStyles[0].marginL,
-                    paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
-                    paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
-                    paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
-                    paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT + containerStyles[0].paddingU,
+                    paddingRight: paddingR + containerStyles[0].paddingU,
+                    paddingBottom: paddingB + containerStyles[0].paddingU,
+                    paddingLeft: paddingL + containerStyles[0].paddingU,
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                     // backgroundColor: containerStyles[0].backColor
                     //     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
@@ -1209,8 +1193,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                marginTop: titleStyles[0].titleMarginT,
-                                marginBottom: titleStyles[0].titleMarginB
+                                marginTop: titleMarginT,
+                                marginBottom: titleMarginB
                             }}
                         >
                             <RichText
@@ -1220,6 +1204,7 @@ class edit extends Component {
                                 placeholder={__("Awesome Title")}
                                 value={titleText}
                                 style={{
+                                    fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
                                     color: titleStyles[0].titleColor,
                                     fontFamily: titleStyles[0].titleFont,
                                     letterSpacing: titleStyles[0].titleLetter + "px",
@@ -1237,8 +1222,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__desc_wrap`}
                             style={{
-                                marginTop: descStyles[0].descMarginT,
-                                marginBottom: descStyles[0].descMarginB
+                                marginTop: descMarginT,
+                                marginBottom: descMarginB
                             }}
                         >
                             <RichText
@@ -1252,7 +1237,8 @@ class edit extends Component {
                                     color: descStyles[0].descColor,
                                     fontFamily: descStyles[0].descFont,
                                     lineHeight: descStyles[0].descLine + "px",
-                                    fontWeight: descStyles[0].descWeight
+                                    fontWeight: descStyles[0].descWeight,
+                                    fontSize: `${descriptionFontSize}${descStyles[0].descSizeUnit}`
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1262,8 +1248,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
-                                marginTop: btnStyles[0].btnMarginT,
-                                marginBottom: btnStyles[0].btnMarginB
+                                marginTop: btnMarginT,
+                                marginBottom: btnMarginB
                             }}
                         >
                             <RichText
@@ -1273,6 +1259,7 @@ class edit extends Component {
                                 placeholder={__("Click Here")}
                                 value={btnText}
                                 style={{
+                                    fontSize: `${buttonFontSize}${btnStyles[0].btnSizeUnit}`,
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack
                                         ? hexToRgba(btnStyles[0].btnBack, btnStyles[0].btnOpacity)
@@ -1283,7 +1270,7 @@ class edit extends Component {
                                     fontWeight: btnStyles[0].btnWeight,
                                     borderStyle: btnStyles[0].btnBorderType,
                                     borderWidth: btnBorderIconBox
-                                        ? `${btnStyles[0].btnBorderTop}px ${btnStyles[0].btnBorderRight}px ${btnStyles[0].btnBorderBottom}px ${btnStyles[0].btnBorderLeft}px`
+                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
                                         : btnStyles[0].btnBorderWidth + "px",
                                     borderRadius: btnStyles[0].btnBorderRadius + "px",
                                     borderColor: btnStyles[0].btnBorderColor,

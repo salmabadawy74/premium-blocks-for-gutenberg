@@ -7,8 +7,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import styling from './styling';
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
@@ -33,28 +32,41 @@ const {
 } = wp.blockEditor;
 
 const { Fragment, Component } = wp.element;
+const { withSelect } = wp.data
+
 
 class edit extends Component {
+    constructor() {
+        super(...arguments);
 
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId.substr(0, 6) })
 
         this.props.setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-testimonial-" + clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     render() {
         const { isSelected, className, setAttributes } = this.props;
         const {
             block_id,
+            classMigrate,
             align,
             authorImgId,
             authorImgUrl,
@@ -62,61 +74,22 @@ class edit extends Component {
             imgSize,
             imgBorder,
             imgBorderColor,
-            text,
-            authorTag,
-            authorColor,
-            authorSizeUnit,
-            authorSizeMobile,
-            authorSizeTablet,
-            authorSize,
-            authorLetter,
-            authorStyle,
-            authorUpper,
-            authorWeight,
             author,
-            authorComTag,
+            authorStyles,
+
+            text,
             authorCom,
-            authorComColor,
-            authorComSize,
-            authorComSizeUnit,
-            authorComSizeMobile,
-            authorComSizeTablet,
-            urlCheck,
-            urlText,
-            urlTarget,
-            quotSize,
-            quotColor,
-            quotOpacity,
-            bodyColor,
-            bodySize,
-            bodySizeUnit,
-            bodySizeMobile,
-            bodySizeTablet,
-            bodyLine,
-            bodyTop,
-            bodyBottom,
-            dashColor,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            shadowPosition,
-            backColor,
-            backOpacity,
-            imageID,
-            imageURL,
-            fixed,
-            backgroundRepeat,
-            backgroundPosition,
-            backgroundSize,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            contentStyle,
+            companyStyles,
+            quoteStyles,
+            containerStyles,
             paddingTop,
             paddingRight,
             paddingBottom,
             paddingLeft,
-            paddingUnit,
-            hideDesktop,
-            hideTablet,
-            hideMobile
         } = this.props.attributes;
 
         const RADIUS = [
@@ -134,15 +107,70 @@ class edit extends Component {
             }
         ];
 
-        let element = document.getElementById(
-            "premium-style-testimonial-" + this.props.clientId.substr(0, 6)
-        );
+        const saveAuthorStyle = (value) => {
+            const newUpdate = authorStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                authorStyles: newUpdate,
+            });
+        }
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+
+        const saveContentStyle = (value) => {
+            const newUpdate = contentStyle.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                contentStyle: newUpdate,
+            });
+        }
+
+        const saveContainerStyle = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                containerStyles: newUpdate,
+            });
+        }
+        const saveCompanyStyle = (value) => {
+            const newUpdate = companyStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                companyStyles: newUpdate,
+            });
+        }
+        const saveQuoteStyles = (value) => {
+            const newUpdate = quoteStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                quoteStyles: newUpdate,
+            });
         }
 
         const mainClasses = classnames(className, "premium-testimonial");
+
+        const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
+        const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
+        const testimonalFontSize = this.getPreviewSize(this.props.deviceType, contentStyle[0].bodySize, contentStyle[0].bodySizeTablet, contentStyle[0].bodySizeMobile);
 
         return [
             isSelected && (
@@ -227,49 +255,49 @@ class edit extends Component {
                         <Toolbar
                             controls={"123456".split("").map(tag => ({
                                 icon: "heading",
-                                isActive: "H" + tag === authorTag,
-                                onClick: () => setAttributes({ authorTag: "H" + tag }),
+                                isActive: "H" + tag === authorStyles[0].authorTag,
+                                onClick: () => saveAuthorStyle({ authorTag: "H" + tag }),
                                 subscript: tag
                             }))}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveAuthorStyle}
                             fontSizeType={{
-                                value: authorSizeUnit,
+                                value: authorStyles[0].authorSizeUnit,
                                 label: __("authorSizeUnit"),
                             }}
                             fontSize={{
-                                value: authorSize,
+                                value: authorStyles[0].authorSize,
                                 label: __("authorSize"),
                             }}
                             fontSizeMobile={{
-                                value: authorSizeMobile,
+                                value: authorStyles[0].authorSizeMobile,
                                 label: __("authorSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: authorSizeTablet,
+                                value: authorStyles[0].authorSizeTablet,
                                 label: __("authorSizeTablet"),
                             }}
-                            onChangeSize={newSize => setAttributes({ authorSize: newSize })}
-                            weight={authorWeight}
-                            style={authorStyle}
-                            spacing={authorLetter}
-                            upper={authorUpper}
+                            onChangeSize={newSize => saveAuthorStyle({ authorSize: newSize })}
+                            weight={authorStyles[0].authorWeight}
+                            style={authorStyles[0].authorStyle}
+                            spacing={authorStyles[0].authorLetter}
+                            upper={authorStyles[0].authorUpper}
                             onChangeWeight={newWeight =>
-                                setAttributes({ authorWeight: newWeight })
+                                saveAuthorStyle({ authorWeight: newWeight })
                             }
-                            onChangeStyle={newStyle => setAttributes({ authorStyle: newStyle })}
+                            onChangeStyle={newStyle => saveAuthorStyle({ authorStyle: newStyle })}
                             onChangeSpacing={newValue =>
-                                setAttributes({ authorLetter: newValue })
+                                saveAuthorStyle({ authorLetter: newValue })
                             }
-                            onChangeUpper={check => setAttributes({ authorUpper: check })}
+                            onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
                         />
                         <p>{__("Color")}</p>
                         <ColorPalette
-                            value={authorColor}
+                            value={authorStyles[0].authorColor}
                             onChange={newValue =>
-                                setAttributes({
+                                saveAuthorStyle({
                                     authorColor: newValue
                                 })
                             }
@@ -283,48 +311,45 @@ class edit extends Component {
                     >
                         <PremiumTypo
                             components={["responsiveSize", "line"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveContentStyle}
                             fontSizeType={{
-                                value: bodySizeUnit,
+                                value: contentStyle[0].bodySizeUnit,
                                 label: __("bodySizeUnit"),
                             }}
                             fontSize={{
-                                value: bodySize,
+                                value: contentStyle[0].bodySize,
                                 label: __("bodySize"),
                             }}
                             fontSizeMobile={{
-                                value: bodySizeMobile,
+                                value: contentStyle[0].bodySizeMobile,
                                 label: __("bodySizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: bodySizeTablet,
+                                value: contentStyle[0].bodySizeTablet,
                                 label: __("bodySizeTablet"),
                             }}
-                            line={bodyLine}
-                            onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
+                            line={contentStyle[0].bodyLine}
+                            onChangeLine={newWeight => saveContentStyle({ bodyLine: newWeight })}
                         />
                         <p>{__("Color")}</p>
                         <ColorPalette
-                            value={bodyColor}
+                            value={contentStyle[0].bodyColor}
                             onChange={newValue =>
-                                setAttributes({
+                                saveContentStyle({
                                     bodyColor: newValue
                                 })
                             }
-                            opacityValue={backOpacity}
-                            onChangeOpacity={value =>
-                                setAttributes({ backOpacity: value })
-                            }
+
                         />
                         <RangeControl
                             label={__("Margin Top (PX)")}
-                            value={bodyTop}
-                            onChange={newSize => setAttributes({ bodyTop: newSize })}
+                            value={contentStyle[0].bodyTop}
+                            onChange={newSize => saveContentStyle({ bodyTop: newSize })}
                         />
                         <RangeControl
                             label={__("Margin Bottom (PX)")}
-                            value={bodyBottom}
-                            onChange={newSize => setAttributes({ bodyBottom: newSize })}
+                            value={contentStyle[0].bodyBottom}
+                            onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -336,28 +361,28 @@ class edit extends Component {
                         <Toolbar
                             controls={"123456".split("").map(tag => ({
                                 icon: "heading",
-                                isActive: "H" + tag === authorComTag,
-                                onClick: () => setAttributes({ authorComTag: "H" + tag }),
+                                isActive: "H" + tag === authorStyles[0].authorComTag,
+                                onClick: () => saveAuthorStyle({ authorComTag: "H" + tag }),
                                 subscript: tag
                             }))}
                         />
                         <PremiumTypo
                             components={["responsiveSize"]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveCompanyStyle}
                             fontSizeType={{
-                                value: authorComSizeUnit,
+                                value: companyStyles[0].authorComSizeUnit,
                                 label: __("authorComSizeUnit"),
                             }}
                             fontSize={{
-                                value: authorComSize,
+                                value: companyStyles[0].authorComSize,
                                 label: __("authorComSize"),
                             }}
                             fontSizeMobile={{
-                                value: authorComSizeMobile,
+                                value: companyStyles[0].authorComSizeMobile,
                                 label: __("authorComSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: authorComSizeTablet,
+                                value: companyStyles[0].authorComSizeTablet,
                                 label: __("authorComSizeTablet"),
                             }}
                         />
@@ -376,9 +401,9 @@ class edit extends Component {
                                     <Fragment>
                                         <p>{__("Text Color")}</p>
                                         <ColorPalette
-                                            value={authorComColor}
+                                            value={companyStyles[0].authorComColor}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveCompanyStyle({
                                                     authorComColor: newValue
                                                 })
                                             }
@@ -386,9 +411,9 @@ class edit extends Component {
                                         />
                                         <p>{__("Dash Color")}</p>
                                         <ColorPalette
-                                            value={dashColor}
+                                            value={companyStyles[0].dashColor}
                                             onChange={newValue =>
-                                                setAttributes({
+                                                saveCompanyStyle({
                                                     dashColor: newValue
                                                 })
                                             }
@@ -400,21 +425,21 @@ class edit extends Component {
                         </div>
                         <ToggleControl
                             label={__("URL")}
-                            checked={urlCheck}
-                            onChange={newCheck => setAttributes({ urlCheck: newCheck })}
+                            checked={companyStyles[0].urlCheck}
+                            onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
                         />
-                        {urlCheck && (
+                        {companyStyles[0].urlCheck && (
                             <TextControl
                                 label={__("URL")}
-                                value={urlText}
-                                onChange={newURL => setAttributes({ urlText: newURL })}
+                                value={companyStyles[0].urlText}
+                                onChange={newURL => saveCompanyStyle({ urlText: newURL })}
                             />
                         )}
-                        {urlCheck && (
+                        {companyStyles[0].urlCheck && (
                             <ToggleControl
                                 label={__("Open Link in a New Tab")}
-                                checked={urlTarget}
-                                onChange={newCheck => setAttributes({ urlTarget: newCheck })}
+                                checked={companyStyles[0].urlTarget}
+                                onChange={newCheck => saveCompanyStyle({ urlTarget: newCheck })}
                             />
                         )}
                     </PanelBody>
@@ -425,17 +450,17 @@ class edit extends Component {
                     >
                         <RangeControl
                             label={__("Size (EM)")}
-                            value={quotSize}
+                            value={quoteStyles[0].quotSize}
                             min="1"
                             max="12"
-                            onChange={newSize => setAttributes({ quotSize: newSize })}
+                            onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
                         />
                         <Fragment>
                             <p>{__("Quotations Color")}</p>
                             <ColorPalette
-                                value={quotColor}
+                                value={quoteStyles[0].quotColor}
                                 onChange={newValue =>
-                                    setAttributes({
+                                    saveQuoteStyles({
                                         quotColor: newValue
                                     })
                                 }
@@ -446,8 +471,8 @@ class edit extends Component {
                             label={__("Opacity")}
                             min="0"
                             max="100"
-                            value={quotOpacity}
-                            onChange={newValue => setAttributes({ quotOpacity: newValue })}
+                            value={quoteStyles[0].quotOpacity}
+                            onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -459,75 +484,74 @@ class edit extends Component {
                             <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
-                                colorValue={backColor}
+                                colorValue={containerStyles[0].backColor}
                                 onChangeColor={newvalue =>
-                                    setAttributes({
-                                        backColor: newvalue,
-                                        backColorUpdated: true,
+                                    saveContainerStyle({
+                                        backColor: newvalue
                                     })
                                 }
-                                opacityValue={backOpacity}
+                                opacityValue={containerStyles[0].backOpacity}
                                 onChangeOpacity={value =>
-                                    setAttributes({ backOpacity: value })
+                                    saveContainerStyle({ backOpacity: value })
                                 }
                             />
                             <PremiumBackground
-                                imageID={imageID}
-                                imageURL={imageURL}
-                                backgroundPosition={backgroundPosition}
-                                backgroundRepeat={backgroundRepeat}
-                                backgroundSize={backgroundSize}
-                                fixed={fixed}
+                                imageID={containerStyles[0].imageID}
+                                imageURL={containerStyles[0].imageURL}
+                                backgroundPosition={containerStyles[0].backgroundPosition}
+                                backgroundRepeat={containerStyles[0].backgroundRepeat}
+                                backgroundSize={containerStyles[0].backgroundSize}
+                                fixed={containerStyles[0].fixed}
                                 onSelectMedia={media => {
-                                    setAttributes({
+                                    saveContainerStyle({
                                         imageID: media.id,
                                         imageURL: media.url
                                     });
                                 }}
                                 onRemoveImage={value =>
-                                    setAttributes({ imageURL: "", imageID: "" })
+                                    saveContainerStyle({ imageURL: "", imageID: "" })
                                 }
                                 onChangeBackPos={newValue =>
-                                    setAttributes({ backgroundPosition: newValue })
+                                    saveContainerStyle({ backgroundPosition: newValue })
                                 }
                                 onchangeBackRepeat={newValue =>
-                                    setAttributes({ backgroundRepeat: newValue })
+                                    saveContainerStyle({ backgroundRepeat: newValue })
                                 }
                                 onChangeBackSize={newValue =>
-                                    setAttributes({ backgroundSize: newValue })
+                                    saveContainerStyle({ backgroundSize: newValue })
                                 }
-                                onChangeFixed={check => setAttributes({ fixed: check })}
+                                onChangeFixed={check => saveContainerStyle({ fixed: check })}
                             />
                         </Fragment>
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
+                            color={containerStyles[0].shadowColor}
+                            blur={containerStyles[0].shadowBlur}
+                            horizontal={containerStyles[0].shadowHorizontal}
+                            vertical={containerStyles[0].shadowVertical}
+                            position={containerStyles[0].shadowPosition}
                             onChangeColor={newColor =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowColor: newColor.hex
                                 })
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowBlur: newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowHorizontal: newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowVertical: newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowPosition: newValue
                                 })
                             }
@@ -558,9 +582,9 @@ class edit extends Component {
                                 })
                             }
                             showUnits={true}
-                            selectedUnit={paddingUnit}
+                            selectedUnit={containerStyles[0].paddingUnit}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingUnit: newvalue })
+                                saveContainerStyle({ paddingUnit: newvalue })
                             }
                         />
                     </PanelBody>
@@ -578,27 +602,27 @@ class edit extends Component {
                 id={`premium-testimonial-${block_id}`}
                 className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
                 style={{
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                    backgroundColor: backColor
-                        ? hexToRgba(backColor, backOpacity)
+                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                    backgroundColor: containerStyles[0].backColor
+                        ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
                         : "transparent",
-                    backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    paddingTop: paddingTop + paddingUnit,
-                    paddingBottom: paddingBottom + paddingUnit,
-                    paddingLeft: paddingLeft + paddingUnit,
-                    paddingRight: paddingRight + paddingUnit
+                    backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    paddingTop: paddingTop + containerStyles[0].paddingUnit,
+                    paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
+                    paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
+                    paddingRight: paddingRight + containerStyles[0].paddingUnit
                 }}
             >
                 <div className={`premium-testimonial__container`}>
                     <span className={`premium-testimonial__upper`}>
                         <PremiumUpperQuote
-                            size={quotSize}
-                            color={quotColor}
-                            opacity={quotOpacity}
+                            size={quoteStyles[0].quotSize}
+                            color={quoteStyles[0].quotColor}
+                            opacity={quoteStyles[0].quotOpacity}
                         />
                     </span>
                     <div
@@ -634,10 +658,11 @@ class edit extends Component {
                                     placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                     onChange={newText => setAttributes({ text: newText })}
                                     style={{
-                                        color: bodyColor,
-                                        lineHeight: bodyLine + "px",
-                                        marginTop: bodyTop + "px",
-                                        marginBottom: bodyBottom + "px"
+                                        fontSize: `${testimonalFontSize}${contentStyle[0].bodySizeUnit}`,
+                                        color: contentStyle[0].bodyColor,
+                                        lineHeight: contentStyle[0].bodyLine + "px",
+                                        marginTop: contentStyle[0].bodyTop + "px",
+                                        marginBottom: contentStyle[0].bodyBottom + "px"
                                     }}
                                     keepPlaceholderOnFocus
                                 />
@@ -648,44 +673,46 @@ class edit extends Component {
                             style={{ justifyContent: align }}
                         >
                             <RichText
-                                tagName={authorTag.toLowerCase()}
+                                tagName={authorStyles[0].authorTag.toLowerCase()}
                                 className={`premium-testimonial__author`}
                                 value={author}
                                 isSelected={false}
                                 onChange={newText => setAttributes({ author: newText })}
                                 style={{
-                                    color: authorColor,
-                                    letterSpacing: authorLetter + "px",
-                                    textTransform: authorUpper ? "uppercase" : "none",
-                                    fontStyle: authorStyle,
-                                    fontWeight: authorWeight
+                                    fontSize: `${authorFontSize}${authorStyles[0].authorSizeUnit} `,
+                                    color: authorStyles[0].authorColor,
+                                    letterSpacing: authorStyles[0].authorLetter + "px",
+                                    textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
+                                    fontStyle: authorStyles[0].authorStyle,
+                                    fontWeight: authorStyles[0].authorWeight
                                 }}
                             />
                             <span
                                 className={`premium-testimonial__sep`}
                                 style={{
-                                    color: dashColor
+                                    color: companyStyles[0].dashColor
                                 }}
                             >
                                 &nbsp;-&nbsp;
             </span>
                             <RichText
-                                tagName={authorComTag.toLowerCase()}
+                                tagName={authorStyles[0].authorComTag.toLowerCase()}
                                 className={`premium-testimonial__author_comp`}
                                 onChange={newText => setAttributes({ authorCom: newText })}
                                 value={authorCom}
                                 isSelected={false}
                                 style={{
-                                    color: authorComColor,
+                                    color: companyStyles[0].authorComColor,
+                                    fontSize: `${authorComFontSize}${companyStyles[0].authorComSizeUnit}`
                                 }}
                             />
                         </div>
                     </div>
                     <span className={`premium-testimonial__lower`}>
                         <PremiumLowerQuote
-                            size={quotSize}
-                            color={quotColor}
-                            opacity={quotOpacity}
+                            size={quoteStyles[0].quotSize}
+                            color={quoteStyles[0].quotColor}
+                            opacity={quoteStyles[0].quotOpacity}
                         />
                     </span>
                 </div>
@@ -694,4 +721,11 @@ class edit extends Component {
     }
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

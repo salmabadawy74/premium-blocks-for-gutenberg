@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
+import hexToRgba from "../../components/hex-to-rgba"
 
 const { RichText } = wp.blockEditor;
 
@@ -44,7 +44,31 @@ const save = props => {
         titleStyles,
         descStyles,
         btnStyles,
-        containerStyles
+        containerStyles,
+        titleMarginT,
+        titleMarginB,
+        descMarginT,
+        descMarginB,
+        btnBorderWidth,
+        btnBorderTop,
+        btnBorderRight,
+        btnBorderBottom,
+        btnBorderLeft,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
+        btnMarginT,
+        btnMarginB,
+        marginT,
+        marginR,
+        marginB,
+        marginL,
+        paddingT,
+        paddingR,
+        paddingB,
+        paddingL,
+        iconType
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
@@ -57,19 +81,19 @@ const save = props => {
                 textAlign: align,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: borderIconBox
-                    ? `${containerStyles[0].borderTop}px ${containerStyles[0].borderRight}px ${containerStyles[0].borderBottom}px ${containerStyles[0].borderLeft}px`
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                marginTop: containerStyles[0].marginT,
-                marginRight: containerStyles[0].marginR,
-                marginBottom: containerStyles[0].marginB,
-                marginLeft: containerStyles[0].marginL,
-                paddingTop: containerStyles[0].paddingT + containerStyles[0].paddingU,
-                paddingRight: containerStyles[0].paddingR + containerStyles[0].paddingU,
-                paddingBottom: containerStyles[0].paddingB + containerStyles[0].paddingU,
-                paddingLeft: containerStyles[0].paddingL + containerStyles[0].paddingU,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                marginTop: marginT,
+                marginRight: marginR,
+                marginBottom: marginB,
+                marginLeft: marginL,
+                paddingTop: paddingT + containerStyles[0].paddingU,
+                paddingRight: paddingR + containerStyles[0].paddingU,
+                paddingBottom: paddingB + containerStyles[0].paddingU,
+                paddingLeft: paddingL + containerStyles[0].paddingU,
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                 backgroundColor: containerStyles[0].backColor
                     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
                     : "transparent",
@@ -111,9 +135,12 @@ const save = props => {
                             style={{
                                 color: iconColor,
                                 backgroundColor: iconBackColor
-                                    ? hexToRgba(iconBackColor, iconOpacity)
+                                    ? hexToRgba(
+                                        iconBackColor,
+                                        iconOpacity
+                                    )
                                     : "transparent",
-                                fontSize: iconSize,
+                                fontSize: iconSize
                             }}
                         />
                     )}
@@ -136,12 +163,12 @@ const save = props => {
                     <div
                         className={`premium-icon-box__title_wrap`}
                         style={{
-                            marginTop: titleStyles[0].titleMarginT,
-                            marginBottom: titleStyles[0].titleMarginB
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
                         }}
                     >
                         <RichText.Content
-                            tagName={titleTag.toLowerCase()}
+                            tagName={titleStyles[0].titleTag.toLowerCase()}
                             className={`premium-icon-box__title`}
                             value={titleText}
                             style={{
@@ -161,8 +188,8 @@ const save = props => {
                     <div
                         className={`premium-icon-box__desc_wrap`}
                         style={{
-                            marginTop: descStyles[0].descMarginT,
-                            marginBottom: descStyles[0].descMarginB
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
                         }}
                     >
                         <RichText.Content
@@ -182,8 +209,8 @@ const save = props => {
                     <div
                         className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                         style={{
-                            marginTop: btnStyles[0].btnMarginT,
-                            marginBottom: btnStyles[0].btnMarginB
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
                         }}
                     >
                         <RichText.Content
@@ -204,7 +231,7 @@ const save = props => {
                                 fontWeight: btnStyles[0].btnWeight,
                                 borderStyle: btnStyles[0].btnBorderType,
                                 borderWidth: btnBorderIconBox
-                                    ? `${btnStyles[0].btnBorderTop}px ${btnStyles[0].btnBorderRight}px ${btnStyles[0].btnBorderBottom}px ${btnStyles[0].btnBorderLeft}px`
+                                    ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
                                     : btnStyles[0].btnBorderWidth + "px",
                                 borderRadius: btnStyles[0].btnBorderRadius + "px",
                                 borderColor: btnStyles[0].btnBorderColor,

@@ -5,13 +5,12 @@ import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
 import PremiumBorder from "../../components/premium-border"
 import PremiumPadding from "../../components/premium-padding"
-import FONTS from "../../components/premium-fonts"
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import styling from './styling'
-import hexToRgba from "hex-to-rgba"
+import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
 
 const {
     PanelBody,
@@ -35,106 +34,63 @@ class edit extends Component {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId.substr(0, 6) })
         setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-count-up-" + clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
-
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
     render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
         const {
             block_id,
+            borderCount,
             increment,
             time,
             delay,
             align,
             flexDir,
-            numberSizeUnit,
-            numberSize,
-            numberSizeMobile,
-            numberSizeTablet,
-            numberColor,
-            numberWeight,
+            prefix,
+            suffix,
             icon,
             iconSpacing,
-            iconSize,
-            iconColor,
-            titleCheck,
-            titleTxt,
-            titleColor,
-            titleSizeUnit,
-            titleSize,
-            titleSizeMobile,
-            titleSizeTablet,
-            titleSpacing,
-            titleStyle,
-            titleUpper,
-            titleT,
-            titleB,
-            titleWeight,
             imageID,
             imageURL,
             iconType,
             iconCheck,
-            prefix,
-            prefixTxt,
-            prefixSize,
-            prefixSizeUnit,
-            prefixSizeTablet,
-            prefixSizeMobile,
-            prefixColor,
-            prefixWeight,
-            prefixGap,
-            suffix,
-            suffixTxt,
-            suffixSizeUnit,
-            suffixSize,
-            suffixSizeTablet,
-            suffixSizeMobile,
-            suffixColor,
-            suffixWeight,
-            suffixGap,
+            iconSize,
+            iconColor,
             selfAlign,
+            titleCheck,
+            titleTxt,
             faIcon,
-            containerBack,
-            containerOpacity,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            shadowPosition,
-            backgroundImageID,
-            backgroundImageURL,
-            fixed,
-            backgroundRepeat,
-            backgroundPosition,
-            backgroundSize,
-            borderType,
-            borderColor,
-            borderRadius,
-            borderWidth,
-            borderCount,
+            counterFamily,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            numberStyles,
+            titleStyles,
+            containerStyles,
+            suffixStyles,
+            prefixStyles,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            titleFamily,
-            counterFamily,
-            prefixFamily,
-            suffixFamily,
             paddingT,
             paddingR,
             paddingB,
             paddingL,
-            paddingU,
-            hideDesktop,
-            hideTablet,
-            hideMobile
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -192,64 +148,68 @@ class edit extends Component {
                 setAttributes({ selfAlign: "flex-end" });
                 break;
         }
+        const saveNumberStyles = (value) => {
+            const newUpdate = numberStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                numberStyles: newUpdate,
+            });
+        }
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css2?family=" +
-                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-            head.appendChild(link);
-        };
-
-        const onChangeTitleFamily = fontFamily => {
-            setAttributes({ titleFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const onChangePrefixFamily = fontFamily => {
-            setAttributes({ prefixFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const onChangeCounterFamily = fontFamily => {
-            setAttributes({ counterFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const onChangeSuffixFamily = fontFamily => {
-            setAttributes({ suffixFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        let element = document.getElementById(
-            "premium-style-count-up-" + blockId.substr(0, 6)
-        );
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+        const savePrefixStyle = (value) => {
+            const newUpdate = prefixStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                prefixStyles: newUpdate,
+            });
+        }
+        const saveSuffixStyle = (value) => {
+            const newUpdate = suffixStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                suffixStyles: newUpdate,
+            });
+        }
+        const saveContainerStyle = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                containerStyles: newUpdate,
+            });
         }
 
         const mainClasses = classnames(className, "premium-countup");
-
+        const numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
+        const prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
+        const suffixFontSize = this.getPreviewSize(this.props.deviceType, suffixStyles[0].suffixSize, suffixStyles[0].suffixSizeTablet, suffixStyles[0].suffixSizeMobile);
+        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -425,42 +385,38 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={counterFamily}
-                            options={FONTS}
-                            onChange={onChangeCounterFamily}
-                        />
                         <PremiumTypo
-                            components={["responsiveSize", "weight"]}
-                            setAttributes={setAttributes}
+                            components={["responsiveSize", "weight", "family"]}
+                            setAttributes={saveNumberStyles}
                             fontSizeType={{
-                                value: numberSizeUnit,
+                                value: numberStyles[0].numberSizeUnit,
                                 label: __("numberSizeUnit"),
                             }}
                             fontSize={{
-                                value: numberSize,
+                                value: numberStyles[0].numberSize,
                                 label: __("numberSize"),
                             }}
                             fontSizeMobile={{
-                                value: numberSizeMobile,
+                                value: numberStyles[0].numberSizeMobile,
                                 label: __("numberSizeMobile"),
                             }}
                             fontSizeTablet={{
-                                value: numberSizeTablet,
+                                value: numberStyles[0].numberSizeTablet,
                                 label: __("numberSizeTablet"),
                             }}
-                            weight={numberWeight}
+                            fontFamily={counterFamily}
+                            weight={numberStyles[0].numberWeight}
                             onChangeWeight={newWeight =>
-                                setAttributes({ numberWeight: newWeight })
+                                saveNumberStyles({ numberWeight: newWeight })
                             }
+                            onChangeFamily={(fontFamily) => setAttributes({ counterFamily: fontFamily })}
                         />
                         <Fragment>
                             <p>{__("Number Color")}</p>
                             <ColorPalette
-                                value={numberColor}
+                                value={numberStyles[0].numberColor}
                                 onChange={newValue =>
-                                    setAttributes({
+                                    saveNumberStyles({
                                         numberColor: newValue === undefined ? "transparent" : newValue
                                     })
                                 }
@@ -476,47 +432,44 @@ class edit extends Component {
                         >
                             <TextControl
                                 label={__("Prefix")}
-                                value={prefixTxt}
-                                onChange={value => setAttributes({ prefixTxt: value })}
+                                value={prefixStyles[0].prefixTxt}
+                                onChange={value => savePrefixStyle({ prefixTxt: value })}
                             />
 
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={prefixFamily}
-                                options={FONTS}
-                                onChange={onChangePrefixFamily}
-                            />
+
                             <PremiumTypo
-                                components={["responsiveSize", "weight"]}
-                                setAttributes={setAttributes}
+                                components={["responsiveSize", "weight", "family"]}
+                                setAttributes={savePrefixStyle}
                                 fontSizeType={{
-                                    value: prefixSizeUnit,
+                                    value: prefixStyles[0].prefixSizeUnit,
                                     label: __("prefixSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: prefixSize,
+                                    value: prefixStyles[0].prefixSize,
                                     label: __("prefixSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: prefixSizeMobile,
+                                    value: prefixStyles[0].prefixSizeMobile,
                                     label: __("prefixSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: prefixSizeTablet,
+                                    value: prefixStyles[0].prefixSizeTablet,
                                     label: __("prefixSizeTablet"),
                                 }}
-                                weight={prefixWeight}
+                                weight={prefixStyles[0].prefixWeight}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ prefixWeight: newWeight })
+                                    savePrefixStyle({ prefixWeight: newWeight })
                                 }
+                                fontFamily={prefixStyles[0].prefixFamily}
+                                onChangeFamily={(fontFamily) => savePrefixStyle({ prefixFamily: fontFamily })}
                             />
 
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={prefixColor}
+                                    value={prefixStyles[0].prefixColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        savePrefixStyle({
                                             prefixColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -526,8 +479,8 @@ class edit extends Component {
                             </Fragment>
                             <RangeControl
                                 label={__("Gap After (PX)")}
-                                value={prefixGap}
-                                onChange={newValue => setAttributes({ prefixGap: newValue })}
+                                value={prefixStyles[0].prefixGap}
+                                onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -539,45 +492,41 @@ class edit extends Component {
                         >
                             <TextControl
                                 label={__("Suffix")}
-                                value={suffixTxt}
-                                onChange={value => setAttributes({ suffixTxt: value })}
-                            />
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={suffixFamily}
-                                options={FONTS}
-                                onChange={onChangeSuffixFamily}
+                                value={suffixStyles[0].suffixTxt}
+                                onChange={value => saveSuffixStyle({ suffixTxt: value })}
                             />
                             <PremiumTypo
-                                components={["responsiveSize", "weight"]}
-                                setAttributes={setAttributes}
+                                components={["responsiveSize", "weight", "family"]}
+                                setAttributes={saveSuffixStyle}
                                 fontSizeType={{
-                                    value: suffixSizeUnit,
+                                    value: suffixStyles[0].suffixSizeUnit,
                                     label: __("suffixSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: suffixSize,
+                                    value: suffixStyles[0].suffixSize,
                                     label: __("suffixSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: suffixSizeMobile,
+                                    value: suffixStyles[0].suffixSizeMobile,
                                     label: __("suffixSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: suffixSizeTablet,
+                                    value: suffixStyles[0].suffixSizeTablet,
                                     label: __("suffixSizeTablet"),
                                 }}
-                                weight={suffixWeight}
+                                weight={suffixStyles[0].suffixWeight}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ suffixWeight: newWeight })
+                                    saveSuffixStyle({ suffixWeight: newWeight })
                                 }
+                                fontFamily={suffixStyles[0].suffixFamily}
+                                onChangeFamily={(fontFamily) => saveSuffixStyle({ suffixFamily: fontFamily })}
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={suffixColor}
+                                    value={suffixStyles[0].suffixColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        saveSuffixStyle({
                                             suffixColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -587,8 +536,8 @@ class edit extends Component {
                             </Fragment>
                             <RangeControl
                                 label={__("Gap Before (PX)")}
-                                value={suffixGap}
-                                onChange={newValue => setAttributes({ suffixGap: newValue })}
+                                value={suffixStyles[0].suffixGap}
+                                onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
                             />
                         </PanelBody>
                     )}
@@ -603,52 +552,48 @@ class edit extends Component {
                                 value={titleTxt}
                                 onChange={value => setAttributes({ titleTxt: value })}
                             />
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={titleFamily}
-                                options={FONTS}
-                                onChange={onChangeTitleFamily}
-                            />
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "spacing", "style", "upper"]}
-                                setAttributes={setAttributes}
+                                components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
+                                setAttributes={saveTitleStyles}
                                 fontSizeType={{
-                                    value: titleSizeUnit,
+                                    value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit"),
                                 }}
                                 fontSize={{
-                                    value: titleSize,
+                                    value: titleStyles[0].titleSize,
                                     label: __("titleSize"),
                                 }}
                                 fontSizeMobile={{
-                                    value: titleSizeMobile,
+                                    value: titleStyles[0].titleSizeMobile,
                                     label: __("titleSizeMobile"),
                                 }}
                                 fontSizeTablet={{
-                                    value: titleSizeTablet,
+                                    value: titleStyles[0].titleSizeTablet,
                                     label: __("titleSizeTablet"),
                                 }}
-                                weight={titleWeight}
-                                style={titleStyle}
-                                spacing={titleSpacing}
-                                upper={titleUpper}
+                                fontFamily={titleStyles[0].titleFamily}
+                                weight={titleStyles[0].titleWeight}
+                                style={titleStyles[0].titleStyle}
+                                spacing={titleStyles[0].titleSpacing}
+                                upper={titleStyles[0].titleUpper}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight })
+                                    saveTitleStyles({ titleWeight: newWeight })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
+                                    saveTitleStyles({ titleStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ titleSpacing: newValue })
+                                    saveTitleStyles({ titleSpacing: newValue })
                                 }
-                                onChangeUpper={check => setAttributes({ titleUpper: check })}
+                                onChangeFamily={(fontFamily) => saveTitleStyles({ titleFamily: fontFamily })}
+                                onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
                                 <ColorPalette
-                                    value={titleColor}
+                                    value={titleStyles[0].titleColor}
                                     onChange={newValue =>
-                                        setAttributes({
+                                        saveTitleStyles({
                                             titleColor:
                                                 newValue === undefined ? "transparent" : newValue
                                         })
@@ -663,13 +608,13 @@ class edit extends Component {
                             >
                                 <RangeControl
                                     label={__("Margin Top (PX)")}
-                                    value={titleT}
-                                    onChange={newValue => setAttributes({ titleT: newValue })}
+                                    value={titleStyles[0].titleT}
+                                    onChange={newValue => saveTitleStyles({ titleT: newValue })}
                                 />
                                 <RangeControl
                                     label={__("Margin Bottom (PX)")}
-                                    value={titleB}
-                                    onChange={newValue => setAttributes({ titleB: newValue })}
+                                    value={titleStyles[0].titleB}
+                                    onChange={newValue => saveTitleStyles({ titleB: newValue })}
                                 />
                             </PanelBody>
                         </PanelBody>
@@ -683,59 +628,59 @@ class edit extends Component {
                             <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
-                                colorValue={containerBack}
+                                colorValue={containerStyles[0].containerBack}
                                 onChangeColor={newValue =>
-                                    setAttributes({
+                                    saveContainerStyle({
                                         containerBack: newValue,
                                     })
                                 }
-                                opacityValue={containerOpacity}
+                                opacityValue={containerStyles[0].containerOpacity}
                                 onChangeOpacity={value =>
-                                    setAttributes({ containerOpacity: value })
+                                    saveContainerStyle({ containerOpacity: value })
                                 }
                             />
                         </Fragment>
 
                         <PremiumBackground
-                            imageID={backgroundImageID}
-                            imageURL={backgroundImageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].backgroundImageID}
+                            imageURL={containerStyles[0].backgroundImageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveContainerStyle({
                                     backgroundImageID: media.id,
                                     backgroundImageURL: media.url
                                 });
                             }}
                             onRemoveImage={value =>
-                                setAttributes({
+                                saveContainerStyle({
                                     backgroundImageURL: "",
                                     backgroundImageID: ""
                                 })
                             }
                             onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
+                                saveContainerStyle({ backgroundPosition: newValue })
                             }
                             onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
+                                saveContainerStyle({ backgroundRepeat: newValue })
                             }
                             onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
+                                saveContainerStyle({ backgroundSize: newValue })
                             }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
+                            borderType={containerStyles[0].borderType}
+                            borderWidth={containerStyles[0].borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={containerStyles[0].borderColor}
+                            borderRadius={containerStyles[0].borderRadius}
+                            onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderCount: true,
@@ -746,47 +691,45 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveContainerStyle({ borderColor: colorValue.hex })
                             }
                             onChangeRadius={(newRadius) =>
-                                setAttributes({ borderRadius: newRadius })
+                                saveContainerStyle({ borderRadius: newRadius })
                             }
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
+                            color={containerStyles[0].shadowColor}
+                            blur={containerStyles[0].shadowBlur}
+                            horizontal={containerStyles[0].shadowHorizontal}
+                            vertical={containerStyles[0].shadowVertical}
+                            position={containerStyles[0].shadowPosition}
                             withAlpha={true}
                             onChangeColor={newColor => {
 
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowColor: newColor.rgb
                                 })
-
-
                             }
 
                             }
                             onChangeBlur={newBlur =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowBlur: newBlur
                                 })
                             }
                             onChangehHorizontal={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowHorizontal: newValue
                                 })
                             }
                             onChangeVertical={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowVertical: newValue
                                 })
                             }
                             onChangePosition={newValue =>
-                                setAttributes({
+                                saveContainerStyle({
                                     shadowPosition: newValue
                                 })
                             }
@@ -817,9 +760,9 @@ class edit extends Component {
                                     paddingL: value || 0
                                 })
                             }
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                saveContainerStyle({ paddingU: newvalue })
                             }
                         />
                     </PanelBody>
@@ -847,25 +790,25 @@ class edit extends Component {
                 style={{
                     justifyContent: align,
                     flexDirection: flexDir,
-                    backgroundColor: containerBack
-                        ? hexToRgba(containerBack, containerOpacity)
+                    backgroundColor: containerStyles[0].containerBack
+                        ? hexToRgba(containerStyles[0].containerBack, containerStyles[0].containerOpacity)
                         : "transparent",
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px rgba(${shadowColor.r},${shadowColor.g},${shadowColor.b}, ${shadowColor.a}) ${shadowPosition}`,
-                    backgroundImage: backgroundImageURL ? `url('${backgroundImageURL}')` : 'none',
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    borderStyle: borderType,
+                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
+                    backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    borderStyle: containerStyles[0].borderType,
                     borderWidth: borderCount
                         ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
+                        : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor,
+                    paddingTop: paddingT + containerStyles[0].paddingU,
+                    paddingRight: paddingR + containerStyles[0].paddingU,
+                    paddingBottom: paddingB + containerStyles[0].paddingU,
+                    paddingLeft: paddingL + containerStyles[0].paddingU,
                 }}
             >
                 {iconCheck && (
@@ -920,13 +863,14 @@ class edit extends Component {
                             <p
                                 className={`premium-countup__prefix`}
                                 style={{
-                                    fontFamily: prefixFamily,
-                                    color: prefixColor,
-                                    fontWeight: prefixWeight,
-                                    marginRight: prefixGap + "px"
+                                    fontSize: `${prefixFontSize}${prefixStyles[0].prefixSizeUnit}`,
+                                    fontFamily: prefixStyles[0].prefixFamily,
+                                    color: prefixStyles[0].prefixColor,
+                                    fontWeight: prefixStyles[0].prefixWeight,
+                                    marginRight: prefixStyles[0].prefixGap + "px"
                                 }}
                             >
-                                {prefixTxt}
+                                {prefixStyles[0].prefixTxt}
                             </p>
                         )}
                         <p
@@ -934,9 +878,10 @@ class edit extends Component {
                             data-interval={time}
                             data-delay={delay}
                             style={{
+                                fontSize: `${numberFontSize}${numberStyles[0].numberSizeUnit}`,
                                 fontFamily: counterFamily,
-                                color: numberColor,
-                                fontWeight: numberWeight
+                                color: numberStyles[0].numberColor,
+                                fontWeight: numberStyles[0].numberWeight
                             }}
                         >
                             {increment}
@@ -945,13 +890,14 @@ class edit extends Component {
                             <p
                                 className={`premium-countup__suffix`}
                                 style={{
-                                    fontFamily: suffixFamily,
-                                    color: suffixColor,
-                                    fontWeight: suffixWeight,
-                                    marginLeft: suffixGap + "px"
+                                    fontSize: `${suffixFontSize}${suffixStyles[0].suffixSizeUnit}`,
+                                    fontFamily: suffixStyles[0].suffixFamily,
+                                    color: suffixStyles[0].suffixColor,
+                                    fontWeight: suffixStyles[0].suffixWeight,
+                                    marginLeft: suffixStyles[0].suffixGap + "px"
                                 }}
                             >
-                                {suffixTxt}
+                                {suffixStyles[0].suffixTxt}
                             </p>
                         )}
                     </div>
@@ -959,14 +905,15 @@ class edit extends Component {
                         <h3
                             className={`premium-countup__title`}
                             style={{
-                                fontFamily: titleFamily,
-                                marginTop: titleT + "px",
-                                marginBottom: titleB + "px",
-                                color: titleColor,
-                                letterSpacing: titleSpacing + "px",
-                                fontWeight: titleWeight,
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle
+                                fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
+                                fontFamily: titleStyles[0].titleFamily,
+                                marginTop: titleStyles[0].titleT + "px",
+                                marginBottom: titleStyles[0].titleB + "px",
+                                color: titleStyles[0].titleColor,
+                                letterSpacing: titleStyles[0].titleSpacing + "px",
+                                fontWeight: titleStyles[0].titleWeight,
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle
                             }}
                         >
                             {titleTxt}
@@ -977,14 +924,15 @@ class edit extends Component {
                     <h3
                         className={`premium-countup__title`}
                         style={{
-                            fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
-                            color: titleColor,
-                            letterSpacing: titleSpacing + "px",
-                            fontWeight: titleWeight,
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
+                            fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
+                            fontFamily: titleStyles[0].titleFamily,
+                            marginTop: titleStyles[0].titleT + "px",
+                            marginBottom: titleStyles[0].titleB + "px",
+                            color: titleStyles[0].titleColor,
+                            letterSpacing: titleStyles[0].titleSpacing + "px",
+                            fontWeight: titleStyles[0].titleWeight,
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
                             alignSelf: selfAlign
                         }}
                     >
@@ -996,4 +944,12 @@ class edit extends Component {
     }
 };
 
-export default edit;
+
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

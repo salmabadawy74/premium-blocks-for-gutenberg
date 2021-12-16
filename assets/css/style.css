@@ -1952,3 +1952,99 @@ a.premium-dheading-block__link:hover {
     padding: 10px 15px;
     width: 100%;
 }
+.pbg-form-loading-spin {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.pbg-form-loading-spin div {
+    position: absolute;
+    top: 27px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.pbg-form-loading-spin div:nth-child(1) {
+    left: 6px;
+    animation: pbg-form-ellipses1 0.6s infinite;
+}
+.pbg-form-loading-spin div:nth-child(2) {
+    left: 6px;
+    animation: pbg-form-ellipses2 0.6s infinite;
+}
+.pbg-form-loading-spin div:nth-child(3) {
+    left: 26px;
+    animation: pbg-form-ellipses2 0.6s infinite;
+}
+.pbg-form-loading-spin div:nth-child(4) {
+    left: 45px;
+    animation: pbg-form-ellipses3 0.6s infinite;
+}
+.premium-blocks-form-warning {
+    background: #fff5f5;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #fc8181;
+    color: #c53030;
+    font-weight: bold;
+}
+.pbg-form-error-msg {
+    background: #fff5f5;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 2px;
+    border: 1px solid #fc8181;
+    color: #c53030;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+.pbg-form.pbg-form-has-error {
+    align-items: flex-start;
+}
+.pbg-form
+    .premium-blocks-form-field
+    .pbg-text-style-field.has-error:not(.missingclass) {
+    border-color: #c53030;
+}
+.pbg-form .required {
+    color: #e53e3e;
+    margin-left: 5px;
+}
+.premium-blocks-form-success {
+    background: #ebf8ff;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #4299e1;
+    color: #2b6cb0;
+    font-weight: bold;
+}
+@keyframes pbg-form-ellipses1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes pbg-form-ellipses3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes pbg-form-ellipses2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(19px, 0);
+    }
+}

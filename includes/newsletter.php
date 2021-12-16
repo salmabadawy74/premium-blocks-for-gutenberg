@@ -80,10 +80,6 @@ class PBG_Ajax_Form {
 					}
 				}
 
-				// Check Recaptcha.
-
-				// unset( $_POST['_kb_form_sub_id'], $_POST['_kb_verify_email'] );
-				// Get fields.
 				$fields = array();
 				if ( ! isset( $form_args['fields'] ) || ! is_array( $form_args['fields'] ) ) {
 					$form_args['fields'] = array(

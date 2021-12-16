@@ -4,11 +4,9 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
-import FONTS from "../../components/premium-fonts";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-
 
 const { __ } = wp.i18n;
 
@@ -181,6 +179,8 @@ export class edit extends Component {
             }
         ];
 
+
+
         const onChangeHover = newValue => {
             this.props.setAttributes({ effect: newValue });
             switch (newValue) {
@@ -197,25 +197,6 @@ export class edit extends Component {
         };
         setAttributes({ block_id: blockId });
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css2?family=" +
-                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-            head.appendChild(link);
-        };
-
-        const onChangeTextFamily = fontFamily => {
-            saveTextStyles({ textFontFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
         const saveTextStyles = (value) => {
             const newUpdate = textStyles.map((item, index) => {
                 if (0 === index) {
@@ -242,7 +223,6 @@ export class edit extends Component {
         const mainClasses = classnames(className, "premium-button");
 
         const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
-
         return [
             isSelected && "block" != btnSize && (
                 <BlockControls key="controls">
@@ -306,14 +286,8 @@ export class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={textStyles[0].textFontFamily}
-                            options={FONTS}
-                            onChange={onChangeTextFamily}
-                        />
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                             setAttributes={saveTextStyles}
                             fontSizeType={{
                                 value: textStyles[0].textSizeUnit,
@@ -331,6 +305,7 @@ export class edit extends Component {
                                 value: textStyles[0].textSizeTablet,
                                 label: __("textSizeTablet"),
                             }}
+                            fontFamily={textStyles[0].textFontFamily}
                             weight={textStyles[0].textWeight}
                             style={textStyles[0].textStyle}
                             spacing={textStyles[0].textLetter}
@@ -348,6 +323,7 @@ export class edit extends Component {
                             onChangeSpacing={newValue =>
                                 saveTextStyles({ textLetter: newValue })
                             }
+                            onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
                             onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
                         <PremiumTextShadow

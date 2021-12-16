@@ -1,4 +1,6 @@
 import PremiumResponsive from "./premium-responsive";
+import FONTS from "./premium-fonts";
+import WebFont from 'webfontloader';
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -12,10 +14,23 @@ const {
 } = wp.components;
 
 export default class PremiumTypo extends Component {
-    constructor() {
-        super(...arguments);
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            fontFamily: this.props.fontFamily
+        }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.fontFamily !== this.state.fontFamily) {
+            WebFont.load({
+                google: {
+                    families: this.state.fontFamily
+                }
+            });
+        }
+    }
     render() {
         const {
             components,
@@ -25,6 +40,7 @@ export default class PremiumTypo extends Component {
             spacing,
             line,
             upper,
+            onChangeFamily = () => { },
             onChangeSize = () => { },
             onChangeWeight = () => { },
             onChangeStyle = () => { },
@@ -33,6 +49,7 @@ export default class PremiumTypo extends Component {
             onChangeUpper = () => { },
             onResetClick = () => { },
         } = this.props;
+        const { fontFamily } = this.state;
 
         const STYLE = [
             {
@@ -146,18 +163,17 @@ export default class PremiumTypo extends Component {
                                     onResetClick={onResetClick}
                                 />
                             )}
+                            {components.includes('family') && (
+                                <SelectControl
+                                    label={__("Font Family")}
+                                    value={fontFamily}
+                                    options={FONTS}
+                                    onChange={onChangeFamily}
+                                />
+                            )}
                         </Fragment>
                     )}
                 />
-                {/* <Button
-                    className="premium-control-toggle-btn reset-btn"
-                    contentClassName="premium-control-toggle-content"
-                    isSmall
-                    aria-pressed={this.state !== null}
-                    onClick={onResetClick}
-                >
-                    <i className="premium-control-reset dashicons dashicons-image-rotate" />
-                </Button> */}
             </div>
         );
     }

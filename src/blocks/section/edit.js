@@ -5,7 +5,7 @@ import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumSizeUnits from "../../components/premium-size-units";
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 
 const { __ } = wp.i18n;
@@ -13,6 +13,8 @@ const { __ } = wp.i18n;
 const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
 
 const { Fragment } = wp.element;
+const { withSelect } = wp.data
+
 
 const {
     BlockControls,
@@ -29,49 +31,32 @@ const edit = props => {
     const { isSelected, className, setAttributes } = props;
 
     const {
-        isUpdated,
         stretchSection,
-        horAlign,
         innerWidthType,
+        isUpdated,
+        horAlign,
+        height,
         innerWidth,
         minHeight,
         minHeightUnit,
         vPos,
-        height,
-        color,
-        opacity,
-        imageID,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderWidth,
+        block_id,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        containerStyles,
         borderTop,
         borderRight,
         borderBottom,
         borderLeft,
-        borderColor,
-        borderRadius,
         marginTop,
         marginBottom,
         marginLeft,
         marginRight,
-        marginUnit,
         paddingTop,
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        hideDesktop,
-        hideTablet,
-        hideMobile
     } = props.attributes;
 
     const WIDTH = [
@@ -110,6 +95,18 @@ const edit = props => {
     ];
 
     const mainClasses = classnames(className, "premium-container");
+
+    const saveContainerStyle = (value) => {
+        const newUpdate = containerStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate,
+        });
+    }
 
     return [
         isSelected && (
@@ -203,42 +200,42 @@ const edit = props => {
                     <p>{__("Background Color")}</p>
                     <PremiumBackground
                         type="color"
-                        colorValue={color}
+                        colorValue={containerStyles[0].color}
                         onChangeColor={newvalue =>
-                            setAttributes({ color: newvalue })
+                            saveContainerStyle({ color: newvalue })
                         }
-                        opacityValue={opacity}
+                        opacityValue={containerStyles[0].opacity}
                         onChangeOpacity={value =>
-                            setAttributes({ opacity: value })
+                            saveContainerStyle({ opacity: value })
                         }
                     />
                     <PremiumBackground
-                        imageID={imageID}
-                        imageURL={imageURL}
-                        backgroundPosition={backgroundPosition}
-                        backgroundRepeat={backgroundRepeat}
-                        backgroundSize={backgroundSize}
-                        fixed={fixed}
+                        imageID={containerStyles[0].imageID}
+                        imageURL={containerStyles[0].imageURL}
+                        backgroundPosition={containerStyles[0].backgroundPosition}
+                        backgroundRepeat={containerStyles[0].backgroundRepeat}
+                        backgroundSize={containerStyles[0].backgroundSize}
+                        fixed={containerStyles[0].fixed}
                         onSelectMedia={media => {
-                            setAttributes({
+                            saveContainerStyle({
                                 imageID: media.id,
                                 imageURL: media.url
                             });
                         }}
                         onRemoveImage={value =>
-                            setAttributes({ imageURL: "", imageID: "" })
+                            saveContainerStyle({ imageURL: "", imageID: "" })
                         }
                         onChangeBackPos={newValue =>
-                            setAttributes({ backgroundPosition: newValue })
+                            saveContainerStyle({ backgroundPosition: newValue })
                         }
                         onchangeBackRepeat={newValue =>
-                            setAttributes({ backgroundRepeat: newValue })
+                            saveContainerStyle({ backgroundRepeat: newValue })
                         }
                         onChangeBackSize={newValue =>
-                            setAttributes({ backgroundSize: newValue })
+                            saveContainerStyle({ backgroundSize: newValue })
                         }
                         onChangeFixed={check =>
-                            setAttributes({ fixed: check })
+                            saveContainerStyle({ fixed: check })
                         }
                     />
                 </PanelBody>
@@ -248,15 +245,15 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <PremiumBorder
-                        borderType={borderType}
-                        borderWidth={borderWidth}
+                        borderType={containerStyles[0].borderType}
+                        borderWidth={containerStyles[0].borderWidth}
                         top={borderTop}
                         right={borderRight}
                         bottom={borderBottom}
                         left={borderLeft}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        borderColor={containerStyles[0].borderColor}
+                        borderRadius={containerStyles[0].borderRadius}
+                        onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 borderTop: top,
@@ -267,21 +264,21 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            saveContainerStyle({ borderColor: colorValue.hex })
                         }
                         onChangeRadius={(newrRadius) =>
-                            setAttributes({ borderRadius: newrRadius })
+                            saveContainerStyle({ borderRadius: newrRadius })
                         }
                     />
                     <PremiumBoxShadow
                         inner={false}
-                        color={shadowColor}
-                        blur={shadowBlur}
-                        horizontal={shadowHorizontal}
-                        vertical={shadowVertical}
-                        position={shadowPosition}
+                        color={containerStyles[0].shadowColor}
+                        blur={containerStyles[0].shadowBlur}
+                        horizontal={containerStyles[0].shadowHorizontal}
+                        vertical={containerStyles[0].shadowVertical}
+                        position={containerStyles[0].shadowPosition}
                         onChangeColor={newColor =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
@@ -289,24 +286,24 @@ const edit = props => {
                             })
                         }
                         onChangeBlur={newBlur =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
                             })
                         }
                         onChangehHorizontal={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowHorizontal:
                                     newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangeVertical={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowVertical:
                                     newValue === undefined ? 0 : newValue
                             })
                         }
                         onChangePosition={newValue =>
-                            setAttributes({
+                            saveContainerStyle({
                                 shadowPosition:
                                     newValue === undefined ? 0 : newValue
                             })
@@ -346,7 +343,7 @@ const edit = props => {
                         }
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue =>
-                            setAttributes({ marginUnit: newvalue })
+                            saveContainerStyle({ marginUnit: newvalue })
                         }
                     />
                     <PremiumPadding
@@ -375,9 +372,9 @@ const edit = props => {
                             })
                         }
                         showUnits={true}
-                        selectedUnit={paddingUnit}
+                        selectedUnit={containerStyles[0].paddingUnit}
                         onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingUnit: newvalue })
+                            saveContainerStyle({ paddingUnit: newvalue })
                         }
                     />
                 </PanelBody>
@@ -397,29 +394,29 @@ const edit = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color
-                    ? hexToRgba(color, opacity)
+                backgroundColor: containerStyles[0].color
+                    ? hexToRgba(containerStyles[0].color, containerStyles[0].opacity)
                     : "transparent",
-                borderStyle: borderType,
+                borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                marginTop: marginTop + containerStyles[0].marginUnit,
+                marginBottom: marginBottom + containerStyles[0].marginUnit,
+                marginLeft: marginLeft + containerStyles[0].marginUnit,
+                marginRight: marginRight + containerStyles[0].marginUnit,
+                paddingTop: paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: paddingRight + containerStyles[0].paddingUnit,
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >
             <div
@@ -441,4 +438,11 @@ const edit = props => {
     ];
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

@@ -9,6 +9,8 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
+
+
 registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
     icon: <PbgIcon icon="dual-heading" />,

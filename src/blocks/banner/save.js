@@ -156,6 +156,7 @@ const save = props => {
                         className={`premium-banner__link`}
                         href={url}
                         target={target && "_blank"}
+                        rel="noopener"
                     />
                 )}
             </div>

@@ -1,5 +1,5 @@
 import attributes from "./attributes"
-import hexToRgba from "hex-to-rgba"
+import hexToRgba from "../../components/hex-to-rgba"
 import classnames from 'classnames'
 
 const className = "premium-countup"

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
+import hexToRgba from "../../components/hex-to-rgba"
 
 const { InnerBlocks } = wp.blockEditor;
 
@@ -8,49 +8,32 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
-        isUpdated,
         stretchSection,
-        horAlign,
         innerWidthType,
-        innerWidth,
+        isUpdated,
+        horAlign,
         height,
-        vPos,
+        innerWidth,
         minHeight,
         minHeightUnit,
-        color,
-        opacity,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderWidth,
+        vPos,
+        block_id,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        containerStyles,
         borderTop,
         borderRight,
         borderBottom,
         borderLeft,
-        borderColor,
-        borderRadius,
         marginTop,
         marginBottom,
         marginLeft,
         marginRight,
-        marginUnit,
         paddingTop,
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        hideDesktop,
-        hideTablet,
-        hideMobile
     } = props.attributes;
 
 
@@ -63,29 +46,29 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color
-                    ? hexToRgba(color, opacity)
+                backgroundColor: containerStyles[0].color
+                    ? hexToRgba(containerStyles[0].color, containerStyles[0].opacity)
                     : "transparent",
-                borderStyle: borderType,
+                borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                marginTop: marginTop + containerStyles[0].marginUnit,
+                marginBottom: marginBottom + containerStyles[0].marginUnit,
+                marginLeft: marginLeft + containerStyles[0].marginUnit,
+                marginRight: marginRight + containerStyles[0].marginUnit,
+                paddingTop: paddingTop + containerStyles[0].paddingUnit,
+                paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
+                paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
+                paddingRight: paddingRight + containerStyles[0].paddingUnit,
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >
             <div
