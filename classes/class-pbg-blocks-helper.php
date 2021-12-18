@@ -97,6 +97,7 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 
 		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-config.php';
+		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-templates-helper.php';
 
 		// Get Blocks Attributes.
 		self::$block_atts = PBG_Blocks_Config::get_block_attributes();
