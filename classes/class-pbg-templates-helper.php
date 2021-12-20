@@ -92,15 +92,16 @@ class PBG_Template_Helper {
         // echo PREMIUM_BLOCKS_TEMPLATE_PATH;
         // $current_screen = get_current_screen();
         $dir        = PREMIUM_BLOCKS_PATH . 'src/blocks/template/json';
-        echo $dir;
+        // echo $dir;
         $list_files = $this->get_default_assets();
         foreach ( $list_files as $key => $file_name ) {
             if ( file_exists( $dir . '/' . $file_name . '.json' ) ) {
-                echo $dir . '/' . $file_name . '.json';
+                // echo $dir . '/' . $file_name . '.json';
                 $data = $this->ast_block_templates_get_filesystem()->get_contents( $dir . '/' . $file_name . '.json' );
-                echo $data;
+                // echo $data;
                 if ( ! empty( $data ) ) {
                     update_site_option( $file_name, $data );
+                    $this->get_upload_dir();
                 }
             }
         }
@@ -207,6 +208,34 @@ class PBG_Template_Helper {
         WP_Filesystem();
         return $wp_filesystem;
     }
+
+    	/**
+		 * Returns an array of paths for the upload directory
+		 * of the current site.
+		 *
+		 * @since 1.14.0
+		 * @return array
+		 */
+		public static function get_upload_dir() {
+
+			$upload = wp_upload_dir();
+    $upload_dir = $upload['basedir'];
+    $upload_dir = $upload_dir . '/pbgTemplate';
+    if (! is_dir($upload_dir)) {
+       mkdir( $upload_dir, 0700 );
+       $filename = 'Templates';
+    //    $filename = basename($_FILES['Attach_Files']['name']);
+       $filetype = 'json';
+       $datei = "files/standard/{$projID}/{$filename}";
+       $target_path = $upload_dir . "/" . $filename;
+        //    if(move_uploaded_file($_FILES['Attach_Files']['tmp_name'], $target_path)) {
+        //    mysql_query("INSERT INTO files (files.name, files.project, files.user, files.added, files.datei, files.type, files.folder, files.visible) VALUES('{$filename}', '{$projID}', 5, UNIX_TIMESTAMP(now()), '{$datei}', '{$filetype}', 0, ' ')");
+        //    }
+        chmod("{$target_path}", 0755);
+    }
+		}
+
+
     /**
      * Creates and returns an instance of the class
      *

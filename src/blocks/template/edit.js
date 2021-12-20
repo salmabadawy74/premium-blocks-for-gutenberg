@@ -62,21 +62,99 @@ class edit extends Component {
             setAttributes({
                 isModalOpen: value
             });
-            jQuery(document).ready(function ($) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'admin-ajax.php',
-                    data: { 'action': 'pbg-block-templates-import-category' },
-                    success: function (data) {
-                        console.log('data', data);
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    }
-                });
-                console.log("jjjj")
+            console.log(template)
+            if (template.length == 0) {
 
-            });
+                jQuery(document).ready(function ($) {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'admin-ajax.php',
+                        data: { 'action': 'pbg-block-templates-import-category' },
+                        success: function (data) {
+                            console.log('data', Object.values(JSON.parse(data.data)));
+                            setAttributes({
+                                template: Object.values(JSON.parse(data.data)),
+                                newTemplate: Object.values(JSON.parse(data.data))
+                            });
+                            const designList = Object.keys(JSON.parse(data.data)).reduce((output, name) => {
+                                const design = JSON.parse(data.data)[name]
+                                const { categories, uikit } = design
+
+                                if (typeof output.uikits[uikit] === 'undefined') {
+                                    output.uikits[uikit] = {
+                                        id: uikit,
+                                        label: design.uikit,
+                                        plan: design.plan,
+                                        count: 0,
+                                    }
+                                }
+
+                                categories.forEach(category => {
+                                    if (typeof output.categories[category] === 'undefined') {
+                                        output.categories[category] = {
+                                            id: category,
+                                            label: category,
+                                            count: 0,
+                                        }
+                                    }
+                                })
+                                return output
+                            }, { uikits: {}, categories: {} })
+
+                            let uikitSort = ['label']
+
+                            const uikits = sortBy(Object.values(designList.uikits), uikitSort)
+                            const categories = sortBy(Object.values(designList.categories), 'label')
+                            categories.unshift({
+                                id: 'all',
+                                label: __('All'),
+                                count: 0,
+                            })
+
+                            const newUiKits = uikits.reduce((uiKits, uiKit) => {
+                                uiKits[uiKit.id] = {
+                                    uiKit,
+                                    count: 0,
+                                }
+                                return uiKits
+                            }, {})
+
+                            const newCategories = categories.reduce((categories, category) => {
+                                categories[category.id] = {
+                                    category,
+                                    count: 0,
+                                }
+                                return categories
+                            }, {})
+
+                            if (newCategories['all']) {
+                                newCategories['all'].count = Object.values(JSON.parse(data.data)).length
+                                // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
+                            }
+
+                            Object.values(JSON.parse(data.data)).forEach(design => {
+                                if (design.uikit && newUiKits[design.uikit]) {
+                                    newUiKits[design.uikit].count++
+                                }
+                                design.categories.forEach(category => {
+                                    if (category && newCategories[category]) {
+                                        newCategories[category].count++
+                                    }
+                                })
+                            })
+
+                            setAttributes({
+                                uikits: Object.values(newUiKits),
+                                category: Object.values(newCategories)
+                            });
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                });
+            }
+
             // const results = await apiFetch({
             //     path: `/stackable/v2/design_library`,
             //     method: 'GET',
