@@ -1,7 +1,7 @@
 import PremiumResponsive from "./premium-responsive";
-import FONTS from "./premium-fonts";
+import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
-
+import Select from "react-select"
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -20,6 +20,7 @@ export default class PremiumTypo extends Component {
         this.state = {
             fontFamily: this.props.fontFamily
         }
+
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -29,6 +30,7 @@ export default class PremiumTypo extends Component {
                     families: this.state.fontFamily
                 }
             });
+
         }
     }
     render() {
@@ -40,6 +42,8 @@ export default class PremiumTypo extends Component {
             spacing,
             line,
             upper,
+            setAttributes,
+            fontFamily,
             onChangeFamily = () => { },
             onChangeSize = () => { },
             onChangeWeight = () => { },
@@ -49,7 +53,6 @@ export default class PremiumTypo extends Component {
             onChangeUpper = () => { },
             onResetClick = () => { },
         } = this.props;
-        const { fontFamily } = this.state;
 
         const STYLE = [
             {
@@ -65,6 +68,61 @@ export default class PremiumTypo extends Component {
                 label: "Oblique",
             },
         ];
+        const fonts = [
+            { value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+        ]
+
+        let fontWeight = ""
+        Object.keys(googleFonts).map((k, v) => {
+            fonts.push(
+                { value: k, label: k, weight: googleFonts[k].weight }
+            )
+            if (k === fontFamily) {
+                fontWeight = googleFonts[k].weight
+
+            }
+        })
+
+        if (fontWeight === "") {
+            fontWeight = fonts[0].weight
+        }
+        const fontWeightObj = []
+
+        fontWeight.forEach(function (item) {
+            fontWeightObj.push(
+                { value: item, label: item }
+            )
+        })
+
+        const onFontfamilyChange = (value) => {
+            onFontChange(weight, value.label)
+            onChangeFamily(value.value)
+        }
+
+        const onFontChange = (weight, fontFamily) => {
+            let font_flag
+            let new_value
+            if (typeof googleFonts[fontFamily] == "object") {
+                const gfontsObj = googleFonts[fontFamily].weight
+                if (typeof gfontsObj == "object") {
+                    gfontsObj.forEach(function (item) {
+                        if (weight.value == item) {
+                            font_flag = false
+                        } else {
+                            new_value = item
+                            font_flag = true
+                            setAttributes({ [weight.label]: new_value })
+                            return
+                        }
+                    })
+                }
+            }
+
+        }
 
         return (
             <div className="premium-control-toggle">
@@ -119,15 +177,26 @@ export default class PremiumTypo extends Component {
                                     {...this.props}
                                 />
                             )}
+                            {components.includes('family') && (
+                                <Select
+                                    options={fonts}
+                                    value={{ value: this.props.fontFamily, label: __(`${this.props.fontFamily}`), weight: fontWeightObj }}
+                                    isMulti={false}
+                                    maxMenuHeight={300}
+                                    onChange={onFontfamilyChange}
+                                    className="react-select-container"
+                                    classNamePrefix="react-select"
+                                />
+
+                            )}
                             {components.includes("weight") && (
-                                <RangeControl
-                                    label={__("Font Weight")}
-                                    min="100"
-                                    max="900"
-                                    step="100"
+                                <SelectControl
+                                    label={__("Font Weight", 'premium blocks for gutenberg')}
                                     value={weight}
                                     onChange={onChangeWeight}
-                                    onResetClick={onResetClick}
+                                    options={
+                                        fontWeightObj
+                                    }
                                 />
                             )}
                             {components.includes("style") && (
@@ -163,14 +232,7 @@ export default class PremiumTypo extends Component {
                                     onResetClick={onResetClick}
                                 />
                             )}
-                            {components.includes('family') && (
-                                <SelectControl
-                                    label={__("Font Family")}
-                                    value={fontFamily}
-                                    options={FONTS}
-                                    onChange={onChangeFamily}
-                                />
-                            )}
+
                         </Fragment>
                     )}
                 />
