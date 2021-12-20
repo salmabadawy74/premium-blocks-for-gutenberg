@@ -84,7 +84,7 @@ const attributes = {
                 textLetter: '',
                 textStyle: '',
                 textUpper: false,
-                textWeight: 500,
+                textWeight: '',
                 textLine: '',
                 shadowColor: '',
                 shadowBlur: '0',

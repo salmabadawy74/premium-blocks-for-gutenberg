@@ -8,8 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Define PBG_Blocks_Helper class
  */
 class PBG_Blocks_Helper {
-
-
 	/**
 	 * Class instance
 	 *
@@ -113,9 +111,9 @@ class PBG_Blocks_Helper {
 		// Enqueue Generated stylesheet to WP Head.
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
+		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
 
 	}
-
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
 	 *
@@ -127,7 +125,6 @@ class PBG_Blocks_Helper {
 	public function pbg_editor() {
 		$is_fa_enabled       = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 		$plugin_dependencies = array( 'wp-blocks', 'react', 'react-dom', 'wp-components', 'wp-compose', 'wp-data', 'wp-edit-post', 'wp-element', 'wp-hooks', 'wp-i18n', 'wp-plugins', 'wp-polyfill', 'wp-primitives', 'wp-api', 'wp-widgets' );
-
 		wp_enqueue_script(
 			'pbg-editor',
 			PREMIUM_BLOCKS_URL . 'assets/js/build.js',
@@ -149,11 +146,14 @@ class PBG_Blocks_Helper {
 			array( 'wp-edit-blocks' ),
 			PREMIUM_BLOCKS_VERSION
 		);
-
+		$gfonts_path      = PREMIUM_BLOCKS_URL . 'assets/gfonts.php';
+		$gfont_names_path = PREMIUM_BLOCKS_URL . 'assets/gfonts-names.php';
 		wp_localize_script(
 			'pbg-editor',
 			'PremiumBlocksSettings',
 			array(
+				'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
 				'activeBlocks'      => self::$blocks,
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
@@ -169,8 +169,6 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
-
-
 	public function load_api_settings() {
 		register_setting(
 			'mail_chimp_api',
@@ -257,7 +255,6 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
-
 	public function on_init() {
 
 		if ( ! function_exists( 'register_block_type' ) ) {
@@ -348,7 +345,6 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
-
 	/**
 	 * Add Premium Blocks category to Blocks Categories
 	 *
@@ -369,7 +365,6 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
-
 	/**
 	 * Generate Stylesheet
 	 *
@@ -429,7 +424,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
 	public function it_is_not_amp() {
 		$not_amp = true;
 		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
@@ -437,7 +431,6 @@ class PBG_Blocks_Helper {
 		}
 		return $not_amp;
 	}
-
 	/**
 	 * Generates stylesheet in loop.
 	 *
@@ -469,7 +462,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
 	/**
 	 * Parse Guten Block.
 	 *
@@ -482,9 +474,6 @@ class PBG_Blocks_Helper {
 
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 	}
-
-
-
 	/**
 	 * Print Stylsheet
 	 *
@@ -510,7 +499,6 @@ class PBG_Blocks_Helper {
 		<?php
 		ob_end_flush();
 	}
-
 	/**
 	 * Get Block CSS
 	 *
@@ -579,7 +567,6 @@ class PBG_Blocks_Helper {
 
 		return $css;
 	}
-
 	public function render_inline_css( $css, $style_id, $in_content = false ) {
 
 		if ( ! is_admin() ) {
@@ -592,7 +579,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
 	public function should_render_inline( $name, $unique_id ) {
 		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
 			return true;
@@ -600,8 +586,57 @@ class PBG_Blocks_Helper {
 		return false;
 	}
 
+	/**
+	 * Adds Google fonts for loading later
+	 *
+	 * @param array $attr the blocks attr.
+	 */
+	public function add_gfont( $attr ) {
+
+		$defaults = array(
+			'googleFont'     => true,
+			'loadGoogleFont' => true,
+			'fontFamily'     => '',
+			'fontVariant'    => '',
+		);
+		$attr     = wp_parse_args( $attr, $defaults );
+
+		if ( true == $attr['googleFont'] && true == $attr['loadGoogleFont'] && ! empty( $attr['fontFamily'] ) ) {
+			// Check if the font has been added yet.
+			if ( ! array_key_exists( $attr['fontFamily'], self::$gfonts ) ) {
+				$add_font                            = array(
+					'fontfamily'   => $attr['fontFamily'],
+					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
+				);
+				self::$gfonts[ $attr['fontFamily'] ] = $add_font;
+				// Check if wp_head has already run in which case we need to add to footer fonts.
+				if ( did_action( 'wp_body_open' ) >= 1 ) {
+					self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
+				}
+			} else {
+				if ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ) {
+					if ( ! in_array( $attr['fontVariant'], self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], true ) ) {
+						array_push( self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
+						if ( did_action( 'wp_body_open' ) >= 1 ) {
+							if ( ! array_key_exists( $attr['fontFamily'], self::$footer_gfonts ) ) {
+								$add_font                                   = array(
+									'fontfamily'   => $attr['fontFamily'],
+									'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
+								);
+								self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
+							} else {
+								array_push( self::$footer_gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	public function frontend_gfonts() {
+
 		if ( empty( self::$gfonts ) ) {
+
 			return;
 		}
 		$print_google_fonts = apply_filters( 'pbg_blocks_print_google_fonts', true );
@@ -622,14 +657,16 @@ class PBG_Blocks_Helper {
 				$link .= '%7C'; // Append a new font to the string.
 			}
 			$link .= $gfont_values['fontfamily'];
+			if ( ! empty( $gfont_values['fontvariants'] ) ) {
+				$link .= ':';
+				$link .= implode( ',', $gfont_values['fontvariants'] );
+			}
 		}
 		if ( apply_filters( 'pbg_display_swap_google_fonts', true ) ) {
 			$link .= '&amp;display=swap';
 		}
 		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
 	}
-
-
 	/**
 	 * Get Fancy Text Block CSS
 	 *
@@ -822,8 +859,6 @@ class PBG_Blocks_Helper {
 
 		return $css->css_output();
 	}
-
-
 	/**
 	 * Get Accordion Block CSS
 	 *
@@ -919,7 +954,6 @@ class PBG_Blocks_Helper {
 		}
 		return $css->css_output();
 	}
-
 	/**
 	 * Get Banner Block CSS
 	 *
@@ -967,7 +1001,6 @@ class PBG_Blocks_Helper {
 		return $content;
 	}
 	public function get_banner_css_style( $attr, $unique_id ) {
-
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1016,7 +1049,6 @@ class PBG_Blocks_Helper {
 		return $css->css_output();
 
 	}
-
 	/**
 	 * Get Button Block CSS
 	 *
@@ -1037,18 +1069,7 @@ class PBG_Blocks_Helper {
 				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
-		if ( isset( $attributes['textStyles'][0]['textFontFamily'] ) ) {
-			self::$gfonts = $attributes['textStyles'][0]['textFontFamily'];
-		}
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-button',
-				PREMIUM_BLOCKS_URL . 'assets/js/button.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
+
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -1066,6 +1087,15 @@ class PBG_Blocks_Helper {
 		return $content;
 	}
 	public function get_button_css_style( $attr, $unique_id ) {
+		if ( isset( $attr['textStyles'][0]['textFontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['textStyles'][0]['textFontFamily'] ) ? $attr['textStyles'][0]['textFontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['textStyles'][0]['textWeight'] ) ? $attr['textStyles'][0]['textWeight'] : '' ),
+				)
+			);
+		}
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1093,12 +1123,9 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
-
 		$css->stop_media_query();
-
 		return $css->css_output();
 	}
-
 	/**
 	 * Get Count Up Block CSS
 	 *
@@ -1148,18 +1175,6 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		if ( isset( $attributes['titleStyles'][0]['titleFamily'] ) ) {
-			self::$gfonts = $attributes['titleStyles'][0]['titleFamily'];
-		}
-		if ( isset( $attributes['suffixStyles'][0]['suffixFamily'] ) ) {
-			self::$gfonts = $attributes['suffixStyles'][0]['suffixFamily'];
-		}
-		if ( isset( $attributes['prefixStyles'][0]['prefixFamily'] ) ) {
-			self::$gfonts = $attributes['prefixStyles'][0]['prefixFamily'];
-		}
-		if ( isset( $attributes['counterFamily'] ) ) {
-			self::$gfonts = $attributes['counterFamily'];
-		}
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -1176,9 +1191,40 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_countup_css_style( $attr, $unique_id ) {
 
+		if ( isset( $attr['titleStyles'][0]['titleFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['titleStyles'][0]['titleFamily'] ) ? $attr['titleStyles'][0]['titleFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['textStyles'][0]['textWeight'] ) ? $attr['textStyles'][0]['textWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['suffixStyles'][0]['suffixFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['suffixStyles'][0]['suffixFamily'] ) ? $attr['suffixStyles'][0]['suffixFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['textStyles'][0]['suffixWeight'] ) ? $attr['textStyles'][0]['suffixWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['prefixStyles'][0]['prefixFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['prefixStyles'][0]['prefixFamily'] ) ? $attr['prefixStyles'][0]['prefixFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['textStyles'][0]['prefixWeight'] ) ? $attr['textStyles'][0]['prefixWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['counterFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['counterFamily'] ) ? $attr['counterFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['numberStyles'][0]['numberWeight'] ) ? $attr['numberStyles'][0]['numberWeight'] : '' ),
+				)
+			);
+		}
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1193,7 +1239,6 @@ class PBG_Blocks_Helper {
 		}
 		// Title Style
 		if ( isset( $attr['titleStyles'] ) ) {
-
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__info' . '> .premium-countup__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titleSizeUnit'] . '!important' ) );
@@ -1273,11 +1318,9 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 
 	}
-
 	/**
 	 * Get Dual Heading Block CSS
 	 *
@@ -1299,25 +1342,9 @@ class PBG_Blocks_Helper {
 				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-dual-heading',
-				PREMIUM_BLOCKS_URL . 'assets/js/dual-heading.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-		if ( isset( $attributes['firstStyles'][0]['firstFamily'] ) ) {
-			self::$gfonts = $attributes['firstStyles'][0]['firstFamily'];
-		}
-		if ( isset( $attributes['secondStyles'][0]['secondFamily'] ) ) {
-			self::$gfonts = $attributes['secondStyles'][0]['secondFamily'];
-		}
 		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+
 			$css = $this->get_dual_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -1330,8 +1357,24 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_dual_css_style( $attr, $unique_id ) {
+
+		if ( isset( $attr['firstStyles'][0]['firstFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['firstStyles'][0]['firstFamily'] ) ? $attr['firstStyles'][0]['firstFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['firstStyles'][0]['firstWeight'] ) ? $attr['firstStyles'][0]['firstWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['secondStyles'][0]['secondFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['secondStyles'][0]['secondFamily'] ) ? $attr['secondStyles'][0]['secondFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['secondStyles'][0]['secondWeight'] ) ? $attr['secondStyles'][0]['secondWeight'] : '' ),
+				)
+			);
+		}
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1385,7 +1428,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 	}
 	/**
@@ -1399,32 +1441,14 @@ class PBG_Blocks_Helper {
 	 * @param string $id block ID.
 	 */
 	public function get_iconbox_css( $attributes, $content ) {
-
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
-		}
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-sectionicon-box',
-				PREMIUM_BLOCKS_URL . 'assets/js/icon-box.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
-		if ( isset( $attributes['titleStyles'][0]['titleFont'] ) ) {
-			self::$gfonts = $attributes['titleStyles'][0]['titleFont'];
-		}
-		if ( isset( $attributes['descStyles'][0]['descFont'] ) ) {
-			self::$gfonts = $attributes['descStyles'][0]['descFont'];
 		}
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+
 			$css = $this->get_iconbox_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
@@ -1438,6 +1462,22 @@ class PBG_Blocks_Helper {
 		return $content;
 	}
 	public function get_iconbox_css_style( $attr, $unique_id ) {
+		if ( isset( $attr['titleStyles'][0]['titleFont'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['titleStyles'][0]['titleFont'] ) ? $attr['titleStyles'][0]['titleFont'] : '' ),
+					'fontVariant' => ( isset( $attr['textStyles'][0]['titleWeight'] ) ? $attr['textStyles'][0]['titleWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['descStyles'][0]['descFont'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['descStyles'][0]['descFont'] ) ? $attr['descStyles'][0]['descFont'] : '' ),
+					'fontVariant' => ( isset( $attr['descStyles'][0]['descWeight'] ) ? $attr['descStyles'][0]['descWeight'] : '' ),
+				)
+			);
+		}
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1505,11 +1545,8 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 	}
-
-
 	/**
 	 * Get Pricing Table Block CSS
 	 *
@@ -1601,7 +1638,6 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['titleStyles'] ) ) {
-
 			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__title_wrap' . '> .premium-pricing-table__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeTablet'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
@@ -1648,10 +1684,8 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->stop_media_query();
-
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleStyles'] ) ) {
-
 			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) || isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__title_wrap' . '> .premium-pricing-table__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeMobile'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
@@ -1732,10 +1766,7 @@ class PBG_Blocks_Helper {
 
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_lottie_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -1746,7 +1777,6 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_lottie_css_style( $attr, $unique_id ) {
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
@@ -1758,7 +1788,6 @@ class PBG_Blocks_Helper {
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
@@ -1771,11 +1800,9 @@ class PBG_Blocks_Helper {
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-
 			}
 		}
 		$css->stop_media_query();
@@ -1785,17 +1812,13 @@ class PBG_Blocks_Helper {
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-
 				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
 				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
 				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-
 			}
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
-
 	}
 	/**
 	 * Get Testimonial Block CSS
@@ -1808,7 +1831,6 @@ class PBG_Blocks_Helper {
 	 * @param string $id block ID.
 	 */
 	public function get_testimonial_css( $attributes, $content ) {
-
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
@@ -1818,13 +1840,9 @@ class PBG_Blocks_Helper {
 				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
-
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_testimonial_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -1864,7 +1882,6 @@ class PBG_Blocks_Helper {
 		}
 		$css->start_media_query( $media_query['tablet'] );
 		// Author Style FontSize Tablet.
-
 		if ( isset( $attr['authorStyles'] ) ) {
 			if ( isset( $attr['authorStyles'][0]['authorSizeTablet'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
 				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
@@ -1888,7 +1905,6 @@ class PBG_Blocks_Helper {
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// Author Style FontSize Mobile.
-
 		if ( isset( $attr['authorStyles'] ) ) {
 			if ( isset( $attr['authorStyles'][0]['authorSizeMobile'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
 				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
@@ -1910,7 +1926,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 	}
 	/**
@@ -1924,7 +1939,6 @@ class PBG_Blocks_Helper {
 	 * @param string $id block ID.
 	 */
 	public function get_videobox_css( $attributes, $content ) {
-
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
@@ -1943,15 +1957,9 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		if ( isset( $attributes['descStyles'][0]['videoDescFamily'] ) ) {
-			self::$gfonts = $attributes['descStyles'][0]['videoDescFamily'];
-		}
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_videobox_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -1964,6 +1972,14 @@ class PBG_Blocks_Helper {
 
 	}
 	public function get_videobox_css_style( $attr, $unique_id ) {
+		if ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ? $attr['descStyles'][0]['videoDescFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['descStyles'][0]['videoDescWeight'] ) ? $attr['descStyles'][0]['videoDescWeight'] : '' ),
+				)
+			);
+		}
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1985,13 +2001,11 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-
 		if ( isset( $attr['descStyles'][0]['videoDescSize'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 			$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeMobile'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 	}
 	public function get_newsLetter_css( $attributes, $content ) {
@@ -2005,7 +2019,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 		if ( $this->it_is_not_amp() ) {
-
 			wp_enqueue_script(
 				'pbg-newsletter-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
@@ -2013,50 +2026,46 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
-				wp_enqueue_script(
-					'pbg-form-js',
-					PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
-					array( 'jquery' ),
-					PREMIUM_BLOCKS_VERSION,
-					true
-				);
-				wp_localize_script(
-					'pbg-newsletter-js',
-					'premium_blocks_form_params',
-					array(
-						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-						'required'      => __( 'is required', 'premium-blocks' ),
-						'mismatch'      => __( 'does not match', 'premium-blocks' ),
-						'validation'    => __( 'is not valid', 'premium-blocks' ),
-						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-						'item'          => __( 'Item', 'premium-blocks' ),
-					)
-				);
-				wp_localize_script(
-					'pbg-form-js',
-					'settings',
-					array(
-						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-						'required'      => __( 'is required', 'premium-blocks' ),
-						'mismatch'      => __( 'does not match', 'premium-blocks' ),
-						'validation'    => __( 'is not valid', 'premium-blocks' ),
-						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-						'item'          => __( 'Item', 'premium-blocks' ),
-					)
-				);
+			wp_enqueue_script(
+				'pbg-form-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			wp_localize_script(
+				'pbg-newsletter-js',
+				'premium_blocks_form_params',
+				array(
+					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+					'required'      => __( 'is required', 'premium-blocks' ),
+					'mismatch'      => __( 'does not match', 'premium-blocks' ),
+					'validation'    => __( 'is not valid', 'premium-blocks' ),
+					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+					'item'          => __( 'Item', 'premium-blocks' ),
+				)
+			);
+			wp_localize_script(
+				'pbg-form-js',
+				'settings',
+				array(
+					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+					'required'      => __( 'is required', 'premium-blocks' ),
+					'mismatch'      => __( 'does not match', 'premium-blocks' ),
+					'validation'    => __( 'is not valid', 'premium-blocks' ),
+					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+					'item'          => __( 'Item', 'premium-blocks' ),
+				)
+			);
 
 		}
 		$style_id = 'kt-blocks' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_videobox_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -2067,7 +2076,6 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	/**
 	 * Get CSS value
 	 *
@@ -2118,7 +2126,6 @@ class PBG_Blocks_Helper {
 			return $output;
 		}
 	}
-
 	/**
 	 * Generates stylesheet for reusable blocks.
 	 *
@@ -2178,7 +2185,16 @@ class PBG_Blocks_Helper {
 
 		return $desktop . $tab_styling_css . $mob_styling_css;
 	}
-
+	public function frontend_footer_gfonts() {
+		if ( empty( self::$footer_gfonts ) ) {
+			return;
+		}
+		$print_google_fonts = apply_filters( 'premium_blocks_print_footer_google_fonts', true );
+		if ( ! $print_google_fonts ) {
+			return;
+		}
+		$this->load_google_font( self::$footer_gfonts );
+	}
 	/**
 	 * Creates and returns an instance of the class
 	 *
@@ -2195,8 +2211,6 @@ class PBG_Blocks_Helper {
 		return self::$instance;
 	}
 }
-
-
 if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 
 	/**
