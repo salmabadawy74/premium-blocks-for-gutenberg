@@ -107,7 +107,7 @@ const attributes = {
                 numberSizeTablet: '',
                 numberSizeMobile: '',
                 numberColor: "#6ec1e4",
-                numberWeight: '900',
+                numberWeight: '',
             }
         ]
     },
@@ -127,7 +127,7 @@ const attributes = {
                 titleT: 1,
                 titleB: 1,
                 titleColor: '',
-                titleWeight: 500,
+                titleWeight: '',
             }
         ]
     },
