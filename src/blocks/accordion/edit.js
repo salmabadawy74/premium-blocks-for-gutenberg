@@ -3,6 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const { Component, Fragment } = wp.element;
 
@@ -12,7 +13,6 @@ const {
     Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     Dropdown,
     Button
 } = wp.components;
@@ -470,10 +470,12 @@ class PremiumAccordion extends Component {
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-                        <RangeControl
-                            label={__("Size ")}
+                        <PremiumRangeControl
+                            label={__("Size  ")}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
+                            showUnit={false}
+                            defaultValue={20}
                         />
                         <div className="premium-control-toggle">
                             <strong>{__("Colors")}</strong>
@@ -512,23 +514,31 @@ class PremiumAccordion extends Component {
                                 )}
                             />
                         </div>
-                        <RangeControl
-                            label={__("Border Radius (PX)")}
+                        <PremiumRangeControl
+                            label={__("Border Radius  ")}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue =>
                                 saveArrowStyles({
                                     arrowRadius: newValue === undefined ? 0 : newValue
                                 })
                             }
+                            unit={'px'}
+                            units={['px']}
+                            defaultValue={0}
+                            showUnit={false}
                         />
-                        <RangeControl
-                            label={__("Padding (PX)")}
+                        <PremiumRangeControl
+                            label={__("Padding")}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue =>
                                 saveArrowStyles({
                                     arrowPadding: newValue === undefined ? 0 : newValue
                                 })
                             }
+                            unit={'px'}
+                            units={['px']}
+                            defaultValue={0}
+                            showUnit={false}
                         />
                     </PanelBody>
                     <PanelBody

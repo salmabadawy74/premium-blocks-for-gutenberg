@@ -5,6 +5,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -384,32 +385,59 @@ class edit extends Component {
                             }
                         />
 
-                        <p>{__("Margin Left")}</p>
-                        <RangeControl
+                        {/* <p>{__("Margin Left")}</p> */}
+                        {/* <RangeControl
                             value={firstStyles[0].firstMarginL}
                             min="0"
                             max="100"
                             onChange={newMargin =>
                                 saveFirstStyle({ firstMarginL: newMargin || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Left")}
+                            value={firstStyles[0].firstMarginL}
+                            onChange={newMargin =>
+                                saveFirstStyle({ firstMarginL: newMargin || "0" })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <p>{__("Margin Right")}</p>
-                        <RangeControl
+                        {/* <p>{__("Margin Right")}</p> */}
+                        {/* <RangeControl
                             value={firstStyles[0].firstMarginR}
                             min="0"
                             max="100"
                             onChange={newMargin =>
                                 saveFirstStyle({ firstMarginR: newMargin || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Right")}
+                            value={firstStyles[0].firstMarginR}
+                            onChange={newMargin =>
+                                saveFirstStyle({ firstMarginR: newMargin })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <p>{__("Padding")}</p>
-                        <RangeControl
+                        {/* <p>{__("Padding")}</p> */}
+                        {/* <RangeControl
                             value={firstStyles[0].firstPadding}
                             min="0"
                             max="100"
                             onChange={newPadding =>
                                 saveFirstStyle({ firstPadding: newPadding || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Padding")}
+                            value={firstStyles[0].firstPadding}
+                            onChange={newPadding =>
+                                saveFirstStyle({ firstPadding: newPadding })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
                     </PanelBody>
                     <PanelBody
@@ -607,32 +635,59 @@ class edit extends Component {
                                 saveSecondStyle({ secondShadowVertical: newValue || "0" })
                             }
                         />
-                        <p>{__("Margin Left")}</p>
-                        <RangeControl
+                        {/* <p>{__("Margin Left")}</p> */}
+                        {/* <RangeControl
                             value={secondStyles[0].secondMarginL}
                             min="0"
                             max="100"
                             onChange={newMargin =>
                                 saveSecondStyle({ secondMarginL: newMargin || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Left")}
+                            value={secondStyles[0].secondMarginL}
+                            onChange={newMargin =>
+                                saveSecondStyle({ secondMarginL: newMargin })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <p>{__("Margin Right")}</p>
-                        <RangeControl
+                        {/* <p>{__("Margin Right")}</p> */}
+                        {/* <RangeControl
                             value={secondStyles[0].secondMarginR}
                             min="0"
                             max="100"
                             onChange={newMargin =>
                                 saveSecondStyle({ secondMarginR: newMargin || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Right")}
+                            value={secondStyles[0].secondMarginR}
+                            onChange={newMargin =>
+                                saveSecondStyle({ secondMarginR: newMargin || "0" })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <p>{__("Padding")}</p>
-                        <RangeControl
+                        {/* <p>{__("Padding")}</p> */}
+                        {/* <RangeControl
                             value={secondStyles[0].secondPadding}
                             min="0"
                             max="100"
                             onChange={newPadding =>
                                 saveSecondStyle({ secondPadding: newPadding || "0" })
                             }
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Padding")}
+                            value={secondStyles[0].secondPadding}
+                            onChange={newPadding =>
+                                saveSecondStyle({ secondPadding: newPadding || "0" })
+                            }
+                            showUnit={false}
+                            defaultValue={0}
                         />
                     </PanelBody>
                     <PanelBody

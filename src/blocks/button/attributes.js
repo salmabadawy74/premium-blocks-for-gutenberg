@@ -112,7 +112,7 @@ const attributes = {
                 btnShadowVertical: 0,
                 btnShadowPosition: '',
                 padding: '',
-                paddingU: '',
+                paddingU: 'px',
             }
         ]
     }
