@@ -28,26 +28,7 @@ module.exports = function (grunt) {
                     }
                 ]
             }
-            // options: {
-            //     sourcemap: "false",
-            //     implementation: sass,
-            // },
-            // dist: {
-            //     files: [
 
-            //         {
-            //             "./assets/css/editorpanel.css":
-            //                 "./assets/sass/editorpanel.scss",
-            //         },
-            //         // {
-            //         //     expand: true,
-            //         //     cwd: "sass/",
-            //         //     src: ["editorpanel.scss"],
-            //         //     dest: "assets/css/editorpanel",
-            //         //     ext: ".css",
-            //         // }
-            //     ],
-            // },
         },
         copy: {
             main: {
