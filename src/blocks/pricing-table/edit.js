@@ -7,6 +7,8 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
+
 const { withSelect } = wp.data
 
 const { __ } = wp.i18n;
@@ -419,16 +421,18 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <RangeControl
-                                                label={__("Margin Top (PX)")}
+                                            <PremiumRangeControl
+                                                label={__("Margin Top")}
                                                 value={titleStyles[0].titleMarginT}
-                                                min="10"
-                                                max="80"
                                                 onChange={newSize =>
                                                     saveTitleStyles({ titleMarginT: newSize })
                                                 }
+                                                units={['px']}
+                                                defaultValue={0}
+                                                showUnit={false}
+
                                             />
-                                            <RangeControl
+                                            {/* <RangeControl
                                                 label={__("Margin Bottom (PX)")}
                                                 value={titleStyles[0].titleMarginB}
                                                 min="0"
@@ -436,8 +440,17 @@ class PremiumPricingTable extends Component {
                                                 onChange={newMargin =>
                                                     saveTitleStyles({ titleMarginB: newMargin })
                                                 }
+                                            /> */}
+                                            <PremiumRangeControl
+                                                label={__("Margin Bottom")}
+                                                value={titleStyles[0].titleMarginB}
+                                                onChange={newMargin =>
+                                                    saveTitleStyles({ titleMarginB: newMargin })
+                                                }
+                                                showUnit={false}
+                                                defaultValue={0}
                                             />
-                                            <RangeControl
+                                            {/* <RangeControl
                                                 label={__("Padding (PX)")}
                                                 value={titleStyles[0].titlePadding}
                                                 min="0"
@@ -445,6 +458,16 @@ class PremiumPricingTable extends Component {
                                                 onChange={newPadding =>
                                                     saveTitleStyles({ titlePadding: newPadding })
                                                 }
+                                            /> */}
+                                            <PremiumRangeControl
+                                                label={__("Padding")}
+                                                value={titleStyles[0].titlePadding}
+                                                onChange={newPadding =>
+                                                    saveTitleStyles({ titlePadding: newPadding })
+                                                }
+                                                showUnit={false}
+                                                defaultValue={0}
+
                                             />
                                         </Fragment>
                                     )}
@@ -753,7 +776,7 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <RangeControl
+                                            {/* <RangeControl
                                                 label={__("Container Margin Top (PX)")}
                                                 value={priceStyles[0].priceMarginT}
                                                 min="0"
@@ -761,8 +784,31 @@ class PremiumPricingTable extends Component {
                                                 onChange={newMargin =>
                                                     savePriceStyles({ priceMarginT: newMargin })
                                                 }
+                                            /> */}
+                                            <PremiumRangeControl
+                                                label={__("Container Margin Top")}
+                                                value={priceStyles[0].priceMarginT}
+                                                onChange={newMargin =>
+                                                    savePriceStyles({ priceMarginT: newMargin })
+                                                }
+                                                showUnit={false}
+                                                defaultValue={0}
                                             />
-                                            <RangeControl
+                                            <PremiumRangeControl
+                                                label={__("Container Margin Bottom")}
+                                                value={priceStyles[0].priceMarginB}
+                                                onChange={newValue => saveBtnStyles({ padding: newValue })}
+                                                defaultValue={0}
+                                                showUnit={false}
+                                            />
+                                            <PremiumRangeControl
+                                                label={__("Container Padding ")}
+                                                value={btnStyles[0].padding}
+                                                onChange={newValue => saveBtnStyles({ padding: newValue })}
+                                                defaultValue={0}
+                                                showUnit={false}
+                                            />
+                                            {/* <RangeControl
                                                 label={__("Container Margin Bottom (PX)")}
                                                 value={priceStyles[0].priceMarginB}
                                                 min="0"
@@ -770,8 +816,8 @@ class PremiumPricingTable extends Component {
                                                 onChange={newPadding =>
                                                     savePriceStyles({ priceMarginB: newPadding })
                                                 }
-                                            />
-                                            <RangeControl
+                                            /> */}
+                                            {/* <RangeControl
                                                 label={__("Container Padding (PX)")}
                                                 value={priceStyles[0].pricePadding}
                                                 min="0"
@@ -779,7 +825,7 @@ class PremiumPricingTable extends Component {
                                                 onChange={newPadding =>
                                                     savePriceStyles({ pricePadding: newPadding })
                                                 }
-                                            />
+                                            /> */}
                                         </Fragment>
                                     )}
                                 />

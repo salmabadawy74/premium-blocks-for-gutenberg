@@ -11,6 +11,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const { __ } = wp.i18n;
 
@@ -18,7 +19,6 @@ const {
     PanelBody,
     Toolbar,
     SelectControl,
-    RangeControl,
     ToggleControl,
     Dropdown,
     Button
@@ -184,17 +184,16 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <PremiumSizeUnits
-                        onChangeSizeUnit={newValue =>
-                            saveIconStyle({ iconSizeUnit: newValue })
-                        }
-                    />
-                    <RangeControl
+                    <PremiumRangeControl
                         label={__("Size")}
                         value={iconStyles[0].iconSize}
                         onChange={newValue => saveIconStyle({ iconSize: newValue })}
-                        initialPosition={50}
-                        allowReset={true}
+                        units={['px', 'em', 'rem']}
+                        defaultValue={0}
+                        onChangeUnit={newValue =>
+                            saveIconStyle({ iconSizeUnit: newValue })
+                        }
+                        showUnit={true}
                     />
                     <div className="premium-control-toggle">
                         <strong>{__("Colors")}</strong>

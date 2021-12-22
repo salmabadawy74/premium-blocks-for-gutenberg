@@ -9,6 +9,8 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import PremiumRangeControl from "../../components/premium-range-control";
+
 
 const { __ } = wp.i18n;
 
@@ -222,18 +224,32 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <RangeControl
+                                // <RangeControl
+                                //     label={__("Size")}
+                                //     max="200"
+                                //     value={imgSize}
+                                //     onChange={newSize => setAttributes({ imgSize: newSize })}
+                                // />
+                                <PremiumRangeControl
                                     label={__("Size")}
-                                    max="200"
                                     value={imgSize}
                                     onChange={newSize => setAttributes({ imgSize: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             )}
                             {authorImgUrl && (
-                                <RangeControl
-                                    label={__("Border Width (PX)")}
+                                // <RangeControl
+                                //     label={__("Border Width (PX)")}
+                                //     value={imgBorder}
+                                //     onChange={newSize => setAttributes({ imgBorder: newSize })}
+                                // />
+                                <PremiumRangeControl
+                                    label={__("Border Width")}
                                     value={imgBorder}
                                     onChange={newSize => setAttributes({ imgBorder: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             )}
                             {authorImgUrl && (
@@ -341,15 +357,29 @@ class edit extends Component {
                             }
 
                         />
-                        <RangeControl
+                        {/* <RangeControl
                             label={__("Margin Top (PX)")}
                             value={contentStyle[0].bodyTop}
                             onChange={newSize => saveContentStyle({ bodyTop: newSize })}
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Top")}
+                            value={contentStyle[0].bodyTop}
+                            onChange={newSize => saveContentStyle({ bodyTop: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <RangeControl
+                        {/* <RangeControl
                             label={__("Margin Bottom (PX)")}
                             value={contentStyle[0].bodyBottom}
                             onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Margin Bottom")}
+                            value={contentStyle[0].bodyBottom}
+                            onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
                     </PanelBody>
                     <PanelBody
@@ -448,12 +478,20 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <RangeControl
+                        {/* <RangeControl
                             label={__("Size (EM)")}
                             value={quoteStyles[0].quotSize}
                             min="1"
                             max="12"
                             onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Size")}
+                            value={quoteStyles[0].quotSize}
+                            onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
+                            // units={['em']}
+                            showUnit={false}
+                            defaultValue={0}
                         />
                         <Fragment>
                             <p>{__("Quotations Color")}</p>
@@ -474,6 +512,7 @@ class edit extends Component {
                             value={quoteStyles[0].quotOpacity}
                             onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
                         />
+
                     </PanelBody>
                     <PanelBody
                         title={__("Container")}

@@ -9,11 +9,10 @@ import PremiumMargin from "../../components/premium-margin"
 import PremiumTextShadow from "../../components/premium-text-shadow"
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
-import PremiumSizeUnits from "../../components/premium-size-units"
-import FONTS from "../../components/premium-fonts"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const { __ } = wp.i18n;
 
@@ -397,12 +396,21 @@ class edit extends Component {
                                             })
                                         }
                                     />
-                                    <RangeControl
+                                    {/* <RangeControl
                                         label={__("Border Radius (PX)")}
                                         value={iconRadius}
                                         onChange={newValue =>
                                             setAttributes({ iconRadius: newValue || 0 })
                                         }
+                                    /> */}
+                                    <PremiumRangeControl
+                                        label={__("Border Radius (PX)")}
+                                        value={iconRadius}
+                                        onChange={newValue =>
+                                            setAttributes({ iconRadius: newValue || 0 })
+                                        }
+                                        showUnit={false}
+                                        defaultValue={100}
                                     />
                                 </Fragment>
                             )}
@@ -412,12 +420,21 @@ class edit extends Component {
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            <RangeControl
+                            {/* <RangeControl
                                 label={__("Size (PX)")}
                                 value={iconSize}
                                 min="1"
                                 max="200"
                                 onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
+                            /> */}
+                            <PremiumRangeControl
+                                label={__("Size (PX)")}
+                                value={iconSize}
+                                min="10"
+                                max="200"
+                                onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
+                                showUnit={false}
+                                defaultValue={''}
                             />
                         </PanelBody>
                     )}
@@ -692,7 +709,7 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            <PremiumSizeUnits
+                            {/* <PremiumSizeUnits
                                 onChangeSizeUnit={newValue =>
                                     saveButtonStyle({ btnPaddingU: newValue })
                                 }
@@ -701,6 +718,16 @@ class edit extends Component {
                                 label={__("Padding")}
                                 value={btnStyles[0].btnPadding}
                                 onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
+                            /> */}
+                            <PremiumRangeControl
+                                label={__("Padding")}
+                                value={btnStyles[0].btnPadding}
+                                onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
+                                showUnit={true}
+                                defaultValue={''}
+                                onChangeUnit={newValue =>
+                                    saveButtonStyle({ btnPaddingU: newValue })
+                                }
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
@@ -719,7 +746,6 @@ class edit extends Component {
                             />
                         </PanelBody>
                     )}
-
                     <PanelBody
                         title={__("Container")}
                         className="premium-panel-body"

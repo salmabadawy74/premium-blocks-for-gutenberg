@@ -8,6 +8,7 @@ import PremiumPadding from "../../components/premium-padding"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -262,10 +263,17 @@ class edit extends Component {
                             onChange={newDir => setAttributes({ flexDir: newDir })}
                         />
                         {("row" === flexDir || "row-reverse" === flexDir) && (
-                            <RangeControl
-                                label={__("Spacing (PX)")}
+                            // <RangeControl
+                            //     label={__("Spacing (PX)")}
+                            //     value={iconSpacing}
+                            //     onChange={newValue => setAttributes({ iconSpacing: newValue })}
+                            // />
+                            <PremiumRangeControl
+                                label={__("Spacing")}
                                 value={iconSpacing}
                                 onChange={newValue => setAttributes({ iconSpacing: newValue })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                         )}
                         <ToggleControl
@@ -357,12 +365,20 @@ class edit extends Component {
                                     }
                                 />
                             )}
-                            <RangeControl
+                            <PremiumRangeControl
+                                label={__("Size")}
+                                value={iconSize}
+                                onChange={newValue => setAttributes({ iconSize: newValue })}
+                                showUnit={false}
+                                defaultValue={40}
+                                max={200}
+                            />
+                            {/* <RangeControl
                                 label={__("Size (PX)")}
                                 max="200"
                                 value={iconSize}
                                 onChange={newValue => setAttributes({ iconSize: newValue })}
-                            />
+                            /> */}
                             {"icon" === icon && (
                                 <Fragment>
                                     <p>{__("Icon Color")}</p>
@@ -477,10 +493,17 @@ class edit extends Component {
                                     allowReset={true}
                                 />
                             </Fragment>
-                            <RangeControl
+                            {/* <RangeControl
                                 label={__("Gap After (PX)")}
                                 value={prefixStyles[0].prefixGap}
                                 onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
+                            /> */}
+                            <PremiumRangeControl
+                                label={__("Gap After")}
+                                value={prefixStyles[0].prefixGap}
+                                onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
+                                showUnit={false}
+                                defaultValue={2}
                             />
                         </PanelBody>
                     )}
@@ -534,10 +557,17 @@ class edit extends Component {
                                     allowReset={true}
                                 />
                             </Fragment>
-                            <RangeControl
+                            {/* <RangeControl
                                 label={__("Gap Before (PX)")}
                                 value={suffixStyles[0].suffixGap}
                                 onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
+                            /> */}
+                            <PremiumRangeControl
+                                label={__("Gap Before")}
+                                value={suffixStyles[0].suffixGap}
+                                onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
+                                showUnit={false}
+                                defaultValue={2}
                             />
                         </PanelBody>
                     )}
@@ -606,15 +636,29 @@ class edit extends Component {
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
-                                <RangeControl
+                                {/* <RangeControl
                                     label={__("Margin Top (PX)")}
                                     value={titleStyles[0].titleT}
                                     onChange={newValue => saveTitleStyles({ titleT: newValue })}
+                                /> */}
+                                <PremiumRangeControl
+                                    label={__("Margin Top")}
+                                    value={titleStyles[0].titleT}
+                                    onChange={newValue => saveTitleStyles({ titleT: newValue })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
-                                <RangeControl
+                                {/* <RangeControl
                                     label={__("Margin Bottom (PX)")}
                                     value={titleStyles[0].titleB}
                                     onChange={newValue => saveTitleStyles({ titleB: newValue })}
+                                /> */}
+                                <PremiumRangeControl
+                                    label={__("Margin Bottom")}
+                                    value={titleStyles[0].titleB}
+                                    onChange={newValue => saveTitleStyles({ titleB: newValue })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             </PanelBody>
                         </PanelBody>

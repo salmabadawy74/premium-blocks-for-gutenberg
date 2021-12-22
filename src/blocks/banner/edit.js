@@ -16,7 +16,6 @@ const {
     Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     ToggleControl,
 } = wp.components;
@@ -309,11 +308,15 @@ export class edit extends Component {
                         />
                         <p>{"custom" === height && __("Min Height (PX)")}</p>
                         {"custom" === height && (
-                            <RangeControl
+
+                            <PremiumRangeControl
+                                label={__("Min Height (PX)")}
                                 value={minHeight}
                                 min="10"
                                 max="800"
                                 onChange={newSize => setAttributes({ minHeight: newSize })}
+                                showUnit={false}
+                                defaultValue={100}
                             />
                         )}
                         {"custom" === height && (
@@ -336,7 +339,7 @@ export class edit extends Component {
                                 allowReset={true}
                             />
                         </Fragment>
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Overlay Opacity")}
                             value={opacity}
                             min="1"
@@ -346,6 +349,8 @@ export class edit extends Component {
                                     opacity: newOpacity === undefined ? 50 : newOpacity
                                 })
                             }
+                            showUnit={false}
+                            defaultValue={''}
                         />
                         <ToggleControl
                             label={__("Link")}

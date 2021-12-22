@@ -9,6 +9,8 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
+
 const { withSelect } = wp.data
 
 const {
@@ -151,7 +153,6 @@ class edit extends Component {
                 label: __("Self Hosted")
             }
         ];
-
         const loopVideo = () => {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
@@ -404,7 +405,7 @@ class edit extends Component {
                                 />
                                 {playIcon && (
                                     <Fragment>
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Size (PX)")}
                                             value={playStyles[0].playSize}
                                             onChange={newValue =>
@@ -412,9 +413,21 @@ class edit extends Component {
                                                     playSize: newValue === undefined ? 20 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Size")}
+                                            value={playStyles[0].playSize}
+                                            onChange={newValue =>
+                                                savePlayStyles({
+                                                    playSize: newValue === undefined ? 20 : newValue
+                                                })
+                                            }
+                                            // units={['px']}
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
 
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playStyles[0].playTop}
                                             onChange={newValue =>
@@ -422,6 +435,18 @@ class edit extends Component {
                                                     playTop: newValue === undefined ? 50 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Vertical Offset")}
+                                            value={playStyles[0].playTop}
+                                            onChange={newValue =>
+                                                savePlayStyles({
+                                                    playTop: newValue === undefined ? 50 : newValue
+                                                })
+                                            }
+                                            // units={['%']}
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
                                         <PremiumBorder
                                             borderType={playStyles[0].playBorderType}
@@ -451,7 +476,7 @@ class edit extends Component {
                                                 savePlayStyles({ playBorderRadius: newrRadius })
                                             }
                                         />
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Padding (PX)")}
                                             value={playStyles[0].playPadding}
                                             onChange={newValue =>
@@ -459,6 +484,17 @@ class edit extends Component {
                                                     playPadding: newValue === undefined ? 20 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Padding")}
+                                            value={playStyles[0].playPadding}
+                                            onChange={newValue =>
+                                                savePlayStyles({
+                                                    playPadding: newValue === undefined ? 20 : newValue
+                                                })
+                                            }
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
                                     </Fragment>
                                 )}
@@ -528,7 +564,7 @@ class edit extends Component {
                                             }
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={descStyles[0].descTop}
                                             onChange={newValue =>
@@ -536,8 +572,19 @@ class edit extends Component {
                                                     descTop: newValue === undefined ? 50 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Vertical Offset")}
+                                            value={descStyles[0].descTop}
+                                            onChange={newValue =>
+                                                saveDescritionStyle({
+                                                    descTop: newValue === undefined ? 50 : newValue
+                                                })
+                                            }
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Border Radius (px)")}
                                             value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue =>
@@ -546,6 +593,19 @@ class edit extends Component {
                                                         newValue === undefined ? 0 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Border Radius")}
+                                            value={descStyles[0].videoDescBorderRadius}
+                                            onChange={newValue =>
+                                                saveDescritionStyle({
+                                                    videoDescBorderRadius:
+                                                        newValue === undefined ? 0 : newValue
+                                                })
+                                            }
+                                            // units={['px']}
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
                                         <PremiumTextShadow
                                             color={descStyles[0].descShadowColor}
@@ -569,7 +629,7 @@ class edit extends Component {
                                                 saveDescritionStyle({ descShadowVertical: newValue || "0" })
                                             }
                                         />
-                                        <RangeControl
+                                        {/* <RangeControl
                                             label={__("Padding (PX)")}
                                             value={descStyles[0].videoDescPadding}
                                             onChange={newValue =>
@@ -578,6 +638,19 @@ class edit extends Component {
                                                         newValue === undefined ? 20 : newValue
                                                 })
                                             }
+                                        /> */}
+                                        <PremiumRangeControl
+                                            label={__("Padding")}
+                                            value={descStyles[0].videoDescPadding}
+                                            onChange={newValue =>
+                                                saveDescritionStyle({
+                                                    videoDescPadding:
+                                                        newValue === undefined ? 20 : newValue
+                                                })
+                                            }
+                                            // units={['px']}
+                                            showUnit={false}
+                                            defaultValue={0}
                                         />
                                     </Fragment>
                                 )}

@@ -7,6 +7,8 @@ import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
+
 
 const { __ } = wp.i18n;
 
@@ -513,13 +515,22 @@ export class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumSizeUnits
+                        {/* <PremiumSizeUnits
                             onChangeSizeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
                         />
                         <RangeControl
                             label={__("Padding")}
                             value={btnStyles[0].padding}
                             onChange={newValue => saveBtnStyles({ padding: newValue })}
+                        /> */}
+                        <PremiumRangeControl
+                            label={__("Padding")}
+                            value={btnStyles[0].padding}
+                            onChange={newValue => saveBtnStyles({ padding: newValue })}
+                            units={['px', 'em', 'rem']}
+                            defaultValue={0}
+                            onChangeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
+                            showUnit={true}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
