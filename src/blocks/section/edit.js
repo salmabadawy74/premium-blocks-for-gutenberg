@@ -12,7 +12,7 @@ import PremiumRangeControl from "../../components/premium-range-control";
 
 const { __ } = wp.i18n;
 
-const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl } = wp.components;
 
 const { Fragment } = wp.element;
 const { withSelect } = wp.data
@@ -147,21 +147,13 @@ const edit = props => {
                         />
                     )}
                     {"boxed" === innerWidthType && stretchSection && (
-                        // <RangeControl
-                        //     label={__("Max Width (%)")}
-                        //     min="1"
-                        //     max="1600"
-                        //     value={innerWidth}
-                        //     onChange={newValue =>
-                        //         setAttributes({ innerWidth: newValue })
-                        //     }
-                        // />
                         <PremiumRangeControl
                             label={__("Max Width")}
                             value={innerWidth}
+                            min="1"
+                            max="1600"
                             onChange={newValue =>
                                 setAttributes({ innerWidth: newValue })}
-                            units={['px']}
                             defaultValue={0}
                             showUnit={false}
                         />
@@ -176,13 +168,7 @@ const edit = props => {
                     />
                     {"min" === height && (
                         <Fragment>
-                            {/* <PremiumSizeUnits
-                                units={["px", "vh", "vw"]}
-                                onChangeSizeUnit={newValue =>
-                                    setAttributes({ minHeightUnit: newValue })
-                                }
-                            /> */}
-                            {/* <RangeControl
+                            <PremiumRangeControl
                                 label={__("Min Height")}
                                 value={minHeight}
                                 min="1"
@@ -190,19 +176,13 @@ const edit = props => {
                                 onChange={newValue =>
                                     setAttributes({ minHeight: newValue })
                                 }
-                            /> */}
-                            <PremiumRangeControl
-                                label={__("Min Height")}
-                                value={minHeight}
-                                onChange={newValue =>
-                                    setAttributes({ minHeight: newValue })
-                                }
-                                units={['px', 'em', 'rem']}
+                                units={["px", "vh", "vw"]}
                                 defaultValue={0}
                                 onChangeUnit={newValue =>
                                     setAttributes({ minHeightUnit: newValue })
                                 }
                                 showUnit={true}
+                                unit={minHeightUnit}
                             />
                         </Fragment>
                     )}

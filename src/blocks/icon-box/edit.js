@@ -396,13 +396,6 @@ class edit extends Component {
                                             })
                                         }
                                     />
-                                    {/* <RangeControl
-                                        label={__("Border Radius (PX)")}
-                                        value={iconRadius}
-                                        onChange={newValue =>
-                                            setAttributes({ iconRadius: newValue || 0 })
-                                        }
-                                    /> */}
                                     <PremiumRangeControl
                                         label={__("Border Radius (PX)")}
                                         value={iconRadius}
@@ -410,7 +403,7 @@ class edit extends Component {
                                             setAttributes({ iconRadius: newValue || 0 })
                                         }
                                         showUnit={false}
-                                        defaultValue={100}
+                                        defaultValue={0}
                                     />
                                 </Fragment>
                             )}
@@ -420,13 +413,6 @@ class edit extends Component {
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            {/* <RangeControl
-                                label={__("Size (PX)")}
-                                value={iconSize}
-                                min="1"
-                                max="200"
-                                onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
-                            /> */}
                             <PremiumRangeControl
                                 label={__("Size (PX)")}
                                 value={iconSize}
@@ -709,16 +695,6 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            {/* <PremiumSizeUnits
-                                onChangeSizeUnit={newValue =>
-                                    saveButtonStyle({ btnPaddingU: newValue })
-                                }
-                            />
-                            <RangeControl
-                                label={__("Padding")}
-                                value={btnStyles[0].btnPadding}
-                                onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
-                            /> */}
                             <PremiumRangeControl
                                 label={__("Padding")}
                                 value={btnStyles[0].btnPadding}
@@ -728,6 +704,7 @@ class edit extends Component {
                                 onChangeUnit={newValue =>
                                     saveButtonStyle({ btnPaddingU: newValue })
                                 }
+                                unit={btnStyles[0].btnPaddingU}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}

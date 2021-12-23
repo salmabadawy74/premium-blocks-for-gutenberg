@@ -1,7 +1,5 @@
 import PremiumSizeUnits from "./premium-size-units";
-
 const { __ } = wp.i18n;
-
 import React, { Component } from "react";
 
 class PremiumPadding extends Component {
@@ -52,10 +50,18 @@ class PremiumPadding extends Component {
         const { top, right, bottom, left, showUnits, isLinked } = this.state;
 
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
+        let defaultValue = {
+
+            top: "",
+            right: "",
+            bottom: "",
+            left: "",
+
+        };
 
         return (
-            <div className={`premium-control-group`}>
-                <div className="premium-control-label-container">
+            <div className={`kmt-spacing-responsive`}>
+                <header className="premium-control-label-container">
                     <div className={`premium-control-label`}>
                         <strong>{__("Padding")}</strong>
                     </div>
@@ -67,51 +73,73 @@ class PremiumPadding extends Component {
                             />
                         )}
                     </div>
+                </header>
+                <div className={`kmt-spacing-responsive-outer-wrapper`}>
+                    <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>
+                        <ul className={`kmt-spacing-wrapper`}>
+                            <li className={`kmt-spacing-input-item`}>
+                                <input
+                                    type="number"
+                                    name="top"
+                                    value={top || 0}
+                                    onChange={this.onInputChange}
+                                    className={`kmt-spacing-input`}
+                                />
+                                <span className={`kmt-spacing-title`}>{__(`Top`)}</span>
+                            </li>
+                            <li className={`kmt-spacing-input-item`}>
+                                <input
+                                    type="number"
+                                    name="right"
+                                    value={right || 0}
+                                    onChange={this.onInputChange}
+                                    className={`kmt-spacing-input`}
+                                />
+                                <span className={`kmt-spacing-title`}>{__('Right')}</span>
+                            </li>
+                            <li className={`kmt-spacing-input-item`}>
+                                <input
+                                    type="number"
+                                    name="bottom"
+                                    value={bottom || 0}
+                                    onChange={this.onInputChange}
+                                    className={`kmt-spacing-input`}
+                                />
+                                <span className={`kmt-spacing-title`}>{__('Bottom')}</span>
+                            </li>
+                            <li className={`kmt-spacing-input-item`}>
+                                <input
+                                    type="number"
+                                    name="left"
+                                    value={left || 0}
+                                    onChange={this.onInputChange}
+                                    className={`kmt-spacing-input`}
+                                />
+                                <span className={`kmt-spacing-title`}>{__('Left')}</span>
+                            </li>
+                            <li>
+                                <button
+                                    className={`linked-btn kmt-spacing-input-item-link is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
+                                        }`}
+                                    onClick={this.onButtonClick}
+                                />
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div className={`premium-controls-container`}>
-                    <div className={`premium-control-wrapper`}>
-                        <input
-                            type="number"
-                            name="top"
-                            value={top || 0}
-                            onChange={this.onInputChange}
-                        />
-                        <label className={`premium-control-label`}>Top</label>
-                    </div>
-                    <div className={`premium-control-wrapper`}>
-                        <input
-                            type="number"
-                            name="right"
-                            value={right || 0}
-                            onChange={this.onInputChange}
-                        />
-                        <label className={`premium-control-label`}>Right</label>
-                    </div>
-                    <div className={`premium-control-wrapper`}>
-                        <input
-                            type="number"
-                            name="bottom"
-                            value={bottom || 0}
-                            onChange={this.onInputChange}
-                        />
-                        <label className={`premium-control-label`}>Bottom</label>
-                    </div>
-                    <div className={`premium-control-wrapper`}>
-                        <input
-                            type="number"
-                            name="left"
-                            value={left || 0}
-                            onChange={this.onInputChange}
-                        />
-                        <label className={`premium-control-label`}>Left</label>
-                    </div>
-                    <div>
-                        <button
-                            className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
-                                }`}
-                            onClick={this.onButtonClick}
-                        />
-                    </div>
+                <div className="kmt-spacing-btn-reset-wrap">
+                    <button
+                        className="kmt-reset-btn "
+                        // disabled={
+                        //     JSON.stringify(state) ===
+                        //     JSON.stringify(defaultVals)
+                        // }
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log("reset")
+
+                        }}
+                    ></button>
                 </div>
             </div>
         );

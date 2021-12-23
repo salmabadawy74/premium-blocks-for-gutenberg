@@ -1,7 +1,7 @@
-const { ButtonGroup, Button } = wp.components;
+
 
 export default function PremiumSizeUnits(props) {
-    const { activeUnit, units, onChangeSizeUnit = unit => {} } = props;
+    const { activeUnit, units, onChangeSizeUnit = unit => { } } = props;
 
     let sizeUnits = ["px", "em", "%"];
 
@@ -10,21 +10,20 @@ export default function PremiumSizeUnits(props) {
     }
 
     return (
-        <ButtonGroup className="premium-unit-control">
+        <ul className="kmt-slider-units">
             {sizeUnits.map((unit, index) => (
-                <Button
-                    isSmall
-                    isDefault
+                <li
+
                     className={
-                        "premium-unit-control-btn " +
+                        "single-unit " +
                         (unit === activeUnit &&
-                            "premium-unit-control-active-btn")
+                            "active")
                     }
                     onClick={() => onChangeSizeUnit(unit)}
                 >
-                    {unit}
-                </Button>
+                    <span className={`unit-text`}> {unit}</span>
+                </li>
             ))}
-        </ButtonGroup>
+        </ul>
     );
 }

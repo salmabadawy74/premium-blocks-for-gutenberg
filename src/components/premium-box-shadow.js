@@ -7,6 +7,7 @@ const {
     ColorPicker
 } = wp.components;
 const { Fragment } = wp.element;
+import PremiumRangeControl from './premium-range-control';
 
 export default function PremiumBoxShadow(props) {
     const {
@@ -58,20 +59,26 @@ export default function PremiumBoxShadow(props) {
                                 disableAlpha={withAlpha ? false : true}
                             />
                         </Fragment>
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Horizontal")}
                             value={horizontal}
                             onChange={onChangehHorizontal}
+                            showUnit={false}
+                            defaultValue={''}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Vertical")}
                             value={vertical}
                             onChange={onChangeVertical}
+                            showUnit={false}
+                            defaultValue={''}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Blur")}
                             value={blur}
                             onChange={onChangeBlur}
+                            showUnit={false}
+                            defaultValue={''}
                         />
                         <SelectControl
                             label={__("Position")}

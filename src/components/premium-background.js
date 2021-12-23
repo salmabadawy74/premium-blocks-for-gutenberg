@@ -7,10 +7,12 @@ const {
     ToggleControl,
     Tooltip,
     Dashicon,
-    RangeControl
 } = wp.components;
 
 const { MediaUpload, ColorPalette } = wp.blockEditor;
+import PremiumRangeControl from './premium-range-control';
+
+
 
 export default function PremiumBackground(props) {
     const {
@@ -113,99 +115,98 @@ export default function PremiumBackground(props) {
                 onChange={onChangeColor}
                 allowReset={true}
             />
-            <RangeControl
+            <PremiumRangeControl
                 label={__(`Background Opacity`)}
                 value={opacityValue}
                 onChange={onChangeOpacity}
-                max={1}
-                min={0}
-                step={0.1}
+                showUnit={false}
+                defaultValue={''}
             />
         </Fragment>
     ) : (
-            <Fragment>
-                <MediaUpload
-                    allowedTypes={["image"]}
-                    onSelect={onSelectMedia}
-                    type="image"
-                    value={imageID}
-                    render={({ open }) => (
-                        <Fragment>
-                            {imageURL && (
-                                <span className="premium-image-media">
-                                    <img
-                                        src={imageURL}
-                                        className="premium-image-upload"
-                                    />
-                                    <div className="premium-image-actions">
-                                        <Tooltip text={__("Edit")}>
-                                            <button
-                                                className="premium-image-button"
-                                                aria-label={__("Edit")}
-                                                onClick={open}
-                                                role="button"
-                                            >
-                                                <span
-                                                    aria-label={__("Edit")}
-                                                    className="fa fa-pencil"
-                                                />
-                                            </button>
-                                        </Tooltip>
-                                        <Tooltip text={__("Remove")}>
-                                            <button
-                                                className="premium-image-button"
-                                                aria-label={__("Remove")}
-                                                onClick={onRemoveImage}
-                                                role="button"
-                                            >
-                                                <span
-                                                    aria-label={__("Close")}
-                                                    className="fa fa-trash-o"
-                                                />
-                                            </button>
-                                        </Tooltip>
-                                    </div>
-                                </span>
-                            )}
-                            {!imageURL && (
-                                <div
-                                    onClick={open}
-                                    className={"premium-placeholder-image"}
-                                >
-                                    <Dashicon icon="insert" />
-                                    <span>{__("Insert Background ")}</span>
-                                </div>
-                            )}
-                        </Fragment>
-                    )}
-                />
-                {imageURL && (
+        <Fragment>
+            <MediaUpload
+                allowedTypes={["image"]}
+                onSelect={onSelectMedia}
+                type="image"
+                value={imageID}
+                render={({ open }) => (
                     <Fragment>
-                        <SelectControl
-                            label={__("Position")}
-                            options={POSITION}
-                            value={backgroundPosition}
-                            onChange={onChangeBackPos}
-                        />
-                        <SelectControl
-                            label={__("Repeat")}
-                            options={REPEAT}
-                            value={backgroundRepeat}
-                            onChange={onchangeBackRepeat}
-                        />
-                        <SelectControl
-                            label={__("Size")}
-                            options={SIZE}
-                            value={backgroundSize}
-                            onChange={onChangeBackSize}
-                        />
-                        <ToggleControl
-                            label={__("Fixed Background")}
-                            checked={fixed}
-                            onChange={onChangeFixed}
-                        />
+                        {imageURL && (
+                            <span className="premium-image-media">
+                                <img
+                                    src={imageURL}
+                                    className="premium-image-upload"
+                                />
+                                <div className="premium-image-actions">
+                                    <Tooltip text={__("Edit")}>
+                                        <button
+                                            className="premium-image-button"
+                                            aria-label={__("Edit")}
+                                            onClick={open}
+                                            role="button"
+                                        >
+                                            <span
+                                                aria-label={__("Edit")}
+                                                className="fa fa-pencil"
+                                            />
+                                        </button>
+                                    </Tooltip>
+                                    <Tooltip text={__("Remove")}>
+                                        <button
+                                            className="premium-image-button"
+                                            aria-label={__("Remove")}
+                                            onClick={onRemoveImage}
+                                            role="button"
+                                        >
+                                            <span
+                                                aria-label={__("Close")}
+                                                className="fa fa-trash-o"
+                                            />
+                                        </button>
+                                    </Tooltip>
+                                </div>
+                            </span>
+                        )}
+                        {!imageURL && (
+                            <div
+                                onClick={open}
+                                className={"premium-placeholder-image"}
+                            >
+                                <Dashicon icon="insert" />
+                                <span>{__("Insert Background ")}</span>
+                            </div>
+                        )}
                     </Fragment>
                 )}
-            </Fragment>
-        );
+            />
+            {imageURL && (
+                <Fragment>
+                    <SelectControl
+                        label={__("Position")}
+                        options={POSITION}
+                        value={backgroundPosition}
+                        onChange={onChangeBackPos}
+                    />
+                    <SelectControl
+                        label={__("Repeat")}
+                        options={REPEAT}
+                        value={backgroundRepeat}
+                        onChange={onchangeBackRepeat}
+                    />
+                    <SelectControl
+                        label={__("Size")}
+                        options={SIZE}
+                        value={backgroundSize}
+                        onChange={onChangeBackSize}
+                    />
+                    <ToggleControl
+                        label={__("Fixed Background")}
+                        checked={fixed}
+                        onChange={onChangeFixed}
+                    />
+                </Fragment>
+            )}
+        </Fragment>
+    );
 }

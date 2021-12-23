@@ -63,12 +63,12 @@ Lottie button
         margin-right: 0.4em;
     }
 }
-.premium-unit-control {
+.kmt-slider-units {
     float: right;
     z-index: 99999;
     position: relative;
     margin-bottom: 7px;
-    button.premium-unit-control-btn {
+    li.single-unit {
         text-shadow: none;
         text-decoration: none;
         box-shadow: none !important;
@@ -78,7 +78,7 @@ Lottie button
             background: #f3f4f5 !important;
         }
     }
-    button.premium-unit-control-active-btn {
+    li.single-unit.active {
         color: #0084bc !important;
         font-weight: bold;
     }
@@ -3707,3 +3707,4 @@ i.fipicon-angle-left {
     }
 }
 @import "./RangeControl.scss";
+@import "./spacing.scss";

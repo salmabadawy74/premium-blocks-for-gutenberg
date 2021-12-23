@@ -2,6 +2,7 @@ import { maps } from "../../../assets/js/settings";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
 
 const className = "premium-maps";
 
@@ -13,7 +14,6 @@ const {
     Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     TextareaControl,
     ToggleControl,
@@ -529,12 +529,14 @@ class PremiumMap extends Component {
                                     value={markerDesc}
                                     onChange={newText => setAttributes({ markerDesc: newText })}
                                 />
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Spacing (PX)")}
                                     value={gapBetween}
                                     min="10"
                                     max="80"
                                     onChange={newSize => setAttributes({ gapBetween: newSize })}
+                                    showUnit={false}
+                                    defaultValue={10}
                                 />
                                 <ToggleControl
                                     label={__("Description opened by default")}
@@ -573,19 +575,23 @@ class PremiumMap extends Component {
 
                                     />
                                 )}
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Description Box Max Width (PX)")}
                                     value={maxWidth}
                                     min="10"
                                     max="500"
                                     onChange={newSize => setAttributes({ maxWidth: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Description Box Padding (PX)")}
                                     value={boxPadding}
                                     min="1"
                                     max="50"
                                     onChange={newSize => setAttributes({ boxPadding: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             </Fragment>
                         )}
@@ -596,12 +602,14 @@ class PremiumMap extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
+                            <PremiumRangeControl
                                 label={__("Font Size (PX)")}
                                 value={titleSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ titleSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
@@ -624,12 +632,14 @@ class PremiumMap extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
+                            <PremiumRangeControl
                                 label={__("Font Size (PX)")}
                                 value={descSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ descSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <Fragment>
                                 <p>{__("Text Color")}</p>
@@ -657,19 +667,23 @@ class PremiumMap extends Component {
                             value={mapType}
                             onChange={newType => setAttributes({ mapType: newType })}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Map Height (PX)")}
                             value={height}
                             min="10"
                             max="800"
                             onChange={newSize => setAttributes({ height: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Zoom")}
                             value={zoom}
                             min="1"
                             max="14"
                             onChange={newSize => setAttributes({ zoom: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
                         <ToggleControl
                             label={__("Map Type Controls")}

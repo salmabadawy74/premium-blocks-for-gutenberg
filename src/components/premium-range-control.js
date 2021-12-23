@@ -61,26 +61,27 @@ export default function PremiumRangeControl({
                 </div>
                 {showUnit && (<ul className="kmt-slider-units">
                     <PremiumSizeUnits
+                        activeUnit={unit}
                         onChangeSizeUnit={newValue =>
                             onChangeUnit(newValue)
                         }
                     />
                 </ul>)}
             </header>
-            <div className={'kadence-range-control-inner'}>
-                <RangeControl
-                    className={'kadence-range-control-range'}
-                    beforeIcon={beforeIcon}
-                    value={value}
-                    onChange={(newVal) => onChange(newVal)}
-                    min={min}
-                    max={max}
-                    step={step}
-                    help={help}
-                    withInputField={false}
-                />
-                <div className="components-base-control kt-range-number-input">
-                    <div className="components-base-control__field">
+            <div className={'wrapper'}>
+                <div className={`input-field-wrapper active`}>
+                    <RangeControl
+                        beforeIcon={beforeIcon}
+                        value={value}
+                        onChange={(newVal) => onChange(newVal)}
+                        min={min}
+                        max={max}
+                        step={step}
+                        help={help}
+                        withInputField={false}
+                        className={'kmt-range-value-input'}
+                    />
+                    <div className="kemet_range_value">
                         <input
                             value={value}
                             onChange={onChangInput}
