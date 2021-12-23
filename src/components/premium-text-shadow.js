@@ -1,6 +1,8 @@
 const { __ } = wp.i18n;
-const { RangeControl, Dropdown, Button, ColorPicker } = wp.components;
+const { Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
+import PremiumRangeControl from './premium-range-control';
+
 export default function PremiumTextShadow(props) {
     const {
         label,
@@ -38,23 +40,35 @@ export default function PremiumTextShadow(props) {
                                 onResetClick={onResetClick}
                             />
                         </Fragment>
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Blur")}
+                            min="0"
+                            max="10"
+                            step="0.1"
                             value={blur}
                             onChange={onChangeBlur}
-                            onResetClick={onResetClick}
+                            showUnit={false}
+                            defaultValue={''}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Horizontal")}
+                            min="0"
+                            max="10"
+                            step="0.1"
                             value={horizontal}
                             onChange={onChangehHorizontal}
-                            onResetClick={onResetClick}
+                            showUnit={false}
+                            defaultValue={''}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Vertical")}
+                            min="0"
+                            max="10"
+                            step="0.1"
                             value={vertical}
                             onChange={onChangeVertical}
-                            onResetClick={onResetClick}
+                            showUnit={false}
+                            defaultValue={''}
                         />
                     </Fragment>
                 )}

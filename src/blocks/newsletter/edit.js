@@ -2,11 +2,12 @@ import classnames from "classnames";
 import Select from 'react-select';
 import debounce from 'lodash/debounce';
 const { InspectorControls, ColorPalette } = wp.blockEditor;
-const { PanelBody, SelectControl, RangeControl, ToggleControl, TextControl, Spinner, ServerSideRender } = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner, ServerSideRender } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import { Fragment } from "react";
+import PremiumRangeControl from "../../components/premium-range-control";
 const { addQueryArgs } = wp.url;
 const { apiFetch } = wp;
 const { withSelect } = wp.data
@@ -452,19 +453,23 @@ export class edit extends Component {
                             checked={mailchimp[0]['doubleOption']}
                             onChange={(value) => saveMailChimp({ doubleOption: value })}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Column Gap")}
                             value={columnGap}
                             onChange={(newValue) =>
                                 setAttributes({ columnGap: newValue })
                             }
+                            defaultValue={0}
+                            showUnit={false}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Row Gap")}
                             value={rowGap}
                             onChange={(newValue) =>
                                 setAttributes({ rowGap: newValue })
                             }
+                            defaultValue={0}
+                            showUnit={false}
                         />
                     </PanelBody>
                     <PanelBody
@@ -741,19 +746,19 @@ export class edit extends Component {
                                 saveButtonStyle({ btnBorderRadius: newRadius })
                             }
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Vertical Spacing")}
                             value={btnStyles[0].vPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ vPaddingSubmit: value })}
-                            min={0}
-                            max={100}
+                            defaultValue={0}
+                            showUnit={false}
                         />
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Horizontal Spacing")}
                             value={btnStyles[0].hPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ hPaddingSubmit: value })}
-                            min={0}
-                            max={100}
+                            defaultValue={0}
+                            showUnit={false}
                         />
                     </PanelBody>
                 </InspectorControls >

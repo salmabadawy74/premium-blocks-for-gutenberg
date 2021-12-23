@@ -16,7 +16,6 @@ const { withSelect } = wp.data
 const {
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     TextareaControl,
     ToggleControl,
@@ -405,7 +404,7 @@ class edit extends Component {
                                 />
                                 {playIcon && (
                                     <Fragment>
-                                        {/* <RangeControl
+                                        <PremiumRangeControl
                                             label={__("Size (PX)")}
                                             value={playStyles[0].playSize}
                                             onChange={newValue =>
@@ -413,21 +412,10 @@ class edit extends Component {
                                                     playSize: newValue === undefined ? 20 : newValue
                                                 })
                                             }
-                                        /> */}
-                                        <PremiumRangeControl
-                                            label={__("Size")}
-                                            value={playStyles[0].playSize}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playSize: newValue === undefined ? 20 : newValue
-                                                })
-                                            }
-                                            // units={['px']}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
-
-                                        {/* <RangeControl
+                                        <PremiumRangeControl
                                             label={__("Vertical Offset (%)")}
                                             value={playStyles[0].playTop}
                                             onChange={newValue =>
@@ -435,16 +423,6 @@ class edit extends Component {
                                                     playTop: newValue === undefined ? 50 : newValue
                                                 })
                                             }
-                                        /> */}
-                                        <PremiumRangeControl
-                                            label={__("Vertical Offset")}
-                                            value={playStyles[0].playTop}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playTop: newValue === undefined ? 50 : newValue
-                                                })
-                                            }
-                                            // units={['%']}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -476,17 +454,8 @@ class edit extends Component {
                                                 savePlayStyles({ playBorderRadius: newrRadius })
                                             }
                                         />
-                                        {/* <RangeControl
-                                            label={__("Padding (PX)")}
-                                            value={playStyles[0].playPadding}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playPadding: newValue === undefined ? 20 : newValue
-                                                })
-                                            }
-                                        /> */}
                                         <PremiumRangeControl
-                                            label={__("Padding")}
+                                            label={__("Padding (PX)")}
                                             value={playStyles[0].playPadding}
                                             onChange={newValue =>
                                                 savePlayStyles({
@@ -564,17 +533,8 @@ class edit extends Component {
                                             }
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
-                                        {/* <RangeControl
-                                            label={__("Vertical Offset (%)")}
-                                            value={descStyles[0].descTop}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    descTop: newValue === undefined ? 50 : newValue
-                                                })
-                                            }
-                                        /> */}
                                         <PremiumRangeControl
-                                            label={__("Vertical Offset")}
+                                            label={__("Vertical Offset (%)")}
                                             value={descStyles[0].descTop}
                                             onChange={newValue =>
                                                 saveDescritionStyle({
@@ -584,7 +544,7 @@ class edit extends Component {
                                             showUnit={false}
                                             defaultValue={0}
                                         />
-                                        {/* <RangeControl
+                                        <PremiumRangeControl
                                             label={__("Border Radius (px)")}
                                             value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue =>
@@ -593,17 +553,6 @@ class edit extends Component {
                                                         newValue === undefined ? 0 : newValue
                                                 })
                                             }
-                                        /> */}
-                                        <PremiumRangeControl
-                                            label={__("Border Radius")}
-                                            value={descStyles[0].videoDescBorderRadius}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    videoDescBorderRadius:
-                                                        newValue === undefined ? 0 : newValue
-                                                })
-                                            }
-                                            // units={['px']}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -629,7 +578,7 @@ class edit extends Component {
                                                 saveDescritionStyle({ descShadowVertical: newValue || "0" })
                                             }
                                         />
-                                        {/* <RangeControl
+                                        <PremiumRangeControl
                                             label={__("Padding (PX)")}
                                             value={descStyles[0].videoDescPadding}
                                             onChange={newValue =>
@@ -638,17 +587,6 @@ class edit extends Component {
                                                         newValue === undefined ? 20 : newValue
                                                 })
                                             }
-                                        /> */}
-                                        <PremiumRangeControl
-                                            label={__("Padding")}
-                                            value={descStyles[0].videoDescPadding}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    videoDescPadding:
-                                                        newValue === undefined ? 20 : newValue
-                                                })
-                                            }
-                                            // units={['px']}
                                             showUnit={false}
                                             defaultValue={0}
                                         />

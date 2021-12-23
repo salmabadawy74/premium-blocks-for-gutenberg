@@ -1,8 +1,9 @@
 import { Component } from "react";
+import PremiumRangeControl from './premium-range-control';
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl, ColorPicker } = wp.components;
+const { SelectControl, ColorPicker } = wp.components;
 
 export default class PremiumBorder extends Component {
 
@@ -161,12 +162,14 @@ export default class PremiumBorder extends Component {
                             />
                         </Fragment>
                     )}
-                    <RangeControl
+
+                    <PremiumRangeControl
                         label={__("Border Radius")}
                         value={borderRadius}
                         min="0"
                         max="150"
                         onChange={onChangeRadius}
+                        showUnit={false}
                     />
                 </Fragment>
             </div>

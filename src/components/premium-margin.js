@@ -72,7 +72,7 @@ class PremiumMargin extends Component {
         const { onChangeMarSizeUnit = () => { }, selectedUnit } = this.props;
 
         return (
-            <div className={`premium-control-group`}>
+            <div className={`kmt-spacing-responsive`}>
                 <div className="premium-control-label-container">
                     <div className={`premium-control-label`}>
                         <strong>{__("Margin")}</strong>
@@ -86,60 +86,64 @@ class PremiumMargin extends Component {
                         )}
                     </div>
                 </div>
-                <div className={`premium-controls-container`}>
-                    {(directions.includes("all") || directions.includes("top")) && (
-                        <div className={`premium-control-wrapper`}>
-                            <input
-                                type="number"
-                                name="top"
-                                value={top || 0}
-                                onChange={this.onInputChange}
-                            />
-                            <label className={`premium-control-label`}>Top</label>
-                        </div>
-                    )}
-                    {(directions.includes("all") || directions.includes("right")) && (
-                        <div className={`premium-control-wrapper`}>
-                            <input
-                                type="number"
-                                name="right"
-                                value={right || 0}
-                                onChange={this.onInputChange}
-                            />
-                            <label className={`premium-control-label`}>Right</label>
-                        </div>
-                    )}
-                    {(directions.includes("all") || directions.includes("bottom")) && (
-                        <div className={`premium-control-wrapper`}>
-                            <input
-                                type="number"
-                                name="bottom"
-                                value={bottom || 0}
-                                onChange={this.onInputChange}
-                            />
-                            <label className={`premium-control-label`}>Bottom</label>
-                        </div>
-                    )}
-                    {(directions.includes("all") || directions.includes("left")) && (
-                        <div className={`premium-control-wrapper`}>
-                            <input
-                                type="number"
-                                name="left"
-                                value={left || 0}
-                                onChange={this.onInputChange}
-                            />
-                            <label className={`premium-control-label`}>Left</label>
-                        </div>
-                    )}
-                    {(directions.length > 1 || directions.includes("all")) && (
-                        <div>
-                            <button
-                                className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
-                                    }`}
-                                onClick={this.onButtonClick}
-                            />
-                        </div>
-                    )}
+                <div className={`kmt-spacing-responsive-outer-wrapper`}>
+                    <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>
+                        <ul className={`kmt-spacing-wrapper`}>
+                            {(directions.includes("all") || directions.includes("top")) && (
+                                <li className={`premium-control-wrapper`}>
+                                    <input
+                                        type="number"
+                                        name="top"
+                                        value={top || 0}
+                                        onChange={this.onInputChange}
+                                    />
+                                    <span className={`premium-control-label`}>Top</span>
+                                </li>
+                            )}
+                            {(directions.includes("all") || directions.includes("right")) && (
+                                <li className={`premium-control-wrapper`}>
+                                    <input
+                                        type="number"
+                                        name="right"
+                                        value={right || 0}
+                                        onChange={this.onInputChange}
+                                    />
+                                    <span className={`premium-control-label`}>Right</span>
+                                </li>
+                            )}
+                            {(directions.includes("all") || directions.includes("bottom")) && (
+                                <li className={`premium-control-wrapper`}>
+                                    <input
+                                        type="number"
+                                        name="bottom"
+                                        value={bottom || 0}
+                                        onChange={this.onInputChange}
+                                    />
+                                    <span className={`premium-control-label`}>Bottom</span>
+                                </li>
+                            )}
+                            {(directions.includes("all") || directions.includes("left")) && (
+                                <li className={`premium-control-wrapper`}>
+                                    <input
+                                        type="number"
+                                        name="left"
+                                        value={left || 0}
+                                        onChange={this.onInputChange}
+                                    />
+                                    <span className={`premium-control-label`}>Left</span>
+                                </li>
+                            )}
+                            {(directions.length > 1 || directions.includes("all")) && (
+                                <li>
+                                    <button
+                                        className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
+                                            }`}
+                                        onClick={this.onButtonClick}
+                                    />
+                                </li>
+                            )}
+                        </ul>
+                    </div>
                 </div>
             </div>
         );

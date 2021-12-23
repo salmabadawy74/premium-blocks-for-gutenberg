@@ -18,7 +18,6 @@ const {
     Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     ToggleControl,
     Dropdown,
@@ -224,28 +223,18 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                // <RangeControl
-                                //     label={__("Size")}
-                                //     max="200"
-                                //     value={imgSize}
-                                //     onChange={newSize => setAttributes({ imgSize: newSize })}
-                                // />
                                 <PremiumRangeControl
                                     label={__("Size")}
                                     value={imgSize}
+                                    max="200"
                                     onChange={newSize => setAttributes({ imgSize: newSize })}
                                     showUnit={false}
                                     defaultValue={0}
                                 />
                             )}
                             {authorImgUrl && (
-                                // <RangeControl
-                                //     label={__("Border Width (PX)")}
-                                //     value={imgBorder}
-                                //     onChange={newSize => setAttributes({ imgBorder: newSize })}
-                                // />
                                 <PremiumRangeControl
-                                    label={__("Border Width")}
+                                    label={__("Border Width (PX)")}
                                     value={imgBorder}
                                     onChange={newSize => setAttributes({ imgBorder: newSize })}
                                     showUnit={false}
@@ -357,25 +346,15 @@ class edit extends Component {
                             }
 
                         />
-                        {/* <RangeControl
-                            label={__("Margin Top (PX)")}
-                            value={contentStyle[0].bodyTop}
-                            onChange={newSize => saveContentStyle({ bodyTop: newSize })}
-                        /> */}
                         <PremiumRangeControl
-                            label={__("Margin Top")}
+                            label={__("Margin Top (PX)")}
                             value={contentStyle[0].bodyTop}
                             onChange={newSize => saveContentStyle({ bodyTop: newSize })}
                             showUnit={false}
                             defaultValue={0}
                         />
-                        {/* <RangeControl
-                            label={__("Margin Bottom (PX)")}
-                            value={contentStyle[0].bodyBottom}
-                            onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
-                        /> */}
                         <PremiumRangeControl
-                            label={__("Margin Bottom")}
+                            label={__("Margin Bottom (PX)")}
                             value={contentStyle[0].bodyBottom}
                             onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
                             showUnit={false}
@@ -478,18 +457,12 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        {/* <RangeControl
+                        <PremiumRangeControl
                             label={__("Size (EM)")}
                             value={quoteStyles[0].quotSize}
                             min="1"
                             max="12"
                             onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
-                        /> */}
-                        <PremiumRangeControl
-                            label={__("Size")}
-                            value={quoteStyles[0].quotSize}
-                            onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
-                            // units={['em']}
                             showUnit={false}
                             defaultValue={0}
                         />
@@ -505,14 +478,15 @@ class edit extends Component {
                                 allowReset={true}
                             />
                         </Fragment>
-                        <RangeControl
+                        <PremiumRangeControl
                             label={__("Opacity")}
                             min="0"
                             max="100"
                             value={quoteStyles[0].quotOpacity}
                             onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
-
                     </PanelBody>
                     <PanelBody
                         title={__("Container")}

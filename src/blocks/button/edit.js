@@ -515,22 +515,14 @@ export class edit extends Component {
                                 })
                             }
                         />
-                        {/* <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
-                        />
-                        <RangeControl
-                            label={__("Padding")}
-                            value={btnStyles[0].padding}
-                            onChange={newValue => saveBtnStyles({ padding: newValue })}
-                        /> */}
                         <PremiumRangeControl
                             label={__("Padding")}
                             value={btnStyles[0].padding}
                             onChange={newValue => saveBtnStyles({ padding: newValue })}
-                            units={['px', 'em', 'rem']}
                             defaultValue={0}
                             onChangeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
                             showUnit={true}
+                            unit={btnStyles[0].paddingU}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

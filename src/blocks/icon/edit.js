@@ -194,6 +194,7 @@ const edit = props => {
                             saveIconStyle({ iconSizeUnit: newValue })
                         }
                         showUnit={true}
+                        unit={iconStyles.iconSizeUnit}
                     />
                     <div className="premium-control-toggle">
                         <strong>{__("Colors")}</strong>

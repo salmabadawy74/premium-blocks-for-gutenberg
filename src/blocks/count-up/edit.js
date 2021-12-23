@@ -263,11 +263,6 @@ class edit extends Component {
                             onChange={newDir => setAttributes({ flexDir: newDir })}
                         />
                         {("row" === flexDir || "row-reverse" === flexDir) && (
-                            // <RangeControl
-                            //     label={__("Spacing (PX)")}
-                            //     value={iconSpacing}
-                            //     onChange={newValue => setAttributes({ iconSpacing: newValue })}
-                            // />
                             <PremiumRangeControl
                                 label={__("Spacing")}
                                 value={iconSpacing}
@@ -493,11 +488,6 @@ class edit extends Component {
                                     allowReset={true}
                                 />
                             </Fragment>
-                            {/* <RangeControl
-                                label={__("Gap After (PX)")}
-                                value={prefixStyles[0].prefixGap}
-                                onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
-                            /> */}
                             <PremiumRangeControl
                                 label={__("Gap After")}
                                 value={prefixStyles[0].prefixGap}
@@ -557,11 +547,6 @@ class edit extends Component {
                                     allowReset={true}
                                 />
                             </Fragment>
-                            {/* <RangeControl
-                                label={__("Gap Before (PX)")}
-                                value={suffixStyles[0].suffixGap}
-                                onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
-                            /> */}
                             <PremiumRangeControl
                                 label={__("Gap Before")}
                                 value={suffixStyles[0].suffixGap}
@@ -636,11 +621,6 @@ class edit extends Component {
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
-                                {/* <RangeControl
-                                    label={__("Margin Top (PX)")}
-                                    value={titleStyles[0].titleT}
-                                    onChange={newValue => saveTitleStyles({ titleT: newValue })}
-                                /> */}
                                 <PremiumRangeControl
                                     label={__("Margin Top")}
                                     value={titleStyles[0].titleT}
@@ -648,11 +628,7 @@ class edit extends Component {
                                     showUnit={false}
                                     defaultValue={0}
                                 />
-                                {/* <RangeControl
-                                    label={__("Margin Bottom (PX)")}
-                                    value={titleStyles[0].titleB}
-                                    onChange={newValue => saveTitleStyles({ titleB: newValue })}
-                                /> */}
+
                                 <PremiumRangeControl
                                     label={__("Margin Bottom")}
                                     value={titleStyles[0].titleB}

@@ -7,6 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import PremiumRangeControl from "../../components/premium-range-control";
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
@@ -306,9 +307,7 @@ export class edit extends Component {
                             value={height}
                             onChange={newHeight => setAttributes({ height: newHeight })}
                         />
-                        <p>{"custom" === height && __("Min Height (PX)")}</p>
                         {"custom" === height && (
-
                             <PremiumRangeControl
                                 label={__("Min Height (PX)")}
                                 value={minHeight}
