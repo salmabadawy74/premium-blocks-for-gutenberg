@@ -36,6 +36,10 @@
     }
 
     .input-wrapper .kmt-spacing-wrapper {
+        display: flex;
+        align-items: initial;
+        justify-content: center;
+
         li {
             text-align: center;
             -webkit-box-flex: 1;
@@ -52,6 +56,8 @@
                 padding: 0 3px;
                 width: 100% !important;
                 height: 32px;
+                border: 1px solid #dcdddf !important;
+                border-radius: 0 !important;
             }
         }
 
@@ -140,18 +146,15 @@ input {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-
     &:disabled {
         color: rgba(0, 0, 0, 0.2);
         cursor: default;
     }
-
     &::before {
         content: "\f531";
         transition: transform 0.3s ease;
         transform: rotate(45deg);
     }
-
     &:hover {
         &:not(:disabled):before {
             transform: rotate(-45deg);
@@ -160,7 +163,6 @@ input {
         border: none;
         background: transparent;
     }
-
     &:focus {
         box-shadow: none;
         border: none;
