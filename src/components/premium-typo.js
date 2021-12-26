@@ -1,13 +1,14 @@
 import PremiumResponsive from "./premium-responsive";
 import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
-import Select from "react-select"
+import Select from "react-select";
+import PremiumRangeControl from './premium-range-control';
+
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 const {
     SelectControl,
-    RangeControl,
     ToggleControl,
     Dropdown,
     Button,
@@ -139,12 +140,14 @@ export default class PremiumTypo extends Component {
                     renderContent={() => (
                         <Fragment>
                             {components.includes("size") && (
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Font Size (PX)")}
                                     value={size}
                                     min="10"
                                     max="80"
+                                    defaultValue={''}
                                     onChange={onChangeSize}
+                                    showUnit={false}
                                 />
                             )}
                             {components.includes("responsiveSize") && (
@@ -217,19 +220,23 @@ export default class PremiumTypo extends Component {
                                 />
                             )}
                             {components.includes("spacing") && (
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Letter Spacing (PX)")}
                                     value={spacing}
                                     onChange={onChangeSpacing}
-                                    onResetClick={onResetClick}
+                                    defaultValue={''}
+                                    onChange={onChangeSpacing}
+                                    showUnit={false}
                                 />
                             )}
                             {components.includes("line") && (
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__("Line Height (PX)")}
                                     value={line}
                                     onChange={onChangeLine}
-                                    onResetClick={onResetClick}
+                                    defaultValue={''}
+                                    onChange={onChangeLine}
+                                    showUnit={false}
                                 />
                             )}
 

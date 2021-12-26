@@ -166,8 +166,7 @@ export default class PremiumBorder extends Component {
                     <PremiumRangeControl
                         label={__("Border Radius")}
                         value={borderRadius}
-                        min="0"
-                        max="150"
+                        defaultValue={0}
                         onChange={onChangeRadius}
                         showUnit={false}
                     />

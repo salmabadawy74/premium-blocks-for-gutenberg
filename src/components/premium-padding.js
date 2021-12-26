@@ -13,12 +13,17 @@ class PremiumPadding extends Component {
             left: this.props.paddingLeft || 0,
             showUnits: this.props.showUnits || false,
         };
+        this.defaultValue = {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        }
 
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.changeFunction = this.changeFunction.bind(this);
     }
-
     onButtonClick() {
         this.setState({ isLinked: !this.state.isLinked });
     }
@@ -50,14 +55,6 @@ class PremiumPadding extends Component {
         const { top, right, bottom, left, showUnits, isLinked } = this.state;
 
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
-        let defaultValue = {
-
-            top: "",
-            right: "",
-            bottom: "",
-            left: "",
-
-        };
 
         return (
             <div className={`kmt-spacing-responsive`}>
@@ -126,21 +123,21 @@ class PremiumPadding extends Component {
                             </li>
                         </ul>
                     </div>
+                    <div className="kmt-spacing-btn-reset-wrap">
+                        <button
+                            className="kmt-reset-btn "
+                            disabled={
+                                JSON.stringify(this.state) ===
+                                JSON.stringify(this.defaultValue)
+                            }
+                            onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({ ...this.state, ...this.defaultValue })
+                            }}
+                        ></button>
+                    </div>
                 </div>
-                <div className="kmt-spacing-btn-reset-wrap">
-                    <button
-                        className="kmt-reset-btn "
-                        // disabled={
-                        //     JSON.stringify(state) ===
-                        //     JSON.stringify(defaultVals)
-                        // }
-                        onClick={(e) => {
-                            e.preventDefault();
-                            console.log("reset")
 
-                        }}
-                    ></button>
-                </div>
             </div>
         );
     }
