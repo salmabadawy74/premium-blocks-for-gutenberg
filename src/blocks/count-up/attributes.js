@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
     block_id: {
         type: "string"
@@ -84,7 +85,8 @@ const attributes = {
         default: "dashicons-clock"
     },
     counterFamily: {
-        type: "string"
+        type: "string",
+        default: __('Default')
     },
     hideDesktop: {
         type: 'boolean',
@@ -115,7 +117,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                titleFamily: '',
+                titleFamily: __('Default'),
                 titleSize: 20,
                 titleSizeUnit: 'px',
                 titleSizeTablet: '',
@@ -200,7 +202,7 @@ const attributes = {
                 suffixColor: '',
                 suffixWeight: '',
                 suffixGap: 2,
-                suffixFamily: '',
+                suffixFamily: __('Default'),
             }
         ]
     },
@@ -216,7 +218,7 @@ const attributes = {
                 prefixColor: '',
                 prefixWeight: '',
                 prefixGap: 2,
-                prefixFamily: '',
+                prefixFamily: __('Default'),
             }
         ]
     }

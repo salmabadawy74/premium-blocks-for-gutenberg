@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
     block_id: {
         type: "string"
@@ -33,7 +34,7 @@ const attributes = {
                 firstClip: false,
                 firstAnim: false,
                 firstStroke: false,
-                firstFamily: '',
+                firstFamily: __('Default'),
                 firstSizeUnit: 'px',
                 firstSize: '',
                 firstSizeMobile: '',
@@ -66,7 +67,7 @@ const attributes = {
                 secondClip: false,
                 secondAnim: false,
                 secondStroke: false,
-                secondFamily: '',
+                secondFamily: __('Default'),
                 secondSizeUnit: 'px',
                 secondSize: '20',
                 secondSizeTablet: '',

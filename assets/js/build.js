@@ -331,6 +331,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
+var _responsive = __webpack_require__(387);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
 var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
@@ -367,7 +371,8 @@ function PremiumRangeControl(_ref) {
         unit = _ref$unit === undefined ? 'px' : _ref$unit,
         defaultValue = _ref.defaultValue,
         onChangeUnit = _ref.onChangeUnit,
-        showUnit = _ref.showUnit;
+        showUnit = _ref.showUnit,
+        responsive = _ref.responsive;
 
     var onChangInput = function onChangInput(event) {
         if (event.target.value === '') {
@@ -407,7 +412,7 @@ function PremiumRangeControl(_ref) {
             React.createElement(
                 'div',
                 { className: 'kmt-slider-title-wrap' },
-                React.createElement(
+                responsive ? React.createElement(_responsive2.default, { label: label }) : React.createElement(
                     'span',
                     { className: 'customize-control-title kmt-control-title' },
                     label
@@ -1919,12 +1924,14 @@ var PremiumPadding = function (_Component) {
                             __("Padding")
                         )
                     ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "premium-control-units" },
-                        showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: selectedUnit,
-                            onChangeSizeUnit: onChangePadSizeUnit
+                    showUnits && _react2.default.createElement(
+                        "ul",
+                        { className: "kmt-slider-units" },
+                        _react2.default.createElement(_premiumSizeUnits2.default, {
+                            activeUnit: unit,
+                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                                return onChangeUnit(newValue);
+                            }
                         })
                     )
                 ),
@@ -3689,7 +3696,7 @@ var PremiumMargin = function (_Component) {
                 "div",
                 { className: "kmt-spacing-responsive" },
                 _react2.default.createElement(
-                    "div",
+                    "header",
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
                         "div",
@@ -3700,12 +3707,14 @@ var PremiumMargin = function (_Component) {
                             __("Margin")
                         )
                     ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "premium-control-units" },
-                        showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: selectedUnit,
-                            onChangeSizeUnit: onChangeMarSizeUnit
+                    showUnits && _react2.default.createElement(
+                        "ul",
+                        { className: "kmt-slider-units" },
+                        _react2.default.createElement(_premiumSizeUnits2.default, {
+                            activeUnit: unit,
+                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                                return onChangeUnit(newValue);
+                            }
                         })
                     )
                 ),
@@ -11251,6 +11260,8 @@ var _ref;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var __ = wp.i18n.__;
+
 var attributes = {
     block_id: {
         type: "string"
@@ -11337,7 +11348,8 @@ var attributes = {
         default: "dashicons-clock"
     },
     counterFamily: {
-        type: "string"
+        type: "string",
+        default: __('Default')
     },
     hideDesktop: {
         type: 'boolean',
@@ -11365,7 +11377,7 @@ var attributes = {
     titleStyles: {
         type: "array",
         default: [(_ref = {
-            titleFamily: '',
+            titleFamily: __('Default'),
             titleSize: 20,
             titleSizeUnit: 'px',
             titleSizeTablet: '',
@@ -11444,7 +11456,7 @@ var attributes = {
             suffixColor: '',
             suffixWeight: '',
             suffixGap: 2,
-            suffixFamily: ''
+            suffixFamily: __('Default')
         }]
     },
     prefixStyles: {
@@ -11458,7 +11470,7 @@ var attributes = {
             prefixColor: '',
             prefixWeight: '',
             prefixGap: 2,
-            prefixFamily: ''
+            prefixFamily: __('Default')
         }]
     }
 };
@@ -36502,7 +36514,7 @@ var attributes = {
             textSize: 20,
             textSizeTablet: '',
             textSizeMobile: '',
-            textFontFamily: '',
+            textFontFamily: __('Default'),
             textLetter: '',
             textStyle: '',
             textUpper: false,
@@ -42054,6 +42066,8 @@ Object.defineProperty(exports, "__esModule", {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var __ = wp.i18n.__;
+
 var attributes = _defineProperty({
     block_id: {
         type: "string"
@@ -42088,7 +42102,7 @@ var attributes = _defineProperty({
             firstClip: false,
             firstAnim: false,
             firstStroke: false,
-            firstFamily: '',
+            firstFamily: __('Default'),
             firstSizeUnit: 'px',
             firstSize: '',
             firstSizeMobile: '',
@@ -42119,7 +42133,7 @@ var attributes = _defineProperty({
             secondClip: false,
             secondAnim: false,
             secondStroke: false,
-            secondFamily: '',
+            secondFamily: __('Default'),
             secondSizeUnit: 'px',
             secondSize: '20',
             secondSizeTablet: '',
@@ -62332,6 +62346,8 @@ exports.default = deprecatedContent;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var __ = wp.i18n.__;
+
 var videoBoxAttrs = {
     block_id: {
         type: 'string'
@@ -62466,7 +62482,7 @@ var videoBoxAttrs = {
         type: 'array',
         default: [{
             videoDescText: '',
-            videoDescFamily: '',
+            videoDescFamily: __('Default'),
             videoDescSize: '',
             videoDescSizeUnit: 'px',
             videoDescSizeMobile: '',
@@ -67833,7 +67849,7 @@ var edit = function (_Component) {
                                 return setAttributes({ bottom: newValue });
                             },
                             showUnit: false,
-                            defaultValue: 100,
+                            defaultValue: '',
                             min: 0,
                             max: 50
                         }),
@@ -67844,109 +67860,26 @@ var edit = function (_Component) {
                                 return setAttributes({ top: newValue });
                             },
                             showUnit: false,
-                            defaultValue: 100,
+                            defaultValue: '',
                             min: 50,
                             max: 100
                         })
                     ),
-                    React.createElement(_premiumSizeUnits2.default, {
-
-                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                            return saveLottieStyles({ sizeUnit: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        TabPanel,
-                        {
-                            className: "premium-size-type-field-tabs",
-                            activeClass: "active-tab",
-                            tabs: [{
-                                name: "mobile",
-                                title: React.createElement(Dashicon, { icon: "desktop" }),
-                                className: "premium-desktop-tab premium-responsive-tabs"
-                            }, {
-                                name: "tablet",
-                                title: React.createElement(Dashicon, { icon: "tablet" }),
-                                className: "premium-tablet-tab premium-responsive-tabs"
-
-                            }, {
-                                name: "desktop",
-                                title: React.createElement(Dashicon, { icon: "smartphone" }),
-                                className: "premium-mobile-tab premium-responsive-tabs"
-
-                            }]
+                    React.createElement(_premiumRangeControl2.default, {
+                        label: __("Size"),
+                        value: lottieStyles[0].size,
+                        onChange: function onChange(value) {
+                            return saveLottieStyles({ size: value !== "" ? value : 200 });
                         },
-                        function (tab) {
-                            var tabout = void 0;
-                            if ("mobile" === tab.name) {
-                                tabout =
-                                // <RangeControl
-                                //     label={__("Size")}
-                                //     value={lottieStyles[0].size}
-                                //     max={lottieStyles[0].sizeUnit === '%' ? 100 : 400}
-                                //     onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
-                                //     initialPosition={200}
-                                // />
-                                React.createElement(_premiumRangeControl2.default, {
-                                    label: __("Size"),
-                                    value: lottieStyles[0].size,
-                                    onChange: function onChange(newValue) {
-                                        return setAttributes({ top: newValue });
-                                    },
-                                    showUnit: false,
-                                    defaultValue: 200,
-                                    min: 0,
-                                    max: lottieStyles[0].sizeUnit === '%' ? 100 : 400
-                                });
-                            } else if ("tablet" === tab.name) {
-                                tabout =
-                                // <RangeControl
-                                //     label={__("Size Tablet")}
-                                //     value={lottieStyles[0].sizeTablet}
-                                //     max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
-                                //     onChange={(value) => saveLottieStyles({ sizeTablet: (value !== "") ? value : 200 })}
-                                //     initialPosition={200}
-                                // />
-                                React.createElement(_premiumRangeControl2.default, {
-                                    label: __("Size Tablet"),
-                                    value: lottieStyles[0].sizeTablet,
-                                    onChange: function onChange(value) {
-                                        return saveLottieStyles({ sizeTablet: value !== "" ? value : 200 });
-                                    },
-                                    showUnit: false,
-                                    defaultValue: 200,
-                                    min: 0,
-                                    max: lottieStyles[0].sizeUnit === '%' ? 100 : 800
-                                });
-                            } else {
-                                tabout =
-                                // <RangeControl
-                                //     label={__("Size Mobile")}
-                                //     value={lottieStyles[0].sizeMobile}
-                                //     max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
-                                //     onChange={(value) => saveLottieStyles({ sizeMobile: (value !== "") ? value : 200 })}
-                                //     initialPosition={200}
-                                // />
-                                React.createElement(_premiumRangeControl2.default, {
-                                    label: __("Size Mobile"),
-                                    value: lottieStyles[0].sizeMobile,
-                                    onChange: function onChange(value) {
-                                        return saveLottieStyles({ sizeMobile: value !== "" ? value : 200 });
-                                    },
-                                    showUnit: false,
-                                    defaultValue: 200,
-                                    min: 0,
-                                    max: lottieStyles[0].sizeUnit === '%' ? 100 : 800
-                                });
-                            }
-
-                            return React.createElement(
-                                "div",
-                                null,
-                                tabout
-                            );
-                        }
-                    ),
+                        showUnit: true,
+                        defaultValue: 200,
+                        min: 0,
+                        max: lottieStyles[0].sizeUnit === '%' ? 100 : 400,
+                        onChangeUnit: function onChangeUnit(newValue) {
+                            return saveLottieStyles({ sizeUnit: newValue });
+                        },
+                        unit: lottieStyles[0].sizeUnit
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Rotate (Degree)"),
                         value: rotate,
@@ -72146,7 +72079,7 @@ var attributes = {
             required: true,
             inputColumnWidth: '100',
             textColor: '',
-            textFontFamily: '',
+            textFontFamily: __('Default'),
             textSizeUnit: "",
             textSize: '',
             textSizeMobile: '',
@@ -72171,7 +72104,7 @@ var attributes = {
         default: [{
             btnColor: '',
             btnBackColor: '',
-            btnFontFamily: '',
+            btnFontFamily: __('Default'),
             btnSizeUnit: 'px',
             btnSize: '',
             btnSizeMobile: "",
@@ -72194,6 +72127,117 @@ var attributes = {
     }
 };
 exports.default = attributes;
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+// import kmtEvents from './events';
+
+var Fragment = wp.element.Fragment;
+
+var Responsive = function (_Component) {
+    _inherits(Responsive, _Component);
+
+    function Responsive(props) {
+        _classCallCheck(this, Responsive);
+
+        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
+
+        _this.state = {
+            view: 'desktop'
+        };
+        // this.linkResponsiveButtons();
+        return _this;
+    }
+
+    _createClass(Responsive, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var label = this.props.label;
+
+            var devices = ['desktop', 'tablet', 'mobile'];
+            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
+            return _react2.default.createElement(
+                Fragment,
+                null,
+                label ? _react2.default.createElement(
+                    'span',
+                    { className: 'customize-control-title kmt-control-title' },
+                    label
+                ) : null,
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'kmt-responsive-control-btns kmt-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === previewDevice ? ' active' : '';
+                        var icon = device === 'mobile' ? 'smartphone' : device;
+                        return _react2.default.createElement(
+                            'li',
+                            { className: '' + device + activeClass },
+                            _react2.default.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        _this2.changeViewType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                ),
+                this.props.children
+            );
+        }
+    }, {
+        key: 'changeViewType',
+        value: function changeViewType(device) {
+            this.setState({ view: device });
+            wp.customize && wp.customize.previewedDevice(device);
+            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
+                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
+                    return c.toUpperCase();
+                }));
+            }
+            this.props.onChange(device);
+        }
+        // linkResponsiveButtons() {
+        //     let self = this;
+        //     kmtEvents.on('KemetChangedRepsonsivePreview', function (e) {
+        //         self.changeViewType(e.detail);
+        //     })
+        // }
+
+    }]);
+
+    return Responsive;
+}(_react.Component);
+
+exports.default = Responsive;
 
 /***/ })
 /******/ ]);

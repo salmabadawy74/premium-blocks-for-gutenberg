@@ -267,15 +267,6 @@ class edit extends Component {
                         checked={reverse}
                         onChange={() => setAttributes({ reverse: !reverse })}
                     />
-                    {/* <RangeControl
-                        label={__('Animation Speed')}
-                        value={speed}
-                        onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
-                        max={3}
-                        min={.1}
-                        step={0.1}
-                        initialPosition={1}
-                    /> */}
                     <PremiumRangeControl
                         label={__('Animation Speed')}
                         value={speed}
@@ -299,15 +290,6 @@ class edit extends Component {
                     />
 
                     {('scroll' === trigger && !reverse) && <Fragment>
-                        {/* <RangeControl
-                            label={__('Scroll Speed')}
-                            value={scrollSpeed}
-                            onChange={(newValue) => setAttributes({ scrollSpeed: (newValue !== "") ? newValue : 200 })}
-                            min={1}
-                            max={10}
-                            step={.1}
-                            initialPosition={0}
-                        /> */}
                         <PremiumRangeControl
                             label={__('Scroll Speed')}
                             value={scrollSpeed}
@@ -320,46 +302,41 @@ class edit extends Component {
                         />
                     </Fragment>}
                     {((trigger === 'viewport' || trigger === 'scroll') && !reverse) && <Fragment>
-                        {/* <RangeControl
-                            label={__('Bottom')}
-                            value={bottom}
-                            onChange={(newValue) => setAttributes({ bottom: newValue })}
-                            min={0}
-                            max={50}
-                            initialPosition={0}
-                        /> */}
                         <PremiumRangeControl
                             label={__('Bottom')}
                             value={bottom}
                             onChange={(newValue) => setAttributes({ bottom: newValue })}
                             showUnit={false}
-                            defaultValue={100}
+                            defaultValue={''}
                             min={0}
                             max={50}
                         />
-                        {/* <RangeControl
-                            label={__('Top')}
-                            value={top}
-                            onChange={(newValue) => setAttributes({ top: newValue })}
-                            min={50}
-                            max={100}
-                            initialPosition={100}
-                        /> */}
                         <PremiumRangeControl
                             label={__('Top')}
                             value={top}
                             onChange={(newValue) => setAttributes({ top: newValue })}
                             showUnit={false}
-                            defaultValue={100}
+                            defaultValue={''}
                             min={50}
                             max={100}
                         />
                     </Fragment>}
-                    <PremiumSizeUnits
+                    <PremiumRangeControl
+                        label={__("Size")}
+                        value={lottieStyles[0].size}
+                        onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
+                        showUnit={true}
+                        defaultValue={200}
+                        min={0}
+                        max={lottieStyles[0].sizeUnit === '%' ? 100 : 400}
+                        onChangeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
+                        unit={lottieStyles[0].sizeUnit}
+                    />
+                    {/* <PremiumSizeUnits
 
                         onChangeSizeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
-                    />
-                    <TabPanel
+                    /> */}
+                    {/* <TabPanel
                         className="premium-size-type-field-tabs"
                         activeClass="active-tab"
                         tabs={[
@@ -378,7 +355,6 @@ class edit extends Component {
                                 name: "desktop",
                                 title: <Dashicon icon="smartphone" />,
                                 className: "premium-mobile-tab premium-responsive-tabs",
-
                             },
                         ]}
                     >
@@ -445,17 +421,7 @@ class edit extends Component {
 
                             return <div>{tabout}</div>
                         }}
-                    </TabPanel>
-
-                    {/* <RangeControl
-                        label={__("Rotate (Degree)")}
-                        value={rotate}
-                        min={-180}
-                        max={180}
-                        onChange={(newValue) => setAttributes({ rotate: newValue })}
-                        step={1}
-                        initialPosition={0}
-                    /> */}
+                    </TabPanel> */}
                     <PremiumRangeControl
                         label={__("Rotate (Degree)")}
                         value={rotate}
@@ -557,14 +523,6 @@ class edit extends Component {
                                             value={lottieStyles[0].backColor}
                                             onChange={(newValue) => saveLottieStyles({ backColor: newValue })}
                                         />
-                                        {/* <RangeControl
-                                            label={__(`Opacity`)}
-                                            value={lottieStyles[0].backOpacity}
-                                            onChange={(newvalue) => saveLottieStyles({ backOpacity: newvalue })}
-                                            max={1}
-                                            min={.1}
-                                            step={0.01}
-                                        /> */}
                                         <PremiumRangeControl
                                             label={__(`Opacity`)}
                                             value={lottieStyles[0].backOpacity}
@@ -598,14 +556,6 @@ class edit extends Component {
                                             value={lottieStyles[0].backHColor}
                                             onChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
                                         />
-                                        {/* <RangeControl
-                                            label={__(`Opacity`)}
-                                            value={lottieStyles[0].backHOpacity}
-                                            onChange={(newvalue) => saveLottieStyles({ backHOpacity: newvalue })}
-                                            max={1}
-                                            min={.1}
-                                            step={0.01}
-                                        /> */}
                                         <PremiumRangeControl
                                             label={__(`Opacity`)}
                                             value={lottieStyles[0].backHOpacity}

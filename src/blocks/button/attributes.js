@@ -80,7 +80,7 @@ const attributes = {
                 textSize: 20,
                 textSizeTablet: '',
                 textSizeMobile: '',
-                textFontFamily: '',
+                textFontFamily: __('Default'),
                 textLetter: '',
                 textStyle: '',
                 textUpper: false,
