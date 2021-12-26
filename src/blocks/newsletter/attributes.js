@@ -56,7 +56,7 @@ const attributes = {
                 required: true,
                 inputColumnWidth: '100',
                 textColor: '',
-                textFontFamily: '',
+                textFontFamily: __('Default'),
                 textSizeUnit: "",
                 textSize: '',
                 textSizeMobile: '',
@@ -83,7 +83,7 @@ const attributes = {
             {
                 btnColor: '',
                 btnBackColor: '',
-                btnFontFamily: '',
+                btnFontFamily: __('Default'),
                 btnSizeUnit: 'px',
                 btnSize: '',
                 btnSizeMobile: "",

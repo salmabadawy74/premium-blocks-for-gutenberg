@@ -83,14 +83,15 @@ class PremiumMargin extends Component {
                     <div className={`premium-control-label`}>
                         <strong>{__("Margin")}</strong>
                     </div>
-                    <div className={`premium-control-units`}>
-                        {showUnits && (
-                            <PremiumSizeUnits
-                                activeUnit={selectedUnit}
-                                onChangeSizeUnit={onChangeMarSizeUnit}
-                            />
-                        )}
-                    </div>
+
+                    {showUnits && (<ul className="kmt-slider-units">
+                        <PremiumSizeUnits
+                            activeUnit={unit}
+                            onChangeSizeUnit={newValue =>
+                                onChangeUnit(newValue)
+                            }
+                        />
+                    </ul>)}
                 </header>
                 <div className={`kmt-spacing-responsive-outer-wrapper`}>
                     <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>

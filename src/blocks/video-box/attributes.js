@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const videoBoxAttrs = {
     block_id: {
         type: 'string'
@@ -139,7 +140,7 @@ const videoBoxAttrs = {
         default: [
             {
                 videoDescText: '',
-                videoDescFamily: '',
+                videoDescFamily: __('Default'),
                 videoDescSize: '',
                 videoDescSizeUnit: 'px',
                 videoDescSizeMobile: '',

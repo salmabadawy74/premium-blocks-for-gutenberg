@@ -1,3 +1,4 @@
+import Responsive from './Common/responsive';
 import PremiumSizeUnits from './premium-size-units'
 const {
     RangeControl,
@@ -22,7 +23,8 @@ export default function PremiumRangeControl({
     unit = 'px',
     defaultValue,
     onChangeUnit,
-    showUnit
+    showUnit,
+    responsive
 }) {
     const onChangInput = (event) => {
         if (event.target.value === '') {
@@ -57,7 +59,7 @@ export default function PremiumRangeControl({
         <div className={`premium-blocks-range-control`}>
             <header>
                 <div className={`kmt-slider-title-wrap`}>
-                    <span className="customize-control-title kmt-control-title">{label}</span>
+                    {responsive ? <Responsive label={label} /> : <span className="customize-control-title kmt-control-title">{label}</span>}
                 </div>
                 {showUnit && (<ul className="kmt-slider-units">
                     <PremiumSizeUnits
