@@ -3,6 +3,8 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+
 
 const className = "premium-maps";
 
@@ -19,7 +21,7 @@ const {
     ToggleControl,
 } = wp.components;
 
-const { InspectorControls, ColorPalette } = wp.editor;
+const { InspectorControls } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -611,19 +613,17 @@ class PremiumMap extends Component {
                                 showUnit={false}
                                 defaultValue={0}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={titleColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            titleColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", '')}
+                                colorValue={titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        titleColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                         </PanelBody>
                     )}
                     {mapMarker && markerDesc && (
@@ -641,19 +641,17 @@ class PremiumMap extends Component {
                                 showUnit={false}
                                 defaultValue={0}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={descColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            descColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", '')}
+                                colorValue={descColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        descColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                         </PanelBody>
                     )}
                     <PanelBody

@@ -5,6 +5,7 @@ import Typed from "typed.js";
 import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import hexToRgba from "../../components/hex-to-rgba";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 import {
     SortableContainer,
@@ -22,7 +23,6 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    ColorPalette,
 } = wp.blockEditor;
 
 const {
@@ -622,15 +622,16 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={fancyStyles[0].fancyTextColor}
-                            onChange={(newValue) =>
+
+                        <AdvancedPopColorControl
+                            label={__("Color", '')}
+                            colorValue={fancyStyles[0].fancyTextColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveFancyStyle({
                                     fancyTextColor: newValue,
                                 })
                             }
-                            allowReset={true}
                         />
                         <PremiumTypo
                             components={[
@@ -709,18 +710,16 @@ class edit extends Component {
                             onResetClick={onResetClickLabelTextShadow}
                         />
                         {effect == "typing" && cursorShow && (
-                            <Fragment>
-                                <p>{__("Cursor Color")}</p>
-                                <ColorPalette
-                                    value={fancyStyles[0].cursorColor}
-                                    onChange={(newValue) =>
-                                        saveFancyStyle({
-                                            cursorColor: newValue,
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Cursor Color", '')}
+                                colorValue={fancyStyles[0].cursorColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveFancyStyle({
+                                        cursorColor: newValue,
+                                    })
+                                }
+                            />
                         )}
                     </PanelBody>
                     <PanelBody
@@ -728,15 +727,16 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={PreStyles[0].textColor}
-                            onChange={(newValue) =>
+
+                        <AdvancedPopColorControl
+                            label={__("Color", '')}
+                            colorValue={PreStyles[0].textColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 savePrefixStyle({
                                     textColor: newValue,
                                 })
                             }
-                            allowReset={true}
                         />
                         <PremiumTypo
                             components={[

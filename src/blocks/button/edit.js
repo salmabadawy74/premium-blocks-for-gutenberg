@@ -8,6 +8,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 
 const { __ } = wp.i18n;
@@ -24,7 +25,6 @@ const { Fragment, Component } = wp.element;
 
 const {
     InspectorControls,
-    ColorPalette,
     AlignmentToolbar,
     BlockControls,
     RichText,
@@ -85,99 +85,99 @@ export class edit extends Component {
         const SIZE = [
             {
                 value: "sm",
-                label: __("Small")
+                label: __("Small", 'premium-block-for-gutenberg')
             },
             {
                 value: "md",
-                label: __("Medium")
+                label: __("Medium", 'premium-block-for-gutenberg')
             },
             {
                 value: "lg",
-                label: __("Large")
+                label: __("Large", 'premium-block-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Block")
+                label: __("Block", 'premium-block-for-gutenberg')
             }
         ];
         const DIRECTION = [
             {
                 value: "top",
-                label: __("Top to Bottom")
+                label: __("Top to Bottom", 'premium-block-for-gutenberg')
             },
             {
                 value: "bottom",
-                label: __("Bottom to Top")
+                label: __("Bottom to Top", 'premium-block-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left to Right")
+                label: __("Left to Right", 'premium-block-for-gutenberg')
             },
             {
                 value: "right",
-                label: __("Right to Left")
+                label: __("Right to Left", 'premium-block-for-gutenberg')
             }
         ];
         const SHUTTER = [
             {
                 value: "shutouthor",
-                label: __("Shutter out Horizontal")
+                label: __("Shutter out Horizontal", 'premium-block-for-gutenberg')
             },
             {
                 value: "shutoutver",
-                label: __("Shutter out Vertical")
+                label: __("Shutter out Vertical", 'premium-block-for-gutenberg')
             },
             {
                 value: "scshutoutver",
-                label: __("Scaled Shutter Vertical")
+                label: __("Scaled Shutter Vertical", 'premium-block-for-gutenberg')
             },
             {
                 value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal")
+                label: __("Scaled Shutter Horizontal", 'premium-block-for-gutenberg')
             },
             {
                 value: "dshutinver",
-                label: __("Tilted Left")
+                label: __("Tilted Left", 'premium-block-for-gutenberg')
             },
             {
                 value: "dshutinhor",
-                label: __("Tilted Right")
+                label: __("Tilted Right", 'premium-block-for-gutenberg')
             }
         ];
         const RADIAL = [
             {
                 value: "radialin",
-                label: __("Radial In")
+                label: __("Radial In", 'premium-block-for-gutenberg')
             },
             {
                 value: "radialout",
-                label: __("Radial Out")
+                label: __("Radial Out", 'premium-block-for-gutenberg')
             },
             {
                 value: "rectin",
-                label: __("Rectangle In")
+                label: __("Rectangle In", 'premium-block-for-gutenberg')
             },
             {
                 value: "rectout",
-                label: __("Rectangle Out")
+                label: __("Rectangle Out", 'premium-block-for-gutenberg')
             }
         ];
         const EFFECTS = [
             {
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             },
             {
                 value: "slide",
-                label: __("Slide")
+                label: __("Slide", 'premium-block-for-gutenberg')
             },
             {
                 value: "shutter",
-                label: __("Shutter")
+                label: __("Shutter", 'premium-block-for-gutenberg')
             },
             {
                 value: "radial",
-                label: __("Radial")
+                label: __("Radial", 'premium-block-for-gutenberg')
             }
         ];
 
@@ -237,20 +237,20 @@ export class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("General Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
                             options={EFFECTS}
-                            label={__("Hover Effect")}
+                            label={__("Hover Effect", 'premium-block-for-gutenberg')}
                             value={effect}
                             onChange={onChangeHover}
                         />
                         {"slide" === effect && (
                             <SelectControl
                                 options={DIRECTION}
-                                label={__("Direction")}
+                                label={__("Direction", 'premium-block-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -258,7 +258,7 @@ export class edit extends Component {
                         {"shutter" === effect && (
                             <SelectControl
                                 options={SHUTTER}
-                                label={__("Shutter Direction")}
+                                label={__("Shutter Direction", 'premium-block-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -266,25 +266,25 @@ export class edit extends Component {
                         {"radial" === effect && (
                             <SelectControl
                                 options={RADIAL}
-                                label={__("Style")}
+                                label={__("Style", 'premium-block-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         <SelectControl
                             options={SIZE}
-                            label={__("Button Size")}
+                            label={__("Button Size", 'premium-block-for-gutenberg')}
                             value={btnSize}
                             onChange={newSize => setAttributes({ btnSize: newSize })}
                         />
                         <ToggleControl
-                            label={__("Open link in new tab")}
+                            label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                             checked={btnTarget}
                             onChange={newValue => setAttributes({ btnTarget: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Text Style")}
+                        title={__("Text Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -293,19 +293,19 @@ export class edit extends Component {
                             setAttributes={saveTextStyles}
                             fontSizeType={{
                                 value: textStyles[0].textSizeUnit,
-                                label: __("textSizeUnit"),
+                                label: __("textSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: textStyles[0].textSize,
-                                label: __("textSize"),
+                                label: __("textSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: textStyles[0].textSizeMobile,
-                                label: __("textSizeMobile"),
+                                label: __("textSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: textStyles[0].textSizeTablet,
-                                label: __("textSizeTablet"),
+                                label: __("textSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={textStyles[0].textFontFamily}
                             weight={textStyles[0].textWeight}
@@ -346,11 +346,11 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Button Style")}
+                        title={__("Button Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <strong>{__("Colors")}</strong>
+                        <strong>{__("Colors", 'premium-block-for-gutenberg')}</strong>
                         <TabPanel
                             className="premium-color-tabpanel"
                             activeClass="active-tab"
@@ -372,20 +372,20 @@ export class edit extends Component {
                                 if ("normal" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={btnStyles[0].textColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                colorValue={btnStyles[0].textColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     saveBtnStyles({
                                                         textColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                             <p>
                                                 {"radial" !== effect
-                                                    ? __("Background Color")
-                                                    : __("Background Hover Color")}
+                                                    ? __("Background Color", 'premium-block-for-gutenberg')
+                                                    : __("Background Hover Color", 'premium-block-for-gutenberg')}
                                             </p>
                                             <PremiumBackground
                                                 type="color"
@@ -408,40 +408,38 @@ export class edit extends Component {
                                 if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Text Hover Color")}</p>
-                                            <ColorPalette
-                                                value={btnStyles[0].textHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={btnStyles[0].textHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     saveBtnStyles({
                                                         textHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>
-                                                {"radial" !== effect
-                                                    ? __("Background Hover Color")
-                                                    : __("Background Color")}
-                                            </p>
-                                            <ColorPalette
-                                                value={btnStyles[0].backHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={"radial" !== effect
+                                                    ? __("Background Hover Color", 'premium-block-for-gutenberg')
+                                                    : __("Background Color", 'premium-block-for-gutenberg')}
+                                                colorValue={btnStyles[0].backHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     saveBtnStyles({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>{__("Border Hover Color")}</p>
-                                            <ColorPalette
-                                                value={btnStyles[0].borderHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Border Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={btnStyles[0].borderHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     saveBtnStyles({
                                                         borderHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                         </Fragment>
                                     );
@@ -516,7 +514,7 @@ export class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Padding")}
+                            label={__("Padding", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].padding}
                             onChange={newValue => saveBtnStyles({ padding: newValue })}
                             defaultValue={0}

@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import Select from 'react-select';
 import debounce from 'lodash/debounce';
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner, ServerSideRender } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
@@ -13,6 +13,7 @@ const { apiFetch } = wp;
 const { withSelect } = wp.data
 const { Component } = wp.element;
 const { getWidgetIdFromBlock } = wp.widgets;
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 export class edit extends Component {
 
@@ -511,10 +512,11 @@ export class edit extends Component {
                                 saveInputStyle({ inputColumnWidth: value })
                             }
                         />
-                        <p>{__("Text Color")}</p>
-                        <ColorPalette
-                            value={inputStyles[0].textColor}
-                            onChange={(newValue) =>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", '')}
+                            colorValue={inputStyles[0].textColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveInputStyle({ textColor: newValue })
                             }
                         />
@@ -581,14 +583,15 @@ export class edit extends Component {
                             onChangeFamily={(value) =>
                                 saveInputStyle({ textFontFamily: value })}
                         />
-                        <p>{__(`Background Color`)}</p>
-                        <ColorPalette
-                            value={inputStyles[0].textBackColor}
-                            onChange={(newValue) =>
+
+                        <AdvancedPopColorControl
+                            label={__("Background Color", '')}
+                            colorValue={inputStyles[0].textBackColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveInputStyle({ textBackColor: newValue })
                             }
                         />
-
                         <PremiumBorder
                             borderType={inputStyles[0].textBorderType}
                             top={inputStyles[0].textBorderTop}
@@ -642,18 +645,19 @@ export class edit extends Component {
                                 { value: "full", label: __("Full") },
                             ]}
                         />
-
-                        <p>{__("Text Color")}</p>
-                        <ColorPalette
-                            value={btnStyles[0].btnColor}
-                            onChange={(newValue) =>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", '')}
+                            colorValue={btnStyles[0].btnColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveButtonStyle({ btnColor: newValue })
                             }
                         />
-                        <p>{__(`Background Color`)}</p>
-                        <ColorPalette
-                            value={btnStyles[0].btnBackColor}
-                            onChange={(newValue) =>
+                        <AdvancedPopColorControl
+                            label={__("Background Color", '')}
+                            colorValue={btnStyles[0].btnBackColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveButtonStyle({ btnBackColor: newValue })
                             }
                         />

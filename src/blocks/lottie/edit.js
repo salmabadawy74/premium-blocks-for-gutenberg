@@ -4,8 +4,9 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+
 
 const { __ } = wp.i18n;
 
@@ -28,8 +29,6 @@ const {
     TabPanel,
     Dashicon,
 } = wp.components
-
-const { ColorPalette } = wp.blockEditor;
 
 let isLottieUpdated = null;
 
@@ -518,10 +517,11 @@ class edit extends Component {
                             if ("normal" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={lottieStyles[0].backColor}
-                                            onChange={(newValue) => saveLottieStyles({ backColor: newValue })}
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", '')}
+                                            colorValue={lottieStyles[0].backColor}
+                                            colorDefault={''}
+                                            onColorChange={(newValue) => saveLottieStyles({ backColor: newValue })}
                                         />
                                         <PremiumRangeControl
                                             label={__(`Opacity`)}
@@ -551,10 +551,11 @@ class edit extends Component {
                             if ("hover" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={lottieStyles[0].backHColor}
-                                            onChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", '')}
+                                            colorValue={lottieStyles[0].backHColor}
+                                            colorDefault={''}
+                                            onColorChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
                                         />
                                         <PremiumRangeControl
                                             label={__(`Opacity`)}

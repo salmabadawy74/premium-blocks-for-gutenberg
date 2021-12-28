@@ -16,18 +16,22 @@
     margin-right: 6px;
 }
 .kmt-spacing-responsive {
-    .kmt-spacing-responsive-units li.single-unit {
-        display: inline-block;
-        margin-left: 6px;
-        width: 16px;
-        text-align: center;
-        user-select: none;
-        opacity: 0.7;
-        cursor: pointer;
-        &.active {
-            font-weight: bold;
-            text-decoration: underline;
-            opacity: 1;
+    .kmt-spacing-responsive-units .kmt-slider-units {
+        font-size: 11px;
+        text-transform: uppercase;
+        li.single-unit {
+            display: inline-block;
+            margin-left: 6px;
+            width: 16px;
+            text-align: center;
+            user-select: none;
+            opacity: 0.7;
+            cursor: pointer;
+            &.active {
+                font-weight: bold;
+                text-decoration: underline;
+                opacity: 1;
+            }
         }
     }
 
@@ -82,7 +86,7 @@
                     color: var(--primaryColor);
                 }
             }
-            span {
+            button {
                 width: 35px;
                 height: 30px;
                 line-height: 30px;
@@ -92,7 +96,7 @@
                 font-size: 12px;
                 cursor: pointer;
             }
-            .kmt-spacing-disconnected {
+            button.disconnected {
                 color: #50575e;
             }
         }
@@ -114,6 +118,7 @@ input {
     position: relative;
     align-items: center;
     margin-bottom: 5px;
+    justify-content: space-between;
 }
 .kmt-spacing-btn-reset-wrap .kmt-reset-btn {
     display: flex;

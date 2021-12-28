@@ -4,7 +4,6 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
-import PremiumSizeUnits from "../../components/premium-size-units";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
@@ -349,6 +348,8 @@ const edit = props => {
                         onChangeMarSizeUnit={newvalue =>
                             saveContainerStyle({ marginUnit: newvalue })
                         }
+                        selectedUnit={containerStyles[0].marginUnit}
+
                     />
                     <PremiumPadding
                         paddingTop={paddingTop}

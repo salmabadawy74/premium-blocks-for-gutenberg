@@ -42,9 +42,6 @@ export default function PremiumTextShadow(props) {
                         </Fragment>
                         <PremiumRangeControl
                             label={__("Blur")}
-                            min="0"
-                            max="10"
-                            step="0.1"
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}
@@ -52,9 +49,6 @@ export default function PremiumTextShadow(props) {
                         />
                         <PremiumRangeControl
                             label={__("Horizontal")}
-                            min="0"
-                            max="10"
-                            step="0.1"
                             value={horizontal}
                             onChange={onChangehHorizontal}
                             showUnit={false}
@@ -62,9 +56,6 @@ export default function PremiumTextShadow(props) {
                         />
                         <PremiumRangeControl
                             label={__("Vertical")}
-                            min="0"
-                            max="10"
-                            step="0.1"
                             value={vertical}
                             onChange={onChangeVertical}
                             showUnit={false}

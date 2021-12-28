@@ -61,14 +61,14 @@ export default function PremiumRangeControl({
                 <div className={`kmt-slider-title-wrap`}>
                     {responsive ? <Responsive label={label} /> : <span className="customize-control-title kmt-control-title">{label}</span>}
                 </div>
-                {showUnit && (<ul className="kmt-slider-units">
+                {showUnit && (
                     <PremiumSizeUnits
                         activeUnit={unit}
                         onChangeSizeUnit={newValue =>
                             onChangeUnit(newValue)
                         }
                     />
-                </ul>)}
+                )}
             </header>
             <div className={'wrapper'}>
                 <div className={`input-field-wrapper active`}>

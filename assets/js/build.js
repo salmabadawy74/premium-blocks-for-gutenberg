@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 122);
+/******/ 	return __webpack_require__(__webpack_require__.s = 124);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -329,9 +329,46 @@ process.umask = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = hexToRGBA;
+/**
+ * function to return string with capital letter.
+ * @param {string} hex the color hex.
+ * @param {number} alpha the alpha number.
+ * @returns {string} rgba color.
+ */
+function hexToRGBA(hex, alpha) {
+    if (null === hex) {
+        return '';
+    }
+
+    /**
+     * Detect CSS variables in form of var(--color) and get their current
+     * values from the :root selector.
+     */
+    if (hex.indexOf('var(') > -1) {
+        hex = window.getComputedStyle(document.documentElement).getPropertyValue(hex.replace('var(', '').replace(')', '')) || '#fff';
+    }
+
+    hex = hex.replace('#', '');
+    var r = parseInt(hex.length === 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
+    var g = parseInt(hex.length === 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
+    var b = parseInt(hex.length === 3 ? hex.slice(2, 3).repeat(2) : hex.slice(4, 6), 16);
+    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.default = undefined;
 
-var _responsive = __webpack_require__(387);
+var _responsive = __webpack_require__(129);
 
 var _responsive2 = _interopRequireDefault(_responsive);
 
@@ -418,16 +455,12 @@ function PremiumRangeControl(_ref) {
                     label
                 )
             ),
-            showUnit && React.createElement(
-                'ul',
-                { className: 'kmt-slider-units' },
-                React.createElement(_premiumSizeUnits2.default, {
-                    activeUnit: unit,
-                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                        return onChangeUnit(newValue);
-                    }
-                })
-            )
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
         ),
         React.createElement(
             'div',
@@ -473,44 +506,21 @@ function PremiumRangeControl(_ref) {
 exports.default = PremiumRangeControl;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
 
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = hexToRGBA;
-/**
- * function to return string with capital letter.
- * @param {string} hex the color hex.
- * @param {number} alpha the alpha number.
- * @returns {string} rgba color.
- */
-function hexToRGBA(hex, alpha) {
-    if (null === hex) {
-        return '';
-    }
-
-    /**
-     * Detect CSS variables in form of var(--color) and get their current
-     * values from the :root selector.
-     */
-    if (hex.indexOf('var(') > -1) {
-        hex = window.getComputedStyle(document.documentElement).getPropertyValue(hex.replace('var(', '').replace(')', '')) || '#fff';
-    }
-
-    hex = hex.replace('#', '');
-    var r = parseInt(hex.length === 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
-    var g = parseInt(hex.length === 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
-    var b = parseInt(hex.length === 3 ? hex.slice(2, 3).repeat(2) : hex.slice(4, 6), 16);
-    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(127);
+} else {
+  module.exports = __webpack_require__(128);
 }
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -560,20 +570,6 @@ exports.newsletter = newsletter;
 var _FontAwesomeConfig = FontAwesomeConfig;
 var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(125);
-} else {
-  module.exports = __webpack_require__(126);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 6 */
@@ -689,9 +685,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -960,23 +956,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumResponsive = __webpack_require__(127);
+var _premiumResponsive = __webpack_require__(130);
 
 var _premiumResponsive2 = _interopRequireDefault(_premiumResponsive);
 
-var _premiumFonts = __webpack_require__(214);
+var _premiumFonts = __webpack_require__(215);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _webfontloader = __webpack_require__(215);
+var _webfontloader = __webpack_require__(216);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
-var _reactSelect = __webpack_require__(96);
+var _reactSelect = __webpack_require__(98);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1231,16 +1227,16 @@ exports.default = PremiumTypo;
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(98);
+  var ReactIs = __webpack_require__(100);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(233)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(234)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(234)();
+  module.exports = __webpack_require__(235)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -1263,7 +1259,7 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(84);
+var freeGlobal = __webpack_require__(85);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -1285,9 +1281,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackground;
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1298,9 +1298,7 @@ var _wp$components = wp.components,
     ToggleControl = _wp$components.ToggleControl,
     Tooltip = _wp$components.Tooltip,
     Dashicon = _wp$components.Dashicon;
-var _wp$blockEditor = wp.blockEditor,
-    MediaUpload = _wp$blockEditor.MediaUpload,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+var MediaUpload = wp.blockEditor.MediaUpload;
 function PremiumBackground(props) {
     var type = props.type,
         colorValue = props.colorValue,
@@ -1386,17 +1384,11 @@ function PremiumBackground(props) {
     return type === "color" ? React.createElement(
         Fragment,
         null,
-        React.createElement(ColorPalette, {
-            value: colorValue,
-            onChange: onChangeColor,
-            allowReset: true
-        }),
-        React.createElement(_premiumRangeControl2.default, {
-            label: __("Background Opacity"),
-            value: opacityValue,
-            onChange: onChangeOpacity,
-            showUnit: false,
-            defaultValue: ''
+        React.createElement(_ColorComponent2.default, {
+            label: __("Background Color", ''),
+            colorValue: colorValue,
+            colorDefault: '',
+            onColorChange: onChangeColor
         })
     ) : React.createElement(
         Fragment,
@@ -1404,7 +1396,7 @@ function PremiumBackground(props) {
         React.createElement(MediaUpload, {
             allowedTypes: ["image"],
             onSelect: onSelectMedia,
-            type: "image",
+            type: 'image',
             value: imageID,
             render: function render(_ref) {
                 var open = _ref.open;
@@ -1412,29 +1404,29 @@ function PremiumBackground(props) {
                     Fragment,
                     null,
                     imageURL && React.createElement(
-                        "span",
-                        { className: "premium-image-media" },
-                        React.createElement("img", {
+                        'span',
+                        { className: 'premium-image-media' },
+                        React.createElement('img', {
                             src: imageURL,
-                            className: "premium-image-upload"
+                            className: 'premium-image-upload'
                         }),
                         React.createElement(
-                            "div",
-                            { className: "premium-image-actions" },
+                            'div',
+                            { className: 'premium-image-actions' },
                             React.createElement(
                                 Tooltip,
                                 { text: __("Edit") },
                                 React.createElement(
-                                    "button",
+                                    'button',
                                     {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Edit"),
+                                        className: 'premium-image-button',
+                                        'aria-label': __("Edit"),
                                         onClick: open,
-                                        role: "button"
+                                        role: 'button'
                                     },
-                                    React.createElement("span", {
-                                        "aria-label": __("Edit"),
-                                        className: "fa fa-pencil"
+                                    React.createElement('span', {
+                                        'aria-label': __("Edit"),
+                                        className: 'fa fa-pencil'
                                     })
                                 )
                             ),
@@ -1442,30 +1434,30 @@ function PremiumBackground(props) {
                                 Tooltip,
                                 { text: __("Remove") },
                                 React.createElement(
-                                    "button",
+                                    'button',
                                     {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Remove"),
+                                        className: 'premium-image-button',
+                                        'aria-label': __("Remove"),
                                         onClick: onRemoveImage,
-                                        role: "button"
+                                        role: 'button'
                                     },
-                                    React.createElement("span", {
-                                        "aria-label": __("Close"),
-                                        className: "fa fa-trash-o"
+                                    React.createElement('span', {
+                                        'aria-label': __("Close"),
+                                        className: 'fa fa-trash-o'
                                     })
                                 )
                             )
                         )
                     ),
                     !imageURL && React.createElement(
-                        "div",
+                        'div',
                         {
                             onClick: open,
                             className: "premium-placeholder-image"
                         },
-                        React.createElement(Dashicon, { icon: "insert" }),
+                        React.createElement(Dashicon, { icon: 'insert' }),
                         React.createElement(
-                            "span",
+                            'span',
                             null,
                             __("Insert Background ")
                         )
@@ -1549,7 +1541,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumTextShadow;
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1621,9 +1613,6 @@ function PremiumTextShadow(props) {
                     ),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Blur"),
-                        min: "0",
-                        max: "10",
-                        step: "0.1",
                         value: blur,
                         onChange: onChangeBlur,
                         showUnit: false,
@@ -1631,9 +1620,6 @@ function PremiumTextShadow(props) {
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Horizontal"),
-                        min: "0",
-                        max: "10",
-                        step: "0.1",
                         value: horizontal,
                         onChange: onChangehHorizontal,
                         showUnit: false,
@@ -1641,9 +1627,6 @@ function PremiumTextShadow(props) {
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Vertical"),
-                        min: "0",
-                        max: "10",
-                        step: "0.1",
                         value: vertical,
                         onChange: onChangeVertical,
                         showUnit: false,
@@ -1667,7 +1650,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBoxShadow;
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1675,7 +1658,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button,
@@ -1801,7 +1783,7 @@ var _premiumSizeUnits = __webpack_require__(19);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1831,7 +1813,8 @@ var PremiumPadding = function (_Component) {
             right: _this.props.paddingRight || 0,
             bottom: _this.props.paddingBottom || 0,
             left: _this.props.paddingLeft || 0,
-            showUnits: _this.props.showUnits || false
+            showUnits: _this.props.showUnits || false,
+            unit: _this.props.unit || 'px'
         };
         _this.defaultValue = {
             top: '',
@@ -1839,7 +1822,6 @@ var PremiumPadding = function (_Component) {
             bottom: '',
             left: ''
         };
-
         _this.onInputChange = _this.onInputChange.bind(_this);
         _this.onButtonClick = _this.onButtonClick.bind(_this);
         _this.changeFunction = _this.changeFunction.bind(_this);
@@ -1902,12 +1884,12 @@ var PremiumPadding = function (_Component) {
                 bottom = _state3.bottom,
                 left = _state3.left,
                 showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked;
+                isLinked = _state3.isLinked,
+                unit = _state3.unit;
             var _props = this.props,
                 _props$onChangePadSiz = _props.onChangePadSizeUnit,
                 onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
                 selectedUnit = _props.selectedUnit;
-
 
             return _react2.default.createElement(
                 "div",
@@ -1917,23 +1899,15 @@ var PremiumPadding = function (_Component) {
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
                         "div",
-                        { className: "premium-control-label" },
-                        _react2.default.createElement(
-                            "strong",
-                            null,
-                            __("Padding")
-                        )
+                        { className: "kmt-slider-title-wrap" },
+                        __("Padding")
                     ),
-                    showUnits && _react2.default.createElement(
-                        "ul",
-                        { className: "kmt-slider-units" },
-                        _react2.default.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: unit,
-                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                return onChangeUnit(newValue);
-                            }
-                        })
-                    )
+                    showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
+                        activeUnit: selectedUnit,
+                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                            return onChangePadSizeUnit(newValue);
+                        }
+                    })
                 ),
                 _react2.default.createElement(
                     "div",
@@ -2012,7 +1986,7 @@ var PremiumPadding = function (_Component) {
                                 "li",
                                 null,
                                 _react2.default.createElement("button", {
-                                    className: "linked-btn kmt-spacing-input-item-link is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                                    className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links connected" : "editor-unlink disconnected"),
                                     onClick: this.onButtonClick
                                 })
                             )
@@ -2110,7 +2084,7 @@ function PremiumSizeUnits(props) {
 
 var global = __webpack_require__(18);
 var core = __webpack_require__(11);
-var ctx = __webpack_require__(110);
+var ctx = __webpack_require__(112);
 var hide = __webpack_require__(27);
 var has = __webpack_require__(23);
 var PROTOTYPE = 'prototype';
@@ -2182,7 +2156,7 @@ module.exports = $export;
 
 
 var anObject = __webpack_require__(37);
-var IE8_DOM_DEFINE = __webpack_require__(111);
+var IE8_DOM_DEFINE = __webpack_require__(113);
 var toPrimitive = __webpack_require__(66);
 var dP = Object.defineProperty;
 
@@ -2231,8 +2205,8 @@ module.exports = function (it, key) {
 "use strict";
 
 
-var baseIsNative = __webpack_require__(142),
-    getValue = __webpack_require__(147);
+var baseIsNative = __webpack_require__(144),
+    getValue = __webpack_require__(149);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2285,9 +2259,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(224);
+  module.exports = __webpack_require__(225);
 } else {
-  module.exports = __webpack_require__(227);
+  module.exports = __webpack_require__(228);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2431,7 +2405,7 @@ module.exports = function (exec) {
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(114);
+var IObject = __webpack_require__(116);
 var defined = __webpack_require__(67);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -2559,8 +2533,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 var _Symbol = __webpack_require__(40),
-    getRawTag = __webpack_require__(143),
-    objectToString = __webpack_require__(144);
+    getRawTag = __webpack_require__(145),
+    objectToString = __webpack_require__(146);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2715,11 +2689,11 @@ module.exports = function (it) {
 "use strict";
 
 
-var listCacheClear = __webpack_require__(132),
-    listCacheDelete = __webpack_require__(133),
-    listCacheGet = __webpack_require__(134),
-    listCacheHas = __webpack_require__(135),
-    listCacheSet = __webpack_require__(136);
+var listCacheClear = __webpack_require__(134),
+    listCacheDelete = __webpack_require__(135),
+    listCacheGet = __webpack_require__(136),
+    listCacheHas = __webpack_require__(137),
+    listCacheSet = __webpack_require__(138);
 
 /**
  * Creates an list cache object.
@@ -2755,7 +2729,7 @@ module.exports = ListCache;
 "use strict";
 
 
-var eq = __webpack_require__(82);
+var eq = __webpack_require__(83);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -2812,7 +2786,7 @@ module.exports = nativeCreate;
 "use strict";
 
 
-var isKeyable = __webpack_require__(156);
+var isKeyable = __webpack_require__(158);
 
 /**
  * Gets the data for `map`.
@@ -2937,25 +2911,25 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(293);
+var _edit = __webpack_require__(295);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(294);
+var _save = __webpack_require__(296);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(295);
+var _deprecated = __webpack_require__(297);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(296);
+var _attributes = __webpack_require__(298);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -3034,7 +3008,7 @@ module.exports = function (bitmap, value) {
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(113);
+var $keys = __webpack_require__(115);
 var enumBugKeys = __webpack_require__(71);
 
 module.exports = Object.keys || function keys(O) {
@@ -3211,11 +3185,11 @@ module.exports = Map;
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(148),
-    mapCacheDelete = __webpack_require__(155),
-    mapCacheGet = __webpack_require__(157),
-    mapCacheHas = __webpack_require__(158),
-    mapCacheSet = __webpack_require__(159);
+var mapCacheClear = __webpack_require__(150),
+    mapCacheDelete = __webpack_require__(157),
+    mapCacheGet = __webpack_require__(159),
+    mapCacheHas = __webpack_require__(160),
+    mapCacheSet = __webpack_require__(161);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3251,8 +3225,8 @@ module.exports = MapCache;
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(177),
-    baseKeys = __webpack_require__(184),
+var arrayLikeKeys = __webpack_require__(179),
+    baseKeys = __webpack_require__(186),
     isArrayLike = __webpack_require__(58);
 
 /**
@@ -3338,7 +3312,7 @@ module.exports = isLength;
 "use strict";
 
 
-var isFunction = __webpack_require__(83),
+var isFunction = __webpack_require__(84),
     isLength = __webpack_require__(57);
 
 /**
@@ -3416,13 +3390,13 @@ module.exports = isKey;
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(238));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(239));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(243));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(244));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(102));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(104));
 
-var _Transition = _interopRequireDefault(__webpack_require__(99));
+var _Transition = _interopRequireDefault(__webpack_require__(101));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -3447,7 +3421,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumFilters;
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -3503,9 +3477,6 @@ function PremiumFilters(props) {
                     null,
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Blur"),
-                        min: "0",
-                        max: "10",
-                        step: "0.1",
                         value: blur,
                         onChange: onChangeBlur,
                         showUnit: false,
@@ -3568,7 +3539,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -3603,7 +3574,8 @@ var PremiumMargin = function (_Component) {
             bottom: _this.props.marginBottom || 0,
             left: _this.props.marginLeft || 0,
             directions: _this.props.directions,
-            showUnits: _this.props.showUnits || false
+            showUnits: _this.props.showUnits || false,
+            unit: _this.props.unit || 'px'
         };
         _this.defaultValue = {
             top: '',
@@ -3685,7 +3657,8 @@ var PremiumMargin = function (_Component) {
                 left = _state3.left,
                 directions = _state3.directions,
                 showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked;
+                isLinked = _state3.isLinked,
+                unit = _state3.unit;
             var _props = this.props,
                 _props$onChangeMarSiz = _props.onChangeMarSizeUnit,
                 onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
@@ -3700,23 +3673,15 @@ var PremiumMargin = function (_Component) {
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
                         "div",
-                        { className: "premium-control-label" },
-                        _react2.default.createElement(
-                            "strong",
-                            null,
-                            __("Margin")
-                        )
+                        { className: "kmt-slider-title-wrap" },
+                        __("Margin")
                     ),
-                    showUnits && _react2.default.createElement(
-                        "ul",
-                        { className: "kmt-slider-units" },
-                        _react2.default.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: unit,
-                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                return onChangeUnit(newValue);
-                            }
-                        })
-                    )
+                    showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
+                        activeUnit: selectedUnit,
+                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                            return onChangeMarSizeUnit(newValue);
+                        }
+                    })
                 ),
                 _react2.default.createElement(
                     "div",
@@ -4134,7 +4099,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(37);
-var dPs = __webpack_require__(351);
+var dPs = __webpack_require__(353);
 var enumBugKeys = __webpack_require__(71);
 var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -4143,13 +4108,13 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(112)('iframe');
+  var iframe = __webpack_require__(114)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(352).appendChild(iframe);
+  __webpack_require__(354).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4232,6 +4197,67 @@ module.exports = __webpack_amd_options__;
 "use strict";
 
 
+var arrayMap = __webpack_require__(81),
+    baseIteratee = __webpack_require__(131),
+    baseMap = __webpack_require__(209),
+    isArray = __webpack_require__(14);
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
  * shorthands.
@@ -4255,18 +4281,18 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var ListCache = __webpack_require__(38),
-    stackClear = __webpack_require__(137),
-    stackDelete = __webpack_require__(138),
-    stackGet = __webpack_require__(139),
-    stackHas = __webpack_require__(140),
-    stackSet = __webpack_require__(141);
+    stackClear = __webpack_require__(139),
+    stackDelete = __webpack_require__(140),
+    stackGet = __webpack_require__(141),
+    stackHas = __webpack_require__(142),
+    stackSet = __webpack_require__(143);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -4290,7 +4316,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4335,7 +4361,7 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4380,7 +4406,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4395,7 +4421,7 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4429,13 +4455,13 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsEqualDeep = __webpack_require__(160),
+var baseIsEqualDeep = __webpack_require__(162),
     isObjectLike = __webpack_require__(36);
 
 /**
@@ -4465,15 +4491,15 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SetCache = __webpack_require__(161),
-    arraySome = __webpack_require__(164),
-    cacheHas = __webpack_require__(165);
+var SetCache = __webpack_require__(163),
+    arraySome = __webpack_require__(166),
+    cacheHas = __webpack_require__(167);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -4551,13 +4577,13 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsArguments = __webpack_require__(179),
+var baseIsArguments = __webpack_require__(181),
     isObjectLike = __webpack_require__(36);
 
 /** Used for built-in method references. */
@@ -4596,7 +4622,7 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4605,7 +4631,7 @@ module.exports = isArguments;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(12),
-    stubFalse = __webpack_require__(180);
+    stubFalse = __webpack_require__(182);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -4645,7 +4671,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4677,15 +4703,15 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsTypedArray = __webpack_require__(181),
-    baseUnary = __webpack_require__(182),
-    nodeUtil = __webpack_require__(183);
+var baseIsTypedArray = __webpack_require__(183),
+    baseUnary = __webpack_require__(184),
+    nodeUtil = __webpack_require__(185);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -4712,7 +4738,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4735,7 +4761,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4762,13 +4788,54 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(95),
+var baseGet = __webpack_require__(96);
+
+/**
+ * Gets the value at `path` of `object`. If the resolved value is
+ * `undefined`, the `defaultValue` is returned in its place.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.7.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @param {*} [defaultValue] The value returned for `undefined` resolved values.
+ * @returns {*} Returns the resolved value.
+ * @example
+ *
+ * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ *
+ * _.get(object, 'a[0].b.c');
+ * // => 3
+ *
+ * _.get(object, ['a', '0', 'b', 'c']);
+ * // => 3
+ *
+ * _.get(object, 'a.b.c', 'default');
+ * // => 'default'
+ */
+function get(object, path, defaultValue) {
+  var result = object == null ? undefined : baseGet(object, path);
+  return result === undefined ? defaultValue : result;
+}
+
+module.exports = get;
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var castPath = __webpack_require__(97),
     toKey = __webpack_require__(45);
 
 /**
@@ -4794,7 +4861,7 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4802,8 +4869,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(14),
     isKey = __webpack_require__(59),
-    stringToPath = __webpack_require__(196),
-    toString = __webpack_require__(199);
+    stringToPath = __webpack_require__(197),
+    toString = __webpack_require__(200);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -4823,7 +4890,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4836,15 +4903,15 @@ exports.defaultTheme = exports.mergeStyles = exports.components = exports.makeAn
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _memoizeOne = __webpack_require__(216);
+var _memoizeOne = __webpack_require__(217);
 
 var _memoizeOne2 = _interopRequireDefault(_memoizeOne);
 
-var _emotion = __webpack_require__(217);
+var _emotion = __webpack_require__(218);
 
 var _reactDom = __webpack_require__(25);
 
@@ -4852,11 +4919,11 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _raf = __webpack_require__(235);
+var _raf = __webpack_require__(236);
 
 var _raf2 = _interopRequireDefault(_raf);
 
-var _reactInputAutosize = __webpack_require__(237);
+var _reactInputAutosize = __webpack_require__(238);
 
 var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
@@ -10169,35 +10236,35 @@ exports.mergeStyles = mergeStyles;
 exports.defaultTheme = defaultTheme;
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(225);
-} else {
-  module.exports = __webpack_require__(226);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(231);
-} else {
-  module.exports = __webpack_require__(232);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
 /* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(226);
+} else {
+  module.exports = __webpack_require__(227);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(232);
+} else {
+  module.exports = __webpack_require__(233);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10208,13 +10275,13 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(25));
 
-var _reactLifecyclesCompat = __webpack_require__(100);
+var _reactLifecyclesCompat = __webpack_require__(102);
 
-var _PropTypes = __webpack_require__(101);
+var _PropTypes = __webpack_require__(103);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -10837,7 +10904,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10972,7 +11039,7 @@ function polyfill(Component) {
 exports.polyfill = polyfill;
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11009,7 +11076,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11020,11 +11087,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
-var _reactLifecyclesCompat = __webpack_require__(100);
+var _reactLifecyclesCompat = __webpack_require__(102);
 
-var _ChildMapping = __webpack_require__(244);
+var _ChildMapping = __webpack_require__(245);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -11246,7 +11313,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11478,7 +11545,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11504,7 +11571,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(5), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(5), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(4), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(4), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -12049,7 +12116,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12066,7 +12133,7 @@ var iconsList = {
 exports.default = iconsList;
 
 /***/ }),
-/* 106 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12077,7 +12144,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(107);
+var _arrayLikeToArray = __webpack_require__(109);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -12093,7 +12160,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 107 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12114,7 +12181,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 108 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12140,7 +12207,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 109 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12159,14 +12226,14 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 110 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(331);
+var aFunction = __webpack_require__(333);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -12190,20 +12257,20 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 111 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = !__webpack_require__(22) && !__webpack_require__(29)(function () {
-  return Object.defineProperty(__webpack_require__(112)('div'), 'a', { get: function get() {
+  return Object.defineProperty(__webpack_require__(114)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 112 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12218,7 +12285,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 113 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12226,7 +12293,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(23);
 var toIObject = __webpack_require__(30);
-var arrayIndexOf = __webpack_require__(333)(false);
+var arrayIndexOf = __webpack_require__(335)(false);
 var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -12245,21 +12312,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 114 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(115);
+var cof = __webpack_require__(117);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 115 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12272,7 +12339,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 116 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12293,7 +12360,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 117 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12303,11 +12370,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(346);
+var _iterator = __webpack_require__(348);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(357);
+var _symbol = __webpack_require__(359);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -12328,7 +12395,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 118 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12336,12 +12403,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 var LIBRARY = __webpack_require__(49);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(119);
+var redefine = __webpack_require__(121);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(74);
-var $iterCreate = __webpack_require__(350);
+var $iterCreate = __webpack_require__(352);
 var setToStringTag = __webpack_require__(76);
-var getPrototypeOf = __webpack_require__(116);
+var getPrototypeOf = __webpack_require__(118);
 var ITERATOR = __webpack_require__(31)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -12416,7 +12483,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 119 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12425,14 +12492,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 module.exports = __webpack_require__(27);
 
 /***/ }),
-/* 120 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(113);
+var $keys = __webpack_require__(115);
 var hiddenKeys = __webpack_require__(71).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -12440,7 +12507,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-/* 121 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12451,7 +12518,7 @@ var createDesc = __webpack_require__(47);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(66);
 var has = __webpack_require__(23);
-var IE8_DOM_DEFINE = __webpack_require__(111);
+var IE8_DOM_DEFINE = __webpack_require__(113);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -12464,68 +12531,68 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 122 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(123);
+__webpack_require__(125);
 
-__webpack_require__(248);
+__webpack_require__(249);
 
-__webpack_require__(253);
+__webpack_require__(254);
 
-__webpack_require__(258);
+__webpack_require__(259);
 
-__webpack_require__(262);
+__webpack_require__(263);
 
-__webpack_require__(267);
+__webpack_require__(268);
 
-__webpack_require__(272);
+__webpack_require__(274);
 
-__webpack_require__(277);
+__webpack_require__(279);
 
-__webpack_require__(278);
+__webpack_require__(280);
 
-__webpack_require__(283);
+__webpack_require__(285);
 
-__webpack_require__(288);
+__webpack_require__(290);
 
 __webpack_require__(46);
 
-__webpack_require__(297);
+__webpack_require__(299);
 
-__webpack_require__(322);
+__webpack_require__(324);
 
-__webpack_require__(378);
+__webpack_require__(380);
 
 /***/ }),
-/* 123 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(124);
+var _edit = __webpack_require__(126);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(245);
+var _save = __webpack_require__(246);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(246);
+var _attributes = __webpack_require__(247);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(247);
+var _deprecated = __webpack_require__(248);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -12550,7 +12617,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 124 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12584,9 +12651,13 @@ var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12609,11 +12680,10 @@ var _wp$components = wp.components,
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     RichText = _wp$blockEditor.RichText,
-    InnerBlocks = _wp$blockEditor.InnerBlocks,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+    InnerBlocks = _wp$blockEditor.InnerBlocks;
 
 
-var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here") }]];
+var CONTENT = [["core/paragraph", { content: __("Insert Your Content Here", 'premium-block-for-gutenberg') }]];
 
 var isAccUpdated = null;
 
@@ -12714,18 +12784,18 @@ var PremiumAccordion = function (_Component) {
 
             var ARROW = [{
                 value: "in",
-                label: __("In")
+                label: __("In", 'premium-block-for-gutenberg')
             }, {
                 value: "out",
-                label: __("Out")
+                label: __("Out", 'premium-block-for-gutenberg')
             }];
 
             var TYPE = [{
                 value: "text",
-                label: __("Text")
+                label: __("Text", 'premium-block-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Gutenberg Block")
+                label: __("Gutenberg Block", 'premium-block-for-gutenberg')
             }];
 
             var saveTitleStyles = function saveTitleStyles(value) {
@@ -12811,7 +12881,7 @@ var PremiumAccordion = function (_Component) {
                                         repeaterItems: onAccordionChange("titleText", newText, index)
                                     });
                                 },
-                                placeholder: __("Awesome Title"),
+                                placeholder: __("Awesome Title", 'premium-block-for-gutenberg'),
                                 value: item.titleText,
                                 style: {
                                     color: titleStyles[0].titleColor,
@@ -12897,14 +12967,14 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("Title Tag")
+                        __("Title Tag", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -12919,7 +12989,7 @@ var PremiumAccordion = function (_Component) {
                         })
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Direction"),
+                        label: __("Direction", 'premium-block-for-gutenberg'),
                         options: DIRECTION,
                         value: direction,
                         onChange: function onChange(newEffect) {
@@ -12954,59 +13024,26 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(
-                            "strong",
-                            null,
-                            __("Colors")
-                        ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref) {
-                                var isOpen = _ref.isOpen,
-                                    onToggle = _ref.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: titleStyles[0].titleColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveTitleStyles({
-                                                titleColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: titleStyles[0].titleBack,
-                                        onChange: function onChange(newValue) {
-                                            return saveTitleStyles({
-                                                titleBack: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    })
-                                );
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Text Color", ''),
+                            colorValue: titleStyles[0].titleColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(value) {
+                                return saveTitleStyles({
+                                    titleColor: value
+                                });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Background Color", 'premium-block-for-gutenberg'),
+                            colorValue: titleStyles[0].titleBack,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(value) {
+                                return saveTitleStyles({
+                                    titleBack: value
+                                });
                             }
                         })
                     ),
@@ -13022,11 +13059,11 @@ var PremiumAccordion = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveTitleStyles({ titleBorder: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
                             return setAttributes({
                                 titleBorderUpdated: true,
                                 titleBorderTop: top,
@@ -13090,12 +13127,12 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Arrow"),
+                        title: __("Arrow", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Position"),
+                        label: __("Position", 'premium-block-for-gutenberg'),
                         options: ARROW,
                         value: arrowStyles[0].arrowPos,
                         onChange: function onChange(newEffect) {
@@ -13103,7 +13140,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size  "),
+                        label: __("Size", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowSize: newValue });
@@ -13111,65 +13148,28 @@ var PremiumAccordion = function (_Component) {
                         showUnit: false,
                         defaultValue: 20
                     }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(
-                            "strong",
-                            null,
-                            __("Colors")
-                        ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref3) {
-                                var isOpen = _ref3.isOpen,
-                                    onToggle = _ref3.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Arrow Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: arrowStyles[0].arrowColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveArrowStyles({
-                                                arrowColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: arrowStyles[0].arrowBack,
-                                        onChange: function onChange(newValue) {
-                                            return saveArrowStyles({
-                                                arrowBack: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    })
-                                );
-                            }
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Arrow Color", 'premium-block-for-gutenberg'),
+                        colorValue: arrowStyles[0].arrowColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveArrowStyles({
+                                arrowColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: arrowStyles[0].arrowBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveArrowStyles({
+                                arrowBack: newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Border Radius  "),
+                        label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({
@@ -13182,7 +13182,7 @@ var PremiumAccordion = function (_Component) {
                         showUnit: false
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Padding"),
+                        label: __("Padding", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({
@@ -13198,18 +13198,18 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Content"),
+                        title: __("Content", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Type"),
+                        label: __("Type", 'premium-block-for-gutenberg'),
                         options: TYPE,
                         value: contentType,
                         onChange: function onChange(newType) {
                             return setAttributes({ contentType: newType });
                         },
-                        help: __("Gutenberg Block works only with single accordion item")
+                        help: __("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')
                     }),
                     React.createElement(Toolbar, {
                         controls: ALIGNS.map(function (align) {
@@ -13252,63 +13252,26 @@ var PremiumAccordion = function (_Component) {
                                 return SaveDescStyles({ descUpper: check });
                             }
                         }),
-                        React.createElement(
-                            "div",
-                            { className: "premium-control-toggle" },
-                            React.createElement(
-                                "strong",
-                                null,
-                                __("Colors")
-                            ),
-                            React.createElement(Dropdown, {
-                                className: "premium-control-toggle-btn",
-                                contentClassName: "premium-control-toggle-content",
-                                position: "bottom right",
-                                renderToggle: function renderToggle(_ref4) {
-                                    var isOpen = _ref4.isOpen,
-                                        onToggle = _ref4.onToggle;
-                                    return React.createElement(
-                                        Button,
-                                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                        React.createElement("i", { className: "dashicons dashicons-edit" })
-                                    );
-                                },
-                                renderContent: function renderContent() {
-                                    return React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Text Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: descStyles[0].descColor,
-                                            onChange: function onChange(newValue) {
-                                                return SaveDescStyles({
-                                                    descColor: newValue
-                                                });
-                                            },
-                                            allowReset: true
-                                        }),
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Background Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: descStyles[0].descBack,
-                                            onChange: function onChange(newValue) {
-                                                return SaveDescStyles({
-                                                    descBack: newValue
-                                                });
-                                            },
-                                            allowReset: true
-                                        })
-                                    );
-                                }
-                            })
-                        )
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            colorValue: descStyles[0].descColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(value) {
+                                return SaveDescStyles({
+                                    descColor: value
+                                });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Background Color", 'premium-block-for-gutenberg'),
+                            colorValue: descStyles[0].descBack,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(value) {
+                                return SaveDescStyles({
+                                    descBack: value
+                                });
+                            }
+                        })
                     ),
                     React.createElement(_premiumBorder2.default, {
                         borderType: descStyles[0].descBorder,
@@ -13322,11 +13285,11 @@ var PremiumAccordion = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return SaveDescStyles({ descBorder: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref5) {
-                            var top = _ref5.top,
-                                right = _ref5.right,
-                                bottom = _ref5.bottom,
-                                left = _ref5.left;
+                        onChangeWidth: function onChangeWidth(_ref2) {
+                            var top = _ref2.top,
+                                right = _ref2.right,
+                                bottom = _ref2.bottom,
+                                left = _ref2.left;
                             return setAttributes({
                                 descBorderUpdated: true,
                                 descBorderTop: top,
@@ -13413,19 +13376,19 @@ var PremiumAccordion = function (_Component) {
                             onClick: function onClick() {
                                 return setAttributes({
                                     repeaterItems: repeaterItems.concat([{
-                                        titleText: __("Awesome Title"),
-                                        descText: __("Cool Description")
+                                        titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
+                                        descText: __("Cool Description", 'premium-block-for-gutenberg')
                                     }])
                                 });
                             }
                         },
                         React.createElement("i", { className: "dashicons dashicons-plus premium-repeater-icon" }),
-                        __("Add New Item")
+                        __("Add New Item", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(
                         "p",
                         null,
-                        __("Add the items you need then reload the page")
+                        __("Add the items you need then reload the page", 'premium-block-for-gutenberg')
                     )
                 )
             )];
@@ -13438,7 +13401,7 @@ var PremiumAccordion = function (_Component) {
 exports.default = PremiumAccordion;
 
 /***/ }),
-/* 125 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13622,7 +13585,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 126 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15525,7 +15488,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 127 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15535,7 +15498,118 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _map = __webpack_require__(128);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+// import kmtEvents from './events';
+
+var Fragment = wp.element.Fragment;
+
+var Responsive = function (_Component) {
+    _inherits(Responsive, _Component);
+
+    function Responsive(props) {
+        _classCallCheck(this, Responsive);
+
+        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
+
+        _this.state = {
+            view: 'desktop'
+        };
+        // this.linkResponsiveButtons();
+        return _this;
+    }
+
+    _createClass(Responsive, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var label = this.props.label;
+
+            var devices = ['desktop', 'tablet', 'mobile'];
+            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
+            return _react2.default.createElement(
+                Fragment,
+                null,
+                label ? _react2.default.createElement(
+                    'span',
+                    { className: 'customize-control-title kmt-control-title' },
+                    label
+                ) : null,
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'kmt-responsive-control-btns kmt-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === previewDevice ? ' active' : '';
+                        var icon = device === 'mobile' ? 'smartphone' : device;
+                        return _react2.default.createElement(
+                            'li',
+                            { className: '' + device + activeClass },
+                            _react2.default.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        _this2.changeViewType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                ),
+                this.props.children
+            );
+        }
+    }, {
+        key: 'changeViewType',
+        value: function changeViewType(device) {
+            this.setState({ view: device });
+            wp.customize && wp.customize.previewedDevice(device);
+            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
+                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
+                    return c.toUpperCase();
+                }));
+            }
+            this.props.onChange(device);
+        }
+        // linkResponsiveButtons() {
+        //     let self = this;
+        //     kmtEvents.on('KemetChangedRepsonsivePreview', function (e) {
+        //         self.changeViewType(e.detail);
+        //     })
+        // }
+
+    }]);
+
+    return Responsive;
+}(_react.Component);
+
+exports.default = Responsive;
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _map = __webpack_require__(80);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -15684,68 +15758,7 @@ function PremiumResponsive(props) {
 exports.default = PremiumResponsive;
 
 /***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var arrayMap = __webpack_require__(80),
-    baseIteratee = __webpack_require__(129),
-    baseMap = __webpack_require__(208),
-    isArray = __webpack_require__(14);
-
-/**
- * Creates an array of values by running each element in `collection` thru
- * `iteratee`. The iteratee is invoked with three arguments:
- * (value, index|key, collection).
- *
- * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
- *
- * The guarded methods are:
- * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
- * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
- * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
- * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- * @example
- *
- * function square(n) {
- *   return n * n;
- * }
- *
- * _.map([4, 8], square);
- * // => [16, 64]
- *
- * _.map({ 'a': 4, 'b': 8 }, square);
- * // => [16, 64] (iteration order is not guaranteed)
- *
- * var users = [
- *   { 'user': 'barney' },
- *   { 'user': 'fred' }
- * ];
- *
- * // The `_.property` iteratee shorthand.
- * _.map(users, 'user');
- * // => ['barney', 'fred']
- */
-function map(collection, iteratee) {
-  var func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, baseIteratee(iteratee, 3));
-}
-
-module.exports = map;
-
-/***/ }),
-/* 129 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15753,11 +15766,11 @@ module.exports = map;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(130),
-    baseMatchesProperty = __webpack_require__(194),
-    identity = __webpack_require__(204),
+var baseMatches = __webpack_require__(132),
+    baseMatchesProperty = __webpack_require__(196),
+    identity = __webpack_require__(205),
     isArray = __webpack_require__(14),
-    property = __webpack_require__(205);
+    property = __webpack_require__(206);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -15784,15 +15797,15 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 130 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(131),
-    getMatchData = __webpack_require__(193),
-    matchesStrictComparable = __webpack_require__(93);
+var baseIsMatch = __webpack_require__(133),
+    getMatchData = __webpack_require__(195),
+    matchesStrictComparable = __webpack_require__(94);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -15814,14 +15827,14 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 131 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Stack = __webpack_require__(81),
-    baseIsEqual = __webpack_require__(86);
+var Stack = __webpack_require__(82),
+    baseIsEqual = __webpack_require__(87);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -15878,7 +15891,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 132 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15899,7 +15912,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 133 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15942,7 +15955,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 134 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15969,7 +15982,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 135 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15993,7 +16006,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 136 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16027,7 +16040,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 137 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16050,7 +16063,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 138 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16076,7 +16089,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 139 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16098,7 +16111,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 140 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16120,7 +16133,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 141 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16162,16 +16175,16 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 142 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isFunction = __webpack_require__(83),
-    isMasked = __webpack_require__(145),
+var isFunction = __webpack_require__(84),
+    isMasked = __webpack_require__(147),
     isObject = __webpack_require__(35),
-    toSource = __webpack_require__(85);
+    toSource = __webpack_require__(86);
 
 /**
  * Used to match `RegExp`
@@ -16214,7 +16227,7 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 143 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16268,7 +16281,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 144 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16298,13 +16311,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 145 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(146);
+var coreJsData = __webpack_require__(148);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -16326,7 +16339,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 146 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16340,7 +16353,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 147 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16361,13 +16374,13 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 148 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(149),
+var Hash = __webpack_require__(151),
     ListCache = __webpack_require__(38),
     Map = __webpack_require__(54);
 
@@ -16390,17 +16403,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 149 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(150),
-    hashDelete = __webpack_require__(151),
-    hashGet = __webpack_require__(152),
-    hashHas = __webpack_require__(153),
-    hashSet = __webpack_require__(154);
+var hashClear = __webpack_require__(152),
+    hashDelete = __webpack_require__(153),
+    hashGet = __webpack_require__(154),
+    hashHas = __webpack_require__(155),
+    hashSet = __webpack_require__(156);
 
 /**
  * Creates a hash object.
@@ -16430,7 +16443,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 150 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16453,7 +16466,7 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 151 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16478,7 +16491,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 152 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16516,7 +16529,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 153 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16547,7 +16560,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 154 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16578,7 +16591,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 155 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16604,7 +16617,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 156 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16627,7 +16640,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 157 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16651,7 +16664,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 158 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16675,7 +16688,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 159 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16705,20 +16718,20 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 160 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Stack = __webpack_require__(81),
-    equalArrays = __webpack_require__(87),
-    equalByTag = __webpack_require__(166),
-    equalObjects = __webpack_require__(170),
-    getTag = __webpack_require__(188),
+var Stack = __webpack_require__(82),
+    equalArrays = __webpack_require__(88),
+    equalByTag = __webpack_require__(168),
+    equalObjects = __webpack_require__(172),
+    getTag = __webpack_require__(190),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(89),
-    isTypedArray = __webpack_require__(91);
+    isBuffer = __webpack_require__(90),
+    isTypedArray = __webpack_require__(92);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -16794,15 +16807,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 161 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var MapCache = __webpack_require__(55),
-    setCacheAdd = __webpack_require__(162),
-    setCacheHas = __webpack_require__(163);
+    setCacheAdd = __webpack_require__(164),
+    setCacheHas = __webpack_require__(165);
 
 /**
  *
@@ -16829,7 +16842,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 162 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16856,7 +16869,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 163 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16878,7 +16891,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 164 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16909,7 +16922,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 165 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16930,18 +16943,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 166 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(40),
-    Uint8Array = __webpack_require__(167),
-    eq = __webpack_require__(82),
-    equalArrays = __webpack_require__(87),
-    mapToArray = __webpack_require__(168),
-    setToArray = __webpack_require__(169);
+    Uint8Array = __webpack_require__(169),
+    eq = __webpack_require__(83),
+    equalArrays = __webpack_require__(88),
+    mapToArray = __webpack_require__(170),
+    setToArray = __webpack_require__(171);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -17048,7 +17061,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 167 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17062,7 +17075,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 168 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17088,7 +17101,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 169 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17114,13 +17127,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 170 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(171);
+var getAllKeys = __webpack_require__(173);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -17204,14 +17217,14 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 171 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(172),
-    getSymbols = __webpack_require__(174),
+var baseGetAllKeys = __webpack_require__(174),
+    getSymbols = __webpack_require__(176),
     keys = __webpack_require__(56);
 
 /**
@@ -17228,13 +17241,13 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 172 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(173),
+var arrayPush = __webpack_require__(175),
     isArray = __webpack_require__(14);
 
 /**
@@ -17256,7 +17269,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 173 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17284,14 +17297,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 174 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(175),
-    stubArray = __webpack_require__(176);
+var arrayFilter = __webpack_require__(177),
+    stubArray = __webpack_require__(178);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -17322,7 +17335,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 175 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17355,7 +17368,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17386,18 +17399,18 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(178),
-    isArguments = __webpack_require__(88),
+var baseTimes = __webpack_require__(180),
+    isArguments = __webpack_require__(89),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(89),
-    isIndex = __webpack_require__(90),
-    isTypedArray = __webpack_require__(91);
+    isBuffer = __webpack_require__(90),
+    isIndex = __webpack_require__(91),
+    isTypedArray = __webpack_require__(92);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -17441,7 +17454,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17469,7 +17482,7 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17495,7 +17508,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 180 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17521,7 +17534,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 181 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17577,7 +17590,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 182 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17599,7 +17612,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 183 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17607,7 +17620,7 @@ module.exports = baseUnary;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(84);
+var freeGlobal = __webpack_require__(85);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -17640,14 +17653,14 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 184 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(185),
-    nativeKeys = __webpack_require__(186);
+var isPrototype = __webpack_require__(187),
+    nativeKeys = __webpack_require__(188);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -17678,7 +17691,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 185 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17704,13 +17717,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 186 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(187);
+var overArg = __webpack_require__(189);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -17718,7 +17731,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 187 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17741,19 +17754,19 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 188 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(189),
+var DataView = __webpack_require__(191),
     Map = __webpack_require__(54),
-    Promise = __webpack_require__(190),
-    Set = __webpack_require__(191),
-    WeakMap = __webpack_require__(192),
+    Promise = __webpack_require__(192),
+    Set = __webpack_require__(193),
+    WeakMap = __webpack_require__(194),
     baseGetTag = __webpack_require__(33),
-    toSource = __webpack_require__(85);
+    toSource = __webpack_require__(86);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -17808,7 +17821,7 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 189 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17823,7 +17836,7 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 190 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17838,7 +17851,7 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 191 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17853,7 +17866,7 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 192 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17868,13 +17881,13 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 193 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isStrictComparable = __webpack_require__(92),
+var isStrictComparable = __webpack_require__(93),
     keys = __webpack_require__(56);
 
 /**
@@ -17900,18 +17913,18 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 194 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsEqual = __webpack_require__(86),
-    get = __webpack_require__(195),
-    hasIn = __webpack_require__(201),
+var baseIsEqual = __webpack_require__(87),
+    get = __webpack_require__(95),
+    hasIn = __webpack_require__(202),
     isKey = __webpack_require__(59),
-    isStrictComparable = __webpack_require__(92),
-    matchesStrictComparable = __webpack_require__(93),
+    isStrictComparable = __webpack_require__(93),
+    matchesStrictComparable = __webpack_require__(94),
     toKey = __webpack_require__(45);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -17939,54 +17952,13 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 195 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(94);
-
-/**
- * Gets the value at `path` of `object`. If the resolved value is
- * `undefined`, the `defaultValue` is returned in its place.
- *
- * @static
- * @memberOf _
- * @since 3.7.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @param {*} [defaultValue] The value returned for `undefined` resolved values.
- * @returns {*} Returns the resolved value.
- * @example
- *
- * var object = { 'a': [{ 'b': { 'c': 3 } }] };
- *
- * _.get(object, 'a[0].b.c');
- * // => 3
- *
- * _.get(object, ['a', '0', 'b', 'c']);
- * // => 3
- *
- * _.get(object, 'a.b.c', 'default');
- * // => 'default'
- */
-function get(object, path, defaultValue) {
-  var result = object == null ? undefined : baseGet(object, path);
-  return result === undefined ? defaultValue : result;
-}
-
-module.exports = get;
-
-/***/ }),
-/* 196 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var memoizeCapped = __webpack_require__(197);
+var memoizeCapped = __webpack_require__(198);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -18015,13 +17987,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(198);
+var memoize = __webpack_require__(199);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -18049,7 +18021,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18130,13 +18102,13 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(200);
+var baseToString = __webpack_require__(201);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -18166,14 +18138,14 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(40),
-    arrayMap = __webpack_require__(80),
+    arrayMap = __webpack_require__(81),
     isArray = __webpack_require__(14),
     isSymbol = __webpack_require__(44);
 
@@ -18211,14 +18183,14 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(202),
-    hasPath = __webpack_require__(203);
+var baseHasIn = __webpack_require__(203),
+    hasPath = __webpack_require__(204);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -18253,7 +18225,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18274,16 +18246,16 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(95),
-    isArguments = __webpack_require__(88),
+var castPath = __webpack_require__(97),
+    isArguments = __webpack_require__(89),
     isArray = __webpack_require__(14),
-    isIndex = __webpack_require__(90),
+    isIndex = __webpack_require__(91),
     isLength = __webpack_require__(57),
     toKey = __webpack_require__(45);
 
@@ -18320,7 +18292,7 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18349,14 +18321,14 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(206),
-    basePropertyDeep = __webpack_require__(207),
+var baseProperty = __webpack_require__(207),
+    basePropertyDeep = __webpack_require__(208),
     isKey = __webpack_require__(59),
     toKey = __webpack_require__(45);
 
@@ -18389,7 +18361,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18411,13 +18383,13 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(94);
+var baseGet = __webpack_require__(96);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -18435,13 +18407,13 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(209),
+var baseEach = __webpack_require__(210),
     isArrayLike = __webpack_require__(58);
 
 /**
@@ -18465,14 +18437,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(210),
-    createBaseEach = __webpack_require__(213);
+var baseForOwn = __webpack_require__(211),
+    createBaseEach = __webpack_require__(214);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -18487,13 +18459,13 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(211),
+var baseFor = __webpack_require__(212),
     keys = __webpack_require__(56);
 
 /**
@@ -18511,13 +18483,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(212);
+var createBaseFor = __webpack_require__(213);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -18535,7 +18507,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18568,7 +18540,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18608,7 +18580,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19513,7 +19485,7 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19871,7 +19843,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19932,7 +19904,7 @@ function memoizeOne(resultFn, isEqual) {
 exports.default = memoizeOne;
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19943,7 +19915,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.caches = exports.sheet = exports.css = exports.keyframes = exports.injectGlobal = exports.getRegisteredStyles = exports.merge = exports.cx = exports.hydrate = exports.flush = undefined;
 
-var _createEmotion2 = __webpack_require__(218);
+var _createEmotion2 = __webpack_require__(219);
 
 var _createEmotion3 = _interopRequireDefault(_createEmotion2);
 
@@ -19976,7 +19948,7 @@ exports.caches = caches;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19988,23 +19960,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _memoize = __webpack_require__(219);
+var _memoize = __webpack_require__(220);
 
 var _memoize2 = _interopRequireDefault(_memoize);
 
-var _unitless = __webpack_require__(220);
+var _unitless = __webpack_require__(221);
 
 var _unitless2 = _interopRequireDefault(_unitless);
 
-var _hash = __webpack_require__(221);
+var _hash = __webpack_require__(222);
 
 var _hash2 = _interopRequireDefault(_hash);
 
-var _stylis = __webpack_require__(222);
+var _stylis = __webpack_require__(223);
 
 var _stylis2 = _interopRequireDefault(_stylis);
 
-var _stylisRuleSheet = __webpack_require__(223);
+var _stylisRuleSheet = __webpack_require__(224);
 
 var _stylisRuleSheet2 = _interopRequireDefault(_stylisRuleSheet);
 
@@ -20526,7 +20498,7 @@ exports.default = createEmotion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20546,7 +20518,7 @@ function memoize(fn) {
 exports.default = memoize;
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20603,7 +20575,7 @@ var unitlessKeys = {
 exports.default = unitlessKeys;
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20651,7 +20623,7 @@ function murmurhash2_32_gc(str) {
 exports.default = murmurhash2_32_gc;
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21289,7 +21261,7 @@ function stylis_min(W) {
 exports.default = stylis_min;
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21346,7 +21318,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21366,9 +21338,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(5),
+var aa = __webpack_require__(4),
     n = __webpack_require__(32),
-    r = __webpack_require__(97);function ba(a, b, c, d, e, f, g, h) {
+    r = __webpack_require__(99);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var l = [c, d, e, f, g, h],
@@ -23689,7 +23661,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23895,7 +23867,7 @@ exports.unstable_shouldYield = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24601,7 +24573,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(34)))
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24612,7 +24584,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(5);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(52);var scheduler=__webpack_require__(97);var tracing=__webpack_require__(228);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(52);var scheduler=__webpack_require__(99);var tracing=__webpack_require__(229);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -28490,21 +28462,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(229);
-} else {
   module.exports = __webpack_require__(230);
+} else {
+  module.exports = __webpack_require__(231);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28531,7 +28503,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28959,7 +28931,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29034,7 +29006,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29268,7 +29240,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29283,7 +29255,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(98);
+var ReactIs = __webpack_require__(100);
 var assign = __webpack_require__(32);
 
 var ReactPropTypesSecret = __webpack_require__(53);
@@ -29846,7 +29818,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29912,13 +29884,13 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var now = __webpack_require__(236),
+var now = __webpack_require__(237),
     root = typeof window === 'undefined' ? global : window,
     vendors = ['moz', 'webkit'],
     suffix = 'AnimationFrame',
@@ -29997,7 +29969,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30041,7 +30013,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30073,7 +30045,7 @@ var _createClass = function () {
 	};
 }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -30336,7 +30308,7 @@ AutosizeInput.defaultProps = {
 exports.default = AutosizeInput;
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30347,15 +30319,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _addClass = _interopRequireDefault(__webpack_require__(239));
+var _addClass = _interopRequireDefault(__webpack_require__(240));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(242));
+var _removeClass = _interopRequireDefault(__webpack_require__(243));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
-var _Transition = _interopRequireDefault(__webpack_require__(99));
+var _Transition = _interopRequireDefault(__webpack_require__(101));
 
-var _PropTypes = __webpack_require__(101);
+var _PropTypes = __webpack_require__(103);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30736,18 +30708,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(240);
+var _interopRequireDefault = __webpack_require__(241);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(241));
+var _hasClass = _interopRequireDefault(__webpack_require__(242));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -30756,7 +30728,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30772,7 +30744,7 @@ module.exports = _interopRequireDefault;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30788,7 +30760,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30803,7 +30775,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30814,11 +30786,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = __webpack_require__(25);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(102));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(104));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30968,7 +30940,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30980,7 +30952,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -31123,7 +31095,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31295,7 +31267,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31479,7 +31451,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32248,31 +32220,31 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(249);
+var _edit = __webpack_require__(250);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(250);
+var _save = __webpack_require__(251);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(251);
+var _deprecated = __webpack_require__(252);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(252);
+var _attributes = __webpack_require__(253);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -32296,7 +32268,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32347,9 +32319,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32377,7 +32353,6 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     RichText = _wp$blockEditor.RichText;
 
 var edit = exports.edit = function (_Component) {
@@ -32469,68 +32444,68 @@ var edit = exports.edit = function (_Component) {
 
             var ALIGNS = [{
                 value: "flex-start",
-                label: __("Top")
+                label: __("Top", 'premium-block-for-gutenberg')
             }, {
                 value: "center",
-                label: __("Middle")
+                label: __("Middle", 'premium-block-for-gutenberg')
             }, {
                 value: "flex-end",
-                label: __("Bottom")
+                label: __("Bottom", 'premium-block-for-gutenberg')
             }, {
                 value: "inherit",
-                label: __("Full")
+                label: __("Full", 'premium-block-for-gutenberg')
             }];
 
             var EFFECTS = [{
                 value: "effect1",
-                label: __("Style 1")
+                label: __("Style 1", 'premium-block-for-gutenberg')
             }, {
                 value: "effect2",
-                label: __("Style 2")
+                label: __("Style 2", 'premium-block-for-gutenberg')
             }, {
                 value: "effect3",
-                label: __("Style 3")
+                label: __("Style 3", 'premium-block-for-gutenberg')
             }, {
                 value: "effect4",
-                label: __("Style 4")
+                label: __("Style 4", 'premium-block-for-gutenberg')
             }, {
                 value: "effect5",
-                label: __("Style 5")
+                label: __("Style 5", 'premium-block-for-gutenberg')
             }, {
                 value: "effect6",
-                label: __("Style 6")
+                label: __("Style 6", 'premium-block-for-gutenberg')
             }];
             var HOVER = [{
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "zoomin",
-                label: __("Zoom In")
+                label: __("Zoom In", 'premium-block-for-gutenberg')
             }, {
                 value: "zoomout",
-                label: "Zoom Out"
+                label: __("Zoom Out", 'premium-block-for-gutenberg')
             }, {
                 value: "scale",
-                label: __("Scale")
+                label: __("Scale", 'premium-block-for-gutenberg')
             }, {
                 value: "gray",
-                label: __("Gray Scale")
+                label: __("Gray Scale", 'premium-block-for-gutenberg')
             }, {
                 value: "blur",
-                label: __("Blur")
+                label: __("Blur", 'premium-block-for-gutenberg')
             }, {
                 value: "bright",
-                label: __("Bright")
+                label: __("Bright", 'premium-block-for-gutenberg')
             }, {
                 value: "sepia",
-                label: __("Sepia")
+                label: __("Sepia", 'premium-block-for-gutenberg')
             }];
             var HEIGHT = [{
                 value: "default",
-                label: __("Default")
+                label: __("Default", 'premium-block-for-gutenberg')
             }, {
                 value: "custom",
-                label: __("Custom")
+                label: __("Custom", 'premium-block-for-gutenberg')
             }];
             var mainClasses = (0, _classnames2.default)(className, "premium-banner");
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -32578,7 +32553,7 @@ var edit = exports.edit = function (_Component) {
                     Toolbar,
                     null,
                     React.createElement(IconButton, {
-                        label: __("Refresh this button when it conflict with other buttons styles"),
+                        label: __("Refresh this button when it conflict with other buttons styles", 'premium-block-for-gutenberg'),
                         icon: "update",
                         className: "components-toolbar__control",
                         onClick: function onClick() {
@@ -32598,7 +32573,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings"),
+                        title: __("General Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
@@ -32641,7 +32616,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Banner Style"),
+                        label: __("Banner Style", 'premium-block-for-gutenberg'),
                         value: effect,
                         onChange: function onChange(newEffect) {
                             return setAttributes({ effect: newEffect });
@@ -32649,7 +32624,7 @@ var edit = exports.edit = function (_Component) {
                         options: EFFECTS
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Image Hover Effect"),
+                        label: __("Image Hover Effect", 'premium-block-for-gutenberg'),
                         options: HOVER,
                         value: hoverEffect,
                         onChange: function onChange(newEffect) {
@@ -32657,14 +32632,14 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Always Hovered"),
+                        label: __("Always Hovered", 'premium-block-for-gutenberg'),
                         checked: hovered,
                         onChange: function onChange(check) {
                             return setAttributes({ hovered: check });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Height"),
+                        label: __("Height", 'premium-block-for-gutenberg'),
                         options: HEIGHT,
                         value: height,
                         onChange: function onChange(newHeight) {
@@ -32672,7 +32647,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     "custom" === height && React.createElement(_premiumRangeControl2.default, {
-                        label: __("Min Height (PX)"),
+                        label: __("Min Height (PX)", 'premium-block-for-gutenberg'),
                         value: minHeight,
                         min: "10",
                         max: "800",
@@ -32683,33 +32658,25 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: 100
                     }),
                     "custom" === height && React.createElement(SelectControl, {
-                        label: __("Vertical Align"),
+                        label: __("Vertical Align", 'premium-block-for-gutenberg'),
                         options: ALIGNS,
                         value: verAlign,
                         onChange: function onChange(newValue) {
                             return setAttributes({ verAlign: newValue });
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Overlay")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: background,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    background: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Overlay", 'premium-block-for-gutenberg'),
+                        colorValue: background,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({
+                                background: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Overlay Opacity"),
+                        label: __("Overlay Opacity", 'premium-block-for-gutenberg'),
                         value: opacity,
                         min: "1",
                         max: "100",
@@ -32722,7 +32689,7 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: ''
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Link"),
+                        label: __("Link", 'premium-block-for-gutenberg'),
                         checked: urlCheck,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ urlCheck: newCheck });
@@ -32735,14 +32702,14 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     urlCheck && React.createElement(ToggleControl, {
-                        label: __("Open link in new tab"),
+                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                         checked: target,
                         onChange: function onChange(newValue) {
                             return setAttributes({ target: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Hide Description on Mobiles"),
+                        label: __("Hide Description on Mobiles", 'premium-block-for-gutenberg'),
                         checked: responsive,
                         onChange: function onChange(newValue) {
                             return setAttributes({ responsive: newValue });
@@ -32752,14 +32719,14 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Title Settings"),
+                        title: __("Title Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("HTML Tag")
+                        __("HTML Tag", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -32778,19 +32745,19 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: saveStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit")
+                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: titleStyles[0].titleSize,
-                            label: __("titleSize")
+                            label: __("titleSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile")
+                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet")
+                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: titleStyles[0].titleWeight,
                         line: titleStyles[0].titleLine,
@@ -32805,60 +32772,36 @@ var edit = exports.edit = function (_Component) {
                             }, titleStyles);
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: titleStyles[0].titleColor,
-                            onChange: function onChange(newValue) {
-                                return saveStyles({
-                                    titleColor: newValue === undefined ? "transparent" : newValue
-                                }, titleStyles);
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    "effect3" === effect && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Separator Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: sepColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    sepColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    "effect2" === effect && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: titleStyles[0].titleBack,
-                            onChange: function onChange(newValue) {
-                                return saveStyles({
-                                    titleBack: newValue === undefined ? "transparent" : newValue
-                                }, titleStyles);
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveStyles({
+                                titleColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
+                    "effect3" === effect && React.createElement(_ColorComponent2.default, {
+                        label: __("Separator Color", 'premium-block-for-gutenberg'),
+                        colorValue: sepColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({
+                                sepColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
+                    "effect2" === effect && React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].titleBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveStyles({
+                                titleBack: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: titleStyles[0].shadowColor,
                         blur: titleStyles[0].shadowBlur,
@@ -32889,7 +32832,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Description Settings"),
+                        title: __("Description Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -32898,19 +32841,19 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: descriptionStyles,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit")
+                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: descStyles[0].descSize,
-                            label: __("descSize")
+                            label: __("descSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile")
+                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet")
+                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: descStyles[0].descWeight,
                         line: descStyles[0].descLine,
@@ -32925,24 +32868,16 @@ var edit = exports.edit = function (_Component) {
                             }, descStyles);
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: descStyles[0].descColor,
-                            onChange: function onChange(newValue) {
-                                return descriptionStyles({
-                                    descColor: newValue === undefined ? "transparent" : newValue
-                                }, descStyles);
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: descStyles[0].descColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return descriptionStyles({
+                                descColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: descStyles[0].descShadowColor,
                         blur: descStyles[0].descShadowBlur,
@@ -32973,7 +32908,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container Style"),
+                        title: __("Container Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -33220,7 +33155,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33397,7 +33332,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34648,7 +34583,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34873,23 +34808,23 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _edit = __webpack_require__(254);
+var _edit = __webpack_require__(255);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(255);
+var _save = __webpack_require__(256);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(256);
+var _deprecated = __webpack_require__(257);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -34897,7 +34832,7 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(257);
+var _attributes = __webpack_require__(258);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -34922,7 +34857,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34965,7 +34900,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -34973,9 +34908,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34999,7 +34938,6 @@ var _wp$element = wp.element,
     Component = _wp$element.Component;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     BlockControls = _wp$blockEditor.BlockControls,
     RichText = _wp$blockEditor.RichText,
@@ -35070,74 +35008,74 @@ var edit = exports.edit = function (_Component) {
 
             var SIZE = [{
                 value: "sm",
-                label: __("Small")
+                label: __("Small", 'premium-block-for-gutenberg')
             }, {
                 value: "md",
-                label: __("Medium")
+                label: __("Medium", 'premium-block-for-gutenberg')
             }, {
                 value: "lg",
-                label: __("Large")
+                label: __("Large", 'premium-block-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Block")
+                label: __("Block", 'premium-block-for-gutenberg')
             }];
             var DIRECTION = [{
                 value: "top",
-                label: __("Top to Bottom")
+                label: __("Top to Bottom", 'premium-block-for-gutenberg')
             }, {
                 value: "bottom",
-                label: __("Bottom to Top")
+                label: __("Bottom to Top", 'premium-block-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left to Right")
+                label: __("Left to Right", 'premium-block-for-gutenberg')
             }, {
                 value: "right",
-                label: __("Right to Left")
+                label: __("Right to Left", 'premium-block-for-gutenberg')
             }];
             var SHUTTER = [{
                 value: "shutouthor",
-                label: __("Shutter out Horizontal")
+                label: __("Shutter out Horizontal", 'premium-block-for-gutenberg')
             }, {
                 value: "shutoutver",
-                label: __("Shutter out Vertical")
+                label: __("Shutter out Vertical", 'premium-block-for-gutenberg')
             }, {
                 value: "scshutoutver",
-                label: __("Scaled Shutter Vertical")
+                label: __("Scaled Shutter Vertical", 'premium-block-for-gutenberg')
             }, {
                 value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal")
+                label: __("Scaled Shutter Horizontal", 'premium-block-for-gutenberg')
             }, {
                 value: "dshutinver",
-                label: __("Tilted Left")
+                label: __("Tilted Left", 'premium-block-for-gutenberg')
             }, {
                 value: "dshutinhor",
-                label: __("Tilted Right")
+                label: __("Tilted Right", 'premium-block-for-gutenberg')
             }];
             var RADIAL = [{
                 value: "radialin",
-                label: __("Radial In")
+                label: __("Radial In", 'premium-block-for-gutenberg')
             }, {
                 value: "radialout",
-                label: __("Radial Out")
+                label: __("Radial Out", 'premium-block-for-gutenberg')
             }, {
                 value: "rectin",
-                label: __("Rectangle In")
+                label: __("Rectangle In", 'premium-block-for-gutenberg')
             }, {
                 value: "rectout",
-                label: __("Rectangle Out")
+                label: __("Rectangle Out", 'premium-block-for-gutenberg')
             }];
             var EFFECTS = [{
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "slide",
-                label: __("Slide")
+                label: __("Slide", 'premium-block-for-gutenberg')
             }, {
                 value: "shutter",
-                label: __("Shutter")
+                label: __("Shutter", 'premium-block-for-gutenberg')
             }, {
                 value: "radial",
-                label: __("Radial")
+                label: __("Radial", 'premium-block-for-gutenberg')
             }];
 
             var onChangeHover = function onChangeHover(newValue) {
@@ -35197,19 +35135,19 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings"),
+                        title: __("General Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
                         options: EFFECTS,
-                        label: __("Hover Effect"),
+                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
                         value: effect,
                         onChange: onChangeHover
                     }),
                     "slide" === effect && React.createElement(SelectControl, {
                         options: DIRECTION,
-                        label: __("Direction"),
+                        label: __("Direction", 'premium-block-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -35217,7 +35155,7 @@ var edit = exports.edit = function (_Component) {
                     }),
                     "shutter" === effect && React.createElement(SelectControl, {
                         options: SHUTTER,
-                        label: __("Shutter Direction"),
+                        label: __("Shutter Direction", 'premium-block-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -35225,7 +35163,7 @@ var edit = exports.edit = function (_Component) {
                     }),
                     "radial" === effect && React.createElement(SelectControl, {
                         options: RADIAL,
-                        label: __("Style"),
+                        label: __("Style", 'premium-block-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -35233,14 +35171,14 @@ var edit = exports.edit = function (_Component) {
                     }),
                     React.createElement(SelectControl, {
                         options: SIZE,
-                        label: __("Button Size"),
+                        label: __("Button Size", 'premium-block-for-gutenberg'),
                         value: btnSize,
                         onChange: function onChange(newSize) {
                             return setAttributes({ btnSize: newSize });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Open link in new tab"),
+                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                         checked: btnTarget,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnTarget: newValue });
@@ -35250,7 +35188,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Text Style"),
+                        title: __("Text Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -35259,19 +35197,19 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: saveTextStyles,
                         fontSizeType: {
                             value: textStyles[0].textSizeUnit,
-                            label: __("textSizeUnit")
+                            label: __("textSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: textStyles[0].textSize,
-                            label: __("textSize")
+                            label: __("textSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: textStyles[0].textSizeMobile,
-                            label: __("textSizeMobile")
+                            label: __("textSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: textStyles[0].textSizeTablet,
-                            label: __("textSizeTablet")
+                            label: __("textSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: textStyles[0].textFontFamily,
                         weight: textStyles[0].textWeight,
@@ -35327,14 +35265,14 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Button Style"),
+                        title: __("Button Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "strong",
                         null,
-                        __("Colors")
+                        __("Colors", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(
                         TabPanel,
@@ -35357,24 +35295,20 @@ var edit = exports.edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: btnStyles[0].textColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                                        colorValue: btnStyles[0].textColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveBtnStyles({
                                                 textColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
                                     React.createElement(
                                         "p",
                                         null,
-                                        "radial" !== effect ? __("Background Color") : __("Background Hover Color")
+                                        "radial" !== effect ? __("Background Color", 'premium-block-for-gutenberg') : __("Background Hover Color", 'premium-block-for-gutenberg')
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
@@ -35397,48 +35331,36 @@ var edit = exports.edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Hover Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: btnStyles[0].textHoverColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Text Hover Color", 'premium-block-for-gutenberg'),
+                                        colorValue: btnStyles[0].textHoverColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveBtnStyles({
                                                 textHoverColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        "radial" !== effect ? __("Background Hover Color") : __("Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: btnStyles[0].backHoverColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: "radial" !== effect ? __("Background Hover Color", 'premium-block-for-gutenberg') : __("Background Color", 'premium-block-for-gutenberg'),
+                                        colorValue: btnStyles[0].backHoverColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveBtnStyles({
                                                 backHoverColor: newValue,
                                                 slideColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Border Hover Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: btnStyles[0].borderHoverColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Border Hover Color", 'premium-block-for-gutenberg'),
+                                        colorValue: btnStyles[0].borderHoverColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveBtnStyles({
                                                 borderHoverColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     })
                                 );
                             }
@@ -35517,7 +35439,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Padding"),
+                        label: __("Padding", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].padding,
                         onChange: function onChange(newValue) {
                             return saveBtnStyles({ padding: newValue });
@@ -35610,7 +35532,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35624,7 +35546,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -35704,7 +35626,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36423,7 +36345,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36551,23 +36473,23 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _attributes = __webpack_require__(103);
+var _attributes = __webpack_require__(105);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(259);
+var _edit = __webpack_require__(260);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(260);
+var _save = __webpack_require__(261);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -36575,7 +36497,7 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(261);
+var _deprecated = __webpack_require__(262);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -36602,7 +36524,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36620,7 +36542,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _premiumTypo = __webpack_require__(9);
 
@@ -36646,7 +36568,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -36654,9 +36576,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36677,9 +36603,7 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -36772,32 +36696,32 @@ var edit = function (_Component) {
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
             var ICONS = [{
                 value: "icon",
-                label: __("Icon")
+                label: __("Icon", 'premium-block-for-gutenberg')
             }, {
                 value: "img",
-                label: __("Image")
+                label: __("Image", 'premium-block-for-gutenberg')
             }];
 
             var DIRECTION = [{
                 value: "row",
-                label: __("Row")
+                label: __("Row", 'premium-block-for-gutenberg')
             }, {
                 value: "row-reverse",
                 label: __("Reversed Row")
             }, {
                 value: "column",
-                label: __("Column")
+                label: __("Column", 'premium-block-for-gutenberg')
             }, {
                 value: "column-reverse",
-                label: __("Reversed Column")
+                label: __("Reversed Column", 'premium-block-for-gutenberg')
             }];
 
             var TYPE = [{
                 value: "fa",
-                label: "Font Awesome Icon"
+                label: __("Font Awesome Icon", 'premium-block-for-gutenberg')
             }, {
                 value: "dash",
-                label: "Dashicon"
+                label: __("Dashicon", 'premium-block-for-gutenberg')
             }];
 
             var ALIGNS = ["left", "center", "right"];
@@ -36881,19 +36805,19 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Counter"),
+                        title: __("Counter", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Final Number"),
+                        label: __("Final Number", 'premium-block-for-gutenberg'),
                         value: increment,
                         onChange: function onChange(value) {
                             return setAttributes({ increment: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Counting Time"),
+                        label: __("Counting Time", 'premium-block-for-gutenberg'),
                         value: time,
                         onChange: function onChange(value) {
                             return setAttributes({ time: value });
@@ -36901,12 +36825,12 @@ var edit = function (_Component) {
                         help: __("Set counting time in milliseconds, for example: 1000")
                     }),
                     React.createElement(TextControl, {
-                        label: __("Delay"),
+                        label: __("Delay", 'premium-block-for-gutenberg'),
                         value: delay,
                         onChange: function onChange(value) {
                             return setAttributes({ delay: value });
                         },
-                        help: __("Set delay in milliseconds, for example: 10")
+                        help: __("Set delay in milliseconds, for example: 10", 'premium-block-for-gutenberg')
                     }),
                     React.createElement(
                         "p",
@@ -36937,7 +36861,7 @@ var edit = function (_Component) {
                         })
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Direction"),
+                        label: __("Direction", 'premium-block-for-gutenberg'),
                         options: DIRECTION,
                         value: flexDir,
                         onChange: function onChange(newDir) {
@@ -36945,7 +36869,7 @@ var edit = function (_Component) {
                         }
                     }),
                     ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(_premiumRangeControl2.default, {
-                        label: __("Spacing"),
+                        label: __("Spacing", 'premium-block-for-gutenberg'),
                         value: iconSpacing,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconSpacing: newValue });
@@ -36954,28 +36878,28 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Icon"),
+                        label: __("Icon", 'premium-block-for-gutenberg'),
                         checked: iconCheck,
                         onChange: function onChange(check) {
                             return setAttributes({ iconCheck: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Prefix"),
+                        label: __("Prefix", 'premium-block-for-gutenberg'),
                         checked: prefix,
                         onChange: function onChange(check) {
                             return setAttributes({ prefix: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Suffix"),
+                        label: __("Suffix", 'premium-block-for-gutenberg'),
                         checked: suffix,
                         onChange: function onChange(check) {
                             return setAttributes({ suffix: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Title"),
+                        label: __("Title", 'premium-block-for-gutenberg'),
                         checked: titleCheck,
                         onChange: function onChange(check) {
                             return setAttributes({ titleCheck: check });
@@ -36985,12 +36909,12 @@ var edit = function (_Component) {
                 iconCheck && React.createElement(
                     PanelBody,
                     {
-                        title: __("Icon"),
+                        title: __("Icon", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Icon Type"),
+                        label: __("Icon Type", 'premium-block-for-gutenberg'),
                         options: ICONS,
                         value: icon,
                         onChange: function onChange(newType) {
@@ -37006,7 +36930,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(SelectControl, {
-                            label: __("Icon Type"),
+                            label: __("Icon Type", 'premium-block-for-gutenberg'),
                             value: iconType,
                             options: TYPE,
                             onChange: function onChange(newType) {
@@ -37014,7 +36938,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(TextControl, {
-                            label: __("Icon Class"),
+                            label: __("Icon Class", 'premium-block-for-gutenberg'),
                             value: faIcon,
                             help: [__("Get icon class from"), React.createElement(
                                 "a",
@@ -37024,7 +36948,7 @@ var edit = function (_Component) {
                                 },
                                 "\xA0",
                                 __("here")
-                            ), __(" , for example: "), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
+                            ), __(" , for example: ", 'premium-block-for-gutenberg'), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
                             onChange: function onChange(newIcon) {
                                 return setAttributes({ faIcon: newIcon });
                             }
@@ -37056,29 +36980,21 @@ var edit = function (_Component) {
                         defaultValue: 40,
                         max: 200
                     }),
-                    "icon" === icon && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Icon Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: iconColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    iconColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    )
+                    "icon" === icon && React.createElement(_ColorComponent2.default, {
+                        label: __("Icon Color", 'premium-block-for-gutenberg'),
+                        colorValue: iconColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({
+                                iconColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    })
                 ),
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Number"),
+                        title: __("Number", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -37087,19 +37003,19 @@ var edit = function (_Component) {
                         setAttributes: saveNumberStyles,
                         fontSizeType: {
                             value: numberStyles[0].numberSizeUnit,
-                            label: __("numberSizeUnit")
+                            label: __("numberSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: numberStyles[0].numberSize,
-                            label: __("numberSize")
+                            label: __("numberSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: numberStyles[0].numberSizeMobile,
-                            label: __("numberSizeMobile")
+                            label: __("numberSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: numberStyles[0].numberSizeTablet,
-                            label: __("numberSizeTablet")
+                            label: __("numberSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: counterFamily,
                         weight: numberStyles[0].numberWeight,
@@ -37110,34 +37026,26 @@ var edit = function (_Component) {
                             return setAttributes({ counterFamily: fontFamily });
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Number Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: numberStyles[0].numberColor,
-                            onChange: function onChange(newValue) {
-                                return saveNumberStyles({
-                                    numberColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    )
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Number Color", 'premium-block-for-gutenberg'),
+                        colorValue: numberStyles[0].numberColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveNumberStyles({
+                                numberColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    })
                 ),
                 prefix && React.createElement(
                     PanelBody,
                     {
-                        title: __("Prefix"),
+                        title: __("Prefix", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Prefix"),
+                        label: __("Prefix", 'premium-block-for-gutenberg'),
                         value: prefixStyles[0].prefixTxt,
                         onChange: function onChange(value) {
                             return savePrefixStyle({ prefixTxt: value });
@@ -37148,19 +37056,19 @@ var edit = function (_Component) {
                         setAttributes: savePrefixStyle,
                         fontSizeType: {
                             value: prefixStyles[0].prefixSizeUnit,
-                            label: __("prefixSizeUnit")
+                            label: __("prefixSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: prefixStyles[0].prefixSize,
-                            label: __("prefixSize")
+                            label: __("prefixSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: prefixStyles[0].prefixSizeMobile,
-                            label: __("prefixSizeMobile")
+                            label: __("prefixSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: prefixStyles[0].prefixSizeTablet,
-                            label: __("prefixSizeTablet")
+                            label: __("prefixSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: prefixStyles[0].prefixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
@@ -37171,26 +37079,18 @@ var edit = function (_Component) {
                             return savePrefixStyle({ prefixFamily: fontFamily });
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: prefixStyles[0].prefixColor,
-                            onChange: function onChange(newValue) {
-                                return savePrefixStyle({
-                                    prefixColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: prefixStyles[0].prefixColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return savePrefixStyle({
+                                prefixColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Gap After"),
+                        label: __("Gap After", 'premium-block-for-gutenberg'),
                         value: prefixStyles[0].prefixGap,
                         onChange: function onChange(newValue) {
                             return savePrefixStyle({ prefixGap: newValue });
@@ -37202,12 +37102,12 @@ var edit = function (_Component) {
                 suffix && React.createElement(
                     PanelBody,
                     {
-                        title: __("Suffix"),
+                        title: __("Suffix", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Suffix"),
+                        label: __("Suffix", 'premium-block-for-gutenberg'),
                         value: suffixStyles[0].suffixTxt,
                         onChange: function onChange(value) {
                             return saveSuffixStyle({ suffixTxt: value });
@@ -37218,19 +37118,19 @@ var edit = function (_Component) {
                         setAttributes: saveSuffixStyle,
                         fontSizeType: {
                             value: suffixStyles[0].suffixSizeUnit,
-                            label: __("suffixSizeUnit")
+                            label: __("suffixSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: suffixStyles[0].suffixSize,
-                            label: __("suffixSize")
+                            label: __("suffixSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: suffixStyles[0].suffixSizeMobile,
-                            label: __("suffixSizeMobile")
+                            label: __("suffixSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: suffixStyles[0].suffixSizeTablet,
-                            label: __("suffixSizeTablet")
+                            label: __("suffixSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: suffixStyles[0].suffixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
@@ -37241,26 +37141,18 @@ var edit = function (_Component) {
                             return saveSuffixStyle({ suffixFamily: fontFamily });
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: suffixStyles[0].suffixColor,
-                            onChange: function onChange(newValue) {
-                                return saveSuffixStyle({
-                                    suffixColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: suffixStyles[0].suffixColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveSuffixStyle({
+                                suffixColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Gap Before"),
+                        label: __("Gap Before", 'premium-block-for-gutenberg'),
                         value: suffixStyles[0].suffixGap,
                         onChange: function onChange(newValue) {
                             return saveSuffixStyle({ suffixGap: newValue });
@@ -37272,12 +37164,12 @@ var edit = function (_Component) {
                 titleCheck && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Title Text"),
+                        label: __("Title Text", 'premium-block-for-gutenberg'),
                         value: titleTxt,
                         onChange: function onChange(value) {
                             return setAttributes({ titleTxt: value });
@@ -37288,15 +37180,15 @@ var edit = function (_Component) {
                         setAttributes: saveTitleStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit")
+                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: titleStyles[0].titleSize,
-                            label: __("titleSize")
+                            label: __("titleSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile")
+                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: titleStyles[0].titleSizeTablet,
@@ -37323,24 +37215,16 @@ var edit = function (_Component) {
                             return saveTitleStyles({ titleUpper: check });
                         }
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: titleStyles[0].titleColor,
-                            onChange: function onChange(newValue) {
-                                return saveTitleStyles({
-                                    titleColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", ''),
+                        colorValue: titleStyles[0].titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveTitleStyles({
+                                titleColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    }),
                     React.createElement(
                         PanelBody,
                         {
@@ -37715,7 +37599,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37729,7 +37613,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -37926,7 +37810,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37936,11 +37820,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(103);
+var _attributes = __webpack_require__(105);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -39334,31 +39218,31 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(263);
+var _edit = __webpack_require__(264);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(264);
+var _save = __webpack_require__(265);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(265);
+var _deprecated = __webpack_require__(266);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(266);
+var _attributes = __webpack_require__(267);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -39383,7 +39267,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39417,7 +39301,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -39425,9 +39309,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39454,7 +39342,6 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 
 var edit = function (_Component) {
@@ -39532,10 +39419,10 @@ var edit = function (_Component) {
 
             var DISPLAY = [{
                 value: "inline",
-                label: __("Inline")
+                label: __("Inline", 'premium-block-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Block")
+                label: __("Block", 'premium-block-for-gutenberg')
             }];
 
             var saveSecondStyle = function saveSecondStyle(value) {
@@ -39590,12 +39477,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings"),
+                        title: __("General Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("First Heading"),
+                        label: __("First Heading", 'premium-block-for-gutenberg'),
                         type: "url",
                         value: firstHeading,
                         onChange: function onChange(value) {
@@ -39603,7 +39490,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Second Heading"),
+                        label: __("Second Heading", 'premium-block-for-gutenberg'),
                         type: "url",
                         value: secondHeading,
                         onChange: function onChange(value) {
@@ -39611,7 +39498,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Display"),
+                        label: __("Display", 'premium-block-for-gutenberg'),
                         value: display,
                         options: DISPLAY,
                         onChange: function onChange(value) {
@@ -39619,14 +39506,14 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Link"),
+                        label: __("Link", 'premium-block-for-gutenberg'),
                         checked: link,
                         onChange: function onChange(newValue) {
                             return setAttributes({ link: newValue });
                         }
                     }),
                     link && React.createElement(ToggleControl, {
-                        label: __("Open link in new tab"),
+                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                         checked: target,
                         onChange: function onChange(newValue) {
                             return setAttributes({ target: newValue });
@@ -39636,12 +39523,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("First Heading Style"),
+                        title: __("First Heading Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Clipped"),
+                        label: __("Clipped", 'premium-block-for-gutenberg'),
                         checked: firstStyles[0].firstClip,
                         onChange: function onChange(newValue) {
                             return saveFirstStyle({ firstClip: newValue });
@@ -39651,14 +39538,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
-                            label: __("Animated"),
+                            label: __("Animated", 'premium-block-for-gutenberg'),
                             checked: firstStyles[0].firstAnim,
                             onChange: function onChange(newValue) {
                                 return saveFirstStyle({ firstAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Stroke"),
+                            label: __("Stroke", 'premium-block-for-gutenberg'),
                             checked: firstStyles[0].firstStroke,
                             onChange: function onChange(newValue) {
                                 return saveFirstStyle({ firstStroke: newValue });
@@ -39670,19 +39557,19 @@ var edit = function (_Component) {
                         setAttributes: saveFirstStyle,
                         fontSizeType: {
                             value: firstStyles[0].firstSizeUnit,
-                            label: __("firstSizeUnit")
+                            label: __("firstSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: firstStyles[0].firstSize,
-                            label: __("firstSize")
+                            label: __("firstSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: firstStyles[0].firstSizeMobile,
-                            label: __("firstSizeMobile")
+                            label: __("firstSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: firstStyles[0].firstSizeTablet,
-                            label: __("firstSizeTablet")
+                            label: __("firstSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: firstStyles[0].firstFamily,
 
@@ -39707,122 +39594,60 @@ var edit = function (_Component) {
                         }
                     }),
                     !firstStyles[0].firstClip && React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            colorValue: firstStyles[0].firstColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveFirstStyle({
+                                    firstColor: newValue
+                                });
+                            }
+                        }),
                         React.createElement(
-                            "strong",
+                            "p",
                             null,
-                            __("Colors")
+                            __("Background Color", 'premium-block-for-gutenberg')
                         ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref) {
-                                var isOpen = _ref.isOpen,
-                                    onToggle = _ref.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
+                        React.createElement(_premiumBackground2.default, {
+                            type: "color",
+                            colorValue: firstStyles[0].firstBackground,
+                            onChangeColor: function onChangeColor(value) {
+                                return saveFirstStyle({
+                                    firstBackground: value
+                                });
                             },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: firstStyles[0].firstColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveFirstStyle({
-                                                firstColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(_premiumBackground2.default, {
-                                        type: "color",
-                                        colorValue: firstStyles[0].firstBackground,
-                                        onChangeColor: function onChangeColor(value) {
-                                            return saveFirstStyle({
-                                                firstBackground: value
-                                            });
-                                        },
-                                        opacityValue: firstStyles[0].firstOpacity,
-                                        onChangeOpacity: function onChangeOpacity(value) {
-                                            return saveFirstStyle({
-                                                firstOpacity: value
-                                            });
-                                        }
-                                    })
-                                );
+                            opacityValue: firstStyles[0].firstOpacity,
+                            onChangeOpacity: function onChangeOpacity(value) {
+                                return saveFirstStyle({
+                                    firstOpacity: value
+                                });
                             }
                         })
                     ),
                     firstStyles[0].firstClip && React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(
-                            "strong",
-                            null,
-                            __("Colors")
-                        ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref2) {
-                                var isOpen = _ref2.isOpen,
-                                    onToggle = _ref2.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("First Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: firstStyles[0].firstColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveFirstStyle({
-                                                firstColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Second Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: firstStyles[0].firstClipColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveFirstStyle({
-                                                firstClipColor: newValue
-                                            });
-                                        },
-                                        allowReset: true
-                                    })
-                                );
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("First Color", 'premium-block-for-gutenberg'),
+                            colorValue: firstStyles[0].firstColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveFirstStyle({
+                                    firstColor: newValue
+                                });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Second Color", 'premium-block-for-gutenberg'),
+                            colorValue: firstStyles[0].firstClipColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveFirstStyle({
+                                    firstClipColor: newValue
+                                });
                             }
                         })
                     ),
@@ -39838,11 +39663,11 @@ var edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveFirstStyle({ firstBorderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref3) {
-                            var top = _ref3.top,
-                                right = _ref3.right,
-                                bottom = _ref3.bottom,
-                                left = _ref3.left;
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
                             return setAttributes({
                                 firstBorder: true,
                                 firstBorderTop: top,
@@ -39879,7 +39704,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Left"),
+                        label: __("Margin Left", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstMarginL,
                         onChange: function onChange(newMargin) {
                             return saveFirstStyle({ firstMarginL: newMargin || "0" });
@@ -39888,7 +39713,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Right"),
+                        label: __("Margin Right", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstMarginR,
                         onChange: function onChange(newMargin) {
                             return saveFirstStyle({ firstMarginR: newMargin });
@@ -39897,7 +39722,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Padding"),
+                        label: __("Padding", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstPadding,
                         onChange: function onChange(newPadding) {
                             return saveFirstStyle({ firstPadding: newPadding });
@@ -39909,12 +39734,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Second Heading Style"),
+                        title: __("Second Heading Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Clipped"),
+                        label: __("Clipped", 'premium-block-for-gutenberg'),
                         checked: secondStyles[0].secondClip,
                         onChange: function onChange(newValue) {
                             return saveSecondStyle({ secondClip: newValue });
@@ -39924,14 +39749,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
-                            label: __("Animated"),
+                            label: __("Animated", 'premium-block-for-gutenberg'),
                             checked: secondStyles[0].secondAnim,
                             onChange: function onChange(newValue) {
                                 return saveSecondStyle({ secondAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __('Stroke'),
+                            label: __('Stroke', 'premium-block-for-gutenberg'),
                             checked: secondStyles[0].secondStroke,
                             onChange: function onChange(newValue) {
                                 return saveSecondStyle({ secondStroke: newValue });
@@ -39943,19 +39768,19 @@ var edit = function (_Component) {
                         setAttributes: saveSecondStyle,
                         fontSizeType: {
                             value: secondStyles[0].secondSizeUnit,
-                            label: __("secondSizeUnit")
+                            label: __("secondSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: secondStyles[0].secondSize,
-                            label: __("secondSize")
+                            label: __("secondSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: secondStyles[0].secondSizeMobile,
-                            label: __("secondSizeMobile")
+                            label: __("secondSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: secondStyles[0].secondSizeTablet,
-                            label: __("secondSizeTablet")
+                            label: __("secondSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: secondStyles[0].secondFamily,
                         weight: secondStyles[0].secondWeight,
@@ -39979,122 +39804,60 @@ var edit = function (_Component) {
                         }
                     }),
                     !secondStyles[0].secondClip && React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            colorValue: secondStyles[0].secondColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSecondStyle({
+                                    secondColor: newValue || "transparent"
+                                });
+                            }
+                        }),
                         React.createElement(
-                            "strong",
+                            "p",
                             null,
-                            __("Colors")
+                            __("Background Color", 'premium-block-for-gutenberg')
                         ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref4) {
-                                var isOpen = _ref4.isOpen,
-                                    onToggle = _ref4.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
+                        React.createElement(_premiumBackground2.default, {
+                            type: "color",
+                            colorValue: secondStyles[0].secondBackground,
+                            onChangeColor: function onChangeColor(value) {
+                                return saveSecondStyle({
+                                    secondBackground: value
+                                });
                             },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: secondStyles[0].secondColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveSecondStyle({
-                                                secondColor: newValue || "transparent"
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(_premiumBackground2.default, {
-                                        type: "color",
-                                        colorValue: secondStyles[0].secondBackground,
-                                        onChangeColor: function onChangeColor(value) {
-                                            return saveSecondStyle({
-                                                secondBackground: value
-                                            });
-                                        },
-                                        opacityValue: secondStyles[0].secondOpacity,
-                                        onChangeOpacity: function onChangeOpacity(value) {
-                                            return saveSecondStyle({
-                                                secondOpacity: value
-                                            });
-                                        }
-                                    })
-                                );
+                            opacityValue: secondStyles[0].secondOpacity,
+                            onChangeOpacity: function onChangeOpacity(value) {
+                                return saveSecondStyle({
+                                    secondOpacity: value
+                                });
                             }
                         })
                     ),
                     secondStyles[0].secondClip && React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(
-                            "strong",
-                            null,
-                            __("Colors")
-                        ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref5) {
-                                var isOpen = _ref5.isOpen,
-                                    onToggle = _ref5.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("First Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: secondStyles[0].secondColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveSecondStyle({
-                                                secondColor: newValue || "transparent"
-                                            });
-                                        },
-                                        allowReset: true
-                                    }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Second Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: secondStyles[0].secondClipColor,
-                                        onChange: function onChange(newValue) {
-                                            return saveSecondStyle({
-                                                secondClipColor: newValue || "transparent"
-                                            });
-                                        },
-                                        allowReset: true
-                                    })
-                                );
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("First Color", 'premium-block-for-gutenberg'),
+                            colorValue: secondStyles[0].secondColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSecondStyle({
+                                    secondColor: newValue || "transparent"
+                                });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Second Color", 'premium-block-for-gutenberg'),
+                            colorValue: secondStyles[0].secondClipColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSecondStyle({
+                                    secondClipColor: newValue || "transparent"
+                                });
                             }
                         })
                     ),
@@ -40110,11 +39873,11 @@ var edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveSecondStyle({ secondBorderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref6) {
-                            var top = _ref6.top,
-                                right = _ref6.right,
-                                bottom = _ref6.bottom,
-                                left = _ref6.left;
+                        onChangeWidth: function onChangeWidth(_ref2) {
+                            var top = _ref2.top,
+                                right = _ref2.right,
+                                bottom = _ref2.bottom,
+                                left = _ref2.left;
                             return setAttributes({
                                 secondBorder: true,
                                 secondBorderTop: top,
@@ -40153,7 +39916,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Left"),
+                        label: __("Margin Left", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondMarginL,
                         onChange: function onChange(newMargin) {
                             return saveSecondStyle({ secondMarginL: newMargin });
@@ -40162,7 +39925,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Right"),
+                        label: __("Margin Right", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondMarginR,
                         onChange: function onChange(newMargin) {
                             return saveSecondStyle({ secondMarginR: newMargin || "0" });
@@ -40171,7 +39934,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Padding"),
+                        label: __("Padding", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondPadding,
                         onChange: function onChange(newPadding) {
                             return saveSecondStyle({ secondPadding: newPadding || "0" });
@@ -40183,14 +39946,14 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container Style"),
+                        title: __("Container Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("Background Color")
+                        __("Background Color", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
@@ -40246,11 +40009,11 @@ var edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveContainerStyle({ containerBorderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref7) {
-                            var top = _ref7.top,
-                                right = _ref7.right,
-                                bottom = _ref7.bottom,
-                                left = _ref7.left;
+                        onChangeWidth: function onChangeWidth(_ref3) {
+                            var top = _ref3.top,
+                                right = _ref3.right,
+                                bottom = _ref3.bottom,
+                                left = _ref3.left;
                             return setAttributes({
                                 containerBorder: true,
                                 containerBorderTop: top,
@@ -40391,7 +40154,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40405,7 +40168,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -40539,7 +40302,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42054,7 +41817,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42255,31 +42018,31 @@ var attributes = _defineProperty({
 exports.default = attributes;
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(268);
+var _edit = __webpack_require__(269);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(269);
+var _save = __webpack_require__(271);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(270);
+var _deprecated = __webpack_require__(272);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(271);
+var _attributes = __webpack_require__(273);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42304,7 +42067,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42320,13 +42083,13 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _reactFonticonpicker = __webpack_require__(104);
+var _reactFonticonpicker = __webpack_require__(106);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(105);
+var _premiumIconsList = __webpack_require__(107);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -42358,7 +42121,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -42366,9 +42129,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42382,7 +42149,6 @@ var _wp$components = wp.components,
     Button = _wp$components.Button;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 var Fragment = wp.element.Fragment;
 var withSelect = wp.data.withSelect;
@@ -42470,6 +42236,7 @@ var edit = function edit(props) {
             containerStyles: newUpdate
         });
     };
+
     var saveIconStyle = function saveIconStyle(value) {
         var newUpdate = iconStyles.map(function (item, index) {
             if (0 === index) {
@@ -42510,6 +42277,16 @@ var edit = function edit(props) {
                 isMulti: false,
                 appendTo: "body",
                 noSelectedPlaceholder: __("Select Icon")
+            }),
+            React.createElement(_ColorComponent2.default, {
+                label: __('Icon Hover Color', ''),
+                colorValue: iconStyles[0].iconColor,
+                colorDefault: '',
+                onColorChange: function onColorChange(newValue) {
+                    return saveIconStyle({
+                        iconColor: newValue
+                    });
+                }
             }),
             React.createElement(SelectControl, {
                 label: __("Hover Effect"),
@@ -42569,69 +42346,26 @@ var edit = function edit(props) {
                     return saveIconStyle({ iconSizeUnit: newValue });
                 },
                 showUnit: true,
-                unit: iconStyles.iconSizeUnit
+                unit: iconStyles[0].iconSizeUnit
             }),
-            React.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                React.createElement(
-                    "strong",
-                    null,
-                    __("Colors")
-                ),
-                React.createElement(Dropdown, {
-                    className: "premium-control-toggle-btn",
-                    contentClassName: "premium-control-toggle-content",
-                    position: "bottom right",
-                    renderToggle: function renderToggle(_ref) {
-                        var isOpen = _ref.isOpen,
-                            onToggle = _ref.onToggle;
-                        return React.createElement(
-                            Button,
-                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                            React.createElement("i", { className: "dashicons dashicons-edit" })
-                        );
-                    },
-                    renderContent: function renderContent() {
-                        return React.createElement(
-                            Fragment,
-                            null,
-                            React.createElement(
-                                "p",
-                                null,
-                                __("Icon Color")
-                            ),
-                            React.createElement(ColorPalette, {
-                                value: iconStyles[0].iconColor,
-                                onChange: function onChange(newValue) {
-                                    return saveIconStyle({
-                                        iconColor: newValue
-                                    });
-                                },
-                                allowReset: true
-                            }),
-                            React.createElement(
-                                "p",
-                                null,
-                                __("Background Color")
-                            ),
-                            React.createElement(_premiumBackground2.default, {
-                                type: "color",
-                                colorValue: iconStyles[0].iconBack,
-                                onChangeColor: function onChangeColor(value) {
-                                    return saveIconStyle({ iconBack: value });
-                                },
-                                opacityValue: iconStyles[0].iconOpacity,
-                                onChangeOpacity: function onChangeOpacity(newvalue) {
-                                    return saveIconStyle({
-                                        iconOpacity: newvalue
-                                    });
-                                }
-                            })
-                        );
-                    }
-                })
-            ),
+            React.createElement(_ColorComponent2.default, {
+                label: __("Icon Color", ''),
+                colorValue: iconStyles[0].iconColor,
+                colorDefault: '',
+                onColorChange: function onColorChange(value) {
+                    return saveIconStyle({
+                        iconColor: value
+                    });
+                }
+            }),
+            React.createElement(_ColorComponent2.default, {
+                label: __("Background Color", 'kadence-blocks'),
+                colorValue: iconStyles[0].iconBack,
+                colorDefault: '',
+                onColorChange: function onColorChange(value) {
+                    return saveIconStyle({ iconBack: value });
+                }
+            }),
             React.createElement(_premiumBorder2.default, {
                 borderType: iconStyles[0].borderType,
                 borderWidth: borderWidth,
@@ -42644,11 +42378,11 @@ var edit = function edit(props) {
                 onChangeType: function onChangeType(newType) {
                     return saveIconStyle({ borderType: newType });
                 },
-                onChangeWidth: function onChangeWidth(_ref2) {
-                    var top = _ref2.top,
-                        right = _ref2.right,
-                        bottom = _ref2.bottom,
-                        left = _ref2.left;
+                onChangeWidth: function onChangeWidth(_ref) {
+                    var top = _ref.top,
+                        right = _ref.right,
+                        bottom = _ref.bottom,
+                        left = _ref.left;
                     return setAttributes({
                         iconBorder: true,
                         iconBorderTop: top,
@@ -42752,11 +42486,6 @@ var edit = function edit(props) {
             React.createElement(
                 Fragment,
                 null,
-                React.createElement(
-                    "p",
-                    null,
-                    __("Background Color")
-                ),
                 React.createElement(_premiumBackground2.default, {
                     type: "color",
                     colorValue: containerStyles[0].backgroundColor,
@@ -42812,11 +42541,11 @@ var edit = function edit(props) {
                 onChangeType: function onChangeType(newType) {
                     return saveContainerStyle({ wrapBorderType: newType });
                 },
-                onChangeWidth: function onChangeWidth(_ref3) {
-                    var top = _ref3.top,
-                        right = _ref3.right,
-                        bottom = _ref3.bottom,
-                        left = _ref3.left;
+                onChangeWidth: function onChangeWidth(_ref2) {
+                    var top = _ref2.top,
+                        right = _ref2.right,
+                        bottom = _ref2.bottom,
+                        left = _ref2.left;
                     return setAttributes({
                         wrapBorder: true,
                         wrapBorderTop: top,
@@ -42969,7 +42698,9 @@ var edit = function edit(props) {
             className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
             style: {
                 color: iconStyles[0].iconColor || "#6ec1e4",
-                backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                backgroundColor: iconStyles[0].iconBack,
+                // ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
+                // : "transparent",
                 fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -43008,7 +42739,253 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 269 */
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _hexToRgba = __webpack_require__(2);
+
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+var _get = __webpack_require__(95);
+
+var _get2 = _interopRequireDefault(_get);
+
+var _map = __webpack_require__(80);
+
+var _map2 = _interopRequireDefault(_map);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+var Component = wp.element.Component;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    Popover = _wp$components.Popover,
+    RangeControl = _wp$components.RangeControl,
+    ColorIndicator = _wp$components.ColorIndicator,
+    ColorPicker = _wp$components.ColorPicker,
+    Tooltip = _wp$components.Tooltip,
+    Dashicon = _wp$components.Dashicon;
+var withSelect = wp.data.withSelect;
+
+var AdvancedColorControl = function (_Component) {
+    _inherits(AdvancedColorControl, _Component);
+
+    function AdvancedColorControl() {
+        _classCallCheck(this, AdvancedColorControl);
+
+        var _this = _possibleConstructorReturn(this, (AdvancedColorControl.__proto__ || Object.getPrototypeOf(AdvancedColorControl)).apply(this, arguments));
+
+        _this.state = {
+            isVisible: false,
+            colors: [],
+            classSat: 'first',
+            currentColor: '',
+            defaultColor: ''
+        };
+        return _this;
+    }
+
+    _createClass(AdvancedColorControl, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            if ('transparent' === this.props.colorDefault) {
+                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue });
+                this.setState({ defaultColor: '' });
+            } else {
+                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue });
+                this.setState({ defaultColor: this.props.colorDefault });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var toggleVisible = function toggleVisible() {
+                if ('transparent' === _this2.props.colorDefault) {
+                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue || 'transparent' === _this2.props.colorValue ? '' : _this2.props.colorValue });
+                } else {
+                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue ? _this2.props.colorDefault : _this2.props.colorValue });
+                }
+                _this2.setState({ classSat: 'first' });
+                _this2.setState({ isVisible: true });
+            };
+            var toggleClose = function toggleClose() {
+                if (_this2.state.isVisible === true) {
+                    _this2.setState({ isVisible: false });
+                }
+            };
+            return React.createElement(
+                'div',
+                { className: 'kt-color-popover-container' },
+                React.createElement(
+                    'div',
+                    { className: 'kt-advanced-color-settings-container' },
+                    this.props.label && React.createElement(
+                        'h2',
+                        { className: 'kt-beside-color-label' },
+                        this.props.label
+                    ),
+                    this.props.colorValue && this.props.colorValue !== this.props.colorDefault && React.createElement(
+                        Tooltip,
+                        { text: __('Clear') },
+                        React.createElement(Button, {
+                            className: 'components-color-palette__clear',
+                            type: 'button',
+                            onClick: function onClick() {
+                                _this2.setState({ currentColor: _this2.props.colorDefault });
+                                _this2.props.onColorChange(undefined);
+                                if (_this2.props.onColorClassChange) {
+                                    _this2.props.onColorClassChange('');
+                                }
+                            },
+                            isSmall: true
+                        })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'kt-beside-color-click' },
+                        this.state.isVisible && React.createElement(
+                            Popover,
+                            { position: 'top left', className: 'kt-popover-color', onClose: toggleClose },
+                            this.props.colors && React.createElement(
+                                'div',
+                                { className: 'components-color-palette' },
+                                (0, _map2.default)(this.props.colors, function (_ref) {
+                                    var color = _ref.color,
+                                        slug = _ref.slug,
+                                        name = _ref.name;
+
+                                    var style = { color: color };
+                                    return React.createElement(
+                                        'div',
+                                        { key: color, className: 'components-color-palette__item-wrapper' },
+                                        React.createElement(
+                                            Tooltip,
+                                            {
+                                                text: name || sprintf(__('Color code: %s'), color) },
+                                            React.createElement(Button, {
+                                                type: 'button',
+                                                className: 'components-color-palette__item ' + (_this2.props.colorValue === color ? 'is-active' : ''),
+                                                style: style,
+                                                onClick: function onClick() {
+                                                    _this2.setState({ currentColor: color });
+                                                    _this2.props.onColorChange(color);
+                                                    if (_this2.props.onColorClassChange) {
+                                                        _this2.props.onColorClassChange(slug);
+                                                    }
+                                                    if ('third' === _this2.state.classSat) {
+                                                        _this2.setState({ classSat: 'second' });
+                                                    } else {
+                                                        _this2.setState({ classSat: 'third' });
+                                                    }
+                                                },
+                                                'aria-label': name ? sprintf(__('Color: %s'), name) : sprintf(__('Color code: %s'), color),
+                                                'aria-pressed': _this2.props.colorValue === color
+                                            })
+                                        ),
+                                        _this2.props.colorValue === color && React.createElement(Dashicon, { icon: 'saved' })
+                                    );
+                                })
+                            ),
+                            this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
+                                color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
+                                onChangeComplete: function onChangeComplete(color) {
+                                    _this2.setState({ currentColor: color.hex });
+                                    if (color.rgb) {
+                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                    }
+                                    if (_this2.props.onColorClassChange) {
+                                        _this2.props.onColorClassChange('');
+                                    }
+                                }
+
+                            }),
+                            this.state.classSat === 'second' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
+                                color: undefined === this.state.currentColor || '' === this.state.currentColor || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.state.currentColor,
+                                onChangeComplete: function onChangeComplete(color) {
+                                    _this2.setState({ currentColor: color.hex });
+                                    if (color.rgb) {
+                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                    }
+                                    if (_this2.props.onColorClassChange) {
+                                        _this2.props.onColorClassChange('');
+                                    }
+                                }
+
+                            }),
+                            this.state.classSat !== 'second' && !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
+                                color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
+                                onChangeComplete: function onChangeComplete(color) {
+                                    _this2.setState({ currentColor: color.hex });
+                                    if (color.rgb) {
+
+                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                    }
+                                    if (_this2.props.onColorClassChange) {
+                                        _this2.props.onColorClassChange('');
+                                    }
+                                }
+
+                            })
+                        ),
+                        this.state.isVisible && React.createElement(
+                            Tooltip,
+                            { text: __('Select Color') },
+                            React.createElement(
+                                Button,
+                                { className: 'kt-color-icon-indicate ' + (this.props.onOpacityChange || 'transparent' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleClose },
+                                React.createElement(ColorIndicator, { className: 'kt-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
+                            )
+                        ),
+                        !this.state.isVisible && React.createElement(
+                            Tooltip,
+                            { text: __('Select Color') },
+                            React.createElement(
+                                Button,
+                                { className: 'kt-color-icon-indicate ' + (this.props.onOpacityChange || 'transparent' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleVisible },
+                                React.createElement(ColorIndicator, { className: 'kt-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AdvancedColorControl;
+}(Component);
+
+exports.default = withSelect(function (select, ownProps) {
+    var settings = select('core/block-editor').getSettings();
+    var colors = (0, _get2.default)(settings, ['colors'], []);
+    var disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
+    return {
+        colors: colors,
+        disableCustomColors: disableCustomColors
+    };
+})(AdvancedColorControl);
+
+/***/ }),
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43022,7 +42999,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -43139,7 +43116,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 270 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44661,7 +44638,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44886,31 +44863,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(273);
+var _edit = __webpack_require__(275);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(274);
+var _save = __webpack_require__(276);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(275);
+var _deprecated = __webpack_require__(277);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(276);
+var _attributes = __webpack_require__(278);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -44935,7 +44912,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44953,17 +44930,17 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(104);
+var _reactFonticonpicker = __webpack_require__(106);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(105);
+var _premiumIconsList = __webpack_require__(107);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -44995,7 +44972,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -45003,9 +44980,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45031,7 +45012,6 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     RichText = _wp$blockEditor.RichText,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     URLInput = _wp$blockEditor.URLInput;
 
@@ -45191,10 +45171,10 @@ var edit = function (_Component) {
 
 
             var imgIcon = [{
-                label: __("Icon"),
+                label: __("Icon", 'premium-block-for-gutenberg'),
                 value: "icon"
             }, {
-                label: __("Image"),
+                label: __("Image", 'premium-block-for-gutenberg'),
                 value: "image"
             }];
 
@@ -45202,73 +45182,73 @@ var edit = function (_Component) {
 
             var EFFECTS = [{
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "pulse",
-                label: __("Pulse")
+                label: __("Pulse", 'premium-block-for-gutenberg')
             }, {
                 value: "rotate",
-                label: __("Rotate")
+                label: __("Rotate", 'premium-block-for-gutenberg')
             }, {
                 value: "drotate",
-                label: __("3D Rotate")
+                label: __("3D Rotate", 'premium-block-for-gutenberg')
             }, {
                 value: "buzz",
-                label: __("Buzz")
+                label: __("Buzz", 'premium-block-for-gutenberg')
             }, {
                 value: "drop",
-                label: __("Drop Shadow")
+                label: __("Drop Shadow", 'premium-block-for-gutenberg')
             }, {
                 value: "wobble",
-                label: __("Wobble")
+                label: __("Wobble", 'premium-block-for-gutenberg')
             }];
 
             var BTN_EFFECTS = [{
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "slide",
-                label: __("Slide")
+                label: __("Slide", 'premium-block-for-gutenberg')
             }];
 
             var DIRECTION = [{
                 value: "top",
-                label: __("Top to Bottom")
+                label: __("Top to Bottom", 'premium-block-for-gutenberg')
             }, {
                 value: "bottom",
-                label: __("Bottom to Top")
+                label: __("Bottom to Top", 'premium-block-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left to Right")
+                label: __("Left to Right", 'premium-block-for-gutenberg')
             }, {
                 value: "right",
-                label: __("Right to Left")
+                label: __("Right to Left", 'premium-block-for-gutenberg')
             }];
 
             var ICON_POS = [{
-                label: __("Inline"),
+                label: __("Inline", 'premium-block-for-gutenberg'),
                 value: "inline"
             }, {
-                label: __("Block"),
+                label: __("Block", 'premium-block-for-gutenberg'),
                 value: "block"
             }];
 
             var ICON_HPOS = [{
-                label: __("Before"),
+                label: __("Before", 'premium-block-for-gutenberg'),
                 value: "before"
             }, {
-                label: __("After"),
+                label: __("After", 'premium-block-for-gutenberg'),
                 value: "after"
             }];
 
             var ICON_VPOS = [{
-                label: __("Top"),
+                label: __("Top", 'premium-block-for-gutenberg'),
                 value: "top"
             }, {
-                label: __("Middle"),
+                label: __("Middle", 'premium-block-for-gutenberg'),
                 value: "center"
             }, {
-                label: __("Bottom"),
+                label: __("Bottom", 'premium-block-for-gutenberg'),
                 value: "bottom"
             }];
 
@@ -45292,19 +45272,19 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Display Options"),
+                        title: __("Display Options", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Icon"),
+                        label: __("Icon", 'premium-block-for-gutenberg'),
                         checked: iconChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Title"),
+                        label: __("Title", 'premium-block-for-gutenberg'),
                         checked: titleChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleChecked: newValue });
@@ -45982,25 +45962,16 @@ var edit = function (_Component) {
                                     iconChecked && React.createElement(
                                         Fragment,
                                         null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Icon Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: iconColor,
-                                            onChange: function onChange(newValue) {
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Icon Color", ''),
+                                            colorValue: iconColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
                                                 return setAttributes({
                                                     iconColor: newValue || "transparent"
                                                 });
-                                            },
-                                            allowReset: true
+                                            }
                                         }),
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __(" Icon Background Color")
-                                        ),
                                         React.createElement(_premiumBackground2.default, {
                                             type: "color",
                                             colorValue: iconBackColor,
@@ -46017,64 +45988,39 @@ var edit = function (_Component) {
                                             }
                                         })
                                     ),
-                                    titleChecked && React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Tile Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: titleStyles[0].titleColor,
-                                            onChange: function onChange(newValue) {
-                                                return saveTitleStyle({
-                                                    titleColor: newValue || "transparent"
-                                                });
-                                            },
-                                            allowReset: true
-                                        })
-                                    ),
-                                    descChecked && React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Descreption Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: descStyles[0].descColor,
-                                            onChange: function onChange(newValue) {
-                                                return saveDescriptionStyle({
-                                                    descColor: newValue || "transparent"
-                                                });
-                                            },
-                                            allowReset: true
-                                        })
-                                    ),
+                                    titleChecked && React.createElement(_ColorComponent2.default, {
+                                        label: __("Tile Color", 'premium-block-for-gutenberg'),
+                                        colorValue: titleStyles[0].titleColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveTitleStyle({
+                                                titleColor: newValue || "transparent"
+                                            });
+                                        }
+                                    }),
+                                    descChecked && React.createElement(_ColorComponent2.default, {
+                                        label: __("Descreption Color", 'premium-block-for-gutenberg'),
+                                        colorValue: descStyles[0].descColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveDescriptionStyle({
+                                                descColor: newValue || "transparent"
+                                            });
+                                        }
+                                    }),
                                     btnChecked && React.createElement(
                                         Fragment,
                                         null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Button Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: btnStyles[0].btnColor,
-                                            onChange: function onChange(newValue) {
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Button Color", 'premium-block-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
                                                 return saveButtonStyle({
                                                     btnColor: newValue || "#000"
                                                 });
-                                            },
-                                            allowReset: true
+                                            }
                                         }),
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Button Background Color")
-                                        ),
                                         React.createElement(_premiumBackground2.default, {
                                             type: "color",
                                             colorValue: btnStyles[0].btnBack,
@@ -46090,11 +46036,6 @@ var edit = function (_Component) {
                                                 });
                                             }
                                         })
-                                    ),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __(" Container Background Color")
                                     ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
@@ -46116,48 +46057,36 @@ var edit = function (_Component) {
                                     btnChecked && React.createElement(
                                         Fragment,
                                         null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Button Hover Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: btnStyles[0].btnHoverColor,
-                                            onChange: function onChange(newValue) {
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Button Hover Color", 'premium-block-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnHoverColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
                                                 return saveButtonStyle({
                                                     btnHoverColor: newValue || "#000"
                                                 });
-                                            },
-                                            allowReset: true
+                                            }
                                         }),
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Background Button Hover Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: btnStyles[0].btnHoverBack,
-                                            onChange: function onChange(newValue) {
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __('Background Button Hover Color', 'premium-block-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnHoverBack,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
                                                 return saveButtonStyle({
                                                     btnHoverBack: newValue
                                                 });
-                                            },
-                                            allowReset: true
+                                            }
                                         })
                                     ),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Border Hover Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: btnHoverBorder,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __('Border Hover Color', 'premium-block-for-gutenberg'),
+                                        colorValue: btnHoverBorder,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return setAttributes({
                                                 btnHoverBorder: newValue || "transparent"
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     })
                                 );
                             }
@@ -46378,7 +46307,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46392,7 +46321,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -46614,7 +46543,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49485,7 +49414,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49823,7 +49752,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49831,7 +49760,7 @@ exports.default = attributes;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _premiumMediaUpload = __webpack_require__(26);
 
@@ -49845,9 +49774,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49868,9 +49801,7 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     TextareaControl = _wp$components.TextareaControl,
     ToggleControl = _wp$components.ToggleControl;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
+var InspectorControls = wp.editor.InspectorControls;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -50486,24 +50417,16 @@ var PremiumMap = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: titleColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    titleColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    )
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", ''),
+                        colorValue: titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({
+                                titleColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    })
                 ),
                 mapMarker && markerDesc && React.createElement(
                     PanelBody,
@@ -50523,24 +50446,16 @@ var PremiumMap = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Text Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: descColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    descColor: newValue === undefined ? "transparent" : newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    )
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", ''),
+                        colorValue: descColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({
+                                descColor: newValue === undefined ? "transparent" : newValue
+                            });
+                        }
+                    })
                 ),
                 React.createElement(
                     PanelBody,
@@ -50940,31 +50855,31 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(279);
+var _edit = __webpack_require__(281);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(280);
+var _save = __webpack_require__(282);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(281);
+var _deprecated = __webpack_require__(283);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(282);
+var _attributes = __webpack_require__(284);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -50988,7 +50903,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51026,7 +50941,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -51034,9 +50949,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51065,7 +50984,6 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     RichText = _wp$blockEditor.RichText,
     PanelColorSettings = _wp$blockEditor.PanelColorSettings,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     URLInput = _wp$blockEditor.URLInput;
 
 var PremiumPricingTable = function (_Component) {
@@ -51609,24 +51527,16 @@ var PremiumPricingTable = function (_Component) {
                                     return savePriceStyles({ slashV: newValue });
                                 }
                             }),
-                            React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(
-                                    "p",
-                                    null,
-                                    __("Text Color")
-                                ),
-                                React.createElement(ColorPalette, {
-                                    value: priceStyles[0].slashColor,
-                                    onChange: function onChange(newValue) {
-                                        return savePriceStyles({
-                                            slashColor: newValue === undefined ? "transparent" : newValue
-                                        });
-                                    },
-                                    allowReset: true
-                                })
-                            )
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Text Color", ''),
+                                colorValue: priceStyles[0].slashColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return savePriceStyles({
+                                        slashColor: newValue === undefined ? "transparent" : newValue
+                                    });
+                                }
+                            })
                         ),
                         "curr" === priceStyles[0].selectedStyle && React.createElement(
                             Fragment,
@@ -51667,24 +51577,16 @@ var PremiumPricingTable = function (_Component) {
                                     });
                                 }
                             }),
-                            React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(
-                                    "p",
-                                    null,
-                                    __("Text Color")
-                                ),
-                                React.createElement(ColorPalette, {
-                                    value: priceStyles[0].currColor,
-                                    onChange: function onChange(newValue) {
-                                        return savePriceStyles({
-                                            currColor: newValue === undefined ? "transparent" : newValue
-                                        });
-                                    },
-                                    allowReset: true
-                                })
-                            )
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Text Color", ''),
+                                colorValue: priceStyles[0].currColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return savePriceStyles({
+                                        currColor: newValue === undefined ? "transparent" : newValue
+                                    });
+                                }
+                            })
                         ),
                         "price" === priceStyles[0].selectedStyle && React.createElement(
                             Fragment,
@@ -51722,24 +51624,16 @@ var PremiumPricingTable = function (_Component) {
                                     return savePriceStyles({ valV: newValue });
                                 }
                             }),
-                            React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(
-                                    "p",
-                                    null,
-                                    __("Text Color")
-                                ),
-                                React.createElement(ColorPalette, {
-                                    value: priceStyles[0].valColor,
-                                    onChange: function onChange(newValue) {
-                                        return savePriceStyles({
-                                            valColor: newValue === undefined ? "transparent" : newValue
-                                        });
-                                    },
-                                    allowReset: true
-                                })
-                            )
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Text Color", ''),
+                                colorValue: priceStyles[0].valColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return savePriceStyles({
+                                        valColor: newValue === undefined ? "transparent" : newValue
+                                    });
+                                }
+                            })
                         ),
                         "divider" === priceStyles[0].selectedStyle && React.createElement(
                             Fragment,
@@ -51776,24 +51670,16 @@ var PremiumPricingTable = function (_Component) {
                                     return savePriceStyles({ divV: newValue });
                                 }
                             }),
-                            React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(
-                                    "p",
-                                    null,
-                                    __("Text Color")
-                                ),
-                                React.createElement(ColorPalette, {
-                                    value: priceStyles[0].divColor,
-                                    onChange: function onChange(newValue) {
-                                        return savePriceStyles({
-                                            divColor: newValue === undefined ? "transparent" : newValue
-                                        });
-                                    },
-                                    allowReset: true
-                                })
-                            )
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Text Color", ''),
+                                colorValue: priceStyles[0].divColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return savePriceStyles({
+                                        divColor: newValue === undefined ? "transparent" : newValue
+                                    });
+                                }
+                            })
                         ),
                         "duration" === priceStyles[0].selectedStyle && React.createElement(
                             Fragment,
@@ -51830,24 +51716,16 @@ var PremiumPricingTable = function (_Component) {
                                     return savePriceStyles({ durV: newValue });
                                 }
                             }),
-                            React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(
-                                    "p",
-                                    null,
-                                    __("Text Color")
-                                ),
-                                React.createElement(ColorPalette, {
-                                    value: priceStyles[0].durColor,
-                                    onChange: function onChange(newValue) {
-                                        return savePriceStyles({
-                                            durColor: newValue === undefined ? "transparent" : newValue
-                                        });
-                                    },
-                                    allowReset: true
-                                })
-                            )
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Text Color", ''),
+                                colorValue: priceStyles[0].durColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return savePriceStyles({
+                                        durColor: newValue === undefined ? "transparent" : newValue
+                                    });
+                                }
+                            })
                         )
                     ),
                     React.createElement(
@@ -52947,7 +52825,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52961,7 +52839,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -53270,7 +53148,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55532,7 +55410,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55837,23 +55715,23 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _edit = __webpack_require__(284);
+var _edit = __webpack_require__(286);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(285);
+var _save = __webpack_require__(287);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(286);
+var _deprecated = __webpack_require__(288);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -55861,7 +55739,7 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(287);
+var _attributes = __webpack_require__(289);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -55893,7 +55771,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55929,11 +55807,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumSizeUnits = __webpack_require__(19);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -55941,7 +55815,7 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -56281,7 +56155,9 @@ var edit = function edit(props) {
                 showUnits: true,
                 onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
                     return saveContainerStyle({ marginUnit: newvalue });
-                }
+                },
+                selectedUnit: containerStyles[0].marginUnit
+
             }),
             React.createElement(_premiumPadding2.default, {
                 paddingTop: paddingTop,
@@ -56387,7 +56263,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56401,7 +56277,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -56491,7 +56367,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 286 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57223,7 +57099,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 287 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57345,23 +57221,23 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 288 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _edit = __webpack_require__(289);
+var _edit = __webpack_require__(291);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(290);
+var _save = __webpack_require__(292);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(291);
+var _deprecated = __webpack_require__(293);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -57369,7 +57245,7 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(292);
+var _attributes = __webpack_require__(294);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -57394,7 +57270,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 289 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57444,7 +57320,7 @@ var _premiumMediaUpload = __webpack_require__(26);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -57452,9 +57328,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57477,8 +57357,7 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    RichText = _wp$blockEditor.RichText,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+    RichText = _wp$blockEditor.RichText;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -57709,24 +57588,16 @@ var edit = function (_Component) {
                             showUnit: false,
                             defaultValue: 0
                         }),
-                        authorImgUrl && React.createElement(
-                            Fragment,
-                            null,
-                            React.createElement(
-                                "p",
-                                null,
-                                __("Border Color")
-                            ),
-                            React.createElement(ColorPalette, {
-                                value: imgBorderColor,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({
-                                        imgBorderColor: newValue
-                                    });
-                                },
-                                allowReset: true
-                            })
-                        )
+                        authorImgUrl && React.createElement(_ColorComponent2.default, {
+                            label: __("Border Color", ''),
+                            colorValue: imgBorderColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return setAttributes({
+                                    imgBorderColor: newValue
+                                });
+                            }
+                        })
                     ),
                     React.createElement(
                         "p",
@@ -57784,19 +57655,15 @@ var edit = function (_Component) {
                             return saveAuthorStyle({ authorUpper: check });
                         }
                     }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: authorStyles[0].authorColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", ''),
+                        colorValue: authorStyles[0].authorColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveAuthorStyle({
                                 authorColor: newValue
                             });
-                        },
-                        allowReset: true
+                        }
                     })
                 ),
                 React.createElement(
@@ -57830,19 +57697,15 @@ var edit = function (_Component) {
                             return saveContentStyle({ bodyLine: newWeight });
                         }
                     }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: contentStyle[0].bodyColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", ''),
+                        colorValue: contentStyle[0].bodyColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveContentStyle({
                                 bodyColor: newValue
                             });
                         }
-
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Margin Top (PX)"),
@@ -57932,33 +57795,25 @@ var edit = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Text Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: companyStyles[0].authorComColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Text Color", ''),
+                                        colorValue: companyStyles[0].authorComColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveCompanyStyle({
                                                 authorComColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Dash Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: companyStyles[0].dashColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Dash Color", ''),
+                                        colorValue: companyStyles[0].dashColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveCompanyStyle({
                                                 dashColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     })
                                 );
                             }
@@ -58004,24 +57859,16 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Quotations Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: quoteStyles[0].quotColor,
-                            onChange: function onChange(newValue) {
-                                return saveQuoteStyles({
-                                    quotColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Quotations Color", ''),
+                        colorValue: quoteStyles[0].quotColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveQuoteStyles({
+                                quotColor: newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Opacity"),
                         min: "0",
@@ -58333,7 +58180,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 290 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58359,7 +58206,7 @@ var _lowerQuote = __webpack_require__(65);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -58537,7 +58384,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 291 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59828,7 +59675,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 292 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59990,7 +59837,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 293 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60040,7 +59887,7 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -60048,9 +59895,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60071,9 +59922,7 @@ var _wp$components = wp.components,
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+var InspectorControls = wp.blockEditor.InspectorControls;
 var __ = wp.i18n.__;
 
 
@@ -60673,19 +60522,15 @@ var edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Icon Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: playStyles[0].playColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Icon Color", ''),
+                                        colorValue: playStyles[0].playColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return savePlayStyles({
                                                 playColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
                                     React.createElement(
                                         "p",
@@ -60706,19 +60551,15 @@ var edit = function (_Component) {
                                     videoDesc && React.createElement(
                                         Fragment,
                                         null,
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Description Color")
-                                        ),
-                                        React.createElement(ColorPalette, {
-                                            value: descStyles[0].videoDescColor,
-                                            onChange: function onChange(newValue) {
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Description Color", ''),
+                                            colorValue: descStyles[0].videoDescColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
                                                 return setAttributes({
                                                     videoDescColor: newValue
                                                 });
-                                            },
-                                            allowReset: true
+                                            }
                                         }),
                                         React.createElement(
                                             "p",
@@ -60747,33 +60588,25 @@ var edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Icon Hover Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: playStyles[0].playHoverColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Icon Hover Color", ''),
+                                        colorValue: playStyles[0].playHoverColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return savePlayStyles({
                                                 playHoverColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Icon Hover Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: playStyles[0].playHoverBackColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Icon Hover Background Color", ''),
+                                        colorValue: playStyles[0].playHoverBackColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return savePlayStyles({
                                                 playHoverBackColor: newValue
                                             });
-                                        },
-                                        allowReset: true
+                                        }
                                     })
                                 );
                             }
@@ -60994,7 +60827,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 294 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61012,7 +60845,7 @@ var _index = __webpack_require__(46);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -61164,7 +60997,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 295 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62337,7 +62170,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 296 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62509,23 +62342,23 @@ var videoBoxAttrs = {
 exports.default = videoBoxAttrs;
 
 /***/ }),
-/* 297 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _save = __webpack_require__(298);
+var _save = __webpack_require__(300);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(299);
+var _edit = __webpack_require__(301);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(320);
+var _deprecated = __webpack_require__(322);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -62533,7 +62366,7 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(321);
+var _attributes = __webpack_require__(323);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -62558,7 +62391,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 298 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62706,7 +62539,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 299 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62732,7 +62565,7 @@ var _premiumTextShadow = __webpack_require__(15);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(300);
+var _typed = __webpack_require__(302);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -62744,11 +62577,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _hexToRgba = __webpack_require__(3);
+var _hexToRgba = __webpack_require__(2);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
-var _reactSortableHoc = __webpack_require__(301);
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+var _reactSortableHoc = __webpack_require__(303);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62766,8 +62603,7 @@ var _wp$element = wp.element,
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+    InspectorControls = _wp$blockEditor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
@@ -63369,19 +63205,15 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: fancyStyles[0].fancyTextColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", ''),
+                        colorValue: fancyStyles[0].fancyTextColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveFancyStyle({
                                 fancyTextColor: newValue
                             });
-                        },
-                        allowReset: true
+                        }
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
@@ -63457,24 +63289,16 @@ var edit = function (_Component) {
                         },
                         onResetClick: onResetClickLabelTextShadow
                     }),
-                    effect == "typing" && cursorShow && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Cursor Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: fancyStyles[0].cursorColor,
-                            onChange: function onChange(newValue) {
-                                return saveFancyStyle({
-                                    cursorColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    )
+                    effect == "typing" && cursorShow && React.createElement(_ColorComponent2.default, {
+                        label: __("Cursor Color", ''),
+                        colorValue: fancyStyles[0].cursorColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveFancyStyle({
+                                cursorColor: newValue
+                            });
+                        }
+                    })
                 ),
                 React.createElement(
                     PanelBody,
@@ -63483,19 +63307,15 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: PreStyles[0].textColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", ''),
+                        colorValue: PreStyles[0].textColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return savePrefixStyle({
                                 textColor: newValue
                             });
-                        },
-                        allowReset: true
+                        }
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
@@ -63685,7 +63505,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 300 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64797,7 +64617,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
 
 /***/ }),
-/* 301 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64808,47 +64628,47 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(302);
+var _extends2 = __webpack_require__(304);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(303);
+var _slicedToArray2 = __webpack_require__(305);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(307);
+var _objectSpread2 = __webpack_require__(309);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(308);
+var _classCallCheck2 = __webpack_require__(310);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(309);
+var _createClass2 = __webpack_require__(311);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(310);
+var _possibleConstructorReturn2 = __webpack_require__(312);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(312);
+var _getPrototypeOf2 = __webpack_require__(314);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(313);
+var _inherits2 = __webpack_require__(315);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _assertThisInitialized2 = __webpack_require__(109);
+var _assertThisInitialized2 = __webpack_require__(111);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
-var _defineProperty2 = __webpack_require__(108);
+var _defineProperty2 = __webpack_require__(110);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _propTypes = __webpack_require__(10);
 
@@ -64856,11 +64676,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(25);
 
-var _invariant = __webpack_require__(315);
+var _invariant = __webpack_require__(317);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(316);
+var _toConsumableArray2 = __webpack_require__(318);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -66442,7 +66262,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 302 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66471,7 +66291,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 303 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66482,19 +66302,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(304);
+var _arrayWithHoles = __webpack_require__(306);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(305);
+var _iterableToArrayLimit = __webpack_require__(307);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(106);
+var _unsupportedIterableToArray = __webpack_require__(108);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(306);
+var _nonIterableRest = __webpack_require__(308);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -66505,7 +66325,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 304 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66520,7 +66340,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 305 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66561,7 +66381,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 306 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66576,7 +66396,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 307 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66587,7 +66407,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _objectSpread;
 
-var _defineProperty = __webpack_require__(108);
+var _defineProperty = __webpack_require__(110);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -66613,7 +66433,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 308 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66630,7 +66450,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66657,7 +66477,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66668,11 +66488,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(311);
+var _typeof2 = __webpack_require__(313);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _assertThisInitialized = __webpack_require__(109);
+var _assertThisInitialized = __webpack_require__(111);
 
 var _assertThisInitialized2 = _interopRequireDefault(_assertThisInitialized);
 
@@ -66689,7 +66509,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66721,7 +66541,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66739,7 +66559,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66750,7 +66570,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(314);
+var _setPrototypeOf = __webpack_require__(316);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -66772,7 +66592,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66792,7 +66612,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66845,7 +66665,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 316 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66856,19 +66676,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(317);
+var _arrayWithoutHoles = __webpack_require__(319);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(318);
+var _iterableToArray = __webpack_require__(320);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _unsupportedIterableToArray = __webpack_require__(106);
+var _unsupportedIterableToArray = __webpack_require__(108);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(319);
+var _nonIterableSpread = __webpack_require__(321);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -66879,7 +66699,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 317 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66890,7 +66710,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(107);
+var _arrayLikeToArray = __webpack_require__(109);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -66901,7 +66721,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 318 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66916,7 +66736,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 319 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66931,7 +66751,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 320 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67279,7 +67099,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 321 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67428,7 +67248,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 322 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67438,17 +67258,17 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(323);
+var _edit = __webpack_require__(325);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
-var _save = __webpack_require__(376);
+var _save = __webpack_require__(378);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(377);
+var _attributes = __webpack_require__(379);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -67472,7 +67292,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 323 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67490,7 +67310,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(324);
+var _reactLottieWithSegments = __webpack_require__(326);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -67510,13 +67330,13 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumSizeUnits = __webpack_require__(19);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67543,7 +67363,6 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     TabPanel = _wp$components.TabPanel,
     Dashicon = _wp$components.Dashicon;
-var ColorPalette = wp.blockEditor.ColorPalette;
 
 
 var isLottieUpdated = null;
@@ -67991,14 +67810,11 @@ var edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: lottieStyles[0].backColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Background Color", ''),
+                                        colorValue: lottieStyles[0].backColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveLottieStyles({ backColor: newValue });
                                         }
                                     }),
@@ -68042,14 +67858,11 @@ var edit = function (_Component) {
                                 tabout = React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Background Color")
-                                    ),
-                                    React.createElement(ColorPalette, {
-                                        value: lottieStyles[0].backHColor,
-                                        onChange: function onChange(newValue) {
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Background Color", ''),
+                                        colorValue: lottieStyles[0].backHColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
                                             return saveLottieStyles({ backHColor: newValue });
                                         }
                                     }),
@@ -68234,7 +68047,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 324 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68244,35 +68057,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(325);
+var _stringify = __webpack_require__(327);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(327);
+var _extends2 = __webpack_require__(329);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(336);
+var _getPrototypeOf = __webpack_require__(338);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(340);
+var _classCallCheck2 = __webpack_require__(342);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(341);
+var _createClass2 = __webpack_require__(343);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(345);
+var _possibleConstructorReturn2 = __webpack_require__(347);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(367);
+var _inherits2 = __webpack_require__(369);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -68280,7 +68093,7 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(375);
+var _lottieWeb = __webpack_require__(377);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -68588,16 +68401,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 325 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(326), __esModule: true };
+module.exports = { "default": __webpack_require__(328), __esModule: true };
 
 /***/ }),
-/* 326 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68611,7 +68424,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 327 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68619,7 +68432,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(328);
+var _assign = __webpack_require__(330);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -68642,26 +68455,26 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 328 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(329), __esModule: true };
+module.exports = { "default": __webpack_require__(331), __esModule: true };
 
 /***/ }),
-/* 329 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(330);
+__webpack_require__(332);
 module.exports = __webpack_require__(11).Object.assign;
 
 /***/ }),
-/* 330 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68670,10 +68483,10 @@ module.exports = __webpack_require__(11).Object.assign;
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(20);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(332) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(334) });
 
 /***/ }),
-/* 331 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68685,7 +68498,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 332 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68696,7 +68509,7 @@ var getKeys = __webpack_require__(48);
 var gOPS = __webpack_require__(72);
 var pIE = __webpack_require__(51);
 var toObject = __webpack_require__(73);
-var IObject = __webpack_require__(114);
+var IObject = __webpack_require__(116);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -68731,7 +68544,7 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 } : $assign;
 
 /***/ }),
-/* 333 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68740,8 +68553,8 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(30);
-var toLength = __webpack_require__(334);
-var toAbsoluteIndex = __webpack_require__(335);
+var toLength = __webpack_require__(336);
+var toAbsoluteIndex = __webpack_require__(337);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -68764,7 +68577,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 334 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68778,7 +68591,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 335 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68793,26 +68606,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 336 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(337), __esModule: true };
+module.exports = { "default": __webpack_require__(339), __esModule: true };
 
 /***/ }),
-/* 337 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(338);
+__webpack_require__(340);
 module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 /***/ }),
-/* 338 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68820,16 +68633,16 @@ module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(73);
-var $getPrototypeOf = __webpack_require__(116);
+var $getPrototypeOf = __webpack_require__(118);
 
-__webpack_require__(339)('getPrototypeOf', function () {
+__webpack_require__(341)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 339 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68849,7 +68662,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68864,7 +68677,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68872,7 +68685,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(342);
+var _defineProperty = __webpack_require__(344);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -68899,29 +68712,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(343), __esModule: true };
+module.exports = { "default": __webpack_require__(345), __esModule: true };
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(344);
+__webpack_require__(346);
 var $Object = __webpack_require__(11).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68932,7 +68745,7 @@ var $export = __webpack_require__(20);
 $export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProperty: __webpack_require__(21).f });
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68940,7 +68753,7 @@ $export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProp
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(117);
+var _typeof2 = __webpack_require__(119);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -68957,36 +68770,36 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(347), __esModule: true };
-
-/***/ }),
-/* 347 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(348);
-__webpack_require__(353);
-module.exports = __webpack_require__(77).f('iterator');
-
-/***/ }),
 /* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(349)(true);
+module.exports = { "default": __webpack_require__(349), __esModule: true };
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(350);
+__webpack_require__(355);
+module.exports = __webpack_require__(77).f('iterator');
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $at = __webpack_require__(351)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(118)(String, 'String', function (iterated) {
+__webpack_require__(120)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -69001,7 +68814,7 @@ __webpack_require__(118)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69024,7 +68837,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 350 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69046,7 +68859,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 351 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69068,7 +68881,7 @@ module.exports = __webpack_require__(22) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 352 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69078,13 +68891,13 @@ var document = __webpack_require__(18).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(354);
+__webpack_require__(356);
 var global = __webpack_require__(18);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(74);
@@ -69101,14 +68914,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(355);
-var step = __webpack_require__(356);
+var addToUnscopables = __webpack_require__(357);
+var step = __webpack_require__(358);
 var Iterators = __webpack_require__(74);
 var toIObject = __webpack_require__(30);
 
@@ -69116,7 +68929,7 @@ var toIObject = __webpack_require__(30);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(118)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(120)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -69142,7 +68955,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69151,7 +68964,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69162,29 +68975,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(358), __esModule: true };
+module.exports = { "default": __webpack_require__(360), __esModule: true };
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(359);
-__webpack_require__(364);
-__webpack_require__(365);
+__webpack_require__(361);
 __webpack_require__(366);
+__webpack_require__(367);
+__webpack_require__(368);
 module.exports = __webpack_require__(11).Symbol;
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69197,8 +69010,8 @@ var global = __webpack_require__(18);
 var has = __webpack_require__(23);
 var DESCRIPTORS = __webpack_require__(22);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(119);
-var META = __webpack_require__(360).KEY;
+var redefine = __webpack_require__(121);
+var META = __webpack_require__(362).KEY;
 var $fails = __webpack_require__(29);
 var shared = __webpack_require__(70);
 var setToStringTag = __webpack_require__(76);
@@ -69206,16 +69019,16 @@ var uid = __webpack_require__(50);
 var wks = __webpack_require__(31);
 var wksExt = __webpack_require__(77);
 var wksDefine = __webpack_require__(78);
-var enumKeys = __webpack_require__(361);
-var isArray = __webpack_require__(362);
+var enumKeys = __webpack_require__(363);
+var isArray = __webpack_require__(364);
 var anObject = __webpack_require__(37);
 var isObject = __webpack_require__(28);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(66);
 var createDesc = __webpack_require__(47);
 var _create = __webpack_require__(75);
-var gOPNExt = __webpack_require__(363);
-var $GOPD = __webpack_require__(121);
+var gOPNExt = __webpack_require__(365);
+var $GOPD = __webpack_require__(123);
 var $DP = __webpack_require__(21);
 var $keys = __webpack_require__(48);
 var gOPD = $GOPD.f;
@@ -69343,7 +69156,7 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(120).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(122).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(51).f = $propertyIsEnumerable;
   __webpack_require__(72).f = $getOwnPropertySymbols;
 
@@ -69434,7 +69247,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69497,7 +69310,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69522,20 +69335,20 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(115);
+var cof = __webpack_require__(117);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69545,7 +69358,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(30);
-var gOPN = __webpack_require__(120).f;
+var gOPN = __webpack_require__(122).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -69563,29 +69376,11 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(78)('asyncIterator');
-
-/***/ }),
 /* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-__webpack_require__(78)('observable');
 
 /***/ }),
 /* 367 */
@@ -69594,17 +69389,35 @@ __webpack_require__(78)('observable');
 "use strict";
 
 
+__webpack_require__(78)('asyncIterator');
+
+/***/ }),
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(78)('observable');
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(368);
+var _setPrototypeOf = __webpack_require__(370);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(372);
+var _create = __webpack_require__(374);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(117);
+var _typeof2 = __webpack_require__(119);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -69629,26 +69442,26 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(369), __esModule: true };
+module.exports = { "default": __webpack_require__(371), __esModule: true };
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(370);
+__webpack_require__(372);
 module.exports = __webpack_require__(11).Object.setPrototypeOf;
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69656,10 +69469,10 @@ module.exports = __webpack_require__(11).Object.setPrototypeOf;
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(20);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(371).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(373).set });
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69677,7 +69490,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(110)(Function.call, __webpack_require__(121).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(112)(Function.call, __webpack_require__(123).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -69693,29 +69506,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(373), __esModule: true };
+module.exports = { "default": __webpack_require__(375), __esModule: true };
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(374);
+__webpack_require__(376);
 var $Object = __webpack_require__(11).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69726,7 +69539,7 @@ var $export = __webpack_require__(20);
 $export($export.S, 'Object', { create: __webpack_require__(75) });
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70317,7 +70130,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70387,7 +70200,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70533,25 +70346,25 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(4);
+var _settings = __webpack_require__(5);
 
 var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(379);
+var _edit = __webpack_require__(381);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(385);
+var _save = __webpack_require__(387);
 
-var _attributes = __webpack_require__(386);
+var _attributes = __webpack_require__(388);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -70575,7 +70388,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70594,11 +70407,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactSelect = __webpack_require__(96);
+var _reactSelect = __webpack_require__(98);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(380);
+var _debounce = __webpack_require__(382);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -70610,11 +70423,15 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
-var _premiumRangeControl = __webpack_require__(2);
+var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(270);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70626,9 +70443,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette;
+var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
@@ -71184,14 +70999,11 @@ var edit = exports.edit = function (_Component) {
                             return saveInputStyle({ inputColumnWidth: value });
                         }
                     }),
-                    React.createElement(
-                        'p',
-                        null,
-                        __("Text Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: inputStyles[0].textColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", ''),
+                        colorValue: inputStyles[0].textColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveInputStyle({ textColor: newValue });
                         }
                     }),
@@ -71246,14 +71058,11 @@ var edit = exports.edit = function (_Component) {
                     }), _defineProperty(_React$createElement, 'onChangeFamily', function onChangeFamily(value) {
                         return saveInputStyle({ textFontFamily: value });
                     }), _React$createElement)),
-                    React.createElement(
-                        'p',
-                        null,
-                        __('Background Color')
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: inputStyles[0].textBackColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", ''),
+                        colorValue: inputStyles[0].textBackColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveInputStyle({ textBackColor: newValue });
                         }
                     }),
@@ -71311,25 +71120,19 @@ var edit = exports.edit = function (_Component) {
                         },
                         options: [{ value: "small", label: __("Small") }, { value: "medium", label: __("Medium") }, { value: "large", label: __("Large") }, { value: "extralarge", label: __("Extra Large") }, { value: "full", label: __("Full") }]
                     }),
-                    React.createElement(
-                        'p',
-                        null,
-                        __("Text Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: btnStyles[0].btnColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", ''),
+                        colorValue: btnStyles[0].btnColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveButtonStyle({ btnColor: newValue });
                         }
                     }),
-                    React.createElement(
-                        'p',
-                        null,
-                        __('Background Color')
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: btnStyles[0].btnBackColor,
-                        onChange: function onChange(newValue) {
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", ''),
+                        colorValue: btnStyles[0].btnBackColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
                             return saveButtonStyle({ btnBackColor: newValue });
                         }
                     }),
@@ -71543,15 +71346,15 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(35),
-    now = __webpack_require__(381),
-    toNumber = __webpack_require__(382);
+    now = __webpack_require__(383),
+    toNumber = __webpack_require__(384);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -71739,7 +71542,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71770,13 +71573,13 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 382 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(383),
+var baseTrim = __webpack_require__(385),
     isObject = __webpack_require__(35),
     isSymbol = __webpack_require__(44);
 
@@ -71840,13 +71643,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 383 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(384);
+var trimmedEndIndex = __webpack_require__(386);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -71865,7 +71668,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 384 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71892,7 +71695,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 385 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71903,7 +71706,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.save = save;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -72013,7 +71816,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 386 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72127,117 +71930,6 @@ var attributes = {
     }
 };
 exports.default = attributes;
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var __ = wp.i18n.__;
-// import kmtEvents from './events';
-
-var Fragment = wp.element.Fragment;
-
-var Responsive = function (_Component) {
-    _inherits(Responsive, _Component);
-
-    function Responsive(props) {
-        _classCallCheck(this, Responsive);
-
-        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
-
-        _this.state = {
-            view: 'desktop'
-        };
-        // this.linkResponsiveButtons();
-        return _this;
-    }
-
-    _createClass(Responsive, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var label = this.props.label;
-
-            var devices = ['desktop', 'tablet', 'mobile'];
-            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
-            return _react2.default.createElement(
-                Fragment,
-                null,
-                label ? _react2.default.createElement(
-                    'span',
-                    { className: 'customize-control-title kmt-control-title' },
-                    label
-                ) : null,
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'kmt-responsive-control-btns kmt-responsive-slider-btns' },
-                    devices.map(function (device, key) {
-                        var activeClass = device === previewDevice ? ' active' : '';
-                        var icon = device === 'mobile' ? 'smartphone' : device;
-                        return _react2.default.createElement(
-                            'li',
-                            { className: '' + device + activeClass },
-                            _react2.default.createElement(
-                                'button',
-                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
-                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        _this2.changeViewType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                ),
-                this.props.children
-            );
-        }
-    }, {
-        key: 'changeViewType',
-        value: function changeViewType(device) {
-            this.setState({ view: device });
-            wp.customize && wp.customize.previewedDevice(device);
-            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
-                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
-                    return c.toUpperCase();
-                }));
-            }
-            this.props.onChange(device);
-        }
-        // linkResponsiveButtons() {
-        //     let self = this;
-        //     kmtEvents.on('KemetChangedRepsonsivePreview', function (e) {
-        //         self.changeViewType(e.detail);
-        //     })
-        // }
-
-    }]);
-
-    return Responsive;
-}(_react.Component);
-
-exports.default = Responsive;
 
 /***/ })
 /******/ ]);
