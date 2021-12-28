@@ -12,6 +12,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { __ } = wp.i18n;
 
@@ -24,11 +25,11 @@ const {
     Button
 } = wp.components;
 
-const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
+const { InspectorControls, URLInput } = wp.blockEditor;
 
 const { Fragment } = wp.element;
-const { withSelect } = wp.data
 
+const { withSelect } = wp.data
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
@@ -119,6 +120,7 @@ const edit = props => {
             containerStyles: newUpdate,
         });
     }
+
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
             if (0 === index) {
@@ -151,6 +153,15 @@ const edit = props => {
                         isMulti={false}
                         appendTo="body"
                         noSelectedPlaceholder={__("Select Icon")}
+                    />
+                    <AdvancedPopColorControl
+                        label={__('Icon Hover Color', '')}
+                        colorValue={iconStyles[0].iconColor}
+                        colorDefault={''}
+                        onColorChange={newValue =>
+                            saveIconStyle({
+                                iconColor: newValue
+                            })}
                     />
                     <SelectControl
                         label={__("Hover Effect")}
@@ -194,49 +205,26 @@ const edit = props => {
                             saveIconStyle({ iconSizeUnit: newValue })
                         }
                         showUnit={true}
-                        unit={iconStyles.iconSizeUnit}
+                        unit={iconStyles[0].iconSizeUnit}
                     />
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>{__("Icon Color")}</p>
-                                    <ColorPalette
-                                        value={iconStyles[0].iconColor}
-                                        onChange={newValue =>
-                                            saveIconStyle({
-                                                iconColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Background Color")}</p>
-                                    <PremiumBackground
-                                        type="color"
-                                        colorValue={iconStyles[0].iconBack}
-                                        onChangeColor={value =>
-                                            saveIconStyle({ iconBack: value })
-                                        }
-                                        opacityValue={iconStyles[0].iconOpacity}
-                                        onChangeOpacity={newvalue =>
-                                            saveIconStyle({
-                                                iconOpacity: newvalue,
-                                            })
-                                        }
-                                    />
-                                </Fragment>
-                            )}
-                        />
-                    </div>
+                    <AdvancedPopColorControl
+                        label={__("Icon Color", '')}
+                        colorValue={iconStyles[0].iconColor}
+                        colorDefault={''}
+                        onColorChange={value =>
+                            saveIconStyle({
+                                iconColor: value
+                            })
+                        }
+                    />
+                    <AdvancedPopColorControl
+                        label={__("Background Color", 'kadence-blocks')}
+                        colorValue={iconStyles[0].iconBack}
+                        colorDefault={''}
+                        onColorChange={value =>
+                            saveIconStyle({ iconBack: value })
+                        }
+                    />
                     <PremiumBorder
                         borderType={iconStyles[0].borderType}
                         borderWidth={borderWidth}
@@ -347,7 +335,6 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <Fragment>
-                        <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={containerStyles[0].backgroundColor}
@@ -389,7 +376,6 @@ const edit = props => {
                             onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                     </Fragment>
-
                     <PremiumBorder
                         borderType={containerStyles[0].wrapBorderType}
                         borderWidth={containerStyles[0].wrapBorderWidth}
@@ -418,7 +404,6 @@ const edit = props => {
                             saveContainerStyle({ wrapBorderRadius: newrRadius })
                         }
                     />
-
                     <PremiumBoxShadow
                         inner={true}
                         color={containerStyles[0].wrapShadowColor}
@@ -452,7 +437,6 @@ const edit = props => {
                             })
                         }
                     />
-
                     <PremiumMargin
                         directions={["all"]}
                         marginTop={wrapMarginT}
@@ -559,9 +543,9 @@ const edit = props => {
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
                         color: iconStyles[0].iconColor || "#6ec1e4",
-                        backgroundColor: iconStyles[0].iconBack
-                            ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
-                            : "transparent",
+                        backgroundColor: iconStyles[0].iconBack,
+                        // ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
+                        // : "transparent",
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

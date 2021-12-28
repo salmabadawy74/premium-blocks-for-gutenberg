@@ -7,6 +7,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { withSelect } = wp.data
 
@@ -30,7 +31,6 @@ const {
     AlignmentToolbar,
     RichText,
     PanelColorSettings,
-    ColorPalette,
     URLInput
 } = wp.blockEditor;
 
@@ -532,19 +532,17 @@ class PremiumPricingTable extends Component {
                                             value={priceStyles[0].slashV}
                                             onChange={newValue => savePriceStyles({ slashV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={priceStyles[0].slashColor}
-                                                onChange={newValue =>
-                                                    savePriceStyles({
-                                                        slashColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={priceStyles[0].slashColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                savePriceStyles({
+                                                    slashColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"curr" === priceStyles[0].selectedStyle && (
@@ -585,22 +583,20 @@ class PremiumPricingTable extends Component {
                                                 })
                                             }
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={priceStyles[0].currColor}
-                                                onChange={newValue =>
-                                                    savePriceStyles({
-                                                        currColor:
-                                                            newValue ===
-                                                                undefined
-                                                                ? "transparent"
-                                                                : newValue,
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={priceStyles[0].currColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                savePriceStyles({
+                                                    currColor:
+                                                        newValue ===
+                                                            undefined
+                                                            ? "transparent"
+                                                            : newValue,
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"price" === priceStyles[0].selectedStyle && (
@@ -636,19 +632,17 @@ class PremiumPricingTable extends Component {
                                             value={priceStyles[0].valV}
                                             onChange={newValue => savePriceStyles({ valV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={priceStyles[0].valColor}
-                                                onChange={newValue =>
-                                                    savePriceStyles({
-                                                        valColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={priceStyles[0].valColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                savePriceStyles({
+                                                    valColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"divider" === priceStyles[0].selectedStyle && (
@@ -683,19 +677,17 @@ class PremiumPricingTable extends Component {
                                             value={priceStyles[0].divV}
                                             onChange={newValue => savePriceStyles({ divV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={priceStyles[0].divColor}
-                                                onChange={newValue =>
-                                                    savePriceStyles({
-                                                        divColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={priceStyles[0].divColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                savePriceStyles({
+                                                    divColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"duration" === priceStyles[0].selectedStyle && (
@@ -730,19 +722,18 @@ class PremiumPricingTable extends Component {
                                             value={priceStyles[0].durV}
                                             onChange={newValue => savePriceStyles({ durV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={priceStyles[0].durColor}
-                                                onChange={newValue =>
-                                                    savePriceStyles({
-                                                        durColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={priceStyles[0].durColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                savePriceStyles({
+                                                    durColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                             </PanelBody>

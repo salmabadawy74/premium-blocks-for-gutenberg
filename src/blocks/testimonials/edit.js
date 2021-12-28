@@ -10,6 +10,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 
 const { __ } = wp.i18n;
@@ -29,7 +30,6 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
-    ColorPalette,
 } = wp.blockEditor;
 
 const { Fragment, Component } = wp.element;
@@ -242,18 +242,16 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <Fragment>
-                                    <p>{__("Border Color")}</p>
-                                    <ColorPalette
-                                        value={imgBorderColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                imgBorderColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Border Color", '')}
+                                    colorValue={imgBorderColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            imgBorderColor: newValue
+                                        })
+                                    }
+                                />
                             )}
                         </PanelBody>
                         <p>{__("Author HTML Tag")}</p>
@@ -298,15 +296,15 @@ class edit extends Component {
                             }
                             onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
                         />
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={authorStyles[0].authorColor}
-                            onChange={newValue =>
+                        <AdvancedPopColorControl
+                            label={__("Color", '')}
+                            colorValue={authorStyles[0].authorColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveAuthorStyle({
                                     authorColor: newValue
                                 })
                             }
-                            allowReset={true}
                         />
                     </PanelBody>
                     <PanelBody
@@ -336,15 +334,15 @@ class edit extends Component {
                             line={contentStyle[0].bodyLine}
                             onChangeLine={newWeight => saveContentStyle({ bodyLine: newWeight })}
                         />
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={contentStyle[0].bodyColor}
-                            onChange={newValue =>
+                        <AdvancedPopColorControl
+                            label={__("Color", '')}
+                            colorValue={contentStyle[0].bodyColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 saveContentStyle({
                                     bodyColor: newValue
                                 })
                             }
-
                         />
                         <PremiumRangeControl
                             label={__("Margin Top (PX)")}
@@ -408,25 +406,26 @@ class edit extends Component {
                                 )}
                                 renderContent={() => (
                                     <Fragment>
-                                        <p>{__("Text Color")}</p>
-                                        <ColorPalette
-                                            value={companyStyles[0].authorComColor}
-                                            onChange={newValue =>
+
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", '')}
+                                            colorValue={companyStyles[0].authorComColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
                                                 saveCompanyStyle({
                                                     authorComColor: newValue
                                                 })
                                             }
-                                            allowReset={true}
                                         />
-                                        <p>{__("Dash Color")}</p>
-                                        <ColorPalette
-                                            value={companyStyles[0].dashColor}
-                                            onChange={newValue =>
+                                        <AdvancedPopColorControl
+                                            label={__("Dash Color", '')}
+                                            colorValue={companyStyles[0].dashColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
                                                 saveCompanyStyle({
                                                     dashColor: newValue
                                                 })
                                             }
-                                            allowReset={true}
                                         />
                                     </Fragment>
                                 )}
@@ -466,18 +465,16 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <Fragment>
-                            <p>{__("Quotations Color")}</p>
-                            <ColorPalette
-                                value={quoteStyles[0].quotColor}
-                                onChange={newValue =>
-                                    saveQuoteStyles({
-                                        quotColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Quotations Color", '')}
+                            colorValue={quoteStyles[0].quotColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveQuoteStyles({
+                                    quotColor: newValue
+                                })
+                            }
+                        />
                         <PremiumRangeControl
                             label={__("Opacity")}
                             min="0"

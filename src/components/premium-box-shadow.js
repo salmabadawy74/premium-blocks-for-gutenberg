@@ -1,6 +1,5 @@
 const { __ } = wp.i18n;
 const {
-    RangeControl,
     SelectControl,
     Dropdown,
     Button,

@@ -9,6 +9,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -22,7 +23,7 @@ const {
     ToggleControl
 } = wp.components;
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const { Fragment, Component } = wp.element;
 
@@ -98,18 +99,18 @@ class edit extends Component {
         const ICONS = [
             {
                 value: "icon",
-                label: __("Icon")
+                label: __("Icon", 'premium-block-for-gutenberg')
             },
             {
                 value: "img",
-                label: __("Image")
+                label: __("Image", 'premium-block-for-gutenberg')
             }
         ];
 
         const DIRECTION = [
             {
                 value: "row",
-                label: __("Row")
+                label: __("Row", 'premium-block-for-gutenberg')
             },
             {
                 value: "row-reverse",
@@ -117,22 +118,22 @@ class edit extends Component {
             },
             {
                 value: "column",
-                label: __("Column")
+                label: __("Column", 'premium-block-for-gutenberg')
             },
             {
                 value: "column-reverse",
-                label: __("Reversed Column")
+                label: __("Reversed Column", 'premium-block-for-gutenberg')
             }
         ];
 
         const TYPE = [
             {
                 value: "fa",
-                label: "Font Awesome Icon"
+                label: __("Font Awesome Icon", 'premium-block-for-gutenberg')
             },
             {
                 value: "dash",
-                label: "Dashicon"
+                label: __("Dashicon", 'premium-block-for-gutenberg')
             }
         ];
 
@@ -215,26 +216,26 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Counter")}
+                        title={__("Counter", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Final Number")}
+                            label={__("Final Number", 'premium-block-for-gutenberg')}
                             value={increment}
                             onChange={value => setAttributes({ increment: value })}
                         />
                         <TextControl
-                            label={__("Counting Time")}
+                            label={__("Counting Time", 'premium-block-for-gutenberg')}
                             value={time}
                             onChange={value => setAttributes({ time: value })}
                             help={__("Set counting time in milliseconds, for example: 1000")}
                         />
                         <TextControl
-                            label={__("Delay")}
+                            label={__("Delay", 'premium-block-for-gutenberg')}
                             value={delay}
                             onChange={value => setAttributes({ delay: value })}
-                            help={__("Set delay in milliseconds, for example: 10")}
+                            help={__("Set delay in milliseconds, for example: 10", 'premium-block-for-gutenberg')}
                         />
                         <p>{__("Align")}</p>
                         {"row-reverse" !== flexDir && (
@@ -257,14 +258,14 @@ class edit extends Component {
                             />
                         )}
                         <SelectControl
-                            label={__("Direction")}
+                            label={__("Direction", 'premium-block-for-gutenberg')}
                             options={DIRECTION}
                             value={flexDir}
                             onChange={newDir => setAttributes({ flexDir: newDir })}
                         />
                         {("row" === flexDir || "row-reverse" === flexDir) && (
                             <PremiumRangeControl
-                                label={__("Spacing")}
+                                label={__("Spacing", 'premium-block-for-gutenberg')}
                                 value={iconSpacing}
                                 onChange={newValue => setAttributes({ iconSpacing: newValue })}
                                 showUnit={false}
@@ -272,34 +273,34 @@ class edit extends Component {
                             />
                         )}
                         <ToggleControl
-                            label={__("Icon")}
+                            label={__("Icon", 'premium-block-for-gutenberg')}
                             checked={iconCheck}
                             onChange={check => setAttributes({ iconCheck: check })}
                         />
                         <ToggleControl
-                            label={__("Prefix")}
+                            label={__("Prefix", 'premium-block-for-gutenberg')}
                             checked={prefix}
                             onChange={check => setAttributes({ prefix: check })}
                         />
                         <ToggleControl
-                            label={__("Suffix")}
+                            label={__("Suffix", 'premium-block-for-gutenberg')}
                             checked={suffix}
                             onChange={check => setAttributes({ suffix: check })}
                         />
                         <ToggleControl
-                            label={__("Title")}
+                            label={__("Title", 'premium-block-for-gutenberg')}
                             checked={titleCheck}
                             onChange={check => setAttributes({ titleCheck: check })}
                         />
                     </PanelBody>
                     {iconCheck && (
                         <PanelBody
-                            title={__("Icon")}
+                            title={__("Icon", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Icon Type")}
+                                label={__("Icon Type", 'premium-block-for-gutenberg')}
                                 options={ICONS}
                                 value={icon}
                                 onChange={newType => setAttributes({ icon: newType })}
@@ -313,13 +314,13 @@ class edit extends Component {
                             {"icon" === icon && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Icon Type")}
+                                        label={__("Icon Type", 'premium-block-for-gutenberg')}
                                         value={iconType}
                                         options={TYPE}
                                         onChange={newType => setAttributes({ iconType: newType })}
                                     />
                                     <TextControl
-                                        label={__("Icon Class")}
+                                        label={__("Icon Class", 'premium-block-for-gutenberg')}
                                         value={faIcon}
                                         help={[
                                             __("Get icon class from"),
@@ -334,7 +335,7 @@ class edit extends Component {
                                                 &nbsp;
                                                 {__("here")}
                                             </a>,
-                                            __(" , for example: "),
+                                            __(" , for example: ", 'premium-block-for-gutenberg'),
                                             "fa" === iconType ? "address-book" : "dashicons-admin-site"
                                         ]}
                                         onChange={newIcon => setAttributes({ faIcon: newIcon })}
@@ -368,31 +369,24 @@ class edit extends Component {
                                 defaultValue={40}
                                 max={200}
                             />
-                            {/* <RangeControl
-                                label={__("Size (PX)")}
-                                max="200"
-                                value={iconSize}
-                                onChange={newValue => setAttributes({ iconSize: newValue })}
-                            /> */}
+
                             {"icon" === icon && (
-                                <Fragment>
-                                    <p>{__("Icon Color")}</p>
-                                    <ColorPalette
-                                        value={iconColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                iconColor:
-                                                    newValue === undefined ? "transparent" : newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Icon Color", 'premium-block-for-gutenberg')}
+                                    colorValue={iconColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            iconColor:
+                                                newValue === undefined ? "transparent" : newValue
+                                        })
+                                    }
+                                />
                             )}
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Number")}
+                        title={__("Number", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -401,19 +395,19 @@ class edit extends Component {
                             setAttributes={saveNumberStyles}
                             fontSizeType={{
                                 value: numberStyles[0].numberSizeUnit,
-                                label: __("numberSizeUnit"),
+                                label: __("numberSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: numberStyles[0].numberSize,
-                                label: __("numberSize"),
+                                label: __("numberSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: numberStyles[0].numberSizeMobile,
-                                label: __("numberSizeMobile"),
+                                label: __("numberSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: numberStyles[0].numberSizeTablet,
-                                label: __("numberSizeTablet"),
+                                label: __("numberSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={counterFamily}
                             weight={numberStyles[0].numberWeight}
@@ -422,27 +416,25 @@ class edit extends Component {
                             }
                             onChangeFamily={(fontFamily) => setAttributes({ counterFamily: fontFamily })}
                         />
-                        <Fragment>
-                            <p>{__("Number Color")}</p>
-                            <ColorPalette
-                                value={numberStyles[0].numberColor}
-                                onChange={newValue =>
-                                    saveNumberStyles({
-                                        numberColor: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Number Color", 'premium-block-for-gutenberg')}
+                            colorValue={numberStyles[0].numberColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveNumberStyles({
+                                    numberColor: newValue === undefined ? "transparent" : newValue
+                                })
+                            }
+                        />
                     </PanelBody>
                     {prefix && (
                         <PanelBody
-                            title={__("Prefix")}
+                            title={__("Prefix", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Prefix")}
+                                label={__("Prefix", 'premium-block-for-gutenberg')}
                                 value={prefixStyles[0].prefixTxt}
                                 onChange={value => savePrefixStyle({ prefixTxt: value })}
                             />
@@ -453,19 +445,19 @@ class edit extends Component {
                                 setAttributes={savePrefixStyle}
                                 fontSizeType={{
                                     value: prefixStyles[0].prefixSizeUnit,
-                                    label: __("prefixSizeUnit"),
+                                    label: __("prefixSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: prefixStyles[0].prefixSize,
-                                    label: __("prefixSize"),
+                                    label: __("prefixSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: prefixStyles[0].prefixSizeMobile,
-                                    label: __("prefixSizeMobile"),
+                                    label: __("prefixSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: prefixStyles[0].prefixSizeTablet,
-                                    label: __("prefixSizeTablet"),
+                                    label: __("prefixSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={prefixStyles[0].prefixWeight}
                                 onChangeWeight={newWeight =>
@@ -474,22 +466,19 @@ class edit extends Component {
                                 fontFamily={prefixStyles[0].prefixFamily}
                                 onChangeFamily={(fontFamily) => savePrefixStyle({ prefixFamily: fontFamily })}
                             />
-
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={prefixStyles[0].prefixColor}
-                                    onChange={newValue =>
-                                        savePrefixStyle({
-                                            prefixColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={prefixStyles[0].prefixColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    savePrefixStyle({
+                                        prefixColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <PremiumRangeControl
-                                label={__("Gap After")}
+                                label={__("Gap After", 'premium-block-for-gutenberg')}
                                 value={prefixStyles[0].prefixGap}
                                 onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
                                 showUnit={false}
@@ -499,12 +488,12 @@ class edit extends Component {
                     )}
                     {suffix && (
                         <PanelBody
-                            title={__("Suffix")}
+                            title={__("Suffix", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Suffix")}
+                                label={__("Suffix", 'premium-block-for-gutenberg')}
                                 value={suffixStyles[0].suffixTxt}
                                 onChange={value => saveSuffixStyle({ suffixTxt: value })}
                             />
@@ -513,19 +502,19 @@ class edit extends Component {
                                 setAttributes={saveSuffixStyle}
                                 fontSizeType={{
                                     value: suffixStyles[0].suffixSizeUnit,
-                                    label: __("suffixSizeUnit"),
+                                    label: __("suffixSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: suffixStyles[0].suffixSize,
-                                    label: __("suffixSize"),
+                                    label: __("suffixSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: suffixStyles[0].suffixSizeMobile,
-                                    label: __("suffixSizeMobile"),
+                                    label: __("suffixSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: suffixStyles[0].suffixSizeTablet,
-                                    label: __("suffixSizeTablet"),
+                                    label: __("suffixSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={suffixStyles[0].suffixWeight}
                                 onChangeWeight={newWeight =>
@@ -534,21 +523,19 @@ class edit extends Component {
                                 fontFamily={suffixStyles[0].suffixFamily}
                                 onChangeFamily={(fontFamily) => saveSuffixStyle({ suffixFamily: fontFamily })}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={suffixStyles[0].suffixColor}
-                                    onChange={newValue =>
-                                        saveSuffixStyle({
-                                            suffixColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={suffixStyles[0].suffixColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveSuffixStyle({
+                                        suffixColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <PremiumRangeControl
-                                label={__("Gap Before")}
+                                label={__("Gap Before", 'premium-block-for-gutenberg')}
                                 value={suffixStyles[0].suffixGap}
                                 onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
                                 showUnit={false}
@@ -558,12 +545,12 @@ class edit extends Component {
                     )}
                     {titleCheck && (
                         <PanelBody
-                            title={__("Title")}
+                            title={__("Title", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Title Text")}
+                                label={__("Title Text", 'premium-block-for-gutenberg')}
                                 value={titleTxt}
                                 onChange={value => setAttributes({ titleTxt: value })}
                             />
@@ -572,15 +559,15 @@ class edit extends Component {
                                 setAttributes={saveTitleStyles}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit"),
+                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: titleStyles[0].titleSize,
-                                    label: __("titleSize"),
+                                    label: __("titleSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: titleStyles[0].titleSizeMobile,
-                                    label: __("titleSizeMobile"),
+                                    label: __("titleSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: titleStyles[0].titleSizeTablet,
@@ -603,19 +590,17 @@ class edit extends Component {
                                 onChangeFamily={(fontFamily) => saveTitleStyles({ titleFamily: fontFamily })}
                                 onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={titleStyles[0].titleColor}
-                                    onChange={newValue =>
-                                        saveTitleStyles({
-                                            titleColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", '')}
+                                colorValue={titleStyles[0].titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        titleColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <PanelBody
                                 title={__("Spacings")}
                                 className="premium-panel-body-inner"

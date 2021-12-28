@@ -4,6 +4,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { Component, Fragment } = wp.element;
 
@@ -17,10 +18,10 @@ const {
     Button
 } = wp.components;
 
-const { InspectorControls, RichText, InnerBlocks, ColorPalette } = wp.blockEditor;
+const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert Your Content Here") }]
+    ["core/paragraph", { content: __("Insert Your Content Here", 'premium-block-for-gutenberg') }]
 ];
 
 let isAccUpdated = null;
@@ -112,22 +113,22 @@ class PremiumAccordion extends Component {
         const ARROW = [
             {
                 value: "in",
-                label: __("In")
+                label: __("In", 'premium-block-for-gutenberg')
             },
             {
                 value: "out",
-                label: __("Out")
+                label: __("Out", 'premium-block-for-gutenberg')
             }
         ];
 
         const TYPE = [
             {
                 value: "text",
-                label: __("Text")
+                label: __("Text", 'premium-block-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Gutenberg Block")
+                label: __("Gutenberg Block", 'premium-block-for-gutenberg')
             }
         ];
 
@@ -217,7 +218,7 @@ class PremiumAccordion extends Component {
                                         )
                                     })
                                 }
-                                placeholder={__("Awesome Title")}
+                                placeholder={__("Awesome Title", 'premium-block-for-gutenberg')}
                                 value={item.titleText}
                                 style={{
                                     color: titleStyles[0].titleColor,
@@ -300,11 +301,11 @@ class PremiumAccordion extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
                     <PanelBody
-                        title={__("Title")}
+                        title={__("Title", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Title Tag")}</p>
+                        <p>{__("Title Tag", 'premium-block-for-gutenberg')}</p>
                         <Toolbar
                             controls={"123456".split("").map(tag => ({
                                 icon: "heading",
@@ -314,7 +315,7 @@ class PremiumAccordion extends Component {
                             }))}
                         />
                         <SelectControl
-                            label={__("Direction")}
+                            label={__("Direction", 'premium-block-for-gutenberg')}
                             options={DIRECTION}
                             value={direction}
                             onChange={newEffect => setAttributes({ direction: newEffect })}
@@ -348,43 +349,31 @@ class PremiumAccordion extends Component {
                             onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
                             onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Text Color")}</p>
-                                        <ColorPalette
-                                            value={titleStyles[0].titleColor}
-                                            onChange={newValue =>
-                                                saveTitleStyles({
-                                                    titleColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={titleStyles[0].titleBack}
-                                            onChange={newValue =>
-                                                saveTitleStyles({
-                                                    titleBack: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
+
+                        <Fragment>
+
+                            <AdvancedPopColorControl
+                                label={__("Text Color", '')}
+                                colorValue={titleStyles[0].titleColor}
+                                colorDefault={''}
+                                onColorChange={value =>
+                                    saveTitleStyles({
+                                        titleColor: value
+                                    })
+                                }
                             />
-                        </div>
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].titleBack}
+                                colorDefault={''}
+                                onColorChange={value =>
+                                    saveTitleStyles({
+                                        titleBack: value
+                                    })
+                                }
+                            />
+                        </Fragment>
+
                         <PremiumBorder
                             borderType={titleStyles[0].titleBorder}
                             borderWidth={titleBorderWidth}
@@ -460,62 +449,45 @@ class PremiumAccordion extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Arrow")}
+                        title={__("Arrow", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Position")}
+                            label={__("Position", 'premium-block-for-gutenberg')}
                             options={ARROW}
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
                         <PremiumRangeControl
-                            label={__("Size  ")}
+                            label={__("Size", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
                             showUnit={false}
                             defaultValue={20}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Arrow Color")}</p>
-                                        <ColorPalette
-                                            value={arrowStyles[0].arrowColor}
-                                            onChange={newValue =>
-                                                saveArrowStyles({
-                                                    arrowColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={arrowStyles[0].arrowBack}
-                                            onChange={newValue =>
-                                                saveArrowStyles({
-                                                    arrowBack: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
+                        <AdvancedPopColorControl
+                            label={__("Arrow Color", 'premium-block-for-gutenberg')}
+                            colorValue={arrowStyles[0].arrowColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveArrowStyles({
+                                    arrowColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={arrowStyles[0].arrowBack}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveArrowStyles({
+                                    arrowBack: newValue
+                                })
+                            }
+                        />
                         <PremiumRangeControl
-                            label={__("Border Radius  ")}
+                            label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue =>
                                 saveArrowStyles({
@@ -528,7 +500,7 @@ class PremiumAccordion extends Component {
                             showUnit={false}
                         />
                         <PremiumRangeControl
-                            label={__("Padding")}
+                            label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue =>
                                 saveArrowStyles({
@@ -542,16 +514,16 @@ class PremiumAccordion extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Content")}
+                        title={__("Content", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Type")}
+                            label={__("Type", 'premium-block-for-gutenberg')}
                             options={TYPE}
                             value={contentType}
                             onChange={newType => setAttributes({ contentType: newType })}
-                            help={__("Gutenberg Block works only with single accordion item")}
+                            help={__("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')}
                         />
                         <Toolbar
                             controls={ALIGNS.map(align => ({
@@ -592,43 +564,26 @@ class PremiumAccordion extends Component {
                                     }
                                     onChangeUpper={check => SaveDescStyles({ descUpper: check })}
                                 />
-                                <div className="premium-control-toggle">
-                                    <strong>{__("Colors")}</strong>
-                                    <Dropdown
-                                        className="premium-control-toggle-btn"
-                                        contentClassName="premium-control-toggle-content"
-                                        position="bottom right"
-                                        renderToggle={({ isOpen, onToggle }) => (
-                                            <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                                <i className="dashicons dashicons-edit" />
-                                            </Button>
-                                        )}
-                                        renderContent={() => (
-                                            <Fragment>
-                                                <p>{__("Text Color")}</p>
-                                                <ColorPalette
-                                                    value={descStyles[0].descColor}
-                                                    onChange={newValue =>
-                                                        SaveDescStyles({
-                                                            descColor: newValue
-                                                        })
-                                                    }
-                                                    allowReset={true}
-                                                />
-                                                <p>{__("Background Color")}</p>
-                                                <ColorPalette
-                                                    value={descStyles[0].descBack}
-                                                    onChange={newValue =>
-                                                        SaveDescStyles({
-                                                            descBack: newValue
-                                                        })
-                                                    }
-                                                    allowReset={true}
-                                                />
-                                            </Fragment>
-                                        )}
-                                    />
-                                </div>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descStyles[0].descColor}
+                                    colorDefault={''}
+                                    onColorChange={value =>
+                                        SaveDescStyles({
+                                            descColor: value
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descStyles[0].descBack}
+                                    colorDefault={''}
+                                    onColorChange={value =>
+                                        SaveDescStyles({
+                                            descBack: value
+                                        })
+                                    }
+                                />
                             </Fragment>
                         )}
 
@@ -728,17 +683,17 @@ class PremiumAccordion extends Component {
                             return setAttributes({
                                 repeaterItems: repeaterItems.concat([
                                     {
-                                        titleText: __("Awesome Title"),
-                                        descText: __("Cool Description")
+                                        titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
+                                        descText: __("Cool Description", 'premium-block-for-gutenberg')
                                     }
                                 ])
                             });
                         }}
                     >
                         <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item")}
+                        {__("Add New Item", 'premium-block-for-gutenberg')}
                     </button>
-                    <p>{__("Add the items you need then reload the page")}</p>
+                    <p>{__("Add the items you need then reload the page", 'premium-block-for-gutenberg')}</p>
                 </div>
             </Fragment>
         ];

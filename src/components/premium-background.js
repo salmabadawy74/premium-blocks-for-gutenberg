@@ -9,8 +9,9 @@ const {
     Dashicon,
 } = wp.components;
 
-const { MediaUpload, ColorPalette } = wp.blockEditor;
+const { MediaUpload } = wp.blockEditor;
 import PremiumRangeControl from './premium-range-control';
+import AdvancedPopColorControl from './Color Control/ColorComponent'
 
 
 
@@ -110,17 +111,23 @@ export default function PremiumBackground(props) {
 
     return type === "color" ? (
         <Fragment>
-            <ColorPalette
+            {/* <ColorPalette
                 value={colorValue}
                 onChange={onChangeColor}
                 allowReset={true}
-            />
-            <PremiumRangeControl
+            /> */}
+            {/* <PremiumRangeControl
                 label={__(`Background Opacity`)}
                 value={opacityValue}
                 onChange={onChangeOpacity}
                 showUnit={false}
                 defaultValue={''}
+            /> */}
+            <AdvancedPopColorControl
+                label={__("Background Color", '')}
+                colorValue={colorValue}
+                colorDefault={''}
+                onColorChange={onChangeColor}
             />
         </Fragment>
     ) : (

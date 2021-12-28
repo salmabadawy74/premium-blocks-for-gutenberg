@@ -10,6 +10,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { withSelect } = wp.data
 
@@ -24,7 +25,7 @@ const {
 
 const { Component, Fragment } = wp.element;
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -621,15 +622,15 @@ class edit extends Component {
                                 if ("normal" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Icon Color")}</p>
-                                            <ColorPalette
-                                                value={playStyles[0].playColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Color", '')}
+                                                colorValue={playStyles[0].playColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     savePlayStyles({
                                                         playColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                             <p>{__("Icon Background Color")}</p>
                                             <PremiumBackground
@@ -647,15 +648,16 @@ class edit extends Component {
                                             />
                                             {videoDesc && (
                                                 <Fragment>
-                                                    <p>{__("Description Color")}</p>
-                                                    <ColorPalette
-                                                        value={descStyles[0].videoDescColor}
-                                                        onChange={newValue =>
+
+                                                    <AdvancedPopColorControl
+                                                        label={__("Description Color", '')}
+                                                        colorValue={descStyles[0].videoDescColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 videoDescColor: newValue,
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
                                                     <p>{__("Description Background Color")}</p>
                                                     <PremiumBackground
@@ -685,25 +687,26 @@ class edit extends Component {
                                 if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Icon Hover Color")}</p>
-                                            <ColorPalette
-                                                value={playStyles[0].playHoverColor}
-                                                onChange={newValue =>
+
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Hover Color", '')}
+                                                colorValue={playStyles[0].playHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     savePlayStyles({
                                                         playHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>{__("Icon Hover Background Color")}</p>
-                                            <ColorPalette
-                                                value={playStyles[0].playHoverBackColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Hover Background Color", '')}
+                                                colorValue={playStyles[0].playHoverBackColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     savePlayStyles({
                                                         playHoverBackColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                         </Fragment>
                                     );

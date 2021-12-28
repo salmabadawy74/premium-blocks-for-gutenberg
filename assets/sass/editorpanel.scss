@@ -29,25 +29,7 @@
         margin-right: 0.4em;
     }
 }
-.kmt-slider-units {
-    float: right;
-    z-index: 99999;
-    position: relative;
-    li.single-unit {
-        text-shadow: none;
-        text-decoration: none;
-        box-shadow: none !important;
-        border: none;
-        outline: none;
-        &:focus {
-            background: #f3f4f5 !important;
-        }
-    }
-    li.single-unit.active {
-        color: #0084bc !important;
-        font-weight: bold;
-    }
-}
+
 .premium-size-type-field-tabs {
     .components-range-control {
         .components-base-control__field {

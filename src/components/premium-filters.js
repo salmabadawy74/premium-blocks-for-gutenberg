@@ -33,9 +33,6 @@ export default function PremiumFilters(props) {
                     <Fragment>
                         <PremiumRangeControl
                             label={__("Blur")}
-                            min="0"
-                            max="10"
-                            step="0.1"
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}

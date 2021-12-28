@@ -6,6 +6,7 @@ import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -27,7 +28,6 @@ const {
     BlockControls,
     InspectorControls,
     AlignmentToolbar,
-    ColorPalette,
     URLInput
 } = wp.blockEditor;
 
@@ -96,11 +96,11 @@ class edit extends Component {
         const DISPLAY = [
             {
                 value: "inline",
-                label: __("Inline")
+                label: __("Inline", 'premium-block-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Block")
+                label: __("Block", 'premium-block-for-gutenberg')
             }
         ];
 
@@ -153,61 +153,61 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("General Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("First Heading")}
+                            label={__("First Heading", 'premium-block-for-gutenberg')}
                             type="url"
                             value={firstHeading}
                             onChange={value => setAttributes({ firstHeading: value })}
                         />
                         <TextControl
-                            label={__("Second Heading")}
+                            label={__("Second Heading", 'premium-block-for-gutenberg')}
                             type="url"
                             value={secondHeading}
                             onChange={value => setAttributes({ secondHeading: value })}
                         />
 
                         <SelectControl
-                            label={__("Display")}
+                            label={__("Display", 'premium-block-for-gutenberg')}
                             value={display}
                             options={DISPLAY}
                             onChange={value => setAttributes({ display: value })}
                         />
                         <ToggleControl
-                            label={__("Link")}
+                            label={__("Link", 'premium-block-for-gutenberg')}
                             checked={link}
                             onChange={newValue => setAttributes({ link: newValue })}
                         />
                         {link && (
                             <ToggleControl
-                                label={__("Open link in new tab")}
+                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                                 checked={target}
                                 onChange={newValue => setAttributes({ target: newValue })}
                             />
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("First Heading Style")}
+                        title={__("First Heading Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Clipped")}
+                            label={__("Clipped", 'premium-block-for-gutenberg')}
                             checked={firstStyles[0].firstClip}
                             onChange={newValue => saveFirstStyle({ firstClip: newValue })}
                         />
                         {firstStyles[0].firstClip && (
                             <Fragment>
                                 <ToggleControl
-                                    label={__("Animated")}
+                                    label={__("Animated", 'premium-block-for-gutenberg')}
                                     checked={firstStyles[0].firstAnim}
                                     onChange={newValue => saveFirstStyle({ firstAnim: newValue })}
                                 />
                                 <ToggleControl
-                                    label={__("Stroke")}
+                                    label={__("Stroke", 'premium-block-for-gutenberg')}
                                     checked={firstStyles[0].firstStroke}
                                     onChange={newValue => saveFirstStyle({ firstStroke: newValue })}
                                 />
@@ -218,19 +218,19 @@ class edit extends Component {
                             setAttributes={saveFirstStyle}
                             fontSizeType={{
                                 value: firstStyles[0].firstSizeUnit,
-                                label: __("firstSizeUnit"),
+                                label: __("firstSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: firstStyles[0].firstSize,
-                                label: __("firstSize"),
+                                label: __("firstSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: firstStyles[0].firstSizeMobile,
-                                label: __("firstSizeMobile"),
+                                label: __("firstSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: firstStyles[0].firstSizeTablet,
-                                label: __("firstSizeTablet"),
+                                label: __("firstSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={firstStyles[0].firstFamily}
 
@@ -250,89 +250,65 @@ class edit extends Component {
                         />
 
                         {!firstStyles[0].firstClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={firstStyles[0].firstColor}
-                                                onChange={newValue =>
-                                                    saveFirstStyle({
-                                                        firstColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
-                                                colorValue={firstStyles[0].firstBackground}
-                                                onChangeColor={value =>
-                                                    saveFirstStyle({
-                                                        firstBackground: value,
-                                                    })
-                                                }
-                                                opacityValue={firstStyles[0].firstOpacity}
-                                                onChangeOpacity={value =>
-                                                    saveFirstStyle({
-                                                        firstOpacity: value,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    )}
+
+                            <Fragment>
+
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveFirstStyle({
+                                            firstColor: newValue
+                                        })
+                                    }
                                 />
-                            </div>
+                                <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
+                                <PremiumBackground
+                                    type="color"
+                                    colorValue={firstStyles[0].firstBackground}
+                                    onChangeColor={value =>
+                                        saveFirstStyle({
+                                            firstBackground: value,
+                                        })
+                                    }
+                                    opacityValue={firstStyles[0].firstOpacity}
+                                    onChangeOpacity={value =>
+                                        saveFirstStyle({
+                                            firstOpacity: value,
+                                        })
+                                    }
+                                />
+                            </Fragment>
                         )}
 
                         {firstStyles[0].firstClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("First Color")}</p>
-                                            <ColorPalette
-                                                value={firstStyles[0].firstColor}
-                                                onChange={newValue =>
-                                                    saveFirstStyle({
-                                                        firstColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Second Color")}</p>
-                                            <ColorPalette
-                                                value={firstStyles[0].firstClipColor}
-                                                onChange={newValue =>
-                                                    saveFirstStyle({
-                                                        firstClipColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
-                                    )}
+
+                            <Fragment>
+
+                                <AdvancedPopColorControl
+                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveFirstStyle({
+                                            firstColor: newValue
+                                        })
+                                    }
                                 />
-                            </div>
+
+                                <AdvancedPopColorControl
+                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstClipColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveFirstStyle({
+                                            firstClipColor: newValue
+                                        })
+                                    }
+                                />
+                            </Fragment>
+
                         )}
 
                         <PremiumBorder
@@ -385,7 +361,7 @@ class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Margin Left")}
+                            label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginL}
                             onChange={newMargin =>
                                 saveFirstStyle({ firstMarginL: newMargin || "0" })
@@ -394,7 +370,7 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <PremiumRangeControl
-                            label={__("Margin Right")}
+                            label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginR}
                             onChange={newMargin =>
                                 saveFirstStyle({ firstMarginR: newMargin })
@@ -403,7 +379,7 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <PremiumRangeControl
-                            label={__("Padding")}
+                            label={__("Padding", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstPadding}
                             onChange={newPadding =>
                                 saveFirstStyle({ firstPadding: newPadding })
@@ -413,24 +389,24 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Second Heading Style")}
+                        title={__("Second Heading Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Clipped")}
+                            label={__("Clipped", 'premium-block-for-gutenberg')}
                             checked={secondStyles[0].secondClip}
                             onChange={newValue => saveSecondStyle({ secondClip: newValue })}
                         />
                         {secondStyles[0].secondClip && (
                             <Fragment>
                                 <ToggleControl
-                                    label={__("Animated")}
+                                    label={__("Animated", 'premium-block-for-gutenberg')}
                                     checked={secondStyles[0].secondAnim}
                                     onChange={newValue => saveSecondStyle({ secondAnim: newValue })}
                                 />
                                 <ToggleControl
-                                    label={__('Stroke')}
+                                    label={__('Stroke', 'premium-block-for-gutenberg')}
                                     checked={secondStyles[0].secondStroke}
                                     onChange={newValue => saveSecondStyle({ secondStroke: newValue })}
                                 />
@@ -441,19 +417,19 @@ class edit extends Component {
                             setAttributes={saveSecondStyle}
                             fontSizeType={{
                                 value: secondStyles[0].secondSizeUnit,
-                                label: __("secondSizeUnit"),
+                                label: __("secondSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: secondStyles[0].secondSize,
-                                label: __("secondSize"),
+                                label: __("secondSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: secondStyles[0].secondSizeMobile,
-                                label: __("secondSizeMobile"),
+                                label: __("secondSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: secondStyles[0].secondSizeTablet,
-                                label: __("secondSizeTablet"),
+                                label: __("secondSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={secondStyles[0].secondFamily}
                             weight={secondStyles[0].secondWeight}
@@ -470,90 +446,59 @@ class edit extends Component {
                             onChangeUpper={check => saveSecondStyle({ secondUpper: check })}
                             onChangeFamily={(fontFamily) => saveSecondStyle({ secondFamily: fontFamily })}
                         />
-
                         {!secondStyles[0].secondClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={secondStyles[0].secondColor}
-                                                onChange={newValue =>
-                                                    saveSecondStyle({
-                                                        secondColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
-                                                colorValue={secondStyles[0].secondBackground}
-                                                onChangeColor={value =>
-                                                    saveSecondStyle({
-                                                        secondBackground: value,
-                                                    })
-                                                }
-                                                opacityValue={secondStyles[0].secondOpacity}
-                                                onChangeOpacity={value =>
-                                                    saveSecondStyle({
-                                                        secondOpacity: value,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondStyles[0].secondColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveSecondStyle({
+                                            secondColor: newValue || "transparent"
+                                        })
+                                    }
                                 />
-                            </div>
+                                <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
+                                <PremiumBackground
+                                    type="color"
+                                    colorValue={secondStyles[0].secondBackground}
+                                    onChangeColor={value =>
+                                        saveSecondStyle({
+                                            secondBackground: value,
+                                        })
+                                    }
+                                    opacityValue={secondStyles[0].secondOpacity}
+                                    onChangeOpacity={value =>
+                                        saveSecondStyle({
+                                            secondOpacity: value,
+                                        })
+                                    }
+                                />
+                            </Fragment>
                         )}
                         {secondStyles[0].secondClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("First Color")}</p>
-                                            <ColorPalette
-                                                value={secondStyles[0].secondColor}
-                                                onChange={newValue =>
-                                                    saveSecondStyle({
-                                                        secondColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Second Color")}</p>
-                                            <ColorPalette
-                                                value={secondStyles[0].secondClipColor}
-                                                onChange={newValue =>
-                                                    saveSecondStyle({
-                                                        secondClipColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
-                                    )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondStyles[0].secondColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveSecondStyle({
+                                            secondColor: newValue || "transparent"
+                                        })
+                                    }
                                 />
-                            </div>
+                                <AdvancedPopColorControl
+                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondStyles[0].secondClipColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveSecondStyle({
+                                            secondClipColor: newValue || "transparent"
+                                        })
+                                    }
+                                />
+                            </Fragment>
                         )}
 
                         <PremiumBorder
@@ -608,7 +553,7 @@ class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Margin Left")}
+                            label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginL}
                             onChange={newMargin =>
                                 saveSecondStyle({ secondMarginL: newMargin })
@@ -617,7 +562,7 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <PremiumRangeControl
-                            label={__("Margin Right")}
+                            label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginR}
                             onChange={newMargin =>
                                 saveSecondStyle({ secondMarginR: newMargin || "0" })
@@ -626,7 +571,7 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <PremiumRangeControl
-                            label={__("Padding")}
+                            label={__("Padding", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondPadding}
                             onChange={newPadding =>
                                 saveSecondStyle({ secondPadding: newPadding || "0" })
@@ -636,11 +581,11 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Container Style")}
+                        title={__("Container Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Background Color")}</p>
+                        <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={containerStyles[0].containerBack}

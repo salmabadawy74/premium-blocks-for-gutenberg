@@ -15,6 +15,7 @@ class PremiumMargin extends Component {
             left: this.props.marginLeft || 0,
             directions: this.props.directions,
             showUnits: this.props.showUnits || false,
+            unit: this.props.unit || 'px'
         };
         this.defaultValue = {
             top: '',
@@ -73,6 +74,7 @@ class PremiumMargin extends Component {
             directions,
             showUnits,
             isLinked,
+            unit
         } = this.state;
 
         const { onChangeMarSizeUnit = () => { }, selectedUnit } = this.props;
@@ -80,18 +82,17 @@ class PremiumMargin extends Component {
         return (
             <div className={`kmt-spacing-responsive`}>
                 <header className="premium-control-label-container">
-                    <div className={`premium-control-label`}>
-                        <strong>{__("Margin")}</strong>
+                    <div className={`kmt-slider-title-wrap`}>
+                        {__("Margin")}
                     </div>
-
-                    {showUnits && (<ul className="kmt-slider-units">
+                    {showUnits && (
                         <PremiumSizeUnits
-                            activeUnit={unit}
+                            activeUnit={selectedUnit}
                             onChangeSizeUnit={newValue =>
-                                onChangeUnit(newValue)
+                                onChangeMarSizeUnit(newValue)
                             }
                         />
-                    </ul>)}
+                    )}
                 </header>
                 <div className={`kmt-spacing-responsive-outer-wrapper`}>
                     <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>

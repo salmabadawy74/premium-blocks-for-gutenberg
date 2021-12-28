@@ -12,6 +12,7 @@ class PremiumPadding extends Component {
             bottom: this.props.paddingBottom || 0,
             left: this.props.paddingLeft || 0,
             showUnits: this.props.showUnits || false,
+            unit: this.props.unit || 'px'
         };
         this.defaultValue = {
             top: '',
@@ -19,7 +20,6 @@ class PremiumPadding extends Component {
             bottom: '',
             left: ''
         }
-
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.changeFunction = this.changeFunction.bind(this);
@@ -49,29 +49,23 @@ class PremiumPadding extends Component {
             });
         }
     }
-
     render() {
-
-        const { top, right, bottom, left, showUnits, isLinked } = this.state;
-
+        const { top, right, bottom, left, showUnits, isLinked, unit } = this.state;
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
-
         return (
             <div className={`kmt-spacing-responsive`}>
                 <header className="premium-control-label-container">
-                    <div className={`premium-control-label`}>
-                        <strong>{__("Padding")}</strong>
+                    <div className={`kmt-slider-title-wrap`}>
+                        {__("Padding")}
                     </div>
-
-                    {showUnits && (<ul className="kmt-slider-units">
+                    {showUnits && (
                         <PremiumSizeUnits
-                            activeUnit={unit}
+                            activeUnit={selectedUnit}
                             onChangeSizeUnit={newValue =>
-                                onChangeUnit(newValue)
+                                onChangePadSizeUnit(newValue)
                             }
                         />
-                    </ul>)}
-
+                    )}
                 </header>
                 <div className={`kmt-spacing-responsive-outer-wrapper`}>
                     <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>
@@ -118,7 +112,7 @@ class PremiumPadding extends Component {
                             </li>
                             <li>
                                 <button
-                                    className={`linked-btn kmt-spacing-input-item-link is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
+                                    className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links connected" : "editor-unlink disconnected"
                                         }`}
                                     onClick={this.onButtonClick}
                                 />
