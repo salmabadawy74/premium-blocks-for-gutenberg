@@ -1,5 +1,8 @@
 import React from 'react';
 import Select from 'react-select';
+import axios from 'axios'
+import { sortBy } from 'lodash';
+
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
@@ -8,11 +11,10 @@ const {
     Button,
     Modal,
     TabPanel,
-    TextControl,
-    SelectControl
+    TextControl
 } = wp.components;
+
 const apiFetch = wp.apiFetch;
-const { applyFilters } = wp.hooks;
 
 class modal extends Component {
 
@@ -35,21 +37,7 @@ class modal extends Component {
         }
     }
 
-    componentDidUpdate(nextProps) {
-        // console.log(this.props.attributes.template, nextProps.attributes.template)
-        if (this.props.attributes.search !== nextProps.attributes.search) {
-            //     this.props.setAttributes({
-            //         template: nextProps.attributes.template
-            //     }, () => {
-            // this.selectCategory(this.props.attributes.selectcategory, nextProps.attributes.template)
-            //     });
-            // }
-            // this.props.setSearch(this.props.attributes.search)
-        }
-    }
-
     selectCategory(item) {
-        console.log(item, this.props.attributes.template, this.props.attributes.category)
         this.props.attributes.category.map((cat, i) => {
             if (cat.category.id === item) {
                 this.props.setAttributes({
@@ -63,20 +51,18 @@ class modal extends Component {
         }).filter(t => {
             return t.categories[0] === item
         })
-        console.log('newTemp', newTemp)
+
         this.props.setAttributes({
             template: item === 'all' ? this.props.attributes.newTemplate : newTemp,
             selectcategory: item
         });
+
         this.props.setSearch(this.props.attributes.search, (item === 'all' ? this.props.attributes.newTemplate : newTemp), 'category', item)
     }
 
 
     selectUikit(item, library) {
-        // console.log('uikits', item)
-
         this.props.attributes.uikits.forEach((uikit, i) => {
-            // console.log(uikit)
             if (uikit.uiKit.id === item) {
                 this.props.setAttributes({
                     activeCategory: item
@@ -84,17 +70,18 @@ class modal extends Component {
                 return;
             }
         })
-        // console.log('this.props.attributes.newTemplate', this.props.attributes.newTemplate)
+
         let newTemp = (library != undefined ? library : this.props.attributes.newTemplate).map((temp, i) => {
             return temp
         }).filter(t => {
             return t.uikit === item
         })
-        console.log(newTemp)
+
         this.props.setAttributes({
             template: newTemp,
             selectuikit: item
         });
+
         this.props.setSearch(this.props.attributes.search, newTemp, 'uikit', item)
     }
 
@@ -102,19 +89,13 @@ class modal extends Component {
         const { attributes, setAttributes, isSelected } = this.props;
 
         const {
-            block_id,
-            align,
-            className,
-            newTemplate,
             template,
             category,
             activeCategory,
             uikits,
             column,
             search,
-            selectcategory,
-            selectuikit,
-            tabName
+            selectcategory
         } = attributes;
 
         const TABSTYLE = [
@@ -129,12 +110,14 @@ class modal extends Component {
         ];
 
         const selectTemplate = async (designId) => {
+
             const results = await apiFetch({
                 path: `/stackable/v2/design//${designId}`,
                 method: 'GET',
             })
+
             let designLibrary = await results
-            // console.log(designLibrary)
+
             this.props.onSelect(designLibrary);
         }
 
@@ -172,7 +155,6 @@ class modal extends Component {
         });
 
         const tabSelect = (tabName) => {
-            console.log('tabName', tabName)
             if (tabName === 'uikit') {
                 this.selectUikit('Angled')
             }
@@ -196,6 +178,99 @@ class modal extends Component {
                 selectcategory: value != null ? value.value : 'all'
             });
             this.selectCategory(value != null ? value.value : 'all')
+        }
+
+        const setDoReset = (value) => {
+            this.props.setAttributes({
+                reset: value
+            });
+            axios.get('admin-ajax.php', {
+                params: {
+                    action: 'pbg-block-templates',
+                    reset: value
+                }
+            })
+                .then(function (response) {
+
+                    setAttributes({
+                        template: Object.values(JSON.parse(response.data.data)),
+                        newTemplate: Object.values(JSON.parse(response.data.data))
+                    });
+
+                    const designList = Object.keys(JSON.parse(response.data.data)).reduce((output, name) => {
+                        const design = JSON.parse(response.data.data)[name]
+                        const { categories, uikit } = design
+
+                        if (typeof output.uikits[uikit] === 'undefined') {
+                            output.uikits[uikit] = {
+                                id: uikit,
+                                label: design.uikit,
+                                plan: design.plan,
+                                count: 0,
+                            }
+                        }
+
+                        categories.forEach(category => {
+                            if (typeof output.categories[category] === 'undefined') {
+                                output.categories[category] = {
+                                    id: category,
+                                    label: category,
+                                    count: 0,
+                                }
+                            }
+                        })
+                        return output
+                    }, { uikits: {}, categories: {} })
+
+                    let uikitSort = ['label']
+
+                    const uikits = sortBy(Object.values(designList.uikits), uikitSort)
+                    const categories = sortBy(Object.values(designList.categories), 'label')
+                    categories.unshift({
+                        id: 'all',
+                        label: __('All'),
+                        count: 0,
+                    })
+
+                    const newUiKits = uikits.reduce((uiKits, uiKit) => {
+                        uiKits[uiKit.id] = {
+                            uiKit,
+                            count: 0,
+                        }
+                        return uiKits
+                    }, {})
+
+                    const newCategories = categories.reduce((categories, category) => {
+                        categories[category.id] = {
+                            category,
+                            count: 0,
+                        }
+                        return categories
+                    }, {})
+
+                    if (newCategories['all']) {
+                        newCategories['all'].count = Object.values(JSON.parse(response.data.data)).length
+                    }
+
+                    Object.values(JSON.parse(response.data.data)).forEach(design => {
+                        if (design.uikit && newUiKits[design.uikit]) {
+                            newUiKits[design.uikit].count++
+                        }
+                        design.categories.forEach(category => {
+                            if (category && newCategories[category]) {
+                                newCategories[category].count++
+                            }
+                        })
+                    })
+
+                    setAttributes({
+                        uikits: Object.values(newUiKits),
+                        category: Object.values(newCategories)
+                    });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
 
 
@@ -248,8 +323,7 @@ class modal extends Component {
                         <Button
                             icon="image-rotate"
                             label={__('Refresh Library')}
-                        // className="ugb-modal-design-library__refresh"
-                        // onClick={ () => setDoReset( true ) }
+                            onClick={() => setDoReset(true)}
                         />
 
                         <Button

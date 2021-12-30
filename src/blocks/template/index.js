@@ -52,6 +52,10 @@ const test1Attrs = {
     tabName: {
         type: 'string',
         default: 'category'
+    },
+    reset: {
+        type: 'boolean',
+        default: false
     }
 };
 

@@ -60189,6 +60189,10 @@ var test1Attrs = {
     tabName: {
         type: 'string',
         default: 'category'
+    },
+    reset: {
+        type: 'boolean',
+        default: false
     }
 };
 
@@ -60236,20 +60240,12 @@ var dispatch = wp.data.dispatch;
 var _wp$blocks = wp.blocks,
     createBlock = _wp$blocks.createBlock,
     createBlocksFromInnerBlocksTemplate = _wp$blocks.createBlocksFromInnerBlocksTemplate;
-
-var apiFetch = wp.apiFetch;
 var applyFilters = wp.hooks.applyFilters;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    ColorPalette = _wp$blockEditor.ColorPalette;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Toolbar = _wp$components.Toolbar;
+    InspectorControls = _wp$blockEditor.InspectorControls;
+var PanelBody = wp.components.PanelBody;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -60265,7 +60261,6 @@ var edit = function (_Component) {
         value: function componentDidMount() {
 
             this.props.setAttributes({
-                // classMigrate: true,
                 isModalOpen: false,
                 search: ''
             });
@@ -60285,10 +60280,7 @@ var edit = function (_Component) {
                 align = attributes.align,
                 className = attributes.className,
                 isModalOpen = attributes.isModalOpen,
-                newTemplate = attributes.newTemplate,
-                template = attributes.template,
-                uikits = attributes.uikits,
-                category = attributes.category;
+                template = attributes.template;
 
 
             var setIsModalOpen = function () {
@@ -60300,15 +60292,12 @@ var edit = function (_Component) {
                                     setAttributes({
                                         isModalOpen: value
                                     });
-                                    console.log(template);
 
                                     __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('admin-ajax.php', {
                                         params: {
-                                            // action: 'pbg-block-templates',
-                                            action: 'true'
+                                            action: 'pbg-block-templates'
                                         }
                                     }).then(function (response) {
-                                        console.log(response.data);
                                         setAttributes({
                                             template: Object.values(JSON.parse(response.data.data)),
                                             newTemplate: Object.values(JSON.parse(response.data.data))
@@ -60368,7 +60357,6 @@ var edit = function (_Component) {
 
                                         if (newCategories['all']) {
                                             newCategories['all'].count = Object.values(JSON.parse(response.data.data)).length;
-                                            // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
                                         }
 
                                         Object.values(JSON.parse(response.data.data)).forEach(function (design) {
@@ -60390,182 +60378,7 @@ var edit = function (_Component) {
                                         console.log(error);
                                     });
 
-                                    // jQuery(document).ready(function ($) {
-                                    //     $.ajax({
-                                    //         type: 'GET',
-                                    //         url: 'admin-ajax.php',
-                                    //         data: { 'action': 'pbg-block-templates' },
-                                    //         success: function (data) {
-                                    //             console.log('data', data);
-                                    //             setAttributes({
-                                    //                 template: Object.values(JSON.parse(data.data)),
-                                    //                 newTemplate: Object.values(JSON.parse(data.data))
-                                    //             });
-                                    //             const designList = Object.keys(JSON.parse(data.data)).reduce((output, name) => {
-                                    //                 const design = JSON.parse(data.data)[name]
-                                    //                 const { categories, uikit } = design
-
-                                    //                 if (typeof output.uikits[uikit] === 'undefined') {
-                                    //                     output.uikits[uikit] = {
-                                    //                         id: uikit,
-                                    //                         label: design.uikit,
-                                    //                         plan: design.plan,
-                                    //                         count: 0,
-                                    //                     }
-                                    //                 }
-
-                                    //                 categories.forEach(category => {
-                                    //                     if (typeof output.categories[category] === 'undefined') {
-                                    //                         output.categories[category] = {
-                                    //                             id: category,
-                                    //                             label: category,
-                                    //                             count: 0,
-                                    //                         }
-                                    //                     }
-                                    //                 })
-                                    //                 return output
-                                    //             }, { uikits: {}, categories: {} })
-
-                                    //             let uikitSort = ['label']
-
-                                    //             const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-                                    //             const categories = sortBy(Object.values(designList.categories), 'label')
-                                    //             categories.unshift({
-                                    //                 id: 'all',
-                                    //                 label: __('All'),
-                                    //                 count: 0,
-                                    //             })
-
-                                    //             const newUiKits = uikits.reduce((uiKits, uiKit) => {
-                                    //                 uiKits[uiKit.id] = {
-                                    //                     uiKit,
-                                    //                     count: 0,
-                                    //                 }
-                                    //                 return uiKits
-                                    //             }, {})
-
-                                    //             const newCategories = categories.reduce((categories, category) => {
-                                    //                 categories[category.id] = {
-                                    //                     category,
-                                    //                     count: 0,
-                                    //                 }
-                                    //                 return categories
-                                    //             }, {})
-
-                                    //             if (newCategories['all']) {
-                                    //                 newCategories['all'].count = Object.values(JSON.parse(data.data)).length
-                                    //                 // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-                                    //             }
-
-                                    //             Object.values(JSON.parse(data.data)).forEach(design => {
-                                    //                 if (design.uikit && newUiKits[design.uikit]) {
-                                    //                     newUiKits[design.uikit].count++
-                                    //                 }
-                                    //                 design.categories.forEach(category => {
-                                    //                     if (category && newCategories[category]) {
-                                    //                         newCategories[category].count++
-                                    //                     }
-                                    //                 })
-                                    //             })
-
-                                    //             setAttributes({
-                                    //                 uikits: Object.values(newUiKits),
-                                    //                 category: Object.values(newCategories)
-                                    //             });
-                                    //         },
-                                    //         error: function (err) {
-                                    //             console.log(err);
-                                    //         }
-                                    //     });
-                                    // });
-
-
-                                    // const results = await apiFetch({
-                                    //     path: `/stackable/v2/design_library`,
-                                    //     method: 'GET',
-                                    // })
-                                    // let designLibrary = await results
-
-                                    // this.props.setAttributes({
-                                    //     template: Object.values(designLibrary.v3),
-                                    //     newTemplate: Object.values(designLibrary.v3)
-                                    // });
-
-                                    // const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
-                                    //     const design = designLibrary.v3[name]
-                                    //     const { categories, uikit } = design
-
-                                    //     if (typeof output.uikits[uikit] === 'undefined') {
-                                    //         output.uikits[uikit] = {
-                                    //             id: uikit,
-                                    //             label: design.uikit,
-                                    //             plan: design.plan,
-                                    //             count: 0,
-                                    //         }
-                                    //     }
-
-                                    //     categories.forEach(category => {
-                                    //         if (typeof output.categories[category] === 'undefined') {
-                                    //             output.categories[category] = {
-                                    //                 id: category,
-                                    //                 label: category,
-                                    //                 count: 0,
-                                    //             }
-                                    //         }
-                                    //     })
-                                    //     return output
-                                    // }, { uikits: {}, categories: {} })
-
-                                    // let uikitSort = ['label']
-
-                                    // const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-                                    // const categories = sortBy(Object.values(designList.categories), 'label')
-                                    // categories.unshift({
-                                    //     id: 'all',
-                                    //     label: __('All'),
-                                    //     count: 0,
-                                    // })
-
-                                    // const newUiKits = uikits.reduce((uiKits, uiKit) => {
-                                    //     uiKits[uiKit.id] = {
-                                    //         uiKit,
-                                    //         count: 0,
-                                    //     }
-                                    //     return uiKits
-                                    // }, {})
-
-                                    // const newCategories = categories.reduce((categories, category) => {
-                                    //     categories[category.id] = {
-                                    //         category,
-                                    //         count: 0,
-                                    //     }
-                                    //     return categories
-                                    // }, {})
-
-                                    // if (newCategories['all']) {
-                                    //     newCategories['all'].count = Object.values(designLibrary.v3).length
-                                    //     // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-                                    // }
-
-                                    // Object.values(designLibrary.v3).forEach(design => {
-                                    //     if (design.uikit && newUiKits[design.uikit]) {
-                                    //         newUiKits[design.uikit].count++
-                                    //     }
-                                    //     design.categories.forEach(category => {
-                                    //         if (category && newCategories[category]) {
-                                    //             newCategories[category].count++
-                                    //         }
-                                    //     })
-                                    // })
-
-                                    // this.props.setAttributes({
-                                    //     uikits: Object.values(newUiKits),
-                                    //     category: Object.values(newCategories)
-                                    // });
-                                    // console.log(uikits,
-                                    //     category, template)
-
-                                case 3:
+                                case 2:
                                 case 'end':
                                     return _context.stop();
                             }
@@ -60590,8 +60403,8 @@ var edit = function (_Component) {
             };
 
             var setSearch = function setSearch(search, temp, type, selectItem) {
-                console.log(search, temp);
                 var library = temp != undefined ? temp : template;
+
                 if (type === "category" && selectItem !== 'all') {
                     library = library.filter(function (_ref2) {
                         var categories = _ref2.categories;
@@ -60600,12 +60413,14 @@ var edit = function (_Component) {
                         });
                     });
                 }
+
                 if (type === "uikit") {
                     library = library.filter(function (_ref3) {
                         var uikit = _ref3.uikit;
                         return uikit === selectItem;
                     });
                 }
+
                 var terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ');
                 // Every search term should match a property of a design.
                 terms.forEach(function (searchTerm) {
@@ -60700,6 +60515,10 @@ var edit = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_select__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -60712,6 +60531,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -60720,11 +60542,10 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     Modal = _wp$components.Modal,
     TabPanel = _wp$components.TabPanel,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl;
+    TextControl = _wp$components.TextControl;
+
 
 var apiFetch = wp.apiFetch;
-var applyFilters = wp.hooks.applyFilters;
 
 var modal = function (_Component) {
     _inherits(modal, _Component);
@@ -60757,25 +60578,10 @@ var modal = function (_Component) {
             }
         }
     }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate(nextProps) {
-            // console.log(this.props.attributes.template, nextProps.attributes.template)
-            if (this.props.attributes.search !== nextProps.attributes.search) {
-                //     this.props.setAttributes({
-                //         template: nextProps.attributes.template
-                //     }, () => {
-                // this.selectCategory(this.props.attributes.selectcategory, nextProps.attributes.template)
-                //     });
-                // }
-                // this.props.setSearch(this.props.attributes.search)
-            }
-        }
-    }, {
         key: 'selectCategory',
         value: function selectCategory(item) {
             var _this3 = this;
 
-            console.log(item, this.props.attributes.template, this.props.attributes.category);
             this.props.attributes.category.map(function (cat, i) {
                 if (cat.category.id === item) {
                     _this3.props.setAttributes({
@@ -60789,11 +60595,12 @@ var modal = function (_Component) {
             }).filter(function (t) {
                 return t.categories[0] === item;
             });
-            console.log('newTemp', newTemp);
+
             this.props.setAttributes({
                 template: item === 'all' ? this.props.attributes.newTemplate : newTemp,
                 selectcategory: item
             });
+
             this.props.setSearch(this.props.attributes.search, item === 'all' ? this.props.attributes.newTemplate : newTemp, 'category', item);
         }
     }, {
@@ -60801,10 +60608,7 @@ var modal = function (_Component) {
         value: function selectUikit(item, library) {
             var _this4 = this;
 
-            // console.log('uikits', item)
-
             this.props.attributes.uikits.forEach(function (uikit, i) {
-                // console.log(uikit)
                 if (uikit.uiKit.id === item) {
                     _this4.props.setAttributes({
                         activeCategory: item
@@ -60812,17 +60616,18 @@ var modal = function (_Component) {
                     return;
                 }
             });
-            // console.log('this.props.attributes.newTemplate', this.props.attributes.newTemplate)
+
             var newTemp = (library != undefined ? library : this.props.attributes.newTemplate).map(function (temp, i) {
                 return temp;
             }).filter(function (t) {
                 return t.uikit === item;
             });
-            console.log(newTemp);
+
             this.props.setAttributes({
                 template: newTemp,
                 selectuikit: item
             });
+
             this.props.setSearch(this.props.attributes.search, newTemp, 'uikit', item);
         }
     }, {
@@ -60834,19 +60639,13 @@ var modal = function (_Component) {
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
                 isSelected = _props.isSelected;
-            var block_id = attributes.block_id,
-                align = attributes.align,
-                className = attributes.className,
-                newTemplate = attributes.newTemplate,
-                template = attributes.template,
+            var template = attributes.template,
                 category = attributes.category,
                 activeCategory = attributes.activeCategory,
                 uikits = attributes.uikits,
                 column = attributes.column,
                 search = attributes.search,
-                selectcategory = attributes.selectcategory,
-                selectuikit = attributes.selectuikit,
-                tabName = attributes.tabName;
+                selectcategory = attributes.selectcategory;
 
 
             var TABSTYLE = [{
@@ -60878,7 +60677,7 @@ var modal = function (_Component) {
                                 case 5:
                                     designLibrary = _context.sent;
 
-                                    // console.log(designLibrary)
+
                                     _this5.props.onSelect(designLibrary);
 
                                 case 7:
@@ -60960,7 +60759,6 @@ var modal = function (_Component) {
             });
 
             var tabSelect = function tabSelect(tabName) {
-                console.log('tabName', tabName);
                 if (tabName === 'uikit') {
                     _this5.selectUikit('Angled');
                 } else {
@@ -60983,6 +60781,99 @@ var modal = function (_Component) {
                     selectcategory: value != null ? value.value : 'all'
                 });
                 _this5.selectCategory(value != null ? value.value : 'all');
+            };
+
+            var setDoReset = function setDoReset(value) {
+                _this5.props.setAttributes({
+                    reset: value
+                });
+                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('admin-ajax.php', {
+                    params: {
+                        action: 'pbg-block-templates',
+                        reset: value
+                    }
+                }).then(function (response) {
+
+                    setAttributes({
+                        template: Object.values(JSON.parse(response.data.data)),
+                        newTemplate: Object.values(JSON.parse(response.data.data))
+                    });
+
+                    var designList = Object.keys(JSON.parse(response.data.data)).reduce(function (output, name) {
+                        var design = JSON.parse(response.data.data)[name];
+                        var categories = design.categories,
+                            uikit = design.uikit;
+
+
+                        if (typeof output.uikits[uikit] === 'undefined') {
+                            output.uikits[uikit] = {
+                                id: uikit,
+                                label: design.uikit,
+                                plan: design.plan,
+                                count: 0
+                            };
+                        }
+
+                        categories.forEach(function (category) {
+                            if (typeof output.categories[category] === 'undefined') {
+                                output.categories[category] = {
+                                    id: category,
+                                    label: category,
+                                    count: 0
+                                };
+                            }
+                        });
+                        return output;
+                    }, { uikits: {}, categories: {} });
+
+                    var uikitSort = ['label'];
+
+                    var uikits = Object(__WEBPACK_IMPORTED_MODULE_3_lodash__["sortBy"])(Object.values(designList.uikits), uikitSort);
+                    var categories = Object(__WEBPACK_IMPORTED_MODULE_3_lodash__["sortBy"])(Object.values(designList.categories), 'label');
+                    categories.unshift({
+                        id: 'all',
+                        label: __('All'),
+                        count: 0
+                    });
+
+                    var newUiKits = uikits.reduce(function (uiKits, uiKit) {
+                        uiKits[uiKit.id] = {
+                            uiKit: uiKit,
+                            count: 0
+                        };
+                        return uiKits;
+                    }, {});
+
+                    var newCategories = categories.reduce(function (categories, category) {
+                        categories[category.id] = {
+                            category: category,
+                            count: 0
+                        };
+                        return categories;
+                    }, {});
+
+                    if (newCategories['all']) {
+                        newCategories['all'].count = Object.values(JSON.parse(response.data.data)).length;
+                    }
+
+                    Object.values(JSON.parse(response.data.data)).forEach(function (design) {
+                        if (design.uikit && newUiKits[design.uikit]) {
+                            newUiKits[design.uikit].count++;
+                        }
+                        design.categories.forEach(function (category) {
+                            if (category && newCategories[category]) {
+                                newCategories[category].count++;
+                            }
+                        });
+                    });
+
+                    setAttributes({
+                        uikits: Object.values(newUiKits),
+                        category: Object.values(newCategories)
+                    });
+                }).catch(function (error) {
+                    console.log(error);
+                });
             };
 
             return wp.element.createElement(
@@ -61054,9 +60945,10 @@ var modal = function (_Component) {
                         }),
                         wp.element.createElement(Button, {
                             icon: 'image-rotate',
-                            label: __('Refresh Library')
-                            // className="ugb-modal-design-library__refresh"
-                            // onClick={ () => setDoReset( true ) }
+                            label: __('Refresh Library'),
+                            onClick: function onClick() {
+                                return setDoReset(true);
+                            }
                         }),
                         wp.element.createElement(
                             Button,

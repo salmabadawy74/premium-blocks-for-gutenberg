@@ -18,7 +18,6 @@ class PBG_Template_Helper {
     public function __construct() {
 
         add_action( 'wp_ajax_pbg-block-templates', array( $this, 'ajax_import_templates' ) );   
-        add_action( 'wp_ajax_true', array( $this, 'ajax_import_templates_reset' ) );   
         
     }
 
@@ -53,10 +52,11 @@ class PBG_Template_Helper {
      * @return void
      */
     public function ajax_import_templates() {
-
         $cache = get_transient('pbg_get_template');
-
-        if( ! $cache ) {
+        
+        $key = isset( $_GET['reset'] ) ? $_GET['reset'] : '';
+        // print_r($key);
+        if( ! $cache || $key ) {
 
             $category = $this->get_remote_templates();
 
@@ -65,26 +65,7 @@ class PBG_Template_Helper {
             $category = $this->get_cached_templates();
             
         }
-        
-            
-        wp_send_json_success( $category );
-    }
-
-    public function ajax_import_templates_reset() {
-
-        // $cache = get_transient('pbg_get_template');
-
-        // if( ! $cache ) {
-
-            $category = $this->get_remote_templates();
-
-        // } else {
-
-            // $category = $this->get_cached_templates();
-            
-        // }
-        
-            
+         
         wp_send_json_success( $category );
     }
 

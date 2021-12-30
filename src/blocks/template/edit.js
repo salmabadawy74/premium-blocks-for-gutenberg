@@ -7,23 +7,17 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { dispatch } = wp.data;
 const { createBlock, createBlocksFromInnerBlocksTemplate } = wp.blocks;
-const apiFetch = wp.apiFetch;
 const { applyFilters } = wp.hooks;
 
 
 const {
     BlockControls,
     AlignmentToolbar,
-    InspectorControls,
-    ColorPalette,
+    InspectorControls
 } = wp.blockEditor;
 
 const {
-    PanelBody,
-    SelectControl,
-    TextControl,
-    ToggleControl,
-    Toolbar,
+    PanelBody
 } = wp.components;
 
 class edit extends Component {
@@ -35,7 +29,6 @@ class edit extends Component {
     componentDidMount() {
 
         this.props.setAttributes({
-            // classMigrate: true,
             isModalOpen: false,
             search: ''
         });
@@ -51,10 +44,7 @@ class edit extends Component {
             align,
             className,
             isModalOpen,
-            newTemplate,
-            template,
-            uikits,
-            category
+            template
         } = attributes;
 
 
@@ -62,16 +52,13 @@ class edit extends Component {
             setAttributes({
                 isModalOpen: value
             });
-            console.log(template)
 
             axios.get('admin-ajax.php', {
                 params: {
-                    // action: 'pbg-block-templates',
-                    action: 'true'
+                    action: 'pbg-block-templates'
                 }
             })
                 .then(function (response) {
-                    console.log(response.data);
                     setAttributes({
                         template: Object.values(JSON.parse(response.data.data)),
                         newTemplate: Object.values(JSON.parse(response.data.data))
@@ -129,7 +116,6 @@ class edit extends Component {
 
                     if (newCategories['all']) {
                         newCategories['all'].count = Object.values(JSON.parse(response.data.data)).length
-                        // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
                     }
 
                     Object.values(JSON.parse(response.data.data)).forEach(design => {
@@ -151,182 +137,6 @@ class edit extends Component {
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
-            // jQuery(document).ready(function ($) {
-            //     $.ajax({
-            //         type: 'GET',
-            //         url: 'admin-ajax.php',
-            //         data: { 'action': 'pbg-block-templates' },
-            //         success: function (data) {
-            //             console.log('data', data);
-            //             setAttributes({
-            //                 template: Object.values(JSON.parse(data.data)),
-            //                 newTemplate: Object.values(JSON.parse(data.data))
-            //             });
-            //             const designList = Object.keys(JSON.parse(data.data)).reduce((output, name) => {
-            //                 const design = JSON.parse(data.data)[name]
-            //                 const { categories, uikit } = design
-
-            //                 if (typeof output.uikits[uikit] === 'undefined') {
-            //                     output.uikits[uikit] = {
-            //                         id: uikit,
-            //                         label: design.uikit,
-            //                         plan: design.plan,
-            //                         count: 0,
-            //                     }
-            //                 }
-
-            //                 categories.forEach(category => {
-            //                     if (typeof output.categories[category] === 'undefined') {
-            //                         output.categories[category] = {
-            //                             id: category,
-            //                             label: category,
-            //                             count: 0,
-            //                         }
-            //                     }
-            //                 })
-            //                 return output
-            //             }, { uikits: {}, categories: {} })
-
-            //             let uikitSort = ['label']
-
-            //             const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-            //             const categories = sortBy(Object.values(designList.categories), 'label')
-            //             categories.unshift({
-            //                 id: 'all',
-            //                 label: __('All'),
-            //                 count: 0,
-            //             })
-
-            //             const newUiKits = uikits.reduce((uiKits, uiKit) => {
-            //                 uiKits[uiKit.id] = {
-            //                     uiKit,
-            //                     count: 0,
-            //                 }
-            //                 return uiKits
-            //             }, {})
-
-            //             const newCategories = categories.reduce((categories, category) => {
-            //                 categories[category.id] = {
-            //                     category,
-            //                     count: 0,
-            //                 }
-            //                 return categories
-            //             }, {})
-
-            //             if (newCategories['all']) {
-            //                 newCategories['all'].count = Object.values(JSON.parse(data.data)).length
-            //                 // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-            //             }
-
-            //             Object.values(JSON.parse(data.data)).forEach(design => {
-            //                 if (design.uikit && newUiKits[design.uikit]) {
-            //                     newUiKits[design.uikit].count++
-            //                 }
-            //                 design.categories.forEach(category => {
-            //                     if (category && newCategories[category]) {
-            //                         newCategories[category].count++
-            //                     }
-            //                 })
-            //             })
-
-            //             setAttributes({
-            //                 uikits: Object.values(newUiKits),
-            //                 category: Object.values(newCategories)
-            //             });
-            //         },
-            //         error: function (err) {
-            //             console.log(err);
-            //         }
-            //     });
-            // });
-
-
-            // const results = await apiFetch({
-            //     path: `/stackable/v2/design_library`,
-            //     method: 'GET',
-            // })
-            // let designLibrary = await results
-
-            // this.props.setAttributes({
-            //     template: Object.values(designLibrary.v3),
-            //     newTemplate: Object.values(designLibrary.v3)
-            // });
-
-            // const designList = Object.keys(designLibrary.v3).reduce((output, name) => {
-            //     const design = designLibrary.v3[name]
-            //     const { categories, uikit } = design
-
-            //     if (typeof output.uikits[uikit] === 'undefined') {
-            //         output.uikits[uikit] = {
-            //             id: uikit,
-            //             label: design.uikit,
-            //             plan: design.plan,
-            //             count: 0,
-            //         }
-            //     }
-
-            //     categories.forEach(category => {
-            //         if (typeof output.categories[category] === 'undefined') {
-            //             output.categories[category] = {
-            //                 id: category,
-            //                 label: category,
-            //                 count: 0,
-            //             }
-            //         }
-            //     })
-            //     return output
-            // }, { uikits: {}, categories: {} })
-
-            // let uikitSort = ['label']
-
-            // const uikits = sortBy(Object.values(designList.uikits), uikitSort)
-            // const categories = sortBy(Object.values(designList.categories), 'label')
-            // categories.unshift({
-            //     id: 'all',
-            //     label: __('All'),
-            //     count: 0,
-            // })
-
-            // const newUiKits = uikits.reduce((uiKits, uiKit) => {
-            //     uiKits[uiKit.id] = {
-            //         uiKit,
-            //         count: 0,
-            //     }
-            //     return uiKits
-            // }, {})
-
-            // const newCategories = categories.reduce((categories, category) => {
-            //     categories[category.id] = {
-            //         category,
-            //         count: 0,
-            //     }
-            //     return categories
-            // }, {})
-
-            // if (newCategories['all']) {
-            //     newCategories['all'].count = Object.values(designLibrary.v3).length
-            //     // newCategories.all.label = '    ' // Spaces so we will be first when sorting.
-            // }
-
-            // Object.values(designLibrary.v3).forEach(design => {
-            //     if (design.uikit && newUiKits[design.uikit]) {
-            //         newUiKits[design.uikit].count++
-            //     }
-            //     design.categories.forEach(category => {
-            //         if (category && newCategories[category]) {
-            //             newCategories[category].count++
-            //         }
-            //     })
-            // })
-
-            // this.props.setAttributes({
-            //     uikits: Object.values(newUiKits),
-            //     category: Object.values(newCategories)
-            // });
-            // console.log(uikits,
-            //     category, template)
         }
 
         const replaceBlockWithAttributes = (blockName, attributes, innerBlocks) => {
@@ -341,15 +151,17 @@ class edit extends Component {
 
 
         const setSearch = (search, temp, type, selectItem) => {
-            console.log(search, temp)
             let library = (temp != undefined ? temp : template);
+
             if (type === "category" && selectItem !== 'all') {
                 library = library.filter(({ categories }) => categories.some(cat => selectItem.includes(cat)))
             }
+
             if (type === "uikit") {
                 library = library.filter(({ uikit }) => uikit === selectItem)
 
             }
+
             const terms = search.toLowerCase().replace(/\s+/, ' ').trim().split(' ')
             // Every search term should match a property of a design.
             terms.forEach(searchTerm => {
