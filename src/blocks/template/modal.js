@@ -62,13 +62,16 @@ class modal extends Component {
 
 
     selectUikit(item, library) {
+
         this.props.attributes.uikits.forEach((uikit, i) => {
+
             if (uikit.uiKit.id === item) {
                 this.props.setAttributes({
                     activeCategory: item
                 });
                 return;
             }
+
         })
 
         let newTemp = (library != undefined ? library : this.props.attributes.newTemplate).map((temp, i) => {
@@ -86,7 +89,7 @@ class modal extends Component {
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props;
+        const { attributes, setAttributes } = this.props;
 
         const {
             template,
@@ -150,7 +153,7 @@ class modal extends Component {
             </li>
         });
 
-        const options = category.map((item, i) => {
+        const options = category.map((item) => {
             return { value: item.category.id, label: item.category.label }
         });
 
@@ -173,17 +176,21 @@ class modal extends Component {
         }
 
         const handleChange = (value) => {
+
             this.props.setAttributes({
                 activeCategory: value != null ? value.value : 'all',
                 selectcategory: value != null ? value.value : 'all'
             });
+
             this.selectCategory(value != null ? value.value : 'all')
         }
 
         const setDoReset = (value) => {
+
             this.props.setAttributes({
                 reset: value
             });
+
             axios.get('admin-ajax.php', {
                 params: {
                     action: 'pbg-block-templates',
@@ -226,6 +233,7 @@ class modal extends Component {
 
                     const uikits = sortBy(Object.values(designList.uikits), uikitSort)
                     const categories = sortBy(Object.values(designList.categories), 'label')
+
                     categories.unshift({
                         id: 'all',
                         label: __('All'),
@@ -256,6 +264,7 @@ class modal extends Component {
                         if (design.uikit && newUiKits[design.uikit]) {
                             newUiKits[design.uikit].count++
                         }
+
                         design.categories.forEach(category => {
                             if (category && newCategories[category]) {
                                 newCategories[category].count++

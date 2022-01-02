@@ -588,9 +588,9 @@ class PBG_Blocks_Helper {
 			case 'premium/fancy-text':
 				$css += $this->get_fancy_text_css( $blockattr, $block_id );
 				break;
-				case 'premium/template':
-					$css += $this->get_test_css( $blockattr, $block_id );
-					break;
+				// case 'premium/template':
+				// 	$css += $this->get_test_css( $blockattr, $block_id );
+				// 	break;
 			case 'premium/accordion':
 				$css += $this->get_accordion_css( $blockattr, $block_id );
 				break;

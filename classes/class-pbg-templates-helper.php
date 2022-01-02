@@ -31,42 +31,43 @@ class PBG_Template_Helper {
 
             if ( file_exists( $dir . '/' . $file_name . '.json' ) ) {
 
-                $data = $this->ast_block_templates_get_filesystem()->get_contents( $dir . '/' . $file_name . '.json' );
+                $template = $this->ast_block_templates_get_filesystem()->get_contents( $dir . '/' . $file_name . '.json' );
 
-                if ( ! empty( $data ) ) {
+                if ( ! empty( $template ) ) {
 
-                    update_site_option( $file_name, $data );
+                    update_site_option( $file_name, $template );
 
-                    $this->get_upload_dir($data);
+                    $this->get_upload_dir($template);
 
-                    return $data;
+                    return $template;
                 }
             }
         }
     }
 
     /**
-     * Import category
+     * Import template
      *
      * @since 1.0.0
      * @return void
      */
     public function ajax_import_templates() {
+
         $cache = get_transient('pbg_get_template');
         
         $key = isset( $_GET['reset'] ) ? $_GET['reset'] : '';
-        // print_r($key);
+        
         if( ! $cache || $key ) {
 
-            $category = $this->get_remote_templates();
+            $template = $this->get_remote_templates();
 
         } else {
 
-            $category = $this->get_cached_templates();
+            $template = $this->get_cached_templates();
             
         }
          
-        wp_send_json_success( $category );
+        wp_send_json_success( $template );
     }
 
 

@@ -59,10 +59,12 @@ class edit extends Component {
                 }
             })
                 .then(function (response) {
+
                     setAttributes({
                         template: Object.values(JSON.parse(response.data.data)),
                         newTemplate: Object.values(JSON.parse(response.data.data))
                     });
+
                     const designList = Object.keys(JSON.parse(response.data.data)).reduce((output, name) => {
                         const design = JSON.parse(response.data.data)[name]
                         const { categories, uikit } = design
@@ -92,6 +94,7 @@ class edit extends Component {
 
                     const uikits = sortBy(Object.values(designList.uikits), uikitSort)
                     const categories = sortBy(Object.values(designList.categories), 'label')
+
                     categories.unshift({
                         id: 'all',
                         label: __('All'),
@@ -119,9 +122,11 @@ class edit extends Component {
                     }
 
                     Object.values(JSON.parse(response.data.data)).forEach(design => {
+
                         if (design.uikit && newUiKits[design.uikit]) {
                             newUiKits[design.uikit].count++
                         }
+
                         design.categories.forEach(category => {
                             if (category && newCategories[category]) {
                                 newCategories[category].count++
