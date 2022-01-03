@@ -9,7 +9,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-
+import map from 'lodash/map';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 
@@ -18,7 +18,10 @@ const {
     Toolbar,
     SelectControl,
     TextControl,
-    ToggleControl
+    ToggleControl,
+    Button,
+    ButtonGroup,
+    RangeControl
 } = wp.components;
 
 const { InspectorControls } = wp.blockEditor;
@@ -91,6 +94,7 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
+            backgroundType
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -137,6 +141,14 @@ class edit extends Component {
 
         const ALIGNS = ["left", "center", "right"];
         const REVALIGNS = ["right", "center", "left"];
+        const gradTypes = [
+            { key: 'linear', name: __('Linear') },
+            { key: 'radial', name: __('Radial') },
+        ];
+        const bgType = [
+            { key: 'solid', name: __('Solid') },
+            { key: 'gradient', name: __('Gradient') },
+        ];
         switch (align) {
             case "left":
                 setAttributes({ selfAlign: "flex-start" });
@@ -627,49 +639,152 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumBackground
-                            type="color"
-                            colorValue={containerStyles[0].containerBack}
-                            onChangeColor={newValue =>
-                                saveContainerStyle({
-                                    containerBack: newValue,
-                                })
-                            }
-                            opacityValue={containerStyles[0].containerOpacity}
-                            onChangeOpacity={value =>
-                                saveContainerStyle({ containerOpacity: value })
-                            }
-                        />
-                        <PremiumBackground
-                            imageID={containerStyles[0].backgroundImageID}
-                            imageURL={containerStyles[0].backgroundImageURL}
-                            backgroundPosition={containerStyles[0].backgroundPosition}
-                            backgroundRepeat={containerStyles[0].backgroundRepeat}
-                            backgroundSize={containerStyles[0].backgroundSize}
-                            fixed={containerStyles[0].fixed}
-                            onSelectMedia={media => {
-                                saveContainerStyle({
-                                    backgroundImageID: media.id,
-                                    backgroundImageURL: media.url
-                                });
-                            }}
-                            onRemoveImage={value =>
-                                saveContainerStyle({
-                                    backgroundImageURL: "",
-                                    backgroundImageID: ""
-                                })
-                            }
-                            onChangeBackPos={newValue =>
-                                saveContainerStyle({ backgroundPosition: newValue })
-                            }
-                            onchangeBackRepeat={newValue =>
-                                saveContainerStyle({ backgroundRepeat: newValue })
-                            }
-                            onChangeBackSize={newValue =>
-                                saveContainerStyle({ backgroundSize: newValue })
-                            }
-                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
-                        />
+                        <div className="kt-btn-size-settings-container">
+                            <h2 className="kt-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
+                            <ButtonGroup className="kt-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
+                                {map(bgType, ({ name, key }) => (
+                                    <Button
+                                        key={key}
+                                        className="kt-btn-size-btn"
+                                        isSmall
+                                        onClick={() => setAttributes({ backgroundType: key })}
+                                    >
+                                        { name}
+                                    </Button>
+                                ))}
+                            </ButtonGroup>
+                        </div>
+                        {'solid' === backgroundType && (
+                            <div className="kt-inner-sub-section">
+                                <PremiumBackground
+                                    type="color"
+                                    colorValue={containerStyles[0].containerBack}
+                                    onChangeColor={newValue =>
+                                        saveContainerStyle({
+                                            containerBack: newValue,
+                                        })
+                                    }
+                                    opacityValue={containerStyles[0].containerOpacity}
+                                    onChangeOpacity={value =>
+                                        saveContainerStyle({ containerOpacity: value })
+                                    }
+                                />
+                                <PremiumBackground
+                                    imageID={containerStyles[0].backgroundImageID}
+                                    imageURL={containerStyles[0].backgroundImageURL}
+                                    backgroundPosition={containerStyles[0].backgroundPosition}
+                                    backgroundRepeat={containerStyles[0].backgroundRepeat}
+                                    backgroundSize={containerStyles[0].backgroundSize}
+                                    fixed={containerStyles[0].fixed}
+                                    onSelectMedia={media => {
+                                        saveContainerStyle({
+                                            backgroundImageID: media.id,
+                                            backgroundImageURL: media.url
+                                        });
+                                    }}
+                                    onRemoveImage={value =>
+                                        saveContainerStyle({
+                                            backgroundImageURL: "",
+                                            backgroundImageID: ""
+                                        })
+                                    }
+                                    onChangeBackPos={newValue =>
+                                        saveContainerStyle({ backgroundPosition: newValue })
+                                    }
+                                    onchangeBackRepeat={newValue =>
+                                        saveContainerStyle({ backgroundRepeat: newValue })
+                                    }
+                                    onChangeBackSize={newValue =>
+                                        saveContainerStyle({ backgroundSize: newValue })
+                                    }
+                                    onChangeFixed={check => saveContainerStyle({ fixed: check })}
+                                />
+                            </div>
+                        )}
+                        {'gradient' === backgroundType && (
+                            <div className="kt-inner-sub-section">
+                                <AdvancedPopColorControl
+                                    label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
+                                    colorValue={containerStyles[0].gradientColorOne}
+                                    colorDefault={''}
+                                    onColorChange={value => {
+                                        console.log(value)
+                                    }}
+                                />
+                                <RangeControl
+                                    label={__('Location', 'premium-block-for-gutenberg')}
+                                    value={containerStyles[0].gradientLocationOne}
+                                    onChange={(value) => {
+                                        console.log(value)
+                                    }}
+                                    min={0}
+                                    max={100}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
+                                    colorValue={containerStyles[0].gradientColorTwo}
+                                    colorDefault={'#777777'}
+                                    onColorChange={value => {
+                                        console.log(value)
+                                    }}
+                                />
+                                <RangeControl
+                                    label={__('Location', 'premium-block-for-gutenberg')}
+                                    value={containerStyles[0].gradientLocationTwo}
+                                    onChange={(value) => {
+                                        console.log(value)
+                                    }}
+                                    min={0}
+                                    max={100}
+                                />
+                                <div className="kt-btn-size-settings-container">
+                                    <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
+                                    <ButtonGroup className="kt-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
+                                        {map(gradTypes, ({ name, key }) => (
+                                            <Button
+                                                key={key}
+                                                className="kt-btn-size-btn"
+                                                isSmall
+                                                onClick={() => {
+                                                    saveContainerStyle({ gradientType: key })
+                                                }}
+                                            >
+                                                { name}
+                                            </Button>
+                                        ))}
+                                    </ButtonGroup>
+                                </div>
+                                { 'radial' !== (containerStyles[0].gradientType) && (
+                                    <RangeControl
+                                        label={__('Gradient Angle', 'premium-block-for-gutenberg')}
+                                        value={containerStyles[0].gradientType}
+                                        onChange={(value) => {
+                                            saveContainerStyle({ gradientType: value });
+                                        }}
+                                        min={0}
+                                        max={360}
+                                    />
+                                )}
+                                { 'radial' === (containerStyles[0].gradientType) && (
+                                    <SelectControl
+                                        label={__('Gradient Position', 'premium-block-for-gutenberg')}
+                                        value={(containerStyles[0].gradientPosition)}
+                                        options={[
+                                            { value: 'center top', label: __('Center Top', 'premium-block-for-gutenberg') },
+                                            { value: 'center center', label: __('Center Center', 'premium-block-for-gutenberg') },
+                                            { value: 'center bottom', label: __('Center Bottom', 'premium-block-for-gutenberg') },
+                                            { value: 'left top', label: __('Left Top', 'premium-block-for-gutenberg') },
+                                            { value: 'left center', label: __('Left Center', 'premium-block-for-gutenberg') },
+                                            { value: 'left bottom', label: __('Left Bottom', 'premium-block-for-gutenberg') },
+                                            { value: 'right top', label: __('Right Top', 'premium-block-for-gutenberg') },
+                                            { value: 'right center', label: __('Right Center', 'premium-block-for-gutenberg') },
+                                            { value: 'right bottom', label: __('Right Bottom', 'premium-block-for-gutenberg') },
+                                        ]}
+                                        onChange={value => saveContainerStyle({ gradientPosition: value })}
+                                    />
+                                )}
+                            </div>
+                        )}
                         <PremiumBorder
                             borderType={containerStyles[0].borderType}
                             borderWidth={containerStyles[0].borderWidth}
@@ -710,7 +825,6 @@ class edit extends Component {
                                     shadowColor: newColor.rgb
                                 })
                             }
-
                             }
                             onChangeBlur={newBlur =>
                                 saveContainerStyle({

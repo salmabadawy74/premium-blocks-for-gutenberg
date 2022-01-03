@@ -10,7 +10,6 @@ const {
 } = wp.components;
 
 const { MediaUpload } = wp.blockEditor;
-import PremiumRangeControl from './premium-range-control';
 import AdvancedPopColorControl from './Color Control/ColorComponent'
 
 
@@ -111,18 +110,6 @@ export default function PremiumBackground(props) {
 
     return type === "color" ? (
         <Fragment>
-            {/* <ColorPalette
-                value={colorValue}
-                onChange={onChangeColor}
-                allowReset={true}
-            /> */}
-            {/* <PremiumRangeControl
-                label={__(`Background Opacity`)}
-                value={opacityValue}
-                onChange={onChangeOpacity}
-                showUnit={false}
-                defaultValue={''}
-            /> */}
             <AdvancedPopColorControl
                 label={__("Background Color", '')}
                 colorValue={colorValue}

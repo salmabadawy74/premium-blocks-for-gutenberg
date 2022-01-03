@@ -285,6 +285,15 @@ class edit extends Component {
             }
         ];
 
+        const gradTypes = [
+            { key: 'linear', name: __('Linear') },
+            { key: 'radial', name: __('Radial') },
+        ];
+        const bgType = [
+            { key: 'solid', name: __('Solid') },
+            { key: 'gradient', name: __('Gradient') },
+        ];
+
         const mainClasses = classnames(className, "premium-icon-box");
 
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);

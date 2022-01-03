@@ -153,6 +153,13 @@ const testimonialsAttrs = {
                 shadowVertical: '',
                 shadowPosition: '',
                 paddingUnit: 'px',
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
             }
         ]
     }
