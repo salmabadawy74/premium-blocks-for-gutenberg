@@ -58,7 +58,7 @@ const save = props => {
     return (
         <div
         >
-            <p className="premium-template">Test1</p>
+            <p className="premium-template"></p>
         </div>
     );
 };

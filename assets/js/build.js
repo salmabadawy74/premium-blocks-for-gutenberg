@@ -72493,11 +72493,7 @@ var save = function save(props) {
     return wp.element.createElement(
         'div',
         null,
-        wp.element.createElement(
-            'p',
-            { className: 'premium-template' },
-            'Test1'
-        )
+        wp.element.createElement('p', { className: 'premium-template' })
     );
 };
 
