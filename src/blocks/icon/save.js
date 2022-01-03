@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from "../../components/hex-to-rgba"
 
 const save = props => {
 
@@ -56,9 +55,7 @@ const save = props => {
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: containerStyles[0].backgroundColor
-                    ? hexToRgba(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity)
-                    : "transparent",
+                backgroundColor: containerStyles[0].backgroundColor,
                 backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : "none",
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -93,9 +90,7 @@ const save = props => {
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
                         color: iconStyles[0].iconColor || "#6ec1e4",
-                        backgroundColor: iconStyles[0].iconBack
-                            ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
-                            : "transparent",
+                        backgroundColor: iconStyles[0].iconBack,
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

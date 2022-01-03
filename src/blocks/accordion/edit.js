@@ -14,8 +14,6 @@ const {
     Toolbar,
     PanelBody,
     SelectControl,
-    Dropdown,
-    Button
 } = wp.components;
 
 const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
@@ -61,7 +59,7 @@ class PremiumAccordion extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, clientId, className } = this.props;
+        const { isSelected, setAttributes, className } = this.props;
 
         const {
             accordionId,
@@ -72,7 +70,6 @@ class PremiumAccordion extends Component {
             arrowStyles,
             descStyles,
             contentType,
-            titleEditBorder,
             textShadowColor,
             textShadowBlur,
             textShadowHorizontal,
@@ -170,12 +167,10 @@ class PremiumAccordion extends Component {
 
         const onAccordionChange = (attr, value, index) => {
             const items = repeaterItems;
-
             return items.map(function (item, currIndex) {
                 if (index == currIndex) {
                     item[attr] = value;
                 }
-
                 return item;
             });
         };
@@ -353,7 +348,7 @@ class PremiumAccordion extends Component {
                         <Fragment>
 
                             <AdvancedPopColorControl
-                                label={__("Text Color", '')}
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
                                 colorValue={titleStyles[0].titleColor}
                                 colorDefault={''}
                                 onColorChange={value =>
@@ -698,6 +693,7 @@ class PremiumAccordion extends Component {
             </Fragment>
         ];
     }
+
 }
 
 export default PremiumAccordion;

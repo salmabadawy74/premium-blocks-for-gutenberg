@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Select from 'react-select';
 import debounce from 'lodash/debounce';
 const { InspectorControls } = wp.blockEditor;
-const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner, ServerSideRender } = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner } = wp.components;
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
@@ -179,7 +179,7 @@ export class edit extends Component {
     getMailChimpTags() {
 
         if (!this.state.api) {
-            this.setState({ listTags: ["salma"], listTagsLoaded: true });
+            this.setState({ listTags: [], listTagsLoaded: true });
             return;
         }
         this.setState({ isFetchingTags: true });
@@ -228,17 +228,15 @@ export class edit extends Component {
         const { attributes:
             { block_id,
                 api,
-                list_id,
                 columnGap,
                 rowGap,
                 eMail,
                 inputStyles,
                 btnStyles,
-                messageStyle,
                 mailchimp },
             isSelected,
-            setAttributes, className } =
-            this.props;
+            setAttributes,
+            className } = this.props;
         const { list, listsLoaded, isFetching, isSavedAPI, listAttr, isFetchingAttributes, listAttrLoaded, isFetchingGroups, listGroups, listGroupLoaded, isFetchingTags, listTags, listTagsLoaded } = this.state
         const m = Array.isArray(list) && list.length,
             g = Array.isArray(listGroups) && listGroups.length,
@@ -337,17 +335,17 @@ export class edit extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
                     <PanelBody
-                        title={__("General")}
+                        title={__("General", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
                         <TextControl
-                            label={__(`E-mail`)}
+                            label={__(`E-mail`, 'premium-block-for-gutenberg')}
                             value={eMail}
                             onChange={(value) => setAttributes({ eMail: value })}
                         />
                         <TextControl
-                            label={__(`Mailchimp Api Key`)}
+                            label={__(`Mailchimp Api Key`, 'premium-block-for-gutenberg')}
                             value={this.state.api}
                             onChange={e => this.setState({ api: e })}
                         />
@@ -392,7 +390,7 @@ export class edit extends Component {
                                         { (!listGroupLoaded ? this.getMailChimpGroups() : '')}
                                         { !Array.isArray(listGroups) ?
                                             <Spinner /> :
-                                            __('No group found.', '')}
+                                            __('No group found.', 'premium-block-for-gutenberg')}
                                     </Fragment>
 
                                 )}
@@ -421,7 +419,7 @@ export class edit extends Component {
                                         { (!listTagsLoaded ? this.getMailChimpTags() : '')}
                                         { !Array.isArray(listTags) ?
                                             <Spinner /> :
-                                            __('No Tags found.', '')}
+                                            __('No Tags found.', 'premium-block-for-gutenberg')}
                                     </Fragment>
 
                                 )}
@@ -440,22 +438,19 @@ export class edit extends Component {
                                     />
                                 </Fragment>
                                 }
+                                <ToggleControl
+                                    label={__('Double in Option', 'premium-block-for-gutenberg')}
+                                    checked={mailchimp[0]['doubleOption']}
+                                    onChange={(value) => saveMailChimp({ doubleOption: value })}
+                                />
                             </Fragment>
                             }
-
-
-
                             {/* ///////////////////////////////////// TAGS //////////////////////////////////////// */}
 
                         </Fragment>}
 
-                        <ToggleControl
-                            label={__('Double in Option')}
-                            checked={mailchimp[0]['doubleOption']}
-                            onChange={(value) => saveMailChimp({ doubleOption: value })}
-                        />
                         <PremiumRangeControl
-                            label={__("Column Gap")}
+                            label={__("Column Gap", 'premium-block-for-gutenberg')}
                             value={columnGap}
                             onChange={(newValue) =>
                                 setAttributes({ columnGap: newValue })
@@ -464,7 +459,7 @@ export class edit extends Component {
                             showUnit={false}
                         />
                         <PremiumRangeControl
-                            label={__("Row Gap")}
+                            label={__("Row Gap", 'premium-block-for-gutenberg')}
                             value={rowGap}
                             onChange={(newValue) =>
                                 setAttributes({ rowGap: newValue })
@@ -474,38 +469,38 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Input Style")}
+                        title={__("Input Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__(`Label`)}
+                            label={__(`Label`, 'premium-block-for-gutenberg')}
                             checked={inputStyles[0].showLabel}
                             onChange={(value) =>
                                 saveInputStyle({ showLabel: value })
                             }
                         />
                         <TextControl
-                            label={__(`Label`)}
+                            label={__(`Label`, 'premium-block-for-gutenberg')}
                             value={inputStyles[0].label}
                             onChange={(newURL) => saveInputStyle({ url: newURL })}
                         />
                         <TextControl
-                            label={__(`Placeholder`)}
+                            label={__(`Placeholder`, 'premium-block-for-gutenberg')}
                             value={inputStyles[0].placeholder}
                             onChange={(newURL) =>
                                 saveInputStyle({ placeholder: newURL })
                             }
                         />
                         <ToggleControl
-                            label={__(`Required`)}
+                            label={__(`Required`, 'premium-block-for-gutenberg')}
                             checked={inputStyles[0].required}
                             onChange={(value) =>
                                 saveInputStyle({ required: value })
                             }
                         />
                         <SelectControl
-                            label={__(`Column Width`)}
+                            label={__(`Column Width`, 'premium-block-for-gutenberg')}
                             options={COLUMNS}
                             value={inputStyles[0].inputColumnWidth}
                             onChange={(value) =>
@@ -513,7 +508,7 @@ export class edit extends Component {
                             }
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", '')}
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={inputStyles[0].textColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -533,19 +528,19 @@ export class edit extends Component {
                             setAttributes={saveInputStyle}
                             fontSizeType={{
                                 value: inputStyles[0].textSizeUnit,
-                                label: __("textSizeUnit"),
+                                label: __("textSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: inputStyles[0].textSize,
-                                label: __("textSize"),
+                                label: __("textSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: inputStyles[0].textSizeMobile,
-                                label: __("textSizeMobile"),
+                                label: __("textSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: inputStyles[0].textSizeTablet,
-                                label: __("textSizeTablet"),
+                                label: __("textSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={inputStyles[0].textFontFamily}
                             weight={inputStyles[0].textWeight}
@@ -585,7 +580,7 @@ export class edit extends Component {
                         />
 
                         <AdvancedPopColorControl
-                            label={__("Background Color", '')}
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
                             colorValue={inputStyles[0].textBackColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -620,13 +615,13 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Button")}
+                        title={__("Button", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
 
                         <SelectControl
-                            label={__(`Column Width`)}
+                            label={__(`Column Width`, 'premium-block-for-gutenberg')}
                             options={COLUMNS}
                             value={btnStyles[0].btnColumn}
                             onChange={(value) =>
@@ -634,19 +629,19 @@ export class edit extends Component {
                             }
                         />
                         <SelectControl
-                            label={__("Button Size")}
+                            label={__("Button Size", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].buttonSize}
                             onChange={(value) => saveButtonStyle({ buttonSize: value })}
                             options={[
-                                { value: "small", label: __("Small") },
-                                { value: "medium", label: __("Medium") },
-                                { value: "large", label: __("Large") },
-                                { value: "extralarge", label: __("Extra Large") },
-                                { value: "full", label: __("Full") },
+                                { value: "small", label: __("Small", 'premium-block-for-gutenberg') },
+                                { value: "medium", label: __("Medium", 'premium-block-for-gutenberg') },
+                                { value: "large", label: __("Large", 'premium-block-for-gutenberg') },
+                                { value: "extralarge", label: __("Extra Large", 'premium-block-for-gutenberg') },
+                                { value: "full", label: __("Full", 'premium-block-for-gutenberg') },
                             ]}
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", '')}
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={btnStyles[0].btnColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -654,7 +649,7 @@ export class edit extends Component {
                             }
                         />
                         <AdvancedPopColorControl
-                            label={__("Background Color", '')}
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
                             colorValue={btnStyles[0].btnBackColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -674,19 +669,19 @@ export class edit extends Component {
                             setAttributes={saveButtonStyle}
                             fontSizeType={{
                                 value: btnStyles[0].btnSizeUnit,
-                                label: __("textSizeUnit"),
+                                label: __("textSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: btnStyles[0].btnSize,
-                                label: __("textSize"),
+                                label: __("textSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: btnStyles[0].btnSizeMobile,
-                                label: __("textSizeMobile"),
+                                label: __("textSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: btnStyles[0].btnSizeTablet,
-                                label: __("textSizeTablet"),
+                                label: __("textSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             fontFamily={btnStyles[0].btnFontFamily}
                             weight={btnStyles[0].btnWeight}
@@ -751,14 +746,14 @@ export class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Vertical Spacing")}
+                            label={__("Vertical Spacing", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].vPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ vPaddingSubmit: value })}
                             defaultValue={0}
                             showUnit={false}
                         />
                         <PremiumRangeControl
-                            label={__("Horizontal Spacing")}
+                            label={__("Horizontal Spacing", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].hPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ hPaddingSubmit: value })}
                             defaultValue={0}

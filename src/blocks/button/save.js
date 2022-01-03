@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from "../../components/hex-to-rgba"
 
 const { RichText } = wp.blockEditor;
 
@@ -19,7 +18,6 @@ const save = props => {
         slideColor,
         block_id,
         hideDesktop,
-        classMigrate,
         hideTablet,
         hideMobile,
         textStyles,
@@ -67,9 +65,7 @@ const save = props => {
                 target={btnTarget ? "_blank" : "_self"}
                 style={{
                     color: btnStyles[0].textColor,
-                    backgroundColor: btnStyles[0].backColor
-                        ? hexToRgba(btnStyles[0].backColor, btnStyles[0].backOpacity)
-                        : "transparent",
+                    backgroundColor: btnStyles[0].backColor,
                     fontFamily: textStyles[0].textFontFamily,
                     letterSpacing: textStyles[0].textLetter + "px",
                     textTransform: textStyles[0].textUpper ? "uppercase" : "none",

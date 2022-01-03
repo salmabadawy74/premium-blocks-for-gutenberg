@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from "../../components/hex-to-rgba"
 
 const { InnerBlocks } = wp.blockEditor;
 
@@ -46,9 +45,7 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].color
-                    ? hexToRgba(containerStyles[0].color, containerStyles[0].opacity)
-                    : "transparent",
+                backgroundColor: containerStyles[0].color,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`

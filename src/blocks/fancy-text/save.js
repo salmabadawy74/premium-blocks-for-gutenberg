@@ -6,7 +6,6 @@ export default function save(props) {
 
     const {
         block_id,
-        classMigrate,
         align,
         prefix,
         suffix,

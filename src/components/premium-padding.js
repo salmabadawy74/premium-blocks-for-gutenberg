@@ -53,9 +53,9 @@ class PremiumPadding extends Component {
         const { top, right, bottom, left, showUnits, isLinked, unit } = this.state;
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
         return (
-            <div className={`kmt-spacing-responsive`}>
+            <div className={`premium-spacing-responsive`}>
                 <header className="premium-control-label-container">
-                    <div className={`kmt-slider-title-wrap`}>
+                    <div className={`premium-slider-title-wrap`}>
                         {__("Padding")}
                     </div>
                     {showUnits && (
@@ -67,61 +67,61 @@ class PremiumPadding extends Component {
                         />
                     )}
                 </header>
-                <div className={`kmt-spacing-responsive-outer-wrapper`}>
-                    <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>
-                        <ul className={`kmt-spacing-wrapper`}>
-                            <li className={`kmt-spacing-input-item`}>
+                <div className={`premium-spacing-responsive-outer-wrapper`}>
+                    <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
+                        <ul className={`premium-spacing-wrapper`}>
+                            <li className={`premium-spacing-input-item`}>
                                 <input
                                     type="number"
                                     name="top"
                                     value={top || 0}
                                     onChange={this.onInputChange}
-                                    className={`kmt-spacing-input`}
+                                    className={`premium-spacing-input`}
                                 />
-                                <span className={`kmt-spacing-title`}>{__(`Top`)}</span>
+                                <span className={`premium-spacing-title`}>{__(`Top`)}</span>
                             </li>
-                            <li className={`kmt-spacing-input-item`}>
+                            <li className={`premium-spacing-input-item`}>
                                 <input
                                     type="number"
                                     name="right"
                                     value={right || 0}
                                     onChange={this.onInputChange}
-                                    className={`kmt-spacing-input`}
+                                    className={`premium-spacing-input`}
                                 />
-                                <span className={`kmt-spacing-title`}>{__('Right')}</span>
+                                <span className={`premium-spacing-title`}>{__('Right')}</span>
                             </li>
-                            <li className={`kmt-spacing-input-item`}>
+                            <li className={`premium-spacing-input-item`}>
                                 <input
                                     type="number"
                                     name="bottom"
                                     value={bottom || 0}
                                     onChange={this.onInputChange}
-                                    className={`kmt-spacing-input`}
+                                    className={`premium-spacing-input`}
                                 />
-                                <span className={`kmt-spacing-title`}>{__('Bottom')}</span>
+                                <span className={`premium-spacing-title`}>{__('Bottom')}</span>
                             </li>
-                            <li className={`kmt-spacing-input-item`}>
+                            <li className={`premium-spacing-input-item`}>
                                 <input
                                     type="number"
                                     name="left"
                                     value={left || 0}
                                     onChange={this.onInputChange}
-                                    className={`kmt-spacing-input`}
+                                    className={`premium-spacing-input`}
                                 />
-                                <span className={`kmt-spacing-title`}>{__('Left')}</span>
+                                <span className={`premium-spacing-title`}>{__('Left')}</span>
                             </li>
                             <li>
                                 <button
-                                    className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links connected" : "editor-unlink disconnected"
+                                    className={`linked-btn is-button dashicons dashicons-${isLinked ? "admin-links connected" : "editor-unlink disconnected"
                                         }`}
                                     onClick={this.onButtonClick}
                                 />
                             </li>
                         </ul>
                     </div>
-                    <div className="kmt-spacing-btn-reset-wrap">
+                    <div className="premium-spacing-btn-reset-wrap">
                         <button
-                            className="kmt-reset-btn "
+                            className="premium-reset-btn "
                             disabled={
                                 JSON.stringify(this.state) ===
                                 JSON.stringify(this.defaultValue)

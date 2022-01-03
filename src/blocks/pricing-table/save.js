@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import hexToRgba from "../../components/hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
@@ -53,9 +52,7 @@ const save = props => {
             className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
-                backgroundColor: tableStyles[0].tableBack
-                    ? hexToRgba(tableStyles[0].tableBack, tableStyles[0].tableOpacity)
-                    : "transparent",
+                backgroundColor: tableStyles[0].tableBack,
                 borderStyle: tableStyles[0].borderType,
                 borderWidth: borderUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
@@ -129,9 +126,7 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__price_wrap`}
                     style={{
-                        backgroundColor: priceStyles[0].priceBack
-                            ? hexToRgba(priceStyles[0].priceBack, priceStyles[0].priceOpacity)
-                            : "transparent",
+                        backgroundColor: priceStyles[0].priceBack,
                         marginTop: priceStyles[0].priceMarginT + "px",
                         marginBottom: priceStyles[0].priceMarginB + "px",
                         padding: priceStyles[0].pricePadding + "px",

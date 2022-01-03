@@ -3,7 +3,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -18,10 +17,7 @@ const {
     PanelBody,
     SelectControl,
     TextControl,
-    RangeControl,
     ToggleControl,
-    Dropdown,
-    Button
 } = wp.components;
 
 const {
@@ -65,7 +61,6 @@ class edit extends Component {
             contentAlign,
             firstHeading,
             secondHeading,
-            titleTag,
             display,
             firstStyles,
             secondStyles,
@@ -263,7 +258,6 @@ class edit extends Component {
                                         })
                                     }
                                 />
-                                <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
                                 <PremiumBackground
                                     type="color"
                                     colorValue={firstStyles[0].firstBackground}
@@ -458,7 +452,6 @@ class edit extends Component {
                                         })
                                     }
                                 />
-                                <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
                                 <PremiumBackground
                                     type="color"
                                     colorValue={secondStyles[0].secondBackground}
@@ -585,7 +578,6 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Background Color", 'premium-block-for-gutenberg')}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={containerStyles[0].containerBack}
@@ -675,7 +667,7 @@ class edit extends Component {
                     "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                 style={{
                     textAlign: contentAlign,
-                    backgroundColor: containerStyles[0].containerBack ? hexToRgba(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
+                    backgroundColor: containerStyles[0].containerBack,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,
@@ -697,7 +689,7 @@ class edit extends Component {
                                 fontSize: `${firstFontSize}${firstStyles[0].firstSizeUnit}`,
                                 display: display,
                                 color: firstStyles[0].firstColor,
-                                backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground ? hexToRgba(firstStyles[0].firstBackground, firstStyles[0].firstOpacity) : "transparent",
+                                backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
                                 backgroundImage: firstStyles[0].firstClip
                                     ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
                                     : "none",
@@ -726,7 +718,7 @@ class edit extends Component {
                                 fontSize: `${secondFontSize}${secondStyles[0].secondSizeUnit}`,
                                 display: display,
                                 color: secondStyles[0].secondColor,
-                                backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground ? hexToRgba(secondStyles[0].secondBackground, secondStyles[0].secondOpacity) : "transparent",
+                                backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
                                 backgroundImage: secondStyles[0].secondClip
                                     ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
                                     : "none",

@@ -3,9 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -16,7 +14,6 @@ const { __ } = wp.i18n;
 const {
     PanelBody,
     SelectControl,
-    RangeControl,
     ToggleControl,
     TabPanel,
 } = wp.components;
@@ -382,11 +379,6 @@ export class edit extends Component {
                                                     })
                                                 }
                                             />
-                                            <p>
-                                                {"radial" !== effect
-                                                    ? __("Background Color", 'premium-block-for-gutenberg')
-                                                    : __("Background Hover Color", 'premium-block-for-gutenberg')}
-                                            </p>
                                             <PremiumBackground
                                                 type="color"
                                                 colorValue={btnStyles[0].backColor}
@@ -562,9 +554,7 @@ export class edit extends Component {
                     onChange={value => setAttributes({ btnText: value })}
                     style={{
                         color: btnStyles[0].textColor,
-                        backgroundColor: btnStyles[0].backColor
-                            ? hexToRgba(btnStyles[0].backColor, btnStyles[0].backOpacity)
-                            : "transparent",
+                        backgroundColor: btnStyles[0].backColor,
                         fontFamily: textStyles[0].textFontFamily,
                         letterSpacing: textStyles[0].textLetter + "px",
                         fontSize: btnFontSize + textStyles[0].textSizeUnit,

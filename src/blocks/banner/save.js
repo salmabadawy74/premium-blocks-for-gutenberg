@@ -9,7 +9,6 @@ const save = props => {
     const {
         block_id,
         borderBanner,
-        imageID,
         imageURL,
         titleStyles,
         descStyles,
@@ -39,7 +38,6 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        classMigrate,
         borderWidth,
         borderTop,
         borderRight,

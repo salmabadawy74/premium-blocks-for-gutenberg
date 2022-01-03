@@ -57,7 +57,7 @@ const attributes = {
                 inputColumnWidth: '100',
                 textColor: '',
                 textFontFamily: __('Default'),
-                textSizeUnit: "",
+                textSizeUnit: "px",
                 textSize: '',
                 textSizeMobile: '',
                 textSizeTablet: '',

@@ -4,7 +4,6 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
 import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import hexToRgba from "../../components/hex-to-rgba";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 import {
@@ -180,7 +179,6 @@ class edit extends Component {
 
         const {
             block_id,
-            classMigrate,
             align,
             prefix,
             suffix,
@@ -208,11 +206,11 @@ class edit extends Component {
         const ALIGNS = ["left", "center", "right"];
         const EFFECT = [
             {
-                label: __("Typing"),
+                label: __("Typing", 'premium-block-for-gutenberg'),
                 value: "typing",
             },
             {
-                label: __("Slide"),
+                label: __("Slide", 'premium-block-for-gutenberg'),
                 value: "slide",
             },
         ];
@@ -324,7 +322,7 @@ class edit extends Component {
             setAttributes({
                 repeaterFancyText: repeaterFancyText.concat([
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         edit: true,
                     },
                 ]),
@@ -365,9 +363,7 @@ class edit extends Component {
             letter-spacing: ${fancyStyles[0].fancyTextLetter}px;
             text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
             font-style: ${fancyStyles[0].fancyTextStyle};
-            background-color: ${fancyStyles[0].fancyTextBGColor
-                    ? hexToRgba(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity)
-                    : "transparent"};
+            background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
         .premium-fancy-text-title-slide {
@@ -377,9 +373,7 @@ class edit extends Component {
             letter-spacing: ${fancyStyles[0].fancyTextLetter} + "px";
             text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
             font-style: ${fancyStyles[0].fancyTextStyle};
-            background-color: ${fancyStyles[0].fancyTextBGColor
-                    ? hexToRgba(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity)
-                    : "transparent"};
+            background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
          .typed-cursor {
@@ -392,9 +386,7 @@ class edit extends Component {
             letter-spacing: ${PreStyles[0].textLetter}px;
             text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
             font-style: ${PreStyles[0].textStyle};
-            background-color: ${PreStyles[0].textBGColor
-                    ? hexToRgba(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity)
-                    : "transparent"};
+            background-color: ${PreStyles[0].textBGColor};
         }
          .premium-fancy-text-suffix-text{
             font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
@@ -403,9 +395,7 @@ class edit extends Component {
             letter-spacing: ${PreStyles[0].textLetter}px;
             text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
             font-style: ${PreStyles[0].textStyle};
-            background-color: ${PreStyles[0].textBGColor
-                    ? hexToRgba(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity)
-                    : "transparent"};
+            background-color: ${PreStyles[0].textBGColor};
         }
             `}
         </style>)
@@ -426,12 +416,12 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("General Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Prefix Text")}
+                            label={__("Prefix Text", 'premium-block-for-gutenberg')}
                             value={prefix}
                             onChange={(newText) =>
                                 setAttributes({ prefix: newText })
@@ -467,7 +457,7 @@ class edit extends Component {
                             <br />
                         </Fragment>
                         <TextControl
-                            label={__("Suffix Text")}
+                            label={__("Suffix Text", 'premium-block-for-gutenberg')}
                             value={suffix}
                             onChange={(newText) =>
                                 setAttributes({ suffix: newText })
@@ -475,12 +465,12 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Advanced Settings")}
+                        title={__("Advanced Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Effect")}
+                            label={__("Effect", 'premium-block-for-gutenberg')}
                             options={EFFECT}
                             value={effect}
                             onChange={(newValue) =>
@@ -490,7 +480,7 @@ class edit extends Component {
                         {"typing" === effect ? (
                             <Fragment>
                                 <TextControl
-                                    label={__("Type Speed")}
+                                    label={__("Type Speed", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={typeSpeed}
                                     onChange={(newValue) =>
@@ -498,10 +488,10 @@ class edit extends Component {
                                             typeSpeed: parseInt(newValue),
                                         })
                                     }
-                                    help={__('Set typing effect speed in milliseconds.')}
+                                    help={__('Set typing effect speed in milliseconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Back Speed")}
+                                    label={__("Back Speed", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={backSpeed}
                                     onChange={(newValue) =>
@@ -509,10 +499,10 @@ class edit extends Component {
                                             backSpeed: parseInt(newValue),
                                         })
                                     }
-                                    help={__('Set a speed for backspace effect in milliseconds.')}
+                                    help={__('Set a speed for backspace effect in milliseconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Start Delay")}
+                                    label={__("Start Delay", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={startdelay}
                                     onChange={(newValue) =>
@@ -520,10 +510,10 @@ class edit extends Component {
                                             startdelay: parseInt(newValue),
                                         })
                                     }
-                                    help={__('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.')}
+                                    help={__('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Back Delay")}
+                                    label={__("Back Delay", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={backdelay}
                                     onChange={(newValue) =>
@@ -532,18 +522,18 @@ class edit extends Component {
                                         })
                                     }
                                     help={__(
-                                        "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
+                                        "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-block-for-gutenberg'
                                     )}
                                 />
                                 <ToggleControl
-                                    label={__("Loop")}
+                                    label={__("Loop", 'premium-block-for-gutenberg')}
                                     checked={loop}
                                     onChange={(newCheck) =>
                                         setAttributes({ loop: newCheck })
                                     }
                                 />
                                 <ToggleControl
-                                    label={__("Show Cursor")}
+                                    label={__("Show Cursor", 'premium-block-for-gutenberg')}
                                     checked={cursorShow}
                                     onChange={(newCheck) =>
                                         setAttributes({ cursorShow: newCheck })
@@ -551,7 +541,7 @@ class edit extends Component {
                                 />
                                 {cursorShow && (
                                     <TextControl
-                                        label={__("Cursor Mark")}
+                                        label={__("Cursor Mark", 'premium-block-for-gutenberg')}
                                         value={cursorMark}
                                         onChange={(newCheck) =>
                                             setAttributes({
@@ -564,11 +554,10 @@ class edit extends Component {
                         ) : (
                             <Fragment>
                                 <p className="premium-notice">
-                                    Please note that Slide effect works only on
-                                    frontend
+                                    {__(' Please note that Slide effect works only on frontend', 'premium-block-for-gutenberg')}
                                 </p>
                                 <TextControl
-                                    label={__("Animation Speed")}
+                                    label={__("Animation Speed", 'premium-block-for-gutenberg')}
                                     value={animationSpeed}
                                     type="Number"
                                     onChange={(newValue) =>
@@ -577,11 +566,11 @@ class edit extends Component {
                                         })
                                     }
                                     help={__(
-                                        "Set a duration value in milliseconds for slide effect."
+                                        "Set a duration value in milliseconds for slide effect.", 'premium-block-for-gutenberg'
                                     )}
                                 />
                                 <TextControl
-                                    label={__("Pause Time")}
+                                    label={__("Pause Time", 'premium-block-for-gutenberg')}
                                     value={pauseTime}
                                     type="Number"
                                     onChange={(newValue) =>
@@ -590,20 +579,20 @@ class edit extends Component {
                                         })
                                     }
                                     help={__(
-                                        "How long should the word/string stay visible? Set a value in milliseconds."
+                                        "How long should the word/string stay visible? Set a value in milliseconds.", 'premium-block-for-gutenberg'
                                     )}
                                 />
                                 <ToggleControl
-                                    label={__("Pause on Hover")}
+                                    label={__("Pause on Hover", 'premium-block-for-gutenberg')}
                                     checked={hoverPause}
                                     onChange={(newCheck) =>
                                         setAttributes({ hoverPause: newCheck })
                                     }
                                     help={__(
-                                        "If you enabled this option, the slide will be paused when mouseover."
+                                        "If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg'
                                     )}
                                 />
-                                <p>{__("Fancy Strings Alignment")}</p>
+                                <p>{__("Fancy Strings Alignment", 'premium-block-for-gutenberg')}</p>
                                 <Toolbar
                                     controls={ALIGNS.map((contentAlign) => ({
                                         icon: "editor-align" + contentAlign,
@@ -618,13 +607,13 @@ class edit extends Component {
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Fancy Text Style")}
+                        title={__("Fancy Text Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
 
                         <AdvancedPopColorControl
-                            label={__("Color", '')}
+                            label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={fancyStyles[0].fancyTextColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -644,19 +633,19 @@ class edit extends Component {
                             setAttributes={saveFancyStyle}
                             fontSizeType={{
                                 value: fancyStyles[0].fancyTextfontSizeUnit,
-                                label: __("fancyTextfontSizeUnit"),
+                                label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: fancyStyles[0].fancyTextfontSize,
-                                label: __("fancyTextfontSize"),
+                                label: __("fancyTextfontSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: fancyStyles[0].fancyTextfontSizeMobile,
-                                label: __("fancyTextfontSizeMobile"),
+                                label: __("fancyTextfontSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: fancyStyles[0].fancyTextfontSizeTablet,
-                                label: __("fancyTextfontSizeTablet"),
+                                label: __("fancyTextfontSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             weight={fancyStyles[0].fancyTextWeight}
                             style={fancyStyles[0].fancyTextStyle}
@@ -678,7 +667,6 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={fancyStyles[0].fancyTextBGColor}
@@ -711,7 +699,7 @@ class edit extends Component {
                         />
                         {effect == "typing" && cursorShow && (
                             <AdvancedPopColorControl
-                                label={__("Cursor Color", '')}
+                                label={__("Cursor Color", 'premium-block-for-gutenberg')}
                                 colorValue={fancyStyles[0].cursorColor}
                                 colorDefault={''}
                                 onColorChange={newValue =>
@@ -723,13 +711,13 @@ class edit extends Component {
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Prefix & Suffix Style")}
+                        title={__("Prefix & Suffix Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
 
                         <AdvancedPopColorControl
-                            label={__("Color", '')}
+                            label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={PreStyles[0].textColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -749,19 +737,19 @@ class edit extends Component {
                             setAttributes={savePrefixStyle}
                             fontSizeType={{
                                 value: PreStyles[0].textfontSizeUnit,
-                                label: __("textfontSizeUnit"),
+                                label: __("textfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: PreStyles[0].textfontSize,
-                                label: __("textfontSize"),
+                                label: __("textfontSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: PreStyles[0].textfontSizeMobile,
-                                label: __("textfontSizeMobile"),
+                                label: __("textfontSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: PreStyles[0].textfontSizeTablet,
-                                label: __("textfontSizeTablet"),
+                                label: __("textfontSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             weight={PreStyles[0].textWeight}
                             style={PreStyles[0].textStyle}
@@ -781,7 +769,6 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={PreStyles[0].textBGColor}

@@ -80,9 +80,9 @@ class PremiumMargin extends Component {
         const { onChangeMarSizeUnit = () => { }, selectedUnit } = this.props;
 
         return (
-            <div className={`kmt-spacing-responsive`}>
+            <div className={`premium-spacing-responsive`}>
                 <header className="premium-control-label-container">
-                    <div className={`kmt-slider-title-wrap`}>
+                    <div className={`premium-slider-title-wrap`}>
                         {__("Margin")}
                     </div>
                     {showUnits && (
@@ -94,61 +94,61 @@ class PremiumMargin extends Component {
                         />
                     )}
                 </header>
-                <div className={`kmt-spacing-responsive-outer-wrapper`}>
-                    <div className={`input-wrapper kmt-spacing-responsive-wrapper`}>
-                        <ul className={`kmt-spacing-wrapper`}>
+                <div className={`premium-spacing-responsive-outer-wrapper`}>
+                    <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
+                        <ul className={`premium-spacing-wrapper`}>
                             {(directions.includes("all") || directions.includes("top")) && (
-                                <li className={`kmt-spacing-input-item`}>
+                                <li className={`premium-spacing-input-item`}>
                                     <input
                                         type="number"
                                         name="top"
                                         value={top || 0}
                                         onChange={this.onInputChange}
-                                        className={`kmt-spacing-input`}
+                                        className={`premium-spacing-input`}
                                     />
-                                    <span className={`kmt-spacing-title`}>Top</span>
+                                    <span className={`premium-spacing-title`}>Top</span>
                                 </li>
                             )}
                             {(directions.includes("all") || directions.includes("right")) && (
-                                <li className={`kmt-spacing-input-item`}>
+                                <li className={`premium-spacing-input-item`}>
                                     <input
                                         type="number"
                                         name="right"
                                         value={right || 0}
                                         onChange={this.onInputChange}
-                                        className={`kmt-spacing-input`}
+                                        className={`premium-spacing-input`}
                                     />
-                                    <span className={`kmt-spacing-title`}>Right</span>
+                                    <span className={`premium-spacing-title`}>Right</span>
                                 </li>
                             )}
                             {(directions.includes("all") || directions.includes("bottom")) && (
-                                <li className={`kmt-spacing-input-item`}>
+                                <li className={`premium-spacing-input-item`}>
                                     <input
                                         type="number"
                                         name="bottom"
                                         value={bottom || 0}
                                         onChange={this.onInputChange}
-                                        className={`kmt-spacing-input`}
+                                        className={`premium-spacing-input`}
                                     />
-                                    <span className={`kmt-spacing-title`}>Bottom</span>
+                                    <span className={`premium-spacing-title`}>Bottom</span>
                                 </li>
                             )}
                             {(directions.includes("all") || directions.includes("left")) && (
-                                <li className={`kmt-spacing-input-item`}>
+                                <li className={`premium-spacing-input-item`}>
                                     <input
                                         type="number"
                                         name="left"
                                         value={left || 0}
                                         onChange={this.onInputChange}
-                                        className={`kmt-spacing-input`}
+                                        className={`premium-spacing-input`}
                                     />
-                                    <span className={`kmt-spacing-title`}>Left</span>
+                                    <span className={`premium-spacing-title`}>Left</span>
                                 </li>
                             )}
                             {(directions.length > 1 || directions.includes("all")) && (
                                 <li>
                                     <button
-                                        className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
+                                        className={`linked-btn  is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
                                             }`}
                                         onClick={this.onButtonClick}
                                     />
@@ -156,9 +156,9 @@ class PremiumMargin extends Component {
                             )}
                         </ul>
                     </div>
-                    <div className="kmt-spacing-btn-reset-wrap">
+                    <div className="premium-spacing-btn-reset-wrap">
                         <button
-                            className="kmt-reset-btn "
+                            className="premium-reset-btn "
                             disabled={
                                 JSON.stringify(this.state) ===
                                 JSON.stringify(this.defaultValue)
